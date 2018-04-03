@@ -1,12 +1,20 @@
+import React, { Component } from "react";
 import withData from "./../lib/apollo/withData";
+import withRoot from "./../lib/theme/withRoot";
 import Header from "./../components/Header";
 import Profile from "./../components/Profile";
 
-const Shop = () => (
-  <div>
+@withData
+@withRoot
+class Shop extends Component {
+  render() {
+    return (
+      <div>
+        <Header />
+        <Profile />
+      </div>
+    )
+  }
+}
 
-    <Profile />
-  </div>
-);
-
-export default withData(Shop);
+export default Shop;

@@ -1,0 +1,4 @@
+{
+  "presets": ["next/babel", "stage-2"],
+  "plugins": ["transform-decorators-legacy"]
+}
