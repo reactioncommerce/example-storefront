@@ -28,6 +28,10 @@
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
-    "@reactioncommerce/eslint-config": "^1.0.1"
+    "@reactioncommerce/eslint-config": "^1.0.1",
+    "eslint": "^4.19.1",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0"
   }
 }
