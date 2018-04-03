@@ -15,14 +15,14 @@ const GET_VIEWER = gql`
 
 class Profile extends Component {
   render() {
-    console.log(this.props);
+    const { viewer: { name, emailRecords } } = this.props;
     return (
-      <h1>Profile</h1>
+      <h1>{name}</h1>
     );
   }
 }
 
-export default ( { viewer }) => {
+export default ({ viewer }) => {
   return (
     <Query query={GET_VIEWER}>
       {({ loading, error, data }) => {
