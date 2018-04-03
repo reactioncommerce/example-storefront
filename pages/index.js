@@ -1,8 +1,12 @@
+import withData from "./../lib/apollo/withData";
 import Header from "./../components/Header";
+import Profile from "./../components/Profile";
 
-export default () => (
+const Shop = () => (
   <div>
-    <Header />
-    Index
+
+    <Profile />
   </div>
 );
+
+export default withData(Shop);

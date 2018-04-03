@@ -168,7 +168,7 @@ var _react = __webpack_require__("./node_modules/react/cjs/react.development.js"
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__("./node_modules/prop-types/index.js");
+var _propTypes = __webpack_require__("./node_modules/next/node_modules/prop-types/index.js");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
