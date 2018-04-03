@@ -1,1 +1,1 @@
-# Reaction Next Storefront Staterkit
+# Reaction Next Storefront Starterkit
