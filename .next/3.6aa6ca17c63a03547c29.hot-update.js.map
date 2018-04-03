@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./pages/index.js?f7ee"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;eAEe;AAAA,SACb;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,GADa;AAAA,C;;AAAf","file":"3.6aa6ca17c63a03547c29.hot-update.js","sourcesContent":["\n\nexport default () => (\n  <h1>Nextjs App</h1>\n);\n\n\n\n// WEBPACK FOOTER //\n// ./pages/index.js"],"sourceRoot":""}

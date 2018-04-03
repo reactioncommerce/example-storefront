@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./pages/index.js?f7ee"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;eAEe;AAAA,SACb;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,GADa;AAAA,C;;AAAf","file":"3.40d3da9084bf2f7263c3.hot-update.js","sourcesContent":["\n\nexport default () => (\n  <h1>Nextjs App duder</h1>\n);\n\n\n\n// WEBPACK FOOTER //\n// ./pages/index.js"],"sourceRoot":""}

@@ -1,0 +1,24 @@
+{
+  "name": "Storefront",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "material-ui": "^1.0.0-beta.40",
+    "mobx": "^4.1.1",
+    "next": "^5.1.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
+  },
+  "devDependencies": {
+    "@reactioncommerce/eslint-config": "^1.0.1"
+  }
+}
