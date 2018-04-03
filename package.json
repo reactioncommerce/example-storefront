@@ -12,11 +12,18 @@
   "author": "",
   "license": "GPL-3.0",
   "dependencies": {
+    "apollo-cache-inmemory": "^1.1.9",
+    "apollo-client": "^2.2.5",
+    "apollo-link-http": "^1.5.1",
+    "graphql": "^0.13.1",
+    "graphql-tag": "^2.8.0",
+    "prop-types": "^15.6.1",
     "material-ui": "^1.0.0-beta.40",
     "mobx": "^4.1.1",
     "next": "^5.1.0",
     "react": "^16.3.0",
-    "react-dom": "^16.3.0"
+    "react-dom": "^16.3.0",
+    "react-helmet": "^5.2.0"
   },
   "devDependencies": {
     "@reactioncommerce/eslint-config": "^1.0.1"

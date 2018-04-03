@@ -1,5 +1,8 @@
-
+import Header from "./../components/Header";
 
 export default () => (
-  <h1>Nextjs App</h1>
+  <div>
+    <Header />
+    Index
+  </div>
 );
