@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AppBar from "material-ui/AppBar";
-import Toolbar from "material-ui/Toolbar"
+import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
 
 class Header extends Component {
@@ -11,7 +11,7 @@ class Header extends Component {
           <Typography variant="title" color="secondary">App Name</Typography>
         </Toolbar>
       </AppBar>
-    )
+    );
   }
 }
 
