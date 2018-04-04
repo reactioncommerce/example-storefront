@@ -2,7 +2,7 @@ import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
 import JssProvider from "react-jss/lib/JssProvider";
 import flush from "styled-jsx/server";
-import getPageContext from "./../lib/theme/reactionTheme";
+import getPageContext from "./../lib/theme/getPageContext";
 
 class MyDocument extends Document {
   render() {
@@ -37,7 +37,7 @@ class MyDocument extends Document {
   }
 }
 
-MyDocument.getInitialProps = ctx => {
+MyDocument.getInitialProps = (ctx) => {
   // Resolution order
   //
   // On the server:
@@ -57,7 +57,7 @@ MyDocument.getInitialProps = ctx => {
 
   // Get the context of the page to collected side effects.
   const pageContext = getPageContext();
-  const page = ctx.renderPage(Component => props => (
+  const page = ctx.renderPage((Component) => (props) => (
     <JssProvider
       registry={pageContext.sheetsRegistry}
       generateClassName={pageContext.generateClassName}
@@ -78,7 +78,7 @@ MyDocument.getInitialProps = ctx => {
         />
         {flush() || null}
       </React.Fragment>
-    ),
+    )
   };
 };
 

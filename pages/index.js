@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import withData from "./../lib/apollo/withData";
 import withRoot from "./../lib/theme/withRoot";
 import Header from "./../components/Header";
 import Profile from "./../components/Profile";
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     textAlign: "center",
     paddingTop: theme.spacing.unit * 20
@@ -16,6 +17,10 @@ const styles = theme => ({
 @withRoot
 @withStyles(styles)
 class Shop extends Component {
+  static propTypes = {
+    classes: PropTypes.object
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -24,7 +29,7 @@ class Shop extends Component {
         <Profile />
         <p>Index Page</p>
       </div>
-    )
+    );
   }
 }
 
