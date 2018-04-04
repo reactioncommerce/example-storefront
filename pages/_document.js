@@ -1,10 +1,10 @@
 import React from "react";
-import Document, { Head, Main, NextScript } from "next/document";
+import { Document as NextDocument, Head, Main, NextScript } from "next/document";
 import JssProvider from "react-jss/lib/JssProvider";
 import flush from "styled-jsx/server";
 import getPageContext from "./../lib/theme/getPageContext";
 
-class MyDocument extends Document {
+class Document extends NextDocument {
   render() {
     const { pageContext } = this.props;
 
@@ -23,10 +23,7 @@ class MyDocument extends Document {
           />
           {/* PWA primary color */}
           <meta name="theme-color" content={pageContext.theme.palette.primary.main} />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
-          />
+          <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" rel="stylesheet" />
         </Head>
         <body>
           <Main />
@@ -37,7 +34,7 @@ class MyDocument extends Document {
   }
 }
 
-MyDocument.getInitialProps = (ctx) => {
+Document.getInitialProps = (ctx) => {
   // Resolution order
   //
   // On the server:
@@ -82,4 +79,4 @@ MyDocument.getInitialProps = (ctx) => {
   };
 };
 
-export default MyDocument;
+export default Document;
