@@ -6,9 +6,9 @@ import Typography from "material-ui/Typography";
 class Header extends Component {
   render() {
     return (
-      <AppBar position="static" color="primary">
+      <AppBar position="static">
         <Toolbar>
-          <Typography variant="title" color="secondary">App Name</Typography>
+          <Typography variant="title">Reaction Commerce</Typography>
         </Toolbar>
       </AppBar>
     );

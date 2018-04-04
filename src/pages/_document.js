@@ -4,7 +4,7 @@ import JssProvider from "react-jss/lib/JssProvider";
 import flush from "styled-jsx/server";
 import getPageContext from "../lib/theme/getPageContext";
 
-class MyDocument extends Document {
+class HTMLDocument extends Document {
   render() {
     const { pageContext } = this.props;
 
@@ -37,7 +37,7 @@ class MyDocument extends Document {
   }
 }
 
-MyDocument.getInitialProps = (ctx) => {
+HTMLDocument.getInitialProps = (ctx) => {
   // Resolution order
   //
   // On the server:
@@ -82,4 +82,4 @@ MyDocument.getInitialProps = (ctx) => {
   };
 };
 
-export default MyDocument;
+export default HTMLDocument;
