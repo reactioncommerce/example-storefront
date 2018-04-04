@@ -17,7 +17,7 @@ class Profile extends Component {
   render() {
     const { viewer: { name, emailRecords } } = this.props;
     return (
-      <h1>{name}</h1>
+      <h1>Hello {name}</h1>
     );
   }
 }

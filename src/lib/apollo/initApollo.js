@@ -14,8 +14,7 @@ const create = initialState =>
     connectToDevTools: process.browser,
     ssrMode: !process.browser,
     link: new HttpLink({
-      uri: `${process.env.PROTOCOL}://${process.env.HOST}:${process.env.PORT}/${process.env
-        .ENDPOINT}`,
+      uri: "http://localhost:3030/graphql-alpha",
       headers: {
         "meteor-login-token": `${process.env.METEOR_TOKEN}`
       },
