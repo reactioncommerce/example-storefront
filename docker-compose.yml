@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        BUILD_ENV: "development"
+    command: [sh, -c, "yarn dev"]
+    env_file:
+      - ./.env
+    environment:
+      REACTION_APP_NAME: "reaction-next-starterkit.web"
+    ports:
+      - 4000:3000
+    volumes:
+      - $HOME/.cache/yarn-offline-mirror:/home/node/.cache/yarn-offline-mirror
+      - web-yarn:/home/node/.cache/yarn
+      - .:/usr/local/src/reaction-app
+
+volumes:
+  web-yarn:
