@@ -1,5 +1,10 @@
 version: '3.4'
 
+networks:
+  reaction-api:
+    external:
+      name: reaction-api
+
 services:
   web:
     build:
@@ -11,6 +16,10 @@ services:
       - ./.env
     environment:
       REACTION_APP_NAME: "reaction-next-starterkit.web"
+    networks:
+      reaction-api:
+        aliases:
+          - storefront
     ports:
       - 4000:3000
     volumes:
