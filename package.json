@@ -13,7 +13,6 @@
   "scripts": {
     "dev": "node_modules/.bin/babel-watch -w src/server.js --disable-autowatch src/server.js",
     "build": "next build",
-    "dev": "next",
     "lint": "eslint .",
     "start": "next start"
   },
