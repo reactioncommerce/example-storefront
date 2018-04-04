@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 
-import Layout from "components/layout";
+import Layout from "components/Layout";
 import withData from "lib/apollo/withData";
 import withRoot from "lib/theme/withRoot";
-import Header from "components/header";
-import Profile from "components/profile";
+import Header from "components/Header";
+import Profile from "components/Profile";
 
 const styles = theme => ({
   root: {
