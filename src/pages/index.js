@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
-import withData from "./../lib/apollo/withData";
-import withRoot from "./../lib/theme/withRoot";
-import Header from "./../components/Header";
-import Profile from "./../components/Profile";
 
-const styles = (theme) => ({
+import Layout from "components/layout";
+import withData from "lib/apollo/withData";
+import withRoot from "lib/theme/withRoot";
+import Header from "components/header";
+import Profile from "components/profile";
+
+const styles = theme => ({
   root: {
     textAlign: "center",
     paddingTop: theme.spacing.unit * 20
@@ -23,12 +25,14 @@ class Shop extends Component {
 
   render() {
     const { classes } = this.props;
-    return (
-      <div className={classes.root}>
-        <Header />
-        <Profile />
-        <p>Index Page</p>
-      </div>
+
+    return(
+      <Layout title="Wecome home">
+        <div className={classes.root}>
+          <Profile />
+          <p>Index Page</p>
+        </div>
+      </Layout>
     );
   }
 }

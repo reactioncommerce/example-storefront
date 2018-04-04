@@ -2,7 +2,7 @@ import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
 import JssProvider from "react-jss/lib/JssProvider";
 import flush from "styled-jsx/server";
-import getPageContext from "./../lib/theme/getPageContext";
+import getPageContext from "../lib/theme/getPageContext";
 
 class MyDocument extends Document {
   render() {

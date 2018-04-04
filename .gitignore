@@ -25,3 +25,4 @@ allure-results
 .reaction/config.json
 
 .next/*
+src/.next/*
