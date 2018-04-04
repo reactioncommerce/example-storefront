@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import Typography from "material-ui/Typography";
 
 const GET_VIEWER = gql`
   {
@@ -22,7 +23,7 @@ class Profile extends Component {
   render() {
     const { viewer: { name } } = this.props;
     return (
-      <h1>{name}</h1>
+      <Typography variant="subheading">{name}</Typography>
     );
   }
 }
