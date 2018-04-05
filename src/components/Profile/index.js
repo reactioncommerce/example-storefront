@@ -23,7 +23,7 @@ class Profile extends Component {
   render() {
     const { viewer: { name } } = this.props;
     return (
-      <Typography variant="subheading">{name}</Typography>
+      <Typography variant="subheading">Hello {name}</Typography>
     );
   }
 }

@@ -25,3 +25,4 @@ allure-results
 
 .next/*
 src/.next/*
+build
