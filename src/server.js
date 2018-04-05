@@ -25,11 +25,13 @@ app.prepare()
 
     server.listen(3000, (err) => {
       if (err) throw err;
-      console.log("> App ready on http://localhost:3000");
+      // TODO: do we need this console?
+      console.log("> App ready on http://localhost:3000"); // eslint-disable-line
     });
   })
   .catch((ex) => {
-    console.error(ex.stack);
+    // TODO: Better error handling?
+    console.error(ex.stack); // eslint-disable-line
     process.exit(1);
   });
 

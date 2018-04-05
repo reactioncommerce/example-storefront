@@ -50,7 +50,7 @@
     "react-test-renderer": "^16.3.1"
   },
   "devDependencies": {
-    "@reactioncommerce/eslint-config": "^1.0.1",
+    "@reactioncommerce/eslint-config": "^1.7.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",

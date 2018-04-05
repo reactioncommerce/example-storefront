@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Header from "components/Header";
 
-export default ({ children, title = '' }) => (
+export default ({ children, title = "" }) => (
   <div>
     <Head>
       <title key="title">{title}</title>
@@ -12,4 +12,4 @@ export default ({ children, title = '' }) => (
     {children}
 
   </div>
-)
+);

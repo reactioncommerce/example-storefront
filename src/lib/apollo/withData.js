@@ -43,7 +43,7 @@ export default (ComposedComponent) =>
         } catch (error) {
           // errorr
           // TODO: handle the error
-          console.log("apollo client error", error)
+          console.log("apollo client error", error); // eslint-disable-line
         }
         Head.rewind();
         serverState = {
