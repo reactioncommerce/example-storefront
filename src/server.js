@@ -1,10 +1,13 @@
 import express from "express";
 import nextApp from "next";
+import { useStaticRendering } from "mobx-react";
 
 import { appPath, dev } from "./config";
 
 const app = nextApp({ dir: appPath, dev });
 const handle = app.getRequestHandler();
+
+useStaticRendering(true);
 
 app.prepare()
   .then(() => {

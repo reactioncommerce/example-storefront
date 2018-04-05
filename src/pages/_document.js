@@ -2,8 +2,11 @@ import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
 import JssProvider from "react-jss/lib/JssProvider";
 import flush from "styled-jsx/server";
-import getPageContext from "../lib/theme/getPageContext";
 import Helmet from "react-helmet";
+import { Provider } from "mobx-react";
+import rootMobxStores from "../lib/stores";
+import getPageContext from "../lib/theme/getPageContext";
+
 
 class HTMLDocument extends Document {
   static getInitialProps = (ctx) => {
@@ -26,12 +29,16 @@ class HTMLDocument extends Document {
 
     // Get the context of the page to collected side effects.
     const pageContext = getPageContext();
+
+    /* eslint-disable-next-line react/display-name */
     const page = ctx.renderPage((Component) => (props) => (
       <JssProvider
         registry={pageContext.sheetsRegistry}
         generateClassName={pageContext.generateClassName}
       >
-        <Component pageContext={pageContext} {...props} />
+        <Provider {...rootMobxStores}>
+          <Component pageContext={pageContext} {...props} />
+        </Provider>
       </JssProvider>
     ));
 
@@ -57,7 +64,7 @@ class HTMLDocument extends Document {
     const htmlAttrs = helmet.htmlAttributes.toComponent();
 
     return (
-      <html {...htmlAttrs}>
+      <html lang="en" {...htmlAttrs}>
         <Head>
           <Helmet
             htmlAttributes={{lang: "en", dir: "ltr"}}
