@@ -3,6 +3,8 @@ import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import fetch from "isomorphic-fetch";
 
+const { env: { METEOR_TOKEN, GRAPHQL_URL } } = process;
+
 let apolloClient = null;
 
 if (!process.browser) {
@@ -14,10 +16,9 @@ const create = (initialState) =>
     connectToDevTools: process.browser,
     ssrMode: !process.browser,
     link: new HttpLink({
-      uri: `${process.env.PROTOCOL}://${process.env.HOST}:${process.env.PORT}/${process.env
-       .ENDPOINT}`,
+      uri: `${GRAPHQL_URL}`,
       headers: {
-        "meteor-login-token": `${process.env.METEOR_TOKEN}`
+        "meteor-login-token": `${METEOR_TOKEN}`
       },
       credentials: "same-origin"
     }),
