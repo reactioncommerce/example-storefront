@@ -57,7 +57,7 @@ class HTMLDocument extends Document {
     const htmlAttrs = helmet.htmlAttributes.toComponent();
 
     return (
-      <html {...htmlAttrs}>
+      <html lang="en" {...htmlAttrs}>
         <Head>
           <Helmet
             htmlAttributes={{lang: "en", dir: "ltr"}}
