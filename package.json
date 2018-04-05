@@ -17,6 +17,7 @@
     "build-next": "npm install --save-dev && next build src",
     "lint": "eslint .",
     "start": "NODE_ENV=production node build/app/server.js",
+    "test": "npm run test:unit",
     "test:unit": "jest",
     "test:unit:watch": "jest --watch"
   },
