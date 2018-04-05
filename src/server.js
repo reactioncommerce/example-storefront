@@ -1,8 +1,7 @@
-import express from 'express';
-import nextApp from 'next';
-import bodyParser from 'body-parser';
+import express from "express";
+import nextApp from "next";
 
-import { appPath, dev } from './config';
+import { appPath, dev } from "./config";
 
 const app = nextApp({ dir: appPath, dev });
 const handle = app.getRequestHandler();
@@ -19,15 +18,14 @@ app.prepare()
     //   app.render(req, res, actualPage, queryParams);
     // });
 
-    server.get('*', (req, res) => handle(req, res));
-    
+    server.get("*", (req, res) => handle(req, res));
 
     /* END EXPRESS ROUTES */
 
-    
+
     server.listen(3000, (err) => {
       if (err) throw err;
-      console.log(`> App ready on http://localhost:3000`);
+      console.log("> App ready on http://localhost:3000");
     });
   })
   .catch((ex) => {
