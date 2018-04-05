@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<h3
+  className="MuiTypography-root-1 MuiTypography-subheading-8"
+>
+  Hello 
+  Test User
+</h3>
+`;
