@@ -3,9 +3,9 @@
 Example storefront application for [Reaction Commerce](https://reactioncommerce.com/).
 
 ## Quicktstart
-```
+`
 git clone https://github.com/reactioncommerce/reaction-next-starterkit.git && cd reaction-next-starterkit && npm install && npm run dev
-```
+`
 ## Development
 To run the application in development mode execute:
 ```
