@@ -1,7 +1,7 @@
 import { observable, computed, action } from "mobx";
 
 class UIStore {
-  @observable _cartOpen = true;
+  @observable _cartOpen = false;
 
   @computed get cartOpen() {
     return this._cartOpen;
@@ -11,7 +11,7 @@ class UIStore {
     this._cartOpen = value;
   }
 
-  @action toggleCartOpen() {
+  @action toggleCartOpen = () => {
     this.cartOpen = !this.cartOpen;
   }
 }
