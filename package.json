@@ -16,7 +16,9 @@
     "build-clean": "rm -rf build/app",
     "build-next": "npm install --save-dev && next build src",
     "lint": "eslint .",
-    "start": "NODE_ENV=production node build/app/server.js"
+    "start": "NODE_ENV=production node build/app/server.js",
+    "test:unit": "jest",
+    "test:unit:watch": "jest --watch"
   },
   "eslintConfig": {
     "extends": [
@@ -27,11 +29,15 @@
     "apollo-cache-inmemory": "^1.1.9",
     "apollo-client": "^2.2.5",
     "apollo-link-http": "^1.5.1",
+    "babel-jest": "^22.4.3",
     "body-parser": "^1.18.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "express": "^4.16.3",
     "graphql": "^0.13.1",
     "graphql-tag": "^2.8.0",
     "isomorphic-fetch": "^2.2.1",
+    "jest": "^22.4.3",
     "material-ui": "^1.0.0-beta.40",
     "mobx": "^4.1.1",
     "next": "^5.1.0",
@@ -39,7 +45,8 @@
     "react": "^16.3.0",
     "react-apollo": "^2.1.2",
     "react-dom": "^16.3.0",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "react-test-renderer": "^16.3.1"
   },
   "devDependencies": {
     "@reactioncommerce/eslint-config": "^1.0.1",
