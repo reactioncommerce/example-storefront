@@ -68,8 +68,7 @@ RUN set -ex; \
     yarn install \
       --frozen-lockfile \
       --ignore-scripts \
-      --no-cache \
-      --production; \
+      --no-cache; \
   elif [ "$BUILD_ENV" = "test" ]; then \
     yarn install \
       --frozen-lockfile \
@@ -85,6 +84,9 @@ RUN set -ex; \
 WORKDIR $APP_SOURCE_DIR
 COPY . $APP_SOURCE_DIR
 
-RUN yarn run build
+RUN set -ex; \
+  if [ "$BUILD_ENV" = "production" ]; then \
+    yarn build; \
+  fi;
 
-CMD ["yarn start"]
+CMD ["yarn", "start"]
