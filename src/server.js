@@ -23,9 +23,9 @@ app.prepare()
     /* END EXPRESS ROUTES */
 
 
-    server.listen(3000, (err) => {
+    server.listen(4000, (err) => {
       if (err) throw err;
-      console.log("> App ready on http://localhost:3000");
+      console.log("> App ready on http://localhost:4000");
     });
   })
   .catch((ex) => {

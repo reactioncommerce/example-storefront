@@ -12,7 +12,9 @@
   "license": "GPL-3.0",
   "scripts": {
     "dev": "npx babel-watch -w src/server.js --disable-autowatch src/server.js",
-    "build": "npm run build-clean && npx babel src -d build/app --ignore '**/*.test.js','**/*__mocks__','**/*__snapshots__' && cp -R src/static build/app/static && npx next build build/app",
+    "build": "npm run build-clean && npm run build-transpile  && npm run build-sync && npx next build build/app",
+    "build-transpile": "npx babel src -d build/app --ignore '**/*.test.js','**/*__mocks__','**/*__snapshots__'",
+    "build-sync": "cp -R src/static build/app/static && rsync -av --prune-empty-dirs --include='*/' --include='*.gql' --exclude='*' src/* build/app",
     "build-clean": "rm -rf build/app",
     "build-next": "npm install --save-dev && next build src",
     "lint": "eslint .",
