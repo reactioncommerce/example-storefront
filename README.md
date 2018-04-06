@@ -49,6 +49,7 @@ To start the app in production mode execute:
 `docker run -p ${port}:3000 --env-file .env --network reaction-api reaction-storefront`
 
 _**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at._
+
 _**NOTE:** The above command is assuming ether the `devserver` or `reaction` is also running._
 
 ## Features
