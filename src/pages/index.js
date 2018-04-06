@@ -33,7 +33,7 @@ class Shop extends Component {
       <Layout title="Welcome home">
         <div className={classes.root}>
           <Profile />
-          <Typography variant="body">Index Page</Typography>
+          <Typography variant="body1">Index Page</Typography>
         </div>
       </Layout>
     );
