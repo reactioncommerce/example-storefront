@@ -1,12 +1,12 @@
 import React from "react";
-import Head from "next/head";
+import Helmet from "react-helmet";
 import Header from "components/Header";
 
 export default ({ children, title = '' }) => (
   <div>
-    <Head>
-      <title key="title">{title}</title>
-    </Head>
+    <Helmet>
+      <title>{title}</title>
+    </Helmet>
     <Header />
 
     {children}

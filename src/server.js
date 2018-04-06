@@ -1,10 +1,14 @@
 import express from "express";
 import nextApp from "next";
+import { useStaticRendering } from "mobx-react";
 
+import logger from "lib/logger";
 import { appPath, dev } from "./config";
 
 const app = nextApp({ dir: appPath, dev });
 const handle = app.getRequestHandler();
+
+useStaticRendering(true);
 
 app.prepare()
   .then(() => {
@@ -25,11 +29,12 @@ app.prepare()
 
     server.listen(4000, (err) => {
       if (err) throw err;
-      console.log("> App ready on http://localhost:4000");
+      
+      logger.appStarted("localhost", 4000);
     });
   })
   .catch((ex) => {
-    console.error(ex.stack);
+    logger.error(ex.stack);
     process.exit(1);
   });
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { observer, inject } from "mobx-react";
 import { withStyles } from "material-ui/styles";
 import Typography from "material-ui/Typography";
 
@@ -18,6 +19,8 @@ const styles = (theme) => ({
 @withData
 @withRoot
 @withStyles(styles)
+@inject("uiStore")
+@observer
 class Shop extends Component {
   static propTypes = {
     classes: PropTypes.object
@@ -30,7 +33,7 @@ class Shop extends Component {
       <Layout title="Welcome home">
         <div className={classes.root}>
           <Profile />
-          <Typography variant="body">Index Page</Typography>
+          <Typography variant="body1">Index Page</Typography>
         </div>
       </Layout>
     );
