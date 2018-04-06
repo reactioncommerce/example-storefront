@@ -21,7 +21,7 @@ services:
         aliases:
           - storefront
     ports:
-      - 4000:3000
+      - 4000:4000
     volumes:
       - $HOME/.cache/yarn-offline-mirror:/home/node/.cache/yarn-offline-mirror
       - web-yarn:/home/node/.cache/yarn

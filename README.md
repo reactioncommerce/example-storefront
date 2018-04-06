@@ -33,6 +33,7 @@ _**NOTE:** Currently we're using the [release 1.11.0 branch](https://github.com/
  1. Create a new `.env` file in the root of this project or copy the example one by running `cp .env.example .env`
  2. Replace the METEOR_TOKEN with the Meteor.loginToken from the above steps.
  3. Start the storefront application in development mode by running `docker-compose up -d --build`
+ 4. The Storefront will run on [localhost:4000](http://localhost:4000).
  
 ## Development
 To run the application in development mode execute:
@@ -46,7 +47,7 @@ Running the command below will build the starterkit for production.
 
 To start the app in production mode execute:
 
-`docker run -p ${port}:3000 --env-file .env --network reaction-api reaction-storefront`
+`docker run -p ${port}:4000 --env-file .env --network reaction-api reaction-storefront`
 
 _**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at._
 

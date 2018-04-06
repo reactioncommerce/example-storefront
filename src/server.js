@@ -2,6 +2,7 @@ import express from "express";
 import nextApp from "next";
 import { useStaticRendering } from "mobx-react";
 
+import logger from "lib/logger";
 import { appPath, dev } from "./config";
 
 const app = nextApp({ dir: appPath, dev });
@@ -26,15 +27,13 @@ app.prepare()
     /* END EXPRESS ROUTES */
 
 
-    server.listen(3000, (err) => {
+    server.listen(4000, (err) => {
       if (err) throw err;
-      // TODO: do we need this console?
-      console.log("> App ready on http://localhost:3000"); // eslint-disable-line
+      logger.appStarted("localhost", 4000);
     });
   })
   .catch((ex) => {
-    // TODO: Better error handling?
-    console.error(ex.stack); // eslint-disable-line
+    logger.error(ex.stack);
     process.exit(1);
   });
 
