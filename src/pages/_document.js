@@ -67,7 +67,7 @@ class HTMLDocument extends Document {
       <html lang="en" {...htmlAttrs}>
         <Head>
           <Helmet
-            htmlAttributes={{lang: "en", dir: "ltr"}}
+            htmlAttributes={{ lang: "en", dir: "ltr" }}
             title="My page"
             meta={[
               { charSet: "utf-8" },
