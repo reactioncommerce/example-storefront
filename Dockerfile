@@ -85,6 +85,6 @@ RUN set -ex; \
 WORKDIR $APP_SOURCE_DIR
 COPY . $APP_SOURCE_DIR
 
-# RUN yarn run build
+RUN yarn run build
 
 CMD ["yarn start"]
