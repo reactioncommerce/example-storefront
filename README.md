@@ -21,13 +21,13 @@ First you'll need to create a docker network for the GraphQL service and Storefr
 
 **Starting Reaction's GraphQL server**
 
-*NOTE: Currently we're using this [branch](https://github.com/reactioncommerce/reaction/tree/feat-aldeed-graphql-pure-queries) of Reaction Commerce to create the GraphQl service.*
+*NOTE: Currently we're using the [release 1.11.0 branch](https://github.com/reactioncommerce/reaction/pull/4151) of Reaction Commerce to create the GraphQl service.*
 
  1. Pull the latest code from Reaction Commerce
  2. Start the devserver by running `docker-compose up -d devserver` or start both the devserver and reaction by running `docker-compose up -d`
 
 **Getting a Meteor login token**
- 1. If not already running start a Reaction Commerce shop within docker by running `docker-compose up -d reaction`
+ 1. If not already running, start a Reaction Commerce shop within docker by running `docker-compose up -d reaction`
  2. Once the app has started view the shop at localhost:3000
  3. Open the devtools and copy the Meteor.loginToken from the localstorage.
 
