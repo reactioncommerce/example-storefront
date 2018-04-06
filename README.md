@@ -12,14 +12,14 @@ Example storefront application for [Reaction Commerce](https://reactioncommerce.
 
 First you'll need to create a docker network for the GraphQL service and Storefront to communicate.
 
-*NOTE: Currently we're using the network name of `reaction-api` but this may change in the future.*
+_**NOTE:** Currently we're using the network name of `reaction-api` but this may change in the future._
 
  1. Create a network by running `docker network create reaction-api`.
  2. Run `docker network ls` to verify your new network has been created
 
 **Starting Reaction's GraphQL server**
 
-*NOTE: Currently we're using the [release 1.11.0 branch](https://github.com/reactioncommerce/reaction/pull/4151) of Reaction Commerce to create the GraphQl service.*
+_**NOTE:** Currently we're using the [release 1.11.0 branch](https://github.com/reactioncommerce/reaction/pull/4151) of Reaction Commerce to create the GraphQl service._
 
  1. Pull the latest code from Reaction Commerce
  2. Start the devserver by running `docker-compose up -d devserver` or start both the `devserver` and `reaction` by running `docker-compose up -d`
@@ -48,7 +48,8 @@ To start the app in production mode execute:
 
 `docker run -p ${port}:3000 --env-file .env --network reaction-api reaction-storefront`
 
-*Replace the `${port}` with the localhost port you'd like the application to run at.*
+_**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at._
+_**NOTE:** The above command is assuming ether the `devserver` or `reaction` is also running._
 
 ## Features
  - [Docker](https://docs.docker.com)
