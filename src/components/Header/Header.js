@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AppBar from "material-ui/AppBar";
-import Button from "material-ui/Button";
+import Hidden from "material-ui/Hidden";
 import MenuList from "material-ui/Menu/MenuList";
 import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
@@ -9,10 +9,12 @@ import IconButton from "material-ui/IconButton";
 import Drawer from "material-ui/Drawer";
 import CartIcon from "mdi-material-ui/Cart";
 import MenuIcon from "mdi-material-ui/Menu";
+import Popover from "material-ui/Popover";
 import { inject, observer } from "mobx-react";
-import { observable, computed } from "mobx";
+import { action, observable, computed } from "mobx";
 import { withStyles } from "material-ui/styles";
 import NavigationItem from "../NavigationItem";
+import HorizontalNavigationItem from "../NavigationItem/HorizontalNavigationItem";
 
 const styles = () => ({
   cart: {
@@ -65,10 +67,17 @@ class Header extends Component {
     uiStore: PropTypes.object
   }
 
-  @observable _open = false
+  @observable _popoverAnchor = null
 
-  @computed get() { return this._open; }
-  set(value) { this._open = value; }
+  @computed get popoverAnchor() { return this._popoverAnchor; }
+
+  @action onClick = (event) => {
+    this._popoverAnchor = event.target;
+  }
+
+  @action onClose = () => {
+    this._popoverAnchor = null;
+  }
 
   render() {
     const { classes, uiStore } = this.props;
@@ -76,15 +85,21 @@ class Header extends Component {
     return (
       <AppBar position="static" elevation={0}>
         <Toolbar>
-          <IconButton color="inherit" onClick={uiStore.toggleMenuDrawerOpen}>
-            <MenuIcon/>
-          </IconButton>
+
+          <Hidden mdUp>
+            <IconButton color="inherit" onClick={uiStore.toggleMenuDrawerOpen}>
+              <MenuIcon/>
+            </IconButton>
+          </Hidden>
+
           <Typography className={classes.title} color="inherit" variant="title">Reaction</Typography>
 
           <nav className={classes.menu}>
+            <Hidden smDown>
             {tags.map((tag, index) => (
-              <Button key={index} href={`/tag/${tag.name}`} color="inherit">{tag.name}</Button>
+              <HorizontalNavigationItem key={index} menuItem={tag} />
             ))}
+      </Hidden>
           </nav>
 
           <IconButton color="inherit" onClick={uiStore.toggleCartOpen}>
@@ -103,6 +118,9 @@ class Header extends Component {
         <Drawer anchor="right" open={uiStore.cartOpen} onClose={uiStore.toggleCartOpen}>
           <div className={classes.cart}>Cart</div>
         </Drawer>
+        <Popover anchorEl={this.popoverAnchor} onClose={this.onClose} open={Boolean(this.popoverAnchor)}>
+          <Typography variant="title">Popover!</Typography>
+        </Popover>
       </AppBar>
     );
   }
