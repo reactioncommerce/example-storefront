@@ -3,20 +3,15 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import AppBar from "material-ui/AppBar";
 import Hidden from "material-ui/Hidden";
-import MenuList from "material-ui/Menu/MenuList";
+
 import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
-import IconButton from "material-ui/IconButton";
-import Drawer from "material-ui/Drawer";
-import CartIcon from "mdi-material-ui/Cart";
-import MenuIcon from "mdi-material-ui/Menu";
-import { inject, observer } from "mobx-react";
+
 import { withStyles } from "material-ui/styles";
 import HorizontalNavigationItem from "../NavigationItem/HorizontalNavigationItem";
-import VerticalNavigationItem from "../NavigationItem/VerticalNavigationItem";
 
-import { DesktopNavigation, MobileNavigation, MobileNavigationToggle } from "../Navigation";
-import { Cart, CartToggle } from "../Cart";
+import { DesktopNavigation, MobileNavigation, MobileNavigationToggle } from "components/Navigation";
+import { CartToggle } from "components/Cart";
 
 const styles = () => ({
   menu: {
@@ -58,8 +53,6 @@ const tags = [
 ];
 
 @withStyles(styles)
-@inject("uiStore")
-@observer
 class Header extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -67,17 +60,19 @@ class Header extends Component {
   };
 
   render() {
-    const { classes, uiStore } = this.props;
+    const { classes } = this.props;
 
     return (
       <AppBar position="static" elevation={0}>
         <Toolbar>
-          <Hidden mdUp>
-            <MobileNavigationToggle />
-          </Hidden>
+          <Hidden mdUp />
+
+          <MobileNavigationToggle />
 
           <Typography className={classes.title} color="inherit" variant="title">
-            <Link href="/">Reaction</Link>
+            <Link href="/">
+              <a>Reaction</a>
+            </Link>
           </Typography>
 
           <nav className={classes.menu}>
@@ -89,11 +84,7 @@ class Header extends Component {
           <CartToggle />
         </Toolbar>
 
-        <Drawer open={uiStore.menuDrawerOpen} onClose={uiStore.toggleMenuDrawerOpen}>
-          <div className={classes.cart}>
-            <MenuList>{tags.map((tag, index) => <VerticalNavigationItem key={index} menuItem={tag} />)}</MenuList>
-          </div>
-        </Drawer>
+        <MobileNavigation tags={tags} />
       </AppBar>
     );
   }
