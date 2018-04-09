@@ -15,12 +15,10 @@ import { withStyles } from "material-ui/styles";
 import HorizontalNavigationItem from "../NavigationItem/HorizontalNavigationItem";
 import VerticalNavigationItem from "../NavigationItem/VerticalNavigationItem";
 
-import Cart from "../Cart";
+import { DesktopNavigation, MobileNavigation, MobileNavigationToggle } from "../Navigation";
+import { Cart, CartToggle } from "../Cart";
 
 const styles = () => ({
-  cart: {
-    width: 320
-  },
   menu: {
     flex: 1
   }
@@ -75,9 +73,7 @@ class Header extends Component {
       <AppBar position="static" elevation={0}>
         <Toolbar>
           <Hidden mdUp>
-            <IconButton color="inherit" onClick={uiStore.toggleMenuDrawerOpen}>
-              <MenuIcon />
-            </IconButton>
+            <MobileNavigationToggle />
           </Hidden>
 
           <Typography className={classes.title} color="inherit" variant="title">
@@ -88,9 +84,9 @@ class Header extends Component {
             <Hidden smDown>{tags.map((tag, index) => <HorizontalNavigationItem key={index} menuItem={tag} />)}</Hidden>
           </nav>
 
-          <IconButton color="inherit" onClick={uiStore.toggleCartOpen}>
-            <CartIcon />
-          </IconButton>
+          <DesktopNavigation tags={tags} />
+
+          <CartToggle />
         </Toolbar>
 
         <Drawer open={uiStore.menuDrawerOpen} onClose={uiStore.toggleMenuDrawerOpen}>

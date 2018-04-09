@@ -4,7 +4,8 @@ class UIStore {
   @observable _cartOpen = false;
   @observable _menuDrawerOpen = false;
 
-  @computed get cartOpen() {
+  @computed
+  get cartOpen() {
     return this._cartOpen;
   }
 
@@ -12,11 +13,14 @@ class UIStore {
     this._cartOpen = value;
   }
 
-  @action toggleCartOpen = () => {
+  @action
+  toggleCartOpen = () => {
+    console.log("ui store toggle cart drawer");
     this.cartOpen = !this.cartOpen;
-  }
+  };
 
-  @computed get menuDrawerOpen() {
+  @computed
+  get menuDrawerOpen() {
     return this._menuDrawerOpen;
   }
 
@@ -24,9 +28,11 @@ class UIStore {
     this._menuDrawerOpen = value;
   }
 
-  @action toggleMenuDrawerOpen = () => {
+  @action
+  toggleMenuDrawerOpen = () => {
+    console.log("ui store toggle menu drawer");
     this.menuDrawerOpen = !this.menuDrawerOpen;
-  }
+  };
 }
 
 export default UIStore;
