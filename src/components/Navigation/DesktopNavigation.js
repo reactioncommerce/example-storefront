@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import { DesktopNavigationItem } from "components/Navigation";
+
 class DesktopNavigation extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -12,10 +14,8 @@ class DesktopNavigation extends Component {
     tags: []
   };
 
-  renderNavDropdown(tag, index) {}
-
   renderNavItem(tag, index) {
-    return <p key={index}>{tag.title}</p>;
+    return <DesktopNavigationItem key={index} menuItem={tag} />;
   }
 
   render() {

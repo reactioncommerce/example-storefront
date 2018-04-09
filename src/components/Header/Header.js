@@ -8,14 +8,23 @@ import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
 
 import { withStyles } from "material-ui/styles";
-import HorizontalNavigationItem from "../NavigationItem/HorizontalNavigationItem";
 
 import { DesktopNavigation, MobileNavigation, MobileNavigationToggle } from "components/Navigation";
 import { CartToggle } from "components/Cart";
 
-const styles = () => ({
-  menu: {
+const styles = (theme) => ({
+  controls: {
+    alignItems: "inherit",
+    display: "inherit",
     flex: 1
+  },
+  title: {
+    marginRight: theme.spacing.unit
+  },
+  toolbar: {
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "space-between"
   }
 });
 
@@ -64,22 +73,20 @@ class Header extends Component {
 
     return (
       <AppBar position="static" elevation={0}>
-        <Toolbar>
-          <Hidden mdUp />
+        <Toolbar className={classes.toolbar}>
+          <Hidden mdUp>
+            <MobileNavigationToggle />
+          </Hidden>
 
-          <MobileNavigationToggle />
+          <div className={classes.controls}>
+            <Typography className={classes.title} color="inherit" variant="title">
+              Reaction
+            </Typography>
 
-          <Typography className={classes.title} color="inherit" variant="title">
-            <Link href="/">
-              <a>Reaction</a>
-            </Link>
-          </Typography>
-
-          <nav className={classes.menu}>
-            <Hidden smDown>{tags.map((tag, index) => <HorizontalNavigationItem key={index} menuItem={tag} />)}</Hidden>
-          </nav>
-
-          <DesktopNavigation tags={tags} />
+            <Hidden smDown>
+              <DesktopNavigation tags={tags} />
+            </Hidden>
+          </div>
 
           <CartToggle />
         </Toolbar>

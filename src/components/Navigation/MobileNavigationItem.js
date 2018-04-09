@@ -27,7 +27,7 @@ const styles = (theme) => ({
 
 @withStyles(styles)
 @observer
-class VerticalNavigationItem extends Component {
+class MobileNavigationItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
     menuItem: PropTypes.object
@@ -103,4 +103,4 @@ class VerticalNavigationItem extends Component {
   }
 }
 
-export default VerticalNavigationItem;
+export default MobileNavigationItem;

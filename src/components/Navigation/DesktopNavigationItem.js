@@ -15,12 +15,6 @@ import { action, computed, observable } from "mobx";
 import { withStyles } from "material-ui/styles";
 
 const styles = (theme) => ({
-  cart: {
-    width: 320
-  },
-  menu: {
-    flex: 1
-  },
   paper: {
     padding: theme.spacing.unit,
     width: "100vw"
@@ -29,7 +23,7 @@ const styles = (theme) => ({
 
 @withStyles(styles)
 @observer
-class HorizontalNavigationItem extends Component {
+class DesktopNavigationItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
     menuItem: PropTypes.object
@@ -113,4 +107,4 @@ class HorizontalNavigationItem extends Component {
   }
 }
 
-export default HorizontalNavigationItem;
+export default DesktopNavigationItem;
