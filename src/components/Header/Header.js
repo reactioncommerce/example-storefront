@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Link from "next/link";
 import AppBar from "material-ui/AppBar";
-import Button from "material-ui/Button";
+import Hidden from "material-ui/Hidden";
 import MenuList from "material-ui/Menu/MenuList";
 import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
@@ -10,8 +11,8 @@ import Drawer from "material-ui/Drawer";
 import CartIcon from "mdi-material-ui/Cart";
 import MenuIcon from "mdi-material-ui/Menu";
 import { inject, observer } from "mobx-react";
-import { observable, computed } from "mobx";
 import { withStyles } from "material-ui/styles";
+import HorizontalNavigationItem from "../NavigationItem/HorizontalNavigationItem";
 import VerticalNavigationItem from "../NavigationItem/VerticalNavigationItem";
 
 const styles = () => ({
@@ -63,12 +64,7 @@ class Header extends Component {
   static propTypes = {
     classes: PropTypes.object,
     uiStore: PropTypes.object
-  }
-
-  @observable _open = false
-
-  @computed get() { return this._open; }
-  set(value) { this._open = value; }
+  };
 
   render() {
     const { classes, uiStore } = this.props;
@@ -76,30 +72,31 @@ class Header extends Component {
     return (
       <AppBar position="static" elevation={0}>
         <Toolbar>
-          <IconButton color="inherit" onClick={uiStore.toggleMenuDrawerOpen}>
-            <MenuIcon/>
-          </IconButton>
-          <Typography className={classes.title} color="inherit" variant="title">Reaction</Typography>
+          <Hidden mdUp>
+            <IconButton color="inherit" onClick={uiStore.toggleMenuDrawerOpen}>
+              <MenuIcon />
+            </IconButton>
+          </Hidden>
+
+          <Typography className={classes.title} color="inherit" variant="title">
+            <Link href="/">Reaction</Link>
+          </Typography>
 
           <nav className={classes.menu}>
-            {tags.map((tag, index) => (
-              <Button key={index} href={`/tag/${tag.name}`} color="inherit">{tag.name}</Button>
-            ))}
+            <Hidden smDown>{tags.map((tag, index) => <HorizontalNavigationItem key={index} menuItem={tag} />)}</Hidden>
           </nav>
 
           <IconButton color="inherit" onClick={uiStore.toggleCartOpen}>
             <CartIcon />
           </IconButton>
         </Toolbar>
+
         <Drawer open={uiStore.menuDrawerOpen} onClose={uiStore.toggleMenuDrawerOpen}>
           <div className={classes.cart}>
-            <MenuList>
-              {tags.map((tag, index) => (
-                <VerticalNavigationItem key={index} menuItem={tag} />
-              ))}
-            </MenuList>
+            <MenuList>{tags.map((tag, index) => <VerticalNavigationItem key={index} menuItem={tag} />)}</MenuList>
           </div>
         </Drawer>
+
         <Drawer anchor="right" open={uiStore.cartOpen} onClose={uiStore.toggleCartOpen}>
           <div className={classes.cart}>Cart</div>
         </Drawer>
