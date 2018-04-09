@@ -8,7 +8,7 @@ import { withStyles } from "material-ui/styles";
 import Drawer from "material-ui/Drawer";
 import MenuList from "material-ui/Menu/MenuList";
 
-import VerticalNavigationItem from "../NavigationItem/VerticalNavigationItem";
+import { MobileNavigationItem } from "components/Navigation";
 
 const styles = () => ({
   nav: {
@@ -33,8 +33,7 @@ class MobileNavigation extends Component {
   };
 
   renderNavItem(tag, index) {
-    return <VerticalNavigationItem key={index} menuItem={tag} />;
-    // return <p>{tag.name}</p>;
+    return <MobileNavigationItem key={index} menuItem={tag} />;
   }
 
   render() {

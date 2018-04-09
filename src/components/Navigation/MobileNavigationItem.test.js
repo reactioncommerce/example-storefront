@@ -1,12 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import VerticalNavigationItem from "./VerticalNavigationItem";
+import MobileNavigationItem from "./MobileNavigationItem";
 
 const testMenuItem = {
   _id: "123",
   name: "Shop",
   slug: "shop"
-}
+};
 
 const testMenuItemWithRelatedTags = {
   _id: "123",
@@ -17,17 +17,17 @@ const testMenuItemWithRelatedTags = {
     { _id: "222", name: "Shoes", slug: "shoes" },
     { _id: "333", name: "Accessories", slug: "accessories" }
   ]
-}
+};
 
 test("basic snapshot", () => {
-  const component = renderer.create(<VerticalNavigationItem menuItem={testMenuItem} />);
+  const component = renderer.create(<MobileNavigationItem menuItem={testMenuItem} />);
 
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test("snapshot with related items", () => {
-  const component = renderer.create(<VerticalNavigationItem menuItem={testMenuItemWithRelatedTags} />);
+  const component = renderer.create(<MobileNavigationItem menuItem={testMenuItemWithRelatedTags} />);
 
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();

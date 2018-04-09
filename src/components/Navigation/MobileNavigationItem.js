@@ -10,21 +10,11 @@ import MenuItem from "material-ui/Menu/MenuItem";
 import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 
-
 import { observer } from "mobx-react";
 import { action, computed, observable } from "mobx";
 import { withStyles } from "material-ui/styles";
 
 const styles = (theme) => ({
-  cart: {
-    width: 320
-  },
-  menu: {
-    flex: 1
-  },
-  // nested: {
-  //   marginLeft: theme.spacing.unit * 2
-  // },
   subMenuGroup: {
     marginBottom: theme.spacing.unit * 2
   },
@@ -41,14 +31,20 @@ class VerticalNavigationItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
     menuItem: PropTypes.object
+  };
+
+  @observable _open = false;
+
+  @computed
+  get open() {
+    return this._open;
+  }
+  set open(value) {
+    this._open = value;
   }
 
-  @observable _open = false
-
-  @computed get open() { return this._open; }
-  set open(value) { this._open = value; }
-
-  @action handleMenuItemClick = () => {
+  @action
+  handleMenuItemClick = () => {
     const { menuItem } = this.props;
     const { relatedTags } = menuItem;
     const hasRelatedTags = Array.isArray(relatedTags) && relatedTags.length > 0;
@@ -58,7 +54,7 @@ class VerticalNavigationItem extends Component {
     } else {
       Router.push(`/tag/${menuItem.name}`);
     }
-  }
+  };
 
   render() {
     const { classes, menuItem } = this.props;
@@ -67,41 +63,27 @@ class VerticalNavigationItem extends Component {
 
     return (
       <Fragment>
-        <MenuItem
-          color="inherit"
-          onClick={this.handleMenuItemClick}
-        >
+        <MenuItem color="inherit" onClick={this.handleMenuItemClick}>
           <ListItemText classes={{ primary: classes.primary }} primary={menuItem.name} />
-          {hasRelatedTags &&
-            <ListItemIcon className={classes.icon}>
-              {this.open ? <ChevronUpIcon /> : <ChevronDownIcon />}
-            </ListItemIcon>
-          }
+          {hasRelatedTags && (
+            <ListItemIcon className={classes.icon}>{this.open ? <ChevronUpIcon /> : <ChevronDownIcon />}</ListItemIcon>
+          )}
         </MenuItem>
 
-        {hasRelatedTags &&
+        {hasRelatedTags && (
           <Collapse in={this.open} timeout="auto" unmountOnExit>
             <MenuList component="div" disablePadding>
               {relatedTags.map((menuItemGroup, index) => (
                 <MenuList disablePadding key={index}>
                   <MenuItem inset className={classes.nested}>
-                    <ListItemText
-                      classes={{ inset: classes.listItemTextInset }}
-                      inset
-                      primary={menuItemGroup.name}
-                    />
+                    <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={menuItemGroup.name} />
                   </MenuItem>
 
-                  {Array.isArray(menuItemGroup.relatedTags) &&
+                  {Array.isArray(menuItemGroup.relatedTags) && (
                     <div className={classes.subMenuGroup}>
                       <Divider />
-                      {menuItemGroup.relatedTags.map((menuItemGroupItem, index) => (
-                        <MenuItem
-                          className={classes.nested}
-                          dense
-                          inset
-                          key={index}
-                        >
+                      {menuItemGroup.relatedTags.map((menuItemGroupItem, i) => (
+                        <MenuItem className={classes.nested} dense inset key={i}>
                           <ListItemText
                             classes={{ inset: classes.listItemTextInset }}
                             inset
@@ -110,12 +92,12 @@ class VerticalNavigationItem extends Component {
                         </MenuItem>
                       ))}
                     </div>
-                  }
+                  )}
                 </MenuList>
               ))}
             </MenuList>
           </Collapse>
-        }
+        )}
       </Fragment>
     );
   }
