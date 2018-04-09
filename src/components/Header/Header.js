@@ -65,19 +65,24 @@ class Header extends Component {
   static propTypes = {
     classes: PropTypes.object,
     uiStore: PropTypes.object
+  };
+
+  @observable _popoverAnchor = null;
+
+  @computed
+  get popoverAnchor() {
+    return this._popoverAnchor;
   }
 
-  @observable _popoverAnchor = null
-
-  @computed get popoverAnchor() { return this._popoverAnchor; }
-
-  @action onClick = (event) => {
+  @action
+  onClick = event => {
     this._popoverAnchor = event.target;
-  }
+  };
 
-  @action onClose = () => {
+  @action
+  onClose = () => {
     this._popoverAnchor = null;
-  }
+  };
 
   render() {
     const { classes, uiStore } = this.props;
@@ -85,21 +90,18 @@ class Header extends Component {
     return (
       <AppBar position="static" elevation={0}>
         <Toolbar>
-
           <Hidden mdUp>
             <IconButton color="inherit" onClick={uiStore.toggleMenuDrawerOpen}>
-              <MenuIcon/>
+              <MenuIcon />
             </IconButton>
           </Hidden>
 
-          <Typography className={classes.title} color="inherit" variant="title">Reaction</Typography>
+          <Typography className={classes.title} color="inherit" variant="title">
+            Reaction
+          </Typography>
 
           <nav className={classes.menu}>
-            <Hidden smDown>
-            {tags.map((tag, index) => (
-              <HorizontalNavigationItem key={index} menuItem={tag} />
-            ))}
-      </Hidden>
+            <Hidden smDown>{tags.map((tag, index) => <HorizontalNavigationItem key={index} menuItem={tag} />)}</Hidden>
           </nav>
 
           <IconButton color="inherit" onClick={uiStore.toggleCartOpen}>
@@ -108,11 +110,7 @@ class Header extends Component {
         </Toolbar>
         <Drawer open={uiStore.menuDrawerOpen} onClose={uiStore.toggleMenuDrawerOpen}>
           <div className={classes.cart}>
-            <MenuList>
-              {tags.map((tag, index) => (
-                <NavigationItem key={index} menuItem={tag} />
-              ))}
-            </MenuList>
+            <MenuList>{tags.map((tag, index) => <NavigationItem key={index} menuItem={tag} />)}</MenuList>
           </div>
         </Drawer>
         <Drawer anchor="right" open={uiStore.cartOpen} onClose={uiStore.toggleCartOpen}>
