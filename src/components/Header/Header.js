@@ -12,7 +12,7 @@ import MenuIcon from "mdi-material-ui/Menu";
 import { inject, observer } from "mobx-react";
 import { observable, computed } from "mobx";
 import { withStyles } from "material-ui/styles";
-import NavigationItem from "../NavigationItem";
+import VerticalNavigationItem from "../NavigationItem/VerticalNavigationItem";
 
 const styles = () => ({
   cart: {
