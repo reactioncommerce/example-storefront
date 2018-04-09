@@ -3,10 +3,9 @@ import PropTypes from "prop-types";
 import Router from "next/router";
 import Button from "material-ui/Button";
 import Divider from "material-ui/Divider";
-import ListItemText from "material-ui/List/ListItemText";
 import Grid from "material-ui/Grid";
-import MenuList from "material-ui/Menu/MenuList";
-import MenuItem from "material-ui/Menu/MenuItem";
+import List from "material-ui/List";
+import ListItem from "material-ui/List/ListItem";
 import Popover from "material-ui/Popover";
 import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
@@ -88,22 +87,22 @@ class HorizontalNavigationItem extends Component {
             <Grid container className={classes.paper} spacing={16}>
               {relatedTags.map((menuItemGroup, index) => (
                 <Grid item key={index}>
-                  <MenuList disablePadding key={index}>
-                    <MenuItem className={classes.nested}>
+                  <List disablePadding key={index}>
+                    <ListItem className={classes.nested}>
                       <Button href={`/tag/${menuItemGroup.name}`}>{menuItemGroup.title}</Button>
-                    </MenuItem>
+                    </ListItem>
 
                     {Array.isArray(menuItemGroup.relatedTags) && (
                       <div>
                         <Divider />
                         {menuItemGroup.relatedTags.map((menuItemGroupItem, i) => (
-                          <MenuItem className={classes.nested} dense key={i}>
+                          <ListItem className={classes.nested} dense key={i}>
                             <Button href={`/tag/${menuItemGroupItem.name}`}>{menuItemGroupItem.name}</Button>
-                          </MenuItem>
+                          </ListItem>
                         ))}
                       </div>
                     )}
-                  </MenuList>
+                  </List>
                 </Grid>
               ))}
             </Grid>
