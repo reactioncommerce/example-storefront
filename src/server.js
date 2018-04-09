@@ -22,6 +22,12 @@ app.prepare()
     //   app.render(req, res, actualPage, queryParams);
     // });
 
+    server.get("/tag/:slug", (req, res) => {
+      const actualPage = "/";
+      const queryParams = { slug: req.params.slug };
+      app.render(req, res, actualPage, queryParams);
+    });
+
     server.get("*", (req, res) => handle(req, res));
 
     /* END EXPRESS ROUTES */
