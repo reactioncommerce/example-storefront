@@ -1,34 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import DesktopNavigationItem from "./DesktopNavigationItem";
-
-const testMenuItem = {
-  _id: "123",
-  name: "Shop",
-  slug: "shop"
-};
-
-const testMenuItemWithRelatedTags = {
-  _id: "123",
-  name: "Shop",
-  slug: "shop",
-  relatedTags: [
-    { _id: "111", name: "Clothes", slug: "clothes" },
-    { _id: "222", name: "Shoes", slug: "shoes" },
-    { _id: "333", name: "Accessories", slug: "accessories" }
-  ]
-};
+import DesktopNavigation from "./DesktopNavigation";
 
 test("basic snapshot", () => {
-  const component = renderer.create(<DesktopNavigationItem menuItem={testMenuItem} />);
-
-  const tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-});
-
-test("snapshot with related items", () => {
-  const component = renderer.create(<DesktopNavigationItem menuItem={testMenuItemWithRelatedTags} />);
-
+  const component = renderer.create(<DesktopNavigation />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
