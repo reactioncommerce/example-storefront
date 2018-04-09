@@ -33,6 +33,11 @@ class MobileNavigationItem extends Component {
     menuItem: PropTypes.object
   };
 
+  static defaultProps = {
+    classes: {},
+    menuItem: {}
+  };
+
   @observable _open = false;
 
   @computed

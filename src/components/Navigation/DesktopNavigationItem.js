@@ -29,6 +29,11 @@ class DesktopNavigationItem extends Component {
     menuItem: PropTypes.object
   };
 
+  static defaultProps = {
+    classes: {},
+    menuItem: {}
+  };
+
   @observable _popoverAnchor = null;
 
   @computed
