@@ -1,15 +1,33 @@
-import React from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
+
 import Header from "components/Header";
+import { Cart } from "components/Cart";
 
-export default ({ children, title = "" }) => (
-  <div>
-    <Helmet>
-      <title>{title}</title>
-    </Helmet>
-    <Header />
+class Layout extends Component {
+  static propTypes = {
+    children: PropTypes.node,
+    title: PropTypes.string
+  };
 
-    {children}
+  static defaultProps = {
+    title: ""
+  };
 
-  </div>
-);
+  render() {
+    const { children, title } = this.props;
+    return (
+      <div>
+        <Helmet>
+          <title>{title}</title>
+        </Helmet>
+        <Header />
+        <main>{children}</main>
+        <Cart />
+      </div>
+    );
+  }
+}
+
+export default Layout;
