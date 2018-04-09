@@ -94,8 +94,6 @@ class Header extends Component {
             <MenuList>{tags.map((tag, index) => <VerticalNavigationItem key={index} menuItem={tag} />)}</MenuList>
           </div>
         </Drawer>
-
-        <Cart />
       </AppBar>
     );
   }
