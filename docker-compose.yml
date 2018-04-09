@@ -1,0 +1,33 @@
+version: '3.4'
+
+networks:
+  reaction-api:
+    external:
+      name: reaction-api
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        BUILD_ENV: "development"
+    command: [sh, -c, "yarn dev"]
+    env_file:
+      - ./.env
+    environment:
+      REACTION_APP_NAME: "reaction-next-starterkit.web"
+    networks:
+      reaction-api:
+        aliases:
+          - storefront
+    ports:
+      - 4000:4000
+    volumes:
+      - $HOME/.cache/yarn-offline-mirror:/home/node/.cache/yarn-offline-mirror
+      - web-yarn:/home/node/.cache/yarn
+      - .:/usr/local/src/reaction-app
+      - reaction-next-starterkit_node_modules:/usr/local/src/reaction-app/node_modules # do not link node_modules in, and persist it between dc up runs
+
+volumes:
+  web-yarn:
+  reaction-next-starterkit_node_modules:
