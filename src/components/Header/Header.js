@@ -9,9 +9,7 @@ import IconButton from "material-ui/IconButton";
 import Drawer from "material-ui/Drawer";
 import CartIcon from "mdi-material-ui/Cart";
 import MenuIcon from "mdi-material-ui/Menu";
-import Popover from "material-ui/Popover";
 import { inject, observer } from "mobx-react";
-import { action, observable, computed } from "mobx";
 import { withStyles } from "material-ui/styles";
 import NavigationItem from "../NavigationItem";
 import HorizontalNavigationItem from "../NavigationItem/HorizontalNavigationItem";
@@ -67,23 +65,6 @@ class Header extends Component {
     uiStore: PropTypes.object
   };
 
-  @observable _popoverAnchor = null;
-
-  @computed
-  get popoverAnchor() {
-    return this._popoverAnchor;
-  }
-
-  @action
-  onClick = event => {
-    this._popoverAnchor = event.target;
-  };
-
-  @action
-  onClose = () => {
-    this._popoverAnchor = null;
-  };
-
   render() {
     const { classes, uiStore } = this.props;
 
@@ -108,17 +89,16 @@ class Header extends Component {
             <CartIcon />
           </IconButton>
         </Toolbar>
+
         <Drawer open={uiStore.menuDrawerOpen} onClose={uiStore.toggleMenuDrawerOpen}>
           <div className={classes.cart}>
             <MenuList>{tags.map((tag, index) => <NavigationItem key={index} menuItem={tag} />)}</MenuList>
           </div>
         </Drawer>
+
         <Drawer anchor="right" open={uiStore.cartOpen} onClose={uiStore.toggleCartOpen}>
           <div className={classes.cart}>Cart</div>
         </Drawer>
-        <Popover anchorEl={this.popoverAnchor} onClose={this.onClose} open={Boolean(this.popoverAnchor)}>
-          <Typography variant="title">Popover!</Typography>
-        </Popover>
       </AppBar>
     );
   }
