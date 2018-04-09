@@ -29,6 +29,7 @@ app.prepare()
 
     server.listen(4000, (err) => {
       if (err) throw err;
+      
       logger.appStarted("localhost", 4000);
     });
   })
