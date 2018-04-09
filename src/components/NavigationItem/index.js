@@ -1,1 +1,1 @@
-export { default } from "./NavigationItem";
+export { default as VerticalNavigationItem } from "./VerticalNavigationItem";

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Link from "next/link";
 import AppBar from "material-ui/AppBar";
 import Hidden from "material-ui/Hidden";
 import MenuList from "material-ui/Menu/MenuList";
@@ -11,8 +12,8 @@ import CartIcon from "mdi-material-ui/Cart";
 import MenuIcon from "mdi-material-ui/Menu";
 import { inject, observer } from "mobx-react";
 import { withStyles } from "material-ui/styles";
-import NavigationItem from "../NavigationItem";
 import HorizontalNavigationItem from "../NavigationItem/HorizontalNavigationItem";
+import VerticalNavigationItem from "../NavigationItem/VerticalNavigationItem";
 
 const styles = () => ({
   cart: {
@@ -78,7 +79,7 @@ class Header extends Component {
           </Hidden>
 
           <Typography className={classes.title} color="inherit" variant="title">
-            Reaction
+            <Link href="/">Reaction</Link>
           </Typography>
 
           <nav className={classes.menu}>
@@ -92,7 +93,7 @@ class Header extends Component {
 
         <Drawer open={uiStore.menuDrawerOpen} onClose={uiStore.toggleMenuDrawerOpen}>
           <div className={classes.cart}>
-            <MenuList>{tags.map((tag, index) => <NavigationItem key={index} menuItem={tag} />)}</MenuList>
+            <MenuList>{tags.map((tag, index) => <VerticalNavigationItem key={index} menuItem={tag} />)}</MenuList>
           </div>
         </Drawer>
 
