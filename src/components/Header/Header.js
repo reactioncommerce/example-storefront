@@ -15,6 +15,8 @@ import { withStyles } from "material-ui/styles";
 import HorizontalNavigationItem from "../NavigationItem/HorizontalNavigationItem";
 import VerticalNavigationItem from "../NavigationItem/VerticalNavigationItem";
 
+import Cart from "../Cart";
+
 const styles = () => ({
   cart: {
     width: 320
@@ -97,9 +99,7 @@ class Header extends Component {
           </div>
         </Drawer>
 
-        <Drawer anchor="right" open={uiStore.cartOpen} onClose={uiStore.toggleCartOpen}>
-          <div className={classes.cart}>Cart</div>
-        </Drawer>
+        <Cart />
       </AppBar>
     );
   }
