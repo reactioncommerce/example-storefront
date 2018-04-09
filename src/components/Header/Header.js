@@ -95,7 +95,7 @@ class Header extends Component {
           <div className={classes.cart}>
             <MenuList>
               {tags.map((tag, index) => (
-                <NavigationItem key={index} menuItem={tag} />
+                <VerticalNavigationItem key={index} menuItem={tag} />
               ))}
             </MenuList>
           </div>
