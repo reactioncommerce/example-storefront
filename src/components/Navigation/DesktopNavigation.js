@@ -6,21 +6,21 @@ import { DesktopNavigationItem } from "components/Navigation";
 class DesktopNavigation extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    tags: PropTypes.arrayOf(PropTypes.object)
+    navItems: PropTypes.arrayOf(PropTypes.object)
   };
 
   static defaultProps = {
     classes: {},
-    tags: []
+    navItems: []
   };
 
-  renderNavItem(tag, index) {
-    return <DesktopNavigationItem key={index} menuItem={tag} />;
+  renderNavItem(navItem, index) {
+    return <DesktopNavigationItem key={index} navItem={navItem} />;
   }
 
   render() {
-    const { tags } = this.props;
-    return <nav>{tags.map(this.renderNavItem)}</nav>;
+    const { navItems } = this.props;
+    return <nav>{navItems.map(this.renderNavItem)}</nav>;
   }
 }
 

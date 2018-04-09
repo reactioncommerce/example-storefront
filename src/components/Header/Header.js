@@ -85,14 +85,14 @@ class Header extends Component {
             </Typography>
 
             <Hidden smDown>
-              <DesktopNavigation tags={tags} />
+              <DesktopNavigation navItems={tags} />
             </Hidden>
           </div>
 
           <CartToggle />
         </Toolbar>
 
-        <MobileNavigation tags={tags} />
+        <MobileNavigation navItems={tags} />
       </AppBar>
     );
   }

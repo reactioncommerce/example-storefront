@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
 import { inject, observer } from "mobx-react";
-
 import { withStyles } from "material-ui/styles";
-
 import Drawer from "material-ui/Drawer";
 import MenuList from "material-ui/Menu/MenuList";
-
 import { MobileNavigationItem } from "components/Navigation";
 
 const styles = () => ({
@@ -22,27 +18,27 @@ const styles = () => ({
 class MobileNavigation extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    tags: PropTypes.arrayOf(PropTypes.object),
+    navItems: PropTypes.arrayOf(PropTypes.object),
     uiStore: PropTypes.object
   };
 
   static defaultProps = {
     classes: {},
-    tags: [],
+    navItems: [],
     uiStore: {}
   };
 
-  renderNavItem(tag, index) {
-    return <MobileNavigationItem key={index} menuItem={tag} />;
+  renderNavItem(navItem, index) {
+    return <MobileNavigationItem key={index} navItem={navItem} />;
   }
 
   render() {
-    const { classes, tags, uiStore } = this.props;
+    const { classes, navItems, uiStore } = this.props;
 
     return (
       <Drawer open={uiStore.menuDrawerOpen} onClose={uiStore.toggleMenuDrawerOpen}>
         <nav className={classes.nav}>
-          <MenuList>{tags.map(this.renderNavItem)}</MenuList>
+          <MenuList>{navItems.map(this.renderNavItem)}</MenuList>
         </nav>
       </Drawer>
     );

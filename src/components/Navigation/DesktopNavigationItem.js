@@ -4,8 +4,9 @@ import Router from "next/router";
 import Button from "material-ui/Button";
 import Divider from "material-ui/Divider";
 import Grid from "material-ui/Grid";
-import List from "material-ui/List";
-import ListItem from "material-ui/List/ListItem";
+import ListItemText from "material-ui/List/ListItemText";
+import MenuList from "material-ui/Menu/MenuList";
+import MenuItem from "material-ui/Menu/MenuItem";
 import Popover from "material-ui/Popover";
 import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
@@ -26,13 +27,18 @@ const styles = (theme) => ({
 class DesktopNavigationItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    menuItem: PropTypes.object
+    navItem: PropTypes.object
   };
 
   static defaultProps = {
     classes: {},
-    menuItem: {}
+    navItem: {}
   };
+
+  get hasSubNavItems() {
+    const { navItem: { relatedTags } } = this.props;
+    return Array.isArray(relatedTags) && relatedTags.length > 0;
+  }
 
   @observable _popoverAnchor = null;
 
@@ -43,19 +49,17 @@ class DesktopNavigationItem extends Component {
 
   @computed
   get hasPopover() {
-    return Boolean(this._popoverAnchor);
+    return Boolean(this.popoverAnchor);
   }
 
   @action
-  onClick = (event) => {
-    const { menuItem } = this.props;
-    const { relatedTags } = menuItem;
-    const hasRelatedTags = Array.isArray(relatedTags) && relatedTags.length > 0;
+  onClick = ({ target }) => {
+    const { navItem } = this.props;
 
-    if (hasRelatedTags) {
-      this._popoverAnchor = event.target;
+    if (this.hasSubNavItems) {
+      this._popoverAnchor = target;
     } else {
-      Router.push(`/tag/${menuItem.name}`);
+      Router.push(`/tag/${navItem.name}`);
     }
   };
 
@@ -64,49 +68,53 @@ class DesktopNavigationItem extends Component {
     this._popoverAnchor = null;
   };
 
-  render() {
-    const { classes, menuItem } = this.props;
-    const { relatedTags } = menuItem;
-    const hasRelatedTags = Array.isArray(relatedTags) && relatedTags.length > 0;
+  renderSubNav(navItemGroup) {
+    return (
+      <Fragment>
+        <Divider />
+        {navItemGroup.relatedTags.map((navItem, index) => (
+          <MenuItem dense key={index}>
+            <ListItemText primary={navItem.title} />
+          </MenuItem>
+        ))}
+      </Fragment>
+    );
+  }
 
+  renderPopover() {
+    const { classes, navItem: { relatedTags } } = this.props;
+    return (
+      <Popover
+        anchorEl={this.popoverAnchor}
+        anchorOrigin={{ vertical: "bottom" }}
+        onClose={this.onClose}
+        open={this.hasPopover}
+      >
+        <Grid container className={classes.paper} spacing={16}>
+          {relatedTags.map((navItemGroup, index) => (
+            <Grid item key={index}>
+              <MenuList disablePadding>
+                <MenuItem>
+                  <ListItemText primary={navItemGroup.title} />
+                </MenuItem>
+                {Array.isArray(navItemGroup.relatedTags) && this.renderSubNav(navItemGroup)}
+              </MenuList>
+            </Grid>
+          ))}
+        </Grid>
+      </Popover>
+    );
+  }
+
+  render() {
+    const { navItem } = this.props;
     return (
       <Fragment>
         <Button color="inherit" onClick={this.onClick}>
-          {menuItem.name}
-          {hasRelatedTags && <Fragment>{this.hasPopover ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
+          {navItem.name}
+          {this.hasSubNavItems && <Fragment>{this.hasPopover ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
         </Button>
-
-        {hasRelatedTags && (
-          <Popover
-            anchorEl={this.popoverAnchor}
-            anchorOrigin={{ vertical: "bottom" }}
-            onClose={this.onClose}
-            open={this.hasPopover}
-          >
-            <Grid container className={classes.paper} spacing={16}>
-              {relatedTags.map((menuItemGroup, index) => (
-                <Grid item key={index}>
-                  <List disablePadding key={index}>
-                    <ListItem className={classes.nested}>
-                      <Button href={`/tag/${menuItemGroup.name}`}>{menuItemGroup.title}</Button>
-                    </ListItem>
-
-                    {Array.isArray(menuItemGroup.relatedTags) && (
-                      <div>
-                        <Divider />
-                        {menuItemGroup.relatedTags.map((menuItemGroupItem, i) => (
-                          <ListItem className={classes.nested} dense key={i}>
-                            <Button href={`/tag/${menuItemGroupItem.name}`}>{menuItemGroupItem.name}</Button>
-                          </ListItem>
-                        ))}
-                      </div>
-                    )}
-                  </List>
-                </Grid>
-              ))}
-            </Grid>
-          </Popover>
-        )}
+        {this.hasSubNavItems && this.renderPopover()}
       </Fragment>
     );
   }

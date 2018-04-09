@@ -15,7 +15,7 @@ import { action, computed, observable } from "mobx";
 import { withStyles } from "material-ui/styles";
 
 const styles = (theme) => ({
-  subMenuGroup: {
+  subNav: {
     marginBottom: theme.spacing.unit * 2
   },
   listItemTextInset: {
@@ -30,79 +30,86 @@ const styles = (theme) => ({
 class MobileNavigationItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    menuItem: PropTypes.object
+    navItem: PropTypes.object
   };
 
   static defaultProps = {
     classes: {},
-    menuItem: {}
+    navItem: {}
   };
 
-  @observable _open = false;
+  get hasSubNavItems() {
+    const { navItem: { relatedTags } } = this.props;
+    return Array.isArray(relatedTags) && relatedTags.length > 0;
+  }
+
+  @observable _isSubNavOpen = false;
 
   @computed
-  get open() {
-    return this._open;
+  get isSubNavOpen() {
+    return this._isSubNavOpen;
   }
-  set open(value) {
-    this._open = value;
+
+  set isSubNavOpen(value) {
+    this._isSubNavOpen = value;
   }
 
   @action
-  handleMenuItemClick = () => {
-    const { menuItem } = this.props;
-    const { relatedTags } = menuItem;
-    const hasRelatedTags = Array.isArray(relatedTags) && relatedTags.length > 0;
+  onClick = () => {
+    const { navItem } = this.props;
 
-    if (hasRelatedTags) {
-      this.open = !this.open;
+    if (this.hasSubNavItems) {
+      this.isSubNavOpen = !this.isSubNavOpen;
     } else {
-      Router.push(`/tag/${menuItem.name}`);
+      Router.push(`/tag/${navItem.name}`);
     }
   };
 
-  render() {
-    const { classes, menuItem } = this.props;
-    const { relatedTags } = menuItem;
-    const hasRelatedTags = Array.isArray(relatedTags) && relatedTags.length > 0;
+  renderSubNav(navItemGroup) {
+    const { classes } = this.props;
+    return (
+      <div className={classes.subNav}>
+        <Divider />
+        {navItemGroup.relatedTags.map((navItemGroupItem, index) => (
+          <MenuItem className={classes.nested} dense inset key={index}>
+            <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroupItem.title} />
+          </MenuItem>
+        ))}
+      </div>
+    );
+  }
 
+  renderCollapse() {
+    const { classes, navItem: { relatedTags } } = this.props;
+    return (
+      <Collapse in={this.isSubNavOpen} timeout="auto" unmountOnExit>
+        <MenuList component="div" disablePadding>
+          {relatedTags.map((navItemGroup, index) => (
+            <MenuList disablePadding key={index}>
+              <MenuItem inset className={classes.nested}>
+                <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroup.title} />
+              </MenuItem>
+              {Array.isArray(navItemGroup.relatedTags) && this.renderSubNav(navItemGroup)}
+            </MenuList>
+          ))}
+        </MenuList>
+      </Collapse>
+    );
+  }
+
+  render() {
+    const { classes, navItem } = this.props;
     return (
       <Fragment>
-        <MenuItem color="inherit" onClick={this.handleMenuItemClick}>
-          <ListItemText classes={{ primary: classes.primary }} primary={menuItem.name} />
-          {hasRelatedTags && (
-            <ListItemIcon className={classes.icon}>{this.open ? <ChevronUpIcon /> : <ChevronDownIcon />}</ListItemIcon>
+        <MenuItem color="inherit" onClick={this.onClick}>
+          <ListItemText classes={{ primary: classes.primary }} primary={navItem.name} />
+          {this.hasSubNavItems && (
+            <ListItemIcon className={classes.icon}>
+              {this.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
+            </ListItemIcon>
           )}
         </MenuItem>
-
-        {hasRelatedTags && (
-          <Collapse in={this.open} timeout="auto" unmountOnExit>
-            <MenuList component="div" disablePadding>
-              {relatedTags.map((menuItemGroup, index) => (
-                <MenuList disablePadding key={index}>
-                  <MenuItem inset className={classes.nested}>
-                    <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={menuItemGroup.name} />
-                  </MenuItem>
-
-                  {Array.isArray(menuItemGroup.relatedTags) && (
-                    <div className={classes.subMenuGroup}>
-                      <Divider />
-                      {menuItemGroup.relatedTags.map((menuItemGroupItem, i) => (
-                        <MenuItem className={classes.nested} dense inset key={i}>
-                          <ListItemText
-                            classes={{ inset: classes.listItemTextInset }}
-                            inset
-                            primary={menuItemGroupItem.name}
-                          />
-                        </MenuItem>
-                      ))}
-                    </div>
-                  )}
-                </MenuList>
-              ))}
-            </MenuList>
-          </Collapse>
-        )}
+        {this.hasSubNavItems && this.renderCollapse()}
       </Fragment>
     );
   }
