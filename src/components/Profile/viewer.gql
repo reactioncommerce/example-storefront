@@ -1,0 +1,8 @@
+query viewerQuery {
+  viewer {
+    name
+    emailRecords {
+      address
+    }
+  }
+}

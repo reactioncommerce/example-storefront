@@ -12,9 +12,11 @@
   "license": "GPL-3.0",
   "scripts": {
     "dev": "babel-watch -w src/server.js --disable-autowatch src/server.js",
-    "build": "yarn run build-clean && babel src -d build/app --ignore '**/*.test.js','**/*__mocks__','**/*__snapshots__' && cp -R src/static build/app/static && next build build/app",
+    "build": "yarn run build-clean && yarn run build-transpile && yarn run build-sync && next build src && mv src/.next build/app",
+    "build-transpile": "babel src -d build/app --ignore '**/*.test.js','**/*__mocks__','**/*__snapshots__'",
+    "build-sync": "cp -R src/static build/app/static && rsync -av --prune-empty-dirs --include='*/' --include='*.gql' --exclude='*' src/* build/app",
     "build-clean": "rimraf build/app",
-    "build-next": "yarn install && next build src",
+    "build-next": "yarn install --save-dev && next build src",
     "lint": "eslint .",
     "start": "NODE_ENV=production node build/app/server.js",
     "test": "yarn run test:unit",
