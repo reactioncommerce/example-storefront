@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { shallow } from "enzyme";
-import { CartToggle } from "./";
+import CartToggle from "./CartToggle";
 
 test("basic snapshot", () => {
   const component = renderer.create(shallow(<CartToggle />).get(3));

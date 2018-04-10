@@ -20,15 +20,13 @@ const testMenuItemWithRelatedTags = {
 };
 
 test("basic snapshot", () => {
-  const component = renderer.create(<DesktopNavigationItem menuItem={testMenuItem} />);
-
+  const component = renderer.create(<DesktopNavigationItem navItems={testMenuItem} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test("snapshot with related items", () => {
-  const component = renderer.create(<DesktopNavigationItem menuItem={testMenuItemWithRelatedTags} />);
-
+  const component = renderer.create(<DesktopNavigationItem navItems={testMenuItemWithRelatedTags} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
