@@ -16,8 +16,12 @@ import { action, computed, observable } from "mobx";
 import { withStyles } from "material-ui/styles";
 
 const styles = (theme) => ({
-  paper: {
-    padding: theme.spacing.unit,
+  popover: {
+    maxWidth: "100vw",
+    padding: theme.spacing.unit * 2,
+    width: "100vw"
+  },
+  grid: {
     width: "100vw"
   }
 });
@@ -40,24 +44,23 @@ class DesktopNavigationItem extends Component {
     return Array.isArray(relatedTags) && relatedTags.length > 0;
   }
 
-  @observable _popoverAnchor = null;
+  @observable _isSubNavOpen = false;
 
   @computed
-  get popoverAnchor() {
-    return this._popoverAnchor;
+  get isSubNavOpen() {
+    return this._isSubNavOpen;
   }
 
-  @computed
-  get hasPopover() {
-    return Boolean(this.popoverAnchor);
+  set isSubNavOpen(value) {
+    this._isSubNavOpen = value;
   }
 
   @action
-  onClick = ({ target }) => {
+  onClick = () => {
     const { navItem } = this.props;
 
     if (this.hasSubNavItems) {
-      this._popoverAnchor = target;
+      this.isSubNavOpen = !this.isSubNavOpen;
     } else {
       Router.push(`/tag/${navItem.name}`);
     }
@@ -65,7 +68,7 @@ class DesktopNavigationItem extends Component {
 
   @action
   onClose = () => {
-    this._popoverAnchor = null;
+    this.isSubNavOpen = false;
   };
 
   renderSubNav(navItemGroup) {
@@ -85,12 +88,14 @@ class DesktopNavigationItem extends Component {
     const { classes, navItem: { relatedTags } } = this.props;
     return (
       <Popover
-        anchorEl={this.popoverAnchor}
-        anchorOrigin={{ vertical: "bottom" }}
+        classes={{ paper: classes.popover }}
+        anchorReference={"anchorPosition"}
+        anchorPosition={{ top: 64 }}
+        elevation={1}
         onClose={this.onClose}
-        open={this.hasPopover}
+        open={this.isSubNavOpen}
       >
-        <Grid container className={classes.paper} spacing={16}>
+        <Grid container className={classes.grid} spacing={16}>
           {relatedTags.map((navItemGroup, index) => (
             <Grid item key={index}>
               <MenuList disablePadding>
@@ -112,7 +117,7 @@ class DesktopNavigationItem extends Component {
       <Fragment>
         <Button color="inherit" onClick={this.onClick}>
           {navItem.name}
-          {this.hasSubNavItems && <Fragment>{this.hasPopover ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
+          {this.hasSubNavItems && <Fragment>{this.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
         </Button>
         {this.hasSubNavItems && this.renderPopover()}
       </Fragment>
