@@ -84,11 +84,10 @@ class ProductItem extends Component {
   renderProductMedia() {
     const { classes, product: { description } } = this.props;
     const chipClasses = { root: classes.chip, label: classes.chipLabel };
-    const productStatus = this.productStatus;
-    console.log("product status is", this.productStatus);
+    const { label, style } = this.productStatus || {};
     return (
       <div className={classes.productMedia}>
-        {productStatus && <Chip label={productStatus.label} classes={chipClasses} className={productStatus.style} />}
+        {this.productStatus && <Chip label={label} classes={chipClasses} className={style} />}
         {this.productLowQuantity && <Chip label={"Low Inventory"} classes={chipClasses} className={classes.warning} />}
         <img className={classes.img} src="http://via.placeholder.com/200" alt={description} />
       </div>
