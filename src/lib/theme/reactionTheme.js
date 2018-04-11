@@ -25,6 +25,7 @@ const theme = createMuiTheme({
     fontFamily: "Source Sans Pro, Helvetica Neue, Helvetica, sans-serif",
     fontSize: 16,
     fontWeightLight: 200,
+    fontWeightMedium: 400,
     fontWeightRegular: 400,
     fontWeightBold: 700
   }

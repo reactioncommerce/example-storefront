@@ -19,12 +19,12 @@ export const tempProducts = [
     workflow: {
       status: "new"
     },
-    isLowQuantity: false,
-    isSoldOut: true,
+    isLowQuantity: true,
+    isSoldOut: false,
     vendor: "Bluestone Coffee",
     description:
       "A bag of rich Arabica coffee. Great for a fueling up for a night out or for settling in for a night of coding at home",
-    isBackorder: true,
+    isBackorder: false,
     positions: {
       "reaction swag shop": {
         weight: 1
@@ -117,7 +117,7 @@ export const tempProducts = [
     vendor: "Shirtworks",
     description:
       "The same hip Reaction logo in a cut more suitable for the ladies. 100% cotton fabric and double-stitching make this a shirt that will last for years to come",
-    isBackorder: true,
+    isBackorder: false,
     hashtags: ["dhqmJjXWotCNkTzxg"]
   },
   {

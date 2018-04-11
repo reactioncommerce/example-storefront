@@ -18,7 +18,7 @@ class Shop extends Component {
 
   render() {
     return (
-      <Layout title="Welcome home">
+      <Layout title="Reaction Shop">
         <ProductGrid />
       </Layout>
     );
