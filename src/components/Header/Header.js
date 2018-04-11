@@ -84,7 +84,7 @@ class Header extends Component {
               Reaction
             </Typography>
 
-            <Hidden smDown>
+            <Hidden smDown initialWidth={"md"}>
               <DesktopNavigation navItems={tags} />
             </Hidden>
           </div>
