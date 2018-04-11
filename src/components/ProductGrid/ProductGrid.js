@@ -2,19 +2,30 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "material-ui/Grid";
 
+import { ProductItem } from "components/ProductGrid";
+
 // TODO: get real products from server
-import { tempProducts as products } from "./tempProducts";
+import { tempProducts } from "./tempProducts";
 
 class ProductGrid extends Component {
-  static propTypes = {};
+  static propTypes = {
+    products: PropTypes.arrayOf(PropTypes.object)
+  };
 
-  static defaultProps = {};
+  static defaultProps = {
+    products: tempProducts
+  };
 
   renderProduct(product) {
-    return <Grid item>{product.title}</Grid>;
+    return (
+      <Grid key={product._id} item>
+        <ProductItem product={product} />
+      </Grid>
+    );
   }
 
   render() {
+    const { products } = this.props;
     console.log("product grid", products);
     return (
       <section>

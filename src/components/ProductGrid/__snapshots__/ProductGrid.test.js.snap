@@ -1,7 +1,190 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic snapshot 1`] = `
-<h1>
-  PRoduct Grid!
-</h1>
+<section>
+  <div
+    className="MuiGrid-typeContainer-1 MuiGrid-spacing-xs-24-24"
+  >
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Reaction Bag of Beans
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Bag
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      One pound bag
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Two pound bag
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Reaction Mug
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      One Size
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Reaction Commerce Pouch
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      One Size
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Reaction Scout Book
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      One Size
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Reaction Ladies Shirt
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Blue
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      SM
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      M
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      L
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      XL
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Reaction Mens Shirt
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Blue
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      SM
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      M
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      L
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      XL
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Reaction Sticker
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      One Size
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Reaction Hoodie
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Black
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      S
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      M
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      L
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      XL
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Reaction Camp Shirt
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      Black
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      S
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      M
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      L
+    </div>
+    <div
+      className="MuiGrid-typeItem-2"
+    >
+      XL
+    </div>
+  </div>
+</section>
 `;
