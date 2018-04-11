@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { observer, inject } from "mobx-react";
 import { withStyles } from "material-ui/styles";
-import Typography from "material-ui/Typography";
 
-import Layout from "components/Layout";
 import withData from "lib/apollo/withData";
 import withRoot from "lib/theme/withRoot";
-import Profile from "components/Profile";
+import Layout from "components/Layout";
+import { ProductGrid } from "components/ProductGrid";
 
 const styles = (theme) => ({
   root: {
@@ -24,7 +23,7 @@ const styles = (theme) => ({
 class Shop extends Component {
   static propTypes = {
     classes: PropTypes.object
-  }
+  };
 
   render() {
     const { classes } = this.props;
@@ -32,8 +31,7 @@ class Shop extends Component {
     return (
       <Layout title="Welcome home">
         <div className={classes.root}>
-          <Profile />
-          <Typography variant="body1">Index Page</Typography>
+          <ProductGrid />
         </div>
       </Layout>
     );
