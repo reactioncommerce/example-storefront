@@ -40,8 +40,8 @@ class DesktopNavigationItem extends Component {
   };
 
   get hasSubNavItems() {
-    const { navItem: { relatedTags } } = this.props;
-    return Array.isArray(relatedTags) && relatedTags.length > 0;
+    const { navItem: { subTags } } = this.props;
+    return Array.isArray(subTags.edges) && subTags.edges.length > 0;
   }
 
   @observable _isSubNavOpen = false;
@@ -58,11 +58,12 @@ class DesktopNavigationItem extends Component {
   @action
   onClick = () => {
     const { navItem } = this.props;
+    console.log("slug", navItem);
 
     if (this.hasSubNavItems) {
       this.isSubNavOpen = !this.isSubNavOpen;
     } else {
-      Router.push(`/tag/${navItem.name}`);
+      Router.push(`/tag/${navItem.slug}`);
     }
   };
 
@@ -75,9 +76,9 @@ class DesktopNavigationItem extends Component {
     return (
       <Fragment>
         <Divider />
-        {navItemGroup.relatedTags.map((navItem, index) => (
+        {navItemGroup.subTags.edges.map(({ node: navItem }, index) => (
           <MenuItem dense key={index}>
-            <ListItemText primary={navItem.title} />
+            <ListItemText primary={navItem.name} />
           </MenuItem>
         ))}
       </Fragment>
@@ -85,7 +86,7 @@ class DesktopNavigationItem extends Component {
   }
 
   renderPopover() {
-    const { classes, navItem: { relatedTags } } = this.props;
+    const { classes, navItem: { subTags } } = this.props;
     return (
       <Popover
         classes={{ paper: classes.popover }}
@@ -96,13 +97,13 @@ class DesktopNavigationItem extends Component {
         open={this.isSubNavOpen}
       >
         <Grid container className={classes.grid} spacing={16}>
-          {relatedTags.map((navItemGroup, index) => (
+          {subTags.edges.map(({ node: navItemGroup }, index) => (
             <Grid item key={index}>
               <MenuList disablePadding>
                 <MenuItem>
-                  <ListItemText primary={navItemGroup.title} />
+                  <ListItemText primary={navItemGroup.name} />
                 </MenuItem>
-                {Array.isArray(navItemGroup.relatedTags) && this.renderSubNav(navItemGroup)}
+                {Array.isArray(navItemGroup.subTags.edges) && this.renderSubNav(navItemGroup)}
               </MenuList>
             </Grid>
           ))}
