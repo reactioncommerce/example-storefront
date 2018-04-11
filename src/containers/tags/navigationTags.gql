@@ -1,0 +1,26 @@
+#import "./tagFragment.gql"
+
+query navigationTagsQuery($shopId: String!) {
+	tags(shopId: $shopId) {
+	  edges {
+	    node {
+        ...TagInfo
+        isTopLevel
+        subTags {
+          edges {
+            node {
+              ...TagInfo
+              subTags {
+                edges {
+                  node {
+                    ...TagInfo
+                  }
+                }
+              }
+            }
+          }
+        }
+	    }
+	  }
+	}
+}
