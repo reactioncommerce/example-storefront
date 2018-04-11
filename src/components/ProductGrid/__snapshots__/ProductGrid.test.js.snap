@@ -6,184 +6,316 @@ exports[`basic snapshot 1`] = `
     className="MuiGrid-typeContainer-1 MuiGrid-spacing-xs-24-24"
   >
     <div
-      className="MuiGrid-typeItem-2"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
-      Reaction Bag of Beans
+      <div>
+        <div
+          className="ProductItem-productMedia-93"
+        >
+          <img
+            alt="A bag of rich Arabica coffee. Great for a fueling up for a night out or for settling in for a night of coding at home"
+            className="ProductItem-img-94"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
+        <div
+          className="ProductItem-productInfo-92"
+        >
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              Reaction Bag of Beans
+            </aside>
+            <p
+              className="MuiTypography-root-95 MuiTypography-body1-104"
+            >
+              Bluestone Coffee
+            </p>
+          </div>
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              $
+              12 - 24
+            </aside>
+          </div>
+        </div>
+      </div>
     </div>
     <div
-      className="MuiGrid-typeItem-2"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
-      Bag
+      <div>
+        <div
+          className="ProductItem-productMedia-93"
+        >
+          <img
+            alt="A sturdy mug to keep your hot drinks hot and your cold drinks cold"
+            className="ProductItem-img-94"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
+        <div
+          className="ProductItem-productInfo-92"
+        >
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              Reaction Mug
+            </aside>
+            <p
+              className="MuiTypography-root-95 MuiTypography-body1-104"
+            >
+              Mugworks
+            </p>
+          </div>
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              $
+              15
+            </aside>
+          </div>
+        </div>
+      </div>
     </div>
     <div
-      className="MuiGrid-typeItem-2"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
-      One pound bag
+      <div>
+        <div
+          className="ProductItem-productMedia-93"
+        >
+          <img
+            alt="Need to make a quick note? Got a once-in-a-lifetime idea? Write it down in one of these great little notebooks"
+            className="ProductItem-img-94"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
+        <div
+          className="ProductItem-productInfo-92"
+        >
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              Reaction Scout Book
+            </aside>
+            <p
+              className="MuiTypography-root-95 MuiTypography-body1-104"
+            >
+              Bookworks
+            </p>
+          </div>
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              $
+              6
+            </aside>
+          </div>
+        </div>
+      </div>
     </div>
     <div
-      className="MuiGrid-typeItem-2"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
-      Two pound bag
+      <div>
+        <div
+          className="ProductItem-productMedia-93"
+        >
+          <img
+            alt="The same hip Reaction logo in a cut more suitable for the ladies. 100% cotton fabric and double-stitching make this a shirt that will last for years to come"
+            className="ProductItem-img-94"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
+        <div
+          className="ProductItem-productInfo-92"
+        >
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              Reaction Ladies Shirt
+            </aside>
+            <p
+              className="MuiTypography-root-95 MuiTypography-body1-104"
+            >
+              Shirtworks
+            </p>
+          </div>
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              $
+              18 - 20
+            </aside>
+          </div>
+        </div>
+      </div>
     </div>
     <div
-      className="MuiGrid-typeItem-2"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
-      Reaction Mug
+      <div>
+        <div
+          className="ProductItem-productMedia-93"
+        >
+          <img
+            alt="Get your Reaction together and show it to the world. 100% cotton fabric and double-stitching make this a shirt that will last for years to come"
+            className="ProductItem-img-94"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
+        <div
+          className="ProductItem-productInfo-92"
+        >
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              Reaction Mens Shirt
+            </aside>
+            <p
+              className="MuiTypography-root-95 MuiTypography-body1-104"
+            >
+              Shirtworks
+            </p>
+          </div>
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              $
+              18 - 20
+            </aside>
+          </div>
+        </div>
+      </div>
     </div>
     <div
-      className="MuiGrid-typeItem-2"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
-      One Size
+      <div>
+        <div
+          className="ProductItem-productMedia-93"
+        >
+          <img
+            alt="Show your pride and affix some Reaction to almost any surface"
+            className="ProductItem-img-94"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
+        <div
+          className="ProductItem-productInfo-92"
+        >
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              Reaction Sticker
+            </aside>
+            <p
+              className="MuiTypography-root-95 MuiTypography-body1-104"
+            >
+              Stickerworks
+            </p>
+          </div>
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              $
+              4
+            </aside>
+          </div>
+        </div>
+      </div>
     </div>
     <div
-      className="MuiGrid-typeItem-2"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
-      Reaction Commerce Pouch
+      <div>
+        <div
+          className="ProductItem-productMedia-93"
+        >
+          <img
+            alt="Whether DJ'ing your EDM set or hacking into the NSA this stylish hoodie will keep your tiny fragile body warm"
+            className="ProductItem-img-94"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
+        <div
+          className="ProductItem-productInfo-92"
+        >
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              Reaction Hoodie
+            </aside>
+            <p
+              className="MuiTypography-root-95 MuiTypography-body1-104"
+            >
+              Hanes
+            </p>
+          </div>
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              $
+              35
+            </aside>
+          </div>
+        </div>
+      </div>
     </div>
     <div
-      className="MuiGrid-typeItem-2"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
-      One Size
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      Reaction Scout Book
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      One Size
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      Reaction Ladies Shirt
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      Blue
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      SM
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      M
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      L
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      XL
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      Reaction Mens Shirt
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      Blue
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      SM
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      M
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      L
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      XL
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      Reaction Sticker
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      One Size
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      Reaction Hoodie
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      Black
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      S
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      M
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      L
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      XL
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      Reaction Camp Shirt
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      Black
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      S
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      M
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      L
-    </div>
-    <div
-      className="MuiGrid-typeItem-2"
-    >
-      XL
+      <div>
+        <div
+          className="ProductItem-productMedia-93"
+        >
+          <img
+            alt="This camp shirt is a classy, clean alternative to T-shirts or Polos. Represent Reaction at camp or on the road"
+            className="ProductItem-img-94"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
+        <div
+          className="ProductItem-productInfo-92"
+        >
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              Reaction Camp Shirt
+            </aside>
+            <p
+              className="MuiTypography-root-95 MuiTypography-body1-104"
+            >
+              Hanes
+            </p>
+          </div>
+          <div>
+            <aside
+              className="MuiTypography-root-95 MuiTypography-body2-103"
+            >
+              $
+              40 - 45
+            </aside>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

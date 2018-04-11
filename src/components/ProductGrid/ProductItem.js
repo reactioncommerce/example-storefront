@@ -41,6 +41,7 @@ class ProductItem extends Component {
 
   renderProductInfo() {
     const { classes, product: { price, title, vendor } } = this.props;
+    const { range: priceRange } = price || {};
     return (
       <div className={classes.productInfo}>
         <div>
@@ -49,7 +50,7 @@ class ProductItem extends Component {
         </div>
 
         <div>
-          <Typography variant="body2">${price.range ? price.range : price}</Typography>
+          <Typography variant="body2">${priceRange || price}</Typography>
         </div>
       </div>
     );
