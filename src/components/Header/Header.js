@@ -11,6 +11,9 @@ import { inject, observer } from "mobx-react";
 import { withStyles } from "material-ui/styles";
 
 const styles = () => ({
+  header: {
+    height: "10vh"
+  },
   title: {
     flex: 1
   },
@@ -31,7 +34,7 @@ class Header extends Component {
     const { classes, uiStore } = this.props;
 
     return (
-      <AppBar position="static">
+      <AppBar className={classes.header} position="static">
         <Toolbar>
           <Typography className={classes.title} variant="title">Reaction Commerce</Typography>
           <IconButton onClick={uiStore.toggleCartOpen}>

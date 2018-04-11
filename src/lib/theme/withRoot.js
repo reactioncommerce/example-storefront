@@ -6,6 +6,13 @@ import { Provider } from "mobx-react";
 import rootMobxStores from "../stores";
 import getPageContext from "./getPageContext";
 
+/**
+ *
+ * @param {object} Component to wrap
+ * @summary Wraps a page to provide the application's theme
+ *
+ * @returns {undefined} undefined
+ */
 function withRoot(Component) {
   class WithRoot extends React.Component {
     constructor(props, context) {

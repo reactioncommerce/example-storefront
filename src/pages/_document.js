@@ -77,7 +77,7 @@ class HTMLDocument extends Document {
               { name: "theme-color", content: pageContext.theme.palette.primary.main }
             ]}
             link={[
-              { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500" }
+              { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500" }
             ]}
           />
           {helmet.base.toComponent()}
