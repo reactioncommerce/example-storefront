@@ -1,0 +1,5 @@
+fragment TagInfo on Tag {
+  position
+  name
+  slug
+}
