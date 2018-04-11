@@ -17,8 +17,15 @@ class ProductGrid extends Component {
   };
 
   renderProduct(product) {
+    const gridItemProps = {
+      key: product._id,
+      xs: 12,
+      sm: 4,
+      md: 3,
+      lg: 2
+    };
     return (
-      <Grid key={product._id} item>
+      <Grid item {...gridItemProps}>
         <ProductItem product={product} />
       </Grid>
     );
@@ -26,7 +33,6 @@ class ProductGrid extends Component {
 
   render() {
     const { products } = this.props;
-    console.log("product grid", products);
     return (
       <section>
         <Grid container spacing={24}>

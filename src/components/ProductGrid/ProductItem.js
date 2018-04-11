@@ -4,8 +4,18 @@ import { withStyles } from "material-ui/styles";
 import Typography from "material-ui/Typography";
 
 const styles = () => ({
-  productInfo: {},
-  productMedia: {}
+  root: {},
+  productInfo: {
+    display: "flex",
+    justifyContent: "space-between"
+  },
+  productMedia: {
+    position: "relative"
+  },
+  img: {
+    height: "auto",
+    width: "100%"
+  }
 });
 
 @withStyles(styles)
@@ -21,19 +31,26 @@ class ProductItem extends Component {
   };
 
   renderProductMedia() {
-    const { product: { description } } = this.props;
+    const { classes, product: { description } } = this.props;
     return (
-      <div>
-        <img src="http://via.placeholder.com/200" alt={description} />
+      <div className={classes.productMedia}>
+        <img className={classes.img} src="http://via.placeholder.com/200" alt={description} />
       </div>
     );
   }
 
   renderProductInfo() {
-    const { product: { title } } = this.props;
+    const { classes, product: { price, title, vendor } } = this.props;
     return (
-      <div>
-        <Typography variant="title">{title}</Typography>
+      <div className={classes.productInfo}>
+        <div>
+          <Typography variant="body2">{title}</Typography>
+          <Typography variant="body1">{vendor}</Typography>
+        </div>
+
+        <div>
+          <Typography variant="body2">${price.range ? price.range : price}</Typography>
+        </div>
       </div>
     );
   }
