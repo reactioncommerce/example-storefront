@@ -5,6 +5,7 @@ import { withStyles } from "material-ui/styles";
 import Drawer from "material-ui/Drawer";
 import MenuList from "material-ui/Menu/MenuList";
 import { MobileNavigationItem } from "components/Navigation";
+import withNavigationTags from "../../containers/tags/withNavigationTags";
 
 const styles = () => ({
   nav: {
@@ -13,6 +14,7 @@ const styles = () => ({
 });
 
 @withStyles(styles)
+@withNavigationTags
 @inject("uiStore")
 @observer
 class MobileNavigation extends Component {
@@ -29,7 +31,7 @@ class MobileNavigation extends Component {
   };
 
   renderNavItem(navItem, index) {
-    return <MobileNavigationItem key={index} navItem={navItem} />;
+    return <MobileNavigationItem key={index} navItem={navItem.node} />;
   }
 
   render() {
@@ -38,7 +40,7 @@ class MobileNavigation extends Component {
     return (
       <Drawer open={uiStore.menuDrawerOpen} onClose={uiStore.toggleMenuDrawerOpen}>
         <nav className={classes.nav}>
-          <MenuList>{navItems.map(this.renderNavItem)}</MenuList>
+          <MenuList>{navItems.edges && navItems.edges.map(this.renderNavItem)}</MenuList>
         </nav>
       </Drawer>
     );
