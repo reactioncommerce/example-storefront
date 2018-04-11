@@ -1,15 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
+
 import Header from "components/Header";
 import Footer from "components/Footer";
 import { withStyles } from "material-ui/styles";
+import { Cart } from "components/Cart";
 
 const styles = () => ({
   main: {
     display: "flex",
     flexDirection: "column",
-    height: "calc(100vh - 20vh)"
+    minHeight: "calc(100vh - 64px)"
   },
   article: {
     padding: "10px"
@@ -26,11 +28,11 @@ const Layout = ({ children, title = "", ...props }) => {
       </Helmet>
       <Header />
       <main className={main}>
-        <nav>Navigation</nav>
         <article className={article}>
           {children}
         </article>
       </main>
+      <Cart />
       <Footer />
     </React.Fragment>
   );

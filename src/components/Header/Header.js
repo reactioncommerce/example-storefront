@@ -1,49 +1,100 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AppBar from "material-ui/AppBar";
+import Hidden from "material-ui/Hidden";
 import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
-import IconButton from "material-ui/IconButton";
-import Drawer from "material-ui/Drawer";
-import CartIcon from "mdi-material-ui/Cart";
-
-import { inject, observer } from "mobx-react";
 import { withStyles } from "material-ui/styles";
+import { DesktopNavigation, MobileNavigation, MobileNavigationToggle } from "components/Navigation";
+import { CartToggle } from "components/Cart";
 
-const styles = () => ({
-  header: {
-    height: "10vh"
-  },
-  title: {
+// TODO: Get tag data from GraphQL, this is just a sample
+const tags = [
+  { name: "men", title: "Men" },
+  { name: "women", title: "Women" },
+  {
+    name: "kids",
+    title: "Kids",
+    relatedTags: [
+      {
+        name: "test1",
+        title: "Test 1",
+        relatedTags: [
+          { name: "men", title: "Men" },
+          { name: "women", title: "Women" },
+          { name: "men", title: "Men" },
+          { name: "women", title: "Women" }
+        ]
+      },
+      {
+        name: "test2",
+        title: "Test 2",
+        relatedTags: [
+          { name: "men", title: "Men" },
+          { name: "women", title: "Women" },
+          { name: "men", title: "Men" },
+          { name: "women", title: "Women" }
+        ]
+      },
+      { name: "test3", title: "Test 3" }
+    ]
+  }
+];
+
+const styles = (theme) => ({
+  controls: {
+    alignItems: "inherit",
+    display: "inherit",
     flex: 1
   },
-  cart: {
-    width: 320
+  title: {
+    marginRight: theme.spacing.unit
+  },
+  toolbar: {
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "space-between"
   }
 });
 
 @withStyles(styles)
-@inject("uiStore")
-@observer
 class Header extends Component {
   static propTypes = {
     classes: PropTypes.object,
     uiStore: PropTypes.object
-  }
+  };
+
+  static defaultProps = {
+    classes: {},
+    uiStore: {}
+  };
+
   render() {
-    const { classes, uiStore } = this.props;
+    const {
+      classes: { controls, toolbar, title }
+    } = this.props;
 
     return (
-      <AppBar className={classes.header} position="static">
-        <Toolbar>
-          <Typography className={classes.title} variant="title">Reaction Commerce</Typography>
-          <IconButton onClick={uiStore.toggleCartOpen}>
-            <CartIcon />
-          </IconButton>
+      <AppBar position="static" elevation={0}>
+        <Toolbar className={toolbar}>
+          <Hidden mdUp>
+            <MobileNavigationToggle />
+          </Hidden>
+
+          <div className={controls}>
+            <Typography className={title} color="inherit" variant="title">
+              Reaction
+            </Typography>
+
+            <Hidden smDown initialWidth={"md"}>
+              <DesktopNavigation navItems={tags} />
+            </Hidden>
+          </div>
+
+          <CartToggle />
         </Toolbar>
-        <Drawer anchor="right" open={uiStore.cartOpen} onClose={uiStore.toggleCartOpen}>
-          <div className={classes.cart}>Cart</div>
-        </Drawer>
+
+        <MobileNavigation navItems={tags} />
       </AppBar>
     );
   }

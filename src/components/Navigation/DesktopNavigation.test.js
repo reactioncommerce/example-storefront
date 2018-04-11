@@ -1,10 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { shallow } from "enzyme";
-import Layout from "./";
+import DesktopNavigation from "./DesktopNavigation";
 
 test("basic snapshot", () => {
-  const component = renderer.create(shallow(<Layout />).get(3));
+  const component = renderer.create(<DesktopNavigation />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });

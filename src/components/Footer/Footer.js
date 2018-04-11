@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Small from "components/Typography/Small";
 import { withStyles } from "material-ui/styles";
+import Typography from "material-ui/Typography";
 
 const date = new Date();
 
 const styles = () => ({
   footer: {
-    height: "10vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
@@ -16,7 +15,9 @@ const styles = () => ({
 
 const Footer = ({ ...props }) => (
   <footer className={props.classes.footer}>
-    <Small>&copy; {date.getFullYear()} Reaction Commerce</Small>
+    <Typography variant="smallText">
+      &copy; {date.getFullYear()} Reaction Commerce
+    </Typography>
   </footer>
 );
 

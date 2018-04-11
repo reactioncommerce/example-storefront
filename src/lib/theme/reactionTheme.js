@@ -26,12 +26,16 @@ const theme = createMuiTheme({
     fontSize: 16,
     fontWeightLight: 200,
     fontWeightRegular: 400,
-    fontWeightBold: 700,
-    smallText: {
-      fontSize: "65%",
-      fontWeight: "400",
-      lineHeight: "1",
-      color: "#777"
+    fontWeightBold: 700
+  },
+  overrides: {
+    MuiTypography: {
+      smallText: {
+        fontSize: "65%",
+        fontWeight: "400",
+        lineHeight: "1",
+        color: "#777"
+      }
     }
   }
 });
