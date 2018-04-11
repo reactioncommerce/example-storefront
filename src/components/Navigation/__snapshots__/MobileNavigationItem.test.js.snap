@@ -20,15 +20,9 @@ exports[`basic snapshot 1`] = `
 >
   <div
     className="MuiListItemText-root-18"
-  >
-    <h3
-      className="MuiTypography-root-24 MuiTypography-subheading-31 MuiListItemText-primary-21"
-    >
-      Shop
-    </h3>
-  </div>
+  />
   <span
-    className="MuiTouchRipple-root-48"
+    className="MuiTouchRipple-root-24"
   />
 </li>
 `;
@@ -53,26 +47,9 @@ exports[`snapshot with related items 1`] = `
 >
   <div
     className="MuiListItemText-root-18"
-  >
-    <h3
-      className="MuiTypography-root-24 MuiTypography-subheading-31 MuiListItemText-primary-21"
-    >
-      Shop
-    </h3>
-  </div>
-  <svg
-    aria-hidden="true"
-    className="MuiSvgIcon-root-56 MuiListItemIcon-root-55"
-    color={undefined}
-    focusable="false"
-    viewBox="0 0 24 24"
-  >
-    <path
-      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-    />
-  </svg>
+  />
   <span
-    className="MuiTouchRipple-root-48"
+    className="MuiTouchRipple-root-24"
   />
 </li>
 `;

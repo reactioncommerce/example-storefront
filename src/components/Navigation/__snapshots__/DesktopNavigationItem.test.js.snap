@@ -2,7 +2,7 @@
 
 exports[`basic snapshot 1`] = `
 <button
-  className="MuiButtonBase-root-17 MuiButton-root-2 MuiButton-colorInherit-6"
+  className="MuiButtonBase-root-18 MuiButton-root-3 MuiButton-colorInherit-7"
   disabled={false}
   onBlur={[Function]}
   onClick={[Function]}
@@ -19,19 +19,17 @@ exports[`basic snapshot 1`] = `
   type="button"
 >
   <span
-    className="MuiButton-label-3"
-  >
-    Shop
-  </span>
+    className="MuiButton-label-4"
+  />
   <span
-    className="MuiTouchRipple-root-20"
+    className="MuiTouchRipple-root-21"
   />
 </button>
 `;
 
 exports[`snapshot with related items 1`] = `
 <button
-  className="MuiButtonBase-root-17 MuiButton-root-2 MuiButton-colorInherit-6"
+  className="MuiButtonBase-root-18 MuiButton-root-3 MuiButton-colorInherit-7"
   disabled={false}
   onBlur={[Function]}
   onClick={[Function]}
@@ -48,23 +46,10 @@ exports[`snapshot with related items 1`] = `
   type="button"
 >
   <span
-    className="MuiButton-label-3"
-  >
-    Shop
-    <svg
-      aria-hidden="true"
-      className="MuiSvgIcon-root-27"
-      color={undefined}
-      focusable="false"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-      />
-    </svg>
-  </span>
+    className="MuiButton-label-4"
+  />
   <span
-    className="MuiTouchRipple-root-20"
+    className="MuiTouchRipple-root-21"
   />
 </button>
 `;
