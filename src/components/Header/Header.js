@@ -54,14 +54,14 @@ class Header extends Component {
             </Typography>
 
             <Hidden smDown initialWidth={"md"}>
-              <DesktopNavigation navItems={tags} />
+              <DesktopNavigation />
             </Hidden>
           </div>
 
           <CartToggle />
         </Toolbar>
 
-        <MobileNavigation navItems={tags} />
+        <MobileNavigation />
       </AppBar>
     );
   }
