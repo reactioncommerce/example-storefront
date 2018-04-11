@@ -7,7 +7,7 @@ exports[`basic snapshot 1`] = `
   >
     <img
       alt={undefined}
-      className="ProductItem-img-4"
+      className="ProductItem-img-12"
       src="http://via.placeholder.com/200"
     />
   </div>
@@ -16,15 +16,15 @@ exports[`basic snapshot 1`] = `
   >
     <div>
       <aside
-        className="MuiTypography-root-5 MuiTypography-body2-13"
+        className="MuiTypography-root-13 MuiTypography-body2-21"
       />
       <p
-        className="MuiTypography-root-5 MuiTypography-body1-14"
+        className="MuiTypography-root-13 MuiTypography-body1-22"
       />
     </div>
     <div>
       <aside
-        className="MuiTypography-root-5 MuiTypography-body2-13"
+        className="MuiTypography-root-13 MuiTypography-body2-21"
       >
         $
       </aside>

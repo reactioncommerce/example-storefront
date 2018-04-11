@@ -12,9 +12,22 @@ exports[`basic snapshot 1`] = `
         <div
           className="ProductItem-productMedia-93"
         >
+          <div
+            className="MuiChip-root-103 ProductItem-chip-94 ProductItem-warning-101"
+            onClick={undefined}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <span
+              className="MuiChip-label-108 ProductItem-chipLabel-95"
+            >
+              Low Inventory
+            </span>
+          </div>
           <img
             alt="A bag of rich Arabica coffee. Great for a fueling up for a night out or for settling in for a night of coding at home"
-            className="ProductItem-img-94"
+            className="ProductItem-img-102"
             src="http://via.placeholder.com/200"
           />
         </div>
@@ -23,19 +36,19 @@ exports[`basic snapshot 1`] = `
         >
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               Reaction Bag of Beans
             </aside>
             <p
-              className="MuiTypography-root-95 MuiTypography-body1-104"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
               Bluestone Coffee
             </p>
           </div>
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
               12 - 24
@@ -51,9 +64,22 @@ exports[`basic snapshot 1`] = `
         <div
           className="ProductItem-productMedia-93"
         >
+          <div
+            className="MuiChip-root-103 ProductItem-chip-94 ProductItem-status-96 ProductItem-statusBackorder-98"
+            onClick={undefined}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <span
+              className="MuiChip-label-108 ProductItem-chipLabel-95"
+            >
+              Backorder
+            </span>
+          </div>
           <img
             alt="A sturdy mug to keep your hot drinks hot and your cold drinks cold"
-            className="ProductItem-img-94"
+            className="ProductItem-img-102"
             src="http://via.placeholder.com/200"
           />
         </div>
@@ -62,19 +88,19 @@ exports[`basic snapshot 1`] = `
         >
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               Reaction Mug
             </aside>
             <p
-              className="MuiTypography-root-95 MuiTypography-body1-104"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
               Mugworks
             </p>
           </div>
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
               15
@@ -90,9 +116,22 @@ exports[`basic snapshot 1`] = `
         <div
           className="ProductItem-productMedia-93"
         >
+          <div
+            className="MuiChip-root-103 ProductItem-chip-94 ProductItem-status-96 ProductItem-statusBackorder-98"
+            onClick={undefined}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <span
+              className="MuiChip-label-108 ProductItem-chipLabel-95"
+            >
+              Backorder
+            </span>
+          </div>
           <img
             alt="Need to make a quick note? Got a once-in-a-lifetime idea? Write it down in one of these great little notebooks"
-            className="ProductItem-img-94"
+            className="ProductItem-img-102"
             src="http://via.placeholder.com/200"
           />
         </div>
@@ -101,19 +140,19 @@ exports[`basic snapshot 1`] = `
         >
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               Reaction Scout Book
             </aside>
             <p
-              className="MuiTypography-root-95 MuiTypography-body1-104"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
               Bookworks
             </p>
           </div>
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
               6
@@ -129,9 +168,22 @@ exports[`basic snapshot 1`] = `
         <div
           className="ProductItem-productMedia-93"
         >
+          <div
+            className="MuiChip-root-103 ProductItem-chip-94 ProductItem-status-96 ProductItem-statusSoldOut-97"
+            onClick={undefined}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <span
+              className="MuiChip-label-108 ProductItem-chipLabel-95"
+            >
+              Sold Out
+            </span>
+          </div>
           <img
             alt="The same hip Reaction logo in a cut more suitable for the ladies. 100% cotton fabric and double-stitching make this a shirt that will last for years to come"
-            className="ProductItem-img-94"
+            className="ProductItem-img-102"
             src="http://via.placeholder.com/200"
           />
         </div>
@@ -140,19 +192,19 @@ exports[`basic snapshot 1`] = `
         >
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               Reaction Ladies Shirt
             </aside>
             <p
-              className="MuiTypography-root-95 MuiTypography-body1-104"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
               Shirtworks
             </p>
           </div>
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
               18 - 20
@@ -168,9 +220,22 @@ exports[`basic snapshot 1`] = `
         <div
           className="ProductItem-productMedia-93"
         >
+          <div
+            className="MuiChip-root-103 ProductItem-chip-94 ProductItem-status-96 ProductItem-statusBackorder-98"
+            onClick={undefined}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <span
+              className="MuiChip-label-108 ProductItem-chipLabel-95"
+            >
+              Backorder
+            </span>
+          </div>
           <img
             alt="Get your Reaction together and show it to the world. 100% cotton fabric and double-stitching make this a shirt that will last for years to come"
-            className="ProductItem-img-94"
+            className="ProductItem-img-102"
             src="http://via.placeholder.com/200"
           />
         </div>
@@ -179,19 +244,19 @@ exports[`basic snapshot 1`] = `
         >
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               Reaction Mens Shirt
             </aside>
             <p
-              className="MuiTypography-root-95 MuiTypography-body1-104"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
               Shirtworks
             </p>
           </div>
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
               18 - 20
@@ -207,9 +272,22 @@ exports[`basic snapshot 1`] = `
         <div
           className="ProductItem-productMedia-93"
         >
+          <div
+            className="MuiChip-root-103 ProductItem-chip-94 ProductItem-status-96 ProductItem-statusBackorder-98"
+            onClick={undefined}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <span
+              className="MuiChip-label-108 ProductItem-chipLabel-95"
+            >
+              Backorder
+            </span>
+          </div>
           <img
             alt="Show your pride and affix some Reaction to almost any surface"
-            className="ProductItem-img-94"
+            className="ProductItem-img-102"
             src="http://via.placeholder.com/200"
           />
         </div>
@@ -218,19 +296,19 @@ exports[`basic snapshot 1`] = `
         >
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               Reaction Sticker
             </aside>
             <p
-              className="MuiTypography-root-95 MuiTypography-body1-104"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
               Stickerworks
             </p>
           </div>
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
               4
@@ -248,7 +326,7 @@ exports[`basic snapshot 1`] = `
         >
           <img
             alt="Whether DJ'ing your EDM set or hacking into the NSA this stylish hoodie will keep your tiny fragile body warm"
-            className="ProductItem-img-94"
+            className="ProductItem-img-102"
             src="http://via.placeholder.com/200"
           />
         </div>
@@ -257,19 +335,19 @@ exports[`basic snapshot 1`] = `
         >
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               Reaction Hoodie
             </aside>
             <p
-              className="MuiTypography-root-95 MuiTypography-body1-104"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
               Hanes
             </p>
           </div>
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
               35
@@ -287,7 +365,7 @@ exports[`basic snapshot 1`] = `
         >
           <img
             alt="This camp shirt is a classy, clean alternative to T-shirts or Polos. Represent Reaction at camp or on the road"
-            className="ProductItem-img-94"
+            className="ProductItem-img-102"
             src="http://via.placeholder.com/200"
           />
         </div>
@@ -296,19 +374,19 @@ exports[`basic snapshot 1`] = `
         >
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               Reaction Camp Shirt
             </aside>
             <p
-              className="MuiTypography-root-95 MuiTypography-body1-104"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
               Hanes
             </p>
           </div>
           <div>
             <aside
-              className="MuiTypography-root-95 MuiTypography-body2-103"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
               40 - 45
