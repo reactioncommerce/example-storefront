@@ -8,39 +8,6 @@ import { withStyles } from "material-ui/styles";
 import { DesktopNavigation, MobileNavigation, MobileNavigationToggle } from "components/Navigation";
 import { CartToggle } from "components/Cart";
 
-// TODO: Get tag data from GraphQL, this is just a sample
-const tags = [
-  { name: "men", title: "Men" },
-  { name: "women", title: "Women" },
-  {
-    name: "kids",
-    title: "Kids",
-    relatedTags: [
-      {
-        name: "test1",
-        title: "Test 1",
-        relatedTags: [
-          { name: "men", title: "Men" },
-          { name: "women", title: "Women" },
-          { name: "men", title: "Men" },
-          { name: "women", title: "Women" }
-        ]
-      },
-      {
-        name: "test2",
-        title: "Test 2",
-        relatedTags: [
-          { name: "men", title: "Men" },
-          { name: "women", title: "Women" },
-          { name: "men", title: "Men" },
-          { name: "women", title: "Women" }
-        ]
-      },
-      { name: "test3", title: "Test 3" }
-    ]
-  }
-];
-
 const styles = (theme) => ({
   controls: {
     alignItems: "inherit",
@@ -70,7 +37,7 @@ class Header extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, tags } = this.props;
 
     return (
       <AppBar position="static" elevation={0}>
