@@ -70,17 +70,19 @@ class Header extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const {
+      classes: { controls, toolbar, title }
+    } = this.props;
 
     return (
       <AppBar position="static" elevation={0}>
-        <Toolbar className={classes.toolbar}>
+        <Toolbar className={toolbar}>
           <Hidden mdUp>
             <MobileNavigationToggle />
           </Hidden>
 
-          <div className={classes.controls}>
-            <Typography className={classes.title} color="inherit" variant="title">
+          <div className={controls}>
+            <Typography className={title} color="inherit" variant="title">
               Reaction
             </Typography>
 
