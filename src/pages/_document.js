@@ -7,7 +7,6 @@ import { Provider } from "mobx-react";
 import rootMobxStores from "../lib/stores";
 import getPageContext from "../lib/theme/getPageContext";
 
-
 class HTMLDocument extends Document {
   static getInitialProps = (ctx) => {
     // Resolution order
@@ -32,10 +31,7 @@ class HTMLDocument extends Document {
 
     /* eslint-disable-next-line react/display-name */
     const page = ctx.renderPage((Component) => (props) => (
-      <JssProvider
-        registry={pageContext.sheetsRegistry}
-        generateClassName={pageContext.generateClassName}
-      >
+      <JssProvider registry={pageContext.sheetsRegistry} generateClassName={pageContext.generateClassName}>
         <Provider {...rootMobxStores}>
           <Component pageContext={pageContext} {...props} />
         </Provider>
@@ -57,7 +53,7 @@ class HTMLDocument extends Document {
         </React.Fragment>
       )
     };
-  }
+  };
 
   render() {
     const { pageContext, helmet } = this.props;
@@ -72,13 +68,14 @@ class HTMLDocument extends Document {
             meta={[
               { charSet: "utf-8" },
               // Use minimum-scale=1 to enable GPU rasterization
-              { name: "viewport", content: "user-scalable=0, initial-scale=1 minimum-scale=1, width=device-width, height=device-height" },
+              {
+                name: "viewport",
+                content: "user-scalable=0, initial-scale=1 minimum-scale=1, width=device-width, height=device-height"
+              },
               // PWA primary color
               { name: "theme-color", content: pageContext.theme.palette.primary.main }
             ]}
-            link={[
-              { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500" }
-            ]}
+            link={[{ rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" }]}
           />
           {helmet.base.toComponent()}
           {helmet.title.toComponent()}
