@@ -7,14 +7,16 @@ import Footer from "components/Footer";
 import { Cart } from "components/Cart";
 
 const styles = (theme) => ({
-  main: {
+  root: {
     display: "flex",
     flexDirection: "column",
-    minHeight: "calc(100vh - 64px)",
-    padding: theme.spacing.unit * 3
+    minHeight: "100vh"
+  },
+  main: {
+    flex: "1 1 auto"
   },
   article: {
-    padding: "10px"
+    padding: theme.spacing.unit * 3
   }
 });
 
@@ -32,18 +34,20 @@ class Layout extends Component {
   };
 
   render() {
-    const { classes: { article, main }, children, title } = this.props;
+    const { classes: { article, main, root }, children, title } = this.props;
     return (
       <React.Fragment>
         <Helmet>
           <title>{title}</title>
         </Helmet>
-        <Header />
-        <main className={main}>
-          <article className={article}>{children}</article>
-        </main>
+        <div className={root}>
+          <Header />
+          <main className={main}>
+            <article className={article}>{children}</article>
+          </main>
+          <Footer />
+        </div>
         <Cart />
-        <Footer />
       </React.Fragment>
     );
   }
