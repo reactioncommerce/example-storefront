@@ -17,7 +17,10 @@ const styles = (theme) => ({
     borderRadius: 4,
     fontSize: 12,
     height: "auto",
-    padding: theme.spacing.unit * 0.5,
+    paddingBottom: theme.spacing.unit * 0.5,
+    paddingLeft: theme.spacing.unit,
+    paddingRight: theme.spacing.unit,
+    paddingTop: theme.spacing.unit * 0.5,
     position: "absolute"
   },
   chipLabel: {
@@ -85,11 +88,14 @@ class ProductItem extends Component {
     const { classes, product: { description } } = this.props;
     const chipClasses = { root: classes.chip, label: classes.chipLabel };
     const { label, style } = this.productStatus || {};
+    // TODO: random number for temp images, REMOVE ONCE WE HAVE REAL DATA
+    const tempRandNum = Math.floor(Math.random() * 100 + 0);
+    const tempImgSrc = `https://picsum.photos/200?image=${tempRandNum}&blur&gravity=south`;
     return (
       <div className={classes.productMedia}>
         {this.productStatus && <Chip label={label} classes={chipClasses} className={style} />}
         {this.productLowQuantity && <Chip label={"Low Inventory"} classes={chipClasses} className={classes.warning} />}
-        <img className={classes.img} src="http://via.placeholder.com/200" alt={description} />
+        <img className={classes.img} src={tempImgSrc} alt={description} />
       </div>
     );
   }
