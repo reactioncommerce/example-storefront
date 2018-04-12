@@ -7,6 +7,7 @@ import Typography from "material-ui/Typography";
 import Layout from "components/Layout";
 import withData from "lib/apollo/withData";
 import withRoot from "lib/theme/withRoot";
+import withShop from "containers/shop/withShop";
 import Profile from "components/Profile";
 
 const styles = (theme) => ({
@@ -18,6 +19,7 @@ const styles = (theme) => ({
 
 @withData
 @withRoot
+@withShop
 @withStyles(styles)
 @inject("uiStore")
 @observer
