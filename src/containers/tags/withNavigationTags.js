@@ -83,15 +83,8 @@ export default (Component) => (
           updateQuery: action((previousResult, { fetchMoreResult }) => {
             const { tags: { edges: newEdges, pageInfo: newPageInfo } } = fetchMoreResult;
 
-            // With additional results
+            // Return with additional results
             if (newEdges.length) {
-              // If we have next page, then continue on
-              if (newPageInfo.hasNextPage) {
-                // continue on
-                return this.fetchMoreDataIfNecessary(fetchMore, data);
-              }
-
-              // Otherwise stop here
               return {
                 tags: {
                   __typename: previousResult.tags.__typename,
