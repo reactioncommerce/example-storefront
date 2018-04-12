@@ -20,9 +20,8 @@ export class DesktopNavigation extends Component {
   }
 
   render() {
-    const { navItems: { edges } } = this.props;
-    const topLevelTags = Array.isArray(edges) && edges.filter(({ node }) => node.isTopLevel)
-    return <nav>{topLevelTags && topLevelTags.map(this.renderNavItem)}</nav>;
+    const { navItems } = this.props;
+    return <nav>{navItems && navItems.edges && navItems.edges.map(this.renderNavItem)}</nav>;
   }
 }
 
