@@ -35,12 +35,20 @@ export default (Component) => (
     getTagTree = action((subTagIds) => {
       const { tags } = this.data;
 
+      // With a list of tags
       if (tags && tags.edges) {
+        // If the there are subTags, we'll fetch them now
         if (Array.isArray(subTagIds) && subTagIds.length) {
-          return subTagIds.map((subTagId) => (
-            tags.edges.find(({ node }) => (node._id === subTagId))
-          ));
+          const subTags = [];
+
+          for (const subTagId of subTagIds) {
+            const tag = tags.edges.find(({ node }) => (node._id === subTagId));
+            if (tag) subTags.push(tag);
+          }
+
+          return subTags;
         } else if (!subTagIds) {
+          // Return the list of top-level tags
           return tags.edges
             .filter(({ node }) => node.isTopLevel)
             .map(({ node }) => {
