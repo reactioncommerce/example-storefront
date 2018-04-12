@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
+import { withStyles, withTheme } from "material-ui/styles";
 import Chip from "material-ui/Chip";
 import Typography from "material-ui/Typography";
 
@@ -14,9 +14,10 @@ const styles = (theme) => ({
     position: "relative"
   },
   chip: {
+    ...theme.typography.caption,
     borderRadius: 4,
-    fontSize: 12,
     height: "auto",
+    fontSize: 12,
     paddingBottom: theme.spacing.unit * 0.5,
     paddingLeft: theme.spacing.unit,
     paddingRight: theme.spacing.unit,
@@ -46,7 +47,6 @@ const styles = (theme) => ({
   },
   warning: {
     backgroundColor: "transparent",
-    ...theme.typography.caption,
     right: theme.spacing.unit,
     top: theme.spacing.unit
   },
@@ -57,15 +57,18 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles)
+@withTheme()
 class ProductItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    product: PropTypes.object
+    product: PropTypes.object,
+    theme: PropTypes.object
   };
 
   static defaultProps = {
     classes: {},
-    product: {}
+    product: {},
+    theme: {}
   };
 
   get productStatus() {
@@ -84,18 +87,49 @@ class ProductItem extends Component {
     return isLowQuantity && !isSoldOut;
   }
 
-  renderProductMedia() {
-    const { classes, product: { description } } = this.props;
-    const chipClasses = { root: classes.chip, label: classes.chipLabel };
-    const { label, style } = this.productStatus || {};
+  renderProductImage() {
+    const { classes: { img }, product: { description, weight }, theme: { breakpoints: { values } } } = this.props;
     // TODO: random number for temp images, REMOVE ONCE WE HAVE REAL DATA
     const tempRandNum = Math.floor(Math.random() * 100 + 0);
-    const tempImgSrc = `https://picsum.photos/200?image=${tempRandNum}&blur&gravity=south`;
+    const tempImgs = {
+      0: {
+        xs: `https://picsum.photos/400?image=${tempRandNum}&gravity=center`,
+        sm: `https://picsum.photos/300?image=${tempRandNum}&gravity=center`,
+        md: `https://picsum.photos/400?image=${tempRandNum}&&gravity=center`,
+        lg: `https://picsum.photos/800?image=${tempRandNum}&gravity=center`
+      },
+      1: {
+        xs: `https://picsum.photos/400?image=${tempRandNum}&gravity=center`,
+        sm: `https://picsum.photos/600/285?image=${tempRandNum}&gravity=center`,
+        md: `https://picsum.photos/700/332?image=${tempRandNum}&&gravity=center`,
+        lg: `https://picsum.photos/1600/783?image=${tempRandNum}&gravity=center`
+      },
+      2: {
+        xs: `https://picsum.photos/400?image=${tempRandNum}&gravity=center`,
+        sm: `https://picsum.photos/800/300?image=${tempRandNum}&gravity=center`,
+        md: `https://picsum.photos/1000/312?image=${tempRandNum}&&gravity=center`,
+        lg: `https://picsum.photos/1600/512?image=${tempRandNum}&gravity=center`
+      }
+    };
+    return (
+      <picture>
+        <source srcSet={tempImgs[weight].lg} media={`(min-width: ${values.lg}px)`} />
+        <source srcSet={tempImgs[weight].md} media={`(min-width: ${values.md}px)`} />
+        <source srcSet={tempImgs[weight].sm} media={`(min-width: ${values.sm}px)`} />
+        <img className={img} src={tempImgs[weight].xs} alt={description} />
+      </picture>
+    );
+  }
+
+  renderProductMedia() {
+    const { classes } = this.props;
+    const chipClasses = { root: classes.chip, label: classes.chipLabel };
+    const { label, style } = this.productStatus || {};
     return (
       <div className={classes.productMedia}>
         {this.productStatus && <Chip label={label} classes={chipClasses} className={style} />}
         {this.productLowQuantity && <Chip label={"Low Inventory"} classes={chipClasses} className={classes.warning} />}
-        <img className={classes.img} src={tempImgSrc} alt={description} />
+        {this.renderProductImage()}
       </div>
     );
   }
@@ -111,7 +145,7 @@ class ProductItem extends Component {
         </div>
 
         <div>
-          <Typography variant="body2">${priceRange || price}</Typography>
+          <Typography variant="body1">${priceRange || price}</Typography>
         </div>
       </div>
     );

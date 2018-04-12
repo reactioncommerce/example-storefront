@@ -17,12 +17,27 @@ class ProductGrid extends Component {
   };
 
   renderProduct(product) {
+    const { _id, weight } = product;
+    const gridItemSize = {
+      0: {
+        xs: 12,
+        sm: 4,
+        md: 3
+      },
+      1: {
+        xs: 12,
+        sm: 8,
+        md: 6
+      },
+      2: {
+        xs: 12,
+        sm: 12,
+        md: 9
+      }
+    };
     const gridItemProps = {
-      key: product._id,
-      xs: 12,
-      sm: 4,
-      md: 3,
-      lg: 2
+      key: _id,
+      ...gridItemSize[weight]
     };
     return (
       <Grid item {...gridItemProps}>
