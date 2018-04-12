@@ -38,7 +38,7 @@
     "graphql": "^0.13.1",
     "graphql-tag": "^2.8.0",
     "isomorphic-fetch": "^2.2.1",
-    "material-ui": "^1.0.0-beta.40",
+    "material-ui": "^1.0.0-beta.41",
     "mdi-material-ui": "^3.2.0",
     "mobx": "^4.1.1",
     "mobx-react": "^5.0.0",
