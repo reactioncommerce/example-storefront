@@ -13,6 +13,7 @@
 *.seed
 *.sublime-project
 *.sublime-workspace
+browser.config.js
 
 lib-cov
 logs
