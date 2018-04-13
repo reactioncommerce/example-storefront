@@ -20,7 +20,7 @@ const styles = () => ({
 class MobileNavigation extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    navItems: PropTypes.arrayOf(PropTypes.object),
+    navItems: PropTypes.object,
     uiStore: PropTypes.object
   };
 
