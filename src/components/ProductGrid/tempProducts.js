@@ -35,7 +35,7 @@ export const tempProducts = [
         position: 0
       }
     },
-    weight: 1,
+    weight: 2,
     media: []
   },
   {
@@ -126,7 +126,7 @@ export const tempProducts = [
     hashtags: ["hZdSevCBP8dDc66Ba"],
     createdAt: "2018-04-12T18:48:28.870Z",
     updatedAt: "2018-04-12T18:52:20.366Z",
-    weight: 0,
+    weight: 1,
     media: []
   },
   {
@@ -318,7 +318,7 @@ export const tempProducts = [
         position: 7
       }
     },
-    weight: 0,
+    weight: 1,
     media: []
   }
 ];
