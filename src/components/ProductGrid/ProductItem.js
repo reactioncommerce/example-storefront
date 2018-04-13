@@ -135,7 +135,7 @@ class ProductItem extends Component {
   state = { hasImageLoaded: false };
 
   get productDetailHref() {
-    const { product: { _id, handle } } = this.props;
+    const { product: { handle } } = this.props;
     const url = `/product/${handle}`;
     return { pathname: url };
   }
