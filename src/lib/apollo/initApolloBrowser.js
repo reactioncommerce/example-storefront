@@ -6,7 +6,6 @@ import config from "browser.config";
 
 // Enviroment variables from .env
 const { METEOR_TOKEN, GRAPHQL_URL } = config;
-console.log("GGGGG", GRAPHQL_URL);
 
 if (!process.browser) {
   global.fetch = fetch;
