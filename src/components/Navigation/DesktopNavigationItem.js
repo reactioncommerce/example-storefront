@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import Router from "next/router";
 import Button from "material-ui/Button";
 import Divider from "material-ui/Divider";
 import Grid from "material-ui/Grid";
@@ -14,6 +13,7 @@ import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 import { observer } from "mobx-react";
 import { action, computed, observable } from "mobx";
 import { withStyles } from "material-ui/styles";
+import { Router } from "../../routes";
 
 const styles = (theme) => ({
   popover: {
@@ -62,7 +62,7 @@ class DesktopNavigationItem extends Component {
     if (this.hasSubNavItems) {
       this.isSubNavOpen = !this.isSubNavOpen;
     } else {
-      Router.push(`/tag/${navItem.name}`);
+      Router.pushRoute("tag", { slug: navItem.name });
     }
   };
 
