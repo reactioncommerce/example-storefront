@@ -78,7 +78,7 @@ export default (Component) => (
      * @param {Object} data - Data from previous query, used for recustion to fetch all tags
      * @return {undefined} no return value
      */
-    @action fetchMoreDataIfNecessary = (fetchMore, data) => {
+    fetchMoreDataIfNecessary = (fetchMore, data) => {
       const { primaryShopId } = this.props;
       const pageInfo = data && data.tags.pageInfo;
 
@@ -88,7 +88,7 @@ export default (Component) => (
             shopId: primaryShopId,
             cursor: pageInfo.endCursor
           },
-          updateQuery: action((previousResult, { fetchMoreResult }) => {
+          updateQuery: (previousResult, { fetchMoreResult }) => {
             const { tags: { edges: newEdges, pageInfo: newPageInfo } } = fetchMoreResult;
 
             // Return with additional results
@@ -104,7 +104,7 @@ export default (Component) => (
 
             // Send the previous result if the new result contians no additional data
             return previousResult;
-          })
+          }
         }).catch((error) => {
           console.log(error); /* eslint-disable-line no-console */
         });
