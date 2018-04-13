@@ -32,9 +32,11 @@ _**NOTE:** Currently we're using the [release 1.11.0 branch](https://github.com/
 **Setting up the Storefront's environment**
  1. Create a new `.env` file in the root of this project or copy the example one by running `cp .env.example .env`
  2. Replace the METEOR_TOKEN with the Meteor.loginToken from the above steps.
- 3. Start the storefront application in development mode by running `docker-compose up -d --build`
- 4. The Storefront will run on [localhost:4000](http://localhost:4000).
- 
+ 3. Create a new `browser.config.js` file in the `src` directory of this project or copy the example one by running `cp src/browser.config.example.js browser.config.js`
+ 4. Replace the METEOR_TOKEN with the Meteor.loginToken from the above steps.
+ 5. Start the storefront application in development mode by running `docker-compose up -d --build`
+ 6. The Storefront will run on [localhost:4000](http://localhost:4000).
+
 ## Development
 To run the application in development mode execute:
 
