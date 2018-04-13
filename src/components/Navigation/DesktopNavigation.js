@@ -7,7 +7,7 @@ import withNavigationTags from "../../containers/tags/withNavigationTags";
 export class DesktopNavigation extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    navItems: PropTypes.arrayOf(PropTypes.object)
+    navItems: PropTypes.object
   };
 
   static defaultProps = {
