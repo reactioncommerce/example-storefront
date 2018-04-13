@@ -33,9 +33,9 @@ app.prepare()
     /* END EXPRESS ROUTES */
 
 
-    server.listen(4000, (err) => {
+    return server.listen(4000, (err) => {
       if (err) throw err;
-      
+
       logger.appStarted("localhost", 4000);
     });
   })
