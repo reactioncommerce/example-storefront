@@ -10,7 +10,8 @@ const handle = app.getRequestHandler();
 
 useStaticRendering(true);
 
-app.prepare()
+app
+  .prepare()
   .then(() => {
     const server = express();
 
@@ -28,14 +29,19 @@ app.prepare()
       app.render(req, res, actualPage, queryParams);
     });
 
+    server.get("/product/:slug", (req, res) => {
+      const actualPage = "/product";
+      const queryParams = { slug: req.params.slug };
+      app.render(req, res, actualPage, queryParams);
+    });
+
     server.get("*", (req, res) => handle(req, res));
 
     /* END EXPRESS ROUTES */
 
-
     server.listen(4000, (err) => {
       if (err) throw err;
-      
+
       logger.appStarted("localhost", 4000);
     });
   })

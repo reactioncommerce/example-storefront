@@ -1,16 +1,49 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import Link from "next/link";
 import { withStyles, withTheme } from "material-ui/styles";
+import ButtonBase from "material-ui/ButtonBase";
 import Chip from "material-ui/Chip";
+import Fade from "material-ui/transitions/Fade";
+import Hidden from "material-ui/Hidden";
 import Typography from "material-ui/Typography";
+import LoadingIcon from "mdi-material-ui/Loading";
+
+// TODO: random number for temp images, REMOVE ONCE WE HAVE REAL DATA
+const tempRandNum = 15;
+const tempImgs = {
+  0: {
+    xs: `http://via.placeholder.com/400/E3EBF0/1d1d1d?text=FPO`,
+    sm: `http://via.placeholder.com/300/E3EBF0/1d1d1d?text=FPO`,
+    md: `http://via.placeholder.com/400/E3EBF0/1d1d1d?text=FPO`,
+    lg: `http://via.placeholder.com/800/E3EBF0/1d1d1d?text=FPO`
+  },
+  1: {
+    xs: `http://via.placeholder.com/400/E3EBF0/1d1d1d?text=FPO`,
+    sm: `http://via.placeholder.com/600x285/E3EBF0/1d1d1d?text=FPO`,
+    md: `http://via.placeholder.com/700x332/E3EBF0/1d1d1d?text=FPO`,
+    lg: `http://via.placeholder.com/1600x780/E3EBF0/1d1d1d?text=FPO`
+  },
+  2: {
+    xs: `http://via.placeholder.com/400/E3EBF0/1d1d1d?text=FPO`,
+    sm: `http://via.placeholder.com/800x248/E3EBF0/1d1d1d?text=FPO`,
+    md: `http://via.placeholder.com/1000x312/E3EBF0/1d1d1d?text=FPO`,
+    lg: `http://via.placeholder.com/1600x512/E3EBF0/1d1d1d?text=FPO`
+  }
+};
 
 const styles = (theme) => ({
+  [`@keyframes spin`]: {
+    from: { transform: "rotate(0deg)" },
+    to: { transform: "rotate(-360deg)" }
+  },
   root: {},
   productInfo: {
     display: "flex",
     justifyContent: "space-between"
   },
   productMedia: {
+    backgroundColor: theme.palette.primary.contrastText,
     position: "relative"
   },
   chip: {
@@ -53,6 +86,34 @@ const styles = (theme) => ({
   img: {
     height: "auto",
     width: "100%"
+  },
+  imgLoading: {
+    alignItems: "center",
+    backgroundColor: "transparent",
+    display: "flex",
+    fontSize: 48,
+    height: 100,
+    justifyContent: "center",
+    left: "calc(50% - 50px)",
+    position: "absolute",
+    top: "calc(50% - 50px)",
+    width: 100
+  },
+  loadingIcon: {
+    color: theme.palette.primary.main,
+    fontSize: "inherit",
+    animationName: "spin",
+    animationDuration: theme.transitions.duration.standard * 2,
+    animationTimingFunction: theme.transitions.easing.sharp,
+    animationIterationCount: "infinite",
+    animationFillMode: "both"
+  },
+  link: {
+    ...theme.typography.body2,
+    textAlign: "left",
+    "&:hover": {
+      color: theme.palette.secondary.main
+    }
   }
 });
 
@@ -71,6 +132,14 @@ class ProductItem extends Component {
     theme: {}
   };
 
+  state = { hasImageLoaded: false };
+
+  get productDetailHref() {
+    const { product: { _id, handle } } = this.props;
+    const url = `/product/${handle}`;
+    return { pathname: url };
+  }
+
   get productStatus() {
     const { classes, product: { isBackorder, isSoldOut } } = this.props;
     let status;
@@ -87,37 +156,38 @@ class ProductItem extends Component {
     return isLowQuantity && !isSoldOut;
   }
 
+  onImageLoad = () => {
+    this.setState({ hasImageLoaded: true });
+  };
+
   renderProductImage() {
-    const { classes: { img }, product: { description, weight }, theme: { breakpoints: { values } } } = this.props;
-    // TODO: random number for temp images, REMOVE ONCE WE HAVE REAL DATA
-    const tempRandNum = Math.floor(Math.random() * 100 + 0);
-    const tempImgs = {
-      0: {
-        xs: `https://picsum.photos/400?image=${tempRandNum}&gravity=center`,
-        sm: `https://picsum.photos/300?image=${tempRandNum}&gravity=center`,
-        md: `https://picsum.photos/400?image=${tempRandNum}&&gravity=center`,
-        lg: `https://picsum.photos/800?image=${tempRandNum}&gravity=center`
-      },
-      1: {
-        xs: `https://picsum.photos/400?image=${tempRandNum}&gravity=center`,
-        sm: `https://picsum.photos/600/285?image=${tempRandNum}&gravity=center`,
-        md: `https://picsum.photos/700/332?image=${tempRandNum}&&gravity=center`,
-        lg: `https://picsum.photos/1600/783?image=${tempRandNum}&gravity=center`
-      },
-      2: {
-        xs: `https://picsum.photos/400?image=${tempRandNum}&gravity=center`,
-        sm: `https://picsum.photos/800/300?image=${tempRandNum}&gravity=center`,
-        md: `https://picsum.photos/1000/312?image=${tempRandNum}&&gravity=center`,
-        lg: `https://picsum.photos/1600/512?image=${tempRandNum}&gravity=center`
-      }
-    };
-    return (
+    const {
+      classes: { img, imgLoading, loadingIcon },
+      product: { description, weight },
+      theme: { breakpoints: { values } }
+    } = this.props;
+    const { hasImageLoaded } = this.state;
+
+    const picture = (
       <picture>
         <source srcSet={tempImgs[weight].lg} media={`(min-width: ${values.lg}px)`} />
         <source srcSet={tempImgs[weight].md} media={`(min-width: ${values.md}px)`} />
         <source srcSet={tempImgs[weight].sm} media={`(min-width: ${values.sm}px)`} />
-        <img className={img} src={tempImgs[weight].xs} alt={description} />
+        <img className={img} src={tempImgs[weight].xs} alt={description} onLoad={this.onImageLoad} />
       </picture>
+    );
+
+    const loading = (
+      <div className={imgLoading}>
+        <LoadingIcon className={loadingIcon} />
+      </div>
+    );
+
+    return (
+      <Fragment>
+        <Fade in={hasImageLoaded}>{picture}</Fade>
+        <Hidden xsUp={hasImageLoaded}>{loading}</Hidden>
+      </Fragment>
     );
   }
 
@@ -140,7 +210,11 @@ class ProductItem extends Component {
     return (
       <div className={classes.productInfo}>
         <div>
-          <Typography variant="body2">{title}</Typography>
+          <Typography variant="body2">
+            <Link href={this.productDetailHref}>
+              <ButtonBase classes={{ root: classes.link }}>{title}</ButtonBase>
+            </Link>
+          </Typography>
           <Typography variant="body1">{vendor}</Typography>
         </div>
 
@@ -154,7 +228,9 @@ class ProductItem extends Component {
   render() {
     return (
       <div>
-        {this.renderProductMedia()}
+        <Link href={this.productDetailHref}>
+          <a>{this.renderProductMedia()}</a>
+        </Link>
         {this.renderProductInfo()}
       </div>
     );
