@@ -42,8 +42,16 @@ export default (Component) => (
           const subTags = [];
 
           for (const subTagId of subTagIds) {
-            const tag = tags.edges.find(({ node }) => (node._id === subTagId));
-            if (tag) subTags.push(tag);
+            const foundTagEdge = tags.edges.find(({ node }) => (node._id === subTagId));
+
+            if (foundTagEdge) {
+              const { node: subTag } = foundTagEdge;
+              if (subTag.subTagIds && Array.isArray(subTag.subTagIds)) {
+                subTag.subTags = { edges: this.getTagTree(subTag.subTagIds) };
+              }
+
+              subTags.push({ node: subTag });
+            }
           }
 
           return subTags;
