@@ -13,22 +13,22 @@ import LoadingIcon from "mdi-material-ui/Loading";
 const tempRandNum = 15;
 const tempImgs = {
   0: {
-    xs: `http://via.placeholder.com/400/E3EBF0/1d1d1d?text=FPO`,
-    sm: `http://via.placeholder.com/300/E3EBF0/1d1d1d?text=FPO`,
-    md: `http://via.placeholder.com/400/E3EBF0/1d1d1d?text=FPO`,
-    lg: `http://via.placeholder.com/800/E3EBF0/1d1d1d?text=FPO`
+    xs: "http://via.placeholder.com/400/E6E6E6/999999?text=FPO",
+    sm: "http://via.placeholder.com/300/E6E6E6/999999?text=FPO",
+    md: "http://via.placeholder.com/400/E6E6E6/999999?text=FPO",
+    lg: "http://via.placeholder.com/800/E6E6E6/999999?text=FPO"
   },
   1: {
-    xs: `http://via.placeholder.com/400/E3EBF0/1d1d1d?text=FPO`,
-    sm: `http://via.placeholder.com/600x285/E3EBF0/1d1d1d?text=FPO`,
-    md: `http://via.placeholder.com/700x332/E3EBF0/1d1d1d?text=FPO`,
-    lg: `http://via.placeholder.com/1600x780/E3EBF0/1d1d1d?text=FPO`
+    xs: "http://via.placeholder.com/400/E6E6E6/999999?text=FPO",
+    sm: "http://via.placeholder.com/600x285/E6E6E6/999999?text=FPO",
+    md: "http://via.placeholder.com/700x332/E6E6E6/999999?text=FPO",
+    lg: "http://via.placeholder.com/1600x780/E6E6E6/999999?text=FPO"
   },
   2: {
-    xs: `http://via.placeholder.com/400/E3EBF0/1d1d1d?text=FPO`,
-    sm: `http://via.placeholder.com/800x248/E3EBF0/1d1d1d?text=FPO`,
-    md: `http://via.placeholder.com/1000x312/E3EBF0/1d1d1d?text=FPO`,
-    lg: `http://via.placeholder.com/1600x512/E3EBF0/1d1d1d?text=FPO`
+    xs: "http://via.placeholder.com/400/E6E6E6/999999?text=FPO",
+    sm: "http://via.placeholder.com/800x248/E6E6E6/999999?text=FPO",
+    md: "http://via.placeholder.com/1000x312/E6E6E6/999999?text=FPO",
+    lg: "http://via.placeholder.com/1600x512/E6E6E6/999999?text=FPO"
   }
 };
 
@@ -100,7 +100,7 @@ const styles = (theme) => ({
     width: 100
   },
   loadingIcon: {
-    color: theme.palette.primary.main,
+    color: theme.palette.primary.light,
     fontSize: "inherit",
     animationName: "spin",
     animationDuration: theme.transitions.duration.standard * 2,
