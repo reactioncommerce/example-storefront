@@ -55,7 +55,8 @@ const styles = (theme) => ({
     paddingLeft: theme.spacing.unit,
     paddingRight: theme.spacing.unit,
     paddingTop: theme.spacing.unit * 0.5,
-    position: "absolute"
+    position: "absolute",
+    zIndex: 100
   },
   chipLabel: {
     fontWeight: theme.typography.fontWeightBold,
