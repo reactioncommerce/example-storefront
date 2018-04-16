@@ -5,10 +5,12 @@ import Typography from "material-ui/Typography";
 
 import withData from "lib/apollo/withData";
 import withRoot from "lib/theme/withRoot";
+import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
 
 @withData
 @withRoot
+@withShop
 @inject("uiStore")
 @observer
 class ProductDetail extends Component {
