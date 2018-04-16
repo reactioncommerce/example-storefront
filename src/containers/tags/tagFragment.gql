@@ -1,0 +1,8 @@
+fragment TagInfo on Tag {
+  _id
+  position
+  name
+  slug
+  isTopLevel
+  subTagIds
+}

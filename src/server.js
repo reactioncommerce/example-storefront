@@ -18,7 +18,7 @@ app
     const server = express();
     server.use(routeHandler);
     server.get("*", (req, res) => handle(req, res));
-    server.listen(4000, (err) => {
+    return server.listen(4000, (err) => {
       if (err) throw err;
       logger.appStarted("localhost", 4000);
     });

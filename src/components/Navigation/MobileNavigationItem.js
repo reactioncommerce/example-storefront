@@ -39,8 +39,8 @@ class MobileNavigationItem extends Component {
   };
 
   get hasSubNavItems() {
-    const { navItem: { relatedTags } } = this.props;
-    return Array.isArray(relatedTags) && relatedTags.length > 0;
+    const { navItem: { subTags } } = this.props;
+    return Array.isArray(subTags.edges) && subTags.edges.length > 0;
   }
 
   @observable _isSubNavOpen = false;
@@ -70,9 +70,9 @@ class MobileNavigationItem extends Component {
     return (
       <div className={classes.subNav}>
         <Divider />
-        {navItemGroup.relatedTags.map((navItemGroupItem, index) => (
+        {navItemGroup.subTags.edges.map(({ node: navItemGroupItem }, index) => (
           <MenuItem className={classes.nested} dense inset key={index}>
-            <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroupItem.title} />
+            <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroupItem.name} />
           </MenuItem>
         ))}
       </div>
@@ -80,16 +80,16 @@ class MobileNavigationItem extends Component {
   }
 
   renderCollapse() {
-    const { classes, navItem: { relatedTags } } = this.props;
+    const { classes, navItem: { subTags } } = this.props;
     return (
       <Collapse in={this.isSubNavOpen} timeout="auto" unmountOnExit>
         <MenuList component="div" disablePadding>
-          {relatedTags.map((navItemGroup, index) => (
+          {subTags.edges.map(({ node: navItemGroup }, index) => (
             <MenuList disablePadding key={index}>
               <MenuItem inset className={classes.nested}>
-                <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroup.title} />
+                <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroup.name} />
               </MenuItem>
-              {Array.isArray(navItemGroup.relatedTags) && this.renderSubNav(navItemGroup)}
+              {Array.isArray(navItemGroup.subTags.edges) && this.renderSubNav(navItemGroup)}
             </MenuList>
           ))}
         </MenuList>
