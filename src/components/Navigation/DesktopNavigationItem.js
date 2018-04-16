@@ -40,8 +40,8 @@ class DesktopNavigationItem extends Component {
   };
 
   get hasSubNavItems() {
-    const { navItem: { relatedTags } } = this.props;
-    return Array.isArray(relatedTags) && relatedTags.length > 0;
+    const { navItem: { subTags } } = this.props;
+    return subTags && Array.isArray(subTags.edges) && subTags.edges.length > 0;
   }
 
   @observable _isSubNavOpen = false;
@@ -62,7 +62,7 @@ class DesktopNavigationItem extends Component {
     if (this.hasSubNavItems) {
       this.isSubNavOpen = !this.isSubNavOpen;
     } else {
-      Router.pushRoute("tag", { slug: navItem.name });
+      Router.pushRoute("tag", { slug: navItem.slug });
     }
   };
 
@@ -75,9 +75,9 @@ class DesktopNavigationItem extends Component {
     return (
       <Fragment>
         <Divider />
-        {navItemGroup.relatedTags.map((navItem, index) => (
+        {navItemGroup.subTags.edges.map(({ node: navItem }, index) => (
           <MenuItem dense key={index}>
-            <ListItemText primary={navItem.title} />
+            <ListItemText primary={navItem.name} />
           </MenuItem>
         ))}
       </Fragment>
@@ -85,34 +85,40 @@ class DesktopNavigationItem extends Component {
   }
 
   renderPopover() {
-    const { classes, navItem: { relatedTags } } = this.props;
-    return (
-      <Popover
-        classes={{ paper: classes.popover }}
-        anchorReference={"anchorPosition"}
-        anchorPosition={{ top: 64 }}
-        elevation={1}
-        onClose={this.onClose}
-        open={this.isSubNavOpen}
-      >
-        <Grid container className={classes.grid} spacing={16}>
-          {relatedTags.map((navItemGroup, index) => (
-            <Grid item key={index}>
-              <MenuList disablePadding>
-                <MenuItem>
-                  <ListItemText primary={navItemGroup.title} />
-                </MenuItem>
-                {Array.isArray(navItemGroup.relatedTags) && this.renderSubNav(navItemGroup)}
-              </MenuList>
-            </Grid>
-          ))}
-        </Grid>
-      </Popover>
-    );
+    const { classes, navItem: { subTags } } = this.props;
+
+    if (subTags) {
+      return (
+        <Popover
+          classes={{ paper: classes.popover }}
+          anchorReference={"anchorPosition"}
+          anchorPosition={{ top: 64 }}
+          elevation={1}
+          onClose={this.onClose}
+          open={this.isSubNavOpen}
+        >
+          <Grid container className={classes.grid} spacing={16}>
+            {subTags.edges.map(({ node: navItemGroup }, index) => (
+              <Grid item key={index}>
+                <MenuList disablePadding>
+                  <MenuItem>
+                    <ListItemText primary={navItemGroup.name} />
+                  </MenuItem>
+                  {navItemGroup.subTags && Array.isArray(navItemGroup.subTags.edges) && this.renderSubNav(navItemGroup)}
+                </MenuList>
+              </Grid>
+            ))}
+          </Grid>
+        </Popover>
+      );
+    }
+
+    return null;
   }
 
   render() {
     const { navItem } = this.props;
+
     return (
       <Fragment>
         <Button color="inherit" onClick={this.onClick}>

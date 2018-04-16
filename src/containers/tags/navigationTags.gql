@@ -1,0 +1,17 @@
+#import "./tagFragment.gql"
+
+query navigationTagsQuery($shopId: ID!, $cursor: ConnectionCursor) {
+  tags(shopId: $shopId, first: 50, after: $cursor) {
+    pageInfo {
+      endCursor
+      startCursor
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...TagInfo
+      }
+    }
+  }
+}

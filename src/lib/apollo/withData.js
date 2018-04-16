@@ -2,8 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import { ApolloProvider, getDataFromTree } from "react-apollo";
 import Head from "next/head";
-import initApollo from "./initApollo";
+import initApolloServer from "./initApolloServer";
+import initApolloBrowser from "./initApolloBrowser";
 
+/**
+ * Get the display name of a component
+ * @name getComponentDisplayName
+ * @param {React.Component} Component Reactio component
+ * @returns {String} Component display name
+ */
 function getComponentDisplayName(Component) {
   return Component.displayName || Component.name || "Unknown";
 }
@@ -30,7 +37,7 @@ export default (ComposedComponent) =>
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
       if (!process.browser) {
-        const apollo = initApollo();
+        const apollo = initApolloServer();
         // Provide the `url` prop data in case a GraphQL query uses it
         const url = { query: ctx.query, pathname: ctx.pathname };
         try {
@@ -61,7 +68,7 @@ export default (ComposedComponent) =>
 
     constructor(props) {
       super(props);
-      this.apollo = initApollo(this.props.serverState.apollo.data);
+      this.apollo = initApolloBrowser(this.props.serverState.apollo.data);
     }
 
     render() {
