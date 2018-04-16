@@ -4,8 +4,10 @@ import { useStaticRendering } from "mobx-react";
 
 import logger from "lib/logger";
 import { appPath, dev } from "./config";
+import router from "./routes";
 
 const app = nextApp({ dir: appPath, dev });
+const routeHandler = router.getRequestHandler(app);
 const handle = app.getRequestHandler();
 
 useStaticRendering(true);
@@ -14,34 +16,10 @@ app
   .prepare()
   .then(() => {
     const server = express();
-
-    /* BEGIN EXPRESS ROUTES */
-    // This is how to render a masked route with NextJS
-    // server.get('/p/:id', (req, res) => {
-    //   const actualPage = '/post';
-    //   const queryParams = { id: req.params.id };
-    //   app.render(req, res, actualPage, queryParams);
-    // });
-
-    server.get("/tag/:slug", (req, res) => {
-      const actualPage = "/";
-      const queryParams = { slug: req.params.slug };
-      app.render(req, res, actualPage, queryParams);
-    });
-
-    server.get("/product/:slug", (req, res) => {
-      const actualPage = "/product";
-      const queryParams = { slug: req.params.slug };
-      app.render(req, res, actualPage, queryParams);
-    });
-
+    server.use(routeHandler);
     server.get("*", (req, res) => handle(req, res));
-
-    /* END EXPRESS ROUTES */
-
     server.listen(4000, (err) => {
       if (err) throw err;
-
       logger.appStarted("localhost", 4000);
     });
   })

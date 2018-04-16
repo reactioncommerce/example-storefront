@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import Router from "next/router";
+import { Router } from "routes";
 import Divider from "material-ui/Divider";
 import ListItemIcon from "material-ui/List/ListItemIcon";
 import ListItemText from "material-ui/List/ListItemText";
@@ -61,7 +61,7 @@ class MobileNavigationItem extends Component {
     if (this.hasSubNavItems) {
       this.isSubNavOpen = !this.isSubNavOpen;
     } else {
-      Router.push(`/tag/${navItem.name}`);
+      Router.pushRoute("tag", { slug: navItem.name });
     }
   };
 
