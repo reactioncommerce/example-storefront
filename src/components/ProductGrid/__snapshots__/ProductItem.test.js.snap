@@ -2,32 +2,70 @@
 
 exports[`basic snapshot 1`] = `
 <div>
-  <div
-    className="ProductItem-productMedia-3"
+  <a
+    href="/product/undefined"
+    onClick={[Function]}
   >
-    <img
-      alt={undefined}
-      className="ProductItem-img-12"
-      src="http://via.placeholder.com/200"
-    />
-  </div>
+    <div
+      className="WithTheme-ProductItem--productMedia-3"
+    >
+      
+      <div
+        className="WithTheme-ProductItem--imgLoading-13"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-50 WithTheme-ProductItem--loadingIcon-14"
+          color={undefined}
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
+          />
+        </svg>
+      </div>
+    </div>
+  </a>
   <div
-    className="ProductItem-productInfo-2"
+    className="WithTheme-ProductItem--productInfo-2"
   >
     <div>
       <aside
-        className="MuiTypography-root-13 MuiTypography-body2-21"
-      />
+        className="MuiTypography-root-16 MuiTypography-body2-24"
+      >
+        <button
+          className="MuiButtonBase-root-40 WithTheme-ProductItem--link-15"
+          disabled={undefined}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiTouchRipple-root-43"
+          />
+        </button>
+      </aside>
       <p
-        className="MuiTypography-root-13 MuiTypography-body1-22"
+        className="MuiTypography-root-16 MuiTypography-body1-25"
       />
     </div>
     <div>
-      <aside
-        className="MuiTypography-root-13 MuiTypography-body2-21"
+      <p
+        className="MuiTypography-root-16 MuiTypography-body1-25"
       >
         $
-      </aside>
+      </p>
     </div>
   </div>
 </div>

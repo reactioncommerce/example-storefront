@@ -171,23 +171,26 @@ class ProductItem extends Component {
     } = this.props;
     const { hasImageLoaded } = this.state;
 
-    const picture = (
-      <picture>
-        <source srcSet={tempImgs[weight].lg} media={`(min-width: ${values.lg}px)`} />
-        <source srcSet={tempImgs[weight].md} media={`(min-width: ${values.md}px)`} />
-        <source srcSet={tempImgs[weight].sm} media={`(min-width: ${values.sm}px)`} />
-        <img
-          className={img}
-          src={tempImgs[weight].xs}
-          alt={description}
-          onLoad={this.onImageLoad}
-          ref={(image) => {
-            if (image && image.complete) this.onImageLoad();
-            return;
-          }}
-        />
-      </picture>
-    );
+    const picture =
+      tempImgs && weight ? (
+        <picture>
+          <source srcSet={tempImgs[weight].lg} media={`(min-width: ${values.lg}px)`} />
+          <source srcSet={tempImgs[weight].md} media={`(min-width: ${values.md}px)`} />
+          <source srcSet={tempImgs[weight].sm} media={`(min-width: ${values.sm}px)`} />
+          <img
+            className={img}
+            src={tempImgs[weight].xs}
+            alt={description}
+            onLoad={this.onImageLoad}
+            ref={(image) => {
+              if (image && image.complete) this.onImageLoad();
+              return;
+            }}
+          />
+        </picture>
+      ) : (
+        ""
+      );
 
     const loading = (
       <div className={imgLoading}>
@@ -197,7 +200,7 @@ class ProductItem extends Component {
 
     return (
       <Fragment>
-        <Fade in={hasImageLoaded}>{picture}</Fade>
+        {picture ? <Fade in={hasImageLoaded}>{picture}</Fade> : ""}
         <Hidden xsUp={hasImageLoaded}>{loading}</Hidden>
       </Fragment>
     );
