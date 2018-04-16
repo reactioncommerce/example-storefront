@@ -6,726 +6,391 @@ exports[`basic snapshot 1`] = `
     className="MuiGrid-typeContainer-1 MuiGrid-spacing-xs-24-24"
   >
     <div
-      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-12-51 MuiGrid-grid-md-9-61"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
       <div>
-        <a
-          href="/product/reaction-scout-book"
-          onClick={[Function]}
+        <div
+          className="ProductItem-productMedia-93"
         >
           <div
-            className="WithTheme-ProductItem--productMedia-93"
+            className="MuiChip-root-103 ProductItem-chip-94 ProductItem-warning-101"
+            onClick={undefined}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={-1}
           >
-            <div
-              className="MuiChip-root-106 WithTheme-ProductItem--chip-94 WithTheme-ProductItem--warning-101"
-              onClick={undefined}
-              onKeyDown={[Function]}
-              role="button"
-              tabIndex={-1}
+            <span
+              className="MuiChip-label-108 ProductItem-chipLabel-95"
             >
-              <span
-                className="MuiChip-label-111 WithTheme-ProductItem--chipLabel-95"
-              >
-                Low Inventory
-              </span>
-            </div>
-            <picture
-              style={
-                Object {
-                  "opacity": 0,
-                  "willChange": "opacity",
-                }
-              }
-            >
-              <source
-                media="(min-width: 1280px)"
-                srcSet="http://via.placeholder.com/1600x512/E6E6E6/999999?text=FPO"
-              />
-              <source
-                media="(min-width: 960px)"
-                srcSet="http://via.placeholder.com/1000x312/E6E6E6/999999?text=FPO"
-              />
-              <source
-                media="(min-width: 600px)"
-                srcSet="http://via.placeholder.com/800x248/E6E6E6/999999?text=FPO"
-              />
-              <img
-                alt="Need to make a quick note? Got a once-in-a-lifetime idea? Write it down in one of these great little notebooks"
-                className="WithTheme-ProductItem--img-102"
-                onLoad={[Function]}
-                src="http://via.placeholder.com/400/E6E6E6/999999?text=FPO"
-              />
-            </picture>
-            <div
-              className="WithTheme-ProductItem--imgLoading-103"
-            >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-147 WithTheme-ProductItem--loadingIcon-104"
-                color={undefined}
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
-                />
-              </svg>
-            </div>
+              Low Inventory
+            </span>
           </div>
-        </a>
-        <div
-          className="WithTheme-ProductItem--productInfo-92"
-        >
-          <div>
-            <aside
-              className="MuiTypography-root-113 MuiTypography-body2-121"
-            >
-              <button
-                className="MuiButtonBase-root-137 WithTheme-ProductItem--link-105"
-                disabled={undefined}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex="0"
-                type="button"
-              >
-                Reaction Scout Book
-                <span
-                  className="MuiTouchRipple-root-140"
-                />
-              </button>
-            </aside>
-            <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
-            >
-              Bookworks
-            </p>
-          </div>
-          <div>
-            <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
-            >
-              $
-              0.00
-            </p>
-          </div>
+          <img
+            alt="A bag of rich Arabica coffee. Great for a fueling up for a night out or for settling in for a night of coding at home"
+            className="ProductItem-img-102"
+            src="http://via.placeholder.com/200"
+          />
         </div>
-      </div>
-    </div>
-    <div
-      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55"
-    >
-      <div>
-        <a
-          href="/product/example-product"
-          onClick={[Function]}
-        >
-          <div
-            className="WithTheme-ProductItem--productMedia-93"
-          >
-            <div
-              className="MuiChip-root-106 WithTheme-ProductItem--chip-94 WithTheme-ProductItem--status-96 WithTheme-ProductItem--statusBackorder-98"
-              onClick={undefined}
-              onKeyDown={[Function]}
-              role="button"
-              tabIndex={-1}
-            >
-              <span
-                className="MuiChip-label-111 WithTheme-ProductItem--chipLabel-95"
-              >
-                Backorder
-              </span>
-            </div>
-            
-            <div
-              className="WithTheme-ProductItem--imgLoading-103"
-            >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-147 WithTheme-ProductItem--loadingIcon-104"
-                color={undefined}
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
-                />
-              </svg>
-            </div>
-          </div>
-        </a>
         <div
-          className="WithTheme-ProductItem--productInfo-92"
+          className="ProductItem-productInfo-92"
         >
           <div>
             <aside
-              className="MuiTypography-root-113 MuiTypography-body2-121"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
-              <button
-                className="MuiButtonBase-root-137 WithTheme-ProductItem--link-105"
-                disabled={undefined}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex="0"
-                type="button"
-              >
-                Basic Reaction Product
-                <span
-                  className="MuiTouchRipple-root-140"
-                />
-              </button>
+              Reaction Bag of Beans
             </aside>
             <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
-            >
-              Example Manufacturer
-            </p>
-          </div>
-          <div>
-            <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
-            >
-              $
-              12.99 - 19.99
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-8-47 MuiGrid-grid-md-6-58"
-    >
-      <div>
-        <a
-          href="/product/reaction-bag-of-beans"
-          onClick={[Function]}
-        >
-          <div
-            className="WithTheme-ProductItem--productMedia-93"
-          >
-            <picture
-              style={
-                Object {
-                  "opacity": 0,
-                  "willChange": "opacity",
-                }
-              }
-            >
-              <source
-                media="(min-width: 1280px)"
-                srcSet="http://via.placeholder.com/1600x780/E6E6E6/999999?text=FPO"
-              />
-              <source
-                media="(min-width: 960px)"
-                srcSet="http://via.placeholder.com/700x332/E6E6E6/999999?text=FPO"
-              />
-              <source
-                media="(min-width: 600px)"
-                srcSet="http://via.placeholder.com/600x285/E6E6E6/999999?text=FPO"
-              />
-              <img
-                alt="A bag of rich Arabica coffee. Great for a fueling up for a night out or for settling in for a night of coding at home"
-                className="WithTheme-ProductItem--img-102"
-                onLoad={[Function]}
-                src="http://via.placeholder.com/400/E6E6E6/999999?text=FPO"
-              />
-            </picture>
-            <div
-              className="WithTheme-ProductItem--imgLoading-103"
-            >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-147 WithTheme-ProductItem--loadingIcon-104"
-                color={undefined}
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
-                />
-              </svg>
-            </div>
-          </div>
-        </a>
-        <div
-          className="WithTheme-ProductItem--productInfo-92"
-        >
-          <div>
-            <aside
-              className="MuiTypography-root-113 MuiTypography-body2-121"
-            >
-              <button
-                className="MuiButtonBase-root-137 WithTheme-ProductItem--link-105"
-                disabled={undefined}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex="0"
-                type="button"
-              >
-                Reaction Bag of Beans
-                <span
-                  className="MuiTouchRipple-root-140"
-                />
-              </button>
-            </aside>
-            <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
               Bluestone Coffee
             </p>
           </div>
           <div>
-            <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
+            <aside
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
               12 - 24
-            </p>
+            </aside>
           </div>
         </div>
       </div>
     </div>
     <div
-      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
       <div>
-        <a
-          href="/product/reaction-mug"
-          onClick={[Function]}
+        <div
+          className="ProductItem-productMedia-93"
         >
           <div
-            className="WithTheme-ProductItem--productMedia-93"
+            className="MuiChip-root-103 ProductItem-chip-94 ProductItem-status-96 ProductItem-statusBackorder-98"
+            onClick={undefined}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={-1}
           >
-            
-            <div
-              className="WithTheme-ProductItem--imgLoading-103"
+            <span
+              className="MuiChip-label-108 ProductItem-chipLabel-95"
             >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-147 WithTheme-ProductItem--loadingIcon-104"
-                color={undefined}
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
-                />
-              </svg>
-            </div>
+              Backorder
+            </span>
           </div>
-        </a>
+          <img
+            alt="A sturdy mug to keep your hot drinks hot and your cold drinks cold"
+            className="ProductItem-img-102"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
         <div
-          className="WithTheme-ProductItem--productInfo-92"
+          className="ProductItem-productInfo-92"
         >
           <div>
             <aside
-              className="MuiTypography-root-113 MuiTypography-body2-121"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
-              <button
-                className="MuiButtonBase-root-137 WithTheme-ProductItem--link-105"
-                disabled={undefined}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex="0"
-                type="button"
-              >
-                Reaction Mug
-                <span
-                  className="MuiTouchRipple-root-140"
-                />
-              </button>
+              Reaction Mug
             </aside>
             <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
               Mugworks
             </p>
           </div>
           <div>
-            <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
+            <aside
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
               15
-            </p>
+            </aside>
           </div>
         </div>
       </div>
     </div>
     <div
-      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
       <div>
-        <a
-          href="/product/reaction-commerce-pouch"
-          onClick={[Function]}
+        <div
+          className="ProductItem-productMedia-93"
         >
           <div
-            className="WithTheme-ProductItem--productMedia-93"
+            className="MuiChip-root-103 ProductItem-chip-94 ProductItem-status-96 ProductItem-statusBackorder-98"
+            onClick={undefined}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={-1}
           >
-            <div
-              className="MuiChip-root-106 WithTheme-ProductItem--chip-94 WithTheme-ProductItem--status-96 WithTheme-ProductItem--statusSoldOut-97"
-              onClick={undefined}
-              onKeyDown={[Function]}
-              role="button"
-              tabIndex={-1}
+            <span
+              className="MuiChip-label-108 ProductItem-chipLabel-95"
             >
-              <span
-                className="MuiChip-label-111 WithTheme-ProductItem--chipLabel-95"
-              >
-                Sold Out
-              </span>
-            </div>
-            
-            <div
-              className="WithTheme-ProductItem--imgLoading-103"
-            >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-147 WithTheme-ProductItem--loadingIcon-104"
-                color={undefined}
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
-                />
-              </svg>
-            </div>
+              Backorder
+            </span>
           </div>
-        </a>
+          <img
+            alt="Need to make a quick note? Got a once-in-a-lifetime idea? Write it down in one of these great little notebooks"
+            className="ProductItem-img-102"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
         <div
-          className="WithTheme-ProductItem--productInfo-92"
+          className="ProductItem-productInfo-92"
         >
           <div>
             <aside
-              className="MuiTypography-root-113 MuiTypography-body2-121"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
-              <button
-                className="MuiButtonBase-root-137 WithTheme-ProductItem--link-105"
-                disabled={undefined}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex="0"
-                type="button"
-              >
-                Reaction Commerce Pouch
-                <span
-                  className="MuiTouchRipple-root-140"
-                />
-              </button>
+              Reaction Scout Book
             </aside>
             <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
-              Pouchworks
+              Bookworks
             </p>
           </div>
           <div>
-            <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
+            <aside
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
-              8
-            </p>
+              6
+            </aside>
           </div>
         </div>
       </div>
     </div>
     <div
-      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
       <div>
-        <a
-          href="/product/reaction-ladies-shirt"
-          onClick={[Function]}
+        <div
+          className="ProductItem-productMedia-93"
         >
           <div
-            className="WithTheme-ProductItem--productMedia-93"
+            className="MuiChip-root-103 ProductItem-chip-94 ProductItem-status-96 ProductItem-statusSoldOut-97"
+            onClick={undefined}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={-1}
           >
-            
-            <div
-              className="WithTheme-ProductItem--imgLoading-103"
+            <span
+              className="MuiChip-label-108 ProductItem-chipLabel-95"
             >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-147 WithTheme-ProductItem--loadingIcon-104"
-                color={undefined}
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
-                />
-              </svg>
-            </div>
+              Sold Out
+            </span>
           </div>
-        </a>
+          <img
+            alt="The same hip Reaction logo in a cut more suitable for the ladies. 100% cotton fabric and double-stitching make this a shirt that will last for years to come"
+            className="ProductItem-img-102"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
         <div
-          className="WithTheme-ProductItem--productInfo-92"
+          className="ProductItem-productInfo-92"
         >
           <div>
             <aside
-              className="MuiTypography-root-113 MuiTypography-body2-121"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
-              <button
-                className="MuiButtonBase-root-137 WithTheme-ProductItem--link-105"
-                disabled={undefined}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex="0"
-                type="button"
-              >
-                Reaction Ladies Shirt
-                <span
-                  className="MuiTouchRipple-root-140"
-                />
-              </button>
+              Reaction Ladies Shirt
             </aside>
             <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
               Shirtworks
             </p>
           </div>
           <div>
-            <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
+            <aside
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
               18 - 20
-            </p>
+            </aside>
           </div>
         </div>
       </div>
     </div>
     <div
-      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
       <div>
-        <a
-          href="/product/reaction-mens-shirt"
-          onClick={[Function]}
+        <div
+          className="ProductItem-productMedia-93"
         >
           <div
-            className="WithTheme-ProductItem--productMedia-93"
+            className="MuiChip-root-103 ProductItem-chip-94 ProductItem-status-96 ProductItem-statusBackorder-98"
+            onClick={undefined}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={-1}
           >
-            
-            <div
-              className="WithTheme-ProductItem--imgLoading-103"
+            <span
+              className="MuiChip-label-108 ProductItem-chipLabel-95"
             >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-147 WithTheme-ProductItem--loadingIcon-104"
-                color={undefined}
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
-                />
-              </svg>
-            </div>
+              Backorder
+            </span>
           </div>
-        </a>
+          <img
+            alt="Get your Reaction together and show it to the world. 100% cotton fabric and double-stitching make this a shirt that will last for years to come"
+            className="ProductItem-img-102"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
         <div
-          className="WithTheme-ProductItem--productInfo-92"
+          className="ProductItem-productInfo-92"
         >
           <div>
             <aside
-              className="MuiTypography-root-113 MuiTypography-body2-121"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
-              <button
-                className="MuiButtonBase-root-137 WithTheme-ProductItem--link-105"
-                disabled={undefined}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex="0"
-                type="button"
-              >
-                Reaction Mens Shirt
-                <span
-                  className="MuiTouchRipple-root-140"
-                />
-              </button>
+              Reaction Mens Shirt
             </aside>
             <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
               Shirtworks
             </p>
           </div>
           <div>
-            <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
+            <aside
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
               18 - 20
-            </p>
+            </aside>
           </div>
         </div>
       </div>
     </div>
     <div
-      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-8-47 MuiGrid-grid-md-6-58"
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
     >
       <div>
-        <a
-          href="/product/reaction-sticker"
-          onClick={[Function]}
+        <div
+          className="ProductItem-productMedia-93"
         >
           <div
-            className="WithTheme-ProductItem--productMedia-93"
+            className="MuiChip-root-103 ProductItem-chip-94 ProductItem-status-96 ProductItem-statusBackorder-98"
+            onClick={undefined}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={-1}
           >
-            <picture
-              style={
-                Object {
-                  "opacity": 0,
-                  "willChange": "opacity",
-                }
-              }
+            <span
+              className="MuiChip-label-108 ProductItem-chipLabel-95"
             >
-              <source
-                media="(min-width: 1280px)"
-                srcSet="http://via.placeholder.com/1600x780/E6E6E6/999999?text=FPO"
-              />
-              <source
-                media="(min-width: 960px)"
-                srcSet="http://via.placeholder.com/700x332/E6E6E6/999999?text=FPO"
-              />
-              <source
-                media="(min-width: 600px)"
-                srcSet="http://via.placeholder.com/600x285/E6E6E6/999999?text=FPO"
-              />
-              <img
-                alt="Show your pride and affix some Reaction to almost any surface"
-                className="WithTheme-ProductItem--img-102"
-                onLoad={[Function]}
-                src="http://via.placeholder.com/400/E6E6E6/999999?text=FPO"
-              />
-            </picture>
-            <div
-              className="WithTheme-ProductItem--imgLoading-103"
-            >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-147 WithTheme-ProductItem--loadingIcon-104"
-                color={undefined}
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
-                />
-              </svg>
-            </div>
+              Backorder
+            </span>
           </div>
-        </a>
+          <img
+            alt="Show your pride and affix some Reaction to almost any surface"
+            className="ProductItem-img-102"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
         <div
-          className="WithTheme-ProductItem--productInfo-92"
+          className="ProductItem-productInfo-92"
         >
           <div>
             <aside
-              className="MuiTypography-root-113 MuiTypography-body2-121"
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
-              <button
-                className="MuiButtonBase-root-137 WithTheme-ProductItem--link-105"
-                disabled={undefined}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex="0"
-                type="button"
-              >
-                Reaction Sticker
-                <span
-                  className="MuiTouchRipple-root-140"
-                />
-              </button>
+              Reaction Sticker
             </aside>
             <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
+              className="MuiTypography-root-110 MuiTypography-body1-119"
             >
               Stickerworks
             </p>
           </div>
           <div>
-            <p
-              className="MuiTypography-root-113 MuiTypography-body1-122"
+            <aside
+              className="MuiTypography-root-110 MuiTypography-body2-118"
             >
               $
               4
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
+    >
+      <div>
+        <div
+          className="ProductItem-productMedia-93"
+        >
+          <img
+            alt="Whether DJ'ing your EDM set or hacking into the NSA this stylish hoodie will keep your tiny fragile body warm"
+            className="ProductItem-img-102"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
+        <div
+          className="ProductItem-productInfo-92"
+        >
+          <div>
+            <aside
+              className="MuiTypography-root-110 MuiTypography-body2-118"
+            >
+              Reaction Hoodie
+            </aside>
+            <p
+              className="MuiTypography-root-110 MuiTypography-body1-119"
+            >
+              Hanes
             </p>
+          </div>
+          <div>
+            <aside
+              className="MuiTypography-root-110 MuiTypography-body2-118"
+            >
+              $
+              35
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55 MuiGrid-grid-lg-2-67"
+    >
+      <div>
+        <div
+          className="ProductItem-productMedia-93"
+        >
+          <img
+            alt="This camp shirt is a classy, clean alternative to T-shirts or Polos. Represent Reaction at camp or on the road"
+            className="ProductItem-img-102"
+            src="http://via.placeholder.com/200"
+          />
+        </div>
+        <div
+          className="ProductItem-productInfo-92"
+        >
+          <div>
+            <aside
+              className="MuiTypography-root-110 MuiTypography-body2-118"
+            >
+              Reaction Camp Shirt
+            </aside>
+            <p
+              className="MuiTypography-root-110 MuiTypography-body1-119"
+            >
+              Hanes
+            </p>
+          </div>
+          <div>
+            <aside
+              className="MuiTypography-root-110 MuiTypography-body2-118"
+            >
+              $
+              40 - 45
+            </aside>
           </div>
         </div>
       </div>
