@@ -93,10 +93,20 @@ export default (Component) => (
 
             // Return with additional results
             if (newEdges.length) {
+              // Concat the previous and next data
+              let newEdgesArray = [...previousResult.tags.edges, ...newEdges];
+
+              // Remove duplicates
+              newEdgesArray = newEdgesArray.filter((obj, pos, arr) => (
+                arr
+                  .map(({ node }) => node._id)
+                  .indexOf(obj.node._id) === pos
+              ));
+
               return {
                 tags: {
                   __typename: previousResult.tags.__typename,
-                  edges: [...previousResult.tags.edges, ...newEdges],
+                  edges: newEdgesArray,
                   pageInfo: newPageInfo
                 }
               };
