@@ -157,6 +157,8 @@ class ProductItem extends Component {
   }
 
   onImageLoad = () => {
+    const { hasImageLoaded } = this.state;
+    if (hasImageLoaded) return;
     this.setState({ hasImageLoaded: true });
   };
 
@@ -173,7 +175,16 @@ class ProductItem extends Component {
         <source srcSet={tempImgs[weight].lg} media={`(min-width: ${values.lg}px)`} />
         <source srcSet={tempImgs[weight].md} media={`(min-width: ${values.md}px)`} />
         <source srcSet={tempImgs[weight].sm} media={`(min-width: ${values.sm}px)`} />
-        <img className={img} src={tempImgs[weight].xs} alt={description} onLoad={this.onImageLoad} />
+        <img
+          className={img}
+          src={tempImgs[weight].xs}
+          alt={description}
+          onLoad={this.onImageLoad}
+          ref={(image) => {
+            if (image && image.complete) this.onImageLoad();
+            return;
+          }}
+        />
       </picture>
     );
 
