@@ -12,17 +12,14 @@ const handle = app.getRequestHandler();
 
 useStaticRendering(true);
 
-app.prepare()
-  .then(() => { // eslint-disable-line promise/always-return
+app
+  .prepare()
+  .then(() => {
     const server = express();
-
     server.use(routeHandler);
-
     server.get("*", (req, res) => handle(req, res));
-
     return server.listen(4000, (err) => {
       if (err) throw err;
-
       logger.appStarted("localhost", 4000);
     });
   })
