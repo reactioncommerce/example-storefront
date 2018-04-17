@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "material-ui/Grid";
 
-import { ProductItem } from "components/ProductGrid";
+import { ProductItem } from "components/Product";
 
 // TODO: get real products from server
 import { tempProducts } from "./tempProducts";

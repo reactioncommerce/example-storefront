@@ -10,7 +10,6 @@ import Typography from "material-ui/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
 
 // TODO: random number for temp images, REMOVE ONCE WE HAVE REAL DATA
-const tempRandNum = 15;
 const tempImgs = {
   0: {
     xs: "http://via.placeholder.com/400/E6E6E6/999999?text=FPO",
@@ -32,7 +31,7 @@ const tempImgs = {
   }
 };
 
-const styles = (theme) => ({
+const styles = theme => ({
   [`@keyframes spin`]: {
     from: { transform: "rotate(0deg)" },
     to: { transform: "rotate(-360deg)" }
@@ -181,7 +180,7 @@ class ProductItem extends Component {
           src={tempImgs[weight].xs}
           alt={description}
           onLoad={this.onImageLoad}
-          ref={(image) => {
+          ref={image => {
             if (image && image.complete) this.onImageLoad();
             return;
           }}

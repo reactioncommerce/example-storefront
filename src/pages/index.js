@@ -6,7 +6,7 @@ import withData from "lib/apollo/withData";
 import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
-import { ProductGrid } from "components/ProductGrid";
+import { ProductGrid } from "components/Product";
 
 @withData
 @withRoot
