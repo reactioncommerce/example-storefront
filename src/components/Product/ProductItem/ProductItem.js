@@ -44,7 +44,9 @@ class ProductItem extends Component {
 
   static defaultProps = {
     classes: {},
-    product: {},
+    product: {
+      weight: 0 // TODO: revisit this once real data is connected, only being used so render test pass
+    },
     theme: {}
   };
 
