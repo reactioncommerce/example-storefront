@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import Link from "next/link";
 import { withStyles, withTheme } from "material-ui/styles";
 import ButtonBase from "material-ui/ButtonBase";
 import Chip from "material-ui/Chip";
@@ -9,6 +8,7 @@ import Hidden from "material-ui/Hidden";
 import Typography from "material-ui/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
 
+import { Link } from "routes";
 import { styles } from "./styles";
 
 // TODO: random number for temp images, REMOVE ONCE WE HAVE REAL DATA
@@ -53,7 +53,7 @@ class ProductItem extends Component {
   get productDetailHref() {
     const { product: { handle } } = this.props;
     const url = `/product/${handle}`;
-    return { pathname: url };
+    return url;
   }
 
   get productStatus() {
@@ -138,7 +138,7 @@ class ProductItem extends Component {
       <div className={classes.productInfo}>
         <div>
           <Typography variant="body2">
-            <Link href={this.productDetailHref}>
+            <Link route={this.productDetailHref}>
               <ButtonBase classes={{ root: classes.link }}>{title}</ButtonBase>
             </Link>
           </Typography>
@@ -155,7 +155,7 @@ class ProductItem extends Component {
   render() {
     return (
       <div>
-        <Link href={this.productDetailHref}>
+        <Link route={this.productDetailHref}>
           <a>{this.renderProductMedia()}</a>
         </Link>
         {this.renderProductInfo()}
