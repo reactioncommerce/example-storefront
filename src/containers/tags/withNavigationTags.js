@@ -115,8 +115,11 @@ export default (Component) => (
             // Send the previous result if the new result contians no additional data
             return previousResult;
           }
-        }).catch((error) => {
-          console.log(error); /* eslint-disable-line no-console */
+        }).catch(() => {
+          /*
+            Catch errors, namely `TypeError: Cannot set property 'networkStatus' of undefined` which seems to be
+            an Apollo issue: https://github.com/apollographql/apollo-client/issues/2539
+          */
         });
       }
     }

@@ -2,11 +2,10 @@ import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import fetch from "isomorphic-fetch";
+import getConfig from "next/config";
 
-// Enviroment variables from config.client
-const { env: { METEOR_TOKEN, GRAPHQL_URL } } = process;
-
-let apolloClient = null;
+// Config
+const { serverRuntimeConfig: { graphqlUrl, meteorToken } } = getConfig();
 
 if (!process.browser) {
   global.fetch = fetch;
@@ -17,9 +16,9 @@ const create = (initialState) =>
     connectToDevTools: false,
     ssrMode: true,
     link: new HttpLink({
-      uri: `${GRAPHQL_URL}`,
+      uri: `${graphqlUrl}`,
       headers: {
-        "meteor-login-token": `${METEOR_TOKEN}`
+        "meteor-login-token": `${meteorToken}`
       },
       credentials: "same-origin"
     }),
@@ -27,14 +26,10 @@ const create = (initialState) =>
   });
 
 /**
- * @name initApolloBrowser
+ * @name initApolloServer
  * @param {*} initialState Initial state to initialize the Apollo client with
  * @return {ApolloClient} Apollo client instance
  */
-export default function initApolloBorwser(initialState) {
-  if (!apolloClient) {
-    apolloClient = create(initialState);
-  }
-
-  return apolloClient;
+export default function initApolloServer(initialState) {
+  return create(initialState);
 }
