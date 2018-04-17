@@ -6,6 +6,7 @@ import getConfig from "next/config";
 
 // Config
 const { publicRuntimeConfig: { graphqlUrl, meteorToken } } = getConfig();
+let apolloClient = null;
 
 if (!process.browser) {
   global.fetch = fetch;
@@ -25,11 +26,16 @@ const create = (initialState) =>
     cache: new InMemoryCache().restore(initialState || {})
   });
 
+
 /**
  * @name initApolloBrowser
  * @param {*} initialState Initial state to initialize the Apollo client with
  * @return {ApolloClient} Apollo client instance
  */
-export default function initApolloBrowser(initialState) {
-  return create(initialState);
+export default function initApolloBorwser(initialState) {
+  if (!apolloClient) {
+    apolloClient = create(initialState);
+  }
+
+  return apolloClient;
 }
