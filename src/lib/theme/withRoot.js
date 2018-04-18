@@ -27,6 +27,9 @@ function withRoot(Component) {
       if (jssStyles && jssStyles.parentNode) {
         jssStyles.parentNode.removeChild(jssStyles);
       }
+
+      // Fetch and update auth token in auth store
+      rootMobxStores.authStore.fetchAuthToken();
     }
 
     pageContext = null;
