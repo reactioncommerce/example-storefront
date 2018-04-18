@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import DesktopNavigationItem from "./DesktopNavigationItem";
+import NavigationItemDesktop from "./NavigationItemDesktop";
 
 const testMenuItem = {
   _id: "123",
@@ -20,13 +20,13 @@ const testMenuItemWithRelatedTags = {
 };
 
 test("basic snapshot", () => {
-  const component = renderer.create(<DesktopNavigationItem navItems={testMenuItem} />);
+  const component = renderer.create(<NavigationItemDesktop navItems={testMenuItem} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test("snapshot with related items", () => {
-  const component = renderer.create(<DesktopNavigationItem navItems={testMenuItemWithRelatedTags} />);
+  const component = renderer.create(<NavigationItemDesktop navItems={testMenuItemWithRelatedTags} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
