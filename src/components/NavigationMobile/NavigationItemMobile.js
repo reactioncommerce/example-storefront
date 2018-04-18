@@ -14,7 +14,7 @@ import { observer } from "mobx-react";
 import { action, computed, observable } from "mobx";
 import { withStyles } from "material-ui/styles";
 
-const styles = theme => ({
+const styles = (theme) => ({
   subNav: {
     marginBottom: theme.spacing.unit * 2
   },

@@ -1,5 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import { shallow } from "enzyme";
 import NavigationItemMobile from "./NavigationItemMobile";
 
 const testMenuItem = {
@@ -20,7 +21,7 @@ const testMenuItemWithRelatedTags = {
 };
 
 test("basic snapshot", () => {
-  const component = renderer.create(<NavigationItemMobile navItmes={testMenuItem} />);
+  const component = renderer.create(shallow(<NavigationItemMobile navItmes={testMenuItem} />).get(3));
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
