@@ -53,8 +53,8 @@ class ProductItem extends Component {
   state = { hasImageLoaded: false };
 
   get productDetailHref() {
-    const { product: { handle } } = this.props;
-    const url = `/product/${handle}`;
+    const { product: { slug } } = this.props;
+    const url = `/product/${slug}`;
     return url;
   }
 
@@ -98,7 +98,7 @@ class ProductItem extends Component {
           src={tempImgs[weight].xs}
           alt={description}
           onLoad={this.onImageLoad}
-          ref={image => {
+          ref={(image) => {
             if (image && image.complete) this.onImageLoad();
             return;
           }}
@@ -158,7 +158,7 @@ class ProductItem extends Component {
     return (
       <div>
         <Link route={this.productDetailHref}>
-          <a>{this.renderProductMedia()}</a>
+          <div>Prodcut image placeholder</div>
         </Link>
         {this.renderProductInfo()}
       </div>

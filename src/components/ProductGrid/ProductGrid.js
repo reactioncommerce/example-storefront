@@ -2,21 +2,17 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "material-ui/Grid";
 
+import withCatalogItems from "containers/catalog/withCatalogItems";
 import ProductItem from "components/ProductItem";
 
-// TODO: get real products from server
-import { tempProducts } from "./tempProducts";
-
+@withCatalogItems
 class ProductGrid extends Component {
   static propTypes = {
-    products: PropTypes.arrayOf(PropTypes.object)
+    catalogItems: PropTypes.arrayOf(PropTypes.object)
   };
 
-  static defaultProps = {
-    products: tempProducts
-  };
-
-  renderProduct(product) {
+  renderProduct(edge) {
+    const { node: { product } } = edge;
     const { _id, weight } = product;
     const gridItemSize = {
       0: {
@@ -47,11 +43,12 @@ class ProductGrid extends Component {
   }
 
   render() {
-    const { products } = this.props;
+    const { catalogItems } = this.props;
+
     return (
       <section>
         <Grid container spacing={24}>
-          {products.map(this.renderProduct)}
+          {catalogItems.map(this.renderProduct)}
         </Grid>
       </section>
     );
