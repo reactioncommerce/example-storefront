@@ -1,4 +1,5 @@
 import { observable, computed, action } from "mobx";
+import Cookies from "js-cookie";
 
 /**
  * A mobx store for authentication
@@ -17,6 +18,13 @@ class AuthStore {
 
   @action saveToken = () => {
     // Save the token
+    Cookies.set("token", this.token);
+  }
+
+  fetchAuthToken() {
+    const token = Cookies.get("token");
+    this.token = token || "";
+    return token;
   }
 }
 
