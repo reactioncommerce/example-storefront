@@ -50,6 +50,14 @@ class AccountDropdown extends Component {
     authStore.token = event.target.value;
   }
 
+  @action onTokenSave = () => {
+    const { authStore } = this.props;
+    authStore.saveToken();
+
+    // TODO: Reload so the auth changes can be reflected on server and in browser
+    window.location.reload();
+  }
+
   render() {
     const { authStore, classes } = this.props;
     return (
@@ -78,7 +86,7 @@ class AccountDropdown extends Component {
               <Button>
                 {"Cancel"}
               </Button>
-              <Button color="primary" onClick={authStore.saveToken}>
+              <Button color="primary" onClick={this.onTokenSave}>
                 {"Save"}
               </Button>
             </DialogActions>
