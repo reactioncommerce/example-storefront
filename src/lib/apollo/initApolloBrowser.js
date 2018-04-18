@@ -5,21 +5,21 @@ import fetch from "isomorphic-fetch";
 import getConfig from "next/config";
 
 // Config
-const { publicRuntimeConfig: { graphqlUrl, meteorToken } } = getConfig();
+const { publicRuntimeConfig: { graphqlUrl } } = getConfig();
 let apolloClient = null;
 
 if (!process.browser) {
   global.fetch = fetch;
 }
 
-const create = (initialState) =>
+const create = (initialState, options = {}) =>
   new ApolloClient({
     connectToDevTools: true,
     ssrMode: false,
     link: new HttpLink({
       uri: `${graphqlUrl}`,
       headers: {
-        "meteor-login-token": `${meteorToken}`
+        "meteor-login-token": `${options.token}`
       },
       credentials: "same-origin"
     }),
@@ -29,12 +29,13 @@ const create = (initialState) =>
 
 /**
  * @name initApolloBrowser
- * @param {*} initialState Initial state to initialize the Apollo client with
+ * @param {Object} initialState Initial state to initialize the Apollo client with
+ * @param {Object} options Additional options to initialize the Apollo client with
  * @return {ApolloClient} Apollo client instance
  */
-export default function initApolloBorwser(initialState) {
+export default function initApolloBorwser(initialState, options) {
   if (!apolloClient) {
-    apolloClient = create(initialState);
+    apolloClient = create(initialState, options);
   }
 
   return apolloClient;
