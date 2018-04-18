@@ -31,9 +31,9 @@ _**NOTE:** Currently we're using the [release 1.11.0 branch](https://github.com/
 
 **Setting up the Storefront's environment**
  1. Create a new `.env` file in the root of this project or copy the example one by running `cp .env.example .env`
- 2. Replace the METEOR_TOKEN with the Meteor.loginToken from the above steps.
- 3. Start the storefront application in development mode by running `docker-compose up -d --build`
- 4. The Storefront will run on [localhost:4000](http://localhost:4000).
+ 2. Start the storefront application in development mode by running `docker-compose up -d --build`
+ 3. The Storefront will run on [localhost:4000](http://localhost:4000).
+ 4. Use the account dropdown (user icon), and enter Meteor.loginToken from the above steps and save
 
 ## Development
 To run the application in development mode execute:
