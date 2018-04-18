@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { ApolloProvider, getDataFromTree } from "react-apollo";
 import Head from "next/head";
 import jsHttpCookie from "cookie";
-import rootMobxStores from "lib/stores";
 import initApolloServer from "./initApolloServer";
 import initApolloBrowser from "./initApolloBrowser";
 
