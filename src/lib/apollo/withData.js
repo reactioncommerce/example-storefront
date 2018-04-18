@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { ApolloProvider, getDataFromTree } from "react-apollo";
 import Head from "next/head";
+import jsHttpCookie from "cookie";
 import initApolloServer from "./initApolloServer";
 import initApolloBrowser from "./initApolloBrowser";
 
@@ -37,7 +38,19 @@ export default (ComposedComponent) =>
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
       if (!process.browser) {
-        const apollo = initApolloServer();
+        const { req } = ctx;
+        let token;
+
+        // Grab cookies form the request headers
+        if (req && req.headers) {
+          const cookies = req.headers.cookie;
+
+          if (typeof cookies === "string") {
+            ({ token } = jsHttpCookie.parse(cookies));
+          }
+        }
+
+        const apollo = initApolloServer(undefined, { meteorToken: token });
         // Provide the `url` prop data in case a GraphQL query uses it
         const url = { query: ctx.query, pathname: ctx.pathname };
         try {
@@ -54,6 +67,7 @@ export default (ComposedComponent) =>
         }
         Head.rewind();
         serverState = {
+          token,
           apollo: {
             data: apollo.cache.extract()
           }
@@ -68,7 +82,9 @@ export default (ComposedComponent) =>
 
     constructor(props) {
       super(props);
-      this.apollo = initApolloBrowser(this.props.serverState.apollo.data);
+      const { apollo, token } = this.props.serverState;
+
+      this.apollo = initApolloBrowser(apollo.data, { token });
     }
 
     render() {

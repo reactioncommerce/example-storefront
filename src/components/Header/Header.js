@@ -7,6 +7,7 @@ import Typography from "material-ui/Typography";
 import { withStyles } from "material-ui/styles";
 import { DesktopNavigation, MobileNavigation, MobileNavigationToggle } from "components/Navigation";
 import { CartToggle } from "components/Cart";
+import AccountDropdown from "components/AccountDropdown";
 
 const styles = (theme) => ({
   controls: {
@@ -58,6 +59,7 @@ class Header extends Component {
             </Hidden>
           </div>
 
+          <AccountDropdown />
           <CartToggle />
         </Toolbar>
 
