@@ -17,10 +17,10 @@ passport.use(new CookieStrategy((token, done) => {
   done(null, { token });
 }));
 
-app.prepare()
-  .then(() => { // eslint-disable-line promise/always-return
+app
+  .prepare()
+  .then(() => {
     const server = express();
-
     server.use(routeHandler);
 
     server.get(
@@ -31,7 +31,6 @@ app.prepare()
 
     return server.listen(4000, (err) => {
       if (err) throw err;
-
       logger.appStarted("localhost", 4000);
     });
   })

@@ -1,30 +1,26 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { observer, inject } from "mobx-react";
+import Typography from "material-ui/Typography";
 
 import withData from "lib/apollo/withData";
 import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
-import ProductGrid from "components/ProductGrid";
 
 @withData
 @withRoot
 @withShop
 @inject("uiStore")
 @observer
-class Shop extends Component {
-  static propTypes = {};
-
-  static defaulProps = {};
-
+class ProductDetail extends Component {
   render() {
     return (
-      <Layout title="Reaction Shop">
-        <ProductGrid />
+      <Layout>
+        <Typography variant="display1">Product Page!</Typography>
       </Layout>
     );
   }
 }
 
-export default Shop;
+export default ProductDetail;

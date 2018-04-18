@@ -87,7 +87,7 @@ class HTMLDocument extends Document {
               // PWA primary color
               { name: "theme-color", content: pageContext.theme.palette.primary.main }
             ]}
-            link={[{ rel: "preload", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" }]}
+            link={[{ rel: "preload", as: "font", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" }]}
           />
           {helmet.base.toComponent()}
           {helmet.title.toComponent()}
