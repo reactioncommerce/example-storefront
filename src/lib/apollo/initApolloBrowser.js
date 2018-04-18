@@ -19,7 +19,7 @@ const create = (initialState, options = {}) =>
     link: new HttpLink({
       uri: `${graphqlUrl}`,
       headers: {
-        "meteor-login-token": `${options.token}`
+        "meteor-login-token": `${options.token || ""}`
       },
       credentials: "same-origin"
     }),
