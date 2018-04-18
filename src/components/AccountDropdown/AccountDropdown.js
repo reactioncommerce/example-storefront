@@ -83,9 +83,6 @@ class AccountDropdown extends Component {
             />
 
             <DialogActions>
-              <Button>
-                {"Cancel"}
-              </Button>
               <Button color="primary" onClick={this.onTokenSave}>
                 {"Save"}
               </Button>
