@@ -7,3 +7,21 @@ test("basic snapshot", () => {
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+test("snapshot with only title", () => {
+  const component = renderer.create(<ProductDetailTitle title="Title" />);
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+test("snapshot with only pageTitle", () => {
+  const component = renderer.create(<ProductDetailTitle pageTitle="Subtitle" />);
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+test("snapshot with neither title nor pageTitle", () => {
+  const component = renderer.create(<ProductDetailTitle />);
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
