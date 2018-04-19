@@ -6,7 +6,7 @@ import MenuIcon from "mdi-material-ui/Menu";
 
 @inject("uiStore")
 @observer
-class MobileNavigationToggle extends Component {
+class NavigationToggleMobile extends Component {
   static propTypes = {
     uiStore: PropTypes.object
   };
@@ -25,4 +25,4 @@ class MobileNavigationToggle extends Component {
   }
 }
 
-export default MobileNavigationToggle;
+export default NavigationToggleMobile;

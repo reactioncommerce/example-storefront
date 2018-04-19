@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`basic snapshot 1`] = `
+exports[`renders with 1 level of tags 1`] = `
 <button
   className="MuiButtonBase-root-18 MuiButton-root-3 MuiButton-colorInherit-7"
   disabled={false}
@@ -27,7 +27,34 @@ exports[`basic snapshot 1`] = `
 </button>
 `;
 
-exports[`snapshot with related items 1`] = `
+exports[`renders with 2 levels of tags 1`] = `
+<button
+  className="MuiButtonBase-root-18 MuiButton-root-3 MuiButton-colorInherit-7"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex="0"
+  type="button"
+>
+  <span
+    className="MuiButton-label-4"
+  />
+  <span
+    className="MuiTouchRipple-root-21"
+  />
+</button>
+`;
+
+exports[`renders with 3 levels of tags 1`] = `
 <button
   className="MuiButtonBase-root-18 MuiButton-root-3 MuiButton-colorInherit-7"
   disabled={false}

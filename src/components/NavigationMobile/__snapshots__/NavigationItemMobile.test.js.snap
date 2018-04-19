@@ -1,6 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`basic snapshot 1`] = `
+exports[`renders with 1 level of tags 1`] = `null`;
+
+exports[`renders with 2 levels of tags 1`] = `
 <li
   className="MuiButtonBase-root-15 MuiListItem-root-5 MuiListItem-default-8 MuiListItem-gutters-12 MuiListItem-button-13 MuiMenuItem-root-3"
   color="inherit"
@@ -20,14 +22,31 @@ exports[`basic snapshot 1`] = `
 >
   <div
     className="MuiListItemText-root-18"
-  />
+  >
+    <h3
+      className="MuiTypography-root-24 MuiTypography-subheading-31 MuiListItemText-primary-21"
+    >
+      Tag Name
+    </h3>
+  </div>
+  <svg
+    aria-hidden="true"
+    className="MuiSvgIcon-root-49 MuiListItemIcon-root-48"
+    color={undefined}
+    focusable="false"
+    viewBox="0 0 24 24"
+  >
+    <path
+      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+    />
+  </svg>
   <span
-    className="MuiTouchRipple-root-24"
+    className="MuiTouchRipple-root-55"
   />
 </li>
 `;
 
-exports[`snapshot with related items 1`] = `
+exports[`renders with 3 levels of tags 1`] = `
 <li
   className="MuiButtonBase-root-15 MuiListItem-root-5 MuiListItem-default-8 MuiListItem-gutters-12 MuiListItem-button-13 MuiMenuItem-root-3"
   color="inherit"
@@ -47,9 +66,26 @@ exports[`snapshot with related items 1`] = `
 >
   <div
     className="MuiListItemText-root-18"
-  />
+  >
+    <h3
+      className="MuiTypography-root-24 MuiTypography-subheading-31 MuiListItemText-primary-21"
+    >
+      Tag Name
+    </h3>
+  </div>
+  <svg
+    aria-hidden="true"
+    className="MuiSvgIcon-root-49 MuiListItemIcon-root-48"
+    color={undefined}
+    focusable="false"
+    viewBox="0 0 24 24"
+  >
+    <path
+      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+    />
+  </svg>
   <span
-    className="MuiTouchRipple-root-24"
+    className="MuiTouchRipple-root-55"
   />
 </li>
 `;

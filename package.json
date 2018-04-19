@@ -72,6 +72,7 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-react": "^7.7.0",
     "jest": "^22.4.3",
+    "jest-transform-graphql": "2.1.0",
     "react-test-renderer": "^16.3.1",
     "rimraf": "^2.6.2"
   },
@@ -79,6 +80,10 @@
     "roots": [
       "./src"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
+    "transform": {
+      "\\.(gql|graphql)$": "jest-transform-graphql",
+      ".*": "babel-jest"
+    }
   }
 }
