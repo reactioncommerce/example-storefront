@@ -19,11 +19,20 @@ exports[`basic snapshot 1`] = `
     <div
       className="MuiGrid-item-4 MuiGrid-grid-sm-6-47"
     >
-      <h1
-        className="MuiTypography-root-93 MuiTypography-display1-97"
+      <div
+        className="MuiGrid-item-4 MuiGrid-grid-sm-12-53"
       >
-        Right Container
-      </h1>
+        <h1
+          className="MuiTypography-root-93 MuiTypography-display2-96 MuiTypography-gutterBottom-110"
+        >
+          Title
+        </h1>
+        <h2
+          className="MuiTypography-root-93 MuiTypography-title-99 MuiTypography-colorPrimary-113"
+        >
+          SubTitle
+        </h2>
+      </div>
     </div>
   </div>
 </div>
