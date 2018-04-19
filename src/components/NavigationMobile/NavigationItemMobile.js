@@ -14,7 +14,7 @@ import { observer } from "mobx-react";
 import { action, computed, observable } from "mobx";
 import { withStyles } from "material-ui/styles";
 
-const styles = (theme) => ({
+const styles = theme => ({
   subNav: {
     marginBottom: theme.spacing.unit * 2
   },
@@ -39,7 +39,9 @@ class NavigationItemMobile extends Component {
   };
 
   get hasSubNavItems() {
-    const { navItem: { subTags } } = this.props;
+    const {
+      navItem: { subTags }
+    } = this.props;
     return Array.isArray(subTags.edges) && subTags.edges.length > 0;
   }
 
@@ -80,7 +82,10 @@ class NavigationItemMobile extends Component {
   }
 
   renderCollapse() {
-    const { classes, navItem: { subTags } } = this.props;
+    const {
+      classes,
+      navItem: { subTags }
+    } = this.props;
     return (
       <Collapse in={this.isSubNavOpen} timeout="auto" unmountOnExit>
         <MenuList component="div" disablePadding>

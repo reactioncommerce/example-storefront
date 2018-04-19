@@ -3,31 +3,29 @@ import renderer from "react-test-renderer";
 import { shallow } from "enzyme";
 import NavigationItemMobile from "./NavigationItemMobile";
 
-const testMenuItem = {
+const mockTag = {
   _id: "123",
   name: "Shop",
   slug: "shop"
 };
 
-const testMenuItemWithRelatedTags = {
+const mockTagWithSubTags = {
   _id: "123",
   name: "Shop",
   slug: "shop",
-  relatedTags: [
-    { _id: "111", name: "Clothes", slug: "clothes" },
-    { _id: "222", name: "Shoes", slug: "shoes" },
-    { _id: "333", name: "Accessories", slug: "accessories" }
-  ]
+  subTags: {
+    edges: []
+  }
 };
 
 test("basic snapshot", () => {
-  const component = renderer.create(shallow(<NavigationItemMobile navItmes={testMenuItem} />).get(3));
+  const component = renderer.create(shallow(<NavigationItemMobile navItem={mockTag} />).get(3));
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test("snapshot with related items", () => {
-  const component = renderer.create(<NavigationItemMobile navItmes={testMenuItemWithRelatedTags} />);
+  const component = renderer.create(<NavigationItemMobile navItem={mockTagWithSubTags} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
