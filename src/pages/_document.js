@@ -4,6 +4,7 @@ import JssProvider from "react-jss/lib/JssProvider";
 import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
 import { Provider } from "mobx-react";
+import jsHttpCookie from "cookie";
 import rootMobxStores from "../lib/stores";
 import getPageContext from "../lib/theme/getPageContext";
 
@@ -28,6 +29,17 @@ class HTMLDocument extends Document {
 
     // Get the context of the page to collected side effects.
     const pageContext = getPageContext();
+    const { req } = ctx;
+
+    // Grab cookies form the request headers
+    if (req && req.headers) {
+      const cookies = req.headers.cookie;
+
+      if (typeof cookies === "string") {
+        const { token } = jsHttpCookie.parse(cookies);
+        rootMobxStores.authStore.token = token;
+      }
+    }
 
     /* eslint-disable-next-line react/display-name */
     const page = ctx.renderPage((Component) => (props) => (
