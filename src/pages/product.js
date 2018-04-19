@@ -1,26 +1,32 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { observer, inject } from "mobx-react";
-import Typography from "material-ui/Typography";
-
 import withData from "lib/apollo/withData";
 import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
+import ProductDetail from "components/ProductDetail";
 
 @withData
 @withRoot
 @withShop
 @inject("uiStore")
 @observer
-class ProductDetail extends Component {
+class ProductDetailPage extends Component {
+  static propTypes = {
+    /**
+     * Catalog Product item
+     */
+    catalogProduct: PropTypes.object
+  }
+
   render() {
     return (
       <Layout>
-        <Typography variant="display1">Product Page!</Typography>
+        <ProductDetail />
       </Layout>
     );
   }
 }
 
-export default ProductDetail;
+export default ProductDetailPage;
