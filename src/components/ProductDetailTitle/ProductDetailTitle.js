@@ -21,6 +21,10 @@ class ProductDetailTitle extends Component {
   }
   render() {
     const { title, pageTitle } = this.props;
+
+    // Render nothing if neither the title nor pageTitle exists
+    if (!title && !pageTitle) return null;
+
     return (
       <Grid item sm={12}>
         {title && <Typography gutterBottom={true} variant="display2">{title}</Typography>}
