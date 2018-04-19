@@ -5,10 +5,10 @@ exports[`basic snapshot 1`] = `
   className="ProductDetail-root-1"
 >
   <div
-    className="MuiGrid-typeContainer-3 MuiGrid-spacing-xs-24-26 ProductDetail-pdpContainer-2"
+    className="MuiGrid-container-3 MuiGrid-spacing-xs-24-26 ProductDetail-pdpContainer-2"
   >
     <div
-      className="MuiGrid-typeItem-4 MuiGrid-grid-sm-6-47"
+      className="MuiGrid-item-4 MuiGrid-grid-sm-6-47"
     >
       <h1
         className="MuiTypography-root-93 MuiTypography-display1-97"
@@ -17,7 +17,7 @@ exports[`basic snapshot 1`] = `
       </h1>
     </div>
     <div
-      className="MuiGrid-typeItem-4 MuiGrid-grid-sm-6-47"
+      className="MuiGrid-item-4 MuiGrid-grid-sm-6-47"
     >
       <h1
         className="MuiTypography-root-93 MuiTypography-display1-97"
