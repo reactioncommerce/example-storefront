@@ -34,7 +34,12 @@ class Layout extends Component {
   };
 
   render() {
-    const { classes: { article, main, root }, children, title } = this.props;
+    const {
+      classes: { article, main, root },
+      children,
+      title
+    } = this.props;
+
     return (
       <React.Fragment>
         <Helmet>

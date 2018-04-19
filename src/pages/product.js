@@ -7,6 +7,7 @@ import withData from "lib/apollo/withData";
 import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
+import VariantList from "components/VariantList";
 
 @withData
 @withRoot
@@ -18,6 +19,7 @@ class ProductDetail extends Component {
     return (
       <Layout>
         <Typography variant="display1">Product Page!</Typography>
+        <VariantList />
       </Layout>
     );
   }
