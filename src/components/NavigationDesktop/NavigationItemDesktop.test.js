@@ -2,31 +2,29 @@ import React from "react";
 import renderer from "react-test-renderer";
 import NavigationItemDesktop from "./NavigationItemDesktop";
 
-const testMenuItem = {
+const mockTag = {
   _id: "123",
   name: "Shop",
   slug: "shop"
 };
 
-const testMenuItemWithRelatedTags = {
+const mockTagWithSubTags = {
   _id: "123",
   name: "Shop",
   slug: "shop",
-  relatedTags: [
-    { _id: "111", name: "Clothes", slug: "clothes" },
-    { _id: "222", name: "Shoes", slug: "shoes" },
-    { _id: "333", name: "Accessories", slug: "accessories" }
-  ]
+  subTags: {
+    edges: []
+  }
 };
 
 test("basic snapshot", () => {
-  const component = renderer.create(<NavigationItemDesktop navItems={testMenuItem} />);
+  const component = renderer.create(<NavigationItemDesktop navItems={mockTag} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test("snapshot with related items", () => {
-  const component = renderer.create(<NavigationItemDesktop navItems={testMenuItemWithRelatedTags} />);
+  const component = renderer.create(<NavigationItemDesktop navItems={mockTagWithSubTags} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
