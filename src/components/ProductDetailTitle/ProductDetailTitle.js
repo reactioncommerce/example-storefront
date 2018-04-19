@@ -22,7 +22,7 @@ class ProductDetailTitle extends Component {
   render() {
     const { title, pageTitle } = this.props;
     return (
-      <Grid xs={12}>
+      <Grid item sm={12}>
         {title && <Typography gutterBottom={true} variant="display2">{title}</Typography>}
         {pageTitle && <Typography color="primary" component="h2" variant="title">{pageTitle}</Typography>}
       </Grid>
