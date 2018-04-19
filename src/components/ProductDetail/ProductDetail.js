@@ -4,6 +4,9 @@ import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
 import Typography from "material-ui/Typography";
 
+// PDP Components
+import ProductDetailTitle from "components/ProductDetailTitle";
+
 const styles = () => ({
   root: {
     display: "flex",
@@ -24,12 +27,13 @@ const styles = () => ({
 @withStyles(styles, { withTheme: true })
 class ProductDetail extends Component {
   static propTypes = {
+    catalogProduct: PropTypes.object,
     classes: PropTypes.object,
     theme: PropTypes.object
   }
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes, theme, catalogProduct } = this.props;
 
     return (
       <div className={classes.root}>
@@ -40,8 +44,10 @@ class ProductDetail extends Component {
           </Grid>
 
           <Grid item sm={6}>
-            {/* TODO: Right Content, remove when adding initial components */}
-            <Typography variant="display1">Right Container</Typography>
+            <ProductDetailTitle
+              pageTitle={catalogProduct.pageTitle}
+              title={catalogProduct.title}
+            />
           </Grid>
         </Grid>
       </div>
