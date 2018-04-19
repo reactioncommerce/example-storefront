@@ -5,14 +5,14 @@ import withData from "lib/apollo/withData";
 import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
-import ProductDetailComponent from "components/ProductDetail";
+import ProductDetail from "components/ProductDetail";
 
 @withData
 @withRoot
 @withShop
 @inject("uiStore")
 @observer
-class ProductDetail extends Component {
+class ProductDetailPage extends Component {
   static propTypes = {
     /**
      * Catalog Product item
@@ -23,10 +23,10 @@ class ProductDetail extends Component {
   render() {
     return (
       <Layout>
-        <ProductDetailComponent />
+        <ProductDetail />
       </Layout>
     );
   }
 }
 
-export default ProductDetail;
+export default ProductDetailPage;
