@@ -55,10 +55,10 @@ export default [
           priority: 0,
           productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
           URLs: {
-            thumbnail: "/assets/files/Media/mmY4m9gwPK2uFEZ8w/thumbnail/noomahoney_jar.png",
-            small: "/assets/files/Media/mmY4m9gwPK2uFEZ8w/small/noomahoney_jar.png",
-            medium: "/assets/files/Media/mmY4m9gwPK2uFEZ8w/medium/noomahoney_jar.jpg",
-            large: "/assets/files/Media/mmY4m9gwPK2uFEZ8w/large/noomahoney_jar.jpg"
+            thumbnail: "/assets/files/Media/mmY4m9gwPK2uFEZ8w/thumbnail/product_image.png",
+            small: "/assets/files/Media/mmY4m9gwPK2uFEZ8w/small/product_image.png",
+            medium: "/assets/files/Media/mmY4m9gwPK2uFEZ8w/medium/product_image.jpg",
+            large: "/assets/files/Media/mmY4m9gwPK2uFEZ8w/large/product_image.jpg"
           }
         },
         price: {
