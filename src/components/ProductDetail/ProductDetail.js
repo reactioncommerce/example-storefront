@@ -52,7 +52,7 @@ class ProductDetail extends Component {
             <ProductDetailInfo
               priceRange={catalogProduct.price.range}
               description={catalogProduct.description}
-              vvendor={catalogProduct.vvendor}
+              vendor={catalogProduct.vendor}
             />
           </Grid>
         </Grid>
