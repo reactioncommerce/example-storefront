@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { withStyles, withTheme } from "material-ui/styles";
+import { withStyles } from "material-ui/styles";
 import { inject, observer } from "mobx-react";
 import Chip from "material-ui/Chip";
 import Fade from "material-ui/transitions/Fade";

@@ -17,7 +17,7 @@ import ProductGrid from "components/ProductGrid";
 @observer
 class Shop extends Component {
   static propTypes = {
-    catalogItems: PropTypes.array
+    catalogItems: PropTypes.array.isRequired
   };
 
   render() {
