@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+>
+  <div
+    className="MuiTypography-root-91 MuiTypography-display2-94 MuiTypography-gutterBottom-108"
+  >
+    $19.99
+  </div>
+  <p
+    className="MuiTypography-root-91 MuiTypography-body1-100"
+  >
+    Vendor
+  </p>
+  <p
+    className="MuiTypography-root-91 MuiTypography-body1-100"
+  >
+    Description
+  </p>
+</div>
+`;
