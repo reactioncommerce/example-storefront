@@ -1,6 +1,5 @@
 import React from "react";
 import { Query } from "react-apollo";
-import { Provider } from "mobx-react";
 import primaryShopIdQuery from "../common-gql/primaryShopId.gql";
 import catalogItemsQuery from "./catalogItems.gql";
 
@@ -28,9 +27,7 @@ export default (Component) => (
                   const { catalogItems } = catalogData || {};
 
                   return (
-                    <Provider>
-                      <Component catalogItems={catalogItems.edges} />
-                    </Provider>
+                    <Component catalogItems={catalogItems.edges} />
                   );
                 }}
               </Query>
