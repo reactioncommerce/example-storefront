@@ -1,37 +1,17 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles, withTheme } from "material-ui/styles";
-import ButtonBase from "material-ui/ButtonBase";
 import Chip from "material-ui/Chip";
 import Fade from "material-ui/transitions/Fade";
 import Hidden from "material-ui/Hidden";
 import Typography from "material-ui/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
+import getConfig from "next/config";
 
-import { Link } from "routes";
+import Link from "components/Link";
 import { styles } from "./styles";
 
-// TODO: random number for temp images, REMOVE ONCE WE HAVE REAL DATA
-const tempImgs = {
-  0: {
-    xs: "http://via.placeholder.com/400/E6E6E6/999999?text=FPO",
-    sm: "http://via.placeholder.com/300/E6E6E6/999999?text=FPO",
-    md: "http://via.placeholder.com/400/E6E6E6/999999?text=FPO",
-    lg: "http://via.placeholder.com/800/E6E6E6/999999?text=FPO"
-  },
-  1: {
-    xs: "http://via.placeholder.com/400/E6E6E6/999999?text=FPO",
-    sm: "http://via.placeholder.com/600x285/E6E6E6/999999?text=FPO",
-    md: "http://via.placeholder.com/700x332/E6E6E6/999999?text=FPO",
-    lg: "http://via.placeholder.com/1600x780/E6E6E6/999999?text=FPO"
-  },
-  2: {
-    xs: "http://via.placeholder.com/400/E6E6E6/999999?text=FPO",
-    sm: "http://via.placeholder.com/800x248/E6E6E6/999999?text=FPO",
-    md: "http://via.placeholder.com/1000x312/E6E6E6/999999?text=FPO",
-    lg: "http://via.placeholder.com/1600x512/E6E6E6/999999?text=FPO"
-  }
-};
+const { publicRuntimeConfig: { externalAssetsUrl } } = getConfig();
 
 @withStyles(styles)
 @withTheme()
@@ -44,9 +24,6 @@ class ProductItem extends Component {
 
   static defaultProps = {
     classes: {},
-    product: {
-      weight: 0 // TODO: revisit this once real data is connected, only being used so render test pass
-    },
     theme: {}
   };
 
@@ -80,22 +57,26 @@ class ProductItem extends Component {
     this.setState({ hasImageLoaded: true });
   };
 
+  buildImgUrl(imgPath) {
+    return `${externalAssetsUrl}${imgPath}`;
+  }
+
   renderProductImage() {
     const {
       classes: { img, imgLoading, loadingIcon },
-      product: { description, weight },
+      product: { description, primaryImage: { URLs } },
       theme: { breakpoints: { values } }
     } = this.props;
     const { hasImageLoaded } = this.state;
 
     const picture = (
       <picture>
-        <source srcSet={tempImgs[weight].lg} media={`(min-width: ${values.lg}px)`} />
-        <source srcSet={tempImgs[weight].md} media={`(min-width: ${values.md}px)`} />
-        <source srcSet={tempImgs[weight].sm} media={`(min-width: ${values.sm}px)`} />
+        <source srcSet={this.buildImgUrl(URLs.small)} media={`(min-width: ${values.sm}px)`} />
+        <source srcSet={this.buildImgUrl(URLs.medium)} media={`(min-width: ${values.md}px)`} />
+        <source srcSet={this.buildImgUrl(URLs.large)} media={`(min-width: ${values.lg}px)`} />
         <img
           className={img}
-          src={tempImgs[weight].xs}
+          src={this.buildImgUrl(URLs.small)}
           alt={description}
           onLoad={this.onImageLoad}
           ref={(image) => {
@@ -137,18 +118,15 @@ class ProductItem extends Component {
     const { classes, product: { price, title, vendor } } = this.props;
     const { range: priceRange } = price || {};
     return (
-      <div className={classes.productInfo}>
-        <div>
+      <div >
+        <div className={classes.productInfo}>
           <Typography variant="body2">
-            <Link route={this.productDetailHref}>
-              <ButtonBase classes={{ root: classes.link }}>{title}</ButtonBase>
-            </Link>
+            {title}
           </Typography>
-          <Typography variant="body1">{vendor}</Typography>
-        </div>
-
-        <div>
           <Typography variant="body1">${priceRange || price}</Typography>
+        </div>
+        <div>
+          <Typography variant="body1">{vendor}</Typography>
         </div>
       </div>
     );
@@ -158,9 +136,9 @@ class ProductItem extends Component {
     return (
       <div>
         <Link route={this.productDetailHref}>
-          <div>Prodcut image placeholder</div>
+          {this.renderProductMedia()}
+          {this.renderProductInfo()}
         </Link>
-        {this.renderProductInfo()}
       </div>
     );
   }

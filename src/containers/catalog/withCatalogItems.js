@@ -21,7 +21,7 @@ export default (Component) => (
             const { primaryShopId } = data || {};
 
             return (
-              <Query query={catalogItemsQuery} variables={{ shopId: primaryShopId, first: 3 }}>
+              <Query query={catalogItemsQuery} variables={{ shopId: primaryShopId, first: 25 }}>
                 {({ loading: loadingShopData, data: catalogData }) => {
                   if (loadingShopData) return null;
 

@@ -14,17 +14,21 @@ query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt) {
             isLowQuantity
             isSoldOut
             isBackorder
-            primaryImage {
-              URLs {
-                original
-              }
-            }
-            weight
             price {
               range
               min
               max
             }
+            primaryImage {
+              URLs {
+                small
+                medium
+                large
+              }
+            }
+          }
+          positions {
+            displayWeight
           }
         }
       }
