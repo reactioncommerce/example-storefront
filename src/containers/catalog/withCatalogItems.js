@@ -1,6 +1,6 @@
 import React from "react";
+import { inject, observer } from "mobx-react";
 import { Query } from "react-apollo";
-import primaryShopIdQuery from "../common-gql/primaryShopId.gql";
 import catalogItemsQuery from "./catalogItems.gql";
 
 /**
@@ -10,27 +10,21 @@ import catalogItemsQuery from "./catalogItems.gql";
  * @returns {React.Component} - component decorated with primaryShopId and catalog as props
  */
 export default (Component) => (
+  @inject("primaryShopId")
+  @observer
   class CatalogItems extends React.Component {
     render() {
-      return (
-        <Query query={primaryShopIdQuery}>
-          {({ loading, data }) => {
-            if (loading) return null;
+      const { primaryShopId } = this.props || {};
 
-            const { primaryShopId } = data || {};
+      return (
+        <Query query={catalogItemsQuery} variables={{ shopId: primaryShopId, first: 25 }}>
+          {({ loading: loadingShopData, data: catalogData }) => {
+            if (loadingShopData) return null;
+
+            const { catalogItems } = catalogData || {};
 
             return (
-              <Query query={catalogItemsQuery} variables={{ shopId: primaryShopId, first: 25 }}>
-                {({ loading: loadingShopData, data: catalogData }) => {
-                  if (loadingShopData) return null;
-
-                  const { catalogItems } = catalogData || {};
-
-                  return (
-                    <Component catalogItems={catalogItems.edges} />
-                  );
-                }}
-              </Query>
+              <Component catalogItems={catalogItems.edges} />
             );
           }}
         </Query>
