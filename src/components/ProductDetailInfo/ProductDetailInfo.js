@@ -32,7 +32,7 @@ class ProductDetailInfo extends Component {
 
     return (
       <Grid item sm={12}>
-        {priceRange && <Typography component="div" gutterBottom={true} variant="display2">{priceRange}</Typography>}
+        {priceRange && <Typography component="div" gutterBottom={true} variant="title">{priceRange}</Typography>}
         {vendor && <Typography>{vendor}</Typography>}
         {description && <Typography>{description}</Typography>}
       </Grid>
