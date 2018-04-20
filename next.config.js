@@ -7,6 +7,7 @@ const initExport = {
   },
   publicRuntimeConfig: { // Will be available on both server and client
     graphqlUrl: process.env.EXTERNAL_GRAPHQL_URL,
+    externalAssetsUrl: process.env.EXTERNAL_ASSETS_URL,
     meteorToken: process.env.METEOR_TOKEN
   },
   webpack: (config) => {
