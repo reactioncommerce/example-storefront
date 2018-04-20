@@ -7,6 +7,9 @@ import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
 import ProductDetail from "components/ProductDetail";
 
+// TODO: Data will eventually come from GraphQL
+import sampleData from "components/ProductDetail/sampleData";
+
 @withData
 @withRoot
 @withShop
@@ -23,7 +26,7 @@ class ProductDetailPage extends Component {
   render() {
     return (
       <Layout>
-        <ProductDetail />
+        <ProductDetail catalogProduct={sampleData} />
       </Layout>
     );
   }
