@@ -5,8 +5,10 @@ import Hidden from "material-ui/Hidden";
 import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
 import { withStyles } from "material-ui/styles";
-import { DesktopNavigation, MobileNavigation, MobileNavigationToggle } from "components/Navigation";
+import { NavigationDesktop } from "components/NavigationDesktop";
+import { NavigationMobile, NavigationToggleMobile } from "components/NavigationMobile";
 import { CartToggle } from "components/Cart";
+import AccountDropdown from "components/AccountDropdown";
 
 const styles = (theme) => ({
   controls: {
@@ -37,15 +39,13 @@ class Header extends Component {
   };
 
   render() {
-    const {
-      classes: { controls, toolbar, title }
-    } = this.props;
+    const { classes: { controls, toolbar, title } } = this.props;
 
     return (
       <AppBar position="static" elevation={0}>
         <Toolbar className={toolbar}>
           <Hidden mdUp>
-            <MobileNavigationToggle />
+            <NavigationToggleMobile />
           </Hidden>
 
           <div className={controls}>
@@ -54,14 +54,15 @@ class Header extends Component {
             </Typography>
 
             <Hidden smDown initialWidth={"md"}>
-              <DesktopNavigation />
+              <NavigationDesktop />
             </Hidden>
           </div>
 
+          <AccountDropdown />
           <CartToggle />
         </Toolbar>
 
-        <MobileNavigation />
+        <NavigationMobile />
       </AppBar>
     );
   }

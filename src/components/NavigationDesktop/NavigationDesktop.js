@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import { DesktopNavigationItem } from "components/Navigation";
+import { NavigationItemDesktop } from "components/NavigationDesktop";
 import withNavigationTags from "../../containers/tags/withNavigationTags";
 
-export class DesktopNavigation extends Component {
+export class NavigationDesktop extends Component {
   static propTypes = {
     classes: PropTypes.object,
     navItems: PropTypes.object
@@ -16,7 +16,7 @@ export class DesktopNavigation extends Component {
   };
 
   renderNavItem(navItem, index) {
-    return <DesktopNavigationItem key={index} navItem={navItem.node} />;
+    return <NavigationItemDesktop key={index} navItem={navItem.node} />;
   }
 
   render() {
@@ -25,4 +25,4 @@ export class DesktopNavigation extends Component {
   }
 }
 
-export default withNavigationTags(DesktopNavigation);
+export default withNavigationTags(NavigationDesktop);

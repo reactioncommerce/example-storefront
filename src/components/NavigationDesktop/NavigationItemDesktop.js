@@ -15,7 +15,7 @@ import { action, computed, observable } from "mobx";
 import { withStyles } from "material-ui/styles";
 import { Router } from "../../routes";
 
-const styles = (theme) => ({
+const styles = theme => ({
   popover: {
     maxWidth: "100vw",
     padding: theme.spacing.unit * 2,
@@ -28,7 +28,7 @@ const styles = (theme) => ({
 
 @withStyles(styles)
 @observer
-class DesktopNavigationItem extends Component {
+class NavigationItemDesktop extends Component {
   static propTypes = {
     classes: PropTypes.object,
     navItem: PropTypes.object
@@ -131,4 +131,4 @@ class DesktopNavigationItem extends Component {
   }
 }
 
-export default DesktopNavigationItem;
+export default NavigationItemDesktop;
