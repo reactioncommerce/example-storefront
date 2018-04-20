@@ -4,7 +4,7 @@ import Typography from "material-ui/Typography";
 import Grid from "material-ui/Grid";
 
 /**
- * Product detail, basic info fields
+ * Product detail basic info fields
  * @class ProductDetailTitle
  */
 class ProductDetailInfo extends Component {
