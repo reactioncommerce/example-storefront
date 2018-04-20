@@ -13,7 +13,7 @@ class ProductGrid extends Component {
 
   renderProduct(edge) {
     const { node: { product, positions } } = edge;
-    const weight = positions[0].displayWeight;
+    const weight = (positions.length) ? positions[0].displayWeight : 0;
     const { _id } = product;
     const gridItemSize = {
       0: {

@@ -12,6 +12,7 @@ import Link from "components/Link";
 import { styles } from "./styles";
 
 const { publicRuntimeConfig: { externalAssetsUrl } } = getConfig();
+const PRODUCT_PLACE_HOLDER = "/resources/placeholder.gif";
 
 @withStyles(styles)
 @withTheme()
@@ -64,19 +65,30 @@ class ProductItem extends Component {
   renderProductImage() {
     const {
       classes: { img, imgLoading, loadingIcon },
-      product: { description, primaryImage: { URLs } },
+      product: { description },
       theme: { breakpoints: { values } }
     } = this.props;
     const { hasImageLoaded } = this.state;
+    let { product: { primaryImage } } = this.props;
+
+    if (!primaryImage) {
+      primaryImage = {
+        URLs: {
+          small: PRODUCT_PLACE_HOLDER,
+          medium: PRODUCT_PLACE_HOLDER,
+          large: PRODUCT_PLACE_HOLDER
+        }
+      };
+    }
 
     const picture = (
       <picture>
-        <source srcSet={this.buildImgUrl(URLs.small)} media={`(min-width: ${values.sm}px)`} />
-        <source srcSet={this.buildImgUrl(URLs.medium)} media={`(min-width: ${values.md}px)`} />
-        <source srcSet={this.buildImgUrl(URLs.large)} media={`(min-width: ${values.lg}px)`} />
+        <source srcSet={this.buildImgUrl(primaryImage.URLs.small)} media={`(min-width: ${values.sm}px)`} />
+        <source srcSet={this.buildImgUrl(primaryImage.URLs.medium)} media={`(min-width: ${values.md}px)`} />
+        <source srcSet={this.buildImgUrl(primaryImage.URLs.large)} media={`(min-width: ${values.lg}px)`} />
         <img
           className={img}
-          src={this.buildImgUrl(URLs.small)}
+          src={this.buildImgUrl(primaryImage.URLs.small)}
           alt={description}
           onLoad={this.onImageLoad}
           ref={(image) => {
