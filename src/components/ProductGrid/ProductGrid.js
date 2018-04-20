@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "material-ui/Grid";
 
-import withCatalogItems from "containers/catalog/withCatalogItems";
 import ProductItem from "components/ProductItem";
 
-@withCatalogItems
 class ProductGrid extends Component {
   static propTypes = {
     catalogItems: PropTypes.arrayOf(PropTypes.object)
