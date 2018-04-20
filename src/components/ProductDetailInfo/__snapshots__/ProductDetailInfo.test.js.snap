@@ -5,7 +5,7 @@ exports[`basic snapshot 1`] = `
   className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
 >
   <div
-    className="MuiTypography-root-91 MuiTypography-display2-94 MuiTypography-gutterBottom-108"
+    className="MuiTypography-root-91 MuiTypography-title-97 MuiTypography-gutterBottom-108"
   >
     $19.99
   </div>
