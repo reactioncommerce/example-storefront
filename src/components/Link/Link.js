@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link as NextLink } from "routes";
-import { withStyles, withTheme } from "material-ui/styles";
+import { withStyles } from "material-ui/styles";
 
 const styles = ({
   link: {
@@ -11,7 +11,6 @@ const styles = ({
 });
 
 @withStyles(styles)
-@withTheme()
 class Link extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
