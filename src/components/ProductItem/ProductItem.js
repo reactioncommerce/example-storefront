@@ -1,26 +1,27 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles, withTheme } from "material-ui/styles";
+import { inject, observer } from "mobx-react";
 import Chip from "material-ui/Chip";
 import Fade from "material-ui/transitions/Fade";
 import Hidden from "material-ui/Hidden";
 import Typography from "material-ui/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
-import getConfig from "next/config";
 
 import Link from "components/Link";
 import { styles } from "./styles";
 
-const { publicRuntimeConfig: { externalAssetsUrl } } = getConfig();
 const PRODUCT_PLACE_HOLDER = "/resources/placeholder.gif";
 
-@withStyles(styles)
-@withTheme()
+@withStyles(styles, { withTheme: true })
+@inject("uiStore")
+@observer
 class ProductItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
     product: PropTypes.object,
-    theme: PropTypes.object
+    theme: PropTypes.object,
+    uiStore: PropTypes.object
   };
 
   static defaultProps = {
@@ -59,7 +60,8 @@ class ProductItem extends Component {
   };
 
   buildImgUrl(imgPath) {
-    return `${externalAssetsUrl}${imgPath}`;
+    const { uiStore: { appConfig: { publicRuntimeConfig } } } = this.props;
+    return `${publicRuntimeConfig.externalAssetsUrl}${imgPath}`;
   }
 
   renderProductImage() {
@@ -135,7 +137,7 @@ class ProductItem extends Component {
           <Typography variant="body2">
             {title}
           </Typography>
-          <Typography variant="body1">${priceRange || price}</Typography>
+          <Typography variant="body1">${priceRange}</Typography>
         </div>
         <div>
           <Typography variant="body1">{vendor}</Typography>
