@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { Provider } from "mobx-react";
 import ProductGrid from "./ProductGrid";
-import products from "./__mocks__/products";
+import products from "./__mocks__/products.mock";
 
 const uiStore = {
   appConfig: {

@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import ProductItem from "./ProductItem";
-import product from "./__mocks__/product";
+import product from "./__mocks__/product.mock";
 
 const uiStore = {
   appConfig: {

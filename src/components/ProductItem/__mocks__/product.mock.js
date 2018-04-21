@@ -20,8 +20,9 @@ export default {
       }
     },
     price: {
-      min: 240,
-      max: 240
+      range: "7.99 - 77.99",
+      min: "7.99",
+      max: "77,99"
     }
   },
   positions: [
