@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+>
+  <h1
+    className="MuiTypography-root-91 MuiTypography-display2-94 MuiTypography-gutterBottom-108"
+  >
+    Title
+  </h1>
+  <h2
+    className="MuiTypography-root-91 MuiTypography-title-97 MuiTypography-colorPrimary-111"
+  >
+    Subtitle
+  </h2>
+</div>
+`;
+
+exports[`snapshot with neither title nor pageTitle 1`] = `null`;
+
+exports[`snapshot with only pageTitle 1`] = `
+<div
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+>
+  <h2
+    className="MuiTypography-root-91 MuiTypography-title-97 MuiTypography-colorPrimary-111"
+  >
+    Subtitle
+  </h2>
+</div>
+`;
+
+exports[`snapshot with only title 1`] = `
+<div
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+>
+  <h1
+    className="MuiTypography-root-91 MuiTypography-display2-94 MuiTypography-gutterBottom-108"
+  >
+    Title
+  </h1>
+</div>
+`;

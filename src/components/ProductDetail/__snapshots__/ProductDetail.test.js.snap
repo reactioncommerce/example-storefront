@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="ProductDetail-root-1"
+>
+  <div
+    className="MuiGrid-container-3 MuiGrid-spacing-xs-24-26 ProductDetail-pdpContainer-2"
+  >
+    <div
+      className="MuiGrid-item-4 MuiGrid-grid-sm-6-47"
+    >
+      <h1
+        className="MuiTypography-root-93 MuiTypography-display1-97"
+      >
+        Left Container
+      </h1>
+    </div>
+    <div
+      className="MuiGrid-item-4 MuiGrid-grid-sm-6-47"
+    >
+      <div
+        className="MuiGrid-item-4 MuiGrid-grid-sm-12-53"
+      >
+        <h1
+          className="MuiTypography-root-93 MuiTypography-display2-96 MuiTypography-gutterBottom-110"
+        >
+          Title
+        </h1>
+        <h2
+          className="MuiTypography-root-93 MuiTypography-title-99 MuiTypography-colorPrimary-113"
+        >
+          SubTitle
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+`;

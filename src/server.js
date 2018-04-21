@@ -1,7 +1,8 @@
 import express from "express";
 import nextApp from "next";
 import { useStaticRendering } from "mobx-react";
-
+import passport from "passport";
+import CookieStrategy from "passport-cookie";
 import logger from "lib/logger";
 import { appPath, dev } from "./config";
 import router from "./routes";
@@ -12,12 +13,22 @@ const handle = app.getRequestHandler();
 
 useStaticRendering(true);
 
+passport.use(new CookieStrategy((token, done) => {
+  done(null, { token });
+}));
+
 app
   .prepare()
   .then(() => {
     const server = express();
     server.use(routeHandler);
-    server.get("*", (req, res) => handle(req, res));
+
+    server.get(
+      "*",
+      passport.authenticate("cookie", { session: false }),
+      (req, res) => handle(req, res)
+    );
+
     return server.listen(4000, (err) => {
       if (err) throw err;
       logger.appStarted("localhost", 4000);

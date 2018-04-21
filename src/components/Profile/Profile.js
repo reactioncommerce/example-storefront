@@ -12,7 +12,12 @@ export default class Profile extends Component {
   };
 
   render() {
-    const { viewer: { name } } = this.props;
-    return <Typography variant="subheading">Hello {name}</Typography>;
+    const { viewer } = this.props;
+
+    if (viewer) {
+      return <Typography variant="subheading">Hello {viewer.name}</Typography>;
+    }
+
+    return null;
   }
 }

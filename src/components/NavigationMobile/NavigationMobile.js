@@ -4,7 +4,7 @@ import { inject, observer } from "mobx-react";
 import { withStyles } from "material-ui/styles";
 import Drawer from "material-ui/Drawer";
 import MenuList from "material-ui/Menu/MenuList";
-import { MobileNavigationItem } from "components/Navigation";
+import { NavigationItemMobile } from "components/NavigationMobile";
 import withNavigationTags from "../../containers/tags/withNavigationTags";
 
 const styles = () => ({
@@ -17,7 +17,7 @@ const styles = () => ({
 @withNavigationTags
 @inject("uiStore")
 @observer
-class MobileNavigation extends Component {
+class NavigationMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
     navItems: PropTypes.object,
@@ -31,7 +31,7 @@ class MobileNavigation extends Component {
   };
 
   renderNavItem(navItem, index) {
-    return <MobileNavigationItem key={index} navItem={navItem.node} />;
+    return <NavigationItemMobile key={index} navItem={navItem.node} />;
   }
 
   render() {
@@ -47,4 +47,4 @@ class MobileNavigation extends Component {
   }
 }
 
-export default MobileNavigation;
+export default NavigationMobile;
