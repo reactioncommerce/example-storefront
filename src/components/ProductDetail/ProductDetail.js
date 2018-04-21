@@ -6,6 +6,7 @@ import Typography from "material-ui/Typography";
 
 // PDP Components
 import ProductDetailTitle from "components/ProductDetailTitle";
+import VariantList from "components/VariantList";
 
 const styles = () => ({
   root: {
@@ -48,6 +49,7 @@ class ProductDetail extends Component {
               pageTitle={catalogProduct.pageTitle}
               title={catalogProduct.title}
             />
+            <VariantList />
           </Grid>
         </Grid>
       </div>

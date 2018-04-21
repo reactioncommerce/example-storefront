@@ -33,6 +33,80 @@ exports[`basic snapshot 1`] = `
           SubTitle
         </h2>
       </div>
+      <ul
+        className="VariantList-variantsList-117"
+      >
+        <li
+          className="VariantList-variantItem-118"
+        >
+          <button
+            className="MuiButtonBase-root-135 MuiButton-root-120 VariantItem-variantButton-119"
+            disabled={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-121"
+            >
+              <p
+                className="MuiTypography-root-93 MuiTypography-body1-102"
+              >
+                Men's Lightweigth Synchilla
+              </p>
+              <p
+                className="MuiTypography-root-93 MuiTypography-body1-102"
+              >
+                7.99 - 77.99
+              </p>
+            </span>
+          </button>
+        </li>
+        <li
+          className="VariantList-variantItem-118"
+        >
+          <button
+            className="MuiButtonBase-root-135 MuiButton-root-120 VariantItem-variantButton-119"
+            disabled={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-121"
+            >
+              <p
+                className="MuiTypography-root-93 MuiTypography-body1-102"
+              >
+                Basic Reaction Product
+              </p>
+              <p
+                className="MuiTypography-root-93 MuiTypography-body1-102"
+              >
+                7.99 - 77.99
+              </p>
+            </span>
+          </button>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

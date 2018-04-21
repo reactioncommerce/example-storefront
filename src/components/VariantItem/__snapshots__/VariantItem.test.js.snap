@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<button
+  className="MuiButtonBase-root-17 MuiButton-root-2 VariantItem-variantButton-1"
+  disabled={false}
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex="0"
+  type="button"
+>
+  <span
+    className="MuiButton-label-3"
+  >
+    <p
+      className="MuiTypography-root-20 MuiTypography-body1-29"
+    >
+      Men's Lightweigth Synchilla
+    </p>
+    <p
+      className="MuiTypography-root-20 MuiTypography-body1-29"
+    >
+      7.99 - 77.99
+    </p>
+  </span>
+</button>
+`;

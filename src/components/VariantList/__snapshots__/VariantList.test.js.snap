@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<ul
+  className="VariantList-variantsList-1"
+>
+  <li
+    className="VariantList-variantItem-2"
+  >
+    <button
+      className="MuiButtonBase-root-19 MuiButton-root-4 VariantItem-variantButton-3"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-5"
+      >
+        <p
+          className="MuiTypography-root-22 MuiTypography-body1-31"
+        >
+          Men's Lightweigth Synchilla
+        </p>
+        <p
+          className="MuiTypography-root-22 MuiTypography-body1-31"
+        >
+          7.99 - 77.99
+        </p>
+      </span>
+    </button>
+  </li>
+  <li
+    className="VariantList-variantItem-2"
+  >
+    <button
+      className="MuiButtonBase-root-19 MuiButton-root-4 VariantItem-variantButton-3"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-5"
+      >
+        <p
+          className="MuiTypography-root-22 MuiTypography-body1-31"
+        >
+          Basic Reaction Product
+        </p>
+        <p
+          className="MuiTypography-root-22 MuiTypography-body1-31"
+        >
+          7.99 - 77.99
+        </p>
+      </span>
+    </button>
+  </li>
+</ul>
+`;

@@ -7,7 +7,9 @@ import Typography from "material-ui/Typography";
 const styles = () => ({
   variantButton: {
     "display": "flex",
+    "justifyContent": "space-between",
     "textTransform": "none",
+    "width": "100%",
     "transition": "opacity 200ms linear",
     "borderRadius": "2px",
     "backgroundColor": "#fff",
@@ -34,7 +36,10 @@ class VariantItem extends Component {
         className={variantButton}
       >
         <Typography variant="body1">
-          {title} - {price.range}
+          {title}
+        </Typography>
+        <Typography variant="body1">
+          {price.range}
         </Typography>
       </Button>
     );

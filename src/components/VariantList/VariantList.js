@@ -3,42 +3,28 @@ import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 
 import VariantItem from "components/VariantItem";
+import variants from "./__mocks__/variants.mock";
 
-const variantList = [
-  {
-    _id: "ookONEUTHe2424",
-    title: "Basic Variant",
-    price: {
-      range: "$9.99-$19.99",
-      min: 9.99,
-      max: 19.99
-    },
-    index: 0
-  },
-  {
-    _id: "outhhraoe242004HNOE",
-    title: "Complex Variant",
-    price: {
-      range: "$99.99-$199.99",
-      min: 99.99,
-      max: 199.99
-    },
-    index: 1
-  }
-].sort((variant1, variant2) => variant1.index - variant2.index);
+// Sort by index value
+variants.sort((variant1, variant2) => variant1.index - variant2.index);
 
 const styles = () => ({
   variantsList: {
-    listStyle: "none"
+    listStyle: "none",
+    paddingLeft: 0
+  },
+  variantItem: {
+    margin: "10px 0"
   }
 });
 
 @withStyles(styles)
 class VariantList extends Component {
-  renderVariant(variant) {
+  renderVariant = (variant) => {
+    const { classes: { variantItem } } = this.props;
     return (
-      <li key={variant._id}>
-        <VariantItem variant={variant} />
+      <li className={variantItem} key={variant.node.product._id}>
+        <VariantItem variant={variant.node.product} />
       </li>
     );
   }
@@ -48,7 +34,7 @@ class VariantList extends Component {
 
     return (
       <ul className={variantsList}>
-        {variantList.map(this.renderVariant)}
+        {variants.map(this.renderVariant)}
       </ul>
     );
   }
