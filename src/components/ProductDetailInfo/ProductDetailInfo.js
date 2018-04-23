@@ -10,7 +10,7 @@ import Grid from "material-ui/Grid";
 class ProductDetailInfo extends Component {
   static propTypes = {
     /**
-     * Prodcut description
+     * Product description
      */
     description: PropTypes.string,
 
@@ -27,7 +27,7 @@ class ProductDetailInfo extends Component {
   render() {
     const { priceRange, vendor, description } = this.props;
 
-    // Render all props are undefined then skip rendering component
+    // If all props are undefined then skip rendering component
     if (!priceRange && !vendor && !description) return null;
 
     return (
