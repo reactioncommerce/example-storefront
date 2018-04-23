@@ -67,7 +67,6 @@ class ProductItem extends Component {
   renderProductImage() {
     const {
       classes: { img, imgLoading, loadingIcon },
-      product: { description },
       theme: { breakpoints: { values } }
     } = this.props;
     const { hasImageLoaded } = this.state;
@@ -91,7 +90,7 @@ class ProductItem extends Component {
         <img
           className={img}
           src={this.buildImgUrl(primaryImage.URLs.small)}
-          alt={description}
+          alt=""
           onLoad={this.onImageLoad}
           ref={(image) => {
             if (image && image.complete) this.onImageLoad();
