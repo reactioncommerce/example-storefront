@@ -20,6 +20,18 @@ class ProductGrid extends Component {
     products: tempProducts
   };
 
+  renderHelmet() {
+    const { shop } = this.props;
+
+    // If we are on the default Product Grid, use default shop info
+    return (
+      <Helmet>
+        <title>{shop.name}</title>
+        <meta name="description" content={shop.description} />
+      </Helmet>
+    );
+  }
+
   renderProduct(product) {
     const { _id, weight } = product;
     const gridItemSize = {
@@ -54,6 +66,7 @@ class ProductGrid extends Component {
     const { products } = this.props;
     return (
       <section>
+        {this.renderHelmet()}
         <Grid container spacing={24}>
           {products.map(this.renderProduct)}
         </Grid>
