@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "material-ui/Grid";
+import Helmet from "react-helmet";
+import { inject, observer } from "mobx-react";
 
 import ProductItem from "components/ProductItem";
 
 // TODO: get real products from server
 import { tempProducts } from "./tempProducts";
 
+@inject("shop")
+@observer
 class ProductGrid extends Component {
   static propTypes = {
     products: PropTypes.arrayOf(PropTypes.object)
