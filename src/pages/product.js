@@ -8,7 +8,7 @@ import Layout from "components/Layout";
 import ProductDetail from "components/ProductDetail";
 
 // TODO: Data will eventually come from GraphQL
-import sampleData from "components/ProductDetail/__mocks__/sampleData";
+import sampleData from "components/ProductDetail/__mocks__/productData.mock";
 
 @withData
 @withRoot
