@@ -47,7 +47,7 @@ class ProductGrid extends Component {
     return (
       <section>
         <Grid container spacing={24}>
-          {catalogItems.map(this.renderProduct)}
+          {(catalogItems && catalogItems.length) ? catalogItems.map(this.renderProduct) : null }
         </Grid>
       </section>
     );
