@@ -38,6 +38,10 @@ class ProductDetail extends Component {
 
     return (
       <div className={classes.root}>
+        <Helmet>
+          <title>{catalogProduct.title}</title>
+          <meta name="description" content={catalogProduct.description} />
+        </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
           <Grid item sm={6}>
             {/* TODO: Left Content, remove when adding initial components */}
