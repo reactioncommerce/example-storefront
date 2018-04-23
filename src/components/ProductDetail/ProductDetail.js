@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
 import Typography from "material-ui/Typography";
+import Helmet from "react-helmet";
 
 // PDP Components
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
+import ProductDetailInfo from "components/ProductDetailInfo";
 
 const styles = () => ({
   root: {
@@ -38,6 +40,10 @@ class ProductDetail extends Component {
 
     return (
       <div className={classes.root}>
+        <Helmet>
+          <title>{catalogProduct.title}</title>
+          <meta name="description" content={catalogProduct.description} />
+        </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
           <Grid item sm={6}>
             {/* TODO: Left Content, remove when adding initial components */}
@@ -50,6 +56,11 @@ class ProductDetail extends Component {
               title={catalogProduct.title}
             />
             <VariantList />
+            <ProductDetailInfo
+              priceRange={catalogProduct.price.range}
+              description={catalogProduct.description}
+              vendor={catalogProduct.vendor}
+            />
           </Grid>
         </Grid>
       </div>

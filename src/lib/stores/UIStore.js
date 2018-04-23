@@ -1,12 +1,19 @@
 import { observable, computed, action } from "mobx";
+import getConfig from "next/config";
 
 class UIStore {
   @observable _cartOpen = false;
   @observable _menuDrawerOpen = false;
+  @observable _appConfig = getConfig();
 
   @computed
   get cartOpen() {
     return this._cartOpen;
+  }
+
+  @computed
+  get appConfig() {
+    return this._appConfig;
   }
 
   set cartOpen(value) {

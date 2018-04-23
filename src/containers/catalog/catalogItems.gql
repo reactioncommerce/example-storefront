@@ -1,0 +1,37 @@
+query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt) { 
+  catalogItems(shopIds: [$shopId], first: $first) {
+    edges {
+      cursor
+      node {
+        _id
+        ... on CatalogItemProduct {
+          product {
+            _id
+            title
+            slug
+            description
+            vendor
+            isLowQuantity
+            isSoldOut
+            isBackorder
+            price {
+              range
+              min
+              max
+            }
+            primaryImage {
+              URLs {
+                small
+                medium
+                large
+              }
+            }
+          }
+          positions {
+            displayWeight
+          }
+        }
+      }
+    }
+  }
+}
