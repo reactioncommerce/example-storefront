@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+>
+  <div
+    className="MuiTypography-root-91 MuiTypography-title-97 MuiTypography-gutterBottom-108"
+  >
+    $19.99
+  </div>
+  <p
+    className="MuiTypography-root-91 MuiTypography-body1-100"
+  >
+    Vendor
+  </p>
+  <p
+    className="MuiTypography-root-91 MuiTypography-body1-100"
+  >
+    Description
+  </p>
+</div>
+`;
+
+exports[`snapshot with description only 1`] = `
+<div
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+>
+  <p
+    className="MuiTypography-root-91 MuiTypography-body1-100"
+  >
+    Description
+  </p>
+</div>
+`;
+
+exports[`snapshot with no props 1`] = `null`;
+
+exports[`snapshot with price and description 1`] = `
+<div
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+>
+  <div
+    className="MuiTypography-root-91 MuiTypography-title-97 MuiTypography-gutterBottom-108"
+  >
+    $19.99
+  </div>
+  <p
+    className="MuiTypography-root-91 MuiTypography-body1-100"
+  >
+    Description
+  </p>
+</div>
+`;
+
+exports[`snapshot with price only 1`] = `
+<div
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+>
+  <div
+    className="MuiTypography-root-91 MuiTypography-title-97 MuiTypography-gutterBottom-108"
+  >
+    $19.99
+  </div>
+</div>
+`;
+
+exports[`snapshot with vendor only 1`] = `
+<div
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+>
+  <p
+    className="MuiTypography-root-91 MuiTypography-body1-100"
+  >
+    Vendor
+  </p>
+</div>
+`;

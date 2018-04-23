@@ -2,5 +2,9 @@
 export default {
   title: "Title",
   pageTitle: "SubTitle",
-  description: "Product description"
+  description: "Description",
+  vendor: "Vendor",
+  price: {
+    range: "$19.99"
+  }
 };
