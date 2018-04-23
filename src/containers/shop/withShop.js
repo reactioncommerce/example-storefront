@@ -1,7 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
 import { Provider } from "mobx-react";
-import primaryShopIdQuery from "./primaryShopId.gql";
+import primaryShopIdQuery from "../common-gql/primaryShopId.gql";
 import shopQuery from "./shop.gql";
 
 /**

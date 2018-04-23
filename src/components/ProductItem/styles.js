@@ -1,18 +1,20 @@
-export const styles = theme => ({
+export const styles = (theme) => ({
   "@keyframes spin": {
     from: { transform: "rotate(0deg)" },
     to: { transform: "rotate(-360deg)" }
   },
-  root: {},
-  productInfo: {
+  "root": {},
+  "productInfo": {
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingTop: 10
   },
-  productMedia: {
+  "productMedia": {
     backgroundColor: theme.palette.primary.contrastText,
     position: "relative"
   },
-  chip: {
+  "chip": {
     ...theme.typography.caption,
     borderRadius: 4,
     height: "auto",
@@ -24,37 +26,37 @@ export const styles = theme => ({
     position: "absolute",
     zIndex: 100
   },
-  chipLabel: {
+  "chipLabel": {
     fontWeight: theme.typography.fontWeightBold,
     padding: 0
   },
-  status: {
+  "status": {
     color: theme.palette.primary.contrastText,
     left: theme.spacing.unit,
     top: theme.spacing.unit
   },
-  statusSoldOut: {
+  "statusSoldOut": {
     backgroundColor: theme.palette.secondary.main
   },
-  statusBackorder: {
+  "statusBackorder": {
     backgroundColor: theme.palette.secondary.dark
   },
-  statusSale: {
+  "statusSale": {
     backgroundColor: theme.palette.error.main
   },
-  statusBestseller: {
+  "statusBestseller": {
     backgroundColor: theme.palette.primary.light
   },
-  warning: {
+  "warning": {
     backgroundColor: "transparent",
     right: theme.spacing.unit,
     top: theme.spacing.unit
   },
-  img: {
+  "img": {
     height: "auto",
     width: "100%"
   },
-  imgLoading: {
+  "imgLoading": {
     alignItems: "center",
     backgroundColor: "transparent",
     display: "flex",
@@ -66,7 +68,7 @@ export const styles = theme => ({
     top: "calc(50% - 50px)",
     width: 100
   },
-  loadingIcon: {
+  "loadingIcon": {
     color: theme.palette.primary.light,
     fontSize: "inherit",
     animationName: "spin",
@@ -75,9 +77,9 @@ export const styles = theme => ({
     animationIterationCount: "infinite",
     animationFillMode: "both"
   },
-  link: {
+  "link": {
     ...theme.typography.body2,
-    textAlign: "left",
+    "textAlign": "left",
     "&:hover": {
       color: theme.palette.secondary.main
     }

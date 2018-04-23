@@ -1,60 +1,39 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { withStyles, withTheme } from "material-ui/styles";
-import ButtonBase from "material-ui/ButtonBase";
+import { withStyles } from "material-ui/styles";
+import { inject, observer } from "mobx-react";
 import Chip from "material-ui/Chip";
 import Fade from "material-ui/transitions/Fade";
 import Hidden from "material-ui/Hidden";
 import Typography from "material-ui/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
 
-import { Link } from "routes";
+import Link from "components/Link";
 import { styles } from "./styles";
 
-// TODO: random number for temp images, REMOVE ONCE WE HAVE REAL DATA
-const tempImgs = {
-  0: {
-    xs: "http://via.placeholder.com/400/E6E6E6/999999?text=FPO",
-    sm: "http://via.placeholder.com/300/E6E6E6/999999?text=FPO",
-    md: "http://via.placeholder.com/400/E6E6E6/999999?text=FPO",
-    lg: "http://via.placeholder.com/800/E6E6E6/999999?text=FPO"
-  },
-  1: {
-    xs: "http://via.placeholder.com/400/E6E6E6/999999?text=FPO",
-    sm: "http://via.placeholder.com/600x285/E6E6E6/999999?text=FPO",
-    md: "http://via.placeholder.com/700x332/E6E6E6/999999?text=FPO",
-    lg: "http://via.placeholder.com/1600x780/E6E6E6/999999?text=FPO"
-  },
-  2: {
-    xs: "http://via.placeholder.com/400/E6E6E6/999999?text=FPO",
-    sm: "http://via.placeholder.com/800x248/E6E6E6/999999?text=FPO",
-    md: "http://via.placeholder.com/1000x312/E6E6E6/999999?text=FPO",
-    lg: "http://via.placeholder.com/1600x512/E6E6E6/999999?text=FPO"
-  }
-};
+const PRODUCT_PLACE_HOLDER = "/resources/placeholder.gif";
 
-@withStyles(styles)
-@withTheme()
+@withStyles(styles, { withTheme: true })
+@inject("uiStore")
+@observer
 class ProductItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
     product: PropTypes.object,
-    theme: PropTypes.object
+    theme: PropTypes.object,
+    uiStore: PropTypes.object
   };
 
   static defaultProps = {
     classes: {},
-    product: {
-      weight: 0 // TODO: revisit this once real data is connected, only being used so render test pass
-    },
     theme: {}
   };
 
   state = { hasImageLoaded: false };
 
   get productDetailHref() {
-    const { product: { handle } } = this.props;
-    const url = `/product/${handle}`;
+    const { product: { slug } } = this.props;
+    const url = `/product/${slug}`;
     return url;
   }
 
@@ -80,25 +59,40 @@ class ProductItem extends Component {
     this.setState({ hasImageLoaded: true });
   };
 
+  buildImgUrl(imgPath) {
+    const { uiStore: { appConfig: { publicRuntimeConfig } } } = this.props;
+    return `${publicRuntimeConfig.externalAssetsUrl}${imgPath}`;
+  }
+
   renderProductImage() {
     const {
       classes: { img, imgLoading, loadingIcon },
-      product: { description, weight },
       theme: { breakpoints: { values } }
     } = this.props;
     const { hasImageLoaded } = this.state;
+    let { product: { primaryImage } } = this.props;
+
+    if (!primaryImage) {
+      primaryImage = {
+        URLs: {
+          small: PRODUCT_PLACE_HOLDER,
+          medium: PRODUCT_PLACE_HOLDER,
+          large: PRODUCT_PLACE_HOLDER
+        }
+      };
+    }
 
     const picture = (
       <picture>
-        <source srcSet={tempImgs[weight].lg} media={`(min-width: ${values.lg}px)`} />
-        <source srcSet={tempImgs[weight].md} media={`(min-width: ${values.md}px)`} />
-        <source srcSet={tempImgs[weight].sm} media={`(min-width: ${values.sm}px)`} />
+        <source srcSet={this.buildImgUrl(primaryImage.URLs.small)} media={`(min-width: ${values.sm}px)`} />
+        <source srcSet={this.buildImgUrl(primaryImage.URLs.medium)} media={`(min-width: ${values.md}px)`} />
+        <source srcSet={this.buildImgUrl(primaryImage.URLs.large)} media={`(min-width: ${values.lg}px)`} />
         <img
           className={img}
-          src={tempImgs[weight].xs}
-          alt={description}
+          src={this.buildImgUrl(primaryImage.URLs.small)}
+          alt=""
           onLoad={this.onImageLoad}
-          ref={image => {
+          ref={(image) => {
             if (image && image.complete) this.onImageLoad();
             return;
           }}
@@ -137,18 +131,15 @@ class ProductItem extends Component {
     const { classes, product: { price, title, vendor } } = this.props;
     const { range: priceRange } = price || {};
     return (
-      <div className={classes.productInfo}>
-        <div>
+      <div >
+        <div className={classes.productInfo}>
           <Typography variant="body2">
-            <Link route={this.productDetailHref}>
-              <ButtonBase classes={{ root: classes.link }}>{title}</ButtonBase>
-            </Link>
+            {title}
           </Typography>
-          <Typography variant="body1">{vendor}</Typography>
+          <Typography variant="body1">${priceRange}</Typography>
         </div>
-
         <div>
-          <Typography variant="body1">${priceRange || price}</Typography>
+          <Typography variant="body1">{vendor}</Typography>
         </div>
       </div>
     );
@@ -158,9 +149,9 @@ class ProductItem extends Component {
     return (
       <div>
         <Link route={this.productDetailHref}>
-          <a>{this.renderProductMedia()}</a>
+          {this.renderProductMedia()}
+          {this.renderProductInfo()}
         </Link>
-        {this.renderProductInfo()}
       </div>
     );
   }
