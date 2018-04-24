@@ -5,6 +5,7 @@ const initExport = {
     graphqlUrl: process.env.INTERNAL_GRAPHQL_URL
   },
   publicRuntimeConfig: { // Will be available on both server and client
+    externalAssetsUrl: process.env.EXTERNAL_ASSETS_URL,
     graphqlUrl: process.env.EXTERNAL_GRAPHQL_URL
   },
   webpack: (config) => {

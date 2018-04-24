@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<a
+  className="Link-link-1"
+  href="/next"
+  onClick={[Function]}
+>
+  Linked
+</a>
+`;
