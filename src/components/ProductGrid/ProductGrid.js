@@ -13,11 +13,7 @@ import { tempProducts } from "./tempProducts";
 @observer
 class ProductGrid extends Component {
   static propTypes = {
-    products: PropTypes.arrayOf(PropTypes.object)
-  };
-
-  static defaultProps = {
-    products: tempProducts
+    catalogItems: PropTypes.arrayOf(PropTypes.object)
   };
 
   renderHelmet() {
@@ -32,8 +28,11 @@ class ProductGrid extends Component {
     );
   }
 
-  renderProduct(product) {
-    const { _id, weight } = product;
+  renderProduct(edge) {
+    const { node: { product, positions } } = edge;
+    const weight = (positions.length) ? positions[0].displayWeight : 0;
+    const { _id } = product;
+
     const gridItemSize = {
       0: {
         xs: 12,
@@ -63,12 +62,13 @@ class ProductGrid extends Component {
   }
 
   render() {
-    const { products } = this.props;
+    const { catalogItems } = this.props;
+
     return (
       <section>
         {this.renderHelmet()}
         <Grid container spacing={24}>
-          {products.map(this.renderProduct)}
+          {(catalogItems && catalogItems.length) ? catalogItems.map(this.renderProduct) : null }
         </Grid>
       </section>
     );

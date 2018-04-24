@@ -7,6 +7,7 @@ import Helmet from "react-helmet";
 
 // PDP Components
 import ProductDetailTitle from "components/ProductDetailTitle";
+import ProductDetailInfo from "components/ProductDetailInfo";
 
 const styles = () => ({
   root: {
@@ -52,6 +53,11 @@ class ProductDetail extends Component {
             <ProductDetailTitle
               pageTitle={catalogProduct.pageTitle}
               title={catalogProduct.title}
+            />
+            <ProductDetailInfo
+              priceRange={catalogProduct.price.range}
+              description={catalogProduct.description}
+              vendor={catalogProduct.vendor}
             />
           </Grid>
         </Grid>

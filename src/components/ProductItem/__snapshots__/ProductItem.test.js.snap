@@ -3,11 +3,12 @@
 exports[`basic snapshot 1`] = `
 <div>
   <a
+    className="Link-link-16"
     href="/product/undefined"
     onClick={[Function]}
   >
     <div
-      className="WithTheme-ProductItem--productMedia-3"
+      className="inject-ProductItem-with-uiStore-productMedia-3"
     >
       <picture
         style={
@@ -18,30 +19,30 @@ exports[`basic snapshot 1`] = `
         }
       >
         <source
-          media="(min-width: 1280px)"
-          srcSet="http://via.placeholder.com/800/E6E6E6/999999?text=FPO"
+          media="(min-width: 600px)"
+          srcSet="http://localhost:300/resources/placeholder.gif"
         />
         <source
           media="(min-width: 960px)"
-          srcSet="http://via.placeholder.com/400/E6E6E6/999999?text=FPO"
+          srcSet="http://localhost:300/resources/placeholder.gif"
         />
         <source
-          media="(min-width: 600px)"
-          srcSet="http://via.placeholder.com/300/E6E6E6/999999?text=FPO"
+          media="(min-width: 1280px)"
+          srcSet="http://localhost:300/resources/placeholder.gif"
         />
         <img
           alt={undefined}
-          className="WithTheme-ProductItem--img-12"
+          className="inject-ProductItem-with-uiStore-img-12"
           onLoad={[Function]}
-          src="http://via.placeholder.com/400/E6E6E6/999999?text=FPO"
+          src="http://localhost:300/resources/placeholder.gif"
         />
       </picture>
       <div
-        className="WithTheme-ProductItem--imgLoading-13"
+        className="inject-ProductItem-with-uiStore-imgLoading-13"
       >
         <svg
           aria-hidden="true"
-          className="MuiSvgIcon-root-50 WithTheme-ProductItem--loadingIcon-14"
+          className="MuiSvgIcon-root-41 inject-ProductItem-with-uiStore-loadingIcon-14"
           color={undefined}
           focusable="false"
           viewBox="0 0 24 24"
@@ -52,47 +53,25 @@ exports[`basic snapshot 1`] = `
         </svg>
       </div>
     </div>
-  </a>
-  <div
-    className="WithTheme-ProductItem--productInfo-2"
-  >
     <div>
-      <aside
-        className="MuiTypography-root-16 MuiTypography-body2-24"
+      <div
+        className="inject-ProductItem-with-uiStore-productInfo-2"
       >
-        <button
-          className="MuiButtonBase-root-40 WithTheme-ProductItem--link-15"
-          disabled={undefined}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex="0"
-          type="button"
+        <aside
+          className="MuiTypography-root-17 MuiTypography-body2-25"
+        />
+        <p
+          className="MuiTypography-root-17 MuiTypography-body1-26"
         >
-          <span
-            className="MuiTouchRipple-root-43"
-          />
-        </button>
-      </aside>
-      <p
-        className="MuiTypography-root-16 MuiTypography-body1-25"
-      />
+          $
+        </p>
+      </div>
+      <div>
+        <p
+          className="MuiTypography-root-17 MuiTypography-body1-26"
+        />
+      </div>
     </div>
-    <div>
-      <p
-        className="MuiTypography-root-16 MuiTypography-body1-25"
-      >
-        $
-      </p>
-    </div>
-  </div>
+  </a>
 </div>
 `;
