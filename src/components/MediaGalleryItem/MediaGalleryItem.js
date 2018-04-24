@@ -17,7 +17,7 @@ const styles = () => ({
  * @class ProductDetailMediaGalleryItem
  */
 @withStyles(styles)
-class ProductDetailMediaGalleryItem extends Component {
+class MediaGalleryItem extends Component {
   static propTypes = {
     /**
      * CSS class names
@@ -67,4 +67,4 @@ class ProductDetailMediaGalleryItem extends Component {
   }
 }
 
-export default ProductDetailMediaGalleryItem;
+export default MediaGalleryItem;

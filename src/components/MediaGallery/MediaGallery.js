@@ -4,7 +4,7 @@ import Grid from "material-ui/Grid";
 import withStyles from "material-ui/styles/withStyles";
 import { action, computed, observable } from "mobx";
 import { inject, observer } from "mobx-react";
-import MediaGalleryIttem from "./ProductDetailMediaGalleryItem"
+import MediaGalleryIttem from "./ProductDetailMediaGalleryItem";
 
 const styles = (theme) => ({
 
@@ -16,7 +16,7 @@ const styles = (theme) => ({
  */
 @withStyles(styles)
 @observer
-class ProductDetailMediaGallery extends Component {
+class MediaGallery extends Component {
   static propTypes = {
     /**
      * Media items
@@ -66,4 +66,4 @@ class ProductDetailMediaGallery extends Component {
   }
 }
 
-export default ProductDetailMediaGallery;
+export default MediaGallery;
