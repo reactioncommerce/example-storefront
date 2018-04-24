@@ -160,7 +160,7 @@ jobs:
               reactionapp_next_starterkit:/usr/local/src/reaction-app/reports \
               reports
       - store_test_results:
-          path: reports/junit
+          path: reports/jest
       - store_artifacts:
           path: reports
 
