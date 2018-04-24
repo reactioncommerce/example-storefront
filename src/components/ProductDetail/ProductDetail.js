@@ -8,6 +8,7 @@ import Helmet from "react-helmet";
 // PDP Components
 import ProductDetailTitle from "components/ProductDetailTitle";
 import ProductDetailInfo from "components/ProductDetailInfo";
+import MediaGallery from "components/MediaGallery";
 
 const styles = () => ({
   root: {
@@ -45,8 +46,7 @@ class ProductDetail extends Component {
         </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
           <Grid item sm={6}>
-            {/* TODO: Left Content, remove when adding initial components */}
-            <Typography variant="display1">Left Container</Typography>
+            <MediaGallery mediaItems={catalogProduct.media} />
           </Grid>
 
           <Grid item sm={6}>
