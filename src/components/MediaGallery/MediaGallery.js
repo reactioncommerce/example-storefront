@@ -4,7 +4,7 @@ import Grid from "material-ui/Grid";
 import withStyles from "material-ui/styles/withStyles";
 import { action, computed, observable } from "mobx";
 import { inject, observer } from "mobx-react";
-import MediaGalleryIttem from "./ProductDetailMediaGalleryItem";
+import MediaGalleryItem from "components/MediaGalleryItem";
 
 const styles = (theme) => ({
 
@@ -57,8 +57,8 @@ class MediaGallery extends Component {
         </div>
 
         <div>
-          {mediaItems.map((media) => (
-            <MediaGalleryIttem media={media} onClick={this.handleMediaItemClick} />
+          {mediaItems.map((media, index) => (
+            <MediaGalleryItem key={index} media={media} onClick={this.handleMediaItemClick} />
           ))}
         </div>
       </Grid>
