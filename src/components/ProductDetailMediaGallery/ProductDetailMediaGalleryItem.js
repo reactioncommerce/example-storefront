@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import ButtonBase from "material-ui/ButtonBase";
 import withStyles from "material-ui/styles/withStyles";
 
-const styles = (theme) => ({
+const styles = () => ({
   root: {
     minWidth: 140
   },
@@ -27,7 +27,26 @@ class ProductDetailMediaGalleryItem extends Component {
     /**
      * Product media
      */
-    media: PropTypes.object
+    media: PropTypes.object,
+
+    /**
+     * Click callback
+     * @example (event, media) => {}
+     */
+    onClick: PropTypes.func
+  }
+
+  static defaultProps = {
+    onClick: () => {}
+  }
+
+  /**
+   * Click handler for ButtonBase
+   * @param {SyntheticEvent} event Event
+   * @returns {undefined}
+   */
+  handleClick = (event) => {
+    this.props.onClick(event, this.props.media);
   }
 
   render() {
@@ -37,7 +56,7 @@ class ProductDetailMediaGalleryItem extends Component {
     if (!media) return null;
 
     return (
-      <ButtonBase className={classes.root}>
+      <ButtonBase className={classes.root} onClick={this.handleClick}>
         <img
           className={classes.img}
           src={media.url}
