@@ -60,7 +60,7 @@ class MediaGalleryItem extends Component {
         <img
           className={classes.img}
           src={media.url}
-          alt={media.metadata.description}
+          alt=""
         />
       </ButtonBase>
     );
