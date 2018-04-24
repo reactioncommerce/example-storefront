@@ -7,7 +7,12 @@ import { inject, observer } from "mobx-react";
 import MediaGalleryItem from "components/MediaGalleryItem";
 
 const styles = (theme) => ({
+  featured: {
 
+  },
+  featuredImage: {
+    width: "100%"
+  }
 });
 
 /**
@@ -15,22 +20,33 @@ const styles = (theme) => ({
  * @class ProductDetailMediaGallery
  */
 @withStyles(styles)
+@inject("uiStore")
 @observer
 class MediaGallery extends Component {
   static propTypes = {
     /**
+     * CSS Class names
+     */
+    classes: PropTypes.object,
+
+    /**
      * Media items
      */
-    mediaItems: PropTypes.array
-  }
+    mediaItems: PropTypes.arrayOf(PropTypes.object),
 
-  @observable _featuredMedia
+    /**
+     * UIStore
+     */
+    uiStore: PropTypes.object
+  }
 
   constructor(props) {
     super(props);
 
-    this.featuredMedia = Array.isArray(props.media) && props.media[0];
+    this.featuredMedia = Array.isArray(props.mediaItems) && props.mediaItems[0];
   }
+
+  @observable _featuredMedia
 
   @computed get featuredMedia() {
     return this._featuredMedia;
@@ -44,16 +60,34 @@ class MediaGallery extends Component {
     this.featuredImage = mediaItem;
   }
 
+  renderFeaturedImage() {
+    const featurdMedia = this.featuredMedia;
+    const { classes, uiStore } = this.props;
+    const { publicRuntimeConfig } = uiStore.appConfig;
+
+    if (featurdMedia && featurdMedia.URLs) {
+      return (
+        <img
+          className={classes.featuredImage}
+          src={`${publicRuntimeConfig.externalAssetsUrl}${this.featuredMedia.URLs.large}`}
+          alt=""
+        />
+      );
+    }
+
+    return null;
+  }
+
   render() {
-    const { mediaItems } = this.props;
+    const { classes, mediaItems } = this.props;
 
     // If all props are undefined then skip rendering component
     if (!mediaItems) return null;
 
     return (
       <Grid item sm={12}>
-        <div>
-
+        <div className={classes.featured}>
+          {this.renderFeaturedImage()}
         </div>
 
         <div>
