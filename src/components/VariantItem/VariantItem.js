@@ -28,6 +28,13 @@ const styles = () => ({
 
 @withStyles(styles)
 class VariantItem extends Component {
+  static propTypes = {
+    active: PropTypes.bool.isRequired,
+    classes: PropTypes.object,
+    handleClick: PropTypes.func.isRequired,
+    variant: PropTypes.object.isRequired
+  }
+
   onClick = () => {
     this.props.handleClick(this.props.variant);
   }
@@ -55,12 +62,5 @@ class VariantItem extends Component {
     );
   }
 }
-
-VariantItem.propTypes = {
-  active: PropTypes.bool.isRequired,
-  classes: PropTypes.object,
-  handleClick: PropTypes.func.isRequired,
-  variant: PropTypes.object.isRequired
-};
 
 export default VariantItem;

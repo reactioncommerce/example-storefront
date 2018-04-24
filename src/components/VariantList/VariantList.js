@@ -6,10 +6,6 @@ import { observer } from "mobx-react";
 
 import { Router } from "routes";
 import VariantItem from "components/VariantItem";
-import variants from "./__mocks__/variants.mock";
-
-// Sort by index value
-variants.sort((variant1, variant2) => variant1.index - variant2.index);
 
 const styles = () => ({
   variantsList: {
@@ -24,12 +20,27 @@ const styles = () => ({
 @withStyles(styles)
 @observer
 class VariantList extends Component {
-  @observable _selectedVariant = variants[0].node.product._id;
+  static propTypes = {
+    classes: PropTypes.object,
+    product: PropTypes.object.isRequired,
+    variants: PropTypes.arrayOf(PropTypes.object).isRequired
+  }
+
+  constructor(props) {
+    super(props);
+    // Select first variant by default
+    this.selectedVariant = props.variants[0]._id;
+  }
+
+  @observable _selectedVariant = null;
 
   @action
   handleClick = (variant) => {
     this._selectedVariant = variant._id;
-    Router.pushRoute("product", { productSlug: variant.slug, variantId: variant._id });
+    Router.pushRoute("product", {
+      productSlug: this.props.product.slug,
+      variantId: variant._id
+    });
   }
 
   @computed
@@ -37,24 +48,27 @@ class VariantList extends Component {
     return this._selectedVariant;
   }
 
+  set selectedVariant(value) {
+    this._selectedVariant = value;
+  }
+
   renderVariant = (variant) => {
     const { classes: { variantItem } } = this.props;
-    const { node: { product } } = variant;
-    const active = (this.selectedVariant === product._id);
+    const active = (this.selectedVariant === variant._id);
 
     return (
-      <li className={variantItem} key={product._id}>
+      <li className={variantItem} key={variant._id}>
         <VariantItem
           active={active}
           handleClick={this.handleClick}
-          variant={variant.node.product}
+          variant={variant}
         />
       </li>
     );
   }
 
   render() {
-    const { classes: { variantsList } } = this.props;
+    const { classes: { variantsList }, variants } = this.props;
     return (
       <ul className={variantsList}>
         {variants.map(this.renderVariant)}
@@ -62,9 +76,5 @@ class VariantList extends Component {
     );
   }
 }
-
-VariantList.propTypes = {
-  classes: PropTypes.object
-};
 
 export default VariantList;
