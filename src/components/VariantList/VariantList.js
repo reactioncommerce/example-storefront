@@ -7,17 +7,18 @@ import { observer } from "mobx-react";
 import { Router } from "routes";
 import VariantItem from "components/VariantItem";
 
-const styles = () => ({
+const styles = (theme) => ({
   variantsList: {
     listStyle: "none",
     paddingLeft: 0
   },
   variantItem: {
-    margin: "10px 0"
+    marginTop: theme.spacing.unit * 1.25,
+    marginBottom: theme.spacing.unit * 1.25
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { withTheme: true })
 @observer
 class VariantList extends Component {
   static propTypes = {

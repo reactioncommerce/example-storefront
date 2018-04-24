@@ -1,32 +1,37 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
-import Button from "material-ui/Button";
+import ButtonBase from "material-ui/ButtonBase";
 import Typography from "material-ui/Typography";
 import classNames from "classnames";
 
-const styles = () => ({
+const styles = (theme) => ({
   variantButton: {
     "display": "flex",
     "justifyContent": "space-between",
     "textTransform": "none",
     "width": "100%",
-    "transition": "opacity 200ms linear",
     "borderRadius": "2px",
-    "backgroundColor": "#fff",
-    "border": "1px solid #fff",
-    "padding": "10px 20px",
+    "backgroundColor": theme.palette.primary.contrastText,
+    "border": "1px solid",
+    "borderColor": theme.palette.primary.contrastText,
+    "paddingTop": theme.spacing.unit * 1.25,
+    "paddingBottom": theme.spacing.unit * 1.25,
+    "paddingLeft": theme.spacing.unit * 2.5,
+    "paddingRight": theme.spacing.unit * 2.5,
     "&:hover": {
-      border: "1px solid #94e8d1",
-      backgroundColor: "#fff"
+      border: "1px solid",
+      borderColor: theme.palette.activeElement.main,
+      backgroundColor: theme.palette.primary.contrastText
     }
   },
   activeVariant: {
-    border: "1px solid #94e8d1"
+    border: "1px solid",
+    borderColor: theme.palette.activeElement.main
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { withTheme: true })
 class VariantItem extends Component {
   static propTypes = {
     active: PropTypes.bool.isRequired,
@@ -47,7 +52,7 @@ class VariantItem extends Component {
     } = this.props;
 
     return (
-      <Button
+      <ButtonBase
         disableRipple
         className={classNames(variantButton, { [activeVariant]: active })}
         onClick={this.onClick}
@@ -58,7 +63,7 @@ class VariantItem extends Component {
         <Typography component="span" variant="body1">
           {price.range}
         </Typography>
-      </Button>
+      </ButtonBase>
     );
   }
 }
