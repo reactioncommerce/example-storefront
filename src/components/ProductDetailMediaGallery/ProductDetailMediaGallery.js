@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "material-ui/Grid";
 import withStyles from "material-ui/styles/withStyles";
+import { action, computed, observable } from "mobx";
+import { inject, observer } from "mobx-react";
+import MediaGalleryIttem from "./ProductDetailMediaGalleryItem"
 
 const styles = (theme) => ({
 
@@ -12,6 +15,7 @@ const styles = (theme) => ({
  * @class ProductDetailMediaGallery
  */
 @withStyles(styles)
+@observer
 class ProductDetailMediaGallery extends Component {
   static propTypes = {
     /**
@@ -20,6 +24,25 @@ class ProductDetailMediaGallery extends Component {
     mediaItems: PropTypes.array
   }
 
+  @observable _featuredMedia
+
+  constructor(props) {
+    super(props);
+
+    this.featuredMedia = Array.isArray(props.media) && props.media[0];
+  }
+
+  @computed get featuredMedia() {
+    return this._featuredMedia;
+  }
+
+  set featuredMedia(value) {
+    this._featuredMedia = value;
+  }
+
+  @action handleMediaItemClick = (event, mediaItem) => {
+    this.featuredImage = mediaItem;
+  }
 
   render() {
     const { mediaItems } = this.props;
@@ -34,7 +57,9 @@ class ProductDetailMediaGallery extends Component {
         </div>
 
         <div>
-
+          {mediaItems.map((media) => (
+            <MediaGalleryIttem media={media} onClick={this.handleMediaItemClick} />
+          ))}
         </div>
       </Grid>
     );
