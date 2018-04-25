@@ -8,22 +8,278 @@ exports[`basic snapshot 1`] = `
     className="MuiGrid-container-3 MuiGrid-spacing-xs-24-26 ProductDetail-pdpContainer-2"
   >
     <div
-      className="MuiGrid-item-4 MuiGrid-grid-sm-6-47"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-12-40 MuiGrid-grid-sm-6-47"
     >
-      <h1
-        className="MuiTypography-root-93 MuiTypography-display1-97"
+      <div
+        className="MuiGrid-container-3 inject-MediaGallery-with-uiStore-root-93"
       >
-        Left Container
-      </h1>
+        <div
+          className="MuiGrid-item-4 MuiGrid-grid-xs-12-40 MuiGrid-grid-sm-12-53"
+        >
+          <div
+            className="inject-MediaGallery-with-uiStore-featured-94"
+          >
+            <img
+              alt=""
+              className="inject-MediaGallery-with-uiStore-featuredImage-95"
+              src="/assets/files/Media/P3MkhDWadHoDNsFPE/large/I0DhYYC.jpg"
+            />
+          </div>
+          <div
+            className="MuiGrid-container-3 MuiGrid-spacing-xs-8-24"
+          >
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-31 MuiGrid-grid-sm-2-43"
+            >
+              <button
+                className="MuiButtonBase-root-98 inject-MediaGalleryItem-with-uiStore-root-96"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <img
+                  alt=""
+                  className="inject-MediaGalleryItem-with-uiStore-img-97"
+                  src="/assets/files/Media/P3MkhDWadHoDNsFPE/small/I0DhYYC.png"
+                />
+                <span
+                  className="MuiTouchRipple-root-101"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-31 MuiGrid-grid-sm-2-43"
+            >
+              <button
+                className="MuiButtonBase-root-98 inject-MediaGalleryItem-with-uiStore-root-96"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <img
+                  alt=""
+                  className="inject-MediaGalleryItem-with-uiStore-img-97"
+                  src="/assets/files/Media/jYkxma8zveTG9f9Q9/small/cB4Ao8V.png"
+                />
+                <span
+                  className="MuiTouchRipple-root-101"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-31 MuiGrid-grid-sm-2-43"
+            >
+              <button
+                className="MuiButtonBase-root-98 inject-MediaGalleryItem-with-uiStore-root-96"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <img
+                  alt=""
+                  className="inject-MediaGalleryItem-with-uiStore-img-97"
+                  src="/assets/files/Media/XnuHto5KgFRQH4k7d/small/eMVBUmD.png"
+                />
+                <span
+                  className="MuiTouchRipple-root-101"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-31 MuiGrid-grid-sm-2-43"
+            >
+              <button
+                className="MuiButtonBase-root-98 inject-MediaGalleryItem-with-uiStore-root-96"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <img
+                  alt=""
+                  className="inject-MediaGalleryItem-with-uiStore-img-97"
+                  src="/assets/files/Media/4zNFkNwCnErxewpLF/small/Mj460Zo.png"
+                />
+                <span
+                  className="MuiTouchRipple-root-101"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-31 MuiGrid-grid-sm-2-43"
+            >
+              <button
+                className="MuiButtonBase-root-98 inject-MediaGalleryItem-with-uiStore-root-96"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <img
+                  alt=""
+                  className="inject-MediaGalleryItem-with-uiStore-img-97"
+                  src="/assets/files/Media/4nvNZibEbtfnTBaSx/small/belle-ALT1.jpg"
+                />
+                <span
+                  className="MuiTouchRipple-root-101"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-31 MuiGrid-grid-sm-2-43"
+            >
+              <button
+                className="MuiButtonBase-root-98 inject-MediaGalleryItem-with-uiStore-root-96"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <img
+                  alt=""
+                  className="inject-MediaGalleryItem-with-uiStore-img-97"
+                  src="/assets/files/Media/yfAMghTtzbhPqyqLk/small/belle-ALT2.jpg"
+                />
+                <span
+                  className="MuiTouchRipple-root-101"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-31 MuiGrid-grid-sm-2-43"
+            >
+              <button
+                className="MuiButtonBase-root-98 inject-MediaGalleryItem-with-uiStore-root-96"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <img
+                  alt=""
+                  className="inject-MediaGalleryItem-with-uiStore-img-97"
+                  src="/assets/files/Media/9T94xPRnYGDacJdJ5/small/belle-ALT3.jpg"
+                />
+                <span
+                  className="MuiTouchRipple-root-101"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-31 MuiGrid-grid-sm-2-43"
+            >
+              <button
+                className="MuiButtonBase-root-98 inject-MediaGalleryItem-with-uiStore-root-96"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <img
+                  alt=""
+                  className="inject-MediaGalleryItem-with-uiStore-img-97"
+                  src="/assets/files/Media/JhcDN3YKTEnNn8p3J/small/belle-HERO.jpg"
+                />
+                <span
+                  className="MuiTouchRipple-root-101"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div
-      className="MuiGrid-item-4 MuiGrid-grid-sm-6-47"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-12-40 MuiGrid-grid-sm-6-47"
     >
       <div
         className="MuiGrid-item-4 MuiGrid-grid-sm-12-53"
       >
         <h1
-          className="MuiTypography-root-93 MuiTypography-display2-96 MuiTypography-gutterBottom-110"
+          className="MuiTypography-root-108 MuiTypography-display2-111 MuiTypography-gutterBottom-125"
         >
           Reaction Sample Product
         </h1>
@@ -32,17 +288,17 @@ exports[`basic snapshot 1`] = `
         className="MuiGrid-item-4 MuiGrid-grid-sm-12-53"
       >
         <div
-          className="MuiTypography-root-93 MuiTypography-title-99 MuiTypography-gutterBottom-110"
+          className="MuiTypography-root-108 MuiTypography-title-114 MuiTypography-gutterBottom-125"
         >
-          12.99 - 330
+          $12.99 - $330
         </div>
         <p
-          className="MuiTypography-root-93 MuiTypography-body1-102"
+          className="MuiTypography-root-108 MuiTypography-body1-117"
         >
           Example Manufacturer
         </p>
         <p
-          className="MuiTypography-root-93 MuiTypography-body1-102"
+          className="MuiTypography-root-108 MuiTypography-body1-117"
         >
           Sign in as administrator to edit.
 You can clone this product from the product grid.
@@ -55,13 +311,13 @@ Details can be added below the image for more specific product information.
         </p>
       </div>
       <ul
-        className="VariantList-variantsList-117"
+        className="VariantList-variantsList-132"
       >
         <li
-          className="VariantList-variantItem-118"
+          className="VariantList-variantItem-133"
         >
           <button
-            className="MuiButtonBase-root-121 VariantItem-variantButton-119 VariantItem-activeVariant-120"
+            className="MuiButtonBase-root-98 VariantItem-variantButton-134 VariantItem-activeVariant-135"
             disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
@@ -78,20 +334,20 @@ Details can be added below the image for more specific product information.
             type="button"
           >
             <span
-              className="MuiTypography-root-93 MuiTypography-body1-102"
+              className="MuiTypography-root-108 MuiTypography-body1-117"
             >
               Sample Variant
             </span>
             <span
-              className="MuiTypography-root-93 MuiTypography-body1-102"
+              className="MuiTypography-root-108 MuiTypography-body1-117"
             />
           </button>
         </li>
         <li
-          className="VariantList-variantItem-118"
+          className="VariantList-variantItem-133"
         >
           <button
-            className="MuiButtonBase-root-121 VariantItem-variantButton-119"
+            className="MuiButtonBase-root-98 VariantItem-variantButton-134"
             disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
@@ -108,12 +364,12 @@ Details can be added below the image for more specific product information.
             type="button"
           >
             <span
-              className="MuiTypography-root-93 MuiTypography-body1-102"
+              className="MuiTypography-root-108 MuiTypography-body1-117"
             >
               Sample Variant 2
             </span>
             <span
-              className="MuiTypography-root-93 MuiTypography-body1-102"
+              className="MuiTypography-root-108 MuiTypography-body1-117"
             />
           </button>
         </li>
