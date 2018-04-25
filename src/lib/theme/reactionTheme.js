@@ -19,7 +19,11 @@ const theme = createMuiTheme({
       main: "#CD3F4C",
       dark: "#3C1F21",
       contrastText: "#FFFFFF"
+    },
+    reaction: {
+      activeElementBorderColor: "#94e8d1"
     }
+
   },
   typography: {
     fontFamily: "Source Sans Pro, Helvetica Neue, Helvetica, sans-serif",

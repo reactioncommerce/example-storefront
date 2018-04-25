@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<button
+  className="MuiButtonBase-root-3 VariantItem-variantButton-1 VariantItem-activeVariant-2"
+  disabled={undefined}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex="0"
+  type="button"
+>
+  <span
+    className="MuiTypography-root-6 MuiTypography-body1-15"
+  >
+    Sample Variant
+  </span>
+  <span
+    className="MuiTypography-root-6 MuiTypography-body1-15"
+  />
+</button>
+`;
