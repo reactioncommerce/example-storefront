@@ -37,7 +37,12 @@ class MediaGalleryItem extends Component {
      * Click callback
      * @example (event, media) => {}
      */
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+
+    /**
+     * UI store for general ui state and config
+     */
+    uiStore: PropTypes.object
   }
 
   static defaultProps = {
