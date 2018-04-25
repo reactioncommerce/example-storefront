@@ -3,10 +3,10 @@
 exports[`basic snapshot 1`] = `
 <section>
   <div
-    className="MuiGrid-typeContainer-1 MuiGrid-spacing-xs-24-24"
+    className="MuiGrid-container-1 MuiGrid-spacing-xs-24-24"
   >
     <div
-      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55"
+      className="MuiGrid-item-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55"
     >
       <div>
         <a
@@ -101,7 +101,7 @@ exports[`basic snapshot 1`] = `
       </div>
     </div>
     <div
-      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55"
+      className="MuiGrid-item-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55"
     >
       <div>
         <a
