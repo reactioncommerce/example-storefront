@@ -17,7 +17,7 @@ const styles = () => ({
     flexGrow: 1
   },
   pdpContainer: {
-    maxWidth: 1920
+    maxWidth: 1440
   }
 });
 
@@ -45,11 +45,11 @@ class ProductDetail extends Component {
           <meta name="description" content={catalogProduct.description} />
         </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <MediaGallery mediaItems={catalogProduct.media} />
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <ProductDetailTitle
               pageTitle={catalogProduct.pageTitle}
               title={catalogProduct.title}
