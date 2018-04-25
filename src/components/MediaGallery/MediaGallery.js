@@ -6,14 +6,34 @@ import { action, computed, observable } from "mobx";
 import { inject, observer } from "mobx-react";
 import MediaGalleryItem from "components/MediaGalleryItem";
 
-const styles = () => ({
+const styles = (theme) => ({
   root: {
     width: "100%"
   },
+  featured: {
+    display: "flex",
+    justifyContent: "center",
+    height: "500px",
+    maxHeight: "500px",
+    overflow: "hidden",
+    backgroundColor: theme.palette.common.white,
+    marginBottom: theme.spacing.unit,
+    [theme.breakpoints.up("xs")]: {
+      maxHeight: "300px"
+    },
+    [theme.breakpoints.up("sm")]: {
+      maxHeight: "300px"
+    },
+    [theme.breakpoints.up("md")]: {
+      maxHeight: "500px"
+    },
+    [theme.breakpoints.up("lg")]: {
+      maxHeight: "500px"
+    }
+  },
   featuredImage: {
-    objectFit: "cover",
-    width: "100%",
-    maxHeight: "500px"
+    flex: 0,
+    height: "100%"
   }
 });
 
@@ -104,11 +124,15 @@ class MediaGallery extends Component {
             {this.renderFeaturedImage()}
           </div>
 
-          <Grid container spacing={theme.spacing.unit * 2}>
+          <Grid container spacing={theme.spacing.unit}>
             {mediaItems.map((media, index) => (
-              <Grid item xs={3} sm={2}>
+              <Grid
+                item
+                key={index}
+                xs={3}
+                sm={2}
+              >
                 <MediaGalleryItem
-                  key={index}
                   media={media}
                   onClick={this.handleMediaItemClick}
                 />
