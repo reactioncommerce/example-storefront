@@ -31,7 +31,7 @@ exports[`basic snapshot 1`] = `
           srcSet="http://localhost:300/resources/placeholder.gif"
         />
         <img
-          alt={undefined}
+          alt=""
           className="inject-ProductItem-with-uiStore-img-12"
           onLoad={[Function]}
           src="http://localhost:300/resources/placeholder.gif"
