@@ -37,6 +37,11 @@ class MediaGallery extends Component {
     /**
      * UIStore
      */
+    theme: PropTypes.object,
+
+    /**
+     * UIStore
+     */
     uiStore: PropTypes.object
   }
 
@@ -56,6 +61,12 @@ class MediaGallery extends Component {
     this._featuredMedia = value;
   }
 
+  /**
+   * Media item click handler
+   * @param {SyntheticEvent} event - Event
+   * @param {Object} mediaItem - Media item object
+   * @returns {undefined}
+   */
   @action handleMediaItemClick = (event, mediaItem) => {
     this.featuredMedia = mediaItem;
   }
