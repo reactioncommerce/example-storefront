@@ -8,9 +8,10 @@ exports[`basic snapshot 1`] = `
     className="VariantList-variantItem-2"
   >
     <button
-      className="MuiButtonBase-root-19 MuiButton-root-4 VariantItem-variantButton-3"
-      disabled={false}
+      className="MuiButtonBase-root-5 VariantItem-variantButton-3 VariantItem-activeVariant-4"
+      disabled={undefined}
       onBlur={[Function]}
+      onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -24,28 +25,23 @@ exports[`basic snapshot 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-5"
+        className="MuiTypography-root-8 MuiTypography-body1-17"
       >
-        <p
-          className="MuiTypography-root-22 MuiTypography-body1-31"
-        >
-          Men's Lightweigth Synchilla
-        </p>
-        <p
-          className="MuiTypography-root-22 MuiTypography-body1-31"
-        >
-          7.99 - 77.99
-        </p>
+        Sample Variant
       </span>
+      <span
+        className="MuiTypography-root-8 MuiTypography-body1-17"
+      />
     </button>
   </li>
   <li
     className="VariantList-variantItem-2"
   >
     <button
-      className="MuiButtonBase-root-19 MuiButton-root-4 VariantItem-variantButton-3"
-      disabled={false}
+      className="MuiButtonBase-root-5 VariantItem-variantButton-3"
+      disabled={undefined}
       onBlur={[Function]}
+      onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -59,19 +55,13 @@ exports[`basic snapshot 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-5"
+        className="MuiTypography-root-8 MuiTypography-body1-17"
       >
-        <p
-          className="MuiTypography-root-22 MuiTypography-body1-31"
-        >
-          Basic Reaction Product
-        </p>
-        <p
-          className="MuiTypography-root-22 MuiTypography-body1-31"
-        >
-          7.99 - 77.99
-        </p>
+        Sample Variant 2
       </span>
+      <span
+        className="MuiTypography-root-8 MuiTypography-body1-17"
+      />
     </button>
   </li>
 </ul>

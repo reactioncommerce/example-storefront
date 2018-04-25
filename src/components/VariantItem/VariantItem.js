@@ -21,13 +21,13 @@ const styles = (theme) => ({
     "paddingRight": theme.spacing.unit * 2.5,
     "&:hover": {
       border: "1px solid",
-      borderColor: theme.palette.activeElement.main,
+      borderColor: theme.palette.primary.activeElementBorderColor,
       backgroundColor: theme.palette.primary.contrastText
     }
   },
   activeVariant: {
     border: "1px solid",
-    borderColor: theme.palette.activeElement.main
+    borderColor: theme.palette.primary.activeElementBorderColor
   }
 });
 
@@ -57,7 +57,7 @@ class VariantItem extends Component {
         className={classNames(variantButton, { [activeVariant]: active })}
         onClick={this.onClick}
       >
-        <Typography componest="span" variant="body1">
+        <Typography component="span" variant="body1">
           {title}
         </Typography>
         <Typography component="span" variant="body1">

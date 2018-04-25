@@ -25,13 +25,34 @@ exports[`basic snapshot 1`] = `
         <h1
           className="MuiTypography-root-93 MuiTypography-display2-96 MuiTypography-gutterBottom-110"
         >
-          Title
+          Reaction Sample Product
         </h1>
-        <h2
-          className="MuiTypography-root-93 MuiTypography-title-99 MuiTypography-colorPrimary-113"
+      </div>
+      <div
+        className="MuiGrid-item-4 MuiGrid-grid-sm-12-53"
+      >
+        <div
+          className="MuiTypography-root-93 MuiTypography-title-99 MuiTypography-gutterBottom-110"
         >
-          SubTitle
-        </h2>
+          12.99 - 330
+        </div>
+        <p
+          className="MuiTypography-root-93 MuiTypography-body1-102"
+        >
+          Example Manufacturer
+        </p>
+        <p
+          className="MuiTypography-root-93 MuiTypography-body1-102"
+        >
+          Sign in as administrator to edit.
+You can clone this product from the product grid.
+You can upload images click or drag in image box on the left here.
+Tag this product below, and then add tag in navigation.
+Click the bookmark in the tag to set product url.
+Option variants, price, quantity, and child variants are created by clicking on the variant below, clone the variant to add more options.
+Details can be added below the image for more specific product information.
+ Login next to the cart, and then click the dashboard icon for more tools.
+        </p>
       </div>
       <ul
         className="VariantList-variantsList-117"
@@ -40,9 +61,10 @@ exports[`basic snapshot 1`] = `
           className="VariantList-variantItem-118"
         >
           <button
-            className="MuiButtonBase-root-135 MuiButton-root-120 VariantItem-variantButton-119"
-            disabled={false}
+            className="MuiButtonBase-root-121 VariantItem-variantButton-119 VariantItem-activeVariant-120"
+            disabled={undefined}
             onBlur={[Function]}
+            onClick={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
@@ -56,28 +78,23 @@ exports[`basic snapshot 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-121"
+              className="MuiTypography-root-93 MuiTypography-body1-102"
             >
-              <p
-                className="MuiTypography-root-93 MuiTypography-body1-102"
-              >
-                Men's Lightweigth Synchilla
-              </p>
-              <p
-                className="MuiTypography-root-93 MuiTypography-body1-102"
-              >
-                7.99 - 77.99
-              </p>
+              Sample Variant
             </span>
+            <span
+              className="MuiTypography-root-93 MuiTypography-body1-102"
+            />
           </button>
         </li>
         <li
           className="VariantList-variantItem-118"
         >
           <button
-            className="MuiButtonBase-root-135 MuiButton-root-120 VariantItem-variantButton-119"
-            disabled={false}
+            className="MuiButtonBase-root-121 VariantItem-variantButton-119"
+            disabled={undefined}
             onBlur={[Function]}
+            onClick={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
@@ -91,41 +108,16 @@ exports[`basic snapshot 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-121"
+              className="MuiTypography-root-93 MuiTypography-body1-102"
             >
-              <p
-                className="MuiTypography-root-93 MuiTypography-body1-102"
-              >
-                Basic Reaction Product
-              </p>
-              <p
-                className="MuiTypography-root-93 MuiTypography-body1-102"
-              >
-                7.99 - 77.99
-              </p>
+              Sample Variant 2
             </span>
+            <span
+              className="MuiTypography-root-93 MuiTypography-body1-102"
+            />
           </button>
         </li>
       </ul>
-      <div
-        className="MuiGrid-item-4 MuiGrid-grid-sm-12-53"
-      >
-        <div
-          className="MuiTypography-root-93 MuiTypography-title-99 MuiTypography-gutterBottom-110"
-        >
-          $19.99
-        </div>
-        <p
-          className="MuiTypography-root-93 MuiTypography-body1-102"
-        >
-          Vendor
-        </p>
-        <p
-          className="MuiTypography-root-93 MuiTypography-body1-102"
-        >
-          Description
-        </p>
-      </div>
     </div>
   </div>
 </div>

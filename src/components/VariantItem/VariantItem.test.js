@@ -5,7 +5,12 @@ import variant from "./__mocks__/variant.mock";
 import VariantItem from "./VariantItem";
 
 test("basic snapshot", () => {
-  const component = renderer.create(shallow(<VariantItem variant={variant.product} />).get(0));
+  const component = renderer.create(shallow((
+    <VariantItem
+      active={true}
+      handleClick={() => true}
+      variant={variant}
+    />)).get(0));
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -1,10 +1,16 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { shallow } from "enzyme";
-import VariantList from "./";
+import catalogProduct from "components/ProductDetail/__mocks__/productData.mock";
+import VariantList from "./VariantList";
 
 test("basic snapshot", () => {
-  const component = renderer.create(shallow(<VariantList />).get(0));
+  const variants = catalogProduct.variants.filter((variant) => variant.ancestorIds.length === 1);
+  const component = renderer.create(shallow((
+    <VariantList
+      product={catalogProduct}
+      variants={variants}
+    />)).get(0));
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });

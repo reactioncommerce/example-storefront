@@ -2,9 +2,10 @@
 
 exports[`basic snapshot 1`] = `
 <button
-  className="MuiButtonBase-root-17 MuiButton-root-2 VariantItem-variantButton-1"
-  disabled={false}
+  className="MuiButtonBase-root-3 VariantItem-variantButton-1 VariantItem-activeVariant-2"
+  disabled={undefined}
   onBlur={[Function]}
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -18,18 +19,12 @@ exports[`basic snapshot 1`] = `
   type="button"
 >
   <span
-    className="MuiButton-label-3"
+    className="MuiTypography-root-6 MuiTypography-body1-15"
   >
-    <p
-      className="MuiTypography-root-20 MuiTypography-body1-29"
-    >
-      Men's Lightweigth Synchilla
-    </p>
-    <p
-      className="MuiTypography-root-20 MuiTypography-body1-29"
-    >
-      7.99 - 77.99
-    </p>
+    Sample Variant
   </span>
+  <span
+    className="MuiTypography-root-6 MuiTypography-body1-15"
+  />
 </button>
 `;
