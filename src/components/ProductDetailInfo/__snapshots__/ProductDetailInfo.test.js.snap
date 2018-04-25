@@ -2,7 +2,7 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+  className="MuiGrid-typeItem-2 MuiGrid-grid-sm-12-51"
 >
   <div
     className="MuiTypography-root-91 MuiTypography-title-97 MuiTypography-gutterBottom-108"
@@ -24,7 +24,7 @@ exports[`basic snapshot 1`] = `
 
 exports[`snapshot with description only 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+  className="MuiGrid-typeItem-2 MuiGrid-grid-sm-12-51"
 >
   <p
     className="MuiTypography-root-91 MuiTypography-body1-100"
@@ -38,7 +38,7 @@ exports[`snapshot with no props 1`] = `null`;
 
 exports[`snapshot with price and description 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+  className="MuiGrid-typeItem-2 MuiGrid-grid-sm-12-51"
 >
   <div
     className="MuiTypography-root-91 MuiTypography-title-97 MuiTypography-gutterBottom-108"
@@ -55,7 +55,7 @@ exports[`snapshot with price and description 1`] = `
 
 exports[`snapshot with price only 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+  className="MuiGrid-typeItem-2 MuiGrid-grid-sm-12-51"
 >
   <div
     className="MuiTypography-root-91 MuiTypography-title-97 MuiTypography-gutterBottom-108"
@@ -67,7 +67,7 @@ exports[`snapshot with price only 1`] = `
 
 exports[`snapshot with vendor only 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+  className="MuiGrid-typeItem-2 MuiGrid-grid-sm-12-51"
 >
   <p
     className="MuiTypography-root-91 MuiTypography-body1-100"
