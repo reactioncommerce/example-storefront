@@ -6,12 +6,14 @@ import { action, computed, observable } from "mobx";
 import { inject, observer } from "mobx-react";
 import MediaGalleryItem from "components/MediaGalleryItem";
 
-const styles = (theme) => ({
-  featured: {
-
+const styles = () => ({
+  root: {
+    width: "100%"
   },
   featuredImage: {
-    width: "100%"
+    objectFit: "cover",
+    width: "100%",
+    maxHeight: "500px"
   }
 });
 
@@ -19,7 +21,7 @@ const styles = (theme) => ({
  * Product detail media gallery
  * @class ProductDetailMediaGallery
  */
-@withStyles(styles)
+@withStyles(styles, { withTheme: true })
 @inject("uiStore")
 @observer
 class MediaGallery extends Component {
@@ -90,22 +92,30 @@ class MediaGallery extends Component {
   }
 
   render() {
-    const { classes, mediaItems } = this.props;
+    const { classes, mediaItems, theme } = this.props;
 
     // If all props are undefined then skip rendering component
     if (!mediaItems) return null;
 
     return (
-      <Grid item sm={12}>
-        <div className={classes.featured}>
-          {this.renderFeaturedImage()}
-        </div>
+      <Grid container className={classes.root}>
+        <Grid item xs={12} sm={12}>
+          <div className={classes.featured}>
+            {this.renderFeaturedImage()}
+          </div>
 
-        <div>
-          {mediaItems.map((media, index) => (
-            <MediaGalleryItem key={index} media={media} onClick={this.handleMediaItemClick} />
-          ))}
-        </div>
+          <Grid container spacing={theme.spacing.unit * 2}>
+            {mediaItems.map((media, index) => (
+              <Grid item xs={3} sm={2}>
+                <MediaGalleryItem
+                  key={index}
+                  media={media}
+                  onClick={this.handleMediaItemClick}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
       </Grid>
     );
   }
