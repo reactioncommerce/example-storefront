@@ -13,7 +13,7 @@ exports[`basic snapshot 1`] = `
       <img
         alt=""
         className="inject-MediaGallery-with-uiStore-featuredImage-3"
-        src="/assets/files/Media/P3MkhDWadHoDNsFPE/large/I0DhYYC.jpg"
+        src="/resources/placeholder.gif"
       />
     </div>
     <div
@@ -42,7 +42,7 @@ exports[`basic snapshot 1`] = `
           <img
             alt=""
             className="inject-MediaGalleryItem-with-uiStore-img-95"
-            src="/assets/files/Media/P3MkhDWadHoDNsFPE/small/I0DhYYC.png"
+            src="/resources/placeholder.gif"
           />
           <span
             className="MuiTouchRipple-root-99"
@@ -72,7 +72,7 @@ exports[`basic snapshot 1`] = `
           <img
             alt=""
             className="inject-MediaGalleryItem-with-uiStore-img-95"
-            src="/assets/files/Media/P3MkhDWadHoDNsFPE/small/I0DhYYC.png"
+            src="/resources/placeholder.gif"
           />
           <span
             className="MuiTouchRipple-root-99"

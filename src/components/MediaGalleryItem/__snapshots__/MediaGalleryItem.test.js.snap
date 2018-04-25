@@ -21,7 +21,7 @@ exports[`basic snapshot 1`] = `
   <img
     alt=""
     className="inject-MediaGalleryItem-with-uiStore-img-2"
-    src="/assets/files/Media/P3MkhDWadHoDNsFPE/small/I0DhYYC.png"
+    src="/resources/placeholder.gif"
   />
   <span
     className="MuiTouchRipple-root-6"

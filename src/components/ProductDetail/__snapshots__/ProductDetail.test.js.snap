@@ -22,7 +22,7 @@ exports[`basic snapshot 1`] = `
             <img
               alt=""
               className="inject-MediaGallery-with-uiStore-featuredImage-95"
-              src="/assets/files/Media/P3MkhDWadHoDNsFPE/large/I0DhYYC.jpg"
+              src="/resources/placeholder.gif"
             />
           </div>
           <div
@@ -51,7 +51,7 @@ exports[`basic snapshot 1`] = `
                 <img
                   alt=""
                   className="inject-MediaGalleryItem-with-uiStore-img-97"
-                  src="/assets/files/Media/P3MkhDWadHoDNsFPE/small/I0DhYYC.png"
+                  src="/resources/placeholder.gif"
                 />
                 <span
                   className="MuiTouchRipple-root-101"
@@ -81,7 +81,7 @@ exports[`basic snapshot 1`] = `
                 <img
                   alt=""
                   className="inject-MediaGalleryItem-with-uiStore-img-97"
-                  src="/assets/files/Media/jYkxma8zveTG9f9Q9/small/cB4Ao8V.png"
+                  src="/resources/placeholder.gif"
                 />
                 <span
                   className="MuiTouchRipple-root-101"
@@ -111,7 +111,7 @@ exports[`basic snapshot 1`] = `
                 <img
                   alt=""
                   className="inject-MediaGalleryItem-with-uiStore-img-97"
-                  src="/assets/files/Media/XnuHto5KgFRQH4k7d/small/eMVBUmD.png"
+                  src="/resources/placeholder.gif"
                 />
                 <span
                   className="MuiTouchRipple-root-101"
@@ -141,7 +141,7 @@ exports[`basic snapshot 1`] = `
                 <img
                   alt=""
                   className="inject-MediaGalleryItem-with-uiStore-img-97"
-                  src="/assets/files/Media/4zNFkNwCnErxewpLF/small/Mj460Zo.png"
+                  src="/resources/placeholder.gif"
                 />
                 <span
                   className="MuiTouchRipple-root-101"
@@ -171,7 +171,7 @@ exports[`basic snapshot 1`] = `
                 <img
                   alt=""
                   className="inject-MediaGalleryItem-with-uiStore-img-97"
-                  src="/assets/files/Media/4nvNZibEbtfnTBaSx/small/belle-ALT1.jpg"
+                  src="/resources/placeholder.gif"
                 />
                 <span
                   className="MuiTouchRipple-root-101"
@@ -201,7 +201,7 @@ exports[`basic snapshot 1`] = `
                 <img
                   alt=""
                   className="inject-MediaGalleryItem-with-uiStore-img-97"
-                  src="/assets/files/Media/yfAMghTtzbhPqyqLk/small/belle-ALT2.jpg"
+                  src="/resources/placeholder.gif"
                 />
                 <span
                   className="MuiTouchRipple-root-101"
@@ -231,7 +231,7 @@ exports[`basic snapshot 1`] = `
                 <img
                   alt=""
                   className="inject-MediaGalleryItem-with-uiStore-img-97"
-                  src="/assets/files/Media/9T94xPRnYGDacJdJ5/small/belle-ALT3.jpg"
+                  src="/resources/placeholder.gif"
                 />
                 <span
                   className="MuiTouchRipple-root-101"
@@ -261,7 +261,7 @@ exports[`basic snapshot 1`] = `
                 <img
                   alt=""
                   className="inject-MediaGalleryItem-with-uiStore-img-97"
-                  src="/assets/files/Media/JhcDN3YKTEnNn8p3J/small/belle-HERO.jpg"
+                  src="/resources/placeholder.gif"
                 />
                 <span
                   className="MuiTouchRipple-root-101"

@@ -17,11 +17,11 @@ const media = {
   productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
   variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
   URLs: {
-    large: "/assets/files/Media/P3MkhDWadHoDNsFPE/large/I0DhYYC.jpg",
-    medium: "/assets/files/Media/P3MkhDWadHoDNsFPE/medium/I0DhYYC.jpg",
-    original: "/assets/files/Media/P3MkhDWadHoDNsFPE/image/I0DhYYC.jpg",
-    small: "/assets/files/Media/P3MkhDWadHoDNsFPE/small/I0DhYYC.png",
-    thumbnail: "/assets/files/Media/P3MkhDWadHoDNsFPE/thumbnail/I0DhYYC.png"
+    large: "/resources/placeholder.gif",
+    medium: "/resources/placeholder.gif",
+    original: "/resources/placeholder.gif",
+    small: "/resources/placeholder.gif",
+    thumbnail: "/resources/placeholder.gif"
   }
 };
 
