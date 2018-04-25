@@ -34,6 +34,7 @@
     "apollo-link-http": "^1.5.1",
     "body-parser": "^1.18.2",
     "chalk": "^2.3.2",
+    "classnames": "^2.2.5",
     "express": "^4.16.3",
     "graphql": "^0.13.1",
     "graphql-tag": "^2.8.0",
@@ -74,7 +75,8 @@
     "jest": "^22.4.3",
     "jest-transform-graphql": "2.1.0",
     "react-test-renderer": "^16.3.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "snyk": "^1.73.0"
   },
   "jest": {
     "roots": [

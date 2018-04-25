@@ -6,6 +6,7 @@ import Helmet from "react-helmet";
 
 // PDP Components
 import ProductDetailTitle from "components/ProductDetailTitle";
+import VariantList from "components/VariantList";
 import ProductDetailInfo from "components/ProductDetailInfo";
 import MediaGallery from "components/MediaGallery";
 
@@ -36,6 +37,8 @@ class ProductDetail extends Component {
 
   render() {
     const { classes, theme, catalogProduct } = this.props;
+    // Fiter out variant options
+    const variants = catalogProduct.variants.filter((variant) => variant.ancestorIds.length === 1);
 
     return (
       <div className={classes.root}>
@@ -58,6 +61,7 @@ class ProductDetail extends Component {
               description={catalogProduct.description}
               vendor={catalogProduct.vendor}
             />
+            <VariantList product={catalogProduct} variants={variants}/>
           </Grid>
         </Grid>
       </div>
