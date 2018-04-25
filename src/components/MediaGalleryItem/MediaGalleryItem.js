@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ButtonBase from "material-ui/ButtonBase";
 import withStyles from "material-ui/styles/withStyles";
+import { inject, observer } from "mobx-react";
 
 const styles = () => ({
   root: {
-    minWidth: 140
+    maxWidth: "100%"
   },
   img: {
-    width: "100%"
+    width: "100%",
+    objectFit: "cover"
   }
 });
 
@@ -17,6 +19,8 @@ const styles = () => ({
  * @class ProductDetailMediaGalleryItem
  */
 @withStyles(styles)
+@inject("uiStore")
+@observer
 class MediaGalleryItem extends Component {
   static propTypes = {
     /**
@@ -46,11 +50,12 @@ class MediaGalleryItem extends Component {
    * @returns {undefined}
    */
   handleClick = (event) => {
-    this.props.onClick(event, this.props.media);
+    this.props.onClick(event, this.props.media, this.props.index);
   }
 
   render() {
-    const { classes, media } = this.props;
+    const { classes, media, uiStore } = this.props;
+    const { publicRuntimeConfig } = uiStore.appConfig;
 
     // If all props are undefined then skip rendering component
     if (!media) return null;
@@ -59,7 +64,7 @@ class MediaGalleryItem extends Component {
       <ButtonBase className={classes.root} onClick={this.handleClick}>
         <img
           className={classes.img}
-          src={media.url}
+          src={`${publicRuntimeConfig.externalAssetsUrl}${media.URLs.small}`}
           alt=""
         />
       </ButtonBase>
