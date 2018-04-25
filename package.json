@@ -75,7 +75,8 @@
     "jest": "^22.4.3",
     "jest-transform-graphql": "2.1.0",
     "react-test-renderer": "^16.3.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "snyk": "^1.73.0"
   },
   "jest": {
     "roots": [

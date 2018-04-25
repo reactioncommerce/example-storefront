@@ -22,7 +22,6 @@ class UIStore {
 
   @action
   toggleCartOpen = () => {
-    console.log("ui store toggle cart drawer");
     this.cartOpen = !this.cartOpen;
   };
 
@@ -37,7 +36,6 @@ class UIStore {
 
   @action
   toggleMenuDrawerOpen = () => {
-    console.log("ui store toggle menu drawer");
     this.menuDrawerOpen = !this.menuDrawerOpen;
   };
 }

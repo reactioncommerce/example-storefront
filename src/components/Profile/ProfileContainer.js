@@ -3,6 +3,7 @@ import { Query } from "react-apollo";
 import viewerQuery from "./viewer.gql";
 import Profile from "./Profile";
 
+// eslint-disable-next-line react/display-name
 export default () => (
   <Query query={viewerQuery}>
     {({ loading, error, data }) => {
