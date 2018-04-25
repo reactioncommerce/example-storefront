@@ -20,6 +20,7 @@
     "lint": "eslint .",
     "start": "NODE_ENV=production node build/app/server.js",
     "test": "yarn run test:unit",
+    "test:ci": "yarn run test:unit --ci --runInBand --colors",
     "test:unit": "jest",
     "test:unit:watch": "jest --watch"
   },
@@ -72,12 +73,23 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-react": "^7.7.0",
     "jest": "^22.4.3",
+    "jest-junit": "^3.6.0",
     "jest-transform-graphql": "2.1.0",
     "react-test-renderer": "^16.3.1",
     "rimraf": "^2.6.2",
     "snyk": "^1.73.0"
   },
   "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/reports/**",
+      "!**/dist/**",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ],
+    "coverageDirectory": "reports/coverage",
+    "testResultsProcessor": "jest-junit",
     "roots": [
       "./src"
     ],
@@ -86,5 +98,9 @@
       "\\.(gql|graphql)$": "jest-transform-graphql",
       ".*": "babel-jest"
     }
+  },
+  "jest-junit": {
+    "output": "reports/junit/junit.xml",
+    "suiteName": "jest-tests"
   }
 }
