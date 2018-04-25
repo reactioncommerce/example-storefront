@@ -57,7 +57,7 @@ class MediaGallery extends Component {
   }
 
   @action handleMediaItemClick = (event, mediaItem) => {
-    this.featuredImage = mediaItem;
+    this.featuredMedia = mediaItem;
   }
 
   renderFeaturedImage() {
