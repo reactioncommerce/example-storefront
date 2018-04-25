@@ -6,8 +6,7 @@ const theme = createMuiTheme({
       light: "#26B0F9",
       main: "#1999DD",
       dark: "#172F3C",
-      contrastText: "#FFFFFF",
-      activeElementBorderColor: "#94e8d1"
+      contrastText: "#FFFFFF"
     },
     secondary: {
       light: "#5d8ea9",
@@ -20,7 +19,11 @@ const theme = createMuiTheme({
       main: "#CD3F4C",
       dark: "#3C1F21",
       contrastText: "#FFFFFF"
+    },
+    reaction: {
+      activeElementBorderColor: "#94e8d1"
     }
+
   },
   typography: {
     fontFamily: "Source Sans Pro, Helvetica Neue, Helvetica, sans-serif",

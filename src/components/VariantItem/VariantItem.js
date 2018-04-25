@@ -21,13 +21,13 @@ const styles = (theme) => ({
     "paddingRight": theme.spacing.unit * 2.5,
     "&:hover": {
       border: "1px solid",
-      borderColor: theme.palette.primary.activeElementBorderColor,
+      borderColor: theme.palette.reaction.activeElementBorderColor,
       backgroundColor: theme.palette.primary.contrastText
     }
   },
   activeVariant: {
     border: "1px solid",
-    borderColor: theme.palette.primary.activeElementBorderColor
+    borderColor: theme.palette.reaction.activeElementBorderColor
   }
 });
 
