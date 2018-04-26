@@ -19,13 +19,15 @@ export default (Component) => (
       return (
         <Query query={catalogItemsQuery} variables={{ shopId: primaryShopId, first: 25 }}>
           {({ loading: loadingShopData, data: catalogData }) => {
-            if (loadingShopData) return null;
+            {
+              if (loadingShopData) return null;
 
-            const { catalogItems } = catalogData || {};
+              const { catalogItems } = catalogData || {};
 
-            return (
-              <Component catalogItems={catalogItems.edges} />
-            );
+              return (
+                <Component catalogItems={catalogItems.edges} />
+              );
+            }
           }}
         </Query>
       );

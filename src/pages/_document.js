@@ -10,23 +10,6 @@ import getPageContext from "../lib/theme/getPageContext";
 
 class HTMLDocument extends Document {
   static getInitialProps = (ctx) => {
-    // Resolution order
-    //
-    // On the server:
-    // 1. page.getInitialProps
-    // 2. document.getInitialProps
-    // 3. page.render
-    // 4. document.render
-    //
-    // On the server with error:
-    // 2. document.getInitialProps
-    // 3. page.render
-    // 4. document.render
-    //
-    // On the client
-    // 1. page.getInitialProps
-    // 3. page.render
-
     // Get the context of the page to collected side effects.
     const pageContext = getPageContext();
     const { req } = ctx;
