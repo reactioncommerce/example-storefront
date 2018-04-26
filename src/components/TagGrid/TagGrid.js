@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import Chip from "material-ui/Chip";
 import Typography from "material-ui/Typography";
-import Link from "components/Link";
 import Grid from "material-ui/Grid";
+import Link from "components/Link";
 
 const styles = (theme) => ({
   title: {
