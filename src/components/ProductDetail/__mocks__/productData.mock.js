@@ -10,7 +10,7 @@ export default {
   isBackorder: false,
   primaryImage: null,
   price: {
-    range: "12.99 - 330",
+    range: "$12.99 - $330",
     min: 12.99,
     max: 330
   },
@@ -78,6 +78,112 @@ export default {
         }
 
       ]
+    }
+  ],
+  media: [
+    {
+      toGrid: 1,
+      priority: 0,
+      productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
+      variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
+      URLs: {
+        large: "/resources/placeholder.gif",
+        medium: "/resources/placeholder.gif",
+        original: "/resources/placeholder.gif",
+        small: "/resources/placeholder.gif",
+        thumbnail: "/resources/placeholder.gif"
+      }
+    },
+    {
+      toGrid: 1,
+      priority: 0,
+      productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
+      variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
+      URLs: {
+        large: "/resources/placeholder.gif",
+        medium: "/resources/placeholder.gif",
+        original: "/resources/placeholder.gif",
+        small: "/resources/placeholder.gif",
+        thumbnail: "/resources/placeholder.gif"
+      }
+    },
+    {
+      toGrid: 1,
+      priority: 0,
+      productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
+      variantId: "cmVhY3Rpb24vcHJvZHVjdDpTTXI0cmhERm5ZdkZNdERUWA==",
+      URLs: {
+        large: "/resources/placeholder.gif",
+        medium: "/resources/placeholder.gif",
+        original: "/resources/placeholder.gif",
+        small: "/resources/placeholder.gif",
+        thumbnail: "/resources/placeholder.gif"
+      }
+    },
+    {
+      toGrid: 1,
+      priority: 0,
+      productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
+      variantId: "cmVhY3Rpb24vcHJvZHVjdDpDSm9SQm05dlJyb3JjOW14Wg==",
+      URLs: {
+        large: "/resources/placeholder.gif",
+        medium: "/resources/placeholder.gif",
+        original: "/resources/placeholder.gif",
+        small: "/resources/placeholder.gif",
+        thumbnail: "/resources/placeholder.gif"
+      }
+    },
+    {
+      toGrid: 1,
+      priority: 2,
+      productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
+      variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
+      URLs: {
+        large: "/resources/placeholder.gif",
+        medium: "/resources/placeholder.gif",
+        original: "/resources/placeholder.gif",
+        small: "/resources/placeholder.gif",
+        thumbnail: "/resources/placeholder.gif"
+      }
+    },
+    {
+      toGrid: 1,
+      priority: 3,
+      productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
+      variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
+      URLs: {
+        large: "/resources/placeholder.gif",
+        medium: "/resources/placeholder.gif",
+        original: "/resources/placeholder.gif",
+        small: "/resources/placeholder.gif",
+        thumbnail: "/resources/placeholder.gif"
+      }
+    },
+    {
+      toGrid: 1,
+      priority: 4,
+      productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
+      variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
+      URLs: {
+        large: "/resources/placeholder.gif",
+        medium: "/resources/placeholder.gif",
+        original: "/resources/placeholder.gif",
+        small: "/resources/placeholder.gif",
+        thumbnail: "/resources/placeholder.gif"
+      }
+    },
+    {
+      toGrid: 1,
+      priority: 5,
+      productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
+      variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
+      URLs: {
+        large: "/resources/placeholder.gif",
+        medium: "/resources/placeholder.gif",
+        original: "/resources/placeholder.gif",
+        small: "/resources/placeholder.gif",
+        thumbnail: "/resources/placeholder.gif"
+      }
     }
   ]
 };

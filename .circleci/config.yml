@@ -152,15 +152,15 @@ jobs:
               --env-file docker-cache/.env \
               --name reactionapp_next_starterkit \
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-              yarn run test --coverage
+              yarn run test:ci
       - run:
           name: Copy test artifacts from Remote Docker
           command: |
             docker cp \
-              reactionapp_next_starterkit:/usr/local/src/reaction-app/coverage \
+              reactionapp_next_starterkit:/usr/local/src/reaction-app/reports \
               reports
       - store_test_results:
-          path: reports/lcov-report
+          path: reports/junit
       - store_artifacts:
           path: reports
 

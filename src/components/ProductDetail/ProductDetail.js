@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
-import Typography from "material-ui/Typography";
 import Helmet from "react-helmet";
 
 // PDP Components
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
 import ProductDetailInfo from "components/ProductDetailInfo";
-import OptionsList from "components/OptionsList";
+import MediaGallery from "components/MediaGallery";
 
 const styles = () => ({
   root: {
@@ -18,12 +17,7 @@ const styles = () => ({
     flexGrow: 1
   },
   pdpContainer: {
-    maxWidth: 1920
-  },
-  panel: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: "auto"
+    maxWidth: 1400
   }
 });
 
@@ -53,12 +47,11 @@ class ProductDetail extends Component {
           <meta name="description" content={catalogProduct.description} />
         </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
-          <Grid className={classes.panel} item sm={6}>
-            {/* TODO: Left Content, remove when adding initial components */}
-            <Typography variant="display1">Left Container</Typography>
+          <Grid item xs={12} sm={6}>
+            <MediaGallery mediaItems={catalogProduct.media} />
           </Grid>
 
-          <Grid className={classes.panel} item sm={6}>
+          <Grid item xs={12} sm={6}>
             <ProductDetailTitle
               pageTitle={catalogProduct.pageTitle}
               title={catalogProduct.title}
