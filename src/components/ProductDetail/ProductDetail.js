@@ -9,7 +9,7 @@ import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
 import ProductDetailInfo from "components/ProductDetailInfo";
 import MediaGallery from "components/MediaGallery";
-import TagGrid from "components/TagGrid"
+import TagGrid from "components/TagGrid";
 
 const styles = (theme) => ({
   root: {
