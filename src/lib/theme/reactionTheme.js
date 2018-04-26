@@ -23,7 +23,7 @@ const theme = createMuiTheme({
     },
     reaction: {
       activeElementBorderColor: "#94E8D1",
-      activeElementBackground: "#E6E6E7"
+      activeElementBackground: "#E6E6E6"
     }
 
   },

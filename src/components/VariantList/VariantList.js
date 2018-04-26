@@ -7,6 +7,7 @@ import { observer } from "mobx-react";
 import { Router } from "routes";
 import VariantItem from "components/VariantItem";
 import OptionsList from "components/OptionsList";
+import Divider from "components/Divider";
 
 const styles = (theme) => ({
   variantsContainer: {
@@ -77,7 +78,10 @@ class VariantList extends Component {
       <React.Fragment>
         {options &&
           <div>
-            <OptionsList options={options} />
+            <Divider />
+            <div>
+              <OptionsList options={options} />
+            </div>
           </div>
         }
       </React.Fragment>
@@ -85,9 +89,9 @@ class VariantList extends Component {
   }
 
   render() {
-    const { classes: { variantsList }, variants } = this.props;
+    const { classes: { variantsContainer }, variants } = this.props;
     return (
-      <div className="variantsContainer">
+      <div className={variantsContainer}>
         {variants.map(this.renderVariant)}
         {this.renderOptionsList()}
       </div>
