@@ -7,7 +7,7 @@ import classNames from "classnames";
 
 import styles from "./styles";
 
-@withStyles(styles, { withTheme: true })
+@withStyles(styles)
 class ProductDetailOption extends Component {
   static propTypes = {
     classes: PropTypes.object,

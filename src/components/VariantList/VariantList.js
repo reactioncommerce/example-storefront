@@ -17,7 +17,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true })
+@withStyles(styles)
 @observer
 class VariantList extends Component {
   static propTypes = {
