@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { observer, inject } from "mobx-react";
+import Helmet from "react-helmet";
 
 import withData from "lib/apollo/withData";
 import withCatalogItems from "containers/catalog/withCatalogItems";
@@ -8,8 +9,6 @@ import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
-
-import Helmet from "react-helmet";
 
 @withData
 @withShop
@@ -29,19 +28,17 @@ class Shop extends Component {
 
     return (
       <Helmet>
-        <title>TAG {shop.name}</title>
+        <title>{shop.name}</title>
         <meta name="description" content={shop.description} />
       </Helmet>
     );
   }
 
   render() {
-    console.log("dogman", this.props.composedInitialProps.shop);
-
+    const { shop } = this.props;
     return (
       <Layout title="Reaction Shop">
-      <h1>On a tag page</h1>
-      {this.renderHelmet()}
+        {this.renderHelmet()}
         <ProductGrid catalogItems={this.props.catalogItems}/>
       </Layout>
     );
