@@ -9,8 +9,9 @@ import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
 import ProductDetailInfo from "components/ProductDetailInfo";
 import MediaGallery from "components/MediaGallery";
+import TagGrid from "components/TagGrid"
 
-const styles = () => ({
+const styles = (theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
@@ -18,6 +19,9 @@ const styles = () => ({
   },
   pdpContainer: {
     maxWidth: 1440
+  },
+  section: {
+    marginBottom: theme.spacing.unit * 2
   }
 });
 
@@ -48,7 +52,12 @@ class ProductDetail extends Component {
         </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
           <Grid item xs={12} sm={6}>
-            <MediaGallery mediaItems={catalogProduct.media} />
+            <div className={classes.section}>
+              <MediaGallery mediaItems={catalogProduct.media} />
+            </div>
+            <div className={classes.section}>
+              <TagGrid tags={catalogProduct.tags} />
+            </div>
           </Grid>
 
           <Grid item xs={12} sm={6}>
