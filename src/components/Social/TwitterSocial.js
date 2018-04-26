@@ -3,17 +3,14 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 
 function getTwitterMeta(props) {
-  const title = props.title;
-  const preferredUrl = props.url;
-  const url = encodeURIComponent(preferredUrl);
-  const { username, description } = props.settings;
+  const url = encodeURIComponent(props.url);
 
   const meta = [
     { property: "twitter:card", content: "summary" },
-    { property: "twitter:creator", content: username },
+    { property: "twitter:creator", content: props.creator },
     { property: "twitter:url", content: url },
-    { property: "twitter:title", content: title },
-    { property: "twitter:description", content: description }
+    { property: "twitter:title", content: props.title },
+    { property: "twitter:description", content: props.description }
   ];
 
   if (props.media) {
