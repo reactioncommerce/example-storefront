@@ -6,7 +6,7 @@ import { observer } from "mobx-react";
 
 import { Router } from "routes";
 import VariantItem from "components/VariantItem";
-import OptionsList from "components/OptionsList";
+import ProductDetailOptionsList from "components/ProductDetailOptionsList";
 import Divider from "components/Divider";
 
 const styles = (theme) => ({
@@ -79,7 +79,7 @@ class VariantList extends Component {
         {options &&
           <Fragment>
             <Divider />
-            <OptionsList options={options} />
+            <ProductDetailOptionsList options={options} />
           </Fragment>
         }
       </Fragment>

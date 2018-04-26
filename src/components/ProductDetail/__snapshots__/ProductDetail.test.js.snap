@@ -310,10 +310,10 @@ Details can be added below the image for more specific product information.
  Login next to the cart, and then click the dashboard icon for more tools.
         </p>
       </div>
-      <ul
-        className="VariantList-variantsList-132"
+      <div
+        className="VariantList-variantsContainer-132"
       >
-        <li
+        <div
           className="VariantList-variantItem-133"
         >
           <button
@@ -342,8 +342,8 @@ Details can be added below the image for more specific product information.
               className="MuiTypography-root-108 MuiTypography-body1-117"
             />
           </button>
-        </li>
-        <li
+        </div>
+        <div
           className="VariantList-variantItem-133"
         >
           <button
@@ -372,8 +372,81 @@ Details can be added below the image for more specific product information.
               className="MuiTypography-root-108 MuiTypography-body1-117"
             />
           </button>
-        </li>
-      </ul>
+        </div>
+        <div
+          className="Divider-container-136"
+        >
+          <hr
+            className="Divider-item-138"
+          />
+          <span
+            className="MuiTypography-root-108 MuiTypography-body1-117 Divider-label-137"
+          >
+            Available Options
+          </span>
+          <hr
+            className="Divider-item-138"
+          />
+        </div>
+        <div
+          className="OptionsList-optionsContainer-139"
+        >
+          <div
+            className="ProductDetailOption-variantOptionContainer-140"
+          >
+            <button
+              className="MuiButtonBase-root-98 ProductDetailOption-optionButton-141"
+              disabled={undefined}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex="0"
+              type="button"
+            >
+              <span
+                className="MuiTypography-root-108 MuiTypography-body1-117 ProductDetailOption-optionText-142"
+              >
+                Red
+              </span>
+            </button>
+          </div>
+          <div
+            className="ProductDetailOption-variantOptionContainer-140"
+          >
+            <button
+              className="MuiButtonBase-root-98 ProductDetailOption-optionButton-141"
+              disabled={undefined}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex="0"
+              type="button"
+            >
+              <span
+                className="MuiTypography-root-108 MuiTypography-body1-117 ProductDetailOption-optionText-142"
+              >
+                Green
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
