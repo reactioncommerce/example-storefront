@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import { observable, action, computed } from "mobx";
@@ -75,16 +75,14 @@ class VariantList extends Component {
     const options = (selectedVariant.options.length) ? selectedVariant.options : null;
 
     return (
-      <React.Fragment>
+      <Fragment>
         {options &&
-          <div>
+          <Fragment>
             <Divider />
-            <div>
-              <OptionsList options={options} />
-            </div>
-          </div>
+            <OptionsList options={options} />
+          </Fragment>
         }
-      </React.Fragment>
+      </Fragment>
     );
   }
 
