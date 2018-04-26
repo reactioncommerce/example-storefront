@@ -7,7 +7,7 @@ function getTwitterMeta(props) {
 
   const meta = [
     { property: "twitter:card", content: "summary" },
-    { property: "twitter:creator", content: props.creator },
+    { property: "twitter:site", content: props.siteName },
     { property: "twitter:url", content: url },
     { property: "twitter:title", content: props.title },
     { property: "twitter:description", content: props.description }
