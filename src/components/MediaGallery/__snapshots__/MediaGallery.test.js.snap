@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="MuiGrid-container-4 inject-MediaGallery-with-uiStore-root-1"
+>
+  <div
+    className="MuiGrid-item-5 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-12-54"
+  >
+    <div
+      className="inject-MediaGallery-with-uiStore-featured-2"
+    >
+      <img
+        alt=""
+        className="inject-MediaGallery-with-uiStore-featuredImage-3"
+        src="/resources/placeholder.gif"
+      />
+    </div>
+    <div
+      className="MuiGrid-container-4 MuiGrid-spacing-xs-8-25"
+    >
+      <div
+        className="MuiGrid-item-5 MuiGrid-grid-xs-3-32 MuiGrid-grid-sm-2-44"
+      >
+        <button
+          className="MuiButtonBase-root-96 inject-MediaGalleryItem-with-uiStore-root-94"
+          disabled={undefined}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <img
+            alt=""
+            className="inject-MediaGalleryItem-with-uiStore-img-95"
+            src="/resources/placeholder.gif"
+          />
+          <span
+            className="MuiTouchRipple-root-99"
+          />
+        </button>
+      </div>
+      <div
+        className="MuiGrid-item-5 MuiGrid-grid-xs-3-32 MuiGrid-grid-sm-2-44"
+      >
+        <button
+          className="MuiButtonBase-root-96 inject-MediaGalleryItem-with-uiStore-root-94"
+          disabled={undefined}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <img
+            alt=""
+            className="inject-MediaGalleryItem-with-uiStore-img-95"
+            src="/resources/placeholder.gif"
+          />
+          <span
+            className="MuiTouchRipple-root-99"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
