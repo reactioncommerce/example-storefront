@@ -6,11 +6,10 @@ import { observer } from "mobx-react";
 
 import { Router } from "routes";
 import VariantItem from "components/VariantItem";
+import OptionsList from "components/OptionsList";
 
 const styles = (theme) => ({
-  variantsList: {
-    listStyle: "none",
-    paddingLeft: 0
+  variantsContainer: {
   },
   variantItem: {
     marginTop: theme.spacing.unit * 1.25,
@@ -58,22 +57,40 @@ class VariantList extends Component {
     const active = (this.selectedVariant === variant._id);
 
     return (
-      <li className={variantItem} key={variant._id}>
+      <div className={variantItem} key={variant._id}>
         <VariantItem
           active={active}
           handleClick={this.handleClick}
           variant={variant}
         />
-      </li>
+      </div>
+    );
+  }
+
+  renderOptionsList = () => {
+    const selectedVariant = this.props.variants.find((variant) => variant._id === this.selectedVariant);
+
+    // If currently selected variant has options, then render them.
+    const options = (selectedVariant.options.length) ? selectedVariant.options : null;
+
+    return (
+      <React.Fragment>
+        {options &&
+          <div>
+            <OptionsList options={options} />
+          </div>
+        }
+      </React.Fragment>
     );
   }
 
   render() {
     const { classes: { variantsList }, variants } = this.props;
     return (
-      <ul className={variantsList}>
+      <div className="variantsContainer">
         {variants.map(this.renderVariant)}
-      </ul>
+        {this.renderOptionsList()}
+      </div>
     );
   }
 }

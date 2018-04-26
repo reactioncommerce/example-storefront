@@ -5,7 +5,6 @@ import { observable, action, computed } from "mobx";
 import { observer } from "mobx-react";
 
 import ProductDetailOption from "components/ProductDetailOption";
-import options from "./__mocks__/options.mock";
 
 const styles = () => ({
   optionsContainer: {
@@ -20,7 +19,7 @@ const styles = () => ({
 class OptionsList extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    options: PropTypes.object
+    options: PropTypes.arrayOf(PropTypes.object)
   }
 
   @observable _selectedOption = null;
@@ -55,7 +54,7 @@ class OptionsList extends Component {
   render() {
     return (
       <div className={this.props.classes.optionsContainer}>
-        {options.map(this.renderProductOption)}
+        {this.props.options.map(this.renderProductOption)}
       </div>
     );
   }

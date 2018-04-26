@@ -69,7 +69,6 @@ class ProductDetail extends Component {
               vendor={catalogProduct.vendor}
             />
             <VariantList product={catalogProduct} variants={variants}/>
-            <OptionsList />
           </Grid>
         </Grid>
       </div>
