@@ -19,6 +19,11 @@ const styles = () => ({
   },
   pdpContainer: {
     maxWidth: 1920
+  },
+  panel: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: "auto"
   }
 });
 
@@ -48,12 +53,12 @@ class ProductDetail extends Component {
           <meta name="description" content={catalogProduct.description} />
         </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
-          <Grid item sm={6}>
+          <Grid className={classes.panel} item sm={6}>
             {/* TODO: Left Content, remove when adding initial components */}
             <Typography variant="display1">Left Container</Typography>
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid className={classes.panel} item sm={6}>
             <ProductDetailTitle
               pageTitle={catalogProduct.pageTitle}
               title={catalogProduct.title}
