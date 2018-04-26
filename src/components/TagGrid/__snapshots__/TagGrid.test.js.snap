@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<section>
+  <h2
+    className="MuiTypography-root-3 MuiTypography-title-9 TagGrid-title-1"
+  >
+    Tags
+  </h2>
+  <div
+    className="MuiGrid-container-27 MuiGrid-spacing-xs-8-48"
+  >
+    <div
+      className="MuiGrid-item-28"
+    >
+      <a
+        className="Link-link-117"
+        href="/tag/shoes"
+        onClick={[Function]}
+      >
+        <div
+          className="MuiChip-root-118 TagGrid-chip-2"
+          onClick={undefined}
+          onKeyDown={[Function]}
+          role="button"
+          tabIndex={-1}
+        >
+          <span
+            className="MuiChip-label-123"
+          >
+            Shoes
+          </span>
+        </div>
+      </a>
+    </div>
+    <div
+      className="MuiGrid-item-28"
+    >
+      <a
+        className="Link-link-117"
+        href="/tag/shop"
+        onClick={[Function]}
+      >
+        <div
+          className="MuiChip-root-118 TagGrid-chip-2"
+          onClick={undefined}
+          onKeyDown={[Function]}
+          role="button"
+          tabIndex={-1}
+        >
+          <span
+            className="MuiChip-label-123"
+          >
+            Shop
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+`;
