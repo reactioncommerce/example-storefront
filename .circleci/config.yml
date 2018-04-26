@@ -1,0 +1,212 @@
+# This CircleCI configuration uses workflows to fan-out to multiple jobs.  The
+# workflow is Dockerized. The first job builds the Docker image which is used
+# in all future steps.
+#
+#  Assumes that the Docker image is published to Docker Hub.
+version: 2
+
+# The following stanza defines a map named defaults with a variable that may be
+# inserted using the YAML merge (<<: *) key later in the file to save some
+# typing. See http://yaml.org/type/merge.html for details.
+defaults: &defaults
+  environment:
+    - DOCKER_REPOSITORY: "reactioncommerce/reaction-next-starterkit"
+    - DOCKER_NAMESPACE: "reactioncommerce"
+    - DOCKER_NAME: "reaction-next-starterkit"
+
+  docker:
+    - image: circleci/node:8-stretch
+
+jobs:
+  docker-build:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Discover Docker Tags
+          command: |
+            mkdir -p docker-cache
+            .circleci/bin/docker-tags "$CIRCLE_SHA1" "$CIRCLE_BRANCH" \
+              > docker-cache/docker-tags.txt
+            cat docker-cache/docker-tags.txt
+      - run:
+          name: Docker Build
+          command: |
+            docker build \
+              --build-arg "BUILD_COMPARE_URL=$CIRCLE_COMPARE_URL" \
+              --build-arg "BUILD_DATE=$(date -u '+%Y-%m-%dT%H:%M:%SZ')" \
+              --build-arg "BUILD_ENV=test" \
+              --build-arg "BUILD_NUMBER=$CIRCLE_BUILD_NUM" \
+              --build-arg "BUILD_PLATFORM=circleci" \
+              --build-arg "BUILD_PLATFORM_PROJECT_REPONAME=$CIRCLE_PROJECT_REPONAME" \
+              --build-arg "BUILD_PLATFORM_PROJECT_USERNAME=$CIRCLE_PROJECT_USERNAME" \
+              --build-arg "BUILD_PULL_REQUESTS=$CI_PULL_REQUESTS" \
+              --build-arg "BUILD_TRIGGERED_BY_TAG=$CIRCLE_TAG" \
+              --build-arg "BUILD_URL=$CIRCLE_BUILD_URL" \
+              --build-arg "CIRCLE_WORKFLOW_ID=$CIRCLE_WORKFLOW_ID" \
+              --build-arg "CIRCLE_WORKFLOW_JOB_ID=$CIRCLE_WORKFLOW_JOB_ID" \
+              --build-arg "CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS=$CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS" \
+              --build-arg "CIRCLE_WORKSPACE_ID=$CIRCLE_WORKSPACE_ID" \
+              --build-arg "GIT_REPOSITORY_URL=$CIRCLE_REPOSITORY_URL" \
+              --build-arg "GIT_SHA1=$CIRCLE_SHA1" \
+              --build-arg "LICENSE=GPL-3.0-only" \
+              --build-arg "VCS_REF=$CIRCLE_SHA1" \
+              --build-arg "VENDOR=Reaction Commerce" \
+              -t "$DOCKER_REPOSITORY:$CIRCLE_SHA1" .
+            mkdir -p docker-cache
+            docker save \
+              -o docker-cache/docker-image.tar \
+              "$DOCKER_REPOSITORY:$CIRCLE_SHA1"
+      - run:
+          name: Save Test .env for Workspace Jobs
+          command: cp .env.example docker-cache/.env
+      - persist_to_workspace:
+          root: docker-cache
+          paths:
+            - docker-image.tar
+            - docker-tags.txt
+            - .env
+
+  docker-push:
+    <<: *defaults
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: docker-cache
+      - run:
+          name: Load Docker Image
+          command: |
+            docker load < docker-cache/docker-image.tar
+      - run:
+          name: Tag Docker Image
+          command: |
+            cat docker-cache/docker-tags.txt \
+              | xargs -t -I % \
+                docker tag \
+                  "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
+                  "$DOCKER_REPOSITORY:%"
+      - run:
+          # Creates a new Docker repository. This is not strictly required if
+          # the Docker Hub defaults are set appropriately.
+          name: Create Private Docker Hub Repository
+          command: |
+            # Fetch a login token from environment credentials.
+            TOKEN=$(curl \
+              -H "Content-Type: application/json" \
+              -X POST  \
+              -d "{\"username\":\"$DOCKER_USER\",\"password\":\"$DOCKER_PASS\"}" \
+              -s \
+              https://hub.docker.com/v2/users/login/ \
+                | jq -r .token)
+            # Try to create the private repo. It exits with success on fail.
+            curl \
+             -H "Authorization: JWT $TOKEN" \
+             -H "Content-Type: application/json" \
+             -d "{\"namespace\":\"$DOCKER_NAMESPACE\",
+                  \"name\":\"$DOCKER_NAME\",
+                  \"description\":\"$DESCRIPTION\",
+                  \"full_description\":\"\",
+                  \"is_private\":true}" \
+            https://hub.docker.com/v2/repositories/
+      - run:
+          name: Docker Push
+          command: |
+            docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+            docker push "$DOCKER_REPOSITORY:$CIRCLE_SHA1"
+            cat docker-cache/docker-tags.txt \
+              | xargs -t -I % \
+                docker push "$DOCKER_REPOSITORY:%"
+  lint:
+    <<: *defaults
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: docker-cache
+      - run:
+          name: Load Docker Image
+          command: |
+            docker load < docker-cache/docker-image.tar
+      - run:
+          name: Lint
+          command: |
+            docker run \
+              --env-file docker-cache/.env \
+              --name reactionapp_next_starterkit \
+              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
+              yarn run lint
+  test:
+    <<: *defaults
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: docker-cache
+      - run:
+          name: Load Docker Image
+          command: |
+            docker load < docker-cache/docker-image.tar
+      - run:
+          name: Test
+          command: |
+            docker run \
+              --env-file docker-cache/.env \
+              --name reactionapp_next_starterkit \
+              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
+              yarn run test:ci
+      - run:
+          name: Copy test artifacts from Remote Docker
+          command: |
+            docker cp \
+              reactionapp_next_starterkit:/usr/local/src/reaction-app/reports \
+              reports
+      - store_test_results:
+          path: reports/junit
+      - store_artifacts:
+          path: reports
+
+  snyk-security:
+    <<: *defaults
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: docker-cache
+      - run:
+          name: Load Docker Image
+          command: |
+            docker load < docker-cache/docker-image.tar
+      - run:
+          name: Snyk
+          command: |
+            # Snyk doesn't look up the directory tree for node_modules as
+            # NodeJS does so we have to take some extra measures to test in the
+            # Docker image. Copy package.json up a directory so that it is a
+            # sibling to node_modules, then run snyk test.
+            docker run \
+              --env-file docker-cache/.env \
+              -e "SNYK_TOKEN=$SNYK_TOKEN" \
+              --name reactionapp_next_starterkit \
+              -w /usr/local/src \
+              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
+              sh -c "cp reaction-app/package.json ./ && snyk test"
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - docker-build:
+          context: reaction-build-read
+      - docker-push:
+          context: reaction-publish-docker
+          requires:
+            - docker-build
+      - lint:
+          context: reaction-validation
+          requires:
+            - docker-build
+      - test:
+          context: reaction-validation
+          requires:
+            - docker-build
+      - snyk-security:
+          context: reaction-validation
+          requires:
+            - docker-build

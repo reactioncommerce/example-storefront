@@ -15,7 +15,7 @@ import { action, computed, observable } from "mobx";
 import { withStyles } from "material-ui/styles";
 import { Router } from "../../routes";
 
-const styles = theme => ({
+const styles = (theme) => ({
   popover: {
     maxWidth: "100vw",
     padding: theme.spacing.unit * 2,
