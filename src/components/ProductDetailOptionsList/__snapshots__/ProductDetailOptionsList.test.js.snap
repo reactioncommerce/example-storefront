@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="OptionsList-optionsContainer-1"
+>
+  <div
+    className="ProductDetailOption-variantOptionContainer-2"
+  >
+    <button
+      className="MuiButtonBase-root-6 ProductDetailOption-optionButton-3"
+      disabled={undefined}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiTypography-root-9 MuiTypography-body1-18 ProductDetailOption-optionText-4"
+      >
+        Blue
+      </span>
+    </button>
+  </div>
+  <div
+    className="ProductDetailOption-variantOptionContainer-2"
+  >
+    <button
+      className="MuiButtonBase-root-6 ProductDetailOption-optionButton-3"
+      disabled={undefined}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiTypography-root-9 MuiTypography-body1-18 ProductDetailOption-optionText-4"
+      >
+        Red
+      </span>
+    </button>
+  </div>
+</div>
+`;
