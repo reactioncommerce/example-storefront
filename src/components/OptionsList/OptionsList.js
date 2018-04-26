@@ -1,25 +1,62 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withStyles } from "material-ui/styles";
+import { observable, action, computed } from "mobx";
+import { observer } from "mobx-react";
 
 import ProductDetailOption from "components/ProductDetailOption";
 import options from "./__mocks__/options.mock";
 
+const styles = () => ({
+  optionsContainer: {
+    display: "flex",
+    flex: "1 1 auto",
+    flexWrap: "wrap"
+  }
+});
+
+@withStyles(styles, { withTheme: true })
+@observer
 class OptionsList extends Component {
   static propTypes = {
-    productOptions: PropTypes.object
+    classes: PropTypes.object.isRequired,
+    options: PropTypes.object
   }
 
-  renderProductOption = (option) => (
-    <li>
-      <ProductDetailOption option={option} />
-    </li>
-  )
+  @observable _selectedOption = null;
+
+  @computed
+  get selectedOption() {
+    return this._selectedOption;
+  }
+
+  set selectedOption(value) {
+    this._selectedOption = value;
+  }
+
+  @action
+  setOption = (option) => {
+    this.selectedOption = option._id;
+  }
+
+  renderProductOption = (option) => {
+    const isSelected = (this._selectedOption === option._id);
+
+    return (
+      <ProductDetailOption
+        onClick={this.setOption}
+        isSelected={isSelected}
+        key={option._id}
+        option={option}
+      />
+    );
+  }
 
   render() {
     return (
-      <ul>
+      <div className={this.props.classes.optionsContainer}>
         {options.map(this.renderProductOption)}
-      </ul>
+      </div>
     );
   }
 }
