@@ -19,17 +19,19 @@ import ProductGrid from "components/ProductGrid";
 @inject("uiStore")
 @observer
 
-class Shop extends Component {
+class TagShop extends Component {
   static propTypes = {
     catalogItems: PropTypes.array.isRequired
   };
 
   renderHelmet() {
-    const { shop } = this.props;
+    const { shop, routingStore } = this.props;
+    const title = routingStore.query.slug || shop.name;
+    const pageTitle = title[0].toUpperCase() + title.slice(1);
 
     return (
       <Helmet>
-        <title>{shop.name}</title>
+        <title>{pageTitle}</title>
         <meta name="description" content={shop.description} />
       </Helmet>
     );
@@ -46,4 +48,4 @@ class Shop extends Component {
   }
 }
 
-export default Shop;
+export default TagShop;
