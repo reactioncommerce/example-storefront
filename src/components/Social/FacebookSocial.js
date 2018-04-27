@@ -6,7 +6,6 @@ function getFacebookMeta(props) {
   const meta = [
     { "property": "og:type", "content": "article" },
     { "property": "og:site_name", "content": props.siteName },
-    { "property": "og:url", "content": props.url },
     { "property": "og:title", "content": props.title },
     { "property": "og:description", "content": props.description }
   ];

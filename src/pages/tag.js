@@ -39,6 +39,12 @@ class TagShop extends Component {
 
   render() {
     const { shop } = this.props;
+    const meta = {
+      "description": shop.description,
+      "siteName": shop.name,
+      "title": shop.name
+    }
+
     return (
       <Layout title="Reaction Shop">
         {this.renderHelmet()}

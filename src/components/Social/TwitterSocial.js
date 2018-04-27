@@ -3,12 +3,9 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 
 function getTwitterMeta(props) {
-  const url = encodeURIComponent(props.url);
-
   const meta = [
     { property: "twitter:card", content: "summary" },
     { property: "twitter:site", content: props.siteName },
-    { property: "twitter:url", content: url },
     { property: "twitter:title", content: props.title },
     { property: "twitter:description", content: props.description }
   ];
