@@ -15,6 +15,7 @@ import ProductGrid from "components/ProductGrid";
 @withCatalogItems
 @withRoot
 @inject("shop")
+@inject("routingStore")
 @inject("uiStore")
 @observer
 
