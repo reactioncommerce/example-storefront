@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import renderer from "react-test-renderer";
-import TwiterSocial from "./TwitterSocial";
+import TwitterSocial from "./TwitterSocial";
 
 const meta = {
   "description": "Shop Description",
