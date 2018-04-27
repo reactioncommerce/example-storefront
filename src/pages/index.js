@@ -23,7 +23,10 @@ class Shop extends Component {
   render() {
     return (
       <Layout title="Reaction Shop">
-        <ProductGrid catalogItems={this.props.catalogItems}/>
+        <ProductGrid
+          catalogItems={this.props.catalogItems}
+          pageInfo={this.props.catalogItemsPageInfo}
+        />
       </Layout>
     );
   }
