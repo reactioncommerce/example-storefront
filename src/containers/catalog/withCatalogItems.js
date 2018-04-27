@@ -24,7 +24,7 @@ export default (Component) => (
             const { catalogItems } = catalogData || {};
 
             return (
-              <Component catalogItems={catalogItems.edges} />
+              <Component {...this.props} catalogItems={catalogItems.edges} />
             );
           }}
         </Query>
