@@ -1,0 +1,52 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.11.0
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  'npm:debug:20170905':
+    - next > webpack > watchpack > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.216Z'
+  'npm:tough-cookie:20170905':
+    - next > webpack > watchpack > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.216Z'
+  'npm:deep-extend:20180409':
+    - next > @zeit/check-updates > update-notifier > latest-version > package-json > registry-auth-token > rc > deep-extend:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.216Z'
+    - next > @zeit/check-updates > update-notifier > latest-version > package-json > registry-url > rc > deep-extend:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.217Z'
+    - next > webpack > watchpack > chokidar > fsevents > node-pre-gyp > rc > deep-extend:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.217Z'
+  'npm:hoek:20180212':
+    - next > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > hoek:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.217Z'
+    - next > webpack > watchpack > chokidar > fsevents > node-pre-gyp > request > hawk > hoek:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.217Z'
+    - next > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.217Z'
+    - next > webpack > watchpack > chokidar > fsevents > node-pre-gyp > request > hawk > boom > hoek:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.217Z'
+    - next > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.217Z'
+    - next > webpack > watchpack > chokidar > fsevents > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.217Z'
+    - next > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.217Z'
+    - next > webpack > watchpack > chokidar > fsevents > node-pre-gyp > request > hawk > sntp > hoek:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.217Z'
+  'npm:sshpk:20180409':
+    - next > webpack > watchpack > chokidar > fsevents > node-pre-gyp > request > http-signature > sshpk:
+        reason: Upgrade unavailable
+        expires: '2018-05-27T16:30:45.217Z'
+patch: {}
