@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import { observable, action, computed } from "mobx";
 import { observer } from "mobx-react";
-
 import ProductDetailOption from "components/ProductDetailOption";
 
 const styles = () => ({
@@ -34,7 +33,7 @@ class OptionsList extends Component {
   }
 
   @action
-  setOption = (option) => {
+  selectOption = (option) => {
     this.selectedOption = option._id;
   }
 
@@ -43,7 +42,7 @@ class OptionsList extends Component {
 
     return (
       <ProductDetailOption
-        onClick={this.setOption}
+        onClick={this.selectOption}
         isSelected={isSelected}
         key={option._id}
         option={option}

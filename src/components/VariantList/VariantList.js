@@ -20,7 +20,7 @@ const styles = (theme) => ({
 
 @withStyles(styles)
 @observer
-class VariantList extends Component {
+export default class VariantList extends Component {
   static propTypes = {
     classes: PropTypes.object,
     product: PropTypes.object.isRequired,
@@ -38,6 +38,7 @@ class VariantList extends Component {
   @action
   handleClick = (variant) => {
     this._selectedVariant = variant._id;
+
     Router.pushRoute("product", {
       productSlug: this.props.product.slug,
       variantId: variant._id
@@ -74,14 +75,12 @@ class VariantList extends Component {
     // If currently selected variant has options, then render them.
     const options = (selectedVariant.options.length) ? selectedVariant.options : null;
 
+    if (!options) return null;
+
     return (
       <Fragment>
-        {options &&
-          <Fragment>
-            <Divider />
-            <ProductDetailOptionsList options={options} />
-          </Fragment>
-        }
+        <Divider />
+        <ProductDetailOptionsList options={options} />
       </Fragment>
     );
   }
@@ -96,5 +95,3 @@ class VariantList extends Component {
     );
   }
 }
-
-export default VariantList;

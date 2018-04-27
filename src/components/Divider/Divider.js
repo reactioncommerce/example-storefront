@@ -13,7 +13,7 @@ const styles = (theme) => ({
     flexBasis: "auto",
     textTransform: "uppercase",
     fontWeight: theme.typography.fontWeightBold,
-    fontSize: "12px",
+    fontSize: "0.7rem",
     paddingRight: theme.spacing.unit * 1.25,
     paddingLeft: theme.spacing.unit * 1.25,
     letterSpacing: "0.1rem"
@@ -28,6 +28,11 @@ const styles = (theme) => ({
   }
 });
 
+/**
+ * A divider for variant options
+ * @export
+ * @class Divider
+ */
 @withStyles(styles)
 export default class Divider extends Component {
   static propTypes = {

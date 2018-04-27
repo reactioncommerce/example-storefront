@@ -4,11 +4,10 @@ import { withStyles } from "material-ui/styles";
 import ButtonBase from "material-ui/ButtonBase";
 import Typography from "material-ui/Typography";
 import classNames from "classnames";
-
 import styles from "./styles";
 
 @withStyles(styles)
-class ProductDetailOption extends Component {
+export default class ProductDetailOption extends Component {
   static propTypes = {
     classes: PropTypes.object,
     isSelected: PropTypes.bool,
@@ -40,5 +39,3 @@ class ProductDetailOption extends Component {
     );
   }
 }
-
-export default ProductDetailOption;
