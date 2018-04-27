@@ -14,6 +14,22 @@ export default {
     min: 12.99,
     max: 330
   },
+  tags: [
+    {
+      node: {
+        position: null,
+        name: "Shoes",
+        slug: "shoes"
+      }
+    },
+    {
+      node: {
+        position: null,
+        name: "Shop",
+        slug: "shop"
+      }
+    }
+  ],
   variants: [
     {
       _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OjZxaXFQd0JrZUpkdGRRYzRH",
