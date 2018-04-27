@@ -1,5 +1,11 @@
-query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt) { 
-  catalogItems(shopIds: [$shopId], first: $first) {
+query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt, $last:  ConnectionLimitInt, $before: ConnectionCursor, $after: ConnectionCursor) {
+  catalogItems(shopIds: [$shopId], first: $first, last: $last, before: $before, after: $after) {
+    pageInfo {
+      endCursor
+      startCursor
+      hasNextPage
+      hasPreviousPage
+    }
     edges {
       cursor
       node {
