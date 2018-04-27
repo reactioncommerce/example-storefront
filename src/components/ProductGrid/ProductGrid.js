@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "material-ui/Grid";
-
 import ProductItem from "components/ProductItem";
+import PageStepper from "components/PageStepper";
 
-class ProductGrid extends Component {
+export default class ProductGrid extends Component {
   static propTypes = {
     catalogItems: PropTypes.arrayOf(PropTypes.object)
   };
@@ -42,16 +42,18 @@ class ProductGrid extends Component {
   }
 
   render() {
-    const { catalogItems } = this.props;
+    const { catalogItems, pageInfo } = this.props;
+
+    if (!catalogItems) return null;
 
     return (
       <section>
         <Grid container spacing={24}>
           {(catalogItems && catalogItems.length) ? catalogItems.map(this.renderProduct) : null }
         </Grid>
+
+        <PageStepper pageInfo={pageInfo} />
       </section>
     );
   }
 }
-
-export default ProductGrid;
