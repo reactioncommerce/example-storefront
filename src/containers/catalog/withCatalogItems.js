@@ -17,14 +17,64 @@ export default (Component) => (
       const { primaryShopId } = this.props || {};
 
       return (
-        <Query query={catalogItemsQuery} variables={{ shopId: primaryShopId, first: 25 }}>
-          {({ loading: loadingShopData, data: catalogData }) => {
+        <Query query={catalogItemsQuery} variables={{ shopId: primaryShopId, first: 2 }}>
+          {({ loading: loadingShopData, data: catalogData, fetchMore }) => {
             if (loadingShopData) return null;
 
             const { catalogItems } = catalogData || {};
 
             return (
-              <Component catalogItems={catalogItems.edges} />
+              <Component
+                catalogItems={catalogItems && catalogItems.edges}
+                catalogItemsPageInfo={{
+                  ...((catalogItems && catalogItems.pageInfo) || {}),
+                  loadPreviousPage: () => {
+                    console.log(catalogItems.pageInfo.startCursor);
+
+                    fetchMore({
+                      variables: {
+                        shopId: primaryShopId,
+                        last: 4,
+                        first: null,
+                        before: catalogItems.pageInfo.endCursor
+                      },
+                      updateQuery: (previousResult, { fetchMoreResult }) => {
+                        const { catalogItems: newCatalogItems } = fetchMoreResult;
+                        console.log("fetchMoreResult", fetchMoreResult);
+
+                        // Return with additional results
+                        if (newCatalogItems.edges.length) {
+                          return fetchMoreResult;
+                        }
+
+                        // Send the previous result if the new result contians no additional data
+                        return previousResult;
+                      }
+                    });
+                  },
+                  loadNextPage: () => {
+                    fetchMore({
+                      variables: {
+                        shopId: primaryShopId,
+                        first: 2,
+                        after: catalogItems.pageInfo.endCursor
+                      },
+                      updateQuery: (previousResult, { fetchMoreResult }) => {
+                        const { catalogItems: newCatalogItems } = fetchMoreResult;
+                        console.log("fetchMoreResult", fetchMoreResult);
+
+                        // Return with additional results
+                        if (newCatalogItems.edges.length) {
+                          return fetchMoreResult;
+                        }
+
+                        // Send the previous result if the new result contians no additional data
+                        return previousResult;
+                      }
+                    });
+                  }
+                }}
+              />
             );
           }}
         </Query>
