@@ -17,7 +17,6 @@ import ProductGrid from "components/ProductGrid";
 @inject("shop")
 @inject("uiStore")
 @observer
-
 class Shop extends Component {
   static propTypes = {
     catalogItems: PropTypes.array.isRequired
