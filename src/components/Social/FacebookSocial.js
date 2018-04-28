@@ -13,6 +13,10 @@ function getFacebookMeta(props) {
   return meta;
 }
 
+/**
+ * Add Facebook Open Graph meta data to react-helmet
+ * @class FacebookSocial
+ */
 export default class FacebookSocial extends Component {
   render() {
     return (

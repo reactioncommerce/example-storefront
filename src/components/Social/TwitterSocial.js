@@ -26,6 +26,10 @@ function getTwitterMeta(props) {
   return meta;
 }
 
+/**
+ * Add Twitter meta data to react-helmet
+ * @class TwitterSocial
+ */
 export default class TwitterSocial extends Component {
   render() {
     return (
