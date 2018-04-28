@@ -20,7 +20,9 @@ import { FacebookSocial, TwitterSocial } from "components/Social";
 @observer
 export default class TagShop extends Component {
   static propTypes = {
-    catalogItems: PropTypes.array.isRequired
+    catalogItems: PropTypes.array.isRequired,
+    routingStore: PropTypes.object,
+    shop: PropTypes.object
   };
 
   renderHelmet() {
@@ -39,9 +41,9 @@ export default class TagShop extends Component {
   render() {
     const { shop } = this.props;
     const meta = {
-      "description": shop.description,
-      "siteName": shop.name,
-      "title": shop.name
+      description: shop.description,
+      siteName: shop.name,
+      title: shop.name
     }
 
     return (
@@ -49,7 +51,7 @@ export default class TagShop extends Component {
         {this.renderHelmet()}
         <FacebookSocial settings={meta} />
         <TwitterSocial settings={meta} />
-        <ProductGrid catalogItems={this.props.catalogItems}/>
+        <ProductGrid catalogItems={this.props.catalogItems} />
       </Layout>
     );
   }

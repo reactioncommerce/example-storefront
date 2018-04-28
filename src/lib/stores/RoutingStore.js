@@ -1,5 +1,4 @@
-import { observable, computed, action } from "mobx";
-import getConfig from "next/config";
+import { observable, computed } from "mobx";
 
 export default class RoutingStore {
   @observable _pathname = "";
