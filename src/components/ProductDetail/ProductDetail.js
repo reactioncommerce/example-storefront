@@ -2,22 +2,26 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
-import Typography from "material-ui/Typography";
 import Helmet from "react-helmet";
 
 // PDP Components
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
 import ProductDetailInfo from "components/ProductDetailInfo";
+import MediaGallery from "components/MediaGallery";
+import TagGrid from "components/TagGrid";
 
-const styles = () => ({
+const styles = (theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
     flexGrow: 1
   },
   pdpContainer: {
-    maxWidth: 1920
+    maxWidth: 1440
+  },
+  section: {
+    marginBottom: theme.spacing.unit * 2
   }
 });
 
@@ -47,12 +51,16 @@ class ProductDetail extends Component {
           <meta name="description" content={catalogProduct.description} />
         </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
-          <Grid item sm={6}>
-            {/* TODO: Left Content, remove when adding initial components */}
-            <Typography variant="display1">Left Container</Typography>
+          <Grid item xs={12} sm={6}>
+            <div className={classes.section}>
+              <MediaGallery mediaItems={catalogProduct.media} />
+            </div>
+            <div className={classes.section}>
+              <TagGrid tags={catalogProduct.tags} />
+            </div>
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <ProductDetailTitle
               pageTitle={catalogProduct.pageTitle}
               title={catalogProduct.title}
