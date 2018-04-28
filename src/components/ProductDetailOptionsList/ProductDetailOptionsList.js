@@ -4,6 +4,7 @@ import Grid from "material-ui/Grid";
 import { withStyles } from "material-ui/styles";
 import { observable, action, computed } from "mobx";
 import { observer } from "mobx-react";
+import { Router } from "routes";
 import ProductDetailOption from "components/ProductDetailOption";
 
 const styles = (theme) => ({
@@ -19,6 +20,7 @@ export default class OptionsList extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     options: PropTypes.arrayOf(PropTypes.object),
+    productSlug: PropTypes.string,
     theme: PropTypes.object
   }
 
@@ -37,6 +39,11 @@ export default class OptionsList extends Component {
   selectOption = (option) => {
     this.selectedOption = option._id;
     this.forceUpdate();
+
+    Router.pushRoute("product", {
+      productSlug: this.props.productSlug,
+      variantId: option._id
+    });
   }
 
   render() {

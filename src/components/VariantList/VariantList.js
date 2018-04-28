@@ -73,14 +73,17 @@ export default class VariantList extends Component {
     const selectedVariant = this.props.variants.find((variant) => variant._id === this.selectedVariant);
 
     // If currently selected variant has options, then render them.
-    const options = (selectedVariant.options.length) ? selectedVariant.options : null;
+    const options = (Array.isArray(selectedVariant.options)) ? selectedVariant.options : null;
 
     if (!options) return null;
 
     return (
       <Fragment>
         <Divider />
-        <ProductDetailOptionsList options={options} />
+        <ProductDetailOptionsList
+          productSlug={this.props.product.slug}
+          options={options}
+        />
       </Fragment>
     );
   }
