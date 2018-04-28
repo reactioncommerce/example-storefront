@@ -1,27 +1,21 @@
 export default (theme) => ({
-  variantOptionContainer: {
-    display: "flex",
-    width: `${theme.spacing.unit * 3.125}%`,
-    maxWidth: `${theme.spacing.unit * 3.125}%`,
-    padding: theme.spacing.unit * 1.25
-  },
   optionButton: {
-    "flex": "1 1 auto",
     "fontWeight": 600,
-    "padding": theme.spacing.unit * 1.25,
+    "padding": theme.spacing.unit,
     "borderRadius": "2px",
     "backgroundColor": theme.palette.primary.contrastText,
     "border": "1px solid",
+    "minWidth": 150,
     "borderColor": theme.palette.primary.borderColor,
     "&:hover": {
-      backgroundColor: theme.palette.reaction.activeElementBackground
+      borderColor: theme.palette.reaction.activeElementBorderColor
     }
   },
   optionText: {
     fontWeight: 500,
-    fontSize: "14px"
+    fontSize: "0.9rem"
   },
   isSelected: {
-    backgroundColor: theme.palette.reaction.activeElementBackground
+    borderColor: theme.palette.reaction.activeElementBorderColor
   }
 });

@@ -10,9 +10,9 @@ import styles from "./styles";
 export default class ProductDetailOption extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    isSelected: PropTypes.bool,
     onClick: PropTypes.func.isRequired,
-    option: PropTypes.object
+    option: PropTypes.object,
+    selectedOption: PropTypes.string
   }
 
   handleOnClick = () => {
@@ -21,21 +21,26 @@ export default class ProductDetailOption extends Component {
 
   render() {
     const {
-      classes: { variantOptionContainer, optionButton, optionText, isSelected }
+      classes: { optionButton, optionText, isSelected },
+      selectedOption,
+      option
     } = this.props;
 
+    const active = (selectedOption === option._id) || false;
+
     return (
-      <div className={variantOptionContainer}>
-        <ButtonBase
-          onClick={this.handleOnClick}
-          className={classNames(optionButton, { [isSelected]: this.props.isSelected })}
-          disableRipple
-        >
-          <Typography className={optionText} component="span" variant="body1">
-            {this.props.option.optionTitle}
-          </Typography>
-        </ButtonBase>
-      </div>
+      <ButtonBase
+        onClick={this.handleOnClick}
+        className={classNames(
+          optionButton,
+          { [isSelected]: active }
+        )
+        }
+      >
+        <Typography className={optionText} component="span" variant="body1">
+          {option.optionTitle}
+        </Typography>
+      </ButtonBase>
     );
   }
 }

@@ -1,24 +1,25 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Grid from "material-ui/Grid";
 import { withStyles } from "material-ui/styles";
 import { observable, action, computed } from "mobx";
 import { observer } from "mobx-react";
 import ProductDetailOption from "components/ProductDetailOption";
 
-const styles = () => ({
-  optionsContainer: {
-    display: "flex",
-    flex: "1 1 auto",
-    flexWrap: "wrap"
+const styles = (theme) => ({
+  root: {
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit
   }
 });
 
-@withStyles(styles)
 @observer
-class OptionsList extends Component {
+@withStyles(styles, { withTheme: true })
+export default class OptionsList extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    options: PropTypes.arrayOf(PropTypes.object)
+    options: PropTypes.arrayOf(PropTypes.object),
+    theme: PropTypes.object
   }
 
   @observable _selectedOption = null;
@@ -35,28 +36,27 @@ class OptionsList extends Component {
   @action
   selectOption = (option) => {
     this.selectedOption = option._id;
-  }
-
-  renderProductOption = (option) => {
-    const isSelected = (this._selectedOption === option._id);
-
-    return (
-      <ProductDetailOption
-        onClick={this.selectOption}
-        isSelected={isSelected}
-        key={option._id}
-        option={option}
-      />
-    );
+    this.forceUpdate();
   }
 
   render() {
+    const { classes: { root }, options, theme } = this.props;
+
+    if (!Array.isArray(options)) return null;
+
     return (
-      <div className={this.props.classes.optionsContainer}>
-        {this.props.options.map(this.renderProductOption)}
-      </div>
+      <Grid container className={root} spacing={theme.spacing.unit}>
+        {options.map((option) => (
+          <Grid item key={option._id}>
+            <ProductDetailOption
+              onClick={this.selectOption}
+              selectedOption={this.selectedOption}
+              option={option}
+            />
+          </Grid>
+        ))
+        }
+      </Grid>
     );
   }
 }
-
-export default OptionsList;

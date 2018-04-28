@@ -7,11 +7,8 @@ export default (theme) => ({
     "borderRadius": "2px",
     "backgroundColor": theme.palette.primary.contrastText,
     "border": "1px solid",
-    "borderColor": theme.palette.primary.contrastText,
-    "paddingTop": theme.spacing.unit * 1.25,
-    "paddingBottom": theme.spacing.unit * 1.25,
-    "paddingLeft": theme.spacing.unit * 2.5,
-    "paddingRight": theme.spacing.unit * 2.5,
+    "borderColor": theme.palette.primary.borderColor,
+    "padding": theme.spacing.unit * 2,
     "&:hover": {
       border: "1px solid",
       borderColor: theme.palette.reaction.activeElementBorderColor,
