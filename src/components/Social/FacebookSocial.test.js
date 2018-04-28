@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import renderer from "react-test-renderer";
 import FacebookSocial from "./FacebookSocial";
 
 const meta = {
-  "description": "Shop Description",
-  "siteName": "Shop Name",
-  "title": "Shop Title"
+  description: "Shop Description",
+  siteName: "Shop Name",
+  title: "Shop Title"
 };
 
 
