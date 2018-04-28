@@ -3,9 +3,9 @@ import renderer from "react-test-renderer";
 import TwitterSocial from "./TwitterSocial";
 
 const meta = {
-  "description": "Shop Description",
-  "siteName": "Shop Name",
-  "title": "Shop Title"
+  description: "Shop Description",
+  siteName: "Shop Name",
+  title: "Shop Title"
 };
 
 

@@ -5,7 +5,7 @@ import Helmet from "react-helmet";
 function getFacebookMeta(props) {
   const meta = [
     { property: "og:type", content: "article" },
-    { property: "og:site_name",content: props.siteName },
+    { property: "og:site_name", content: props.siteName },
     { property: "og:title", content: props.title },
     { property: "og:description", content: props.description }
   ];
