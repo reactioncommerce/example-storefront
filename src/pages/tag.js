@@ -44,7 +44,7 @@ export default class TagShop extends Component {
       description: shop.description,
       siteName: shop.name,
       title: shop.name
-    }
+    };
 
     return (
       <Layout title="Reaction Shop">

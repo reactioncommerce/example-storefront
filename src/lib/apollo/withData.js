@@ -20,7 +20,8 @@ export default (ComposedComponent) =>
   class WithData extends React.Component {
     static displayName = `WithData(${getComponentDisplayName(ComposedComponent)})`;
     static propTypes = {
-      serverState: PropTypes.object.isRequired
+      serverState: PropTypes.object.isRequired,
+      url: PropTypes.object
     };
 
     static async getInitialProps(ctx) {
