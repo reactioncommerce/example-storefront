@@ -18,8 +18,7 @@ import ProductGrid from "components/ProductGrid";
 @inject("routingStore")
 @inject("uiStore")
 @observer
-
-class TagShop extends Component {
+export default class TagShop extends Component {
   static propTypes = {
     catalogItems: PropTypes.array.isRequired
   };
@@ -53,5 +52,3 @@ class TagShop extends Component {
     );
   }
 }
-
-export default TagShop;

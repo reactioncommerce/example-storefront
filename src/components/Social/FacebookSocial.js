@@ -13,7 +13,7 @@ function getFacebookMeta(props) {
   return meta;
 }
 
-class FacebookSocial extends Component {
+export default class FacebookSocial extends Component {
   render() {
     return (
       <Helmet
@@ -26,5 +26,3 @@ class FacebookSocial extends Component {
 FacebookSocial.propTypes = {
   settings: PropTypes.object
 };
-
-export default FacebookSocial;

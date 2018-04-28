@@ -26,7 +26,7 @@ function getTwitterMeta(props) {
   return meta;
 }
 
-class TwitterSocial extends Component {
+export default class TwitterSocial extends Component {
   render() {
     return (
       <Helmet
@@ -39,5 +39,3 @@ class TwitterSocial extends Component {
 TwitterSocial.propTypes = {
   settings: PropTypes.object
 };
-
-export default TwitterSocial;

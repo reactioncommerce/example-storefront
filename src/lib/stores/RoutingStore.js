@@ -1,7 +1,7 @@
 import { observable, computed, action } from "mobx";
 import getConfig from "next/config";
 
-class RoutingStore {
+export default class RoutingStore {
   @observable _pathname = "";
   @observable _query = "";
 
@@ -23,5 +23,3 @@ class RoutingStore {
     this._query = value;
   }
 }
-
-export default RoutingStore;
