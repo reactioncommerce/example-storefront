@@ -6,7 +6,7 @@ export default (theme) => ({
     "backgroundColor": theme.palette.primary.contrastText,
     "border": "1px solid",
     "minWidth": 150,
-    "borderColor": theme.palette.primary.borderColor,
+    "borderColor": theme.palette.reaction.borderColor,
     "&:hover": {
       borderColor: theme.palette.reaction.activeElementBorderColor
     }

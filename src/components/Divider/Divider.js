@@ -22,7 +22,7 @@ const styles = (theme) => ({
     flex: "1 1 auto",
     border: 0,
     borderTop: "1px solid",
-    borderColor: "#e6e6e6",
+    borderColor: theme.palette.reaction.borderColor,
     marginTop: theme.spacing.unit * 2.25,
     marginBottom: theme.spacing.unit * 2.25
   }
