@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 
+/**
+ * Generates Twitter metadata
+ *
+ * @param {object} meta - Twitter metadata information
+ * @returns  {Array} - Array of objects with metadata properties.
+ */
 function getTwitterMeta(meta) {
   const metadata = [
     { property: "twitter:card", content: "summary" },
