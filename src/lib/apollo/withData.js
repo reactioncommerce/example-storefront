@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { ApolloProvider, getDataFromTree } from "react-apollo";
 import Head from "next/head";
 import jsHttpCookie from "cookie";
+import rootMobxStores from "lib/stores";
 import initApolloServer from "./initApolloServer";
 import initApolloBrowser from "./initApolloBrowser";
-
 /**
  * Get the display name of a component
  * @name getComponentDisplayName
@@ -20,7 +20,8 @@ export default (ComposedComponent) =>
   class WithData extends React.Component {
     static displayName = `WithData(${getComponentDisplayName(ComposedComponent)})`;
     static propTypes = {
-      serverState: PropTypes.object.isRequired
+      serverState: PropTypes.object.isRequired,
+      url: PropTypes.object
     };
 
     static async getInitialProps(ctx) {
@@ -49,6 +50,9 @@ export default (ComposedComponent) =>
             ({ token } = jsHttpCookie.parse(cookies));
           }
         }
+
+        rootMobxStores.routingStore.pathname = ctx.pathname;
+        rootMobxStores.routingStore.query = ctx.query;
 
         const apollo = initApolloServer(undefined, { meteorToken: token });
         // Provide the `url` prop data in case a GraphQL query uses it
@@ -85,6 +89,9 @@ export default (ComposedComponent) =>
       const { apollo, token } = this.props.serverState;
 
       this.apollo = initApolloBrowser(apollo.data, { token });
+
+      rootMobxStores.routingStore.pathname = props.url.pathname;
+      rootMobxStores.routingStore.query = props.url.query;
     }
 
     render() {
