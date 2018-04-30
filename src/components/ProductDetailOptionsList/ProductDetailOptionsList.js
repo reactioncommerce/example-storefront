@@ -14,8 +14,8 @@ const styles = (theme) => ({
   }
 });
 
-@observer
 @withStyles(styles, { withTheme: true })
+@observer
 export default class OptionsList extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -38,7 +38,6 @@ export default class OptionsList extends Component {
   @action
   selectOption = (option) => {
     this.selectedOption = option._id;
-    this.forceUpdate();
 
     Router.pushRoute("product", {
       productSlug: this.props.productSlug,
