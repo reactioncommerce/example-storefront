@@ -14,8 +14,8 @@ const styles = (theme) => ({
     textTransform: "uppercase",
     fontWeight: theme.typography.fontWeightBold,
     fontSize: "0.7rem",
-    paddingRight: theme.spacing.unit * 1.25,
-    paddingLeft: theme.spacing.unit * 1.25,
+    paddingRight: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit,
     letterSpacing: "0.1rem"
   },
   item: {
@@ -23,8 +23,8 @@ const styles = (theme) => ({
     border: 0,
     borderTop: "1px solid",
     borderColor: theme.palette.reaction.borderColor,
-    marginTop: theme.spacing.unit * 2.25,
-    marginBottom: theme.spacing.unit * 2.25
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
   }
 });
 
