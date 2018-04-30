@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link as NextLink } from "routes";
 import { withStyles } from "material-ui/styles";
+import classNames from "classnames";
 
 const styles = ({
   link: {
@@ -14,15 +15,16 @@ const styles = ({
 class Link extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    className: PropTypes.string,
     classes: PropTypes.object.isRequired
   }
 
   render() {
-    const { classes, children, ...props } = this.props;
+    const { classes, children, className, ...props } = this.props;
 
     return (
       <NextLink {...props}>
-        <a className={classes.link}>
+        <a className={classNames(classes.link, className)}>
           {children}
         </a>
       </NextLink>
