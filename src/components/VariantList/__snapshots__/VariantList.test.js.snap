@@ -80,13 +80,13 @@ exports[`basic snapshot 1`] = `
     />
   </div>
   <div
-    className="OptionsList-optionsContainer-35"
+    className="MuiGrid-container-36 MuiGrid-spacing-xs-8-57 OptionsList-root-35"
   >
     <div
-      className="ProductDetailOption-variantOptionContainer-36"
+      className="MuiGrid-item-37"
     >
       <button
-        className="MuiButtonBase-root-5 ProductDetailOption-optionButton-37"
+        className="MuiButtonBase-root-5 ProductDetailOption-optionButton-126"
         disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
@@ -103,17 +103,17 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiTypography-root-8 MuiTypography-body1-17 ProductDetailOption-optionText-38"
+          className="MuiTypography-root-8 MuiTypography-body1-17 ProductDetailOption-optionText-127"
         >
           Red
         </span>
       </button>
     </div>
     <div
-      className="ProductDetailOption-variantOptionContainer-36"
+      className="MuiGrid-item-37"
     >
       <button
-        className="MuiButtonBase-root-5 ProductDetailOption-optionButton-37"
+        className="MuiButtonBase-root-5 ProductDetailOption-optionButton-126"
         disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
@@ -130,7 +130,7 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiTypography-root-8 MuiTypography-body1-17 ProductDetailOption-optionText-38"
+          className="MuiTypography-root-8 MuiTypography-body1-17 ProductDetailOption-optionText-127"
         >
           Green
         </span>

@@ -1,31 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic snapshot 1`] = `
-<div
-  className="ProductDetailOption-variantOptionContainer-1"
+<button
+  className="MuiButtonBase-root-4 ProductDetailOption-optionButton-1"
+  disabled={undefined}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex="0"
+  type="button"
 >
-  <button
-    className="MuiButtonBase-root-5 ProductDetailOption-optionButton-2 ProductDetailOption-isSelected-4"
-    disabled={undefined}
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    tabIndex="0"
-    type="button"
+  <span
+    className="MuiTypography-root-7 MuiTypography-body1-16 ProductDetailOption-optionText-2"
   >
-    <span
-      className="MuiTypography-root-8 MuiTypography-body1-17 ProductDetailOption-optionText-3"
-    >
-      Blue
-    </span>
-  </button>
-</div>
+    Blue
+  </span>
+</button>
 `;
