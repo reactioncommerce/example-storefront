@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 
-function getFacebookMeta(props) {
-  const meta = [
+function getFacebookMeta(meta) {
+  const metadata = [
     { property: "og:type", content: "article" },
-    { property: "og:site_name", content: props.siteName },
-    { property: "og:title", content: props.title },
-    { property: "og:description", content: props.description }
+    { property: "og:site_name", content: meta.siteName },
+    { property: "og:title", content: meta.title },
+    { property: "og:description", content: meta.description }
   ];
 
-  return meta;
+  return metadata;
 }
 
 /**
@@ -18,15 +18,15 @@ function getFacebookMeta(props) {
  * @class FacebookSocial
  */
 export default class FacebookSocial extends Component {
+  static propTypes = {
+    meta: PropTypes.object
+  }
+
   render() {
     return (
       <Helmet
-        meta={getFacebookMeta(this.props)}
+        meta={getFacebookMeta(this.props.meta)}
       />
     );
   }
 }
-
-FacebookSocial.propTypes = {
-  settings: PropTypes.object
-};

@@ -1,5 +1,6 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import { mount } from "enzyme";
+import Helmet from "react-helmet";
 import FacebookSocial from "./FacebookSocial";
 
 const meta = {
@@ -8,11 +9,16 @@ const meta = {
   title: "Shop Title"
 };
 
+test("helmet metatags - open graph", () => {
+  const metaTags = [
+    { property: "og:type", content: "article" },
+    { property: "og:site_name", content: "Shop Name" },
+    { property: "og:title", content: "Shop Title" },
+    { property: "og:description", content: "Shop Description" }
+  ];
 
-test("basic snapshot", () => {
-  const component = renderer.create((
-    <FacebookSocial meta={meta} />
-  ));
-  const tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+  mount(<FacebookSocial meta={meta} />);
+  const helmet = Helmet.peek();
+
+  expect(helmet.metaTags).toEqual(metaTags);
 });

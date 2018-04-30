@@ -2,28 +2,28 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 
-function getTwitterMeta(props) {
-  const meta = [
+function getTwitterMeta(meta) {
+  const metadata = [
     { property: "twitter:card", content: "summary" },
-    { property: "twitter:site", content: props.siteName },
-    { property: "twitter:title", content: props.title },
-    { property: "twitter:description", content: props.description }
+    { property: "twitter:site", content: meta.siteName },
+    { property: "twitter:title", content: meta.title },
+    { property: "twitter:description", content: meta.description }
   ];
 
-  if (props.media) {
+  if (meta.media) {
     let media;
 
-    if (!/^http(s?):\/\/+/.test(props.media)) {
-      media = location.origin + props.media;
+    if (!/^http(s?):\/\/+/.test(meta.media)) {
+      media = location.origin + meta.media;
     }
 
-    meta.push({
+    metadata.push({
       property: "twitter:image",
       content: media
     });
   }
 
-  return meta;
+  return metadata;
 }
 
 /**
@@ -31,15 +31,15 @@ function getTwitterMeta(props) {
  * @class TwitterSocial
  */
 export default class TwitterSocial extends Component {
+  static propTypes = {
+    meta: PropTypes.object
+  }
+
   render() {
     return (
       <Helmet
-        meta={getTwitterMeta(this.props)}
+        meta={getTwitterMeta(this.props.meta)}
       />
     );
   }
 }
-
-TwitterSocial.propTypes = {
-  settings: PropTypes.object
-};
