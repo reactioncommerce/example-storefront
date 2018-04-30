@@ -7,6 +7,7 @@ import classNames from "classnames";
 
 const styles = ({
   link: {
+    color: "inherit",
     textDecoration: "none"
   }
 });
