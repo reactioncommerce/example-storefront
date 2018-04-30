@@ -3,7 +3,12 @@ export default {
   _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
   title: "Reaction Sample Product",
   slug: "example-product",
-  description: "Sign in as administrator to edit.\nYou can clone this product from the product grid.\nYou can upload images click or drag in image box on the left here.\nTag this product below, and then add tag in navigation.\nClick the bookmark in the tag to set product url.\nOption variants, price, quantity, and child variants are created by clicking on the variant below, clone the variant to add more options.\nDetails can be added below the image for more specific product information.\n Login next to the cart, and then click the dashboard icon for more tools.",
+  description: "Sign in as administrator to edit.\nYou can clone this product from the product grid.\n" +
+    "You can upload images click or drag in image box on the left here.\nTag this product below, and then add tag" +
+    " in navigation.\nClick the bookmark in the tag to set product url.\nOption variants, price, quantity," +
+    " and child variants are created by clicking on the variant below, clone the variant to add more options.\n" +
+    "Details can be added below the image for more specific product information.\n Login next to the cart," +
+    " and then click the dashboard icon for more tools.",
   vendor: "Example Manufacturer",
   isLowQuantity: false,
   isSoldOut: false,
