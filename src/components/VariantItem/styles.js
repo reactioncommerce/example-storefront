@@ -13,6 +13,9 @@ export default (theme) => ({
       border: "1px solid",
       borderColor: theme.palette.reaction.activeElementBorderColor,
       backgroundColor: theme.palette.primary.contrastText
+    },
+    "&:focus": {
+      outline: "auto 5px -webkit-focus-ring-color"
     }
   },
   activeVariant: {

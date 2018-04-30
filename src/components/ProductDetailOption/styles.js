@@ -9,6 +9,9 @@ export default (theme) => ({
     "borderColor": theme.palette.reaction.borderColor,
     "&:hover": {
       borderColor: theme.palette.reaction.activeElementBorderColor
+    },
+    "&:focus": {
+      outline: "auto 5px -webkit-focus-ring-color"
     }
   },
   optionText: {

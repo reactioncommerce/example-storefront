@@ -30,6 +30,7 @@ export default class ProductDetailOption extends Component {
 
     return (
       <ButtonBase
+        disableRipple
         onClick={this.handleOnClick}
         className={classNames(
           optionButton,
