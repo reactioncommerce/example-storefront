@@ -49,8 +49,8 @@ export default class TagShop extends Component {
     return (
       <Layout title="Reaction Shop">
         {this.renderHelmet()}
-        <FacebookSocial settings={meta} />
-        <TwitterSocial settings={meta} />
+        <FacebookSocial meta={meta} />
+        <TwitterSocial meta={meta} />
         <ProductGrid catalogItems={this.props.catalogItems} />
       </Layout>
     );
