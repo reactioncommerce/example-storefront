@@ -28,7 +28,7 @@ export default class TagShop extends Component {
   renderHelmet() {
     const { shop, routingStore } = this.props;
     const title = routingStore.query.slug || shop.name;
-    const pageTitle = title[0].toUpperCase() + title.slice(1);
+    const pageTitle = title[0].toUpperCase() + title.slice(1); // TODO: rethink capitalization of tag
 
     return (
       <Helmet>
