@@ -7,9 +7,10 @@ const date = new Date();
 
 const styles = () => ({
   footer: {
+    alignItems: "center",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    marginBottom: "1.5rem"
   }
 });
 

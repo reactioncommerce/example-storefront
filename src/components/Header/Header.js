@@ -9,6 +9,7 @@ import { NavigationDesktop } from "components/NavigationDesktop";
 import { NavigationMobile, NavigationToggleMobile } from "components/NavigationMobile";
 import { CartToggle } from "components/Cart";
 import AccountDropdown from "components/AccountDropdown";
+import Link from "components/Link";
 
 const styles = (theme) => ({
   controls: {
@@ -50,7 +51,7 @@ class Header extends Component {
 
           <div className={controls}>
             <Typography className={title} color="inherit" variant="title">
-              Reaction
+              <Link route="/">Reaction</Link>
             </Typography>
 
             <Hidden smDown initialWidth={"md"}>

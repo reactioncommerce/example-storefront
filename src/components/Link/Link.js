@@ -6,6 +6,7 @@ import { withStyles } from "material-ui/styles";
 
 const styles = ({
   link: {
+    color: "inherit",
     textDecoration: "none"
   }
 });
