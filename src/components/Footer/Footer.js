@@ -5,11 +5,12 @@ import Typography from "material-ui/Typography";
 
 const date = new Date();
 
-const styles = () => ({
+const styles = (theme) => ({
   footer: {
+    alignItems: "center",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    marginBottom: theme.spacing.unit * 2
   }
 });
 

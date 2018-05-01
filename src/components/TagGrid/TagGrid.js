@@ -51,10 +51,10 @@ export default class TagGrid extends Component {
       <section>
         <Typography className={classes.title} variant="title">{"Tags"}</Typography>
         <Grid container spacing={theme.spacing.unit}>
-          {tags.map(({ node: tag }, index) => (
-            <Grid item>
+          {tags.map(({ node: tag }) => (
+            <Grid item key={tag.slug}>
               <Link route={`/tag/${tag.slug}`}>
-                <Chip className={classes.chip} key={index} label={tag.name} />
+                <Chip className={classes.chip} label={tag.name} />
               </Link>
             </Grid>
           ))}

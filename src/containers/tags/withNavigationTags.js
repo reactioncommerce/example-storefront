@@ -7,7 +7,7 @@ import navigationTagsQuery from "./navigationTags.gql";
 
 /**
  * withNavigationTags higher order query component for fetching tags for the navigation
- * @name withShop
+ * @name NavigationTags
  * @param {React.Component} Component to decorate
  * @returns {React.Component} - Component with `navItems` prop
  */

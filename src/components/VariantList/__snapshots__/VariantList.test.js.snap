@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic snapshot 1`] = `
-<ul
-  className="VariantList-variantsList-1"
+<div
+  className="VariantList-variantsContainer-1"
 >
-  <li
+  <div
     className="VariantList-variantItem-2"
   >
     <button
@@ -33,8 +33,8 @@ exports[`basic snapshot 1`] = `
         className="MuiTypography-root-8 MuiTypography-body1-17"
       />
     </button>
-  </li>
-  <li
+  </div>
+  <div
     className="VariantList-variantItem-2"
   >
     <button
@@ -63,6 +63,79 @@ exports[`basic snapshot 1`] = `
         className="MuiTypography-root-8 MuiTypography-body1-17"
       />
     </button>
-  </li>
-</ul>
+  </div>
+  <div
+    className="Divider-container-32"
+  >
+    <hr
+      className="Divider-item-34"
+    />
+    <span
+      className="MuiTypography-root-8 MuiTypography-body1-17 Divider-label-33"
+    >
+      Available Options
+    </span>
+    <hr
+      className="Divider-item-34"
+    />
+  </div>
+  <div
+    className="MuiGrid-container-36 MuiGrid-spacing-xs-8-57 OptionsList-root-35"
+  >
+    <div
+      className="MuiGrid-item-37"
+    >
+      <button
+        className="MuiButtonBase-root-5 ProductDetailOption-optionButton-126"
+        disabled={undefined}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiTypography-root-8 MuiTypography-body1-17 ProductDetailOption-optionText-127"
+        >
+          Red
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiGrid-item-37"
+    >
+      <button
+        className="MuiButtonBase-root-5 ProductDetailOption-optionButton-126"
+        disabled={undefined}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiTypography-root-8 MuiTypography-body1-17 ProductDetailOption-optionText-127"
+        >
+          Green
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
 `;

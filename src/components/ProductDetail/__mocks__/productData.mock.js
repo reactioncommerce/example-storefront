@@ -3,7 +3,12 @@ export default {
   _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
   title: "Reaction Sample Product",
   slug: "example-product",
-  description: "Sign in as administrator to edit.\nYou can clone this product from the product grid.\nYou can upload images click or drag in image box on the left here.\nTag this product below, and then add tag in navigation.\nClick the bookmark in the tag to set product url.\nOption variants, price, quantity, and child variants are created by clicking on the variant below, clone the variant to add more options.\nDetails can be added below the image for more specific product information.\n Login next to the cart, and then click the dashboard icon for more tools.",
+  description: "Sign in as administrator to edit.\nYou can clone this product from the product grid.\n" +
+    "You can upload images click or drag in image box on the left here.\nTag this product below, and then add tag" +
+    " in navigation.\nClick the bookmark in the tag to set product url.\nOption variants, price, quantity," +
+    " and child variants are created by clicking on the variant below, clone the variant to add more options.\n" +
+    "Details can be added below the image for more specific product information.\n Login next to the cart," +
+    " and then click the dashboard icon for more tools.",
   vendor: "Example Manufacturer",
   isLowQuantity: false,
   isSoldOut: false,
@@ -38,27 +43,30 @@ export default {
       ],
       title: "Sample Variant",
       price: 19.99,
-      optionTitle: "Untitled Option"
-    },
-    {
-      _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlNNcjRyaERGbll2Rk10RFRY",
-      ancestorIds: [
-        "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
-        "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OjZxaXFQd0JrZUpkdGRRYzRH"
-      ],
-      title: "Option 1 - Red Dwarf",
-      price: 19.99,
-      optionTitle: "Red"
-    },
-    {
-      _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OkNKb1JCbTl2UnJvcmM5bXha",
-      ancestorIds: [
-        "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
-        "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OjZxaXFQd0JrZUpkdGRRYzRH"
-      ],
-      title: "Option 2 - Green Tomato",
-      price: 12.99,
-      optionTitle: "Green"
+      optionTitle: "Untitled Option",
+      options: [
+        {
+          _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlNNcjRyaERGbll2Rk10RFRY",
+          ancestorIds: [
+            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
+            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OjZxaXFQd0JrZUpkdGRRYzRH"
+          ],
+          title: "Option 1 - Red Dwarf",
+          price: 19.99,
+          optionTitle: "Red"
+        },
+        {
+          _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OkNKb1JCbTl2UnJvcmM5bXha",
+          ancestorIds: [
+            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
+            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OjZxaXFQd0JrZUpkdGRRYzRH"
+          ],
+          title: "Option 2 - Green Tomato",
+          price: 12.99,
+          optionTitle: "Green"
+        }
+
+      ]
     },
     {
       _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlB6QXlqeW1ER3U2V0drRGpu",
@@ -67,27 +75,30 @@ export default {
       ],
       title: "Sample Variant 2",
       price: 10.99,
-      optionTitle: "Untitled Option"
-    },
-    {
-      _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OkhaUHFmaVBIV0xabWZ1aHZp",
-      ancestorIds: [
-        "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
-        "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlB6QXlqeW1ER3U2V0drRGpu"
-      ],
-      title: "Sample Variant 2 - Blue Option",
-      price: 200,
-      optionTitle: "Blue"
-    },
-    {
-      _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50Old5em43emZhQkFYS1hja3BT",
-      ancestorIds: [
-        "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
-        "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlB6QXlqeW1ER3U2V0drRGpu"
-      ],
-      title: "Sample Variant 2 - Red Option",
-      price: 330,
-      optionTitle: "Red"
+      optionTitle: "Untitled Option",
+      options: [
+        {
+          _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OkhaUHFmaVBIV0xabWZ1aHZp",
+          ancestorIds: [
+            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
+            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlB6QXlqeW1ER3U2V0drRGpu"
+          ],
+          title: "Sample Variant 2 - Blue Option",
+          price: 200,
+          optionTitle: "Blue"
+        },
+        {
+          _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50Old5em43emZhQkFYS1hja3BT",
+          ancestorIds: [
+            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
+            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlB6QXlqeW1ER3U2V0drRGpu"
+          ],
+          title: "Sample Variant 2 - Red Option",
+          price: 330,
+          optionTitle: "Red"
+        }
+
+      ]
     }
   ],
   media: [

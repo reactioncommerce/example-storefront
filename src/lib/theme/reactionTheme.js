@@ -21,7 +21,9 @@ const theme = createMuiTheme({
       contrastText: "#FFFFFF"
     },
     reaction: {
-      activeElementBorderColor: "#94e8d1"
+      activeElementBorderColor: "#94E8D1",
+      activeElementBackground: "#E6E6E6",
+      borderColor: "#CCCCCC"
     }
 
   },

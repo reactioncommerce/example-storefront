@@ -29,6 +29,11 @@ class MediaGalleryItem extends Component {
     classes: PropTypes.object,
 
     /**
+     * The 0-based integer position of this item within a group of MediaGalleryItems
+     */
+    index: PropTypes.number,
+
+    /**
      * Product media
      */
     media: PropTypes.object,
