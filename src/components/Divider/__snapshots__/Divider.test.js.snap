@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="Divider-container-1"
+>
+  <hr
+    className="Divider-item-3"
+  />
+  <span
+    className="MuiTypography-root-4 MuiTypography-body1-13 Divider-label-2"
+  >
+    Available Options
+  </span>
+  <hr
+    className="Divider-item-3"
+  />
+</div>
+`;

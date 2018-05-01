@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import { observable, action, computed } from "mobx";
@@ -6,11 +6,11 @@ import { observer } from "mobx-react";
 
 import { Router } from "routes";
 import VariantItem from "components/VariantItem";
+import ProductDetailOptionsList from "components/ProductDetailOptionsList";
+import Divider from "components/Divider";
 
 const styles = (theme) => ({
-  variantsList: {
-    listStyle: "none",
-    paddingLeft: 0
+  variantsContainer: {
   },
   variantItem: {
     marginTop: theme.spacing.unit * 1.25,
@@ -18,9 +18,9 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true })
+@withStyles(styles)
 @observer
-class VariantList extends Component {
+export default class VariantList extends Component {
   static propTypes = {
     classes: PropTypes.object,
     product: PropTypes.object.isRequired,
@@ -38,6 +38,7 @@ class VariantList extends Component {
   @action
   handleClick = (variant) => {
     this._selectedVariant = variant._id;
+
     Router.pushRoute("product", {
       productSlug: this.props.product.slug,
       variantId: variant._id
@@ -58,24 +59,42 @@ class VariantList extends Component {
     const active = (this.selectedVariant === variant._id);
 
     return (
-      <li className={variantItem} key={variant._id}>
+      <div className={variantItem} key={variant._id}>
         <VariantItem
           active={active}
           handleClick={this.handleClick}
           variant={variant}
         />
-      </li>
+      </div>
+    );
+  }
+
+  renderOptionsList = () => {
+    const selectedVariant = this.props.variants.find((variant) => variant._id === this.selectedVariant);
+
+    // If currently selected variant has options, then render them.
+    const options = (Array.isArray(selectedVariant.options)) ? selectedVariant.options : null;
+
+    if (!options) return null;
+
+    return (
+      <Fragment>
+        <Divider />
+        <ProductDetailOptionsList
+          productSlug={this.props.product.slug}
+          options={options}
+        />
+      </Fragment>
     );
   }
 
   render() {
-    const { classes: { variantsList }, variants } = this.props;
+    const { classes: { variantsContainer }, variants } = this.props;
     return (
-      <ul className={variantsList}>
+      <div className={variantsContainer}>
         {variants.map(this.renderVariant)}
-      </ul>
+        {this.renderOptionsList()}
+      </div>
     );
   }
 }
-
-export default VariantList;

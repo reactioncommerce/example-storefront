@@ -18,7 +18,7 @@ const styles = (theme) => ({
     flexGrow: 1
   },
   pdpContainer: {
-    maxWidth: 1440
+    maxWidth: 1400
   },
   section: {
     marginBottom: theme.spacing.unit * 2
