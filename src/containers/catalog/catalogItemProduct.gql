@@ -1,0 +1,43 @@
+query catalogItemProductQuery($slugOrId: String!) {
+  catalogItemProduct(slugOrId: $slugOrId) {
+    product {
+      _id
+      title
+      slug
+      description
+      vendor
+      isLowQuantity
+      isSoldOut
+      isBackorder
+      price {
+        range
+        min
+        max
+      }
+      media {
+        toGrid
+        priority
+        productId
+        variantId
+        URLs {
+          thumbnail
+          small
+          medium
+          large
+        }
+      }
+      tags {
+        nodes {
+          name
+        }
+      }
+      variants {
+        _id
+        ancestorIds
+        title
+        price
+        optionTitle
+      }
+    }
+  }
+}

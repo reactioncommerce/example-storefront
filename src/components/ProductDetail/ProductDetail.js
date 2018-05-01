@@ -34,43 +34,43 @@ const styles = (theme) => ({
 @withStyles(styles, { withTheme: true })
 class ProductDetail extends Component {
   static propTypes = {
-    catalogProduct: PropTypes.object,
     classes: PropTypes.object,
+    product: PropTypes.object,
     theme: PropTypes.object
   }
 
   render() {
-    const { classes, theme, catalogProduct } = this.props;
+    const { classes, theme, product } = this.props;
     // Fiter out variant options
-    const variants = catalogProduct.variants.filter((variant) => variant.ancestorIds.length === 1);
+    const variants = product.variants.filter((variant) => variant.ancestorIds.length === 1);
 
     return (
       <div className={classes.root}>
         <Helmet>
-          <title>{catalogProduct.title}</title>
-          <meta name="description" content={catalogProduct.description} />
+          <title>{product.title}</title>
+          <meta name="description" content={product.description} />
         </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
           <Grid item xs={12} sm={6}>
             <div className={classes.section}>
-              <MediaGallery mediaItems={catalogProduct.media} />
+              <MediaGallery mediaItems={product.media} />
             </div>
             <div className={classes.section}>
-              <TagGrid tags={catalogProduct.tags} />
+              <TagGrid tags={product.tags} />
             </div>
           </Grid>
 
           <Grid item xs={12} sm={6}>
             <ProductDetailTitle
-              pageTitle={catalogProduct.pageTitle}
-              title={catalogProduct.title}
+              pageTitle={product.pageTitle}
+              title={product.title}
             />
             <ProductDetailInfo
-              priceRange={catalogProduct.price.range}
-              description={catalogProduct.description}
-              vendor={catalogProduct.vendor}
+              priceRange={product.price.range}
+              description={product.description}
+              vendor={product.vendor}
             />
-            <VariantList product={catalogProduct} variants={variants}/>
+            <VariantList product={product} variants={variants}/>
           </Grid>
         </Grid>
       </div>
