@@ -3,6 +3,8 @@ import { inject, observer } from "mobx-react";
 import { Query } from "react-apollo";
 import catalogItemsQuery from "./catalogItems.gql";
 
+const limit = 24;
+
 /**
  * withCatalogItems higher order query component for fetching primaryShopId and catalog data
  * @name withCatalogItems
@@ -17,7 +19,7 @@ export default (Component) => (
       const { primaryShopId } = this.props || {};
 
       return (
-        <Query query={catalogItemsQuery} variables={{ shopId: primaryShopId, first: 2 }}>
+        <Query query={catalogItemsQuery} variables={{ shopId: primaryShopId, first: limit }}>
           {({ loading: loadingShopData, data: catalogData, fetchMore }) => {
             if (loadingShopData) return null;
 
@@ -29,18 +31,15 @@ export default (Component) => (
                 catalogItemsPageInfo={{
                   ...((catalogItems && catalogItems.pageInfo) || {}),
                   loadPreviousPage: () => {
-                    console.log(catalogItems.pageInfo.startCursor);
-
                     fetchMore({
                       variables: {
                         shopId: primaryShopId,
-                        last: 4,
+                        last: limit,
                         first: null,
                         before: catalogItems.pageInfo.endCursor
                       },
                       updateQuery: (previousResult, { fetchMoreResult }) => {
                         const { catalogItems: newCatalogItems } = fetchMoreResult;
-                        console.log("fetchMoreResult", fetchMoreResult);
 
                         // Return with additional results
                         if (newCatalogItems.edges.length) {
@@ -56,12 +55,11 @@ export default (Component) => (
                     fetchMore({
                       variables: {
                         shopId: primaryShopId,
-                        first: 2,
+                        first: limit,
                         after: catalogItems.pageInfo.endCursor
                       },
                       updateQuery: (previousResult, { fetchMoreResult }) => {
                         const { catalogItems: newCatalogItems } = fetchMoreResult;
-                        console.log("fetchMoreResult", fetchMoreResult);
 
                         // Return with additional results
                         if (newCatalogItems.edges.length) {
