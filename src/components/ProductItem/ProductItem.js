@@ -7,8 +7,8 @@ import Fade from "material-ui/transitions/Fade";
 import Hidden from "material-ui/Hidden";
 import Typography from "material-ui/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
-
 import Link from "components/Link";
+import Badge from "components/Badge";
 import { styles } from "./styles";
 
 const PRODUCT_PLACE_HOLDER = "/resources/placeholder.gif";
@@ -38,12 +38,12 @@ class ProductItem extends Component {
   }
 
   get productStatus() {
-    const { classes, product: { isBackorder, isSoldOut } } = this.props;
+    const { product: { isBackorder, isSoldOut } } = this.props;
     let status;
     if (isSoldOut && isBackorder) {
-      status = { label: "Backorder", style: `${classes.status} ${classes.statusBackorder}` };
+      status = { type: "backorder", label: "Backorder" };
     } else if (isSoldOut && !isBackorder) {
-      status = { label: "Sold Out", style: `${classes.status} ${classes.statusSoldOut}` };
+      status = { type: "sold_out", label: "Sold Out" };
     }
     return status;
   }
@@ -114,14 +114,17 @@ class ProductItem extends Component {
     );
   }
 
+  renderBadge() {
+
+  }
+
   renderProductMedia() {
     const { classes } = this.props;
-    const chipClasses = { root: classes.chip, label: classes.chipLabel };
-    const { label, style } = this.productStatus || {};
+    const { type, label } = this.productStatus || {};
     return (
       <div className={classes.productMedia}>
-        {this.productStatus && <Chip label={label} classes={chipClasses} className={style} />}
-        {this.productLowQuantity && <Chip label={"Low Inventory"} classes={chipClasses} className={classes.warning} />}
+        {this.productStatus && <Badge type={type} label={label} />}
+        {this.productLowQuantity && <Badge type={"low_inventory"} label="Low Inventory" />}
         {this.renderProductImage()}
       </div>
     );
