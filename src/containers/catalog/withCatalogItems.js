@@ -1,9 +1,10 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import { Query } from "react-apollo";
+import { paganation } from "lib/helpers/paganation";
 import catalogItemsQuery from "./catalogItems.gql";
 
-const limit = 24;
+const PAGE_LIMIT = 3;
 
 /**
  * withCatalogItems higher order query component for fetching primaryShopId and catalog data
@@ -19,7 +20,7 @@ export default (Component) => (
       const { primaryShopId } = this.props || {};
 
       return (
-        <Query query={catalogItemsQuery} variables={{ shopId: primaryShopId, first: limit }}>
+        <Query query={catalogItemsQuery} variables={{ shopId: primaryShopId, first: PAGE_LIMIT }}>
           {({ loading, data, fetchMore }) => {
             if (loading) return null;
 
@@ -28,51 +29,13 @@ export default (Component) => (
             return (
               <Component
                 {...this.props}
+                catalogItemsPageInfo={paganation({
+                  fetchMore,
+                  data,
+                  queryName: "catalogItems",
+                  limit: PAGE_LIMIT
+                })}
                 catalogItems={catalogItems && catalogItems.edges}
-                catalogItemsPageInfo={{
-                  ...((catalogItems && catalogItems.pageInfo) || {}),
-                  loadPreviousPage: () => {
-                    fetchMore({
-                      variables: {
-                        shopId: primaryShopId,
-                        last: limit,
-                        first: null,
-                        before: catalogItems.pageInfo.endCursor
-                      },
-                      updateQuery: (previousResult, { fetchMoreResult }) => {
-                        const { catalogItems: newCatalogItems } = fetchMoreResult;
-
-                        // Return with additional results
-                        if (newCatalogItems.edges.length) {
-                          return fetchMoreResult;
-                        }
-
-                        // Send the previous result if the new result contians no additional data
-                        return previousResult;
-                      }
-                    });
-                  },
-                  loadNextPage: () => {
-                    fetchMore({
-                      variables: {
-                        shopId: primaryShopId,
-                        first: limit,
-                        after: catalogItems.pageInfo.endCursor
-                      },
-                      updateQuery: (previousResult, { fetchMoreResult }) => {
-                        const { catalogItems: newCatalogItems } = fetchMoreResult;
-
-                        // Return with additional results
-                        if (newCatalogItems.edges.length) {
-                          return fetchMoreResult;
-                        }
-
-                        // Send the previous result if the new result contians no additional data
-                        return previousResult;
-                      }
-                    });
-                  }
-                }}
               />
             );
           }}
