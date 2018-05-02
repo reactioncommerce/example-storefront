@@ -28,8 +28,8 @@ class Shop extends Component {
 
     return (
       <Helmet>
-        <title>{shop.name}</title>
-        <meta name="description" content={shop.description} />
+        <title>{shop && shop.name}</title>
+        <meta name="description" content={shop && shop.description} />
       </Helmet>
     );
   }
