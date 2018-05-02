@@ -20,6 +20,7 @@ import ProductGrid from "components/ProductGrid";
 class Shop extends Component {
   static propTypes = {
     catalogItems: PropTypes.array.isRequired,
+    catalogItemsPageInfo: PropTypes.object,
     shop: PropTypes.object
   };
 
