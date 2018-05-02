@@ -1,5 +1,6 @@
 query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt, $last:  ConnectionLimitInt, $before: ConnectionCursor, $after: ConnectionCursor) {
   catalogItems(shopIds: [$shopId], first: $first, last: $last, before: $before, after: $after) {
+    totalCount
     pageInfo {
       endCursor
       startCursor
