@@ -61,3 +61,7 @@ _**NOTE:** The above command is assuming ether the `devserver` or `reaction` is 
  - [MobX](https://mobx.js.org/getting-started.html)
  - [nextjs](https://github.com/zeit/next.js/)
  - [Material UI](https://material-ui-next.com/)
+
+ ## Reference links for development
+ ### CSS in JS
+ - [Responsive Breakbpoints](https://material-ui-next.com/layout/css-in-js/#responsive-breakpoints)
