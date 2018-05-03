@@ -6,7 +6,8 @@ import withStyles from "material-ui/styles/withStyles";
 
 const styles = (theme) => ({
   root: {
-    margin: theme.spacing.unit * 2
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2
   }
 });
 
@@ -29,19 +30,17 @@ export default class ProductGrid extends Component {
     const { classes, pageInfo, theme } = this.props;
 
     return (
-      <Grid className={classes.root} container justify="center" spacing={theme.spacing.unit * 2}>
-        {pageInfo.hasPreviousPage &&
-          <Grid item>
-            <Button onClick={pageInfo.loadPreviousPage} variant="raised">Previous</Button>
-          </Grid>
-        }
-        {pageInfo.hasNextPage &&
-          <Grid item>
-            <Button onClick={pageInfo.loadNextPage} variant="raised">
-              Next
-            </Button>
-          </Grid>
-        }
+      <Grid className={classes.root} container justify="space-between">
+        <Grid item>
+          {pageInfo.hasPreviousPage &&
+            <Button onClick={pageInfo.loadPreviousPage} variant="raised">{"Previous"}</Button>
+          }
+        </Grid>
+        <Grid item>
+          {pageInfo.hasNextPage &&
+            <Button onClick={pageInfo.loadNextPage} variant="raised">{"Next"}</Button>
+          }
+        </Grid>
       </Grid>
     );
   }
