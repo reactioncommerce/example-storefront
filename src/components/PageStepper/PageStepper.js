@@ -11,7 +11,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true })
+@withStyles(styles)
 export default class ProductGrid extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -27,7 +27,7 @@ export default class ProductGrid extends Component {
   };
 
   render() {
-    const { classes, pageInfo, theme } = this.props;
+    const { classes, pageInfo } = this.props;
 
     return (
       <Grid className={classes.root} container justify="space-between">
