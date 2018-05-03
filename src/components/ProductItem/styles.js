@@ -53,8 +53,18 @@ export const styles = (theme) => ({
     top: theme.spacing.unit
   },
   "img": {
-    height: "auto",
-    width: "100%"
+    // height: "auto",
+    width: "100%",
+    objectFit: "cover",
+    [theme.breakpoints.down("sm")]: {
+      height: 3200
+    },
+    [theme.breakpoints.down("md")]: {
+      height: 225
+    },
+    [theme.breakpoints.down("lg")]: {
+      height: 325
+    }
   },
   "imgLoading": {
     alignItems: "center",
