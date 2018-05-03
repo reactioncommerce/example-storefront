@@ -6,7 +6,8 @@ import PageStepper from "components/PageStepper";
 
 export default class ProductGrid extends Component {
   static propTypes = {
-    catalogItems: PropTypes.arrayOf(PropTypes.object)
+    catalogItems: PropTypes.arrayOf(PropTypes.object),
+    pageInfo: PropTypes.object
   };
 
   renderProduct(edge) {
@@ -52,7 +53,7 @@ export default class ProductGrid extends Component {
           {(catalogItems && catalogItems.length) ? catalogItems.map(this.renderProduct) : null}
         </Grid>
 
-        <PageStepper pageInfo={pageInfo} />
+        { pageInfo && <PageStepper pageInfo={pageInfo} /> }
       </section>
     );
   }
