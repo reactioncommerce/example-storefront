@@ -6,6 +6,11 @@ import Cookies from "js-cookie";
  * @class AuthStore
  */
 class AuthStore {
+  /**
+  *`query` @observable
+  * @type @observable
+  * @param {string} token - The login token of the current user
+  */
   @observable _token = "";
 
   @computed get token() {
