@@ -2,6 +2,8 @@
 
 `reaction-next-starterkit` uses [mobx](https://github.com/mobxjs/mobx) as our state management datastore.
 
+MobX stores are to be defined in `/lib/stores`.
+
 ## Data stores
 
 ### AuthStore
