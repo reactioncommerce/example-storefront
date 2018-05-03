@@ -13,9 +13,22 @@ const uiStore = {
 };
 
 test("basic snapshot", () => {
+  const pageInfo = {
+    hasNextPage: false,
+    hasPreviousPage: true,
+    loadNextPage: () => {},
+    loadPreviousPage: () => {},
+    startCursot: "",
+    endCursor: ""
+  };
+
   const component = renderer.create((
     <Provider uiStore={uiStore}>
-      <ProductGrid catalogItems={products} primaryShopId="123" />
+      <ProductGrid
+        catalogItems={products}
+        pageInfo={pageInfo}
+        primaryShopId="123"
+      />
     </Provider>
   ));
   const tree = component.toJSON();
