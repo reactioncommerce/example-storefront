@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import { Query } from "react-apollo";
-import { paganation } from "lib/helpers/paganation";
+import { paganation, paganationVariablesFromUrlParams } from "lib/helpers/paganation";
 import catalogItemsQuery from "./catalogItems.gql";
 
 const PAGE_LIMIT = 3;
@@ -14,13 +15,23 @@ const PAGE_LIMIT = 3;
  */
 export default (Component) => (
   @inject("primaryShopId")
+  @inject("routingStore")
   @observer
   class CatalogItems extends React.Component {
+    static propTypes = {
+      primaryShopId: PropTypes.string,
+      routingStore: PropTypes.object
+    }
+
     render() {
-      const { primaryShopId } = this.props || {};
+      const { primaryShopId, routingStore } = this.props || {};
+      const variables = {
+        shopId: primaryShopId,
+        ...paganationVariablesFromUrlParams(routingStore.query)
+      };
 
       return (
-        <Query query={catalogItemsQuery} variables={{ shopId: primaryShopId, first: PAGE_LIMIT }}>
+        <Query query={catalogItemsQuery} variables={variables}>
           {({ loading, data, fetchMore }) => {
             if (loading) return null;
 
@@ -31,6 +42,7 @@ export default (Component) => (
                 {...this.props}
                 catalogItemsPageInfo={paganation({
                   fetchMore,
+                  routingStore,
                   data,
                   queryName: "catalogItems",
                   limit: PAGE_LIMIT
