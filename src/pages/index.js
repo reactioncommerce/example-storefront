@@ -11,9 +11,9 @@ import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
 
 @withData
+@withRoot
 @withShop
 @withCatalogItems
-@withRoot
 @inject("shop")
 @inject("uiStore")
 @observer
