@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { withStyles } from "material-ui/styles";
+import { INVENTORY_STATUS } from "lib/utils";
 
 const styles = (theme) => ({
   badge: {
@@ -40,7 +41,7 @@ const styles = (theme) => ({
   },
   warning: {
     backgroundColor: "transparent",
-    top: theme.spacing.unit
+    color: theme.palette.secondary.main
   },
   alignRight: {
     right: 0
@@ -69,16 +70,16 @@ export default class Badge extends Component {
 
     const badgeClasses = classNames(
       badge,
-      { [status]: type === "backorder" || type === "sold_out" },
-      { [soldOut]: type === "sold_out" },
-      { [backorder]: type === "backorder" },
-      { [alignRight]: type === "low_inventory" },
+      { [status]: type === INVENTORY_STATUS.SOLD_OUT || type === INVENTORY_STATUS.BACKORDER },
+      { [soldOut]: type === INVENTORY_STATUS.SOLD_OUT },
+      { [backorder]: type === INVENTORY_STATUS.BACKORDER },
+      { [alignRight]: type === INVENTORY_STATUS.LOW_QUANTITY },
       className
     );
 
     const labelClasses = classNames(
       labelStyle,
-      { [warning]: type === "low_inventory" }
+      { [warning]: type === INVENTORY_STATUS.LOW_QUANTITY }
     );
 
     return (

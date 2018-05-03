@@ -1,0 +1,36 @@
+import keyMirror from "keymirror";
+
+export const INVENTORY_STATUS = keyMirror({
+  SOLD_OUT: null,
+  BACKORDER: null,
+  LOW_QUANTITY: null
+});
+
+
+/**
+ * Determines a product's inventory status
+ *
+ * @param {Object} product - The product
+ * @returns {Object} - The computed product status
+ */
+export function inventoryStatus(product) {
+  let status = null;
+
+  if (product.isSoldOut && product.isBackorder) {
+    status = { type: INVENTORY_STATUS.BACKORDER, label: "Backorder" };
+  } else if (product.isSoldOut && !product.isBackorder) {
+    status = { type: INVENTORY_STATUS.SOLD_OUT, label: "Sold Out" };
+  }
+
+  return status;
+}
+
+/**
+ * Determines if a product has low inventory.
+ *
+ * @param {Object} product - The product
+ * @returns {Boolean} - Indicates whether the product has low inventory
+ */
+export function isProductLowQuantity(product) {
+  return product.isLowQuantity && !product.isSoldOut;
+}

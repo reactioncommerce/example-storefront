@@ -2,13 +2,13 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import { inject, observer } from "mobx-react";
-import Chip from "material-ui/Chip";
 import Fade from "material-ui/transitions/Fade";
 import Hidden from "material-ui/Hidden";
 import Typography from "material-ui/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
 import Link from "components/Link";
 import Badge from "components/Badge";
+import { inventoryStatus, isProductLowQuantity, INVENTORY_STATUS } from "lib/utils";
 import { styles } from "./styles";
 
 const PRODUCT_PLACE_HOLDER = "/resources/placeholder.gif";
@@ -35,22 +35,6 @@ class ProductItem extends Component {
     const { product: { slug } } = this.props;
     const url = `/product/${slug}`;
     return url;
-  }
-
-  get productStatus() {
-    const { product: { isBackorder, isSoldOut } } = this.props;
-    let status;
-    if (isSoldOut && isBackorder) {
-      status = { type: "backorder", label: "Backorder" };
-    } else if (isSoldOut && !isBackorder) {
-      status = { type: "sold_out", label: "Sold Out" };
-    }
-    return status;
-  }
-
-  get productLowQuantity() {
-    const { product: { isLowQuantity, isSoldOut } } = this.props;
-    return isLowQuantity && !isSoldOut;
   }
 
   onImageLoad = () => {
@@ -119,12 +103,13 @@ class ProductItem extends Component {
   }
 
   renderProductMedia() {
-    const { classes } = this.props;
-    const { type, label } = this.productStatus || {};
+    const { classes, product } = this.props;
+    const status = inventoryStatus(product);
+
     return (
       <div className={classes.productMedia}>
-        {this.productStatus && <Badge type={type} label={label} />}
-        {this.productLowQuantity && <Badge type={"low_inventory"} label="Low Inventory" />}
+        {status && <Badge type={status.type} label={status.label} />}
+        {isProductLowQuantity(product) && <Badge type={INVENTORY_STATUS.LOW_QUANTITY} label="Low Inventory" />}
         {this.renderProductImage()}
       </div>
     );
