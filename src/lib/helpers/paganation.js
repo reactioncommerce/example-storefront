@@ -1,23 +1,4 @@
 /**
- * Update catalogItems page info
- * @param {Object} data data returend from GraphQL query
- * @param {Object} pageInfo PageInfo to update
- * @returns {Object} data containing the updated page info for catalofItems
- */
-export function extendPageInfo(data, pageInfo) {
-  return {
-    ...data,
-    catalogItems: {
-      ...data.catalogItems,
-      pageInfo: {
-        ...data.catalogItems.pageInfo,
-        ...pageInfo
-      }
-    }
-  };
-}
-
-/**
  * Load next page of content for a Apollo GraphQL query
  * @name loadPreviousPage
  * @param {Object} args Args for paganation
@@ -27,30 +8,33 @@ export function extendPageInfo(data, pageInfo) {
  * @param {Object} args.fetchMore fetchMore function
  * @returns {Function} load next page function
  */
-export const loadNextPage = ({ queryName, data, limit, fetchMore }) => () => {
-  if (!queryName) {
-    throw new Error("queryName is required");
+export const loadNextPage = ({ queryName, data, limit, fetchMore, routingStore }) => () => {
+  if (!queryName) throw new Error("queryName is required");
+
+  const cursor = data[queryName].pageInfo.endCursor;
+
+  // Set URL search params to allow for link sharing
+  if (routingStore) {
+    routingStore.setSearch(`first=${limit}&after=${cursor}}`);
   }
 
   fetchMore({
     variables: {
       first: limit,
-      after: data[queryName].pageInfo.endCursor
+      after: cursor,
+      last: null,
+      before: null
     },
     updateQuery: (previousResult, { fetchMoreResult }) => {
       const { [queryName]: items } = fetchMoreResult;
 
       // Return with additional results
       if (items.edges.length) {
-        return extendPageInfo(fetchMoreResult, {
-          hasPreviousPage: true
-        });
+        return fetchMoreResult;
       }
 
       // Send the previous result if the new result contians no additional data
-      return extendPageInfo(previousResult, {
-        hasPreviousPage: previousResult[queryName].edges.length > previousResult[queryName].totalCount
-      });
+      return previousResult;
     }
   });
 };
@@ -65,28 +49,33 @@ export const loadNextPage = ({ queryName, data, limit, fetchMore }) => () => {
  * @param {Object} args.fetchMore fetchMore function
  * @returns {Function} load next page function
  */
-export const loadPreviousPage = ({ queryName, data, limit, fetchMore }) => () => {
+export const loadPreviousPage = ({ queryName, data, limit, fetchMore, routingStore }) => () => {
+  if (!queryName) throw new Error("queryName is required");
+
+  const cursor = data[queryName].pageInfo.startCursor;
+
+  // Set URL search params to allow for link sharing
+  if (routingStore) {
+    routingStore.setSearch(`last=${limit}&before=${cursor}`);
+  }
+
   fetchMore({
     variables: {
-      last: limit,
       first: null,
-      before: data[queryName].pageInfo.startCursor
+      after: null,
+      last: limit,
+      before: cursor
     },
     updateQuery: (previousResult, { fetchMoreResult }) => {
       const { [queryName]: items } = fetchMoreResult;
 
       // Return with additional results
-      if (items.edges.length && items.pageInfo.hasPreviousPage) {
-        return extendPageInfo(fetchMoreResult, {
-          hasNextPage: fetchMoreResult[queryName].edges.length <= fetchMoreResult[queryName].totalCount
-        });
+      if (items.edges.length) {
+        return fetchMoreResult;
       }
 
       // Send the previous result if the new result contians no additional data
-      return extendPageInfo(previousResult, {
-        hasPreviousPage: false,
-        hasNextPage: previousResult[queryName].edges.length <= previousResult[queryName].totalCount
-      });
+      return previousResult;
     }
   });
 };
@@ -103,7 +92,10 @@ export const loadPreviousPage = ({ queryName, data, limit, fetchMore }) => () =>
  */
 export const paganation = (args) => {
   const { queryName, data } = args;
-  const pageInfo = (data[queryName] && data[queryName].pageInfo) || {};
+
+  if (!queryName) throw new Error("queryName is required");
+
+  const pageInfo = (data && data[queryName] && data[queryName].pageInfo) || {};
 
   return {
     ...pageInfo,
