@@ -11,9 +11,9 @@ import ProductGrid from "components/ProductGrid";
 import { FacebookSocial, TwitterSocial } from "components/Social";
 
 @withData
+@withRoot
 @withShop
 @withCatalogItems
-@withRoot
 @inject("shop")
 @inject("routingStore")
 @inject("uiStore")
