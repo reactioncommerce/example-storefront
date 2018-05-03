@@ -112,22 +112,27 @@ export const paganation = (args) => {
  * @param {Number|String} params.last Limit starting at the end of the list
  * @param {String} params.before Before Cursor
  * @param {String} params.after After cursor
+ * @param {Options} options Additional options
+ * @param {Number} options.defaultLimit After cursor
  * @returns {Object} Object of variables for GraphQL query
  */
-export const paganationVariablesFromUrlParams = (params) => {
+export const paganationVariablesFromUrlParams = (params, options) => {
   const { first, last, before, after } = params || {};
+  const { defaultPageLimit } = options || {};
   const variables = {};
 
   if (first) {
     variables.first = parseInt(first, 10);
   } else if (last) {
     variables.last = parseInt(last, 10);
+  } else if (defaultPageLimit) {
+    variables.first = defaultPageLimit;
   }
 
-  if (before) {
-    variables.before = before;
-  } else if (after) {
+  if (after) {
     variables.after = after;
+  } else if (before) {
+    variables.before = before;
   }
 
   return variables;

@@ -27,7 +27,7 @@ export default (Component) => (
       const { primaryShopId, routingStore } = this.props || {};
       const variables = {
         shopId: primaryShopId,
-        ...paganationVariablesFromUrlParams(routingStore.query)
+        ...paganationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: PAGE_LIMIT })
       };
 
       return (
