@@ -10,10 +10,10 @@ const styles = (theme) => ({
     borderRadius: 4,
     height: "auto",
     fontSize: "0.7rem",
-    paddingBottom: theme.spacing.unit * 0.5,
+    paddingBottom: theme.spacing.unithalf,
     paddingLeft: theme.spacing.unit,
     paddingRight: theme.spacing.unit,
-    paddingTop: theme.spacing.unit * 0.5,
+    paddingTop: theme.spacing.unithalf,
     position: "absolute",
     zIndex: 100
   },
@@ -37,7 +37,7 @@ const styles = (theme) => ({
     backgroundColor: theme.palette.error.main
   },
   bestseller: {
-    backgroundColor: theme.palette.primary.light
+    backgroundColor: theme.palette.reaction.bestseller
   },
   warning: {
     backgroundColor: "transparent",
@@ -61,7 +61,7 @@ export default class Badge extends Component {
   render() {
     const {
       classes: {
-        badge, status, labelStyle, soldOut, backorder, warning, alignRight
+        alignRight, badge, backorder, bestseller, sale, status, labelStyle, soldOut, warning
       },
       className,
       type,
@@ -70,9 +70,11 @@ export default class Badge extends Component {
 
     const badgeClasses = classNames(
       badge,
-      { [status]: type === INVENTORY_STATUS.SOLD_OUT || type === INVENTORY_STATUS.BACKORDER },
-      { [soldOut]: type === INVENTORY_STATUS.SOLD_OUT },
       { [backorder]: type === INVENTORY_STATUS.BACKORDER },
+      { [bestseller]: type === INVENTORY_STATUS.BESTSELLER },
+      { [sale]: type === INVENTORY_STATUS.SALE },
+      { [status]: type !== INVENTORY_STATUS.LOW_QUANTITY },
+      { [soldOut]: type === INVENTORY_STATUS.SOLD_OUT },
       { [alignRight]: type === INVENTORY_STATUS.LOW_QUANTITY },
       className
     );

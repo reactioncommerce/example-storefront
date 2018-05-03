@@ -1,9 +1,11 @@
 import keyMirror from "keymirror";
 
 export const INVENTORY_STATUS = keyMirror({
-  SOLD_OUT: null,
   BACKORDER: null,
-  LOW_QUANTITY: null
+  BESTSELLER: null,
+  LOW_QUANTITY: null,
+  SOLD_OUT: null,
+  SALE: null
 });
 
 
