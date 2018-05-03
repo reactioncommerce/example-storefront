@@ -53,7 +53,7 @@ _**NOTE:** Replace the `${port}` with the localhost port you'd like the applicat
 
 _**NOTE:** The above command is assuming ether the `devserver` or `reaction` is also running._
 
-## [Using MobX]
+## Using MobX
 See our [MobX documentation](docs/MOBX.md)
 
 ## Features
