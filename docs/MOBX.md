@@ -5,7 +5,9 @@
 ## Data stores
 
 ### AuthStore
-[WIP]
+`AuthStore` data store provides data related to authorization of users. The values are set inside of `src/pages/_document.js`.
+
+- `token`: The login token of the current user
 
 ### RoutingStore
 The mobx `RoutingStore` data store provides data related to the current route. The values are set inside of the `withData` HOC, as this is where `nextjs` provides routing context.
