@@ -22,7 +22,7 @@ export default class ProductGrid extends Component {
       hasPreviousPage: PropTypes.bool,
       loadNextPage: PropTypes.func,
       loadPreviousPage: PropTypes.func
-    }),
+    }).isRequired,
     theme: PropTypes.object
   };
 
