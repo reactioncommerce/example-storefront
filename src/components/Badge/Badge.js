@@ -52,36 +52,36 @@ const styles = (theme) => ({
 export default class Badge extends Component {
   static propTypes = {
     className: PropTypes.string,
-    classes: PropTypes.object,
+    classes: PropTypes.object.isRequired,
     isLowInventory: PropTypes.bool,
-    label: PropTypes.string,
-    type: PropTypes.string
+    label: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired
   }
 
   render() {
     const {
-      classes: {
-        alignRight, badge, backorder, bestseller, sale, status, labelStyle, soldOut, warning
-      },
+      classes,
       className,
       type,
       label
     } = this.props;
 
     const badgeClasses = classNames(
-      badge,
-      { [backorder]: type === INVENTORY_STATUS.BACKORDER },
-      { [bestseller]: type === INVENTORY_STATUS.BESTSELLER },
-      { [sale]: type === INVENTORY_STATUS.SALE },
-      { [status]: type !== INVENTORY_STATUS.LOW_QUANTITY },
-      { [soldOut]: type === INVENTORY_STATUS.SOLD_OUT },
-      { [alignRight]: type === INVENTORY_STATUS.LOW_QUANTITY },
+      classes.badge,
+      {
+        [classes.backorder]: type === INVENTORY_STATUS.BACKORDER,
+        [classes.bestseller]: type === INVENTORY_STATUS.BESTSELLER,
+        [classes.sale]: type === INVENTORY_STATUS.SALE,
+        [classes.status]: type !== INVENTORY_STATUS.LOW_QUANTITY,
+        [classes.soldOut]: type === INVENTORY_STATUS.SOLD_OUT,
+        [classes.alignRight]: type === INVENTORY_STATUS.LOW_QUANTITY
+      },
       className
     );
 
     const labelClasses = classNames(
-      labelStyle,
-      { [warning]: type === INVENTORY_STATUS.LOW_QUANTITY }
+      classes.labelStyle,
+      { [classes.warning]: type === INVENTORY_STATUS.LOW_QUANTITY }
     );
 
     return (

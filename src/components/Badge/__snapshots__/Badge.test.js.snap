@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="Badge-badge-1 Badge-sale-6 Badge-status-3"
+>
+  <span
+    className="Badge-labelStyle-2"
+  >
+    Sale
+  </span>
+</div>
+`;
