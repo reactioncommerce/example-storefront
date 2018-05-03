@@ -103,3 +103,32 @@ export const paganation = (args) => {
     loadPreviousPage: loadPreviousPage(args)
   };
 };
+
+/**
+ * Create an object of variables for paganation a GraphQL query.
+ * @name paganationVariablesFromUrlParams
+ * @param {Object} params Object of params to create query variables from
+ * @param {Number|String} params.first Limit starting at the beginning of the list
+ * @param {Number|String} params.last Limit starting at the end of the list
+ * @param {String} params.before Before Cursor
+ * @param {String} params.after After cursor
+ * @returns {Object} Object of variables for GraphQL query
+ */
+export const paganationVariablesFromUrlParams = (params) => {
+  const { first, last, before, after } = params || {};
+  const variables = {};
+
+  if (first) {
+    variables.first = parseInt(first, 10);
+  } else if (last) {
+    variables.last = parseInt(last, 10);
+  }
+
+  if (before) {
+    variables.before = before;
+  } else if (after) {
+    variables.after = after;
+  }
+
+  return variables;
+};
