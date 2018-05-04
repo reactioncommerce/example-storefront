@@ -41,6 +41,9 @@ export default {
       title: "Sample Variant",
       price: 19.99,
       optionTitle: "Untitled Option",
+      isLowQuantity: false,
+      isSoldOut: true,
+      isBackorder: false,
       options: [
         {
           _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlNNcjRyaERGbll2Rk10RFRY",
@@ -50,7 +53,10 @@ export default {
           ],
           title: "Option 1 - Red Dwarf",
           price: 19.99,
-          optionTitle: "Red"
+          optionTitle: "Red",
+          isLowQuantity: false,
+          isSoldOut: true,
+          isBackorder: true
         },
         {
           _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OkNKb1JCbTl2UnJvcmM5bXha",
@@ -60,7 +66,10 @@ export default {
           ],
           title: "Option 2 - Green Tomato",
           price: 12.99,
-          optionTitle: "Green"
+          optionTitle: "Green",
+          isLowQuantity: false,
+          isSoldOut: false,
+          isBackorder: false
         }
 
       ]
@@ -73,6 +82,9 @@ export default {
       title: "Sample Variant 2",
       price: 10.99,
       optionTitle: "Untitled Option",
+      isLowQuantity: false,
+      isSoldOut: false,
+      isBackorder: false,
       options: [
         {
           _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OkhaUHFmaVBIV0xabWZ1aHZp",
@@ -82,7 +94,10 @@ export default {
           ],
           title: "Sample Variant 2 - Blue Option",
           price: 200,
-          optionTitle: "Blue"
+          optionTitle: "Blue",
+          isLowQuantity: false,
+          isSoldOut: false,
+          isBackorder: false
         },
         {
           _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50Old5em43emZhQkFYS1hja3BT",
@@ -92,7 +107,10 @@ export default {
           ],
           title: "Sample Variant 2 - Red Option",
           price: 330,
-          optionTitle: "Red"
+          optionTitle: "Red",
+          isLowQuantity: false,
+          isSoldOut: false,
+          isBackorder: false
         }
 
       ]

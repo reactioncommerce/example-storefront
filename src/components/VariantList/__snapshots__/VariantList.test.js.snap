@@ -8,7 +8,7 @@ exports[`basic snapshot 1`] = `
     className="VariantList-variantItem-2"
   >
     <button
-      className="MuiButtonBase-root-5 VariantItem-variantButton-3 VariantItem-activeVariant-4"
+      className="MuiButtonBase-root-6 VariantItem-variantButton-4 VariantItem-activeVariant-5"
       disabled={undefined}
       onBlur={[Function]}
       onClick={[Function]}
@@ -25,20 +25,33 @@ exports[`basic snapshot 1`] = `
       type="button"
     >
       <span
-        className="MuiTypography-root-8 MuiTypography-body1-17"
+        className="MuiTypography-root-9 MuiTypography-body1-18"
       >
         Sample Variant
       </span>
       <span
-        className="MuiTypography-root-8 MuiTypography-body1-17"
+        className="MuiTypography-root-9 MuiTypography-body1-18"
       />
     </button>
+    <div
+      className="VariantList-alert-3"
+    >
+      <div
+        className="Badge-badge-33 Badge-status-35 Badge-soldOut-36"
+      >
+        <span
+          className="Badge-labelStyle-34"
+        >
+          Sold Out
+        </span>
+      </div>
+    </div>
   </div>
   <div
     className="VariantList-variantItem-2"
   >
     <button
-      className="MuiButtonBase-root-5 VariantItem-variantButton-3"
+      className="MuiButtonBase-root-6 VariantItem-variantButton-4"
       disabled={undefined}
       onBlur={[Function]}
       onClick={[Function]}
@@ -55,38 +68,38 @@ exports[`basic snapshot 1`] = `
       type="button"
     >
       <span
-        className="MuiTypography-root-8 MuiTypography-body1-17"
+        className="MuiTypography-root-9 MuiTypography-body1-18"
       >
         Sample Variant 2
       </span>
       <span
-        className="MuiTypography-root-8 MuiTypography-body1-17"
+        className="MuiTypography-root-9 MuiTypography-body1-18"
       />
     </button>
   </div>
   <div
-    className="Divider-container-32"
+    className="Divider-container-42"
   >
     <hr
-      className="Divider-item-34"
+      className="Divider-item-44"
     />
     <span
-      className="MuiTypography-root-8 MuiTypography-body1-17 Divider-label-33"
+      className="MuiTypography-root-9 MuiTypography-body1-18 Divider-label-43"
     >
       Available Options
     </span>
     <hr
-      className="Divider-item-34"
+      className="Divider-item-44"
     />
   </div>
   <div
-    className="MuiGrid-container-36 MuiGrid-spacing-xs-8-57 OptionsList-root-35"
+    className="MuiGrid-container-48 MuiGrid-spacing-xs-8-69 OptionsList-root-45"
   >
     <div
-      className="MuiGrid-item-37"
+      className="MuiGrid-item-49"
     >
       <button
-        className="MuiButtonBase-root-5 ProductDetailOption-optionButton-126"
+        className="MuiButtonBase-root-6 ProductDetailOption-optionButton-138"
         disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
@@ -103,17 +116,30 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiTypography-root-8 MuiTypography-body1-17 ProductDetailOption-optionText-127"
+          className="MuiTypography-root-9 MuiTypography-body1-18 ProductDetailOption-optionText-139"
         >
           Red
         </span>
       </button>
+      <div
+        className="OptionsList-alert-46"
+      >
+        <div
+          className="Badge-badge-33 Badge-backorder-37 Badge-status-35 OptionsList-badge-47"
+        >
+          <span
+            className="Badge-labelStyle-34"
+          >
+            Backorder
+          </span>
+        </div>
+      </div>
     </div>
     <div
-      className="MuiGrid-item-37"
+      className="MuiGrid-item-49"
     >
       <button
-        className="MuiButtonBase-root-5 ProductDetailOption-optionButton-126"
+        className="MuiButtonBase-root-6 ProductDetailOption-optionButton-138"
         disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
@@ -130,7 +156,7 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiTypography-root-8 MuiTypography-body1-17 ProductDetailOption-optionText-127"
+          className="MuiTypography-root-9 MuiTypography-body1-18 ProductDetailOption-optionText-139"
         >
           Green
         </span>

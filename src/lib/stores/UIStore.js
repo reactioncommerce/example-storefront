@@ -1,9 +1,33 @@
 import { observable, computed, action } from "mobx";
 import getConfig from "next/config";
 
+/**
+ * A mobx store for UI data
+ * @class AuthStore
+ */
+
 class UIStore {
+  /**
+   * Is the cart drawer open or closed
+   *
+   * @type Boolean
+   * @default false
+   */
   @observable _cartOpen = false;
+
+  /**
+   * Is the menu drawer open or closed
+   *
+   * @type Boolean
+   * @default false
+   */
   @observable _menuDrawerOpen = false;
+
+  /**
+   * App config data
+   *
+   * @type Object
+   */
   @observable _appConfig = getConfig();
 
   @computed
