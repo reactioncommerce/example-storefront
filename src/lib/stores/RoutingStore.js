@@ -7,16 +7,16 @@ import { observable, computed } from "mobx";
 
 export default class RoutingStore {
   /**
-   * `pathname` @observable
-   * @type @observable
-   * @param {string} pathname - The pathname of the current page (i.e. `/tags/shop`)
+   * The pathname of the current page (i.e. `/tags/shop`)
+   *
+   * @type String
    */
   @observable _pathname = "";
 
   /**
-   *`query` @observable
+   * The query string of the current page (i.e. `shop`)
+   *
    * @type @observable
-   * @param {string} query - The query string of the current page (i.e. `shop`)
    */
   @observable _query = "";
 

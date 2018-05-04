@@ -5,11 +5,12 @@ import Cookies from "js-cookie";
  * A mobx store for authentication
  * @class AuthStore
  */
+
 class AuthStore {
   /**
-  *`query` @observable
-  * @type @observable
-  * @param {string} token - The login token of the current user
+  * The login token of the current user
+  *
+  * @type String
   */
   @observable _token = "";
 

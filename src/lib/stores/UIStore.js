@@ -8,23 +8,25 @@ import getConfig from "next/config";
 
 class UIStore {
   /**
-   *`query` @observable
-   * @type @observable
-   * @param {boolean} cartOpen - Is the cart drawer open or closed
+   * Is the cart drawer open or closed
+   *
+   * @type Boolean
+   * @default false
    */
   @observable _cartOpen = false;
 
   /**
-   *`query` @observable
-  * @type @observable
-  * @param {boolean} menuDrawerOpen - Is the menu drawer open or closed
-  */
+   * Is the menu drawer open or closed
+   *
+   * @type Boolean
+   * @default false
+   */
   @observable _menuDrawerOpen = false;
 
   /**
-   *`query` @observable
-   * @type @observable
-   * @param {object} appConfig - App config data
+   * App config data
+   *
+   * @type Object
    */
   @observable _appConfig = getConfig();
 
