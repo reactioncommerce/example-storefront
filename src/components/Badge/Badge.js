@@ -20,6 +20,7 @@ const styles = (theme) => ({
   labelStyle: {
     fontWeight: theme.typography.fontWeightBold,
     position: "relative",
+    whiteSpace: "nowrap",
     padding: 0
   },
   status: {

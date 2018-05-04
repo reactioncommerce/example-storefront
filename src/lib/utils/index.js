@@ -22,6 +22,8 @@ export function inventoryStatus(product) {
     status = { type: INVENTORY_STATUS.BACKORDER, label: "Backorder" };
   } else if (product.isSoldOut && !product.isBackorder) {
     status = { type: INVENTORY_STATUS.SOLD_OUT, label: "Sold Out" };
+  } else if (product.isLowQuantity && !product.isSoldOut) {
+    status = { type: INVENTORY_STATUS.LOW_QUANTITY, label: "Low Inventory" };
   }
 
   return status;
