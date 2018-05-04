@@ -56,7 +56,7 @@ class ProductDetail extends Component {
               <MediaGallery mediaItems={product.media} />
             </div>
             <div className={classes.section}>
-              <TagGrid tags={product.tags} />
+              <TagGrid tags={product.tags.nodes} />
             </div>
           </Grid>
 

@@ -29,6 +29,8 @@ query catalogItemProductQuery($slugOrId: String!) {
       tags {
         nodes {
           name
+          slug
+          position
         }
       }
       variants {
