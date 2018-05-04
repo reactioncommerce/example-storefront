@@ -10,7 +10,7 @@ exports[`basic snapshot 1`] = `
     >
       <div>
         <a
-          className="Link-link-106"
+          className="Link-link-98"
           href="/product/men's-lightweigth-synchilla"
           onClick={[Function]}
         >
@@ -18,14 +18,10 @@ exports[`basic snapshot 1`] = `
             className="inject-ProductItem-with-uiStore-productMedia-93"
           >
             <div
-              className="MuiChip-root-107 inject-ProductItem-with-uiStore-chip-94 inject-ProductItem-with-uiStore-status-96 inject-ProductItem-with-uiStore-statusSoldOut-97"
-              onClick={undefined}
-              onKeyDown={[Function]}
-              role="button"
-              tabIndex={-1}
+              className="Badge-badge-99 Badge-status-101 Badge-soldOut-102"
             >
               <span
-                className="MuiChip-label-112 inject-ProductItem-with-uiStore-chipLabel-95"
+                className="Badge-labelStyle-100"
               >
                 Sold Out
               </span>
@@ -52,17 +48,17 @@ exports[`basic snapshot 1`] = `
               />
               <img
                 alt=""
-                className="inject-ProductItem-with-uiStore-img-102"
+                className="inject-ProductItem-with-uiStore-img-94"
                 onLoad={[Function]}
                 src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/small/25580_CICN.png"
               />
             </picture>
             <div
-              className="inject-ProductItem-with-uiStore-imgLoading-103"
+              className="inject-ProductItem-with-uiStore-imgLoading-95"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-138 inject-ProductItem-with-uiStore-loadingIcon-104"
+                className="MuiSvgIcon-root-132 inject-ProductItem-with-uiStore-loadingIcon-96"
                 color={undefined}
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -78,12 +74,12 @@ exports[`basic snapshot 1`] = `
               className="inject-ProductItem-with-uiStore-productInfo-92"
             >
               <aside
-                className="MuiTypography-root-114 MuiTypography-body2-122"
+                className="MuiTypography-root-108 MuiTypography-body2-116"
               >
                 Men's Lightweigth Synchilla
               </aside>
               <p
-                className="MuiTypography-root-114 MuiTypography-body1-123"
+                className="MuiTypography-root-108 MuiTypography-body1-117"
               >
                 $
                 7.99 - 77.99
@@ -91,7 +87,7 @@ exports[`basic snapshot 1`] = `
             </div>
             <div>
               <p
-                className="MuiTypography-root-114 MuiTypography-body1-123"
+                className="MuiTypography-root-108 MuiTypography-body1-117"
               >
                 Patagonia
               </p>
@@ -105,7 +101,7 @@ exports[`basic snapshot 1`] = `
     >
       <div>
         <a
-          className="Link-link-106"
+          className="Link-link-98"
           href="/product/example-product"
           onClick={[Function]}
         >
@@ -134,17 +130,17 @@ exports[`basic snapshot 1`] = `
               />
               <img
                 alt=""
-                className="inject-ProductItem-with-uiStore-img-102"
+                className="inject-ProductItem-with-uiStore-img-94"
                 onLoad={[Function]}
                 src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/small/product_image.png"
               />
             </picture>
             <div
-              className="inject-ProductItem-with-uiStore-imgLoading-103"
+              className="inject-ProductItem-with-uiStore-imgLoading-95"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-138 inject-ProductItem-with-uiStore-loadingIcon-104"
+                className="MuiSvgIcon-root-132 inject-ProductItem-with-uiStore-loadingIcon-96"
                 color={undefined}
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -160,12 +156,12 @@ exports[`basic snapshot 1`] = `
               className="inject-ProductItem-with-uiStore-productInfo-92"
             >
               <aside
-                className="MuiTypography-root-114 MuiTypography-body2-122"
+                className="MuiTypography-root-108 MuiTypography-body2-116"
               >
                 Basic Reaction Product
               </aside>
               <p
-                className="MuiTypography-root-114 MuiTypography-body1-123"
+                className="MuiTypography-root-108 MuiTypography-body1-117"
               >
                 $
                 12.99 - 19.99
@@ -173,7 +169,7 @@ exports[`basic snapshot 1`] = `
             </div>
             <div>
               <p
-                className="MuiTypography-root-114 MuiTypography-body1-123"
+                className="MuiTypography-root-108 MuiTypography-body1-117"
               >
                 Reaction Commerce
               </p>

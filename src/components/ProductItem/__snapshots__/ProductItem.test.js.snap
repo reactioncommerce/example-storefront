@@ -3,7 +3,7 @@
 exports[`basic snapshot 1`] = `
 <div>
   <a
-    className="Link-link-16"
+    className="Link-link-8"
     href="/product/undefined"
     onClick={[Function]}
   >
@@ -32,17 +32,17 @@ exports[`basic snapshot 1`] = `
         />
         <img
           alt=""
-          className="inject-ProductItem-with-uiStore-img-12"
+          className="inject-ProductItem-with-uiStore-img-4"
           onLoad={[Function]}
           src="http://localhost:300/resources/placeholder.gif"
         />
       </picture>
       <div
-        className="inject-ProductItem-with-uiStore-imgLoading-13"
+        className="inject-ProductItem-with-uiStore-imgLoading-5"
       >
         <svg
           aria-hidden="true"
-          className="MuiSvgIcon-root-41 inject-ProductItem-with-uiStore-loadingIcon-14"
+          className="MuiSvgIcon-root-33 inject-ProductItem-with-uiStore-loadingIcon-6"
           color={undefined}
           focusable="false"
           viewBox="0 0 24 24"
@@ -58,17 +58,17 @@ exports[`basic snapshot 1`] = `
         className="inject-ProductItem-with-uiStore-productInfo-2"
       >
         <aside
-          className="MuiTypography-root-17 MuiTypography-body2-25"
+          className="MuiTypography-root-9 MuiTypography-body2-17"
         />
         <p
-          className="MuiTypography-root-17 MuiTypography-body1-26"
+          className="MuiTypography-root-9 MuiTypography-body1-18"
         >
           $
         </p>
       </div>
       <div>
         <p
-          className="MuiTypography-root-17 MuiTypography-body1-26"
+          className="MuiTypography-root-9 MuiTypography-body1-18"
         />
       </div>
     </div>
