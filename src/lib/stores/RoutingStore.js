@@ -1,5 +1,10 @@
 import { observable, computed } from "mobx";
 
+/**
+ * A mobx store for routing data
+ * @class AuthStore
+ */
+
 export default class RoutingStore {
   /**
    * `pathname` @observable

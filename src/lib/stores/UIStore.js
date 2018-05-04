@@ -1,6 +1,11 @@
 import { observable, computed, action } from "mobx";
 import getConfig from "next/config";
 
+/**
+ * A mobx store for UI data
+ * @class AuthStore
+ */
+
 class UIStore {
   /**
    *`query` @observable
