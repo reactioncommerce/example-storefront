@@ -1,24 +1,37 @@
 {
   "presets": [
     [
-      "env",
+      "next/babel",
       {
-        "targets": {
-          "node": "current",
-          "browsers": [
-            "last 2 versions"
-          ]
+        "preset-env": {
+          "targets": {
+            "node": "current",
+            "browsers": [
+              "last 2 versions"
+            ]
+          }
         }
+
       }
     ],
-    "stage-2",
-    "react"
+    [
+      "@babel/preset-stage-2",
+      {
+        "decoratorsLegacy": true
+      }
+    ],
+    "@babel/preset-react"
   ],
   "plugins": [
-    "transform-runtime",
-    "transform-decorators-legacy",
-    ["module-resolver", {
-      "root": [ "./src" ]
-    }]
+    "@babel/plugin-transform-runtime",
+    // "transform-decorators-legacy",
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ]
+      }
+    ]
   ]
 }
