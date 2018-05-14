@@ -37,6 +37,8 @@ const styles = (theme) => ({
   }
 });
 
+const placeholderImage = "/resources/placeholder.gif";
+
 /**
  * Product detail media gallery
  * @class ProductDetailMediaGallery
@@ -102,7 +104,7 @@ class MediaGallery extends Component {
       return (
         <img
           className={classes.featuredImage}
-          src={`${publicRuntimeConfig.externalAssetsUrl}${this.featuredMedia.URLs.large}`}
+          src={`${publicRuntimeConfig.externalAssetsUrl}${this.featuredMedia.URLs.large || placeholderImage}`}
           alt=""
         />
       );
