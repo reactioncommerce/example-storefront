@@ -1,31 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic snapshot 1`] = `
-<section>
+<section
+  className="ProductGrid-productGridContainer-1"
+>
   <div
-    className="MuiGrid-container-1 MuiGrid-spacing-xs-24-24"
+    className="MuiGrid-container-2 MuiGrid-spacing-xs-24-25"
   >
     <div
-      className="MuiGrid-item-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55"
+      className="MuiGrid-item-3 MuiGrid-grid-xs-12-39 MuiGrid-grid-sm-4-44 MuiGrid-grid-md-3-56"
     >
       <div>
         <a
-          className="Link-link-106"
+          className="Link-link-107"
           href="/product/men's-lightweigth-synchilla"
           onClick={[Function]}
         >
           <div
-            className="inject-ProductItem-with-uiStore-productMedia-93"
+            className="inject-ProductItem-with-uiStore-productMedia-94"
           >
             <div
-              className="MuiChip-root-107 inject-ProductItem-with-uiStore-chip-94 inject-ProductItem-with-uiStore-status-96 inject-ProductItem-with-uiStore-statusSoldOut-97"
+              className="MuiChip-root-108 inject-ProductItem-with-uiStore-chip-95 inject-ProductItem-with-uiStore-status-97 inject-ProductItem-with-uiStore-statusSoldOut-98"
               onClick={undefined}
               onKeyDown={[Function]}
               role="button"
               tabIndex={-1}
             >
               <span
-                className="MuiChip-label-112 inject-ProductItem-with-uiStore-chipLabel-95"
+                className="MuiChip-label-113 inject-ProductItem-with-uiStore-chipLabel-96"
               >
                 Sold Out
               </span>
@@ -52,17 +54,17 @@ exports[`basic snapshot 1`] = `
               />
               <img
                 alt=""
-                className="inject-ProductItem-with-uiStore-img-102"
+                className="inject-ProductItem-with-uiStore-img-103"
                 onLoad={[Function]}
                 src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/small/25580_CICN.png"
               />
             </picture>
             <div
-              className="inject-ProductItem-with-uiStore-imgLoading-103"
+              className="inject-ProductItem-with-uiStore-imgLoading-104"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-138 inject-ProductItem-with-uiStore-loadingIcon-104"
+                className="MuiSvgIcon-root-139 inject-ProductItem-with-uiStore-loadingIcon-105"
                 color={undefined}
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -75,15 +77,15 @@ exports[`basic snapshot 1`] = `
           </div>
           <div>
             <div
-              className="inject-ProductItem-with-uiStore-productInfo-92"
+              className="inject-ProductItem-with-uiStore-productInfo-93"
             >
               <aside
-                className="MuiTypography-root-114 MuiTypography-body2-122"
+                className="MuiTypography-root-115 MuiTypography-body2-123"
               >
                 Men's Lightweigth Synchilla
               </aside>
               <p
-                className="MuiTypography-root-114 MuiTypography-body1-123"
+                className="MuiTypography-root-115 MuiTypography-body1-124"
               >
                 $
                 7.99 - 77.99
@@ -91,7 +93,7 @@ exports[`basic snapshot 1`] = `
             </div>
             <div>
               <p
-                className="MuiTypography-root-114 MuiTypography-body1-123"
+                className="MuiTypography-root-115 MuiTypography-body1-124"
               >
                 Patagonia
               </p>
@@ -101,16 +103,16 @@ exports[`basic snapshot 1`] = `
       </div>
     </div>
     <div
-      className="MuiGrid-item-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-sm-4-43 MuiGrid-grid-md-3-55"
+      className="MuiGrid-item-3 MuiGrid-grid-xs-12-39 MuiGrid-grid-sm-4-44 MuiGrid-grid-md-3-56"
     >
       <div>
         <a
-          className="Link-link-106"
+          className="Link-link-107"
           href="/product/example-product"
           onClick={[Function]}
         >
           <div
-            className="inject-ProductItem-with-uiStore-productMedia-93"
+            className="inject-ProductItem-with-uiStore-productMedia-94"
           >
             <picture
               style={
@@ -134,17 +136,17 @@ exports[`basic snapshot 1`] = `
               />
               <img
                 alt=""
-                className="inject-ProductItem-with-uiStore-img-102"
+                className="inject-ProductItem-with-uiStore-img-103"
                 onLoad={[Function]}
                 src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/small/product_image.png"
               />
             </picture>
             <div
-              className="inject-ProductItem-with-uiStore-imgLoading-103"
+              className="inject-ProductItem-with-uiStore-imgLoading-104"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-138 inject-ProductItem-with-uiStore-loadingIcon-104"
+                className="MuiSvgIcon-root-139 inject-ProductItem-with-uiStore-loadingIcon-105"
                 color={undefined}
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -157,15 +159,15 @@ exports[`basic snapshot 1`] = `
           </div>
           <div>
             <div
-              className="inject-ProductItem-with-uiStore-productInfo-92"
+              className="inject-ProductItem-with-uiStore-productInfo-93"
             >
               <aside
-                className="MuiTypography-root-114 MuiTypography-body2-122"
+                className="MuiTypography-root-115 MuiTypography-body2-123"
               >
                 Basic Reaction Product
               </aside>
               <p
-                className="MuiTypography-root-114 MuiTypography-body1-123"
+                className="MuiTypography-root-115 MuiTypography-body1-124"
               >
                 $
                 12.99 - 19.99
@@ -173,7 +175,7 @@ exports[`basic snapshot 1`] = `
             </div>
             <div>
               <p
-                className="MuiTypography-root-114 MuiTypography-body1-123"
+                className="MuiTypography-root-115 MuiTypography-body1-124"
               >
                 Reaction Commerce
               </p>
