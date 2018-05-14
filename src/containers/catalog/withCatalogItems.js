@@ -19,7 +19,7 @@ export default (Component) => (
   @observer
   class CatalogItems extends React.Component {
     static propTypes = {
-      primaryShopId: PropTypes.string,
+      primaryShopId: PropTypes.string.isRequired,
       routingStore: PropTypes.object
     }
 
