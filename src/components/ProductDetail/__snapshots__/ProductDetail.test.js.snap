@@ -382,7 +382,7 @@ Details can be added below the image for more specific product information.
           className="VariantList-variantItem-144"
         >
           <button
-            className="MuiButtonBase-root-99 VariantItem-variantButton-145 VariantItem-activeVariant-146"
+            className="MuiButtonBase-root-99 VariantItem-variantButton-146 VariantItem-activeVariant-147"
             disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
@@ -407,12 +407,25 @@ Details can be added below the image for more specific product information.
               className="MuiTypography-root-111 MuiTypography-body1-120"
             />
           </button>
+          <div
+            className="VariantList-alert-145"
+          >
+            <div
+              className="Badge-badge-148 Badge-status-150 Badge-soldOut-151"
+            >
+              <span
+                className="Badge-labelStyle-149"
+              >
+                Sold Out
+              </span>
+            </div>
+          </div>
         </div>
         <div
           className="VariantList-variantItem-144"
         >
           <button
-            className="MuiButtonBase-root-99 VariantItem-variantButton-145"
+            className="MuiButtonBase-root-99 VariantItem-variantButton-146"
             disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
@@ -439,28 +452,28 @@ Details can be added below the image for more specific product information.
           </button>
         </div>
         <div
-          className="Divider-container-147"
+          className="Divider-container-157"
         >
           <hr
-            className="Divider-item-149"
+            className="Divider-item-159"
           />
           <span
-            className="MuiTypography-root-111 MuiTypography-body1-120 Divider-label-148"
+            className="MuiTypography-root-111 MuiTypography-body1-120 Divider-label-158"
           >
             Available Options
           </span>
           <hr
-            className="Divider-item-149"
+            className="Divider-item-159"
           />
         </div>
         <div
-          className="MuiGrid-container-4 MuiGrid-spacing-xs-8-25 OptionsList-root-150"
+          className="MuiGrid-container-4 MuiGrid-spacing-xs-8-25 OptionsList-root-160"
         >
           <div
             className="MuiGrid-item-5"
           >
             <button
-              className="MuiButtonBase-root-99 ProductDetailOption-optionButton-151"
+              className="MuiButtonBase-root-99 ProductDetailOption-optionButton-163"
               disabled={undefined}
               onBlur={[Function]}
               onClick={[Function]}
@@ -477,17 +490,30 @@ Details can be added below the image for more specific product information.
               type="button"
             >
               <span
-                className="MuiTypography-root-111 MuiTypography-body1-120 ProductDetailOption-optionText-152"
+                className="MuiTypography-root-111 MuiTypography-body1-120 ProductDetailOption-optionText-164"
               >
                 Red
               </span>
             </button>
+            <div
+              className="OptionsList-alert-161"
+            >
+              <div
+                className="Badge-badge-148 Badge-backorder-152 Badge-status-150 OptionsList-badge-162"
+              >
+                <span
+                  className="Badge-labelStyle-149"
+                >
+                  Backorder
+                </span>
+              </div>
+            </div>
           </div>
           <div
             className="MuiGrid-item-5"
           >
             <button
-              className="MuiButtonBase-root-99 ProductDetailOption-optionButton-151"
+              className="MuiButtonBase-root-99 ProductDetailOption-optionButton-163"
               disabled={undefined}
               onBlur={[Function]}
               onClick={[Function]}
@@ -504,7 +530,7 @@ Details can be added below the image for more specific product information.
               type="button"
             >
               <span
-                className="MuiTypography-root-111 MuiTypography-body1-120 ProductDetailOption-optionText-152"
+                className="MuiTypography-root-111 MuiTypography-body1-120 ProductDetailOption-optionText-164"
               >
                 Green
               </span>

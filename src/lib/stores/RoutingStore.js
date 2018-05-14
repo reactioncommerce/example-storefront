@@ -1,7 +1,23 @@
 import { observable, computed } from "mobx";
 
+/**
+ * A mobx store for routing data
+ * @class AuthStore
+ */
+
 export default class RoutingStore {
+  /**
+   * The pathname of the current page (i.e. `/tags/shop`)
+   *
+   * @type String
+   */
   @observable _pathname = "";
+
+  /**
+   * The query string of the current page (i.e. `shop`)
+   *
+   * @type @observable
+   */
   @observable _query = "";
 
   @computed

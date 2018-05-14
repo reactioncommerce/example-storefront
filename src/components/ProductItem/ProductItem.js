@@ -2,13 +2,13 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import { inject, observer } from "mobx-react";
-import Chip from "material-ui/Chip";
 import Fade from "material-ui/transitions/Fade";
 import Hidden from "material-ui/Hidden";
 import Typography from "material-ui/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
-
 import Link from "components/Link";
+import Badge from "components/Badge";
+import { inventoryStatus, isProductLowQuantity, INVENTORY_STATUS } from "lib/utils";
 import { styles } from "./styles";
 
 const PRODUCT_PLACE_HOLDER = "/resources/placeholder.gif";
@@ -35,22 +35,6 @@ class ProductItem extends Component {
     const { product: { slug } } = this.props;
     const url = `/product/${slug}`;
     return url;
-  }
-
-  get productStatus() {
-    const { classes, product: { isBackorder, isSoldOut } } = this.props;
-    let status;
-    if (isSoldOut && isBackorder) {
-      status = { label: "Backorder", style: `${classes.status} ${classes.statusBackorder}` };
-    } else if (isSoldOut && !isBackorder) {
-      status = { label: "Sold Out", style: `${classes.status} ${classes.statusSoldOut}` };
-    }
-    return status;
-  }
-
-  get productLowQuantity() {
-    const { product: { isLowQuantity, isSoldOut } } = this.props;
-    return isLowQuantity && !isSoldOut;
   }
 
   onImageLoad = () => {
@@ -114,14 +98,18 @@ class ProductItem extends Component {
     );
   }
 
+  renderBadge() {
+
+  }
+
   renderProductMedia() {
-    const { classes } = this.props;
-    const chipClasses = { root: classes.chip, label: classes.chipLabel };
-    const { label, style } = this.productStatus || {};
+    const { classes, product } = this.props;
+    const status = inventoryStatus(product);
+
     return (
       <div className={classes.productMedia}>
-        {this.productStatus && <Chip label={label} classes={chipClasses} className={style} />}
-        {this.productLowQuantity && <Chip label={"Low Inventory"} classes={chipClasses} className={classes.warning} />}
+        {status && <Badge type={status.type} label={status.label} />}
+        {isProductLowQuantity(product) && <Badge type={INVENTORY_STATUS.LOW_QUANTITY} label="Low Inventory" />}
         {this.renderProductImage()}
       </div>
     );

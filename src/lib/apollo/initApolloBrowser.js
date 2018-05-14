@@ -23,7 +23,7 @@ const create = (initialState, options = {}) =>
       },
       credentials: "same-origin"
     }),
-    cache: new InMemoryCache().restore(initialState || {})
+    cache: new InMemoryCache().restore({})
   });
 
 
