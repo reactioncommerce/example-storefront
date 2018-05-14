@@ -17,7 +17,15 @@ const styles = () => ({
 export default class ProductGrid extends Component {
   static propTypes = {
     catalogItems: PropTypes.arrayOf(PropTypes.object),
-    classes: PropTypes.object
+    classes: PropTypes.object,
+    pageInfo: PropTypes.shape({
+      startCursor: PropTypes.string,
+      endCursor: PropTypes.string,
+      hasNextPage: PropTypes.bool,
+      hasPreviousPage: PropTypes.bool,
+      loadNextPage: PropTypes.func,
+      loadPreviousPage: PropTypes.func
+    })
   };
 
   renderProduct(edge) {
