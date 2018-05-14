@@ -47,7 +47,7 @@ export default class RoutingStore {
    */
   @action setSearch(search) {
     const path = `${this._pathname}?${search}`;
-    Router.pushRoute(path);
+    Router.pushRoute(path, path, { shallow: true });
     return path;
   }
 }
