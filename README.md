@@ -57,6 +57,9 @@ _**NOTE:** The above command is assuming ether the `devserver` or `reaction` is 
 ## Testing
 To test locally, run `docker-compose run web yarn test`
 
+## Using MobX
+See our [MobX documentation](docs/MOBX.md)
+
 ## Features
  - [Docker](https://docs.docker.com)
  - [React](https://reactjs.org/)

@@ -3,18 +3,26 @@ import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import { observable, action, computed } from "mobx";
 import { observer } from "mobx-react";
-
 import { Router } from "routes";
 import VariantItem from "components/VariantItem";
 import ProductDetailOptionsList from "components/ProductDetailOptionsList";
+import Badge from "components/Badge";
+import { inventoryStatus } from "lib/utils";
 import Divider from "components/Divider";
 
 const styles = (theme) => ({
   variantsContainer: {
   },
   variantItem: {
+    position: "relative",
     marginTop: theme.spacing.unit * 1.25,
     marginBottom: theme.spacing.unit * 1.25
+  },
+  alert: {
+    display: "flex",
+    position: "absolute",
+    top: -theme.spacing.unit * 2,
+    right: theme.spacing.unit * 11
   }
 });
 
@@ -55,16 +63,30 @@ export default class VariantList extends Component {
   }
 
   renderVariant = (variant) => {
-    const { classes: { variantItem } } = this.props;
+    const { classes } = this.props;
     const active = (this.selectedVariant === variant._id);
 
     return (
-      <div className={variantItem} key={variant._id}>
+      <div className={classes.variantItem} key={variant._id}>
         <VariantItem
           active={active}
           handleClick={this.handleClick}
           variant={variant}
         />
+        {this.renderInventoryStatus(variant)}
+      </div>
+    );
+  }
+
+  renderInventoryStatus(variant) {
+    const { classes } = this.props;
+    const status = inventoryStatus(variant);
+
+    if (!status) return null;
+
+    return (
+      <div className={classes.alert}>
+        <Badge type={status.type} label={status.label} />
       </div>
     );
   }

@@ -5,12 +5,25 @@ import { withStyles } from "material-ui/styles";
 import { observable, action, computed } from "mobx";
 import { observer } from "mobx-react";
 import { Router } from "routes";
+import Badge from "components/Badge";
+import { inventoryStatus } from "lib/utils";
 import ProductDetailOption from "components/ProductDetailOption";
 
 const styles = (theme) => ({
   root: {
+    position: "relative",
     marginTop: theme.spacing.unit,
     marginBottom: theme.spacing.unit
+  },
+  alert: {
+    display: "flex",
+    top: -theme.spacing.unit * 2,
+    right: theme.spacing.unit * 1
+  },
+  badge: {
+    fontSize: "0.5rem",
+    top: -theme.spacing.unit,
+    left: theme.spacing.unit * 11
   }
 });
 
@@ -45,6 +58,19 @@ export default class OptionsList extends Component {
     });
   }
 
+  renderInventoryStatus(option) {
+    const { classes } = this.props;
+    const status = inventoryStatus(option);
+
+    if (!status) return null;
+
+    return (
+      <div className={classes.alert}>
+        <Badge className={classes.badge} type={status.type} label={status.label} />
+      </div>
+    );
+  }
+
   render() {
     const { classes: { root }, options, theme } = this.props;
 
@@ -59,6 +85,7 @@ export default class OptionsList extends Component {
               selectedOption={this.selectedOption}
               option={option}
             />
+            {this.renderInventoryStatus(option)}
           </Grid>
         ))
         }
