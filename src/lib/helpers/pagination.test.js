@@ -1,9 +1,9 @@
 import {
   loadNextPage,
   loadPreviousPage,
-  paganation,
-  paganationVariablesFromUrlParams
-} from "./paganation";
+  pagination,
+  paginationVariablesFromUrlParams
+} from "./pagination";
 
 const args = {
   fetchMore: jest.fn(({ updateQuery }) => {
@@ -39,8 +39,8 @@ const args = {
   }
 };
 
-test("paganation helper creates helper function props", () => {
-  const props = paganation(args);
+test("pagination helper creates helper function props", () => {
+  const props = pagination(args);
 
   expect(typeof props.loadNextPage).toBe("function");
   expect(typeof props.loadPreviousPage).toBe("function");
@@ -65,8 +65,8 @@ test("loadPreviousPage helper creates helper function", () => {
   expect(args.routingStore.setSearch).toHaveBeenCalled();
 });
 
-test("paganation variables from url params, (first, after)", () => {
-  const variables = paganationVariablesFromUrlParams({
+test("pagination variables from url params, (first, after)", () => {
+  const variables = paginationVariablesFromUrlParams({
     first: 2,
     after: "6"
   });
@@ -77,8 +77,8 @@ test("paganation variables from url params, (first, after)", () => {
   });
 });
 
-test("paganation variables from url params, (before, last)", () => {
-  const variables = paganationVariablesFromUrlParams({
+test("pagination variables from url params, (before, last)", () => {
+  const variables = paginationVariablesFromUrlParams({
     last: 10,
     before: "3"
   });
@@ -89,8 +89,8 @@ test("paganation variables from url params, (before, last)", () => {
   });
 });
 
-test("paganation variables from url params (first, after) supercede (last, before)", () => {
-  const variables = paganationVariablesFromUrlParams({
+test("pagination variables from url params (first, after) supercede (last, before)", () => {
+  const variables = paginationVariablesFromUrlParams({
     first: 2,
     after: "6",
     last: 10,
@@ -103,8 +103,8 @@ test("paganation variables from url params (first, after) supercede (last, befor
   });
 });
 
-test("paganation variables from url params with defaultPageLimit", () => {
-  const variables = paganationVariablesFromUrlParams({
+test("pagination variables from url params with defaultPageLimit", () => {
+  const variables = paginationVariablesFromUrlParams({
     after: "6"
   }, { defaultPageLimit: 10 });
 

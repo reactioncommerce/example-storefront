@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import { Query } from "react-apollo";
-import { paganation, paganationVariablesFromUrlParams } from "lib/helpers/paganation";
+import { pagination, paginationVariablesFromUrlParams } from "lib/helpers/pagination";
 import catalogItemsQuery from "./catalogItems.gql";
 
 const PAGE_LIMIT = 24;
@@ -27,7 +27,7 @@ export default (Component) => (
       const { primaryShopId, routingStore } = this.props || {};
       const variables = {
         shopId: primaryShopId,
-        ...paganationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: PAGE_LIMIT })
+        ...paginationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: PAGE_LIMIT })
       };
 
       return (
@@ -40,7 +40,7 @@ export default (Component) => (
             return (
               <Component
                 {...this.props}
-                catalogItemsPageInfo={paganation({
+                catalogItemsPageInfo={pagination({
                   fetchMore,
                   routingStore,
                   data,

@@ -1,8 +1,8 @@
 /**
  * Load next page of content for a Apollo GraphQL query
  * @name loadPreviousPage
- * @param {Object} args Args for paganation
- * @param {String} args.queryName Name of the GraphQL whos result will be used to paganate
+ * @param {Object} args Args for pagination
+ * @param {String} args.queryName Name of the GraphQL whose result will be used to paginate
  * @param {Object} args.data Full result from GraphQl
  * @param {Object} args.limit Limit
  * @param {Object} args.fetchMore fetchMore function
@@ -33,7 +33,7 @@ export const loadNextPage = ({ queryName, data, limit, fetchMore, routingStore }
         return fetchMoreResult;
       }
 
-      // Send the previous result if the new result contians no additional data
+      // Send the previous result if the new result contains no additional data
       return previousResult;
     }
   });
@@ -42,8 +42,8 @@ export const loadNextPage = ({ queryName, data, limit, fetchMore, routingStore }
 /**
  * Load previous page of content for a Apollo GraphQL query
  * @name loadPreviousPage
- * @param {Object} args Args for paganation
- * @param {String} args.queryName Name of the GraphQL whos result will be used to paganate
+ * @param {Object} args Args for pagination
+ * @param {String} args.queryName Name of the GraphQL whose result will be used to paginate
  * @param {Object} args.data Full result from GraphQl
  * @param {Object} args.limit Limit
  * @param {Object} args.fetchMore fetchMore function
@@ -74,23 +74,23 @@ export const loadPreviousPage = ({ queryName, data, limit, fetchMore, routingSto
         return fetchMoreResult;
       }
 
-      // Send the previous result if the new result contians no additional data
+      // Send the previous result if the new result contains no additional data
       return previousResult;
     }
   });
 };
 
 /**
- * Create paganation functions for next and previous and page info data
- * @name paganation
- * @param {Object} args Args for paganation
- * @param {String} args.queryName Name of the GraphQL whos result will be used to paganate
+ * Create pagination functions for next and previous and page info data
+ * @name pagination
+ * @param {Object} args Args for pagination
+ * @param {String} args.queryName Name of the GraphQL whose result will be used to paginate
  * @param {Object} args.data Full result from GraphQl
  * @param {Object} args.limit Limit
  * @param {Object} args.fetchMore fetchMore function
  * @returns {Function} load next page function
  */
-export const paganation = (args) => {
+export const pagination = (args) => {
   const { queryName, data } = args;
 
   if (!queryName) throw new Error("queryName is required");
@@ -105,8 +105,8 @@ export const paganation = (args) => {
 };
 
 /**
- * Create an object of variables for paganation a GraphQL query.
- * @name paganationVariablesFromUrlParams
+ * Create an object of variables for pagination a GraphQL query.
+ * @name paginationVariablesFromUrlParams
  * @param {Object} params Object of params to create query variables from
  * @param {Number|String} params.first Limit starting at the beginning of the list
  * @param {Number|String} params.last Limit starting at the end of the list
@@ -116,7 +116,7 @@ export const paganation = (args) => {
  * @param {Number} options.defaultLimit After cursor
  * @returns {Object} Object of variables for GraphQL query
  */
-export const paganationVariablesFromUrlParams = (params, options) => {
+export const paginationVariablesFromUrlParams = (params, options) => {
   const { first, last, before, after } = params || {};
   const { defaultPageLimit } = options || {};
   const variables = {};
