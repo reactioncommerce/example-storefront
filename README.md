@@ -55,7 +55,9 @@ _**NOTE:** Replace the `${port}` with the localhost port you'd like the applicat
 _**NOTE:** The above command is assuming ether the `devserver` or `reaction` is also running._
 
 ## Testing
-To test locally, run `docker-compose run web yarn test`
+- To test locally, run `docker-compose run web yarn test`
+- To test without cache, run `docker-compose run web yarn test --no-cache`. This can be helpful if changes aren't showing up.
+- To update a failing snapshot, run `docker-compose run web yarn test -u`.
 
 ## Using MobX
 See our [MobX documentation](docs/MOBX.md)
