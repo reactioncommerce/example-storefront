@@ -41,8 +41,6 @@ class ProductDetail extends Component {
 
   render() {
     const { classes, theme, product } = this.props;
-    // Fiter out variant options
-    const variants = product.variants.filter((variant) => variant.ancestorIds.length === 1);
 
     return (
       <div className={classes.root}>
@@ -70,7 +68,7 @@ class ProductDetail extends Component {
               description={product.description}
               vendor={product.vendor}
             />
-            <VariantList product={product} variants={variants}/>
+            <VariantList product={product} variants={product.variants}/>
           </Grid>
         </Grid>
       </div>

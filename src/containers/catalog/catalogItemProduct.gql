@@ -35,7 +35,6 @@ query catalogItemProductQuery($slugOrId: String!) {
       }
       variants {
         _id
-        ancestorIds
         title
         price
         optionTitle
