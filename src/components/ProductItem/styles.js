@@ -15,8 +15,8 @@ export const styles = (theme) => ({
     position: "relative"
   },
   "img": {
-    height: "auto",
-    width: "100%"
+    width: "100%",
+    height: "auto"
   },
   "imgLoading": {
     alignItems: "center",
