@@ -1,8 +1,24 @@
 import { action, observable, computed } from "mobx";
 import { Router } from "routes";
 
+/**
+ * A mobx store for routing data
+ * @class AuthStore
+ */
+
 export default class RoutingStore {
+  /**
+   * The pathname of the current page (i.e. `/tags/shop`)
+   *
+   * @type String
+   */
   @observable _pathname = "";
+
+  /**
+   * The query params for the current page (i.e. `{shop: `1234', first: 24}`)
+   *
+   * @type Object
+   */
   @observable _query = {};
 
   @computed
