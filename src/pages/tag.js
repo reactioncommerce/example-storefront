@@ -8,7 +8,6 @@ import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
-import { FacebookSocial, TwitterSocial } from "components/Social";
 
 @withData
 @withRoot
@@ -33,25 +32,18 @@ export default class TagShop extends Component {
     return (
       <Helmet>
         <title>{pageTitle}</title>
-        <meta name="description" content={shop.description} />
+        <meta name="description" content={shop && shop.description} />
       </Helmet>
     );
   }
 
   render() {
-    const { shop } = this.props;
-    const meta = {
-      description: shop.description,
-      siteName: shop.name,
-      title: shop.name
-    };
+    const { catalogItems } = this.props;
 
     return (
       <Layout title="Reaction Shop">
         {this.renderHelmet()}
-        <FacebookSocial meta={meta} />
-        <TwitterSocial meta={meta} />
-        <ProductGrid catalogItems={this.props.catalogItems} />
+        <ProductGrid catalogItems={catalogItems} />
       </Layout>
     );
   }
