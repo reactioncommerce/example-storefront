@@ -20,7 +20,7 @@ test("basic snapshot", () => {
     hasPreviousPage: true,
     loadNextPage: () => {},
     loadPreviousPage: () => {},
-    startCursot: "",
+    startCursor: "",
     endCursor: ""
   };
 
