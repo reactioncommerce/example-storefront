@@ -15,7 +15,7 @@ export const loadNextPage = ({ queryName, data, limit, fetchMore, routingStore }
 
   // Set URL search params to allow for link sharing
   if (routingStore) {
-    routingStore.setSearch(`first=${limit}&after=${cursor}}`);
+    routingStore.setSearch(`first=${limit}&after=${cursor}`);
   }
 
   fetchMore({
