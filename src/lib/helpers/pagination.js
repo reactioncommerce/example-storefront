@@ -1,6 +1,6 @@
 /**
  * Load next page of content for a Apollo GraphQL query
- * @name loadPreviousPage
+ * @name loadNextPage
  * @param {Object} args Args for pagination
  * @param {String} args.queryName Name of the GraphQL whose result will be used to paginate
  * @param {Object} args.data Full result from GraphQl
