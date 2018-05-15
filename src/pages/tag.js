@@ -20,6 +20,7 @@ import ProductGrid from "components/ProductGrid";
 export default class TagShop extends Component {
   static propTypes = {
     catalogItems: PropTypes.array.isRequired,
+    catalogItemsPageInfo: PropTypes.object,
     routingStore: PropTypes.object,
     shop: PropTypes.object
   };
@@ -38,12 +39,15 @@ export default class TagShop extends Component {
   }
 
   render() {
-    const { catalogItems } = this.props;
+    const { catalogItems, catalogItemsPageInfo } = this.props;
 
     return (
       <Layout title="Reaction Shop">
         {this.renderHelmet()}
-        <ProductGrid catalogItems={catalogItems} />
+        <ProductGrid
+          catalogItems={catalogItems}
+          pageInfo={catalogItemsPageInfo}
+        />
       </Layout>
     );
   }
