@@ -24,6 +24,7 @@ query catalogItemProductQuery($slugOrId: String!) {
           small
           medium
           large
+          original
         }
       }
       tags {
@@ -38,6 +39,14 @@ query catalogItemProductQuery($slugOrId: String!) {
         title
         price
         optionTitle
+        options {
+          _id
+          title
+          price
+          optionTitle
+          isSoldOut
+          isLowQuantity
+        }
       }
     }
   }
