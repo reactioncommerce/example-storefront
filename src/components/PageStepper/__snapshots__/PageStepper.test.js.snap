@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hides next button, shows previous button 1`] = `
+<div
+  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 ProductGrid-root-1"
+>
+  <div
+    className="MuiGrid-item-3"
+  >
+    <button
+      className="MuiButtonBase-root-107 MuiButton-root-92 MuiButton-raised-97"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={undefined}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-93"
+      >
+        Previous
+      </span>
+      <span
+        className="MuiTouchRipple-root-110"
+      />
+    </button>
+  </div>
+  <div
+    className="MuiGrid-item-3"
+  />
+</div>
+`;
+
+exports[`shows both next and previous buttons 1`] = `
+<div
+  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 ProductGrid-root-1"
+>
+  <div
+    className="MuiGrid-item-3"
+  >
+    <button
+      className="MuiButtonBase-root-107 MuiButton-root-92 MuiButton-raised-97"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={undefined}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-93"
+      >
+        Previous
+      </span>
+      <span
+        className="MuiTouchRipple-root-110"
+      />
+    </button>
+  </div>
+  <div
+    className="MuiGrid-item-3"
+  >
+    <button
+      className="MuiButtonBase-root-107 MuiButton-root-92 MuiButton-raised-97"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={undefined}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-93"
+      >
+        Next
+      </span>
+      <span
+        className="MuiTouchRipple-root-110"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`shows next button, hides previous button 1`] = `
+<div
+  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 ProductGrid-root-1"
+>
+  <div
+    className="MuiGrid-item-3"
+  />
+  <div
+    className="MuiGrid-item-3"
+  >
+    <button
+      className="MuiButtonBase-root-107 MuiButton-root-92 MuiButton-raised-97"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={undefined}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-93"
+      >
+        Next
+      </span>
+      <span
+        className="MuiTouchRipple-root-110"
+      />
+    </button>
+  </div>
+</div>
+`;

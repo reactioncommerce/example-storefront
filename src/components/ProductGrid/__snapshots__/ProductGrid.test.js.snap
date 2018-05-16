@@ -60,7 +60,7 @@ exports[`basic snapshot 1`] = `
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-133 inject-ProductItem-with-uiStore-loadingIcon-97"
+                className="MuiSvgIcon-root-159 inject-ProductItem-with-uiStore-loadingIcon-97"
                 color={undefined}
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -142,7 +142,7 @@ exports[`basic snapshot 1`] = `
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-133 inject-ProductItem-with-uiStore-loadingIcon-97"
+                className="MuiSvgIcon-root-159 inject-ProductItem-with-uiStore-loadingIcon-97"
                 color={undefined}
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -180,6 +180,43 @@ exports[`basic snapshot 1`] = `
         </a>
       </div>
     </div>
+  </div>
+  <div
+    className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 ProductGrid-root-133"
+  >
+    <div
+      className="MuiGrid-item-3"
+    >
+      <button
+        className="MuiButtonBase-root-149 MuiButton-root-134 MuiButton-raised-139"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-135"
+        >
+          Previous
+        </span>
+        <span
+          className="MuiTouchRipple-root-152"
+        />
+      </button>
+    </div>
+    <div
+      className="MuiGrid-item-3"
+    />
   </div>
 </section>
 `;
