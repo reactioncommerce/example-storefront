@@ -27,7 +27,7 @@ export default class TagGrid extends Component {
     classes: PropTypes.object,
 
     /**
-     * Array of tag nodes [{ node: Object }]
+     * Array of tag nodes
      */
     tags: PropTypes.array,
 
