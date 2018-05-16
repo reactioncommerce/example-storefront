@@ -34,6 +34,7 @@ _**NOTE:** Currently we're using the [release 1.11.0 branch](https://github.com/
  2. Start the storefront application in development mode by running `docker-compose up -d --build`
  3. The Storefront will run on [localhost:4000](http://localhost:4000).
  4. Use the account dropdown (user icon), and enter Meteor.loginToken from the above steps and save
+ 5. Add `EXTERNAL_ASSETS_URL=http://localhost:3000` to your `env` file if you wish to see image assets from your classic Reaction Commerce shop
 
 ## Development
 To run the application in development mode execute:
@@ -53,6 +54,14 @@ _**NOTE:** Replace the `${port}` with the localhost port you'd like the applicat
 
 _**NOTE:** The above command is assuming ether the `devserver` or `reaction` is also running._
 
+## Testing
+- To test locally, run `docker-compose run web yarn test`
+- To test without cache, run `docker-compose run web yarn test --no-cache`. This can be helpful if changes aren't showing up.
+- To update a failing snapshot, run `docker-compose run web yarn test -u`.
+
+## Using MobX
+See our [MobX documentation](docs/MOBX.md)
+
 ## Features
  - [Docker](https://docs.docker.com)
  - [React](https://reactjs.org/)
@@ -60,3 +69,7 @@ _**NOTE:** The above command is assuming ether the `devserver` or `reaction` is 
  - [MobX](https://mobx.js.org/getting-started.html)
  - [nextjs](https://github.com/zeit/next.js/)
  - [Material UI](https://material-ui-next.com/)
+
+ ## Reference links for development
+ ### CSS in JS
+ - [Responsive Breakbpoints](https://material-ui-next.com/layout/css-in-js/#responsive-breakpoints)
