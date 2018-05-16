@@ -40,16 +40,21 @@ export default class Divider extends Component {
     label: PropTypes.string
   }
 
-  static defaultProps = {
-    label: "Available Options"
-  }
-
   render() {
     const { classes: { container, item, label } } = this.props;
+
+    if (this.props.label) {
+      return (
+        <div className={container}>
+          <hr className={item} />
+          <Typography component="span" className={label}>{this.props.label}</Typography>
+          <hr className={item} />
+        </div>
+      );
+    }
+
     return (
       <div className={container}>
-        <hr className={item} />
-        <Typography component="span" className={label}>{this.props.label}</Typography>
         <hr className={item} />
       </div>
     );
