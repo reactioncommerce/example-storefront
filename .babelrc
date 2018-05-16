@@ -1,5 +1,6 @@
 {
   "presets": [
+    "@babel/preset-env",
     [
       "@babel/preset-stage-2",
       {
@@ -23,6 +24,8 @@
     ]
   ],
   "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties",
     [
       "module-resolver",
       {
