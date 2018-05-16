@@ -13,7 +13,7 @@ const PAGE_LIMIT = 24;
  * @param {React.Component} Component to decorate and apply
  * @returns {React.Component} - component decorated with primaryShopId and catalog as props
  */
-export default (Component) => (
+export default (Component) => {
   @inject("primaryShopId")
   @inject("routingStore")
   @observer
@@ -55,4 +55,6 @@ export default (Component) => (
       );
     }
   }
-);
+
+  return CatalogItems;
+};
