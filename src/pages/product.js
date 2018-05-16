@@ -19,7 +19,7 @@ class ProductDetailPage extends Component {
     /**
      * Catalog Product item
      */
-    product: PropTypes.object
+    product: PropTypes.object.isRequired
   }
 
   render() {
