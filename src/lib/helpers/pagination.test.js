@@ -24,7 +24,7 @@ const args = {
     test: {
       pageInfo: {
         hasNextPage: true,
-        hasPrevioudPage: false,
+        hasPreviousPage: false,
         startCursor: "1",
         endCursor: "5"
       },
