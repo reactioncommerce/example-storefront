@@ -96,21 +96,18 @@ class MediaGallery extends Component {
   }
 
   renderFeaturedImage() {
-    const featurdMedia = this.featuredMedia;
+    const { featuredMedia } = this;
     const { classes, uiStore } = this.props;
     const { publicRuntimeConfig } = uiStore.appConfig;
+    const mediaUrl = featuredMedia && featuredMedia.URLs && featuredMedia.URLs.large;
 
-    if (featurdMedia && featurdMedia.URLs) {
-      return (
-        <img
-          className={classes.featuredImage}
-          src={`${publicRuntimeConfig.externalAssetsUrl}${this.featuredMedia.URLs.large || placeholderImage}`}
-          alt=""
-        />
-      );
-    }
-
-    return null;
+    return (
+      <img
+        className={classes.featuredImage}
+        src={`${publicRuntimeConfig.externalAssetsUrl}${mediaUrl || placeholderImage}`}
+        alt=""
+      />
+    );
   }
 
   render() {
