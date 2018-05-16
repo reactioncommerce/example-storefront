@@ -1,4 +1,4 @@
-query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt) { 
+query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt) {
   catalogItems(shopIds: [$shopId], first: $first) {
     edges {
       cursor
@@ -26,9 +26,6 @@ query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt) {
                 large
               }
             }
-          }
-          positions {
-            displayWeight
           }
         }
       }
