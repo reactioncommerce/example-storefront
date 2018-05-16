@@ -15,10 +15,19 @@ const uiStore = {
 };
 
 test("basic snapshot", () => {
+  const pageInfo = {
+    hasNextPage: false,
+    hasPreviousPage: true,
+    loadNextPage: () => {},
+    loadPreviousPage: () => {},
+    startCursor: "",
+    endCursor: ""
+  };
+
   const component = renderer.create((
     <MuiThemeProvider theme={theme}>
       <Provider uiStore={uiStore}>
-        <ProductGrid catalogItems={products} primaryShopId="123" />
+        <ProductGrid catalogItems={products} pageInfo={pageInfo} primaryShopId="123" />
       </Provider>
     </MuiThemeProvider>
   ));
