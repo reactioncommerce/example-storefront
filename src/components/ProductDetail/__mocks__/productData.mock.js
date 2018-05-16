@@ -47,10 +47,6 @@ export default {
       options: [
         {
           _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlNNcjRyaERGbll2Rk10RFRY",
-          ancestorIds: [
-            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
-            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OjZxaXFQd0JrZUpkdGRRYzRH"
-          ],
           title: "Option 1 - Red Dwarf",
           price: 19.99,
           optionTitle: "Red",
@@ -60,10 +56,6 @@ export default {
         },
         {
           _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OkNKb1JCbTl2UnJvcmM5bXha",
-          ancestorIds: [
-            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
-            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OjZxaXFQd0JrZUpkdGRRYzRH"
-          ],
           title: "Option 2 - Green Tomato",
           price: 12.99,
           optionTitle: "Green",
@@ -76,9 +68,6 @@ export default {
     },
     {
       _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlB6QXlqeW1ER3U2V0drRGpu",
-      ancestorIds: [
-        "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s="
-      ],
       title: "Sample Variant 2",
       price: 10.99,
       optionTitle: "Untitled Option",
@@ -88,10 +77,6 @@ export default {
       options: [
         {
           _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OkhaUHFmaVBIV0xabWZ1aHZp",
-          ancestorIds: [
-            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
-            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlB6QXlqeW1ER3U2V0drRGpu"
-          ],
           title: "Sample Variant 2 - Blue Option",
           price: 200,
           optionTitle: "Blue",
@@ -101,10 +86,6 @@ export default {
         },
         {
           _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50Old5em43emZhQkFYS1hja3BT",
-          ancestorIds: [
-            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
-            "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlB6QXlqeW1ER3U2V0drRGpu"
-          ],
           title: "Sample Variant 2 - Red Option",
           price: 330,
           optionTitle: "Red",
