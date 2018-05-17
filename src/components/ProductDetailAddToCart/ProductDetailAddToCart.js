@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import ButtonBase from "material-ui/ButtonBase";
+import Grid from "material-ui/Grid";
 import InputAdornment from "material-ui/Input/InputAdornment";
 import TextField from "material-ui/TextField";
 import Typography from "material-ui/Typography";
@@ -10,27 +11,7 @@ import Plus from "mdi-material-ui/Plus";
 import Divider from "components/Divider";
 
 const styles = (theme) => ({
-  quantityContainer: {
-    padding: 0,
-    border: `1px solid ${theme.palette.reaction.borderColor}`,
-    backgroundColor: theme.palette.common.white,
-    borderRadius: 2
-  },
-  quantityInput: {
-    "width": "40px",
-    "textAlign": "center",
-    "&:focus": {
-      borderColor: "#80bdff",
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)"
-    },
-    "borderLeft": `1px solid ${theme.palette.reaction.borderColor}`,
-    "borderRight": `1px solid ${theme.palette.reaction.borderColor}`
-  },
-  incrementButton: {
-    backgroundColor: theme.palette.reaction.activeElementBackground,
-    padding: 6
-  },
-  optionButton: {
+  addToCartButton: {
     "fontWeight": 600,
     "padding": theme.spacing.unit,
     "borderRadius": "2px",
@@ -43,11 +24,37 @@ const styles = (theme) => ({
     "&:focus": {
       outline: "auto 5px -webkit-focus-ring-color"
     }
+  },
+  incrementButton: {
+    backgroundColor: theme.palette.reaction.activeElementBackground,
+    padding: 6
+  },
+  quantityContainer: {
+    padding: 0,
+    border: `1px solid ${theme.palette.reaction.borderColor}`,
+    backgroundColor: theme.palette.common.white,
+    borderRadius: 2
+  },
+  quantityGrid: {
+    marginBottom: theme.spacing.unit * 3
+  },
+  quantityInput: {
+    "width": "40px",
+    "textAlign": "center",
+    "&:focus": {
+      borderColor: "#80bdff",
+      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)"
+    },
+    "borderLeft": `1px solid ${theme.palette.reaction.borderColor}`,
+    "borderRight": `1px solid ${theme.palette.reaction.borderColor}`
+  },
+  quantityTypography: {
+    marginBottom: theme.spacing.unit * 2
   }
 });
 
 
-@withStyles(styles)
+@withStyles(styles, { withTheme: true })
 export default class ProductDetailOption extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -99,61 +106,73 @@ export default class ProductDetailOption extends Component {
 
   render() {
     const {
-      classes: { optionButton, optionText, quantityInput, quantityContainer, incrementButton }
+      classes: {
+        incrementButton,
+        addToCartButton,
+        optionText,
+        quantityContainer,
+        quantityGrid,
+        quantityInput,
+        quantityTypography
+      }
     } = this.props;
 
     const { addToCartQuantity } = this.state;
 
     return (
-      <Fragment>
-        <Divider />
-        <Typography component="span" className={status}>Quantity</Typography>
-        <TextField
-          id="addToCartQuantityInput"
-          value={addToCartQuantity}
-          onChange={this.handleQuantityInputChange}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment>
-                <ButtonBase
-                  color="default"
-                  variant="outlined"
-                  onClick={this.handleDecrementButton}
-                  className={incrementButton}
-                >
-                  <Minus />
-                </ButtonBase>
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment>
-                <ButtonBase
-                  variant="outlined"
-                  color="default"
-                  onClick={this.handleIncrementButton}
-                  className={incrementButton}
-                >
-                  <Plus />
-                </ButtonBase>
-              </InputAdornment>
-            ),
-            disableUnderline: true,
-            classes: {
-              root: quantityContainer,
-              input: quantityInput
-            }
-          }}
-        />
-        <ButtonBase
-          onClick={this.handleOnClick}
-          className={optionButton}
-          fullWidth={true}
-        >
-          <Typography className={optionText} component="span" variant="body1">
-            Add to cart
-          </Typography>
-        </ButtonBase>
-      </Fragment>
+      <Grid container>
+        <Grid item xs={12} className={quantityGrid}>
+          <Divider />
+          <Typography component="span" className={quantityTypography}>Quantity</Typography>
+          <TextField
+            id="addToCartQuantityInput"
+            value={addToCartQuantity}
+            onChange={this.handleQuantityInputChange}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment>
+                  <ButtonBase
+                    color="default"
+                    variant="outlined"
+                    onClick={this.handleDecrementButton}
+                    className={incrementButton}
+                  >
+                    <Minus />
+                  </ButtonBase>
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment>
+                  <ButtonBase
+                    variant="outlined"
+                    color="default"
+                    onClick={this.handleIncrementButton}
+                    className={incrementButton}
+                  >
+                    <Plus />
+                  </ButtonBase>
+                </InputAdornment>
+              ),
+              disableUnderline: true,
+              classes: {
+                root: quantityContainer,
+                input: quantityInput
+              }
+            }}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <ButtonBase
+            onClick={this.handleOnClick}
+            className={addToCartButton}
+            fullWidth={true}
+          >
+            <Typography className={optionText} component="span" variant="body1">
+              Add to cart
+            </Typography>
+          </ButtonBase>
+        </Grid>
+      </Grid>
     );
   }
 }
