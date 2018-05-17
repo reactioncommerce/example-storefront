@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import ButtonBase from "material-ui/ButtonBase";
@@ -12,18 +12,20 @@ import Divider from "components/Divider";
 
 const styles = (theme) => ({
   addToCartButton: {
-    "fontWeight": 600,
     "padding": theme.spacing.unit,
     "borderRadius": "2px",
     "backgroundColor": theme.palette.primary.light,
-    "color": theme.palette.primary.contrastText,
-    "minWidth": 300,
+    "minWidth": "66%",
     "&:hover": {
       borderColor: theme.palette.reaction.activeElementBorderColor
     },
     "&:focus": {
       outline: "auto 5px -webkit-focus-ring-color"
     }
+  },
+  addToCartText: {
+    color: theme.palette.primary.contrastText,
+    fontWeight: 600,
   },
   incrementButton: {
     backgroundColor: theme.palette.reaction.activeElementBackground,
@@ -55,7 +57,7 @@ const styles = (theme) => ({
 
 
 @withStyles(styles, { withTheme: true })
-export default class ProductDetailOption extends Component {
+export default class ProductDetailAddToCart extends Component {
   static propTypes = {
     classes: PropTypes.object,
     onClick: PropTypes.func.isRequired,
@@ -76,12 +78,14 @@ export default class ProductDetailOption extends Component {
   };
 
   state = {
-    addToCartQuantity: 0
+    addToCartQuantity: 1
   };
 
   handleOnClick = () => {
     console.log("This currently does nothing. When our GraphQL endpoints are available, we'll use them to add the items to the cart.");
     console.log(`This will add ${this.state.addToCartQuantity} items to the cart.`);
+
+    this.setState({ addToCartQuantity: 1 });
   }
 
   handleQuantityInputChange = (event) => {
@@ -107,9 +111,9 @@ export default class ProductDetailOption extends Component {
   render() {
     const {
       classes: {
-        incrementButton,
         addToCartButton,
-        optionText,
+        addToCartText,
+        incrementButton,
         quantityContainer,
         quantityGrid,
         quantityInput,
@@ -167,7 +171,7 @@ export default class ProductDetailOption extends Component {
             className={addToCartButton}
             fullWidth={true}
           >
-            <Typography className={optionText} component="span" variant="body1">
+            <Typography className={addToCartText} component="span" variant="body1">
               Add to cart
             </Typography>
           </ButtonBase>
