@@ -75,7 +75,7 @@ export default (Component) => (
     /**
      * Generates a tree from the given array of subTagIds.
      * @param {Function} fetchMore - Function used to fetch more data from a graphql endpoint
-     * @param {Object} data - Data from previous query, used for recustion to fetch all tags
+     * @param {Object} data - Data from previous query, used for recursion to fetch all tags
      * @return {undefined} no return value
      */
     fetchMoreDataIfNecessary = (fetchMore, data) => {
@@ -112,7 +112,7 @@ export default (Component) => (
               };
             }
 
-            // Send the previous result if the new result contians no additional data
+            // Send the previous result if the new result contains no additional data
             return previousResult;
           }
         }).catch(() => {

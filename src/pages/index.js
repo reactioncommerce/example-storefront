@@ -11,15 +11,16 @@ import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
 
 @withData
+@withRoot
 @withShop
 @withCatalogItems
-@withRoot
 @inject("shop")
 @inject("uiStore")
 @observer
 class Shop extends Component {
   static propTypes = {
     catalogItems: PropTypes.array.isRequired,
+    catalogItemsPageInfo: PropTypes.object,
     shop: PropTypes.object
   };
 
@@ -38,7 +39,10 @@ class Shop extends Component {
     return (
       <Layout title="Reaction Shop">
         {this.renderHelmet()}
-        <ProductGrid catalogItems={this.props.catalogItems}/>
+        <ProductGrid
+          catalogItems={this.props.catalogItems}
+          pageInfo={this.props.catalogItemsPageInfo}
+        />
       </Layout>
     );
   }
