@@ -5,6 +5,8 @@ import Grid from "material-ui/Grid";
 import Helmet from "react-helmet";
 
 // PDP Components
+import ProductDetailAddToCart from "components/ProductDetailAddToCart";
+
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
 import ProductDetailInfo from "components/ProductDetailInfo";
@@ -71,6 +73,7 @@ class ProductDetail extends Component {
               vendor={catalogProduct.vendor}
             />
             <VariantList product={catalogProduct} variants={variants}/>
+            <ProductDetailAddToCart>Add To Cart</ProductDetailAddToCart>
           </Grid>
         </Grid>
       </div>
