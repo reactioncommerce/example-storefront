@@ -2,13 +2,6 @@
   "presets": [
     "@babel/preset-env",
     [
-      "@babel/preset-stage-2",
-      {
-        "decoratorsLegacy": true,
-        "loose": true
-      }
-    ],
-    [
       "next/babel",
       {
         "preset-env": {
@@ -19,13 +12,10 @@
             ]
           }
         }
-
       }
     ]
   ],
   "plugins": [
-    "transform-decorators-legacy",
-    "transform-class-properties",
     [
       "module-resolver",
       {
@@ -34,5 +24,27 @@
         ]
       }
     ]
-  ]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "transform-decorators-legacy",
+        "transform-class-properties"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "@babel/plugin-proposal-object-rest-spread",
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        ["@babel/plugin-proposal-class-properties", { "loose": true }]
+      ]
+    },
+    "jesttest": {
+      "plugins": [
+        "@babel/plugin-proposal-object-rest-spread",
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        ["@babel/plugin-proposal-class-properties", { "loose": true }]
+      ]
+    }
+  }
 }

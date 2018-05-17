@@ -11,9 +11,9 @@
   },
   "license": "GPL-3.0",
   "scripts": {
-    "dev": "babel-node ./src/server.js",
+    "dev": "NODE_ENV=development babel-node ./src/server.js",
     "build": "yarn run build-clean && yarn run build-transpile && yarn run build-sync && next build src && mv src/.next build/app",
-    "build-transpile": "babel src -d build/app --ignore '**/*.test.js','**/*__mocks__','**/*__snapshots__'",
+    "build-transpile": "NODE_ENV=production babel src -d build/app --ignore '**/*.test.js','**/*__mocks__','**/*__snapshots__'",
     "build-sync": "cp -R src/static build/app/static && rsync -av --prune-empty-dirs --include='*/' --include='*.gql' --exclude='*' src/* build/app",
     "build-clean": "rimraf build/app",
     "build-next": "yarn install --save-dev && next build src",
@@ -21,8 +21,8 @@
     "start": "NODE_ENV=production node build/app/server.js",
     "test": "yarn run test:unit",
     "test:ci": "yarn run test:unit --ci --runInBand --colors",
-    "test:unit": "jest",
-    "test:unit:watch": "jest --watch"
+    "test:unit": "NODE_ENV=jesttest jest",
+    "test:unit:watch": "NODE_ENV=jesttest jest --watch"
   },
   "eslintConfig": {
     "extends": [
@@ -57,11 +57,14 @@
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.46",
-    "@babel/core": "^7.0.0-beta.46",
-    "@babel/node": "^7.0.0-beta.46",
-    "@babel/preset-env": "7.0.0-beta.46",
-    "@babel/preset-stage-2": "^7.0.0-beta.46",
+    "@babel/cli": "^7.0.0-beta.47",
+    "@babel/core": "^7.0.0-beta.47",
+    "@babel/node": "^7.0.0-beta.47",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.47",
+    "@babel/plugin-proposal-decorators": "^7.0.0-beta.47",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.47",
+    "@babel/preset-env": "7.0.0-beta.47",
+    "@babel/preset-stage-2": "^7.0.0-beta.47",
     "@reactioncommerce/eslint-config": "^1.7.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.2",
