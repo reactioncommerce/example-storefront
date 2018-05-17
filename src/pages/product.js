@@ -4,15 +4,14 @@ import { observer, inject } from "mobx-react";
 import withData from "lib/apollo/withData";
 import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
+import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import Layout from "components/Layout";
 import ProductDetail from "components/ProductDetail";
-
-// TODO: Data will eventually come from GraphQL
-import sampleData from "components/ProductDetail/__mocks__/productData.mock";
 
 @withData
 @withRoot
 @withShop
+@withCatalogItemProduct
 @inject("uiStore")
 @observer
 class ProductDetailPage extends Component {
@@ -20,13 +19,13 @@ class ProductDetailPage extends Component {
     /**
      * Catalog Product item
      */
-    catalogProduct: PropTypes.object
+    product: PropTypes.object.isRequired
   }
 
   render() {
     return (
       <Layout>
-        <ProductDetail catalogProduct={sampleData} />
+        <ProductDetail product={this.props.product} />
       </Layout>
     );
   }

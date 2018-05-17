@@ -34,9 +34,6 @@ query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt, $last:  Connec
               }
             }
           }
-          positions {
-            displayWeight
-          }
         }
       }
     }

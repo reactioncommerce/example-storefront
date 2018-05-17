@@ -7,12 +7,11 @@ import theme from "lib/theme/reactionTheme";
 import VariantList from "./VariantList";
 
 test("basic snapshot", () => {
-  const variants = catalogProduct.variants.filter((variant) => variant.ancestorIds.length === 1);
   const component = renderer.create((
     <MuiThemeProvider theme={theme}>
       <VariantList
         product={catalogProduct}
-        variants={variants}
+        variants={catalogProduct.variants}
       />
     </MuiThemeProvider>
   ));

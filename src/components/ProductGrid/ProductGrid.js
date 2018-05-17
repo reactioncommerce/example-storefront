@@ -29,29 +29,13 @@ export default class ProductGrid extends Component {
   };
 
   renderProduct(edge) {
-    const { node: { product, positions } } = edge;
-    const weight = (positions.length) ? positions[0].displayWeight : 0;
+    const { node: { product } } = edge;
     const { _id } = product;
-    const gridItemSize = {
-      0: {
-        xs: 12,
-        sm: 4,
-        md: 3
-      },
-      1: {
-        xs: 12,
-        sm: 8,
-        md: 6
-      },
-      2: {
-        xs: 12,
-        sm: 12,
-        md: 9
-      }
-    };
     const gridItemProps = {
       key: _id,
-      ...gridItemSize[weight]
+      xs: 12,
+      sm: 4,
+      md: 3
     };
     return (
       <Grid item {...gridItemProps}>
