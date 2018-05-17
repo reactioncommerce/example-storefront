@@ -27,7 +27,7 @@ export default class TagGrid extends Component {
     classes: PropTypes.object,
 
     /**
-     * Array of tag nodes [{ node: Object }]
+     * Array of tag nodes
      */
     tags: PropTypes.array,
 
@@ -44,14 +44,13 @@ export default class TagGrid extends Component {
       theme
     } = this.props;
 
-
     if (!Array.isArray(tags)) return null;
 
     return (
       <section>
         <Typography className={classes.title} variant="title">{"Tags"}</Typography>
         <Grid container spacing={theme.spacing.unit}>
-          {tags.map(({ node: tag }) => (
+          {tags.map((tag) => (
             <Grid item key={tag.slug}>
               <Link route={`/tag/${tag.slug}`}>
                 <Chip className={classes.chip} label={tag.name} />

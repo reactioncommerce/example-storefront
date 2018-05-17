@@ -18,7 +18,7 @@ test("basic snapshot", () => {
   const component = renderer.create((
     <MuiThemeProvider theme={theme}>
       <Provider uiStore={uiStore}>
-        <ProductDetail catalogProduct={sampleData} />
+        <ProductDetail product={sampleData} />
       </Provider>
     </MuiThemeProvider>
   ));

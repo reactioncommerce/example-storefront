@@ -1,4 +1,5 @@
-import { observable, computed } from "mobx";
+import { action, observable, computed } from "mobx";
+import { Router } from "routes";
 
 /**
  * A mobx store for routing data
@@ -14,11 +15,11 @@ export default class RoutingStore {
   @observable _pathname = "";
 
   /**
-   * The query string of the current page (i.e. `shop`)
+   * The query params for the current page (i.e. `{shop: `1234', first: 24}`)
    *
-   * @type @observable
+   * @type Object
    */
-  @observable _query = "";
+  @observable _query = {};
 
   @computed
   get pathname() {
@@ -36,5 +37,17 @@ export default class RoutingStore {
 
   set query(value) {
     this._query = value;
+  }
+
+  /**
+   * Set a query string for the current route
+   * @name setSearch
+   * @param {String} search Search query string first=1&after=123
+   * @returns {String} full url with query string
+   */
+  @action setSearch(search) {
+    const path = `${this._pathname}?${search}`;
+    Router.pushRoute(path, path, { shallow: true });
+    return path;
   }
 }

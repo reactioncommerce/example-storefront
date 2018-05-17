@@ -4,18 +4,14 @@ import TagGrid from "./TagGrid";
 
 const tags = [
   {
-    node: {
-      position: null,
-      name: "Shoes",
-      slug: "shoes"
-    }
+    position: null,
+    name: "Shoes",
+    slug: "shoes"
   },
   {
-    node: {
-      position: null,
-      name: "Shop",
-      slug: "shop"
-    }
+    position: null,
+    name: "Shop",
+    slug: "shop"
   }
 ];
 
