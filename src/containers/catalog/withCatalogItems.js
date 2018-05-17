@@ -5,7 +5,7 @@ import { Query } from "react-apollo";
 import { pagination, paginationVariablesFromUrlParams } from "lib/helpers/pagination";
 import catalogItemsQuery from "./catalogItems.gql";
 
-const PAGE_LIMIT = 24;
+const PAGE_LIMIT = 4;
 
 /**
  * withCatalogItems higher order query component for fetching primaryShopId and catalog data

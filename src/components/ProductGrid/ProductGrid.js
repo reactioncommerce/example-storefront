@@ -4,6 +4,7 @@ import Grid from "material-ui/Grid";
 import { withStyles } from "material-ui/styles";
 import ProductItem from "components/ProductItem";
 import PageStepper from "components/PageStepper";
+import PageCountSelector from "components/PageCountSelector";
 
 const styles = () => ({
   productGridContainer: {
@@ -51,6 +52,7 @@ export default class ProductGrid extends Component {
 
     return (
       <section className={classes.productGridContainer}>
+        <PageCountSelector />
         <Grid container spacing={24}>
           {(catalogItems && catalogItems.length) ? catalogItems.map(this.renderProduct) : null}
         </Grid>
