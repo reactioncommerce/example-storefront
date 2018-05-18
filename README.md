@@ -10,7 +10,7 @@ _Follow steps as necessary. If you already have Reaction installed, you may be a
 0. Prerequesites
 - Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/). Docker Compose is included in when installing Docker on Mac and Windows, but will need to be installed separately on Linux.
 
-1. Clone the main Reaction repo https://github.com/reactioncommerce/reaction and checkout the `release-1.12.0` branch
+1. Clone the main [Reaction repo](https://github.com/reactioncommerce/reaction) and checkout the `release-1.12.0` branch
     ```sh
     git clone git@github.com:reactioncommerce/reaction.git
     cd reaction
@@ -20,7 +20,7 @@ _Follow steps as necessary. If you already have Reaction installed, you may be a
     cd ..
     ```
 
-2.
+2. Clone this repo
     ```sh
     git clone git@github.com:reactioncommerce/reaction-next-starterkit.git
     ```
