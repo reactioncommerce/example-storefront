@@ -86,8 +86,7 @@ export default class ProductDetailAddToCart extends Component {
 
   handleOnClick = () => {
     // This function currently does nothing. When our GraphQL endpoints are available, we'll use them to add the items to the cart.
-    // To test that this is working, uncomment the following lines
-    // and check to see that the data is correct
+    // To test that this is working, uncomment the following lines and check to see that the data is correct
 
     // const { pdpStore } = this.props;
     // const { addToCartQuantity } = this.state;
