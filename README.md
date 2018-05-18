@@ -46,10 +46,9 @@ _Follow steps as necessary. If you already have Reaction installed, you may be a
     - Open devtools and copy the Meteor.loginToken from `localStorage`.
 
 6. Setup the Storefront environment
-    Navigate to the `reaction-next-starterkit` directory and create a `.env` file. Then add the EXTERNAL_ASSETS_URL if you wish to see images from your Reaction Meteor shop.
+    Navigate to the `reaction-next-starterkit` directory and create a `.env` file.
     ```sh
     cp .env.example .env
-    echo "EXTERNAL_ASSETS_URL=http://localhost:3000" >> .env
     ```
 7. Start the storefront application in development mode using Docker Compose
     ```
