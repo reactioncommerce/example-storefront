@@ -1,10 +1,10 @@
-PageCountSelector
+PageSizeSelector
 =================
 
 ## Usage
 
 ```jsx
-import PageCountSelector from "components/PageCountSelector";
+import PageSizeSelector from "components/PageSizeSelector";
 
 ```
 ## Props

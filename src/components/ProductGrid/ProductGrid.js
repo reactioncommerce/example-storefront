@@ -4,13 +4,16 @@ import Grid from "material-ui/Grid";
 import { withStyles } from "material-ui/styles";
 import ProductItem from "components/ProductItem";
 import PageStepper from "components/PageStepper";
-import PageCountSelector from "components/PageCountSelector";
+import PageSizeSelector from "components/PageSizeSelector";
 
 const styles = () => ({
   productGridContainer: {
     maxWidth: "1440px",
     marginLeft: "auto",
     marginRight: "auto"
+  },
+  pageSizeContainer: {
+    justifyContent: "flex-end"
   }
 });
 
@@ -45,6 +48,18 @@ export default class ProductGrid extends Component {
     );
   }
 
+  renderPageSizeSelector() {
+    const { classes } = this.props;
+
+    return (
+      <Grid container spacing={24} className={classes.pageSizeContainer}>
+        <Grid item>
+          <PageSizeSelector />
+        </Grid>
+      </Grid>
+    )
+  }
+
   render() {
     const { catalogItems, classes, pageInfo } = this.props;
 
@@ -52,7 +67,7 @@ export default class ProductGrid extends Component {
 
     return (
       <section className={classes.productGridContainer}>
-        <PageCountSelector />
+        {this.renderPageSizeSelector()}
         <Grid container spacing={24}>
           {(catalogItems && catalogItems.length) ? catalogItems.map(this.renderProduct) : null}
         </Grid>
