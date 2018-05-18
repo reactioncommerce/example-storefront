@@ -26,7 +26,6 @@ const theme = createMuiTheme({
       bestseller: "#8CE0C9",
       borderColor: "#CCCCCC"
     }
-
   },
   spacing: {
     unithalf: 4
