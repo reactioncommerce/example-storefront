@@ -8,7 +8,7 @@ Reference Storefront application for [Reaction Commerce](https://reactioncommerc
 _Follow steps as necessary. If you already have Reaction installed, you may be able to skip some of these steps._
 
 0. Prerequesites
-- Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/). Docker Compose is included in when installing Docker on Mac and Windows, but will need to be installed separately on Linux.
+- Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/). Docker Compose is included when installing Docker on Mac and Windows, but will need to be installed separately on Linux.
 
 1. Clone the main [Reaction repo](https://github.com/reactioncommerce/reaction) and checkout the `release-1.12.0` branch
     ```sh
@@ -38,14 +38,14 @@ _Follow steps as necessary. If you already have Reaction installed, you may be a
     ```
     docker-compose up -d --build
     ```
-    Optionally, if you don't want to start the Reaction Meteor app, you can just run `docker-compose up -d devserver`
+    You'll need to run the full app at least once in order for step 5 to work. After this initial run, if you don't want to start the Reaction Meteor app, you can just run `docker-compose up -d devserver`
 
-5. Generate a Meteor login token
+5. Generate a Meteor login token  
     _This process will be eliminated once we've built out the GraphQL API for authentication_
     - Visit the Reaction Meteor shop [localhost:3000](http://localhost:3000)
     - Open devtools and copy the Meteor.loginToken from `localStorage`.
 
-6. Setup the Storefront environment
+6. Setup the Storefront environment  
     Navigate to the `reaction-next-starterkit` directory and create a `.env` file.
     ```sh
     cp .env.example .env
@@ -55,7 +55,7 @@ _Follow steps as necessary. If you already have Reaction installed, you may be a
     docker-compose up -d --build
     ```
 
-8. Visit the storefront on localhost:4000
+8. Visit the storefront on `localhost:4000`
 
 
 ## Development
