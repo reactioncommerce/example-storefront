@@ -137,10 +137,15 @@ docker build -t reaction-storefront --build-arg BUILD_ENV=production .
 To start the app in production mode execute:
 
 ```
-docker run -p ${port}:4000 --env-file .env --network reaction-api reaction-storefront
+docker run -d --name storefront -p ${port}:4000 --env-file .env --network reaction-api reaction-storefront
 ```
 
-_**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at._
+To stop the docker container after starting it with the above command
+```
+docker stop storefront
+```
+
+_**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at. I'm partial to 4040_
 _**NOTE:** The above command is assuming ether the `devserver` or `reaction` is also running._
 
 ## Using MobX
