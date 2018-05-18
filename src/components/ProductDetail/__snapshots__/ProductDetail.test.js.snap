@@ -467,7 +467,7 @@ Details can be added below the image for more specific product information.
           />
         </div>
         <div
-          className="MuiGrid-container-4 MuiGrid-spacing-xs-8-25 OptionsList-root-160"
+          className="MuiGrid-container-4 MuiGrid-spacing-xs-8-25 inject-OptionsList-with-pdpStore-root-160"
         >
           <div
             className="MuiGrid-item-5"
@@ -496,10 +496,10 @@ Details can be added below the image for more specific product information.
               </span>
             </button>
             <div
-              className="OptionsList-alert-161"
+              className="inject-OptionsList-with-pdpStore-alert-161"
             >
               <div
-                className="Badge-badge-148 Badge-backorder-152 Badge-status-150 OptionsList-badge-162"
+                className="Badge-badge-148 Badge-backorder-152 Badge-status-150 inject-OptionsList-with-pdpStore-badge-162"
               >
                 <span
                   className="Badge-labelStyle-149"
@@ -542,7 +542,7 @@ Details can be added below the image for more specific product information.
         className="MuiGrid-container-4"
       >
         <div
-          className="MuiGrid-item-5 MuiGrid-grid-xs-12-41 ProductDetailAddToCart-quantityGrid-170"
+          className="MuiGrid-item-5 MuiGrid-grid-xs-12-41 inject-ProductDetailAddToCart-with-pdpStore-quantityGrid-170"
         >
           <div
             className="Divider-container-157"
@@ -552,7 +552,7 @@ Details can be added below the image for more specific product information.
             />
           </div>
           <span
-            className="MuiTypography-root-111 MuiTypography-body1-120 ProductDetailAddToCart-quantityTypography-172"
+            className="MuiTypography-root-111 MuiTypography-body1-120 inject-ProductDetailAddToCart-with-pdpStore-quantityTypography-172"
           >
             Quantity
           </span>
@@ -563,13 +563,13 @@ Details can be added below the image for more specific product information.
             onFocus={[Function]}
           >
             <div
-              className="MuiInput-root-177 ProductDetailAddToCart-quantityContainer-169 MuiInput-formControl-178"
+              className="MuiInput-root-177 inject-ProductDetailAddToCart-with-pdpStore-quantityContainer-169 MuiInput-formControl-178"
             >
               <div
                 className="MuiInputAdornment-root-190"
               >
                 <button
-                  className="MuiButtonBase-root-99 ProductDetailAddToCart-incrementButton-168"
+                  className="MuiButtonBase-root-99 inject-ProductDetailAddToCart-with-pdpStore-incrementButton-168"
                   color="default"
                   disabled={undefined}
                   onBlur={[Function]}
@@ -608,7 +608,7 @@ Details can be added below the image for more specific product information.
                 aria-required={false}
                 autoComplete={undefined}
                 autoFocus={undefined}
-                className="MuiInput-input-185 ProductDetailAddToCart-quantityInput-171"
+                className="MuiInput-input-185 inject-ProductDetailAddToCart-with-pdpStore-quantityInput-171"
                 defaultValue={undefined}
                 disabled={false}
                 id="addToCartQuantityInput"
@@ -629,7 +629,7 @@ Details can be added below the image for more specific product information.
                 className="MuiInputAdornment-root-190"
               >
                 <button
-                  className="MuiButtonBase-root-99 ProductDetailAddToCart-incrementButton-168"
+                  className="MuiButtonBase-root-99 inject-ProductDetailAddToCart-with-pdpStore-incrementButton-168"
                   color="default"
                   disabled={undefined}
                   onBlur={[Function]}
@@ -670,7 +670,7 @@ Details can be added below the image for more specific product information.
           className="MuiGrid-item-5 MuiGrid-grid-xs-12-41"
         >
           <button
-            className="MuiButtonBase-root-99 ProductDetailAddToCart-addToCartButton-166"
+            className="MuiButtonBase-root-99 inject-ProductDetailAddToCart-with-pdpStore-addToCartButton-166"
             disabled={undefined}
             fullWidth={true}
             onBlur={[Function]}
@@ -688,7 +688,7 @@ Details can be added below the image for more specific product information.
             type="button"
           >
             <span
-              className="MuiTypography-root-111 MuiTypography-body1-120 ProductDetailAddToCart-addToCartText-167"
+              className="MuiTypography-root-111 MuiTypography-body1-120 inject-ProductDetailAddToCart-with-pdpStore-addToCartText-167"
             >
               Add to cart
             </span>

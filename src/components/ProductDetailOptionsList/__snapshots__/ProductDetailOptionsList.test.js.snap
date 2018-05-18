@@ -2,7 +2,7 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="MuiGrid-container-4 MuiGrid-spacing-xs-8-25 OptionsList-root-1"
+  className="MuiGrid-container-4 MuiGrid-spacing-xs-8-25 inject-OptionsList-with-pdpStore-root-1"
 >
   <div
     className="MuiGrid-item-5"

@@ -70,9 +70,9 @@ export default class ProductDetailAddToCart extends Component {
 
   static propTypes = {
     classes: PropTypes.object,
+    pdpStore: PropTypes.object,
     product: PropTypes.object,
-    theme: PropTypes.object,
-    uiStore: PropTypes.object
+    theme: PropTypes.object
   };
 
   static defaultProps = {
@@ -88,10 +88,10 @@ export default class ProductDetailAddToCart extends Component {
     // This function currently does nothing. When our GraphQL endpoints are available, we'll use them to add the items to the cart.
     // To test that this is working, uncomment the following lines and check to see that the data is correct
 
-    // const { pdpStore } = this.props;
-    // const { addToCartQuantity } = this.state;
-    // console.log("Selected Option", pdpStore.selectedOption);
-    // console.log("Quantity", addToCartQuantity);
+    const { pdpStore } = this.props;
+    const { addToCartQuantity } = this.state;
+    console.log("Selected Option", pdpStore.selectedOption);
+    console.log("Quantity", addToCartQuantity);
 
     // Reset cart quantity to 1 after items are added to cart
     this.setState({ addToCartQuantity: 1 });
