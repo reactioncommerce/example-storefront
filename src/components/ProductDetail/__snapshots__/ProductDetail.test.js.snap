@@ -538,6 +538,166 @@ Details can be added below the image for more specific product information.
           </div>
         </div>
       </div>
+      <div
+        className="MuiGrid-container-4"
+      >
+        <div
+          className="MuiGrid-item-5 MuiGrid-grid-xs-12-41 ProductDetailAddToCart-quantityGrid-170"
+        >
+          <div
+            className="Divider-container-157"
+          >
+            <hr
+              className="Divider-item-159"
+            />
+          </div>
+          <span
+            className="MuiTypography-root-111 MuiTypography-body1-120 ProductDetailAddToCart-quantityTypography-172"
+          >
+            Quantity
+          </span>
+          <div
+            aria-describedby={undefined}
+            className="MuiFormControl-root-173"
+            onBlur={[Function]}
+            onFocus={[Function]}
+          >
+            <div
+              className="MuiInput-root-177 ProductDetailAddToCart-quantityContainer-169 MuiInput-formControl-178"
+            >
+              <div
+                className="MuiInputAdornment-root-190"
+              >
+                <button
+                  className="MuiButtonBase-root-99 ProductDetailAddToCart-incrementButton-168"
+                  color="default"
+                  disabled={undefined}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex="0"
+                  type="button"
+                  variant="outlined"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="MuiSvgIcon-root-193"
+                    color={undefined}
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19,13H5V11H19V13Z"
+                    />
+                  </svg>
+                  <span
+                    className="MuiTouchRipple-root-102"
+                  />
+                </button>
+              </div>
+              <input
+                aria-invalid={false}
+                aria-required={false}
+                autoComplete={undefined}
+                autoFocus={undefined}
+                className="MuiInput-input-185 ProductDetailAddToCart-quantityInput-171"
+                defaultValue={undefined}
+                disabled={false}
+                id="addToCartQuantityInput"
+                name={undefined}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={undefined}
+                onKeyUp={undefined}
+                placeholder={undefined}
+                readOnly={undefined}
+                required={undefined}
+                rows={undefined}
+                type="text"
+                value={1}
+              />
+              <div
+                className="MuiInputAdornment-root-190"
+              >
+                <button
+                  className="MuiButtonBase-root-99 ProductDetailAddToCart-incrementButton-168"
+                  color="default"
+                  disabled={undefined}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex="0"
+                  type="button"
+                  variant="outlined"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="MuiSvgIcon-root-193"
+                    color={undefined}
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                    />
+                  </svg>
+                  <span
+                    className="MuiTouchRipple-root-102"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiGrid-item-5 MuiGrid-grid-xs-12-41"
+        >
+          <button
+            className="MuiButtonBase-root-99 ProductDetailAddToCart-addToCartButton-166"
+            disabled={undefined}
+            fullWidth={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiTypography-root-111 MuiTypography-body1-120 ProductDetailAddToCart-addToCartText-167"
+            >
+              Add to cart
+            </span>
+            <span
+              className="MuiTouchRipple-root-102"
+            />
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
