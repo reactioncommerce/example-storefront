@@ -8,6 +8,7 @@ import TextField from "material-ui/TextField";
 import Typography from "material-ui/Typography";
 import Minus from "mdi-material-ui/Minus";
 import Plus from "mdi-material-ui/Plus";
+import { inject, observer } from "mobx-react";
 import Divider from "components/Divider";
 
 const styles = (theme) => ({
@@ -57,6 +58,8 @@ const styles = (theme) => ({
 
 
 @withStyles(styles, { withTheme: true })
+@inject("pdpStore")
+@observer
 export default class ProductDetailAddToCart extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -82,9 +85,16 @@ export default class ProductDetailAddToCart extends Component {
   };
 
   handleOnClick = () => {
-    // This currently does nothing.
-    // When our GraphQL endpoints are available, we'll use them to add the items to the cart.
+    // This function currently does nothing. When our GraphQL endpoints are available, we'll use them to add the items to the cart.
+    // To test that this is working, uncomment the following lines
+    // and check to see that the data is correct
 
+    // const { pdpStore } = this.props;
+    // const { addToCartQuantity } = this.state;
+    // console.log("Selected Option", pdpStore.selectedOption);
+    // console.log("Quantity", addToCartQuantity);
+
+    // Reset cart quantity to 1 after items are added to cart
     this.setState({ addToCartQuantity: 1 });
   }
 

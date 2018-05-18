@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "material-ui/Grid";
 import { withStyles } from "material-ui/styles";
-import { observable, action, computed } from "mobx";
-import { observer } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import { Router } from "routes";
 import Badge from "components/Badge";
 import { inventoryStatus } from "lib/utils";
@@ -28,29 +27,21 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles, { withTheme: true })
+@inject("pdpStore")
 @observer
 export default class OptionsList extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     options: PropTypes.arrayOf(PropTypes.object),
+    pdpStore: PropTypes.object,
     productSlug: PropTypes.string,
     theme: PropTypes.object
   }
 
-  @observable _selectedOption = null;
-
-  @computed
-  get selectedOption() {
-    return this._selectedOption;
-  }
-
-  set selectedOption(value) {
-    this._selectedOption = value;
-  }
-
-  @action
   selectOption = (option) => {
-    this.selectedOption = option._id;
+    const { pdpStore } = this.props;
+
+    pdpStore.selectedOption = option._id;
 
     Router.pushRoute("product", {
       productSlug: this.props.productSlug,
@@ -72,7 +63,7 @@ export default class OptionsList extends Component {
   }
 
   render() {
-    const { classes: { root }, options, theme } = this.props;
+    const { classes: { root }, options, pdpStore, theme } = this.props;
 
     if (!Array.isArray(options)) return null;
 
@@ -82,7 +73,7 @@ export default class OptionsList extends Component {
           <Grid item key={option._id}>
             <ProductDetailOption
               onClick={this.selectOption}
-              selectedOption={this.selectedOption}
+              selectedOption={pdpStore.selectedOption}
               option={option}
             />
             {this.renderInventoryStatus(option)}
