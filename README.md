@@ -72,7 +72,7 @@ docker-compose run --rm web [command]
 ```
 Run any command inside a Docker container and then remove the container. Use this to run any tooling operations. Remember your project directory will be mounted and things will usually just work.
 
-## Running Tests in Container
+### Running Tests in Container
 Run tests locally
 ```sh
 docker-compose run web yarn test
@@ -91,6 +91,23 @@ docker-compose run web yarn test -u
 To run snyk security tests (this will run tests in the same way as CI)
 ```sh
 docker-compose run web sh -c "cp package.json ../ && cp .snyk ../ && cd .. && snyk auth && snyk test"
+```
+
+### Yarn Commands
+
+Yarn & NPM should especially run inside the Docker container. We've taken steps to ensure that the node_modules are placed into a cacheable location. If you run Yarn locally, the node_modules are written directly to the project directory and take precedence over those from the Docker build.
+**Yarn Add**
+```
+docker-compose run --rm web yarn add --dev [package]
+```
+
+**Yarn Install**
+
+⚠️ Always rebuild the image and start a new container after modifying yarn.lock or Dockerfile!
+```
+docker-compose run --rm web yarn install
+docker-compose down --rmi local
+docker-compose up -d --build
 ```
 
 ## Cleanup Containers
