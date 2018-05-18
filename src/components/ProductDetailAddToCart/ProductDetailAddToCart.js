@@ -25,7 +25,7 @@ const styles = (theme) => ({
   },
   addToCartText: {
     color: theme.palette.primary.contrastText,
-    fontWeight: 600,
+    fontWeight: 600
   },
   incrementButton: {
     backgroundColor: theme.palette.reaction.activeElementBackground,
@@ -82,8 +82,8 @@ export default class ProductDetailAddToCart extends Component {
   };
 
   handleOnClick = () => {
-    console.log("This currently does nothing. When our GraphQL endpoints are available, we'll use them to add the items to the cart.");
-    console.log(`This will add ${this.state.addToCartQuantity} items to the cart.`);
+    // This currently does nothing.
+    // When our GraphQL endpoints are available, we'll use them to add the items to the cart.
 
     this.setState({ addToCartQuantity: 1 });
   }
