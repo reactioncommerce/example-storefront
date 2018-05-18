@@ -40,12 +40,14 @@ _Follow steps as necessary. If you already have Reaction installed, you may be a
     ```
     You'll need to run the full app at least once in order for step 5 to work. After this initial run, if you don't want to start the Reaction Meteor app, you can just run `docker-compose up -d devserver`
 
-5. Generate a Meteor login token  
+5. Generate a Meteor login token
+
     _This process will be eliminated once we've built out the GraphQL API for authentication_
     - Visit the Reaction Meteor shop [localhost:3000](http://localhost:3000)
     - Open devtools and copy the Meteor.loginToken from `localStorage`.
 
-6. Setup the Storefront environment  
+6. Setup the Storefront environment
+
     Navigate to the `reaction-next-starterkit` directory and create a `.env` file.
     ```sh
     cp .env.example .env
@@ -94,7 +96,7 @@ docker-compose run web sh -c "cp package.json ../ && cp .snyk ../ && cd .. && sn
 
 ### Yarn Commands
 
-Yarn & NPM should especially run inside the Docker container. We've taken steps to ensure that the node_modules are placed into a cacheable location. If you run Yarn locally, the node_modules are written directly to the project directory and take precedence over those from the Docker build.
+Yarn & NPM should run inside the Docker container. We've taken steps to ensure that the node_modules are placed into a cacheable location. If you run Yarn locally, the node_modules are written directly to the project directory and take precedence over those from the Docker build.
 **Yarn Add**
 ```
 docker-compose run --rm web yarn add --dev [package]
