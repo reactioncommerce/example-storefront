@@ -16,36 +16,20 @@ The mobx `RoutingStore` data store provides data related to the current route. T
 `UIStore` data store provides data related to various UI elements of the app. The values are set at various places throughout the app.
 
 ## Adding a new observable prop to an existing store
-To create a new observable, add the `@observable` decorator before a `property = value` set. Then, add a setter and getter to allow data to be viewed and manipulated. If needed, add an `@action` function inside the store.
+To create a new observable, add the `@observable` decorator before a `property = value` set. For each type of action that could set the prop, add a class method with `@action` decorator.
 
-Using our [`cartOpen` @observable](https://github.com/reactioncommerce/reaction-next-starterkit/blob/master/src/lib/stores/UIStore.js) as an example:
+Using our [`isCartOpen` @observable](https://github.com/reactioncommerce/reaction-next-starterkit/blob/master/src/lib/stores/UIStore.js) as an example:
 
 - Set the observable default data:
 ```
-@observable _cartOpen = false;
-```
-
-- Add a getter, using the `@computed` decorator:
-```
-@computed
-get cartOpen() {
-  return this._cartOpen;
-}
-```
-
-- Add a setter, to be used to set a new value to the data store:
-```
-set cartOpen(value) {
-  this._cartOpen = value;
-}
+@observable isCartOpen = false;
 ```
 
 - Add an action, using the `@action` decorator, to change the value of the `@observable`:
 ```
-@action
-toggleCartOpen = () => {
-  this.cartOpen = !this.cartOpen;
-};
+@action toggleCartOpen() {
+  this.isCartOpen = !this.isCartOpen;
+}
 ```
 
 Link: [Creating observables (MobX official documentation)](https://mobx.js.org/refguide/api.html#creating-observables)
