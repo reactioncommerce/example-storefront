@@ -24,7 +24,8 @@ const theme = createMuiTheme({
       activeElementBorderColor: "#94E8D1",
       activeElementBackground: "#E6E6E6",
       bestseller: "#8CE0C9",
-      borderColor: "#CCCCCC"
+      borderColor: "#CCCCCC",
+      buttonBorderRadius: 2
     }
   },
   spacing: {

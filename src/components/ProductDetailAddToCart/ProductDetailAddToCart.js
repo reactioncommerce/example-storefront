@@ -36,7 +36,7 @@ const styles = (theme) => ({
     padding: 0,
     border: `1px solid ${theme.palette.reaction.borderColor}`,
     backgroundColor: theme.palette.common.white,
-    borderRadius: 2
+    borderRadius: theme.palette.reaction.buttonBorderRadius
   },
   quantityGrid: {
     marginBottom: theme.spacing.unit * 3
