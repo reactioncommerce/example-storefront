@@ -14,8 +14,8 @@ import Divider from "components/Divider";
 const styles = (theme) => ({
   addToCartButton: {
     "padding": theme.spacing.unit,
-    "borderRadius": "2px",
     "backgroundColor": theme.palette.primary.light,
+    "borderRadius": theme.palette.reaction.buttonBorderRadius,
     "minWidth": "66%",
     "&:hover": {
       borderColor: theme.palette.reaction.activeElementBorderColor
