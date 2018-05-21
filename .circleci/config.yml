@@ -187,7 +187,7 @@ jobs:
               --name reactionapp_next_starterkit \
               -w /usr/local/src \
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-              sh -c "cp reaction-app/package.json ./ && snyk test"
+              sh -c "cp reaction-app/package.json ./ && cp reaction-app/.snyk ./ && snyk test"
 workflows:
   version: 2
   build_and_test:

@@ -10,9 +10,9 @@ import styles from "./styles";
 @withStyles(styles)
 class VariantItem extends Component {
   static propTypes = {
-    active: PropTypes.bool.isRequired,
     classes: PropTypes.object,
     handleClick: PropTypes.func.isRequired,
+    isActive: PropTypes.bool.isRequired,
     variant: PropTypes.object.isRequired
   }
 
@@ -24,13 +24,13 @@ class VariantItem extends Component {
     const {
       classes: { variantButton, activeVariant },
       variant: { title, price },
-      active
+      isActive
     } = this.props;
 
     return (
       <ButtonBase
         disableRipple
-        className={classNames(variantButton, { [activeVariant]: active })}
+        className={classNames(variantButton, { [activeVariant]: isActive })}
         onClick={this.onClick}
       >
         <Typography component="span" variant="body1">

@@ -1,63 +1,157 @@
-# [WIP] Reaction Next Storefront Starterkit
+# Reaction Storefront Next.js Starter Kit
 
-Example storefront application for [Reaction Commerce](https://reactioncommerce.com/).
+_**Note:** This project is a work in progress and should not be used in production at this time._
 
-## Setup
+Reference Storefront application for [Reaction Commerce](https://reactioncommerce.com/).
 
-`git clone https://github.com/reactioncommerce/reaction-next-starterkit.git && cd reaction-next-starterkit`
+## Getting Started
+_Follow steps as necessary. If you already have Reaction installed, you may be able to skip some of these steps._
 
-### Prerequisites
+0. Prerequesites
+- Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/). Docker Compose is included when installing Docker on Mac and Windows, but will need to be installed separately on Linux.
 
-**Creating a local docker network**
+1. Clone the main [Reaction repo](https://github.com/reactioncommerce/reaction) and checkout the `release-1.12.0` branch
+    ```sh
+    git clone git@github.com:reactioncommerce/reaction.git
+    cd reaction
+    git checkout release-1.12.0
 
-First you'll need to create a docker network for the GraphQL service and Storefront to communicate.
+    # change directory to the parent of your reaction install
+    cd ..
+    ```
 
-_**NOTE:** Currently we're using the network name of `reaction-api` but this may change in the future._
+2. Clone this repo
+    ```sh
+    git clone git@github.com:reactioncommerce/reaction-next-starterkit.git
+    ```
 
- 1. Create a network by running `docker network create reaction-api`.
- 2. Run `docker network ls` to verify your new network has been created
+3. Create a local docker network
 
-**Starting Reaction's GraphQL server**
+    You'll need to create a docker network for the GraphQL service and the Reaction Storefront to communicate
+    ```
+    docker network create reaction-api
+    ```
+    You can run `docker network ls` to verify the network has been created.
 
-_**NOTE:** Currently we're using the [release 1.11.0 branch](https://github.com/reactioncommerce/reaction/pull/4151) of Reaction Commerce to create the GraphQl service._
+4. Start Reaction's GraphQL server
+    From your `reaction` directory run
+    ```
+    docker-compose up -d --build
+    ```
+    You'll need to run the full app at least once in order for step 5 to work. After this initial run, if you don't want to start the Reaction Meteor app, you can just run `docker-compose up -d devserver`
 
- 1. Pull the latest code from Reaction Commerce
- 2. Start the devserver by running `docker-compose up -d devserver` or start both the `devserver` and `reaction` by running `docker-compose up -d`
+5. Generate a Meteor login token
 
-**Getting a Meteor login token**
- 1. If not already running, start a Reaction Commerce shop within docker by running `docker-compose up -d reaction`
- 2. Once the app has started view the shop at [localhost:3000](http://localhost:3000)
- 3. Open the devtools and copy the Meteor.loginToken from the `localStorage`.
+    _This process will be eliminated once we've built out the GraphQL API for authentication_
+    - Visit the Reaction Meteor shop [localhost:3000](http://localhost:3000)
+    - Open devtools and copy the Meteor.loginToken from `localStorage`.
 
-**Setting up the Storefront's environment**
- 1. Create a new `.env` file in the root of this project or copy the example one by running `cp .env.example .env`
- 2. Start the storefront application in development mode by running `docker-compose up -d --build`
- 3. The Storefront will run on [localhost:4000](http://localhost:4000).
- 4. Use the account dropdown (user icon), and enter Meteor.loginToken from the above steps and save
- 5. Add `EXTERNAL_ASSETS_URL=http://localhost:3000` to your `env` file if you wish to see image assets from your classic Reaction Commerce shop
+6. Setup the Storefront environment
+
+    Navigate to the `reaction-next-starterkit` directory and create a `.env` file.
+    ```sh
+    cp .env.example .env
+    ```
+7. Start the storefront application in development mode using Docker Compose
+    ```
+    docker-compose up -d --build
+    ```
+
+8. Visit the storefront on `localhost:4000`
+
 
 ## Development
-To run the application in development mode execute:
 
-`docker-compose up -d`
+### Build and run in development mode with logs
+```
+docker-compose up -d && docker-compose logs -f
+```
+
+### Running Commands inside the container
+```
+docker-compose run --rm web [command]
+```
+Run any command inside a Docker container and then remove the container. Use this to run any tooling operations. Remember your project directory will be mounted and things will usually just work.
+
+### Running Tests in Container
+Run tests locally
+```sh
+docker-compose run --rm web yarn test
+````
+
+Run tests locally without cache (this can be helpful if changes aren't showing up)
+```sh
+docker-compose run --rm web yarn test --no-cache
+```
+
+To update a failing snapshot (if you've made changes to a component)
+```sh
+docker-compose run --rm web yarn test -u
+```
+
+To run snyk security tests (this will run tests in the same way as CI)
+```sh
+docker-compose run --rm web sh -c "cp package.json ../ && cp .snyk ../ && cd .. && snyk auth && snyk test"
+```
+
+To run eslint
+```sh
+docker-compose run --rm web eslint src
+```
+
+### Yarn Commands
+
+Yarn & NPM should run inside the Docker container. We've taken steps to ensure that the node_modules are placed into a cacheable location. If you run Yarn locally, the node_modules are written directly to the project directory and take precedence over those from the Docker build.
+**Yarn Add**
+```
+docker-compose run --rm web yarn add --dev [package]
+```
+
+**Yarn Install**
+
+⚠️ Always rebuild the image and start a new container after modifying yarn.lock or Dockerfile!
+```
+docker-compose run --rm web yarn install
+docker-compose down --rmi local
+docker-compose up -d --build
+```
+
+## Cleanup Containers
+Stop, and retain containers:
+```
+docker-compose stop
+```
+
+Stop, and remove containers:
+```
+docker-compose down
+```
+
+Stop, and remove containers, volumes and built images:
+```
+docker-compose down -v --rmi local
+```
 
 ## Production
 Running the command below will build the starterkit for production.
 
-`docker build -t reaction-storefront --build-arg BUILD_ENV=production .`
+```
+docker build -t reaction-storefront --build-arg BUILD_ENV=production .
+```
 
 To start the app in production mode execute:
 
-`docker run -p ${port}:4000 --env-file .env --network reaction-api reaction-storefront`
+```
+docker run -d --name storefront -p ${port}:4000 --env-file .env --network reaction-api reaction-storefront
+```
 
-_**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at._
+To stop the docker container after starting it with the above command
+```
+docker stop storefront
+```
 
+_**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at. I'm partial to 4040_
 _**NOTE:** The above command is assuming ether the `devserver` or `reaction` is also running._
-
-## Testing
-- To test locally, run `docker-compose run web yarn test`
-- To test without cache, run `docker-compose run web yarn test --no-cache`. This can be helpful if changes aren't showing up.
-- To update a failing snapshot, run `docker-compose run web yarn test -u`.
 
 ## Using MobX
 See our [MobX documentation](docs/MOBX.md)
@@ -72,4 +166,4 @@ See our [MobX documentation](docs/MOBX.md)
 
  ## Reference links for development
  ### CSS in JS
- - [Responsive Breakbpoints](https://material-ui-next.com/layout/css-in-js/#responsive-breakpoints)
+ - [Responsive Breakpoints](https://material-ui-next.com/layout/css-in-js/#responsive-breakpoints)
