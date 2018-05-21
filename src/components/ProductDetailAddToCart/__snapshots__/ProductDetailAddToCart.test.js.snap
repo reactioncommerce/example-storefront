@@ -135,7 +135,6 @@ exports[`basic snapshot 1`] = `
     <button
       className="MuiButtonBase-root-145 inject-ProductDetailAddToCart-with-pdpStore-addToCartButton-1"
       disabled={undefined}
-      fullWidth={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
