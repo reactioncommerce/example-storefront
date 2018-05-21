@@ -30,6 +30,7 @@
     ]
   },
   "dependencies": {
+    "@segment/snippet": "^4.3.1",
     "apollo-cache-inmemory": "^1.1.11",
     "apollo-client": "^2.2.7",
     "apollo-link": "^1.2.2",
@@ -62,8 +63,8 @@
     "@babel/cli": "7.0.0-beta.42",
     "@babel/core": "7.0.0-beta.42",
     "@babel/node": "7.0.0-beta.42",
-    "@babel/plugin-proposal-decorators": "7.0.0-beta.42",
     "@babel/plugin-proposal-class-properties": "7.0.0-beta.42",
+    "@babel/plugin-proposal-decorators": "7.0.0-beta.42",
     "@babel/preset-env": "7.0.0-beta.42",
     "@babel/preset-stage-2": "7.0.0-beta.42",
     "@reactioncommerce/eslint-config": "^1.7.0",
