@@ -2,17 +2,30 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { observer, inject } from "mobx-react";
 import Helmet from "react-helmet";
+import { withStyles } from "material-ui/styles";
 import withData from "lib/apollo/withData";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
+import Grid from "material-ui/Grid";
+
+const styles = (theme) => ({
+  productGridContainer: {
+    maxWidth: "1440px",
+    marginLeft: "auto",
+    marginRight: "auto"
+  }
+});
+
+
 
 @withData
 @withRoot
 @withShop
 @withCatalogItems
+@withStyles(styles)
 @inject("shop")
 @inject("routingStore")
 @inject("uiStore")

@@ -1,6 +1,10 @@
 import { createMuiTheme } from "material-ui/styles";
 
 const theme = createMuiTheme({
+  grid: {
+    productGridMaxWidth: "1440px"
+    }
+  },
   palette: {
     primary: {
       light: "#26B0F9",
