@@ -10,7 +10,7 @@ test("basic snapshot", () => {
   const component = renderer.create((
     <MuiThemeProvider theme={theme}>
       <VariantItem
-        active={true}
+        isActive={true}
         handleClick={() => true}
         variant={variant}
       />
