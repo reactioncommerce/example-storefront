@@ -57,7 +57,7 @@ const styles = (theme) => ({
 });
 
 
-@withStyles(styles, { withTheme: true })
+@withStyles(styles)
 @inject("pdpStore")
 @observer
 export default class ProductDetailAddToCart extends Component {
