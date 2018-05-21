@@ -178,7 +178,6 @@ export default class ProductDetailAddToCart extends Component {
           <ButtonBase
             onClick={this.handleOnClick}
             className={addToCartButton}
-            fullWidth={true}
           >
             <Typography className={addToCartText} component="span" variant="body1">
               Add to cart
