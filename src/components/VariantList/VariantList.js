@@ -69,7 +69,7 @@ export default class VariantList extends Component {
     return (
       <div className={classes.variantItem} key={variant._id}>
         <VariantItem
-          active={active}
+          isActive={active}
           handleClick={this.handleClick}
           variant={variant}
         />
