@@ -76,22 +76,22 @@ Run any command inside a Docker container and then remove the container. Use thi
 ### Running Tests in Container
 Run tests locally
 ```sh
-docker-compose run web yarn test
+docker-compose run --rm web yarn test
 ````
 
 Run tests locally without cache (this can be helpful if changes aren't showing up)
 ```sh
-docker-compose run web yarn test --no-cache
+docker-compose run --rm web yarn test --no-cache
 ```
 
 To update a failing snapshot (if you've made changes to a component)
 ```sh
-docker-compose run web yarn test -u
+docker-compose run --rm web yarn test -u
 ```
 
 To run snyk security tests (this will run tests in the same way as CI)
 ```sh
-docker-compose run web sh -c "cp package.json ../ && cp .snyk ../ && cd .. && snyk auth && snyk test"
+docker-compose run --rm web sh -c "cp package.json ../ && cp .snyk ../ && cd .. && snyk auth && snyk test"
 ```
 
 To run eslint
