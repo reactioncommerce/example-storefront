@@ -48,7 +48,7 @@ export default class VariantList extends Component {
     this._selectedVariant = variant._id;
 
     Router.pushRoute("product", {
-      productSlug: this.props.product.slug,
+      slugOrId: this.props.product.slug,
       variantId: variant._id
     });
   }
