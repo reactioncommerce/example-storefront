@@ -1,8 +1,8 @@
 {
   "presets": [
-    [
-      "env",
-      {
+    ["next/babel", {
+      "preset-env": {
+        "modules": "commonjs",
         "targets": {
           "node": "current",
           "browsers": [
@@ -10,15 +10,29 @@
           ]
         }
       }
-    ],
-    "stage-2",
-    "react"
-  ],
-  "plugins": [
-    "transform-runtime",
-    "transform-decorators-legacy",
-    ["module-resolver", {
-      "root": [ "./src" ]
     }]
-  ]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        ["module-resolver", {"root": ["./src"]}],
+        "transform-decorators-legacy",
+        "transform-class-properties"
+      ]
+    },
+    "production": {
+      "plugins": [
+        ["module-resolver", {"root": ["./src"]}],
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        ["@babel/plugin-proposal-class-properties", { "loose": true }]
+      ]
+    },
+    "jesttest": {
+      "plugins": [
+        ["module-resolver", {"root": ["./src"]}],
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        ["@babel/plugin-proposal-class-properties", { "loose": true }]
+      ]
+    }
+  }
 }

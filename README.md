@@ -76,22 +76,27 @@ Run any command inside a Docker container and then remove the container. Use thi
 ### Running Tests in Container
 Run tests locally
 ```sh
-docker-compose run web yarn test
+docker-compose run --rm web yarn test
 ````
 
 Run tests locally without cache (this can be helpful if changes aren't showing up)
 ```sh
-docker-compose run web yarn test --no-cache
+docker-compose run --rm web yarn test --no-cache
 ```
 
 To update a failing snapshot (if you've made changes to a component)
 ```sh
-docker-compose run web yarn test -u
+docker-compose run --rm web yarn test -u
 ```
 
 To run snyk security tests (this will run tests in the same way as CI)
 ```sh
-docker-compose run web sh -c "cp package.json ../ && cp .snyk ../ && cd .. && snyk auth && snyk test"
+docker-compose run --rm web sh -c "cp package.json ../ && cp .snyk ../ && cd .. && snyk auth && snyk test"
+```
+
+To run eslint
+```sh
+docker-compose run --rm web eslint src
 ```
 
 ### Yarn Commands
@@ -137,10 +142,15 @@ docker build -t reaction-storefront --build-arg BUILD_ENV=production .
 To start the app in production mode execute:
 
 ```
-docker run -p ${port}:4000 --env-file .env --network reaction-api reaction-storefront
+docker run -d --name storefront -p ${port}:4000 --env-file .env --network reaction-api reaction-storefront
 ```
 
-_**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at._
+To stop the docker container after starting it with the above command
+```
+docker stop storefront
+```
+
+_**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at. I'm partial to 4040_
 _**NOTE:** The above command is assuming ether the `devserver` or `reaction` is also running._
 
 ## Using MobX
