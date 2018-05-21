@@ -70,14 +70,12 @@ export default class ProductDetailAddToCart extends Component {
 
   static propTypes = {
     classes: PropTypes.object,
-    pdpStore: PropTypes.object,
-    product: PropTypes.object,
-    theme: PropTypes.object
+    pdpStore: PropTypes.object
   };
 
   static defaultProps = {
     classes: {},
-    theme: {}
+    pdpStore: {}
   };
 
   state = {
