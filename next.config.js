@@ -6,7 +6,8 @@ const initExport = {
   },
   publicRuntimeConfig: { // Will be available on both server and client
     externalAssetsUrl: process.env.EXTERNAL_ASSETS_URL,
-    graphqlUrl: process.env.EXTERNAL_GRAPHQL_URL
+    graphqlUrl: process.env.EXTERNAL_GRAPHQL_URL,
+    segmentAnalyticsWriteKey: process.env.SEGMENT_ANALYTICS_WRITE_KEY
   },
   webpack: (config) => {
     config.module.rules.push({
