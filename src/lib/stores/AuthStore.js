@@ -1,4 +1,4 @@
-import { observable, computed, action } from "mobx";
+import { observable, action } from "mobx";
 import Cookies from "js-cookie";
 
 /**
@@ -12,25 +12,23 @@ class AuthStore {
   *
   * @type String
   */
-  @observable _token = "";
+  @observable token = "";
 
-  @computed get token() {
-    return this._token;
-  }
-
-  set token(value) {
-    this._token = value;
-  }
-
-  @action saveToken = () => {
-    // Save the token
-    Cookies.set("token", this.token);
-  }
-
-  fetchAuthToken() {
-    const token = Cookies.get("token");
+  @action setToken(token) {
     this.token = token || "";
-    return token;
+  }
+
+  saveTokenToCookie() {
+    if (typeof this.token === "string" && this.token.length) {
+      Cookies.set("token", this.token);
+    } else {
+      Cookies.remove("token");
+    }
+  }
+
+  setTokenFromCookie() {
+    const token = Cookies.get("token");
+    this.setToken(token);
   }
 }
 

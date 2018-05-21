@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import { inject } from "mobx-react";
 import IconButton from "material-ui/IconButton";
 import CartIcon from "mdi-material-ui/Cart";
 
 @inject("uiStore")
-@observer
 class CartToggle extends Component {
   static propTypes = {
-    uiStore: PropTypes.object
+    uiStore: PropTypes.shape({
+      toggleCartOpen: PropTypes.func
+    }).isRequired
   };
 
-  static defaultProps = {
-    uiStore: {}
+  handleClick = () => {
+    this.props.uiStore.toggleCartOpen();
   };
 
   render() {
-    const { uiStore } = this.props;
     return (
-      <IconButton color="inherit" onClick={uiStore.toggleCartOpen}>
+      <IconButton color="inherit" onClick={this.handleClick}>
         <CartIcon />
       </IconButton>
     );

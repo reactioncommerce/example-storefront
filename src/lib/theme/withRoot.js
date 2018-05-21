@@ -29,7 +29,7 @@ function withRoot(Component) {
       }
 
       // Fetch and update auth token in auth store
-      rootMobxStores.authStore.fetchAuthToken();
+      rootMobxStores.authStore.setTokenFromCookie();
     }
 
     pageContext = null;

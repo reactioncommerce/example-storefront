@@ -99,7 +99,7 @@ exports[`basic snapshot 1`] = `
       className="MuiGrid-item-49"
     >
       <button
-        className="MuiButtonBase-root-6 ProductDetailOption-optionButton-138"
+        className="MuiButtonBase-root-6 ProductDetailOption-optionButton-138 ProductDetailOption-isSelected-140"
         disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}

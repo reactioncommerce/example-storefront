@@ -21,24 +21,27 @@ class NavigationMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
     navItems: PropTypes.object,
-    uiStore: PropTypes.object
+    uiStore: PropTypes.object.isRequired
   };
 
   static defaultProps = {
     classes: {},
-    navItems: [],
-    uiStore: {}
+    navItems: []
   };
 
   renderNavItem(navItem, index) {
     return <NavigationItemMobile key={index} navItem={navItem.node} />;
   }
 
+  handleClose = () => {
+    this.props.uiStore.toggleMenuDrawerOpen();
+  };
+
   render() {
     const { classes, navItems, uiStore } = this.props;
 
     return (
-      <Drawer open={uiStore.menuDrawerOpen} onClose={uiStore.toggleMenuDrawerOpen}>
+      <Drawer open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
         <nav className={classes.nav}>
           <MenuList>{navItems.edges && navItems.edges.map(this.renderNavItem)}</MenuList>
         </nav>

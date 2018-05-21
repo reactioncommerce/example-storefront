@@ -2,16 +2,16 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="ProductDetail-root-1"
+  className="inject-ProductDetail-with-uiStore-root-1"
 >
   <div
-    className="MuiGrid-container-4 MuiGrid-spacing-xs-24-27 ProductDetail-pdpContainer-2"
+    className="MuiGrid-container-4 MuiGrid-spacing-xs-24-27 inject-ProductDetail-with-uiStore-pdpContainer-2"
   >
     <div
       className="MuiGrid-item-5 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-48"
     >
       <div
-        className="ProductDetail-section-3"
+        className="inject-ProductDetail-with-uiStore-section-3"
       >
         <div
           className="MuiGrid-container-4 inject-MediaGallery-with-uiStore-root-94"
@@ -276,7 +276,7 @@ exports[`basic snapshot 1`] = `
         </div>
       </div>
       <div
-        className="ProductDetail-section-3"
+        className="inject-ProductDetail-with-uiStore-section-3"
       >
         <section>
           <h2
@@ -382,7 +382,7 @@ Details can be added below the image for more specific product information.
           className="VariantList-variantItem-144"
         >
           <button
-            className="MuiButtonBase-root-99 VariantItem-variantButton-146 VariantItem-activeVariant-147"
+            className="MuiButtonBase-root-99 VariantItem-variantButton-146"
             disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
@@ -450,92 +450,6 @@ Details can be added below the image for more specific product information.
               className="MuiTypography-root-111 MuiTypography-body1-120"
             />
           </button>
-        </div>
-        <div
-          className="Divider-container-157"
-        >
-          <hr
-            className="Divider-item-159"
-          />
-          <span
-            className="MuiTypography-root-111 MuiTypography-body1-120 Divider-label-158"
-          >
-            Available Options
-          </span>
-          <hr
-            className="Divider-item-159"
-          />
-        </div>
-        <div
-          className="MuiGrid-container-4 MuiGrid-spacing-xs-8-25 OptionsList-root-160"
-        >
-          <div
-            className="MuiGrid-item-5"
-          >
-            <button
-              className="MuiButtonBase-root-99 ProductDetailOption-optionButton-163"
-              disabled={undefined}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex="0"
-              type="button"
-            >
-              <span
-                className="MuiTypography-root-111 MuiTypography-body1-120 ProductDetailOption-optionText-164"
-              >
-                Red
-              </span>
-            </button>
-            <div
-              className="OptionsList-alert-161"
-            >
-              <div
-                className="Badge-badge-148 Badge-backorder-152 Badge-status-150 OptionsList-badge-162"
-              >
-                <span
-                  className="Badge-labelStyle-149"
-                >
-                  Backorder
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            className="MuiGrid-item-5"
-          >
-            <button
-              className="MuiButtonBase-root-99 ProductDetailOption-optionButton-163"
-              disabled={undefined}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex="0"
-              type="button"
-            >
-              <span
-                className="MuiTypography-root-111 MuiTypography-body1-120 ProductDetailOption-optionText-164"
-              >
-                Green
-              </span>
-            </button>
-          </div>
         </div>
       </div>
     </div>
