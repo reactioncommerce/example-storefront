@@ -94,6 +94,11 @@ To run snyk security tests (this will run tests in the same way as CI)
 docker-compose run web sh -c "cp package.json ../ && cp .snyk ../ && cd .. && snyk auth && snyk test"
 ```
 
+To run eslint
+```sh
+docker-compose run --rm web eslint src
+```
+
 ### Yarn Commands
 
 Yarn & NPM should run inside the Docker container. We've taken steps to ensure that the node_modules are placed into a cacheable location. If you run Yarn locally, the node_modules are written directly to the project directory and take precedence over those from the Docker build.
