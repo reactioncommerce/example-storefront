@@ -93,7 +93,7 @@ exports[`basic snapshot 1`] = `
     />
   </div>
   <div
-    className="MuiGrid-container-48 MuiGrid-spacing-xs-8-69 inject-OptionsList-with-pdpStore-root-45"
+    className="MuiGrid-container-48 MuiGrid-spacing-xs-8-69 inject-OptionsList-with-uiStore-root-45"
   >
     <div
       className="MuiGrid-item-49"
@@ -122,10 +122,10 @@ exports[`basic snapshot 1`] = `
         </span>
       </button>
       <div
-        className="inject-OptionsList-with-pdpStore-alert-46"
+        className="inject-OptionsList-with-uiStore-alert-46"
       >
         <div
-          className="Badge-badge-33 Badge-backorder-37 Badge-status-35 inject-OptionsList-with-pdpStore-badge-47"
+          className="Badge-badge-33 Badge-backorder-37 Badge-status-35 inject-OptionsList-with-uiStore-badge-47"
         >
           <span
             className="Badge-labelStyle-34"

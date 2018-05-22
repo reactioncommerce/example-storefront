@@ -6,14 +6,14 @@ import theme from "lib/theme/reactionTheme";
 import options from "./__mocks__/options.mock";
 import ProductDetailOptionsList from "./ProductDetailOptionsList";
 
-const pdpStore = {
-  selectedOption: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50Okp2aW5XNThpWFN4N3p0UEFQ"
+const uiStore = {
+  pdpSelectedOptionId: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OkpobjJ0YzVaRkFzYVdiaXZR"
 };
 
 test("basic snapshot", () => {
   const component = renderer.create((
     <MuiThemeProvider theme={theme}>
-      <Provider pdpStore={pdpStore}>
+      <Provider uiStore={uiStore}>
         <ProductDetailOptionsList
           options={options}
         />
