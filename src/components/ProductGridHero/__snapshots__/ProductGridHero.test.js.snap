@@ -2,20 +2,14 @@
 
 exports[`basic snapshot 1`] = `
 <section
-  className="ProductGridHero-productGridContainer-2"
+  className="inject-ProductGridHero-with-uiStore-productGridContainer-2"
 >
   <div
     className="MuiGrid-container-3 MuiGrid-spacing-xs-24-26"
   >
     <div
       className="MuiGrid-item-4 MuiGrid-grid-xs-12-40"
-    >
-      <img
-        alt="Tag Hero"
-        className="ProductGridHero-heroImg-1"
-        src="https://k-lerlandworks.com/wp-content/uploads/2017/11/Custom-Water-Features-1600x325.jpg"
-      />
-    </div>
+    />
   </div>
 </section>
 `;
