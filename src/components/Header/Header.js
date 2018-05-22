@@ -33,12 +33,18 @@ const styles = (theme) => ({
 class Header extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    uiStore: PropTypes.object
+    uiStore: PropTypes.shape({
+      toggleCartOpen: PropTypes.func.isRequired,
+      toggleMenuDrawerOpen: PropTypes.func.isRequired
+    }).isRequired
   };
 
   static defaultProps = {
-    classes: {},
-    uiStore: {}
+    classes: {}
+  };
+
+  handleNavigationToggleClick = () => {
+    this.props.uiStore.toggleMenuDrawerOpen();
   };
 
   handleCartToggleClick = () => {
@@ -52,7 +58,7 @@ class Header extends Component {
       <AppBar position="static" elevation={0}>
         <Toolbar className={toolbar}>
           <Hidden mdUp>
-            <NavigationToggleMobile />
+            <NavigationToggleMobile onClick={this.handleNavigationToggleClick} />
           </Hidden>
 
           <div className={controls}>
