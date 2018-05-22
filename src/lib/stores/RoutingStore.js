@@ -1,4 +1,4 @@
-import { action, observable, computed } from "mobx";
+import { action, observable } from "mobx";
 import { Router } from "routes";
 
 /**
@@ -12,31 +12,18 @@ export default class RoutingStore {
    *
    * @type String
    */
-  @observable _pathname = "";
+  @observable pathname = "";
 
   /**
    * The query params for the current page (i.e. `{shop: `1234', first: 24}`)
    *
    * @type Object
    */
-  @observable _query = {};
+  @observable query = {};
 
-  @computed
-  get pathname() {
-    return this._pathname;
-  }
-
-  set pathname(value) {
-    this._pathname = value;
-  }
-
-  @computed
-  get query() {
-    return this._query;
-  }
-
-  set query(value) {
-    this._query = value;
+  @action updateRoute({ pathname, query }) {
+    this.pathname = pathname;
+    this.query = query;
   }
 
   /**

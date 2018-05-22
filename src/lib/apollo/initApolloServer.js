@@ -30,7 +30,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 const httpLink = (options) => new HttpLink({
   uri: `${graphqlUrl}`,
   headers: {
-    "meteor-login-token": `${options.meteorToken || ""}`
+    "meteor-login-token": `${options.token || ""}`
   },
   credentials: "same-origin"
 });

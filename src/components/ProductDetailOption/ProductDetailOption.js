@@ -10,23 +10,21 @@ import styles from "./styles";
 export default class ProductDetailOption extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    onClick: PropTypes.func.isRequired,
-    option: PropTypes.object,
-    selectedOption: PropTypes.string
+    isActive: PropTypes.bool,
+    onClick: PropTypes.func,
+    option: PropTypes.object
   }
 
   handleOnClick = () => {
-    this.props.onClick(this.props.option);
+    this.props.onClick && this.props.onClick(this.props.option);
   }
 
   render() {
     const {
       classes: { optionButton, optionText, isSelected },
-      selectedOption,
+      isActive,
       option
     } = this.props;
-
-    const active = (selectedOption === option._id) || false;
 
     return (
       <ButtonBase
@@ -34,7 +32,7 @@ export default class ProductDetailOption extends Component {
         onClick={this.handleOnClick}
         className={classNames(
           optionButton,
-          { [isSelected]: active }
+          { [isSelected]: isActive || false }
         )
         }
       >

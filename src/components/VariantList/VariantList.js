@@ -1,9 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
-import { observable, action, computed } from "mobx";
-import { observer } from "mobx-react";
-import { Router } from "routes";
 import VariantItem from "components/VariantItem";
 import ProductDetailOptionsList from "components/ProductDetailOptionsList";
 import Badge from "components/Badge";
@@ -27,50 +24,27 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles)
-@observer
 export default class VariantList extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    onSelectOption: PropTypes.func,
+    onSelectVariant: PropTypes.func,
     product: PropTypes.object.isRequired,
+    selectedOptionId: PropTypes.string,
+    selectedVariantId: PropTypes.string,
     variants: PropTypes.arrayOf(PropTypes.object).isRequired
   }
 
-  constructor(props) {
-    super(props);
-    // Select first variant by default
-    this.selectedVariant = props.variants[0]._id;
-  }
-
-  @observable _selectedVariant = null;
-
-  @action
-  handleClick = (variant) => {
-    this._selectedVariant = variant._id;
-
-    Router.pushRoute("product", {
-      slugOrId: this.props.product.slug,
-      variantId: variant._id
-    });
-  }
-
-  @computed
-  get selectedVariant() {
-    return this._selectedVariant;
-  }
-
-  set selectedVariant(value) {
-    this._selectedVariant = value;
-  }
-
   renderVariant = (variant) => {
-    const { classes } = this.props;
-    const active = (this.selectedVariant === variant._id);
+    const { classes, onSelectVariant, selectedVariantId } = this.props;
+
+    const active = (selectedVariantId === variant._id);
 
     return (
       <div className={classes.variantItem} key={variant._id}>
         <VariantItem
+          handleClick={() => { onSelectVariant(variant); }}
           isActive={active}
-          handleClick={this.handleClick}
           variant={variant}
         />
         {this.renderInventoryStatus(variant)}
@@ -91,11 +65,12 @@ export default class VariantList extends Component {
     );
   }
 
-  renderOptionsList = () => {
-    const selectedVariant = this.props.variants.find((variant) => variant._id === this.selectedVariant);
+  renderOptionsList() {
+    const { onSelectOption, product, selectedOptionId, selectedVariantId, variants } = this.props;
+    const selectedVariant = variants.find((variant) => variant._id === selectedVariantId);
 
     // If currently selected variant has options, then render them.
-    const options = (Array.isArray(selectedVariant.options)) ? selectedVariant.options : null;
+    const options = (selectedVariant && Array.isArray(selectedVariant.options) && selectedVariant.options.length) ? selectedVariant.options : null;
 
     if (!options) return null;
 
@@ -103,8 +78,10 @@ export default class VariantList extends Component {
       <Fragment>
         <Divider label="Available Options" />
         <ProductDetailOptionsList
-          productSlug={this.props.product.slug}
+          productSlug={product.slug}
+          onSelectOption={onSelectOption}
           options={options}
+          selectedOptionId={selectedOptionId}
         />
       </Fragment>
     );

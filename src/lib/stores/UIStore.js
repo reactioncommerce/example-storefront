@@ -1,4 +1,4 @@
-import { observable, computed, action } from "mobx";
+import { observable, action } from "mobx";
 import getConfig from "next/config";
 
 /**
@@ -8,12 +8,19 @@ import getConfig from "next/config";
 
 class UIStore {
   /**
+   * App config data
+   *
+   * @type Object
+   */
+  @observable appConfig = getConfig();
+
+  /**
    * Is the cart drawer open or closed
    *
    * @type Boolean
    * @default false
    */
-  @observable _cartOpen = false;
+  @observable isCartOpen = false;
 
   /**
    * Is the menu drawer open or closed
@@ -21,47 +28,48 @@ class UIStore {
    * @type Boolean
    * @default false
    */
-  @observable _menuDrawerOpen = false;
+  @observable isMenuDrawerOpen = false;
 
   /**
-   * App config data
+   * The ID of the option that is selected on the product detail page. This is not
+   * tracked per product, so the assumption is that you can only view one detail page
+   * at a time. The page must reset this before initial mount.
    *
-   * @type Object
+   * @type String
    */
-  @observable _appConfig = getConfig();
+  @observable pdpSelectedOptionId = null;
 
-  @computed
-  get cartOpen() {
-    return this._cartOpen;
+  /**
+   * The ID of the variant that is selected on the product detail page. This is not
+   * tracked per product, so the assumption is that you can only view one detail page
+   * at a time. The page must reset this before initial mount.
+   *
+   * @type String
+   */
+  @observable pdpSelectedVariantId = null;
+
+  /* ACTIONS */
+
+  @action setPDPSelectedVariantId(variantId, optionId) {
+    this.pdpSelectedVariantId = variantId;
+    this.pdpSelectedOptionId = optionId;
   }
 
-  @computed
-  get appConfig() {
-    return this._appConfig;
+  @action closeCart() {
+    this.isCartOpen = false;
   }
 
-  set cartOpen(value) {
-    this._cartOpen = value;
+  @action toggleCartOpen() {
+    this.isCartOpen = !this.isCartOpen;
   }
 
-  @action
-  toggleCartOpen = () => {
-    this.cartOpen = !this.cartOpen;
-  };
-
-  @computed
-  get menuDrawerOpen() {
-    return this._menuDrawerOpen;
+  @action closeMenuDrawer() {
+    this.isMenuDrawerOpen = false;
   }
 
-  set menuDrawerOpen(value) {
-    this._menuDrawerOpen = value;
+  @action toggleMenuDrawerOpen() {
+    this.isMenuDrawerOpen = !this.isMenuDrawerOpen;
   }
-
-  @action
-  toggleMenuDrawerOpen = () => {
-    this.menuDrawerOpen = !this.menuDrawerOpen;
-  };
 }
 
 export default UIStore;
