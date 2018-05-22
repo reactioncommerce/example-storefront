@@ -72,11 +72,16 @@ class MediaGallery extends Component {
 
   state = { featuredMediaIndex: 0 };
 
-  getClickHandler(index) {
-    return () => {
-      this.setState({ featuredMediaIndex: index });
-    };
-  }
+  /**
+   * @name handleMediaItemClick
+   * @param {SyntheticEvent} event Event
+   * @param {Object} media The `media` prop of the MediaGalleryItem that was clicked
+   * @param {Number} index The `index` prop of the MediaGalleryItem that was clicked
+   * @returns {undefined} Nothing
+   */
+  handleMediaItemClick = (event, media, index) => {
+    this.setState({ featuredMediaIndex: index });
+  };
 
   renderFeaturedImage() {
     const { classes, mediaItems, uiStore } = this.props;
@@ -112,8 +117,9 @@ class MediaGallery extends Component {
                 sm={2}
               >
                 <MediaGalleryItem
+                  index={index}
                   media={media}
-                  onClick={this.getClickHandler(index)}
+                  onClick={this.handleMediaItemClick}
                 />
               </Grid>
             ))}
