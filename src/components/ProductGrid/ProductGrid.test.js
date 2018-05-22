@@ -7,6 +7,8 @@ import ProductGrid from "./ProductGrid";
 import products from "./__mocks__/products.mock";
 
 const uiStore = {
+  pageSize: 20,
+  setPageSize: () => true,
   appConfig: {
     publicRuntimeConfig: {
       externalAssetsUrl: "http://localhost:3000"
