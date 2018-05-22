@@ -44,7 +44,7 @@ class ProductDetail extends Component {
     uiStore: PropTypes.object.isRequired
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { product } = this.props;
 
     // Select first variant by default
