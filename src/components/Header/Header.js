@@ -5,6 +5,7 @@ import Hidden from "material-ui/Hidden";
 import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
 import { withStyles } from "material-ui/styles";
+import { inject } from "mobx-react";
 import { NavigationDesktop } from "components/NavigationDesktop";
 import { NavigationMobile, NavigationToggleMobile } from "components/NavigationMobile";
 import { CartToggle } from "components/Cart";
@@ -28,15 +29,26 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles)
+@inject("uiStore")
 class Header extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    uiStore: PropTypes.object
+    uiStore: PropTypes.shape({
+      toggleCartOpen: PropTypes.func.isRequired,
+      toggleMenuDrawerOpen: PropTypes.func.isRequired
+    }).isRequired
   };
 
   static defaultProps = {
-    classes: {},
-    uiStore: {}
+    classes: {}
+  };
+
+  handleNavigationToggleClick = () => {
+    this.props.uiStore.toggleMenuDrawerOpen();
+  };
+
+  handleCartToggleClick = () => {
+    this.props.uiStore.toggleCartOpen();
   };
 
   render() {
@@ -46,7 +58,7 @@ class Header extends Component {
       <AppBar position="static" elevation={0}>
         <Toolbar className={toolbar}>
           <Hidden mdUp>
-            <NavigationToggleMobile />
+            <NavigationToggleMobile onClick={this.handleNavigationToggleClick} />
           </Hidden>
 
           <div className={controls}>
@@ -60,7 +72,7 @@ class Header extends Component {
           </div>
 
           <AccountDropdown />
-          <CartToggle />
+          <CartToggle onClick={this.handleCartToggleClick} />
         </Toolbar>
 
         <NavigationMobile />

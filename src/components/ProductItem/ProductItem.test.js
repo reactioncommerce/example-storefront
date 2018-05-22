@@ -6,7 +6,11 @@ import product from "./__mocks__/product.mock";
 const uiStore = {
   appConfig: {
     publicRuntimeConfig: {
-      externalAssetsUrl: "http://localhost:300"
+      externalAssetsUrl: "http://localhost:3000",
+      placeholderImageUrls: {
+        galleryFeatured: "/resources/placeholder.gif",
+        productGrid: "/resources/placeholder.gif"
+      }
     }
   }
 };

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { observer, inject } from "mobx-react";
 import withData from "lib/apollo/withData";
 import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
@@ -12,8 +11,6 @@ import ProductDetail from "components/ProductDetail";
 @withRoot
 @withShop
 @withCatalogItemProduct
-@inject("uiStore")
-@observer
 class ProductDetailPage extends Component {
   static propTypes = {
     /**

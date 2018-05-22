@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { action, computed, observable } from "mobx";
 import { inject, observer } from "mobx-react";
 import { withStyles } from "material-ui/styles";
 import IconButton from "material-ui/IconButton";
@@ -22,44 +21,57 @@ const styles = (theme) => ({
 @observer
 class AccountDropdown extends Component {
   static propTypes = {
-    authStore: PropTypes.object,
+    authStore: PropTypes.object.isRequired,
     classes: PropTypes.object
   };
 
   static defaultProps = {
-    classes: {},
-    uiStore: {}
+    classes: {}
   };
 
-  @observable _anchorEl = null
+  static getDerivedStateFromProps(props, state) {
+    // Sometimes state comes through null. This might be a NextJS bug or react
+    // hot loader bug. For now, this workaround works.
+    if (state === null) return null;
 
-  @computed get anchorEl() { return this._anchorEl; }
-  set anchorEl(value) { this._anchorEl = value; }
+    const nextPropsToken = (props.authStore && props.authStore.token) || "";
+    if (nextPropsToken !== state.prevToken) {
+      // prevToken is changed only here and stored for next comparison, whereas
+      // token is changed as the user types
+      return { prevToken: nextPropsToken, token: nextPropsToken };
+    }
 
-  @action toggleOpen = (event) => {
-    this.anchorEl = event.currentTarget;
+    return null;
   }
 
-  @action onClose = () => {
-    this.anchorEl = null;
+  state = { anchorElement: null, prevToken: "", token: "" };
+
+  toggleOpen = (event) => {
+    this.setState({ anchorElement: event.currentTarget });
   }
 
-  @action onTokenChange = (event) => {
+  onClose = () => {
+    this.setState({ anchorElement: null });
+  }
+
+  onTokenChange = (event) => {
+    this.setState({ token: event.target.value || "" });
+  }
+
+  onTokenSave = () => {
     const { authStore } = this.props;
 
-    authStore.token = event.target.value;
-  }
+    authStore.setToken(this.state.token);
+    authStore.saveTokenToCookie();
 
-  @action onTokenSave = () => {
-    const { authStore } = this.props;
-    authStore.saveToken();
-
-    // TODO: Reload so the auth changes can be reflected on server and in browser
+    // Reload so the auth changes can be reflected on server and in browser
     window.location.reload();
   }
 
   render() {
-    const { authStore, classes } = this.props;
+    const { classes } = this.props;
+    const { anchorElement, token } = this.state;
+
     return (
       <Fragment>
         <IconButton color="inherit" onClick={this.toggleOpen}>
@@ -67,11 +79,11 @@ class AccountDropdown extends Component {
         </IconButton>
 
         <Popover
-          anchorEl={this.anchorEl}
+          anchorEl={anchorElement}
           anchorOrigin={{
             vertical: "bottom"
           }}
-          open={Boolean(this.anchorEl)}
+          open={Boolean(anchorElement)}
           onClose={this.onClose}
         >
           <div className={classes.accountDropdown}>
@@ -79,7 +91,7 @@ class AccountDropdown extends Component {
               fullWidth={true}
               label="Login Token"
               onChange={this.onTokenChange}
-              value={authStore.token}
+              value={token}
             />
 
             <DialogActions>
