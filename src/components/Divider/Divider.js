@@ -41,12 +41,12 @@ export default class Divider extends Component {
   }
 
   render() {
-    const { classes: { container, item, label }, label: textLabel } = this.props;
+    const { classes: { container, item, label: labelClass }, label } = this.props;
 
     return (
       <div className={container}>
         <hr className={item} />
-        {!!textLabel && <Typography component="span" className={label}>{textLabel}</Typography>}
+        {!!label && <Typography component="span" className={labelClass}>{label}</Typography>}
         <hr className={item} />
       </div>
     );
