@@ -13,6 +13,9 @@ exports[`basic snapshot 1`] = `
       <hr
         className="Divider-item-100"
       />
+      <hr
+        className="Divider-item-100"
+      />
     </div>
     <span
       className="MuiTypography-root-101 MuiTypography-body1-110 inject-ProductDetailAddToCart-with-uiStore-quantityTypography-7"

@@ -7,5 +7,8 @@ exports[`basic snapshot 1`] = `
   <hr
     className="Divider-item-3"
   />
+  <hr
+    className="Divider-item-3"
+  />
 </div>
 `;
