@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Grid from "material-ui/Grid";
 import { withStyles } from "material-ui/styles";
 import { inject, observer } from "mobx-react";
-import { Router } from "routes";
 import Badge from "components/Badge";
 import { inventoryStatus } from "lib/utils";
 import ProductDetailOption from "components/ProductDetailOption";
@@ -27,26 +26,17 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles, { withTheme: true })
-@inject("pdpStore")
+@inject("uiStore")
 @observer
 export default class OptionsList extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    onSelectOption: PropTypes.func,
     options: PropTypes.arrayOf(PropTypes.object),
-    pdpStore: PropTypes.object,
     productSlug: PropTypes.string,
-    theme: PropTypes.object
-  }
-
-  selectOption = (option) => {
-    const { pdpStore } = this.props;
-
-    pdpStore.selectedOption = option._id;
-
-    Router.pushRoute("product", {
-      productSlug: this.props.productSlug,
-      variantId: option._id
-    });
+    selectedOptionId: PropTypes.string,
+    theme: PropTypes.object,
+    uiStore: PropTypes.object
   }
 
   renderInventoryStatus(option) {
@@ -63,7 +53,15 @@ export default class OptionsList extends Component {
   }
 
   render() {
-    const { classes: { root }, options, pdpStore, theme } = this.props;
+    const {
+      classes: { root },
+      onSelectOption,
+      options,
+      selectedOptionId,
+      theme,
+      uiStore: { pdpSelectedOptionId }
+    } = this.props;
+    console.log("this.props.uiStore", pdpSelectedOptionId);
 
     if (!Array.isArray(options)) return null;
 
@@ -72,8 +70,8 @@ export default class OptionsList extends Component {
         {options.map((option) => (
           <Grid item key={option._id}>
             <ProductDetailOption
-              onClick={this.selectOption}
-              selectedOption={pdpStore.selectedOption}
+              isActive={selectedOptionId === option._id}
+              onClick={onSelectOption}
               option={option}
             />
             {this.renderInventoryStatus(option)}
