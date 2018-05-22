@@ -9,23 +9,13 @@ import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
-import Grid from "material-ui/Grid";
-
-const styles = (theme) => ({
-  productGridContainer: {
-    maxWidth: "1440px",
-    marginLeft: "auto",
-    marginRight: "auto"
-  }
-});
-
+import ProductGridHero from "components/ProductGridHero";
 
 
 @withData
 @withRoot
 @withShop
 @withCatalogItems
-@withStyles(styles)
 @inject("shop")
 @inject("routingStore")
 @inject("uiStore")
@@ -34,6 +24,7 @@ export default class TagShop extends Component {
   static propTypes = {
     catalogItems: PropTypes.array.isRequired,
     catalogItemsPageInfo: PropTypes.object,
+    classes: PropTypes.object,
     routingStore: PropTypes.object,
     shop: PropTypes.object
   };
@@ -57,6 +48,7 @@ export default class TagShop extends Component {
     return (
       <Layout title="Reaction Shop">
         {this.renderHelmet()}
+        <ProductGridHero />
         <ProductGrid
           catalogItems={catalogItems}
           pageInfo={catalogItemsPageInfo}
