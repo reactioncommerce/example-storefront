@@ -5,8 +5,6 @@ import { Query } from "react-apollo";
 import { pagination, paginationVariablesFromUrlParams } from "lib/helpers/pagination";
 import catalogItemsQuery from "./catalogItems.gql";
 
-const PAGE_LIMIT = 4;
-
 /**
  * withCatalogItems higher order query component for fetching primaryShopId and catalog data
  * @name withCatalogItems
@@ -16,18 +14,20 @@ const PAGE_LIMIT = 4;
 export default (Component) => {
   @inject("primaryShopId")
   @inject("routingStore")
+  @inject("uiStore")
   @observer
   class CatalogItems extends React.Component {
     static propTypes = {
       primaryShopId: PropTypes.string.isRequired,
-      routingStore: PropTypes.object
+      routingStore: PropTypes.object.isRequired,
+      uiStore: PropTypes.object.isRequired
     }
 
     render() {
-      const { primaryShopId, routingStore } = this.props || {};
+      const { primaryShopId, routingStore, uiStore: { pageSize } } = this.props || {};
       const variables = {
         shopId: primaryShopId,
-        ...paginationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: PAGE_LIMIT })
+        ...paginationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: pageSize })
       };
 
       return (
@@ -45,7 +45,7 @@ export default (Component) => {
                   routingStore,
                   data,
                   queryName: "catalogItems",
-                  limit: PAGE_LIMIT
+                  limit: pageSize
                 })}
                 catalogItems={catalogItems && catalogItems.edges}
               />

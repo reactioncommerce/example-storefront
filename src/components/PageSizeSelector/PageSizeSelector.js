@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Select from "components/Select";
-import MenuItem from 'material-ui/Menu/MenuItem';
+import { observer } from "mobx-react";
 
 const PAGE_SIZES = [
   {
@@ -17,27 +18,30 @@ const PAGE_SIZES = [
   }
 ];
 
+@observer
 class PageSizeSelector extends Component {
-  state = {
-    pageSize: PAGE_SIZES[0].value
+  static propTypes = {
+    uiStore: PropTypes.object.isRequired
   }
 
-  handleChange = event => {
-    this.setState({[event.target.name]: event.target.value});
+  handleChange = (event) => {
+    this.props.uiStore.setPageSize(event.target.value);
   }
 
   render() {
+    const { uiStore } = this.props;
+
     return (
       <Select
-        value={this.state.pageSize}
+        value={uiStore.pageSize}
         options={PAGE_SIZES}
         inputProps={{
           name: "pageSize",
-          id:   "page-size"
+          id: "page-size"
         }}
         onChange={this.handleChange}
       />
-    )
+    );
   }
 }
 

@@ -24,6 +24,13 @@ class UIStore {
   @observable _menuDrawerOpen = false;
 
   /**
+   * The number of items per page to display on the product grid.
+   *
+   * @type Number
+   */
+  @observable pageSize = 20;
+
+  /**
    * App config data
    *
    * @type Object
@@ -61,7 +68,11 @@ class UIStore {
   @action
   toggleMenuDrawerOpen = () => {
     this.menuDrawerOpen = !this.menuDrawerOpen;
-  };
+  }
+
+  @action setPageSize = (size) => {
+    this.pageSize = size;
+  }
 }
 
 export default UIStore;

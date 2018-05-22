@@ -29,7 +29,8 @@ export default class ProductGrid extends Component {
       hasPreviousPage: PropTypes.bool,
       loadNextPage: PropTypes.func,
       loadPreviousPage: PropTypes.func
-    })
+    }),
+    uiStore: PropTypes.object.isRequired
   };
 
   renderProduct(edge) {
@@ -49,15 +50,15 @@ export default class ProductGrid extends Component {
   }
 
   renderPageSizeSelector() {
-    const { classes } = this.props;
+    const { classes, uiStore } = this.props;
 
     return (
       <Grid container spacing={24} className={classes.pageSizeContainer}>
         <Grid item>
-          <PageSizeSelector />
+          <PageSizeSelector uiStore={uiStore} />
         </Grid>
       </Grid>
-    )
+    );
   }
 
   render() {

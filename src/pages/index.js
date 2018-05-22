@@ -21,7 +21,8 @@ class Shop extends Component {
   static propTypes = {
     catalogItems: PropTypes.array.isRequired,
     catalogItemsPageInfo: PropTypes.object,
-    shop: PropTypes.object
+    shop: PropTypes.object,
+    uiStore: PropTypes.object.isRequired
   };
 
   renderHelmet() {
@@ -36,12 +37,15 @@ class Shop extends Component {
   }
 
   render() {
+    const { catalogItems, catalogItemsPageInfo, uiStore } = this.props;
+
     return (
       <Layout title="Reaction Shop">
         {this.renderHelmet()}
         <ProductGrid
-          catalogItems={this.props.catalogItems}
-          pageInfo={this.props.catalogItemsPageInfo}
+          catalogItems={catalogItems}
+          pageInfo={catalogItemsPageInfo}
+          uiStore={uiStore}
         />
       </Layout>
     );
