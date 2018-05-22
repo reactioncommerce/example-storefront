@@ -55,8 +55,16 @@ class UIStore {
     this.pdpSelectedOptionId = optionId;
   }
 
+  @action closeCart() {
+    this.isCartOpen = false;
+  }
+
   @action toggleCartOpen() {
     this.isCartOpen = !this.isCartOpen;
+  }
+
+  @action closeMenuDrawer() {
+    this.isMenuDrawerOpen = false;
   }
 
   @action toggleMenuDrawerOpen() {

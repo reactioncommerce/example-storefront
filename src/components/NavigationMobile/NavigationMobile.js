@@ -21,7 +21,9 @@ class NavigationMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
     navItems: PropTypes.object,
-    uiStore: PropTypes.object.isRequired
+    uiStore: PropTypes.shape({
+      closeMenuDrawer: PropTypes.func
+    }).isRequired
   };
 
   static defaultProps = {
@@ -34,7 +36,7 @@ class NavigationMobile extends Component {
   }
 
   handleClose = () => {
-    this.props.uiStore.toggleMenuDrawerOpen();
+    this.props.uiStore.closeMenuDrawer();
   };
 
   render() {

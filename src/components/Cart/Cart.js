@@ -17,7 +17,7 @@ class Cart extends Component {
   static propTypes = {
     classes: PropTypes.object,
     uiStore: PropTypes.shape({
-      toggleCartOpen: PropTypes.func
+      closeCart: PropTypes.func
     }).isRequired
   };
 
@@ -26,7 +26,7 @@ class Cart extends Component {
   };
 
   handleClose = () => {
-    this.props.uiStore.toggleCartOpen();
+    this.props.uiStore.closeCart();
   };
 
   render() {

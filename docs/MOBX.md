@@ -27,8 +27,8 @@ Using our [`isCartOpen` @observable](https://github.com/reactioncommerce/reactio
 
 - Add an action, using the `@action` decorator, to change the value of the `@observable`:
 ```
-@action toggleCartOpen() {
-  this.isCartOpen = !this.isCartOpen;
+@action openCart() {
+  this.isCartOpen = true;
 }
 ```
 
