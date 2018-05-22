@@ -21,7 +21,7 @@ class Shop extends Component {
   static propTypes = {
     catalogItems: PropTypes.array.isRequired,
     catalogItemsPageInfo: PropTypes.object,
-    shop: PropTypes.object,
+    shop: PropTypes.object
   };
 
   renderHelmet() {
@@ -36,7 +36,7 @@ class Shop extends Component {
   }
 
   render() {
-    const { catalogItems, catalogItemsPageInfo, uiStore } = this.props;
+    const { catalogItems, catalogItemsPageInfo } = this.props;
 
     return (
       <Layout title="Reaction Shop">
