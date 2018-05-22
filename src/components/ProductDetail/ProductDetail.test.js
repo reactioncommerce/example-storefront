@@ -6,16 +6,21 @@ import theme from "lib/theme/reactionTheme";
 import ProductDetail from "./ProductDetail";
 import sampleData from "./__mocks__/productData.mock";
 
+<<<<<<< HEAD
 const pdpStore = {
   selectedOption: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50Okp2aW5XNThpWFN4N3p0UEFQ"
 };
+=======
+jest.mock("next/router");
+>>>>>>> master
 
 const uiStore = {
   appConfig: {
     publicRuntimeConfig: {
       externalAssetsUrl: ""
     }
-  }
+  },
+  setPDPSelectedVariantId: jest.fn().mockName("uiStore.setPDPSelectedVariantId")
 };
 
 test("basic snapshot", () => {
