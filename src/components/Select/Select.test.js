@@ -26,7 +26,7 @@ test("basic snapshot", () => {
         name: "pageSize",
         id: "page-size"
       }}
-      onChange={ () => true }
+      onChange={() => true}
     />
   ));
   const tree = component.toJSON();
