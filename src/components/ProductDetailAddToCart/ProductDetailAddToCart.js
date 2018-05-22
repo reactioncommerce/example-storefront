@@ -58,7 +58,7 @@ const styles = (theme) => ({
 
 
 @withStyles(styles)
-@inject("pdpStore")
+@inject("uiStore")
 @observer
 export default class ProductDetailAddToCart extends Component {
   static propTypes = {
@@ -70,12 +70,12 @@ export default class ProductDetailAddToCart extends Component {
 
   static propTypes = {
     classes: PropTypes.object,
-    pdpStore: PropTypes.object
+    uiStore: PropTypes.object
   };
 
   static defaultProps = {
     classes: {},
-    pdpStore: {}
+    uiStore: {}
   };
 
   state = {
@@ -86,10 +86,15 @@ export default class ProductDetailAddToCart extends Component {
     // This function currently does nothing. When our GraphQL endpoints are available, we'll use them to add the items to the cart.
     // To test that this is working, uncomment the following lines and check to see that the data is correct
 
-    // const { pdpStore } = this.props;
+    // const { uiStore: { pdpSelectedOptionId, pdpSelectedVariantId } } = this.props;
     // const { addToCartQuantity } = this.state;
-    // console.log("Selected Option", pdpStore.selectedOption);
-    // console.log("Quantity", addToCartQuantity);
+
+    // let pdpProductToAddToCart = pdpSelectedVariantId;
+    // if (pdpSelectedOptionId) {
+    //   pdpProductToAddToCart = pdpSelectedOptionId;
+    // }
+    // console.log("ID to add to cart: ", pdpProductToAddToCart);
+    // console.log("Quantity to add to cart: ", addToCartQuantity);
 
     // Reset cart quantity to 1 after items are added to cart
     this.setState({ addToCartQuantity: 1 });

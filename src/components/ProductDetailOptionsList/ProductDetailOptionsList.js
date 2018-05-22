@@ -58,10 +58,8 @@ export default class OptionsList extends Component {
       onSelectOption,
       options,
       selectedOptionId,
-      theme,
-      uiStore: { pdpSelectedOptionId }
+      theme
     } = this.props;
-    console.log("this.props.uiStore", pdpSelectedOptionId);
 
     if (!Array.isArray(options)) return null;
 
