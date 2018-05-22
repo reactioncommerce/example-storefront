@@ -30,6 +30,7 @@
     ]
   },
   "dependencies": {
+    "@material-ui/core": "^1.0.0",
     "apollo-cache-inmemory": "^1.1.11",
     "apollo-client": "^2.2.7",
     "apollo-link": "^1.2.2",
@@ -44,7 +45,6 @@
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.0",
     "keymirror": "^0.1.1",
-    "material-ui": "^1.0.0-beta.44",
     "mdi-material-ui": "^3.2.0",
     "mobx": "^4.1.1",
     "mobx-react": "^5.0.0",
@@ -62,8 +62,8 @@
     "@babel/cli": "7.0.0-beta.42",
     "@babel/core": "7.0.0-beta.42",
     "@babel/node": "7.0.0-beta.42",
-    "@babel/plugin-proposal-decorators": "7.0.0-beta.42",
     "@babel/plugin-proposal-class-properties": "7.0.0-beta.42",
+    "@babel/plugin-proposal-decorators": "7.0.0-beta.42",
     "@babel/preset-env": "7.0.0-beta.42",
     "@babel/preset-stage-2": "7.0.0-beta.42",
     "@reactioncommerce/eslint-config": "^1.7.0",
