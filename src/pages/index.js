@@ -22,7 +22,6 @@ class Shop extends Component {
     catalogItems: PropTypes.array.isRequired,
     catalogItemsPageInfo: PropTypes.object,
     shop: PropTypes.object,
-    uiStore: PropTypes.object.isRequired
   };
 
   renderHelmet() {
@@ -45,7 +44,6 @@ class Shop extends Component {
         <ProductGrid
           catalogItems={catalogItems}
           pageInfo={catalogItemsPageInfo}
-          uiStore={uiStore}
         />
       </Layout>
     );

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Select from "components/Select";
-import { observer } from "mobx-react";
+import { observer, inject } from "mobx-react";
 
 const PAGE_SIZES = [
   {
@@ -18,6 +18,7 @@ const PAGE_SIZES = [
   }
 ];
 
+@inject("uiStore")
 @observer
 class PageSizeSelector extends Component {
   static propTypes = {
