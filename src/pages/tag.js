@@ -24,7 +24,12 @@ export default class TagShop extends Component {
     catalogItemsPageInfo: PropTypes.object,
     classes: PropTypes.object,
     routingStore: PropTypes.object,
-    shop: PropTypes.object
+    shop: PropTypes.object,
+    tag: PropTypes.object
+  };
+
+  static defaultProps= {
+    tag: {}
   };
 
   renderHelmet() {
@@ -41,28 +46,12 @@ export default class TagShop extends Component {
   }
 
   render() {
-    const { catalogItems, catalogItemsPageInfo } = this.props;
-    // const { catalogItems, catalogItemsPageInfo } = this.props;
-    // const tag = {
-    //   media: {
-    //     priority: 1,
-    //     toGrid: 1,
-    //     productId: "JaE2nFHAPtQkmTpQG",
-    //     variantId: "W957Zj38qAMZ26EbT",
-    //     URLs: {
-    //       large: "/assets/files/Media/hqLB5dtd6Q4mGuKX8/large/hero.jpg",
-    //       medium: "/assets/files/Media/hqLB5dtd6Q4mGuKX8/medium/hero.jpg",
-    //       original: "/assets/files/Media/hqLB5dtd6Q4mGuKX8/image/hero.jpg",
-    //       small: "/assets/files/Media/hqLB5dtd6Q4mGuKX8/small/hero.png",
-    //       thumbnail: "/assets/files/Media/hqLB5dtd6Q4mGuKX8/thumbnail/hero.png"
-    //     }
-    //   }
-    // };
+    const { catalogItems, catalogItemsPageInfo, tag } = this.props;
 
     return (
       <Layout title="Reaction Shop">
         {this.renderHelmet()}
-        <ProductGridHero />
+        <ProductGridHero tag={tag} />
         <ProductGrid
           catalogItems={catalogItems}
           pageInfo={catalogItemsPageInfo}
