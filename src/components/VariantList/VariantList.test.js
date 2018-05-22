@@ -17,6 +17,8 @@ test("basic snapshot", () => {
       <Provider pdpStore={pdpStore}>
         <VariantList
           product={catalogProduct}
+          selectedOptionId="cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlNNcjRyaERGbll2Rk10RFRY"
+          selectedVariantId="cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OjZxaXFQd0JrZUpkdGRRYzRH"
           variants={catalogProduct.variants}
         />
       </Provider>
