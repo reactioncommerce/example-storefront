@@ -20,13 +20,25 @@ const theme = createMuiTheme({
       dark: "#3C1F21",
       contrastText: "#FFFFFF"
     },
+    action: {
+      hover: "#f5f5f5",
+      selected: "#f5f5f5"
+    },
+    colors: {
+      buttonBorderColor: "#5e7480"
+    },
+    borders: {
+      default: "1px solid #5e7480"
+    },
     reaction: {
       activeElementBorderColor: "#94E8D1",
       activeElementBackground: "#E6E6E6",
       bestseller: "#8CE0C9",
       borderColor: "#CCCCCC"
     }
-
+  },
+  borderRadii: {
+    default: 2
   },
   spacing: {
     unithalf: 4

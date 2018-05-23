@@ -1,10 +1,33 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import MuiSelect from "material-ui/Select";
-import MenuItem from "material-ui/Menu/MenuItem";
+import { withStyles } from "@material-ui/core/styles";
+import MuiSelect from "@material-ui/core/Select";
+import Input from "@material-ui/core/Input";
+import MenuItem from "@material-ui/core/MenuItem";
 
+const styles = (theme) => ({
+  popOver: {
+    border: theme.palette.borders.default,
+    boxShadow: "none"
+  },
+  menuItem: {
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit
+  },
+  selectMenu: {
+    border: theme.palette.borders.default,
+    paddingLeft: theme.spacing.unit,
+    borderRadius: theme.borderRadii.default
+  },
+  selected: {
+    backgroundColor: theme.palette.action.hover
+  }
+});
+
+@withStyles(styles)
 class Select extends Component {
   static propTypes = {
+    classes: PropTypes.object.isRequired,
     inputProps: PropTypes.object,
     onChange: PropTypes.func.isRequired,
     options: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -12,11 +35,20 @@ class Select extends Component {
   }
 
   renderOptions() {
-    const { options } = this.props;
+    const { classes, options } = this.props;
 
     return (
       options.map((option) => (
-        <MenuItem key={option.value} value={option.value}>{option.name}</MenuItem>
+        <MenuItem
+          classes={{
+            selected: classes.selected
+          }}
+          className={classes.menuItem}
+          key={option.value}
+          value={option.value}
+        >
+          {option.name}
+        </MenuItem>
       ))
     );
   }
@@ -26,13 +58,24 @@ class Select extends Component {
   }
 
   render() {
-    const { value, inputProps } = this.props;
+    const { classes, inputProps, value } = this.props;
 
     return (
       <MuiSelect
-        value={value}
+        classes={{
+          selectMenu: classes.selectMenu
+        }}
+        input={<Input disableUnderline />}
+        inputProps={{
+          ...inputProps
+        }}
+        MenuProps={{
+          PopoverClasses: {
+            paper: classes.popOver
+          }
+        }}
         onChange={this.handleChange}
-        inputProps={{ ...inputProps }}
+        value={value}
       >
         {this.renderOptions()}
       </MuiSelect>
