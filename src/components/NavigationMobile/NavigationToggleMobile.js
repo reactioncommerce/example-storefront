@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
-import IconButton from "material-ui/IconButton";
+import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "mdi-material-ui/Menu";
 
 @inject("uiStore")

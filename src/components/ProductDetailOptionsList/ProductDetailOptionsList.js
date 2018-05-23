@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Grid from "material-ui/Grid";
-import { withStyles } from "material-ui/styles";
+import Grid from "@material-ui/core/Grid";
+import { withStyles } from "@material-ui/core/styles";
 import { observable, action, computed } from "mobx";
 import { observer } from "mobx-react";
 import { Router } from "routes";
@@ -53,7 +53,7 @@ export default class OptionsList extends Component {
     this.selectedOption = option._id;
 
     Router.pushRoute("product", {
-      productSlug: this.props.productSlug,
+      slugOrId: this.props.productSlug,
       variantId: option._id
     });
   }

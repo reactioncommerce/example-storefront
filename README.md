@@ -162,8 +162,8 @@ See our [MobX documentation](docs/MOBX.md)
  - [Apollo](https://www.apollographql.com/docs/react/)
  - [MobX](https://mobx.js.org/getting-started.html)
  - [nextjs](https://github.com/zeit/next.js/)
- - [Material UI](https://material-ui-next.com/)
+ - [Material UI](https://material-ui.com/)
 
  ## Reference links for development
  ### CSS in JS
- - [Responsive Breakpoints](https://material-ui-next.com/layout/css-in-js/#responsive-breakpoints)
+ - [Responsive Breakpoints](https://material-ui.com/layout/css-in-js/#responsive-breakpoints)

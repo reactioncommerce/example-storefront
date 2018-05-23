@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
+import { withStyles } from "@material-ui/core/styles";
 import { observable, action, computed } from "mobx";
 import { observer } from "mobx-react";
 import { Router } from "routes";

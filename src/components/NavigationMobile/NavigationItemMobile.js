@@ -1,18 +1,18 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Router } from "routes";
-import Divider from "material-ui/Divider";
-import ListItemIcon from "material-ui/List/ListItemIcon";
-import ListItemText from "material-ui/List/ListItemText";
-import Collapse from "material-ui/transitions/Collapse";
-import MenuList from "material-ui/Menu/MenuList";
-import MenuItem from "material-ui/Menu/MenuItem";
+import Divider from "@material-ui/core/Divider";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import Collapse from "@material-ui/core/Collapse";
+import MenuList from "@material-ui/core/MenuList";
+import MenuItem from "@material-ui/core/MenuItem";
 import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 
 import { observer } from "mobx-react";
 import { action, computed, observable } from "mobx";
-import { withStyles } from "material-ui/styles";
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = (theme) => ({
   subNav: {

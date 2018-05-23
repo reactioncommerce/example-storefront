@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Typography from "material-ui/Typography";
+import Typography from "@material-ui/core/Typography";
 
 export default class Profile extends Component {
   static propTypes = {

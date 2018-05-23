@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { MuiThemeProvider } from "material-ui/styles";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "lib/theme/reactionTheme";
 import option from "./__mocks__/option.mock";
 import ProductDetailOption from "./ProductDetailOption";

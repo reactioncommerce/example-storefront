@@ -1,18 +1,18 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import Button from "material-ui/Button";
-import Divider from "material-ui/Divider";
-import Grid from "material-ui/Grid";
-import ListItemText from "material-ui/List/ListItemText";
-import MenuList from "material-ui/Menu/MenuList";
-import MenuItem from "material-ui/Menu/MenuItem";
-import Popover from "material-ui/Popover";
+import Button from "@material-ui/core/Button";
+import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
+import ListItemText from "@material-ui/core/ListItemText";
+import MenuList from "@material-ui/core/MenuList";
+import MenuItem from "@material-ui/core/MenuItem";
+import Popover from "@material-ui/core/Popover";
 import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 
 import { observer } from "mobx-react";
 import { action, computed, observable } from "mobx";
-import { withStyles } from "material-ui/styles";
+import { withStyles } from "@material-ui/core/styles";
 import { Router } from "../../routes";
 
 const styles = (theme) => ({
