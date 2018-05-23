@@ -114,7 +114,7 @@ export default class ProductDetailAddToCart extends Component {
       return null;
     }
 
-    this.setState({ addToCartQuantity: numericValue });
+    return this.setState({ addToCartQuantity: numericValue });
   }
 
   handleIncrementButton = () => {
