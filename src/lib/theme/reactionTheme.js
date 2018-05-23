@@ -100,7 +100,7 @@ const theme = createMuiTheme({
       teal300: "#a3f2dc",
       teal400: "#55e4be",
       teal500: "#447467",
-      teal600: "#34584f",
+      teal600: "#34584f"
     }
   },
   spacing: {
