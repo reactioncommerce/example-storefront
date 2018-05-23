@@ -6,6 +6,7 @@ import jsHttpCookie from "cookie";
 import rootMobxStores from "lib/stores";
 import initApolloServer from "./initApolloServer";
 import initApolloBrowser from "./initApolloBrowser";
+
 /**
  * Get the display name of a component
  * @name getComponentDisplayName
@@ -49,14 +50,16 @@ export default (ComposedComponent) =>
           if (typeof cookies === "string") {
             ({ token } = jsHttpCookie.parse(cookies));
           }
+
+          if (typeof token !== "string" || token.length === 0) token = undefined;
         }
 
-        rootMobxStores.routingStore.pathname = ctx.pathname;
-        rootMobxStores.routingStore.query = ctx.query;
-
-        const apollo = initApolloServer(undefined, { meteorToken: token });
         // Provide the `url` prop data in case a GraphQL query uses it
         const url = { query: ctx.query, pathname: ctx.pathname };
+
+        rootMobxStores.routingStore.updateRoute(url);
+
+        const apollo = initApolloServer(undefined, { token });
         try {
           // Run all GraphQL queries
           await getDataFromTree( // eslint-disable-line
@@ -65,7 +68,6 @@ export default (ComposedComponent) =>
             </ApolloProvider>
           ); // eslint-disable-line
         } catch (error) {
-          // errorr
           // TODO: handle the error
           console.log("apollo client error", error); // eslint-disable-line
         }
@@ -90,8 +92,7 @@ export default (ComposedComponent) =>
 
       this.apollo = initApolloBrowser(apollo.data, { token });
 
-      rootMobxStores.routingStore.pathname = props.url.pathname;
-      rootMobxStores.routingStore.query = props.url.query;
+      rootMobxStores.routingStore.updateRoute(props.url);
     }
 
     render() {

@@ -1,24 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "mdi-material-ui/Menu";
 
-@inject("uiStore")
-@observer
 class NavigationToggleMobile extends Component {
   static propTypes = {
-    uiStore: PropTypes.object
-  };
-
-  static defaultProps = {
-    uiStore: {}
+    onClick: PropTypes.func
   };
 
   render() {
-    const { uiStore } = this.props;
     return (
-      <IconButton color="inherit" onClick={uiStore.toggleMenuDrawerOpen}>
+      <IconButton color="inherit" onClick={this.props.onClick}>
         <MenuIcon />
       </IconButton>
     );

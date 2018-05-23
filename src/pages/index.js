@@ -15,7 +15,6 @@ import ProductGrid from "components/ProductGrid";
 @withShop
 @withCatalogItems
 @inject("shop")
-@inject("uiStore")
 @observer
 class Shop extends Component {
   static propTypes = {

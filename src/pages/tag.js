@@ -15,7 +15,6 @@ import ProductGrid from "components/ProductGrid";
 @withCatalogItems
 @inject("shop")
 @inject("routingStore")
-@inject("uiStore")
 @observer
 export default class TagShop extends Component {
   static propTypes = {

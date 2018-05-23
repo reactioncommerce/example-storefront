@@ -9,11 +9,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Popover from "@material-ui/core/Popover";
 import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
-
-import { observer } from "mobx-react";
-import { action, computed, observable } from "mobx";
 import { withStyles } from "@material-ui/core/styles";
-import { Router } from "../../routes";
+import { Router } from "routes";
 
 const styles = (theme) => ({
   popover: {
@@ -27,7 +24,6 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles)
-@observer
 class NavigationItemDesktop extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -39,36 +35,25 @@ class NavigationItemDesktop extends Component {
     navItem: {}
   };
 
+  state = { isSubNavOpen: false };
+
   get hasSubNavItems() {
     const { navItem: { subTags } } = this.props;
     return subTags && Array.isArray(subTags.edges) && subTags.edges.length > 0;
   }
 
-  @observable _isSubNavOpen = false;
-
-  @computed
-  get isSubNavOpen() {
-    return this._isSubNavOpen;
-  }
-
-  set isSubNavOpen(value) {
-    this._isSubNavOpen = value;
-  }
-
-  @action
   onClick = () => {
     const { navItem } = this.props;
 
     if (this.hasSubNavItems) {
-      this.isSubNavOpen = !this.isSubNavOpen;
+      this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
     } else {
       Router.pushRoute("tag", { slug: navItem.slug });
     }
   };
 
-  @action
   onClose = () => {
-    this.isSubNavOpen = false;
+    this.setState({ isSubNavOpen: false });
   };
 
   renderSubNav(navItemGroup) {
@@ -77,7 +62,9 @@ class NavigationItemDesktop extends Component {
         <Divider />
         {navItemGroup.subTags.edges.map(({ node: navItem }, index) => (
           <MenuItem dense key={index}>
-            <ListItemText primary={navItem.name} />
+            <Link route={`/tag/${navItem.slug}`}>
+              <ListItemText primary={navItem.name} />
+            </Link>
           </MenuItem>
         ))}
       </Fragment>
@@ -95,7 +82,7 @@ class NavigationItemDesktop extends Component {
           anchorPosition={{ top: 64 }}
           elevation={1}
           onClose={this.onClose}
-          open={this.isSubNavOpen}
+          open={this.state.isSubNavOpen}
         >
           <Grid container className={classes.grid} spacing={16}>
             {subTags.edges.map(({ node: navItemGroup }, index) => (
@@ -123,7 +110,7 @@ class NavigationItemDesktop extends Component {
       <Fragment>
         <Button color="inherit" onClick={this.onClick}>
           {navItem.name}
-          {this.hasSubNavItems && <Fragment>{this.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
+          {this.hasSubNavItems && <Fragment>{this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
         </Button>
         {this.hasSubNavItems && this.renderPopover()}
       </Fragment>

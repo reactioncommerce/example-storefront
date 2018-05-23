@@ -16,18 +16,23 @@ const styles = () => ({
 class Cart extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    uiStore: PropTypes.object
+    uiStore: PropTypes.shape({
+      closeCart: PropTypes.func
+    }).isRequired
   };
 
   static defaultProps = {
-    classes: {},
-    uiStore: {}
+    classes: {}
+  };
+
+  handleClose = () => {
+    this.props.uiStore.closeCart();
   };
 
   render() {
     const { classes, uiStore } = this.props;
     return (
-      <Drawer anchor="right" open={uiStore.cartOpen} onClose={uiStore.toggleCartOpen}>
+      <Drawer anchor="right" open={uiStore.isCartOpen} onClose={this.handleClose}>
         <div className={classes.cart}>Cart Component</div>
       </Drawer>
     );

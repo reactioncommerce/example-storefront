@@ -6,7 +6,11 @@ const initExport = {
   },
   publicRuntimeConfig: { // Will be available on both server and client
     externalAssetsUrl: process.env.EXTERNAL_ASSETS_URL,
-    graphqlUrl: process.env.EXTERNAL_GRAPHQL_URL
+    graphqlUrl: process.env.EXTERNAL_GRAPHQL_URL,
+    placeholderImageUrls: {
+      galleryFeatured: process.env.PLACEHOLDER_IMAGE_URL_GALLERY,
+      productGrid: process.env.PLACEHOLDER_IMAGE_URL_GRID
+    }
   },
   webpack: (config) => {
     config.module.rules.push({

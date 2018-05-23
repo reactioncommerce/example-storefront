@@ -11,8 +11,6 @@ import Badge from "components/Badge";
 import { inventoryStatus, isProductLowQuantity, INVENTORY_STATUS } from "lib/utils";
 import { styles } from "./styles";
 
-const PRODUCT_PLACE_HOLDER = "/resources/placeholder.gif";
-
 @withStyles(styles, { withTheme: true })
 @inject("uiStore")
 @observer
@@ -21,7 +19,7 @@ class ProductItem extends Component {
     classes: PropTypes.object,
     product: PropTypes.object,
     theme: PropTypes.object,
-    uiStore: PropTypes.object
+    uiStore: PropTypes.object.isRequired
   };
 
   static defaultProps = {
@@ -51,17 +49,21 @@ class ProductItem extends Component {
   renderProductImage() {
     const {
       classes: { img, imgLoading, loadingIcon },
-      theme: { breakpoints: { values } }
+      theme: {
+        breakpoints: { values }
+      },
+      uiStore
     } = this.props;
+    const { publicRuntimeConfig } = uiStore.appConfig;
     const { hasImageLoaded } = this.state;
     let { product: { primaryImage } } = this.props;
 
     if (!primaryImage) {
       primaryImage = {
         URLs: {
-          small: PRODUCT_PLACE_HOLDER,
-          medium: PRODUCT_PLACE_HOLDER,
-          large: PRODUCT_PLACE_HOLDER
+          small: publicRuntimeConfig.placeholderImageUrls.productGrid,
+          medium: publicRuntimeConfig.placeholderImageUrls.productGrid,
+          large: publicRuntimeConfig.placeholderImageUrls.productGrid
         }
       };
     }

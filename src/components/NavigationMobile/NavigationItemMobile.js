@@ -9,9 +9,6 @@ import MenuList from "@material-ui/core/MenuList";
 import MenuItem from "@material-ui/core/MenuItem";
 import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
-
-import { observer } from "mobx-react";
-import { action, computed, observable } from "mobx";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = (theme) => ({
@@ -26,7 +23,6 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles)
-@observer
 class NavigationItemMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -38,31 +34,25 @@ class NavigationItemMobile extends Component {
     navItem: {}
   };
 
+  state = { isSubNavOpen: false };
+
   get hasSubNavItems() {
     const { navItem: { subTags } } = this.props;
     return Array.isArray(subTags.edges) && subTags.edges.length > 0;
   }
 
-  @observable _isSubNavOpen = false;
-
-  @computed
-  get isSubNavOpen() {
-    return this._isSubNavOpen;
-  }
-
-  set isSubNavOpen(value) {
-    this._isSubNavOpen = value;
-  }
-
-  @action
   onClick = () => {
     const { navItem } = this.props;
 
     if (this.hasSubNavItems) {
-      this.isSubNavOpen = !this.isSubNavOpen;
+      this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
     } else {
-      Router.pushRoute("tag", { slug: navItem.name });
+      Router.pushRoute("tag", { slug: navItem.slug });
     }
+  };
+
+  onClose = () => {
+    this.setState({ isSubNavOpen: false });
   };
 
   renderSubNav(navItemGroup) {
@@ -82,7 +72,7 @@ class NavigationItemMobile extends Component {
   renderCollapse() {
     const { classes, navItem: { subTags } } = this.props;
     return (
-      <Collapse in={this.isSubNavOpen} timeout="auto" unmountOnExit>
+      <Collapse in={this.state.isSubNavOpen} timeout="auto" unmountOnExit>
         <MenuList component="div" disablePadding>
           {subTags.edges.map(({ node: navItemGroup }, index) => (
             <MenuList disablePadding key={index}>
@@ -105,7 +95,7 @@ class NavigationItemMobile extends Component {
           <ListItemText classes={{ primary: classes.primary }} primary={navItem.name} />
           {this.hasSubNavItems && (
             <ListItemIcon className={classes.icon}>
-              {this.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
+              {this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
             </ListItemIcon>
           )}
         </MenuItem>

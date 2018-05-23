@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { action, computed, observable } from "mobx";
 import { inject, observer } from "mobx-react";
 import MediaGalleryItem from "components/MediaGalleryItem";
 
@@ -37,8 +36,6 @@ const styles = (theme) => ({
   }
 });
 
-const placeholderImage = "/resources/placeholder.gif";
-
 /**
  * Product detail media gallery
  * @class ProductDetailMediaGallery
@@ -59,7 +56,7 @@ class MediaGallery extends Component {
     mediaItems: PropTypes.arrayOf(PropTypes.object),
 
     /**
-     * UIStore
+     * MUI Theme
      */
     theme: PropTypes.object,
 
@@ -69,42 +66,33 @@ class MediaGallery extends Component {
     uiStore: PropTypes.object
   }
 
-  constructor(props) {
-    super(props);
+  static defaultProps = {
+    mediaItems: []
+  };
 
-    this.featuredMedia = Array.isArray(props.mediaItems) && props.mediaItems[0];
-  }
-
-  @observable _featuredMedia
-
-  @computed get featuredMedia() {
-    return this._featuredMedia;
-  }
-
-  set featuredMedia(value) {
-    this._featuredMedia = value;
-  }
+  state = { featuredMediaIndex: 0 };
 
   /**
-   * Media item click handler
-   * @param {SyntheticEvent} event - Event
-   * @param {Object} mediaItem - Media item object
-   * @returns {undefined}
+   * @name handleMediaItemClick
+   * @param {SyntheticEvent} event Event
+   * @param {Object} media The `media` prop of the MediaGalleryItem that was clicked
+   * @param {Number} index The `index` prop of the MediaGalleryItem that was clicked
+   * @returns {undefined} Nothing
    */
-  @action handleMediaItemClick = (event, mediaItem) => {
-    this.featuredMedia = mediaItem;
-  }
+  handleMediaItemClick = (event, media, index) => {
+    this.setState({ featuredMediaIndex: index });
+  };
 
   renderFeaturedImage() {
-    const { featuredMedia } = this;
-    const { classes, uiStore } = this.props;
+    const { classes, mediaItems, uiStore } = this.props;
     const { publicRuntimeConfig } = uiStore.appConfig;
+    const featuredMedia = mediaItems[this.state.featuredMediaIndex];
     const mediaUrl = featuredMedia && featuredMedia.URLs && featuredMedia.URLs.large;
 
     return (
       <img
         className={classes.featuredImage}
-        src={`${publicRuntimeConfig.externalAssetsUrl}${mediaUrl || placeholderImage}`}
+        src={`${publicRuntimeConfig.externalAssetsUrl}${mediaUrl || publicRuntimeConfig.placeholderImageUrls.galleryFeatured}`}
         alt=""
       />
     );
@@ -112,9 +100,6 @@ class MediaGallery extends Component {
 
   render() {
     const { classes, mediaItems, theme } = this.props;
-
-    // If all props are undefined then skip rendering component
-    if (!mediaItems) return null;
 
     return (
       <Grid container className={classes.root}>
@@ -132,6 +117,7 @@ class MediaGallery extends Component {
                 sm={2}
               >
                 <MediaGalleryItem
+                  index={index}
                   media={media}
                   onClick={this.handleMediaItemClick}
                 />
