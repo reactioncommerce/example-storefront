@@ -137,7 +137,7 @@ class ProductDetail extends Component {
               selectedVariantId={uiStore.pdpSelectedVariantId}
               variants={product.variants}
             />
-            <ProductDetailAddToCart>Add To Cart</ProductDetailAddToCart>
+            <ProductDetailAddToCart />
           </Grid>
         </Grid>
       </div>
