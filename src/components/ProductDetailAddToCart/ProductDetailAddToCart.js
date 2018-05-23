@@ -29,12 +29,14 @@ const styles = (theme) => ({
     fontWeight: 600
   },
   incrementButton: {
-    backgroundColor: theme.palette.reaction.activeElementBackground,
+    backgroundColor: theme.palette.reaction.black02,
+    color: theme.palette.reaction.coolGray500,
+    fontSize: "12px",
     padding: 6
   },
   quantityContainer: {
     padding: 0,
-    border: `1px solid ${theme.palette.reaction.borderColor}`,
+    border: `1px solid ${theme.palette.reaction.black15}`,
     backgroundColor: theme.palette.common.white,
     borderRadius: theme.palette.reaction.buttonBorderRadius
   },
@@ -42,16 +44,19 @@ const styles = (theme) => ({
     marginBottom: theme.spacing.unit * 3
   },
   quantityInput: {
+    "color": theme.palette.reaction.coolGray500,
+    "fontSize": "12px",
     "width": "40px",
     "textAlign": "center",
     "&:focus": {
       borderColor: "#80bdff",
       boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)"
     },
-    "borderLeft": `1px solid ${theme.palette.reaction.borderColor}`,
-    "borderRight": `1px solid ${theme.palette.reaction.borderColor}`
+    "borderLeft": `1px solid ${theme.palette.reaction.black15}`,
+    "borderRight": `1px solid ${theme.palette.reaction.black15}`
   },
   quantityTypography: {
+    color: theme.palette.reaction.coolGray500,
     marginBottom: theme.spacing.unit * 2
   }
 });
