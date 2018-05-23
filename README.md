@@ -153,8 +153,8 @@ docker stop storefront
 _**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at. I'm partial to 4040_
 _**NOTE:** The above command is assuming ether the `devserver` or `reaction` is also running._
 
-## Using MobX
-See our [MobX documentation](docs/MOBX.md)
+## Documentation
+See our [full documentation](./docs)
 
 ## Features
  - [Docker](https://docs.docker.com)
