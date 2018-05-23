@@ -103,7 +103,13 @@ export default class ProductDetailAddToCart extends Component {
   handleQuantityInputChange = (event) => {
     const { value } = event.target;
 
-    this.setState({ addToCartQuantity: Math.floor(Number(value)) });
+    const numericValue = Math.floor(Number(value));
+
+    if (Number.isNaN(numericValue)) {
+      return null;
+    }
+
+    this.setState({ addToCartQuantity: numericValue });
   }
 
   handleIncrementButton = () => {
@@ -115,7 +121,7 @@ export default class ProductDetailAddToCart extends Component {
   handleDecrementButton = () => {
     const value = this.state.addToCartQuantity - 1;
 
-    if (value >= 0) {
+    if (value >= 1) {
       this.setState({ addToCartQuantity: value });
     }
   }
@@ -173,8 +179,7 @@ export default class ProductDetailAddToCart extends Component {
               classes: {
                 root: quantityContainer,
                 input: quantityInput
-              },
-              min: 1
+              }
             }}
           />
         </Grid>
