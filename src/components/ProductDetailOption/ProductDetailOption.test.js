@@ -16,7 +16,7 @@ test("basic snapshot", () => {
       <Provider uiStore={uiStore}>
         <ProductDetailOption
           onClick={() => true}
-          isSelected={true}
+          isSelected
           option={option}
         />
       </Provider>
