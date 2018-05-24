@@ -5,7 +5,7 @@ exports[`basic snapshot 1`] = `
   className="MuiGrid-container-4 inject-MediaGallery-with-uiStore-root-1"
 >
   <div
-    className="MuiGrid-item-5 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-12-54"
+    className="MuiGrid-item-5 MuiGrid-grid-xs-12-42 MuiGrid-grid-sm-12-55"
   >
     <div
       className="inject-MediaGallery-with-uiStore-featured-2"
@@ -20,10 +20,10 @@ exports[`basic snapshot 1`] = `
       className="MuiGrid-container-4 MuiGrid-spacing-xs-8-25"
     >
       <div
-        className="MuiGrid-item-5 MuiGrid-grid-xs-3-32 MuiGrid-grid-sm-2-44"
+        className="MuiGrid-item-5 MuiGrid-grid-xs-3-33 MuiGrid-grid-sm-2-45"
       >
         <button
-          className="MuiButtonBase-root-96 inject-MediaGalleryItem-with-uiStore-root-94"
+          className="MuiButtonBase-root-97 inject-MediaGalleryItem-with-uiStore-root-95"
           disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
@@ -41,19 +41,19 @@ exports[`basic snapshot 1`] = `
         >
           <img
             alt=""
-            className="inject-MediaGalleryItem-with-uiStore-img-95"
+            className="inject-MediaGalleryItem-with-uiStore-img-96"
             src="/resources/placeholder.gif"
           />
           <span
-            className="MuiTouchRipple-root-99"
+            className="MuiTouchRipple-root-100"
           />
         </button>
       </div>
       <div
-        className="MuiGrid-item-5 MuiGrid-grid-xs-3-32 MuiGrid-grid-sm-2-44"
+        className="MuiGrid-item-5 MuiGrid-grid-xs-3-33 MuiGrid-grid-sm-2-45"
       >
         <button
-          className="MuiButtonBase-root-96 inject-MediaGalleryItem-with-uiStore-root-94"
+          className="MuiButtonBase-root-97 inject-MediaGalleryItem-with-uiStore-root-95"
           disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
@@ -71,11 +71,11 @@ exports[`basic snapshot 1`] = `
         >
           <img
             alt=""
-            className="inject-MediaGalleryItem-with-uiStore-img-95"
+            className="inject-MediaGalleryItem-with-uiStore-img-96"
             src="/resources/placeholder.gif"
           />
           <span
-            className="MuiTouchRipple-root-99"
+            className="MuiTouchRipple-root-100"
           />
         </button>
       </div>

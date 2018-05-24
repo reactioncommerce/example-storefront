@@ -8,7 +8,7 @@ exports[`hides next button, shows previous button 1`] = `
     className="MuiGrid-item-3"
   >
     <button
-      className="MuiButtonBase-root-107 MuiButton-root-92 MuiButton-raised-97"
+      className="MuiButtonBase-root-109 MuiButton-root-93 MuiButton-raised-99"
       disabled={false}
       onBlur={[Function]}
       onClick={undefined}
@@ -25,12 +25,12 @@ exports[`hides next button, shows previous button 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-93"
+        className="MuiButton-label-94"
       >
         Previous
       </span>
       <span
-        className="MuiTouchRipple-root-110"
+        className="MuiTouchRipple-root-112"
       />
     </button>
   </div>
@@ -48,7 +48,7 @@ exports[`shows both next and previous buttons 1`] = `
     className="MuiGrid-item-3"
   >
     <button
-      className="MuiButtonBase-root-107 MuiButton-root-92 MuiButton-raised-97"
+      className="MuiButtonBase-root-109 MuiButton-root-93 MuiButton-raised-99"
       disabled={false}
       onBlur={[Function]}
       onClick={undefined}
@@ -65,12 +65,12 @@ exports[`shows both next and previous buttons 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-93"
+        className="MuiButton-label-94"
       >
         Previous
       </span>
       <span
-        className="MuiTouchRipple-root-110"
+        className="MuiTouchRipple-root-112"
       />
     </button>
   </div>
@@ -78,7 +78,7 @@ exports[`shows both next and previous buttons 1`] = `
     className="MuiGrid-item-3"
   >
     <button
-      className="MuiButtonBase-root-107 MuiButton-root-92 MuiButton-raised-97"
+      className="MuiButtonBase-root-109 MuiButton-root-93 MuiButton-raised-99"
       disabled={false}
       onBlur={[Function]}
       onClick={undefined}
@@ -95,12 +95,12 @@ exports[`shows both next and previous buttons 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-93"
+        className="MuiButton-label-94"
       >
         Next
       </span>
       <span
-        className="MuiTouchRipple-root-110"
+        className="MuiTouchRipple-root-112"
       />
     </button>
   </div>
@@ -118,7 +118,7 @@ exports[`shows next button, hides previous button 1`] = `
     className="MuiGrid-item-3"
   >
     <button
-      className="MuiButtonBase-root-107 MuiButton-root-92 MuiButton-raised-97"
+      className="MuiButtonBase-root-109 MuiButton-root-93 MuiButton-raised-99"
       disabled={false}
       onBlur={[Function]}
       onClick={undefined}
@@ -135,12 +135,12 @@ exports[`shows next button, hides previous button 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-93"
+        className="MuiButton-label-94"
       >
         Next
       </span>
       <span
-        className="MuiTouchRipple-root-110"
+        className="MuiTouchRipple-root-112"
       />
     </button>
   </div>

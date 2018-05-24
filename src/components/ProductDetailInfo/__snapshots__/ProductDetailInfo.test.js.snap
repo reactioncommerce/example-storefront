@@ -2,20 +2,20 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-52"
 >
   <div
-    className="MuiTypography-root-91 MuiTypography-title-97 MuiTypography-gutterBottom-108"
+    className="MuiTypography-root-92 MuiTypography-title-98 MuiTypography-gutterBottom-109"
   >
     $19.99
   </div>
   <p
-    className="MuiTypography-root-91 MuiTypography-body1-100"
+    className="MuiTypography-root-92 MuiTypography-body1-101"
   >
     Vendor
   </p>
   <p
-    className="MuiTypography-root-91 MuiTypography-body1-100"
+    className="MuiTypography-root-92 MuiTypography-body1-101"
   >
     Description
   </p>
@@ -24,10 +24,10 @@ exports[`basic snapshot 1`] = `
 
 exports[`snapshot with description only 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-52"
 >
   <p
-    className="MuiTypography-root-91 MuiTypography-body1-100"
+    className="MuiTypography-root-92 MuiTypography-body1-101"
   >
     Description
   </p>
@@ -38,15 +38,15 @@ exports[`snapshot with no props 1`] = `null`;
 
 exports[`snapshot with price and description 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-52"
 >
   <div
-    className="MuiTypography-root-91 MuiTypography-title-97 MuiTypography-gutterBottom-108"
+    className="MuiTypography-root-92 MuiTypography-title-98 MuiTypography-gutterBottom-109"
   >
     $19.99
   </div>
   <p
-    className="MuiTypography-root-91 MuiTypography-body1-100"
+    className="MuiTypography-root-92 MuiTypography-body1-101"
   >
     Description
   </p>
@@ -55,10 +55,10 @@ exports[`snapshot with price and description 1`] = `
 
 exports[`snapshot with price only 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-52"
 >
   <div
-    className="MuiTypography-root-91 MuiTypography-title-97 MuiTypography-gutterBottom-108"
+    className="MuiTypography-root-92 MuiTypography-title-98 MuiTypography-gutterBottom-109"
   >
     $19.99
   </div>
@@ -67,10 +67,10 @@ exports[`snapshot with price only 1`] = `
 
 exports[`snapshot with vendor only 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-sm-12-51"
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-52"
 >
   <p
-    className="MuiTypography-root-91 MuiTypography-body1-100"
+    className="MuiTypography-root-92 MuiTypography-body1-101"
   >
     Vendor
   </p>
