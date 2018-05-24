@@ -21,20 +21,18 @@ const styles = (theme) => ({
 });
 
 
-@withStyles(styles, { withTheme: true })
+@withStyles(styles)
 @inject("uiStore")
 export default class ProductGridHero extends Component {
   static propTypes = {
     classes: PropTypes.object,
     tag: PropTypes.object,
-    theme: PropTypes.object,
     uiStore: PropTypes.object
   };
 
   static defaultProps = {
     classes: {},
     tag: {},
-    theme: {},
     uiStore: {}
   };
 
@@ -55,10 +53,7 @@ export default class ProductGridHero extends Component {
     const {
       classes,
       classes: { img, imgLoading, loadingIcon },
-      tag: { heroMediaUrl },
-      theme: {
-        breakpoints: { values }
-      }
+      tag: { heroMediaUrl }
     } = this.props;
     const { hasImageLoaded } = this.state;
 
