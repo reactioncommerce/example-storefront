@@ -5,7 +5,7 @@ import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
 import { Provider } from "mobx-react";
 import jsHttpCookie from "cookie";
-import * as snippet from "@segment/snippet";
+import analyticsProviders from "analytics";
 import rootMobxStores from "../lib/stores";
 import getPageContext from "../lib/theme/getPageContext";
 
@@ -51,22 +51,16 @@ class HTMLDocument extends Document {
     };
   };
 
-  renderAnalyticsSnippet() {
-    const opts = {
-      apiKey: rootMobxStores.uiStore.appConfig.publicRuntimeConfig.segmentAnalyticsWriteKey,
-      page: true // Set this to `false` if you want to manually fire `analytics.page()` from within your pages.
-    };
-
-    if (process.env.NODE_ENV === "development") {
-      return snippet.max(opts);
-    }
-
-    return snippet.min(opts);
-  }
-
   render() {
     const { pageContext, helmet } = this.props;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
+    let scripts = [];
+
+    // Render analytics  scripts
+    scripts = analyticsProviders.map((provider) => ({
+      type: "text/javascript",
+      innerHTML: provider.renderScript()
+    }));
 
     return (
       <html lang="en" {...htmlAttrs}>
@@ -85,12 +79,7 @@ class HTMLDocument extends Document {
               { name: "theme-color", content: pageContext.theme.palette.primary.main }
             ]}
             link={[{ href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" }]}
-            script={[
-              {
-                type: "text/javascript",
-                innerHTML: this.renderAnalyticsSnippet()
-              }
-            ]}
+            script={scripts}
           />
           {helmet.base.toComponent()}
           {helmet.title.toComponent()}
