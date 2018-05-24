@@ -101,7 +101,12 @@ class ProductDetail extends Component {
   };
 
   render() {
-    const { classes, product, theme, uiStore } = this.props;
+    const { classes, product, theme, uiStore: { pdpSelectedOptionId, pdpSelectedVariantId } } = this.props;
+
+    let pdpProductToAddToCart = pdpSelectedVariantId;
+    if (pdpSelectedOptionId) {
+      pdpProductToAddToCart = pdpSelectedOptionId;
+    }
 
     return (
       <div className={classes.root}>
@@ -133,11 +138,11 @@ class ProductDetail extends Component {
               onSelectOption={this.handleSelectOption}
               onSelectVariant={this.handleSelectVariant}
               product={product}
-              selectedOptionId={uiStore.pdpSelectedOptionId}
-              selectedVariantId={uiStore.pdpSelectedVariantId}
+              selectedOptionId={pdpSelectedOptionId}
+              selectedVariantId={pdpSelectedVariantId}
               variants={product.variants}
             />
-            <ProductDetailAddToCart />
+            <ProductDetailAddToCart variantId={pdpProductToAddToCart} />
           </Grid>
         </Grid>
       </div>
