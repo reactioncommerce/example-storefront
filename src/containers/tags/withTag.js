@@ -16,18 +16,17 @@ export default (Component) => (
   class WithTag extends React.Component {
     static propTypes = {
       /**
-       * tagId used to obtain tag info
+       * slug used to obtain tag info
        */
-      tag: PropTypes.string.isRequired
+      routingStore: PropTypes.object.isRequired
     }
     @observable _data = {}
 
     @computed get data() { return toJS(this._data); }
     set data(value) { this._data = value; }
 
-
     render() {
-      const { tag } = this.props;
+      const { routingStore: { query: { slug: tag } } } = this.props;
 
       return (
         <Query query={tagQuery} variables={{ slugOrId: tag }}>

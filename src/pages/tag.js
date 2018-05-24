@@ -16,9 +16,9 @@ import ProductGridHero from "components/ProductGridHero";
 @withRoot
 @withShop
 @withCatalogItems
-@withTag
 @inject("shop")
 @inject("routingStore")
+@withTag
 @observer
 export default class TagShop extends Component {
   static propTypes = {
