@@ -55,25 +55,22 @@ export default class ProductGridHero extends Component {
     const {
       classes,
       classes: { img, imgLoading, loadingIcon },
-      tag: { media },
+      tag: { heroMediaUrl },
       theme: {
         breakpoints: { values }
       }
     } = this.props;
     const { hasImageLoaded } = this.state;
 
-    if (!media) {
+    if (!heroMediaUrl) {
       return null;
     }
 
     const picture = (
       <picture>
-        <source srcSet={this.buildImgUrl(media.URLs.small)} media={`(min-width: ${values.sm}px)`} />
-        <source srcSet={this.buildImgUrl(media.URLs.medium)} media={`(min-width: ${values.md}px)`} />
-        <source srcSet={this.buildImgUrl(media.URLs.large)} media={`(min-width: ${values.lg}px)`} />
         <img
           className={classes.heroImg}
-          src={this.buildImgUrl(media.URLs.small)}
+          src={heroMediaUrl}
           alt=""
           onLoad={this.onImageLoad}
           ref={(image) => {

@@ -5,11 +5,5 @@ fragment TagInfo on Tag {
   slug
   isTopLevel
   subTagIds
-  media {
-    URLs {
-      small
-      medium
-      large
-    }
-  }
+  heroMediaUrl
 }
