@@ -7,8 +7,6 @@ import ProductGrid from "./ProductGrid";
 import products from "./__mocks__/products.mock";
 
 const uiStore = {
-  pageSize: 20,
-  setPageSize: () => true,
   appConfig: {
     publicRuntimeConfig: {
       externalAssetsUrl: "http://localhost:3000"
@@ -29,7 +27,13 @@ test("basic snapshot", () => {
   const component = renderer.create((
     <MuiThemeProvider theme={theme}>
       <Provider uiStore={uiStore}>
-        <ProductGrid catalogItems={products} pageInfo={pageInfo} primaryShopId="123" />
+        <ProductGrid
+          catalogItems={products}
+          setPageSize={() => true}
+          pageInfo={pageInfo}
+          pageSize={20}
+          primaryShopId="123"
+        />
       </Provider>
     </MuiThemeProvider>
   ));
