@@ -33,7 +33,7 @@ export default class RoutingStore {
    * @returns {String} full url with query string
    */
   @action setSearch(search) {
-    const path = `${this._pathname}?${search}`;
+    const path = `${this.pathname}?${search}`;
     Router.pushRoute(path, path, { shallow: true });
     return path;
   }
