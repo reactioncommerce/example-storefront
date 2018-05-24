@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Link as NextLink } from "routes";
 import { withStyles } from "material-ui/styles";
 import classNames from "classnames";
+import track from "lib/tracking/track";
 
 const styles = ({
   link: {
@@ -13,6 +14,7 @@ const styles = ({
 });
 
 @withStyles(styles)
+@track({ component: "Link" })
 class Link extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
@@ -20,16 +22,33 @@ class Link extends Component {
     classes: PropTypes.object.isRequired
   }
 
+  @track((ownProps) => ({
+    action: "Link Clicked",
+    url: ownProps.route,
+    params: ownProps.params
+  }))
+  trackClick = () => {}
+
   render() {
-    const { classes, children, className, ...props } = this.props;
+    const {
+      classes,
+      children,
+      className,
+      tracking, // eslint-disable-line
+      ...props
+    } = this.props;
 
     return (
       <NextLink {...props}>
-        <a className={classNames(classes.link, className)}>
+        <a
+          className={classNames(classes.link, className)}
+          onMouseUp={this.trackClick}
+          role="link"
+          tabIndex={0}
+        >
           {children}
         </a>
       </NextLink>
-
     );
   }
 }
