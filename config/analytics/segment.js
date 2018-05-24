@@ -9,8 +9,12 @@ import * as snippet from "@segment/snippet";
  * @param {String} data.action String value used as the first param to analytics.track()
  * @returns {undefined} No Return
  */
-export function dispatch({ action, ...trackingData }) {
-  window && window.analytics.track(action, trackingData);
+export function dispatch(data) {
+  // Workaround for not being able to use object rest spread
+  const { action } = data;
+  delete data.action;
+
+  window && window.analytics.track(action, data);
 }
 
 /**
