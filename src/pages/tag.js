@@ -4,6 +4,7 @@ import { observer, inject } from "mobx-react";
 import Helmet from "react-helmet";
 import withData from "lib/apollo/withData";
 import withCatalogItems from "containers/catalog/withCatalogItems";
+import withTag from "containers/tags/withTag";
 import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
@@ -15,6 +16,7 @@ import ProductGridHero from "components/ProductGridHero";
 @withRoot
 @withShop
 @withCatalogItems
+@withTag
 @inject("shop")
 @inject("routingStore")
 @observer
