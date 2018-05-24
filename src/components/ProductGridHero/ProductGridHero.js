@@ -6,7 +6,19 @@ import Grid from "material-ui/Grid";
 import Fade from "material-ui/transitions/Fade";
 import Hidden from "material-ui/Hidden";
 import LoadingIcon from "mdi-material-ui/Loading";
-import styles from "./styles";
+
+const styles = (theme) => ({
+  heroImg: {
+    width: "100%",
+    height: "325px",
+    objectFit: "cover"
+  },
+  productGridContainer: {
+    maxWidth: theme.grid.productGridMaxWidth,
+    marginLeft: "auto",
+    marginRight: "auto"
+  }
+});
 
 
 @withStyles(styles, { withTheme: true })
