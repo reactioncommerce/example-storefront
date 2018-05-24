@@ -25,6 +25,14 @@ export default (ComposedComponent) =>
       url: PropTypes.object
     };
 
+    static getDerivedStateFromProps(nextProps) {
+      const { url: { pathname, query } } = nextProps;
+
+      // Update routing store with pathname and query after route change
+      rootMobxStores.routingStore.updateRoute({ pathname, query });
+    }
+
+
     static async getInitialProps(ctx) {
       let serverState = {
         apollo: {

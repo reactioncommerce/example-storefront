@@ -22,6 +22,7 @@ export default class RoutingStore {
   @observable query = {};
 
   @action updateRoute({ pathname, query }) {
+
     this.pathname = pathname;
     this.query = query;
   }
