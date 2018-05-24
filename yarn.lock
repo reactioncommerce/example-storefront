@@ -6110,6 +6110,13 @@ react-test-renderer@^16.0.0-0, react-test-renderer@^16.3.1:
     prop-types "^15.6.0"
     react-is "^16.3.2"
 
+react-tracking@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/react-tracking/-/react-tracking-5.2.1.tgz#3eb0e580fd740252aa7ce9d8fb0e9e9408921a44"
+  dependencies:
+    deepmerge "^2.0.1"
+    hoist-non-react-statics "^2.3.1"
+
 react-transition-group@^2.2.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.3.1.tgz#31d611b33e143a5e0f2d94c348e026a0f3b474b6"
