@@ -44,7 +44,8 @@ class Shop extends Component {
   }
 
   render() {
-    const { catalogItems, catalogItemsPageInfo, uiStore } = this.props;
+    const { catalogItems, catalogItemsPageInfo, uiStore, routingStore } = this.props;
+    const pageSize = parseInt(routingStore.query.limit, 10) || uiStore.pageSize;
 
     return (
       <Layout title="Reaction Shop">
@@ -52,7 +53,7 @@ class Shop extends Component {
         <ProductGrid
           catalogItems={catalogItems}
           pageInfo={catalogItemsPageInfo}
-          pageSize={uiStore.pageSize}
+          pageSize={pageSize}
           setPageSize={this.setPageSize}
         />
       </Layout>

@@ -117,11 +117,21 @@ export const pagination = (args) => {
  * @returns {Object} Object of variables for GraphQL query
  */
 export const paginationVariablesFromUrlParams = (params, options) => {
-  const { first, last, before, after } = params || {};
+  const { first, last, limit, before, after } = params || {};
   const { defaultPageLimit } = options || {};
   const variables = {};
 
-  if (first) {
+  // first (default)
+  // first & after (forward)
+  // last & before (reverse)
+
+  if (limit && !last && !first) {
+    variables.first = parseInt(limit, 10);
+  } else if (limit && after) {
+    variables.first = parseInt(limit, 10);
+  } else if (limit && before) {
+    variables.last = parseInt(limit, 10);
+  } else if (first) {
     variables.first = parseInt(first, 10);
   } else if (last) {
     variables.last = parseInt(last, 10);
