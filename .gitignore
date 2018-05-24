@@ -30,3 +30,5 @@ package-lock.json
 src/.next/*
 build
 /reports
+
+package-lock.json

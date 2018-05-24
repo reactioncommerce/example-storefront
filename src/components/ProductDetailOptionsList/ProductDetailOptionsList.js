@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
+import { observer } from "mobx-react";
 import Badge from "components/Badge";
 import { inventoryStatus } from "lib/utils";
 import ProductDetailOption from "components/ProductDetailOption";
@@ -25,6 +26,7 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles, { withTheme: true })
+@observer
 export default class OptionsList extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -49,7 +51,13 @@ export default class OptionsList extends Component {
   }
 
   render() {
-    const { classes: { root }, onSelectOption, options, theme, selectedOptionId } = this.props;
+    const {
+      classes: { root },
+      onSelectOption,
+      options,
+      selectedOptionId,
+      theme
+    } = this.props;
 
     if (!Array.isArray(options)) return null;
 

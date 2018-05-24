@@ -76,7 +76,7 @@ export default class VariantList extends Component {
 
     return (
       <Fragment>
-        <Divider />
+        <Divider label="Available Options" />
         <ProductDetailOptionsList
           productSlug={product.slug}
           onSelectOption={onSelectOption}
