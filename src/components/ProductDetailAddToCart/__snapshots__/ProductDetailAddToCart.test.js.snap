@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="MuiGrid-container-8"
+>
+  <div
+    className="MuiGrid-item-9 MuiGrid-grid-xs-12-45 inject-ProductDetailAddToCart-with-uiStore-quantityGrid-5"
+  >
+    <div
+      className="Divider-container-98"
+    >
+      <hr
+        className="Divider-item-100"
+      />
+      <hr
+        className="Divider-item-100"
+      />
+    </div>
+    <span
+      className="MuiTypography-root-101 MuiTypography-body1-110 inject-ProductDetailAddToCart-with-uiStore-quantityTypography-7"
+    >
+      Quantity
+    </span>
+    <div
+      aria-describedby={undefined}
+      className="MuiFormControl-root-125"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <div
+        className="MuiInput-root-129 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-4 MuiInput-formControl-130"
+      >
+        <div
+          className="MuiInputAdornment-root-142"
+        >
+          <button
+            className="MuiButtonBase-root-145 inject-ProductDetailAddToCart-with-uiStore-incrementButton-3"
+            color="default"
+            disabled={undefined}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+            variant="outlined"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-148"
+              color={undefined}
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19,13H5V11H19V13Z"
+              />
+            </svg>
+            <span
+              className="MuiTouchRipple-root-154"
+            />
+          </button>
+        </div>
+        <input
+          aria-invalid={false}
+          aria-required={false}
+          autoComplete={undefined}
+          autoFocus={undefined}
+          className="MuiInput-input-137 inject-ProductDetailAddToCart-with-uiStore-quantityInput-6"
+          defaultValue={undefined}
+          disabled={false}
+          id="addToCartQuantityInput"
+          name={undefined}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={undefined}
+          onKeyUp={undefined}
+          placeholder={undefined}
+          readOnly={undefined}
+          required={undefined}
+          rows={undefined}
+          type="text"
+          value={1}
+        />
+        <div
+          className="MuiInputAdornment-root-142"
+        >
+          <button
+            className="MuiButtonBase-root-145 inject-ProductDetailAddToCart-with-uiStore-incrementButton-3"
+            color="default"
+            disabled={undefined}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+            variant="outlined"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-148"
+              color={undefined}
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+              />
+            </svg>
+            <span
+              className="MuiTouchRipple-root-154"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-item-9 MuiGrid-grid-xs-12-45"
+  >
+    <button
+      className="MuiButtonBase-root-145 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-1"
+      disabled={undefined}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiTypography-root-101 MuiTypography-body1-110 inject-ProductDetailAddToCart-with-uiStore-addToCartText-2"
+      >
+        Add to cart
+      </span>
+      <span
+        className="MuiTouchRipple-root-154"
+      />
+    </button>
+  </div>
+</div>
+`;

@@ -6,6 +6,8 @@ import { inject, observer } from "mobx-react";
 import Helmet from "react-helmet";
 
 // PDP Components
+import ProductDetailAddToCart from "components/ProductDetailAddToCart";
+
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
 import ProductDetailInfo from "components/ProductDetailInfo";
@@ -99,7 +101,12 @@ class ProductDetail extends Component {
   };
 
   render() {
-    const { classes, product, theme, uiStore } = this.props;
+    const { classes, product, theme, uiStore: { pdpSelectedOptionId, pdpSelectedVariantId } } = this.props;
+
+    let pdpProductToAddToCart = pdpSelectedVariantId;
+    if (pdpSelectedOptionId) {
+      pdpProductToAddToCart = pdpSelectedOptionId;
+    }
 
     return (
       <div className={classes.root}>
@@ -131,10 +138,11 @@ class ProductDetail extends Component {
               onSelectOption={this.handleSelectOption}
               onSelectVariant={this.handleSelectVariant}
               product={product}
-              selectedOptionId={uiStore.pdpSelectedOptionId}
-              selectedVariantId={uiStore.pdpSelectedVariantId}
+              selectedOptionId={pdpSelectedOptionId}
+              selectedVariantId={pdpSelectedVariantId}
               variants={product.variants}
             />
+            <ProductDetailAddToCart variantId={pdpProductToAddToCart} />
           </Grid>
         </Grid>
       </div>
