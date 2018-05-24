@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "material-ui/Grid";
 import { withStyles } from "material-ui/styles";
-import { inject, observer } from "mobx-react";
+import { observer } from "mobx-react";
 import Badge from "components/Badge";
 import { inventoryStatus } from "lib/utils";
 import ProductDetailOption from "components/ProductDetailOption";
