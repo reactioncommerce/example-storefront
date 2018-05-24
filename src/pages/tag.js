@@ -8,6 +8,8 @@ import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
+import withTracking from "lib/tracking/withTracking";
+import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
 @withData
 @withRoot
@@ -15,6 +17,8 @@ import ProductGrid from "components/ProductGrid";
 @withCatalogItems
 @inject("shop")
 @inject("routingStore")
+@withTracking
+@trackProductListViewed({ dispatchOnMount: true })
 @observer
 export default class TagShop extends Component {
   static propTypes = {
