@@ -2,19 +2,22 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { observer, inject } from "mobx-react";
 import Helmet from "react-helmet";
-
 import withData from "lib/apollo/withData";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
+import withTracking from "lib/tracking/withTracking";
+import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
 @withData
 @withRoot
 @withShop
 @withCatalogItems
 @inject("shop")
+@withTracking
+@trackProductListViewed({ dispatchOnMount: true })
 @observer
 class Shop extends Component {
   static propTypes = {
