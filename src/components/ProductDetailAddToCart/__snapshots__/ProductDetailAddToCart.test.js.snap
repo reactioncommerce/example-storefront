@@ -5,37 +5,37 @@ exports[`basic snapshot 1`] = `
   className="MuiGrid-container-8"
 >
   <div
-    className="MuiGrid-item-9 MuiGrid-grid-xs-12-45 inject-ProductDetailAddToCart-with-uiStore-quantityGrid-5"
+    className="MuiGrid-item-9 MuiGrid-grid-xs-12-46 inject-ProductDetailAddToCart-with-uiStore-quantityGrid-5"
   >
     <div
-      className="Divider-container-1"
+      className="Divider-container-99"
     >
       <hr
-        className="Divider-item-3"
+        className="Divider-item-101"
       />
       <hr
-        className="Divider-item-3"
+        className="Divider-item-101"
       />
     </div>
     <span
-      className="MuiTypography-root-98 MuiTypography-body1-107 inject-ProductDetailAddToCart-with-uiStore-quantityTypography-7"
+      className="MuiTypography-root-102 MuiTypography-body1-111 inject-ProductDetailAddToCart-with-uiStore-quantityTypography-7"
     >
       Quantity
     </span>
     <div
       aria-describedby={undefined}
-      className="MuiFormControl-root-122"
+      className="MuiFormControl-root-126"
       onBlur={[Function]}
       onFocus={[Function]}
     >
       <div
-        className="MuiInput-root-126 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-4 MuiInput-formControl-127"
+        className="MuiInput-root-130 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-4 MuiInput-formControl-131"
       >
         <div
-          className="MuiInputAdornment-root-139"
+          className="MuiInputAdornment-root-143"
         >
           <button
-            className="MuiButtonBase-root-142 inject-ProductDetailAddToCart-with-uiStore-incrementButton-3"
+            className="MuiButtonBase-root-146 inject-ProductDetailAddToCart-with-uiStore-incrementButton-3"
             color="default"
             disabled={undefined}
             onBlur={[Function]}
@@ -55,7 +55,7 @@ exports[`basic snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-4"
+              className="MuiSvgIcon-root-149"
               color={undefined}
               focusable="false"
               viewBox="0 0 24 24"
@@ -65,7 +65,7 @@ exports[`basic snapshot 1`] = `
               />
             </svg>
             <span
-              className="MuiTouchRipple-root-145"
+              className="MuiTouchRipple-root-155"
             />
           </button>
         </div>
@@ -74,7 +74,7 @@ exports[`basic snapshot 1`] = `
           aria-required={false}
           autoComplete={undefined}
           autoFocus={undefined}
-          className="MuiInput-input-134 inject-ProductDetailAddToCart-with-uiStore-quantityInput-6"
+          className="MuiInput-input-138 inject-ProductDetailAddToCart-with-uiStore-quantityInput-6"
           defaultValue={undefined}
           disabled={false}
           id="addToCartQuantityInput"
@@ -92,10 +92,10 @@ exports[`basic snapshot 1`] = `
           value={1}
         />
         <div
-          className="MuiInputAdornment-root-139"
+          className="MuiInputAdornment-root-143"
         >
           <button
-            className="MuiButtonBase-root-142 inject-ProductDetailAddToCart-with-uiStore-incrementButton-3"
+            className="MuiButtonBase-root-146 inject-ProductDetailAddToCart-with-uiStore-incrementButton-3"
             color="default"
             disabled={undefined}
             onBlur={[Function]}
@@ -115,7 +115,7 @@ exports[`basic snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-4"
+              className="MuiSvgIcon-root-149"
               color={undefined}
               focusable="false"
               viewBox="0 0 24 24"
@@ -125,7 +125,7 @@ exports[`basic snapshot 1`] = `
               />
             </svg>
             <span
-              className="MuiTouchRipple-root-145"
+              className="MuiTouchRipple-root-155"
             />
           </button>
         </div>
@@ -133,10 +133,10 @@ exports[`basic snapshot 1`] = `
     </div>
   </div>
   <div
-    className="MuiGrid-item-9 MuiGrid-grid-xs-12-45"
+    className="MuiGrid-item-9 MuiGrid-grid-xs-12-46"
   >
     <button
-      className="MuiButtonBase-root-142 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-1"
+      className="MuiButtonBase-root-146 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-1"
       disabled={undefined}
       onBlur={[Function]}
       onClick={[Function]}
@@ -153,12 +153,12 @@ exports[`basic snapshot 1`] = `
       type="button"
     >
       <span
-        className="MuiTypography-root-98 MuiTypography-body1-107 inject-ProductDetailAddToCart-with-uiStore-addToCartText-2"
+        className="MuiTypography-root-102 MuiTypography-body1-111 inject-ProductDetailAddToCart-with-uiStore-addToCartText-2"
       >
         Add to cart
       </span>
       <span
-        className="MuiTouchRipple-root-145"
+        className="MuiTouchRipple-root-155"
       />
     </button>
   </div>

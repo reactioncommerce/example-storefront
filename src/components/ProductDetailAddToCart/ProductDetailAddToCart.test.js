@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { MuiThemeProvider } from "material-ui/styles";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 import { Provider } from "mobx-react";
 import theme from "lib/theme/reactionTheme";
 import ProductDetailAddToCart from "./ProductDetailAddToCart";
