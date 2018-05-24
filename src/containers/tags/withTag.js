@@ -18,15 +18,16 @@ export default (Component) => (
       /**
        * slug used to obtain tag info
        */
-      routingStore: PropTypes.object.isRequired
+      url: PropTypes.object.isRequired
     }
+
     @observable _data = {}
 
     @computed get data() { return toJS(this._data); }
     set data(value) { this._data = value; }
 
     render() {
-      const { routingStore: { query: { slug: tag } } } = this.props;
+      const { url: { query: { slug: tag } } } = this.props;
 
       return (
         <Query query={tagQuery} variables={{ slugOrId: tag }}>
