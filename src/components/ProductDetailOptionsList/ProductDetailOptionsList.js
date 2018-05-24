@@ -26,7 +26,6 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles, { withTheme: true })
-@inject("uiStore")
 @observer
 export default class OptionsList extends Component {
   static propTypes = {
@@ -35,8 +34,7 @@ export default class OptionsList extends Component {
     options: PropTypes.arrayOf(PropTypes.object),
     productSlug: PropTypes.string,
     selectedOptionId: PropTypes.string,
-    theme: PropTypes.object,
-    uiStore: PropTypes.object
+    theme: PropTypes.object
   }
 
   renderInventoryStatus(option) {
