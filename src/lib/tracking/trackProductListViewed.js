@@ -3,13 +3,13 @@ import React from "react";
 import track from "./track";
 
 /**
- * trackProduct higher tracks a product
- * @name trackProduct
+ * trackProductListViewed higher tracks a list of viewed products
+ * @name trackProductListViewed
  * @param {Object} options options to supply to tracking HOC
  * @returns {React.Component} - component
  */
 export default (options) => (Component) => {
-  const component = class trackProductList extends React.Component {
+  const component = class trackProductListViewed extends React.Component {
     render() {
       return (
         <Component {...this.props} />
