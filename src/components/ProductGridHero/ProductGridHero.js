@@ -44,11 +44,6 @@ export default class ProductGridHero extends Component {
     this.setState({ hasImageLoaded: true });
   };
 
-  buildImgUrl(imgPath) {
-    const { uiStore: { appConfig: { publicRuntimeConfig } } } = this.props;
-    return `${publicRuntimeConfig.externalAssetsUrl}${imgPath}`;
-  }
-
   renderProductImage() {
     const {
       classes,
