@@ -2,7 +2,7 @@ import analyticsProviders from "analytics";
 
 /**
  * Dispatch tracking data to providers
- * @name dispatchSegmentAnalytics
+ * @name dispatch
  * @param {Object} data Arguments supplied by tracking library
  * @returns {undefined} No Return
  */
