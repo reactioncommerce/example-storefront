@@ -29,3 +29,5 @@ allure-results
 src/.next/*
 build
 /reports
+
+package-lock.json

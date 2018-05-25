@@ -5,9 +5,9 @@ import { withStyles } from "material-ui/styles";
 import ProductItem from "components/ProductItem";
 import PageStepper from "components/PageStepper";
 
-const styles = () => ({
+const styles = (theme) => ({
   productGridContainer: {
-    maxWidth: "1440px",
+    maxWidth: theme.grid.productGridMaxWidth,
     marginLeft: "auto",
     marginRight: "auto"
   }

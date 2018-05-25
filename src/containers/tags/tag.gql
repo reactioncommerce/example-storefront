@@ -1,0 +1,7 @@
+#import "./tagFragment.gql"
+
+query tagQuery($slugOrId: String) {
+  tag(slugOrId: $slugOrId) {
+    ...TagInfo
+  }
+}
