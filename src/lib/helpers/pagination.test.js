@@ -65,9 +65,9 @@ test("loadPreviousPage helper creates helper function", () => {
   expect(args.routingStore.setSearch).toHaveBeenCalled();
 });
 
-test("pagination variables from url params, (first, after)", () => {
+test("pagination variables from url params, (limit, after)", () => {
   const variables = paginationVariablesFromUrlParams({
-    first: 2,
+    limit: 2,
     after: "6"
   });
 
@@ -77,29 +77,15 @@ test("pagination variables from url params, (first, after)", () => {
   });
 });
 
-test("pagination variables from url params, (before, last)", () => {
+test("pagination variables from url params, (before, limit)", () => {
   const variables = paginationVariablesFromUrlParams({
-    last: 10,
+    limit: 10,
     before: "3"
   });
 
   expect(variables).toEqual({
     last: 10,
     before: "3"
-  });
-});
-
-test("pagination variables from url params (first, after) supercede (last, before)", () => {
-  const variables = paginationVariablesFromUrlParams({
-    first: 2,
-    after: "6",
-    last: 10,
-    before: "3"
-  });
-
-  expect(variables).toEqual({
-    first: 2,
-    after: "6"
   });
 });
 
