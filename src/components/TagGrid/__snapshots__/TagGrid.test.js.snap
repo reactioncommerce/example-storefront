@@ -14,9 +14,12 @@ exports[`basic snapshot 1`] = `
       className="MuiGrid-item-28"
     >
       <a
-        className="Link-link-117"
+        className="WithTracking-Link--link-117"
         href="/tag/shoes"
         onClick={[Function]}
+        onMouseUp={[Function]}
+        role="link"
+        tabIndex={0}
       >
         <div
           className="MuiChip-root-118 TagGrid-chip-2"
@@ -37,9 +40,12 @@ exports[`basic snapshot 1`] = `
       className="MuiGrid-item-28"
     >
       <a
-        className="Link-link-117"
+        className="WithTracking-Link--link-117"
         href="/tag/shop"
         onClick={[Function]}
+        onMouseUp={[Function]}
+        role="link"
+        tabIndex={0}
       >
         <div
           className="MuiChip-root-118 TagGrid-chip-2"

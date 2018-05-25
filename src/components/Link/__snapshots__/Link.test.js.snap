@@ -2,9 +2,12 @@
 
 exports[`basic snapshot 1`] = `
 <a
-  className="Link-link-1"
+  className="WithTracking-Link--link-1"
   href="/next"
   onClick={[Function]}
+  onMouseUp={[Function]}
+  role="link"
+  tabIndex={0}
 >
   Linked
 </a>
