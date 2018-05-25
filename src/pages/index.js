@@ -43,6 +43,11 @@ class Shop extends Component {
     this.props.uiStore.setPageSize(pageSize);
   }
 
+  setSortBy = (sortBy) => {
+    this.props.routingStore.setSearch(`sort=${sortBy}`);
+    // TODO: Update uiStore
+  }
+
   render() {
     const { catalogItems, catalogItemsPageInfo, uiStore, routingStore } = this.props;
     const pageSize = parseInt(routingStore.query.limit, 10) || uiStore.pageSize;
@@ -55,6 +60,8 @@ class Shop extends Component {
           pageInfo={catalogItemsPageInfo}
           pageSize={pageSize}
           setPageSize={this.setPageSize}
+          setSortBy={this.setSortBy}
+          sortBy={"newest"}
         />
       </Layout>
     );

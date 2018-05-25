@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import ProductItem from "components/ProductItem";
 import PageStepper from "components/PageStepper";
 import PageSizeSelector from "components/PageSizeSelector";
+import SortBySelector from "components/SortBySelector";
 
 const styles = () => ({
   productGridContainer: {
@@ -31,7 +32,9 @@ export default class ProductGrid extends Component {
       loadPreviousPage: PropTypes.func
     }),
     pageSize: PropTypes.number.isRequired,
-    setPageSize: PropTypes.func.isRequired
+    setPageSize: PropTypes.func.isRequired,
+    setSortBy: PropTypes.func.isRequired,
+    sortBy: PropTypes.string.isRequired
   };
 
   renderProduct(edge) {
@@ -50,13 +53,14 @@ export default class ProductGrid extends Component {
     );
   }
 
-  renderPageSizeSelector() {
-    const { classes, pageSize, setPageSize } = this.props;
+  renderFilters() {
+    const { classes, pageSize, setPageSize, setSortBy, sortBy } = this.props;
 
     return (
       <Grid container spacing={24} className={classes.pageSizeContainer}>
         <Grid item>
           <PageSizeSelector pageSize={pageSize} onChange={setPageSize} />
+          <SortBySelector sortBy={sortBy} onChange={setSortBy} />
         </Grid>
       </Grid>
     );
@@ -69,7 +73,7 @@ export default class ProductGrid extends Component {
 
     return (
       <section className={classes.productGridContainer}>
-        {this.renderPageSizeSelector()}
+        {this.renderFilters()}
         <Grid container spacing={24}>
           {(catalogItems && catalogItems.length) ? catalogItems.map(this.renderProduct) : null}
         </Grid>

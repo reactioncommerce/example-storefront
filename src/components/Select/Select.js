@@ -31,7 +31,7 @@ class Select extends Component {
     inputProps: PropTypes.object,
     onChange: PropTypes.func.isRequired,
     options: PropTypes.arrayOf(PropTypes.object).isRequired,
-    value: PropTypes.number
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
   }
 
   renderOptions() {
