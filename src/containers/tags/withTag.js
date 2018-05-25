@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
-import { computed, observable, toJS } from "mobx";
-import { observer } from "mobx-react";
 import tagQuery from "./tag.gql";
 
 /**
@@ -12,7 +10,6 @@ import tagQuery from "./tag.gql";
  * @returns {React.Component} - Component with `tag` prop
  */
 export default (Component) => (
-  @observer
   class WithTag extends React.Component {
     static propTypes = {
       /**
@@ -20,11 +17,6 @@ export default (Component) => (
        */
       url: PropTypes.object.isRequired
     }
-
-    @observable _data = {}
-
-    @computed get data() { return toJS(this._data); }
-    set data(value) { this._data = value; }
 
     render() {
       const { url: { query: { slug: tag } } } = this.props;
