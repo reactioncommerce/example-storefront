@@ -33,6 +33,7 @@ const styles = (theme) => ({
 class Select extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    inputProps: PropTypes.object,
     onChange: PropTypes.func.isRequired,
     options: PropTypes.arrayOf(PropTypes.object).isRequired,
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
@@ -62,7 +63,7 @@ class Select extends Component {
   }
 
   render() {
-    const { classes, value } = this.props;
+    const { classes, inputProps, value } = this.props;
 
     return (
       <MuiSelect
@@ -70,6 +71,7 @@ class Select extends Component {
           selectMenu: classes.selectMenu
         }}
         input={<Input className={classes.input} disableUnderline />}
+        inputProps={{ ...inputProps }}
         MenuProps={{
           PopoverClasses: {
             paper: classes.popOver

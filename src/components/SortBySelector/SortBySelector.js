@@ -9,11 +9,11 @@ const PAGE_SIZES = [
   },
   {
     name: "Price: low to high",
-    value: "price:low-high"
+    value: "price-low-high"
   },
   {
     name: "Price: high to low",
-    value: "price:high-low"
+    value: "price-high-low"
   }
 ];
 
