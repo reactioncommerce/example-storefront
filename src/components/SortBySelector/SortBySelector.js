@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Select from "components/Select";
 
-const PAGE_SIZES = [
+const SORT_BY = [
   {
     name: "Newest",
     value: "newest"
@@ -33,7 +33,7 @@ class SortBySelector extends Component {
     return (
       <Select
         value={sortBy}
-        options={PAGE_SIZES}
+        options={SORT_BY}
         inputProps={{
           name: "sortBy",
           id: "sort-by"
