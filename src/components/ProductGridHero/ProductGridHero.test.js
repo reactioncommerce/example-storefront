@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { Provider } from "mobx-react";
-import { MuiThemeProvider } from "material-ui/styles";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "lib/theme/reactionTheme";
 import ProductGridHero from "./ProductGridHero";
 
