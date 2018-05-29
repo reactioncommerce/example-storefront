@@ -11,16 +11,21 @@ const styles = (theme) => ({
     boxShadow: "none"
   },
   menuItem: {
+    fontSize: "1rem",
     paddingTop: theme.spacing.unit,
     paddingBottom: theme.spacing.unit
   },
   selectMenu: {
+    fontSize: "1rem",
     border: theme.palette.borders.default,
     paddingLeft: theme.spacing.unit,
     borderRadius: theme.borderRadii.default
   },
   selected: {
     backgroundColor: theme.palette.action.hover
+  },
+  input: {
+    width: theme.spacing.unit * 20
   }
 });
 
@@ -28,7 +33,6 @@ const styles = (theme) => ({
 class Select extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    inputProps: PropTypes.object,
     onChange: PropTypes.func.isRequired,
     options: PropTypes.arrayOf(PropTypes.object).isRequired,
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
@@ -58,17 +62,14 @@ class Select extends Component {
   }
 
   render() {
-    const { classes, inputProps, value } = this.props;
+    const { classes, value } = this.props;
 
     return (
       <MuiSelect
         classes={{
           selectMenu: classes.selectMenu
         }}
-        input={<Input disableUnderline />}
-        inputProps={{
-          ...inputProps
-        }}
+        input={<Input className={classes.input} disableUnderline />}
         MenuProps={{
           PopoverClasses: {
             paper: classes.popOver
