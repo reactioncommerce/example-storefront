@@ -12,12 +12,10 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles)
-export default class ProductGrid extends Component {
+export default class PageStepper extends Component {
   static propTypes = {
     classes: PropTypes.object,
     pageInfo: PropTypes.shape({
-      startCursor: PropTypes.string,
-      endCursor: PropTypes.string,
       hasNextPage: PropTypes.bool,
       hasPreviousPage: PropTypes.bool,
       loadNextPage: PropTypes.func,
