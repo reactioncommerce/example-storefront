@@ -8,7 +8,7 @@ test("basic snapshot", () => {
   const component = renderer.create((
     <MuiThemeProvider theme={theme}>
       <SortBySelector
-        sortBy={20}
+        sortBy={"newest"}
         onChange={() => true}
       />
     </MuiThemeProvider>
