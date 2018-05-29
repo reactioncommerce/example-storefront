@@ -100,6 +100,9 @@ export default (ComposedComponent) =>
       super(props);
       const { apollo, token } = this.props.serverState;
 
+      // State must be initialized if getDerivedStateFromProps is used
+      this.state = {};
+
       this.apollo = initApolloBrowser(apollo.data, { token });
 
       rootMobxStores.routingStore.updateRoute(props.router);
