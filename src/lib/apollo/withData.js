@@ -21,15 +21,17 @@ export default (ComposedComponent) =>
   class WithData extends React.Component {
     static displayName = `WithData(${getComponentDisplayName(ComposedComponent)})`;
     static propTypes = {
-      serverState: PropTypes.object.isRequired,
-      url: PropTypes.object
+      router: PropTypes.object,
+      serverState: PropTypes.object.isRequired
     };
 
     static getDerivedStateFromProps(nextProps) {
-      const { url: { pathname, query } } = nextProps;
+      const { pathname, query } = nextProps.router;
 
       // Update routing store with pathname and query after route change
       rootMobxStores.routingStore.updateRoute({ pathname, query });
+
+      return null;
     }
 
 
@@ -100,7 +102,7 @@ export default (ComposedComponent) =>
 
       this.apollo = initApolloBrowser(apollo.data, { token });
 
-      rootMobxStores.routingStore.updateRoute(props.url);
+      rootMobxStores.routingStore.updateRoute(props.router);
     }
 
     render() {
