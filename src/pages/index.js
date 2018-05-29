@@ -8,7 +8,6 @@ import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
-import withTracking from "lib/tracking/withTracking";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
 @withData
@@ -16,7 +15,6 @@ import trackProductListViewed from "lib/tracking/trackProductListViewed";
 @withShop
 @withCatalogItems
 @inject("shop")
-@withTracking
 @trackProductListViewed({ dispatchOnMount: true })
 @observer
 class Shop extends Component {
