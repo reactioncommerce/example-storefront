@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Grid from "material-ui/Grid";
-import { withStyles } from "material-ui/styles";
+import Grid from "@material-ui/core/Grid";
+import { withStyles } from "@material-ui/core/styles";
 import ProductItem from "components/ProductItem";
 import PageStepper from "components/PageStepper";
+import PageSizeSelector from "components/PageSizeSelector";
 
 const styles = (theme) => ({
   productGridContainer: {
     maxWidth: theme.grid.productGridMaxWidth,
     marginLeft: "auto",
     marginRight: "auto"
+  },
+  pageSizeContainer: {
+    justifyContent: "flex-end"
   }
 });
 
@@ -25,7 +29,9 @@ export default class ProductGrid extends Component {
       hasPreviousPage: PropTypes.bool,
       loadNextPage: PropTypes.func,
       loadPreviousPage: PropTypes.func
-    })
+    }),
+    pageSize: PropTypes.number.isRequired,
+    setPageSize: PropTypes.func.isRequired
   };
 
   renderProduct(edge) {
@@ -44,6 +50,18 @@ export default class ProductGrid extends Component {
     );
   }
 
+  renderPageSizeSelector() {
+    const { classes, pageSize, setPageSize } = this.props;
+
+    return (
+      <Grid container spacing={24} className={classes.pageSizeContainer}>
+        <Grid item>
+          <PageSizeSelector pageSize={pageSize} onChange={setPageSize} />
+        </Grid>
+      </Grid>
+    );
+  }
+
   render() {
     const { catalogItems, classes, pageInfo } = this.props;
 
@@ -51,6 +69,7 @@ export default class ProductGrid extends Component {
 
     return (
       <section className={classes.productGridContainer}>
+        {this.renderPageSizeSelector()}
         <Grid container spacing={24}>
           {(catalogItems && catalogItems.length) ? catalogItems.map(this.renderProduct) : null}
         </Grid>

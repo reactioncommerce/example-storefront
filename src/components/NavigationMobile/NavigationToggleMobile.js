@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import IconButton from "material-ui/IconButton";
+import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "mdi-material-ui/Menu";
 
 class NavigationToggleMobile extends Component {

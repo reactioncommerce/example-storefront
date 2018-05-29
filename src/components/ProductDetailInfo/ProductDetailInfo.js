@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Typography from "material-ui/Typography";
-import Grid from "material-ui/Grid";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 
 /**
  * Product detail basic info fields

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
-import Chip from "material-ui/Chip";
-import Typography from "material-ui/Typography";
-import Grid from "material-ui/Grid";
+import { withStyles } from "@material-ui/core/styles";
+import Chip from "@material-ui/core/Chip";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import Link from "components/Link";
 
 const styles = (theme) => ({

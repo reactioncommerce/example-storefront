@@ -15,7 +15,7 @@ export const loadNextPage = ({ queryName, data, limit, fetchMore, routingStore }
 
   // Set URL search params to allow for link sharing
   if (routingStore) {
-    routingStore.setSearch(`first=${limit}&after=${cursor}`);
+    routingStore.setSearch(`limit=${limit}&after=${cursor}`);
   }
 
   fetchMore({
@@ -56,7 +56,7 @@ export const loadPreviousPage = ({ queryName, data, limit, fetchMore, routingSto
 
   // Set URL search params to allow for link sharing
   if (routingStore) {
-    routingStore.setSearch(`last=${limit}&before=${cursor}`);
+    routingStore.setSearch(`limit=${limit}&before=${cursor}`);
   }
 
   fetchMore({
@@ -108,8 +108,7 @@ export const pagination = (args) => {
  * Create an object of variables for pagination a GraphQL query.
  * @name paginationVariablesFromUrlParams
  * @param {Object} params Object of params to create query variables from
- * @param {Number|String} params.first Limit starting at the beginning of the list
- * @param {Number|String} params.last Limit starting at the end of the list
+ * @param {Number|String} params.limit Maximum number of items to get
  * @param {String} params.before Before Cursor
  * @param {String} params.after After cursor
  * @param {Options} options Additional options
@@ -117,14 +116,16 @@ export const pagination = (args) => {
  * @returns {Object} Object of variables for GraphQL query
  */
 export const paginationVariablesFromUrlParams = (params, options) => {
-  const { first, last, before, after } = params || {};
+  const { limit, before, after } = params || {};
   const { defaultPageLimit } = options || {};
   const variables = {};
 
-  if (first) {
-    variables.first = parseInt(first, 10);
-  } else if (last) {
-    variables.last = parseInt(last, 10);
+  if (limit && after) {
+    variables.first = parseInt(limit, 10);
+  } else if (limit && before) {
+    variables.last = parseInt(limit, 10);
+  } else if (limit) {
+    variables.first = parseInt(limit, 10);
   } else if (defaultPageLimit) {
     variables.first = defaultPageLimit;
   }

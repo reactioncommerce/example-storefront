@@ -15,12 +15,16 @@ import ProductGrid from "components/ProductGrid";
 @withShop
 @withCatalogItems
 @inject("shop")
+@inject("routingStore")
+@inject("uiStore")
 @observer
 class Shop extends Component {
   static propTypes = {
-    catalogItems: PropTypes.array.isRequired,
+    catalogItems: PropTypes.array,
     catalogItemsPageInfo: PropTypes.object,
-    shop: PropTypes.object
+    routingStore: PropTypes.object,
+    shop: PropTypes.object,
+    uiStore: PropTypes.object.isRequired
   };
 
   renderHelmet() {
@@ -34,13 +38,23 @@ class Shop extends Component {
     );
   }
 
+  setPageSize = (pageSize) => {
+    this.props.routingStore.setSearch(`limit=${pageSize}`);
+    this.props.uiStore.setPageSize(pageSize);
+  }
+
   render() {
+    const { catalogItems, catalogItemsPageInfo, uiStore, routingStore } = this.props;
+    const pageSize = parseInt(routingStore.query.limit, 10) || uiStore.pageSize;
+
     return (
       <Layout title="Reaction Shop">
         {this.renderHelmet()}
         <ProductGrid
-          catalogItems={this.props.catalogItems}
-          pageInfo={this.props.catalogItemsPageInfo}
+          catalogItems={catalogItems}
+          pageInfo={catalogItemsPageInfo}
+          pageSize={pageSize}
+          setPageSize={this.setPageSize}
         />
       </Layout>
     );
