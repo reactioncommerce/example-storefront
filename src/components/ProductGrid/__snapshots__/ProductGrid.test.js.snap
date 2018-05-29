@@ -240,7 +240,7 @@ exports[`basic snapshot 1`] = `
     </div>
   </div>
   <div
-    className="MuiGrid-container-3 MuiGrid-justify-xs-space-between-22 ProductGrid-root-167"
+    className="MuiGrid-container-3 MuiGrid-justify-xs-space-between-22 PageStepper-root-167"
   >
     <div
       className="MuiGrid-item-4"
