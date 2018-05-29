@@ -10,7 +10,7 @@ import initApolloBrowser from "./initApolloBrowser";
 /**
  * Get the display name of a component
  * @name getComponentDisplayName
- * @param {React.Component} Component Reactio component
+ * @param {React.Component} Component React component
  * @returns {String} Component display name
  */
 function getComponentDisplayName(Component) {

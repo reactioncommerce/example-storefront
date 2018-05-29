@@ -108,8 +108,7 @@ export const pagination = (args) => {
  * Create an object of variables for pagination a GraphQL query.
  * @name paginationVariablesFromUrlParams
  * @param {Object} params Object of params to create query variables from
- * @param {Number|String} params.first Limit starting at the beginning of the list
- * @param {Number|String} params.last Limit starting at the end of the list
+ * @param {Number|String} params.limit Maximum number of items to get
  * @param {String} params.before Before Cursor
  * @param {String} params.after After cursor
  * @param {Options} options Additional options

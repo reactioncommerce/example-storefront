@@ -1,12 +1,23 @@
-import { configure } from "mobx";
+import { autorun, configure } from "mobx";
 import AuthStore from "./AuthStore";
 import RoutingStore from "./RoutingStore";
 import UIStore from "./UIStore";
 
 configure({ enforceActions: true });
 
+const authStore = new AuthStore();
+const routingStore = new RoutingStore();
+const uiStore = new UIStore();
+
+autorun(() => {
+  const { query } = routingStore;
+  if (query.limit) {
+    uiStore.setPageSize(parseInt(query.limit, 10));
+  }
+});
+
 export default {
-  authStore: new AuthStore(),
-  routingStore: new RoutingStore(),
-  uiStore: new UIStore()
+  authStore,
+  routingStore,
+  uiStore
 };
