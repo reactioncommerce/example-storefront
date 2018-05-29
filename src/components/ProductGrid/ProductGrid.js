@@ -7,9 +7,9 @@ import PageStepper from "components/PageStepper";
 import PageSizeSelector from "components/PageSizeSelector";
 import SortBySelector from "components/SortBySelector";
 
-const styles = () => ({
+const styles = (theme) => ({
   productGridContainer: {
-    maxWidth: "1440px",
+    maxWidth: theme.grid.productGridMaxWidth,
     marginLeft: "auto",
     marginRight: "auto"
   },

@@ -4,10 +4,13 @@ import { observer, inject } from "mobx-react";
 import Helmet from "react-helmet";
 import withData from "lib/apollo/withData";
 import withCatalogItems from "containers/catalog/withCatalogItems";
+import withTag from "containers/tags/withTag";
 import withRoot from "lib/theme/withRoot";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
+import ProductGridHero from "components/ProductGridHero";
+
 
 @withData
 @withRoot
@@ -15,13 +18,20 @@ import ProductGrid from "components/ProductGrid";
 @withCatalogItems
 @inject("shop")
 @inject("routingStore")
+@withTag
 @observer
 export default class TagShop extends Component {
   static propTypes = {
     catalogItems: PropTypes.array.isRequired,
     catalogItemsPageInfo: PropTypes.object,
+    classes: PropTypes.object,
     routingStore: PropTypes.object,
-    shop: PropTypes.object
+    shop: PropTypes.object,
+    tag: PropTypes.object
+  };
+
+  static defaultProps= {
+    tag: {}
   };
 
   renderHelmet() {
@@ -38,11 +48,12 @@ export default class TagShop extends Component {
   }
 
   render() {
-    const { catalogItems, catalogItemsPageInfo } = this.props;
+    const { catalogItems, catalogItemsPageInfo, tag } = this.props;
 
     return (
       <Layout title="Reaction Shop">
         {this.renderHelmet()}
+        <ProductGridHero tag={tag} />
         <ProductGrid
           catalogItems={catalogItems}
           pageInfo={catalogItemsPageInfo}
