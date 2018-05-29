@@ -22,13 +22,14 @@ export function dispatch(data) {
  * @returns {String} String script to be included in the document head
  */
 export function renderScript() {
-  const { publicRuntimeConfig } = getConfig();
+  const { publicRuntimeConfig: { segmentAnalytics } } = getConfig();
+
   const opts = {
-    apiKey: publicRuntimeConfig.segmentAnalyticsWriteKey,
+    apiKey: segmentAnalytics.writeKey,
     page: true // Set this to `false` if you want to manually fire `analytics.page()` from within your pages.
   };
 
-  if (process.env.NODE_ENV === "development") {
+  if (segmentAnalytics.env === "development") {
     return snippet.max(opts);
   }
 
