@@ -5,15 +5,17 @@ import { withStyles } from "@material-ui/core/styles";
 import ProductItem from "components/ProductItem";
 import PageStepper from "components/PageStepper";
 import PageSizeSelector from "components/PageSizeSelector";
+import SortBySelector from "components/SortBySelector";
 
 const styles = (theme) => ({
-  productGridContainer: {
+  root: {
     maxWidth: theme.grid.productGridMaxWidth,
     marginLeft: "auto",
     marginRight: "auto"
   },
-  pageSizeContainer: {
-    justifyContent: "flex-end"
+  filters: {
+    justifyContent: "flex-end",
+    marginBottom: theme.spacing.unit * 2
   }
 });
 
@@ -31,7 +33,9 @@ export default class ProductGrid extends Component {
       loadPreviousPage: PropTypes.func
     }),
     pageSize: PropTypes.number.isRequired,
-    setPageSize: PropTypes.func.isRequired
+    setPageSize: PropTypes.func.isRequired,
+    setSortBy: PropTypes.func.isRequired,
+    sortBy: PropTypes.string.isRequired
   };
 
   renderProduct(edge) {
@@ -50,13 +54,16 @@ export default class ProductGrid extends Component {
     );
   }
 
-  renderPageSizeSelector() {
-    const { classes, pageSize, setPageSize } = this.props;
+  renderFilters() {
+    const { classes, pageSize, setPageSize, setSortBy, sortBy } = this.props;
 
     return (
-      <Grid container spacing={24} className={classes.pageSizeContainer}>
+      <Grid container spacing={8} className={classes.filters}>
         <Grid item>
           <PageSizeSelector pageSize={pageSize} onChange={setPageSize} />
+        </Grid>
+        <Grid item>
+          <SortBySelector sortBy={sortBy} onChange={setSortBy} />
         </Grid>
       </Grid>
     );
@@ -68,8 +75,8 @@ export default class ProductGrid extends Component {
     if (!catalogItems) return null;
 
     return (
-      <section className={classes.productGridContainer}>
-        {this.renderPageSizeSelector()}
+      <section className={classes.root}>
+        {this.renderFilters()}
         <Grid container spacing={24}>
           {(catalogItems && catalogItems.length) ? catalogItems.map(this.renderProduct) : null}
         </Grid>
