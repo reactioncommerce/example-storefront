@@ -14,7 +14,7 @@ export function dispatch(data) {
   const { action } = data;
   delete data.action;
 
-  window && window.analytics.track(action, data);
+  window && window.analytics && window.analytics.track(action, data);
 }
 
 /**
