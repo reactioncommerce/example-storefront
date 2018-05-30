@@ -10,7 +10,7 @@ import initApolloBrowser from "./initApolloBrowser";
 /**
  * Get the display name of a component
  * @name getComponentDisplayName
- * @param {React.Component} Component Reactio component
+ * @param {React.Component} Component React component
  * @returns {String} Component display name
  */
 function getComponentDisplayName(Component) {
@@ -96,16 +96,21 @@ export default (ComposedComponent) =>
       };
     }
 
+    static getDerivedStateFromProps(nextProps) {
+      rootMobxStores.routingStore.updateRoute(nextProps.router);
+
+      return null;
+    }
+
     constructor(props) {
       super(props);
+      this.state = {};
       const { apollo, token } = this.props.serverState;
 
       // State must be initialized if getDerivedStateFromProps is used
       this.state = {};
 
       this.apollo = initApolloBrowser(apollo.data, { token });
-
-      rootMobxStores.routingStore.updateRoute(props.router);
     }
 
     render() {

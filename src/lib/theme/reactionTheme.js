@@ -1,4 +1,4 @@
-import { createMuiTheme } from "material-ui/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
   grid: {
@@ -22,6 +22,16 @@ const theme = createMuiTheme({
       main: "#CD3F4C",
       dark: "#3C1F21",
       contrastText: "#FFFFFF"
+    },
+    action: {
+      hover: "#f5f5f5",
+      selected: "#f5f5f5"
+    },
+    colors: {
+      buttonBorderColor: "#5e7480"
+    },
+    borders: {
+      default: "1px solid #5e7480"
     },
     reaction: {
       activeElementBorderColor: "#94E8D1",
@@ -105,6 +115,9 @@ const theme = createMuiTheme({
       teal500: "#447467",
       teal600: "#34584f"
     }
+  },
+  borderRadii: {
+    default: 2
   },
   spacing: {
     unithalf: 4

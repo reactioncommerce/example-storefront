@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ButtonBase from "material-ui/ButtonBase";
-import withStyles from "material-ui/styles/withStyles";
+import ButtonBase from "@material-ui/core/ButtonBase";
+import withStyles from "@material-ui/core/styles/withStyles";
 import { inject, observer } from "mobx-react";
 
 const styles = () => ({

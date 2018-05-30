@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link as NextLink } from "routes";
-import { withStyles } from "material-ui/styles";
+import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 import track from "lib/tracking/track";
 

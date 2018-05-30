@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
+import { withStyles } from "@material-ui/core/styles";
 import { inject, observer } from "mobx-react";
-import Fade from "material-ui/transitions/Fade";
-import Hidden from "material-ui/Hidden";
-import Typography from "material-ui/Typography";
+import Fade from "@material-ui/core/Fade";
+import Hidden from "@material-ui/core/Hidden";
+import Typography from "@material-ui/core/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
 import Link from "components/Link";
 import Badge from "components/Badge";

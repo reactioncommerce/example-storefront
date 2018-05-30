@@ -31,6 +31,14 @@ class UIStore {
   @observable isMenuDrawerOpen = false;
 
   /**
+   * The number of items per page to display on the product grid.
+   *
+   * @type Number
+   */
+  @observable pageSize = 20;
+
+  /**
+   * App config data
    * The ID of the option that is selected on the product detail page. This is not
    * tracked per product, so the assumption is that you can only view one detail page
    * at a time. The page must reset this before initial mount.
@@ -69,6 +77,10 @@ class UIStore {
 
   @action toggleMenuDrawerOpen() {
     this.isMenuDrawerOpen = !this.isMenuDrawerOpen;
+  }
+
+  @action setPageSize = (size) => {
+    this.pageSize = size;
   }
 }
 

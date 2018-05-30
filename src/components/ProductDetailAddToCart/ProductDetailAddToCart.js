@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
-import ButtonBase from "material-ui/ButtonBase";
-import Grid from "material-ui/Grid";
-import InputAdornment from "material-ui/Input/InputAdornment";
-import TextField from "material-ui/TextField";
-import Typography from "material-ui/Typography";
+import { withStyles } from "@material-ui/core/styles";
+import ButtonBase from "@material-ui/core/ButtonBase";
+import Grid from "@material-ui/core/Grid";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 import Minus from "mdi-material-ui/Minus";
 import Plus from "mdi-material-ui/Plus";
 import { inject, observer } from "mobx-react";

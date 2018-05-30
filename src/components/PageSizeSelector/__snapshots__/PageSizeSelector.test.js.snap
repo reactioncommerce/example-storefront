@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="MuiInput-root-10"
+>
+  <div
+    className="MuiSelect-root-5"
+  >
+    <div
+      aria-haspopup="true"
+      aria-owns={null}
+      aria-pressed="false"
+      className="MuiSelect-select-6 MuiSelect-selectMenu-7 Select-selectMenu-3 MuiInput-input-18"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      20 Products
+    </div>
+    <input
+      aria-invalid={undefined}
+      aria-required={undefined}
+      autoComplete={undefined}
+      autoFocus={undefined}
+      defaultValue={undefined}
+      id="page-size"
+      name="pageSize"
+      onKeyDown={undefined}
+      onKeyUp={undefined}
+      placeholder={undefined}
+      readOnly={undefined}
+      required={undefined}
+      rows={undefined}
+      type="hidden"
+      value={20}
+    />
+    <svg
+      aria-hidden="true"
+      className="MuiSvgIcon-root-23 MuiSelect-icon-9"
+      color={undefined}
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M7 10l5 5 5-5z"
+      />
+    </svg>
+  </div>
+</div>
+`;

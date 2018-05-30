@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Button from "material-ui/Button";
-import Grid from "material-ui/Grid";
-import withStyles from "material-ui/styles/withStyles";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = (theme) => ({
   root: {
@@ -12,12 +12,10 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles)
-export default class ProductGrid extends Component {
+export default class PageStepper extends Component {
   static propTypes = {
     classes: PropTypes.object,
     pageInfo: PropTypes.shape({
-      startCursor: PropTypes.string,
-      endCursor: PropTypes.string,
       hasNextPage: PropTypes.bool,
       hasPreviousPage: PropTypes.bool,
       loadNextPage: PropTypes.func,

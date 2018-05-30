@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { MuiThemeProvider } from "material-ui/styles";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "lib/theme/reactionTheme";
 import Divider from "./Divider";
 

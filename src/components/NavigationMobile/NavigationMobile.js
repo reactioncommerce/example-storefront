@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
-import { withStyles } from "material-ui/styles";
-import Drawer from "material-ui/Drawer";
-import MenuList from "material-ui/Menu/MenuList";
+import { withStyles } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import MenuList from "@material-ui/core/MenuList";
 import { NavigationItemMobile } from "components/NavigationMobile";
 import withNavigationTags from "../../containers/tags/withNavigationTags";
 

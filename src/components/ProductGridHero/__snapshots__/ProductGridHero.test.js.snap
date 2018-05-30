@@ -44,7 +44,7 @@ exports[`snapshot of tagWithMedia 1`] = `
       >
         <svg
           aria-hidden="true"
-          className="MuiSvgIcon-root-93"
+          className="MuiSvgIcon-root-1"
           color={undefined}
           focusable="false"
           viewBox="0 0 24 24"

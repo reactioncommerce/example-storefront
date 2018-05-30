@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import AppBar from "material-ui/AppBar";
-import Hidden from "material-ui/Hidden";
-import Toolbar from "material-ui/Toolbar";
-import Typography from "material-ui/Typography";
-import { withStyles } from "material-ui/styles";
 import { inject } from "mobx-react";
+import AppBar from "@material-ui/core/AppBar";
+import Hidden from "@material-ui/core/Hidden";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
 import { NavigationDesktop } from "components/NavigationDesktop";
 import { NavigationMobile, NavigationToggleMobile } from "components/NavigationMobile";
 import { CartToggle } from "components/Cart";
