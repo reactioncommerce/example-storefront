@@ -5,9 +5,15 @@ exports[`basic snapshot 1`] = `
   className="WithTracking-Link--link-1"
   href="/next"
   onClick={[Function]}
-  onMouseUp={[Function]}
+  onKeyDown={[Function]}
   role="link"
   tabIndex={0}
+  tracking={
+    Object {
+      "getTrackingData": [Function],
+      "trackEvent": [Function],
+    }
+  }
 >
   Linked
 </a>

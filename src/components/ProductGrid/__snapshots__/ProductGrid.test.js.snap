@@ -73,9 +73,15 @@ exports[`basic snapshot 1`] = `
           className="WithTracking-Link--link-133"
           href="/product/men's-lightweigth-synchilla"
           onClick={[Function]}
-          onMouseUp={[Function]}
+          onKeyDown={[Function]}
           role="link"
           tabIndex={0}
+          tracking={
+            Object {
+              "getTrackingData": [Function],
+              "trackEvent": [Function],
+            }
+          }
         >
           <div
             className="inject-ProductItem-with-uiStore-productMedia-128"
@@ -167,9 +173,15 @@ exports[`basic snapshot 1`] = `
           className="WithTracking-Link--link-133"
           href="/product/example-product"
           onClick={[Function]}
-          onMouseUp={[Function]}
+          onKeyDown={[Function]}
           role="link"
           tabIndex={0}
+          tracking={
+            Object {
+              "getTrackingData": [Function],
+              "trackEvent": [Function],
+            }
+          }
         >
           <div
             className="inject-ProductItem-with-uiStore-productMedia-128"

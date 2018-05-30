@@ -294,9 +294,15 @@ exports[`basic snapshot 1`] = `
                 className="WithTracking-Link--link-136"
                 href="/tag/shoes"
                 onClick={[Function]}
-                onMouseUp={[Function]}
+                onKeyDown={[Function]}
                 role="link"
                 tabIndex={0}
+                tracking={
+                  Object {
+                    "getTrackingData": [Function],
+                    "trackEvent": [Function],
+                  }
+                }
               >
                 <div
                   className="MuiChip-root-137 TagGrid-chip-111"
@@ -320,9 +326,15 @@ exports[`basic snapshot 1`] = `
                 className="WithTracking-Link--link-136"
                 href="/tag/shop"
                 onClick={[Function]}
-                onMouseUp={[Function]}
+                onKeyDown={[Function]}
                 role="link"
                 tabIndex={0}
+                tracking={
+                  Object {
+                    "getTrackingData": [Function],
+                    "trackEvent": [Function],
+                  }
+                }
               >
                 <div
                   className="MuiChip-root-137 TagGrid-chip-111"
