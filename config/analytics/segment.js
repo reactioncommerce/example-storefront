@@ -11,10 +11,11 @@ import * as snippet from "@segment/snippet";
  */
 export function dispatch(data) {
   // Workaround for not being able to use object rest spread
-  const { action } = data;
-  delete data.action;
+  const newData = Object.assign({}, data);
+  const { action } = newData;
+  delete newData.action;
 
-  window && window.analytics && window.analytics.track(action, data);
+  window && window.analytics && window.analytics.track(action, newData);
 }
 
 /**
