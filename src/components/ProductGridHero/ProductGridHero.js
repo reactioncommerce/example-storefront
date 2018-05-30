@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { inject } from "mobx-react";
-import { withStyles } from "material-ui/styles";
-import Grid from "material-ui/Grid";
-import Fade from "material-ui/transitions/Fade";
-import Hidden from "material-ui/Hidden";
+import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Fade from "@material-ui/core/Fade";
+import Hidden from "@material-ui/core/Hidden";
 import LoadingIcon from "mdi-material-ui/Loading";
 
 const styles = (theme) => ({

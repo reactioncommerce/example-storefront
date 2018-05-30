@@ -2,25 +2,25 @@
 
 exports[`basic snapshot 1`] = `
 <section
-  className="ProductGrid-productGridContainer-1"
+  className="ProductGrid-root-1"
 >
   <div
-    className="MuiGrid-container-3 MuiGrid-spacing-xs-24-26 ProductGrid-pageSizeContainer-2"
+    className="MuiGrid-container-3 MuiGrid-spacing-xs-8-24 ProductGrid-filters-2"
   >
     <div
       className="MuiGrid-item-4"
     >
       <div
-        className="MuiInput-root-103"
+        className="MuiInput-root-104 Select-input-98"
       >
         <div
-          className="MuiSelect-root-98"
+          className="MuiSelect-root-99"
         >
           <div
             aria-haspopup="true"
             aria-owns={null}
             aria-pressed="false"
-            className="MuiSelect-select-99 MuiSelect-selectMenu-100 Select-selectMenu-96 MuiInput-input-111"
+            className="MuiSelect-select-100 MuiSelect-selectMenu-101 Select-selectMenu-96 MuiInput-input-112"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -49,7 +49,61 @@ exports[`basic snapshot 1`] = `
           />
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-116 MuiSelect-icon-102"
+            className="MuiSvgIcon-root-117 MuiSelect-icon-103"
+            color={undefined}
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-item-4"
+    >
+      <div
+        className="MuiInput-root-104 Select-input-98"
+      >
+        <div
+          className="MuiSelect-root-99"
+        >
+          <div
+            aria-haspopup="true"
+            aria-owns={null}
+            aria-pressed="false"
+            className="MuiSelect-select-100 MuiSelect-selectMenu-101 Select-selectMenu-96 MuiInput-input-112"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            Newest
+          </div>
+          <input
+            aria-invalid={undefined}
+            aria-required={undefined}
+            autoComplete={undefined}
+            autoFocus={undefined}
+            defaultValue={undefined}
+            id="sort-by"
+            name="sortBy"
+            onKeyDown={undefined}
+            onKeyUp={undefined}
+            placeholder={undefined}
+            readOnly={undefined}
+            required={undefined}
+            rows={undefined}
+            type="hidden"
+            value="newest"
+          />
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-117 MuiSelect-icon-103"
             color={undefined}
             focusable="false"
             viewBox="0 0 24 24"
@@ -70,7 +124,7 @@ exports[`basic snapshot 1`] = `
     >
       <div>
         <a
-          className="WithTracking-Link--link-133"
+          className="WithTracking-Link--link-134"
           href="/product/men's-lightweigth-synchilla"
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -84,13 +138,13 @@ exports[`basic snapshot 1`] = `
           }
         >
           <div
-            className="inject-ProductItem-with-uiStore-productMedia-128"
+            className="inject-ProductItem-with-uiStore-productMedia-129"
           >
             <div
-              className="Badge-badge-134 Badge-status-136 Badge-soldOut-137"
+              className="Badge-badge-135 Badge-status-137 Badge-soldOut-138"
             >
               <span
-                className="Badge-labelStyle-135"
+                className="Badge-labelStyle-136"
               >
                 Sold Out
               </span>
@@ -117,17 +171,17 @@ exports[`basic snapshot 1`] = `
               />
               <img
                 alt=""
-                className="inject-ProductItem-with-uiStore-img-129"
+                className="inject-ProductItem-with-uiStore-img-130"
                 onLoad={[Function]}
                 src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/small/25580_CICN.png"
               />
             </picture>
             <div
-              className="inject-ProductItem-with-uiStore-imgLoading-130"
+              className="inject-ProductItem-with-uiStore-imgLoading-131"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-116 inject-ProductItem-with-uiStore-loadingIcon-131"
+                className="MuiSvgIcon-root-117 inject-ProductItem-with-uiStore-loadingIcon-132"
                 color={undefined}
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -140,15 +194,15 @@ exports[`basic snapshot 1`] = `
           </div>
           <div>
             <div
-              className="inject-ProductItem-with-uiStore-productInfo-127"
+              className="inject-ProductItem-with-uiStore-productInfo-128"
             >
               <aside
-                className="MuiTypography-root-143 MuiTypography-body2-151"
+                className="MuiTypography-root-144 MuiTypography-body2-152"
               >
                 Men's Lightweigth Synchilla
               </aside>
               <p
-                className="MuiTypography-root-143 MuiTypography-body1-152"
+                className="MuiTypography-root-144 MuiTypography-body1-153"
               >
                 $
                 7.99 - 77.99
@@ -156,7 +210,7 @@ exports[`basic snapshot 1`] = `
             </div>
             <div>
               <p
-                className="MuiTypography-root-143 MuiTypography-body1-152"
+                className="MuiTypography-root-144 MuiTypography-body1-153"
               >
                 Patagonia
               </p>
@@ -170,7 +224,7 @@ exports[`basic snapshot 1`] = `
     >
       <div>
         <a
-          className="WithTracking-Link--link-133"
+          className="WithTracking-Link--link-134"
           href="/product/example-product"
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -184,7 +238,7 @@ exports[`basic snapshot 1`] = `
           }
         >
           <div
-            className="inject-ProductItem-with-uiStore-productMedia-128"
+            className="inject-ProductItem-with-uiStore-productMedia-129"
           >
             <picture
               style={
@@ -208,17 +262,17 @@ exports[`basic snapshot 1`] = `
               />
               <img
                 alt=""
-                className="inject-ProductItem-with-uiStore-img-129"
+                className="inject-ProductItem-with-uiStore-img-130"
                 onLoad={[Function]}
                 src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/small/product_image.png"
               />
             </picture>
             <div
-              className="inject-ProductItem-with-uiStore-imgLoading-130"
+              className="inject-ProductItem-with-uiStore-imgLoading-131"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-116 inject-ProductItem-with-uiStore-loadingIcon-131"
+                className="MuiSvgIcon-root-117 inject-ProductItem-with-uiStore-loadingIcon-132"
                 color={undefined}
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -231,15 +285,15 @@ exports[`basic snapshot 1`] = `
           </div>
           <div>
             <div
-              className="inject-ProductItem-with-uiStore-productInfo-127"
+              className="inject-ProductItem-with-uiStore-productInfo-128"
             >
               <aside
-                className="MuiTypography-root-143 MuiTypography-body2-151"
+                className="MuiTypography-root-144 MuiTypography-body2-152"
               >
                 Basic Reaction Product
               </aside>
               <p
-                className="MuiTypography-root-143 MuiTypography-body1-152"
+                className="MuiTypography-root-144 MuiTypography-body1-153"
               >
                 $
                 12.99 - 19.99
@@ -247,7 +301,7 @@ exports[`basic snapshot 1`] = `
             </div>
             <div>
               <p
-                className="MuiTypography-root-143 MuiTypography-body1-152"
+                className="MuiTypography-root-144 MuiTypography-body1-153"
               >
                 Reaction Commerce
               </p>
@@ -258,13 +312,13 @@ exports[`basic snapshot 1`] = `
     </div>
   </div>
   <div
-    className="MuiGrid-container-3 MuiGrid-justify-xs-space-between-22 PageStepper-root-167"
+    className="MuiGrid-container-3 MuiGrid-justify-xs-space-between-22 PageStepper-root-168"
   >
     <div
       className="MuiGrid-item-4"
     >
       <button
-        className="MuiButtonBase-root-184 MuiButton-root-168 MuiButton-raised-174"
+        className="MuiButtonBase-root-185 MuiButton-root-169 MuiButton-raised-175"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -281,12 +335,12 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-169"
+          className="MuiButton-label-170"
         >
           Previous
         </span>
         <span
-          className="MuiTouchRipple-root-187"
+          className="MuiTouchRipple-root-188"
         />
       </button>
     </div>

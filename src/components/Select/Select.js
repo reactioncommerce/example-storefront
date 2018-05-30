@@ -11,16 +11,21 @@ const styles = (theme) => ({
     boxShadow: "none"
   },
   menuItem: {
+    fontSize: "1rem",
     paddingTop: theme.spacing.unit,
     paddingBottom: theme.spacing.unit
   },
   selectMenu: {
+    fontSize: "1rem",
     border: theme.palette.borders.default,
     paddingLeft: theme.spacing.unit,
     borderRadius: theme.borderRadii.default
   },
   selected: {
     backgroundColor: theme.palette.action.hover
+  },
+  input: {
+    width: theme.spacing.unit * 20
   }
 });
 
@@ -31,7 +36,7 @@ class Select extends Component {
     inputProps: PropTypes.object,
     onChange: PropTypes.func.isRequired,
     options: PropTypes.arrayOf(PropTypes.object).isRequired,
-    value: PropTypes.number
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
   }
 
   renderOptions() {
@@ -65,10 +70,8 @@ class Select extends Component {
         classes={{
           selectMenu: classes.selectMenu
         }}
-        input={<Input disableUnderline />}
-        inputProps={{
-          ...inputProps
-        }}
+        input={<Input className={classes.input} disableUnderline />}
+        inputProps={{ ...inputProps }}
         MenuProps={{
           PopoverClasses: {
             paper: classes.popOver

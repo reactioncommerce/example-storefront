@@ -19,7 +19,7 @@ exports[`basic snapshot 1`] = `
       role="button"
       tabIndex={0}
     >
-      20 Products
+      Newest
     </div>
     <input
       aria-invalid={undefined}
@@ -27,8 +27,8 @@ exports[`basic snapshot 1`] = `
       autoComplete={undefined}
       autoFocus={undefined}
       defaultValue={undefined}
-      id="page-size"
-      name="pageSize"
+      id="sort-by"
+      name="sortBy"
       onKeyDown={undefined}
       onKeyUp={undefined}
       placeholder={undefined}
@@ -36,7 +36,7 @@ exports[`basic snapshot 1`] = `
       required={undefined}
       rows={undefined}
       type="hidden"
-      value={20}
+      value="newest"
     />
     <svg
       aria-hidden="true"
