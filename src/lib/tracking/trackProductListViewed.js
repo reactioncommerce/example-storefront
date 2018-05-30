@@ -22,6 +22,7 @@ export default (options) => (Component) => {
 
     if (Array.isArray(catalogItems)) {
       // TODO: conform to segment.io schema
+      // Issue: https://github.com/reactioncommerce/reaction-next-starterkit/issues/56
       // https://segment.com/docs/spec/ecommerce/v2/#product-list-viewed
       products = catalogItems.map((catalogItem) => ({
         product_id: catalogItem.node._id
