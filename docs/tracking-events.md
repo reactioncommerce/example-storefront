@@ -4,11 +4,11 @@
 
 You can see the source under `/lib/tracking`
 
-## Using Segment
+## Set up Segment
 
-By default, this Reaction Starter Kit uses segment analytics tracking.
+By default, this Reaction Starter Kit uses Segment analytics tracking.
 
-### Step 1. Obtain your API key from the segment dashboard
+### Step 1. Obtain your API key from the Segment dashboard
 
 ### Step 2. Add your API key to the `.env` config
 In the `.env` file, at the root of the project, add or update the `SEGMENT_ANALYTICS_WRITE_KEY` variable with your API key
@@ -19,9 +19,9 @@ SEGMENT_ANALYTICS_WRITE_KEY=ENTER_YOUR_SEGMENT_API_KEY
 
 ### Step 3. Test
 
-With the app running, navigate or refresh the current page your own to trigger some tracking events. Visit the segment dashboard and verify that events are coming through successfully.
+With the app running, navigate to different pages to trigger tracking events. Visit the Segment dashboard and verify that events are coming through successfully.
 
-## Add Custom Tracking
+## Add a custom tracking service
 
 ### Step 1: Add a custom tracker
 
@@ -34,16 +34,16 @@ import * as segment from "./segment";
 import * as provider from "./provider";
 
 export default [
-  segment,
+  Segment,
   provider
 ];
 ```
 
 ### Step 2: Customize provider.js
 
-In the provider.js file will contain two function `dispatch` and `renderScript`.
+The `provider.js` file contains two functions you need to customize: `dispatch` and `renderScript`.
 
-Dispatch is the final method that gets called with all accumuliated anilatics data for an event.
+The `dispatch` function gets called with all accumulated analytics data for an event. You must call the provider's API to track the event here.
 
 ```js
 /**
@@ -59,7 +59,7 @@ export function dispatch(data) {
 }
 ```
 
-The `renderStript` function renders a string of javascript code for your tracking service. For example in `segment.js` we render the segment snuppet and return a string of that. This string will included in the document head.
+The `renderStript` function renders a string of javascript code for your tracking service. For example in `Segment.js` we render the Segment snippet and return a string. This string will be included in the document head.
 
 ```js
 /**
@@ -83,7 +83,7 @@ export function renderScript() {
 You should now be able to send tracking data to the provider of your choice.
 
 
-## Add tracking to a page
+## Add a page view event
 
 ```js
 import React, { Component } from "react";
@@ -105,7 +105,7 @@ class Page extends Component {
 
 ```
 
-## Tracking events inside a component
+## Add events inside a component
 
 ```js
 import React, { Component } from "react";
@@ -139,7 +139,7 @@ class Page extends Component {
 
 ```
 
-## Tracking events inside a component and on page load
+## Add events on page load and inside a component
 
 ```js
 import React, { Component } from "react";
@@ -180,9 +180,9 @@ class Page extends Component {
 
 ```
 
-## Track product list viewed event
+## Add a Product List Viewed event
 
-Tracking the `Product List Viewed` segment event using the provided HOC `trackProductListViewed`.
+Tracking the `Product List Viewed` Segment event using the provided HOC `trackProductListViewed`.
 
 ```js
 import React, { Component } from "react";
@@ -216,9 +216,9 @@ class Page extends Component {
 
 ```
 
-## Track product viewed event
+## Add a Product Viewed event
 
-Tracking the `Product Viewed` segment event provided HOC `trackProductViewed`.
+Tracking the `Product Viewed` Segment event provided HOC `trackProductViewed`.
 
 ```js
 import React, { Component } from "react";
