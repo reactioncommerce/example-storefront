@@ -29,7 +29,7 @@ export function renderScript() {
     page: true // Set this to `false` if you want to manually fire `analytics.page()` from within your pages.
   };
 
-  if (segmentAnalytics.env === "development") {
+  if (segmentAnalytics.skipMinimize === true) {
     return snippet.max(opts);
   }
 
