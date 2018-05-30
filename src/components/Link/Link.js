@@ -5,6 +5,7 @@ import { Link as NextLink } from "routes";
 import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 import track from "lib/tracking/track";
+import Anchor from "./Anchor.js";
 
 const styles = ({
   link: {
@@ -14,20 +15,17 @@ const styles = ({
 });
 
 @withStyles(styles)
-@track({ component: "Link" })
+@track((ownProps) => ({
+  component: "Link",
+  url: ownProps.route,
+  params: ownProps.params
+}))
 class Link extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
     classes: PropTypes.object.isRequired
   }
-
-  @track((ownProps) => ({
-    action: "Link Clicked",
-    url: ownProps.route,
-    params: ownProps.params
-  }))
-  trackClick = () => {}
 
   render() {
     const {
@@ -39,15 +37,10 @@ class Link extends Component {
     } = this.props;
 
     return (
-      <NextLink {...props}>
-        <a
-          className={classNames(classes.link, className)}
-          onMouseUp={this.trackClick}
-          role="link"
-          tabIndex={0}
-        >
+      <NextLink {...props} passHref>
+        <Anchor className={classNames(classes.link, className)}>
           {children}
-        </a>
+        </Anchor>
       </NextLink>
     );
   }
