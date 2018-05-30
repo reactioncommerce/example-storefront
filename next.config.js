@@ -28,7 +28,7 @@ const initExport = {
     externalAssetsUrl: process.env.EXTERNAL_ASSETS_URL,
     graphqlUrl: process.env.EXTERNAL_GRAPHQL_URL,
     segmentAnalytics: {
-      env: process.env.SEGMENT_ANALYTICS_ENV,
+      skipMinimize: process.env.SEGMENT_ANALYTICS_SKIP_MINIMIZE === "true", // Convert to a Boolean
       writeKey: process.env.SEGMENT_ANALYTICS_WRITE_KEY
     },
     placeholderImageUrls: {
