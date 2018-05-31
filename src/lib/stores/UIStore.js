@@ -38,6 +38,20 @@ class UIStore {
   @observable pageSize = 20;
 
   /**
+   * The product grid's sorting order
+   *
+   * @type string
+   */
+  @observable sortBy = "updatedAt-desc";
+
+  /**
+   * The sort by currency code
+   *
+   * @type string
+   */
+  @observable sortByCurrencyCode = "USD";
+
+  /**
    * App config data
    * The ID of the option that is selected on the product detail page. This is not
    * tracked per product, so the assumption is that you can only view one detail page
@@ -81,6 +95,10 @@ class UIStore {
 
   @action setPageSize = (size) => {
     this.pageSize = size;
+  }
+
+  @action setSortBy = (sortBy) => {
+    this.sortBy = sortBy;
   }
 }
 
