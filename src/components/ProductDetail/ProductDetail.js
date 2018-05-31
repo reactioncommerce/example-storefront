@@ -4,16 +4,14 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { inject, observer } from "mobx-react";
 import Helmet from "react-helmet";
-
-// PDP Components
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
-
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
 import ProductDetailInfo from "components/ProductDetailInfo";
 import MediaGallery from "components/MediaGallery";
 import TagGrid from "components/TagGrid";
 import { Router } from "routes";
+import { priceByCurrencyCode, variantOrOptionById } from "lib/utils";
 
 const styles = (theme) => ({
   root: {
@@ -42,6 +40,7 @@ class ProductDetail extends Component {
   static propTypes = {
     classes: PropTypes.object,
     product: PropTypes.object,
+    shop: PropTypes.object,
     theme: PropTypes.object,
     uiStore: PropTypes.object.isRequired
   }
@@ -100,13 +99,36 @@ class ProductDetail extends Component {
     this.selectVariant(variant, option._id);
   };
 
+  determineProductPrice() {
+    const { product, shop: { currency: { code: currencyCode } } } = this.props;
+    const { pdpSelectedVariantId, pdpSelectedOptionId } = this.props.uiStore;
+    const selectedVariant = variantOrOptionById(product.variants, pdpSelectedVariantId);
+    let productPrice = {};
+
+    if (pdpSelectedOptionId && selectedVariant) {
+      const selectedOption = variantOrOptionById(selectedVariant.options, pdpSelectedOptionId);
+      productPrice = priceByCurrencyCode(currencyCode, selectedOption.pricing);
+    } else if (!pdpSelectedOptionId && selectedVariant) {
+      productPrice = priceByCurrencyCode(currencyCode, selectedVariant.pricing);
+    }
+
+    return productPrice;
+  }
+
   render() {
-    const { classes, product, theme, uiStore: { pdpSelectedOptionId, pdpSelectedVariantId } } = this.props;
+    const {
+      classes,
+      product,
+      theme,
+      uiStore: { pdpSelectedOptionId, pdpSelectedVariantId }
+    } = this.props;
 
     let pdpProductToAddToCart = pdpSelectedVariantId;
     if (pdpSelectedOptionId) {
       pdpProductToAddToCart = pdpSelectedOptionId;
     }
+
+    const productPrice = this.determineProductPrice();
 
     return (
       <div className={classes.root}>
@@ -130,7 +152,7 @@ class ProductDetail extends Component {
               title={product.title}
             />
             <ProductDetailInfo
-              priceRange={product.price.range}
+              priceRange={productPrice.displayPrice}
               description={product.description}
               vendor={product.vendor}
             />

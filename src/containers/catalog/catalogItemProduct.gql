@@ -9,10 +9,11 @@ query catalogItemProductQuery($slugOrId: String!) {
       isLowQuantity
       isSoldOut
       isBackorder
-      price {
-        range
-        min
-        max
+      pricing {
+        currency {
+          code
+        }
+        displayPrice
       }
       media {
         toGrid
@@ -37,12 +38,24 @@ query catalogItemProductQuery($slugOrId: String!) {
       variants {
         _id
         title
-        price
         optionTitle
+        price
+        pricing {
+          currency {
+            code
+          }
+          displayPrice
+        }
         options {
           _id
           title
           price
+          pricing {
+            currency {
+              code
+            }
+            displayPrice
+          }
           optionTitle
           isSoldOut
           isLowQuantity

@@ -3,5 +3,8 @@ query shopQuery($shopId: ID!) {
     _id
     description
     name
+    currency {
+      code
+    }
   }
 }

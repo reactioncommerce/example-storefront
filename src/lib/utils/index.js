@@ -38,3 +38,31 @@ export function inventoryStatus(product) {
 export function isProductLowQuantity(product) {
   return product.isLowQuantity && !product.isSoldOut;
 }
+
+/**
+ * Determines the pricing a product given a currency code.
+ *
+ * @param {String} currencyCode - the shop's set currency code, i.e. "USD"
+ * @param {Array} pricing - An array of pricing objects with different currencies.
+ * @returns {Object} - pricing object, or null if none found.
+ */
+export function priceByCurrencyCode(currencyCode, pricing) {
+  const _pricing = pricing.find((price) => price.currency.code === currencyCode);
+
+  return _pricing || null;
+}
+
+/**
+ * Find a variant or option by _id
+ *
+ * @param {Array} variants - A list of variants or options
+ * @param {String} variantId - _id of target variant or option
+ * @returns {Object} - found variant or option or null if none found.
+ */
+export function variantOrOptionById(variants, variantId) {
+  const _variant = variants.find((variant) => variant._id === variantId);
+
+  return _variant || null;
+}
+
+

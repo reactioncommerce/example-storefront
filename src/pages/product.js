@@ -16,13 +16,14 @@ class ProductDetailPage extends Component {
     /**
      * Catalog Product item
      */
-    product: PropTypes.object.isRequired
+    product: PropTypes.object.isRequired,
+    shop: PropTypes.object.isRequired
   }
 
   render() {
     return (
       <Layout>
-        <ProductDetail product={this.props.product} />
+        <ProductDetail product={this.props.product} shop={this.props.shop} />
       </Layout>
     );
   }
