@@ -26,7 +26,7 @@ export default (Component) => {
     render() {
       const { primaryShopId, routingStore, uiStore } = this.props;
       const [sortBy, sortOrder] = uiStore.sortBy.split("-");
-      
+
       const variables = {
         shopId: primaryShopId,
         ...paginationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: uiStore.pageSize }),

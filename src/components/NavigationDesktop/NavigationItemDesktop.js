@@ -11,6 +11,7 @@ import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 import { withStyles } from "@material-ui/core/styles";
 import { Router } from "routes";
+import Link from "components/Link";
 
 const styles = (theme) => ({
   popover: {

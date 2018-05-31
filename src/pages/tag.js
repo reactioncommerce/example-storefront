@@ -26,8 +26,11 @@ export default class TagShop extends Component {
     catalogItemsPageInfo: PropTypes.object,
     classes: PropTypes.object,
     routingStore: PropTypes.object,
+    setPageSize: PropTypes.func,
+    setSortBy: PropTypes.func,
     shop: PropTypes.object,
-    tag: PropTypes.object
+    tag: PropTypes.object,
+    uiStore: PropTypes.object
   };
 
   static defaultProps= {
