@@ -40,7 +40,7 @@
     "chalk": "^2.3.2",
     "classnames": "^2.2.5",
     "express": "^4.16.3",
-    "graphql": "^0.13.1",
+    "graphql": "^0.13.2",
     "graphql-tag": "^2.8.0",
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.0",
