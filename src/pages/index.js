@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { observer, inject } from "mobx-react";
 import Helmet from "react-helmet";
-
 import withData from "lib/apollo/withData";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import withRoot from "lib/theme/withRoot";
