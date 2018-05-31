@@ -9,6 +9,12 @@ import Button from "@material-ui/core/Button";
 import AccountIcon from "mdi-material-ui/Account";
 import Popover from "@material-ui/core/Popover";
 
+let Keycloak;
+
+if (typeof window !== "undefined") {
+  Keycloak = require("keycloak-js");
+}
+
 const styles = (theme) => ({
   accountDropdown: {
     width: 320,
@@ -68,6 +74,21 @@ class AccountDropdown extends Component {
     window.location.reload();
   }
 
+  onLogin = () => {
+    const keycloak = new Keycloak({
+      realm: "default",
+      clientId: "account",
+      url: "http://localhost:8080/auth"
+    });
+
+    keycloak.init({ flow: "hybrid" }).then((authenticated) => authenticated).catch(() => {});
+
+    keycloak.login({ redirectUri: "http://localhost:4000/auth" })
+      .catch((error) => {
+        throw error;
+      });
+  }
+
   render() {
     const { classes } = this.props;
     const { anchorElement, token } = this.state;
@@ -96,7 +117,13 @@ class AccountDropdown extends Component {
 
             <DialogActions>
               <Button color="primary" onClick={this.onTokenSave}>
-                {"Save"}
+                Save Token
+              </Button>
+            </DialogActions>
+            <hr/>
+            <DialogActions>
+              <Button color="primary" onClick={this.onLogin}>
+                Login with Keycloak
               </Button>
             </DialogActions>
           </div>
