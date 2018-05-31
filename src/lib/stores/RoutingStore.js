@@ -1,4 +1,4 @@
-import { action, observable } from "mobx";
+import { action, toJS, observable } from "mobx";
 import { Router } from "routes";
 
 /**
@@ -33,7 +33,18 @@ export default class RoutingStore {
    * @returns {String} full url with query string
    */
   @action setSearch(search) {
-    const path = `${this.pathname}?${search}`;
+    const _query = { ...toJS(this.query), ...search };
+
+    let urlQueryString = "";
+    Object.keys(_query).forEach((key, index, arr) => {
+      urlQueryString += `${key}=${_query[key]}`;
+
+      if (index < arr.length - 1) {
+        urlQueryString += "&";
+      }
+    });
+
+    const path = `${this.pathname}?${urlQueryString}`;
     Router.pushRoute(path, path, { shallow: true });
     return path;
   }

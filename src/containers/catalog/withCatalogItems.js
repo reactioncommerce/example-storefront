@@ -24,10 +24,15 @@ export default (Component) => {
     }
 
     render() {
-      const { primaryShopId, routingStore, uiStore: { pageSize } } = this.props || {};
+      const { primaryShopId, routingStore, uiStore } = this.props;
+      const [sortBy, sortOrder] = uiStore.sortBy.split("-");
+
       const variables = {
         shopId: primaryShopId,
-        ...paginationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: pageSize })
+        ...paginationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: uiStore.pageSize }),
+        sortBy,
+        sortByPriceCurrencyCode: uiStore.sortByCurrencyCode,
+        sortOrder
       };
 
       return (
@@ -45,7 +50,7 @@ export default (Component) => {
                   routingStore,
                   data,
                   queryName: "catalogItems",
-                  limit: pageSize
+                  limit: uiStore.pageSize
                 })}
                 catalogItems={catalogItems && catalogItems.edges}
               />
