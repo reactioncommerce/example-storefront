@@ -246,3 +246,57 @@ class Page extends Component {
   }
 }
 ```
+
+# Segment events and data mappings
+
+## Product viewed event
+
+Data for the Segment e-commerce event [Product Viewed](https://segment.com/docs/spec/ecommerce/v2/#product-viewed), will require values from a `CatalogItemProduct` and `CatalogItemVariant`.
+
+```js
+{
+  // ID of top-level product
+  product_id: product._id,
+
+  // SKU
+  sku: product.sku,
+
+  // First tag
+  category: product.tags.edges[0].nodes.name,
+
+  // Title of top level product
+  name: product.title,
+
+  // Vendor field from the top-level product
+  brand: product.vendor,
+
+  // Varaint Id
+  variant: variant.variantId,
+
+  // Price from variant
+  price: variant.price,
+
+  // Quantity not available via GraphQL API
+  // Set to 1 as a default
+  quantity: 1
+
+  // Coupons not available via GraphQL API
+  coupon: null,
+
+  // Products only have currency based on shop
+  currency: shop.currency,
+
+  // Position based off of variant index
+  position: variant.index,
+
+  // Value based off of variant price multiplied by quantity (variant.price * quantity)
+  // In this case, use `variant.price` as there is only 1 for the quantity
+  value: variant.price,
+
+  // Use router to get current url
+  url: router.pathname,
+
+  // Primary image from product
+  image_url: product.primaryImage.URLs.original
+}
+```
