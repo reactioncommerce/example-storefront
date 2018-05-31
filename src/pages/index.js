@@ -38,19 +38,22 @@ class Shop extends Component {
     );
   }
 
+  // TODO: move this handler to _app.js, when it becomes available.
   setPageSize = (pageSize) => {
-    this.props.routingStore.setSearch(`limit=${pageSize}`);
+    this.props.routingStore.setSearch({ limit: pageSize });
     this.props.uiStore.setPageSize(pageSize);
   }
 
+  // TODO: move this handler to _app.js, when it becomes available.
   setSortBy = (sortBy) => {
-    this.props.routingStore.setSearch(`sort=${sortBy}`);
-    // TODO: Update uiStore
+    this.props.routingStore.setSearch({ sortby: sortBy });
+    this.props.uiStore.setSortBy(sortBy);
   }
 
   render() {
     const { catalogItems, catalogItemsPageInfo, uiStore, routingStore } = this.props;
     const pageSize = parseInt(routingStore.query.limit, 10) || uiStore.pageSize;
+    const sortBy = routingStore.query.sortby || uiStore.sortBy;
 
     return (
       <Layout title="Reaction Shop">
@@ -61,7 +64,7 @@ class Shop extends Component {
           pageSize={pageSize}
           setPageSize={this.setPageSize}
           setSortBy={this.setSortBy}
-          sortBy={"newest"}
+          sortBy={sortBy}
         />
       </Layout>
     );

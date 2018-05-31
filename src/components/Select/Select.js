@@ -25,7 +25,7 @@ const styles = (theme) => ({
     backgroundColor: theme.palette.action.hover
   },
   input: {
-    width: theme.spacing.unit * 20
+    width: theme.spacing.unit * 21
   }
 });
 

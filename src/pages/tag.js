@@ -47,8 +47,22 @@ export default class TagShop extends Component {
     );
   }
 
+  // TODO: move this handler to _app.js, when it becomes available.
+  setPageSize = (pageSize) => {
+    this.props.routingStore.setSearch({ limit: pageSize });
+    this.props.uiStore.setPageSize(pageSize);
+  }
+
+  // TODO: move this handler to _app.js, when it becomes available.
+  setSortBy = (sortBy) => {
+    this.props.routingStore.setSearch({ sortby: sortBy });
+    this.props.uiStore.setSortBy(sortBy);
+  }
+
   render() {
-    const { catalogItems, catalogItemsPageInfo, tag } = this.props;
+    const { catalogItems, catalogItemsPageInfo, routingStore, uiStore, tag } = this.props;
+    const pageSize = parseInt(routingStore.query.limit, 10) || uiStore.pageSize;
+    const sortBy = routingStore.query.sortby || uiStore.sortBy;
 
     return (
       <Layout title="Reaction Shop">
@@ -57,6 +71,10 @@ export default class TagShop extends Component {
         <ProductGrid
           catalogItems={catalogItems}
           pageInfo={catalogItemsPageInfo}
+          pageSize={pageSize}
+          setPageSize={this.setPageSize}
+          setSortBy={this.setSortBy}
+          sortBy={sortBy}
         />
       </Layout>
     );

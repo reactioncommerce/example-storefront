@@ -5,15 +5,15 @@ import Select from "components/Select";
 const SORT_BY = [
   {
     name: "Newest",
-    value: "newest"
+    value: "updatedAt-desc"
   },
   {
     name: "Price: low to high",
-    value: "price-low-high"
+    value: "minPrice-asc"
   },
   {
     name: "Price: high to low",
-    value: "price-high-low"
+    value: "minPrice-desc"
   }
 ];
 
