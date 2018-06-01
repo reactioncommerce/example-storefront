@@ -12,7 +12,7 @@ import trackProductViewed from "lib/tracking/trackProductViewed";
 @withRoot
 @withShop
 @withCatalogItemProduct
-@trackProductViewed({ dispatchOnMount: true })
+@trackProductViewed()
 class ProductDetailPage extends Component {
   static propTypes = {
     /**
