@@ -220,23 +220,36 @@ class Page extends Component {
 
 Tracking the `Product Viewed` Segment event provided HOC `trackProductViewed`.
 
+See `src/components/ProductDetail/ProductDetail.js` for the full example.
+
 ```js
 import React, { Component } from "react";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import track from "lib/tracking/track";
 import withTracking from "lib/tracking/withTracking";
-import trackProductListViewed from "lib/tracking/trackProductViewed";
+import trackProductViewed from "lib/tracking/trackProductViewed";
+import getVariantTrackingData from "lib/tracking/utils/getVariantTrackingData";
 
 @withData // Apollo initialization
 @withRoot // General app initialization
 @withShop // Get current shop data
 @withCatalogItemProduct // Product for page with route of `/product/:slugOrId/:variantId?`
 @withTracking // Root level tracking dispatch
-@trackProductViewed({
-  // Dispatch event Page component mount
-  dispatchOnMount: true
-})
+@trackProductViewed() // expects the prop `product`
 class Page extends Component {
+
+  componentDidMount() {
+    const { product } = this.props;
+
+    // Select first variant by default
+    this.selectVariant(product.variants[0]);
+  }
+
+  @track((props, state, [variant]) => getVariantTrackingData(variant))
+  selectVariant(variant) {
+    // Do something with selected variant
+  }
+
   render() {
     return (
       <div>
