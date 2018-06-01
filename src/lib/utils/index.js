@@ -53,11 +53,11 @@ export function priceByCurrencyCode(currencyCode, pricing) {
 }
 
 /**
- * Find a variant or option by _id
+ * Find a variant by _id
  *
- * @param {Array} variants - A list of variants or options
- * @param {String} variantId - _id of target variant or option
- * @returns {Object} - found variant or option or null if none found.
+ * @param {Array} variants - A list of variants
+ * @param {String} variantId - _id of target variant
+ * @returns {Object} - target variant or null if none found.
  */
 export function variantById(variants, variantId) {
   const _variant = variants.find((variant) => variant._id === variantId);
