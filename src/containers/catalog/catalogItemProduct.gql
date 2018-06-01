@@ -14,6 +14,11 @@ query catalogItemProductQuery($slugOrId: String!) {
         min
         max
       }
+      shop {
+        currency {
+          code
+        }
+      }
       media {
         toGrid
         priority
@@ -36,6 +41,7 @@ query catalogItemProductQuery($slugOrId: String!) {
       }
       variants {
         _id
+        variantId
         title
         price
         optionTitle
