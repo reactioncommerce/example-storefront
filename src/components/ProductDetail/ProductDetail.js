@@ -119,6 +119,7 @@ class ProductDetail extends Component {
     const {
       classes,
       product,
+      shop,
       theme,
       uiStore: { pdpSelectedOptionId, pdpSelectedVariantId }
     } = this.props;
@@ -162,6 +163,7 @@ class ProductDetail extends Component {
               product={product}
               selectedOptionId={pdpSelectedOptionId}
               selectedVariantId={pdpSelectedVariantId}
+              currencyCode={shop.currency.code}
               variants={product.variants}
             />
             <ProductDetailAddToCart variantId={pdpProductToAddToCart} />

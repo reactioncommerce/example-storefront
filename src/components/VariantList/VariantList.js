@@ -27,6 +27,7 @@ const styles = (theme) => ({
 export default class VariantList extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    currencyCode: PropTypes.string,
     onSelectOption: PropTypes.func,
     onSelectVariant: PropTypes.func,
     product: PropTypes.object.isRequired,
@@ -36,13 +37,14 @@ export default class VariantList extends Component {
   }
 
   renderVariant = (variant) => {
-    const { classes, onSelectVariant, selectedVariantId } = this.props;
+    const { classes, currencyCode, onSelectVariant, selectedVariantId } = this.props;
 
     const active = (selectedVariantId === variant._id);
 
     return (
       <div className={classes.variantItem} key={variant._id}>
         <VariantItem
+          currencyCode={currencyCode}
           handleClick={() => { onSelectVariant(variant); }}
           isActive={active}
           variant={variant}

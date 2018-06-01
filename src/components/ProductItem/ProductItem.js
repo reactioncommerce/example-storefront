@@ -120,6 +120,7 @@ class ProductItem extends Component {
   renderProductInfo() {
     const { classes, product: { price, title, vendor } } = this.props;
     const { range: priceRange } = price || {};
+    
     return (
       <div >
         <div className={classes.productInfo}>
