@@ -3,9 +3,18 @@
 exports[`basic snapshot 1`] = `
 <div>
   <a
-    className="Link-link-8"
+    className="WithTracking-Link--link-8"
     href="/product/undefined"
     onClick={[Function]}
+    onKeyDown={[Function]}
+    role="link"
+    tabIndex={0}
+    tracking={
+      Object {
+        "getTrackingData": [Function],
+        "trackEvent": [Function],
+      }
+    }
   >
     <div
       className="inject-ProductItem-with-uiStore-productMedia-3"

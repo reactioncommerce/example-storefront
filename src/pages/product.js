@@ -6,11 +6,13 @@ import withShop from "containers/shop/withShop";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import Layout from "components/Layout";
 import ProductDetail from "components/ProductDetail";
+import trackProductViewed from "lib/tracking/trackProductViewed";
 
 @withData
 @withRoot
 @withShop
 @withCatalogItemProduct
+@trackProductViewed({ dispatchOnMount: true })
 class ProductDetailPage extends Component {
   static propTypes = {
     /**

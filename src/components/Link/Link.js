@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { Link as NextLink } from "routes";
 import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
+import track from "lib/tracking/track";
+import Anchor from "./Anchor.js";
 
 const styles = ({
   link: {
@@ -13,6 +15,11 @@ const styles = ({
 });
 
 @withStyles(styles)
+@track((ownProps) => ({
+  component: "Link",
+  url: ownProps.route,
+  params: ownProps.params
+}))
 class Link extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
@@ -21,15 +28,20 @@ class Link extends Component {
   }
 
   render() {
-    const { classes, children, className, ...props } = this.props;
+    const {
+      classes,
+      children,
+      className,
+      tracking, // eslint-disable-line
+      ...props
+    } = this.props;
 
     return (
-      <NextLink {...props}>
-        <a className={classNames(classes.link, className)}>
+      <NextLink {...props} passHref>
+        <Anchor className={classNames(classes.link, className)}>
           {children}
-        </a>
+        </Anchor>
       </NextLink>
-
     );
   }
 }

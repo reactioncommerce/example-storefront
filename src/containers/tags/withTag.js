@@ -15,11 +15,11 @@ export default (Component) => (
       /**
        * slug used to obtain tag info
        */
-      url: PropTypes.object.isRequired
+      router: PropTypes.object.isRequired
     }
 
     render() {
-      const { url: { query: { slug: tag } } } = this.props;
+      const { router: { query: { slug: tag } } } = this.props;
 
       return (
         <Query query={tagQuery} variables={{ slugOrId: tag }}>

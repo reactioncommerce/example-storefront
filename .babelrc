@@ -15,21 +15,21 @@
   "env": {
     "development": {
       "plugins": [
-        ["module-resolver", {"root": ["./src"]}],
+        ["module-resolver", {"root": ["./src", "./config"]}],
         "transform-decorators-legacy",
         "transform-class-properties"
       ]
     },
     "production": {
       "plugins": [
-        ["module-resolver", {"root": ["./src"]}],
+        ["module-resolver", {"root": ["./src", "./config"]}],
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         ["@babel/plugin-proposal-class-properties", { "loose": true }]
       ]
     },
     "jesttest": {
       "plugins": [
-        ["module-resolver", {"root": ["./src"]}],
+        ["module-resolver", {"root": ["./src", "./config"]}],
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         ["@babel/plugin-proposal-class-properties", { "loose": true }]
       ]

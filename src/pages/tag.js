@@ -10,7 +10,7 @@ import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
 import ProductGridHero from "components/ProductGridHero";
-
+import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
 @withData
 @withRoot
@@ -19,6 +19,7 @@ import ProductGridHero from "components/ProductGridHero";
 @inject("shop")
 @inject("routingStore")
 @withTag
+@trackProductListViewed({ dispatchOnMount: true })
 @observer
 export default class TagShop extends Component {
   static propTypes = {

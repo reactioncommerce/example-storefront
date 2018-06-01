@@ -14,9 +14,18 @@ exports[`basic snapshot 1`] = `
       className="MuiGrid-item-28"
     >
       <a
-        className="Link-link-118"
+        className="WithTracking-Link--link-118"
         href="/tag/shoes"
         onClick={[Function]}
+        onKeyDown={[Function]}
+        role="link"
+        tabIndex={0}
+        tracking={
+          Object {
+            "getTrackingData": [Function],
+            "trackEvent": [Function],
+          }
+        }
       >
         <div
           className="MuiChip-root-119 TagGrid-chip-2"
@@ -37,9 +46,18 @@ exports[`basic snapshot 1`] = `
       className="MuiGrid-item-28"
     >
       <a
-        className="Link-link-118"
+        className="WithTracking-Link--link-118"
         href="/tag/shop"
         onClick={[Function]}
+        onKeyDown={[Function]}
+        role="link"
+        tabIndex={0}
+        tracking={
+          Object {
+            "getTrackingData": [Function],
+            "trackEvent": [Function],
+          }
+        }
       >
         <div
           className="MuiChip-root-119 TagGrid-chip-2"
