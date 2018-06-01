@@ -11,7 +11,6 @@ test("getVariantTrackingData should return partial data for tracking with segmen
   const data = getVariantTrackingData(variant);
 
   const result = {
-    action: "Product Viewed",
     variant: "1234",
     price: 19.99,
     quantity: 1,
