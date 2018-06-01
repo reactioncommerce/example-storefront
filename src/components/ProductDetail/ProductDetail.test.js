@@ -18,17 +18,11 @@ const uiStore = {
   setPDPSelectedVariantId: jest.fn().mockName("uiStore.setPDPSelectedVariantId")
 };
 
-const shop = {
-  currency: {
-    code: "USD"
-  }
-};
-
 test("basic snapshot", () => {
   const component = renderer.create((
     <MuiThemeProvider theme={theme}>
       <Provider uiStore={uiStore}>
-        <ProductDetail product={sampleData} shop={shop} />
+        <ProductDetail product={sampleData} currencyCode={"USD"} />
       </Provider>
     </MuiThemeProvider>
   ));
