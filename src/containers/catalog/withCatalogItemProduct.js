@@ -16,11 +16,11 @@ export default (Component) => (
   @observer
   class WithCatalogItem extends React.Component {
     static propTypes = {
-      url: PropTypes.object.isRequired
+      router: PropTypes.object.isRequired
     }
 
     render() {
-      const { slugOrId } = this.props.url.query;
+      const { slugOrId } = this.props.router.query;
 
       return (
         <Query query={catalogItemProductQuery} variables={{ slugOrId }}>

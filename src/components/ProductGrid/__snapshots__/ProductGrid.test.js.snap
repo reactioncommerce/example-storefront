@@ -124,9 +124,18 @@ exports[`basic snapshot 1`] = `
     >
       <div>
         <a
-          className="Link-link-134"
+          className="WithTracking-Link--link-134"
           href="/product/men's-lightweigth-synchilla"
           onClick={[Function]}
+          onKeyDown={[Function]}
+          role="link"
+          tabIndex={0}
+          tracking={
+            Object {
+              "getTrackingData": [Function],
+              "trackEvent": [Function],
+            }
+          }
         >
           <div
             className="inject-ProductItem-with-uiStore-productMedia-129"
@@ -214,9 +223,18 @@ exports[`basic snapshot 1`] = `
     >
       <div>
         <a
-          className="Link-link-134"
+          className="WithTracking-Link--link-134"
           href="/product/example-product"
           onClick={[Function]}
+          onKeyDown={[Function]}
+          role="link"
+          tabIndex={0}
+          tracking={
+            Object {
+              "getTrackingData": [Function],
+              "trackEvent": [Function],
+            }
+          }
         >
           <div
             className="inject-ProductItem-with-uiStore-productMedia-129"

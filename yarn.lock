@@ -855,9 +855,31 @@
     scroll "^2.0.3"
     warning "^3.0.0"
 
+"@ndhoule/each@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@ndhoule/each/-/each-2.0.1.tgz#bbed372a603e0713a3193c706a73ddebc5b426a9"
+  dependencies:
+    "@ndhoule/keys" "^2.0.0"
+
+"@ndhoule/keys@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@ndhoule/keys/-/keys-2.0.0.tgz#3d64ae677c65a261747bf3a457c62eb292a4e0ce"
+
+"@ndhoule/map@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@ndhoule/map/-/map-2.0.1.tgz#f5ca0a47424ea67f46e2a6d499b9e9bc886aefa8"
+  dependencies:
+    "@ndhoule/each" "^2.0.1"
+
 "@reactioncommerce/eslint-config@^1.7.0":
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/@reactioncommerce/eslint-config/-/eslint-config-1.7.0.tgz#2d7523651a9d787d8504ee84545f6a6babf5998d"
+
+"@segment/snippet@^4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@segment/snippet/-/snippet-4.3.1.tgz#11c345eb88ea5c64879212ae81a67da0f6e7a80c"
+  dependencies:
+    "@ndhoule/map" "^2.0.1"
 
 "@types/async@2.0.49":
   version "2.0.49"
@@ -6086,6 +6108,13 @@ react-test-renderer@^16.0.0-0, react-test-renderer@^16.3.1:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
     react-is "^16.3.2"
+
+react-tracking@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/react-tracking/-/react-tracking-5.2.1.tgz#3eb0e580fd740252aa7ce9d8fb0e9e9408921a44"
+  dependencies:
+    deepmerge "^2.0.1"
+    hoist-non-react-statics "^2.3.1"
 
 react-transition-group@^2.2.1:
   version "2.3.1"

@@ -2,7 +2,6 @@
 
 exports[`basic snapshot 1`] = `
 <a
-  className="WithTracking-Link--link-1"
   href="/next"
   onClick={[Function]}
   onKeyDown={[Function]}
@@ -15,6 +14,6 @@ exports[`basic snapshot 1`] = `
     }
   }
 >
-  Linked
+  Next
 </a>
 `;
