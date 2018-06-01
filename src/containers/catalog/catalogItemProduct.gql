@@ -37,6 +37,7 @@ query catalogItemProductQuery($slugOrId: String!) {
       }
       variants {
         _id
+        variantId
         title
         optionTitle
         pricing {
@@ -47,6 +48,7 @@ query catalogItemProductQuery($slugOrId: String!) {
         }
         options {
           _id
+          variantId
           title
           pricing {
             currency {
