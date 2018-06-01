@@ -24,6 +24,7 @@ export default class ProductGrid extends Component {
   static propTypes = {
     catalogItems: PropTypes.arrayOf(PropTypes.object),
     classes: PropTypes.object,
+    currencyCode: PropTypes.string,
     pageInfo: PropTypes.shape({
       startCursor: PropTypes.string,
       endCursor: PropTypes.string,
@@ -38,8 +39,9 @@ export default class ProductGrid extends Component {
     sortBy: PropTypes.string.isRequired
   };
 
-  renderProduct(edge) {
+  renderProduct = (edge) => {
     const { node: { product } } = edge;
+    const { currencyCode } = this.props;
     const { _id } = product;
     const gridItemProps = {
       key: _id,
@@ -47,9 +49,10 @@ export default class ProductGrid extends Component {
       sm: 4,
       md: 3
     };
+
     return (
       <Grid item {...gridItemProps}>
-        <ProductItem product={product} />
+        <ProductItem product={product} currencyCode={currencyCode} />
       </Grid>
     );
   }
