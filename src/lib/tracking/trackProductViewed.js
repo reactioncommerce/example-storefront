@@ -9,21 +9,19 @@ import getProductTrackingData from "./utils/getProductTrackingData";
  */
 export default (options) => (
   track(({ product, router }) => {
-    let data = {
-      action: "Product Viewed"
-    };
+    let data = {};
 
     // If product data is provided as a prop, then process the data for tracking
     if (product) {
       data = {
-        ...data,
+        action: "Product Viewed",
         ...getProductTrackingData(product)
       };
-    }
 
-    // If the router is provided as a prop, set the url of the product to the current path
-    if (router) {
-      data.url = router.asPath;
+      // If the router is provided as a prop, set the url of the product to the current path
+      if (router) {
+        data.url = router.asPath;
+      }
     }
 
     return data;
