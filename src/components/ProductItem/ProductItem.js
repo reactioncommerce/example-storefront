@@ -17,7 +17,7 @@ import { styles } from "./styles";
 class ProductItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    currencyCode: PropTypes.string,
+    currencyCode: PropTypes.string.isRequired,
     product: PropTypes.object,
     theme: PropTypes.object,
     uiStore: PropTypes.object.isRequired

@@ -24,7 +24,7 @@ export default class ProductGrid extends Component {
   static propTypes = {
     catalogItems: PropTypes.arrayOf(PropTypes.object),
     classes: PropTypes.object,
-    currencyCode: PropTypes.string,
+    currencyCode: PropTypes.string.isRequired,
     pageInfo: PropTypes.shape({
       startCursor: PropTypes.string,
       endCursor: PropTypes.string,

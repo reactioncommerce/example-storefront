@@ -27,7 +27,7 @@ const styles = (theme) => ({
 export default class VariantList extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    currencyCode: PropTypes.string,
+    currencyCode: PropTypes.string.isRequired,
     onSelectOption: PropTypes.func,
     onSelectVariant: PropTypes.func,
     product: PropTypes.object.isRequired,

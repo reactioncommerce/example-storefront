@@ -17,13 +17,19 @@ class ProductDetailPage extends Component {
      * Catalog Product item
      */
     product: PropTypes.object.isRequired,
-    shop: PropTypes.object.isRequired
+    shop: PropTypes.shape({
+      currency: PropTypes.shape({
+        code: PropTypes.string.isRequired
+      })
+    })
   }
 
   render() {
+    const currencyCode = this.props.shop.currency.code || "USD";
+
     return (
       <Layout>
-        <ProductDetail product={this.props.product} shop={this.props.shop} />
+        <ProductDetail product={this.props.product} currencyCode={currencyCode} />
       </Layout>
     );
   }
