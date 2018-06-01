@@ -88,10 +88,7 @@ You should now be able to send tracking data to the provider of your choice.
 ```js
 import React, { Component } from "react";
 import track from "react-tracking";
-import withTrackingDispatch from "lib/tracking/withTrackingDispatch";
-import withTracking from "lib/tracking/withTracking";
 
-@withTracking
 @track(() => ({
   action: "Page Viewed"
 }), {
@@ -111,9 +108,8 @@ class Page extends Component {
 import React, { Component } from "react";
 import track from "react-tracking";
 import TrackingPropType from "lib/tracking/TrackingPropType";
-import withTracking from "lib/tracking/withTracking";
 
-@withTracking
+@track({ page: "SomePage" })
 class Page extends Component {
   static propTypes = {
     tracking: TrackingPropType
@@ -145,9 +141,7 @@ class Page extends Component {
 import React, { Component } from "react";
 import track from "react-tracking";
 import TrackingPropType from "lib/tracking/TrackingPropType";
-import withTracking from "lib/tracking/withTracking";
 
-@withTracking
 @track(() => ({
   action: "Page Viewed"
 }), {
@@ -188,14 +182,12 @@ Tracking the `Product List Viewed` Segment event using the provided HOC `trackPr
 import React, { Component } from "react";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import track from "lib/tracking/track";
-import withTracking from "lib/tracking/withTracking";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
 @withData // Apollo initialization
 @withRoot // General app initialization
 @withShop // Get current shop data
 @withCatalogItems // Get catalog items for the current page
-@withTracking // Root level tracking dispatch
 @trackProductListViewed({
   // Dispatch event Page component mount
   dispatchOnMount: true
@@ -226,7 +218,6 @@ See `src/components/ProductDetail/ProductDetail.js` for the full example.
 import React, { Component } from "react";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import track from "lib/tracking/track";
-import withTracking from "lib/tracking/withTracking";
 import trackProductViewed from "lib/tracking/trackProductViewed";
 import getVariantTrackingData from "lib/tracking/utils/getVariantTrackingData";
 
@@ -234,7 +225,6 @@ import getVariantTrackingData from "lib/tracking/utils/getVariantTrackingData";
 @withRoot // General app initialization
 @withShop // Get current shop data
 @withCatalogItemProduct // Product for page with route of `/product/:slugOrId/:variantId?`
-@withTracking // Root level tracking dispatch
 @trackProductViewed() // expects the prop `product`
 class Page extends Component {
 

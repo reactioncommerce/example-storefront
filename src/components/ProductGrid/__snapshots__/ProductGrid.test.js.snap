@@ -204,8 +204,7 @@ exports[`basic snapshot 1`] = `
               <p
                 className="MuiTypography-root-144 MuiTypography-body1-153"
               >
-                $
-                7.99 - 77.99
+                $12.99 - $19.99
               </p>
             </div>
             <div>
@@ -295,8 +294,7 @@ exports[`basic snapshot 1`] = `
               <p
                 className="MuiTypography-root-144 MuiTypography-body1-153"
               >
-                $
-                12.99 - 19.99
+                $12.99 - $19.99
               </p>
             </div>
             <div>

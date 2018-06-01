@@ -14,6 +14,7 @@ const uiStore = {
       externalAssetsUrl: ""
     }
   },
+  pdpSelectedVariantId: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OjZxaXFQd0JrZUpkdGRRYzRH",
   setPDPSelectedVariantId: jest.fn().mockName("uiStore.setPDPSelectedVariantId")
 };
 
@@ -21,7 +22,7 @@ test("basic snapshot", () => {
   const component = renderer.create((
     <MuiThemeProvider theme={theme}>
       <Provider uiStore={uiStore}>
-        <ProductDetail product={sampleData} />
+        <ProductDetail product={sampleData} currencyCode={"USD"} />
       </Provider>
     </MuiThemeProvider>
   ));

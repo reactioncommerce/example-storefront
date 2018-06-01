@@ -21,10 +21,11 @@ query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt, $last:  Connec
             isLowQuantity
             isSoldOut
             isBackorder
-            price {
-              range
-              min
-              max
+            pricing {
+              currency {
+                code
+              }
+              displayPrice
             }
             primaryImage {
               URLs {

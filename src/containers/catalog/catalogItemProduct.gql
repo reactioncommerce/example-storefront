@@ -9,10 +9,11 @@ query catalogItemProductQuery($slugOrId: String!) {
       isLowQuantity
       isSoldOut
       isBackorder
-      price {
-        range
-        min
-        max
+      pricing {
+        currency {
+          code
+        }
+        displayPrice
       }
       shop {
         currency {
@@ -43,12 +44,23 @@ query catalogItemProductQuery($slugOrId: String!) {
         _id
         variantId
         title
-        price
         optionTitle
+        pricing {
+          currency {
+            code
+          }
+          displayPrice
+        }
         options {
           _id
+          variantId
           title
-          price
+          pricing {
+            currency {
+              code
+            }
+            displayPrice
+          }
           optionTitle
           isSoldOut
           isLowQuantity

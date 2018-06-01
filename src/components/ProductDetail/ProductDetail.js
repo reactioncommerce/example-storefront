@@ -7,16 +7,14 @@ import Helmet from "react-helmet";
 import trackProductViewed from "lib/tracking/trackProductViewed";
 import track from "lib/tracking/track";
 import getVariantTrackingData from "lib/tracking/utils/getVariantTrackingData";
-
-// PDP Components
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
-
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
 import ProductDetailInfo from "components/ProductDetailInfo";
 import MediaGallery from "components/MediaGallery";
 import TagGrid from "components/TagGrid";
 import { Router } from "routes";
+import { priceByCurrencyCode, variantById } from "lib/utils";
 
 const styles = (theme) => ({
   root: {
@@ -45,6 +43,7 @@ const styles = (theme) => ({
 class ProductDetail extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    currencyCode: PropTypes.string.isRequired,
     product: PropTypes.object,
     theme: PropTypes.object,
     uiStore: PropTypes.object.isRequired
@@ -105,13 +104,43 @@ class ProductDetail extends Component {
     this.selectVariant(variant, option._id);
   };
 
+  /**
+   * @name determineProductPrice
+   * @description Determines a product's price given the shop's currency code. It will
+   * use the selected option if available, otherwise it will use the selected variant.
+   * @returns {Object} An pricing object
+   */
+  determineProductPrice() {
+    const { currencyCode, product } = this.props;
+    const { pdpSelectedVariantId, pdpSelectedOptionId } = this.props.uiStore;
+    const selectedVariant = variantById(product.variants, pdpSelectedVariantId);
+    let productPrice = {};
+
+    if (pdpSelectedOptionId && selectedVariant) {
+      const selectedOption = variantById(selectedVariant.options, pdpSelectedOptionId);
+      productPrice = priceByCurrencyCode(currencyCode, selectedOption.pricing);
+    } else if (!pdpSelectedOptionId && selectedVariant) {
+      productPrice = priceByCurrencyCode(currencyCode, selectedVariant.pricing);
+    }
+
+    return productPrice;
+  }
+
   render() {
-    const { classes, product, theme, uiStore: { pdpSelectedOptionId, pdpSelectedVariantId } } = this.props;
+    const {
+      classes,
+      product,
+      currencyCode,
+      theme,
+      uiStore: { pdpSelectedOptionId, pdpSelectedVariantId }
+    } = this.props;
 
     let pdpProductToAddToCart = pdpSelectedVariantId;
     if (pdpSelectedOptionId) {
       pdpProductToAddToCart = pdpSelectedOptionId;
     }
+
+    const productPrice = this.determineProductPrice();
 
     return (
       <div className={classes.root}>
@@ -135,7 +164,7 @@ class ProductDetail extends Component {
               title={product.title}
             />
             <ProductDetailInfo
-              priceRange={product.price.range}
+              priceRange={productPrice.displayPrice}
               description={product.description}
               vendor={product.vendor}
             />
@@ -145,6 +174,7 @@ class ProductDetail extends Component {
               product={product}
               selectedOptionId={pdpSelectedOptionId}
               selectedVariantId={pdpSelectedVariantId}
+              currencyCode={currencyCode}
               variants={product.variants}
             />
             <ProductDetailAddToCart variantId={pdpProductToAddToCart} />

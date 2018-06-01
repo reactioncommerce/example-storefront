@@ -23,11 +23,16 @@ export default [
             large: "/assets/files/Media/aHEWna7yeBvNFM9bL/large/25580_CICN.jpg"
           }
         },
-        price: {
-          range: "7.99 - 77.99",
-          min: "7.99",
-          max: "77.99"
-        }
+        pricing: [
+          {
+            currency: {
+              code: "USD"
+            },
+            compareAtPrice: null,
+            price: 19.99,
+            displayPrice: "$12.99 - $19.99"
+          }
+        ]
       },
       positions: [
         {
@@ -62,11 +67,16 @@ export default [
             large: "/assets/files/Media/mmY4m9gwPK2uFEZ8w/large/product_image.jpg"
           }
         },
-        price: {
-          range: "12.99 - 19.99",
-          min: 12.99,
-          max: 19.99
-        }
+        pricing: [
+          {
+            currency: {
+              code: "USD"
+            },
+            compareAtPrice: null,
+            price: 19.99,
+            displayPrice: "$12.99 - $19.99"
+          }
+        ]
       },
       positions: [
         {

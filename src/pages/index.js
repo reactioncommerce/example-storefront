@@ -52,7 +52,7 @@ class Shop extends Component {
   }
 
   render() {
-    const { catalogItems, catalogItemsPageInfo, uiStore, routingStore } = this.props;
+    const { catalogItems, catalogItemsPageInfo, uiStore, routingStore, shop } = this.props;
     const pageSize = parseInt(routingStore.query.limit, 10) || uiStore.pageSize;
     const sortBy = routingStore.query.sortby || uiStore.sortBy;
 
@@ -61,6 +61,7 @@ class Shop extends Component {
         {this.renderHelmet()}
         <ProductGrid
           catalogItems={catalogItems}
+          currencyCode={shop.currency.code}
           pageInfo={catalogItemsPageInfo}
           pageSize={pageSize}
           setPageSize={this.setPageSize}
