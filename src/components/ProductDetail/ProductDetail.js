@@ -11,7 +11,7 @@ import ProductDetailInfo from "components/ProductDetailInfo";
 import MediaGallery from "components/MediaGallery";
 import TagGrid from "components/TagGrid";
 import { Router } from "routes";
-import { priceByCurrencyCode, variantOrOptionById } from "lib/utils";
+import { priceByCurrencyCode, variantById } from "lib/utils";
 
 const styles = (theme) => ({
   root: {
@@ -39,8 +39,8 @@ const styles = (theme) => ({
 class ProductDetail extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    currencyCode: PropTypes.string.isRequired,
     product: PropTypes.object,
-    shop: PropTypes.object,
     theme: PropTypes.object,
     uiStore: PropTypes.object.isRequired
   }
@@ -99,14 +99,20 @@ class ProductDetail extends Component {
     this.selectVariant(variant, option._id);
   };
 
+  /**
+   * @name determineProductPrice
+   * @description Determines a product's price given the shop's currency code. It will
+   * use the selected option if available, otherwise it will use the selected variant.
+   * @returns {Object} An pricing object
+   */
   determineProductPrice() {
-    const { product, shop: { currency: { code: currencyCode } } } = this.props;
+    const { currencyCode, product } = this.props;
     const { pdpSelectedVariantId, pdpSelectedOptionId } = this.props.uiStore;
-    const selectedVariant = variantOrOptionById(product.variants, pdpSelectedVariantId);
+    const selectedVariant = variantById(product.variants, pdpSelectedVariantId);
     let productPrice = {};
 
     if (pdpSelectedOptionId && selectedVariant) {
-      const selectedOption = variantOrOptionById(selectedVariant.options, pdpSelectedOptionId);
+      const selectedOption = variantById(selectedVariant.options, pdpSelectedOptionId);
       productPrice = priceByCurrencyCode(currencyCode, selectedOption.pricing);
     } else if (!pdpSelectedOptionId && selectedVariant) {
       productPrice = priceByCurrencyCode(currencyCode, selectedVariant.pricing);
@@ -119,7 +125,7 @@ class ProductDetail extends Component {
     const {
       classes,
       product,
-      shop,
+      currencyCode,
       theme,
       uiStore: { pdpSelectedOptionId, pdpSelectedVariantId }
     } = this.props;
@@ -163,7 +169,7 @@ class ProductDetail extends Component {
               product={product}
               selectedOptionId={pdpSelectedOptionId}
               selectedVariantId={pdpSelectedVariantId}
-              currencyCode={shop.currency.code}
+              currencyCode={currencyCode}
               variants={product.variants}
             />
             <ProductDetailAddToCart variantId={pdpProductToAddToCart} />
