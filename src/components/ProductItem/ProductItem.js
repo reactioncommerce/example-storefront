@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
 import Link from "components/Link";
 import Badge from "components/Badge";
-import { inventoryStatus, isProductLowQuantity, INVENTORY_STATUS } from "lib/utils";
+import { inventoryStatus, isProductLowQuantity, INVENTORY_STATUS, priceByCurrencyCode } from "lib/utils";
 import { styles } from "./styles";
 
 @withStyles(styles, { withTheme: true })
@@ -17,6 +17,7 @@ import { styles } from "./styles";
 class ProductItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    currencyCode: PropTypes.string.isRequired,
     product: PropTypes.object,
     theme: PropTypes.object,
     uiStore: PropTypes.object.isRequired
@@ -118,15 +119,16 @@ class ProductItem extends Component {
   }
 
   renderProductInfo() {
-    const { classes, product: { price, title, vendor } } = this.props;
-    const { range: priceRange } = price || {};
+    const { classes, currencyCode, product: { pricing, title, vendor } } = this.props;
+    const productPrice = priceByCurrencyCode(currencyCode, pricing);
+
     return (
       <div >
         <div className={classes.productInfo}>
           <Typography variant="body2">
             {title}
           </Typography>
-          <Typography variant="body1">${priceRange}</Typography>
+          <Typography variant="body1">{productPrice.displayPrice}</Typography>
         </div>
         <div>
           <Typography variant="body1">{vendor}</Typography>

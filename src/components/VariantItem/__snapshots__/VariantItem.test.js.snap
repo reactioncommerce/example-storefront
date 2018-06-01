@@ -25,6 +25,8 @@ exports[`basic snapshot 1`] = `
   </span>
   <span
     className="MuiTypography-root-6 MuiTypography-body1-15"
-  />
+  >
+    $12.99 - $19.99
+  </span>
 </button>
 `;

@@ -29,6 +29,7 @@ test("basic snapshot", () => {
       <Provider uiStore={uiStore}>
         <ProductGrid
           catalogItems={products}
+          currencyCode="USD"
           pageInfo={pageInfo}
           pageSize={20}
           primaryShopId="123"
