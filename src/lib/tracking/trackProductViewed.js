@@ -18,7 +18,7 @@ export default (options) => (
       data = {
         ...data,
         ...getProductTrackingData(product)
-      }
+      };
     }
 
     // If the router is provided as a prop, set the url of the product to the current path
