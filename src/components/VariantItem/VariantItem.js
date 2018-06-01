@@ -12,7 +12,7 @@ import styles from "./styles";
 class VariantItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    currencyCode: PropTypes.string,
+    currencyCode: PropTypes.string.isRequired,
     handleClick: PropTypes.func.isRequired,
     isActive: PropTypes.bool.isRequired,
     variant: PropTypes.object.isRequired
