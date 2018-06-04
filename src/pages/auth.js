@@ -24,7 +24,17 @@ class AuthPage extends Component {
     return hashObj;
   }
 
+  setToken() {
+    // parse the url params from Keycloak
+    const params = this.getUrlParams();
+
+    if (typeof window !== "undefined" && params.access_token) {
+      localStorage.setItem("kc-token", params.access_token);
+    }
+  }
+
   render() {
+    this.setToken();
     return (
       <div>
         <h4>Successful OAuth response:</h4>
