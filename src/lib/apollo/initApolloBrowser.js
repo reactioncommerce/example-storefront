@@ -1,5 +1,6 @@
 import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";
+import { setContext } from "apollo-link-context";
 import { onError } from "apollo-link-error";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import fetch from "isomorphic-fetch";
@@ -28,6 +29,18 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 });
 
+const authLink = setContext((__, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem("kc-token");
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      Authorization: token ? `Bearer ${token}` : ""
+    }
+  };
+});
+
 const httpLink = (options) => new HttpLink({
   uri: `${graphqlUrl}`,
   headers: {
@@ -40,7 +53,7 @@ const create = (initialState, options = {}) =>
   new ApolloClient({
     connectToDevTools: true,
     ssrMode: false,
-    link: errorLink.concat(httpLink(options)),
+    link: authLink.concat(errorLink.concat(httpLink(options))),
     cache: new InMemoryCache().restore({})
   });
 
