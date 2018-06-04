@@ -35,7 +35,7 @@ export default function getVariantTrackingData({ product, variant, optionId }) {
     }
   }
 
-  if (product.shop) {
+  if (product && product.shop) {
     const shopCurrency = product.shop.currency.code;
     const foundPricing = data.pricing.find((pricing) => pricing.currency.code === shopCurrency);
 
