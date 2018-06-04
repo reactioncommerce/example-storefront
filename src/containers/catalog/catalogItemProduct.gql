@@ -58,7 +58,9 @@ query catalogItemProductQuery($slugOrId: String!) {
         variantId
         title
         optionTitle
+        index
         pricing {
+          price
           currency {
             code
           }
