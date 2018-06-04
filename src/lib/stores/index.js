@@ -14,6 +14,10 @@ autorun(() => {
   if (query.limit) {
     uiStore.setPageSize(parseInt(query.limit, 10));
   }
+
+  if (query.sortby) {
+    uiStore.setSortBy(query.sortby);
+  }
 });
 
 export default {

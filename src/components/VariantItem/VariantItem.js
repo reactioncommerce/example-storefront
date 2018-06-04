@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
+import { priceByCurrencyCode } from "lib/utils";
 
 import styles from "./styles";
 
@@ -11,6 +12,7 @@ import styles from "./styles";
 class VariantItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    currencyCode: PropTypes.string.isRequired,
     handleClick: PropTypes.func.isRequired,
     isActive: PropTypes.bool.isRequired,
     variant: PropTypes.object.isRequired
@@ -23,9 +25,12 @@ class VariantItem extends Component {
   render() {
     const {
       classes: { variantButton, activeVariant },
-      variant: { title, price },
+      currencyCode,
+      variant: { title, pricing },
       isActive
     } = this.props;
+
+    const variantPrice = priceByCurrencyCode(currencyCode, pricing);
 
     return (
       <ButtonBase
@@ -37,7 +42,7 @@ class VariantItem extends Component {
           {title}
         </Typography>
         <Typography component="span" variant="body1">
-          {price.range}
+          {variantPrice.displayPrice}
         </Typography>
       </ButtonBase>
     );

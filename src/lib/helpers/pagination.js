@@ -15,7 +15,7 @@ export const loadNextPage = ({ queryName, data, limit, fetchMore, routingStore }
 
   // Set URL search params to allow for link sharing
   if (routingStore) {
-    routingStore.setSearch(`limit=${limit}&after=${cursor}`);
+    routingStore.setSearch({ limit, after: cursor });
   }
 
   fetchMore({
@@ -56,7 +56,7 @@ export const loadPreviousPage = ({ queryName, data, limit, fetchMore, routingSto
 
   // Set URL search params to allow for link sharing
   if (routingStore) {
-    routingStore.setSearch(`limit=${limit}&before=${cursor}`);
+    routingStore.setSearch({ limit, before: cursor });
   }
 
   fetchMore({

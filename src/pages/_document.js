@@ -5,6 +5,7 @@ import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
 import { Provider } from "mobx-react";
 import jsHttpCookie from "cookie";
+import analyticsProviders from "analytics";
 import rootMobxStores from "../lib/stores";
 import getPageContext from "../lib/theme/getPageContext";
 
@@ -53,6 +54,13 @@ class HTMLDocument extends Document {
   render() {
     const { pageContext, helmet } = this.props;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
+    let scripts = [];
+
+    // Render analytics  scripts
+    scripts = analyticsProviders.map((provider) => ({
+      type: "text/javascript",
+      innerHTML: provider.renderScript()
+    }));
 
     return (
       <html lang="en" {...htmlAttrs}>
@@ -71,6 +79,7 @@ class HTMLDocument extends Document {
               { name: "theme-color", content: pageContext.theme.palette.primary.main }
             ]}
             link={[{ href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" }]}
+            script={scripts}
           />
           {helmet.base.toComponent()}
           {helmet.title.toComponent()}

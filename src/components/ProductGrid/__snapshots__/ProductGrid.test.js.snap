@@ -99,7 +99,7 @@ exports[`basic snapshot 1`] = `
             required={undefined}
             rows={undefined}
             type="hidden"
-            value="newest"
+            value="updatedAt-desc"
           />
           <svg
             aria-hidden="true"
@@ -124,9 +124,18 @@ exports[`basic snapshot 1`] = `
     >
       <div>
         <a
-          className="Link-link-134"
+          className="WithTracking-Link--link-134"
           href="/product/men's-lightweigth-synchilla"
           onClick={[Function]}
+          onKeyDown={[Function]}
+          role="link"
+          tabIndex={0}
+          tracking={
+            Object {
+              "getTrackingData": [Function],
+              "trackEvent": [Function],
+            }
+          }
         >
           <div
             className="inject-ProductItem-with-uiStore-productMedia-129"
@@ -195,8 +204,7 @@ exports[`basic snapshot 1`] = `
               <p
                 className="MuiTypography-root-144 MuiTypography-body1-153"
               >
-                $
-                7.99 - 77.99
+                $12.99 - $19.99
               </p>
             </div>
             <div>
@@ -215,9 +223,18 @@ exports[`basic snapshot 1`] = `
     >
       <div>
         <a
-          className="Link-link-134"
+          className="WithTracking-Link--link-134"
           href="/product/example-product"
           onClick={[Function]}
+          onKeyDown={[Function]}
+          role="link"
+          tabIndex={0}
+          tracking={
+            Object {
+              "getTrackingData": [Function],
+              "trackEvent": [Function],
+            }
+          }
         >
           <div
             className="inject-ProductItem-with-uiStore-productMedia-129"
@@ -277,8 +294,7 @@ exports[`basic snapshot 1`] = `
               <p
                 className="MuiTypography-root-144 MuiTypography-body1-153"
               >
-                $
-                12.99 - 19.99
+                $12.99 - $19.99
               </p>
             </div>
             <div>

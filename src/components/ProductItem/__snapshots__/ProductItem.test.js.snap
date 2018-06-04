@@ -3,9 +3,18 @@
 exports[`basic snapshot 1`] = `
 <div>
   <a
-    className="Link-link-8"
-    href="/product/undefined"
+    className="WithTracking-Link--link-8"
+    href="/product/example-product"
     onClick={[Function]}
+    onKeyDown={[Function]}
+    role="link"
+    tabIndex={0}
+    tracking={
+      Object {
+        "getTrackingData": [Function],
+        "trackEvent": [Function],
+      }
+    }
   >
     <div
       className="inject-ProductItem-with-uiStore-productMedia-3"
@@ -59,17 +68,21 @@ exports[`basic snapshot 1`] = `
       >
         <aside
           className="MuiTypography-root-9 MuiTypography-body2-17"
-        />
+        >
+          Reaction Sample Product
+        </aside>
         <p
           className="MuiTypography-root-9 MuiTypography-body1-18"
         >
-          $
+          $12.99 - $19.99
         </p>
       </div>
       <div>
         <p
           className="MuiTypography-root-9 MuiTypography-body1-18"
-        />
+        >
+          Example Manufacturer
+        </p>
       </div>
     </div>
   </a>

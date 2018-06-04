@@ -1,5 +1,5 @@
-query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt, $last:  ConnectionLimitInt, $before: ConnectionCursor, $after: ConnectionCursor) {
-  catalogItems(shopIds: [$shopId], first: $first, last: $last, before: $before, after: $after) {
+query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt, $last:  ConnectionLimitInt, $before: ConnectionCursor, $after: ConnectionCursor, $sortBy: CatalogItemSortByField, $sortByPriceCurrencyCode: String, $sortOrder: SortOrder) {
+  catalogItems(shopIds: [$shopId], first: $first, last: $last, before: $before, after: $after, sortBy: $sortBy, sortByPriceCurrencyCode: $sortByPriceCurrencyCode, sortOrder: $sortOrder) {
     totalCount
     pageInfo {
       endCursor
@@ -21,10 +21,11 @@ query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt, $last:  Connec
             isLowQuantity
             isSoldOut
             isBackorder
-            price {
-              range
-              min
-              max
+            pricing {
+              currency {
+                code
+              }
+              displayPrice
             }
             primaryImage {
               URLs {

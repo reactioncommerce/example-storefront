@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import product from "components/ProductDetail/__mocks__/productData.mock";
 import ProductItem from "./ProductItem";
-import product from "./__mocks__/product.mock";
 
 const uiStore = {
   appConfig: {
@@ -16,7 +16,9 @@ const uiStore = {
 };
 
 test("basic snapshot", () => {
-  const component = renderer.create(<ProductItem product={product} uiStore={uiStore}/>);
+  const component = renderer.create((
+    <ProductItem currencyCode="USD" product={product} uiStore={uiStore}/>
+  ));
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });

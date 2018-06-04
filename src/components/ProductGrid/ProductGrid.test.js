@@ -29,12 +29,13 @@ test("basic snapshot", () => {
       <Provider uiStore={uiStore}>
         <ProductGrid
           catalogItems={products}
+          currencyCode="USD"
           pageInfo={pageInfo}
           pageSize={20}
           primaryShopId="123"
           setPageSize={() => true}
           setSortBy={() => true}
-          sortBy={"newest"}
+          sortBy={"updatedAt-desc"}
         />
       </Provider>
     </MuiThemeProvider>

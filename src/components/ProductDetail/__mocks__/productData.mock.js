@@ -14,11 +14,16 @@ export default {
   isSoldOut: false,
   isBackorder: false,
   primaryImage: null,
-  price: {
-    range: "$12.99 - $330",
-    min: 12.99,
-    max: 330
-  },
+  pricing: [
+    {
+      currency: {
+        code: "USD"
+      },
+      compareAtPrice: null,
+      price: 19.99,
+      displayPrice: "$12.99 - $19.99"
+    }
+  ],
   tags: {
     nodes: [{
       position: null,
@@ -39,7 +44,16 @@ export default {
         "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s="
       ],
       title: "Sample Variant",
-      price: 19.99,
+      pricing: [
+        {
+          currency: {
+            code: "USD"
+          },
+          compareAtPrice: null,
+          price: 19.99,
+          displayPrice: "$12.99 - $19.99"
+        }
+      ],
       optionTitle: "Untitled Option",
       isLowQuantity: false,
       isSoldOut: true,
@@ -48,7 +62,16 @@ export default {
         {
           _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlNNcjRyaERGbll2Rk10RFRY",
           title: "Option 1 - Red Dwarf",
-          price: 19.99,
+          pricing: [
+            {
+              currency: {
+                code: "USD"
+              },
+              compareAtPrice: null,
+              price: 19.99,
+              displayPrice: "$12.99 - $19.99"
+            }
+          ],
           optionTitle: "Red",
           isLowQuantity: false,
           isSoldOut: true,
@@ -57,7 +80,16 @@ export default {
         {
           _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OkNKb1JCbTl2UnJvcmM5bXha",
           title: "Option 2 - Green Tomato",
-          price: 12.99,
+          pricing: [
+            {
+              currency: {
+                code: "USD"
+              },
+              compareAtPrice: null,
+              price: 19.99,
+              displayPrice: "$12.99 - $19.99"
+            }
+          ],
           optionTitle: "Green",
           isLowQuantity: false,
           isSoldOut: false,
@@ -69,7 +101,16 @@ export default {
     {
       _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OlB6QXlqeW1ER3U2V0drRGpu",
       title: "Sample Variant 2",
-      price: 10.99,
+      pricing: [
+        {
+          currency: {
+            code: "USD"
+          },
+          compareAtPrice: null,
+          price: 19.99,
+          displayPrice: "$12.99 - $19.99"
+        }
+      ],
       optionTitle: "Untitled Option",
       isLowQuantity: false,
       isSoldOut: false,
@@ -78,7 +119,16 @@ export default {
         {
           _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OkhaUHFmaVBIV0xabWZ1aHZp",
           title: "Sample Variant 2 - Blue Option",
-          price: 200,
+          pricing: [
+            {
+              currency: {
+                code: "USD"
+              },
+              compareAtPrice: null,
+              price: 19.99,
+              displayPrice: "$12.99 - $19.99"
+            }
+          ],
           optionTitle: "Blue",
           isLowQuantity: false,
           isSoldOut: false,
@@ -87,8 +137,17 @@ export default {
         {
           _id: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50Old5em43emZhQkFYS1hja3BT",
           title: "Sample Variant 2 - Red Option",
-          price: 330,
           optionTitle: "Red",
+          pricing: [
+            {
+              currency: {
+                code: "USD"
+              },
+              compareAtPrice: null,
+              price: 19.99,
+              displayPrice: "$12.99 - $19.99"
+            }
+          ],
           isLowQuantity: false,
           isSoldOut: false,
           isBackorder: false

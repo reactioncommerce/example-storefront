@@ -36,7 +36,7 @@ exports[`basic snapshot 1`] = `
       required={undefined}
       rows={undefined}
       type="hidden"
-      value="newest"
+      value="updatedAt-desc"
     />
     <svg
       aria-hidden="true"

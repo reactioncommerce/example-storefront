@@ -16,25 +16,25 @@ ignore:
   'npm:hoek:20180212':
     - '*':
         reason: 'Possible false positive, waiting on requestjs to updated hawk version'
-        expires: 2018-05-30T00:00:00.000Z
+        expires: 2018-06-30T00:00:00.000Z
   'npm:sshpk:20180409':
     - '*':
         reason: Waiting on http-signature to update to the latest sshpk version
-        expires: 2018-05-30T00:00:00.000Z
+        expires: 2018-06-15T00:00:00.000Z
   'npm:ua-parser-js:20180227':
     - '*':
         reason: Waiting on fbjs to update to the latest ua-parser-js version
-        expires: 2018-05-30T00:00:00.000Z
+        expires: 2018-06-15T00:00:00.000Z
   'npm:tough-cookie:20170905':
     - '*':
         reason: Waiting on tough-cookie to update to the latest sshpk version
-        expires: 2018-05-30T00:00:00.000Z
+        expires: 2018-06-15T00:00:00.000Z
   'npm:stringstream:20180511':
     - '*':
         reason: Waiting on updated package
-        expires: 2018-05-30T00:00:00.000Z
+        expires: 2018-06-15T00:00:00.000Z
   'npm:braces:20180219':
     - '*':
         reason: Waiting for Next.js 6 to update to Babel 7 beta.47
-        expires: 2018-05-30T00:00:00.000Z
+        expires: 2018-06-15T00:00:00.000Z
 patch: {}
