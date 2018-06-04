@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Provider as MobXProvider } from "mobx-react";
 import { ApolloProvider, getDataFromTree } from "react-apollo";
 import Head from "next/head";
 import jsHttpCookie from "cookie";
@@ -22,7 +23,7 @@ export default (ComposedComponent) =>
     static displayName = `WithData(${getComponentDisplayName(ComposedComponent)})`;
     static propTypes = {
       router: PropTypes.object,
-      serverState: PropTypes.object.isRequired
+      serverState: PropTypes.object
     };
 
     static getDerivedStateFromProps(nextProps) {
@@ -104,8 +105,7 @@ export default (ComposedComponent) =>
 
     constructor(props) {
       super(props);
-      this.state = {};
-      const { apollo, token } = this.props.serverState;
+      const { apollo, token } = this.props.serverState || { apollo: {} };
 
       // State must be initialized if getDerivedStateFromProps is used
       this.state = {};
@@ -115,9 +115,11 @@ export default (ComposedComponent) =>
 
     render() {
       return (
-        <ApolloProvider client={this.apollo}>
-          <ComposedComponent {...this.props} />
-        </ApolloProvider>
+        <MobXProvider {...rootMobxStores}>
+          <ApolloProvider client={this.apollo}>
+            <ComposedComponent {...this.props} />
+          </ApolloProvider>
+        </MobXProvider>
       );
     }
   };
