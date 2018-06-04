@@ -56,7 +56,13 @@ class ProductDetail extends Component {
     this.selectVariant(product.variants[0]);
   }
 
-  @track((props, state, [variant]) => getVariantTrackingData(variant))
+  @track((props, state, [variant, optionId]) => (
+    getVariantTrackingData({
+      variant, // Object representing a variant. (Required)
+      optionId, // Selected option of the provided variant, if available. (Optional)
+      product: props.product // Full product document for additional data. (Optional)
+    })
+  ))
   selectVariant(variant, optionId) {
     const { product, uiStore } = this.props;
 
