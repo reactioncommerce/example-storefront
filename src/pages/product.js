@@ -1,18 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import withData from "lib/apollo/withData";
-import withRoot from "lib/theme/withRoot";
-import withShop from "containers/shop/withShop";
+import { observer } from "mobx-react";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
-import Layout from "components/Layout";
 import ProductDetail from "components/ProductDetail";
 import trackProductViewed from "lib/tracking/trackProductViewed";
 
-@withData
-@withRoot
-@withShop
 @withCatalogItemProduct
 @trackProductViewed({ dispatchOnMount: true })
+@observer
 class ProductDetailPage extends Component {
   static propTypes = {
     /**
@@ -30,9 +25,9 @@ class ProductDetailPage extends Component {
     const currencyCode = this.props.shop.currency.code || "USD";
 
     return (
-      <Layout>
+      <React.Fragment>
         <ProductDetail product={this.props.product} currencyCode={currencyCode} />
-      </Layout>
+      </React.Fragment>
     );
   }
 }

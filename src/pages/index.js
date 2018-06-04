@@ -1,22 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { observer, inject } from "mobx-react";
+import { observer } from "mobx-react";
 import Helmet from "react-helmet";
-import withData from "lib/apollo/withData";
 import withCatalogItems from "containers/catalog/withCatalogItems";
-import withRoot from "lib/theme/withRoot";
-import withShop from "containers/shop/withShop";
-import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
-@withData
-@withRoot
-@withShop
 @withCatalogItems
-@inject("shop")
-@inject("routingStore")
-@inject("uiStore")
 @trackProductListViewed({ dispatchOnMount: true })
 @observer
 class Shop extends Component {
@@ -57,7 +47,7 @@ class Shop extends Component {
     const sortBy = routingStore.query.sortby || uiStore.sortBy;
 
     return (
-      <Layout title="Reaction Shop">
+      <React.Fragment>
         {this.renderHelmet()}
         <ProductGrid
           catalogItems={catalogItems}
@@ -68,7 +58,7 @@ class Shop extends Component {
           setSortBy={this.setSortBy}
           sortBy={sortBy}
         />
-      </Layout>
+      </React.Fragment>
     );
   }
 }
