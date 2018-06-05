@@ -41,3 +41,24 @@ test("getProductTrackingData should return partial data for tracking with segmen
 
   expect(data).toEqual(result);
 });
+
+test("getProductTrackingData should not fail when tags.nodes is a blank array", () => {
+  const productDataWithoutTags = { ...product };
+
+  // When there are no tags, product.tags.nodes may be a blank array
+  productDataWithoutTags.tags.nodes = [];
+
+  const data = getProductTrackingData(productDataWithoutTags);
+
+  const result = {
+    product_id: "1234", // eslint-disable-line camelcase
+    sku: "a456",
+    name: "My Product",
+    brand: "Reaction",
+    currency: "USD",
+    image_url: "/assets/image.jpg" // eslint-disable-line camelcase
+  };
+
+  expect(data).toEqual(result);
+});
+
