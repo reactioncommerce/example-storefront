@@ -50,7 +50,12 @@ class AccountDropdown extends Component {
     return null;
   }
 
-  state = { anchorElement: null, prevToken: "", token: "" };
+  state = {
+    anchorElement: null,
+    prevToken: "",
+    token: "",
+    keycloakToken: typeof window !== "undefined" ? localStorage.getItem("kc-token") : ""
+  };
 
   toggleOpen = (event) => {
     this.setState({ anchorElement: event.currentTarget });
@@ -89,9 +94,14 @@ class AccountDropdown extends Component {
       });
   }
 
+  onLogout = () => {
+    localStorage.clear("kc-token");
+    this.setState({ keycloakToken: "" });
+  }
+
   render() {
     const { classes } = this.props;
-    const { anchorElement, token } = this.state;
+    const { anchorElement, token, keycloakToken } = this.state;
 
     return (
       <Fragment>
@@ -122,9 +132,15 @@ class AccountDropdown extends Component {
             </DialogActions>
             <hr/>
             <DialogActions>
-              <Button color="primary" onClick={this.onLogin}>
-                Login with Keycloak
-              </Button>
+              {!keycloakToken ?
+                <Button color="primary" onClick={this.onLogin}>
+                  Login with Keycloak
+                </Button>
+                :
+                <Button color="primary" onClick={this.onLogout}>
+                  Logout of Keycloak
+                </Button>
+              }
             </DialogActions>
           </div>
         </Popover>
