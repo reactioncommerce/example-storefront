@@ -21,6 +21,11 @@ query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt, $last:  Connec
             isLowQuantity
             isSoldOut
             isBackorder
+            shop {
+              currency {
+                code
+              }
+            }
             pricing {
               currency {
                 code
