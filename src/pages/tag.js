@@ -38,9 +38,12 @@ export default class TagShop extends Component {
     tag: {}
   };
 
-  componentDidMount() {
-    const { routingStore, tag } = this.props;
-    routingStore.setTag(tag);
+  static getDerivedStateFromProps(props) {
+    const { routingStore, tag } = props;
+    if (routingStore.tag._id !== tag._id) {
+      console.log("routingStore", tag._id, routingStore.tag._id);
+      routingStore.setTag(tag);
+    }
   }
 
   renderHelmet() {
@@ -84,7 +87,6 @@ export default class TagShop extends Component {
           setPageSize={this.setPageSize}
           setSortBy={this.setSortBy}
           sortBy={sortBy}
-          tag={tag}
         />
       </Layout>
     );
