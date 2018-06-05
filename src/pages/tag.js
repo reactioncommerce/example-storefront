@@ -29,9 +29,16 @@ export default class TagShop extends Component {
     routingStore: PropTypes.object,
     setPageSize: PropTypes.func,
     setSortBy: PropTypes.func,
-    shop: PropTypes.object,
+    shop: PropTypes.shape({
+      currency: PropTypes.shape({
+        code: PropTypes.string.isRequired
+      })
+    }),
     tag: PropTypes.object,
-    uiStore: PropTypes.object
+    uiStore: PropTypes.shape({
+      pageSize: PropTypes.number.isRequired,
+      sortBy: PropTypes.string.isRequired
+    })
   };
 
   static defaultProps= {
@@ -64,7 +71,7 @@ export default class TagShop extends Component {
   }
 
   render() {
-    const { catalogItems, catalogItemsPageInfo, routingStore, uiStore, tag } = this.props;
+    const { catalogItems, catalogItemsPageInfo, routingStore, shop, tag, uiStore } = this.props;
     const pageSize = parseInt(routingStore.query.limit, 10) || uiStore.pageSize;
     const sortBy = routingStore.query.sortby || uiStore.sortBy;
 
@@ -74,6 +81,7 @@ export default class TagShop extends Component {
         <ProductGridHero tag={tag} />
         <ProductGrid
           catalogItems={catalogItems}
+          currencyCode={shop.currency.code}
           pageInfo={catalogItemsPageInfo}
           pageSize={pageSize}
           setPageSize={this.setPageSize}
