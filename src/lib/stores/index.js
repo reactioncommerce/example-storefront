@@ -11,11 +11,11 @@ const uiStore = new UIStore();
 
 autorun(() => {
   const { query } = routingStore;
-  if (query.limit) {
+  if (query && Object.prototype.hasOwnProperty.call(query, "limit")) {
     uiStore.setPageSize(parseInt(query.limit, 10));
   }
 
-  if (query.sortby) {
+  if (query && Object.prototype.hasOwnProperty.call(query, "sortby")) {
     uiStore.setSortBy(query.sortby);
   }
 });
