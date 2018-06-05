@@ -77,7 +77,7 @@ class AccountDropdown extends Component {
   onLogin = () => {
     const keycloak = new Keycloak({
       realm: "default",
-      clientId: "account",
+      clientId: "reaction-next-starterkit-client",
       url: "http://localhost:8080/auth"
     });
 
