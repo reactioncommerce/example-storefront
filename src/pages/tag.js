@@ -34,9 +34,14 @@ export default class TagShop extends Component {
     uiStore: PropTypes.object
   };
 
-  static defaultProps= {
+  static defaultProps = {
     tag: {}
   };
+
+  componentDidMount() {
+    const { routingStore, tag } = this.props;
+    routingStore.setTag(tag);
+  }
 
   renderHelmet() {
     const { shop, routingStore } = this.props;
@@ -55,13 +60,13 @@ export default class TagShop extends Component {
   setPageSize = (pageSize) => {
     this.props.routingStore.setSearch({ limit: pageSize });
     this.props.uiStore.setPageSize(pageSize);
-  }
+  };
 
   // TODO: move this handler to _app.js, when it becomes available.
   setSortBy = (sortBy) => {
     this.props.routingStore.setSearch({ sortby: sortBy });
     this.props.uiStore.setSortBy(sortBy);
-  }
+  };
 
   render() {
     const { catalogItems, catalogItemsPageInfo, routingStore, uiStore, tag } = this.props;
@@ -79,6 +84,7 @@ export default class TagShop extends Component {
           setPageSize={this.setPageSize}
           setSortBy={this.setSortBy}
           sortBy={sortBy}
+          tag={tag}
         />
       </Layout>
     );

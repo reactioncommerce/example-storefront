@@ -21,15 +21,16 @@ export default (Component) => {
       primaryShopId: PropTypes.string.isRequired,
       routingStore: PropTypes.object.isRequired,
       uiStore: PropTypes.object.isRequired
-    }
+    };
 
     render() {
       const { primaryShopId, routingStore, uiStore } = this.props;
       const [sortBy, sortOrder] = uiStore.sortBy.split("-");
-
+      const tagIds = routingStore.tag._id ? [routingStore.tag._id] : undefined;
       const variables = {
         shopId: primaryShopId,
         ...paginationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: uiStore.pageSize }),
+        tagIds,
         sortBy,
         sortByPriceCurrencyCode: uiStore.sortByCurrencyCode,
         sortOrder

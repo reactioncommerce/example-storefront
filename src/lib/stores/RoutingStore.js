@@ -21,6 +21,16 @@ export default class RoutingStore {
    */
   @observable query = {};
 
+  /**
+   * The tag for the current page.
+   * @type Object
+   */
+  @observable tag = {};
+
+  @action setTag = (tag) => {
+    this.tag = tag;
+  }
+
   @action updateRoute({ pathname, query }) {
     this.pathname = pathname;
     this.query = query;
@@ -34,7 +44,8 @@ export default class RoutingStore {
    */
   @action setSearch(search) {
     const _query = { ...toJS(this.query), ...search };
-
+    const _slug = _query.slug;
+    delete _query.slug;
     let urlQueryString = "";
     Object.keys(_query).forEach((key, index, arr) => {
       urlQueryString += `${key}=${_query[key]}`;
@@ -44,7 +55,13 @@ export default class RoutingStore {
       }
     });
 
-    const path = `${this.pathname}?${urlQueryString}`;
+    let path;
+    if (_slug) {
+      path = `${this.pathname}/${_slug}?${urlQueryString}`;
+    } else {
+      path = `${this.pathname}?${urlQueryString}`;
+    }
+
     Router.pushRoute(path, path, { shallow: true });
     return path;
   }

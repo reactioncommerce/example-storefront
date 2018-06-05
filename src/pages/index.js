@@ -28,6 +28,11 @@ class Shop extends Component {
     uiStore: PropTypes.object.isRequired
   };
 
+  componentDidMount() {
+    const { routingStore } = this.props;
+    routingStore.setTag({});
+  }
+
   renderHelmet() {
     const { shop } = this.props;
 
@@ -43,13 +48,13 @@ class Shop extends Component {
   setPageSize = (pageSize) => {
     this.props.routingStore.setSearch({ limit: pageSize });
     this.props.uiStore.setPageSize(pageSize);
-  }
+  };
 
   // TODO: move this handler to _app.js, when it becomes available.
   setSortBy = (sortBy) => {
     this.props.routingStore.setSearch({ sortby: sortBy });
     this.props.uiStore.setSortBy(sortBy);
-  }
+  };
 
   render() {
     const { catalogItems, catalogItemsPageInfo, uiStore, routingStore, shop } = this.props;
