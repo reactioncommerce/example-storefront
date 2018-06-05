@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { inject } from "mobx-react";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
@@ -25,6 +26,7 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles)
+@inject("routingStore")
 class NavigationItemDesktop extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -44,11 +46,11 @@ class NavigationItemDesktop extends Component {
   }
 
   onClick = () => {
-    const { navItem } = this.props;
-
+    const { navItem, routingStore } = this.props;
     if (this.hasSubNavItems) {
       this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
     } else {
+      routingStore.setTag({ _id: navItem._id, name: navItem.name, slug: navItem.slug });
       Router.pushRoute("tag", { slug: navItem.slug });
     }
   };
