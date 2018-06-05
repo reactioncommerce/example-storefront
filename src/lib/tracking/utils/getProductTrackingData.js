@@ -9,7 +9,7 @@ export default function getProductTrackingData(product) {
   return {
     product_id: product._id, // eslint-disable-line camelcase
     sku: product.sku,
-    category: (product.tags && Array.isArray(product.tags.nodes) && product.tags.nodes[0].name) || undefined,
+    category: (product.tags && Array.isArray(product.tags.nodes) && product.tags.nodes.length && product.tags.nodes[0].name) || undefined,
     name: product.title,
     brand: product.vendor,
     currency: product.shop.currency.code,
