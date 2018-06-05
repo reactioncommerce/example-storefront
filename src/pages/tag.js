@@ -41,7 +41,6 @@ export default class TagShop extends Component {
   static getDerivedStateFromProps(props) {
     const { routingStore, tag } = props;
     if (routingStore.tag._id !== tag._id) {
-      console.log("routingStore", tag._id, routingStore.tag._id);
       routingStore.setTag(tag);
     }
   }
