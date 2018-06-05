@@ -3,7 +3,6 @@ import Document, { Head, Main, NextScript } from "next/document";
 import JssProvider from "react-jss/lib/JssProvider";
 import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
-import { Provider } from "mobx-react";
 import jsHttpCookie from "cookie";
 import analyticsProviders from "analytics";
 import rootMobxStores from "../lib/stores";
@@ -28,9 +27,7 @@ class HTMLDocument extends Document {
     /* eslint-disable-next-line react/display-name */
     const page = ctx.renderPage((Component) => (props) => (
       <JssProvider registry={pageContext.sheetsRegistry} generateClassName={pageContext.generateClassName}>
-        <Provider {...rootMobxStores}>
-          <Component pageContext={pageContext} {...props} />
-        </Provider>
+        <Component pageContext={pageContext} {...props} />
       </JssProvider>
     ));
 
