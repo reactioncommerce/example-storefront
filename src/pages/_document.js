@@ -67,7 +67,7 @@ class HTMLDocument extends Document {
         <Head>
           <Helmet
             htmlAttributes={{ lang: "en", dir: "ltr" }}
-            title="My page"
+            title="My Store"
             meta={[
               { charSet: "utf-8" },
               // Use minimum-scale=1 to enable GPU rasterization
