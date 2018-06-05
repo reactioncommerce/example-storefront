@@ -2,23 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { observer, inject } from "mobx-react";
 import Helmet from "react-helmet";
-import withData from "lib/apollo/withData";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import withTag from "containers/tags/withTag";
-import withRoot from "lib/theme/withRoot";
-import withShop from "containers/shop/withShop";
-import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
 import ProductGridHero from "components/ProductGridHero";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
-@withData
-@withRoot
-@withShop
-@withCatalogItems
-@inject("shop")
+@withTag @withCatalogItems
 @inject("routingStore")
-@withTag
 @trackProductListViewed({ dispatchOnMount: true })
 @observer
 export default class TagShop extends Component {
@@ -58,25 +49,23 @@ export default class TagShop extends Component {
     );
   }
 
-  // TODO: move this handler to _app.js, when it becomes available.
   setPageSize = (pageSize) => {
     this.props.routingStore.setSearch({ limit: pageSize });
     this.props.uiStore.setPageSize(pageSize);
   }
 
-  // TODO: move this handler to _app.js, when it becomes available.
   setSortBy = (sortBy) => {
     this.props.routingStore.setSearch({ sortby: sortBy });
     this.props.uiStore.setSortBy(sortBy);
   }
 
   render() {
-    const { catalogItems, catalogItemsPageInfo, routingStore, shop, tag, uiStore } = this.props;
-    const pageSize = parseInt(routingStore.query.limit, 10) || uiStore.pageSize;
-    const sortBy = routingStore.query.sortby || uiStore.sortBy;
+    const { catalogItems, catalogItemsPageInfo, routingStore: { query }, shop, tag, uiStore } = this.props;
+    const pageSize = (query && query.limit) ? parseInt(query.limit, 10) : uiStore.pageSize;
+    const sortBy = (query && query.sortby) ? query.sortby : uiStore.sortBy;
 
     return (
-      <Layout title="Reaction Shop">
+      <React.Fragment>
         {this.renderHelmet()}
         <ProductGridHero tag={tag} />
         <ProductGrid
@@ -88,7 +77,7 @@ export default class TagShop extends Component {
           setSortBy={this.setSortBy}
           sortBy={sortBy}
         />
-      </Layout>
+      </React.Fragment>
     );
   }
 }

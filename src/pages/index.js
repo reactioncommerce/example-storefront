@@ -2,21 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { observer, inject } from "mobx-react";
 import Helmet from "react-helmet";
-import withData from "lib/apollo/withData";
 import withCatalogItems from "containers/catalog/withCatalogItems";
-import withRoot from "lib/theme/withRoot";
-import withShop from "containers/shop/withShop";
-import Layout from "components/Layout";
 import ProductGrid from "components/ProductGrid";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
-@withData
-@withRoot
-@withShop
 @withCatalogItems
-@inject("shop")
-@inject("routingStore")
-@inject("uiStore")
+@inject("routingStore", "uiStore")
 @trackProductListViewed({ dispatchOnMount: true })
 @observer
 class Shop extends Component {
@@ -28,37 +19,27 @@ class Shop extends Component {
     uiStore: PropTypes.object.isRequired
   };
 
-  renderHelmet() {
-    const { shop } = this.props;
-
-    return (
-      <Helmet>
-        <title>{shop && shop.name}</title>
-        <meta name="description" content={shop && shop.description} />
-      </Helmet>
-    );
-  }
-
-  // TODO: move this handler to _app.js, when it becomes available.
   setPageSize = (pageSize) => {
     this.props.routingStore.setSearch({ limit: pageSize });
     this.props.uiStore.setPageSize(pageSize);
   }
 
-  // TODO: move this handler to _app.js, when it becomes available.
   setSortBy = (sortBy) => {
     this.props.routingStore.setSearch({ sortby: sortBy });
     this.props.uiStore.setSortBy(sortBy);
   }
 
   render() {
-    const { catalogItems, catalogItemsPageInfo, uiStore, routingStore, shop } = this.props;
-    const pageSize = parseInt(routingStore.query.limit, 10) || uiStore.pageSize;
-    const sortBy = routingStore.query.sortby || uiStore.sortBy;
+    const { catalogItems, catalogItemsPageInfo, uiStore, routingStore: { query }, shop } = this.props;
+    const pageSize = (query && query.limit) ? parseInt(query.limit, 10) : uiStore.pageSize;
+    const sortBy = (query && query.sortby) ? query.sortby : uiStore.sortBy;
 
     return (
-      <Layout title="Reaction Shop">
-        {this.renderHelmet()}
+      <React.Fragment>
+        <Helmet>
+          <title>{shop && shop.name}</title>
+          <meta name="description" content={shop && shop.description} />
+        </Helmet>
         <ProductGrid
           catalogItems={catalogItems}
           currencyCode={shop.currency.code}
@@ -68,7 +49,7 @@ class Shop extends Component {
           setSortBy={this.setSortBy}
           sortBy={sortBy}
         />
-      </Layout>
+      </React.Fragment>
     );
   }
 }
