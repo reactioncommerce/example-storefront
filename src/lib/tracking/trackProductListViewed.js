@@ -9,8 +9,11 @@ import getProductListTrackingData from "./utils/getProductListTrackingData";
  * @returns {React.Component} - component
  */
 export default (options) => track(({ tag, catalogItems }) => {
-  const products = (Array.isArray(catalogItems) && catalogItems.map((catalogItem) => catalogItem.node)) || undefined;
-  return getProductListTrackingData({ tag, products });
+  const products = (Array.isArray(catalogItems) && catalogItems.map((catalogItem) => catalogItem.node.product)) || undefined;
+  return {
+    action: "Product List Viewed",
+    ...getProductListTrackingData({ tag, products })
+  };
 }, {
   ...options
 });
