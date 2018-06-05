@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Router } from "routes";
 
 class AuthPage extends Component {
   static propTypes = {
-    url: PropTypes.object.isRequired
-  }
-
-  state = {
-    isAuthenticating: true
+    router: PropTypes.object.isRequired
   }
 
   getUrlParams() {
-    const hashObj = this.props.url.asPath
+    const hashObj = this.props.router.asPath
       .substring(6)
       .split("&")
       .map((el) => el.split("="))
@@ -30,19 +27,13 @@ class AuthPage extends Component {
 
     if (typeof window !== "undefined" && params.access_token) {
       localStorage.setItem("kc-token", params.access_token);
+      Router.pushRoute("/");
     }
   }
 
   render() {
     this.setToken();
-    return (
-      <div>
-        <h4>Successful OAuth response:</h4>
-        <pre>
-          {JSON.stringify(this.getUrlParams(), null, 2)}
-        </pre>
-      </div>
-    );
+    return <div>Logging in...</div>;
   }
 }
 
