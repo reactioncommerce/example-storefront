@@ -184,9 +184,6 @@ import withCatalogItems from "containers/catalog/withCatalogItems";
 import track from "lib/tracking/track";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
-@withData // Apollo initialization
-@withRoot // General app initialization
-@withShop // Get current shop data
 @withCatalogItems // Get catalog items for the current page
 @trackProductListViewed({
   // Dispatch event Page component mount
@@ -218,9 +215,6 @@ import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import track from "lib/tracking/track";
 import trackProductListViewed from "lib/tracking/trackProductViewed";
 
-@withData // Apollo initialization
-@withRoot // General app initialization
-@withShop // Get current shop data
 @withCatalogItemProduct // Product for page with route of `/product/:slugOrId/:variantId?`
 @trackProductViewed({
   // Dispatch event Page component mount
