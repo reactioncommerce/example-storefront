@@ -37,6 +37,8 @@ export default class TagShop extends Component {
     tag: PropTypes.object,
     uiStore: PropTypes.shape({
       pageSize: PropTypes.number.isRequired,
+      setSortBy: PropTypes.func.isString,
+      setPageSize: PropTypes.func.isString,
       sortBy: PropTypes.string.isRequired
     })
   };
