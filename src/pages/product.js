@@ -5,7 +5,7 @@ import ProductDetail from "components/ProductDetail";
 import trackProductViewed from "lib/tracking/trackProductViewed";
 
 @withCatalogItemProduct
-@trackProductViewed({ dispatchOnMount: true })
+@trackProductViewed()
 class ProductDetailPage extends Component {
   static propTypes = {
     /**
