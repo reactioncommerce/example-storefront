@@ -7,6 +7,7 @@ import withTheme from "lib/theme/withTheme";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
 import withMobX from "lib/stores/withMobX";
+import rootMobXStores from "lib/stores";
 
 @withApolloClient
 @withShop
@@ -14,6 +15,11 @@ import withMobX from "lib/stores/withMobX";
 @withTheme
 @track({}, { dispatch })
 export default class App extends NextApp {
+  componentDidMount() {
+    // Fetch and update auth token in auth store
+    rootMobXStores.authStore.setTokenFromCookie();
+  }
+
   render() {
     const { Component, ...rest } = this.props;
 
