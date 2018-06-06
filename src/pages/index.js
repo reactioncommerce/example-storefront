@@ -15,8 +15,18 @@ class Shop extends Component {
     catalogItems: PropTypes.array,
     catalogItemsPageInfo: PropTypes.object,
     routingStore: PropTypes.object,
-    shop: PropTypes.object,
-    uiStore: PropTypes.object.isRequired
+    shop: PropTypes.shape({
+      currency: PropTypes.shape({
+        code: PropTypes.string.isRequired
+      })
+    }),
+    tag: PropTypes.object,
+    uiStore: PropTypes.shape({
+      pageSize: PropTypes.number.isRequired,
+      setPageSize: PropTypes.func.isRequired,
+      setSortBy: PropTypes.func.isRequired,
+      sortBy: PropTypes.string.isRequired
+    })
   };
 
   setPageSize = (pageSize) => {

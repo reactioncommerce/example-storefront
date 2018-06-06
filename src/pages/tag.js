@@ -9,7 +9,7 @@ import ProductGridHero from "components/ProductGridHero";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
 @withTag @withCatalogItems
-@inject("routingStore")
+@inject("routingStore", "uiStore")
 @trackProductListViewed({ dispatchOnMount: true })
 @observer
 export default class TagShop extends Component {
@@ -18,8 +18,6 @@ export default class TagShop extends Component {
     catalogItemsPageInfo: PropTypes.object,
     classes: PropTypes.object,
     routingStore: PropTypes.object,
-    setPageSize: PropTypes.func,
-    setSortBy: PropTypes.func,
     shop: PropTypes.shape({
       currency: PropTypes.shape({
         code: PropTypes.string.isRequired
@@ -28,6 +26,8 @@ export default class TagShop extends Component {
     tag: PropTypes.object,
     uiStore: PropTypes.shape({
       pageSize: PropTypes.number.isRequired,
+      setPageSize: PropTypes.func.isRequired,
+      setSortBy: PropTypes.func.isRequired,
       sortBy: PropTypes.string.isRequired
     })
   };
