@@ -17,12 +17,12 @@ function getComponentDisplayName(Component) {
   return Component.displayName || Component.name || "Unknown";
 }
 
-export default (ComposedComponent) =>
-  class WithData extends React.Component {
-    static displayName = `WithData(${getComponentDisplayName(ComposedComponent)})`;
+export default (App) =>
+  class WithApolloClient extends React.Component {
+    static displayName = `WithApolloClient(${getComponentDisplayName(App)})`;
     static propTypes = {
-      router: PropTypes.object,
-      serverState: PropTypes.object.isRequired
+      apolloState: PropTypes.object.isRequired,
+      router: PropTypes.object
     };
 
     static getDerivedStateFromProps(nextProps) {
@@ -36,21 +36,17 @@ export default (ComposedComponent) =>
 
 
     static async getInitialProps(ctx) {
-      let serverState = {
-        apollo: {
-          data: {}
-        }
-      };
+      let apolloState = {};
 
-      let composedInitialProps = {};
-      if (ComposedComponent.getInitialProps) {
-        composedInitialProps = await ComposedComponent.getInitialProps(ctx);
+      let appProps = {};
+      if (App.getInitialProps) {
+        appProps = await App.getInitialProps(ctx);
       }
 
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
       if (!process.browser) {
-        const { req } = ctx;
+        const { Component, router, req } = ctx;
         let token;
 
         // Grab cookies form the request headers
@@ -74,7 +70,11 @@ export default (ComposedComponent) =>
           // Run all GraphQL queries
           await getDataFromTree( // eslint-disable-line
             <ApolloProvider client={apollo}>
-              <ComposedComponent url={url} {...composedInitialProps} />
+              <App
+                {...appProps}
+                Component={Component}
+                router={router}
+              />
             </ApolloProvider>
           ); // eslint-disable-line
         } catch (error) {
@@ -82,7 +82,7 @@ export default (ComposedComponent) =>
           console.log("apollo client error", error); // eslint-disable-line
         }
         Head.rewind();
-        serverState = {
+        apolloState = {
           token,
           apollo: {
             data: apollo.cache.extract()
@@ -91,8 +91,8 @@ export default (ComposedComponent) =>
       }
 
       return {
-        serverState,
-        ...composedInitialProps
+        ...appProps,
+        apolloState
       };
     }
 
@@ -104,8 +104,7 @@ export default (ComposedComponent) =>
 
     constructor(props) {
       super(props);
-      this.state = {};
-      const { apollo, token } = this.props.serverState;
+      const { apollo, token } = this.props.apolloState;
 
       // State must be initialized if getDerivedStateFromProps is used
       this.state = {};
@@ -116,7 +115,7 @@ export default (ComposedComponent) =>
     render() {
       return (
         <ApolloProvider client={this.apollo}>
-          <ComposedComponent {...this.props} />
+          <App {...this.props} />
         </ApolloProvider>
       );
     }

@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { observer } from "mobx-react";
 import { Query } from "react-apollo";
-import withData from "lib/apollo/withData";
 import catalogItemProductQuery from "./catalogItemProduct.gql";
 
 /**
@@ -12,8 +10,6 @@ import catalogItemProductQuery from "./catalogItemProduct.gql";
  * @returns {React.Component} - component decorated with primaryShopId and catalog as props
  */
 export default (Component) => (
-  @withData
-  @observer
   class WithCatalogItem extends React.Component {
     static propTypes = {
       router: PropTypes.object.isRequired
