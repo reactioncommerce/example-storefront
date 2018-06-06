@@ -22,6 +22,13 @@ export default class RoutingStore {
   @observable query = {};
 
   /**
+   *
+   *
+   * @type String
+   */
+  @observable queryString = "";
+
+  /**
    * The tag for the current page.
    * @type Object
    */
@@ -34,6 +41,13 @@ export default class RoutingStore {
   @action updateRoute({ pathname, query }) {
     this.pathname = pathname;
     this.query = query;
+
+    let path;
+    if (this.queryString !== "") {
+      path = `${pathname}/${query.slug}?${this.queryString}`;
+      console.log("route updated with queryString", path, query);
+      // Router.replaceRoute(path, path, { shallow: true });
+    }
   }
 
   /**
@@ -55,14 +69,16 @@ export default class RoutingStore {
       }
     });
 
+    this.queryString = urlQueryString;
+
     let path;
     if (_slug) {
-      path = `${this.pathname}/${_slug}?${urlQueryString}`;
+      path = `${this.pathname}/${_slug}?${this.queryString}`;
     } else {
-      path = `${this.pathname}?${urlQueryString}`;
+      path = `${this.pathname}?${this.queryString}`;
     }
 
-    Router.pushRoute(path, path, { shallow: true });
+    Router.replaceRoute(path, path, { shallow: true });
     return path;
   }
 }
