@@ -82,6 +82,8 @@ class ProductItemBadges extends Component {
         </Fragment>
       );
     }
+
+    // If any other status, check to see if secondary badges are needed
     return (
       <Fragment>
         {status && <Badge badgeClasses={badgeClasses} label={status.label} />}
