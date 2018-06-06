@@ -6,11 +6,11 @@ import withApolloClient from "lib/apollo/withApolloClient";
 import withTheme from "lib/theme/withTheme";
 import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
-import withMobx from "lib/stores/withMobx";
+import withMobX from "lib/stores/withMobX";
 
 @withApolloClient
 @withShop
-@withMobx
+@withMobX
 @withTheme
 @track({}, { dispatch })
 export default class App extends NextApp {

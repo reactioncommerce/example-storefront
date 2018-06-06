@@ -3,12 +3,13 @@ import { Provider } from "mobx-react";
 import rootMobxStores from "./index";
 
 /**
+ * @summary Provides MobX stores to each page.
  *
  * @param {Node} Component - The component to wrap
  * @returns {Node} - The wrapped component with Mobx stores add the react context.
  */
-function withMobx(Component) {
-  class WithMobx extends React.Component {
+function withMobX(Component) {
+  class WithMobX extends React.Component {
     render() {
       return (
         <Provider {...rootMobxStores} >
@@ -18,7 +19,7 @@ function withMobx(Component) {
     }
   }
 
-  return WithMobx;
+  return WithMobX;
 }
 
-export default withMobx;
+export default withMobX;
