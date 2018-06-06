@@ -266,49 +266,53 @@ Data for the Segment e-commerce event [Product List Viewed](https://segment.com/
 
   // An array of products
   products: [
-    // ID of top-level product
-    product_id: product._id,
+    {
+      // Product id
+      product_id: product._id,
 
-    // SKU
-    sku: product.sku,
+      // SKU
+      sku: product.sku,
 
-    // First tag
-    category: product.tags.edges[0].nodes.name,
+      // First tag
+      category: product.tags.edges[0].nodes.name,
 
-    // Title of top level product
-    name: product.title,
+      // Title of top level product
+      name: product.title,
 
-    // Vendor field from the top-level product
-    brand: product.vendor,
+      // Vendor field from the top-level product
+      brand: product.vendor,
 
-    // Varaint Id
-    variant: variant.variantId,
+      // Not used. Products in the grid do not have an associated variant
+      variant: undefined,
 
-    // Price from variant
-    price: variant.price,
+      // Price using the minimum price
+      // Where index 0, should be the index of the pricing object related to the currency for this product or shop
+      price: product.pricing[0].minPrice,
 
-    // Quantity not available via GraphQL API
-    // Set to 1 as a default
-    quantity: 1
+      // Quantity not available via GraphQL API
+      // Set to 1 as a default
+      quantity: 1
 
-    // Coupons not available via GraphQL API
-    coupon: null,
+      // Coupons not available via GraphQL API
+      coupon: null,
 
-    // Products only have currency based on shop
-    currency: shop.currency,
+      // Products only have currency based on shop
+      currency: product.shop.currency,
 
-    // Position based off of variant index
-    position: variant.index,
+      // Not used. Products in the catalog currently don't have a concrete position
+      position: undefined,
 
-    // Value based off of variant price multiplied by quantity (variant.price * quantity)
-    // In this case, use `variant.price` as there is only 1 for the quantity
-    value: variant.price,
+      // Value based off of the proeduct min price multiplied by quantity (variant.price * quantity)
+      // In this case, use `product.pricing.price` as there is only 1 for the quantity
+      // Where index 0, should be the index of the pricing object related to the currency for this product or shop
+      value: product.pricing[0].minPrice,
 
-    // Use router to get current url
-    url: router.pathname,
+      // Use router to generate the product url
+      url: "",
 
-    // Primary image from a varaint or product
-    image_url: product.primaryImage.URLs.original
+      // Primary image from product
+      image_url: product.primaryImage.URLs.original
+    }
   ]
 }
 ```
