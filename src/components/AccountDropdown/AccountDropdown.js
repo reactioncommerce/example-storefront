@@ -8,12 +8,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import AccountIcon from "mdi-material-ui/Account";
 import Popover from "@material-ui/core/Popover";
-
-let Keycloak;
-
-if (typeof window !== "undefined") {
-  Keycloak = require("keycloak-js");
-}
+import { login, logout } from "lib/auth";
 
 const styles = (theme) => ({
   accountDropdown: {
@@ -80,23 +75,11 @@ class AccountDropdown extends Component {
   }
 
   onLogin = () => {
-    const keycloak = new Keycloak({
-      realm: "default",
-      clientId: "reaction-next-starterkit-client",
-      url: "http://localhost:8080/auth"
-    });
-
-    keycloak.init({ flow: "hybrid" }).then((authenticated) => authenticated).catch(() => {});
-
-    keycloak.login({ redirectUri: "http://localhost:4000/auth" })
-      .catch((error) => {
-        throw error;
-      });
+    login();
   }
 
   onLogout = () => {
-    localStorage.clear("kc-token");
-    this.setState({ keycloakToken: "" });
+    logout(() => this.setState({ keycloakToken: "" }));
   }
 
   render() {
