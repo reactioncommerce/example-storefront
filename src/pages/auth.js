@@ -27,7 +27,9 @@ class AuthPage extends Component {
 
     if (typeof window !== "undefined" && params.access_token) {
       localStorage.setItem("kc-token", params.access_token);
-      Router.pushRoute("/");
+      const previousRoute = localStorage.getItem("kc-redirected-from");
+      localStorage.removeItem("kc-redirected-from");
+      Router.pushRoute(previousRoute || "/");
     }
   }
 

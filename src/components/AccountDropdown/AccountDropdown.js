@@ -75,6 +75,7 @@ class AccountDropdown extends Component {
   }
 
   onLogin = () => {
+    localStorage.setItem("kc-redirected-from", window.location.pathname);
     login();
   }
 

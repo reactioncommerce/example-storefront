@@ -16,6 +16,10 @@ export const login = () => {
 
 
 // log the browser out of Keycloak
-export const logout = () => {
+export const logout = (cb) => {
   localStorage.removeItem("kc-token");
+  if (typeof cb === "function") {
+    cb();
+  }
+  window.location.reload();
 };
