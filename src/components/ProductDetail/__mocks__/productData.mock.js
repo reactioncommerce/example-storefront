@@ -14,6 +14,16 @@ export default {
   isSoldOut: false,
   isBackorder: false,
   primaryImage: null,
+  shop: {
+    currency: {
+      code: "USD"
+    }
+  },
+  price: {
+    range: "$12.99 - $330",
+    min: 12.99,
+    max: 330
+  },
   pricing: [
     {
       currency: {

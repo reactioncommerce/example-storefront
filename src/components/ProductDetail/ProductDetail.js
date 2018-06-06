@@ -4,6 +4,9 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { inject, observer } from "mobx-react";
 import Helmet from "react-helmet";
+import trackProductViewed from "lib/tracking/trackProductViewed";
+import track from "lib/tracking/track";
+import getVariantTrackingData from "lib/tracking/utils/getVariantTrackingData";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
@@ -35,6 +38,7 @@ const styles = (theme) => ({
  */
 @withStyles(styles, { withTheme: true })
 @inject("uiStore")
+@trackProductViewed()
 @observer
 class ProductDetail extends Component {
   static propTypes = {
@@ -52,6 +56,13 @@ class ProductDetail extends Component {
     this.selectVariant(product.variants[0]);
   }
 
+  @track((props, state, [variant, optionId]) => (
+    getVariantTrackingData({
+      variant, // Object representing a variant. (Required)
+      optionId, // Selected option of the provided variant, if available. (Optional)
+      product: props.product // Full product document for additional data. (Optional)
+    })
+  ))
   selectVariant(variant, optionId) {
     const { product, uiStore } = this.props;
 

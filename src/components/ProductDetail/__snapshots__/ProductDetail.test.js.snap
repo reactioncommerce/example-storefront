@@ -2,16 +2,16 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="inject-ProductDetail-with-uiStore-root-1"
+  className="inject-WithTracking-ProductDetail--with-uiStore-root-1"
 >
   <div
-    className="MuiGrid-container-4 MuiGrid-spacing-xs-24-27 inject-ProductDetail-with-uiStore-pdpContainer-2"
+    className="MuiGrid-container-4 MuiGrid-spacing-xs-24-27 inject-WithTracking-ProductDetail--with-uiStore-pdpContainer-2"
   >
     <div
       className="MuiGrid-item-5 MuiGrid-grid-xs-12-42 MuiGrid-grid-sm-6-49"
     >
       <div
-        className="inject-ProductDetail-with-uiStore-section-3"
+        className="inject-WithTracking-ProductDetail--with-uiStore-section-3"
       >
         <div
           className="MuiGrid-container-4 inject-MediaGallery-with-uiStore-root-95"
@@ -276,7 +276,7 @@ exports[`basic snapshot 1`] = `
         </div>
       </div>
       <div
-        className="inject-ProductDetail-with-uiStore-section-3"
+        className="inject-WithTracking-ProductDetail--with-uiStore-section-3"
       >
         <section>
           <h2
