@@ -20,6 +20,12 @@ export default (Component) => (
 
             const { primaryShopId } = data || {};
 
+            if (!primaryShopId) {
+              /* eslint-disable no-console */
+              console.error("No primary shop found");
+              return null;
+            }
+
             return (
               <Query query={shopQuery} variables={{ shopId: primaryShopId }}>
                 {({ loading: loadingShopData, data: shopData }) => {
