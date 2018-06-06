@@ -30,6 +30,19 @@ export function inventoryStatus(product) {
 }
 
 /**
+ * Determines if a product is a best seller.
+ * TODO: this is a placeholder, as we don't have "Best Seller" at this moment
+ *
+ * @param {Object} product - The product
+ * @returns {Boolean} - Indicates whether the product is a best seller
+ */
+export function isProductBestSeller(product) {
+  // This is a placeholder.
+  return false;
+  // return product.isBestSeller;
+}
+
+/**
  * Determines if a product has low inventory.
  *
  * @param {Object} product - The product
@@ -37,6 +50,19 @@ export function inventoryStatus(product) {
  */
 export function isProductLowQuantity(product) {
   return product.isLowQuantity && !product.isSoldOut;
+}
+
+/**
+ * Determines if a product is on sale.
+ * TODO: this is a placeholder, as we don't have "Best Seller" at this moment
+ *
+ * @param {Object} product - The product
+ * @returns {Boolean} - Indicates whether the product is on sale
+ */
+export function isProductOnSale(product) {
+  // This is a placeholder.
+  return true;
+  // return product.isBestSeller;
 }
 
 /**
