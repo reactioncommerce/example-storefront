@@ -8,7 +8,8 @@ import ProductGrid from "components/ProductGrid";
 import ProductGridHero from "components/ProductGridHero";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
-@withTag @withCatalogItems
+@withTag
+@withCatalogItems
 @inject("routingStore", "uiStore")
 @trackProductListViewed({ dispatchOnMount: true })
 @observer
@@ -60,7 +61,14 @@ export default class TagShop extends Component {
   }
 
   render() {
-    const { catalogItems, catalogItemsPageInfo, routingStore: { query }, shop, tag, uiStore } = this.props;
+    const {
+      catalogItems,
+      catalogItemsPageInfo,
+      routingStore: { query },
+      shop,
+      tag,
+      uiStore
+    } = this.props;
     const pageSize = (query && query.limit) ? parseInt(query.limit, 10) : uiStore.pageSize;
     const sortBy = (query && query.sortby) ? query.sortby : uiStore.sortBy;
 
