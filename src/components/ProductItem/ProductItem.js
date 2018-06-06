@@ -138,8 +138,8 @@ class ProductItem extends Component {
         <Link route={this.productDetailHref}>
           <ProductItemBadges product={product}>
             {this.renderProductMedia()}
+            {this.renderProductInfo()}
           </ProductItemBadges>
-          {this.renderProductInfo()}
         </Link>
       </div>
     );
