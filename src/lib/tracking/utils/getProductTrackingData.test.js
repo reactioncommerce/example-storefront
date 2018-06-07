@@ -16,6 +16,15 @@ const product = {
       code: "USD"
     }
   },
+  pricing: [
+    {
+      currency: {
+        code: "USD"
+      },
+      minPrice: 12.99,
+      maxPrice: 19.99
+    }
+  ],
   primaryImage: {
     toGrid: 1,
     priority: 0,
@@ -36,6 +45,9 @@ test("getProductTrackingData should return partial data for tracking with segmen
     name: "My Product",
     brand: "Reaction",
     currency: "USD",
+    price: 12.99,
+    quantity: 1,
+    value: 12.99,
     image_url: "/assets/image.jpg" // eslint-disable-line camelcase
   };
 
@@ -56,6 +68,9 @@ test("getProductTrackingData should not fail when tags.nodes is a blank array", 
     name: "My Product",
     brand: "Reaction",
     currency: "USD",
+    price: 12.99,
+    quantity: 1,
+    value: 12.99,
     image_url: "/assets/image.jpg" // eslint-disable-line camelcase
   };
 
