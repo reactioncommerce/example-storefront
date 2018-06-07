@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
-import { inject, observer } from "mobx-react";
 import Badge from "components/Badge";
 import { badgeStatus, isProductBestseller, isProductLowQuantity, BADGE_TYPES } from "lib/utils";
 
