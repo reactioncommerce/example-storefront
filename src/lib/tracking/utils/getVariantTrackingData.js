@@ -15,7 +15,7 @@ export default function getVariantTrackingData({ product, variant, optionId }) {
   // If an option id is provided, use the option instead of the top level variant
   if (optionId) {
     const foundOption = variant.options.find((option) => (
-      option.variantId === optionId
+      option._id === optionId
     ));
 
     if (foundOption) {
@@ -45,7 +45,7 @@ export default function getVariantTrackingData({ product, variant, optionId }) {
   }
 
   return {
-    variant: data.variantId,
+    variant: data._id,
     price,
     quantity: 1,
     position: data.index,
