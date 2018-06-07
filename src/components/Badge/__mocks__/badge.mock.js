@@ -1,6 +1,6 @@
-import { INVENTORY_STATUS } from "lib/utils";
+import { BADGE_TYPES } from "lib/utils";
 
 export default {
-  type: INVENTORY_STATUS.SALE,
+  type: BADGE_TYPES.SALE,
   label: "Sale"
 };

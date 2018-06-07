@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import { inject, observer } from "mobx-react";
 import Badge from "components/Badge";
-import { badgeStatus, isProductBestSeller, isProductLowQuantity, INVENTORY_STATUS } from "lib/utils";
+import { badgeStatus, isProductBestseller, isProductLowQuantity, BADGE_TYPES } from "lib/utils";
 
 const styles = (theme) => ({
   badgeOverlay: {
@@ -70,11 +70,11 @@ class ProductItemBadges extends Component {
 
     const badgeClasses = classNames({
       [classes.status]: true,
-      [classes.backorder]: status.type === INVENTORY_STATUS.BACKORDER,
-      [classes.bestseller]: status.type === INVENTORY_STATUS.BESTSELLER,
-      [classes.lowInventory]: status.type === INVENTORY_STATUS.LOW_QUANTITY,
-      [classes.sale]: status.type === INVENTORY_STATUS.SALE,
-      [classes.soldOut]: status.type === INVENTORY_STATUS.SOLD_OUT
+      [classes.backorder]: status.type === BADGE_TYPES.BACKORDER,
+      [classes.bestseller]: status.type === BADGE_TYPES.BESTSELLER,
+      [classes.lowInventory]: status.type === BADGE_TYPES.LOW_QUANTITY,
+      [classes.sale]: status.type === BADGE_TYPES.SALE,
+      [classes.soldOut]: status.type === BADGE_TYPES.SOLD_OUT
     });
 
     // If status is "BACKORDER" or "SOLD_OUT", only show primary badge
@@ -102,17 +102,17 @@ class ProductItemBadges extends Component {
           <Badge badgeClasses={classes.secondaryBadge} label={"Low Inventory"} />
         );
       }
-      if (isProductBestSeller()) {
+      if (isProductBestseller(product)) {
         return (
-          <Badge badgeClasses={classes.secondaryBadge} label={"Best Seller"} />
+          <Badge badgeClasses={classes.secondaryBadge} label={"Bestseller"} />
         );
       }
     }
 
     if (primaryBadgeType === "LOW_QUANTITY") {
-      if (isProductBestSeller()) {
+      if (isProductBestseller(product)) {
         return (
-          <Badge badgeClasses={classes.secondaryBadge} label={"Best Seller"} />
+          <Badge badgeClasses={classes.secondaryBadge} label={"Bestseller"} />
         );
       }
     }
@@ -126,7 +126,7 @@ class ProductItemBadges extends Component {
 
     const badgeOverlayClasses = classNames({
       [classes.badgeOverlay]: true,
-      [classes.faded]: status.type === INVENTORY_STATUS.SOLD_OUT
+      [classes.faded]: status.type === BADGE_TYPES.SOLD_OUT
     });
 
     return (

@@ -1,6 +1,6 @@
 import keyMirror from "keymirror";
 
-export const INVENTORY_STATUS = keyMirror({
+export const BADGE_TYPES = keyMirror({
   BACKORDER: null,
   BESTSELLER: null,
   LOW_QUANTITY: null,
@@ -19,15 +19,15 @@ export function badgeStatus(product) {
   let status;
 
   if (product.isSoldOut && product.isBackorder) {
-    status = { type: INVENTORY_STATUS.BACKORDER, label: "Backorder" };
+    status = { type: BADGE_TYPES.BACKORDER, label: "Backorder" };
   } else if (product.isSoldOut && !product.isBackorder) {
-    status = { type: INVENTORY_STATUS.SOLD_OUT, label: "Sold Out" };
+    status = { type: BADGE_TYPES.SOLD_OUT, label: "Sold Out" };
   } else if (product.isOnSale) {
-    status = { type: INVENTORY_STATUS.SALE, label: "Sale" };
+    status = { type: BADGE_TYPES.SALE, label: "Sale" };
   } else if (product.isLowQuantity && !product.isSoldOut) {
-    status = { type: INVENTORY_STATUS.LOW_QUANTITY, label: "Low Inventory" };
+    status = { type: BADGE_TYPES.LOW_QUANTITY, label: "Low Inventory" };
   } else if (product.isBestSeller) {
-    status = { type: INVENTORY_STATUS.BESTSELLER, label: "Best Seller" };
+    status = { type: BADGE_TYPES.BESTSELLER, label: "Best Seller" };
   }
 
   return status;
@@ -40,10 +40,16 @@ export function badgeStatus(product) {
  * @param {Object} product - The product
  * @returns {Boolean} - Indicates whether the product is a best seller
  */
-export function isProductBestSeller(product) {
+export function isProductBestseller(product) {
   // This is a placeholder.
-  return true;
-  // return product.isBestSeller;
+  // Remove the placeholder check and only `return product.isBestseller`
+  // when that functionality if available
+  const placeholder = true;
+  if (placeholder) {
+    return true;
+  }
+
+  return product.isBestseller;
 }
 
 /**
@@ -65,8 +71,14 @@ export function isProductLowQuantity(product) {
  */
 export function isProductOnSale(product) {
   // This is a placeholder.
-  return true;
-  // return product.isBestSeller;
+  // Remove the placeholder check and only `return product.isOnSale`
+  // when that functionality if available
+  const placeholder = true;
+  if (placeholder) {
+    return false;
+  }
+
+  return product.isOnSale;
 }
 
 /**

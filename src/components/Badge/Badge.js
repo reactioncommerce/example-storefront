@@ -35,7 +35,8 @@ export default class Badge extends Component {
     badgeClasses: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     classes: PropTypes.object.isRequired,
     label: PropTypes.string.isRequired,
-    labelClasses: PropTypes.object
+    labelClasses: PropTypes.object,
+    type: PropTypes.string
   }
 
   render() {
