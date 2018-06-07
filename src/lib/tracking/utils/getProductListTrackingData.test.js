@@ -21,6 +21,15 @@ const products = [{
       code: "USD"
     }
   },
+  pricing: [
+    {
+      currency: {
+        code: "USD"
+      },
+      minPrice: 12.99,
+      maxPrice: 19.99
+    }
+  ],
   primaryImage: {
     toGrid: 1,
     priority: 0,
@@ -45,6 +54,9 @@ test("getProductListTrackingData should return data for tracking with segment Pr
         name: "My Product",
         brand: "Reaction",
         currency: "USD",
+        price: 12.99,
+        quantity: 1,
+        value: 12.99,
         image_url: "/assets/image.jpg" // eslint-disable-line camelcase
       }
     ]
