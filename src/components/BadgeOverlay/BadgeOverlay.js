@@ -49,8 +49,6 @@ const styles = (theme) => ({
 
 
 @withStyles(styles, { withTheme: true })
-@inject("uiStore")
-@observer
 class BadgeOverlay extends Component {
   static propTypes = {
     children: PropTypes.node,
