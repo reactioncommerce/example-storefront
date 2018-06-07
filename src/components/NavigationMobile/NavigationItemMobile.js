@@ -58,7 +58,8 @@ class NavigationItemMobile extends Component {
     if (this.hasSubNavItems) {
       this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
     } else {
-      Router.pushRoute("tag", { slug: navItem.slug });
+      const path = this.linkPath;
+      Router.pushRoute(path, { slug: navItem.slug });
     }
   };
 
