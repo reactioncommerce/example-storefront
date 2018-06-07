@@ -6,6 +6,17 @@
  * @returns {Object} Data for tracking
  */
 export default function getProductTrackingData(product) {
+  let price;
+
+  if (product && product.shop) {
+    const shopCurrency = product.shop.currency.code;
+    const foundPricing = product.pricing.find((pricing) => pricing.currency.code === shopCurrency);
+
+    if (foundPricing) {
+      price = foundPricing.price || foundPricing.minPrice; // eslint-disable-line prefer-destructuring
+    }
+  }
+
   return {
     product_id: product._id, // eslint-disable-line camelcase
     sku: product.sku,
@@ -13,6 +24,9 @@ export default function getProductTrackingData(product) {
     name: product.title,
     brand: product.vendor,
     currency: product.shop.currency.code,
+    price,
+    quantity: 1,
+    value: price,
     image_url: product.primaryImage && product.primaryImage.URLs.original // eslint-disable-line camelcase
   };
 }
