@@ -46,7 +46,7 @@ export function isProductBestseller(product) {
   // when that functionality if available
   const placeholder = true;
   if (placeholder) {
-    return true;
+    return false;
   }
 
   return product.isBestseller;
