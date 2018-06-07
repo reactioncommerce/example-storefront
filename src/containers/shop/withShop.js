@@ -21,6 +21,7 @@ export default (Component) => (
             const { primaryShopId } = data || {};
 
             if (!primaryShopId) {
+              /* eslint-disable no-console */
               console.error("No primary shop found");
               return null;
             }
