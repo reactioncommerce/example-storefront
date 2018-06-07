@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import VariantItem from "components/VariantItem";
 import ProductDetailOptionsList from "components/ProductDetailOptionsList";
 import Badge from "components/Badge";
-import { inventoryStatus } from "lib/utils";
+import { badgeStatus } from "lib/utils";
 import Divider from "components/Divider";
 
 const styles = (theme) => ({
@@ -56,7 +56,7 @@ export default class VariantList extends Component {
 
   renderInventoryStatus(variant) {
     const { classes } = this.props;
-    const status = inventoryStatus(variant);
+    const status = badgeStatus(variant);
 
     if (!status) return null;
 

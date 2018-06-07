@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import { inject, observer } from "mobx-react";
 import Badge from "components/Badge";
-import { inventoryStatus, isProductBestSeller, isProductLowQuantity, INVENTORY_STATUS } from "lib/utils";
+import { badgeStatus, isProductBestSeller, isProductLowQuantity, INVENTORY_STATUS } from "lib/utils";
 
 const styles = (theme) => ({
   badgeOverlay: {
@@ -42,7 +42,8 @@ const styles = (theme) => ({
   },
   secondaryBadge: {
     color: theme.palette.reaction.coolGrey,
-    right: 0
+    right: theme.spacing.unit,
+    top: theme.spacing.unit
   }
 });
 
@@ -63,7 +64,9 @@ class ProductItemBadges extends Component {
 
   renderBadge = () => {
     const { classes, product } = this.props;
-    const status = inventoryStatus(product) || {};
+    const status = badgeStatus(product);
+
+    if (!status) return null;
 
     const badgeClasses = classNames({
       [classes.status]: true,
@@ -77,16 +80,14 @@ class ProductItemBadges extends Component {
     // If status is "BACKORDER" or "SOLD_OUT", only show primary badge
     if (status.type === "BACKORDER" || status.type === "SOLD_OUT") {
       return (
-        <Fragment>
-          {status && <Badge badgeClasses={badgeClasses} label={status.label} />}
-        </Fragment>
+        <Badge badgeClasses={badgeClasses} label={status.label} />
       );
     }
 
     // If any other status, check to see if secondary badges are needed
     return (
       <Fragment>
-        {status && <Badge badgeClasses={badgeClasses} label={status.label} />}
+        <Badge badgeClasses={badgeClasses} label={status.label} />
         {this.renderSecondaryBadge(status.type)}
       </Fragment>
     );
@@ -94,21 +95,16 @@ class ProductItemBadges extends Component {
 
   renderSecondaryBadge = (primaryBadgeType) => {
     const { classes, product } = this.props;
-    const status = inventoryStatus(product) || {};
 
     if (primaryBadgeType === "SALE") {
       if (isProductLowQuantity(product)) {
         return (
-          <Fragment>
-            {status && <Badge badgeClasses={classes.secondaryBadge} label={"Low Inventory"} />}
-          </Fragment>
+          <Badge badgeClasses={classes.secondaryBadge} label={"Low Inventory"} />
         );
       }
       if (isProductBestSeller()) {
         return (
-          <Fragment>
-            {status && <Badge badgeClasses={classes.secondaryBadge} label={"Best Seller"} />}
-          </Fragment>
+          <Badge badgeClasses={classes.secondaryBadge} label={"Best Seller"} />
         );
       }
     }
@@ -116,9 +112,7 @@ class ProductItemBadges extends Component {
     if (primaryBadgeType === "LOW_QUANTITY") {
       if (isProductBestSeller()) {
         return (
-          <Fragment>
-            {status && <Badge badgeClasses={classes.secondaryBadge} label={"Best Seller"} />}
-          </Fragment>
+          <Badge badgeClasses={classes.secondaryBadge} label={"Best Seller"} />
         );
       }
     }
@@ -128,7 +122,7 @@ class ProductItemBadges extends Component {
 
   render() {
     const { children, classes, product } = this.props;
-    const status = inventoryStatus(product) || {};
+    const status = badgeStatus(product) || {};
 
     const badgeOverlayClasses = classNames({
       [classes.badgeOverlay]: true,

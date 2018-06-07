@@ -10,20 +10,24 @@ export const INVENTORY_STATUS = keyMirror({
 
 
 /**
- * Determines a product's inventory status
+ * Determines a product's badge status
  *
  * @param {Object} product - The product
  * @returns {Object} - The computed product status
  */
-export function inventoryStatus(product) {
-  let status = null;
+export function badgeStatus(product) {
+  let status;
 
   if (product.isSoldOut && product.isBackorder) {
     status = { type: INVENTORY_STATUS.BACKORDER, label: "Backorder" };
   } else if (product.isSoldOut && !product.isBackorder) {
     status = { type: INVENTORY_STATUS.SOLD_OUT, label: "Sold Out" };
+  } else if (product.isOnSale) {
+    status = { type: INVENTORY_STATUS.SALE, label: "Sale" };
   } else if (product.isLowQuantity && !product.isSoldOut) {
     status = { type: INVENTORY_STATUS.LOW_QUANTITY, label: "Low Inventory" };
+  } else if (product.isBestSeller) {
+    status = { type: INVENTORY_STATUS.BESTSELLER, label: "Best Seller" };
   }
 
   return status;
@@ -38,7 +42,7 @@ export function inventoryStatus(product) {
  */
 export function isProductBestSeller(product) {
   // This is a placeholder.
-  return false;
+  return true;
   // return product.isBestSeller;
 }
 

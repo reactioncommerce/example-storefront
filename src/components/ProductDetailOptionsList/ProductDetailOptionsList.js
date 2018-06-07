@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import { observer } from "mobx-react";
 import Badge from "components/Badge";
-import { inventoryStatus } from "lib/utils";
+import { badgeStatus } from "lib/utils";
 import ProductDetailOption from "components/ProductDetailOption";
 
 const styles = (theme) => ({
@@ -39,7 +39,7 @@ export default class OptionsList extends Component {
 
   renderInventoryStatus(option) {
     const { classes } = this.props;
-    const status = inventoryStatus(option);
+    const status = badgeStatus(option);
 
     if (!status) return null;
 
