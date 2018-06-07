@@ -22,7 +22,7 @@ export default class RoutingStore {
   @observable query = {};
 
   /**
-   *
+   * The query params as a URL string. (i.e. `sortby=minPrice-asc&limit=60`)
    *
    * @type String
    */
@@ -41,13 +41,6 @@ export default class RoutingStore {
   @action updateRoute({ pathname, query }) {
     this.pathname = pathname;
     this.query = query;
-
-    let path;
-    if (this.queryString !== "") {
-      path = `${pathname}/${query.slug}?${this.queryString}`;
-      console.log("route updated with queryString", path, query);
-      // Router.replaceRoute(path, path, { shallow: true });
-    }
   }
 
   /**
