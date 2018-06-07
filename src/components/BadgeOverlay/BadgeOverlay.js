@@ -51,11 +51,13 @@ const styles = (theme) => ({
 @withStyles(styles, { withTheme: true })
 @inject("uiStore")
 @observer
-class ProductItemBadges extends Component {
+class BadgeOverlay extends Component {
   static propTypes = {
     children: PropTypes.node,
     classes: PropTypes.object,
-    product: PropTypes.object.isRequired
+    filterOnly: PropTypes.string,
+    product: PropTypes.object.isRequired,
+    shouldShowPrimaryOnly: PropTypes.bool
   };
 
   static defaultProps = {
@@ -63,7 +65,7 @@ class ProductItemBadges extends Component {
   };
 
   renderBadge = () => {
-    const { classes, product } = this.props;
+    const { classes, filterOnly, product, shouldShowPrimaryOnly } = this.props;
     const status = badgeStatus(product);
 
     if (!status) return null;
@@ -77,8 +79,18 @@ class ProductItemBadges extends Component {
       [classes.soldOut]: status.type === BADGE_TYPES.SOLD_OUT
     });
 
+    if (filterOnly) {
+      if (status.type === filterOnly) {
+        return (
+          <Badge badgeClasses={badgeClasses} label={status.label} />
+        );
+      }
+
+      return null;
+    }
+
     // If status is "BACKORDER" or "SOLD_OUT", only show primary badge
-    if (status.type === "BACKORDER" || status.type === "SOLD_OUT") {
+    if (status.type === "BACKORDER" || status.type === "SOLD_OUT" || shouldShowPrimaryOnly) {
       return (
         <Badge badgeClasses={badgeClasses} label={status.label} />
       );
@@ -138,4 +150,4 @@ class ProductItemBadges extends Component {
   }
 }
 
-export default ProductItemBadges;
+export default BadgeOverlay;

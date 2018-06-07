@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import { observer } from "mobx-react";
-import Badge from "components/Badge";
 import { badgeStatus } from "lib/utils";
+import BadgeOverlay from "components/BadgeOverlay";
 import ProductDetailOption from "components/ProductDetailOption";
 
 const styles = (theme) => ({
@@ -45,7 +45,7 @@ export default class OptionsList extends Component {
 
     return (
       <div className={classes.alert}>
-        <Badge className={classes.badge} type={status.type} label={status.label} />
+        <BadgeOverlay product={option} filterOnly={"SALE"} shouldShowPrimaryOnly={true} label={status.label} />
       </div>
     );
   }

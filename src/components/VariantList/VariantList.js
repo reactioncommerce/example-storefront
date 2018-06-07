@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import VariantItem from "components/VariantItem";
 import ProductDetailOptionsList from "components/ProductDetailOptionsList";
-import Badge from "components/Badge";
+import BadgeOverlay from "components/BadgeOverlay";
 import { badgeStatus } from "lib/utils";
 import Divider from "components/Divider";
 
@@ -62,7 +62,7 @@ export default class VariantList extends Component {
 
     return (
       <div className={classes.alert}>
-        <Badge type={status.type} label={status.label} />
+        <BadgeOverlay product={variant} filterOnly={"MERCHANDISING"} shouldShowPrimaryOnly={true} label={status.label} />
       </div>
     );
   }

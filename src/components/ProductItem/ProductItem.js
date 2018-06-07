@@ -7,7 +7,7 @@ import Hidden from "@material-ui/core/Hidden";
 import Typography from "@material-ui/core/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
 import Link from "components/Link";
-import ProductItemBadges from "components/ProductItemBadges";
+import BadgeOverlay from "components/BadgeOverlay";
 import { priceByCurrencyCode } from "lib/utils";
 import { styles } from "./styles";
 
@@ -136,10 +136,10 @@ class ProductItem extends Component {
     return (
       <div>
         <Link route={this.productDetailHref}>
-          <ProductItemBadges product={product}>
+          <BadgeOverlay product={product}>
             {this.renderProductMedia()}
             {this.renderProductInfo()}
-          </ProductItemBadges>
+          </BadgeOverlay>
         </Link>
       </div>
     );
