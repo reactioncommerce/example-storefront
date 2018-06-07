@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { inject } from "mobx-react";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
@@ -24,19 +25,29 @@ const styles = (theme) => ({
   }
 });
 
+@inject("routingStore")
 @withStyles(styles)
 class NavigationItemDesktop extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    navItem: PropTypes.object
+    navItem: PropTypes.object,
+    routingStore: PropTypes.object
   };
 
   static defaultProps = {
     classes: {},
-    navItem: {}
+    navItem: {},
+    routingStore: {}
   };
 
   state = { isSubNavOpen: false };
+
+  get linkPath() {
+    const { navItem, routingStore } = this.props;
+    return routingStore.queryString !== ""
+      ? `/tag/${navItem.slug}?${routingStore.queryString}`
+      : `/tag/${navItem.slug}`;
+  }
 
   get hasSubNavItems() {
     const { navItem: { subTags } } = this.props;
@@ -48,7 +59,8 @@ class NavigationItemDesktop extends Component {
     if (this.hasSubNavItems) {
       this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
     } else {
-      Router.pushRoute("tag", { slug: navItem.slug });
+      const path = this.linkPath;
+      Router.pushRoute(path, { slug: navItem.slug });
     }
   };
 
@@ -62,7 +74,7 @@ class NavigationItemDesktop extends Component {
         <Divider />
         {navItemGroup.subTags.edges.map(({ node: navItem }, index) => (
           <MenuItem dense key={index}>
-            <Link route={`/tag/${navItem.slug}`}>
+            <Link route={`${this.linkPath}`}>
               <ListItemText primary={navItem.name} />
             </Link>
           </MenuItem>

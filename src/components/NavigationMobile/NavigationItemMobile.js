@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { inject } from "mobx-react";
 import { Router } from "routes";
 import Divider from "@material-ui/core/Divider";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -22,19 +23,29 @@ const styles = (theme) => ({
   }
 });
 
+@inject("routingStore")
 @withStyles(styles)
 class NavigationItemMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    navItem: PropTypes.object
+    navItem: PropTypes.object,
+    routingStore: PropTypes.object
   };
 
   static defaultProps = {
     classes: {},
-    navItem: {}
+    navItem: {},
+    routingStore: {}
   };
 
   state = { isSubNavOpen: false };
+
+  get linkPath() {
+    const { navItem, routingStore } = this.props;
+    return routingStore.queryString !== ""
+      ? `/tag/${navItem.slug}?${routingStore.queryString}`
+      : `/tag/${navItem.slug}`;
+  }
 
   get hasSubNavItems() {
     const { navItem: { subTags } } = this.props;
