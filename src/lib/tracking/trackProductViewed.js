@@ -1,5 +1,5 @@
-import React from "react";
 import track from "./track";
+import getProductTrackingData from "./utils/getProductTrackingData";
 
 /**
  * trackProductViewed higher tracks a product
@@ -7,26 +7,23 @@ import track from "./track";
  * @param {Object} options options to supply to tracking HOC
  * @returns {React.Component} - component
  */
-export default (options) => (Component) => {
-  const component = class trackProductViewed extends React.Component {
-    render() {
-      return (
-        <Component {...this.props} />
-      );
-    }
-  };
+export default (options) => (
+  track(({ product, router }) => {
+    let data = {};
 
-  return track(({ product }) => {
+    // If product data is provided as a prop, then process the data for tracking
     if (product) {
-      return {
+      data = {
         action: "Product Viewed",
-        product_id: product._id, // eslint-disable-line camelcase
-        name: product.title
+        ...getProductTrackingData(product)
       };
+
+      // If the router is provided as a prop, set the url of the product to the current path
+      if (router) {
+        data.url = router.asPath;
+      }
     }
 
-    return {};
-  }, {
-    ...options
-  })(component);
-};
+    return data;
+  }, options)
+);
