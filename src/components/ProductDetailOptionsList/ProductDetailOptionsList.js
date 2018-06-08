@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import { observer } from "mobx-react";
 import badgeStatus from "lib/utils/badgeStatus";
+import BADGE_TYPES from "lib/utils/badgeTypes";
 import BadgeOverlay from "components/BadgeOverlay";
 import ProductDetailOption from "components/ProductDetailOption";
 
@@ -45,7 +46,7 @@ export default class OptionsList extends Component {
 
     return (
       <div className={classes.alert}>
-        <BadgeOverlay product={option} filterOnly={"SALE"} shouldShowPrimaryOnly={true} label={status.label} />
+        <BadgeOverlay product={option} filterOnly={BADGE_TYPES.SALE} shouldShowPrimaryOnly={true} label={status.label} />
       </div>
     );
   }
