@@ -40,9 +40,14 @@ export default class Anchor extends Component {
   }
 
   render() {
+    const {
+      onAnchorClick, // eslint-disable-line
+      ...props
+    } = this.props;
+
     return (
       <a
-        {...this.props}
+        {...props}
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
         role="link"
