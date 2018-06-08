@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import Badge from "components/Badge";
-import { badgeStatus, isProductBestseller, isProductLowQuantity, BADGE_TYPES } from "lib/utils";
+import BADGE_TYPES from "lib/utils/badgeTypes";
+import isProductLowQuantity from "lib/utils/isProductLowQuantity";
+import isProductBestseller from "lib/utils/isProductBestseller";
+import badgeStatus from "lib/utils/badgeStatus";
 
 const styles = (theme) => ({
   badgeOverlay: {

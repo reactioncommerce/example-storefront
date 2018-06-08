@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import { observer } from "mobx-react";
-import { badgeStatus } from "lib/utils";
+import badgeStatus from "lib/utils/badgeStatus";
 import BadgeOverlay from "components/BadgeOverlay";
 import ProductDetailOption from "components/ProductDetailOption";
 
