@@ -1,4 +1,4 @@
-import BADGE_TYPES from "./badgeTypes";
+import { BADGE_TYPES } from "./badgeTypes";
 
 /**
  * Determines a product's badge status
@@ -6,7 +6,7 @@ import BADGE_TYPES from "./badgeTypes";
  * @param {Object} product - The product
  * @returns {Object} - The computed product status
  */
-export function badgeStatus(product) {
+export default function badgeStatus(product) {
   let status;
 
   if (product.isSoldOut && product.isBackorder) {

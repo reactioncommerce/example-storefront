@@ -5,7 +5,7 @@
  * @param {Array} pricing - An array of pricing objects with different currencies.
  * @returns {Object} - pricing object, or null if none found.
  */
-export function priceByCurrencyCode(currencyCode, pricing) {
+export default function priceByCurrencyCode(currencyCode, pricing) {
   const _pricing = pricing.find((price) => price.currency.code === currencyCode);
 
   return _pricing || null;

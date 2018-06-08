@@ -6,7 +6,7 @@
  * @param {Object} product - The product
  * @returns {Boolean} - Indicates whether the product is on sale
  */
-export function isProductOnSale(product) {
+export default function isProductOnSale(product) {
   // This is a placeholder.
   // Remove the placeholder check and only `return product.isOnSale`
   // when that functionality if available

@@ -4,6 +4,6 @@
  * @param {Object} product - The product
  * @returns {Boolean} - Indicates whether the product has low inventory
  */
-export function isProductLowQuantity(product) {
+export default function isProductLowQuantity(product) {
   return product.isLowQuantity && !product.isSoldOut;
 }

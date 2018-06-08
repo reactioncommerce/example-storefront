@@ -6,7 +6,7 @@
  * @param {Object} product - The product
  * @returns {Boolean} - Indicates whether the product is a best seller
  */
-export function isProductBestseller(product) {
+export default function isProductBestseller(product) {
   // This is a placeholder.
   // Remove the placeholder check and only `return product.isBestseller`
   // when that functionality if available
