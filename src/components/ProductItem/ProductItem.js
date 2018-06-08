@@ -8,10 +8,13 @@ import Typography from "@material-ui/core/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
 import Link from "components/Link";
 import Badge from "components/Badge";
+import track from "lib/tracking/track";
+import trackProductClicked from "lib/tracking/trackProductClicked";
 import { inventoryStatus, isProductLowQuantity, INVENTORY_STATUS, priceByCurrencyCode } from "lib/utils";
 import { styles } from "./styles";
 
 @withStyles(styles, { withTheme: true })
+@track()
 @inject("uiStore")
 @observer
 class ProductItem extends Component {
@@ -35,6 +38,9 @@ class ProductItem extends Component {
     const url = `/product/${slug}`;
     return url;
   }
+
+  @trackProductClicked()
+  handleAnchorClick = () => {}
 
   onImageLoad = () => {
     const { hasImageLoaded } = this.state;
@@ -140,7 +146,10 @@ class ProductItem extends Component {
   render() {
     return (
       <div>
-        <Link route={this.productDetailHref}>
+        <Link
+          route={this.productDetailHref}
+          onAnchorClick={this.handleAnchorClick}
+        >
           {this.renderProductMedia()}
           {this.renderProductInfo()}
         </Link>
