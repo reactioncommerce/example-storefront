@@ -47,6 +47,7 @@ const styles = (theme) => ({
 });
 
 
+@withStyles(styles)
 class BadgeOverlay extends Component {
   static propTypes = {
     children: PropTypes.node,
