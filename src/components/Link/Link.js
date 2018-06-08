@@ -46,7 +46,7 @@ class Link extends Component {
       <NextLink {...props} passHref>
         <Anchor
           className={classNames(classes.link, className)}
-          onAnchorClick={this.props.onAnchorClick}
+          onAnchorClick={onAnchorClick}
         >
           {children}
         </Anchor>
