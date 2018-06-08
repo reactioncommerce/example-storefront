@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import Badge from "components/Badge";
 import BADGE_TYPES from "lib/utils/badgeTypes";
+import BADGE_LABELS from "lib/utils/badgeLabels";
 import isProductLowQuantity from "lib/utils/isProductLowQuantity";
 import isProductBestseller from "lib/utils/isProductBestseller";
 import badgeStatus from "lib/utils/badgeStatus";
@@ -107,12 +108,12 @@ class BadgeOverlay extends Component {
     if (primaryBadgeType === BADGE_TYPES.SALE) {
       if (isProductLowQuantity(product)) {
         return (
-          <Badge badgeClasses={classes.secondaryBadge} label={"Low Inventory"} />
+          <Badge badgeClasses={classes.secondaryBadge} label={BADGE_LABELS.LOW_QUANTITY} />
         );
       }
       if (isProductBestseller(product)) {
         return (
-          <Badge badgeClasses={classes.secondaryBadge} label={"Bestseller"} />
+          <Badge badgeClasses={classes.secondaryBadge} label={BADGE_LABELS.BESTSELLER} />
         );
       }
     }
@@ -120,7 +121,7 @@ class BadgeOverlay extends Component {
     if (primaryBadgeType === BADGE_TYPES.LOW_QUANTITY) {
       if (isProductBestseller(product)) {
         return (
-          <Badge badgeClasses={classes.secondaryBadge} label={"Bestseller"} />
+          <Badge badgeClasses={classes.secondaryBadge} label={BADGE_LABELS.BESTSELLER} />
         );
       }
     }
