@@ -16,6 +16,31 @@ exports[`Product with backorder badge 1`] = `
 </div>
 `;
 
+exports[`Product with bestseller and low inventory badges 1`] = `
+<div
+  className="BadgeOverlay-badgeOverlay-1"
+>
+  <div
+    className="Badge-badge-12 BadgeOverlay-status-3 BadgeOverlay-sale-7"
+  >
+    <span
+      className="Badge-labelStyle-13"
+    >
+      Sale
+    </span>
+  </div>
+  <div
+    className="Badge-badge-12 BadgeOverlay-secondaryBadge-11"
+  >
+    <span
+      className="Badge-labelStyle-13"
+    >
+      Low Inventory
+    </span>
+  </div>
+</div>
+`;
+
 exports[`Product with low inventory badge 1`] = `
 <div
   className="BadgeOverlay-badgeOverlay-1"
@@ -49,6 +74,31 @@ exports[`Product with sale and bestseller badges 1`] = `
       className="Badge-labelStyle-13"
     >
       Sale
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Product with sale and low inventory badges 1`] = `
+<div
+  className="BadgeOverlay-badgeOverlay-1"
+>
+  <div
+    className="Badge-badge-12 BadgeOverlay-status-3 BadgeOverlay-sale-7"
+  >
+    <span
+      className="Badge-labelStyle-13"
+    >
+      Sale
+    </span>
+  </div>
+  <div
+    className="Badge-badge-12 BadgeOverlay-secondaryBadge-11"
+  >
+    <span
+      className="Badge-labelStyle-13"
+    >
+      Low Inventory
     </span>
   </div>
 </div>
