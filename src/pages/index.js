@@ -8,7 +8,6 @@ import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
 @withCatalogItems
 @inject("routingStore", "uiStore")
-@trackProductListViewed({ dispatchOnMount: true })
 @observer
 class Shop extends Component {
   static propTypes = {
@@ -28,6 +27,9 @@ class Shop extends Component {
       sortBy: PropTypes.string.isRequired
     })
   };
+
+  @trackProductListViewed()
+  componentDidMount() {}
 
   setPageSize = (pageSize) => {
     this.props.routingStore.setSearch({ limit: pageSize });
