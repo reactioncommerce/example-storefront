@@ -9,7 +9,7 @@ import getVariantTrackingData from "./utils/getVariantTrackingData";
  * @returns {React.Component} - component
  */
 export default (options) => (
-  track(({ product, router }, state, [variant, optionId]) => {
+  track(({ product, router }, state, functionArgs) => {
     let data = {};
 
     // If product data is provided as a prop, then process the data for tracking
@@ -19,17 +19,22 @@ export default (options) => (
         ...getProductTrackingData(product)
       };
 
-      // Add variant data if available
-      if (variant) {
-        data = {
-          ...data,
-          ...getVariantTrackingData({
-            variant, // Object representing a variant. (Required)
-            optionId, // Selected option of the provided variant, if available. (Optional)
-            product // Full product document for additional data. (Optional)
-          })
-        };
+      if (Array.isArray(functionArgs)) {
+        const [variant, optionId] = functionArgs;
+
+        // Add variant data if available
+        if (variant) {
+          data = {
+            ...data,
+            ...getVariantTrackingData({
+              variant, // Object representing a variant. (Required)
+              optionId, // Selected option of the provided variant, if available. (Optional)
+              product // Full product document for additional data. (Optional)
+            })
+          };
+        }
       }
+
 
       // If the router is provided as a prop, set the url of the product to the current path
       if (router) {
