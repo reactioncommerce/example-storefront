@@ -57,10 +57,6 @@ class BadgeOverlay extends Component {
     shouldShowPrimaryOnly: PropTypes.bool
   };
 
-  static defaultProps = {
-    classes: {}
-  };
-
   renderBadge = () => {
     const { classes, filterOnly, product, shouldShowPrimaryOnly } = this.props;
     const status = badgeStatus(product);
