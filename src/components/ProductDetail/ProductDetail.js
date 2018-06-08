@@ -49,11 +49,12 @@ class ProductDetail extends Component {
     uiStore: PropTypes.object.isRequired
   }
 
-  componentDidMount() {
-    const { product } = this.props;
-
-    // Select first variant by default
-    this.selectVariant(product.variants[0]);
+  constructor(props) {
+    super(props);
+    // console.log("uiStore selected vid", props.uiStore.pdpSelectedVariantId);
+    if (!props.uiStore.pdpSelectedVariantId) {
+      this.selectVariant(props.product.variants[0], null, false);
+    }
   }
 
   @track((props, state, [variant, optionId]) => (
@@ -63,7 +64,7 @@ class ProductDetail extends Component {
       product: props.product // Full product document for additional data. (Optional)
     })
   ))
-  selectVariant(variant, optionId) {
+  selectVariant(variant, optionId, updateRoute = true) {
     const { product, uiStore } = this.props;
 
     // Select the variant, and if it has options, the first option
@@ -75,10 +76,12 @@ class ProductDetail extends Component {
 
     uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
 
-    Router.pushRoute("product", {
-      slugOrId: product.slug,
-      variantId: selectOptionId || variantId
-    });
+    if (updateRoute) {
+      Router.pushRoute("product", {
+        slugOrId: product.slug,
+        variantId: selectOptionId || variantId
+      });
+    }
   }
 
   /**

@@ -8,6 +8,7 @@ import withShop from "containers/shop/withShop";
 import Layout from "components/Layout";
 import withMobX from "lib/stores/withMobX";
 import rootMobXStores from "lib/stores";
+import { PageTransition } from "next-page-transitions";
 
 @withApolloClient
 @withShop
@@ -26,7 +27,13 @@ export default class App extends NextApp {
     return (
       <Container>
         <Layout>
-          <Component {...rest} />
+          <PageTransition
+            key={rest.router.route}
+            classNames="page-transition"
+            timeout={300}
+          >
+            <Component {...rest} />
+          </PageTransition>
         </Layout>
       </Container>
     );
