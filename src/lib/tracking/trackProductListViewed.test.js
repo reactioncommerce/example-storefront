@@ -9,10 +9,7 @@ test("component decorated with trackProductListViewed should dispatch tracking e
   const context = { context: 1 };
   const trackingContext = { dispatch };
   const data = {
-    action: "Product List Viewed",
-    category: "",
-    list_id: "",
-    products: []
+    action: "Product List Viewed"
   };
 
   @trackProductListViewed(trackingContext)
@@ -27,6 +24,6 @@ test("component decorated with trackProductListViewed should dispatch tracking e
   expect(instance.getChildContext().tracking.data).toEqual(data);
   expect(instance.render()).toBeDefined;
 
-  instance.trackEvent(data);
+  instance.trackEvent({});
   expect(dispatch).toHaveBeenCalledWith(data);
 });
