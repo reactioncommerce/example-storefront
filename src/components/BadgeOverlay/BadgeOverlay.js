@@ -86,7 +86,7 @@ class BadgeOverlay extends Component {
     }
 
     // If status is "BACKORDER" or "SOLD_OUT", only show primary badge
-    if (status.type === "BACKORDER" || status.type === "SOLD_OUT" || shouldShowPrimaryOnly) {
+    if (status.type === BADGE_TYPES.BACKORDER || status.type === BADGE_TYPES.SOLD_OUT || shouldShowPrimaryOnly) {
       return (
         <Badge badgeClasses={badgeClasses} label={status.label} />
       );
@@ -104,7 +104,7 @@ class BadgeOverlay extends Component {
   renderSecondaryBadge = (primaryBadgeType) => {
     const { classes, product } = this.props;
 
-    if (primaryBadgeType === "SALE") {
+    if (primaryBadgeType === BADGE_TYPES.SALE) {
       if (isProductLowQuantity(product)) {
         return (
           <Badge badgeClasses={classes.secondaryBadge} label={"Low Inventory"} />
@@ -117,7 +117,7 @@ class BadgeOverlay extends Component {
       }
     }
 
-    if (primaryBadgeType === "LOW_QUANTITY") {
+    if (primaryBadgeType === BADGE_TYPES.LOW_QUANTITY) {
       if (isProductBestseller(product)) {
         return (
           <Badge badgeClasses={classes.secondaryBadge} label={"Bestseller"} />
