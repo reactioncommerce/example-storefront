@@ -17,7 +17,7 @@ export default function badgeStatus(product) {
     status = { type: BADGE_TYPES.SALE, label: "Sale" };
   } else if (product.isLowQuantity && !product.isSoldOut) {
     status = { type: BADGE_TYPES.LOW_QUANTITY, label: "Low Inventory" };
-  } else if (product.isBestSeller) {
+  } else if (product.isBestseller) {
     status = { type: BADGE_TYPES.BESTSELLER, label: "Best Seller" };
   }
 
