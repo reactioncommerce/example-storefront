@@ -7,14 +7,5 @@
  * @returns {Boolean} - Indicates whether the product is a best seller
  */
 export default function isProductBestseller(product) {
-  // This is a placeholder.
-  // Remove the placeholder check and only `return product.isBestseller`
-  // when that functionality if available
-  const placeholder = true;
-  if (placeholder) {
-    return false;
-  }
-
-
-  return product.isBestseller;
+  return product.isBestseller || false;
 }
