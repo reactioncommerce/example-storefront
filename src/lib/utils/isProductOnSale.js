@@ -7,13 +7,5 @@
  * @returns {Boolean} - Indicates whether the product is on sale
  */
 export default function isProductOnSale(product) {
-  // This is a placeholder.
-  // Remove the placeholder check and only `return product.isOnSale`
-  // when that functionality if available
-  const placeholder = true;
-  if (placeholder) {
-    return false;
-  }
-
-  return product.isOnSale;
+  return product.isOnSale || false;
 }

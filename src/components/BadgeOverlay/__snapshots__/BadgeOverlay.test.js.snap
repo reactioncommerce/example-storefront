@@ -76,6 +76,15 @@ exports[`Product with sale and bestseller badges 1`] = `
       Sale
     </span>
   </div>
+  <div
+    className="Badge-badge-12 BadgeOverlay-secondaryBadge-11"
+  >
+    <span
+      className="Badge-labelStyle-13"
+    >
+      Bestseller
+    </span>
+  </div>
 </div>
 `;
 
