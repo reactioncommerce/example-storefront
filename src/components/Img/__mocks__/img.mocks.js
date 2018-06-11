@@ -1,5 +1,4 @@
 export const mockImg = {
-  altText: "Alt text duder",
   URLs: {
     large: "https://picsum.photos/350/350?image=0",
     medium: "https://picsum.photos/300/300?image=0",

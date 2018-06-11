@@ -1,32 +1,36 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { inject } from "mobx-react";
 import { withStyles } from "@material-ui/core/styles";
 
-import { mockImg } from "./__mocks__/img.mocks";
-
-const styles = ({ palette, transitions }) => {
-  console.log(transitions);
+const styles = ({ palette, transitions, zIndex }) => {
+  console.log(palette.grey);
   return {
     imgWrapper: {
-      backgroundColor: palette.grey.A100,
+      backgroundColor: palette.grey["100"],
       display: `block`,
       height: 0,
+      overflow: "hidden",
       paddingTop: `100%`,
       position: `relative`,
       width: `100%`
     },
     img: {
       height: `auto`,
-      left: 0,
+      left: "50%",
       opacity: 1,
       position: `absolute`,
-      top: 0,
-      transition: `opacity ${transitions.duration.standard}ms ${transitions.easing.sharp}`,
-      width: `100%`
+      transition: `opacity ${transitions.duration.standard}ms ${transitions.easing.easeInOut}`,
+      top: "50%",
+      transform: "translate(-50%, -50%)",
+      width: "100%"
     },
-    imgLoaded: {},
+    imgLoaded: {
+      zIndex: zIndex.mobileStepper
+    },
     imgLoading: {
-      filter: `blur(8px)`
+      filter: `blur(8px)`,
+      zIndex: zIndex.appBar
     },
     imgHidden: {
       opacity: 0
@@ -35,31 +39,70 @@ const styles = ({ palette, transitions }) => {
 };
 
 @withStyles(styles, { withTheme: true })
+@inject("uiStore")
 class Img extends Component {
   static propTypes = {
     URLs: PropTypes.shape({
-      large: PropTypes.String,
-      medium: PropTypes.String,
-      original: PropTypes.String,
-      small: PropTypes.String,
-      thumbnail: PropTypes.String
+      large: PropTypes.string,
+      medium: PropTypes.string,
+      original: PropTypes.string,
+      small: PropTypes.string,
+      thumbnail: PropTypes.string
     }),
-    altText: PropTypes.String,
+    altText: PropTypes.string,
     classes: PropTypes.object,
-    src: PropTypes.String,
+    isGrid: PropTypes.boolean,
+    uiStore: PropTypes.object,
     theme: PropTypes.object
   };
 
-  static defaultProps = mockImg;
+  static defaultProps = {
+    URLs: {},
+    altText: ""
+  };
 
   state = { ready: false };
+  _urls = {};
   _mounted = false;
+
+  get assetsPath() {
+    const { uiStore: { appConfig: { publicRuntimeConfig } } } = this.props;
+    return publicRuntimeConfig.externalAssetsUrl;
+  }
+
+  get placeholder() {
+    const { uiStore: { appConfig: { publicRuntimeConfig } } } = this.props;
+    return `${this.assetsPath}${publicRuntimeConfig.placeholderImageUrls.productGrid}`;
+  }
+
+  get imageUrls() {
+    const { URLs, isGrid } = this.props;
+    const imageUrls = {
+      thumbnail: this.placeholder,
+      small: this.placeholder,
+      medium: this.placeholder,
+      large: this.placeholder
+    };
+
+    Object.keys(URLs).forEach((key) => {
+      if (key === "__typename") return;
+      if (isGrid) {
+        imageUrls[key] = `${this.assetsPath}${URLs.small}`;
+      } else {
+        imageUrls[key] = `${this.assetsPath}${URLs[key]}`;
+      }
+    });
+    return imageUrls;
+  }
 
   componentWillMount() {
     this._mounted = true;
-    const buffer = new Image();
-    buffer.onload = () => this._mounted && this.setState({ ready: true });
-    buffer.src = this.props.URLs.small;
+    this._urls = this.imageUrls;
+    if (process.browser) {
+      const buffer = new Image();
+      buffer.onload = () => this._mounted && this.setState({ ready: true });
+      buffer.src = this._urls.small;
+    }
   }
 
   componentWillUnmount() {
@@ -67,24 +110,24 @@ class Img extends Component {
   }
 
   renderPicture() {
-    const { altText, classes, URLs, theme: { breakpoints: { values } } } = this.props;
+    const { altText, classes, theme: { breakpoints: { values } } } = this.props;
     return (
       <picture>
-        <source media={`(min-width: ${values.md}px)`} srcSet={URLs.large} />
-        <source media={`(min-width: ${values.sm}px)`} srcSet={URLs.medium} />
-        <img src={URLs.small} className={`${classes.img} ${classes.imgLoaded}`} alt={altText} />
+        <source media={`(min-width: ${values.md}px)`} srcSet={this._urls.large} />
+        <source media={`(min-width: ${values.sm}px)`} srcSet={this._urls.medium} />
+        <img src={this._urls.small} className={`${classes.img} ${classes.imgLoaded}`} alt={altText} />
       </picture>
     );
   }
 
-  renderPlaceholder() {
-    const { altText, classes, URLs } = this.props;
+  renderLoadingImage() {
+    const { classes } = this.props;
     const { ready } = this.state;
     return (
       <img
-        src={URLs.thumbnail}
+        src={this._urls.thumbnail}
         className={`${classes.img} ${classes.imgLoading} ${ready ? classes.imgHidden : ""}`}
-        alt={altText}
+        alt=""
       />
     );
   }
@@ -95,7 +138,7 @@ class Img extends Component {
     return (
       <div className={classes.imgWrapper}>
         {ready ? this.renderPicture() : null}
-        {this.renderPlaceholder()}
+        {this.renderLoadingImage()}
       </div>
     );
   }
