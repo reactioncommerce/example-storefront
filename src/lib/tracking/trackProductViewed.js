@@ -19,7 +19,7 @@ export default (options) => (
         ...getProductTrackingData(product)
       };
 
-      if (Array.isArray(functionArgs)) {
+      if (functionArgs) {
         const [variant, optionId] = functionArgs;
 
         // Add variant data if available
@@ -34,7 +34,6 @@ export default (options) => (
           };
         }
       }
-
 
       // If the router is provided as a prop, set the url of the product to the current path
       if (router) {
