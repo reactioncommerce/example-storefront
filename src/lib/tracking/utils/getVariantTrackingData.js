@@ -38,19 +38,21 @@ export default function getVariantTrackingData({ product, variant, optionId }) {
     }
   }
 
-  if (product && product.shop) {
-    const shopCurrency = product.shop.currency.code;
-    const foundPricing = data.pricing.find((pricing) => pricing.currency.code === shopCurrency);
+  if (product) {
+    if (product.shop) {
+      const shopCurrency = product.shop.currency.code;
+      const foundPricing = data.pricing.find((pricing) => pricing.currency.code === shopCurrency);
 
-    if (foundPricing) {
-      price = foundPricing.price; // eslint-disable-line prefer-destructuring
+      if (foundPricing) {
+        price = foundPricing.price; // eslint-disable-line prefer-destructuring
+      }
     }
-  }
 
-  const route = routes.findAndGetUrls("product", { slugOrId: product.slug, variantId: data._id });
+    const route = routes.findAndGetUrls("product", { slugOrId: product.slug || product._id, variantId: data._id });
 
-  if (route && route.urls) {
-    url = route.urls.as;
+    if (route && route.urls) {
+      url = route.urls.as;
+    }
   }
 
   return {
