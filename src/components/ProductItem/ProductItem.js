@@ -113,7 +113,7 @@ class ProductItem extends Component {
 
   renderProductInfo() {
     const { classes, currencyCode, product: { pricing, title, vendor } } = this.props;
-    const productPrice = priceByCurrencyCode(currencyCode, pricing);
+    const productPrice = priceByCurrencyCode(currencyCode, pricing) || {};
 
     return (
       <div >
