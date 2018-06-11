@@ -3,7 +3,7 @@ import getVariantTrackingData from "./getVariantTrackingData";
 const variant = {
   _id: "reaction/catalogProductItem:1002",
   variantId: "1002",
-  title: "Men's Lightweigth Synchilla",
+  title: "Men's Lightweight Synchilla",
   index: 0,
   pricing: [
     {
@@ -29,6 +29,7 @@ const variant = {
 
 const product = {
   _id: "1234",
+  slug: "my-product",
   shop: {
     currency: {
       code: "USD"
@@ -65,7 +66,8 @@ test("getVariantTrackingData should return varaint tracking data with supplied v
     quantity: 1,
     position: 0,
     value: undefined,
-    image_url: undefined // eslint-disable-line camelcase
+    image_url: undefined, // eslint-disable-line camelcase
+    url: undefined
   };
 
   expect(data).toEqual(result);
@@ -80,7 +82,8 @@ test("getVariantTrackingData should return varaint tracking data with supplied v
     quantity: 1,
     position: 0,
     value: 19.99,
-    image_url: "/assets/image-1002.jpg" // eslint-disable-line camelcase
+    image_url: "/assets/image-1002.jpg", // eslint-disable-line camelcase
+    url: "/product/my-product/reaction%2FcatalogProductItem%3A1002"
   };
 
   expect(data).toEqual(result);
@@ -95,7 +98,8 @@ test("getVariantTrackingData should return varaint tracking data with supplied v
     quantity: 1,
     position: 0,
     value: 29.99,
-    image_url: "/assets/image-1003.jpg" // eslint-disable-line camelcase
+    image_url: "/assets/image-1003.jpg", // eslint-disable-line camelcase
+    url: "/product/my-product/reaction%2FcatalogProductItem%3A1003"
   };
 
   expect(data).toEqual(result);
@@ -115,7 +119,8 @@ test("getVariantTrackingData should not have media", () => {
     quantity: 1,
     position: 0,
     value: 29.99,
-    image_url: undefined // eslint-disable-line camelcase
+    image_url: undefined, // eslint-disable-line camelcase
+    url: "/product/my-product/reaction%2FcatalogProductItem%3A1003"
   };
 
   expect(data).toEqual(result);
