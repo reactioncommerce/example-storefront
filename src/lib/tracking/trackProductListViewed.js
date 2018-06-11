@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import track from "./track";
 import getProductListTrackingData from "./utils/getProductListTrackingData";
 
