@@ -33,9 +33,19 @@ export default class TagShop extends Component {
     })
   };
 
-  static defaultProps= {
+  static defaultProps = {
     tag: {}
   };
+
+  static getDerivedStateFromProps(props) {
+    const { routingStore, tag } = props;
+    if (routingStore.tag._id !== tag._id) {
+      routingStore.setTag(tag);
+    }
+    return null;
+  }
+
+  state = {}
 
   renderHelmet() {
     const { shop, routingStore } = this.props;

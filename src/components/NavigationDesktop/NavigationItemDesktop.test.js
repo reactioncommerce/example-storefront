@@ -112,20 +112,24 @@ const mockTagsWithMoreSubTags = {
   }
 };
 
+const mockRoutingStore = {
+  queryString: ""
+};
+
 test("renders with 1 level of tags", () => {
-  const component = renderer.create(<NavigationItemDesktop navItems={mockTag} />);
+  const component = renderer.create(<NavigationItemDesktop navItems={mockTag} routingStore={mockRoutingStore} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test("renders with 2 levels of tags", () => {
-  const component = renderer.create(<NavigationItemDesktop navItems={mockTagWithSubTags} />);
+  const component = renderer.create(<NavigationItemDesktop navItems={mockTagWithSubTags} routingStore={mockRoutingStore} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test("renders with 3 levels of tags", () => {
-  const component = renderer.create(<NavigationItemDesktop navItems={mockTagsWithMoreSubTags} />);
+  const component = renderer.create(<NavigationItemDesktop navItems={mockTagsWithMoreSubTags} routingStore={mockRoutingStore} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });

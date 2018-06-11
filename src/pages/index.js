@@ -29,22 +29,25 @@ class Shop extends Component {
   };
 
   @trackProductListViewed()
-  componentDidMount() {}
+  componentDidMount() {
+    const { routingStore } = this.props;
+    routingStore.setTag({});
+  }
 
   setPageSize = (pageSize) => {
     this.props.routingStore.setSearch({ limit: pageSize });
     this.props.uiStore.setPageSize(pageSize);
-  }
+  };
 
   setSortBy = (sortBy) => {
     this.props.routingStore.setSearch({ sortby: sortBy });
     this.props.uiStore.setSortBy(sortBy);
-  }
+  };
 
   render() {
     const { catalogItems, catalogItemsPageInfo, uiStore, routingStore: { query }, shop } = this.props;
-    const pageSize = (query && query.limit) ? parseInt(query.limit, 10) : uiStore.pageSize;
-    const sortBy = (query && query.sortby) ? query.sortby : uiStore.sortBy;
+    const pageSize = query && query.limit ? parseInt(query.limit, 10) : uiStore.pageSize;
+    const sortBy = query && query.sortby ? query.sortby : uiStore.sortBy;
 
     return (
       <React.Fragment>

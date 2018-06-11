@@ -13,7 +13,8 @@ import ProductDetailInfo from "components/ProductDetailInfo";
 import MediaGallery from "components/MediaGallery";
 import TagGrid from "components/TagGrid";
 import { Router } from "routes";
-import { priceByCurrencyCode, variantById } from "lib/utils";
+import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
+import variantById from "lib/utils/variantById";
 
 const styles = (theme) => ({
   root: {

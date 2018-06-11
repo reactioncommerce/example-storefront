@@ -431,14 +431,8 @@ Details can be added below the image for more specific product information.
             className="VariantList-alert-146"
           >
             <div
-              className="Badge-badge-149 Badge-status-151 Badge-soldOut-152"
-            >
-              <span
-                className="Badge-labelStyle-150"
-              >
-                Sold Out
-              </span>
-            </div>
+              className="BadgeOverlay-badgeOverlay-149 BadgeOverlay-faded-150"
+            />
           </div>
         </div>
         <div
@@ -474,28 +468,28 @@ Details can be added below the image for more specific product information.
           </button>
         </div>
         <div
-          className="Divider-container-158"
+          className="Divider-container-160"
         >
           <hr
-            className="Divider-item-160"
+            className="Divider-item-162"
           />
           <span
-            className="MuiTypography-root-112 MuiTypography-body1-121 Divider-label-159"
+            className="MuiTypography-root-112 MuiTypography-body1-121 Divider-label-161"
           >
             Available Options
           </span>
           <hr
-            className="Divider-item-160"
+            className="Divider-item-162"
           />
         </div>
         <div
-          className="MuiGrid-container-4 MuiGrid-spacing-xs-8-25 OptionsList-root-161"
+          className="MuiGrid-container-4 MuiGrid-spacing-xs-8-25 OptionsList-root-163"
         >
           <div
             className="MuiGrid-item-5"
           >
             <button
-              className="MuiButtonBase-root-100 ProductDetailOption-optionButton-164"
+              className="MuiButtonBase-root-100 ProductDetailOption-optionButton-166"
               disabled={undefined}
               onBlur={[Function]}
               onClick={[Function]}
@@ -512,30 +506,24 @@ Details can be added below the image for more specific product information.
               type="button"
             >
               <span
-                className="MuiTypography-root-112 MuiTypography-body1-121 ProductDetailOption-optionText-165"
+                className="MuiTypography-root-112 MuiTypography-body1-121 ProductDetailOption-optionText-167"
               >
                 Red
               </span>
             </button>
             <div
-              className="OptionsList-alert-162"
+              className="OptionsList-alert-164"
             >
               <div
-                className="Badge-badge-149 Badge-backorder-153 Badge-status-151 OptionsList-badge-163"
-              >
-                <span
-                  className="Badge-labelStyle-150"
-                >
-                  Backorder
-                </span>
-              </div>
+                className="BadgeOverlay-badgeOverlay-149"
+              />
             </div>
           </div>
           <div
             className="MuiGrid-item-5"
           >
             <button
-              className="MuiButtonBase-root-100 ProductDetailOption-optionButton-164"
+              className="MuiButtonBase-root-100 ProductDetailOption-optionButton-166"
               disabled={undefined}
               onBlur={[Function]}
               onClick={[Function]}
@@ -552,7 +540,7 @@ Details can be added below the image for more specific product information.
               type="button"
             >
               <span
-                className="MuiTypography-root-112 MuiTypography-body1-121 ProductDetailOption-optionText-165"
+                className="MuiTypography-root-112 MuiTypography-body1-121 ProductDetailOption-optionText-167"
               >
                 Green
               </span>
@@ -564,37 +552,37 @@ Details can be added below the image for more specific product information.
         className="MuiGrid-container-4"
       >
         <div
-          className="MuiGrid-item-5 MuiGrid-grid-xs-12-42 inject-ProductDetailAddToCart-with-uiStore-quantityGrid-171"
+          className="MuiGrid-item-5 MuiGrid-grid-xs-12-42 inject-ProductDetailAddToCart-with-uiStore-quantityGrid-173"
         >
           <div
-            className="Divider-container-158"
+            className="Divider-container-160"
           >
             <hr
-              className="Divider-item-160"
+              className="Divider-item-162"
             />
             <hr
-              className="Divider-item-160"
+              className="Divider-item-162"
             />
           </div>
           <span
-            className="MuiTypography-root-112 MuiTypography-body1-121 inject-ProductDetailAddToCart-with-uiStore-quantityTypography-173"
+            className="MuiTypography-root-112 MuiTypography-body1-121 inject-ProductDetailAddToCart-with-uiStore-quantityTypography-175"
           >
             Quantity
           </span>
           <div
             aria-describedby={undefined}
-            className="MuiFormControl-root-174"
+            className="MuiFormControl-root-176"
             onBlur={[Function]}
             onFocus={[Function]}
           >
             <div
-              className="MuiInput-root-178 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-170 MuiInput-formControl-179"
+              className="MuiInput-root-180 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-172 MuiInput-formControl-181"
             >
               <div
-                className="MuiInputAdornment-root-191"
+                className="MuiInputAdornment-root-193"
               >
                 <button
-                  className="MuiButtonBase-root-100 inject-ProductDetailAddToCart-with-uiStore-incrementButton-169"
+                  className="MuiButtonBase-root-100 inject-ProductDetailAddToCart-with-uiStore-incrementButton-171"
                   color="default"
                   disabled={undefined}
                   onBlur={[Function]}
@@ -614,7 +602,7 @@ Details can be added below the image for more specific product information.
                 >
                   <svg
                     aria-hidden="true"
-                    className="MuiSvgIcon-root-194"
+                    className="MuiSvgIcon-root-196"
                     color={undefined}
                     focusable="false"
                     viewBox="0 0 24 24"
@@ -633,7 +621,7 @@ Details can be added below the image for more specific product information.
                 aria-required={false}
                 autoComplete={undefined}
                 autoFocus={undefined}
-                className="MuiInput-input-186 inject-ProductDetailAddToCart-with-uiStore-quantityInput-172"
+                className="MuiInput-input-188 inject-ProductDetailAddToCart-with-uiStore-quantityInput-174"
                 defaultValue={undefined}
                 disabled={false}
                 id="addToCartQuantityInput"
@@ -651,10 +639,10 @@ Details can be added below the image for more specific product information.
                 value={1}
               />
               <div
-                className="MuiInputAdornment-root-191"
+                className="MuiInputAdornment-root-193"
               >
                 <button
-                  className="MuiButtonBase-root-100 inject-ProductDetailAddToCart-with-uiStore-incrementButton-169"
+                  className="MuiButtonBase-root-100 inject-ProductDetailAddToCart-with-uiStore-incrementButton-171"
                   color="default"
                   disabled={undefined}
                   onBlur={[Function]}
@@ -674,7 +662,7 @@ Details can be added below the image for more specific product information.
                 >
                   <svg
                     aria-hidden="true"
-                    className="MuiSvgIcon-root-194"
+                    className="MuiSvgIcon-root-196"
                     color={undefined}
                     focusable="false"
                     viewBox="0 0 24 24"
@@ -695,7 +683,7 @@ Details can be added below the image for more specific product information.
           className="MuiGrid-item-5 MuiGrid-grid-xs-12-42"
         >
           <button
-            className="MuiButtonBase-root-100 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-167"
+            className="MuiButtonBase-root-100 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-169"
             disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
@@ -712,7 +700,7 @@ Details can be added below the image for more specific product information.
             type="button"
           >
             <span
-              className="MuiTypography-root-112 MuiTypography-body1-121 inject-ProductDetailAddToCart-with-uiStore-addToCartText-168"
+              className="MuiTypography-root-112 MuiTypography-body1-121 inject-ProductDetailAddToCart-with-uiStore-addToCartText-170"
             >
               Add to cart
             </span>

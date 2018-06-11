@@ -36,7 +36,10 @@ const theme = createMuiTheme({
     reaction: {
       activeElementBorderColor: "#94E8D1",
       activeElementBackground: "#E6E6E6",
-      bestseller: "#8CE0C9",
+      badges: {
+        bestseller: "#8CE0C9",
+        sale: "#E54F5D"
+      },
       borderColor: "#CCCCCC",
       buttonBorderRadius: 2,
       // grey scale
