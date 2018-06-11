@@ -45,6 +45,8 @@ export default class TagShop extends Component {
     return null;
   }
 
+  state = {}
+
   renderHelmet() {
     const { shop, routingStore } = this.props;
     const title = routingStore.query.slug || shop.name;
