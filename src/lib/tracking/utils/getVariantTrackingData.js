@@ -1,3 +1,5 @@
+import routes from "routes";
+
 /**
  * Transform a variant object into a partial representation of the Segment product schema
  * @name getVariantTrackingData
@@ -11,6 +13,7 @@ export default function getVariantTrackingData({ product, variant, optionId }) {
   let data = variant;
   let imageURL;
   let price;
+  let url;
 
   // If an option id is provided, use the option instead of the top level variant
   if (optionId) {
@@ -44,12 +47,19 @@ export default function getVariantTrackingData({ product, variant, optionId }) {
     }
   }
 
+  const route = routes.findAndGetUrls("product", { slugOrId: product.slug, variantId: data._id });
+
+  if (route && route.urls) {
+    url = route.urls.as;
+  }
+
   return {
     variant: data._id,
     price,
     quantity: 1,
     position: data.index,
     value: price,
-    image_url: imageURL // eslint-disable-line camelcase
+    image_url: imageURL, // eslint-disable-line camelcase
+    url
   };
 }
