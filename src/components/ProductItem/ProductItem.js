@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
 import Link from "components/Link";
 import Badge from "components/Badge";
+import Img from "components/Img";
 import { inventoryStatus, isProductLowQuantity, INVENTORY_STATUS, priceByCurrencyCode } from "lib/utils";
 import { styles } from "./styles";
 
@@ -36,29 +37,9 @@ class ProductItem extends Component {
     return url;
   }
 
-  onImageLoad = () => {
-    const { hasImageLoaded } = this.state;
-    if (hasImageLoaded) return;
-    this.setState({ hasImageLoaded: true });
-  };
-
-  buildImgUrl(imgPath) {
-    const { uiStore: { appConfig: { publicRuntimeConfig } } } = this.props;
-    return `${publicRuntimeConfig.externalAssetsUrl}${imgPath}`;
-  }
-
-  renderProductImage() {
-    const {
-      classes: { img, imgLoading, loadingIcon },
-      theme: {
-        breakpoints: { values }
-      },
-      uiStore
-    } = this.props;
-    const { publicRuntimeConfig } = uiStore.appConfig;
-    const { hasImageLoaded } = this.state;
+  get primaryImage() {
+    const { publicRuntimeConfig } = this.props.uiStore.appConfig;
     let { product: { primaryImage } } = this.props;
-
     if (!primaryImage) {
       primaryImage = {
         URLs: {
@@ -68,41 +49,12 @@ class ProductItem extends Component {
         }
       };
     }
-
-    const picture = (
-      <picture>
-        <source srcSet={this.buildImgUrl(primaryImage.URLs.small)} media={`(min-width: ${values.sm}px)`} />
-        <source srcSet={this.buildImgUrl(primaryImage.URLs.medium)} media={`(min-width: ${values.md}px)`} />
-        <source srcSet={this.buildImgUrl(primaryImage.URLs.large)} media={`(min-width: ${values.lg}px)`} />
-        <img
-          className={img}
-          src={this.buildImgUrl(primaryImage.URLs.small)}
-          alt=""
-          onLoad={this.onImageLoad}
-          ref={(image) => {
-            if (image && image.complete) this.onImageLoad();
-            return;
-          }}
-        />
-      </picture>
-    );
-
-    const loading = (
-      <div className={imgLoading}>
-        <LoadingIcon className={loadingIcon} />
-      </div>
-    );
-
-    return (
-      <Fragment>
-        <Fade in={hasImageLoaded}>{picture}</Fade>
-        <Hidden xsUp={hasImageLoaded}>{loading}</Hidden>
-      </Fragment>
-    );
+    return primaryImage;
   }
 
-  renderBadge() {
-
+  renderProductImage() {
+    const { product } = this.props;
+    return <Img altText={product.description} isGrid URLs={this.primaryImage.URLs} />;
   }
 
   renderProductMedia() {
