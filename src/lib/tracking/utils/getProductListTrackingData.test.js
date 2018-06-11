@@ -10,6 +10,7 @@ const products = [{
   sku: "a456",
   title: "My Product",
   vendor: "Reaction",
+  slug: "my-product",
   tags: {
     nodes: [
       { name: "tag-1" },
@@ -57,7 +58,8 @@ test("getProductListTrackingData should return data for tracking with segment Pr
         price: 12.99,
         quantity: 1,
         value: 12.99,
-        image_url: "/assets/image.jpg" // eslint-disable-line camelcase
+        image_url: "/assets/image.jpg", // eslint-disable-line camelcase
+        url: "/product/my-product"
       }
     ]
   };
