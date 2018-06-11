@@ -4,6 +4,7 @@ const product = {
   _id: "1234",
   sku: "a456",
   title: "My Product",
+  slug: "my-product",
   vendor: "Reaction",
   tags: {
     nodes: [
@@ -48,7 +49,8 @@ test("getProductTrackingData should return partial data for tracking with segmen
     price: 12.99,
     quantity: 1,
     value: 12.99,
-    image_url: "/assets/image.jpg" // eslint-disable-line camelcase
+    image_url: "/assets/image.jpg", // eslint-disable-line camelcase
+    url: "/product/my-product"
   };
 
   expect(data).toEqual(result);
@@ -71,7 +73,8 @@ test("getProductTrackingData should not fail when tags.nodes is a blank array", 
     price: 12.99,
     quantity: 1,
     value: 12.99,
-    image_url: "/assets/image.jpg" // eslint-disable-line camelcase
+    image_url: "/assets/image.jpg", // eslint-disable-line camelcase
+    url: "/product/my-product"
   };
 
   expect(data).toEqual(result);
