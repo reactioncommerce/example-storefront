@@ -1,3 +1,5 @@
+import routes from "routes";
+
 /**
  * Transform a product object into a partial representation of the Segment product schema.
  * Combine with `getVariantTrackingData(varaint)` to get the full definition
@@ -7,6 +9,7 @@
  */
 export default function getProductTrackingData(product) {
   let price;
+  let url;
 
   if (product && product.shop) {
     const shopCurrency = product.shop.currency.code;
@@ -15,6 +18,12 @@ export default function getProductTrackingData(product) {
     if (foundPricing) {
       price = foundPricing.price || foundPricing.minPrice; // eslint-disable-line prefer-destructuring
     }
+  }
+
+  const route = routes.findAndGetUrls("product", { slugOrId: product.slug });
+
+  if (route && route.urls) {
+    url = route.urls.as;
   }
 
   return {
@@ -27,6 +36,7 @@ export default function getProductTrackingData(product) {
     price,
     quantity: 1,
     value: price,
-    image_url: product.primaryImage && product.primaryImage.URLs.original // eslint-disable-line camelcase
+    image_url: product.primaryImage && product.primaryImage.URLs.original, // eslint-disable-line camelcase
+    url
   };
 }

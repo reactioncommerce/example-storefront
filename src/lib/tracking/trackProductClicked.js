@@ -8,7 +8,7 @@ import getProductTrackingData from "./utils/getProductTrackingData";
  * @returns {React.Component} - component
  */
 export default (options) => (
-  track(({ product, router }) => {
+  track(({ product }) => {
     let data = {};
 
     // If product data is provided as a prop, then process the data for tracking
@@ -17,11 +17,6 @@ export default (options) => (
         action: "Product Clicked",
         ...getProductTrackingData(product)
       };
-
-      // If the router is provided as a prop, set the url of the product to the current path
-      if (router) {
-        data.url = router.asPath;
-      }
     }
 
     return data;
