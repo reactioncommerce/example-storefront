@@ -2,7 +2,7 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="Badge-badge-1 Badge-sale-6 Badge-status-3"
+  className="Badge-badge-1"
 >
   <span
     className="Badge-labelStyle-2"

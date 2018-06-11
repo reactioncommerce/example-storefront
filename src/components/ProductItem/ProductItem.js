@@ -7,8 +7,8 @@ import Hidden from "@material-ui/core/Hidden";
 import Typography from "@material-ui/core/Typography";
 import LoadingIcon from "mdi-material-ui/Loading";
 import Link from "components/Link";
-import Badge from "components/Badge";
-import { inventoryStatus, isProductLowQuantity, INVENTORY_STATUS, priceByCurrencyCode } from "lib/utils";
+import BadgeOverlay from "components/BadgeOverlay";
+import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import { styles } from "./styles";
 
 @withStyles(styles, { withTheme: true })
@@ -101,18 +101,11 @@ class ProductItem extends Component {
     );
   }
 
-  renderBadge() {
-
-  }
-
   renderProductMedia() {
-    const { classes, product } = this.props;
-    const status = inventoryStatus(product);
+    const { classes } = this.props;
 
     return (
       <div className={classes.productMedia}>
-        {status && <Badge type={status.type} label={status.label} />}
-        {isProductLowQuantity(product) && <Badge type={INVENTORY_STATUS.LOW_QUANTITY} label="Low Inventory" />}
         {this.renderProductImage()}
       </div>
     );
@@ -138,11 +131,15 @@ class ProductItem extends Component {
   }
 
   render() {
+    const { product } = this.props;
+
     return (
       <div>
         <Link route={this.productDetailHref}>
-          {this.renderProductMedia()}
-          {this.renderProductInfo()}
+          <BadgeOverlay product={product}>
+            {this.renderProductMedia()}
+            {this.renderProductInfo()}
+          </BadgeOverlay>
         </Link>
       </div>
     );
