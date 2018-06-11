@@ -42,6 +42,7 @@ export default class TagShop extends Component {
     if (routingStore.tag._id !== tag._id) {
       routingStore.setTag(tag);
     }
+    return null;
   }
 
   renderHelmet() {
@@ -60,12 +61,12 @@ export default class TagShop extends Component {
   setPageSize = (pageSize) => {
     this.props.routingStore.setSearch({ limit: pageSize });
     this.props.uiStore.setPageSize(pageSize);
-  };
+  }
 
   setSortBy = (sortBy) => {
     this.props.routingStore.setSearch({ sortby: sortBy });
     this.props.uiStore.setSortBy(sortBy);
-  };
+  }
 
   render() {
     const {
