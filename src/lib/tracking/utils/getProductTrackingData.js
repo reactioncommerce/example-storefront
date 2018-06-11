@@ -11,19 +11,21 @@ export default function getProductTrackingData(product) {
   let price;
   let url;
 
-  if (product && product.shop) {
-    const shopCurrency = product.shop.currency.code;
-    const foundPricing = product.pricing.find((pricing) => pricing.currency.code === shopCurrency);
+  if (product) {
+    if (product.shop) {
+      const shopCurrency = product.shop.currency.code;
+      const foundPricing = product.pricing.find((pricing) => pricing.currency.code === shopCurrency);
 
-    if (foundPricing) {
-      price = foundPricing.price || foundPricing.minPrice; // eslint-disable-line prefer-destructuring
+      if (foundPricing) {
+        price = foundPricing.price || foundPricing.minPrice; // eslint-disable-line prefer-destructuring
+      }
     }
-  }
 
-  const route = routes.findAndGetUrls("product", { slugOrId: product.slug });
+    const route = routes.findAndGetUrls("product", { slugOrId: product.slug || product._id });
 
-  if (route && route.urls) {
-    url = route.urls.as;
+    if (route && route.urls) {
+      url = route.urls.as;
+    }
   }
 
   return {
