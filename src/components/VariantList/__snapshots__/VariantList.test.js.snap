@@ -39,14 +39,8 @@ exports[`basic snapshot 1`] = `
       className="VariantList-alert-3"
     >
       <div
-        className="Badge-badge-33 Badge-status-35 Badge-soldOut-36"
-      >
-        <span
-          className="Badge-labelStyle-34"
-        >
-          Sold Out
-        </span>
-      </div>
+        className="BadgeOverlay-badgeOverlay-33 BadgeOverlay-faded-34"
+      />
     </div>
   </div>
   <div
@@ -82,28 +76,28 @@ exports[`basic snapshot 1`] = `
     </button>
   </div>
   <div
-    className="Divider-container-42"
+    className="Divider-container-44"
   >
     <hr
-      className="Divider-item-44"
+      className="Divider-item-46"
     />
     <span
-      className="MuiTypography-root-9 MuiTypography-body1-18 Divider-label-43"
+      className="MuiTypography-root-9 MuiTypography-body1-18 Divider-label-45"
     >
       Available Options
     </span>
     <hr
-      className="Divider-item-44"
+      className="Divider-item-46"
     />
   </div>
   <div
-    className="MuiGrid-container-48 MuiGrid-spacing-xs-8-69 OptionsList-root-45"
+    className="MuiGrid-container-50 MuiGrid-spacing-xs-8-71 OptionsList-root-47"
   >
     <div
-      className="MuiGrid-item-49"
+      className="MuiGrid-item-51"
     >
       <button
-        className="MuiButtonBase-root-6 ProductDetailOption-optionButton-139 ProductDetailOption-isSelected-141"
+        className="MuiButtonBase-root-6 ProductDetailOption-optionButton-141 ProductDetailOption-isSelected-143"
         disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
@@ -120,30 +114,24 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiTypography-root-9 MuiTypography-body1-18 ProductDetailOption-optionText-140"
+          className="MuiTypography-root-9 MuiTypography-body1-18 ProductDetailOption-optionText-142"
         >
           Red
         </span>
       </button>
       <div
-        className="OptionsList-alert-46"
+        className="OptionsList-alert-48"
       >
         <div
-          className="Badge-badge-33 Badge-backorder-37 Badge-status-35 OptionsList-badge-47"
-        >
-          <span
-            className="Badge-labelStyle-34"
-          >
-            Backorder
-          </span>
-        </div>
+          className="BadgeOverlay-badgeOverlay-33"
+        />
       </div>
     </div>
     <div
-      className="MuiGrid-item-49"
+      className="MuiGrid-item-51"
     >
       <button
-        className="MuiButtonBase-root-6 ProductDetailOption-optionButton-139"
+        className="MuiButtonBase-root-6 ProductDetailOption-optionButton-141"
         disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
@@ -160,7 +148,7 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiTypography-root-9 MuiTypography-body1-18 ProductDetailOption-optionText-140"
+          className="MuiTypography-root-9 MuiTypography-body1-18 ProductDetailOption-optionText-142"
         >
           Green
         </span>

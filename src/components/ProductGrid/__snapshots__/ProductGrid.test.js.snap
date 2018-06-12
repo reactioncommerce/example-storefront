@@ -138,81 +138,85 @@ exports[`basic snapshot 1`] = `
           }
         >
           <div
-            className="inject-ProductItem-with-uiStore-productMedia-129"
+            className="BadgeOverlay-badgeOverlay-135 BadgeOverlay-faded-136"
           >
             <div
-              className="Badge-badge-135 Badge-status-137 Badge-soldOut-138"
+              className="Badge-badge-146 BadgeOverlay-status-137 BadgeOverlay-soldOut-142"
             >
               <span
-                className="Badge-labelStyle-136"
+                className="Badge-labelStyle-147"
               >
                 Sold Out
               </span>
             </div>
-            <picture
-              style={
-                Object {
-                  "opacity": 0,
-                  "willChange": "opacity",
+            <div
+              className="inject-ProductItem-with-uiStore-productMedia-129"
+            >
+              <picture
+                style={
+                  Object {
+                    "opacity": 0,
+                    "willChange": "opacity",
+                  }
                 }
-              }
-            >
-              <source
-                media="(min-width: 600px)"
-                srcSet="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/small/25580_CICN.png"
-              />
-              <source
-                media="(min-width: 960px)"
-                srcSet="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/medium/25580_CICN.jpg"
-              />
-              <source
-                media="(min-width: 1280px)"
-                srcSet="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/large/25580_CICN.jpg"
-              />
-              <img
-                alt=""
-                className="inject-ProductItem-with-uiStore-img-130"
-                onLoad={[Function]}
-                src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/small/25580_CICN.png"
-              />
-            </picture>
-            <div
-              className="inject-ProductItem-with-uiStore-imgLoading-131"
-            >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-117 inject-ProductItem-with-uiStore-loadingIcon-132"
-                color={undefined}
-                focusable="false"
-                viewBox="0 0 24 24"
               >
-                <path
-                  d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
+                <source
+                  media="(min-width: 600px)"
+                  srcSet="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/small/25580_CICN.png"
                 />
-              </svg>
-            </div>
-          </div>
-          <div>
-            <div
-              className="inject-ProductItem-with-uiStore-productInfo-128"
-            >
-              <aside
-                className="MuiTypography-root-144 MuiTypography-body2-152"
+                <source
+                  media="(min-width: 960px)"
+                  srcSet="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/medium/25580_CICN.jpg"
+                />
+                <source
+                  media="(min-width: 1280px)"
+                  srcSet="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/large/25580_CICN.jpg"
+                />
+                <img
+                  alt=""
+                  className="inject-ProductItem-with-uiStore-img-130"
+                  onLoad={[Function]}
+                  src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/small/25580_CICN.png"
+                />
+              </picture>
+              <div
+                className="inject-ProductItem-with-uiStore-imgLoading-131"
               >
-                Men's Lightweigth Synchilla
-              </aside>
-              <p
-                className="MuiTypography-root-144 MuiTypography-body1-153"
-              >
-                $12.99 - $19.99
-              </p>
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root-117 inject-ProductItem-with-uiStore-loadingIcon-132"
+                  color={undefined}
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
+                  />
+                </svg>
+              </div>
             </div>
             <div>
-              <p
-                className="MuiTypography-root-144 MuiTypography-body1-153"
+              <div
+                className="inject-ProductItem-with-uiStore-productInfo-128"
               >
-                Patagonia
-              </p>
+                <aside
+                  className="MuiTypography-root-149 MuiTypography-body2-157"
+                >
+                  Men's Lightweigth Synchilla
+                </aside>
+                <p
+                  className="MuiTypography-root-149 MuiTypography-body1-158"
+                >
+                  $12.99 - $19.99
+                </p>
+              </div>
+              <div>
+                <p
+                  className="MuiTypography-root-149 MuiTypography-body1-158"
+                >
+                  Patagonia
+                </p>
+              </div>
             </div>
           </div>
         </a>
@@ -237,72 +241,76 @@ exports[`basic snapshot 1`] = `
           }
         >
           <div
-            className="inject-ProductItem-with-uiStore-productMedia-129"
+            className="BadgeOverlay-badgeOverlay-135"
           >
-            <picture
-              style={
-                Object {
-                  "opacity": 0,
-                  "willChange": "opacity",
+            <div
+              className="inject-ProductItem-with-uiStore-productMedia-129"
+            >
+              <picture
+                style={
+                  Object {
+                    "opacity": 0,
+                    "willChange": "opacity",
+                  }
                 }
-              }
-            >
-              <source
-                media="(min-width: 600px)"
-                srcSet="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/small/product_image.png"
-              />
-              <source
-                media="(min-width: 960px)"
-                srcSet="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/medium/product_image.jpg"
-              />
-              <source
-                media="(min-width: 1280px)"
-                srcSet="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/large/product_image.jpg"
-              />
-              <img
-                alt=""
-                className="inject-ProductItem-with-uiStore-img-130"
-                onLoad={[Function]}
-                src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/small/product_image.png"
-              />
-            </picture>
-            <div
-              className="inject-ProductItem-with-uiStore-imgLoading-131"
-            >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-117 inject-ProductItem-with-uiStore-loadingIcon-132"
-                color={undefined}
-                focusable="false"
-                viewBox="0 0 24 24"
               >
-                <path
-                  d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
+                <source
+                  media="(min-width: 600px)"
+                  srcSet="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/small/product_image.png"
                 />
-              </svg>
-            </div>
-          </div>
-          <div>
-            <div
-              className="inject-ProductItem-with-uiStore-productInfo-128"
-            >
-              <aside
-                className="MuiTypography-root-144 MuiTypography-body2-152"
+                <source
+                  media="(min-width: 960px)"
+                  srcSet="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/medium/product_image.jpg"
+                />
+                <source
+                  media="(min-width: 1280px)"
+                  srcSet="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/large/product_image.jpg"
+                />
+                <img
+                  alt=""
+                  className="inject-ProductItem-with-uiStore-img-130"
+                  onLoad={[Function]}
+                  src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/small/product_image.png"
+                />
+              </picture>
+              <div
+                className="inject-ProductItem-with-uiStore-imgLoading-131"
               >
-                Basic Reaction Product
-              </aside>
-              <p
-                className="MuiTypography-root-144 MuiTypography-body1-153"
-              >
-                $12.99 - $19.99
-              </p>
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root-117 inject-ProductItem-with-uiStore-loadingIcon-132"
+                  color={undefined}
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
+                  />
+                </svg>
+              </div>
             </div>
             <div>
-              <p
-                className="MuiTypography-root-144 MuiTypography-body1-153"
+              <div
+                className="inject-ProductItem-with-uiStore-productInfo-128"
               >
-                Reaction Commerce
-              </p>
+                <aside
+                  className="MuiTypography-root-149 MuiTypography-body2-157"
+                >
+                  Basic Reaction Product
+                </aside>
+                <p
+                  className="MuiTypography-root-149 MuiTypography-body1-158"
+                >
+                  $12.99 - $19.99
+                </p>
+              </div>
+              <div>
+                <p
+                  className="MuiTypography-root-149 MuiTypography-body1-158"
+                >
+                  Reaction Commerce
+                </p>
+              </div>
             </div>
           </div>
         </a>
@@ -310,13 +318,13 @@ exports[`basic snapshot 1`] = `
     </div>
   </div>
   <div
-    className="MuiGrid-container-3 MuiGrid-justify-xs-space-between-22 PageStepper-root-168"
+    className="MuiGrid-container-3 MuiGrid-justify-xs-space-between-22 PageStepper-root-173"
   >
     <div
       className="MuiGrid-item-4"
     >
       <button
-        className="MuiButtonBase-root-185 MuiButton-root-169 MuiButton-raised-175"
+        className="MuiButtonBase-root-190 MuiButton-root-174 MuiButton-raised-180"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -333,12 +341,12 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-170"
+          className="MuiButton-label-175"
         >
           Previous
         </span>
         <span
-          className="MuiTouchRipple-root-188"
+          className="MuiTouchRipple-root-193"
         />
       </button>
     </div>

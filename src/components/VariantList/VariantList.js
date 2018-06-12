@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import VariantItem from "components/VariantItem";
 import ProductDetailOptionsList from "components/ProductDetailOptionsList";
-import Badge from "components/Badge";
-import { inventoryStatus } from "lib/utils";
+import BadgeOverlay from "components/BadgeOverlay";
+import badgeStatus from "lib/utils/badgeStatus";
 import Divider from "components/Divider";
 
 const styles = (theme) => ({
@@ -56,13 +56,13 @@ export default class VariantList extends Component {
 
   renderInventoryStatus(variant) {
     const { classes } = this.props;
-    const status = inventoryStatus(variant);
+    const status = badgeStatus(variant);
 
     if (!status) return null;
 
     return (
       <div className={classes.alert}>
-        <Badge type={status.type} label={status.label} />
+        <BadgeOverlay product={variant} filterOnly={"MERCHANDISING"} shouldShowPrimaryOnly={true} label={status.label} />
       </div>
     );
   }
