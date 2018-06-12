@@ -1,7 +1,7 @@
 import getProductTrackingData from "./getProductTrackingData";
 
 /**
- * Transform a list of products into data for trakcing with the Segment Product List Viewed event
+ * Transform a list of products into data for tracking with the Segment Product List Viewed event
  * @name getProductListTrackingData
  * @param {Object} data Object containing data for tracking a list of products
  * @param {Object} [data.tag] Tag object, used to associate the list with a uniq identifier
