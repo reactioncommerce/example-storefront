@@ -88,6 +88,22 @@ class HTMLDocument extends Document {
           {helmet.style.toComponent()}
           {helmet.script.toComponent()}
           {helmet.noscript.toComponent()}
+          <style jsx global>{`
+          .page-transition-enter {
+            opacity: 0;
+          }
+          .page-transition-enter-active {
+            opacity: 1;
+            transition: opacity 0ms;
+          }
+          .page-transition-exit {
+            opacity: 1;
+          }
+          .page-transition-exit-active {
+            opacity: 0;
+            transition: opacity 0ms;
+          }
+        `}</style>
         </Head>
         <body>
           <Main />
