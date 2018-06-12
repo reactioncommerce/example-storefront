@@ -34,6 +34,9 @@ class Shop extends Component {
     routingStore.setTag({});
   }
 
+  @trackProductListViewed()
+  componentDidUpdate() {}
+
   setPageSize = (pageSize) => {
     this.props.routingStore.setSearch({ limit: pageSize });
     this.props.uiStore.setPageSize(pageSize);
