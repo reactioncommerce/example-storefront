@@ -7,6 +7,9 @@ import Cookies from "js-cookie";
  */
 
 class AuthStore {
+  constructor(name) {
+    this.tokenName = name || "token";
+  }
   /**
   * The login token of the current user
   *
@@ -18,16 +21,21 @@ class AuthStore {
     this.token = token || "";
   }
 
+  @action unsetToken(tokenName) {
+    this.token = "";
+    Cookies.remove(tokenName);
+  }
+
   saveTokenToCookie() {
     if (typeof this.token === "string" && this.token.length) {
-      Cookies.set("token", this.token);
+      Cookies.set(this.tokenName, this.token);
     } else {
-      Cookies.remove("token");
+      Cookies.remove(this.tokenName);
     }
   }
 
   setTokenFromCookie() {
-    const token = Cookies.get("token");
+    const token = Cookies.get(this.tokenName);
     this.setToken(token);
   }
 }
