@@ -8,7 +8,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import AccountIcon from "mdi-material-ui/Account";
 import Popover from "@material-ui/core/Popover";
-import { login, logout } from "lib/auth";
+import { login } from "lib/auth";
 
 const styles = (theme) => ({
   accountDropdown: {
@@ -19,11 +19,13 @@ const styles = (theme) => ({
 
 @withStyles(styles)
 @inject("authStore")
+@inject("keycloakAuthStore")
 @observer
 class AccountDropdown extends Component {
   static propTypes = {
     authStore: PropTypes.object.isRequired,
-    classes: PropTypes.object
+    classes: PropTypes.object,
+    keycloakAuthStore: PropTypes.object.isRequired
   };
 
   static defaultProps = {
@@ -49,7 +51,7 @@ class AccountDropdown extends Component {
     anchorElement: null,
     prevToken: "",
     token: "",
-    keycloakToken: typeof window !== "undefined" ? localStorage.getItem("kc-token") : ""
+    keycloakToken: this.props.keycloakAuthStore.token
   };
 
   toggleOpen = (event) => {
@@ -79,12 +81,13 @@ class AccountDropdown extends Component {
   }
 
   onLogout = () => {
-    logout(() => this.setState({ keycloakToken: "" }));
+    this.props.keycloakAuthStore.unsetToken("keycloakToken");
+    window.location.reload();
   }
 
   render() {
-    const { classes } = this.props;
-    const { anchorElement, token, keycloakToken } = this.state;
+    const { classes, keycloakAuthStore } = this.props;
+    const { anchorElement, token } = this.state;
 
     return (
       <Fragment>
@@ -115,7 +118,7 @@ class AccountDropdown extends Component {
             </DialogActions>
             <hr/>
             <DialogActions>
-              {!keycloakToken ?
+              {!keycloakAuthStore.token ?
                 <Button color="primary" onClick={this.onLogin}>
                   Login with Keycloak
                 </Button>

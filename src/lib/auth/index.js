@@ -14,13 +14,3 @@ export const login = () => {
   // eslint-disable-next-line no-console
   kc.login({ redirectUri }).catch((error) => console.error(error));
 };
-
-
-// log the browser out of Keycloak
-export const logout = (cb) => {
-  localStorage.removeItem("kc-token");
-  if (typeof cb === "function") {
-    cb();
-  }
-  window.location.reload();
-};

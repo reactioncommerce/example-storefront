@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { inject } from "mobx-react";
 import { Router } from "routes";
 
+@inject("keycloakAuthStore")
 class AuthPage extends Component {
   static propTypes = {
+    keycloakAuthStore: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired
   }
 
@@ -26,7 +29,11 @@ class AuthPage extends Component {
     const params = this.getUrlParams();
 
     if (typeof window !== "undefined" && params.access_token) {
-      localStorage.setItem("kc-token", params.access_token);
+      const { keycloakAuthStore } = this.props;
+
+      keycloakAuthStore.setToken(params.access_token);
+      keycloakAuthStore.saveTokenToCookie();
+
       const previousRoute = localStorage.getItem("kc-redirected-from");
       localStorage.removeItem("kc-redirected-from");
       Router.pushRoute(previousRoute || "/");
