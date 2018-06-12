@@ -10,6 +10,7 @@ export const login = () => {
   const kc = new Keycloak({ realm, clientId, url });
   // eslint-disable-next-line no-console
   kc.init({ flow: "implicit" }).catch((error) => console.error(error));
+  localStorage.setItem("kc-redirected-from", window.location.pathname);
   // eslint-disable-next-line no-console
   kc.login({ redirectUri }).catch((error) => console.error(error));
 };
