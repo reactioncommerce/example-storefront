@@ -1,5 +1,4 @@
 import { observable, action } from "mobx";
-import Cookies from "js-cookie";
 
 /**
  * A mobx store for authentication
@@ -23,19 +22,19 @@ class AuthStore {
 
   @action unsetToken(tokenName) {
     this.token = "";
-    Cookies.remove(tokenName);
+    localStorage.removeItem(tokenName);
   }
 
-  saveTokenToCookie() {
+  saveTokenToLocalStorage() {
     if (typeof this.token === "string" && this.token.length) {
-      Cookies.set(this.tokenName, this.token);
+      localStorage.setItem(this.tokenName, this.token);
     } else {
-      Cookies.remove(this.tokenName);
+      localStorage.removeItem(this.tokenName);
     }
   }
 
-  setTokenFromCookie() {
-    const token = Cookies.get(this.tokenName);
+  setTokenFromLocalStorage() {
+    const token = localStorage.getItem(this.tokenName);
     this.setToken(token);
   }
 }

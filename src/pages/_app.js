@@ -17,8 +17,8 @@ import rootMobXStores from "lib/stores";
 export default class App extends NextApp {
   componentDidMount() {
     // Fetch and update auth token in auth store
-    rootMobXStores.authStore.setTokenFromCookie();
-    rootMobXStores.keycloakAuthStore.setTokenFromCookie();
+    rootMobXStores.authStore.setTokenFromLocalStorage();
+    rootMobXStores.keycloakAuthStore.setTokenFromLocalStorage();
   }
 
   render() {

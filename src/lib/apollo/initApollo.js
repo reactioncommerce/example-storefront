@@ -6,6 +6,21 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import fetch from "isomorphic-fetch";
 import getConfig from "next/config";
 
+/**
+ * Get auth tokens from local storage and include with the request
+ * @name getAuthTokens
+ * @returns {Object} returns the parsed cookies as an object
+ */
+function getAuthTokens() {
+  if (typeof localStorage !== "undefined") {
+    return {
+      meteorToken: localStorage.getItem("meteorToken"),
+      keycloakToken: localStorage.getItem("keycloakToken")
+    };
+  }
+  return {};
+}
+
 // Config
 let graphqlUrl;
 
@@ -26,7 +41,7 @@ if (!process.browser) {
   global.fetch = fetch;
 }
 
-const create = (initialState, getAuthTokens) => {
+const create = (initialState) => {
   // error handling for Apollo Link
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors) {
@@ -55,7 +70,7 @@ const create = (initialState, getAuthTokens) => {
     };
   });
 
-  const httpLink = new HttpLink({ uri: `${graphqlUrl}` });
+  const httpLink = new HttpLink({ uri: `${graphqlUrl}`, credentials: "same-origin" });
 
   return new ApolloClient({
     connectToDevTools: process.browser,
@@ -71,15 +86,15 @@ const create = (initialState, getAuthTokens) => {
  * @param {Object} options Additional options to initialize the Apollo client with
  * @return {ApolloClient} Apollo client instance
  */
-export default function initApollo(initialState, options) {
+export default function initApollo(initialState) {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (!process.browser) {
-    return create(initialState, options);
+    return create(initialState);
   }
 
   if (!apolloClient) {
-    apolloClient = create(initialState, options);
+    apolloClient = create(initialState);
   }
 
   return apolloClient;

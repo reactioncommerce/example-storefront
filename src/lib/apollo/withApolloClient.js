@@ -2,23 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { ApolloProvider, getDataFromTree } from "react-apollo";
 import Head from "next/head";
-import cookie from "cookie";
 import rootMobxStores from "lib/stores";
 import initApollo from "./initApollo";
-
-/**
- * Parse browser cookies
- * @name parseCookies
- * @param {Object} req the request object
- * @param {Object} options options object
- * @returns {Object} returns the parsed cookies as an object
- */
-function parseCookies(req, options = {}) {
-  return cookie.parse(
-    req ? req.headers.cookie || "" : document.cookie,
-    options
-  );
-}
 
 /**
  * Get the display name of a component
@@ -49,12 +34,12 @@ export default (App) =>
     }
 
     static async getInitialProps(ctx) {
-      const { Component, router, ctx: { req, res, query, pathname } } = ctx;
+      const { Component, router, ctx: { res, query, pathname } } = ctx;
 
       // Provide the `url` prop data in case a GraphQL query uses it
       rootMobxStores.routingStore.updateRoute({ query, pathname });
 
-      const apollo = initApollo({}, () => parseCookies(req));
+      const apollo = initApollo({});
 
       ctx.ctx.apolloClient = apollo;
 
@@ -110,7 +95,7 @@ export default (App) =>
       super(props);
       // `getDataFromTree` renders the component first, then the client is passed off as a property.
       // After that, rendering is done using Next's normal rendering pipeline
-      this.apollo = initApollo(props.apolloState.data, parseCookies);
+      this.apollo = initApollo(props.apolloState.data);
 
       // State must be initialized if getDerivedStateFromProps is used
       this.state = {};
