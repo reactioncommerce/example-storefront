@@ -6,12 +6,13 @@ import withCatalogItems from "containers/catalog/withCatalogItems";
 import withTag from "containers/tags/withTag";
 import ProductGrid from "components/ProductGrid";
 import ProductGridHero from "components/ProductGridHero";
+import track from "lib/tracking/track";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
 @withTag
 @withCatalogItems
 @inject("routingStore", "uiStore")
-@trackProductListViewed({ dispatchOnMount: true })
+@track()
 @observer
 export default class TagShop extends Component {
   static propTypes = {
@@ -46,6 +47,12 @@ export default class TagShop extends Component {
   }
 
   state = {}
+
+  @trackProductListViewed()
+  componentDidMount() {}
+
+  @trackProductListViewed()
+  componentDidUpdate() {}
 
   renderHelmet() {
     const { shop, routingStore } = this.props;
