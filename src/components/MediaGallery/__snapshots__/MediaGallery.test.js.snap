@@ -2,19 +2,23 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="MuiGrid-container-4 inject-MediaGallery-with-uiStore-root-1"
+  className="MuiGrid-container-4 MediaGallery-root-1"
 >
   <div
     className="MuiGrid-item-5 MuiGrid-grid-xs-12-42 MuiGrid-grid-sm-12-55"
   >
     <div
-      className="inject-MediaGallery-with-uiStore-featured-2"
+      className="MediaGallery-featured-2"
     >
-      <img
-        alt=""
-        className="inject-MediaGallery-with-uiStore-featuredImage-3"
-        src="/resources/placeholder.gif"
-      />
+      <div
+        className="inject-Img-with-uiStore-imgWrapper-95 "
+      >
+        <img
+          alt=""
+          className="inject-Img-with-uiStore-img-98 inject-Img-with-uiStore-imgLoading-100 "
+          src="/resources/placeholder.gif"
+        />
+      </div>
     </div>
     <div
       className="MuiGrid-container-4 MuiGrid-spacing-xs-8-25"
@@ -23,7 +27,7 @@ exports[`basic snapshot 1`] = `
         className="MuiGrid-item-5 MuiGrid-grid-xs-3-33 MuiGrid-grid-sm-2-45"
       >
         <button
-          className="MuiButtonBase-root-97 inject-MediaGalleryItem-with-uiStore-root-95"
+          className="MuiButtonBase-root-103 MediaGalleryItem-root-102"
           disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
@@ -39,13 +43,17 @@ exports[`basic snapshot 1`] = `
           tabIndex="0"
           type="button"
         >
-          <img
-            alt=""
-            className="inject-MediaGalleryItem-with-uiStore-img-96"
-            src="/resources/placeholder.gif"
-          />
+          <div
+            className="inject-Img-with-uiStore-imgWrapper-95 "
+          >
+            <img
+              alt=""
+              className="inject-Img-with-uiStore-img-98 inject-Img-with-uiStore-imgLoading-100 "
+              src="/resources/placeholder.gif"
+            />
+          </div>
           <span
-            className="MuiTouchRipple-root-100"
+            className="MuiTouchRipple-root-106"
           />
         </button>
       </div>
@@ -53,7 +61,7 @@ exports[`basic snapshot 1`] = `
         className="MuiGrid-item-5 MuiGrid-grid-xs-3-33 MuiGrid-grid-sm-2-45"
       >
         <button
-          className="MuiButtonBase-root-97 inject-MediaGalleryItem-with-uiStore-root-95"
+          className="MuiButtonBase-root-103 MediaGalleryItem-root-102"
           disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
@@ -69,13 +77,17 @@ exports[`basic snapshot 1`] = `
           tabIndex="0"
           type="button"
         >
-          <img
-            alt=""
-            className="inject-MediaGalleryItem-with-uiStore-img-96"
-            src="/resources/placeholder.gif"
-          />
+          <div
+            className="inject-Img-with-uiStore-imgWrapper-95 "
+          >
+            <img
+              alt=""
+              className="inject-Img-with-uiStore-img-98 inject-Img-with-uiStore-imgLoading-100 "
+              src="/resources/placeholder.gif"
+            />
+          </div>
           <span
-            className="MuiTouchRipple-root-100"
+            className="MuiTouchRipple-root-106"
           />
         </button>
       </div>

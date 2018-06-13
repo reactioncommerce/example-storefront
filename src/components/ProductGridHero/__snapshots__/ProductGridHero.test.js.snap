@@ -2,7 +2,7 @@
 
 exports[`snapshop of tagWithoutMedia 1`] = `
 <section
-  className="inject-ProductGridHero-with-uiStore-productGridContainer-2"
+  className="ProductGridHero-productGridContainer-2"
 >
   <div
     className="MuiGrid-container-3 MuiGrid-spacing-xs-24-26"
