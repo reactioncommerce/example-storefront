@@ -29,6 +29,7 @@ query catalogItemsQuery($shopId: ID!, $first: ConnectionLimitInt, $last:  Connec
             }
             primaryImage {
               URLs {
+                thumbnail
                 small
                 medium
                 large
