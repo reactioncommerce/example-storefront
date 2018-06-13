@@ -23,11 +23,11 @@ exports[`renders with 2 levels of tags 1`] = `
   <div
     className="MuiListItemText-root-18"
   >
-    <h3
+    <span
       className="MuiTypography-root-24 MuiTypography-subheading-31 MuiListItemText-primary-21"
     >
       Tag Name
-    </h3>
+    </span>
   </div>
   <svg
     aria-hidden="true"
@@ -67,11 +67,11 @@ exports[`renders with 3 levels of tags 1`] = `
   <div
     className="MuiListItemText-root-18"
   >
-    <h3
+    <span
       className="MuiTypography-root-24 MuiTypography-subheading-31 MuiListItemText-primary-21"
     >
       Tag Name
-    </h3>
+    </span>
   </div>
   <svg
     aria-hidden="true"
