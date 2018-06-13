@@ -70,7 +70,6 @@ class AccountDropdown extends Component {
     const { authStore } = this.props;
 
     authStore.setToken(this.state.token);
-    authStore.saveTokenToLocalStorage();
 
     // Reload so the auth changes can be reflected on server and in browser
     window.location.reload();

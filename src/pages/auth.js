@@ -32,7 +32,6 @@ class AuthPage extends Component {
       const { keycloakAuthStore } = this.props;
 
       keycloakAuthStore.setToken(params.access_token);
-      keycloakAuthStore.saveTokenToLocalStorage();
 
       const previousRoute = localStorage.getItem("kc-redirected-from");
       localStorage.removeItem("kc-redirected-from");

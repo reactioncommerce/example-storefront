@@ -18,6 +18,7 @@ class AuthStore {
 
   @action setToken(token) {
     this.token = token || "";
+    this.saveTokenToLocalStorage();
   }
 
   @action unsetToken(tokenName) {
