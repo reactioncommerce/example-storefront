@@ -56,7 +56,7 @@ class Breadcrumbs extends Component {
     return tag && tag.isTopLevel;
   }
 
-  renderTopLevelTagBreadcrumbs = (tag) => {
+  renderTopLevelTagBreadcrumb = (tag) => {
     const { classes: { breadcrumbIcon, breadcrumbLink }, tag: propTag } = this.props;
 
     const currentTag = tag || propTag;
@@ -69,7 +69,7 @@ class Breadcrumbs extends Component {
     );
   }
 
-  renderSecondLevelTagBreadcrumbs = (tag) => {
+  renderSecondLevelTagBreadcrumb = (tag) => {
     const { classes: { breadcrumbIcon, breadcrumbLink }, tag: propTag, tags } = this.props;
     const currentTag = tag || propTag;
 
@@ -79,27 +79,27 @@ class Breadcrumbs extends Component {
 
     return (
       <Fragment>
-        {this.renderTopLevelTagBreadcrumbs(parentTag)}
+        {this.renderTopLevelTagBreadcrumb(parentTag)}
         <ChevronRight className={breadcrumbIcon} />
         <Link route={`/tag/${currentTag.slug}`}><span className={breadcrumbLink}>{currentTag.name}</span></Link>
       </Fragment>
     );
   }
 
-  renderTagGridBreadcrumbs = (tag) => {
+  renderTagBreadcrumbs = (tag) => {
     if (this.isTopLevel || (tag && tag.isTopLevel)) {
-      return this.renderTopLevelTagBreadcrumbs(tag);
+      return this.renderTopLevelTagBreadcrumb(tag);
     }
-    return this.renderSecondLevelTagBreadcrumbs(tag);
+    return this.renderSecondLevelTagBreadcrumb(tag);
   }
 
-  renderPDPBreadCrumbs = () => {
+  renderProductNameBreadcrumb = () => {
     const { classes: { breadcrumbIcon, breadcrumbLink }, product, tag } = this.props;
 
     if (tag && tag._id) {
       return (
         <Fragment>
-          {this.renderTagGridBreadcrumbs(tag)}
+          {this.renderTagBreadcrumbs(tag)}
           <ChevronRight className={breadcrumbIcon} />
           <Link route={`/product/${product.slug}`}><span className={breadcrumbLink}>{product.title}</span></Link>
         </Fragment>
@@ -116,11 +116,11 @@ class Breadcrumbs extends Component {
 
   renderBreadcrumbs = () => {
     if (this.isTagGrid) {
-      return this.renderTagGridBreadcrumbs();
+      return this.renderTagBreadcrumbs();
     }
 
     if (this.isPDP) {
-      return this.renderPDPBreadCrumbs();
+      return this.renderProductNameBreadcrumb();
     }
 
     return null;
