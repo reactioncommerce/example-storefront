@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { inject } from "mobx-react";
 
+/**
+ *
+ * @method withAssetPath
+ * @summary HOC that adds the full image paths for provided image src/srcs
+ * and replaces them with the placeholder if not provided. This HOC is only to bind
+ * reaction-next-starterkit specific asset urls and placeholders to the general Img component
+ * @param {Component} Comp - wrapped react component.
+ * @return {Class} - Wrapped component
+ */
 export function withAssetPath(Comp) {
   @inject("uiStore")
   class WithAssetPath extends Component {
@@ -56,11 +65,11 @@ export function withAssetPath(Comp) {
      *
      * @method imagePaths
      * @summary For responsive images get the image paths for each breakpoint's image src
-     * @return {Object} - object of each breakpoints image path
+     * @return {Object|null} - object of each breakpoints image path
      */
     get imagePaths() {
       const { srcs } = this.props;
-      if (!srcs) return;
+      if (!srcs) return null;
       const imagePaths = {};
 
       Object.keys(srcs).forEach((key) => {

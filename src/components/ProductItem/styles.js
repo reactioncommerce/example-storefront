@@ -1,16 +1,16 @@
 export const styles = (theme) => ({
-  "root": {},
-  "productInfo": {
+  root: {},
+  productInfo: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     paddingTop: 10
   },
-  "productMedia": {
+  productMedia: {
     backgroundColor: theme.palette.primary.contrastText,
     position: "relative"
   },
-  "link": {
+  link: {
     ...theme.typography.body2,
     "textAlign": "left",
     "&:hover": {

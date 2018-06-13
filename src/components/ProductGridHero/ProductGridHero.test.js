@@ -33,23 +33,17 @@ const tagWithoutMedia = {
 };
 
 test("snapshot of tagWithMedia", () => {
-  const component = renderer.create(
-    shallow(
-      <MuiThemeProvider theme={theme}>
-        <ProductGridHero tag={tagWithMedia} />
-      </MuiThemeProvider>
-    ).get(1)
-  );
+  const component = renderer.create(shallow(<MuiThemeProvider theme={theme}>
+    <ProductGridHero tag={tagWithMedia} />
+  </MuiThemeProvider>).get(1));
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test("snapshop of tagWithoutMedia", () => {
-  const component = renderer.create(
-    <MuiThemeProvider theme={theme}>
-      <ProductGridHero tag={tagWithoutMedia} />
-    </MuiThemeProvider>
-  );
+  const component = renderer.create(<MuiThemeProvider theme={theme}>
+    <ProductGridHero tag={tagWithoutMedia} />
+  </MuiThemeProvider>);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
