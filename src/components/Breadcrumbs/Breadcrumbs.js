@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { inject, observer } from "mobx-react";
 import { withStyles } from "@material-ui/core/styles";
 import ChevronRight from "mdi-material-ui/ChevronRight";
 import Link from "components/Link";
@@ -28,11 +29,7 @@ const styles = (theme) => ({
   }
 });
 
-/**
- * A Breadcrumb component
- * @export
- * @class Breadcrumbs
- */
+
 @withStyles(styles)
 class Breadcrumbs extends Component {
   static propTypes = {
@@ -75,12 +72,6 @@ class Breadcrumbs extends Component {
 
   renderSecondLevelTagBreadcrumbs = (tag) => {
     const { classes: { breadcrumbIcon, breadcrumbLink }, tag: propTag, tags } = this.props;
-
-    console.log("proptTag", propTag);
-    console.log("tag", tag);
-
-
-
     const currentTag = tag || propTag;
 
     // Find tag that is a parent of this tag
@@ -104,23 +95,20 @@ class Breadcrumbs extends Component {
   }
 
   renderPDPBreadCrumbs = () => {
-    const { classes: { breadcrumbIcon, breadcrumbLink }, product } = this.props;
+    const { classes: { breadcrumbIcon, breadcrumbLink }, product, tag } = this.props;
 
-    console.log("product", product);
-
-    const tag = {
-      isTopLevel: false,
-      name: "Tag A-2",
-      position: null,
-      slug: "tag-a-2",
-      subTagIds: [],
-      _id: "cmVhY3Rpb24vdGFnOkpCNEZSQmlXZHVOc3hoaGhu"
-    };
-
+    if (tag && tag._id) {
+      return (
+        <Fragment>
+          {this.renderTagGridBreadcrumbs(tag)}
+          <ChevronRight className={breadcrumbIcon} />
+          <Link route={`/product/${product.slug}`}><span className={breadcrumbLink}>{product.title}</span></Link>
+        </Fragment>
+      );
+    }
 
     return (
       <Fragment>
-        {this.renderTagGridBreadcrumbs(tag)}
         <ChevronRight className={breadcrumbIcon} />
         <Link route={`/product/${product.slug}`}><span className={breadcrumbLink}>{product.title}</span></Link>
       </Fragment>

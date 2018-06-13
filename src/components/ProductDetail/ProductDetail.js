@@ -39,7 +39,7 @@ const styles = (theme) => ({
  * @returns {React.Component} React component node that represents a product detail view
  */
 @withStyles(styles, { withTheme: true })
-@inject("uiStore")
+@inject("routingStore", "uiStore")
 @trackProductViewed()
 @observer
 class ProductDetail extends Component {
@@ -48,6 +48,7 @@ class ProductDetail extends Component {
     currencyCode: PropTypes.string.isRequired,
     product: PropTypes.object,
     theme: PropTypes.object,
+    routingStore: PropTypes.object.isRequired,
     uiStore: PropTypes.object.isRequired
   }
 
@@ -140,6 +141,7 @@ class ProductDetail extends Component {
       product,
       currencyCode,
       theme,
+      routingStore: { tag },
       uiStore: { pdpSelectedOptionId, pdpSelectedVariantId }
     } = this.props;
 
@@ -157,7 +159,7 @@ class ProductDetail extends Component {
           <meta name="description" content={product.description} />
         </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
-          <Breadcrumbs isPDP={true} product={product} />
+          <Breadcrumbs isPDP={true} tag={tag} product={product} />
           <Grid item xs={12} sm={6}>
             <div className={classes.section}>
               <MediaGallery mediaItems={product.media} />
