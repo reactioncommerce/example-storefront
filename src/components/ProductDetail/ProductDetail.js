@@ -47,8 +47,8 @@ class ProductDetail extends Component {
     classes: PropTypes.object,
     currencyCode: PropTypes.string.isRequired,
     product: PropTypes.object,
-    theme: PropTypes.object,
     routingStore: PropTypes.object.isRequired,
+    theme: PropTypes.object,
     uiStore: PropTypes.object.isRequired
   }
 
@@ -138,10 +138,10 @@ class ProductDetail extends Component {
   render() {
     const {
       classes,
-      product,
       currencyCode,
-      theme,
+      product,
       routingStore: { tag },
+      theme,
       uiStore: { pdpSelectedOptionId, pdpSelectedVariantId }
     } = this.props;
 
