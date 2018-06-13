@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { inject, observer } from "mobx-react";
 import Typography from "@material-ui/core/Typography";
 import Link from "components/Link";
 import Badge from "components/Badge";
@@ -10,8 +9,6 @@ import { inventoryStatus, isProductLowQuantity, INVENTORY_STATUS, priceByCurrenc
 import { styles } from "./styles";
 
 @withStyles(styles, { withTheme: true })
-@inject("uiStore")
-@observer
 class ProductItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -35,15 +32,12 @@ class ProductItem extends Component {
   }
 
   get primaryImage() {
-    const { publicRuntimeConfig } = this.props.uiStore.appConfig;
-    let { product: { primaryImage } } = this.props;
+    const { product: { primaryImage } } = this.props;
     if (!primaryImage) {
-      primaryImage = {
+      return {
         URLs: {
-          thumbnail: publicRuntimeConfig.placeholderImageUrls.productGrid,
-          small: publicRuntimeConfig.placeholderImageUrls.productGrid,
-          medium: publicRuntimeConfig.placeholderImageUrls.productGrid,
-          large: publicRuntimeConfig.placeholderImageUrls.productGrid
+          thumbnail: undefined,
+          small: undefined
         }
       };
     }
@@ -51,8 +45,8 @@ class ProductItem extends Component {
   }
 
   renderProductImage() {
-    const { product } = this.props;
-    return <Img altText={product.description} presrc={this.primaryImage.URLs.thumbnail} src={this.primaryImage.URLs.small} />;
+    const { product: { description } } = this.props;
+    return <Img altText={description} presrc={this.primaryImage.URLs.thumbnail} src={this.primaryImage.URLs.small} />;
   }
 
   renderProductMedia() {
