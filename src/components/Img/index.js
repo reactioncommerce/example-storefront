@@ -1,1 +1,4 @@
-export { default } from "./Img";
+import { withAssetPath } from "./withAssetPath";
+import Img from "./Img";
+
+export default withAssetPath(Img);
