@@ -1,52 +1,154 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import ChevronRight from "mdi-material-ui/ChevronRight";
+import Link from "components/Link";
+
+import withTags from "containers/tags/withTags";
 
 const styles = (theme) => ({
   container: {
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    maxWidth: theme.grid.productGridMaxWidth,
+    marginLeft: "auto",
+    marginRight: "auto"
   },
-  label: {
-    flex: 0,
-    flexBasis: "auto",
-    textTransform: "uppercase",
-    fontWeight: theme.typography.fontWeightBold,
-    fontSize: "0.7rem",
-    paddingRight: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit,
-    letterSpacing: "0.1rem"
-  },
-  item: {
-    flex: "1 1 auto",
+  breadcrumbLink: {
+    fontSize: "14px",
+    letterSpacing: "0.3px",
+    color: "#3c3c3c",
     border: 0,
-    borderTop: "1px solid",
+    borderBottom: "1px solid",
     borderColor: theme.palette.reaction.borderColor,
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    margin: "0 7px"
+  },
+  breadcrumbIcon: {
+    fontSize: "14px"
   }
 });
 
 /**
- * A divider for variant options
+ * A Breadcrumb component
  * @export
- * @class Divider
+ * @class Breadcrumbs
  */
 @withStyles(styles)
-export default class Divider extends Component {
+class Breadcrumbs extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    label: PropTypes.string
+    isPDP: PropTypes.bool,
+    isTagGrid: PropTypes.bool,
+    product: PropTypes.object,
+    tag: PropTypes.object,
+    tags: PropTypes.object
+  }
+
+  get isPDP() {
+    const { isPDP } = this.props;
+    return isPDP || false;
+  }
+
+  get isTagGrid() {
+    const { isTagGrid } = this.props;
+    return isTagGrid || false;
+  }
+
+  get isTopLevel() {
+    const { tag } = this.props;
+
+    return tag && tag.isTopLevel;
+  }
+
+  renderTopLevelTagBreadcrumbs = (tag) => {
+    const { classes: { breadcrumbIcon, breadcrumbLink }, tag: propTag } = this.props;
+
+    const currentTag = tag || propTag;
+
+    return (
+      <Fragment>
+        <ChevronRight className={breadcrumbIcon} />
+        <Link route={`/tag/${currentTag.slug}`}><span className={breadcrumbLink}>{currentTag.name}</span></Link>
+      </Fragment>
+    );
+  }
+
+  renderSecondLevelTagBreadcrumbs = (tag) => {
+    const { classes: { breadcrumbIcon, breadcrumbLink }, tag: propTag, tags } = this.props;
+
+    console.log("proptTag", propTag);
+    console.log("tag", tag);
+
+
+
+    const currentTag = tag || propTag;
+
+    // Find tag that is a parent of this tag
+    const nodes = tags.edges.map((edge) => edge.node);
+    const parentTag = nodes.find((node) => node.subTagIds.includes(currentTag._id));
+
+    return (
+      <Fragment>
+        {this.renderTopLevelTagBreadcrumbs(parentTag)}
+        <ChevronRight className={breadcrumbIcon} />
+        <Link route={`/tag/${currentTag.slug}`}><span className={breadcrumbLink}>{currentTag.name}</span></Link>
+      </Fragment>
+    );
+  }
+
+  renderTagGridBreadcrumbs = (tag) => {
+    if (this.isTopLevel || (tag && tag.isTopLevel)) {
+      return this.renderTopLevelTagBreadcrumbs(tag);
+    }
+    return this.renderSecondLevelTagBreadcrumbs(tag);
+  }
+
+  renderPDPBreadCrumbs = () => {
+    const { classes: { breadcrumbIcon, breadcrumbLink }, product } = this.props;
+
+    console.log("product", product);
+
+    const tag = {
+      isTopLevel: false,
+      name: "Tag A-2",
+      position: null,
+      slug: "tag-a-2",
+      subTagIds: [],
+      _id: "cmVhY3Rpb24vdGFnOkpCNEZSQmlXZHVOc3hoaGhu"
+    };
+
+
+    return (
+      <Fragment>
+        {this.renderTagGridBreadcrumbs(tag)}
+        <ChevronRight className={breadcrumbIcon} />
+        <Link route={`/product/${product.slug}`}><span className={breadcrumbLink}>{product.title}</span></Link>
+      </Fragment>
+    );
+  }
+
+  renderBreadcrumbs = () => {
+    if (this.isTagGrid) {
+      return this.renderTagGridBreadcrumbs();
+    }
+
+    if (this.isPDP) {
+      return this.renderPDPBreadCrumbs();
+    }
+
+    return null;
   }
 
   render() {
-    const { classes: { container, item, label: labelClass }, label } = this.props;
+    const { classes: { container, breadcrumbLink } } = this.props;
 
     return (
       <div className={container}>
-      Home > Womens > Active Wear > Skirts > Patagonia Women's Lithia Skirt
+        <Link route="/"><span className={breadcrumbLink}>Home</span></Link>
+        {this.renderBreadcrumbs()}
       </div>
     );
   }
 }
+
+export default withTags(Breadcrumbs);
