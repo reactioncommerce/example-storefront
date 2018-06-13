@@ -96,12 +96,6 @@ export default (App) =>
       };
     }
 
-    static getDerivedStateFromProps(nextProps) {
-      rootMobxStores.routingStore.updateRoute(nextProps.router);
-
-      return null;
-    }
-
     constructor(props) {
       super(props);
       const { apollo, token } = this.props.apolloState;

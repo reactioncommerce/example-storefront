@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import track from "lib/tracking/track";
+import trackProductClicked from "lib/tracking/trackProductClicked";
+import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import Link from "components/Link";
-import Badge from "components/Badge";
 import Img from "components/Img";
-import { inventoryStatus, isProductLowQuantity, INVENTORY_STATUS, priceByCurrencyCode } from "lib/utils";
+import BadgeOverlay from "components/BadgeOverlay";
 import { styles } from "./styles";
 
 @withStyles(styles, { withTheme: true })
+@track()
 class ProductItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -43,27 +46,22 @@ class ProductItem extends Component {
     return primaryImage;
   }
 
-  renderProductImage() {
-    const { product: { description } } = this.props;
-    return <Img altText={description} presrc={this.primaryImage.URLs.thumbnail} src={this.primaryImage.URLs.small} />;
-  }
+  @trackProductClicked()
+  handleAnchorClick = () => {}
 
   renderProductMedia() {
-    const { classes, product } = this.props;
-    const status = inventoryStatus(product);
+    const { classes, product: { description } } = this.props;
 
     return (
       <div className={classes.productMedia}>
-        {status && <Badge type={status.type} label={status.label} />}
-        {isProductLowQuantity(product) && <Badge type={INVENTORY_STATUS.LOW_QUANTITY} label="Low Inventory" />}
-        {this.renderProductImage()}
+        <Img altText={description} presrc={this.primaryImage.URLs.thumbnail} src={this.primaryImage.URLs.small} />;
       </div>
     );
   }
 
   renderProductInfo() {
     const { classes, currencyCode, product: { pricing, title, vendor } } = this.props;
-    const productPrice = priceByCurrencyCode(currencyCode, pricing);
+    const productPrice = priceByCurrencyCode(currencyCode, pricing) || {};
 
     return (
       <div >
@@ -81,11 +79,18 @@ class ProductItem extends Component {
   }
 
   render() {
+    const { product } = this.props;
+
     return (
       <div>
-        <Link route={this.productDetailHref}>
-          {this.renderProductMedia()}
-          {this.renderProductInfo()}
+        <Link
+          route={this.productDetailHref}
+          onAnchorClick={this.handleAnchorClick}
+        >
+          <BadgeOverlay product={product}>
+            {this.renderProductMedia()}
+            {this.renderProductInfo()}
+          </BadgeOverlay>
         </Link>
       </div>
     );

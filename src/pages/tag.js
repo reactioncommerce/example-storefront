@@ -11,7 +11,6 @@ import trackProductListViewed from "lib/tracking/trackProductListViewed";
 @withTag
 @withCatalogItems
 @inject("routingStore", "uiStore")
-@trackProductListViewed({ dispatchOnMount: true })
 @observer
 export default class TagShop extends Component {
   static propTypes = {
@@ -33,9 +32,25 @@ export default class TagShop extends Component {
     })
   };
 
-  static defaultProps= {
+  static defaultProps = {
     tag: {}
   };
+
+  static getDerivedStateFromProps(props) {
+    const { routingStore, tag } = props;
+    if (routingStore.tag._id !== tag._id) {
+      routingStore.setTag(tag);
+    }
+    return null;
+  }
+
+  state = {}
+
+  @trackProductListViewed()
+  componentDidMount() {}
+
+  @trackProductListViewed()
+  componentDidUpdate() {}
 
   renderHelmet() {
     const { shop, routingStore } = this.props;

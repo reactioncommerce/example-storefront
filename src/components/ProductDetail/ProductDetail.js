@@ -4,9 +4,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { inject, observer } from "mobx-react";
 import Helmet from "react-helmet";
-import trackProductViewed from "lib/tracking/trackProductViewed";
 import track from "lib/tracking/track";
-import getVariantTrackingData from "lib/tracking/utils/getVariantTrackingData";
+import trackProductViewed from "lib/tracking/trackProductViewed";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
@@ -14,7 +13,8 @@ import ProductDetailInfo from "components/ProductDetailInfo";
 import MediaGallery from "components/MediaGallery";
 import TagGrid from "components/TagGrid";
 import { Router } from "routes";
-import { priceByCurrencyCode, variantById } from "lib/utils";
+import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
+import variantById from "lib/utils/variantById";
 
 const styles = (theme) => ({
   root: {
@@ -38,7 +38,7 @@ const styles = (theme) => ({
  */
 @withStyles(styles, { withTheme: true })
 @inject("uiStore")
-@trackProductViewed()
+@track()
 @observer
 class ProductDetail extends Component {
   static propTypes = {
@@ -56,13 +56,7 @@ class ProductDetail extends Component {
     this.selectVariant(product.variants[0]);
   }
 
-  @track((props, state, [variant, optionId]) => (
-    getVariantTrackingData({
-      variant, // Object representing a variant. (Required)
-      optionId, // Selected option of the provided variant, if available. (Optional)
-      product: props.product // Full product document for additional data. (Optional)
-    })
-  ))
+  @trackProductViewed()
   selectVariant(variant, optionId) {
     const { product, uiStore } = this.props;
 

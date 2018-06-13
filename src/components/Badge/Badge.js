@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
-import { INVENTORY_STATUS } from "lib/utils";
 
 const styles = (theme) => ({
   badge: {
@@ -21,28 +20,9 @@ const styles = (theme) => ({
     fontWeight: theme.typography.fontWeightBold,
     position: "relative",
     whiteSpace: "nowrap",
-    padding: 0
-  },
-  status: {
-    color: theme.palette.primary.contrastText,
-    left: theme.spacing.unit,
-    top: theme.spacing.unit
-  },
-  soldOut: {
-    backgroundColor: theme.palette.secondary.main
-  },
-  backorder: {
-    backgroundColor: theme.palette.secondary.dark
-  },
-  sale: {
-    backgroundColor: theme.palette.error.main
-  },
-  bestseller: {
-    backgroundColor: theme.palette.reaction.bestseller
-  },
-  warning: {
-    backgroundColor: "transparent",
-    color: theme.palette.secondary.main
+    padding: 0,
+    letterSpacing: "0.5px",
+    fontSize: "11px"
   },
   alignRight: {
     right: 0
@@ -52,37 +32,29 @@ const styles = (theme) => ({
 @withStyles(styles)
 export default class Badge extends Component {
   static propTypes = {
-    className: PropTypes.string,
+    badgeClasses: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     classes: PropTypes.object.isRequired,
-    isLowInventory: PropTypes.bool,
     label: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired
+    labelClasses: PropTypes.object,
+    type: PropTypes.string
   }
 
   render() {
     const {
+      badgeClasses: importedBadgeClasses,
       classes,
-      className,
-      type,
-      label
+      label,
+      labelClasses: importedLabelClasses
     } = this.props;
 
     const badgeClasses = classNames(
       classes.badge,
-      {
-        [classes.backorder]: type === INVENTORY_STATUS.BACKORDER,
-        [classes.bestseller]: type === INVENTORY_STATUS.BESTSELLER,
-        [classes.sale]: type === INVENTORY_STATUS.SALE,
-        [classes.status]: type !== INVENTORY_STATUS.LOW_QUANTITY,
-        [classes.soldOut]: type === INVENTORY_STATUS.SOLD_OUT,
-        [classes.alignRight]: type === INVENTORY_STATUS.LOW_QUANTITY
-      },
-      className
+      importedBadgeClasses
     );
 
     const labelClasses = classNames(
       classes.labelStyle,
-      { [classes.warning]: type === INVENTORY_STATUS.LOW_QUANTITY }
+      importedLabelClasses
     );
 
     return (

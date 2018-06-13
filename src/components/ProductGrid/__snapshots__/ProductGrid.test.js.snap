@@ -138,48 +138,53 @@ exports[`basic snapshot 1`] = `
           }
         >
           <div
-            className="ProductItem-productMedia-129"
+            className="BadgeOverlay-badgeOverlay-132 BadgeOverlay-faded-133"
           >
             <div
-              className="Badge-badge-132 Badge-status-134 Badge-soldOut-135"
+              className="Badge-badge-143 BadgeOverlay-status-134 BadgeOverlay-soldOut-139"
             >
               <span
-                className="Badge-labelStyle-133"
+                className="Badge-labelStyle-144"
               >
                 Sold Out
               </span>
             </div>
             <div
-              className="Img-imgWrapper-141 "
+              className="WithTracking-ProductItem--productMedia-129"
             >
-              <img
-                alt=""
-                className="Img-img-143 Img-imgLoading-145 "
-                src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/thumbnail/25580_CICN.png"
-              />
-            </div>
-          </div>
-          <div>
-            <div
-              className="ProductItem-productInfo-128"
-            >
-              <aside
-                className="MuiTypography-root-147 MuiTypography-body2-155"
+              <div
+                className="Img-imgWrapper-146 "
               >
-                Men's Lightweigth Synchilla
-              </aside>
-              <p
-                className="MuiTypography-root-147 MuiTypography-body1-156"
-              >
-                $12.99 - $19.99
-              </p>
+                <img
+                  alt=""
+                  className="Img-img-148 Img-imgLoading-150 "
+                  src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/thumbnail/25580_CICN.png"
+                />
+              </div>
+              ;
             </div>
             <div>
-              <p
-                className="MuiTypography-root-147 MuiTypography-body1-156"
+              <div
+                className="WithTracking-ProductItem--productInfo-128"
               >
-                Patagonia
-              </p>
+                <aside
+                  className="MuiTypography-root-152 MuiTypography-body2-160"
+                >
+                  Men's Lightweigth Synchilla
+                </aside>
+                <p
+                  className="MuiTypography-root-152 MuiTypography-body1-161"
+                >
+                  $12.99 - $19.99
+                </p>
+              </div>
+              <div>
+                <p
+                  className="MuiTypography-root-152 MuiTypography-body1-161"
+                >
+                  Patagonia
+                </p>
+              </div>
             </div>
           </div>
         </a>
@@ -204,39 +209,44 @@ exports[`basic snapshot 1`] = `
           }
         >
           <div
-            className="ProductItem-productMedia-129"
+            className="BadgeOverlay-badgeOverlay-132"
           >
             <div
-              className="Img-imgWrapper-141 "
+              className="WithTracking-ProductItem--productMedia-129"
             >
-              <img
-                alt=""
-                className="Img-img-143 Img-imgLoading-145 "
-                src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/thumbnail/product_image.png"
-              />
-            </div>
-          </div>
-          <div>
-            <div
-              className="ProductItem-productInfo-128"
-            >
-              <aside
-                className="MuiTypography-root-147 MuiTypography-body2-155"
+              <div
+                className="Img-imgWrapper-146 "
               >
-                Basic Reaction Product
-              </aside>
-              <p
-                className="MuiTypography-root-147 MuiTypography-body1-156"
-              >
-                $12.99 - $19.99
-              </p>
+                <img
+                  alt=""
+                  className="Img-img-148 Img-imgLoading-150 "
+                  src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/thumbnail/product_image.png"
+                />
+              </div>
+              ;
             </div>
             <div>
-              <p
-                className="MuiTypography-root-147 MuiTypography-body1-156"
+              <div
+                className="WithTracking-ProductItem--productInfo-128"
               >
-                Reaction Commerce
-              </p>
+                <aside
+                  className="MuiTypography-root-152 MuiTypography-body2-160"
+                >
+                  Basic Reaction Product
+                </aside>
+                <p
+                  className="MuiTypography-root-152 MuiTypography-body1-161"
+                >
+                  $12.99 - $19.99
+                </p>
+              </div>
+              <div>
+                <p
+                  className="MuiTypography-root-152 MuiTypography-body1-161"
+                >
+                  Reaction Commerce
+                </p>
+              </div>
             </div>
           </div>
         </a>
@@ -244,13 +254,13 @@ exports[`basic snapshot 1`] = `
     </div>
   </div>
   <div
-    className="MuiGrid-container-3 MuiGrid-justify-xs-space-between-22 PageStepper-root-171"
+    className="MuiGrid-container-3 MuiGrid-justify-xs-space-between-22 PageStepper-root-176"
   >
     <div
       className="MuiGrid-item-4"
     >
       <button
-        className="MuiButtonBase-root-188 MuiButton-root-172 MuiButton-raised-178"
+        className="MuiButtonBase-root-193 MuiButton-root-177 MuiButton-raised-183"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -267,12 +277,12 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-173"
+          className="MuiButton-label-178"
         >
           Previous
         </span>
         <span
-          className="MuiTouchRipple-root-191"
+          className="MuiTouchRipple-root-196"
         />
       </button>
     </div>
