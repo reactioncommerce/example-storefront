@@ -1,0 +1,12 @@
+#import "./tagFragment.gql"
+
+query tagsQuery($shopId: ID!) {
+  tags(shopId: $shopId) {
+    edges {
+      cursor
+      node {
+         ...TagInfo
+      }
+    }
+  }
+}
