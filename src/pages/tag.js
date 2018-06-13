@@ -4,6 +4,7 @@ import { observer, inject } from "mobx-react";
 import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import withTag from "containers/tags/withTag";
+import Breadcrumbs from "components/Breadcrumbs";
 import ProductGrid from "components/ProductGrid";
 import ProductGridHero from "components/ProductGridHero";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
@@ -85,6 +86,7 @@ export default class TagShop extends Component {
     return (
       <React.Fragment>
         {this.renderHelmet()}
+        <Breadcrumbs isTagGrid={true} tag={tag} />
         <ProductGridHero tag={tag} />
         <ProductGrid
           catalogItems={catalogItems}

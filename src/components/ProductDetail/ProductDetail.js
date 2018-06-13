@@ -7,6 +7,7 @@ import Helmet from "react-helmet";
 import trackProductViewed from "lib/tracking/trackProductViewed";
 import track from "lib/tracking/track";
 import getVariantTrackingData from "lib/tracking/utils/getVariantTrackingData";
+import Breadcrumbs from "components/Breadcrumbs";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
@@ -156,6 +157,7 @@ class ProductDetail extends Component {
           <meta name="description" content={product.description} />
         </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
+          <Breadcrumbs isPDP={true} product={product} />
           <Grid item xs={12} sm={6}>
             <div className={classes.section}>
               <MediaGallery mediaItems={product.media} />
