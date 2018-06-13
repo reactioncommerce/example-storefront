@@ -7,8 +7,12 @@ const authStore = {
   token: "1234"
 };
 
+const keycloakAuthStore = {
+  token: "1234"
+};
+
 test("basic snapshot", () => {
-  const component = renderer.create(shallow(<AccountDropdown authStore={authStore} />).get(0));
+  const component = renderer.create(shallow(<AccountDropdown authStore={authStore} keycloakAuthStore={keycloakAuthStore} />).get(0));
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
