@@ -1,11 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { inject, observer } from "mobx-react";
-import Fade from "@material-ui/core/Fade";
-import Hidden from "@material-ui/core/Hidden";
 import Typography from "@material-ui/core/Typography";
-import LoadingIcon from "mdi-material-ui/Loading";
 import Link from "components/Link";
 import Badge from "components/Badge";
 import Img from "components/Img";
@@ -43,6 +40,7 @@ class ProductItem extends Component {
     if (!primaryImage) {
       primaryImage = {
         URLs: {
+          thumbnail: publicRuntimeConfig.placeholderImageUrls.productGrid,
           small: publicRuntimeConfig.placeholderImageUrls.productGrid,
           medium: publicRuntimeConfig.placeholderImageUrls.productGrid,
           large: publicRuntimeConfig.placeholderImageUrls.productGrid
@@ -54,7 +52,7 @@ class ProductItem extends Component {
 
   renderProductImage() {
     const { product } = this.props;
-    return <Img altText={product.description} isGrid URLs={this.primaryImage.URLs} />;
+    return <Img altText={product.description} presrc={this.primaryImage.URLs.thumbnail} src={this.primaryImage.URLs.small} />;
   }
 
   renderProductMedia() {
