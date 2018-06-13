@@ -124,7 +124,7 @@ exports[`basic snapshot 1`] = `
     >
       <div>
         <a
-          className="WithTracking-Link--link-134"
+          className="WithTracking-Link--link-131"
           href="/product/men's-lightweigth-synchilla"
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -138,45 +138,45 @@ exports[`basic snapshot 1`] = `
           }
         >
           <div
-            className="inject-ProductItem-with-uiStore-productMedia-129"
+            className="ProductItem-productMedia-129"
           >
             <div
-              className="Badge-badge-135 Badge-status-137 Badge-soldOut-138"
+              className="Badge-badge-132 Badge-status-134 Badge-soldOut-135"
             >
               <span
-                className="Badge-labelStyle-136"
+                className="Badge-labelStyle-133"
               >
                 Sold Out
               </span>
             </div>
             <div
-              className="inject-Img-with-uiStore-imgWrapper-144 "
+              className="Img-imgWrapper-141 "
             >
               <img
                 alt=""
-                className="inject-Img-with-uiStore-img-147 inject-Img-with-uiStore-imgLoading-149 "
+                className="Img-img-143 Img-imgLoading-145 "
                 src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/thumbnail/25580_CICN.png"
               />
             </div>
           </div>
           <div>
             <div
-              className="inject-ProductItem-with-uiStore-productInfo-128"
+              className="ProductItem-productInfo-128"
             >
               <aside
-                className="MuiTypography-root-151 MuiTypography-body2-159"
+                className="MuiTypography-root-147 MuiTypography-body2-155"
               >
                 Men's Lightweigth Synchilla
               </aside>
               <p
-                className="MuiTypography-root-151 MuiTypography-body1-160"
+                className="MuiTypography-root-147 MuiTypography-body1-156"
               >
                 $12.99 - $19.99
               </p>
             </div>
             <div>
               <p
-                className="MuiTypography-root-151 MuiTypography-body1-160"
+                className="MuiTypography-root-147 MuiTypography-body1-156"
               >
                 Patagonia
               </p>
@@ -190,7 +190,7 @@ exports[`basic snapshot 1`] = `
     >
       <div>
         <a
-          className="WithTracking-Link--link-134"
+          className="WithTracking-Link--link-131"
           href="/product/example-product"
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -204,36 +204,36 @@ exports[`basic snapshot 1`] = `
           }
         >
           <div
-            className="inject-ProductItem-with-uiStore-productMedia-129"
+            className="ProductItem-productMedia-129"
           >
             <div
-              className="inject-Img-with-uiStore-imgWrapper-144 "
+              className="Img-imgWrapper-141 "
             >
               <img
                 alt=""
-                className="inject-Img-with-uiStore-img-147 inject-Img-with-uiStore-imgLoading-149 "
+                className="Img-img-143 Img-imgLoading-145 "
                 src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/thumbnail/product_image.png"
               />
             </div>
           </div>
           <div>
             <div
-              className="inject-ProductItem-with-uiStore-productInfo-128"
+              className="ProductItem-productInfo-128"
             >
               <aside
-                className="MuiTypography-root-151 MuiTypography-body2-159"
+                className="MuiTypography-root-147 MuiTypography-body2-155"
               >
                 Basic Reaction Product
               </aside>
               <p
-                className="MuiTypography-root-151 MuiTypography-body1-160"
+                className="MuiTypography-root-147 MuiTypography-body1-156"
               >
                 $12.99 - $19.99
               </p>
             </div>
             <div>
               <p
-                className="MuiTypography-root-151 MuiTypography-body1-160"
+                className="MuiTypography-root-147 MuiTypography-body1-156"
               >
                 Reaction Commerce
               </p>
@@ -244,13 +244,13 @@ exports[`basic snapshot 1`] = `
     </div>
   </div>
   <div
-    className="MuiGrid-container-3 MuiGrid-justify-xs-space-between-22 PageStepper-root-175"
+    className="MuiGrid-container-3 MuiGrid-justify-xs-space-between-22 PageStepper-root-171"
   >
     <div
       className="MuiGrid-item-4"
     >
       <button
-        className="MuiButtonBase-root-192 MuiButton-root-176 MuiButton-raised-182"
+        className="MuiButtonBase-root-188 MuiButton-root-172 MuiButton-raised-178"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -267,12 +267,12 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-177"
+          className="MuiButton-label-173"
         >
           Previous
         </span>
         <span
-          className="MuiTouchRipple-root-195"
+          className="MuiTouchRipple-root-191"
         />
       </button>
     </div>

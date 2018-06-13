@@ -14,8 +14,7 @@ class ProductItem extends Component {
     classes: PropTypes.object,
     currencyCode: PropTypes.string.isRequired,
     product: PropTypes.object,
-    theme: PropTypes.object,
-    uiStore: PropTypes.object.isRequired
+    theme: PropTypes.object
   };
 
   static defaultProps = {
