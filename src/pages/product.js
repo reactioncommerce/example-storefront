@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import ProductDetail from "components/ProductDetail";
-import trackProductViewed from "lib/tracking/trackProductViewed";
 
 @withCatalogItemProduct
-@trackProductViewed()
 class ProductDetailPage extends Component {
   static propTypes = {
     /**

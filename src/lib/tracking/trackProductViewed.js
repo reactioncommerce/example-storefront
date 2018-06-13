@@ -1,5 +1,6 @@
 import track from "./track";
 import getProductTrackingData from "./utils/getProductTrackingData";
+import getVariantTrackingData from "./utils/getVariantTrackingData";
 
 /**
  * trackProductViewed higher tracks a product
@@ -8,7 +9,7 @@ import getProductTrackingData from "./utils/getProductTrackingData";
  * @returns {React.Component} - component
  */
 export default (options) => (
-  track(({ product, router }) => {
+  track(({ product, router }, state, functionArgs) => {
     let data = {};
 
     // If product data is provided as a prop, then process the data for tracking
@@ -17,6 +18,22 @@ export default (options) => (
         action: "Product Viewed",
         ...getProductTrackingData(product)
       };
+
+      if (functionArgs) {
+        const [variant, optionId] = functionArgs;
+
+        // Add variant data if available
+        if (variant) {
+          data = {
+            ...data,
+            ...getVariantTrackingData({
+              variant, // Object representing a variant. (Required)
+              optionId, // Selected option of the provided variant, if available. (Optional)
+              product // Full product document for additional data. (Optional)
+            })
+          };
+        }
+      }
 
       // If the router is provided as a prop, set the url of the product to the current path
       if (router) {

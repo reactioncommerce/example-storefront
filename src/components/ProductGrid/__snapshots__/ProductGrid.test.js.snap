@@ -150,7 +150,7 @@ exports[`basic snapshot 1`] = `
               </span>
             </div>
             <div
-              className="inject-ProductItem-with-uiStore-productMedia-129"
+              className="WithTracking-inject-ProductItem-with-uiStore--productMedia-129"
             >
               <picture
                 style={
@@ -174,17 +174,17 @@ exports[`basic snapshot 1`] = `
                 />
                 <img
                   alt=""
-                  className="inject-ProductItem-with-uiStore-img-130"
+                  className="WithTracking-inject-ProductItem-with-uiStore--img-130"
                   onLoad={[Function]}
                   src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/small/25580_CICN.png"
                 />
               </picture>
               <div
-                className="inject-ProductItem-with-uiStore-imgLoading-131"
+                className="WithTracking-inject-ProductItem-with-uiStore--imgLoading-131"
               >
                 <svg
                   aria-hidden="true"
-                  className="MuiSvgIcon-root-117 inject-ProductItem-with-uiStore-loadingIcon-132"
+                  className="MuiSvgIcon-root-117 WithTracking-inject-ProductItem-with-uiStore--loadingIcon-132"
                   color={undefined}
                   focusable="false"
                   viewBox="0 0 24 24"
@@ -197,7 +197,7 @@ exports[`basic snapshot 1`] = `
             </div>
             <div>
               <div
-                className="inject-ProductItem-with-uiStore-productInfo-128"
+                className="WithTracking-inject-ProductItem-with-uiStore--productInfo-128"
               >
                 <aside
                   className="MuiTypography-root-149 MuiTypography-body2-157"
@@ -244,7 +244,7 @@ exports[`basic snapshot 1`] = `
             className="BadgeOverlay-badgeOverlay-135"
           >
             <div
-              className="inject-ProductItem-with-uiStore-productMedia-129"
+              className="WithTracking-inject-ProductItem-with-uiStore--productMedia-129"
             >
               <picture
                 style={
@@ -268,17 +268,17 @@ exports[`basic snapshot 1`] = `
                 />
                 <img
                   alt=""
-                  className="inject-ProductItem-with-uiStore-img-130"
+                  className="WithTracking-inject-ProductItem-with-uiStore--img-130"
                   onLoad={[Function]}
                   src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/small/product_image.png"
                 />
               </picture>
               <div
-                className="inject-ProductItem-with-uiStore-imgLoading-131"
+                className="WithTracking-inject-ProductItem-with-uiStore--imgLoading-131"
               >
                 <svg
                   aria-hidden="true"
-                  className="MuiSvgIcon-root-117 inject-ProductItem-with-uiStore-loadingIcon-132"
+                  className="MuiSvgIcon-root-117 WithTracking-inject-ProductItem-with-uiStore--loadingIcon-132"
                   color={undefined}
                   focusable="false"
                   viewBox="0 0 24 24"
@@ -291,7 +291,7 @@ exports[`basic snapshot 1`] = `
             </div>
             <div>
               <div
-                className="inject-ProductItem-with-uiStore-productInfo-128"
+                className="WithTracking-inject-ProductItem-with-uiStore--productInfo-128"
               >
                 <aside
                   className="MuiTypography-root-149 MuiTypography-body2-157"

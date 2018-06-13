@@ -20,7 +20,7 @@ exports[`basic snapshot 1`] = `
       className="BadgeOverlay-badgeOverlay-9"
     >
       <div
-        className="inject-ProductItem-with-uiStore-productMedia-3"
+        className="WithTracking-inject-ProductItem-with-uiStore--productMedia-3"
       >
         <picture
           style={
@@ -44,17 +44,17 @@ exports[`basic snapshot 1`] = `
           />
           <img
             alt=""
-            className="inject-ProductItem-with-uiStore-img-4"
+            className="WithTracking-inject-ProductItem-with-uiStore--img-4"
             onLoad={[Function]}
             src="http://localhost:3000/resources/placeholder.gif"
           />
         </picture>
         <div
-          className="inject-ProductItem-with-uiStore-imgLoading-5"
+          className="WithTracking-inject-ProductItem-with-uiStore--imgLoading-5"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-44 inject-ProductItem-with-uiStore-loadingIcon-6"
+            className="MuiSvgIcon-root-44 WithTracking-inject-ProductItem-with-uiStore--loadingIcon-6"
             color={undefined}
             focusable="false"
             viewBox="0 0 24 24"
@@ -67,7 +67,7 @@ exports[`basic snapshot 1`] = `
       </div>
       <div>
         <div
-          className="inject-ProductItem-with-uiStore-productInfo-2"
+          className="WithTracking-inject-ProductItem-with-uiStore--productInfo-2"
         >
           <aside
             className="MuiTypography-root-20 MuiTypography-body2-28"
