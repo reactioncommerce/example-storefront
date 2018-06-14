@@ -83,6 +83,7 @@ export default class TagShop extends Component {
       routingStore: { query },
       shop,
       tag,
+      tags,
       uiStore
     } = this.props;
     const pageSize = (query && query.limit) ? parseInt(query.limit, 10) : uiStore.pageSize;
@@ -91,7 +92,7 @@ export default class TagShop extends Component {
     return (
       <React.Fragment>
         {this.renderHelmet()}
-        <Breadcrumbs isTagGrid={true} tag={tag} />
+        <Breadcrumbs isTagGrid={true} tag={tag} tags={tags} />
         <ProductGridHero tag={tag} />
         <ProductGrid
           catalogItems={catalogItems}

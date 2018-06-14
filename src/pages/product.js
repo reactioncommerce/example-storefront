@@ -21,7 +21,11 @@ class ProductDetailPage extends Component {
     const currencyCode = this.props.shop.currency.code || "USD";
 
     return (
-      <ProductDetail product={this.props.product} currencyCode={currencyCode} />
+      <ProductDetail
+        product={this.props.product}
+        currencyCode={currencyCode}
+        tags={this.props.tags}
+      />
     );
   }
 }
