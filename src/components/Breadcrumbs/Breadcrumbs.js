@@ -4,7 +4,6 @@ import { withStyles } from "@material-ui/core/styles";
 import ChevronRight from "mdi-material-ui/ChevronRight";
 import Link from "components/Link";
 
-import withTags from "containers/tags/withTags";
 
 const styles = (theme) => ({
   container: {
@@ -16,18 +15,16 @@ const styles = (theme) => ({
   },
   breadcrumbLink: {
     fontSize: "14px",
-    letterSpacing: "0.3px",
+    fontFamily: theme.typography.fontFamily,
     color: "#3c3c3c",
     border: 0,
-    borderBottom: "1px solid",
-    borderColor: theme.palette.reaction.borderColor,
+    textDecoration: "underline",
     margin: "0 7px"
   },
   breadcrumbIcon: {
     fontSize: "14px"
   }
 });
-
 
 @withStyles(styles)
 class Breadcrumbs extends Component {
@@ -37,7 +34,9 @@ class Breadcrumbs extends Component {
     isTagGrid: PropTypes.bool,
     product: PropTypes.object,
     tag: PropTypes.object,
-    tags: PropTypes.object
+    tags: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.object).isRequired
+    })
   }
 
   get isPDP() {
@@ -72,6 +71,9 @@ class Breadcrumbs extends Component {
   renderSecondLevelTagBreadcrumb = (tag) => {
     const { classes: { breadcrumbIcon, breadcrumbLink }, tag: propTag, tags } = this.props;
     const currentTag = tag || propTag;
+
+    console.log("tags", tags);
+
 
     // Find tag that is a parent of this tag
     const nodes = tags.edges.map((edge) => edge.node);
@@ -138,4 +140,4 @@ class Breadcrumbs extends Component {
   }
 }
 
-export default withTags(Breadcrumbs);
+export default Breadcrumbs;

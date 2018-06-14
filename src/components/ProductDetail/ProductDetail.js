@@ -157,7 +157,7 @@ class ProductDetail extends Component {
         </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
           <Grid item className={classes.breadcrumbGrid} xs={12}>
-            <Breadcrumbs isPDP={true} tag={tag} product={product} />
+            <Breadcrumbs isPDP={true} tag={tag} tags={this.props.tags} product={product} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <div className={classes.section}>
