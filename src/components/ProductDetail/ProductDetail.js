@@ -5,7 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import { inject, observer } from "mobx-react";
 import Helmet from "react-helmet";
 import track from "lib/tracking/track";
-import getVariantTrackingData from "lib/tracking/utils/getVariantTrackingData";
 import Breadcrumbs from "components/Breadcrumbs";
 import trackProductViewed from "lib/tracking/trackProductViewed";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
