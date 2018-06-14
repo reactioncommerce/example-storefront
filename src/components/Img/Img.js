@@ -2,6 +2,17 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
+/**
+ * @file Img component does a "Medium/Instagram" like progressive loading effect for images.
+ * To achieve this the component first renders an img element with a tiny version of the full resolution image.
+ * This low res image should download quickly and will be blurred by the CSS removing the pixelation.
+ * The component then creates an Image buffer with a src of the full resolution image.
+ * Once the buffer loads the full resolution image the blurred low resimg will fade out revealing the full res image.
+ *
+ * @module Img
+ * @extends Component
+ */
+
 const styles = ({ palette, transitions, zIndex }) => ({
   imgWrapper: {
     backgroundColor: palette.common.white, // palette.grey["100"],
@@ -102,7 +113,7 @@ class Img extends Component {
   /**
    * Private prop for the img wrapper div, used in intersection observer
    */
-  _wapper = null;
+  _wrapper = null;
 
   /**
    *
@@ -121,7 +132,7 @@ class Img extends Component {
    * to scroll within the viewport, once it's with 50px of the viewport start loading the full res image.
    * If the `IntersectionObserver` isn't supported just load the image normally.
    * [Intersection Observer]{@link https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API}
-   * @return {void}
+   * @return {undefined}
    */
   lazyLoad() {
     if (this.supportIntersectionObserver) {
@@ -148,7 +159,7 @@ class Img extends Component {
    * @summary Create a new `Image` buffer and set the `src` to be
    * ether the `props.src` or `props.srcs.small` if a responsive picture.
    * Once the buffer loads set the `ready` state to `true`
-   * @return {void}
+   * @return {undefined}
    */
   loadImage() {
     const { src, srcs } = this.props;
