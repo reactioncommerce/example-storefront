@@ -3,7 +3,6 @@ import renderer from "react-test-renderer";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import { Provider } from "mobx-react";
 import theme from "lib/theme/reactionTheme";
-import product from "components/ProductDetail/__mocks__/productData.mock";
 import Breadcrumbs from "./Breadcrumbs";
 
 const tags = {
@@ -113,7 +112,7 @@ test("tagGrid secondlevel tag", () => {
       <Provider routingStore={routingStore}>
         <Breadcrumbs isTagGrid={true} tag={tag} tags={tags} />
       </Provider>
-      </MuiThemeProvider>
+    </MuiThemeProvider>
   ));
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();

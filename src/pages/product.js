@@ -14,6 +14,9 @@ class ProductDetailPage extends Component {
       currency: PropTypes.shape({
         code: PropTypes.string.isRequired
       })
+    }),
+    tags: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.object).isRequired
     })
   }
 

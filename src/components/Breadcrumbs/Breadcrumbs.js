@@ -72,9 +72,6 @@ class Breadcrumbs extends Component {
     const { classes: { breadcrumbIcon, breadcrumbLink }, tag: propTag, tags } = this.props;
     const currentTag = tag || propTag;
 
-    console.log("tags", tags);
-
-
     // Find tag that is a parent of this tag
     const nodes = tags.edges.map((edge) => edge.node);
     const parentTag = nodes.find((node) => node.subTagIds.includes(currentTag._id));

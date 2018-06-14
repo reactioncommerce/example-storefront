@@ -25,6 +25,9 @@ export default class TagShop extends Component {
       })
     }),
     tag: PropTypes.object,
+    tags: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.object).isRequired
+    }),
     uiStore: PropTypes.shape({
       pageSize: PropTypes.number.isRequired,
       setPageSize: PropTypes.func.isRequired,
