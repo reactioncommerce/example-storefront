@@ -81,16 +81,6 @@ class Img extends Component {
     isHero: false
   };
 
-  /**
-   *
-   * @method supportIntersectionObserver
-   * @summary `IntersectionObserver` feature detection
-   * @return {Boolean}
-   */
-  get supportIntersectionObserver() {
-    return "IntersectionObserver" in window;
-  }
-
   state = { ready: false };
 
   componentDidMount() {
@@ -113,6 +103,16 @@ class Img extends Component {
    * Private prop for the img wrapper div, used in intersection observer
    */
   _wapper = null;
+
+  /**
+   *
+   * @method supportIntersectionObserver
+   * @summary `IntersectionObserver` feature detection
+   * @return {Boolean} - `true` if `IntersectionObserver` is supported by browser
+   */
+  get supportIntersectionObserver() {
+    return "IntersectionObserver" in window;
+  }
 
   /**
    *
@@ -216,7 +216,12 @@ class Img extends Component {
     const { ready } = this.state;
     const wrapperClass = `${classes.imgWrapper} ${isHero ? classes.imgHeroWrapper : ""}`;
     return (
-      <div className={wrapperClass} ref={(wrapper) => (this._wrapper = wrapper)}>
+      <div
+        className={wrapperClass}
+        ref={(wrapper) => {
+          this._wrapper = wrapper;
+        }}
+      >
         {ready ? this.renderImage() : null}
         {this.renderLoadingImage()}
       </div>
