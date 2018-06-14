@@ -29,7 +29,11 @@ const styles = (theme) => ({
   },
   section: {
     marginBottom: theme.spacing.unit * 2
-  }
+  },
+  breadcrumbGrid: {
+    marginBottom: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * 2
+  },
 });
 
 /**
@@ -153,7 +157,9 @@ class ProductDetail extends Component {
           <meta name="description" content={product.description} />
         </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
-          <Breadcrumbs isPDP={true} tag={tag} product={product} />
+          <Grid item className={classes.breadcrumbGrid} xs={12}>
+            <Breadcrumbs isPDP={true} tag={tag} product={product} />
+          </Grid>
           <Grid item xs={12} sm={6}>
             <div className={classes.section}>
               <MediaGallery mediaItems={product.media} />
