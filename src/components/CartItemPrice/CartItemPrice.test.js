@@ -2,12 +2,12 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { MuiThemeProvider as Provider } from "@material-ui/core/styles";
 import theme from "lib/theme/reactionTheme";
-import Price from "./Price";
+import CartItemPrice from "./CartItemPrice";
 
 test("Renders product price and compare at price", () => {
   const component = renderer.create((
     <Provider theme={theme}>
-      <Price displayPrice={"$275.00"} displayCompareAtPrice={"$300.00"}/>
+      <CartItemPrice displayPrice={"$275.00"} displayCompareAtPrice={"$300.00"}/>
     </Provider>
   ));
   const tree = component.toJSON();
@@ -17,7 +17,7 @@ test("Renders product price and compare at price", () => {
 test("Renders product price only", () => {
   const component = renderer.create((
     <Provider theme={theme}>
-      <Price displayPrice={"$300.00"} displayCompareAtPrice={"$300.00"}/>
+      <CartItemPrice displayPrice={"$300.00"} displayCompareAtPrice={"$300.00"}/>
     </Provider>
   ));
   const tree = component.toJSON();
