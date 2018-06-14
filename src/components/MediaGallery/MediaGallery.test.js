@@ -1,7 +1,18 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { shallow } from "enzyme";
+import { Provider } from "mobx-react";
 import MediaGallery from "./MediaGallery";
+
+const uiStore = {
+  appConfig: {
+    publicRuntimeConfig: {
+      externalAssetsUrl: "",
+      placeholderImageUrls: {
+        productGrid: ""
+      }
+    }
+  }
+};
 
 const mediaItems = [
   {
@@ -33,7 +44,9 @@ const mediaItems = [
 ];
 
 test("basic snapshot", () => {
-  const component = renderer.create(shallow(<MediaGallery mediaItems={mediaItems} />).get(1));
+  const component = renderer.create(<Provider uiStore={uiStore}>
+    <MediaGallery mediaItems={mediaItems} uiStore={{}} />
+  </Provider>);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });

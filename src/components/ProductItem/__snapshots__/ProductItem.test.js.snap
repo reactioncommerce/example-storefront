@@ -1,3 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`basic snapshot 1`] = `null`;
+exports[`basic snapshot 1`] = `
+<div>
+  <a
+    className="WithTracking-Link--link-5"
+    href="/product/example-product"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="link"
+    tabIndex={0}
+    tracking={
+      Object {
+        "getTrackingData": [Function],
+        "trackEvent": [Function],
+      }
+    }
+  >
+    <div
+      className="BadgeOverlay-badgeOverlay-6"
+    >
+      <div
+        className="WithTracking-ProductItem--productMedia-3"
+      >
+        <div
+          className="Img-imgWrapper-17 "
+        >
+          <img
+            alt=""
+            className="Img-img-19 Img-imgLoading-21 "
+            src=""
+          />
+        </div>
+      </div>
+      <div>
+        <div
+          className="WithTracking-ProductItem--productInfo-2"
+        >
+          <aside
+            className="MuiTypography-root-23 MuiTypography-body2-31"
+          >
+            Reaction Sample Product
+          </aside>
+          <p
+            className="MuiTypography-root-23 MuiTypography-body1-32"
+          >
+            $12.99 - $19.99
+          </p>
+        </div>
+        <div>
+          <p
+            className="MuiTypography-root-23 MuiTypography-body1-32"
+          >
+            Example Manufacturer
+          </p>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+`;

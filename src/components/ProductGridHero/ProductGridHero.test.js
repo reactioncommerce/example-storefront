@@ -1,9 +1,20 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { shallow } from "enzyme";
+import { Provider } from "mobx-react";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "lib/theme/reactionTheme";
 import ProductGridHero from "./ProductGridHero";
+
+const uiStore = {
+  appConfig: {
+    publicRuntimeConfig: {
+      externalAssetsUrl: "",
+      placeholderImageUrls: {
+        productGrid: ""
+      }
+    }
+  }
+};
 
 const tagWithMedia = {
   name: "TagWithMedia",
@@ -33,16 +44,20 @@ const tagWithoutMedia = {
 };
 
 test("snapshot of tagWithMedia", () => {
-  const component = renderer.create(shallow(<MuiThemeProvider theme={theme}>
-    <ProductGridHero tag={tagWithMedia} />
-  </MuiThemeProvider>).get(1));
+  const component = renderer.create(<MuiThemeProvider theme={theme}>
+    <Provider uiStore={uiStore}>
+      <ProductGridHero tag={tagWithMedia} />
+    </Provider>
+  </MuiThemeProvider>);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test("snapshop of tagWithoutMedia", () => {
   const component = renderer.create(<MuiThemeProvider theme={theme}>
-    <ProductGridHero tag={tagWithoutMedia} />
+    <Provider uiStore={uiStore}>
+      <ProductGridHero tag={tagWithoutMedia} />
+    </Provider>
   </MuiThemeProvider>);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
