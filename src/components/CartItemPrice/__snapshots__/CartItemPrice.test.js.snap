@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders product price and compare at price 1`] = `
+<div>
+  <span
+    className="Price-price-1"
+  >
+    <p
+      className="MuiTypography-root-2 MuiTypography-body1-11"
+    >
+      $275.00
+    </p>
+  </span>
+  <del
+    className="Price-price-1"
+  >
+    <p
+      className="MuiTypography-root-2 MuiTypography-body1-11"
+    >
+      $300.00
+    </p>
+  </del>
+</div>
+`;
+
+exports[`Renders product price only 1`] = `
+<div>
+  <span
+    className="Price-price-1"
+  >
+    <p
+      className="MuiTypography-root-2 MuiTypography-body1-11"
+    >
+      $300.00
+    </p>
+  </span>
+</div>
+`;
