@@ -81,15 +81,23 @@ class Img extends Component {
     isHero: false
   };
 
-  state = { ready: false };
-
-  componentWillMount() {
-    this._mounted = true;
-    this.loadImage();
+  /**
+   *
+   * @method supportIntersectionObserver
+   * @summary `IntersectionObserver` feature detection
+   * @return {Boolean}
+   */
+  get supportIntersectionObserver() {
+    return "IntersectionObserver" in window;
   }
 
-  componentWillUpdate() {
-    this.loadImage();
+  state = { ready: false };
+
+  componentDidMount() {
+    this._mounted = true;
+    if (process.browser) {
+      this.lazyLoad();
+    }
   }
 
   componentWillUnmount() {
@@ -97,25 +105,56 @@ class Img extends Component {
   }
 
   /**
-   * private check for component mount, used in image buffer
+   * Private check for component mount, used in image buffer
    */
   _mounted = false;
 
   /**
+   * Private prop for the img wrapper div, used in intersection observer
+   */
+  _wapper = null;
+
+  /**
+   *
+   * @method lazyLoad
+   * @summary If `IntersectionObserver` is supported create a new one and watch for the `_wrapper` element
+   * to scroll within the viewport, once it's with 50px of the viewport start loading the full res image.
+   * If the `IntersectionObserver` isn't supported just load the image normally.
+   * [Intersection Observer]{@link https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API}
+   * @return {void}
+   */
+  lazyLoad() {
+    if (this.supportIntersectionObserver) {
+      const viewportIntersection = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.intersectionRatio > 0 && !this.state.ready) {
+              this.loadImage();
+            }
+          });
+        },
+        { root: null, rootMargin: "50px 0px", threshold: 0.01 }
+      );
+
+      viewportIntersection.observe(this._wrapper);
+    } else {
+      this.loadImage();
+    }
+  }
+
+  /**
    *
    * @method loadImage
-   * @summary If the process is `browser` then we create a new `Image` buffer and set the `src` to be
+   * @summary Create a new `Image` buffer and set the `src` to be
    * ether the `props.src` or `props.srcs.small` if a responsive picture.
    * Once the buffer loads set the `ready` state to `true`
    * @return {void}
    */
   loadImage() {
     const { src, srcs } = this.props;
-    if (process.browser) {
-      const buffer = new Image();
-      buffer.onload = () => this._mounted && this.setState({ ready: true });
-      buffer.src = src || (srcs && srcs.small);
-    }
+    const buffer = new Image();
+    buffer.onload = () => this._mounted && this.setState({ ready: true });
+    buffer.src = src || (srcs && srcs.small);
   }
 
   /**
@@ -175,8 +214,9 @@ class Img extends Component {
   render() {
     const { classes, isHero } = this.props;
     const { ready } = this.state;
+    const wrapperClass = `${classes.imgWrapper} ${isHero ? classes.imgHeroWrapper : ""}`;
     return (
-      <div className={`${classes.imgWrapper} ${isHero ? classes.imgHeroWrapper : ""}`}>
+      <div className={wrapperClass} ref={(wrapper) => (this._wrapper = wrapper)}>
         {ready ? this.renderImage() : null}
         {this.renderLoadingImage()}
       </div>
