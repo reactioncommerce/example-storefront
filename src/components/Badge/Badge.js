@@ -14,7 +14,7 @@ const styles = (theme) => ({
     paddingRight: theme.spacing.unit,
     paddingTop: theme.spacing.unithalf,
     position: "absolute",
-    zIndex: theme.zIndex.appBar
+    zIndex: theme.zIndex.drawer
   },
   labelStyle: {
     fontWeight: theme.typography.fontWeightBold,
