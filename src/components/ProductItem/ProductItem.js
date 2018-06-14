@@ -54,7 +54,7 @@ class ProductItem extends Component {
 
     return (
       <div className={classes.productMedia}>
-        <Img altText={description} presrc={this.primaryImage.URLs.thumbnail} src={this.primaryImage.URLs.small} />;
+        <Img altText={description} presrc={this.primaryImage.URLs.thumbnail} src={this.primaryImage.URLs.small} />
       </div>
     );
   }
