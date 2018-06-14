@@ -36,10 +36,10 @@ const initExport = {
       productGrid: process.env.PLACEHOLDER_IMAGE_URL_GRID
     },
     keycloakConfig: {
-      realm: process.env.KEYCLOAK_REALM || "default",
-      clientId: process.env.KEYCLOAK_CLIENT_ID || "reaction-next-starterkit-client",
-      url: process.env.KEYCLOAK_URL || "http://localhost:8080/auth",
-      redirectUri: process.env.KEYCLOAK_REDIRECT_URI || "http://localhost:4000/auth"
+      realm: process.env.KEYCLOAK_REALM,
+      clientId: process.env.KEYCLOAK_CLIENT_ID,
+      url: process.env.KEYCLOAK_URL,
+      redirectUri: process.env.KEYCLOAK_REDIRECT_URI
     }
   },
   webpack: (config) => {
