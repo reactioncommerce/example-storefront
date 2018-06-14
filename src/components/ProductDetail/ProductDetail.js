@@ -32,7 +32,7 @@ const styles = (theme) => ({
   breadcrumbGrid: {
     marginBottom: theme.spacing.unit * 2,
     marginTop: theme.spacing.unit * 2
-  },
+  }
 });
 
 /**
