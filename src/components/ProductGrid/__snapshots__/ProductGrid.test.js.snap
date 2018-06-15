@@ -124,7 +124,7 @@ exports[`basic snapshot 1`] = `
     >
       <div>
         <a
-          className="WithTracking-Link--link-134"
+          className="WithTracking-Link--link-131"
           href="/product/men's-lightweigth-synchilla"
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -138,81 +138,48 @@ exports[`basic snapshot 1`] = `
           }
         >
           <div
-            className="BadgeOverlay-badgeOverlay-135 BadgeOverlay-faded-136"
+            className="BadgeOverlay-badgeOverlay-132 BadgeOverlay-faded-133"
           >
             <div
-              className="Badge-badge-146 BadgeOverlay-status-137 BadgeOverlay-soldOut-142"
+              className="Badge-badge-143 BadgeOverlay-status-134 BadgeOverlay-soldOut-139"
             >
               <span
-                className="Badge-labelStyle-147"
+                className="Badge-labelStyle-144"
               >
                 Sold Out
               </span>
             </div>
             <div
-              className="WithTracking-inject-ProductItem-with-uiStore--productMedia-129"
+              className="WithTracking-ProductItem--productMedia-129"
             >
-              <picture
-                style={
-                  Object {
-                    "opacity": 0,
-                    "willChange": "opacity",
-                  }
-                }
+              <div
+                className="Img-imgWrapper-146 "
               >
-                <source
-                  media="(min-width: 600px)"
-                  srcSet="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/small/25580_CICN.png"
-                />
-                <source
-                  media="(min-width: 960px)"
-                  srcSet="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/medium/25580_CICN.jpg"
-                />
-                <source
-                  media="(min-width: 1280px)"
-                  srcSet="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/large/25580_CICN.jpg"
-                />
                 <img
                   alt=""
-                  className="WithTracking-inject-ProductItem-with-uiStore--img-130"
-                  onLoad={[Function]}
-                  src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/small/25580_CICN.png"
+                  className="Img-img-148 Img-imgLoading-150 "
+                  src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/thumbnail/25580_CICN.png"
                 />
-              </picture>
-              <div
-                className="WithTracking-inject-ProductItem-with-uiStore--imgLoading-131"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root-117 WithTracking-inject-ProductItem-with-uiStore--loadingIcon-132"
-                  color={undefined}
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
-                  />
-                </svg>
               </div>
             </div>
             <div>
               <div
-                className="WithTracking-inject-ProductItem-with-uiStore--productInfo-128"
+                className="WithTracking-ProductItem--productInfo-128"
               >
                 <aside
-                  className="MuiTypography-root-149 MuiTypography-body2-157"
+                  className="MuiTypography-root-152 MuiTypography-body2-160"
                 >
                   Men's Lightweigth Synchilla
                 </aside>
                 <p
-                  className="MuiTypography-root-149 MuiTypography-body1-158"
+                  className="MuiTypography-root-152 MuiTypography-body1-161"
                 >
                   $12.99 - $19.99
                 </p>
               </div>
               <div>
                 <p
-                  className="MuiTypography-root-149 MuiTypography-body1-158"
+                  className="MuiTypography-root-152 MuiTypography-body1-161"
                 >
                   Patagonia
                 </p>
@@ -227,7 +194,7 @@ exports[`basic snapshot 1`] = `
     >
       <div>
         <a
-          className="WithTracking-Link--link-134"
+          className="WithTracking-Link--link-131"
           href="/product/example-product"
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -241,72 +208,39 @@ exports[`basic snapshot 1`] = `
           }
         >
           <div
-            className="BadgeOverlay-badgeOverlay-135"
+            className="BadgeOverlay-badgeOverlay-132"
           >
             <div
-              className="WithTracking-inject-ProductItem-with-uiStore--productMedia-129"
+              className="WithTracking-ProductItem--productMedia-129"
             >
-              <picture
-                style={
-                  Object {
-                    "opacity": 0,
-                    "willChange": "opacity",
-                  }
-                }
+              <div
+                className="Img-imgWrapper-146 "
               >
-                <source
-                  media="(min-width: 600px)"
-                  srcSet="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/small/product_image.png"
-                />
-                <source
-                  media="(min-width: 960px)"
-                  srcSet="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/medium/product_image.jpg"
-                />
-                <source
-                  media="(min-width: 1280px)"
-                  srcSet="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/large/product_image.jpg"
-                />
                 <img
                   alt=""
-                  className="WithTracking-inject-ProductItem-with-uiStore--img-130"
-                  onLoad={[Function]}
-                  src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/small/product_image.png"
+                  className="Img-img-148 Img-imgLoading-150 "
+                  src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/thumbnail/product_image.png"
                 />
-              </picture>
-              <div
-                className="WithTracking-inject-ProductItem-with-uiStore--imgLoading-131"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root-117 WithTracking-inject-ProductItem-with-uiStore--loadingIcon-132"
-                  color={undefined}
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
-                  />
-                </svg>
               </div>
             </div>
             <div>
               <div
-                className="WithTracking-inject-ProductItem-with-uiStore--productInfo-128"
+                className="WithTracking-ProductItem--productInfo-128"
               >
                 <aside
-                  className="MuiTypography-root-149 MuiTypography-body2-157"
+                  className="MuiTypography-root-152 MuiTypography-body2-160"
                 >
                   Basic Reaction Product
                 </aside>
                 <p
-                  className="MuiTypography-root-149 MuiTypography-body1-158"
+                  className="MuiTypography-root-152 MuiTypography-body1-161"
                 >
                   $12.99 - $19.99
                 </p>
               </div>
               <div>
                 <p
-                  className="MuiTypography-root-149 MuiTypography-body1-158"
+                  className="MuiTypography-root-152 MuiTypography-body1-161"
                 >
                   Reaction Commerce
                 </p>
@@ -318,13 +252,13 @@ exports[`basic snapshot 1`] = `
     </div>
   </div>
   <div
-    className="MuiGrid-container-3 MuiGrid-justify-xs-space-between-22 PageStepper-root-173"
+    className="MuiGrid-container-3 MuiGrid-justify-xs-space-between-22 PageStepper-root-176"
   >
     <div
       className="MuiGrid-item-4"
     >
       <button
-        className="MuiButtonBase-root-190 MuiButton-root-174 MuiButton-raised-180"
+        className="MuiButtonBase-root-193 MuiButton-root-177 MuiButton-raised-183"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -341,12 +275,12 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-175"
+          className="MuiButton-label-178"
         >
           Previous
         </span>
         <span
-          className="MuiTouchRipple-root-193"
+          className="MuiTouchRipple-root-196"
         />
       </button>
     </div>
