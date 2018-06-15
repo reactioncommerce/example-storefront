@@ -2,15 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { inject, observer } from "mobx-react";
+import Img from "components/Img";
 
 const styles = () => ({
   root: {
-    maxWidth: "100%"
-  },
-  img: {
-    width: "100%",
-    objectFit: "cover"
+    width: "100%"
   }
 });
 
@@ -19,8 +15,6 @@ const styles = () => ({
  * @class ProductDetailMediaGalleryItem
  */
 @withStyles(styles)
-@inject("uiStore")
-@observer
 class MediaGalleryItem extends Component {
   static propTypes = {
     /**
@@ -42,17 +36,12 @@ class MediaGalleryItem extends Component {
      * Click callback
      * @example (event, media) => {}
      */
-    onClick: PropTypes.func,
-
-    /**
-     * UI store for general ui state and config
-     */
-    uiStore: PropTypes.object
-  }
+    onClick: PropTypes.func
+  };
 
   static defaultProps = {
     onClick: () => {}
-  }
+  };
 
   /**
    * Click handler for ButtonBase
@@ -61,22 +50,17 @@ class MediaGalleryItem extends Component {
    */
   handleClick = (event) => {
     this.props.onClick(event, this.props.media, this.props.index);
-  }
+  };
 
   render() {
-    const { classes, media, uiStore } = this.props;
-    const { publicRuntimeConfig } = uiStore.appConfig;
+    const { classes, media } = this.props;
 
     // If all props are undefined then skip rendering component
     if (!media) return null;
 
     return (
       <ButtonBase className={classes.root} onClick={this.handleClick}>
-        <img
-          className={classes.img}
-          src={`${publicRuntimeConfig.externalAssetsUrl}${media.URLs.small}`}
-          alt=""
-        />
+        <Img presrc={media.URLs.thumbnail} src={media.URLs.thumbnail} />
       </ButtonBase>
     );
   }

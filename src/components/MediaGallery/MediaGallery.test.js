@@ -6,7 +6,10 @@ import MediaGallery from "./MediaGallery";
 const uiStore = {
   appConfig: {
     publicRuntimeConfig: {
-      externalAssetsUrl: ""
+      externalAssetsUrl: "",
+      placeholderImageUrls: {
+        productGrid: ""
+      }
     }
   }
 };
@@ -24,7 +27,8 @@ const mediaItems = [
       small: "/resources/placeholder.gif",
       thumbnail: "/resources/placeholder.gif"
     }
-  }, {
+  },
+  {
     toGrid: 1,
     priority: 0,
     productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
@@ -40,11 +44,9 @@ const mediaItems = [
 ];
 
 test("basic snapshot", () => {
-  const component = renderer.create((
-    <Provider uiStore={uiStore}>
-      <MediaGallery mediaItems={mediaItems} />
-    </Provider>
-  ));
+  const component = renderer.create(<Provider uiStore={uiStore}>
+    <MediaGallery mediaItems={mediaItems} uiStore={{}} />
+  </Provider>);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });

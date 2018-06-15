@@ -3,7 +3,7 @@
 exports[`basic snapshot 1`] = `
 <div>
   <a
-    className="WithTracking-Link--link-8"
+    className="WithTracking-Link--link-5"
     href="/product/example-product"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -17,72 +17,39 @@ exports[`basic snapshot 1`] = `
     }
   >
     <div
-      className="BadgeOverlay-badgeOverlay-9"
+      className="BadgeOverlay-badgeOverlay-6"
     >
       <div
-        className="WithTracking-inject-ProductItem-with-uiStore--productMedia-3"
+        className="WithTracking-ProductItem--productMedia-3"
       >
-        <picture
-          style={
-            Object {
-              "opacity": 0,
-              "willChange": "opacity",
-            }
-          }
+        <div
+          className="Img-imgWrapper-17 "
         >
-          <source
-            media="(min-width: 600px)"
-            srcSet="http://localhost:3000/resources/placeholder.gif"
-          />
-          <source
-            media="(min-width: 960px)"
-            srcSet="http://localhost:3000/resources/placeholder.gif"
-          />
-          <source
-            media="(min-width: 1280px)"
-            srcSet="http://localhost:3000/resources/placeholder.gif"
-          />
           <img
             alt=""
-            className="WithTracking-inject-ProductItem-with-uiStore--img-4"
-            onLoad={[Function]}
-            src="http://localhost:3000/resources/placeholder.gif"
+            className="Img-img-19 Img-imgLoading-21 "
+            src=""
           />
-        </picture>
-        <div
-          className="WithTracking-inject-ProductItem-with-uiStore--imgLoading-5"
-        >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root-44 WithTracking-inject-ProductItem-with-uiStore--loadingIcon-6"
-            color={undefined}
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
-            />
-          </svg>
         </div>
       </div>
       <div>
         <div
-          className="WithTracking-inject-ProductItem-with-uiStore--productInfo-2"
+          className="WithTracking-ProductItem--productInfo-2"
         >
           <aside
-            className="MuiTypography-root-20 MuiTypography-body2-28"
+            className="MuiTypography-root-23 MuiTypography-body2-31"
           >
             Reaction Sample Product
           </aside>
           <p
-            className="MuiTypography-root-20 MuiTypography-body1-29"
+            className="MuiTypography-root-23 MuiTypography-body1-32"
           >
             $12.99 - $19.99
           </p>
         </div>
         <div>
           <p
-            className="MuiTypography-root-20 MuiTypography-body1-29"
+            className="MuiTypography-root-23 MuiTypography-body1-32"
           >
             Example Manufacturer
           </p>
