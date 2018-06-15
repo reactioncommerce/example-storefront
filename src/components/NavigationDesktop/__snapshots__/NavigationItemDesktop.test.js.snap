@@ -2,7 +2,7 @@
 
 exports[`renders with 1 level of tags 1`] = `
 <button
-  className="MuiButtonBase-root-19 MuiButton-root-3 MuiButton-colorInherit-8"
+  className="MuiButtonBase-root-21 MuiButton-root-5 MuiButton-colorInherit-10"
   disabled={false}
   onBlur={[Function]}
   onClick={[Function]}
@@ -19,17 +19,17 @@ exports[`renders with 1 level of tags 1`] = `
   type="button"
 >
   <span
-    className="MuiButton-label-4"
+    className="MuiButton-label-6"
   />
   <span
-    className="MuiTouchRipple-root-22"
+    className="MuiTouchRipple-root-24"
   />
 </button>
 `;
 
 exports[`renders with 2 levels of tags 1`] = `
 <button
-  className="MuiButtonBase-root-19 MuiButton-root-3 MuiButton-colorInherit-8"
+  className="MuiButtonBase-root-21 MuiButton-root-5 MuiButton-colorInherit-10"
   disabled={false}
   onBlur={[Function]}
   onClick={[Function]}
@@ -46,17 +46,17 @@ exports[`renders with 2 levels of tags 1`] = `
   type="button"
 >
   <span
-    className="MuiButton-label-4"
+    className="MuiButton-label-6"
   />
   <span
-    className="MuiTouchRipple-root-22"
+    className="MuiTouchRipple-root-24"
   />
 </button>
 `;
 
 exports[`renders with 3 levels of tags 1`] = `
 <button
-  className="MuiButtonBase-root-19 MuiButton-root-3 MuiButton-colorInherit-8"
+  className="MuiButtonBase-root-21 MuiButton-root-5 MuiButton-colorInherit-10"
   disabled={false}
   onBlur={[Function]}
   onClick={[Function]}
@@ -73,10 +73,10 @@ exports[`renders with 3 levels of tags 1`] = `
   type="button"
 >
   <span
-    className="MuiButton-label-4"
+    className="MuiButton-label-6"
   />
   <span
-    className="MuiTouchRipple-root-22"
+    className="MuiTouchRipple-root-24"
   />
 </button>
 `;
