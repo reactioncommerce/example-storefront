@@ -42,11 +42,14 @@ class NavigationItemDesktop extends Component {
 
   state = { isSubNavOpen: false };
 
-  get linkPath() {
+  linkPath = (providedNavItem) => {
     const { navItem, routingStore } = this.props;
+
+    const currentNavItem = providedNavItem || navItem;
+
     return routingStore.queryString !== ""
-      ? `/tag/${navItem.slug}?${routingStore.queryString}`
-      : `/tag/${navItem.slug}`;
+      ? `/tag/${currentNavItem.slug}?${routingStore.queryString}`
+      : `/tag/${currentNavItem.slug}`;
   }
 
   get hasSubNavItems() {
