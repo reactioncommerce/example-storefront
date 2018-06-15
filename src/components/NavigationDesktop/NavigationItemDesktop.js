@@ -87,7 +87,7 @@ class NavigationItemDesktop extends Component {
   }
 
   renderPopover() {
-    const { classes, navItem: { subTags } } = this.props;
+    const { classes, navItem, navItem: { subTags } } = this.props;
 
     if (subTags) {
       return (
@@ -113,6 +113,11 @@ class NavigationItemDesktop extends Component {
               </Grid>
             ))}
           </Grid>
+          <MenuItem>
+            <Link onAnchorClick={this.onClose} route={`${this.linkPath()}`}>
+              <ListItemText primary={`Shop all ${navItem.name}`} />
+            </Link>
+          </MenuItem>
         </Popover>
       );
     }
