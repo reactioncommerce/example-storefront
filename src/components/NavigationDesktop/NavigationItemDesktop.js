@@ -9,6 +9,7 @@ import MenuList from "@material-ui/core/MenuList";
 import MenuItem from "@material-ui/core/MenuItem";
 import Popover from "@material-ui/core/Popover";
 import ChevronDownIcon from "mdi-material-ui/ChevronDown";
+import ChevronRight from "mdi-material-ui/ChevronRight";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 import { withStyles } from "@material-ui/core/styles";
 import { Router } from "routes";
@@ -22,6 +23,17 @@ const styles = (theme) => ({
   },
   grid: {
     width: "100vw"
+  },
+  navigationShopAllLink: {
+    display: "flex",
+    textDecoration: "underline",
+    fontSize: "14px",
+    marginTop: theme.spacing.unit * 6,
+    marginBottom: theme.spacing.unit * 2,
+    fontFamily: theme.typography.fontFamily
+  },
+  navigationShopAllLinkIcon: {
+    fontSize: "12px"
   }
 });
 
@@ -113,11 +125,9 @@ class NavigationItemDesktop extends Component {
               </Grid>
             ))}
           </Grid>
-          <MenuItem>
-            <Link onAnchorClick={this.onClose} route={`${this.linkPath()}`}>
-              <ListItemText primary={`Shop all ${navItem.name}`} />
-            </Link>
-          </MenuItem>
+          <Link className={classes.navigationShopAllLink} onAnchorClick={this.onClose} route={`${this.linkPath()}`}>
+            <span>Shop all {navItem.name} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
+          </Link>
         </Popover>
       );
     }
