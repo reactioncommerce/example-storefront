@@ -1,11 +1,16 @@
 #import "./tagFragment.gql"
 
-query tagsQuery($shopId: ID!) {
-  tags(shopId: $shopId) {
+query tagsQuery($shopId: ID!, $cursor: ConnectionCursor) {
+  tags(shopId: $shopId, first: 50, after: $cursor) {
+    pageInfo {
+      endCursor
+      startCursor
+      hasNextPage
+    }
     edges {
       cursor
       node {
-         ...TagInfo
+        ...TagInfo
       }
     }
   }
