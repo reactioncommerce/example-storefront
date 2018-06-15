@@ -62,7 +62,7 @@ class NavigationItemDesktop extends Component {
     if (this.hasSubNavItems) {
       this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
     } else {
-      const path = this.linkPath;
+      const path = this.linkPath();
       Router.pushRoute(path, { slug: navItem.slug });
     }
   };
@@ -77,7 +77,7 @@ class NavigationItemDesktop extends Component {
         <Divider />
         {navItemGroup.subTags.edges.map(({ node: navItem }, index) => (
           <MenuItem dense key={index}>
-            <Link route={`${this.linkPath}`}>
+            <Link onAnchorClick={this.onClose} route={`${this.linkPath(navItem)}`}>
               <ListItemText primary={navItem.name} />
             </Link>
           </MenuItem>
