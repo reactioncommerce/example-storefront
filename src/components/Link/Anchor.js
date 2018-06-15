@@ -36,6 +36,7 @@ export default class Anchor extends Component {
     event.preventDefault();
     if (event.key === "Enter") {
       this.props.onClick(event);
+      this.props.onAnchorClick(event);
     }
   }
 

@@ -14,6 +14,9 @@ class ProductDetailPage extends Component {
       currency: PropTypes.shape({
         code: PropTypes.string.isRequired
       })
+    }),
+    tags: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.object).isRequired
     })
   }
 
@@ -21,7 +24,11 @@ class ProductDetailPage extends Component {
     const currencyCode = this.props.shop.currency.code || "USD";
 
     return (
-      <ProductDetail product={this.props.product} currencyCode={currencyCode} />
+      <ProductDetail
+        product={this.props.product}
+        currencyCode={currencyCode}
+        tags={this.props.tags}
+      />
     );
   }
 }
