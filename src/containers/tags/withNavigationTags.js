@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Query } from "react-apollo";
 import { computed, observable, action, toJS } from "mobx";
 import { inject, observer } from "mobx-react";
-import navigationTagsQuery from "./navigationTags.gql";
 
 /**
  * withNavigationTags higher order query component for fetching tags for the navigation

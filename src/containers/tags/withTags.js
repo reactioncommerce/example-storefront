@@ -96,7 +96,5 @@ export default (Component) => (
         </Query>
       );
     }
-
-
   }
 );
