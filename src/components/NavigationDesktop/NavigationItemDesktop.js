@@ -101,7 +101,9 @@ class NavigationItemDesktop extends Component {
               <Grid item key={index}>
                 <MenuList disablePadding>
                   <MenuItem>
-                    <ListItemText primary={navItemGroup.name} />
+                    <Link onAnchorClick={this.onClose} route={`${this.linkPath(navItemGroup)}`}>
+                      <ListItemText primary={navItemGroup.name} />
+                    </Link>
                   </MenuItem>
                   {navItemGroup.subTags && Array.isArray(navItemGroup.subTags.edges) && this.renderSubNav(navItemGroup)}
                 </MenuList>
