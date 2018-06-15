@@ -85,11 +85,40 @@ class Breadcrumbs extends Component {
     );
   }
 
+  renderThirdLevelTagBreadcrumb = (tag) => {
+    const { classes: { breadcrumbIcon, breadcrumbLink }, tag: propTag, tags } = this.props;
+    const currentTag = tag || propTag;
+
+    // Find tag that is a parent of this tag
+    const nodes = tags.edges.map((edge) => edge.node);
+    const parentTag = nodes.find((node) => node.subTagIds.includes(currentTag._id));
+
+    return (
+      <Fragment>
+        {this.renderSecondLevelTagBreadcrumb(parentTag)}
+        <ChevronRight className={breadcrumbIcon} />
+        <Link route={`/tag/${currentTag.slug}`}><span className={breadcrumbLink}>{currentTag.name}</span></Link>
+      </Fragment>
+    );
+  }
+
   renderTagBreadcrumbs = (tag) => {
-    if (this.isTopLevel || (tag && tag.isTopLevel)) {
-      return this.renderTopLevelTagBreadcrumb(tag);
+    const { tag: propTag } = this.props;
+    const currentTag = tag || propTag;
+
+    // If this is a top level tag, return a single breadcrumb
+    if (this.isTopLevel || (currentTag && currentTag.isTopLevel)) {
+      return this.renderTopLevelTagBreadcrumb(currentTag);
     }
-    return this.renderSecondLevelTagBreadcrumb(tag);
+
+    // If this is not a top level tag, check to see if this is
+    // a third level tag
+    if (!this.isTopLevel && (currentTag && currentTag.subTagIds && !currentTag.subTagIds.length)) {
+      return this.renderThirdLevelTagBreadcrumb(currentTag);
+    }
+
+    // Return a second level tag if it's not a third level tag
+    return this.renderSecondLevelTagBreadcrumb(currentTag);
   }
 
   renderProductNameBreadcrumb = () => {
