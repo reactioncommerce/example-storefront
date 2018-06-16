@@ -1,4 +1,6 @@
 # Reaction Storefront Next.js Starter Kit
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit?ref=badge_shield)
+
 
 _**Note:** This project is a work in progress and should not be used in production at this time._
 
@@ -167,3 +169,7 @@ See our [full documentation](./docs)
  ## Reference links for development
  ### CSS in JS
  - [Responsive Breakpoints](https://material-ui.com/layout/css-in-js/#responsive-breakpoints)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit?ref=badge_large)
