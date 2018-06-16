@@ -1,6 +1,6 @@
 # Tracking Events
 
-`reaction-next-starterkit` uses [Segment](https://segment.com/) and [NYTimes React Tracking][https://github.com/NYTimes/react-tracking] to track analytics events throughout the app.
+`reaction-next-starterkit` uses [Segment](https://segment.com/) and [NYTimes React Tracking](https://github.com/NYTimes/react-tracking) to track analytics events throughout the app.
 
 You can see the source under `/lib/tracking`
 
