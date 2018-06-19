@@ -1,3 +1,4 @@
+import cookieParser from "cookie-parser";
 import express from "express";
 import nextApp from "next";
 import { useStaticRendering } from "mobx-react";
@@ -14,6 +15,7 @@ app
   .prepare()
   .then(() => {
     const server = express();
+    server.use(cookieParser());
     server.use(routeHandler);
 
     return server.listen(4000, (err) => {

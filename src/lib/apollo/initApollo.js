@@ -9,15 +9,22 @@ import getConfig from "next/config";
 /**
  * Get auth tokens from local storage and include with the request
  * @name getAuthTokens
+ * @param {Object} cookies The req.cookies object
  * @returns {Object} returns the parsed cookies as an object
  */
-function getAuthTokens() {
+function getAuthTokens(cookies) {
   if (typeof localStorage !== "undefined") {
     return {
-      meteorToken: localStorage.getItem("meteorToken"),
-      keycloakToken: localStorage.getItem("keycloakToken")
+      keycloakToken: localStorage.getItem("keycloakToken"),
+      meteorToken: localStorage.getItem("meteorToken")
     };
   }
+
+  if (cookies) {
+    const { keycloakToken, meteorToken } = cookies;
+    return { keycloakToken, meteorToken };
+  }
+
   return {};
 }
 
@@ -60,7 +67,7 @@ const create = (initialState) => {
   // Set auth context
   // https://github.com/apollographql/apollo-link/tree/master/packages/apollo-link-context
   const authLink = setContext((__, { headers }) => {
-    const { meteorToken, keycloakToken } = getAuthTokens();
+    const { meteorToken, keycloakToken } = getAuthTokens(initialState && initialState.cookies);
     return {
       headers: {
         ...headers,

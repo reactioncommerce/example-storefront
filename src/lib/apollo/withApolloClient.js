@@ -34,12 +34,12 @@ export default (App) =>
     }
 
     static async getInitialProps(ctx) {
-      const { Component, router, ctx: { res, query, pathname } } = ctx;
+      const { Component, router, ctx: { req, res, query, pathname } } = ctx;
 
       // Provide the `url` prop data in case a GraphQL query uses it
       rootMobxStores.routingStore.updateRoute({ query, pathname });
 
-      const apollo = initApollo({});
+      const apollo = initApollo({ cookies: req && req.cookies });
 
       ctx.ctx.apolloClient = apollo;
 
