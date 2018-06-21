@@ -5,9 +5,9 @@ import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
 import { Provider } from "mobx-react";
 import analyticsProviders from "analytics";
+import getConfig from "next/config";
 import rootMobxStores from "../lib/stores";
 import getPageContext from "../lib/theme/getPageContext";
-import getConfig from "next/config";
 
 class HTMLDocument extends Document {
   static getInitialProps = (ctx) => {
@@ -56,7 +56,7 @@ class HTMLDocument extends Document {
     scripts = [...scripts, {
       type: "text/javascript",
       src: `${keycloakConfig.url}/js/keycloak.js`
-    }]
+    }];
 
     return (
       <html lang="en" {...htmlAttrs}>
