@@ -44,7 +44,13 @@ exports[`basic snapshot 1`] = `
           <p
             className="MuiTypography-root-23 MuiTypography-body1-32"
           >
-            $12.99 - $19.99
+            <div>
+              <span
+                className="Price__Span-cHkFMo dgppgF"
+              >
+                $12.99 - $19.99
+              </span>
+            </div>
           </p>
         </div>
         <div>
