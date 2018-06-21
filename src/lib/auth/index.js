@@ -3,7 +3,7 @@ import getConfig from "next/config";
 // trigger oauth login redirect flow with Keycloak (CLIENT SIDE ONLY)
 // https://www.keycloak.org/docs/3.0/securing_apps/topics/oidc/javascript-adapter.html
 export const login = () => {
-  const Keycloak = require("keycloak-js");
+  const Keycloak = window.Keycloak;
   const { publicRuntimeConfig } = getConfig();
   const { keycloakConfig } = publicRuntimeConfig; // eslint-disable-line no-unused-vars
   const { realm, clientId, url, redirectUri } = keycloakConfig || {};

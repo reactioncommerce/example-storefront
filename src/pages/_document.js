@@ -7,6 +7,7 @@ import { Provider } from "mobx-react";
 import analyticsProviders from "analytics";
 import rootMobxStores from "../lib/stores";
 import getPageContext from "../lib/theme/getPageContext";
+import getConfig from "next/config";
 
 class HTMLDocument extends Document {
   static getInitialProps = (ctx) => {
@@ -43,12 +44,19 @@ class HTMLDocument extends Document {
     const { pageContext, helmet } = this.props;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
     let scripts = [];
+    const { publicRuntimeConfig } = getConfig();
+    const { keycloakConfig } = publicRuntimeConfig;
 
     // Render analytics  scripts
     scripts = analyticsProviders.map((provider) => ({
       type: "text/javascript",
       innerHTML: provider.renderScript()
     }));
+
+    scripts = [...scripts, {
+      type: "text/javascript",
+      src: `${keycloakConfig.url}/js/keycloak.js`
+    }]
 
     return (
       <html lang="en" {...htmlAttrs}>
