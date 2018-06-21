@@ -4,8 +4,8 @@ import JssProvider from "react-jss/lib/JssProvider";
 import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
 import { Provider } from "mobx-react";
-import jsHttpCookie from "cookie";
 import analyticsProviders from "analytics";
+import getConfig from "next/config";
 import rootMobxStores from "../lib/stores";
 import getPageContext from "../lib/theme/getPageContext";
 
@@ -13,17 +13,6 @@ class HTMLDocument extends Document {
   static getInitialProps = (ctx) => {
     // Get the context of the page to collected side effects.
     const pageContext = getPageContext();
-    const { req } = ctx;
-
-    // Grab cookies form the request headers
-    if (req && req.headers) {
-      const cookies = req.headers.cookie;
-
-      if (typeof cookies === "string") {
-        const { token } = jsHttpCookie.parse(cookies);
-        rootMobxStores.authStore.token = token;
-      }
-    }
 
     /* eslint-disable-next-line react/display-name */
     const page = ctx.renderPage((Component) => (props) => (
@@ -55,12 +44,19 @@ class HTMLDocument extends Document {
     const { pageContext, helmet } = this.props;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
     let scripts = [];
+    const { publicRuntimeConfig } = getConfig();
+    const { keycloakConfig } = publicRuntimeConfig;
 
     // Render analytics  scripts
     scripts = analyticsProviders.map((provider) => ({
       type: "text/javascript",
       innerHTML: provider.renderScript()
     }));
+
+    scripts = [...scripts, {
+      type: "text/javascript",
+      src: `${keycloakConfig.url}/js/keycloak.js`
+    }];
 
     return (
       <html lang="en" {...htmlAttrs}>

@@ -3,7 +3,7 @@ const initExport = {
    * Server config will be available as serverRuntimeConfig
    * @example
    * import getConfig from "next/config";
-   * const { serverRuntimeConfig } from "getConfig()";
+   * const { serverRuntimeConfig } = getConfig();
    */
   serverRuntimeConfig: {
     dev: process.env.NODE_ENV !== "production",
@@ -22,7 +22,7 @@ const initExport = {
    * }
    * @example
    * import getConfig from "next/config";
-   * const { serverRuntimeConfig, publicRuntimeConfig } from "getConfig()";
+   * const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
    */
   publicRuntimeConfig: {
     externalAssetsUrl: process.env.EXTERNAL_ASSETS_URL,
@@ -34,6 +34,12 @@ const initExport = {
     placeholderImageUrls: {
       galleryFeatured: process.env.PLACEHOLDER_IMAGE_URL_GALLERY,
       productGrid: process.env.PLACEHOLDER_IMAGE_URL_GRID
+    },
+    keycloakConfig: {
+      realm: process.env.KEYCLOAK_REALM,
+      clientId: process.env.KEYCLOAK_CLIENT_ID,
+      url: process.env.KEYCLOAK_URL,
+      redirectUri: process.env.KEYCLOAK_REDIRECT_URI
     }
   },
   webpack: (config) => {

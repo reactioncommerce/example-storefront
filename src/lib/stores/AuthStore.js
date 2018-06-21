@@ -1,5 +1,5 @@
-import { observable, action } from "mobx";
 import Cookies from "js-cookie";
+import { observable, action } from "mobx";
 
 /**
  * A mobx store for authentication
@@ -7,6 +7,9 @@ import Cookies from "js-cookie";
  */
 
 class AuthStore {
+  constructor(name) {
+    this.tokenName = name || "token";
+  }
   /**
   * The login token of the current user
   *
@@ -16,19 +19,33 @@ class AuthStore {
 
   @action setToken(token) {
     this.token = token || "";
+    this.saveTokenToLocalStorage();
+    this.saveTokenToCookie();
+  }
+
+  @action unsetToken() {
+    this.setToken("");
+  }
+
+  saveTokenToLocalStorage() {
+    if (typeof this.token === "string" && this.token.length) {
+      localStorage.setItem(this.tokenName, this.token);
+    } else {
+      localStorage.removeItem(this.tokenName);
+    }
+  }
+
+  setTokenFromLocalStorage() {
+    const token = localStorage.getItem(this.tokenName);
+    this.setToken(token);
   }
 
   saveTokenToCookie() {
     if (typeof this.token === "string" && this.token.length) {
-      Cookies.set("token", this.token);
+      Cookies.set(this.tokenName, this.token);
     } else {
-      Cookies.remove("token");
+      Cookies.remove(this.tokenName);
     }
-  }
-
-  setTokenFromCookie() {
-    const token = Cookies.get("token");
-    this.setToken(token);
   }
 }
 

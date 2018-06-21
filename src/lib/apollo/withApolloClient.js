@@ -2,10 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { ApolloProvider, getDataFromTree } from "react-apollo";
 import Head from "next/head";
-import jsHttpCookie from "cookie";
 import rootMobxStores from "lib/stores";
-import initApolloServer from "./initApolloServer";
-import initApolloBrowser from "./initApolloBrowser";
+import initApollo from "./initApollo";
 
 /**
  * Get the display name of a component
@@ -20,6 +18,7 @@ function getComponentDisplayName(Component) {
 export default (App) =>
   class WithApolloClient extends React.Component {
     static displayName = `WithApolloClient(${getComponentDisplayName(App)})`;
+
     static propTypes = {
       apolloState: PropTypes.object.isRequired,
       router: PropTypes.object
@@ -34,61 +33,57 @@ export default (App) =>
       return null;
     }
 
-
     static async getInitialProps(ctx) {
-      let apolloState = {};
+      const { Component, router, ctx: { req, res, query, pathname } } = ctx;
+
+      // Provide the `url` prop data in case a GraphQL query uses it
+      rootMobxStores.routingStore.updateRoute({ query, pathname });
+
+      const apollo = initApollo({ cookies: req && req.cookies });
+
+      ctx.ctx.apolloClient = apollo;
 
       let appProps = {};
+
       if (App.getInitialProps) {
         appProps = await App.getInitialProps(ctx);
       }
 
-      // Run all GraphQL queries in the component tree
-      // and extract the resulting data
-      if (!process.browser) {
-        const { Component, router, req } = ctx;
-        let token;
-
-        // Grab cookies form the request headers
-        if (req && req.headers) {
-          const cookies = req.headers.cookie;
-
-          if (typeof cookies === "string") {
-            ({ token } = jsHttpCookie.parse(cookies));
-          }
-
-          if (typeof token !== "string" || token.length === 0) token = undefined;
-        }
-
-        // Provide the `url` prop data in case a GraphQL query uses it
-        const url = { query: ctx.query, pathname: ctx.pathname };
-
-        rootMobxStores.routingStore.updateRoute(url);
-
-        const apollo = initApolloServer(undefined, { token });
-        try {
-          // Run all GraphQL queries
-          await getDataFromTree( // eslint-disable-line
-            <ApolloProvider client={apollo}>
-              <App
-                {...appProps}
-                Component={Component}
-                router={router}
-              />
-            </ApolloProvider>
-          ); // eslint-disable-line
-        } catch (error) {
-          // TODO: handle the error
-          console.log("apollo client error", error); // eslint-disable-line
-        }
-        Head.rewind();
-        apolloState = {
-          token,
-          apollo: {
-            data: apollo.cache.extract()
-          }
-        };
+      if (res && res.finished) {
+        // When redirecting, the response is finished.
+        // No point in continuing to render
+        return {};
       }
+
+      // Run all graphql queries in the component tree
+      // and extract the resulting data
+      try {
+        // Run all GraphQL queries
+        await getDataFromTree( // eslint-disable-line
+          <ApolloProvider client={apollo}>
+            <App
+              {...appProps}
+              Component={Component}
+              router={router}
+            />
+          </ApolloProvider>
+        ); // eslint-disable-line
+      } catch (error) {
+        // Prevent Apollo Client GraphQL errors from crashing SSR.
+        // Handle them in components via the data.error prop:
+        // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
+        // eslint-disable-next-line no-console
+        console.error("Error while running `getDataFromTree`", error);
+      }
+
+      if (!process.browser) {
+        // getDataFromTree does not call componentWillUnmount
+        // head side effect therefore need to be cleared manually
+        Head.rewind();
+      }
+
+      // Extract query data from the Apollo's store
+      const apolloState = apollo.cache.extract();
 
       return {
         ...appProps,
@@ -98,12 +93,12 @@ export default (App) =>
 
     constructor(props) {
       super(props);
-      const { apollo, token } = this.props.apolloState;
+      // `getDataFromTree` renders the component first, then the client is passed off as a property.
+      // After that, rendering is done using Next's normal rendering pipeline
+      this.apollo = initApollo(props.apolloState.data);
 
       // State must be initialized if getDerivedStateFromProps is used
       this.state = {};
-
-      this.apollo = initApolloBrowser(apollo.data, { token });
     }
 
     render() {
