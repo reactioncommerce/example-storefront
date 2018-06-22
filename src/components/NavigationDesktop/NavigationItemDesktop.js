@@ -34,6 +34,9 @@ const styles = (theme) => ({
   },
   navigationShopAllLinkIcon: {
     fontSize: "12px"
+  },
+  primaryNavItem: {
+    textTransform: "capitalize"
   }
 });
 
@@ -136,11 +139,11 @@ class NavigationItemDesktop extends Component {
   }
 
   render() {
-    const { navItem } = this.props;
+    const { classes: { primaryNavItem }, navItem } = this.props;
 
     return (
       <Fragment>
-        <Button color="inherit" onClick={this.onClick}>
+        <Button className={primaryNavItem} color="inherit" onClick={this.onClick}>
           {navItem.name}
           {this.hasSubNavItems && <Fragment>{this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
         </Button>
