@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import Price from "@reactioncommerce/components/Price/v1";
 import track from "lib/tracking/track";
 import trackProductClicked from "lib/tracking/trackProductClicked";
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
@@ -69,7 +70,9 @@ class ProductItem extends Component {
           <Typography variant="body2">
             {title}
           </Typography>
-          <Typography variant="body1">{productPrice.displayPrice}</Typography>
+          <Typography variant="body1">
+            <Price displayPrice={productPrice.displayPrice} />
+          </Typography>
         </div>
         <div>
           <Typography variant="body1">{vendor}</Typography>
