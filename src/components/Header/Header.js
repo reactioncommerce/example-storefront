@@ -13,13 +13,20 @@ import AccountDropdown from "components/AccountDropdown";
 import Link from "components/Link";
 
 const styles = (theme) => ({
+  appBar: {
+    backgroundColor: theme.palette.reaction.white,
+    borderBottom: `solid 1px ${theme.palette.reaction.black05}`,
+    color: theme.palette.reaction.coolGrey500
+  },
   controls: {
     alignItems: "inherit",
     display: "inherit",
     flex: 1
   },
   title: {
-    marginRight: theme.spacing.unit
+    color: theme.palette.primary.main,
+    marginRight: theme.spacing.unit,
+    borderBottom: `solid 5px ${theme.palette.primary.light}`
   },
   toolbar: {
     alignItems: "center",
@@ -52,10 +59,10 @@ class Header extends Component {
   };
 
   render() {
-    const { classes: { controls, toolbar, title } } = this.props;
+    const { classes: { appBar, controls, toolbar, title } } = this.props;
 
     return (
-      <AppBar position="static" elevation={0}>
+      <AppBar position="static" elevation={0} className={appBar}>
         <Toolbar className={toolbar}>
           <Hidden mdUp>
             <NavigationToggleMobile onClick={this.handleNavigationToggleClick} />
@@ -63,7 +70,7 @@ class Header extends Component {
 
           <div className={controls}>
             <Typography className={title} color="inherit" variant="title">
-              <Link route="/">Reaction</Link>
+              <Link route="/">reaction</Link>
             </Typography>
 
             <Hidden smDown initialWidth={"md"}>
