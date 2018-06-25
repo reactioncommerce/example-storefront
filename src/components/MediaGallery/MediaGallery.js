@@ -67,7 +67,7 @@ class MediaGallery extends Component {
 
     // TODO: figure out the correct usage of alt text here
     // LINK TO GH ISSUE
-    return <Img presrc={mediaUrls.thumbnail} src={mediaUrls.large} />;
+    return <Img presrc={mediaUrls && mediaUrls.thumbnail} src={mediaUrls && mediaUrls.large} />;
   }
 
   render() {
