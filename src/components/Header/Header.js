@@ -24,9 +24,9 @@ const styles = (theme) => ({
     flex: 1
   },
   title: {
-    color: theme.palette.primary.main,
+    color: theme.palette.reaction.reactionBlue,
     marginRight: theme.spacing.unit,
-    borderBottom: `solid 5px ${theme.palette.primary.light}`
+    borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
   },
   toolbar: {
     alignItems: "center",
