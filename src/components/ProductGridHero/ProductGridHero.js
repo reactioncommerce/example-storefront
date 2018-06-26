@@ -10,10 +10,9 @@ const styles = (theme) => ({
     height: "325px",
     objectFit: "cover"
   },
-  productGridContainer: {
+  heroGridContainer: {
     maxWidth: theme.grid.productGridMaxWidth,
-    marginLeft: "auto",
-    marginRight: "auto"
+    margin: "40px auto"
   }
 });
 
@@ -43,7 +42,7 @@ export default class ProductGridHero extends Component {
     const { classes } = this.props;
 
     return (
-      <section className={classes.productGridContainer}>
+      <section className={classes.heroGridContainer}>
         <Grid container spacing={24}>
           <Grid item xs={12}>
             {this.renderHeroImage()}
