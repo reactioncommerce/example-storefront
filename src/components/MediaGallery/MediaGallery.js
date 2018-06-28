@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MediaGalleryItem from "components/MediaGalleryItem";
 import Img from "components/Img";
+import getConfig from "next/config";
 
 const styles = (theme) => ({
   root: {
@@ -60,8 +61,26 @@ class MediaGallery extends Component {
     this.setState({ featuredMediaIndex: index });
   };
 
+  renderPlaceHolderImg = () => {
+    const { publicRuntimeConfig } = getConfig();
+    const { placeholderImageUrls } = publicRuntimeConfig;
+
+    return (
+      <Img
+        presrc={placeholderImageUrls.galleryFeatured}
+        src={placeholderImageUrls.galleryFeatured}
+      />
+    );
+  }
+
   renderFeaturedImage() {
     const { mediaItems } = this.props;
+
+    // Render placeholder, when product does not have images set.
+    if (Array.isArray(mediaItems) && mediaItems.length === 0) {
+      return this.renderPlaceHolderImg();
+    }
+
     const featuredMedia = mediaItems[this.state.featuredMediaIndex];
     const mediaUrls = featuredMedia && featuredMedia.URLs;
 
