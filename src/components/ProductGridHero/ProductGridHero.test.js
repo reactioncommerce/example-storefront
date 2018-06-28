@@ -8,7 +8,10 @@ import ProductGridHero from "./ProductGridHero";
 const uiStore = {
   appConfig: {
     publicRuntimeConfig: {
-      externalAssetsUrl: "http://localhost:3000"
+      externalAssetsUrl: "",
+      placeholderImageUrls: {
+        productGrid: ""
+      }
     }
   }
 };
@@ -40,27 +43,22 @@ const tagWithoutMedia = {
   shopId: "J8Bhq3uTtdgwZx3rz"
 };
 
-
 test("snapshot of tagWithMedia", () => {
-  const component = renderer.create((
-    <MuiThemeProvider theme={theme}>
-      <Provider uiStore={uiStore}>
-        <ProductGridHero tag={tagWithMedia} />
-      </Provider>
-    </MuiThemeProvider>
-  ));
+  const component = renderer.create(<MuiThemeProvider theme={theme}>
+    <Provider uiStore={uiStore}>
+      <ProductGridHero tag={tagWithMedia} />
+    </Provider>
+  </MuiThemeProvider>);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test("snapshop of tagWithoutMedia", () => {
-  const component = renderer.create((
-    <MuiThemeProvider theme={theme}>
-      <Provider uiStore={uiStore}>
-        <ProductGridHero tag={tagWithoutMedia} />
-      </Provider>
-    </MuiThemeProvider>
-  ));
+  const component = renderer.create(<MuiThemeProvider theme={theme}>
+    <Provider uiStore={uiStore}>
+      <ProductGridHero tag={tagWithoutMedia} />
+    </Provider>
+  </MuiThemeProvider>);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });

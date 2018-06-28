@@ -2,7 +2,7 @@
 
 exports[`basic snapshot 1`] = `
 <button
-  className="MuiButtonBase-root-3 inject-MediaGalleryItem-with-uiStore-root-1"
+  className="MuiButtonBase-root-2 MediaGalleryItem-root-1"
   disabled={undefined}
   onBlur={[Function]}
   onClick={[Function]}
@@ -18,13 +18,17 @@ exports[`basic snapshot 1`] = `
   tabIndex="0"
   type="button"
 >
-  <img
-    alt=""
-    className="inject-MediaGalleryItem-with-uiStore-img-2"
-    src="/resources/placeholder.gif"
-  />
+  <div
+    className="Img-imgWrapper-5 "
+  >
+    <img
+      alt=""
+      className="Img-img-7 Img-imgLoading-9 "
+      src="/resources/placeholder.gif"
+    />
+  </div>
   <span
-    className="MuiTouchRipple-root-6"
+    className="MuiTouchRipple-root-11"
   />
 </button>
 `;

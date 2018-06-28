@@ -24,7 +24,12 @@ class Link extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    onAnchorClick: PropTypes.func
+  }
+
+  static defaultProps = {
+    onAnchorClick: () => {}
   }
 
   render() {
@@ -32,13 +37,17 @@ class Link extends Component {
       classes,
       children,
       className,
+      onAnchorClick, // eslint-disable-line
       tracking, // eslint-disable-line
       ...props
     } = this.props;
 
     return (
       <NextLink {...props} passHref>
-        <Anchor className={classNames(classes.link, className)}>
+        <Anchor
+          className={classNames(classes.link, className)}
+          onAnchorClick={onAnchorClick}
+        >
           {children}
         </Anchor>
       </NextLink>

@@ -1,11 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject } from "mobx-react";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Fade from "@material-ui/core/Fade";
-import Hidden from "@material-ui/core/Hidden";
-import LoadingIcon from "mdi-material-ui/Loading";
+import Img from "components/Img";
 
 const styles = (theme) => ({
   heroImg: {
@@ -13,86 +10,42 @@ const styles = (theme) => ({
     height: "325px",
     objectFit: "cover"
   },
-  productGridContainer: {
+  heroGridContainer: {
     maxWidth: theme.grid.productGridMaxWidth,
-    marginLeft: "auto",
-    marginRight: "auto"
+    margin: "40px auto"
   }
 });
 
-
 @withStyles(styles)
-@inject("uiStore")
 export default class ProductGridHero extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    tag: PropTypes.object,
-    uiStore: PropTypes.object
+    tag: PropTypes.object
   };
 
   static defaultProps = {
     classes: {},
-    tag: {},
-    uiStore: {}
+    tag: {}
   };
 
-  state = { hasImageLoaded: false };
-
-  onImageLoad = () => {
-    const { hasImageLoaded } = this.state;
-    if (hasImageLoaded) return;
-    this.setState({ hasImageLoaded: true });
-  };
-
-  renderProductImage() {
-    const {
-      classes,
-      classes: { img, imgLoading, loadingIcon },
-      tag: { heroMediaUrl }
-    } = this.props;
-    const { hasImageLoaded } = this.state;
+  renderHeroImage() {
+    const { tag: { heroMediaUrl } } = this.props;
 
     if (!heroMediaUrl) {
       return null;
     }
 
-    const picture = (
-      <picture>
-        <img
-          className={classes.heroImg}
-          src={heroMediaUrl}
-          alt=""
-          onLoad={this.onImageLoad}
-          ref={(image) => {
-            if (image && image.complete) this.onImageLoad();
-            return;
-          }}
-        />
-      </picture>
-    );
-
-    const loading = (
-      <div className={imgLoading}>
-        <LoadingIcon className={loadingIcon} />
-      </div>
-    );
-
-    return (
-      <Fragment>
-        <Fade in={hasImageLoaded}>{picture}</Fade>
-        <Hidden xsUp={hasImageLoaded}>{loading}</Hidden>
-      </Fragment>
-    );
+    return <Img isHero src={heroMediaUrl} />;
   }
 
   render() {
     const { classes } = this.props;
 
     return (
-      <section className={classes.productGridContainer}>
+      <section className={classes.heroGridContainer}>
         <Grid container spacing={24}>
           <Grid item xs={12}>
-            {this.renderProductImage()}
+            {this.renderHeroImage()}
           </Grid>
         </Grid>
       </section>

@@ -2,7 +2,7 @@
 
 exports[`snapshop of tagWithoutMedia 1`] = `
 <section
-  className="inject-ProductGridHero-with-uiStore-productGridContainer-2"
+  className="ProductGridHero-heroGridContainer-2"
 >
   <div
     className="MuiGrid-container-3 MuiGrid-spacing-xs-24-26"
@@ -16,7 +16,7 @@ exports[`snapshop of tagWithoutMedia 1`] = `
 
 exports[`snapshot of tagWithMedia 1`] = `
 <section
-  className="inject-ProductGridHero-with-uiStore-productGridContainer-2"
+  className="ProductGridHero-heroGridContainer-2"
 >
   <div
     className="MuiGrid-container-3 MuiGrid-spacing-xs-24-26"
@@ -24,35 +24,14 @@ exports[`snapshot of tagWithMedia 1`] = `
     <div
       className="MuiGrid-item-4 MuiGrid-grid-xs-12-41"
     >
-      <picture
-        style={
-          Object {
-            "opacity": 0,
-            "willChange": "opacity",
-          }
-        }
+      <div
+        className="Img-imgWrapper-94 Img-imgHeroWrapper-95"
       >
         <img
           alt=""
-          className="inject-ProductGridHero-with-uiStore-heroImg-1"
-          onLoad={[Function]}
-          src="https://www.reactioncommerce.com/assets/careers-images-2.jpg"
+          className="Img-img-96 Img-imgLoading-98 "
+          src=""
         />
-      </picture>
-      <div
-        className={undefined}
-      >
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root-94"
-          color={undefined}
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
-          />
-        </svg>
       </div>
     </div>
   </div>

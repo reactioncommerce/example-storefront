@@ -1,26 +1,24 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { inject, observer } from "mobx-react";
-import Fade from "@material-ui/core/Fade";
-import Hidden from "@material-ui/core/Hidden";
 import Typography from "@material-ui/core/Typography";
-import LoadingIcon from "mdi-material-ui/Loading";
-import Link from "components/Link";
-import BadgeOverlay from "components/BadgeOverlay";
+import Price from "@reactioncommerce/components/Price/v1";
+import track from "lib/tracking/track";
+import trackProductClicked from "lib/tracking/trackProductClicked";
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
+import Link from "components/Link";
+import Img from "components/Img";
+import BadgeOverlay from "components/BadgeOverlay";
 import { styles } from "./styles";
 
 @withStyles(styles, { withTheme: true })
-@inject("uiStore")
-@observer
+@track()
 class ProductItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
     currencyCode: PropTypes.string.isRequired,
     product: PropTypes.object,
-    theme: PropTypes.object,
-    uiStore: PropTypes.object.isRequired
+    theme: PropTypes.object
   };
 
   static defaultProps = {
@@ -36,77 +34,28 @@ class ProductItem extends Component {
     return url;
   }
 
-  onImageLoad = () => {
-    const { hasImageLoaded } = this.state;
-    if (hasImageLoaded) return;
-    this.setState({ hasImageLoaded: true });
-  };
-
-  buildImgUrl(imgPath) {
-    const { uiStore: { appConfig: { publicRuntimeConfig } } } = this.props;
-    return `${publicRuntimeConfig.externalAssetsUrl}${imgPath}`;
-  }
-
-  renderProductImage() {
-    const {
-      classes: { img, imgLoading, loadingIcon },
-      theme: {
-        breakpoints: { values }
-      },
-      uiStore
-    } = this.props;
-    const { publicRuntimeConfig } = uiStore.appConfig;
-    const { hasImageLoaded } = this.state;
-    let { product: { primaryImage } } = this.props;
-
+  get primaryImage() {
+    const { product: { primaryImage } } = this.props;
     if (!primaryImage) {
-      primaryImage = {
+      return {
         URLs: {
-          small: publicRuntimeConfig.placeholderImageUrls.productGrid,
-          medium: publicRuntimeConfig.placeholderImageUrls.productGrid,
-          large: publicRuntimeConfig.placeholderImageUrls.productGrid
+          thumbnail: undefined,
+          small: undefined
         }
       };
     }
-
-    const picture = (
-      <picture>
-        <source srcSet={this.buildImgUrl(primaryImage.URLs.small)} media={`(min-width: ${values.sm}px)`} />
-        <source srcSet={this.buildImgUrl(primaryImage.URLs.medium)} media={`(min-width: ${values.md}px)`} />
-        <source srcSet={this.buildImgUrl(primaryImage.URLs.large)} media={`(min-width: ${values.lg}px)`} />
-        <img
-          className={img}
-          src={this.buildImgUrl(primaryImage.URLs.small)}
-          alt=""
-          onLoad={this.onImageLoad}
-          ref={(image) => {
-            if (image && image.complete) this.onImageLoad();
-            return;
-          }}
-        />
-      </picture>
-    );
-
-    const loading = (
-      <div className={imgLoading}>
-        <LoadingIcon className={loadingIcon} />
-      </div>
-    );
-
-    return (
-      <Fragment>
-        <Fade in={hasImageLoaded}>{picture}</Fade>
-        <Hidden xsUp={hasImageLoaded}>{loading}</Hidden>
-      </Fragment>
-    );
+    return primaryImage;
   }
 
+  @trackProductClicked()
+  handleAnchorClick = () => {}
+
   renderProductMedia() {
-    const { classes } = this.props;
+    const { classes, product: { description } } = this.props;
 
     return (
       <div className={classes.productMedia}>
-        {this.renderProductImage()}
+        <Img altText={description} presrc={this.primaryImage.URLs.thumbnail} src={this.primaryImage.URLs.small} />
       </div>
     );
   }
@@ -121,7 +70,9 @@ class ProductItem extends Component {
           <Typography variant="body2">
             {title}
           </Typography>
-          <Typography variant="body1">{productPrice.displayPrice}</Typography>
+          <Typography variant="body1">
+            <Price displayPrice={productPrice.displayPrice} />
+          </Typography>
         </div>
         <div>
           <Typography variant="body1">{vendor}</Typography>
@@ -135,7 +86,10 @@ class ProductItem extends Component {
 
     return (
       <div>
-        <Link route={this.productDetailHref}>
+        <Link
+          route={this.productDetailHref}
+          onAnchorClick={this.handleAnchorClick}
+        >
           <BadgeOverlay product={product}>
             {this.renderProductMedia()}
             {this.renderProductInfo()}

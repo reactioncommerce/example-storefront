@@ -21,14 +21,22 @@ query catalogItemsQuery($shopId: ID!, $tagIds: [ID] $first: ConnectionLimitInt, 
             isLowQuantity
             isSoldOut
             isBackorder
+            shop {
+              currency {
+                code
+              }
+            }
             pricing {
               currency {
                 code
               }
               displayPrice
+              minPrice
+              maxPrice
             }
             primaryImage {
               URLs {
+                thumbnail
                 small
                 medium
                 large

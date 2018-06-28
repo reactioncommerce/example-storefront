@@ -4,6 +4,7 @@ import { observer, inject } from "mobx-react";
 import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import withTag from "containers/tags/withTag";
+import Breadcrumbs from "components/Breadcrumbs";
 import ProductGrid from "components/ProductGrid";
 import ProductGridHero from "components/ProductGridHero";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
@@ -11,7 +12,6 @@ import trackProductListViewed from "lib/tracking/trackProductListViewed";
 @withTag
 @withCatalogItems
 @inject("routingStore", "uiStore")
-@trackProductListViewed({ dispatchOnMount: true })
 @observer
 export default class TagShop extends Component {
   static propTypes = {
@@ -25,6 +25,9 @@ export default class TagShop extends Component {
       })
     }),
     tag: PropTypes.object,
+    tags: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.object).isRequired
+    }),
     uiStore: PropTypes.shape({
       pageSize: PropTypes.number.isRequired,
       setPageSize: PropTypes.func.isRequired,
@@ -46,6 +49,12 @@ export default class TagShop extends Component {
   }
 
   state = {}
+
+  @trackProductListViewed()
+  componentDidMount() {}
+
+  @trackProductListViewed()
+  componentDidUpdate() {}
 
   renderHelmet() {
     const { shop, routingStore } = this.props;
@@ -77,6 +86,7 @@ export default class TagShop extends Component {
       routingStore: { query },
       shop,
       tag,
+      tags,
       uiStore
     } = this.props;
     const pageSize = (query && query.limit) ? parseInt(query.limit, 10) : uiStore.pageSize;
@@ -85,6 +95,7 @@ export default class TagShop extends Component {
     return (
       <React.Fragment>
         {this.renderHelmet()}
+        <Breadcrumbs isTagGrid={true} tag={tag} tags={tags} />
         <ProductGridHero tag={tag} />
         <ProductGrid
           catalogItems={catalogItems}

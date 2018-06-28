@@ -5,7 +5,8 @@ import UIStore from "./UIStore";
 
 configure({ enforceActions: true });
 
-const authStore = new AuthStore();
+const authStore = new AuthStore("meteorToken");
+const keycloakAuthStore = new AuthStore("keycloakToken");
 const routingStore = new RoutingStore();
 const uiStore = new UIStore();
 
@@ -22,6 +23,7 @@ autorun(() => {
 
 export default {
   authStore,
+  keycloakAuthStore,
   routingStore,
   uiStore
 };

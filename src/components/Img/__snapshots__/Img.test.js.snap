@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Img snapshot 1`] = `
+<div
+  className="Img-imgWrapper-1 "
+>
+  <img
+    alt=""
+    className="Img-img-3 Img-imgLoading-5 "
+    src={undefined}
+  />
+</div>
+`;

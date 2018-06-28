@@ -8,6 +8,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import AccountIcon from "mdi-material-ui/Account";
 import Popover from "@material-ui/core/Popover";
+import { login } from "lib/auth";
 
 const styles = (theme) => ({
   accountDropdown: {
@@ -18,11 +19,13 @@ const styles = (theme) => ({
 
 @withStyles(styles)
 @inject("authStore")
+@inject("keycloakAuthStore")
 @observer
 class AccountDropdown extends Component {
   static propTypes = {
     authStore: PropTypes.object.isRequired,
-    classes: PropTypes.object
+    classes: PropTypes.object,
+    keycloakAuthStore: PropTypes.object.isRequired
   };
 
   static defaultProps = {
@@ -44,7 +47,12 @@ class AccountDropdown extends Component {
     return null;
   }
 
-  state = { anchorElement: null, prevToken: "", token: "" };
+  state = {
+    anchorElement: null,
+    prevToken: "",
+    token: "",
+    keycloakToken: this.props.keycloakAuthStore.token
+  };
 
   toggleOpen = (event) => {
     this.setState({ anchorElement: event.currentTarget });
@@ -62,14 +70,22 @@ class AccountDropdown extends Component {
     const { authStore } = this.props;
 
     authStore.setToken(this.state.token);
-    authStore.saveTokenToCookie();
 
     // Reload so the auth changes can be reflected on server and in browser
     window.location.reload();
   }
 
+  onLogin = () => {
+    login();
+  }
+
+  onLogout = () => {
+    this.props.keycloakAuthStore.unsetToken("keycloakToken");
+    window.location.reload();
+  }
+
   render() {
-    const { classes } = this.props;
+    const { classes, keycloakAuthStore } = this.props;
     const { anchorElement, token } = this.state;
 
     return (
@@ -96,8 +112,20 @@ class AccountDropdown extends Component {
 
             <DialogActions>
               <Button color="primary" onClick={this.onTokenSave}>
-                {"Save"}
+                Save Token
               </Button>
+            </DialogActions>
+            <hr/>
+            <DialogActions>
+              {!keycloakAuthStore.token ?
+                <Button color="primary" onClick={this.onLogin}>
+                  Login with Keycloak
+                </Button>
+                :
+                <Button color="primary" onClick={this.onLogout}>
+                  Logout of Keycloak
+                </Button>
+              }
             </DialogActions>
           </div>
         </Popover>

@@ -1,3 +1,5 @@
+import routes from "routes";
+
 /**
  * Transform a variant object into a partial representation of the Segment product schema
  * @name getVariantTrackingData
@@ -11,11 +13,12 @@ export default function getVariantTrackingData({ product, variant, optionId }) {
   let data = variant;
   let imageURL;
   let price;
+  let url;
 
   // If an option id is provided, use the option instead of the top level variant
   if (optionId) {
     const foundOption = variant.options.find((option) => (
-      option.variantId === optionId
+      option._id === optionId
     ));
 
     if (foundOption) {
@@ -35,21 +38,30 @@ export default function getVariantTrackingData({ product, variant, optionId }) {
     }
   }
 
-  if (product && product.shop) {
-    const shopCurrency = product.shop.currency.code;
-    const foundPricing = data.pricing.find((pricing) => pricing.currency.code === shopCurrency);
+  if (product) {
+    if (product.shop) {
+      const shopCurrency = product.shop.currency.code;
+      const foundPricing = data.pricing.find((pricing) => pricing.currency.code === shopCurrency);
 
-    if (foundPricing) {
-      price = foundPricing.price; // eslint-disable-line prefer-destructuring
+      if (foundPricing) {
+        price = foundPricing.price; // eslint-disable-line prefer-destructuring
+      }
+    }
+
+    const route = routes.findAndGetUrls("product", { slugOrId: product.slug || product._id, variantId: data._id });
+
+    if (route && route.urls) {
+      url = route.urls.as;
     }
   }
 
   return {
-    variant: data.variantId,
+    variant: data._id,
     price,
     quantity: 1,
     position: data.index,
     value: price,
-    image_url: imageURL // eslint-disable-line camelcase
+    image_url: imageURL, // eslint-disable-line camelcase
+    url
   };
 }

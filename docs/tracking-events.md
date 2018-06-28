@@ -1,6 +1,6 @@
 # Tracking Events
 
-`reaction-next-starterkit` uses [Segment](https://segment.com/) and [NYTimes React Tracking][https://github.com/NYTimes/react-tracking] to track analytics events throughout the app.
+`reaction-next-starterkit` uses [Segment](https://segment.com/) and [NYTimes React Tracking](https://github.com/NYTimes/react-tracking) to track analytics events throughout the app.
 
 You can see the source under `/lib/tracking`
 
@@ -83,7 +83,7 @@ export function renderScript() {
 You should now be able to send tracking data to the provider of your choice.
 
 
-## Add a page view event
+## Track a page view event
 
 ```js
 import React, { Component } from "react";
@@ -102,7 +102,7 @@ class Page extends Component {
 
 ```
 
-## Add events inside a component
+## Track events inside a component
 
 ```js
 import React, { Component } from "react";
@@ -135,7 +135,7 @@ class Page extends Component {
 
 ```
 
-## Add events on page load and inside a component
+## Track events on page load and inside a component
 
 ```js
 import React, { Component } from "react";
@@ -174,22 +174,28 @@ class Page extends Component {
 
 ```
 
-## Add a Product List Viewed event
+## Track a Product List Viewed event
 
 Tracking the `Product List Viewed` Segment event using the provided HOC `trackProductListViewed`.
 
 ```js
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import track from "lib/tracking/track";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
 @withCatalogItems // Get catalog items for the current page
-@trackProductListViewed({
-  // Dispatch event Page component mount
-  dispatchOnMount: true
-})
-class Page extends Component {
+@track()
+class ProductListPage extends Component {
+  static propTypes = {
+    catalogItems: PropTypes.array
+  }
+
+  // Track event on component mount
+  @trackProductListViewed()
+  componentDidMount() {}
+
   render() {
     const { catalogItems } = this.props.catalogItems;
 
@@ -205,7 +211,7 @@ class Page extends Component {
 
 ```
 
-## Add a Product Viewed event
+## Track a Product Viewed event
 
 Tracking the `Product Viewed` Segment event provided HOC `trackProductViewed`.
 
@@ -213,14 +219,17 @@ See `src/components/ProductDetail/ProductDetail.js` for the full example.
 
 ```js
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import track from "lib/tracking/track";
 import trackProductViewed from "lib/tracking/trackProductViewed";
-import getVariantTrackingData from "lib/tracking/utils/getVariantTrackingData";
 
 @withCatalogItemProduct // Product for page with route of `/product/:slugOrId/:variantId?`
-@trackProductViewed() // expects the prop `product`
-class Page extends Component {
+@track()
+class ProductDetailPage extends Component {
+  static propTypes = {
+    product: PropTypes.object
+  }
 
   componentDidMount() {
     const { product } = this.props;
@@ -229,13 +238,8 @@ class Page extends Component {
     this.selectVariant(product.variants[0]);
   }
 
-  @track((props, state, [variant, optionId]) => (
-    getVariantTrackingData({
-      variant, // Object representing a variant. (Required)
-      optionId, // Selected option of the provided variant, if available. (Optional)
-      product: props.product // Full product document for additional data. (Optional)
-    })
-  ))
+  // expects the prop `product`, with `variant` and `optionId` as function params
+  @trackProductViewed()
   selectVariant(variant, optionId) {
     // Do something with selected variant / option
   }
@@ -250,7 +254,108 @@ class Page extends Component {
 }
 ```
 
+## Track a Product Clicked event
+
+Tracking the `Product Viewed` Segment event provided HOC `trackProductViewed`.
+
+See `src/components/ProductDetail/ProductDetail.js` for the full example.
+
+```js
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import track from "lib/tracking/track";
+import trackProductClicked from "lib/tracking/trackProductClicked";
+
+// Product list item.
+@track()
+class ProductItem extends Component {
+  static propTypes = {
+    product: PropTypes.object.isRequired
+  }
+
+  // Track event on component mount,
+  // trackProductClicked, expects the prop `product` to be supplied to component
+  @trackProductClicked()
+  handleClick() {
+    // Do something on product clicked, like routing to a new page or view
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        {this.props.product.title}
+      </button>
+    );
+  }
+}
+```
+
 # Segment events and data mappings
+
+## Product list viewed event
+
+Data for the Segment e-commerce event [Product List Viewed](https://segment.com/docs/spec/ecommerce/v2/#product-list-viewed), will require values from a `CatalogItemProduct` and `CatalogItemVariant`.
+
+```js
+{
+  // ID of the list being viewed. Should be a tag id or home if it's the homepage
+  list_id: "",
+
+  // Name of tag or Home
+  category: "",
+
+  // An array of products
+  products: [
+    {
+      // Product id
+      product_id: product._id,
+
+      // SKU
+      sku: product.sku,
+
+      // First tag
+      category: product.tags.edges[0].nodes.name,
+
+      // Title of top level product
+      name: product.title,
+
+      // Vendor field from the top-level product
+      brand: product.vendor,
+
+      // Not used. Products in the grid do not have an associated variant
+      variant: undefined,
+
+      // Price using the minimum price
+      // Where index 0, should be the index of the pricing object related to the currency for this product or shop
+      price: product.pricing[0].minPrice,
+
+      // Quantity not available via GraphQL API
+      // Set to 1 as a default
+      quantity: 1
+
+      // Coupons not available via GraphQL API
+      coupon: null,
+
+      // Products only have currency based on shop
+      currency: product.shop.currency,
+
+      // Not used. Products in the catalog currently don't have a concrete position
+      position: undefined,
+
+      // Value based off of the proeduct min price multiplied by quantity (variant.price * quantity)
+      // In this case, use `product.pricing.price` as there is only 1 for the quantity
+      // Where index 0, should be the index of the pricing object related to the currency for this product or shop
+      value: product.pricing[0].minPrice,
+
+      // Use router to generate the product url
+      url: "",
+
+      // Primary image from product
+      image_url: product.primaryImage.URLs.original
+    }
+  ]
+}
+```
 
 ## Product viewed event
 
@@ -298,6 +403,60 @@ Data for the Segment e-commerce event [Product Viewed](https://segment.com/docs/
 
   // Use router to get current url
   url: router.pathname,
+
+  // Primary image from product
+  image_url: product.primaryImage.URLs.original
+}
+```
+
+## Product clicked event
+
+Data for the Segment e-commerce event [Product Clicked](https://segment.com/docs/spec/ecommerce/v2/#product-viewed), will require values from a `CatalogItemProduct`.
+
+```js
+{
+  // Product id
+  product_id: product._id,
+
+  // SKU
+  sku: product.sku,
+
+  // First tag
+  category: product.tags.edges[0].nodes.name,
+
+  // Title of top level product
+  name: product.title,
+
+  // Vendor field from the top-level product
+  brand: product.vendor,
+
+  // Not used at the moment. Products clicked from the grid do not have an associated variant.
+  variant: undefined,
+
+  // Price using the minimum price
+  // Where index 0, should be the index of the pricing object related to the currency for this product or shop
+  price: product.pricing[0].minPrice,
+
+  // Quantity not available via GraphQL API
+  // Set to 1 as a default
+  quantity: 1
+
+  // Coupons not available via GraphQL API
+  coupon: null,
+
+  // Products only have currency based on shop
+  currency: product.shop.currency,
+
+  // Not used. Products in the catalog currently don't have a concrete position
+  position: undefined,
+
+  // Value based off of the proeduct min price multiplied by quantity (variant.price * quantity)
+  // In this case, use `product.pricing.price` as there is only 1 for the quantity
+  // Where index 0, should be the index of the pricing object related to the currency for this product or shop
+  value: product.pricing[0].minPrice,
+
+  // Use router to generate the product url
+  url: "",
 
   // Primary image from product
   image_url: product.primaryImage.URLs.original

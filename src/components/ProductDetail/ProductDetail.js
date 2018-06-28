@@ -4,9 +4,9 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { inject, observer } from "mobx-react";
 import Helmet from "react-helmet";
-import trackProductViewed from "lib/tracking/trackProductViewed";
 import track from "lib/tracking/track";
-import getVariantTrackingData from "lib/tracking/utils/getVariantTrackingData";
+import Breadcrumbs from "components/Breadcrumbs";
+import trackProductViewed from "lib/tracking/trackProductViewed";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
@@ -28,6 +28,10 @@ const styles = (theme) => ({
   },
   section: {
     marginBottom: theme.spacing.unit * 2
+  },
+  breadcrumbGrid: {
+    marginBottom: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * 2
   }
 });
 
@@ -38,14 +42,18 @@ const styles = (theme) => ({
  * @returns {React.Component} React component node that represents a product detail view
  */
 @withStyles(styles, { withTheme: true })
-@inject("uiStore")
-@trackProductViewed()
+@inject("routingStore", "uiStore")
+@track()
 @observer
 class ProductDetail extends Component {
   static propTypes = {
     classes: PropTypes.object,
     currencyCode: PropTypes.string.isRequired,
     product: PropTypes.object,
+    routingStore: PropTypes.object.isRequired,
+    tags: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.object).isRequired
+    }),
     theme: PropTypes.object,
     uiStore: PropTypes.object.isRequired
   }
@@ -57,13 +65,7 @@ class ProductDetail extends Component {
     this.selectVariant(product.variants[0]);
   }
 
-  @track((props, state, [variant, optionId]) => (
-    getVariantTrackingData({
-      variant, // Object representing a variant. (Required)
-      optionId, // Selected option of the provided variant, if available. (Optional)
-      product: props.product // Full product document for additional data. (Optional)
-    })
-  ))
+  @trackProductViewed()
   selectVariant(variant, optionId) {
     const { product, uiStore } = this.props;
 
@@ -136,8 +138,10 @@ class ProductDetail extends Component {
   render() {
     const {
       classes,
-      product,
       currencyCode,
+      product,
+      routingStore: { tag },
+      tags,
       theme,
       uiStore: { pdpSelectedOptionId, pdpSelectedVariantId }
     } = this.props;
@@ -156,6 +160,9 @@ class ProductDetail extends Component {
           <meta name="description" content={product.description} />
         </Helmet>
         <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
+          <Grid item className={classes.breadcrumbGrid} xs={12}>
+            <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
+          </Grid>
           <Grid item xs={12} sm={6}>
             <div className={classes.section}>
               <MediaGallery mediaItems={product.media} />

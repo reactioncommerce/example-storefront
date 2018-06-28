@@ -11,10 +11,12 @@ import track from "lib/tracking/track";
 export default class Anchor extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    onAnchorClick: PropTypes.func,
     onClick: PropTypes.func
   }
 
   static defaultProps = {
+    onAnchorClick: () => {},
     onClick: () => {}
   }
 
@@ -24,6 +26,7 @@ export default class Anchor extends Component {
   handleClick = (event) => {
     event.preventDefault();
     this.props.onClick(event);
+    this.props.onAnchorClick(event);
   }
 
   @track(() => ({
@@ -33,13 +36,19 @@ export default class Anchor extends Component {
     event.preventDefault();
     if (event.key === "Enter") {
       this.props.onClick(event);
+      this.props.onAnchorClick(event);
     }
   }
 
   render() {
+    const {
+      onAnchorClick, // eslint-disable-line
+      ...props
+    } = this.props;
+
     return (
       <a
-        {...this.props}
+        {...props}
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
         role="link"
