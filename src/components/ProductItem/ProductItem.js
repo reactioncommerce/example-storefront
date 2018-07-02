@@ -70,7 +70,7 @@ class ProductItem extends Component {
           <Typography variant="body2">
             {title}
           </Typography>
-          <Typography variant="body1">
+          <Typography component="div" variant="body1">
             <Price displayPrice={productPrice.displayPrice} />
           </Typography>
         </div>
