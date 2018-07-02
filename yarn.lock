@@ -871,9 +871,9 @@
   dependencies:
     "@ndhoule/each" "^2.0.1"
 
-"@reactioncommerce/components@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.3.0.tgz#c6550fe497fc8eca2f6ee4850756dd176fc79b63"
+"@reactioncommerce/components@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.4.0.tgz#691ab6631d92a2a5b3f38c8bf39b834bcaea63a2"
   dependencies:
     lodash.debounce "^4.0.8"
     lodash.get "^4.4.2"
