@@ -83,7 +83,7 @@ class Header extends Component {
           <CartToggle onClick={this.handleCartToggleClick} />
         </Toolbar>
 
-        <CartPopover cartItem={this.cartItem()} />
+        <CartPopover />
 
         <NavigationMobile />
       </AppBar>
