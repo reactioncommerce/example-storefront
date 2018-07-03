@@ -1,1 +1,1 @@
-export { default } from "./CheckoutButtons"
+export { default } from "./CheckoutButtons";
