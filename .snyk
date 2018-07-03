@@ -5,5 +5,5 @@ ignore:
   'npm:braces:20180219':
     - '*':
         reason: Waiting for Next.js 6 to update to Babel 7 beta.47 (https://github.com/babel/babel/issues/8034)
-        expires: 2018-06-30T00:00:00.000Z
+        expires: 2018-07-30T00:00:00.000Z
 patch: {}
