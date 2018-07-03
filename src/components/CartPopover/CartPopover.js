@@ -3,24 +3,13 @@ import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import CartCheckoutButton from "@reactioncommerce/components/CartCheckoutButton/v1";
-import Button from "@reactioncommerce/components/Button/v1";
-import Link from "components/Link";
-
-// import ButtonBase from "@material-ui/core/ButtonBase";
-// import InputAdornment from "@material-ui/core/InputAdornment";
-// import TextField from "@material-ui/core/TextField";
-// import Typography from "@material-ui/core/Typography";
-// import Minus from "mdi-material-ui/Minus";
-// import Plus from "mdi-material-ui/Plus";
-// import { inject, observer } from "mobx-react";
-// import Divider from "components/Divider";
+import CheckoutButtons from "components/CheckoutButtons";
 
 
 const styles = (theme) => ({
   container: {
     alignItems: "center",
-    boxShadow: `0 0 1em ${theme.palette.reaction.black30}`,
+    boxShadow: theme.boxShadow.depth2,
     display: "flex",
     marginLeft: "auto",
     marginRight: "auto",
@@ -170,9 +159,7 @@ class CartPopover extends Component {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <CartCheckoutButton
-              components={{ Button }}
-              isDisabled={false}
+            <CheckoutButtons
               onClick={this.handleOnClick}
             />
           </Grid>
