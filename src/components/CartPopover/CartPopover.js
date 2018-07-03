@@ -19,29 +19,41 @@ import Link from "components/Link";
 
 const styles = (theme) => ({
   container: {
-    display: "flex",
     alignItems: "center",
-    width: "100%",
+    boxShadow: `-5px 10px 20px ${theme.palette.reaction.black50}`,
+    display: "flex",
     marginLeft: "auto",
     marginRight: "auto",
-    backgroundColor: "#ff0000"
+    maxWidth: "400px",
+    paddingTop: "12px",
+    position: "fixed",
+    right: 0,
+    top: 0,
+    width: "100%",
+    backgroundColor: theme.palette.reaction.white
   },
-  addedToCartItemQuantity: {
-    color: theme.palette.primary.dark,
-    display: "inline",
-    fontWeight: 600,
-    marginRight: "7px"
+  containerItem: {
+    alignItems: "center",
+    display: "flex"
+  },
+  addedToCartImg: {
+    height: "40px",
+    marginRight: "10px",
+    width: "40px"
   },
   addedToCartItemName: {
-    color: theme.palette.primary.dark,
-    display: "inline",
-    fontWeight: 600,
-    marginRight: "7px"
+    maxWidth: "200px",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    fontWeight: theme.typography.fontWeightMedium,
+    display: "inline-block",
+    lineHeight: "0.8em"
   },
   addedToCartText: {
     color: theme.palette.primary.dark,
     display: "inline",
-    fontWeight: 100
+    fontSize: theme.typography.fontSize * 0.875
   }
 });
 
@@ -145,22 +157,16 @@ class CartPopover extends Component {
   render() {
     // When cartItem is available as a prop, we will pass it in. For now, we are using a static object.
     // const { cartItem, classes: { addToCartButton, container, breadcrumbLink } } = this.props;
-    const { classes: { addedToCartItemName, addedToCartItemQuantity, addedToCartText, container }, theme } = this.props;
+    const { classes: { addedToCartImg, addedToCartItemName, addedToCartText, container, containerItem }, theme } = this.props;
 
 
     return (
       <div className={container}>
         <Grid container className={container} spacing={theme.spacing.unit * 3}>
-          <Grid item xs={12}>
-            <img src={cartItem.imageUrl} alt={cartItem.title} />
-            <Typography className={addedToCartItemQuantity} component="span">
-              {cartItem.quantity}
-            </Typography>
-            <Typography className={addedToCartItemName} component="span">
-              "{cartItem.title}"
-            </Typography>
+          <Grid className={containerItem} item xs={12}>
+            <img alt={cartItem.title} className={addedToCartImg} src={cartItem.imageUrl} />
             <Typography className={addedToCartText} component="span">
-              added to cart
+              {cartItem.quantity} "<span className={addedToCartItemName}>{cartItem.title}</span>" added to cart
             </Typography>
           </Grid>
           <Grid item xs={12}>
