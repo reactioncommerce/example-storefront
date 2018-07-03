@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Button from "@reactioncommerce/components/Button/v1";
+import Link from "components/Link";
 
 export default class CheckoutButtons extends Component {
   static propTypes = {
@@ -13,6 +14,10 @@ export default class CheckoutButtons extends Component {
      */
     onClick: PropTypes.func.isRequired,
     /**
+     * The NextJS route name for the primary checkout button.
+     */
+    primaryButtonRoute: PropTypes.string,
+    /**
      * Text to display inside the button
      */
     primaryButtonText: PropTypes.string,
@@ -23,6 +28,7 @@ export default class CheckoutButtons extends Component {
   }
 
   static defaultProps = {
+    primaryButtonRoute: "/checkout",
     primaryButtonText: "Checkout"
   };
 
@@ -31,18 +37,27 @@ export default class CheckoutButtons extends Component {
   }
 
   render() {
-    const { isDisabled, primaryClassName, primaryButtonText } = this.props;
+    const { 
+      isDisabled, 
+      primaryClassName, 
+      primaryButtonRoute,
+      primaryButtonText
+    } = this.props;
 
     return (
-      <Button
-        actionType="important"
-        className={primaryClassName}
-        isDisabled={isDisabled}
-        onClick={this.handleOnClick}
-        isFullWidth
+      <Link
+        route={primaryButtonRoute}
       >
-        {primaryButtonText}
-      </Button>
+        <Button
+          actionType="important"
+          className={primaryClassName}
+          isDisabled={isDisabled}
+          onClick={this.handleOnClick}
+          isFullWidth
+        >
+          {primaryButtonText}
+        </Button>
+      </Link>
     );
   }
 }
