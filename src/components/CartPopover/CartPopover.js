@@ -20,7 +20,7 @@ import Link from "components/Link";
 const styles = (theme) => ({
   container: {
     alignItems: "center",
-    boxShadow: `-5px 10px 20px ${theme.palette.reaction.black50}`,
+    boxShadow: `0 0 1em ${theme.palette.reaction.black30}`,
     display: "flex",
     marginLeft: "auto",
     marginRight: "auto",
