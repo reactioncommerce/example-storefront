@@ -37,9 +37,9 @@ export default class CheckoutButtons extends Component {
   }
 
   render() {
-    const { 
-      isDisabled, 
-      primaryClassName, 
+    const {
+      isDisabled,
+      primaryClassName,
       primaryButtonRoute,
       primaryButtonText
     } = this.props;
