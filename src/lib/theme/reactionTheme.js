@@ -1,8 +1,8 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
-  grid: {
-    productGridMaxWidth: "1440px"
+  layout: {
+    mainContentMaxWidth: "1440px"
   },
   palette: {
     primary: {

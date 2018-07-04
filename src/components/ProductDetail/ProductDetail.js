@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -18,14 +18,6 @@ import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import variantById from "lib/utils/variantById";
 
 const styles = (theme) => ({
-  root: {
-    display: "flex",
-    justifyContent: "center",
-    flexGrow: 1
-  },
-  pdpContainer: {
-    maxWidth: 1400
-  },
   section: {
     marginBottom: theme.spacing.unit * 2
   },
@@ -154,12 +146,12 @@ class ProductDetail extends Component {
     const productPrice = this.determineProductPrice();
 
     return (
-      <div className={classes.root}>
+      <Fragment>
         <Helmet>
           <title>{product.title}</title>
           <meta name="description" content={product.description} />
         </Helmet>
-        <Grid container className={classes.pdpContainer} spacing={theme.spacing.unit * 3}>
+        <Grid container spacing={theme.spacing.unit * 3}>
           <Grid item className={classes.breadcrumbGrid} xs={12}>
             <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
           </Grid>
@@ -194,7 +186,7 @@ class ProductDetail extends Component {
             <ProductDetailAddToCart variantId={pdpProductToAddToCart} />
           </Grid>
         </Grid>
-      </div>
+      </Fragment>
     );
   }
 }
