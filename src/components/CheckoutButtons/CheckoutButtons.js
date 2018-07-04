@@ -10,10 +10,6 @@ export default class CheckoutButtons extends Component {
      */
     isDisabled: PropTypes.bool,
     /**
-     * On click function to pass to the Button component. Not handled internally, directly passed
-     */
-    onClick: PropTypes.func.isRequired,
-    /**
      * The NextJS route name for the primary checkout button.
      */
     primaryButtonRoute: PropTypes.string,
@@ -32,10 +28,6 @@ export default class CheckoutButtons extends Component {
     primaryButtonText: "Checkout"
   };
 
-  handleOnClick = () => {
-    this.props.onClick();
-  }
-
   render() {
     const {
       isDisabled,
@@ -52,7 +44,6 @@ export default class CheckoutButtons extends Component {
           actionType="important"
           className={primaryClassName}
           isDisabled={isDisabled}
-          onClick={this.handleOnClick}
           isFullWidth
         >
           {primaryButtonText}
