@@ -1,26 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic snapshot 1`] = `
-<section
-  className="ProductGrid-root-1"
->
+Array [
   <div
-    className="MuiGrid-container-3 MuiGrid-spacing-xs-8-24 ProductGrid-filters-2"
+    className="MuiGrid-container-2 MuiGrid-spacing-xs-8-23 ProductGrid-filters-1"
   >
     <div
-      className="MuiGrid-item-4"
+      className="MuiGrid-item-3"
     >
       <div
-        className="MuiInput-root-104 Select-input-98"
+        className="MuiInput-root-103 Select-input-97"
       >
         <div
-          className="MuiSelect-root-99"
+          className="MuiSelect-root-98"
         >
           <div
             aria-haspopup="true"
             aria-owns={null}
             aria-pressed="false"
-            className="MuiSelect-select-100 MuiSelect-selectMenu-101 Select-selectMenu-96 MuiInput-input-112"
+            className="MuiSelect-select-99 MuiSelect-selectMenu-100 Select-selectMenu-95 MuiInput-input-111"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -49,7 +47,7 @@ exports[`basic snapshot 1`] = `
           />
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-117 MuiSelect-icon-103"
+            className="MuiSvgIcon-root-116 MuiSelect-icon-102"
             color={undefined}
             focusable="false"
             viewBox="0 0 24 24"
@@ -62,19 +60,19 @@ exports[`basic snapshot 1`] = `
       </div>
     </div>
     <div
-      className="MuiGrid-item-4"
+      className="MuiGrid-item-3"
     >
       <div
-        className="MuiInput-root-104 Select-input-98"
+        className="MuiInput-root-103 Select-input-97"
       >
         <div
-          className="MuiSelect-root-99"
+          className="MuiSelect-root-98"
         >
           <div
             aria-haspopup="true"
             aria-owns={null}
             aria-pressed="false"
-            className="MuiSelect-select-100 MuiSelect-selectMenu-101 Select-selectMenu-96 MuiInput-input-112"
+            className="MuiSelect-select-99 MuiSelect-selectMenu-100 Select-selectMenu-95 MuiInput-input-111"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -103,7 +101,7 @@ exports[`basic snapshot 1`] = `
           />
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-117 MuiSelect-icon-103"
+            className="MuiSvgIcon-root-116 MuiSelect-icon-102"
             color={undefined}
             focusable="false"
             viewBox="0 0 24 24"
@@ -115,16 +113,16 @@ exports[`basic snapshot 1`] = `
         </div>
       </div>
     </div>
-  </div>
+  </div>,
   <div
-    className="MuiGrid-container-3 MuiGrid-spacing-xs-24-26"
+    className="MuiGrid-container-2 MuiGrid-spacing-xs-24-25"
   >
     <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-4-46 MuiGrid-grid-md-3-58"
+      className="MuiGrid-item-3 MuiGrid-grid-xs-12-40 MuiGrid-grid-sm-4-45 MuiGrid-grid-md-3-57"
     >
       <div>
         <a
-          className="WithTracking-Link--link-131"
+          className="WithTracking-Link--link-130"
           href="/product/men's-lightweigth-synchilla"
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -138,54 +136,54 @@ exports[`basic snapshot 1`] = `
           }
         >
           <div
-            className="BadgeOverlay-badgeOverlay-132 BadgeOverlay-faded-133"
+            className="BadgeOverlay-badgeOverlay-131 BadgeOverlay-faded-132"
           >
             <div
-              className="Badge-badge-143 BadgeOverlay-status-134 BadgeOverlay-soldOut-139"
+              className="Badge-badge-142 BadgeOverlay-status-133 BadgeOverlay-soldOut-138"
             >
               <span
-                className="Badge-labelStyle-144"
+                className="Badge-labelStyle-143"
               >
                 Sold Out
               </span>
             </div>
             <div
-              className="WithTracking-ProductItem--productMedia-129"
+              className="WithTracking-ProductItem--productMedia-128"
             >
               <div
-                className="Img-imgWrapper-146 "
+                className="Img-imgWrapper-145 "
               >
                 <img
                   alt=""
-                  className="Img-img-148 Img-imgLoading-150 "
+                  className="Img-img-147 Img-imgLoading-149 "
                   src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/thumbnail/25580_CICN.png"
                 />
               </div>
             </div>
             <div>
               <div
-                className="WithTracking-ProductItem--productInfo-128"
+                className="WithTracking-ProductItem--productInfo-127"
               >
                 <aside
-                  className="MuiTypography-root-152 MuiTypography-body2-160"
+                  className="MuiTypography-root-151 MuiTypography-body2-159"
                 >
                   Men's Lightweigth Synchilla
                 </aside>
-                <p
-                  className="MuiTypography-root-152 MuiTypography-body1-161"
+                <div
+                  className="MuiTypography-root-151 MuiTypography-body1-160"
                 >
                   <div>
                     <span
-                      className="Price__Span-cHkFMo dgppgF"
+                      className="Price__Span-cHkFMo jxBwgi"
                     >
                       $12.99 - $19.99
                     </span>
                   </div>
-                </p>
+                </div>
               </div>
               <div>
                 <p
-                  className="MuiTypography-root-152 MuiTypography-body1-161"
+                  className="MuiTypography-root-151 MuiTypography-body1-160"
                 >
                   Patagonia
                 </p>
@@ -196,11 +194,11 @@ exports[`basic snapshot 1`] = `
       </div>
     </div>
     <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-4-46 MuiGrid-grid-md-3-58"
+      className="MuiGrid-item-3 MuiGrid-grid-xs-12-40 MuiGrid-grid-sm-4-45 MuiGrid-grid-md-3-57"
     >
       <div>
         <a
-          className="WithTracking-Link--link-131"
+          className="WithTracking-Link--link-130"
           href="/product/example-product"
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -214,45 +212,45 @@ exports[`basic snapshot 1`] = `
           }
         >
           <div
-            className="BadgeOverlay-badgeOverlay-132"
+            className="BadgeOverlay-badgeOverlay-131"
           >
             <div
-              className="WithTracking-ProductItem--productMedia-129"
+              className="WithTracking-ProductItem--productMedia-128"
             >
               <div
-                className="Img-imgWrapper-146 "
+                className="Img-imgWrapper-145 "
               >
                 <img
                   alt=""
-                  className="Img-img-148 Img-imgLoading-150 "
+                  className="Img-img-147 Img-imgLoading-149 "
                   src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/thumbnail/product_image.png"
                 />
               </div>
             </div>
             <div>
               <div
-                className="WithTracking-ProductItem--productInfo-128"
+                className="WithTracking-ProductItem--productInfo-127"
               >
                 <aside
-                  className="MuiTypography-root-152 MuiTypography-body2-160"
+                  className="MuiTypography-root-151 MuiTypography-body2-159"
                 >
                   Basic Reaction Product
                 </aside>
-                <p
-                  className="MuiTypography-root-152 MuiTypography-body1-161"
+                <div
+                  className="MuiTypography-root-151 MuiTypography-body1-160"
                 >
                   <div>
                     <span
-                      className="Price__Span-cHkFMo dgppgF"
+                      className="Price__Span-cHkFMo jxBwgi"
                     >
                       $12.99 - $19.99
                     </span>
                   </div>
-                </p>
+                </div>
               </div>
               <div>
                 <p
-                  className="MuiTypography-root-152 MuiTypography-body1-161"
+                  className="MuiTypography-root-151 MuiTypography-body1-160"
                 >
                   Reaction Commerce
                 </p>
@@ -262,15 +260,15 @@ exports[`basic snapshot 1`] = `
         </a>
       </div>
     </div>
-  </div>
+  </div>,
   <div
-    className="MuiGrid-container-3 MuiGrid-justify-xs-space-between-22 PageStepper-root-176"
+    className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-175"
   >
     <div
-      className="MuiGrid-item-4"
+      className="MuiGrid-item-3"
     >
       <button
-        className="MuiButtonBase-root-193 MuiButton-root-177 MuiButton-raised-183"
+        className="MuiButtonBase-root-192 MuiButton-root-176 MuiButton-raised-182"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -287,18 +285,18 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-178"
+          className="MuiButton-label-177"
         >
           Previous
         </span>
         <span
-          className="MuiTouchRipple-root-196"
+          className="MuiTouchRipple-root-195"
         />
       </button>
     </div>
     <div
-      className="MuiGrid-item-4"
+      className="MuiGrid-item-3"
     />
-  </div>
-</section>
+  </div>,
+]
 `;
