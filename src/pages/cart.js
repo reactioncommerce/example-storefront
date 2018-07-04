@@ -5,8 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import trackProductViewed from "lib/tracking/trackProductViewed";
 import CartSummary from "@reactioncommerce/components/CartSummary/v1";
 import CartItems from "components/CartItems";
-import Button from "@reactioncommerce/components/Button/v1";
-import CartCheckoutButton from "@reactioncommerce/components/CartCheckoutButton/v1";
+import CheckoutButtons from "components/CheckoutButtons";
 import Link from "components/Link";
 
 const styles = () => ({
@@ -83,14 +82,7 @@ class CartPage extends Component {
                 displayTotal="$286.10"
                 itemsQuantity={3}
               />
-              <Link href="/checkout">
-                <CartCheckoutButton
-                  components={{ Button }}
-                  isDisabled={false}
-                  isFullWidth
-                  onClick={this.handleCheckOut}
-                />
-              </Link>
+              <CheckoutButtons onClick={() => {}} />
             </Typography>
           </Grid>
           <Grid className={classes.customerSupportCopy} item xs={12}>
