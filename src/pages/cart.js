@@ -9,21 +9,7 @@ import CartItems from "components/CartItems";
 import CheckoutButtons from "components/CheckoutButtons";
 import Link from "components/Link";
 
-const styles = (theme) => ({
-  title: {
-    fontWeight: theme.typography.fontWeightRegular,
-    marginTop: "1.6rem",
-    marginBottom: "3.1rem"
-  },
-  checkoutButtonsContainer: {
-    backgroundColor: theme.palette.reaction.black02,
-    padding: theme.spacing.unit * 2
-  },
-  customerSupportCopy: {
-    paddingLeft: `${theme.spacing.unit * 4}px !important`
-  }
-});
-
+// TODO: Replace this mock product data with real data.
 const items = [{
   _id: "123",
   attributes: [{ label: "vendor", value: "Patagonia" }, { label: "Color", value: "Red" }, { label: "Size", value: "Medium" }],
@@ -51,6 +37,23 @@ const items = [{
   title: "Another Great Product",
   quantity: 1
 }];
+// END TODO
+
+const styles = (theme) => ({
+  title: {
+    fontWeight: theme.typography.fontWeightRegular,
+    marginTop: "1.6rem",
+    marginBottom: "3.1rem"
+  },
+  checkoutButtonsContainer: {
+    backgroundColor: theme.palette.reaction.black02,
+    padding: theme.spacing.unit * 2
+  },
+  customerSupportCopy: {
+    paddingLeft: `${theme.spacing.unit * 4}px !important`
+  }
+});
+
 
 @trackProductViewed()
 @withStyles(styles)
