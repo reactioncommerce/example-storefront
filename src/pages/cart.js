@@ -56,7 +56,7 @@ const items = [{
 @withStyles(styles)
 class CartPage extends Component {
   static propTypes = {
-    classes: PropTypes.string
+    classes: PropTypes.object
   }
 
   handleCheckOut = () => {
@@ -84,17 +84,15 @@ class CartPage extends Component {
             />
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography component="div" variant="body1">
-              <CartSummary
-                displayShipping="$10.99"
-                displaySubtotal="$275.77"
-                displayTotal="$286.10"
-                itemsQuantity={3}
-              />
-              <div className={classes.checkoutButtonsContainer}>
-                <CheckoutButtons />
-              </div>
-            </Typography>
+            <CartSummary
+              displayShipping="$10.99"
+              displaySubtotal="$275.77"
+              displayTotal="$286.10"
+              itemsQuantity={3}
+            />
+            <div className={classes.checkoutButtonsContainer}>
+              <CheckoutButtons />
+            </div>
           </Grid>
           <Grid className={classes.customerSupportCopy} item>
             <Typography paragraph variant="caption">
