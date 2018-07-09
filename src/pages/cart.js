@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
@@ -8,10 +9,14 @@ import CartItems from "components/CartItems";
 import CheckoutButtons from "components/CheckoutButtons";
 import Link from "components/Link";
 
-const styles = () => ({
+const styles = (theme) => ({
+  title: {
+    fontWeight: theme.typography.fontWeightRegular,
+    marginTop: "1.6rem",
+    marginBottom: "3.1rem"
+  },
   customerSupportCopy: {
-    paddingLeft: "1.8333rem !important",
-    paddingRight: "1.8333rem !important"
+    paddingLeft: "1.8333rem !important"
   }
 });
 
@@ -46,24 +51,24 @@ const items = [{
 @trackProductViewed()
 @withStyles(styles)
 class CartPage extends Component {
+  static propTypes = {
+    classes: PropTypes.string
+  }
+
   handleCheckOut = () => {
     // TODO: handle checkout flow.
   }
 
-  handleItemQuantityChange = (quantity) => {
-    // TODO: update mobx store
-  }
+  handleItemQuantityChange = (quantity) => quantity
 
-  handleRemoveItem = (_id) => {
-    // TODO: update mobx store
-  }
+  handleRemoveItem = (_id) => _id
 
   render() {
     const { classes } = this.props;
 
     return (
-      <section className={classes.root}>
-        <Typography variant="title" align="center">
+      <section>
+        <Typography className={classes.title} variant="title" align="center">
           Shopping Cart
         </Typography>
         <Grid container spacing={24}>
@@ -85,7 +90,7 @@ class CartPage extends Component {
               <CheckoutButtons onClick={() => {}} />
             </Typography>
           </Grid>
-          <Grid className={classes.customerSupportCopy} item xs={12}>
+          <Grid className={classes.customerSupportCopy} item>
             <Typography paragraph variant="caption">
               Have questions? call 1.800.555.5555
             </Typography>
