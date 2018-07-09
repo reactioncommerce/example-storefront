@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
+import Hidden from "@material-ui/core/Hidden";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import CheckoutButtons from "components/CheckoutButtons";
@@ -144,28 +145,30 @@ class CartPopover extends Component {
   }
 
   render() {
-    // When cartItem is available as a prop, we will pass it in. For now, we are using a static object.
-    // const { cartItem, classes: { addToCartButton, container, breadcrumbLink } } = this.props;
+    // When cartItem is available as a prop, we will pass it in.
+    // For now, we are using the static object `cartItem` provided above.
+    // const { cartItem, classes: { addedToCartImg, addedToCartItemName, addedToCartText, container, containerItem }, theme } = this.props;
     const { classes: { addedToCartImg, addedToCartItemName, addedToCartText, container, containerItem }, theme } = this.props;
 
 
     return (
-      <div className={container}>
-        <Grid container className={container} spacing={theme.spacing.unit * 3}>
-          <Grid className={containerItem} item xs={12}>
-            <img alt={cartItem.title} className={addedToCartImg} src={cartItem.imageUrl} />
-            <Typography className={addedToCartText} component="span">
-              {cartItem.quantity} "<span className={addedToCartItemName}>{cartItem.title}</span>" added to cart
-            </Typography>
+      <Hidden mdUp>
+        <div className={container}>
+          <Grid container className={container} spacing={theme.spacing.unit * 3}>
+            <Grid className={containerItem} item xs={12}>
+              <img alt={cartItem.title} className={addedToCartImg} src={cartItem.imageUrl} />
+              <Typography className={addedToCartText} component="span">
+                {cartItem.quantity} "<span className={addedToCartItemName}>{cartItem.title}</span>" added to cart
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <CheckoutButtons
+                onClick={this.handleOnClick}
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={12}>
-            <CheckoutButtons
-              onClick={this.handleOnClick}
-            />
-          </Grid>
-        </Grid>
-
-      </div>
+        </div>
+      </Hidden>
     );
   }
 }
