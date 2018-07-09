@@ -15,8 +15,12 @@ const styles = (theme) => ({
     marginTop: "1.6rem",
     marginBottom: "3.1rem"
   },
+  checkoutButtonsContainer: {
+    backgroundColor: theme.palette.reaction.black02,
+    padding: theme.spacing.unit * 2
+  },
   customerSupportCopy: {
-    paddingLeft: "1.8333rem !important"
+    paddingLeft: `${theme.spacing.unit * 4}px !important`
   }
 });
 
@@ -87,7 +91,9 @@ class CartPage extends Component {
                 displayTotal="$286.10"
                 itemsQuantity={3}
               />
-              <CheckoutButtons onClick={() => {}} />
+              <div className={classes.checkoutButtonsContainer}>
+                <CheckoutButtons />
+              </div>
             </Typography>
           </Grid>
           <Grid className={classes.customerSupportCopy} item>
