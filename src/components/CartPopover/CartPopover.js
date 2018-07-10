@@ -139,10 +139,9 @@ class CartPopover extends Component {
   }
 
   render() {
-    // When cartItem is available as a prop, we will pass it in.
-    // For now, we are using the static object `cartItem` provided above.
-    // const { cartItem, classes: { addedToCartImg, addedToCartItemName, addedToCartText, container, containerItem }, theme } = this.props;
-    const { classes: { addedToCartImg, addedToCartItemName, addedToCartText, container, containerItem }, theme } = this.props;
+    // When cartItem is available as a prop, remove the following lines, and uncomment the prop destructuring below.
+    // For now, we are using the static object `cartItem`.
+    const { classes: { addedToCartImg, addedToCartItemName, addedToCartText, container, containerItem, gridContainer, isContainerHidden, isContainerVisible }, theme, uiStore } = this.props;
     const cartItem = {
       _id: "abcdefghijklmnop",
       attributes: [
