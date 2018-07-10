@@ -158,7 +158,7 @@ class CartPopover extends Component {
 
     if (cartItem) {
       return (
-        <Hidden mdUp>
+        <Hidden mdUp implementation="css">
           <div className={classNames(container, { [isContainerHidden]: !uiStore.isCartPopoverOpen, [isContainerVisible]: uiStore.isCartPopoverOpen })}>
             <Grid container className={gridContainer} spacing={theme.spacing.unit * 3}>
               <Grid className={containerItem} item xs={12}>
