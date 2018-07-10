@@ -142,25 +142,29 @@ class CartPopover extends Component {
   render() {
     const { cartItem, classes: { addedToCartImg, addedToCartItemName, addedToCartText, container, containerItem, gridContainer, isContainerHidden, isContainerVisible }, theme, uiStore } = this.props;
 
-    return (
-      <Hidden mdUp>
-        <div className={classNames(container, { [isContainerHidden]: !uiStore.isCartPopoverOpen, [isContainerVisible]: uiStore.isCartPopoverOpen })}>
-          <Grid container className={gridContainer} spacing={theme.spacing.unit * 3}>
-            <Grid className={containerItem} item xs={12}>
-              <img alt={cartItem.title} className={addedToCartImg} src={cartItem.imageUrl} />
-              <Typography className={addedToCartText} component="span">
-                {cartItem.quantity} "<span className={addedToCartItemName}>{cartItem.title}</span>" added to cart
-              </Typography>
+    if (cartItem) {
+      return (
+        <Hidden mdUp>
+          <div className={classNames(container, { [isContainerHidden]: !uiStore.isCartPopoverOpen, [isContainerVisible]: uiStore.isCartPopoverOpen })}>
+            <Grid container className={gridContainer} spacing={theme.spacing.unit * 3}>
+              <Grid className={containerItem} item xs={12}>
+                <img alt={cartItem.title} className={addedToCartImg} src={cartItem.imageUrl} />
+                <Typography className={addedToCartText} component="span">
+                  {cartItem.quantity} "<span className={addedToCartItemName}>{cartItem.title}</span>" added to cart
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <CheckoutButtons
+                  onClick={this.handleOnClick}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <CheckoutButtons
-                onClick={this.handleOnClick}
-              />
-            </Grid>
-          </Grid>
-        </div>
-      </Hidden>
-    );
+          </div>
+        </Hidden>
+      );
+    }
+
+    return null;
   }
 }
 
