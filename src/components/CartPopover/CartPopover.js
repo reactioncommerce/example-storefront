@@ -135,9 +135,6 @@ class CartPopover extends Component {
     }).isRequired
   }
 
-
-
-
   handleOnClick = () => {
     console.log("go to checkout");
   }
@@ -171,7 +168,6 @@ class CartPopover extends Component {
     };
     // Remove the above lines, and uncomment line below when `cartItem` is available as a prop
     // const { cartItem, classes: { addedToCartImg, addedToCartItemName, addedToCartText, container, containerItem, gridContainer, isContainerHidden, isContainerVisible }, theme, uiStore } = this.props;
-
 
     return (
       <Hidden mdUp>
