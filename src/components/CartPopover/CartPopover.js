@@ -62,30 +62,6 @@ const styles = (theme) => ({
   }
 });
 
-const cartItem = {
-  _id: "abcdefghijklmnop",
-  attributes: [
-    {
-      label: "Color",
-      value: "Red"
-    },
-    {
-      label: "Season",
-      value: "Summer"
-    }
-  ],
-  currentQuantity: 10,
-  imageUrl: "http://localhost:3000/assets/files/Media/nbYKLrZST5DSF87md/thumbnail/chuttersnap-265339-unsplash.png",
-  isLowInventoryQuantity: false,
-  price: {
-    compareAtPrice: "19.99",
-    displayPrice: "18.99"
-  },
-  productSlug: "product-slug",
-  title: "Item Title",
-  quantity: 10
-};
-
 @withStyles(styles, { withTheme: true })
 @inject("uiStore")
 @observer
@@ -166,6 +142,31 @@ class CartPopover extends Component {
     // For now, we are using the static object `cartItem` provided above.
     // const { cartItem, classes: { addedToCartImg, addedToCartItemName, addedToCartText, container, containerItem }, theme } = this.props;
     const { classes: { addedToCartImg, addedToCartItemName, addedToCartText, container, containerItem }, theme } = this.props;
+    const cartItem = {
+      _id: "abcdefghijklmnop",
+      attributes: [
+        {
+          label: "Color",
+          value: "Red"
+        },
+        {
+          label: "Season",
+          value: "Summer"
+        }
+      ],
+      currentQuantity: 10,
+      imageUrl: "http://localhost:3000/assets/files/Media/nbYKLrZST5DSF87md/thumbnail/chuttersnap-265339-unsplash.png",
+      isLowInventoryQuantity: false,
+      price: {
+        compareAtPrice: "19.99",
+        displayPrice: "18.99"
+      },
+      productSlug: "product-slug",
+      title: "Item Title",
+      quantity: 10
+    };
+    // Remove the above lines, and uncomment line below when `cartItem` is available as a prop
+    // const { cartItem, classes: { addedToCartImg, addedToCartItemName, addedToCartText, container, containerItem, gridContainer, isContainerHidden, isContainerVisible }, theme, uiStore } = this.props;
 
 
     return (
