@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { inject, observer } from "mobx-react";
 import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
 import { withStyles } from "@material-ui/core/styles";
@@ -72,6 +73,8 @@ const cartItem = {
 };
 
 @withStyles(styles, { withTheme: true })
+@inject("uiStore")
+@observer
 class CartPopover extends Component {
   static propTypes = {
     /**
