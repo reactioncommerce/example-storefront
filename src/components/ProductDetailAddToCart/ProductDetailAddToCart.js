@@ -69,6 +69,10 @@ const styles = (theme) => ({
 export default class ProductDetailAddToCart extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    uiStore: PropTypes.shape({
+      closeCartPopover: PropTypes.func,
+      openCartPopover: PropTypes.func
+    }).isRequired,
     variantId: PropTypes.string
   };
 
@@ -81,6 +85,7 @@ export default class ProductDetailAddToCart extends Component {
   };
 
   handleOnClick = () => {
+    const { uiStore } = this.props;
     // This function currently does nothing. When our GraphQL endpoints are available, we'll use them to add the items to the cart.
     // To test that this is working, uncomment the following lines and check to see that the data is correct
 
@@ -92,6 +97,11 @@ export default class ProductDetailAddToCart extends Component {
 
     // Reset cart quantity to 1 after items are added to cart
     this.setState({ addToCartQuantity: 1 });
+    uiStore.openCartPopover();
+
+    setTimeout(() => {
+      uiStore.closeCartPopover();
+    }, 4000);
   }
 
   handleQuantityInputChange = (event) => {
@@ -133,7 +143,7 @@ export default class ProductDetailAddToCart extends Component {
       }
     } = this.props;
 
-    const { addToCartQuantity } = this.state;
+    const { addToCartQuantity, isPopoverVisible } = this.state;
 
     return (
       <Fragment>
@@ -189,7 +199,7 @@ export default class ProductDetailAddToCart extends Component {
             </ButtonBase>
           </Grid>
         </Grid>
-        <CartPopover />
+        <CartPopover isVisible={isPopoverVisible} />
       </Fragment>
     );
   }
