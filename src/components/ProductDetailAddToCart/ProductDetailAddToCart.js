@@ -232,7 +232,7 @@ export default class ProductDetailAddToCart extends Component {
             </ButtonBase>
           </Grid>
         </Grid>
-        <CartPopover cartItem={cartItem} isVisible={isPopoverVisible} />
+        <CartPopover cartItem={cartItem} />
       </Fragment>
     );
   }

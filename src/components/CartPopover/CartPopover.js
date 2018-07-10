@@ -128,7 +128,6 @@ class CartPopover extends Component {
       quantity: PropTypes.number
     }).isRequired,
     classes: PropTypes.object,
-    isVisible: PropTypes.bool,
     theme: PropTypes.object,
     uiStore: PropTypes.shape({
       isCartPopoverOpen: PropTypes.bool
