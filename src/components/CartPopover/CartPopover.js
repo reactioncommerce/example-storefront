@@ -12,6 +12,7 @@ import CheckoutButtons from "components/CheckoutButtons";
 const styles = (theme) => ({
   container: {
     "alignItems": "center",
+    "backgroundColor": theme.palette.reaction.white,
     "boxShadow": theme.boxShadow.depth2,
     "display": "flex",
     "marginLeft": "auto",
@@ -24,7 +25,7 @@ const styles = (theme) => ({
     "transitionDuration": "400ms",
     "transitionProperty": "transform",
     "transitionTimingFunction": "linear",
-    "backgroundColor": theme.palette.reaction.white,
+    "zIndex": theme.zIndex.appBar + 1,
     "&:hover": {
       transform: "translate(0px, 0px)"
     }
