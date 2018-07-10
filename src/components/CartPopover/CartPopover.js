@@ -20,8 +20,22 @@ const styles = (theme) => ({
     position: "fixed",
     right: 0,
     top: 0,
-    width: "100%",
-    backgroundColor: theme.palette.reaction.white
+    transitionDuration: "400ms",
+    transitionProperty: "transform",
+    transitionTimingFunction: "linear",
+    backgroundColor: theme.palette.reaction.white,
+    "&:hover": {
+      transform: "translate(0px, 0px)"
+    }
+  },
+  gridContainer: {
+    padding: "10px"
+  },
+  isContainerHidden: {
+    transform: "translate(400px, 0px)"
+  },
+  isContainerVisible: {
+    transform: "translate(0px, 0px)"
   },
   containerItem: {
     alignItems: "center",
