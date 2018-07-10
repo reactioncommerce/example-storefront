@@ -136,11 +136,25 @@ class CartPopover extends Component {
   }
 
   handleOnClick = () => {
-    console.log("go to checkout");
+    // This will need to pass the correct function and data into the Checkout Buttons
   }
 
   render() {
-    const { cartItem, classes: { addedToCartImg, addedToCartItemName, addedToCartText, container, containerItem, gridContainer, isContainerHidden, isContainerVisible }, theme, uiStore } = this.props;
+    const {
+      cartItem,
+      classes: {
+        addedToCartImg,
+        addedToCartItemName,
+        addedToCartText,
+        container,
+        containerItem,
+        gridContainer,
+        isContainerHidden,
+        isContainerVisible
+      },
+      theme,
+      uiStore
+    } = this.props;
 
     if (cartItem) {
       return (

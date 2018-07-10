@@ -176,7 +176,7 @@ export default class ProductDetailAddToCart extends Component {
       }
     } = this.props;
 
-    const { addToCartQuantity, isPopoverVisible } = this.state;
+    const { addToCartQuantity } = this.state;
 
     return (
       <Fragment>
