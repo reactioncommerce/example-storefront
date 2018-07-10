@@ -12,6 +12,36 @@ import { inject, observer } from "mobx-react";
 import CartPopover from "components/CartPopover";
 import Divider from "components/Divider";
 
+// This is a temporary cartItem object to be used for testing
+// pending the GraphQL endpoint being hooked up
+// Remove the code between these comments when live data is available
+const cartItem = {
+  _id: "abcdefghijklmnop",
+  attributes: [
+    {
+      label: "Color",
+      value: "Red"
+    },
+    {
+      label: "Season",
+      value: "Summer"
+    }
+  ],
+  currentQuantity: 10,
+  imageUrl: "http://localhost:3000/assets/files/Media/nbYKLrZST5DSF87md/thumbnail/chuttersnap-265339-unsplash.png",
+  isLowInventoryQuantity: false,
+  price: {
+    compareAtPrice: "19.99",
+    displayPrice: "18.99"
+  },
+  productSlug: "product-slug",
+  title: "Item Title",
+  quantity: 10
+};
+// This is a temporary cartItem object to be used for testing
+// pending the GraphQL endpoint being hooked up
+// Remove the code between these comments when live data is available
+
 const styles = (theme) => ({
   addToCartButton: {
     "padding": theme.spacing.unit,
@@ -97,11 +127,14 @@ export default class ProductDetailAddToCart extends Component {
 
     // Reset cart quantity to 1 after items are added to cart
     this.setState({ addToCartQuantity: 1 });
+
+    // Open cart popover on addToCart
     uiStore.openCartPopover();
 
+    // Close cart popover after 3 seconds
     setTimeout(() => {
       uiStore.closeCartPopover();
-    }, 4000);
+    }, 3000);
   }
 
   handleQuantityInputChange = (event) => {
@@ -199,7 +232,7 @@ export default class ProductDetailAddToCart extends Component {
             </ButtonBase>
           </Grid>
         </Grid>
-        <CartPopover isVisible={isPopoverVisible} />
+        <CartPopover cartItem={cartItem} isVisible={isPopoverVisible} />
       </Fragment>
     );
   }
