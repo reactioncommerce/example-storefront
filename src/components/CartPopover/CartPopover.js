@@ -11,20 +11,20 @@ import CheckoutButtons from "components/CheckoutButtons";
 
 const styles = (theme) => ({
   container: {
-    alignItems: "center",
-    boxShadow: theme.boxShadow.depth2,
-    display: "flex",
-    marginLeft: "auto",
-    marginRight: "auto",
-    maxWidth: "400px",
-    paddingTop: "12px",
-    position: "fixed",
-    right: 0,
-    top: 0,
-    transitionDuration: "400ms",
-    transitionProperty: "transform",
-    transitionTimingFunction: "linear",
-    backgroundColor: theme.palette.reaction.white,
+    "alignItems": "center",
+    "boxShadow": theme.boxShadow.depth2,
+    "display": "flex",
+    "marginLeft": "auto",
+    "marginRight": "auto",
+    "maxWidth": "400px",
+    "paddingTop": "12px",
+    "position": "fixed",
+    "right": 0,
+    "top": 0,
+    "transitionDuration": "400ms",
+    "transitionProperty": "transform",
+    "transitionTimingFunction": "linear",
+    "backgroundColor": theme.palette.reaction.white,
     "&:hover": {
       transform: "translate(0px, 0px)"
     }
