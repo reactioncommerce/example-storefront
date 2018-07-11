@@ -127,7 +127,7 @@ class CartPopover extends Component {
        * Quantity of chosen item in cart
        */
       quantity: PropTypes.number
-    }).isRequired,
+    }),
     classes: PropTypes.object,
     theme: PropTypes.object,
     uiStore: PropTypes.shape({
