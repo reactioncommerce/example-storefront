@@ -5,6 +5,7 @@ import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import ProductGrid from "components/ProductGrid";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
+import { inPageSizes } from "lib/utils/pageSizes";
 
 @withCatalogItems
 @inject("routingStore", "uiStore")
@@ -49,7 +50,7 @@ class Shop extends Component {
 
   render() {
     const { catalogItems, catalogItemsPageInfo, uiStore, routingStore: { query }, shop } = this.props;
-    const pageSize = query && query.limit ? parseInt(query.limit, 10) : uiStore.pageSize;
+    const pageSize = query && inPageSizes(query.limit) ? parseInt(query.limit, 10) : uiStore.pageSize;
     const sortBy = query && query.sortby ? query.sortby : uiStore.sortBy;
 
     return (
