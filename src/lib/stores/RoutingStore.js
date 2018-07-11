@@ -1,5 +1,6 @@
 import { action, toJS, observable } from "mobx";
 import { Router } from "routes";
+import { inPageSizes, PAGE_SIZES } from "lib/utils/pageSizes";
 
 /**
  * A mobx store for routing data
@@ -53,6 +54,10 @@ export default class RoutingStore {
     const _query = { ...toJS(this.query), ...search };
     const _slug = _query.slug;
     delete _query.slug;
+
+    // Validate limit
+    _query.limit = inPageSizes(_query.limit) ? _query.limit : PAGE_SIZES._20;
+
     let urlQueryString = "";
     Object.keys(_query).forEach((key, index, arr) => {
       urlQueryString += `${key}=${_query[key]}`;

@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Select from "components/Select";
+import { PAGE_SIZES } from "lib/utils/pageSizes";
 
-const PAGE_SIZES = [
+const SELECTOR_OPTIONS = [
   {
     name: "20 Products",
-    value: 20
+    value: PAGE_SIZES._20
   },
   {
     name: "60 Products",
-    value: 60
+    value: PAGE_SIZES._60
   },
   {
     name: "100 Products",
-    value: 100
+    value: PAGE_SIZES._100
   }
 ];
 
@@ -33,7 +34,7 @@ class PageSizeSelector extends Component {
     return (
       <Select
         value={pageSize}
-        options={PAGE_SIZES}
+        options={SELECTOR_OPTIONS}
         inputProps={{
           name: "pageSize",
           id: "page-size"

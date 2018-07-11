@@ -1,5 +1,6 @@
 import { observable, action } from "mobx";
 import getConfig from "next/config";
+import { PAGE_SIZES, inPageSizes } from "lib/utils/pageSizes";
 
 /**
  * A mobx store for UI data
@@ -35,7 +36,7 @@ class UIStore {
    *
    * @type Number
    */
-  @observable pageSize = 20;
+  @observable pageSize = PAGE_SIZES._20;
 
   /**
    * The product grid's sorting order
@@ -94,7 +95,8 @@ class UIStore {
   }
 
   @action setPageSize = (size) => {
-    this.pageSize = size;
+    // Validate page size
+    this.pageSize = inPageSizes(size) ? size : PAGE_SIZES._20;
   }
 
   @action setSortBy = (sortBy) => {
