@@ -16,7 +16,7 @@ exports[`do not show cartpopover 1`] = `
         <img
           alt="Item Title"
           className="inject-CartPopover-with-uiStore-addedToCartImg-6"
-          src="http://localhost:3000/assets/files/Media/nbYKLrZST5DSF87md/thumbnail/chuttersnap-265339-unsplash.png"
+          src="http://placehold.it/100"
         />
         <span
           className="MuiTypography-root-115 MuiTypography-body1-124 inject-CartPopover-with-uiStore-addedToCartText-8"
@@ -123,7 +123,7 @@ exports[`show cartpopover 1`] = `
         <img
           alt="Item Title"
           className="inject-CartPopover-with-uiStore-addedToCartImg-6"
-          src="http://localhost:3000/assets/files/Media/nbYKLrZST5DSF87md/thumbnail/chuttersnap-265339-unsplash.png"
+          src="http://placehold.it/100"
         />
         <span
           className="MuiTypography-root-115 MuiTypography-body1-124 inject-CartPopover-with-uiStore-addedToCartText-8"

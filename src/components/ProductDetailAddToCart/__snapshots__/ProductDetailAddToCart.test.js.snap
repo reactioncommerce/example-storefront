@@ -179,7 +179,7 @@ Array [
           <img
             alt="Item Title"
             className="inject-CartPopover-with-uiStore-addedToCartImg-167"
-            src="http://localhost:3000/assets/files/Media/nbYKLrZST5DSF87md/thumbnail/chuttersnap-265339-unsplash.png"
+            src="http://placehold.it/100"
           />
           <span
             className="MuiTypography-root-102 MuiTypography-body1-111 inject-CartPopover-with-uiStore-addedToCartText-169"
