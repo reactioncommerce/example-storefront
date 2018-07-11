@@ -28,7 +28,7 @@ const cartItem = {
     }
   ],
   currentQuantity: 10,
-  imageUrl: "http://localhost:3000/assets/files/Media/nbYKLrZST5DSF87md/thumbnail/chuttersnap-265339-unsplash.png",
+  imageUrl: "http://placehold.it/100",
   isLowInventoryQuantity: false,
   price: {
     compareAtPrice: "19.99",
