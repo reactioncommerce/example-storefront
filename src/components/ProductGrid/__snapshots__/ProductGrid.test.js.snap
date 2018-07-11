@@ -171,7 +171,7 @@ exports[`basic snapshot 1`] = `
                 >
                   Men's Lightweigth Synchilla
                 </aside>
-                <p
+                <div
                   className="MuiTypography-root-152 MuiTypography-body1-161"
                 >
                   <div>
@@ -181,7 +181,7 @@ exports[`basic snapshot 1`] = `
                       $12.99 - $19.99
                     </span>
                   </div>
-                </p>
+                </div>
               </div>
               <div>
                 <p
@@ -238,7 +238,7 @@ exports[`basic snapshot 1`] = `
                 >
                   Basic Reaction Product
                 </aside>
-                <p
+                <div
                   className="MuiTypography-root-152 MuiTypography-body1-161"
                 >
                   <div>
@@ -248,7 +248,7 @@ exports[`basic snapshot 1`] = `
                       $12.99 - $19.99
                     </span>
                   </div>
-                </p>
+                </div>
               </div>
               <div>
                 <p
