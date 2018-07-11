@@ -19,7 +19,8 @@ export default class Error extends Component {
   static propTypes = {
     classes: PropTypes.object,
     shop: PropTypes.object,
-    statusCode: PropTypes.object
+    statusCode: PropTypes.object,
+    subtitle: PropTypes.string
   }
 
   static getInitialProps({ res, err }) {
@@ -28,13 +29,17 @@ export default class Error extends Component {
     return { statusCode };
   }
 
+  static defaultProps = {
+    subtitle: "Error"
+  }
+
   render() {
-    const { classes, shop } = this.props;
+    const { classes, shop, subtitle } = this.props;
 
     return (
       <div className={classes.root}>
         <Helmet>
-          <title>{shop && shop.name} | Error</title>
+          <title> {shop && shop.name} | {subtitle}</title>
         </Helmet>
         {this.props.statusCode ? (
           <Typography> `An error ${this.props.statusCode} occurred on server`</Typography>
