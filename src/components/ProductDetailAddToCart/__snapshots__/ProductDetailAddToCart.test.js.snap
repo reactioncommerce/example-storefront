@@ -179,7 +179,7 @@ Array [
           <img
             alt="Item Title"
             className="inject-CartPopover-with-uiStore-addedToCartImg-167"
-            src="http://placehold.it/100"
+            src="//placehold.it/100"
           />
           <span
             className="MuiTypography-root-102 MuiTypography-body1-111 inject-CartPopover-with-uiStore-addedToCartText-169"

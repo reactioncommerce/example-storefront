@@ -16,7 +16,7 @@ exports[`do not show cartpopover 1`] = `
         <img
           alt="Item Title"
           className="inject-CartPopover-with-uiStore-addedToCartImg-6"
-          src="http://placehold.it/100"
+          src="//placehold.it/100"
         />
         <span
           className="MuiTypography-root-115 MuiTypography-body1-124 inject-CartPopover-with-uiStore-addedToCartText-8"
@@ -123,7 +123,7 @@ exports[`show cartpopover 1`] = `
         <img
           alt="Item Title"
           className="inject-CartPopover-with-uiStore-addedToCartImg-6"
-          src="http://placehold.it/100"
+          src="//placehold.it/100"
         />
         <span
           className="MuiTypography-root-115 MuiTypography-body1-124 inject-CartPopover-with-uiStore-addedToCartText-8"

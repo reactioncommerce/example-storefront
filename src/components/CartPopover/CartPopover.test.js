@@ -17,7 +17,7 @@ const cartItem = {
     }
   ],
   currentQuantity: 10,
-  imageUrl: "http://placehold.it/100",
+  imageUrl: "//placehold.it/100",
   isLowInventoryQuantity: false,
   price: {
     compareAtPrice: "19.99",
