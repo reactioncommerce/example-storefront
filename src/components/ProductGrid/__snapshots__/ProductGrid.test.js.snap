@@ -174,10 +174,11 @@ Array [
                 >
                   <div>
                     <span
-                      className="Price__Span-cHkFMo dgppgF"
+                      className="Price__Span-cHkFMo hTtbIl"
                     >
                       $12.99 - $19.99
                     </span>
+                    
                   </div>
                 </div>
               </div>
@@ -241,10 +242,11 @@ Array [
                 >
                   <div>
                     <span
-                      className="Price__Span-cHkFMo dgppgF"
+                      className="Price__Span-cHkFMo hTtbIl"
                     >
                       $12.99 - $19.99
                     </span>
+                    
                   </div>
                 </div>
               </div>
