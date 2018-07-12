@@ -40,20 +40,22 @@ const items = [{
 // END TODO
 
 const styles = (theme) => ({
-  title: {
-    fontWeight: theme.typography.fontWeightRegular,
-    marginTop: "1.6rem",
-    marginBottom: "3.1rem"
-  },
   checkoutButtonsContainer: {
     backgroundColor: theme.palette.reaction.black02,
     padding: theme.spacing.unit * 2
   },
   customerSupportCopy: {
     paddingLeft: `${theme.spacing.unit * 4}px !important`
+  },
+  phoneNumber: {
+    fontWeight: theme.typography.fontWeightBold
+  },
+  title: {
+    fontWeight: theme.typography.fontWeightRegular,
+    marginTop: "1.6rem",
+    marginBottom: "3.1rem"
   }
 });
-
 
 @trackProductViewed()
 @withStyles(styles)
@@ -99,7 +101,7 @@ class CartPage extends Component {
           </Grid>
           <Grid className={classes.customerSupportCopy} item>
             <Typography paragraph variant="caption">
-              Have questions? call 1.800.555.5555
+              Have questions? call <span className={classes.phoneNumber}>1.800.555.5555</span>
             </Typography>
             <Typography paragraph variant="caption">
               <Link href="#">
