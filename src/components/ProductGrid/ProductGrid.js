@@ -6,6 +6,7 @@ import ProductItem from "components/ProductItem";
 import PageStepper from "components/PageStepper";
 import PageSizeSelector from "components/PageSizeSelector";
 import SortBySelector from "components/SortBySelector";
+import ProductGridEmptyMessage from "./ProductGridEmptyMessage";
 
 const styles = (theme) => ({
   root: {
@@ -75,7 +76,7 @@ export default class ProductGrid extends Component {
   render() {
     const { catalogItems, classes, pageInfo } = this.props;
 
-    if (!catalogItems) return null;
+    if (!catalogItems) return <ProductGridEmptyMessage />;
 
     return (
       <section className={classes.root}>
