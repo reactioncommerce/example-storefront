@@ -9,7 +9,7 @@ const styles = (theme) => ({
   container: {
     display: "flex",
     alignItems: "center",
-    maxWidth: theme.grid.productGridMaxWidth,
+    maxWidth: theme.layout.mainContentMaxWidth,
     marginLeft: "auto",
     marginRight: "auto"
   },

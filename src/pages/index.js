@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { observer, inject } from "mobx-react";
 import Helmet from "react-helmet";
@@ -54,7 +54,7 @@ class Shop extends Component {
     const sortBy = query && query.sortby ? query.sortby : uiStore.sortBy;
 
     return (
-      <React.Fragment>
+      <Fragment>
         <Helmet>
           <title>{shop && shop.name}</title>
           <meta name="description" content={shop && shop.description} />
@@ -68,7 +68,7 @@ class Shop extends Component {
           setSortBy={this.setSortBy}
           sortBy={sortBy}
         />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
