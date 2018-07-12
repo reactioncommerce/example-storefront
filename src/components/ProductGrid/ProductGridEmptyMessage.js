@@ -27,6 +27,7 @@ export default class ProductGridEmptyMessage extends Component {
     actionMessage: PropTypes.string,
     classes: PropTypes.object,
     notFoundMessage: PropTypes.string,
+    resetLink: PropTypes.string,
     routingStore: PropTypes.object
   }
 
@@ -36,10 +37,10 @@ export default class ProductGridEmptyMessage extends Component {
   }
 
   render() {
-    const { classes, actionMessage, notFoundMessage, routingStore } = this.props;
+    const { classes, actionMessage, notFoundMessage, resetLink: providedResetLink, routingStore } = this.props;
 
-    let resetLink = routingStore.pathname;
-    if (routingStore && routingStore.query && routingStore.query.slug) {
+    let resetLink = providedResetLink || routingStore.pathname;
+    if (!providedResetLink && routingStore && routingStore.query && routingStore.query.slug) {
       resetLink = `${routingStore.pathname}/${routingStore.query.slug}`;
     }
 
