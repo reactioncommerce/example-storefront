@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
+import Error from "../../pages/_error";
 import catalogItemProductQuery from "./catalogItemProduct.gql";
 
 /**
@@ -12,21 +13,25 @@ import catalogItemProductQuery from "./catalogItemProduct.gql";
 export default (Component) => (
   class WithCatalogItem extends React.Component {
     static propTypes = {
-      router: PropTypes.object.isRequired
+      router: PropTypes.object.isRequired,
+      shop: PropTypes.object.isRequired
     }
 
     render() {
-      const { slugOrId } = this.props.router.query;
+      const { router: { query }, shop } = this.props;
 
       return (
-        <Query query={catalogItemProductQuery} variables={{ slugOrId }}>
+        <Query query={catalogItemProductQuery} variables={{ slugOrId: query.slugOrId }}>
           {({ loading, data }) => {
             if (loading) return null;
 
-            const { catalogItemProduct } = data || {};
+            const { catalogItemProduct } = data;
 
-            return (
+            // If no product was found, render "Not Found" page
+            return catalogItemProduct ? (
               <Component {...this.props} product={catalogItemProduct.product} />
+            ) : (
+              (<Error shop={shop} subtitle="Not Found" />)
             );
           }}
         </Query>
