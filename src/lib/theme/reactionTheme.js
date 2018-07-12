@@ -125,6 +125,11 @@ const theme = createMuiTheme({
   borderRadii: {
     default: 2
   },
+  boxShadow: {
+    depth0: "none",
+    depth1: "0 0 1rem -0.5rem #808080",
+    depth2: "0 0 1rem #808080"
+  },
   spacing: {
     unithalf: 4
   },
