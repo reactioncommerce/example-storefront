@@ -24,6 +24,14 @@ class UIStore {
   @observable isCartOpen = false;
 
   /**
+   * Is the cart popover open or closed
+   *
+   * @type Boolean
+   * @default false
+   */
+  @observable isCartPopoverOpen = false;
+
+  /**
    * Is the menu drawer open or closed
    *
    * @type Boolean
@@ -84,6 +92,14 @@ class UIStore {
 
   @action toggleCartOpen() {
     this.isCartOpen = !this.isCartOpen;
+  }
+
+  @action openCartPopover() {
+    this.isCartPopoverOpen = true;
+  }
+
+  @action closeCartPopover() {
+    this.isCartPopoverOpen = false;
   }
 
   @action closeMenuDrawer() {
