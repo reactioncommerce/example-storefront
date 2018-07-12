@@ -76,7 +76,7 @@ export default class ProductGrid extends Component {
   render() {
     const { catalogItems, classes, pageInfo } = this.props;
 
-    if (!catalogItems) return <ProductGridEmptyMessage />;
+    if (!catalogItems || !catalogItems.length) return <ProductGridEmptyMessage />;
 
     return (
       <section className={classes.root}>
