@@ -5,14 +5,20 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Link from "components/Link";
 
-const styles = {
+const styles = (theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginTop: "2rem"
+    marginTop: "4rem"
+  },
+  errorMessage: {
+    color: theme.palette.reaction.black65
+  },
+  errorLink: {
+    color: theme.palette.reaction.coolGrey400
   }
-};
+});
 
 @withStyles(styles)
 export default class Error extends Component {
@@ -45,8 +51,8 @@ export default class Error extends Component {
           <Typography> `An error ${this.props.statusCode} occurred on server`</Typography>
         ) : (
           <Fragment>
-            <Typography paragraph>Sorry! We couldn't find what you're looking for.</Typography>
-            <Typography>
+            <Typography className={classes.errorMessage} paragraph>Sorry! We couldn't find what you're looking for.</Typography>
+            <Typography className={classes.errorLink}>
               <Link route="/">Home</Link>
             </Typography>
           </Fragment>
