@@ -30,8 +30,13 @@ export default class Error extends Component {
   }
 
   static getInitialProps({ res, err }) {
-    // eslint-disable-next-line
-    const statusCode = res ? res.statusCode : err ? err.statusCode : null;
+    let { statusCode } = res;
+
+    // Did not receive an OK response
+    if (!statusCode) {
+      statusCode = err ? err.statusCode : null;
+    }
+
     return { statusCode };
   }
 
@@ -40,15 +45,15 @@ export default class Error extends Component {
   }
 
   render() {
-    const { classes, shop, subtitle } = this.props;
+    const { classes, shop, statusCode, subtitle } = this.props;
 
     return (
       <div className={classes.root}>
         <Helmet>
           <title> {shop && shop.name} | {subtitle}</title>
         </Helmet>
-        {this.props.statusCode ? (
-          <Typography> `An error ${this.props.statusCode} occurred on server`</Typography>
+        {statusCode ? (
+          <Typography> `An error ${statusCode} occurred on server`</Typography>
         ) : (
           <Fragment>
             <Typography className={classes.errorMessage} paragraph>Sorry! We couldn't find what you're looking for.</Typography>
