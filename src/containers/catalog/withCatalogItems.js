@@ -41,7 +41,7 @@ export default (Component) => {
           {({ loading, data, fetchMore }) => {
             if (loading) return null;
 
-            const { catalogItems } = data || {};
+            const { catalogItems } = data;
 
             return (
               <Component
