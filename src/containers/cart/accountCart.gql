@@ -1,0 +1,7 @@
+#import "./cartFragment.gql"
+
+query cart($accountId: String, $shopId: String) {
+  accountCartByAccountId(acountId: $accountId, shopId: $shopId) {
+    ...CartCommon
+  }
+}
