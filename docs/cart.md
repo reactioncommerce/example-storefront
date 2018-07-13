@@ -4,7 +4,7 @@
 
 ### Anonymous
 
-Anonymous carts are retrieved by `ID` and `token`, where both the `ID` and the `token` are returned from the `createCart` mutation and both the `ID` and `token` are stored locally to the client/session.
+Anonymous carts are retrieved by `cartId` and `token`, where both the `cartId` and the `token` are returned from the `createCart` mutation and both the `cartId` and `token` are stored locally to the client/session.
 
 ### Account
 
@@ -19,9 +19,9 @@ Check whether there is an anonymous `cartId` and `token` stored. It may assumed 
 
 If we have an anonymous `cartId` and `token`, and we're logged in, call the `reconcileCart` mutation and use the returned cart as the cart object. Assuming the reconciliation is successful, delete the `cartId` and `token` from local storage.
 
-Otherwise, if we are logged in, get the account cart using `accountCartByAccountId` query. The primary shop ID  is used for now, though this should respect the marketplace shared cart setting in the future.
+Otherwise, if we are logged in, get the account cart using `accountCartByAccountId` query with an `accountId` and `shopId`. The primary shop ID  is used for now, though this should respect the marketplace shared cart setting in the future.
 
-Otherwise, if we have an anonymous cart `ID` and `token`, get the anonymous cart using `anonymousCartByCartId ` query
+Otherwise, if we have an anonymous `cartId` and `token`, get the anonymous cart using `anonymousCartByCartId ` query
 
 ## @withCart decorator
 
