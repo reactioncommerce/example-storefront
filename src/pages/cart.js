@@ -65,7 +65,12 @@ const styles = (theme) => ({
 @withStyles(styles)
 class CartPage extends Component {
   static propTypes = {
-    classes: PropTypes.object
+    classes: PropTypes.object,
+    shop: PropTypes.shape({
+      currency: PropTypes.shape({
+        code: PropTypes.string.isRequired
+      })
+    })
   }
 
   handleCheckOut = () => {
