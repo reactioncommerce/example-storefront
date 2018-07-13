@@ -1,13 +1,22 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { observer, inject } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import Helmet from "react-helmet";
 import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 
-@inject("routingStore", "uiStore")
+const styles = {
+  root: {
+  }
+};
+
+@inject("uiStore")
 @observer
+@withStyles(styles)
 class Checkout extends Component {
   static propTypes = {
+    classes: PropTypes.object,
     shop: PropTypes.shape({
       currency: PropTypes.shape({
         code: PropTypes.string.isRequired
@@ -22,12 +31,23 @@ class Checkout extends Component {
     return (
       <Fragment>
         <Helmet>
-          <title>{shop && shop.name}</title>
+          <title>{shop && shop.name} | Checkout</title>
           <meta name="description" content={shop && shop.description} />
         </Helmet>
-        <Typography variant="display2">
-          Checkout
-        </Typography>
+        <section>
+          <Grid container spacing={24}>
+            <Grid item xs={12} md={8}>
+              <Typography>
+                Checkout Actions
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <Typography>
+                Checkout Cart Review
+              </Typography>
+            </Grid>
+          </Grid>
+        </section>
       </Fragment>
     );
   }
