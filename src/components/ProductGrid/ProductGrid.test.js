@@ -14,6 +14,14 @@ const uiStore = {
   }
 };
 
+const routingStore = {
+  pathname: "tag",
+  query: {
+    slug: "test-tag",
+    querystring: "?this&that"
+  }
+};
+
 test("basic snapshot", () => {
   const pageInfo = {
     hasNextPage: false,
@@ -26,7 +34,7 @@ test("basic snapshot", () => {
 
   const component = renderer.create((
     <MuiThemeProvider theme={theme}>
-      <Provider uiStore={uiStore}>
+      <Provider routingStore={routingStore} uiStore={uiStore}>
         <ProductGrid
           catalogItems={products}
           currencyCode="USD"
@@ -56,7 +64,7 @@ test("Empty product grid message", () => {
 
   const component = renderer.create((
     <MuiThemeProvider theme={theme}>
-      <Provider uiStore={uiStore}>
+      <Provider routingStore={routingStore} uiStore={uiStore}>
         <ProductGrid
           catalogItems={null}
           currencyCode="USD"

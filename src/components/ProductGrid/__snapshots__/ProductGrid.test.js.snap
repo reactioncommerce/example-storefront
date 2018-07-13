@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Empty product grid message 1`] = `
+<div
+  className="inject-ProductGridEmptyMessage-with-routingStore-root-203"
+>
+  <p
+    className="MuiTypography-root-152 MuiTypography-body1-161 MuiTypography-paragraph-170 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-205"
+  >
+    Sorry! We couldn't find what you're looking for.
+  </p>
+  <p
+    className="MuiTypography-root-152 MuiTypography-body1-161 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-204"
+  >
+    <a
+      className="WithTracking-Link--link-131"
+      href="tag/test-tag"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="link"
+      tabIndex={0}
+      tracking={
+        Object {
+          "getTrackingData": [Function],
+          "trackEvent": [Function],
+        }
+      }
+    >
+      Clear filters
+    </a>
+  </p>
+</div>
+`;
+
 exports[`basic snapshot 1`] = `
 <section
   className="ProductGrid-root-1"
