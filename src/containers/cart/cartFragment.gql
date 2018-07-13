@@ -1,0 +1,3 @@
+fragment CartCommon on Cart {
+  _id
+}
