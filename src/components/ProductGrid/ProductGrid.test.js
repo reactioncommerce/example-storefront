@@ -43,3 +43,33 @@ test("basic snapshot", () => {
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+test("Empty product grid message", () => {
+  const pageInfo = {
+    hasNextPage: false,
+    hasPreviousPage: true,
+    loadNextPage: () => {},
+    loadPreviousPage: () => {},
+    startCursor: "",
+    endCursor: ""
+  };
+
+  const component = renderer.create((
+    <MuiThemeProvider theme={theme}>
+      <Provider uiStore={uiStore}>
+        <ProductGrid
+          catalogItems={null}
+          currencyCode="USD"
+          pageInfo={pageInfo}
+          pageSize={20}
+          primaryShopId="123"
+          setPageSize={() => true}
+          setSortBy={() => true}
+          sortBy={"updatedAt-desc"}
+        />
+      </Provider>
+    </MuiThemeProvider>
+  ));
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
