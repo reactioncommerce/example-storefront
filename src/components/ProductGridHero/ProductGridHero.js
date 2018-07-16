@@ -11,7 +11,7 @@ const styles = (theme) => ({
     objectFit: "cover"
   },
   heroGridContainer: {
-    maxWidth: theme.grid.productGridMaxWidth,
+    maxWidth: theme.layout.mainContentMaxWidth,
     margin: "40px auto"
   }
 });
@@ -28,24 +28,16 @@ export default class ProductGridHero extends Component {
     tag: {}
   };
 
-  renderHeroImage() {
-    const { tag: { heroMediaUrl } } = this.props;
-
-    if (!heroMediaUrl) {
-      return null;
-    }
-
-    return <Img isHero src={heroMediaUrl} />;
-  }
-
   render() {
-    const { classes } = this.props;
+    const { classes, tag: { heroMediaUrl } } = this.props;
+
+    if (!heroMediaUrl) return null;
 
     return (
       <section className={classes.heroGridContainer}>
         <Grid container spacing={24}>
           <Grid item xs={12}>
-            {this.renderHeroImage()}
+            <Img isHero src={heroMediaUrl} />
           </Grid>
         </Grid>
       </section>

@@ -14,6 +14,14 @@ const uiStore = {
   }
 };
 
+const routingStore = {
+  pathname: "tag",
+  query: {
+    slug: "test-tag",
+    querystring: "?this&that"
+  }
+};
+
 test("basic snapshot", () => {
   const pageInfo = {
     hasNextPage: false,
@@ -26,9 +34,39 @@ test("basic snapshot", () => {
 
   const component = renderer.create((
     <MuiThemeProvider theme={theme}>
-      <Provider uiStore={uiStore}>
+      <Provider routingStore={routingStore} uiStore={uiStore}>
         <ProductGrid
           catalogItems={products}
+          currencyCode="USD"
+          pageInfo={pageInfo}
+          pageSize={20}
+          primaryShopId="123"
+          setPageSize={() => true}
+          setSortBy={() => true}
+          sortBy={"updatedAt-desc"}
+        />
+      </Provider>
+    </MuiThemeProvider>
+  ));
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+test("Empty product grid message", () => {
+  const pageInfo = {
+    hasNextPage: false,
+    hasPreviousPage: true,
+    loadNextPage: () => {},
+    loadPreviousPage: () => {},
+    startCursor: "",
+    endCursor: ""
+  };
+
+  const component = renderer.create((
+    <MuiThemeProvider theme={theme}>
+      <Provider routingStore={routingStore} uiStore={uiStore}>
+        <ProductGrid
+          catalogItems={null}
           currencyCode="USD"
           pageInfo={pageInfo}
           pageSize={20}

@@ -1,5 +1,6 @@
 import { observable, action } from "mobx";
 import getConfig from "next/config";
+import { PAGE_SIZES, inPageSizes } from "lib/utils/pageSizes";
 
 /**
  * A mobx store for UI data
@@ -23,6 +24,14 @@ class UIStore {
   @observable isCartOpen = false;
 
   /**
+   * Is the cart popover open or closed
+   *
+   * @type Boolean
+   * @default false
+   */
+  @observable isCartPopoverOpen = false;
+
+  /**
    * Is the menu drawer open or closed
    *
    * @type Boolean
@@ -35,7 +44,7 @@ class UIStore {
    *
    * @type Number
    */
-  @observable pageSize = 20;
+  @observable pageSize = PAGE_SIZES._20;
 
   /**
    * The product grid's sorting order
@@ -85,6 +94,14 @@ class UIStore {
     this.isCartOpen = !this.isCartOpen;
   }
 
+  @action openCartPopover() {
+    this.isCartPopoverOpen = true;
+  }
+
+  @action closeCartPopover() {
+    this.isCartPopoverOpen = false;
+  }
+
   @action closeMenuDrawer() {
     this.isMenuDrawerOpen = false;
   }
@@ -94,7 +111,8 @@ class UIStore {
   }
 
   @action setPageSize = (size) => {
-    this.pageSize = size;
+    // Validate page size
+    this.pageSize = inPageSizes(size) ? size : PAGE_SIZES._20;
   }
 
   @action setSortBy = (sortBy) => {

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
@@ -6,13 +6,9 @@ import ProductItem from "components/ProductItem";
 import PageStepper from "components/PageStepper";
 import PageSizeSelector from "components/PageSizeSelector";
 import SortBySelector from "components/SortBySelector";
+import ProductGridEmptyMessage from "./ProductGridEmptyMessage";
 
 const styles = (theme) => ({
-  root: {
-    maxWidth: theme.grid.productGridMaxWidth,
-    marginLeft: "auto",
-    marginRight: "auto"
-  },
   filters: {
     justifyContent: "flex-end",
     marginBottom: theme.spacing.unit * 2
@@ -73,19 +69,19 @@ export default class ProductGrid extends Component {
   }
 
   render() {
-    const { catalogItems, classes, pageInfo } = this.props;
+    const { catalogItems, pageInfo } = this.props;
 
-    if (!catalogItems) return null;
+    if (!catalogItems || !catalogItems.length) return <ProductGridEmptyMessage />;
 
     return (
-      <section className={classes.root}>
+      <Fragment>
         {this.renderFilters()}
         <Grid container spacing={24}>
           {(catalogItems && catalogItems.length) ? catalogItems.map(this.renderProduct) : null}
         </Grid>
 
         { pageInfo && <PageStepper pageInfo={pageInfo} /> }
-      </section>
+      </Fragment>
     );
   }
 }
