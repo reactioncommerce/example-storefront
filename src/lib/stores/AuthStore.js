@@ -55,6 +55,14 @@ class AuthStore {
       Cookies.remove(this.tokenName);
     }
   }
+
+  get isAuthenticated() {
+    if (this.accountId) {
+      return true;
+    }
+
+    return false;
+  }
 }
 
 export default AuthStore;
