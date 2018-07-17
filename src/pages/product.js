@@ -1,11 +1,20 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import withCart from "containers/cart/withCart";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import ProductDetail from "components/ProductDetail";
 
+@withCart
 @withCatalogItemProduct
 class ProductDetailPage extends Component {
   static propTypes = {
+    /**
+     * Function to add items to a cart, usually using the addItemsToCart from @withCart decorator.
+     *
+     * @example addItemsToCart(CartItemInput)
+     * @type function
+     */
+    addItemsToCart: PropTypes.func,
     /**
      * Catalog Product item
      */
@@ -25,8 +34,10 @@ class ProductDetailPage extends Component {
 
     return (
       <ProductDetail
-        product={this.props.product}
+        addItemsToCart={this.props.addItemsToCart}
         currencyCode={currencyCode}
+        product={this.props.product}
+        shop={this.props.shop}
         tags={this.props.tags}
       />
     );
