@@ -27,7 +27,9 @@ export default (Component) => (
         cartId: PropTypes.string,
         setCartIdFromLocalStorage: PropTypes.func
       }),
-      primaryShopId: PropTypes.string
+      shop: PropTypes.shape({
+        _id: PropTypes.string
+      })
     }
 
     componentDidMount() {
@@ -35,8 +37,19 @@ export default (Component) => (
       this.props.cartStore.setCartIdFromLocalStorage();
     }
 
-    handleAddItemsToCart = (mutations, input) => {
-      const { authStore, cartStore } = this.props;
+    /**
+     * @name handleAddItemsToCart
+     * @summary Called when addItemsToCart callback is called
+     * @private
+     * @ignore
+     * @param {Object} mutations An object containing Apollo GraphQL mutation functions
+     * @param {Function} mutations.createCart Create cart mutation function
+     * @param {Object} data An an object containing input data for mutations
+     * @param {Array} data.items An an array of CartItemInput objects
+     * @returns {undefined} No return
+     */
+    handleAddItemsToCart(mutations, data) {
+      const { authStore, cartStore, shop } = this.props;
 
       // Given an anonymous user, create or update an anonymous cart with provided items
       if (authStore.isAuthenticated === false) {
@@ -45,7 +58,8 @@ export default (Component) => (
           mutations.addItemsToCart({
             variables: {
               input: {
-                items: input.cartItems
+                items: data.items,
+                shopId: shop._id
               }
             }
           });
@@ -54,7 +68,8 @@ export default (Component) => (
           mutations.createCart({
             variables: {
               input: {
-                items: input.cartItems
+                items: data.items,
+                shopId: shop._id
               }
             }
           });
@@ -63,7 +78,7 @@ export default (Component) => (
     }
 
     render() {
-      const { authStore, cartStore, primaryShopId } = this.props;
+      const { authStore, cartStore, shop } = this.props;
 
       // Anonymous cart query
       let query = anonymousCartQuery;
@@ -77,7 +92,7 @@ export default (Component) => (
         query = accountCartQuery;
         variables = {
           accountId: authStore.accountId,
-          shopId: primaryShopId
+          shopId: shop._id
         };
       }
 
@@ -85,22 +100,17 @@ export default (Component) => (
         <Mutation mutation={createCartMutation}>
           {(createCart) => (
             <Query query={query} variables={variables}>
-              {({ loading, error, data }) => {
-                if (loading || error) return null;
-                if (!data || !data.tag) return null;
-
-                return (
-                  <Component
-                    {...this.props}
-                    addItemsToCart={(cartItems) => {
-                      this.handleAddItemsToCart({
-                        createCart
-                      }, { cartItems });
-                    }}
-                    cart={data.cart}
-                  />
-                );
-              }}
+              {({ data }) => (
+                <Component
+                  {...this.props}
+                  addItemsToCart={(items) => {
+                    this.handleAddItemsToCart({
+                      createCart
+                    }, { items });
+                  }}
+                  cart={data && data.cart}
+                />
+              )}
             </Query>
           )}
         </Mutation>
