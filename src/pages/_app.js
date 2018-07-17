@@ -25,7 +25,6 @@ export default class App extends NextApp {
 
   render() {
     const { Component, ...rest } = this.props;
-
     return (
       <Container>
         <Layout>

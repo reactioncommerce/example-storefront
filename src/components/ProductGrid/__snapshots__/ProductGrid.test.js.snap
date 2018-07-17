@@ -2,18 +2,18 @@
 
 exports[`Empty product grid message 1`] = `
 <div
-  className="inject-ProductGridEmptyMessage-with-routingStore-root-203"
+  className="inject-ProductGridEmptyMessage-with-routingStore-root-202"
 >
   <p
-    className="MuiTypography-root-152 MuiTypography-body1-161 MuiTypography-paragraph-170 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-205"
+    className="MuiTypography-root-151 MuiTypography-body1-160 MuiTypography-paragraph-169 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-204"
   >
     Sorry! We couldn't find what you're looking for.
   </p>
   <p
-    className="MuiTypography-root-152 MuiTypography-body1-161 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-204"
+    className="MuiTypography-root-151 MuiTypography-body1-160 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-203"
   >
     <a
-      className="WithTracking-Link--link-131"
+      className="WithTracking-Link--link-130"
       href="tag/test-tag"
       onClick={[Function]}
       onKeyDown={[Function]}
