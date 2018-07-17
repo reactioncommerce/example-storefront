@@ -11,11 +11,11 @@ class CartStore {
     this.tokenName = name || "token";
   }
   /**
-  * The cardId for an anonymous cart
+  * The cartId for an anonymous cart
   *
   * @type String
   */
-  @observable cardId = "";
+  @observable cartId = "";
 
   @action setCartId(token) {
     this.token = token || "";
