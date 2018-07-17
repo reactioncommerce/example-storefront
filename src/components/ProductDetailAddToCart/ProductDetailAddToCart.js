@@ -68,11 +68,12 @@ const styles = (theme) => ({
 export default class ProductDetailAddToCart extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    variantId: PropTypes.string
+    onClick: PropTypes.func
   };
 
   static defaultProps = {
-    classes: {}
+    classes: {},
+    onClick: () => {}
   };
 
   state = {
@@ -80,14 +81,8 @@ export default class ProductDetailAddToCart extends Component {
   };
 
   handleOnClick = () => {
-    // This function currently does nothing. When our GraphQL endpoints are available, we'll use them to add the items to the cart.
-    // To test that this is working, uncomment the following lines and check to see that the data is correct
-
-    // const { variantId } = this.props;
-    // const { addToCartQuantity } = this.state;
-
-    // console.log("ID to add to cart: ", variantId);
-    // console.log("Quantity to add to cart: ", addToCartQuantity);
+    // Pass chosen quantity to onClick callback
+    this.props.onClick(this.state.addToCartQuantity);
 
     // Reset cart quantity to 1 after items are added to cart
     this.setState({ addToCartQuantity: 1 });
