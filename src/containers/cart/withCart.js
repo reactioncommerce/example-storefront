@@ -5,6 +5,7 @@ import { inject, observer } from "mobx-react";
 import accountCartQuery from "./accountCart.gql";
 import anonymousCartQuery from "./anonymousCart.gql";
 import createCartMutation from "./createCartMutation.gql";
+import addCartItemsMutation from "./addCartItemsMutation.gql";
 
 /**
  * withCart higher order query component for creating, fetching, and updating carts
@@ -25,7 +26,8 @@ export default (Component) => (
       }),
       cartStore: PropTypes.shape({
         cartId: PropTypes.string,
-        setCartIdFromLocalStorage: PropTypes.func
+        token: PropTypes.string,
+        setAnonymousCartCredentialsFromLocalStorage: PropTypes.func
       }),
       shop: PropTypes.shape({
         _id: PropTypes.string
@@ -34,7 +36,7 @@ export default (Component) => (
 
     componentDidMount() {
       // Update the cartId if necessary
-      this.props.cartStore.setCartIdFromLocalStorage();
+      this.props.cartStore.setAnonymousCartCredentialsFromLocalStorage();
     }
 
     /**
@@ -42,30 +44,32 @@ export default (Component) => (
      * @summary Called when addItemsToCart callback is called
      * @private
      * @ignore
-     * @param {Object} mutations An object containing Apollo GraphQL mutation functions
-     * @param {Function} mutations.createCart Create cart mutation function
+     * @param {Function} mutation An Apollo mutation function
      * @param {Object} data An an object containing input data for mutations
      * @param {Array} data.items An an array of CartItemInput objects
      * @returns {undefined} No return
      */
-    handleAddItemsToCart(mutations, data) {
+    handleAddItemsToCart(mutation, data) {
       const { authStore, cartStore, shop } = this.props;
 
       // Given an anonymous user, create or update an anonymous cart with provided items
       if (authStore.isAuthenticated === false) {
         if (cartStore.hasAnonymousCart) {
+          const { cartId, token } = cartStore;
+
           // Add items to an existing anonymous cart
-          mutations.addItemsToCart({
+          mutation({
             variables: {
               input: {
                 items: data.items,
-                shopId: shop._id
+                token,
+                cartId
               }
             }
           });
         } else {
           // Create a new cart with items
-          mutations.createCart({
+          mutation({
             variables: {
               input: {
                 items: data.items,
@@ -84,7 +88,7 @@ export default (Component) => (
       let query = anonymousCartQuery;
       let variables = {
         cartId: cartStore.cartId,
-        token: authStore.token
+        token: cartStore.token
       };
 
       // With an authenticated user, update the cart query to find an authenticated cart
@@ -96,19 +100,33 @@ export default (Component) => (
         };
       }
 
+      let mutation = createCartMutation;
+
+      if (cartStore.hasAnonymousCart) {
+        mutation = addCartItemsMutation;
+      }
+
       return (
-        <Mutation mutation={createCartMutation}>
-          {(createCart) => (
+        <Mutation
+          mutation={mutation}
+          update={(cache, { data: mutationData }) => {
+            if (mutationData && mutationData.createCart) {
+              const { cart, token } = mutationData.createCart;
+              cartStore.setAnonymousCartCredentials(cart._id, token);
+            }
+          }}
+        >
+          {(mutationFunction) => (
             <Query query={query} variables={variables}>
-              {({ data }) => (
+              {({ data: cartData }) => (
                 <Component
                   {...this.props}
                   addItemsToCart={(items) => {
-                    this.handleAddItemsToCart({
-                      createCart
-                    }, { items });
+                    this.handleAddItemsToCart(mutationFunction, {
+                      items
+                    });
                   }}
-                  cart={data && data.cart}
+                  cart={cartData && cartData.cart}
                 />
               )}
             </Query>
