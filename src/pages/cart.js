@@ -67,9 +67,8 @@ class CartPage extends Component {
   static propTypes = {
     classes: PropTypes.object,
     shop: PropTypes.shape({
-      currency: PropTypes.shape({
-        code: PropTypes.string.isRequired
-      })
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string
     })
   }
 
