@@ -11,6 +11,7 @@ import { NavigationMobile, NavigationToggleMobile } from "components/NavigationM
 import { CartToggle } from "components/Cart";
 import AccountDropdown from "components/AccountDropdown";
 import CartPopover from "components/CartPopover";
+import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import Link from "components/Link";
 
 const styles = (theme) => ({
@@ -41,6 +42,9 @@ const styles = (theme) => ({
 class Header extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    shop: PropTypes.shape({
+      name: PropTypes.string
+    }).isRequired,
     uiStore: PropTypes.shape({
       toggleCartOpen: PropTypes.func.isRequired,
       toggleMenuDrawerOpen: PropTypes.func.isRequired
@@ -60,7 +64,7 @@ class Header extends Component {
   };
 
   render() {
-    const { classes: { appBar, controls, toolbar, title } } = this.props;
+    const { classes: { appBar, controls, toolbar, title }, shop } = this.props;
 
     return (
       <AppBar position="static" elevation={0} className={appBar}>
@@ -71,7 +75,9 @@ class Header extends Component {
 
           <div className={controls}>
             <Typography className={title} color="inherit" variant="title">
-              <Link route="/">reaction</Link>
+              <Link route="/">
+                <ShopLogo shopName={shop.name} />
+              </Link>
             </Typography>
 
             <Hidden smDown initialWidth={"md"}>

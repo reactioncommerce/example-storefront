@@ -24,11 +24,11 @@ export default class App extends NextApp {
   }
 
   render() {
-    const { Component, ...rest } = this.props;
+    const { Component, shop, ...rest } = this.props;
     return (
       <Container>
-        <Layout>
-          <Component {...rest} />
+        <Layout shop={shop}>
+          <Component shop={shop} {...rest} />
         </Layout>
       </Container>
     );
