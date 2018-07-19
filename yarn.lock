@@ -904,9 +904,9 @@
   dependencies:
     "@ndhoule/each" "^2.0.1"
 
-"@reactioncommerce/components@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.7.0.tgz#1608ce84744e3fcbf2f823166015f3915eec247e"
+"@reactioncommerce/components@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.8.0.tgz#3be8c36292f3438dac2bf0104bb477e9afdf5215"
   dependencies:
     "@material-ui/core" "^1.4.0"
     lodash.debounce "^4.0.8"
