@@ -25,8 +25,8 @@ export default (Component) => (
         isAuthenticated: PropTypes.bool
       }),
       cartStore: PropTypes.shape({
-        cartId: PropTypes.string,
-        token: PropTypes.string,
+        anonymousCartId: PropTypes.string,
+        anonymousCartToken: PropTypes.string,
         setAnonymousCartCredentialsFromLocalStorage: PropTypes.func
       }),
       shop: PropTypes.shape({
@@ -35,7 +35,7 @@ export default (Component) => (
     }
 
     componentDidMount() {
-      // Update the cartId if necessary
+      // Update the anonymousCartId if necessary
       this.props.cartStore.setAnonymousCartCredentialsFromLocalStorage();
     }
 
@@ -55,15 +55,15 @@ export default (Component) => (
       // Given an anonymous user, create or update an anonymous cart with provided items
       if (authStore.isAuthenticated === false) {
         if (cartStore.hasAnonymousCart) {
-          const { cartId, token } = cartStore;
+          const { anonymousCartId, anonymousCartToken } = cartStore;
 
           // Add items to an existing anonymous cart
           mutation({
             variables: {
               input: {
                 items: data.items,
-                token,
-                cartId
+                token: anonymousCartToken,
+                cartId: anonymousCartId
               }
             }
           });
@@ -87,8 +87,8 @@ export default (Component) => (
       // Anonymous cart query
       let query = anonymousCartQuery;
       let variables = {
-        cartId: cartStore.cartId,
-        token: cartStore.token
+        anonymousCartId: cartStore.anonymousCartId,
+        token: cartStore.anonymousCartToken
       };
 
       // With an authenticated user, update the cart query to find an authenticated cart
