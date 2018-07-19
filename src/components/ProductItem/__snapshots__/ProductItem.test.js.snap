@@ -41,17 +41,18 @@ exports[`basic snapshot 1`] = `
           >
             Reaction Sample Product
           </aside>
-          <p
+          <div
             className="MuiTypography-root-23 MuiTypography-body1-32"
           >
             <div>
               <span
-                className="Price__Span-cHkFMo dgppgF"
+                className="Price__Span-cHkFMo hTtbIl"
               >
                 $12.99 - $19.99
               </span>
+              
             </div>
-          </p>
+          </div>
         </div>
         <div>
           <p

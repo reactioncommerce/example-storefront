@@ -2,514 +2,511 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="inject-WithTracking-ProductDetail--with-routingStore-uiStore-root-1"
+  className="MuiGrid-container-3 MuiGrid-spacing-xs-24-26"
 >
   <div
-    className="MuiGrid-container-5 MuiGrid-spacing-xs-24-28 inject-WithTracking-ProductDetail--with-routingStore-uiStore-pdpContainer-2"
+    className="MuiGrid-item-4 MuiGrid-grid-xs-12-41 inject-WithTracking-ProductDetail--with-routingStore-uiStore-breadcrumbGrid-2"
   >
     <div
-      className="MuiGrid-item-6 MuiGrid-grid-xs-12-43 inject-WithTracking-ProductDetail--with-routingStore-uiStore-breadcrumbGrid-4"
+      className="Breadcrumbs-container-94"
     >
-      <div
-        className="Breadcrumbs-container-96"
-      >
-        <a
-          className="WithTracking-Link--link-99"
-          href="/"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          role="link"
-          tabIndex={0}
-          tracking={
-            Object {
-              "getTrackingData": [Function],
-              "trackEvent": [Function],
-            }
+      <a
+        className="WithTracking-Link--link-97"
+        href="/"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="link"
+        tabIndex={0}
+        tracking={
+          Object {
+            "getTrackingData": [Function],
+            "trackEvent": [Function],
           }
+        }
+      >
+        <span
+          className="Breadcrumbs-breadcrumbLink-95"
         >
-          <span
-            className="Breadcrumbs-breadcrumbLink-97"
-          >
-            Home
-          </span>
-        </a>
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root-100 Breadcrumbs-breadcrumbIcon-98"
-          color={undefined}
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-          />
-        </svg>
-        <a
-          className="WithTracking-Link--link-99"
-          href="/tag/tag-a"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          role="link"
-          tabIndex={0}
-          tracking={
-            Object {
-              "getTrackingData": [Function],
-              "trackEvent": [Function],
-            }
+          Home
+        </span>
+      </a>
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-98 Breadcrumbs-breadcrumbIcon-96"
+        color={undefined}
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+        />
+      </svg>
+      <a
+        className="WithTracking-Link--link-97"
+        href="/tag/tag-a"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="link"
+        tabIndex={0}
+        tracking={
+          Object {
+            "getTrackingData": [Function],
+            "trackEvent": [Function],
           }
+        }
+      >
+        <span
+          className="Breadcrumbs-breadcrumbLink-95"
         >
-          <span
-            className="Breadcrumbs-breadcrumbLink-97"
-          >
-            Tag A
-          </span>
-        </a>
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root-100 Breadcrumbs-breadcrumbIcon-98"
-          color={undefined}
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-          />
-        </svg>
-        <a
-          className="WithTracking-Link--link-99"
-          href="/product/example-product"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          role="link"
-          tabIndex={0}
-          tracking={
-            Object {
-              "getTrackingData": [Function],
-              "trackEvent": [Function],
-            }
+          Tag A
+        </span>
+      </a>
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-98 Breadcrumbs-breadcrumbIcon-96"
+        color={undefined}
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+        />
+      </svg>
+      <a
+        className="WithTracking-Link--link-97"
+        href="/product/example-product"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="link"
+        tabIndex={0}
+        tracking={
+          Object {
+            "getTrackingData": [Function],
+            "trackEvent": [Function],
           }
-        >
-          <span
-            className="Breadcrumbs-breadcrumbLink-97"
-          >
-            Reaction Sample Product
-          </span>
-        </a>
-      </div>
-    </div>
-    <div
-      className="MuiGrid-item-6 MuiGrid-grid-xs-12-43 MuiGrid-grid-sm-6-50"
-    >
-      <div
-        className="inject-WithTracking-ProductDetail--with-routingStore-uiStore-section-3"
+        }
       >
-        <div
-          className="MuiGrid-container-5 MediaGallery-root-106"
-        >
-          <div
-            className="MuiGrid-item-6 MuiGrid-grid-xs-12-43 MuiGrid-grid-sm-12-56"
-          >
-            <div
-              className="MediaGallery-featured-107"
-            >
-              <div
-                className="Img-imgWrapper-109 "
-              >
-                <img
-                  alt=""
-                  className="Img-img-111 Img-imgLoading-113 "
-                  src="/resources/placeholder.gif"
-                />
-              </div>
-            </div>
-            <div
-              className="MuiGrid-container-5 MuiGrid-spacing-xs-8-26"
-            >
-              <div
-                className="MuiGrid-item-6 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-46"
-              >
-                <button
-                  className="MuiButtonBase-root-116 MediaGalleryItem-root-115"
-                  disabled={undefined}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex="0"
-                  type="button"
-                >
-                  <div
-                    className="Img-imgWrapper-109 "
-                  >
-                    <img
-                      alt=""
-                      className="Img-img-111 Img-imgLoading-113 "
-                      src="/resources/placeholder.gif"
-                    />
-                  </div>
-                  <span
-                    className="MuiTouchRipple-root-119"
-                  />
-                </button>
-              </div>
-              <div
-                className="MuiGrid-item-6 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-46"
-              >
-                <button
-                  className="MuiButtonBase-root-116 MediaGalleryItem-root-115"
-                  disabled={undefined}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex="0"
-                  type="button"
-                >
-                  <div
-                    className="Img-imgWrapper-109 "
-                  >
-                    <img
-                      alt=""
-                      className="Img-img-111 Img-imgLoading-113 "
-                      src="/resources/placeholder.gif"
-                    />
-                  </div>
-                  <span
-                    className="MuiTouchRipple-root-119"
-                  />
-                </button>
-              </div>
-              <div
-                className="MuiGrid-item-6 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-46"
-              >
-                <button
-                  className="MuiButtonBase-root-116 MediaGalleryItem-root-115"
-                  disabled={undefined}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex="0"
-                  type="button"
-                >
-                  <div
-                    className="Img-imgWrapper-109 "
-                  >
-                    <img
-                      alt=""
-                      className="Img-img-111 Img-imgLoading-113 "
-                      src="/resources/placeholder.gif"
-                    />
-                  </div>
-                  <span
-                    className="MuiTouchRipple-root-119"
-                  />
-                </button>
-              </div>
-              <div
-                className="MuiGrid-item-6 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-46"
-              >
-                <button
-                  className="MuiButtonBase-root-116 MediaGalleryItem-root-115"
-                  disabled={undefined}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex="0"
-                  type="button"
-                >
-                  <div
-                    className="Img-imgWrapper-109 "
-                  >
-                    <img
-                      alt=""
-                      className="Img-img-111 Img-imgLoading-113 "
-                      src="/resources/placeholder.gif"
-                    />
-                  </div>
-                  <span
-                    className="MuiTouchRipple-root-119"
-                  />
-                </button>
-              </div>
-              <div
-                className="MuiGrid-item-6 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-46"
-              >
-                <button
-                  className="MuiButtonBase-root-116 MediaGalleryItem-root-115"
-                  disabled={undefined}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex="0"
-                  type="button"
-                >
-                  <div
-                    className="Img-imgWrapper-109 "
-                  >
-                    <img
-                      alt=""
-                      className="Img-img-111 Img-imgLoading-113 "
-                      src="/resources/placeholder.gif"
-                    />
-                  </div>
-                  <span
-                    className="MuiTouchRipple-root-119"
-                  />
-                </button>
-              </div>
-              <div
-                className="MuiGrid-item-6 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-46"
-              >
-                <button
-                  className="MuiButtonBase-root-116 MediaGalleryItem-root-115"
-                  disabled={undefined}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex="0"
-                  type="button"
-                >
-                  <div
-                    className="Img-imgWrapper-109 "
-                  >
-                    <img
-                      alt=""
-                      className="Img-img-111 Img-imgLoading-113 "
-                      src="/resources/placeholder.gif"
-                    />
-                  </div>
-                  <span
-                    className="MuiTouchRipple-root-119"
-                  />
-                </button>
-              </div>
-              <div
-                className="MuiGrid-item-6 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-46"
-              >
-                <button
-                  className="MuiButtonBase-root-116 MediaGalleryItem-root-115"
-                  disabled={undefined}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex="0"
-                  type="button"
-                >
-                  <div
-                    className="Img-imgWrapper-109 "
-                  >
-                    <img
-                      alt=""
-                      className="Img-img-111 Img-imgLoading-113 "
-                      src="/resources/placeholder.gif"
-                    />
-                  </div>
-                  <span
-                    className="MuiTouchRipple-root-119"
-                  />
-                </button>
-              </div>
-              <div
-                className="MuiGrid-item-6 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-46"
-              >
-                <button
-                  className="MuiButtonBase-root-116 MediaGalleryItem-root-115"
-                  disabled={undefined}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex="0"
-                  type="button"
-                >
-                  <div
-                    className="Img-imgWrapper-109 "
-                  >
-                    <img
-                      alt=""
-                      className="Img-img-111 Img-imgLoading-113 "
-                      src="/resources/placeholder.gif"
-                    />
-                  </div>
-                  <span
-                    className="MuiTouchRipple-root-119"
-                  />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="inject-WithTracking-ProductDetail--with-routingStore-uiStore-section-3"
-      >
-        <section>
-          <h2
-            className="MuiTypography-root-128 MuiTypography-title-134 TagGrid-title-126"
-          >
-            Tags
-          </h2>
-          <div
-            className="MuiGrid-container-5 MuiGrid-spacing-xs-8-26"
-          >
-            <div
-              className="MuiGrid-item-6"
-            >
-              <a
-                className="WithTracking-Link--link-99"
-                href="/tag/shoes"
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                role="link"
-                tabIndex={0}
-                tracking={
-                  Object {
-                    "getTrackingData": [Function],
-                    "trackEvent": [Function],
-                  }
-                }
-              >
-                <div
-                  className="MuiChip-root-152 TagGrid-chip-127"
-                  onClick={undefined}
-                  onKeyDown={[Function]}
-                  role="button"
-                  tabIndex={-1}
-                >
-                  <span
-                    className="MuiChip-label-157"
-                  >
-                    Shoes
-                  </span>
-                </div>
-              </a>
-            </div>
-            <div
-              className="MuiGrid-item-6"
-            >
-              <a
-                className="WithTracking-Link--link-99"
-                href="/tag/shop"
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                role="link"
-                tabIndex={0}
-                tracking={
-                  Object {
-                    "getTrackingData": [Function],
-                    "trackEvent": [Function],
-                  }
-                }
-              >
-                <div
-                  className="MuiChip-root-152 TagGrid-chip-127"
-                  onClick={undefined}
-                  onKeyDown={[Function]}
-                  role="button"
-                  tabIndex={-1}
-                >
-                  <span
-                    className="MuiChip-label-157"
-                  >
-                    Shop
-                  </span>
-                </div>
-              </a>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-    <div
-      className="MuiGrid-item-6 MuiGrid-grid-xs-12-43 MuiGrid-grid-sm-6-50"
-    >
-      <div
-        className="MuiGrid-item-6 MuiGrid-grid-sm-12-56"
-      >
-        <h1
-          className="MuiTypography-root-128 MuiTypography-display2-131 MuiTypography-gutterBottom-145"
+        <span
+          className="Breadcrumbs-breadcrumbLink-95"
         >
           Reaction Sample Product
-        </h1>
-      </div>
+        </span>
+      </a>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-item-4 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-48"
+  >
+    <div
+      className="inject-WithTracking-ProductDetail--with-routingStore-uiStore-section-1"
+    >
       <div
-        className="MuiGrid-item-6 MuiGrid-grid-sm-12-56"
+        className="MuiGrid-container-3 MediaGallery-root-104"
       >
         <div
-          className="MuiTypography-root-128 MuiTypography-title-134 MuiTypography-gutterBottom-145"
+          className="MuiGrid-item-4 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-12-54"
         >
-          $12.99 - $19.99
+          <div
+            className="MediaGallery-featured-105"
+          >
+            <div
+              className="Img-imgWrapper-107 "
+            >
+              <img
+                alt=""
+                className="Img-img-109 Img-imgLoading-111 "
+                src="/resources/placeholder.gif"
+              />
+            </div>
+          </div>
+          <div
+            className="MuiGrid-container-3 MuiGrid-spacing-xs-8-24"
+          >
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-32 MuiGrid-grid-sm-2-44"
+            >
+              <button
+                className="MuiButtonBase-root-114 MediaGalleryItem-root-113"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="Img-imgWrapper-107 "
+                >
+                  <img
+                    alt=""
+                    className="Img-img-109 Img-imgLoading-111 "
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-117"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-32 MuiGrid-grid-sm-2-44"
+            >
+              <button
+                className="MuiButtonBase-root-114 MediaGalleryItem-root-113"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="Img-imgWrapper-107 "
+                >
+                  <img
+                    alt=""
+                    className="Img-img-109 Img-imgLoading-111 "
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-117"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-32 MuiGrid-grid-sm-2-44"
+            >
+              <button
+                className="MuiButtonBase-root-114 MediaGalleryItem-root-113"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="Img-imgWrapper-107 "
+                >
+                  <img
+                    alt=""
+                    className="Img-img-109 Img-imgLoading-111 "
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-117"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-32 MuiGrid-grid-sm-2-44"
+            >
+              <button
+                className="MuiButtonBase-root-114 MediaGalleryItem-root-113"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="Img-imgWrapper-107 "
+                >
+                  <img
+                    alt=""
+                    className="Img-img-109 Img-imgLoading-111 "
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-117"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-32 MuiGrid-grid-sm-2-44"
+            >
+              <button
+                className="MuiButtonBase-root-114 MediaGalleryItem-root-113"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="Img-imgWrapper-107 "
+                >
+                  <img
+                    alt=""
+                    className="Img-img-109 Img-imgLoading-111 "
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-117"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-32 MuiGrid-grid-sm-2-44"
+            >
+              <button
+                className="MuiButtonBase-root-114 MediaGalleryItem-root-113"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="Img-imgWrapper-107 "
+                >
+                  <img
+                    alt=""
+                    className="Img-img-109 Img-imgLoading-111 "
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-117"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-32 MuiGrid-grid-sm-2-44"
+            >
+              <button
+                className="MuiButtonBase-root-114 MediaGalleryItem-root-113"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="Img-imgWrapper-107 "
+                >
+                  <img
+                    alt=""
+                    className="Img-img-109 Img-imgLoading-111 "
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-117"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-4 MuiGrid-grid-xs-3-32 MuiGrid-grid-sm-2-44"
+            >
+              <button
+                className="MuiButtonBase-root-114 MediaGalleryItem-root-113"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="Img-imgWrapper-107 "
+                >
+                  <img
+                    alt=""
+                    className="Img-img-109 Img-imgLoading-111 "
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-117"
+                />
+              </button>
+            </div>
+          </div>
         </div>
-        <p
-          className="MuiTypography-root-128 MuiTypography-body1-137"
+      </div>
+    </div>
+    <div
+      className="inject-WithTracking-ProductDetail--with-routingStore-uiStore-section-1"
+    >
+      <section>
+        <h2
+          className="MuiTypography-root-126 MuiTypography-title-132 TagGrid-title-124"
         >
-          Example Manufacturer
-        </p>
-        <p
-          className="MuiTypography-root-128 MuiTypography-body1-137"
+          Tags
+        </h2>
+        <div
+          className="MuiGrid-container-3 MuiGrid-spacing-xs-8-24"
         >
-          Sign in as administrator to edit.
+          <div
+            className="MuiGrid-item-4"
+          >
+            <a
+              className="WithTracking-Link--link-97"
+              href="/tag/shoes"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="link"
+              tabIndex={0}
+              tracking={
+                Object {
+                  "getTrackingData": [Function],
+                  "trackEvent": [Function],
+                }
+              }
+            >
+              <div
+                className="MuiChip-root-150 TagGrid-chip-125"
+                onClick={undefined}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={-1}
+              >
+                <span
+                  className="MuiChip-label-155"
+                >
+                  Shoes
+                </span>
+              </div>
+            </a>
+          </div>
+          <div
+            className="MuiGrid-item-4"
+          >
+            <a
+              className="WithTracking-Link--link-97"
+              href="/tag/shop"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="link"
+              tabIndex={0}
+              tracking={
+                Object {
+                  "getTrackingData": [Function],
+                  "trackEvent": [Function],
+                }
+              }
+            >
+              <div
+                className="MuiChip-root-150 TagGrid-chip-125"
+                onClick={undefined}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={-1}
+              >
+                <span
+                  className="MuiChip-label-155"
+                >
+                  Shop
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-item-4 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-48"
+  >
+    <div
+      className="MuiGrid-item-4 MuiGrid-grid-sm-12-54"
+    >
+      <h1
+        className="MuiTypography-root-126 MuiTypography-display2-129 MuiTypography-gutterBottom-143"
+      >
+        Reaction Sample Product
+      </h1>
+    </div>
+    <div
+      className="MuiGrid-item-4 MuiGrid-grid-sm-12-54"
+    >
+      <div
+        className="MuiTypography-root-126 MuiTypography-title-132 MuiTypography-gutterBottom-143"
+      >
+        $12.99 - $19.99
+      </div>
+      <p
+        className="MuiTypography-root-126 MuiTypography-body1-135"
+      >
+        Example Manufacturer
+      </p>
+      <p
+        className="MuiTypography-root-126 MuiTypography-body1-135"
+      >
+        Sign in as administrator to edit.
 You can clone this product from the product grid.
 You can upload images click or drag in image box on the left here.
 Tag this product below, and then add tag in navigation.
@@ -517,16 +514,105 @@ Click the bookmark in the tag to set product url.
 Option variants, price, quantity, and child variants are created by clicking on the variant below, clone the variant to add more options.
 Details can be added below the image for more specific product information.
  Login next to the cart, and then click the dashboard icon for more tools.
-        </p>
+      </p>
+    </div>
+    <div
+      className="VariantList-variantsContainer-157"
+    >
+      <div
+        className="VariantList-variantItem-158"
+      >
+        <button
+          className="MuiButtonBase-root-114 VariantItem-variantButton-160 VariantItem-activeVariant-161"
+          disabled={undefined}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiTypography-root-126 MuiTypography-body1-135"
+          >
+            Sample Variant
+          </span>
+          <span
+            className="MuiTypography-root-126 MuiTypography-body1-135"
+          >
+            $12.99 - $19.99
+          </span>
+        </button>
+        <div
+          className="VariantList-alert-159"
+        >
+          <div
+            className="BadgeOverlay-badgeOverlay-162 BadgeOverlay-faded-163"
+          />
+        </div>
       </div>
       <div
-        className="VariantList-variantsContainer-159"
+        className="VariantList-variantItem-158"
+      >
+        <button
+          className="MuiButtonBase-root-114 VariantItem-variantButton-160"
+          disabled={undefined}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiTypography-root-126 MuiTypography-body1-135"
+          >
+            Sample Variant 2
+          </span>
+          <span
+            className="MuiTypography-root-126 MuiTypography-body1-135"
+          >
+            $12.99 - $19.99
+          </span>
+        </button>
+      </div>
+      <div
+        className="Divider-container-173"
+      >
+        <hr
+          className="Divider-item-175"
+        />
+        <span
+          className="MuiTypography-root-126 MuiTypography-body1-135 Divider-label-174"
+        >
+          Available Options
+        </span>
+        <hr
+          className="Divider-item-175"
+        />
+      </div>
+      <div
+        className="MuiGrid-container-3 MuiGrid-spacing-xs-8-24 OptionsList-root-176"
       >
         <div
-          className="VariantList-variantItem-160"
+          className="MuiGrid-item-4"
         >
           <button
-            className="MuiButtonBase-root-116 VariantItem-variantButton-162 VariantItem-activeVariant-163"
+            className="MuiButtonBase-root-114 ProductDetailOption-optionButton-179"
             disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
@@ -543,29 +629,24 @@ Details can be added below the image for more specific product information.
             type="button"
           >
             <span
-              className="MuiTypography-root-128 MuiTypography-body1-137"
+              className="MuiTypography-root-126 MuiTypography-body1-135 ProductDetailOption-optionText-180"
             >
-              Sample Variant
-            </span>
-            <span
-              className="MuiTypography-root-128 MuiTypography-body1-137"
-            >
-              $12.99 - $19.99
+              Red
             </span>
           </button>
           <div
-            className="VariantList-alert-161"
+            className="OptionsList-alert-177"
           >
             <div
-              className="BadgeOverlay-badgeOverlay-164 BadgeOverlay-faded-165"
+              className="BadgeOverlay-badgeOverlay-162"
             />
           </div>
         </div>
         <div
-          className="VariantList-variantItem-160"
+          className="MuiGrid-item-4"
         >
           <button
-            className="MuiButtonBase-root-116 VariantItem-variantButton-162"
+            className="MuiButtonBase-root-114 ProductDetailOption-optionButton-179"
             disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
@@ -582,258 +663,277 @@ Details can be added below the image for more specific product information.
             type="button"
           >
             <span
-              className="MuiTypography-root-128 MuiTypography-body1-137"
+              className="MuiTypography-root-126 MuiTypography-body1-135 ProductDetailOption-optionText-180"
             >
-              Sample Variant 2
-            </span>
-            <span
-              className="MuiTypography-root-128 MuiTypography-body1-137"
-            >
-              $12.99 - $19.99
+              Green
             </span>
           </button>
         </div>
-        <div
-          className="Divider-container-175"
-        >
-          <hr
-            className="Divider-item-177"
-          />
-          <span
-            className="MuiTypography-root-128 MuiTypography-body1-137 Divider-label-176"
-          >
-            Available Options
-          </span>
-          <hr
-            className="Divider-item-177"
-          />
-        </div>
-        <div
-          className="MuiGrid-container-5 MuiGrid-spacing-xs-8-26 OptionsList-root-178"
-        >
-          <div
-            className="MuiGrid-item-6"
-          >
-            <button
-              className="MuiButtonBase-root-116 ProductDetailOption-optionButton-181"
-              disabled={undefined}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex="0"
-              type="button"
-            >
-              <span
-                className="MuiTypography-root-128 MuiTypography-body1-137 ProductDetailOption-optionText-182"
-              >
-                Red
-              </span>
-            </button>
-            <div
-              className="OptionsList-alert-179"
-            >
-              <div
-                className="BadgeOverlay-badgeOverlay-164"
-              />
-            </div>
-          </div>
-          <div
-            className="MuiGrid-item-6"
-          >
-            <button
-              className="MuiButtonBase-root-116 ProductDetailOption-optionButton-181"
-              disabled={undefined}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex="0"
-              type="button"
-            >
-              <span
-                className="MuiTypography-root-128 MuiTypography-body1-137 ProductDetailOption-optionText-182"
-              >
-                Green
-              </span>
-            </button>
-          </div>
-        </div>
       </div>
+    </div>
+    <div
+      className="MuiGrid-container-3"
+    >
       <div
-        className="MuiGrid-container-5"
+        className="MuiGrid-item-4 MuiGrid-grid-xs-12-41 inject-ProductDetailAddToCart-with-uiStore-quantityGrid-186"
       >
         <div
-          className="MuiGrid-item-6 MuiGrid-grid-xs-12-43 inject-ProductDetailAddToCart-with-uiStore-quantityGrid-188"
+          className="Divider-container-173"
+        >
+          <hr
+            className="Divider-item-175"
+          />
+          <hr
+            className="Divider-item-175"
+          />
+        </div>
+        <span
+          className="MuiTypography-root-126 MuiTypography-body1-135 inject-ProductDetailAddToCart-with-uiStore-quantityTypography-188"
+        >
+          Quantity
+        </span>
+        <div
+          aria-describedby={undefined}
+          className="MuiFormControl-root-189"
+          onBlur={[Function]}
+          onFocus={[Function]}
         >
           <div
-            className="Divider-container-175"
-          >
-            <hr
-              className="Divider-item-177"
-            />
-            <hr
-              className="Divider-item-177"
-            />
-          </div>
-          <span
-            className="MuiTypography-root-128 MuiTypography-body1-137 inject-ProductDetailAddToCart-with-uiStore-quantityTypography-190"
-          >
-            Quantity
-          </span>
-          <div
-            aria-describedby={undefined}
-            className="MuiFormControl-root-191"
-            onBlur={[Function]}
-            onFocus={[Function]}
+            className="MuiInput-root-193 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-185 MuiInput-formControl-194"
           >
             <div
-              className="MuiInput-root-195 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-187 MuiInput-formControl-196"
+              className="MuiInputAdornment-root-206"
             >
-              <div
-                className="MuiInputAdornment-root-208"
-              >
-                <button
-                  className="MuiButtonBase-root-116 inject-ProductDetailAddToCart-with-uiStore-incrementButton-186"
-                  color="default"
-                  disabled={undefined}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex="0"
-                  type="button"
-                  variant="outlined"
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="MuiSvgIcon-root-100"
-                    color={undefined}
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19,13H5V11H19V13Z"
-                    />
-                  </svg>
-                  <span
-                    className="MuiTouchRipple-root-119"
-                  />
-                </button>
-              </div>
-              <input
-                aria-invalid={false}
-                aria-required={false}
-                autoComplete={undefined}
-                autoFocus={undefined}
-                className="MuiInput-input-203 inject-ProductDetailAddToCart-with-uiStore-quantityInput-189"
-                defaultValue={undefined}
-                disabled={false}
-                id="addToCartQuantityInput"
-                name={undefined}
+              <button
+                className="MuiButtonBase-root-114 inject-ProductDetailAddToCart-with-uiStore-incrementButton-184"
+                color="default"
+                disabled={undefined}
                 onBlur={[Function]}
-                onChange={[Function]}
+                onClick={[Function]}
                 onFocus={[Function]}
-                onKeyDown={undefined}
-                onKeyUp={undefined}
-                placeholder={undefined}
-                readOnly={undefined}
-                required={undefined}
-                rows={undefined}
-                type="text"
-                value={1}
-              />
-              <div
-                className="MuiInputAdornment-root-208"
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+                variant="outlined"
               >
-                <button
-                  className="MuiButtonBase-root-116 inject-ProductDetailAddToCart-with-uiStore-incrementButton-186"
-                  color="default"
-                  disabled={undefined}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex="0"
-                  type="button"
-                  variant="outlined"
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root-98"
+                  color={undefined}
+                  focusable="false"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    aria-hidden="true"
-                    className="MuiSvgIcon-root-100"
-                    color={undefined}
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
-                    />
-                  </svg>
-                  <span
-                    className="MuiTouchRipple-root-119"
+                  <path
+                    d="M19,13H5V11H19V13Z"
                   />
-                </button>
-              </div>
+                </svg>
+                <span
+                  className="MuiTouchRipple-root-117"
+                />
+              </button>
+            </div>
+            <input
+              aria-invalid={false}
+              aria-required={false}
+              autoComplete={undefined}
+              autoFocus={undefined}
+              className="MuiInput-input-201 inject-ProductDetailAddToCart-with-uiStore-quantityInput-187"
+              defaultValue={undefined}
+              disabled={false}
+              id="addToCartQuantityInput"
+              name={undefined}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={undefined}
+              onKeyUp={undefined}
+              placeholder={undefined}
+              readOnly={undefined}
+              required={undefined}
+              rows={undefined}
+              type="text"
+              value={1}
+            />
+            <div
+              className="MuiInputAdornment-root-206"
+            >
+              <button
+                className="MuiButtonBase-root-114 inject-ProductDetailAddToCart-with-uiStore-incrementButton-184"
+                color="default"
+                disabled={undefined}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+                variant="outlined"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root-98"
+                  color={undefined}
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                  />
+                </svg>
+                <span
+                  className="MuiTouchRipple-root-117"
+                />
+              </button>
             </div>
           </div>
         </div>
-        <div
-          className="MuiGrid-item-6 MuiGrid-grid-xs-12-43"
+      </div>
+      <div
+        className="MuiGrid-item-4 MuiGrid-grid-xs-12-41"
+      >
+        <button
+          className="MuiButtonBase-root-114 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-182"
+          disabled={undefined}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
         >
-          <button
-            className="MuiButtonBase-root-116 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-184"
-            disabled={undefined}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex="0"
-            type="button"
+          <span
+            className="MuiTypography-root-126 MuiTypography-body1-135 inject-ProductDetailAddToCart-with-uiStore-addToCartText-183"
           >
-            <span
-              className="MuiTypography-root-128 MuiTypography-body1-137 inject-ProductDetailAddToCart-with-uiStore-addToCartText-185"
-            >
-              Add to cart
-            </span>
-            <span
-              className="MuiTouchRipple-root-119"
+            Add to cart
+          </span>
+          <span
+            className="MuiTouchRipple-root-117"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      className="HiddenCss-mdUp-224"
+    >
+      <div
+        className="inject-CartPopover-with-uiStore-container-209 inject-CartPopover-with-uiStore-isContainerHidden-211"
+      >
+        <div
+          className="MuiGrid-container-3 MuiGrid-spacing-xs-24-26 inject-CartPopover-with-uiStore-gridContainer-210"
+        >
+          <div
+            className="MuiGrid-item-4 MuiGrid-grid-xs-12-41 inject-CartPopover-with-uiStore-containerItem-213"
+          >
+            <img
+              alt="Item Title"
+              className="inject-CartPopover-with-uiStore-addedToCartImg-214"
+              src="//placehold.it/100"
             />
-          </button>
+            <span
+              className="MuiTypography-root-126 MuiTypography-body1-135 inject-CartPopover-with-uiStore-addedToCartText-216"
+            >
+              10
+               "
+              <span
+                className="inject-CartPopover-with-uiStore-addedToCartItemName-215"
+              >
+                Item Title
+              </span>
+              " added to cart
+            </span>
+          </div>
+          <div
+            className="MuiGrid-item-4 MuiGrid-grid-xs-12-41"
+          >
+            <a
+              className="WithTracking-Link--link-97"
+              href="/checkout"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="link"
+              tabIndex={0}
+              tracking={
+                Object {
+                  "getTrackingData": [Function],
+                  "trackEvent": [Function],
+                }
+              }
+            >
+              <div
+                className="Button__ButtonDiv-bnfrK eloVkm"
+                onClick={[Function]}
+                onKeyPress={[Function]}
+                role="button"
+                tabIndex={0}
+                title={undefined}
+              >
+                <div>
+                  Checkout
+                </div>
+                <div
+                  className="Button__SpinnerWrap-bgOcuM cCKgPo"
+                  style={
+                    Object {
+                      "opacity": 0,
+                      "paddingLeft": 0,
+                      "width": 0,
+                    }
+                  }
+                >
+                  <svg
+                    className="spinner__SpinnerSvg-iBTUvT bunzNs"
+                    height="40px"
+                    style={
+                      Object {
+                        "enableBackground": "new 0 0 50 50",
+                      }
+                    }
+                    version="1.1"
+                    viewBox="0 0 50 50"
+                    width="40px"
+                    x="0px"
+                    y="0px"
+                  >
+                    <path
+                      d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z"
+                      fill="#000"
+                    >
+                      <animateTransform
+                        attributeName="transform"
+                        attributeType="xml"
+                        dur="1s"
+                        from="0 25 25"
+                        repeatCount="indefinite"
+                        to="360 25 25"
+                        type="rotate"
+                      />
+                    </path>
+                  </svg>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>

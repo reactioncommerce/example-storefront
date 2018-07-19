@@ -1,18 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshop of tagWithoutMedia 1`] = `
-<section
-  className="ProductGridHero-heroGridContainer-2"
->
-  <div
-    className="MuiGrid-container-3 MuiGrid-spacing-xs-24-26"
-  >
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-12-41"
-    />
-  </div>
-</section>
-`;
+exports[`snapshop of tagWithoutMedia 1`] = `null`;
 
 exports[`snapshot of tagWithMedia 1`] = `
 <section

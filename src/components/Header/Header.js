@@ -10,6 +10,7 @@ import { NavigationDesktop } from "components/NavigationDesktop";
 import { NavigationMobile, NavigationToggleMobile } from "components/NavigationMobile";
 import { CartToggle } from "components/Cart";
 import AccountDropdown from "components/AccountDropdown";
+import CartPopover from "components/CartPopover";
 import Link from "components/Link";
 
 const styles = (theme) => ({
@@ -81,6 +82,8 @@ class Header extends Component {
           <AccountDropdown />
           <CartToggle onClick={this.handleCartToggleClick} />
         </Toolbar>
+
+        <CartPopover />
 
         <NavigationMobile />
       </AppBar>

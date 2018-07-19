@@ -44,7 +44,6 @@ export default (App) =>
       ctx.ctx.apolloClient = apollo;
 
       let appProps = {};
-
       if (App.getInitialProps) {
         appProps = await App.getInitialProps(ctx);
       }
@@ -55,39 +54,40 @@ export default (App) =>
         return {};
       }
 
-      // Run all graphql queries in the component tree
-      // and extract the resulting data
-      try {
-        // Run all GraphQL queries
-        await getDataFromTree( // eslint-disable-line
-          <ApolloProvider client={apollo}>
-            <App
-              {...appProps}
-              Component={Component}
-              router={router}
-            />
-          </ApolloProvider>
-        ); // eslint-disable-line
-      } catch (error) {
-        // Prevent Apollo Client GraphQL errors from crashing SSR.
-        // Handle them in components via the data.error prop:
-        // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
-        // eslint-disable-next-line no-console
-        console.error("Error while running `getDataFromTree`", error);
-      }
+      const apolloState = {};
 
       if (!process.browser) {
+        // Run all graphql queries in the component tree
+        // and extract the resulting data
+        try {
+          // Run all GraphQL queries
+          // eslint-disable-next-line
+          await getDataFromTree(
+            <ApolloProvider client={apollo}>
+              <App {...appProps} Component={Component} router={router} />
+            </ApolloProvider>
+          ); // eslint-disable-line
+        } catch (error) {
+          // Prevent Apollo Client GraphQL errors from crashing SSR.
+          // Handle them in components via the data.error prop:
+          // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
+          // eslint-disable-next-line no-console
+          console.error("Error while running `getDataFromTree`", error);
+        }
+
         // getDataFromTree does not call componentWillUnmount
         // head side effect therefore need to be cleared manually
         Head.rewind();
-      }
 
-      // Extract query data from the Apollo's store
-      const apolloState = apollo.cache.extract();
+        // Extract query data from the Apollo's store
+        apolloState.data = apollo.cache.extract();
+      } else {
+        apolloState.data = {};
+      }
 
       return {
         ...appProps,
-        apolloState
+        apolloState: apolloState.data
       };
     }
 
