@@ -114,7 +114,7 @@ class CartPage extends Component {
             </Grid>
             <Grid className={classes.customerSupportCopy} item>
               <Typography paragraph variant="caption">
-              Have questions? call <span className={classes.phoneNumber}>1.800.555.5555</span>
+                Have questions? call <span className={classes.phoneNumber}>1.800.555.5555</span>
               </Typography>
               <Typography paragraph variant="caption">
                 <Link href="#">
