@@ -8,6 +8,7 @@ import analyticsProviders from "analytics";
 import getConfig from "next/config";
 import rootMobxStores from "../lib/stores";
 import getPageContext from "../lib/theme/getPageContext";
+import favicons from "../lib/utils/favicons";
 
 class HTMLDocument extends Document {
   static getInitialProps = (ctx) => {
@@ -74,7 +75,7 @@ class HTMLDocument extends Document {
               // PWA primary color
               { name: "theme-color", content: pageContext.theme.palette.primary.main }
             ]}
-            link={[{ href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" }]}
+            link={[...favicons, { href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" }]}
             script={scripts}
           />
           {helmet.base.toComponent()}
