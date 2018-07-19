@@ -12,7 +12,7 @@ const styles = ({
   shopLogo: {
     display: "flex",
     justifyContent: "center",
-    padding: "2rem 0"
+    padding: "1.5rem 0"
   }
 });
 
