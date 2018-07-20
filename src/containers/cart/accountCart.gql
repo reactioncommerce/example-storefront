@@ -1,7 +1,7 @@
 #import "./cartFragment.gql"
 
 query cart($accountId: String, $shopId: String) {
-  accountCartByAccountId(accountId: $accountId, shopId: $shopId) {
+  cart: accountCartByAccountId(accountId: $accountId, shopId: $shopId) {
     ...CartCommon
   }
 }

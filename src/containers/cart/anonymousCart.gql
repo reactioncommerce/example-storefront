@@ -1,7 +1,7 @@
 #import "./cartFragment.gql"
 
 query cart($cartId: ID!, $token: String!) {
-  anonymousCartByCartId(cartId: $cartId, token: $token) {
+  cart: anonymousCartByCartId(cartId: $cartId, token: $token) {
     ...CartCommon
   }
 }
