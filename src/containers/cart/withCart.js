@@ -119,17 +119,46 @@ export default (Component) => (
         >
           {(mutationFunction) => (
             <Query query={query} variables={variables}>
-              {({ data: cartData }) => {
-                const { anonymousCartByCartId, accountCartByAccountId } = cartData || {
-                  anonymousCartByCartId: null,
-                  accountCartByAccountId: null
-                };
-
-                const cart = anonymousCartByCartId || accountCartByAccountId;
+              {({ data: cartData, fetchMore }) => {
+                const { cart } = cartData || {};
+                const { pageInfo } = (cart && cart.items) || {};
 
                 return (
                   <Component
                     {...this.props}
+                    hasMoreCartItems={(pageInfo && pageInfo.hasNextPage) || false}
+                    loadMoreCartItems={() => {
+                      fetchMore({
+                        variables: {
+                          itemsAfterCursor: (pageInfo && pageInfo.endCursor) || null
+                        },
+                        updateQuery: (previousResult, { fetchMoreResult }) => {
+                          const { cart: fetchMoreCart } = fetchMoreResult;
+
+                          // Check for additional items from result
+                          if (fetchMoreCart && fetchMoreCart.items.edges.length) {
+                            // Merge previous cart items with next cart items
+                            return {
+                              ...fetchMoreResult,
+                              cart: {
+                                ...fetchMoreCart,
+                                items: {
+                                  __typename: previousResult.cart.items.__typename,
+                                  pageInfo: fetchMoreCart.items.pageInfo,
+                                  edges: [
+                                    ...previousResult.cart.items.edges,
+                                    ...fetchMoreCart.items.edges
+                                  ]
+                                }
+                              }
+                            };
+                          }
+
+                          // Send the previous result if the new result contains no additional data
+                          return previousResult;
+                        }
+                      });
+                    }}
                     addItemsToCart={(items) => {
                       this.handleAddItemsToCart(mutationFunction, {
                         items
