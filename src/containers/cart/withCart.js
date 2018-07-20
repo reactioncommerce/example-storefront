@@ -119,17 +119,26 @@ export default (Component) => (
         >
           {(mutationFunction) => (
             <Query query={query} variables={variables}>
-              {({ data: cartData }) => (
-                <Component
-                  {...this.props}
-                  addItemsToCart={(items) => {
-                    this.handleAddItemsToCart(mutationFunction, {
-                      items
-                    });
-                  }}
-                  cart={cartData && cartData.cart}
-                />
-              )}
+              {({ data: cartData }) => {
+                const { anonymousCartByCartId, accountCartByAccountId } = cartData || {
+                  anonymousCartByCartId: null,
+                  accountCartByAccountId: null
+                };
+
+                const cart = anonymousCartByCartId || accountCartByAccountId;
+
+                return (
+                  <Component
+                    {...this.props}
+                    addItemsToCart={(items) => {
+                      this.handleAddItemsToCart(mutationFunction, {
+                        items
+                      });
+                    }}
+                    cart={cart}
+                  />
+                );
+              }}
             </Query>
           )}
         </Mutation>
