@@ -8,7 +8,8 @@ const initExport = {
   serverRuntimeConfig: {
     dev: process.env.NODE_ENV !== "production",
     appPath: process.env.NODE_ENV === "production" ? "./build/app" : "./src",
-    graphqlUrl: process.env.INTERNAL_GRAPHQL_URL
+    graphqlUrl: process.env.INTERNAL_GRAPHQL_URL,
+    faviconUrl: process.env.FAVICON_URL
   },
   /**
    * Browser and server config will be available as publicRuntimeConfig and serverRuntimeConfig
