@@ -87,7 +87,7 @@ export default (Component) => (
       // Anonymous cart query
       let query = anonymousCartQuery;
       let variables = {
-        anonymousCartId: cartStore.anonymousCartId,
+        cartId: cartStore.anonymousCartId,
         token: cartStore.anonymousCartToken
       };
 
