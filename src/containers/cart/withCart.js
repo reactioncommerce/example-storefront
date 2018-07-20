@@ -100,6 +100,7 @@ export default (Component) => (
         };
       }
 
+      // Mutations based on the availability of a cart
       let mutation = createCartMutation;
 
       if (cartStore.hasAnonymousCart) {
