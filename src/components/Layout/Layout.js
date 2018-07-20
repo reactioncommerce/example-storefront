@@ -26,6 +26,9 @@ class Layout extends Component {
   static propTypes = {
     children: PropTypes.node,
     classes: PropTypes.object,
+    shop: PropTypes.shape({
+      name: PropTypes.string
+    }).isRequired,
     title: PropTypes.string
   };
 
@@ -38,6 +41,7 @@ class Layout extends Component {
     const {
       classes: { article, main, root },
       children,
+      shop,
       title
     } = this.props;
 
@@ -47,7 +51,7 @@ class Layout extends Component {
           <title>{title}</title>
         </Helmet>
         <div className={root}>
-          <Header />
+          <Header shop={shop} />
           <main className={main}>
             <article className={article}>{children}</article>
           </main>

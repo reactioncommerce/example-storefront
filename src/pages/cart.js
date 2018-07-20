@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import { inject, observer } from "mobx-react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
@@ -58,10 +60,16 @@ const styles = (theme) => ({
 });
 
 @trackProductViewed()
+@inject("uiStore")
+@observer
 @withStyles(styles)
 class CartPage extends Component {
   static propTypes = {
-    classes: PropTypes.object
+    classes: PropTypes.object,
+    shop: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string
+    })
   }
 
   handleCheckOut = () => {
@@ -73,49 +81,55 @@ class CartPage extends Component {
   handleRemoveItem = (_id) => _id
 
   render() {
-    const { classes } = this.props;
+    const { classes, shop } = this.props;
 
     return (
-      <section>
-        <Typography className={classes.title} variant="title" align="center">
+      <Fragment>
+        <Helmet>
+          <title>{shop && shop.name} | Cart</title>
+          <meta name="description" content={shop && shop.description} />
+        </Helmet>
+        <section>
+          <Typography className={classes.title} variant="title" align="center">
           Shopping Cart
-        </Typography>
-        <Grid container spacing={24}>
-          <Grid item xs={12} md={8}>
-            <CartItems
-              items={items}
-              onChangeCartItemQuantity={this.handleItemQuantityChange}
-              onRemoveItemFromCart={this.handleRemoveItem}
-            />
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <CartSummary
-              displayShipping="$10.99"
-              displaySubtotal="$275.77"
-              displayTotal="$286.10"
-              itemsQuantity={3}
-            />
-            <div className={classes.checkoutButtonsContainer}>
-              <CheckoutButtons />
-            </div>
-          </Grid>
-          <Grid className={classes.customerSupportCopy} item>
-            <Typography paragraph variant="caption">
-              Have questions? call <span className={classes.phoneNumber}>1.800.555.5555</span>
-            </Typography>
-            <Typography paragraph variant="caption">
-              <Link href="#">
+          </Typography>
+          <Grid container spacing={24}>
+            <Grid item xs={12} md={8}>
+              <CartItems
+                items={items}
+                onChangeCartItemQuantity={this.handleItemQuantityChange}
+                onRemoveItemFromCart={this.handleRemoveItem}
+              />
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <CartSummary
+                displayShipping="$10.99"
+                displaySubtotal="$275.77"
+                displayTotal="$286.10"
+                itemsQuantity={3}
+              />
+              <div className={classes.checkoutButtonsContainer}>
+                <CheckoutButtons />
+              </div>
+            </Grid>
+            <Grid className={classes.customerSupportCopy} item>
+              <Typography paragraph variant="caption">
+                Have questions? call <span className={classes.phoneNumber}>1.800.555.5555</span>
+              </Typography>
+              <Typography paragraph variant="caption">
+                <Link href="#">
                 Shipping information
-              </Link>
-            </Typography>
-            <Typography paragraph variant="caption">
-              <Link href="#">
+                </Link>
+              </Typography>
+              <Typography paragraph variant="caption">
+                <Link href="#">
                 Return policy
-              </Link>
-            </Typography>
+                </Link>
+              </Typography>
+            </Grid>
           </Grid>
-        </Grid>
-      </section>
+        </section>
+      </Fragment>
     );
   }
 }
