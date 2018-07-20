@@ -1,6 +1,10 @@
 fragment CartCommon on Cart {
   _id
-  items {
+  items(first: 20, after: $itemsAfterCursor) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
     edges {
       node {
         optionTitle
