@@ -1,3 +1,14 @@
 fragment CartCommon on Cart {
   _id
+  items {
+    edges {
+      node {
+        optionTitle
+        productSlug
+        productType
+        variantTitle
+        quantity
+      }
+    }
+  }
 }
