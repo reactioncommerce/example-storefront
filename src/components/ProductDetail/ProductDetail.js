@@ -157,7 +157,7 @@ class ProductDetail extends Component {
       }
 
       // If we have a selected option, do the same check
-      // Will revert to variant check if no option mdia is available
+      // Will revert to variant check if no option media is available
       if (Array.isArray(selectedVariant.options) && selectedVariant.options.length) {
         const selectedOption = selectedVariant.options.find((option) => option._id === pdpSelectedOptionId);
         if (selectedOption) {
