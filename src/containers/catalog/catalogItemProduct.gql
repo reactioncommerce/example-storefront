@@ -81,6 +81,58 @@ query catalogItemProductQuery($slugOrId: String!) {
           optionTitle
           isSoldOut
           isLowQuantity
+          media {
+            toGrid
+            priority
+            productId
+            variantId
+            URLs {
+              thumbnail
+              small
+              medium
+              large
+              original
+            }
+          }
+          primaryImage {
+            URLs {
+              large
+              medium
+              original
+              small
+              thumbnail
+            }
+            toGrid
+            priority
+            productId
+            variantId
+          }
+        }
+        media {
+          toGrid
+          priority
+          productId
+          variantId
+          URLs {
+            thumbnail
+            small
+            medium
+            large
+            original
+          }
+        }
+        primaryImage {
+          URLs {
+            large
+            medium
+            original
+            small
+            thumbnail
+          }
+          toGrid
+          priority
+          productId
+          variantId
         }
       }
     }
