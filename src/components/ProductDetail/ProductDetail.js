@@ -143,6 +143,31 @@ class ProductDetail extends Component {
       pdpProductToAddToCart = pdpSelectedOptionId;
     }
 
+    // Set the default media as the top-level product's media
+    // (all media on all variants and objects)
+    let pdpMediaItems = product.media;
+
+    // If we have a selected variant (we always should)
+    // check to see if media is available, and use this media instead
+    // Revert to original media if variant doesn't have specific media
+    const selectedVariant = product.variants.find((variant) => variant._id === pdpSelectedVariantId);
+    if (selectedVariant) {
+      if (selectedVariant.media && selectedVariant.media.length) {
+        pdpMediaItems = selectedVariant.media;
+      }
+
+      // If we have a selected option, do the same check
+      // Will revert to variant check if no option mdia is available
+      if (Array.isArray(selectedVariant.options) && selectedVariant.options.length) {
+        const selectedOption = selectedVariant.options.find((option) => option._id === pdpSelectedOptionId);
+        if (selectedOption) {
+          if (selectedOption.media && selectedOption.media.length) {
+            pdpMediaItems = selectedOption.media;
+          }
+        }
+      }
+    }
+
     const productPrice = this.determineProductPrice();
 
     return (
@@ -157,7 +182,7 @@ class ProductDetail extends Component {
           </Grid>
           <Grid item xs={12} sm={6}>
             <div className={classes.section}>
-              <MediaGallery mediaItems={product.media} />
+              <MediaGallery mediaItems={pdpMediaItems} />
             </div>
             <div className={classes.section}>
               <TagGrid tags={product.tags.nodes} />
