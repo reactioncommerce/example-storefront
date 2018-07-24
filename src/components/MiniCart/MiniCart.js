@@ -7,7 +7,6 @@ import CartItemsComponent from "@reactioncommerce/components/CartItems/v1";
 import CartItemComponent from "@reactioncommerce/components/CartItem/v1";
 import CartItemDetailComponent from "@reactioncommerce/components/CartItemDetail/v1";
 import CartItemStockWarningComponent from "@reactioncommerce/components/StockWarning/v1";
-import QuantityInput from "@reactioncommerce/components/QuantityInput/v1";
 import CartItemPriceComponent from "@reactioncommerce/components/Price/v1";
 import Button from "@reactioncommerce/components/Button/v1";
 import IconButton from "@material-ui/core/IconButton";
