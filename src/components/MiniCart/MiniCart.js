@@ -2,13 +2,13 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Popover from "@material-ui/core/Popover";
 import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
-import MiniCartSummary from "@reactioncommerce/components/MiniCartSummary/v1";
-import CartItems from "@reactioncommerce/components/CartItems/v1";
-import CartItem from "@reactioncommerce/components/CartItem/v1";
-import CartItemDetail from "@reactioncommerce/components/CartItemDetail/v1";
-import StockWarning from "@reactioncommerce/components/StockWarning/v1";
+import CartSummaryComponent from "@reactioncommerce/components/MiniCartSummary/v1";
+import CartItemsComponent from "@reactioncommerce/components/CartItems/v1";
+import CartItemComponent from "@reactioncommerce/components/CartItem/v1";
+import CartItemDetailComponent from "@reactioncommerce/components/CartItemDetail/v1";
+import CartItemStockWarningComponent from "@reactioncommerce/components/StockWarning/v1";
 import QuantityInput from "@reactioncommerce/components/QuantityInput/v1";
-import Price from "@reactioncommerce/components/Price/v1";
+import CartItemPriceComponent from "@reactioncommerce/components/Price/v1";
 import Button from "@reactioncommerce/components/Button/v1";
 import IconButton from "@material-ui/core/IconButton";
 import CartIcon from "mdi-material-ui/Cart";
@@ -99,12 +99,12 @@ export default class MiniCart extends Component {
 
     const components = {
       CartCheckoutButtonComponent: () => <Button actionType="important" isFullWidth>Checkout</Button>,
-      CartSummaryComponent: MiniCartSummary,
-      CartItemsComponent: CartItems,
-      CartItemComponent: CartItem,
-      CartItemDetailComponent: CartItemDetail,
-      CartItemStockWarningComponent: StockWarning,
-      CartItemPriceComponent: Price,
+      CartSummaryComponent,
+      CartItemsComponent,
+      CartItemComponent,
+      CartItemDetailComponent,
+      CartItemStockWarningComponent,
+      CartItemPriceComponent,
       // TODO: Use QuantityInput component when MUI dependency is removed.
       CartItemQuantityInputComponent: "div"
     };
