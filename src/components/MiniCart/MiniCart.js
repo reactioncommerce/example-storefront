@@ -89,7 +89,7 @@ export default class MiniCart extends Component {
   }
 
   handleOnClick = () => {
-    Router.pushRoute("checkout");
+    Router.pushRoute("cart");
   }
 
   render() {
@@ -125,7 +125,7 @@ export default class MiniCart extends Component {
             vertical: "bottom"
           }}
           open={Boolean(anchorElement)}
-          onClose={this.onClose}
+          onClose={this.handlePopoverClose}
         >
           <MiniCartComponent cart={{ checkout, items }} components={components} />
         </Popover>
