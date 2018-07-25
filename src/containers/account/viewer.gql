@@ -1,0 +1,6 @@
+query viewer {
+  viewer {
+    _id
+    name
+  }
+}
