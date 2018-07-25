@@ -24,6 +24,13 @@ class CartStore {
   @observable anonymousCartToken = null;
 
   /**
+   * The cart id for an account cart
+   *
+   * @type String
+   */
+  @observable accountCartId = null;
+
+  /**
    * @name setAnonymousCartCredentials
    * @summary Set cartID and anonymousCartToken to local storage and cookies
    * @param {String} anonymousCartId Cart Id from "createCart" mutation
@@ -74,6 +81,9 @@ class CartStore {
    */
   get hasAnonymousCart() {
     return (this.anonymousCartId && this.anonymousCartToken) || false;
+  }
+  @action setAccountCartId(value) {
+    this.accountCartId = value;
   }
 }
 
