@@ -51,34 +51,33 @@ export default (Component) => (
      */
     handleAddItemsToCart(mutation, data) {
       const { authStore, cartStore, shop } = this.props;
+      const input = {
+        items: data.items
+      };
 
-      // Given an anonymous user, create or update an anonymous cart with provided items
-      if (authStore.isAuthenticated === false) {
-        if (cartStore.hasAnonymousCart) {
-          const { anonymousCartId, anonymousCartToken } = cartStore;
+      if (authStore.isAuthenticated === false && cartStore.hasAnonymousCart) {
+        // Given an anonymous user, with a cart, add token and cartId to input
+        const { anonymousCartId, anonymousCartToken } = cartStore;
 
-          // Add items to an existing anonymous cart
-          mutation({
-            variables: {
-              input: {
-                items: data.items,
-                token: anonymousCartToken,
-                cartId: anonymousCartId
-              }
-            }
-          });
-        } else {
-          // Create a new cart with items
-          mutation({
-            variables: {
-              input: {
-                items: data.items,
-                shopId: shop._id
-              }
-            }
-          });
-        }
+        // Add items to an existing anonymous cart
+        input.token = anonymousCartToken;
+        input.cartId = anonymousCartId;
+      } else if (authStore.isAuthenticated === true && cartStore.hasAccountCart) {
+        // With an account and an account cart, set the accountCartId on the input object
+        input.cartId = cartStore.accountCartId;
+      } else if (!cartStore.hasAccountCart && !cartStore.hasAnonymousCart) {
+        // With no anonymous or account cart, add shop Id to input as it will be needed for the create cart mutation
+        input.shopId = shop._id;
       }
+
+      // Run the mutation function provided as a param.
+      // It may take the form of `createCart` or `addCartItems` depending on the
+      // availability of a cart for either an anonymous or logged-in account.
+      mutation({
+        variables: {
+          input
+        }
+      });
     }
 
     render() {
@@ -103,7 +102,7 @@ export default (Component) => (
       // Mutations based on the availability of a cart
       let mutation = createCartMutation;
 
-      if (cartStore.hasAnonymousCart) {
+      if (cartStore.hasAnonymousCart || cartStore.hasAccountCart) {
         mutation = addCartItemsMutation;
       }
 
@@ -111,7 +110,9 @@ export default (Component) => (
         <Mutation
           mutation={mutation}
           update={(cache, { data: mutationData }) => {
-            if (mutationData && mutationData.createCart) {
+            // If the mutation data contains a createCart object and we are an anonymous user,
+            // then set the anonymous cart details
+            if (mutationData && mutationData.createCart && !authStore.isAuthenticated) {
               const { cart, token } = mutationData.createCart;
               cartStore.setAnonymousCartCredentials(cart._id, token);
             }
@@ -122,6 +123,11 @@ export default (Component) => (
               {({ data: cartData, fetchMore }) => {
                 const { cart } = cartData || {};
                 const { pageInfo } = (cart && cart.items) || {};
+
+                // With an authenticated cart, set the accountCartId for later use
+                if (cart && authStore.isAuthenticated) {
+                  cartStore.setAccountCartId(cart._id);
+                }
 
                 return (
                   <Component
