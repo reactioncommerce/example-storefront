@@ -1,6 +1,6 @@
 #import "./cartFragment.gql"
 
-query cart($accountId: String, $shopId: String, $itemsAfterCursor: ConnectionCursor) {
+query cart($accountId: ID!, $shopId: ID!, $itemsAfterCursor: ConnectionCursor) {
   cart: accountCartByAccountId(accountId: $accountId, shopId: $shopId) {
     ...CartCommon
   }
