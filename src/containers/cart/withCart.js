@@ -107,29 +107,32 @@ export default (Component) => (
       }
 
       return (
-        <Mutation
-          mutation={mutation}
-          update={(cache, { data: mutationData }) => {
-            // If the mutation data contains a createCart object and we are an anonymous user,
-            // then set the anonymous cart details
-            if (mutationData && mutationData.createCart && !authStore.isAuthenticated) {
-              const { cart, token } = mutationData.createCart;
-              cartStore.setAnonymousCartCredentials(cart._id, token);
+        <Query query={query} variables={variables}>
+          {({ data: cartData, fetchMore, refetch: refetchCart }) => {
+            const { cart } = cartData || {};
+            const { pageInfo } = (cart && cart.items) || {};
+
+            // With an authenticated cart, set the accountCartId for later use
+            if (cart && authStore.isAuthenticated) {
+              cartStore.setAccountCartId(cart._id);
             }
-          }}
-        >
-          {(mutationFunction) => (
-            <Query query={query} variables={variables}>
-              {({ data: cartData, fetchMore }) => {
-                const { cart } = cartData || {};
-                const { pageInfo } = (cart && cart.items) || {};
 
-                // With an authenticated cart, set the accountCartId for later use
-                if (cart && authStore.isAuthenticated) {
-                  cartStore.setAccountCartId(cart._id);
-                }
+            return (
+              <Mutation
+                mutation={mutation}
+                update={(cache, { data: mutationData }) => {
+                  // On update, refetch cart data
+                  refetchCart();
 
-                return (
+                  // If the mutation data contains a createCart object and we are an anonymous user,
+                  // then set the anonymous cart details
+                  if (mutationData && mutationData.createCart && !authStore.isAuthenticated) {
+                    const { cart: cartPayload, token } = mutationData.createCart;
+                    cartStore.setAnonymousCartCredentials(cartPayload._id, token);
+                  }
+                }}
+              >
+                {(mutationFunction) => (
                   <Component
                     {...this.props}
                     hasMoreCartItems={(pageInfo && pageInfo.hasNextPage) || false}
@@ -172,11 +175,12 @@ export default (Component) => (
                     }}
                     cart={cart}
                   />
-                );
-              }}
-            </Query>
-          )}
-        </Mutation>
+                )}
+              </Mutation>
+            );
+          }}
+        </Query>
+
       );
     }
   }
