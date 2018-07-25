@@ -1,5 +1,14 @@
 fragment CartCommon on Cart {
   _id
+  account {
+    _id
+  }
+  createdAt
+  shop {
+    _id
+  }
+  updatedAt
+  expiresAt
   items(first: 20, after: $itemsAfterCursor) {
     pageInfo {
       hasNextPage
@@ -7,11 +16,61 @@ fragment CartCommon on Cart {
     }
     edges {
       node {
-        optionTitle
+        _id
+        productConfiguration {
+          productId
+          productVariantId
+        }
+        addedAt
+        attributes {
+          label
+          value
+        }
+        createdAt
+        isBackorder
+        isLowQuantity
+        isSoldOut
+        imageURLs {
+          large
+          small
+          original
+          medium
+          thumbnail
+        }
+        metafields {
+          value
+          key
+        }
+        parcel {
+          length
+          width
+          weight
+          height
+        }
+        price {
+          amount
+          displayAmount
+          currency {
+            code
+          }
+        }
+        priceWhenAdded {
+          amount
+          displayAmount
+          currency {
+            code
+          }
+        }
         productSlug
         productType
-        variantTitle
         quantity
+        shop {
+          _id
+        }
+        title
+        variantTitle
+        optionTitle
+        updatedAt
       }
     }
   }
