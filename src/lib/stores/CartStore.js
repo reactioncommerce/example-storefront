@@ -10,14 +10,14 @@ class CartStore {
   ANONYMOUS_CART_TOKEN_KEY_NAME = "anonymousCartToken";
 
   /**
-   * The anonymousCartId for an anonymous cart
+   * The cart id for an anonymous cart
    *
    * @type String
    */
   @observable anonymousCartId = null;
 
   /**
-   * The anonymousCartId for an anonymous cart
+   * The token for an anonymous cart
    *
    * @type String
    */
