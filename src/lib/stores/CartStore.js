@@ -82,6 +82,11 @@ class CartStore {
   get hasAnonymousCart() {
     return (this.anonymousCartId && this.anonymousCartToken) || false;
   }
+
+  get hasAccountCart() {
+    return typeof this.accountCartId === "string";
+  }
+
   @action setAccountCartId(value) {
     this.accountCartId = value;
   }
