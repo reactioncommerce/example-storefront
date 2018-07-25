@@ -63,6 +63,10 @@ class AuthStore {
 
     return false;
   }
+
+  @action setAccountId(accountId) {
+    this.accountId = accountId || null;
+  }
 }
 
 export default AuthStore;
