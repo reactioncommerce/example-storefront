@@ -6,6 +6,7 @@ import accountCartQuery from "./accountCart.gql";
 import anonymousCartQuery from "./anonymousCart.gql";
 import createCartMutation from "./createCartMutation.gql";
 import addCartItemsMutation from "./addCartItemsMutation.gql";
+import reconcileCartsMutation from "./reconcileCartsMutation.gql";
 
 /**
  * withCart higher order query component for creating, fetching, and updating carts
@@ -29,6 +30,9 @@ export default (Component) => (
         anonymousCartToken: PropTypes.string,
         setAnonymousCartCredentialsFromLocalStorage: PropTypes.func
       }),
+      client: PropTypes.shape({
+        mutate: PropTypes.func.isRequired
+      }),
       shop: PropTypes.shape({
         _id: PropTypes.string
       })
@@ -37,6 +41,47 @@ export default (Component) => (
     componentDidMount() {
       // Update the anonymousCartId if necessary
       this.props.cartStore.setAnonymousCartCredentialsFromLocalStorage();
+    }
+
+    /**
+     * Reconcile an anonymous and account cart when an anonymous user signs in
+     * and they have an anonymous cart.
+     * @name reconcileCartsIfNecessary
+     * @summary Called when a user signs in with an anonymous cart
+     * @private
+     * @ignore
+     * @param {Function} refetchCartCallback An Apollo query refetch function
+     * @returns {undefined} No return
+     */
+    reconcileCartsIfNecessary(refetchCartCallback) {
+      const { authStore, cartStore, shop, client: apolloClient } = this.props;
+
+      if (cartStore.hasAnonymousCart && authStore.isAuthenticated) {
+        apolloClient.mutate({
+          mutation: reconcileCartsMutation,
+          update: (cache, { data: mutationData }) => {
+            // On update, re-fetch cart data
+            refetchCartCallback && refetchCartCallback();
+
+            // If the mutation data contains a createCart object and we are an anonymous user,
+            // then set the anonymous cart details
+            if (mutationData && mutationData.reconcileCarts) {
+              const { cart: cartPayload } = mutationData.reconcileCarts;
+
+              if (cartPayload) {
+                cartStore.clearAnonymousCartCredentials();
+              }
+            }
+          },
+          variables: {
+            input: {
+              anonymousCartId: cartStore.anonymousCartId,
+              anonymousCartToken: cartStore.anonymousCartToken,
+              shopId: shop._id
+            }
+          }
+        });
+      }
     }
 
     /**
@@ -81,33 +126,39 @@ export default (Component) => (
     }
 
     render() {
-      const { authStore, cartStore, shop } = this.props;
-
-      // Anonymous cart query
+      const { authStore, cartStore, shop, client: apolloClient } = this.props;
       let query = anonymousCartQuery;
-      let variables = {
-        cartId: cartStore.anonymousCartId,
-        token: cartStore.anonymousCartToken
-      };
+      let variables;
+      let skipQuery = false;
 
-      // With an authenticated user, update the cart query to find an authenticated cart
-      if (authStore.isAuthenticated) {
+      // With an anonymous cart
+      if (cartStore.hasAnonymousCart) {
+        // If we are authenticated, reconcile carts
+        if (authStore.isAuthenticated) {
+          this.reconcileCart();
+          return null;
+        }
+
+        // Otherwise, set query and variables for fetching an anonymous cart
+        query = anonymousCartQuery;
+        variables = {
+          cartId: cartStore.anonymousCartId,
+          token: cartStore.anonymousCartToken
+        };
+      } else if (authStore.isAuthenticated) {
+        // With an authenticated user, update the cart query to find an authenticated cart
         query = accountCartQuery;
         variables = {
           accountId: authStore.accountId,
           shopId: shop._id
         };
-      }
-
-      // Mutations based on the availability of a cart
-      let mutation = createCartMutation;
-
-      if (cartStore.hasAnonymousCart || cartStore.hasAccountCart) {
-        mutation = addCartItemsMutation;
+      } else {
+        // Otherwise skip the query since we have nothing to load
+        skipQuery = true;
       }
 
       return (
-        <Query query={query} variables={variables}>
+        <Query query={query} variables={variables} skip={skipQuery}>
           {({ data: cartData, fetchMore, refetch: refetchCart }) => {
             const { cart } = cartData || {};
             const { pageInfo } = (cart && cart.items) || {};
@@ -117,9 +168,12 @@ export default (Component) => (
               cartStore.setAccountCartId(cart._id);
             }
 
+            //
+            this.reconcileCartsIfNecessary(refetchCart);
+
             return (
               <Mutation
-                mutation={mutation}
+                mutation={cart ? addCartItemsMutation : createCartMutation}
                 update={(cache, { data: mutationData }) => {
                   // On update, refetch cart data
                   refetchCart();
