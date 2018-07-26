@@ -1,0 +1,7 @@
+mutation reconcileCarts($input: ReconcileCartsInput!) {
+  reconcileCarts(input: $input) {
+    cart {
+      _id
+    }
+  }
+}
