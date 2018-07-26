@@ -32,7 +32,7 @@ class CartStore {
 
   /**
    * @name setAnonymousCartCredentials
-   * @summary Set cartID and anonymousCartToken to local storage and cookies
+   * @summary Set anonymousCartID and anonymousCartToken to local storage and cookies
    * @param {String} anonymousCartId Cart Id from "createCart" mutation
    * @param {String} anonymousCartToken  Token from "createCart" mutation
    * @returns {undefined} No return
