@@ -11,14 +11,7 @@ import CartItemPriceComponent from "@reactioncommerce/components/Price/v1";
 import Button from "@reactioncommerce/components/Button/v1";
 import IconButton from "@material-ui/core/IconButton";
 import CartIcon from "mdi-material-ui/Cart";
-import { withStyles } from "@material-ui/core";
 import { Router } from "routes";
-
-const styles = ({
-  popover: {
-    pointerEvents: "none"
-  }
-});
 
 const checkout = {
   summary: {
@@ -70,14 +63,10 @@ const items = [
     quantity: 1
   }];
 
-@withStyles(styles)
 export default class MiniCart extends Component {
-  static propTypes = {
-    classes: PropTypes.object.isRequired
-  }
-
   state = {
-    anchorElement: null
+    anchorElement: null,
+    enteredPopover: false
   };
 
   handlePopoverOpen = (event) => {
@@ -88,12 +77,25 @@ export default class MiniCart extends Component {
     this.setState({ anchorElement: null });
   }
 
+  delayedHandlePopoverClose = () => {
+    const { enteredPopover } = this.state;
+
+    if (!enteredPopover) {
+      setTimeout(() => {
+        this.setState({ anchorElement: null });
+      }, 2000);
+    }
+  }
+
+  handleEnteredPopover = () => {
+    this.setState({ enteredPopover: true });
+  }
+
   handleOnClick = () => {
     Router.pushRoute("cart");
   }
 
   render() {
-    const { classes } = this.props;
     const { anchorElement } = this.state;
 
     const components = {
@@ -112,15 +114,16 @@ export default class MiniCart extends Component {
       <Fragment>
         <IconButton color="inherit"
           onMouseEnter={this.handlePopoverOpen}
-          onMouseLeave={this.handlePopoverClose}
+          onMouseLeave={this.delayedHandlePopoverClose}
           onClick={this.handleOnClick}
         >
           <CartIcon />
         </IconButton>
 
         <Popover
-          className={classes.popover}
           anchorEl={anchorElement}
+          onMouseEnter={this.handleEnteredPopover}
+          onMouseLeave={this.handlePopoverClose}
           anchorOrigin={{
             vertical: "bottom"
           }}
