@@ -84,11 +84,11 @@ class CartStore {
   }
 
   /**
-   * @name hasAnonymousCart
+   * @name hasAnonymousCartCredentials
    * @summary Return a boolean is the credentials for an anonymous cart exists
    * @returns {Boolean} Boolean true if credentials for an anonymous cart exists
    */
-  get hasAnonymousCart() {
+  get hasAnonymousCartCredentials() {
     return (this.anonymousCartId && this.anonymousCartToken) || false;
   }
 
