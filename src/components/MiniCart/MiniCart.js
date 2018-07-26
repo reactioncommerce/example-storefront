@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
 import Popover from "@material-ui/core/Popover";
 import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
 import CartSummaryComponent from "@reactioncommerce/components/MiniCartSummary/v1";
