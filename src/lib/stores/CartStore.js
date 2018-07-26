@@ -61,6 +61,15 @@ class CartStore {
   }
 
   /**
+   * @name clearAnonymousCartCredentials
+   * @summary Remove anonymousCartId and anonymousCartToken from local storage and cookies
+   * @returns {undefined} No return
+   */
+  @action clearAnonymousCartCredentials() {
+    this.setAnonymousCartCredentials(null, null);
+  }
+
+  /**
    * @name setAnonymousCartCredentialsFromLocalStorage
    * @summary Set into class properties from local storage
    * @returns {undefined} No return
