@@ -5,14 +5,14 @@ import CartItemComponent from "@reactioncommerce/components/CartItem/v1";
 import CartItemDetailComponent from "@reactioncommerce/components/CartItemDetail/v1";
 import CartItemStockWarningComponent from "@reactioncommerce/components/StockWarning/v1";
 import CartItemPriceComponent from "@reactioncommerce/components/Price/v1";
-import CartItemQuantityInputComponent from "@reactioncommerce/components/QuantityInput/v1";
 
 const components = {
   CartItemComponent,
   CartItemDetailComponent,
   CartItemStockWarningComponent,
   CartItemPriceComponent,
-  CartItemQuantityInputComponent
+  // TODO: Use QuantityInput component when MUI dependency is removed.
+  CartItemQuantityInputComponent: "div"
 };
 
 export default class CartItems extends Component {

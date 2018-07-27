@@ -8,11 +8,10 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import { NavigationDesktop } from "components/NavigationDesktop";
 import { NavigationMobile, NavigationToggleMobile } from "components/NavigationMobile";
-import { CartToggle } from "components/Cart";
 import AccountDropdown from "components/AccountDropdown";
-import CartPopover from "components/CartPopover";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import Link from "components/Link";
+import MiniCart from "components/MiniCart";
 
 const styles = (theme) => ({
   appBar: {
@@ -46,7 +45,6 @@ class Header extends Component {
       name: PropTypes.string
     }).isRequired,
     uiStore: PropTypes.shape({
-      toggleCartOpen: PropTypes.func.isRequired,
       toggleMenuDrawerOpen: PropTypes.func.isRequired
     }).isRequired
   };
@@ -57,10 +55,6 @@ class Header extends Component {
 
   handleNavigationToggleClick = () => {
     this.props.uiStore.toggleMenuDrawerOpen();
-  };
-
-  handleCartToggleClick = () => {
-    this.props.uiStore.toggleCartOpen();
   };
 
   render() {
@@ -86,11 +80,8 @@ class Header extends Component {
           </div>
 
           <AccountDropdown />
-          <CartToggle onClick={this.handleCartToggleClick} />
+          <MiniCart />
         </Toolbar>
-
-        <CartPopover />
-
         <NavigationMobile />
       </AppBar>
     );

@@ -8,13 +8,13 @@ exports[`basic snapshot 1`] = `
     Tags
   </h2>
   <div
-    className="MuiGrid-container-27 MuiGrid-spacing-xs-8-48"
+    className="MuiGrid-container-27 MuiGrid-spacing-xs-8-49"
   >
     <div
       className="MuiGrid-item-28"
     >
       <a
-        className="WithTracking-Link--link-118"
+        className="WithTracking-Link--link-124"
         href="/tag/shoes"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -28,14 +28,14 @@ exports[`basic snapshot 1`] = `
         }
       >
         <div
-          className="MuiChip-root-119 TagGrid-chip-2"
+          className="MuiChip-root-125 TagGrid-chip-2"
           onClick={undefined}
           onKeyDown={[Function]}
           role="button"
           tabIndex={-1}
         >
           <span
-            className="MuiChip-label-124"
+            className="MuiChip-label-130"
           >
             Shoes
           </span>
@@ -46,7 +46,7 @@ exports[`basic snapshot 1`] = `
       className="MuiGrid-item-28"
     >
       <a
-        className="WithTracking-Link--link-118"
+        className="WithTracking-Link--link-124"
         href="/tag/shop"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -60,14 +60,14 @@ exports[`basic snapshot 1`] = `
         }
       >
         <div
-          className="MuiChip-root-119 TagGrid-chip-2"
+          className="MuiChip-root-125 TagGrid-chip-2"
           onClick={undefined}
           onKeyDown={[Function]}
           role="button"
           tabIndex={-1}
         >
           <span
-            className="MuiChip-label-124"
+            className="MuiChip-label-130"
           >
             Shop
           </span>

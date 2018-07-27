@@ -2,18 +2,18 @@
 
 exports[`Empty product grid message 1`] = `
 <div
-  className="inject-ProductGridEmptyMessage-with-routingStore-root-202"
+  className="inject-ProductGridEmptyMessage-with-routingStore-root-217"
 >
   <p
-    className="MuiTypography-root-151 MuiTypography-body1-160 MuiTypography-paragraph-169 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-204"
+    className="MuiTypography-root-158 MuiTypography-body1-167 MuiTypography-paragraph-176 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-219"
   >
     Sorry! We couldn't find what you're looking for.
   </p>
   <p
-    className="MuiTypography-root-151 MuiTypography-body1-160 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-203"
+    className="MuiTypography-root-158 MuiTypography-body1-167 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-218"
   >
     <a
-      className="WithTracking-Link--link-130"
+      className="WithTracking-Link--link-137"
       href="tag/test-tag"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -35,22 +35,22 @@ exports[`Empty product grid message 1`] = `
 exports[`basic snapshot 1`] = `
 Array [
   <div
-    className="MuiGrid-container-2 MuiGrid-spacing-xs-8-23 ProductGrid-filters-1"
+    className="MuiGrid-container-2 MuiGrid-spacing-xs-8-24 ProductGrid-filters-1"
   >
     <div
       className="MuiGrid-item-3"
     >
       <div
-        className="MuiInput-root-103 Select-input-97"
+        className="MuiInput-root-109 Select-input-103"
       >
         <div
-          className="MuiSelect-root-98"
+          className="MuiSelect-root-104"
         >
           <div
             aria-haspopup="true"
             aria-owns={null}
             aria-pressed="false"
-            className="MuiSelect-select-99 MuiSelect-selectMenu-100 Select-selectMenu-95 MuiInput-input-111"
+            className="MuiSelect-select-105 MuiSelect-selectMenu-106 Select-selectMenu-101 MuiInput-input-117"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -61,8 +61,6 @@ Array [
             20 Products
           </div>
           <input
-            aria-invalid={undefined}
-            aria-required={undefined}
             autoComplete={undefined}
             autoFocus={undefined}
             defaultValue={undefined}
@@ -71,15 +69,13 @@ Array [
             onKeyDown={undefined}
             onKeyUp={undefined}
             placeholder={undefined}
-            readOnly={undefined}
-            required={undefined}
             rows={undefined}
             type="hidden"
             value={20}
           />
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-116 MuiSelect-icon-102"
+            className="MuiSvgIcon-root-122 MuiSelect-icon-108"
             color={undefined}
             focusable="false"
             viewBox="0 0 24 24"
@@ -95,16 +91,16 @@ Array [
       className="MuiGrid-item-3"
     >
       <div
-        className="MuiInput-root-103 Select-input-97"
+        className="MuiInput-root-109 Select-input-103"
       >
         <div
-          className="MuiSelect-root-98"
+          className="MuiSelect-root-104"
         >
           <div
             aria-haspopup="true"
             aria-owns={null}
             aria-pressed="false"
-            className="MuiSelect-select-99 MuiSelect-selectMenu-100 Select-selectMenu-95 MuiInput-input-111"
+            className="MuiSelect-select-105 MuiSelect-selectMenu-106 Select-selectMenu-101 MuiInput-input-117"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -115,8 +111,6 @@ Array [
             Newest
           </div>
           <input
-            aria-invalid={undefined}
-            aria-required={undefined}
             autoComplete={undefined}
             autoFocus={undefined}
             defaultValue={undefined}
@@ -125,15 +119,13 @@ Array [
             onKeyDown={undefined}
             onKeyUp={undefined}
             placeholder={undefined}
-            readOnly={undefined}
-            required={undefined}
             rows={undefined}
             type="hidden"
             value="updatedAt-desc"
           />
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-116 MuiSelect-icon-102"
+            className="MuiSvgIcon-root-122 MuiSelect-icon-108"
             color={undefined}
             focusable="false"
             viewBox="0 0 24 24"
@@ -147,14 +139,14 @@ Array [
     </div>
   </div>,
   <div
-    className="MuiGrid-container-2 MuiGrid-spacing-xs-24-25"
+    className="MuiGrid-container-2 MuiGrid-spacing-xs-24-26"
   >
     <div
-      className="MuiGrid-item-3 MuiGrid-grid-xs-12-40 MuiGrid-grid-sm-4-45 MuiGrid-grid-md-3-57"
+      className="MuiGrid-item-3 MuiGrid-grid-xs-12-42 MuiGrid-grid-sm-4-48 MuiGrid-grid-md-3-61"
     >
       <div>
         <a
-          className="WithTracking-Link--link-130"
+          className="WithTracking-Link--link-137"
           href="/product/men's-lightweigth-synchilla"
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -168,41 +160,41 @@ Array [
           }
         >
           <div
-            className="BadgeOverlay-badgeOverlay-131 BadgeOverlay-faded-132"
+            className="BadgeOverlay-badgeOverlay-138 BadgeOverlay-faded-139"
           >
             <div
-              className="Badge-badge-142 BadgeOverlay-status-133 BadgeOverlay-soldOut-138"
+              className="Badge-badge-149 BadgeOverlay-status-140 BadgeOverlay-soldOut-145"
             >
               <span
-                className="Badge-labelStyle-143"
+                className="Badge-labelStyle-150"
               >
                 Sold Out
               </span>
             </div>
             <div
-              className="WithTracking-ProductItem--productMedia-128"
+              className="WithTracking-ProductItem--productMedia-135"
             >
               <div
-                className="Img-imgWrapper-145 "
+                className="Img-imgWrapper-152 "
               >
                 <img
                   alt=""
-                  className="Img-img-147 Img-imgLoading-149 "
+                  className="Img-img-154 Img-imgLoading-156 "
                   src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/thumbnail/25580_CICN.png"
                 />
               </div>
             </div>
             <div>
               <div
-                className="WithTracking-ProductItem--productInfo-127"
+                className="WithTracking-ProductItem--productInfo-134"
               >
                 <aside
-                  className="MuiTypography-root-151 MuiTypography-body2-159"
+                  className="MuiTypography-root-158 MuiTypography-body2-166"
                 >
                   Men's Lightweigth Synchilla
                 </aside>
                 <div
-                  className="MuiTypography-root-151 MuiTypography-body1-160"
+                  className="MuiTypography-root-158 MuiTypography-body1-167"
                 >
                   <div>
                     <span
@@ -216,7 +208,7 @@ Array [
               </div>
               <div>
                 <p
-                  className="MuiTypography-root-151 MuiTypography-body1-160"
+                  className="MuiTypography-root-158 MuiTypography-body1-167"
                 >
                   Patagonia
                 </p>
@@ -227,11 +219,11 @@ Array [
       </div>
     </div>
     <div
-      className="MuiGrid-item-3 MuiGrid-grid-xs-12-40 MuiGrid-grid-sm-4-45 MuiGrid-grid-md-3-57"
+      className="MuiGrid-item-3 MuiGrid-grid-xs-12-42 MuiGrid-grid-sm-4-48 MuiGrid-grid-md-3-61"
     >
       <div>
         <a
-          className="WithTracking-Link--link-130"
+          className="WithTracking-Link--link-137"
           href="/product/example-product"
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -245,32 +237,32 @@ Array [
           }
         >
           <div
-            className="BadgeOverlay-badgeOverlay-131"
+            className="BadgeOverlay-badgeOverlay-138"
           >
             <div
-              className="WithTracking-ProductItem--productMedia-128"
+              className="WithTracking-ProductItem--productMedia-135"
             >
               <div
-                className="Img-imgWrapper-145 "
+                className="Img-imgWrapper-152 "
               >
                 <img
                   alt=""
-                  className="Img-img-147 Img-imgLoading-149 "
+                  className="Img-img-154 Img-imgLoading-156 "
                   src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/thumbnail/product_image.png"
                 />
               </div>
             </div>
             <div>
               <div
-                className="WithTracking-ProductItem--productInfo-127"
+                className="WithTracking-ProductItem--productInfo-134"
               >
                 <aside
-                  className="MuiTypography-root-151 MuiTypography-body2-159"
+                  className="MuiTypography-root-158 MuiTypography-body2-166"
                 >
                   Basic Reaction Product
                 </aside>
                 <div
-                  className="MuiTypography-root-151 MuiTypography-body1-160"
+                  className="MuiTypography-root-158 MuiTypography-body1-167"
                 >
                   <div>
                     <span
@@ -284,7 +276,7 @@ Array [
               </div>
               <div>
                 <p
-                  className="MuiTypography-root-151 MuiTypography-body1-160"
+                  className="MuiTypography-root-158 MuiTypography-body1-167"
                 >
                   Reaction Commerce
                 </p>
@@ -296,13 +288,13 @@ Array [
     </div>
   </div>,
   <div
-    className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-175"
+    className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-182"
   >
     <div
       className="MuiGrid-item-3"
     >
       <button
-        className="MuiButtonBase-root-192 MuiButton-root-176 MuiButton-raised-182"
+        className="MuiButtonBase-root-207 MuiButton-root-183 MuiButton-contained-192 MuiButton-raised-195"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -319,12 +311,12 @@ Array [
         type="button"
       >
         <span
-          className="MuiButton-label-177"
+          className="MuiButton-label-184"
         >
           Previous
         </span>
         <span
-          className="MuiTouchRipple-root-195"
+          className="MuiTouchRipple-root-210"
         />
       </button>
     </div>

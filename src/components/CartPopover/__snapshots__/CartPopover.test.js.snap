@@ -8,10 +8,10 @@ exports[`do not show cartpopover 1`] = `
     className="inject-CartPopover-with-uiStore-container-1 inject-CartPopover-with-uiStore-isContainerHidden-3"
   >
     <div
-      className="MuiGrid-container-24 MuiGrid-spacing-xs-24-47 inject-CartPopover-with-uiStore-gridContainer-2"
+      className="MuiGrid-container-24 MuiGrid-spacing-xs-24-48 inject-CartPopover-with-uiStore-gridContainer-2"
     >
       <div
-        className="MuiGrid-item-25 MuiGrid-grid-xs-12-62 inject-CartPopover-with-uiStore-containerItem-5"
+        className="MuiGrid-item-25 MuiGrid-grid-xs-12-64 inject-CartPopover-with-uiStore-containerItem-5"
       >
         <img
           alt="Item Title"
@@ -19,7 +19,7 @@ exports[`do not show cartpopover 1`] = `
           src="//placehold.it/100"
         />
         <span
-          className="MuiTypography-root-115 MuiTypography-body1-124 inject-CartPopover-with-uiStore-addedToCartText-8"
+          className="MuiTypography-root-121 MuiTypography-body1-130 inject-CartPopover-with-uiStore-addedToCartText-8"
         >
           10
            "
@@ -32,10 +32,10 @@ exports[`do not show cartpopover 1`] = `
         </span>
       </div>
       <div
-        className="MuiGrid-item-25 MuiGrid-grid-xs-12-62"
+        className="MuiGrid-item-25 MuiGrid-grid-xs-12-64"
       >
         <a
-          className="WithTracking-Link--link-139"
+          className="WithTracking-Link--link-145"
           href="/checkout"
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -115,10 +115,10 @@ exports[`show cartpopover 1`] = `
     className="inject-CartPopover-with-uiStore-container-1 inject-CartPopover-with-uiStore-isContainerVisible-4"
   >
     <div
-      className="MuiGrid-container-24 MuiGrid-spacing-xs-24-47 inject-CartPopover-with-uiStore-gridContainer-2"
+      className="MuiGrid-container-24 MuiGrid-spacing-xs-24-48 inject-CartPopover-with-uiStore-gridContainer-2"
     >
       <div
-        className="MuiGrid-item-25 MuiGrid-grid-xs-12-62 inject-CartPopover-with-uiStore-containerItem-5"
+        className="MuiGrid-item-25 MuiGrid-grid-xs-12-64 inject-CartPopover-with-uiStore-containerItem-5"
       >
         <img
           alt="Item Title"
@@ -126,7 +126,7 @@ exports[`show cartpopover 1`] = `
           src="//placehold.it/100"
         />
         <span
-          className="MuiTypography-root-115 MuiTypography-body1-124 inject-CartPopover-with-uiStore-addedToCartText-8"
+          className="MuiTypography-root-121 MuiTypography-body1-130 inject-CartPopover-with-uiStore-addedToCartText-8"
         >
           10
            "
@@ -139,10 +139,10 @@ exports[`show cartpopover 1`] = `
         </span>
       </div>
       <div
-        className="MuiGrid-item-25 MuiGrid-grid-xs-12-62"
+        className="MuiGrid-item-25 MuiGrid-grid-xs-12-64"
       >
         <a
-          className="WithTracking-Link--link-139"
+          className="WithTracking-Link--link-145"
           href="/checkout"
           onClick={[Function]}
           onKeyDown={[Function]}

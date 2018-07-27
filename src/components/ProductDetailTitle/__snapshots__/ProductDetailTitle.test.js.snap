@@ -2,15 +2,15 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-sm-12-52"
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-55"
 >
   <h1
-    className="MuiTypography-root-92 MuiTypography-display2-95 MuiTypography-gutterBottom-109"
+    className="MuiTypography-root-98 MuiTypography-display2-101 MuiTypography-gutterBottom-115"
   >
     Title
   </h1>
   <h2
-    className="MuiTypography-root-92 MuiTypography-title-98 MuiTypography-colorPrimary-112"
+    className="MuiTypography-root-98 MuiTypography-title-104 MuiTypography-colorPrimary-118"
   >
     Subtitle
   </h2>
@@ -21,10 +21,10 @@ exports[`snapshot with neither title nor pageTitle 1`] = `null`;
 
 exports[`snapshot with only pageTitle 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-sm-12-52"
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-55"
 >
   <h2
-    className="MuiTypography-root-92 MuiTypography-title-98 MuiTypography-colorPrimary-112"
+    className="MuiTypography-root-98 MuiTypography-title-104 MuiTypography-colorPrimary-118"
   >
     Subtitle
   </h2>
@@ -33,10 +33,10 @@ exports[`snapshot with only pageTitle 1`] = `
 
 exports[`snapshot with only title 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-sm-12-52"
+  className="MuiGrid-item-2 MuiGrid-grid-sm-12-55"
 >
   <h1
-    className="MuiTypography-root-92 MuiTypography-display2-95 MuiTypography-gutterBottom-109"
+    className="MuiTypography-root-98 MuiTypography-display2-101 MuiTypography-gutterBottom-115"
   >
     Title
   </h1>
