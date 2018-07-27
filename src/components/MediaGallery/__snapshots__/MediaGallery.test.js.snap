@@ -5,29 +5,29 @@ exports[`basic snapshot 1`] = `
   className="MuiGrid-container-4 MediaGallery-root-1"
 >
   <div
-    className="MuiGrid-item-5 MuiGrid-grid-xs-12-42 MuiGrid-grid-sm-12-55"
+    className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 MuiGrid-grid-sm-12-58"
   >
     <div
       className="MediaGallery-featured-2"
     >
       <div
-        className="Img-imgWrapper-95 "
+        className="Img-imgWrapper-101 "
       >
         <img
           alt=""
-          className="Img-img-97 Img-imgLoading-99 "
+          className="Img-img-103 Img-imgLoading-105 "
           src="/resources/placeholder.gif"
         />
       </div>
     </div>
     <div
-      className="MuiGrid-container-4 MuiGrid-spacing-xs-8-25"
+      className="MuiGrid-container-4 MuiGrid-spacing-xs-8-26"
     >
       <div
-        className="MuiGrid-item-5 MuiGrid-grid-xs-3-33 MuiGrid-grid-sm-2-45"
+        className="MuiGrid-item-5 MuiGrid-grid-xs-3-35 MuiGrid-grid-sm-2-48"
       >
         <button
-          className="MuiButtonBase-root-102 MediaGalleryItem-root-101"
+          className="MuiButtonBase-root-108 MediaGalleryItem-root-107"
           disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
@@ -44,24 +44,24 @@ exports[`basic snapshot 1`] = `
           type="button"
         >
           <div
-            className="Img-imgWrapper-95 "
+            className="Img-imgWrapper-101 "
           >
             <img
               alt=""
-              className="Img-img-97 Img-imgLoading-99 "
+              className="Img-img-103 Img-imgLoading-105 "
               src="/resources/placeholder.gif"
             />
           </div>
           <span
-            className="MuiTouchRipple-root-105"
+            className="MuiTouchRipple-root-111"
           />
         </button>
       </div>
       <div
-        className="MuiGrid-item-5 MuiGrid-grid-xs-3-33 MuiGrid-grid-sm-2-45"
+        className="MuiGrid-item-5 MuiGrid-grid-xs-3-35 MuiGrid-grid-sm-2-48"
       >
         <button
-          className="MuiButtonBase-root-102 MediaGalleryItem-root-101"
+          className="MuiButtonBase-root-108 MediaGalleryItem-root-107"
           disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
@@ -78,16 +78,16 @@ exports[`basic snapshot 1`] = `
           type="button"
         >
           <div
-            className="Img-imgWrapper-95 "
+            className="Img-imgWrapper-101 "
           >
             <img
               alt=""
-              className="Img-img-97 Img-imgLoading-99 "
+              className="Img-img-103 Img-imgLoading-105 "
               src="/resources/placeholder.gif"
             />
           </div>
           <span
-            className="MuiTouchRipple-root-105"
+            className="MuiTouchRipple-root-111"
           />
         </button>
       </div>

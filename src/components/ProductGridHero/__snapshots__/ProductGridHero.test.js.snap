@@ -7,17 +7,17 @@ exports[`snapshot of tagWithMedia 1`] = `
   className="ProductGridHero-heroGridContainer-2"
 >
   <div
-    className="MuiGrid-container-3 MuiGrid-spacing-xs-24-26"
+    className="MuiGrid-container-3 MuiGrid-spacing-xs-24-27"
   >
     <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-12-41"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-12-43"
     >
       <div
-        className="Img-imgWrapper-94 Img-imgHeroWrapper-95"
+        className="Img-imgWrapper-100 Img-imgHeroWrapper-101"
       >
         <img
           alt=""
-          className="Img-img-96 Img-imgLoading-98 "
+          className="Img-img-102 Img-imgLoading-104 "
           src=""
         />
       </div>
