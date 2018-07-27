@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Popover from "@material-ui/core/Popover";
+import { withStyles } from "@material-ui/core/styles";
 import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
 import CartSummaryComponent from "@reactioncommerce/components/MiniCartSummary/v1";
 import CartItemsComponent from "@reactioncommerce/components/CartItems/v1";
@@ -11,6 +11,9 @@ import Button from "@reactioncommerce/components/Button/v1";
 import IconButton from "@material-ui/core/IconButton";
 import CartIcon from "mdi-material-ui/Cart";
 import { Router } from "routes";
+import Popper from "@material-ui/core/Popper";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Fade from "@material-ui/core/Fade";
 
 const checkout = {
   summary: {
@@ -62,40 +65,67 @@ const items = [
     quantity: 1
   }];
 
+const styles = ({
+  popper: {
+    marginTop: "0.5rem",
+    marginRight: "1rem"
+  },
+  cart: {
+    backgroundColor: "#FFFFFF"
+  }
+});
+
+const closePopper = {
+  anchorElement: null,
+  open: false
+};
+
+@withStyles(styles)
 export default class MiniCart extends Component {
   state = {
+    open: false,
     anchorElement: null,
-    enteredPopover: false
+    enteredPopper: false
   };
 
-  handlePopoverOpen = (event) => {
-    this.setState({ anchorElement: event.currentTarget });
+  handlePopperOpen = (event) => {
+    const { currentTarget } = event;
+    this.setState({
+      anchorElement: currentTarget,
+      open: true
+    });
   }
 
-  handlePopoverClose = () => {
-    this.setState({ anchorElement: null });
+  handlePopperClose = () => {
+    const { enteredPopper } = this.state;
+
+    setTimeout(() => {
+      if (!enteredPopper) {
+        this.setState(closePopper);
+      }
+    }, 500);
   }
 
-  delayedHandlePopoverClose = () => {
-    const { enteredPopover } = this.state;
-
-    if (!enteredPopover) {
-      setTimeout(() => {
-        this.setState({ anchorElement: null });
-      }, 2000);
-    }
+  handleEnterPopper = () => {
+    this.setState({ enteredPopper: true });
   }
 
-  handleEnteredPopover = () => {
-    this.setState({ enteredPopover: true });
+  handleLeavePopper = () => {
+    this.setState(closePopper);
+  }
+
+  handleClickAway = () => {
+    this.setState(closePopper);
   }
 
   handleOnClick = () => {
-    Router.pushRoute("cart");
+    this.setState(closePopper, () => Router.pushRoute("cart"));
   }
 
   render() {
-    const { anchorElement } = this.state;
+    const { classes } = this.props;
+    const { anchorElement, open } = this.state;
+    const id = open ? "simple-popper" : null;
 
     const components = {
       CartCheckoutButtonComponent: () => <Button actionType="important" isFullWidth>Checkout</Button>,
@@ -111,26 +141,33 @@ export default class MiniCart extends Component {
 
     return (
       <Fragment>
-        <IconButton color="inherit"
-          onMouseEnter={this.handlePopoverOpen}
-          onMouseLeave={this.delayedHandlePopoverClose}
-          onClick={this.handleOnClick}
-        >
-          <CartIcon />
-        </IconButton>
+        <ClickAwayListener onClickAway={this.handleClickAway}>
+          <IconButton color="inherit"
+            onMouseEnter={this.handlePopperOpen}
+            onMouseLeave={this.handlePopperClose}
+            onClick={this.handleOnClick}
+          >
+            <CartIcon />
+          </IconButton>
+        </ClickAwayListener>
 
-        <Popover
+        <Popper
+          className={classes.popper}
+          id={id}
+          open={open}
           anchorEl={anchorElement}
-          onMouseEnter={this.handleEnteredPopover}
-          onMouseLeave={this.handlePopoverClose}
-          anchorOrigin={{
-            vertical: "bottom"
-          }}
-          open={Boolean(anchorElement)}
-          onClose={this.handlePopoverClose}
+          transition
+          onMouseEnter={this.handleEnterPopper}
+          onMouseLeave={this.handleLeavePopper}
         >
-          <MiniCartComponent cart={{ checkout, items }} components={components} />
-        </Popover>
+          {({ TransitionProps }) => (
+            <Fade {...TransitionProps}>
+              <div className={classes.cart}>
+                <MiniCartComponent cart={{ checkout, items }} components={components} />
+              </div>
+            </Fade>
+          )}
+        </Popper>
       </Fragment>
     );
   }
