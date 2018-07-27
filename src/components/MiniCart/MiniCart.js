@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
 import CartSummaryComponent from "@reactioncommerce/components/MiniCartSummary/v1";
@@ -82,6 +83,10 @@ const closePopper = {
 
 @withStyles(styles)
 export default class MiniCart extends Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired
+  }
+
   state = {
     open: false,
     anchorElement: null,
