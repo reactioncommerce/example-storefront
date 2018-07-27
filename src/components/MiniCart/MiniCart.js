@@ -66,13 +66,14 @@ const items = [
     quantity: 1
   }];
 
-const styles = ({
+const styles = ({ palette, zIndex }) => ({
   popper: {
     marginTop: "0.5rem",
-    marginRight: "1rem"
+    marginRight: "1rem",
+    zIndex: zIndex.modal
   },
   cart: {
-    backgroundColor: "#FFFFFF"
+    backgroundColor: palette.common.white
   }
 });
 
@@ -81,7 +82,7 @@ const closePopper = {
   open: false
 };
 
-@withStyles(styles)
+@withStyles(styles, { withTheme: true })
 export default class MiniCart extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired
