@@ -117,7 +117,7 @@ export default class ProductDetailAddToCart extends Component {
 
   handleOnClick = () => {
     const { uiStore } = this.props;
-    
+
     // Pass chosen quantity to onClick callback
     this.props.onClick(this.state.addToCartQuantity);
 
