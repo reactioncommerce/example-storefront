@@ -126,7 +126,7 @@ export default (Component) => (
     }
 
     render() {
-      const { authStore, cartStore, shop, client: apolloClient } = this.props;
+      const { authStore, cartStore, shop } = this.props;
       let query = anonymousCartQuery;
       let variables;
       let skipQuery = false;
