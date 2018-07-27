@@ -190,11 +190,6 @@ class ProductDetail extends Component {
       uiStore: { pdpSelectedOptionId, pdpSelectedVariantId }
     } = this.props;
 
-    let pdpProductToAddToCart = pdpSelectedVariantId;
-    if (pdpSelectedOptionId) {
-      pdpProductToAddToCart = pdpSelectedOptionId;
-    }
-
     // Set the default media as the top-level product's media
     // (all media on all variants and objects)
     let pdpMediaItems = product.media;
