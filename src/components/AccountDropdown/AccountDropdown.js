@@ -97,7 +97,8 @@ class AccountDropdown extends Component {
         <Popover
           anchorEl={anchorElement}
           anchorOrigin={{
-            vertical: "bottom"
+            vertical: "bottom",
+            horizontal: "center"
           }}
           open={Boolean(anchorElement)}
           onClose={this.onClose}
