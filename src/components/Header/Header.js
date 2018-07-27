@@ -8,10 +8,10 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import { NavigationDesktop } from "components/NavigationDesktop";
 import { NavigationMobile, NavigationToggleMobile } from "components/NavigationMobile";
-import { CartToggle } from "components/Cart";
 import AccountDropdown from "components/AccountDropdown";
-import CartPopover from "components/CartPopover";
+import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import Link from "components/Link";
+import MiniCart from "components/MiniCart";
 
 const styles = (theme) => ({
   appBar: {
@@ -41,8 +41,10 @@ const styles = (theme) => ({
 class Header extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    shop: PropTypes.shape({
+      name: PropTypes.string
+    }).isRequired,
     uiStore: PropTypes.shape({
-      toggleCartOpen: PropTypes.func.isRequired,
       toggleMenuDrawerOpen: PropTypes.func.isRequired
     }).isRequired
   };
@@ -55,12 +57,8 @@ class Header extends Component {
     this.props.uiStore.toggleMenuDrawerOpen();
   };
 
-  handleCartToggleClick = () => {
-    this.props.uiStore.toggleCartOpen();
-  };
-
   render() {
-    const { classes: { appBar, controls, toolbar, title } } = this.props;
+    const { classes: { appBar, controls, toolbar, title }, shop } = this.props;
 
     return (
       <AppBar position="static" elevation={0} className={appBar}>
@@ -71,7 +69,9 @@ class Header extends Component {
 
           <div className={controls}>
             <Typography className={title} color="inherit" variant="title">
-              <Link route="/">reaction</Link>
+              <Link route="/">
+                <ShopLogo shopName={shop.name} />
+              </Link>
             </Typography>
 
             <Hidden smDown initialWidth={"md"}>
@@ -80,11 +80,8 @@ class Header extends Component {
           </div>
 
           <AccountDropdown />
-          <CartToggle onClick={this.handleCartToggleClick} />
+          <MiniCart />
         </Toolbar>
-
-        <CartPopover />
-
         <NavigationMobile />
       </AppBar>
     );

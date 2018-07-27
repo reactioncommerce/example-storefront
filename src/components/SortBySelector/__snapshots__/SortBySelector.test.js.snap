@@ -22,8 +22,6 @@ exports[`basic snapshot 1`] = `
       Newest
     </div>
     <input
-      aria-invalid={undefined}
-      aria-required={undefined}
       autoComplete={undefined}
       autoFocus={undefined}
       defaultValue={undefined}
@@ -32,8 +30,6 @@ exports[`basic snapshot 1`] = `
       onKeyDown={undefined}
       onKeyUp={undefined}
       placeholder={undefined}
-      readOnly={undefined}
-      required={undefined}
       rows={undefined}
       type="hidden"
       value="updatedAt-desc"

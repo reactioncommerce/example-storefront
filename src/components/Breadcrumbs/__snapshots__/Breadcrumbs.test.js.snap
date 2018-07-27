@@ -31,9 +31,11 @@ exports[`tagGrid secondlevel tag 1`] = `
     focusable="false"
     viewBox="0 0 24 24"
   >
-    <path
-      d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-    />
+    <g>
+      <path
+        d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+      />
+    </g>
   </svg>
   <a
     className="WithTracking-Link--link-4"
@@ -62,9 +64,11 @@ exports[`tagGrid secondlevel tag 1`] = `
     focusable="false"
     viewBox="0 0 24 24"
   >
-    <path
-      d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-    />
+    <g>
+      <path
+        d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+      />
+    </g>
   </svg>
   <a
     className="WithTracking-Link--link-4"
@@ -120,9 +124,11 @@ exports[`tagGrid top level tag 1`] = `
     focusable="false"
     viewBox="0 0 24 24"
   >
-    <path
-      d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-    />
+    <g>
+      <path
+        d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+      />
+    </g>
   </svg>
   <a
     className="WithTracking-Link--link-4"

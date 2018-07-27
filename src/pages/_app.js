@@ -27,12 +27,20 @@ export default class App extends NextApp {
   }
 
   render() {
-    const { Component, ...rest } = this.props;
+    const { Component, shop, ...rest } = this.props;
+    const { route } = this.props.router;
+
     return (
       <Container>
-        <Layout>
-          <Component {...rest} />
-        </Layout>
+        {
+          route === "/checkout" ? (
+            <Component shop={shop} {...rest} />
+          ) : (
+            <Layout shop={shop}>
+              <Component shop={shop} {...rest} />
+            </Layout>
+          )
+        }
       </Container>
     );
   }
