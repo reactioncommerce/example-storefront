@@ -132,7 +132,7 @@ export default (Component) => (
       let skipQuery = false;
 
       // With an anonymous cart
-      if (cartStore.hasAnonymousCart) {
+      if (cartStore.hasAnonymousCartCredentials) {
         // If we are authenticated, reconcile carts
         if (authStore.isAuthenticated) {
           this.reconcileCart();
