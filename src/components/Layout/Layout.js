@@ -38,22 +38,17 @@ class Layout extends Component {
   };
 
   render() {
-    const {
-      classes: { article, main, root },
-      children,
-      shop,
-      title
-    } = this.props;
+    const { classes, children, shop, title } = this.props;
 
     return (
       <React.Fragment>
         <Helmet>
           <title>{title}</title>
         </Helmet>
-        <div className={root}>
+        <div className={classes.root}>
           <Header shop={shop} />
-          <main className={main}>
-            <article className={article}>{children}</article>
+          <main className={classes.main}>
+            <article className={classes.article}>{children}</article>
           </main>
           <Footer />
         </div>
