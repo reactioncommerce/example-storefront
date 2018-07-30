@@ -10,8 +10,8 @@ version: 2
 # typing. See http://yaml.org/type/merge.html for details.
 defaults: &defaults
   environment:
-#    - DOCKER_REPOSITORY: "reactioncommerce/reaction-next-starterkit"
-    - DOCKER_REPOSITORY: "202687395681.dkr.ecr.us-west-2.amazonaws.com/reactioncommerce/reaction-next-starterkit"
+    - DOCKER_REPOSITORY: "reactioncommerce/reaction-next-starterkit"
+#    - DOCKER_REPOSITORY: "202687395681.dkr.ecr.us-west-2.amazonaws.com/reactioncommerce/reaction-next-starterkit"
     - DOCKER_NAMESPACE: "reactioncommerce"
     - DOCKER_NAME: "reaction-next-starterkit"
 
@@ -114,25 +114,24 @@ jobs:
       - run:
           name: Docker Push
           command: |
-            #docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+            docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
 
-            sudo apt-get -y install python3-pip wget
-            sudo pip3 install awscli
+            #sudo apt-get -y install python3-pip wget
+            #sudo pip3 install awscli
 
+            #if [ -z "${AWS_REGION}" ]; then
+            #  AWS_REGION=us-west-2
+            #fi
 
-            if [ -z "${AWS_REGION}" ]; then
-              AWS_REGION=us-west-2
-            fi
+            #if [ "${CLOUDFORMATION_AWS_ACCESS_KEY_ID}" ]; then
+            #  AWS_ACCESS_KEY_ID=${CLOUDFORMATION_AWS_ACCESS_KEY_ID}
+            #fi
 
-            if [ "${CLOUDFORMATION_AWS_ACCESS_KEY_ID}" ]; then
-              AWS_ACCESS_KEY_ID=${CLOUDFORMATION_AWS_ACCESS_KEY_ID}
-            fi
+            #if [ "${CLOUDFORMATION_AWS_SECRET_ACCESS_KEY}" ]; then
+            #  AWS_SECRET_ACCESS_KEY=${CLOUDFORMATION_AWS_SECRET_ACCESS_KEY}
+            #fi
 
-            if [ "${CLOUDFORMATION_AWS_SECRET_ACCESS_KEY}" ]; then
-              AWS_SECRET_ACCESS_KEY=${CLOUDFORMATION_AWS_SECRET_ACCESS_KEY}
-            fi
-
-            $(aws ecr get-login --no-include-email --region ${AWS_REGION})
+            #$(aws ecr get-login --no-include-email --region ${AWS_REGION})
             docker push "$DOCKER_REPOSITORY:$CIRCLE_SHA1"
             cat docker-cache/docker-tags.txt \
                 | xargs -t -I % \
@@ -229,10 +228,10 @@ workflows:
           context: reaction-publish-docker
           requires:
             - docker-build
-      - lint:
-          context: reaction-validation
-          requires:
-            - docker-build
+#      - lint:
+#          context: reaction-validation
+#          requires:
+#            - docker-build
       - test:
           context: reaction-validation
           requires:
