@@ -31,4 +31,6 @@ aws s3 cp --recursive s3://${S3_ECS_DEPLOY_BUCKET}/staging/devops .
 
 find aws -name \*sh | xargs chmod +x
 cd aws/app
+ls -la
+cat ./update-app-stack.sh
 ./update-app-stack.sh sk-service
