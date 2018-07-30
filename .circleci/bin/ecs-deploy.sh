@@ -18,6 +18,11 @@ if [ "${CLOUDFORMATION_AWS_SECRET_ACCESS_KEY}" ]; then
 	AWS_SECRET_ACCESS_KEY=${CLOUDFORMATION_AWS_SECRET_ACCESS_KEY}
 fi
 
+echo "AWS_REGION: ${AWS_REGION:0:2}"
+echo "AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:0:2}"
+echo "AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:0:2}"
+
+
 aws s3 cp --recursive s3://${S3_ECS_DEPLOY_BUCKET}/staging/devops .
 
 find aws -name \*sh | xargs chmod +x
