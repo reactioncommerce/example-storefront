@@ -18,10 +18,14 @@ if [ "${CLOUDFORMATION_AWS_SECRET_ACCESS_KEY}" ]; then
 	AWS_SECRET_ACCESS_KEY=${CLOUDFORMATION_AWS_SECRET_ACCESS_KEY}
 fi
 
-echo "AWS_REGION: ${AWS_REGION:0:2}"
-echo "AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:0:2}"
-echo "AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:0:2}"
 
+mkdir ~/.aws
+echo "[default]" > ~/.aws/credentials
+echo "aws_access_key_id = ${AWS_ACCESS_KEY_ID}" >> ~/.aws/credentials
+echo "aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" >> ~/.aws/credentials
+
+echo "[default]" > ~/.aws/config
+echo "region = ${AWS_REGION}" >> > ~/.aws/config
 
 aws s3 cp --recursive s3://${S3_ECS_DEPLOY_BUCKET}/staging/devops .
 
