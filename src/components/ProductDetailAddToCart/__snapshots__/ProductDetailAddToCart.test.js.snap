@@ -199,18 +199,12 @@ Array [
           className="MuiGrid-item-9 MuiGrid-grid-xs-12-48"
         >
           <a
-            className="WithTracking-Link--link-192"
+            className=""
             href="/checkout"
             onClick={[Function]}
             onKeyDown={[Function]}
             role="link"
             tabIndex={0}
-            tracking={
-              Object {
-                "getTrackingData": [Function],
-                "trackEvent": [Function],
-              }
-            }
           >
             <div
               className="Button__ButtonDiv-bnfrK eloVkm"

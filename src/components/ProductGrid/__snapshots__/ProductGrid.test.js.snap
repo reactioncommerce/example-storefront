@@ -2,29 +2,23 @@
 
 exports[`Empty product grid message 1`] = `
 <div
-  className="inject-ProductGridEmptyMessage-with-routingStore-root-217"
+  className="inject-ProductGridEmptyMessage-with-routingStore-root-216"
 >
   <p
-    className="MuiTypography-root-158 MuiTypography-body1-167 MuiTypography-paragraph-176 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-219"
+    className="MuiTypography-root-157 MuiTypography-body1-166 MuiTypography-paragraph-175 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-218"
   >
     Sorry! We couldn't find what you're looking for.
   </p>
   <p
-    className="MuiTypography-root-158 MuiTypography-body1-167 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-218"
+    className="MuiTypography-root-157 MuiTypography-body1-166 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-217"
   >
     <a
-      className="WithTracking-Link--link-137"
+      className=""
       href="tag/test-tag"
       onClick={[Function]}
       onKeyDown={[Function]}
       role="link"
       tabIndex={0}
-      tracking={
-        Object {
-          "getTrackingData": [Function],
-          "trackEvent": [Function],
-        }
-      }
     >
       Clear filters
     </a>
@@ -146,27 +140,21 @@ Array [
     >
       <div>
         <a
-          className="WithTracking-Link--link-137"
+          className=""
           href="/product/men's-lightweigth-synchilla"
           onClick={[Function]}
           onKeyDown={[Function]}
           role="link"
           tabIndex={0}
-          tracking={
-            Object {
-              "getTrackingData": [Function],
-              "trackEvent": [Function],
-            }
-          }
         >
           <div
-            className="BadgeOverlay-badgeOverlay-138 BadgeOverlay-faded-139"
+            className="BadgeOverlay-badgeOverlay-137 BadgeOverlay-faded-138"
           >
             <div
-              className="Badge-badge-149 BadgeOverlay-status-140 BadgeOverlay-soldOut-145"
+              className="Badge-badge-148 BadgeOverlay-status-139 BadgeOverlay-soldOut-144"
             >
               <span
-                className="Badge-labelStyle-150"
+                className="Badge-labelStyle-149"
               >
                 Sold Out
               </span>
@@ -175,11 +163,11 @@ Array [
               className="WithTracking-ProductItem--productMedia-135"
             >
               <div
-                className="Img-imgWrapper-152 "
+                className="Img-imgWrapper-151 "
               >
                 <img
                   alt=""
-                  className="Img-img-154 Img-imgLoading-156 "
+                  className="Img-img-153 Img-imgLoading-155 "
                   src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/thumbnail/25580_CICN.png"
                 />
               </div>
@@ -189,12 +177,12 @@ Array [
                 className="WithTracking-ProductItem--productInfo-134"
               >
                 <aside
-                  className="MuiTypography-root-158 MuiTypography-body2-166"
+                  className="MuiTypography-root-157 MuiTypography-body2-165"
                 >
                   Men's Lightweigth Synchilla
                 </aside>
                 <div
-                  className="MuiTypography-root-158 MuiTypography-body1-167"
+                  className="MuiTypography-root-157 MuiTypography-body1-166"
                 >
                   <div>
                     <span
@@ -208,7 +196,7 @@ Array [
               </div>
               <div>
                 <p
-                  className="MuiTypography-root-158 MuiTypography-body1-167"
+                  className="MuiTypography-root-157 MuiTypography-body1-166"
                 >
                   Patagonia
                 </p>
@@ -223,31 +211,25 @@ Array [
     >
       <div>
         <a
-          className="WithTracking-Link--link-137"
+          className=""
           href="/product/example-product"
           onClick={[Function]}
           onKeyDown={[Function]}
           role="link"
           tabIndex={0}
-          tracking={
-            Object {
-              "getTrackingData": [Function],
-              "trackEvent": [Function],
-            }
-          }
         >
           <div
-            className="BadgeOverlay-badgeOverlay-138"
+            className="BadgeOverlay-badgeOverlay-137"
           >
             <div
               className="WithTracking-ProductItem--productMedia-135"
             >
               <div
-                className="Img-imgWrapper-152 "
+                className="Img-imgWrapper-151 "
               >
                 <img
                   alt=""
-                  className="Img-img-154 Img-imgLoading-156 "
+                  className="Img-img-153 Img-imgLoading-155 "
                   src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/thumbnail/product_image.png"
                 />
               </div>
@@ -257,12 +239,12 @@ Array [
                 className="WithTracking-ProductItem--productInfo-134"
               >
                 <aside
-                  className="MuiTypography-root-158 MuiTypography-body2-166"
+                  className="MuiTypography-root-157 MuiTypography-body2-165"
                 >
                   Basic Reaction Product
                 </aside>
                 <div
-                  className="MuiTypography-root-158 MuiTypography-body1-167"
+                  className="MuiTypography-root-157 MuiTypography-body1-166"
                 >
                   <div>
                     <span
@@ -276,7 +258,7 @@ Array [
               </div>
               <div>
                 <p
-                  className="MuiTypography-root-158 MuiTypography-body1-167"
+                  className="MuiTypography-root-157 MuiTypography-body1-166"
                 >
                   Reaction Commerce
                 </p>
@@ -288,13 +270,13 @@ Array [
     </div>
   </div>,
   <div
-    className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-182"
+    className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-181"
   >
     <div
       className="MuiGrid-item-3"
     >
       <button
-        className="MuiButtonBase-root-207 MuiButton-root-183 MuiButton-contained-192 MuiButton-raised-195"
+        className="MuiButtonBase-root-206 MuiButton-root-182 MuiButton-contained-191 MuiButton-raised-194"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -311,12 +293,12 @@ Array [
         type="button"
       >
         <span
-          className="MuiButton-label-184"
+          className="MuiButton-label-183"
         >
           Previous
         </span>
         <span
-          className="MuiTouchRipple-root-210"
+          className="MuiTouchRipple-root-209"
         />
       </button>
     </div>

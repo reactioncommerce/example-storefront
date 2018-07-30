@@ -11,18 +11,12 @@ exports[`basic snapshot 1`] = `
       className="Breadcrumbs-container-100"
     >
       <a
-        className="WithTracking-Link--link-103"
+        className=""
         href="/"
         onClick={[Function]}
         onKeyDown={[Function]}
         role="link"
         tabIndex={0}
-        tracking={
-          Object {
-            "getTrackingData": [Function],
-            "trackEvent": [Function],
-          }
-        }
       >
         <span
           className="Breadcrumbs-breadcrumbLink-101"
@@ -32,7 +26,7 @@ exports[`basic snapshot 1`] = `
       </a>
       <svg
         aria-hidden="true"
-        className="MuiSvgIcon-root-104 Breadcrumbs-breadcrumbIcon-102"
+        className="MuiSvgIcon-root-103 Breadcrumbs-breadcrumbIcon-102"
         color={undefined}
         focusable="false"
         viewBox="0 0 24 24"
@@ -44,18 +38,12 @@ exports[`basic snapshot 1`] = `
         </g>
       </svg>
       <a
-        className="WithTracking-Link--link-103"
+        className=""
         href="/tag/tag-a"
         onClick={[Function]}
         onKeyDown={[Function]}
         role="link"
         tabIndex={0}
-        tracking={
-          Object {
-            "getTrackingData": [Function],
-            "trackEvent": [Function],
-          }
-        }
       >
         <span
           className="Breadcrumbs-breadcrumbLink-101"
@@ -65,7 +53,7 @@ exports[`basic snapshot 1`] = `
       </a>
       <svg
         aria-hidden="true"
-        className="MuiSvgIcon-root-104 Breadcrumbs-breadcrumbIcon-102"
+        className="MuiSvgIcon-root-103 Breadcrumbs-breadcrumbIcon-102"
         color={undefined}
         focusable="false"
         viewBox="0 0 24 24"
@@ -77,18 +65,12 @@ exports[`basic snapshot 1`] = `
         </g>
       </svg>
       <a
-        className="WithTracking-Link--link-103"
+        className=""
         href="/product/example-product"
         onClick={[Function]}
         onKeyDown={[Function]}
         role="link"
         tabIndex={0}
-        tracking={
-          Object {
-            "getTrackingData": [Function],
-            "trackEvent": [Function],
-          }
-        }
       >
         <span
           className="Breadcrumbs-breadcrumbLink-101"
@@ -105,20 +87,20 @@ exports[`basic snapshot 1`] = `
       className="inject-WithTracking-ProductDetail--with-routingStore-uiStore-section-1"
     >
       <div
-        className="MuiGrid-container-3 MediaGallery-root-111"
+        className="MuiGrid-container-3 MediaGallery-root-110"
       >
         <div
           className="MuiGrid-item-4 MuiGrid-grid-xs-12-43 MuiGrid-grid-sm-12-57"
         >
           <div
-            className="MediaGallery-featured-112"
+            className="MediaGallery-featured-111"
           >
             <div
-              className="Img-imgWrapper-114 "
+              className="Img-imgWrapper-113 "
             >
               <img
                 alt=""
-                className="Img-img-116 Img-imgLoading-118 "
+                className="Img-img-115 Img-imgLoading-117 "
                 src="/resources/placeholder.gif"
               />
             </div>
@@ -130,7 +112,7 @@ exports[`basic snapshot 1`] = `
               className="MuiGrid-item-4 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-47"
             >
               <button
-                className="MuiButtonBase-root-121 MediaGalleryItem-root-120"
+                className="MuiButtonBase-root-120 MediaGalleryItem-root-119"
                 disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -147,16 +129,16 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="Img-imgWrapper-114 "
+                  className="Img-imgWrapper-113 "
                 >
                   <img
                     alt=""
-                    className="Img-img-116 Img-imgLoading-118 "
+                    className="Img-img-115 Img-imgLoading-117 "
                     src="/resources/placeholder.gif"
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-124"
+                  className="MuiTouchRipple-root-123"
                 />
               </button>
             </div>
@@ -164,7 +146,7 @@ exports[`basic snapshot 1`] = `
               className="MuiGrid-item-4 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-47"
             >
               <button
-                className="MuiButtonBase-root-121 MediaGalleryItem-root-120"
+                className="MuiButtonBase-root-120 MediaGalleryItem-root-119"
                 disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -181,16 +163,16 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="Img-imgWrapper-114 "
+                  className="Img-imgWrapper-113 "
                 >
                   <img
                     alt=""
-                    className="Img-img-116 Img-imgLoading-118 "
+                    className="Img-img-115 Img-imgLoading-117 "
                     src="/resources/placeholder.gif"
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-124"
+                  className="MuiTouchRipple-root-123"
                 />
               </button>
             </div>
@@ -198,7 +180,7 @@ exports[`basic snapshot 1`] = `
               className="MuiGrid-item-4 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-47"
             >
               <button
-                className="MuiButtonBase-root-121 MediaGalleryItem-root-120"
+                className="MuiButtonBase-root-120 MediaGalleryItem-root-119"
                 disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -215,16 +197,16 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="Img-imgWrapper-114 "
+                  className="Img-imgWrapper-113 "
                 >
                   <img
                     alt=""
-                    className="Img-img-116 Img-imgLoading-118 "
+                    className="Img-img-115 Img-imgLoading-117 "
                     src="/resources/placeholder.gif"
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-124"
+                  className="MuiTouchRipple-root-123"
                 />
               </button>
             </div>
@@ -232,7 +214,7 @@ exports[`basic snapshot 1`] = `
               className="MuiGrid-item-4 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-47"
             >
               <button
-                className="MuiButtonBase-root-121 MediaGalleryItem-root-120"
+                className="MuiButtonBase-root-120 MediaGalleryItem-root-119"
                 disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -249,16 +231,16 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="Img-imgWrapper-114 "
+                  className="Img-imgWrapper-113 "
                 >
                   <img
                     alt=""
-                    className="Img-img-116 Img-imgLoading-118 "
+                    className="Img-img-115 Img-imgLoading-117 "
                     src="/resources/placeholder.gif"
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-124"
+                  className="MuiTouchRipple-root-123"
                 />
               </button>
             </div>
@@ -266,7 +248,7 @@ exports[`basic snapshot 1`] = `
               className="MuiGrid-item-4 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-47"
             >
               <button
-                className="MuiButtonBase-root-121 MediaGalleryItem-root-120"
+                className="MuiButtonBase-root-120 MediaGalleryItem-root-119"
                 disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -283,16 +265,16 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="Img-imgWrapper-114 "
+                  className="Img-imgWrapper-113 "
                 >
                   <img
                     alt=""
-                    className="Img-img-116 Img-imgLoading-118 "
+                    className="Img-img-115 Img-imgLoading-117 "
                     src="/resources/placeholder.gif"
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-124"
+                  className="MuiTouchRipple-root-123"
                 />
               </button>
             </div>
@@ -300,7 +282,7 @@ exports[`basic snapshot 1`] = `
               className="MuiGrid-item-4 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-47"
             >
               <button
-                className="MuiButtonBase-root-121 MediaGalleryItem-root-120"
+                className="MuiButtonBase-root-120 MediaGalleryItem-root-119"
                 disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -317,16 +299,16 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="Img-imgWrapper-114 "
+                  className="Img-imgWrapper-113 "
                 >
                   <img
                     alt=""
-                    className="Img-img-116 Img-imgLoading-118 "
+                    className="Img-img-115 Img-imgLoading-117 "
                     src="/resources/placeholder.gif"
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-124"
+                  className="MuiTouchRipple-root-123"
                 />
               </button>
             </div>
@@ -334,7 +316,7 @@ exports[`basic snapshot 1`] = `
               className="MuiGrid-item-4 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-47"
             >
               <button
-                className="MuiButtonBase-root-121 MediaGalleryItem-root-120"
+                className="MuiButtonBase-root-120 MediaGalleryItem-root-119"
                 disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -351,16 +333,16 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="Img-imgWrapper-114 "
+                  className="Img-imgWrapper-113 "
                 >
                   <img
                     alt=""
-                    className="Img-img-116 Img-imgLoading-118 "
+                    className="Img-img-115 Img-imgLoading-117 "
                     src="/resources/placeholder.gif"
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-124"
+                  className="MuiTouchRipple-root-123"
                 />
               </button>
             </div>
@@ -368,7 +350,7 @@ exports[`basic snapshot 1`] = `
               className="MuiGrid-item-4 MuiGrid-grid-xs-3-34 MuiGrid-grid-sm-2-47"
             >
               <button
-                className="MuiButtonBase-root-121 MediaGalleryItem-root-120"
+                className="MuiButtonBase-root-120 MediaGalleryItem-root-119"
                 disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -385,16 +367,16 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="Img-imgWrapper-114 "
+                  className="Img-imgWrapper-113 "
                 >
                   <img
                     alt=""
-                    className="Img-img-116 Img-imgLoading-118 "
+                    className="Img-img-115 Img-imgLoading-117 "
                     src="/resources/placeholder.gif"
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-124"
+                  className="MuiTouchRipple-root-123"
                 />
               </button>
             </div>
@@ -407,7 +389,7 @@ exports[`basic snapshot 1`] = `
     >
       <section>
         <h2
-          className="MuiTypography-root-133 MuiTypography-title-139 TagGrid-title-131"
+          className="MuiTypography-root-132 MuiTypography-title-138 TagGrid-title-130"
         >
           Tags
         </h2>
@@ -418,28 +400,22 @@ exports[`basic snapshot 1`] = `
             className="MuiGrid-item-4"
           >
             <a
-              className="WithTracking-Link--link-103"
+              className=""
               href="/tag/shoes"
               onClick={[Function]}
               onKeyDown={[Function]}
               role="link"
               tabIndex={0}
-              tracking={
-                Object {
-                  "getTrackingData": [Function],
-                  "trackEvent": [Function],
-                }
-              }
             >
               <div
-                className="MuiChip-root-157 TagGrid-chip-132"
+                className="MuiChip-root-156 TagGrid-chip-131"
                 onClick={undefined}
                 onKeyDown={[Function]}
                 role="button"
                 tabIndex={-1}
               >
                 <span
-                  className="MuiChip-label-162"
+                  className="MuiChip-label-161"
                 >
                   Shoes
                 </span>
@@ -450,28 +426,22 @@ exports[`basic snapshot 1`] = `
             className="MuiGrid-item-4"
           >
             <a
-              className="WithTracking-Link--link-103"
+              className=""
               href="/tag/shop"
               onClick={[Function]}
               onKeyDown={[Function]}
               role="link"
               tabIndex={0}
-              tracking={
-                Object {
-                  "getTrackingData": [Function],
-                  "trackEvent": [Function],
-                }
-              }
             >
               <div
-                className="MuiChip-root-157 TagGrid-chip-132"
+                className="MuiChip-root-156 TagGrid-chip-131"
                 onClick={undefined}
                 onKeyDown={[Function]}
                 role="button"
                 tabIndex={-1}
               >
                 <span
-                  className="MuiChip-label-162"
+                  className="MuiChip-label-161"
                 >
                   Shop
                 </span>
@@ -489,7 +459,7 @@ exports[`basic snapshot 1`] = `
       className="MuiGrid-item-4 MuiGrid-grid-sm-12-57"
     >
       <h1
-        className="MuiTypography-root-133 MuiTypography-display2-136 MuiTypography-gutterBottom-150"
+        className="MuiTypography-root-132 MuiTypography-display2-135 MuiTypography-gutterBottom-149"
       >
         Reaction Sample Product
       </h1>
@@ -498,17 +468,17 @@ exports[`basic snapshot 1`] = `
       className="MuiGrid-item-4 MuiGrid-grid-sm-12-57"
     >
       <div
-        className="MuiTypography-root-133 MuiTypography-title-139 MuiTypography-gutterBottom-150"
+        className="MuiTypography-root-132 MuiTypography-title-138 MuiTypography-gutterBottom-149"
       >
         $12.99 - $19.99
       </div>
       <p
-        className="MuiTypography-root-133 MuiTypography-body1-142"
+        className="MuiTypography-root-132 MuiTypography-body1-141"
       >
         Example Manufacturer
       </p>
       <p
-        className="MuiTypography-root-133 MuiTypography-body1-142"
+        className="MuiTypography-root-132 MuiTypography-body1-141"
       >
         Sign in as administrator to edit.
 You can clone this product from the product grid.
@@ -521,13 +491,13 @@ Details can be added below the image for more specific product information.
       </p>
     </div>
     <div
-      className="VariantList-variantsContainer-164"
+      className="VariantList-variantsContainer-163"
     >
       <div
-        className="VariantList-variantItem-165"
+        className="VariantList-variantItem-164"
       >
         <button
-          className="MuiButtonBase-root-121 VariantItem-variantButton-167 VariantItem-activeVariant-168"
+          className="MuiButtonBase-root-120 VariantItem-variantButton-166 VariantItem-activeVariant-167"
           disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
@@ -544,29 +514,29 @@ Details can be added below the image for more specific product information.
           type="button"
         >
           <span
-            className="MuiTypography-root-133 MuiTypography-body1-142"
+            className="MuiTypography-root-132 MuiTypography-body1-141"
           >
             Sample Variant
           </span>
           <span
-            className="MuiTypography-root-133 MuiTypography-body1-142"
+            className="MuiTypography-root-132 MuiTypography-body1-141"
           >
             $12.99 - $19.99
           </span>
         </button>
         <div
-          className="VariantList-alert-166"
+          className="VariantList-alert-165"
         >
           <div
-            className="BadgeOverlay-badgeOverlay-169 BadgeOverlay-faded-170"
+            className="BadgeOverlay-badgeOverlay-168 BadgeOverlay-faded-169"
           />
         </div>
       </div>
       <div
-        className="VariantList-variantItem-165"
+        className="VariantList-variantItem-164"
       >
         <button
-          className="MuiButtonBase-root-121 VariantItem-variantButton-167"
+          className="MuiButtonBase-root-120 VariantItem-variantButton-166"
           disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
@@ -583,40 +553,40 @@ Details can be added below the image for more specific product information.
           type="button"
         >
           <span
-            className="MuiTypography-root-133 MuiTypography-body1-142"
+            className="MuiTypography-root-132 MuiTypography-body1-141"
           >
             Sample Variant 2
           </span>
           <span
-            className="MuiTypography-root-133 MuiTypography-body1-142"
+            className="MuiTypography-root-132 MuiTypography-body1-141"
           >
             $12.99 - $19.99
           </span>
         </button>
       </div>
       <div
-        className="Divider-container-180"
+        className="Divider-container-179"
       >
         <hr
-          className="Divider-item-182"
+          className="Divider-item-181"
         />
         <span
-          className="MuiTypography-root-133 MuiTypography-body1-142 Divider-label-181"
+          className="MuiTypography-root-132 MuiTypography-body1-141 Divider-label-180"
         >
           Available Options
         </span>
         <hr
-          className="Divider-item-182"
+          className="Divider-item-181"
         />
       </div>
       <div
-        className="MuiGrid-container-3 MuiGrid-spacing-xs-8-25 OptionsList-root-183"
+        className="MuiGrid-container-3 MuiGrid-spacing-xs-8-25 OptionsList-root-182"
       >
         <div
           className="MuiGrid-item-4"
         >
           <button
-            className="MuiButtonBase-root-121 ProductDetailOption-optionButton-186"
+            className="MuiButtonBase-root-120 ProductDetailOption-optionButton-185"
             disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
@@ -633,16 +603,16 @@ Details can be added below the image for more specific product information.
             type="button"
           >
             <span
-              className="MuiTypography-root-133 MuiTypography-body1-142 ProductDetailOption-optionText-187"
+              className="MuiTypography-root-132 MuiTypography-body1-141 ProductDetailOption-optionText-186"
             >
               Red
             </span>
           </button>
           <div
-            className="OptionsList-alert-184"
+            className="OptionsList-alert-183"
           >
             <div
-              className="BadgeOverlay-badgeOverlay-169"
+              className="BadgeOverlay-badgeOverlay-168"
             />
           </div>
         </div>
@@ -650,7 +620,7 @@ Details can be added below the image for more specific product information.
           className="MuiGrid-item-4"
         >
           <button
-            className="MuiButtonBase-root-121 ProductDetailOption-optionButton-186"
+            className="MuiButtonBase-root-120 ProductDetailOption-optionButton-185"
             disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
@@ -667,7 +637,7 @@ Details can be added below the image for more specific product information.
             type="button"
           >
             <span
-              className="MuiTypography-root-133 MuiTypography-body1-142 ProductDetailOption-optionText-187"
+              className="MuiTypography-root-132 MuiTypography-body1-141 ProductDetailOption-optionText-186"
             >
               Green
             </span>
@@ -679,35 +649,35 @@ Details can be added below the image for more specific product information.
       className="MuiGrid-container-3"
     >
       <div
-        className="MuiGrid-item-4 MuiGrid-grid-xs-12-43 inject-ProductDetailAddToCart-with-uiStore-quantityGrid-193"
+        className="MuiGrid-item-4 MuiGrid-grid-xs-12-43 inject-ProductDetailAddToCart-with-uiStore-quantityGrid-192"
       >
         <div
-          className="Divider-container-180"
+          className="Divider-container-179"
         >
           <hr
-            className="Divider-item-182"
+            className="Divider-item-181"
           />
           <hr
-            className="Divider-item-182"
+            className="Divider-item-181"
           />
         </div>
         <span
-          className="MuiTypography-root-133 MuiTypography-body1-142 inject-ProductDetailAddToCart-with-uiStore-quantityTypography-195"
+          className="MuiTypography-root-132 MuiTypography-body1-141 inject-ProductDetailAddToCart-with-uiStore-quantityTypography-194"
         >
           Quantity
         </span>
         <div
           aria-describedby={undefined}
-          className="MuiFormControl-root-196"
+          className="MuiFormControl-root-195"
         >
           <div
-            className="MuiInput-root-200 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-192 MuiInput-formControl-201"
+            className="MuiInput-root-199 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-191 MuiInput-formControl-200"
           >
             <div
-              className="MuiInputAdornment-root-213"
+              className="MuiInputAdornment-root-212"
             >
               <button
-                className="MuiButtonBase-root-121 inject-ProductDetailAddToCart-with-uiStore-incrementButton-191"
+                className="MuiButtonBase-root-120 inject-ProductDetailAddToCart-with-uiStore-incrementButton-190"
                 color="default"
                 disabled={undefined}
                 onBlur={[Function]}
@@ -727,7 +697,7 @@ Details can be added below the image for more specific product information.
               >
                 <svg
                   aria-hidden="true"
-                  className="MuiSvgIcon-root-104"
+                  className="MuiSvgIcon-root-103"
                   color={undefined}
                   focusable="false"
                   viewBox="0 0 24 24"
@@ -739,7 +709,7 @@ Details can be added below the image for more specific product information.
                   </g>
                 </svg>
                 <span
-                  className="MuiTouchRipple-root-124"
+                  className="MuiTouchRipple-root-123"
                 />
               </button>
             </div>
@@ -747,7 +717,7 @@ Details can be added below the image for more specific product information.
               aria-invalid={false}
               autoComplete={undefined}
               autoFocus={undefined}
-              className="MuiInput-input-208 inject-ProductDetailAddToCart-with-uiStore-quantityInput-194"
+              className="MuiInput-input-207 inject-ProductDetailAddToCart-with-uiStore-quantityInput-193"
               defaultValue={undefined}
               disabled={false}
               id="addToCartQuantityInput"
@@ -765,10 +735,10 @@ Details can be added below the image for more specific product information.
               value={1}
             />
             <div
-              className="MuiInputAdornment-root-213"
+              className="MuiInputAdornment-root-212"
             >
               <button
-                className="MuiButtonBase-root-121 inject-ProductDetailAddToCart-with-uiStore-incrementButton-191"
+                className="MuiButtonBase-root-120 inject-ProductDetailAddToCart-with-uiStore-incrementButton-190"
                 color="default"
                 disabled={undefined}
                 onBlur={[Function]}
@@ -788,7 +758,7 @@ Details can be added below the image for more specific product information.
               >
                 <svg
                   aria-hidden="true"
-                  className="MuiSvgIcon-root-104"
+                  className="MuiSvgIcon-root-103"
                   color={undefined}
                   focusable="false"
                   viewBox="0 0 24 24"
@@ -800,7 +770,7 @@ Details can be added below the image for more specific product information.
                   </g>
                 </svg>
                 <span
-                  className="MuiTouchRipple-root-124"
+                  className="MuiTouchRipple-root-123"
                 />
               </button>
             </div>
@@ -811,7 +781,7 @@ Details can be added below the image for more specific product information.
         className="MuiGrid-item-4 MuiGrid-grid-xs-12-43"
       >
         <button
-          className="MuiButtonBase-root-121 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-189"
+          className="MuiButtonBase-root-120 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-188"
           disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
@@ -828,40 +798,40 @@ Details can be added below the image for more specific product information.
           type="button"
         >
           <span
-            className="MuiTypography-root-133 MuiTypography-body1-142 inject-ProductDetailAddToCart-with-uiStore-addToCartText-190"
+            className="MuiTypography-root-132 MuiTypography-body1-141 inject-ProductDetailAddToCart-with-uiStore-addToCartText-189"
           >
             Add to cart
           </span>
           <span
-            className="MuiTouchRipple-root-124"
+            className="MuiTouchRipple-root-123"
           />
         </button>
       </div>
     </div>
     <div
-      className="HiddenCss-mdUp-231"
+      className="HiddenCss-mdUp-230"
     >
       <div
-        className="inject-CartPopover-with-uiStore-container-216 inject-CartPopover-with-uiStore-isContainerHidden-218"
+        className="inject-CartPopover-with-uiStore-container-215 inject-CartPopover-with-uiStore-isContainerHidden-217"
       >
         <div
-          className="MuiGrid-container-3 MuiGrid-spacing-xs-24-27 inject-CartPopover-with-uiStore-gridContainer-217"
+          className="MuiGrid-container-3 MuiGrid-spacing-xs-24-27 inject-CartPopover-with-uiStore-gridContainer-216"
         >
           <div
-            className="MuiGrid-item-4 MuiGrid-grid-xs-12-43 inject-CartPopover-with-uiStore-containerItem-220"
+            className="MuiGrid-item-4 MuiGrid-grid-xs-12-43 inject-CartPopover-with-uiStore-containerItem-219"
           >
             <img
               alt="Item Title"
-              className="inject-CartPopover-with-uiStore-addedToCartImg-221"
+              className="inject-CartPopover-with-uiStore-addedToCartImg-220"
               src="//placehold.it/100"
             />
             <span
-              className="MuiTypography-root-133 MuiTypography-body1-142 inject-CartPopover-with-uiStore-addedToCartText-223"
+              className="MuiTypography-root-132 MuiTypography-body1-141 inject-CartPopover-with-uiStore-addedToCartText-222"
             >
               10
                "
               <span
-                className="inject-CartPopover-with-uiStore-addedToCartItemName-222"
+                className="inject-CartPopover-with-uiStore-addedToCartItemName-221"
               >
                 Item Title
               </span>
@@ -872,18 +842,12 @@ Details can be added below the image for more specific product information.
             className="MuiGrid-item-4 MuiGrid-grid-xs-12-43"
           >
             <a
-              className="WithTracking-Link--link-103"
+              className=""
               href="/checkout"
               onClick={[Function]}
               onKeyDown={[Function]}
               role="link"
               tabIndex={0}
-              tracking={
-                Object {
-                  "getTrackingData": [Function],
-                  "trackEvent": [Function],
-                }
-              }
             >
               <div
                 className="Button__ButtonDiv-bnfrK eloVkm"

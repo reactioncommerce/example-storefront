@@ -5,18 +5,12 @@ exports[`tagGrid secondlevel tag 1`] = `
   className="Breadcrumbs-container-1"
 >
   <a
-    className="WithTracking-Link--link-4"
+    className=""
     href="/"
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
     tabIndex={0}
-    tracking={
-      Object {
-        "getTrackingData": [Function],
-        "trackEvent": [Function],
-      }
-    }
   >
     <span
       className="Breadcrumbs-breadcrumbLink-2"
@@ -26,7 +20,7 @@ exports[`tagGrid secondlevel tag 1`] = `
   </a>
   <svg
     aria-hidden="true"
-    className="MuiSvgIcon-root-5 Breadcrumbs-breadcrumbIcon-3"
+    className="MuiSvgIcon-root-4 Breadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
     viewBox="0 0 24 24"
@@ -38,18 +32,12 @@ exports[`tagGrid secondlevel tag 1`] = `
     </g>
   </svg>
   <a
-    className="WithTracking-Link--link-4"
+    className=""
     href="/tag/tag-a"
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
     tabIndex={0}
-    tracking={
-      Object {
-        "getTrackingData": [Function],
-        "trackEvent": [Function],
-      }
-    }
   >
     <span
       className="Breadcrumbs-breadcrumbLink-2"
@@ -59,7 +47,7 @@ exports[`tagGrid secondlevel tag 1`] = `
   </a>
   <svg
     aria-hidden="true"
-    className="MuiSvgIcon-root-5 Breadcrumbs-breadcrumbIcon-3"
+    className="MuiSvgIcon-root-4 Breadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
     viewBox="0 0 24 24"
@@ -71,18 +59,12 @@ exports[`tagGrid secondlevel tag 1`] = `
     </g>
   </svg>
   <a
-    className="WithTracking-Link--link-4"
+    className=""
     href="/tag/tag-a-1"
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
     tabIndex={0}
-    tracking={
-      Object {
-        "getTrackingData": [Function],
-        "trackEvent": [Function],
-      }
-    }
   >
     <span
       className="Breadcrumbs-breadcrumbLink-2"
@@ -98,18 +80,12 @@ exports[`tagGrid top level tag 1`] = `
   className="Breadcrumbs-container-1"
 >
   <a
-    className="WithTracking-Link--link-4"
+    className=""
     href="/"
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
     tabIndex={0}
-    tracking={
-      Object {
-        "getTrackingData": [Function],
-        "trackEvent": [Function],
-      }
-    }
   >
     <span
       className="Breadcrumbs-breadcrumbLink-2"
@@ -119,7 +95,7 @@ exports[`tagGrid top level tag 1`] = `
   </a>
   <svg
     aria-hidden="true"
-    className="MuiSvgIcon-root-5 Breadcrumbs-breadcrumbIcon-3"
+    className="MuiSvgIcon-root-4 Breadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
     viewBox="0 0 24 24"
@@ -131,18 +107,12 @@ exports[`tagGrid top level tag 1`] = `
     </g>
   </svg>
   <a
-    className="WithTracking-Link--link-4"
+    className=""
     href="/tag/tag-a"
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
     tabIndex={0}
-    tracking={
-      Object {
-        "getTrackingData": [Function],
-        "trackEvent": [Function],
-      }
-    }
   >
     <span
       className="Breadcrumbs-breadcrumbLink-2"
