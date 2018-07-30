@@ -114,7 +114,8 @@ jobs:
       - run:
           name: Docker Push
           command: |
-            docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+            #docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+            $(aws ecr get-login --no-include-email --region ${AWS_REGION})
             docker push "$DOCKER_REPOSITORY:$CIRCLE_SHA1"
             cat docker-cache/docker-tags.txt \
               | xargs -t -I % \
@@ -218,10 +219,10 @@ workflows:
           context: reaction-validation
           requires:
             - docker-build
-      - snyk-security:
-          context: reaction-validation
-          requires:
-            - docker-build
+#      - snyk-security:
+#          context: reaction-validation
+#          requires:
+#            - docker-build
       - deploy-to-ecs:
           requires:
             - docker-push
