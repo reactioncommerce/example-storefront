@@ -168,7 +168,7 @@ export default (Component) => (
               cartStore.setAccountCartId(cart._id);
             }
 
-            //
+            // Reconcile cart if both an account cart and anonymous cart exist
             this.reconcileCartsIfNecessary(refetchCart);
 
             return (
