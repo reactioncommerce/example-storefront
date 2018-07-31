@@ -19,7 +19,6 @@ import getPageContext from "../lib/theme/getPageContext";
 @withShop
 @withViewer
 @withTags
-@withTheme
 @track({}, { dispatch })
 export default class App extends NextApp {
   constructor(props) {
