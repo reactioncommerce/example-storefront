@@ -135,8 +135,8 @@ export default (Component) => (
       if (cartStore.hasAnonymousCartCredentials) {
         // If we are authenticated, reconcile carts
         if (authStore.isAuthenticated) {
-          this.reconcileCart();
-          return null;
+          this.reconcileCartsIfNecessary();
+          skipQuery = true;
         }
 
         // Otherwise, set query and variables for fetching an anonymous cart
@@ -169,9 +169,6 @@ export default (Component) => (
             } else {
               cartStore.setAccountCartId(null);
             }
-
-            // Reconcile cart if both an account cart and anonymous cart exist
-            this.reconcileCartsIfNecessary(refetchCart);
 
             return (
               <Mutation
