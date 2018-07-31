@@ -8,24 +8,18 @@ exports[`basic snapshot 1`] = `
     Tags
   </h2>
   <div
-    className="MuiGrid-container-27 MuiGrid-spacing-xs-8-49"
+    className="MuiGrid-container-28 MuiGrid-spacing-xs-8-50"
   >
     <div
-      className="MuiGrid-item-28"
+      className="MuiGrid-item-29"
     >
       <a
-        className="WithTracking-Link--link-124"
+        className=""
         href="/tag/shoes"
         onClick={[Function]}
         onKeyDown={[Function]}
         role="link"
         tabIndex={0}
-        tracking={
-          Object {
-            "getTrackingData": [Function],
-            "trackEvent": [Function],
-          }
-        }
       >
         <div
           className="MuiChip-root-125 TagGrid-chip-2"
@@ -43,21 +37,15 @@ exports[`basic snapshot 1`] = `
       </a>
     </div>
     <div
-      className="MuiGrid-item-28"
+      className="MuiGrid-item-29"
     >
       <a
-        className="WithTracking-Link--link-124"
+        className=""
         href="/tag/shop"
         onClick={[Function]}
         onKeyDown={[Function]}
         role="link"
         tabIndex={0}
-        tracking={
-          Object {
-            "getTrackingData": [Function],
-            "trackEvent": [Function],
-          }
-        }
       >
         <div
           className="MuiChip-root-125 TagGrid-chip-2"
