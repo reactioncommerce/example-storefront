@@ -164,8 +164,10 @@ export default (Component) => (
             const { pageInfo } = (cart && cart.items) || {};
 
             // With an authenticated cart, set the accountCartId for later use
-            if (cart && authStore.isAuthenticated) {
+            if (cart && cart.account && cart.account._id === authStore.accountId && authStore.isAuthenticated) {
               cartStore.setAccountCartId(cart._id);
+            } else {
+              cartStore.setAccountCartId(null);
             }
 
             // Reconcile cart if both an account cart and anonymous cart exist
