@@ -41,6 +41,7 @@ export default (Component) => (
     componentDidMount() {
       // Update the anonymousCartId if necessary
       this.props.cartStore.setAnonymousCartCredentialsFromLocalStorage();
+      this.isReconcilingCarts = false;
     }
 
     /**
@@ -50,19 +51,18 @@ export default (Component) => (
      * @summary Called when a user signs in with an anonymous cart
      * @private
      * @ignore
-     * @param {Function} refetchCartCallback An Apollo query refetch function
      * @returns {undefined} No return
      */
-    reconcileCartsIfNecessary(refetchCartCallback) {
+    reconcileCartsIfNecessary() {
       const { authStore, cartStore, shop, client: apolloClient } = this.props;
 
-      if (cartStore.hasAnonymousCartCredentials && authStore.isAuthenticated) {
+      if (cartStore.hasAnonymousCartCredentials && authStore.isAuthenticated && this.isReconcilingCarts === false) {
+        // Prevent multiple calls to reconcile cart mutations when one is currently in progress
+        this.isReconcilingCarts = true;
+
         apolloClient.mutate({
           mutation: reconcileCartsMutation,
           update: (cache, { data: mutationData }) => {
-            // On update, re-fetch cart data
-            refetchCartCallback && refetchCartCallback();
-
             // If the mutation data contains a createCart object and we are an anonymous user,
             // then set the anonymous cart details
             if (mutationData && mutationData.reconcileCarts) {
@@ -72,6 +72,8 @@ export default (Component) => (
                 cartStore.clearAnonymousCartCredentials();
               }
             }
+
+            this.isReconcilingCarts = false;
           },
           variables: {
             input: {
@@ -136,7 +138,20 @@ export default (Component) => (
         // If we are authenticated, reconcile carts
         if (authStore.isAuthenticated) {
           this.reconcileCartsIfNecessary();
-          skipQuery = true;
+
+          // Render the component during cart reconciliation
+          // But set props to null to indicate that no actions may take place to
+          // get or mutate the cart until the reconciliation is complete
+          return (
+            <Component
+              {...this.props}
+              isReconcilingCarts={true}
+              hasMoreCartItems={false}
+              loadMoreCartItems={null}
+              addItemsToCart={null}
+              cart={null}
+            />
+          );
         }
 
         // Otherwise, set query and variables for fetching an anonymous cart
