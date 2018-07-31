@@ -56,7 +56,7 @@ export default (Component) => (
     reconcileCartsIfNecessary(refetchCartCallback) {
       const { authStore, cartStore, shop, client: apolloClient } = this.props;
 
-      if (cartStore.hasAnonymousCart && authStore.isAuthenticated) {
+      if (cartStore.hasAnonymousCartCredentials && authStore.isAuthenticated) {
         apolloClient.mutate({
           mutation: reconcileCartsMutation,
           update: (cache, { data: mutationData }) => {
@@ -100,7 +100,7 @@ export default (Component) => (
         items: data.items
       };
 
-      if (authStore.isAuthenticated === false && cartStore.hasAnonymousCart) {
+      if (authStore.isAuthenticated === false && cartStore.hasAnonymousCartCredentials) {
         // Given an anonymous user, with a cart, add token and cartId to input
         const { anonymousCartId, anonymousCartToken } = cartStore;
 
@@ -110,7 +110,7 @@ export default (Component) => (
       } else if (authStore.isAuthenticated === true && cartStore.hasAccountCart) {
         // With an account and an account cart, set the accountCartId on the input object
         input.cartId = cartStore.accountCartId;
-      } else if (!cartStore.hasAccountCart && !cartStore.hasAnonymousCart) {
+      } else if (!cartStore.hasAccountCart && !cartStore.hasAnonymousCartCredentials) {
         // With no anonymous or account cart, add shop Id to input as it will be needed for the create cart mutation
         input.shopId = shop._id;
       }
