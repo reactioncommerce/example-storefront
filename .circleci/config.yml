@@ -210,18 +210,18 @@ workflows:
           context: reaction-publish-docker
           requires:
             - docker-build
-#      - lint:
-#          context: reaction-validation
-#          requires:
-#            - docker-build
+      - lint:
+          context: reaction-validation
+          requires:
+            - docker-build
       - test:
           context: reaction-validation
           requires:
             - docker-build
-#      - snyk-security:
-#          context: reaction-validation
-#          requires:
-#            - docker-build
+      - snyk-security:
+          context: reaction-validation
+          requires:
+            - docker-build
       - deploy-to-ecs:
           requires:
             - docker-push
