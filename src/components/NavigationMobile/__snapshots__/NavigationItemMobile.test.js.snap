@@ -31,7 +31,7 @@ exports[`renders with 2 levels of tags 1`] = `
   </div>
   <svg
     aria-hidden="true"
-    className="MuiSvgIcon-root-49 MuiListItemIcon-root-48"
+    className="MuiSvgIcon-root-50 MuiListItemIcon-root-49"
     color={undefined}
     focusable="false"
     viewBox="0 0 24 24"
@@ -43,7 +43,7 @@ exports[`renders with 2 levels of tags 1`] = `
     </g>
   </svg>
   <span
-    className="MuiTouchRipple-root-56"
+    className="MuiTouchRipple-root-57"
   />
 </li>
 `;
@@ -77,7 +77,7 @@ exports[`renders with 3 levels of tags 1`] = `
   </div>
   <svg
     aria-hidden="true"
-    className="MuiSvgIcon-root-49 MuiListItemIcon-root-48"
+    className="MuiSvgIcon-root-50 MuiListItemIcon-root-49"
     color={undefined}
     focusable="false"
     viewBox="0 0 24 24"
@@ -89,7 +89,7 @@ exports[`renders with 3 levels of tags 1`] = `
     </g>
   </svg>
   <span
-    className="MuiTouchRipple-root-56"
+    className="MuiTouchRipple-root-57"
   />
 </li>
 `;

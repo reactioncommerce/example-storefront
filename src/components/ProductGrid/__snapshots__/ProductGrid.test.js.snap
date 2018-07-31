@@ -2,15 +2,15 @@
 
 exports[`Empty product grid message 1`] = `
 <div
-  className="inject-ProductGridEmptyMessage-with-routingStore-root-216"
+  className="inject-ProductGridEmptyMessage-with-routingStore-root-217"
 >
   <p
-    className="MuiTypography-root-157 MuiTypography-body1-166 MuiTypography-paragraph-175 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-218"
+    className="MuiTypography-root-157 MuiTypography-body1-166 MuiTypography-paragraph-175 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-219"
   >
     Sorry! We couldn't find what you're looking for.
   </p>
   <p
-    className="MuiTypography-root-157 MuiTypography-body1-166 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-217"
+    className="MuiTypography-root-157 MuiTypography-body1-166 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-218"
   >
     <a
       className=""
@@ -270,13 +270,13 @@ Array [
     </div>
   </div>,
   <div
-    className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-181"
+    className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-182"
   >
     <div
       className="MuiGrid-item-3"
     >
       <button
-        className="MuiButtonBase-root-206 MuiButton-root-182 MuiButton-contained-191 MuiButton-raised-194"
+        className="MuiButtonBase-root-207 MuiButton-root-183 MuiButton-contained-192 MuiButton-raised-195"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -293,12 +293,12 @@ Array [
         type="button"
       >
         <span
-          className="MuiButton-label-183"
+          className="MuiButton-label-184"
         >
           Previous
         </span>
         <span
-          className="MuiTouchRipple-root-209"
+          className="MuiTouchRipple-root-210"
         />
       </button>
     </div>
