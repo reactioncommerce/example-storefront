@@ -17,22 +17,6 @@ function getComponentDisplayName(Component) {
 
 export default (App) =>
   class WithApolloClient extends React.Component {
-    static displayName = `WithApolloClient(${getComponentDisplayName(App)})`;
-
-    static propTypes = {
-      apolloState: PropTypes.object.isRequired,
-      router: PropTypes.object
-    };
-
-    static getDerivedStateFromProps(nextProps) {
-      const { pathname, query } = nextProps.router;
-
-      // Update routing store with pathname and query after route change
-      rootMobxStores.routingStore.updateRoute({ pathname, query });
-
-      return null;
-    }
-
     static async getInitialProps(ctx) {
       const { Component, router, ctx: { req, res, query, pathname } } = ctx;
 
@@ -87,9 +71,16 @@ export default (App) =>
 
       return {
         ...appProps,
-        apolloState: apolloState.data
+        apolloState
       };
     }
+
+    static displayName = `WithApolloClient(${getComponentDisplayName(App)})`;
+
+    static propTypes = {
+      apolloState: PropTypes.object.isRequired,
+      router: PropTypes.object
+    };
 
     constructor(props) {
       super(props);
@@ -99,6 +90,15 @@ export default (App) =>
 
       // State must be initialized if getDerivedStateFromProps is used
       this.state = {};
+    }
+
+    static getDerivedStateFromProps(nextProps) {
+      const { pathname, query } = nextProps.router;
+
+      // Update routing store with pathname and query after route change
+      rootMobxStores.routingStore.updateRoute({ pathname, query });
+
+      return null;
     }
 
     render() {
