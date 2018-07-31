@@ -2,19 +2,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link as NextLink } from "routes";
-import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 import track from "lib/tracking/track";
-import Anchor from "./Anchor.js";
 
-const styles = ({
-  link: {
-    color: "inherit",
-    textDecoration: "none"
-  }
-});
-
-@withStyles(styles)
 @track((ownProps) => ({
   component: "Link",
   url: ownProps.route,
@@ -24,32 +14,49 @@ class Link extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
-    classes: PropTypes.object.isRequired,
-    onAnchorClick: PropTypes.func
+    onClick: PropTypes.func
   }
 
   static defaultProps = {
-    onAnchorClick: () => {}
+    onClick: () => {}
+  }
+
+  @track(() => ({
+    action: "Link Clicked"
+  }))
+  handleClick = (event) => {
+    this.props.onClick(event);
+  }
+
+  @track(() => ({
+    action: "Link Enter Key Down"
+  }))
+  handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      this.props.onClick(event);
+    }
   }
 
   render() {
     const {
-      classes,
       children,
       className,
-      onAnchorClick, // eslint-disable-line
       tracking, // eslint-disable-line
+      onClick,
       ...props
     } = this.props;
 
     return (
       <NextLink {...props} passHref>
-        <Anchor
-          className={classNames(classes.link, className)}
-          onAnchorClick={onAnchorClick}
+        <a
+          className={classNames(className)}
+          onClick={this.handleClick}
+          onKeyDown={this.handleKeyDown}
+          role="link"
+          tabIndex={0}
         >
           {children}
-        </Anchor>
+        </a>
       </NextLink>
     );
   }

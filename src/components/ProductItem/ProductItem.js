@@ -48,7 +48,7 @@ class ProductItem extends Component {
   }
 
   @trackProductClicked()
-  handleAnchorClick = () => {}
+  handleOnClick = () => {}
 
   renderProductMedia() {
     const { classes, product: { description } } = this.props;
@@ -88,7 +88,7 @@ class ProductItem extends Component {
       <div>
         <Link
           route={this.productDetailHref}
-          onAnchorClick={this.handleAnchorClick}
+          onClick={this.handleOnClick}
         >
           <BadgeOverlay product={product}>
             {this.renderProductMedia()}

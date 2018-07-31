@@ -92,7 +92,7 @@ class NavigationItemDesktop extends Component {
         <Divider />
         {navItemGroup.subTags.edges.map(({ node: navItem }, index) => (
           <MenuItem dense key={index}>
-            <Link onAnchorClick={this.onClose} route={`${this.linkPath(navItem)}`}>
+            <Link onClick={this.onClose} route={`${this.linkPath(navItem)}`}>
               <ListItemText primary={navItem.name} />
             </Link>
           </MenuItem>
@@ -119,7 +119,7 @@ class NavigationItemDesktop extends Component {
               <Grid item key={index}>
                 <MenuList disablePadding>
                   <MenuItem>
-                    <Link onAnchorClick={this.onClose} route={`${this.linkPath(navItemGroup)}`}>
+                    <Link onClick={this.onClose} route={`${this.linkPath(navItemGroup)}`}>
                       <ListItemText primary={navItemGroup.name} />
                     </Link>
                   </MenuItem>
@@ -128,7 +128,7 @@ class NavigationItemDesktop extends Component {
               </Grid>
             ))}
           </Grid>
-          <Link className={classes.navigationShopAllLink} onAnchorClick={this.onClose} route={`${this.linkPath()}`}>
+          <Link className={classes.navigationShopAllLink} onClick={this.onClose} route={`${this.linkPath()}`}>
             <span>Shop all {navItem.name} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
           </Link>
         </Popover>

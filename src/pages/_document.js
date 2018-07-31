@@ -1,42 +1,51 @@
-import React from "react";
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 import Document, { Head, Main, NextScript } from "next/document";
-import JssProvider from "react-jss/lib/JssProvider";
 import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
 import { Provider } from "mobx-react";
 import analyticsProviders from "analytics";
 import getConfig from "next/config";
 import rootMobxStores from "../lib/stores";
-import getPageContext from "../lib/theme/getPageContext";
 import favicons from "../lib/utils/favicons";
+import globalStyles from "../lib/theme/globalStyles";
 
 class HTMLDocument extends Document {
   static getInitialProps = (ctx) => {
-    // Get the context of the page to collected side effects.
-    const pageContext = getPageContext();
+    // Render app and page and get the context of the page with collected side effects.
+    let pageContext;
+    const page = ctx.renderPage((Component) => {
+      const WrappedComponent = (props) => {
+        // eslint-disable-next-line prefer-destructuring
+        pageContext = props.pageContext;
 
-    /* eslint-disable-next-line react/display-name */
-    const page = ctx.renderPage((Component) => (props) => (
-      <JssProvider registry={pageContext.sheetsRegistry} generateClassName={pageContext.generateClassName}>
-        <Provider {...rootMobxStores}>
-          <Component pageContext={pageContext} {...props} />
-        </Provider>
-      </JssProvider>
-    ));
+        return (
+          <Provider {...rootMobxStores}>
+            <Component pageContext={pageContext} {...props} />
+          </Provider>
+        );
+      };
+
+      WrappedComponent.propTypes = {
+        pageContext: PropTypes.object.isRequired
+      };
+
+      return WrappedComponent;
+    });
 
     return {
       ...page,
       pageContext,
       helmet: Helmet.rewind(),
       styles: (
-        <React.Fragment>
+        <Fragment>
           <style
             id="jss-server-side"
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: pageContext.sheetsRegistry.toString() }}
           />
           {flush() || null}
-        </React.Fragment>
+        </Fragment>
       )
     };
   };
@@ -85,6 +94,7 @@ class HTMLDocument extends Document {
           {helmet.style.toComponent()}
           {helmet.script.toComponent()}
           {helmet.noscript.toComponent()}
+          {globalStyles}
         </Head>
         <body>
           <Main />

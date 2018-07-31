@@ -2,18 +2,12 @@
 
 exports[`basic snapshot 1`] = `
 <a
-  className="WithTracking-Link--link-1"
+  className=""
   href="/checkout"
   onClick={[Function]}
   onKeyDown={[Function]}
   role="link"
   tabIndex={0}
-  tracking={
-    Object {
-      "getTrackingData": [Function],
-      "trackEvent": [Function],
-    }
-  }
 >
   <div
     className="Button__ButtonDiv-bnfrK eloVkm"
