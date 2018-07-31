@@ -41,6 +41,7 @@ export default (Component) => (
     componentDidMount() {
       // Update the anonymousCartId if necessary
       this.props.cartStore.setAnonymousCartCredentialsFromLocalStorage();
+      this.isReconcilingCarts = false;
     }
 
     /**
@@ -50,19 +51,18 @@ export default (Component) => (
      * @summary Called when a user signs in with an anonymous cart
      * @private
      * @ignore
-     * @param {Function} refetchCartCallback An Apollo query refetch function
      * @returns {undefined} No return
      */
-    reconcileCartsIfNecessary(refetchCartCallback) {
+    reconcileCartsIfNecessary() {
       const { authStore, cartStore, shop, client: apolloClient } = this.props;
 
-      if (cartStore.hasAnonymousCart && authStore.isAuthenticated) {
+      if (cartStore.hasAnonymousCartCredentials && authStore.isAuthenticated && this.isReconcilingCarts === false) {
+        // Prevent multiple calls to reconcile cart mutations when one is currently in progress
+        this.isReconcilingCarts = true;
+
         apolloClient.mutate({
           mutation: reconcileCartsMutation,
           update: (cache, { data: mutationData }) => {
-            // On update, re-fetch cart data
-            refetchCartCallback && refetchCartCallback();
-
             // If the mutation data contains a createCart object and we are an anonymous user,
             // then set the anonymous cart details
             if (mutationData && mutationData.reconcileCarts) {
@@ -72,6 +72,8 @@ export default (Component) => (
                 cartStore.clearAnonymousCartCredentials();
               }
             }
+
+            this.isReconcilingCarts = false;
           },
           variables: {
             input: {
@@ -100,7 +102,7 @@ export default (Component) => (
         items: data.items
       };
 
-      if (authStore.isAuthenticated === false && cartStore.hasAnonymousCart) {
+      if (authStore.isAuthenticated === false && cartStore.hasAnonymousCartCredentials) {
         // Given an anonymous user, with a cart, add token and cartId to input
         const { anonymousCartId, anonymousCartToken } = cartStore;
 
@@ -110,7 +112,7 @@ export default (Component) => (
       } else if (authStore.isAuthenticated === true && cartStore.hasAccountCart) {
         // With an account and an account cart, set the accountCartId on the input object
         input.cartId = cartStore.accountCartId;
-      } else if (!cartStore.hasAccountCart && !cartStore.hasAnonymousCart) {
+      } else if (!cartStore.hasAccountCart && !cartStore.hasAnonymousCartCredentials) {
         // With no anonymous or account cart, add shop Id to input as it will be needed for the create cart mutation
         input.shopId = shop._id;
       }
@@ -135,8 +137,21 @@ export default (Component) => (
       if (cartStore.hasAnonymousCartCredentials) {
         // If we are authenticated, reconcile carts
         if (authStore.isAuthenticated) {
-          this.reconcileCart();
-          return null;
+          this.reconcileCartsIfNecessary();
+
+          // Render the component during cart reconciliation
+          // But set props to null to indicate that no actions may take place to
+          // get or mutate the cart until the reconciliation is complete
+          return (
+            <Component
+              {...this.props}
+              isReconcilingCarts={true}
+              hasMoreCartItems={false}
+              loadMoreCartItems={null}
+              addItemsToCart={null}
+              cart={null}
+            />
+          );
         }
 
         // Otherwise, set query and variables for fetching an anonymous cart
@@ -164,12 +179,11 @@ export default (Component) => (
             const { pageInfo } = (cart && cart.items) || {};
 
             // With an authenticated cart, set the accountCartId for later use
-            if (cart && authStore.isAuthenticated) {
+            if (cart && cart.account && cart.account._id === authStore.accountId && authStore.isAuthenticated) {
               cartStore.setAccountCartId(cart._id);
+            } else {
+              cartStore.setAccountCartId(null);
             }
-
-            //
-            this.reconcileCartsIfNecessary(refetchCart);
 
             return (
               <Mutation
