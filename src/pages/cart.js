@@ -38,7 +38,15 @@ const styles = (theme) => ({
 class CartPage extends Component {
   static propTypes = {
     cart: PropTypes.shape({
-      cart: PropTypes.object
+      items: PropTypes.arrayOf(PropTypes.object),
+      checkout: PropTypes.shape({
+        itemTotal: PropTypes.shape({
+          displayAmount: PropTypes.string
+        }),
+        taxTotal: PropTypes.shape({
+          displayAmount: PropTypes.string
+        })
+      })
     }),
     classes: PropTypes.object,
     shop: PropTypes.shape({
