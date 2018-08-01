@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import { Mutation, Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
 import getConfig from "next/config";
+import cartItemsConnectionToArray from "lib/utils/cartItemsConnectionToArray";
 import accountCartQuery from "./accountCart.gql";
 import anonymousCartQuery from "./anonymousCart.gql";
 import createCartMutation from "./createCartMutation.gql";
 import addCartItemsMutation from "./addCartItemsMutation.gql";
 import reconcileCartsMutation from "./reconcileCartsMutation.gql";
-import cartItemsConnectionToArray from "lib/utils/cartItemsConnectionToArray";
 
 const { publicRuntimeConfig } = getConfig();
 
