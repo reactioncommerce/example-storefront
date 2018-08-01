@@ -39,8 +39,10 @@ export default (Component) => (
     }
 
     componentDidMount() {
+      const { cartStore } = this.props;
+
       // Update the anonymousCartId if necessary
-      this.props.cartStore.setAnonymousCartCredentialsFromLocalStorage();
+      cartStore.setAnonymousCartCredentialsFromLocalStorage();
       this.isReconcilingCarts = false;
     }
 
