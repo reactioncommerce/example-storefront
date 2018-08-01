@@ -9,6 +9,25 @@ fragment CartCommon on Cart {
   }
   updatedAt
   expiresAt
+  checkout {
+    summary {
+      itemTotal {
+        displayAmount
+      }
+      fulfillmentTotal {
+        displayAmount
+      }
+      itemTotal {
+        displayAmount
+      }
+      taxTotal {
+        displayAmount
+      }
+      total {
+        displayAmount
+      }
+    }
+  }
   items(first: 20, after: $itemsAfterCursor) {
     pageInfo {
       hasNextPage
