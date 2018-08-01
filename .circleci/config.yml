@@ -26,6 +26,7 @@ jobs:
       - run:
           name: Run lint
           command: |
+            ls -la
             yarn run lint
 
   docker-build:
