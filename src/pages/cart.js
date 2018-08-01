@@ -58,12 +58,10 @@ class CartPage extends Component {
   renderCartItems() {
     const { cart } = this.props;
 
-    if (cart && Array.isArray(cart.items.edges)) {
-      const items = cart.items.edges.map(({ node }) => node);
-
+    if (cart && Array.isArray(cart.items)) {
       return (
         <CartItems
-          items={items}
+          items={cart.items}
           onChangeCartItemQuantity={this.handleItemQuantityChange}
           onRemoveItemFromCart={this.handleRemoveItem}
         />
