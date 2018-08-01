@@ -19,6 +19,15 @@ defaults: &defaults
     - image: circleci/node:8-stretch
 
 jobs:
+  local_lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Run lint
+          command: |
+            yarn run lint
+
   docker-build:
     <<: *defaults
     steps:
@@ -227,4 +236,4 @@ workflows:
             - docker-push
           filters:
             branches:
-              only: /^master$/
+#              only: /^master$/
