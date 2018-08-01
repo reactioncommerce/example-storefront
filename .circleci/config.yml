@@ -213,7 +213,8 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - local-lint
+      - local-lint:
+          context: reaction-build-read      
       - docker-build:
           context: reaction-build-read
       - docker-push:
