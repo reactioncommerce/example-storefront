@@ -35,8 +35,14 @@ class Shop extends Component {
     routingStore.setTag({});
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.catalogItems !== prevProps.catalogItems) {
+      this.trackEvent(this.props);
+    }
+  }
+
   @trackProductListViewed()
-  componentDidUpdate() {}
+  trackEvent() {}
 
   setPageSize = (pageSize) => {
     this.props.routingStore.setSearch({ limit: pageSize });
