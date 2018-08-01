@@ -16,12 +16,17 @@ import Popper from "@material-ui/core/Popper";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Fade from "@material-ui/core/Fade";
 
+const components = {
+  // TODO: Use QuantityInput component when MUI dependency is removed.
+  QuantityInput: "div"
+};
+
 const checkout = {
   summary: {
-    subtotal: {
+    itemTotal: {
       displayAmount: "$25.00"
     },
-    tax: {
+    taxTotal: {
       displayAmount: "$2.50"
     }
   }
@@ -132,18 +137,6 @@ export default class MiniCart extends Component {
     const { classes } = this.props;
     const { anchorElement, open } = this.state;
     const id = open ? "simple-popper" : null;
-
-    const components = {
-      CartCheckoutButtonComponent: () => <Button actionType="important" isFullWidth>Checkout</Button>,
-      CartSummaryComponent,
-      CartItemsComponent,
-      CartItemComponent,
-      CartItemDetailComponent,
-      CartItemStockWarningComponent,
-      CartItemPriceComponent,
-      // TODO: Use QuantityInput component when MUI dependency is removed.
-      CartItemQuantityInputComponent: "div"
-    };
 
     return (
       <Fragment>

@@ -11,6 +11,8 @@ import rootMobXStores from "lib/stores";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import JssProvider from "react-jss/lib/JssProvider";
+import { ComponentsProvider } from "@reactioncommerce/components-context";
+import componentsContext from "../componentsContext";
 import getPageContext from "../lib/theme/getPageContext";
 
 @withApolloClient
@@ -44,26 +46,28 @@ export default class App extends NextApp {
 
     return (
       <Container>
-        <JssProvider
-          registry={this.pageContext.sheetsRegistry}
-          generateClassName={this.pageContext.generateClassName}
-        >
-          <MuiThemeProvider
-            theme={this.pageContext.theme}
-            sheetsManager={this.pageContext.sheetsManager}
+        <ComponentsProvider value={componentsContext}>
+          <JssProvider
+            registry={this.pageContext.sheetsRegistry}
+            generateClassName={this.pageContext.generateClassName}
           >
-            <CssBaseline />
-            {
-              route === "/checkout" ? (
-                <Component pageContext={this.pageContext} shop={shop} {...rest} />
-              ) : (
-                <Layout shop={shop}>
+            <MuiThemeProvider
+              theme={this.pageContext.theme}
+              sheetsManager={this.pageContext.sheetsManager}
+            >
+              <CssBaseline />
+              {
+                route === "/checkout" ? (
                   <Component pageContext={this.pageContext} shop={shop} {...rest} />
-                </Layout>
-              )
-            }
-          </MuiThemeProvider>
-        </JssProvider>
+                ) : (
+                  <Layout shop={shop}>
+                    <Component pageContext={this.pageContext} shop={shop} {...rest} />
+                  </Layout>
+                )
+              }
+            </MuiThemeProvider>
+          </JssProvider>
+        </ComponentsProvider>
       </Container>
     );
   }

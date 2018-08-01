@@ -7,12 +7,8 @@ import CartItemStockWarningComponent from "@reactioncommerce/components/StockWar
 import CartItemPriceComponent from "@reactioncommerce/components/Price/v1";
 
 const components = {
-  CartItemComponent,
-  CartItemDetailComponent,
-  CartItemStockWarningComponent,
-  CartItemPriceComponent,
   // TODO: Use QuantityInput component when MUI dependency is removed.
-  CartItemQuantityInputComponent: "div"
+  QuantityInput: "div"
 };
 
 export default class CartItems extends Component {
