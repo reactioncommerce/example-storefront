@@ -19,7 +19,7 @@ defaults: &defaults
     - image: circleci/node:8-stretch
 
 jobs:
-  local_lint:
+  local-lint:
     <<: *defaults
     steps:
       - checkout
@@ -213,6 +213,7 @@ workflows:
   version: 2
   build_and_test:
     jobs:
+      - local-lint
       - docker-build:
           context: reaction-build-read
       - docker-push:
@@ -234,6 +235,6 @@ workflows:
       - deploy-to-ecs:
           requires:
             - docker-push
-          filters:
-            branches:
+#          filters:
+#            branches:
 #              only: /^master$/
