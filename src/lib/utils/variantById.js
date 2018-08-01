@@ -6,7 +6,7 @@
  * @returns {Object} - target variant or null if none found.
  */
 export default function variantById(variants, variantId) {
-  const _variant = variants.find((variant) => variant._id === variantId);
+  const _variant = Array.isArray(variants) && variants.find((variant) => variant._id === variantId);
 
   return _variant || null;
 }
