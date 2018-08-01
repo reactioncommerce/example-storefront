@@ -15,6 +15,8 @@ import { Router } from "routes";
 import Popper from "@material-ui/core/Popper";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Fade from "@material-ui/core/Fade";
+import withCart from "containers/cart/withCart";
+import withShop from "containers/shop/withShop";
 
 const checkout = {
   summary: {
@@ -27,44 +29,6 @@ const checkout = {
   }
 };
 
-const items = [
-  {
-    _id: "123",
-    attributes: [{ label: "Color", value: "Red" }, { label: "Size", value: "Medium" }],
-    compareAtPrice: {
-      displayAmount: "$45.00"
-    },
-    currentQuantity: 3,
-    imageURLs: {
-      small: "//placehold.it/100",
-      thumbnail: "//placehold.it/100"
-    },
-    isLowQuantity: true,
-    price: {
-      displayAmount: "$20.00"
-    },
-    productSlug: "/product-slug",
-    productVendor: "Patagonia",
-    title: "Undefeated",
-    quantity: 2
-  },
-  {
-    _id: "456",
-    attributes: [{ label: "Color", value: "Black" }, { label: "Size", value: "10" }],
-    currentQuantity: 500,
-    imageURLs: {
-      small: "//placehold.it/100",
-      thumbnail: "//placehold.it/100"
-    },
-    isLowQuantity: false,
-    price: {
-      displayAmount: "$78.00"
-    },
-    productSlug: "/product-slug",
-    productVendor: "Patagonia",
-    title: "Ticket to Anywhere",
-    quantity: 1
-  }];
 
 const styles = ({ palette, zIndex }) => ({
   popper: {
@@ -83,6 +47,8 @@ const closePopper = {
 };
 
 @withStyles(styles, { withTheme: true })
+@withShop
+@withCart
 export default class MiniCart extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired
@@ -129,7 +95,7 @@ export default class MiniCart extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, cart } = this.props;
     const { anchorElement, open } = this.state;
     const id = open ? "simple-popper" : null;
 
@@ -169,7 +135,7 @@ export default class MiniCart extends Component {
           {({ TransitionProps }) => (
             <Fade {...TransitionProps}>
               <div className={classes.cart}>
-                <MiniCartComponent cart={{ checkout, items }} components={components} />
+                <MiniCartComponent cart={{ ...cart, checkout }} components={components} />
               </div>
             </Fade>
           )}
