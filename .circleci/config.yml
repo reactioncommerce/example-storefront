@@ -19,15 +19,36 @@ defaults: &defaults
     - image: circleci/node:8-stretch
 
 jobs:
-  local-lint:
+  docker-build-nonprod-and-lint:
     <<: *defaults
     steps:
       - checkout
+      - setup_remote_docker
       - run:
-          name: Run lint
+          name: Docker Build Non-Prod
           command: |
-            ls -la
-            yarn run lint
+            docker build \
+              --build-arg "BUILD_COMPARE_URL=$CIRCLE_COMPARE_URL" \
+              --build-arg "BUILD_DATE=$(date -u '+%Y-%m-%dT%H:%M:%SZ')" \
+              --build-arg "BUILD_ENV=test" \
+              --build-arg "BUILD_NUMBER=$CIRCLE_BUILD_NUM" \
+              --build-arg "BUILD_PLATFORM=circleci" \
+              --build-arg "BUILD_PLATFORM_PROJECT_REPONAME=$CIRCLE_PROJECT_REPONAME" \
+              --build-arg "BUILD_PLATFORM_PROJECT_USERNAME=$CIRCLE_PROJECT_USERNAME" \
+              --build-arg "BUILD_PULL_REQUESTS=$CI_PULL_REQUESTS" \
+              --build-arg "BUILD_TRIGGERED_BY_TAG=$CIRCLE_TAG" \
+              --build-arg "BUILD_URL=$CIRCLE_BUILD_URL" \
+              --build-arg "CIRCLE_WORKFLOW_ID=$CIRCLE_WORKFLOW_ID" \
+              --build-arg "CIRCLE_WORKFLOW_JOB_ID=$CIRCLE_WORKFLOW_JOB_ID" \
+              --build-arg "CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS=$CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS" \
+              --build-arg "CIRCLE_WORKSPACE_ID=$CIRCLE_WORKSPACE_ID" \
+              --build-arg "GIT_REPOSITORY_URL=$CIRCLE_REPOSITORY_URL" \
+              --build-arg "GIT_SHA1=$CIRCLE_SHA1" \
+              --build-arg "LICENSE=GPL-3.0-only" \
+              --build-arg "VCS_REF=$CIRCLE_SHA1" \
+              --build-arg "VENDOR=Reaction Commerce" \
+              -t "$DOCKER_REPOSITORY:non-prod" .
+            docker run --rm $DOCKER_REPOSITORY:non-prod yarn run lint
 
   docker-build:
     <<: *defaults
@@ -214,7 +235,7 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - local-lint:
+      - docker-build-nonprod-and-lint:
           context: reaction-build-read      
       - docker-build:
           context: reaction-build-read
@@ -222,10 +243,10 @@ workflows:
           context: reaction-publish-docker
           requires:
             - docker-build
-      - lint:
-          context: reaction-validation
-          requires:
-            - docker-build
+#      - lint:
+#          context: reaction-validation
+#          requires:
+#            - docker-build
       - test:
           context: reaction-validation
           requires:
