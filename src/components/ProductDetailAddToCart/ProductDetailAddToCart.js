@@ -116,10 +116,10 @@ export default class ProductDetailAddToCart extends Component {
   };
 
   handleOnClick = () => {
-    const { uiStore } = this.props;
+    const { onClick, uiStore } = this.props;
 
     // Pass chosen quantity to onClick callback
-    this.props.onClick(this.state.addToCartQuantity);
+    onClick(this.state.addToCartQuantity);
 
     // Reset cart quantity to 1 after items are added to cart
     this.setState({ addToCartQuantity: 1 });
