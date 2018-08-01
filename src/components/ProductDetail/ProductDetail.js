@@ -106,6 +106,7 @@ class ProductDetail extends Component {
    */
   handleAddToCartClick = (quantity) => {
     const {
+      addItemsToCart,
       currencyCode,
       product,
       uiStore: {
@@ -124,7 +125,7 @@ class ProductDetail extends Component {
       const price = priceByCurrencyCode(currencyCode, selectedVariantOrOption.pricing);
 
       // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
-      this.props.addItemsToCart([
+      addItemsToCart([
         {
           price: {
             amount: price.price,

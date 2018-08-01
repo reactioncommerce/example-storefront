@@ -15,13 +15,13 @@ Account carts are retrieved by `accountId` and `shopId`.
 When logging in or loading the app, it's possible that there will be both an anonymous cart and an account cart.
 Specific things to do:
 
-Check whether there is an anonymous `cartId` and `token` stored. It may assumed these two strings will be in local storage or SSR session, which is the same behavior as the login tokens.
+Check whether there is an anonymous `cartId` and `token` stored. It can be assumed these two strings will be in local storage or an SSR session, which is the same behavior as the login tokens.
 
 If we have an anonymous `cartId` and `token`, and we're logged in, call the `reconcileCart` mutation and use the returned cart as the cart object. Assuming the reconciliation is successful, delete the `cartId` and `token` from local storage.
 
-Otherwise, if we are logged in, get the account cart using `accountCartByAccountId` query with an `accountId` and `shopId`. The primary shop ID  is used for now, though this should respect the marketplace shared cart setting in the future.
+Otherwise, if we are logged in, get the account cart using `accountCartByAccountId` query with an `accountId` and `shopId`. The primary shop ID is used for now, though this should respect the marketplace shared cart setting in the future.
 
-Otherwise, if we have an anonymous `cartId` and `token`, get the anonymous cart using `anonymousCartByCartId ` query
+Otherwise, if we have an anonymous `cartId` and `token`, get the anonymous cart using `anonymousCartByCartId ` query.
 
 ## @withCart decorator
 
