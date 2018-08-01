@@ -215,7 +215,7 @@ export default (Component) => (
                           const { cart: fetchMoreCart } = fetchMoreResult;
 
                           // Check for additional items from result
-                          if (fetchMoreCart && fetchMoreCart.items.edges.length) {
+                          if (fetchMoreCart && fetchMoreCart.items && Array.isArray(fetchMoreCart.items.edges) && fetchMoreCart.items.edges.length) {
                             // Merge previous cart items with next cart items
                             return {
                               ...fetchMoreResult,
