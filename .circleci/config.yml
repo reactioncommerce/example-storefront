@@ -25,7 +25,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Docker Build Non-Prod
+          name: Docker build non-prod and run lint
           command: |
             docker build \
               --build-arg "BUILD_COMPARE_URL=$CIRCLE_COMPARE_URL" \
@@ -243,6 +243,7 @@ workflows:
           context: reaction-publish-docker
           requires:
             - docker-build
+            - docker-build-nonprod-and-lint
 #      - lint:
 #          context: reaction-validation
 #          requires:
@@ -258,6 +259,6 @@ workflows:
       - deploy-to-ecs:
           requires:
             - docker-push
-#          filters:
-#            branches:
-#              only: /^master$/
+          filters:
+            branches:
+              only: /^master$/
