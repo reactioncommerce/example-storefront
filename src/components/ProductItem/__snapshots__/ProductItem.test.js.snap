@@ -3,31 +3,25 @@
 exports[`basic snapshot 1`] = `
 <div>
   <a
-    className="WithTracking-Link--link-5"
+    className=""
     href="/product/example-product"
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
     tabIndex={0}
-    tracking={
-      Object {
-        "getTrackingData": [Function],
-        "trackEvent": [Function],
-      }
-    }
   >
     <div
-      className="BadgeOverlay-badgeOverlay-6"
+      className="BadgeOverlay-badgeOverlay-5"
     >
       <div
         className="WithTracking-ProductItem--productMedia-3"
       >
         <div
-          className="Img-imgWrapper-17 "
+          className="Img-imgWrapper-16 "
         >
           <img
             alt=""
-            className="Img-img-19 Img-imgLoading-21 "
+            className="Img-img-18 Img-imgLoading-20 "
             src=""
           />
         </div>
@@ -37,12 +31,12 @@ exports[`basic snapshot 1`] = `
           className="WithTracking-ProductItem--productInfo-2"
         >
           <aside
-            className="MuiTypography-root-23 MuiTypography-body2-31"
+            className="MuiTypography-root-22 MuiTypography-body2-30"
           >
             Reaction Sample Product
           </aside>
           <div
-            className="MuiTypography-root-23 MuiTypography-body1-32"
+            className="MuiTypography-root-22 MuiTypography-body1-31"
           >
             <div>
               <span
@@ -56,7 +50,7 @@ exports[`basic snapshot 1`] = `
         </div>
         <div>
           <p
-            className="MuiTypography-root-23 MuiTypography-body1-32"
+            className="MuiTypography-root-22 MuiTypography-body1-31"
           >
             Example Manufacturer
           </p>

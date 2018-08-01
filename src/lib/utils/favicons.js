@@ -7,7 +7,7 @@ const favicons = [
   {
     rel: "apple-touch-icon",
     sizes: "180x180",
-    href: `/${basePath}apple-touch-icon.png`
+    href: `${basePath}/apple-touch-icon.png`
   },
   {
     rel: "icon",
