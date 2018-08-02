@@ -2,13 +2,6 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
-import CartSummaryComponent from "@reactioncommerce/components/MiniCartSummary/v1";
-import CartItemsComponent from "@reactioncommerce/components/CartItems/v1";
-import CartItemComponent from "@reactioncommerce/components/CartItem/v1";
-import CartItemDetailComponent from "@reactioncommerce/components/CartItemDetail/v1";
-import CartItemStockWarningComponent from "@reactioncommerce/components/StockWarning/v1";
-import CartItemPriceComponent from "@reactioncommerce/components/Price/v1";
-import Button from "@reactioncommerce/components/Button/v1";
 import IconButton from "@material-ui/core/IconButton";
 import CartIcon from "mdi-material-ui/Cart";
 import { Router } from "routes";
@@ -18,12 +11,17 @@ import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
 import withShop from "containers/shop/withShop";
 
+const components = {
+  // TODO: Use QuantityInput component when MUI dependency is removed.
+  QuantityInput: "div"
+};
+
 const checkout = {
   summary: {
-    subtotal: {
+    itemTotal: {
       displayAmount: "$25.00"
     },
-    tax: {
+    taxTotal: {
       displayAmount: "$2.50"
     }
   }
@@ -109,18 +107,6 @@ export default class MiniCart extends Component {
     const { classes, cart } = this.props;
     const { anchorElement, open } = this.state;
     const id = open ? "simple-popper" : null;
-
-    const components = {
-      CartCheckoutButtonComponent: () => <Button actionType="important" isFullWidth>Checkout</Button>,
-      CartSummaryComponent,
-      CartItemsComponent,
-      CartItemComponent,
-      CartItemDetailComponent,
-      CartItemStockWarningComponent,
-      CartItemPriceComponent,
-      // TODO: Use QuantityInput component when MUI dependency is removed.
-      CartItemQuantityInputComponent: "div"
-    };
 
     return (
       <Fragment>

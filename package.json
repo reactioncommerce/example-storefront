@@ -22,7 +22,7 @@
     "test": "yarn run test:unit",
     "test:ci": "yarn run test:unit --ci --runInBand --colors",
     "test:unit": "NODE_ENV=jesttest jest",
-    "test:unit:watch": "NODE_ENV=jesttest jest --watch"
+    "test:unit:watch": "NODE_ENV=jesttest jest --watchAll"
   },
   "eslintConfig": {
     "extends": [
@@ -31,7 +31,8 @@
   },
   "dependencies": {
     "@material-ui/core": "^1.4.2",
-    "@reactioncommerce/components": "^0.11.1",
+    "@reactioncommerce/components": "0.14.0",
+    "@reactioncommerce/components-context": "^1.0.0",
     "@segment/snippet": "^4.3.1",
     "apollo-cache-inmemory": "^1.1.11",
     "apollo-client": "^2.2.7",

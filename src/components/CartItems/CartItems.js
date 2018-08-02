@@ -1,18 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import CartItemsList from "@reactioncommerce/components/CartItems/v1";
-import CartItemComponent from "@reactioncommerce/components/CartItem/v1";
-import CartItemDetailComponent from "@reactioncommerce/components/CartItemDetail/v1";
-import CartItemStockWarningComponent from "@reactioncommerce/components/StockWarning/v1";
-import CartItemPriceComponent from "@reactioncommerce/components/Price/v1";
 
 const components = {
-  CartItemComponent,
-  CartItemDetailComponent,
-  CartItemStockWarningComponent,
-  CartItemPriceComponent,
   // TODO: Use QuantityInput component when MUI dependency is removed.
-  CartItemQuantityInputComponent: "div"
+  QuantityInput: "div"
 };
 
 export default class CartItems extends Component {
