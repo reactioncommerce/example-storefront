@@ -10,7 +10,11 @@ import createCartMutation from "./createCartMutation.gql";
 import addCartItemsMutation from "./addCartItemsMutation.gql";
 import reconcileCartsMutation from "./reconcileCartsMutation.gql";
 
-const { publicRuntimeConfig } = getConfig();
+const { publicRuntimeConfig } = getConfig() || {
+  publicRuntimeConfig: {
+    externalAssetsUrl: ""
+  }
+};
 
 /**
  * withCart higher order query component for creating, fetching, and updating carts
