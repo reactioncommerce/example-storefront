@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
+import CartItems from "components/CartItems";
 import IconButton from "@material-ui/core/IconButton";
 import CartIcon from "mdi-material-ui/Cart";
 import { Router } from "routes";
@@ -10,11 +11,6 @@ import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
 import withShop from "containers/shop/withShop";
-
-const components = {
-  // TODO: Use QuantityInput component when MUI dependency is removed.
-  QuantityInput: "div"
-};
 
 const checkout = {
   summary: {
@@ -60,7 +56,9 @@ export default class MiniCart extends Component {
         })
       })
     }),
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    hasMoreCartItems: PropTypes.bool,
+    loadMoreCartItems: PropTypes.func
   }
 
   state = {
@@ -104,7 +102,7 @@ export default class MiniCart extends Component {
   }
 
   render() {
-    const { classes, cart } = this.props;
+    const { classes, cart, hasMoreCartItems, loadMoreCartItems } = this.props;
     const { anchorElement, open } = this.state;
     const id = open ? "simple-popper" : null;
 
@@ -132,7 +130,18 @@ export default class MiniCart extends Component {
           {({ TransitionProps }) => (
             <Fade {...TransitionProps}>
               <div className={classes.cart}>
-                <MiniCartComponent cart={{ ...cart, checkout }} components={components} />
+                <MiniCartComponent
+                  cart={{ ...cart, checkout }}
+                  components={{
+                    QuantityInput: "div",
+                    CartItems: (
+                      <CartItems
+                        hasMoreCartItems={hasMoreCartItems}
+                        onLoadMoreCartItems={loadMoreCartItems}
+                      />
+                    )
+                  }}
+                />
               </div>
             </Fade>
           )}
