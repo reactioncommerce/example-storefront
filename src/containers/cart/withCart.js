@@ -53,9 +53,10 @@ export default (Component) => (
      * @summary Called when a user signs in with an anonymous cart
      * @private
      * @ignore
+     * @param {Function} refetchCart An Apollo query function to refetch cart data
      * @returns {undefined} No return
      */
-    reconcileCartsIfNecessary() {
+    reconcileCartsIfNecessary(refetchCart) {
       const { authStore, cartStore, shop, client: apolloClient } = this.props;
 
       if (cartStore.hasAnonymousCartCredentials && authStore.isAuthenticated && this.isReconcilingCarts === false) {
@@ -65,17 +66,27 @@ export default (Component) => (
         apolloClient.mutate({
           mutation: reconcileCartsMutation,
           update: (cache, { data: mutationData }) => {
+            this.isReconcilingCarts = false;
+
             // If the mutation data contains a createCart object and we are an anonymous user,
             // then set the anonymous cart details
             if (mutationData && mutationData.reconcileCarts) {
               const { cart: cartPayload } = mutationData.reconcileCarts;
 
               if (cartPayload) {
+                // Clear anonymous account credentials
                 cartStore.clearAnonymousCartCredentials();
+
+                // Update cache for account cart query
+                cache.writeQuery({
+                  query: accountCartQuery,
+                  data: { cart: cartPayload }
+                });
+
+                // Refetch cart
+                refetchCart && refetchCart();
               }
             }
-
-            this.isReconcilingCarts = false;
           },
           variables: {
             input: {
@@ -137,25 +148,6 @@ export default (Component) => (
 
       // With an anonymous cart
       if (cartStore.hasAnonymousCartCredentials) {
-        // If we are authenticated, reconcile carts
-        if (authStore.isAuthenticated) {
-          this.reconcileCartsIfNecessary();
-
-          // Render the component during cart reconciliation
-          // But set props to null to indicate that no actions may take place to
-          // get or mutate the cart until the reconciliation is complete
-          return (
-            <Component
-              {...this.props}
-              isReconcilingCarts={true}
-              hasMoreCartItems={false}
-              loadMoreCartItems={null}
-              addItemsToCart={null}
-              cart={null}
-            />
-          );
-        }
-
         // Otherwise, set query and variables for fetching an anonymous cart
         query = anonymousCartQuery;
         variables = {
@@ -185,6 +177,11 @@ export default (Component) => (
               cartStore.setAccountCartId(cart._id);
             } else {
               cartStore.setAccountCartId(null);
+            }
+
+            // If we are authenticated, reconcile carts
+            if (cartStore.hasAnonymousCartCredentials && authStore.isAuthenticated) {
+              this.reconcileCartsIfNecessary(refetchCart);
             }
 
             return (
