@@ -116,6 +116,21 @@ docker-compose down --rmi local
 docker-compose up -d --build
 ```
 
+### Testing `reaction-component-library` components in the starterkit
+
+Sometimes we need to test [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) components in the context of the starterkit. Unfortunetly, there isn't an easy wasy to do this within our Docker containers, so we need to run the `starterkit` outside of docker.
+
+1. Inside the [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) repo, run the command `yarn link` to allow the library to be installed into the starterkit
+1. Inside the `reaction-next-starterkit` repo, run the command `yarn link "@reactioncommerce/styleguide"` to set the local version as an override of the published npm version
+1. Temporarily rename your `.yarnrc` file to anything else (i.e. `.yarnrc-temp`)
+1. Inside your `.env` file, change `INTERNAL_GRAPHQL_URL` to equal `http://localhost:3030/graphql-alpha`, the same as the `EXTERNAL_GRAPHQL_URL` 
+1. Start the starterkit locally by running the command `export $(cat .env | xargs) && yarn dev`
+1. Your starterkit should now be running at `localhost:4000`
+1. After your changes are tested, shut down the starterkit by running the command `CTRL+C`
+1. Run the command `yarn unlink "@reactioncommerce/styleguide"` to unlink the local version of the component library
+1. Undo the renaming of your `.yarnrc` file
+1. Undo the URL change inside your `.env` file
+
 ## Cleanup Containers
 Stop, and retain containers:
 ```
