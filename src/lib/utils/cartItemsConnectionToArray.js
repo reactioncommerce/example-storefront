@@ -8,6 +8,11 @@
  * @returns {Array.<Object>} Returns an array of cart item objects
  */
 export default function cartItemsConnectionToArray(cartItemsConnection, options) {
+  // Return a blank array if you don't have good data to begin with
+  if (!cartItemsConnection || !cartItemsConnection.edges) {
+    return [];
+  }
+
   // Make a copy to be able to mutate array if items
   const cartItems = [...cartItemsConnection.edges];
   const opts = {
