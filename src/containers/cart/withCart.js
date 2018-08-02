@@ -192,6 +192,16 @@ export default (Component) => (
               this.reconcileCartsIfNecessary(refetchCart);
             }
 
+            let processedCartData = null;
+            if (cart) {
+              processedCartData = {
+                ...cart,
+                items: cartItemsConnectionToArray(cart.items, {
+                  externalAssetsUrl: publicRuntimeConfig.externalAssetsUrl
+                })
+              };
+            }
+
             return (
               <Mutation
                 mutation={cart ? addCartItemsMutation : createCartMutation}
@@ -248,12 +258,7 @@ export default (Component) => (
                         items
                       });
                     }}
-                    cart={{
-                      ...cart,
-                      items: cartItemsConnectionToArray(cart.items, {
-                        externalAssetsUrl: publicRuntimeConfig.externalAssetsUrl
-                      })
-                    }}
+                    cart={processedCartData}
                   />
                 )}
               </Mutation>
