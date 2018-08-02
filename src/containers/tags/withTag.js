@@ -23,14 +23,14 @@ export default (Component) => (
 
       return (
         <Query query={tagQuery} variables={{ slugOrId: tag }}>
-          {({ loading, error, data }) => {
-            if (loading || error) return null;
-            if (!data || !data.tag) return null;
+          {({ error, data }) => {
+            if (error) return null;
+            const tagData = data || {};
 
             return (
               <Component
                 {...this.props}
-                tag={data.tag}
+                tag={tagData && tagData.tag}
               />
             );
           }}
