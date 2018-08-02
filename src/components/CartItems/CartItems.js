@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Button from "@reactioncommerce/components/Button/v1";
 import CartItemsList from "@reactioncommerce/components/CartItems/v1";
 
 const components = {
@@ -7,8 +9,21 @@ const components = {
   QuantityInput: "div"
 };
 
-export default class CartItems extends Component {
+const styles = (theme) => ({
+  loadMore: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
+  }
+});
+
+@withStyles(styles)
+class CartItems extends Component {
   static propTypes = {
+    classes: PropTypes.object,
+    hasMoreCartItems: PropTypes.boolean,
+    isMiniCart: PropTypes.bool,
     items: PropTypes.arrayOf(PropTypes.shape({
       _id: PropTypes.string,
       attributes: PropTypes.arrayOf(PropTypes.object),
@@ -24,6 +39,7 @@ export default class CartItems extends Component {
       quantity: PropTypes.number
     })).isRequired,
     onChangeCartItemQuantity: PropTypes.func.isRequired,
+    onLoadMoreCartItems: PropTypes.func,
     onRemoveItemFromCart: PropTypes.func.isRequired
   }
 
@@ -40,16 +56,36 @@ export default class CartItems extends Component {
   }
 
   render() {
-    const { items } = this.props;
+    const {
+      classes,
+      items,
+      isMiniCart,
+      hasMoreCartItems,
+      onLoadMoreCartItems
+    } = this.props;
 
     return (
-      <CartItemsList
-        items={items}
-        components={components}
-        onChangeCartItemQuantity={this.handleItemQuantityChange}
-        onRemoveItemFromCart={this.handleRemoveItem}
-      />
+      <Fragment>
+        <CartItemsList
+          isMiniCart={isMiniCart}
+          items={items}
+          components={components}
+          onChangeCartItemQuantity={this.handleItemQuantityChange}
+          onRemoveItemFromCart={this.handleRemoveItem}
+        />
+        {hasMoreCartItems &&
+          <div className={classes.loadMore}>
+            <Button
+              isTextOnly
+              onClick={onLoadMoreCartItems}
+            >
+              {"Load More"}
+            </Button>
+          </div>
+        }
+      </Fragment>
     );
   }
 }
 
+export default CartItems;
