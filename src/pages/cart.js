@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import trackProductViewed from "lib/tracking/trackProductViewed";
-import Button from "@reactioncommerce/components/Button/v1";
 import CartSummary from "@reactioncommerce/components/CartSummary/v1";
 import withCart from "containers/cart/withCart";
 import CartItems from "components/CartItems";
@@ -28,12 +27,6 @@ const styles = (theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
     marginTop: "1.6rem",
     marginBottom: "3.1rem"
-  },
-  loadMore: {
-    display: "flex",
-    justifyContent: "center",
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
   }
 });
 
@@ -73,11 +66,13 @@ class CartPage extends Component {
   handleRemoveItem = (_id) => _id
 
   renderCartItems() {
-    const { cart } = this.props;
+    const { cart, hasMoreCartItems, loadMoreCartItems } = this.props;
 
     if (cart && Array.isArray(cart.items)) {
       return (
         <CartItems
+          hasMoreCartItems={hasMoreCartItems}
+          onLoadMoreCartItems={loadMoreCartItems}
           items={cart.items}
           onChangeCartItemQuantity={this.handleItemQuantityChange}
           onRemoveItemFromCart={this.handleRemoveItem}
@@ -89,7 +84,7 @@ class CartPage extends Component {
   }
 
   render() {
-    const { classes, hasMoreCartItems, loadMoreCartItems, shop } = this.props;
+    const { classes, shop } = this.props;
 
     return (
       <Fragment>
@@ -104,16 +99,6 @@ class CartPage extends Component {
           <Grid container spacing={24}>
             <Grid item xs={12} md={8}>
               {this.renderCartItems()}
-              {hasMoreCartItems &&
-                <div className={classes.loadMore}>
-                  <Button
-                    isTextOnly
-                    onClick={loadMoreCartItems}
-                  >
-                    {"Load More"}
-                  </Button>
-                </div>
-              }
             </Grid>
             <Grid item xs={12} md={3}>
               <CartSummary
