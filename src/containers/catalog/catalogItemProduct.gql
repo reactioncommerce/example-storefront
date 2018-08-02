@@ -2,6 +2,7 @@ query catalogItemProductQuery($slugOrId: String!) {
   catalogItemProduct(slugOrId: $slugOrId) {
     product {
       _id
+      productId
       title
       slug
       description

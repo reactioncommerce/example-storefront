@@ -10,6 +10,14 @@ class AuthStore {
   constructor(name) {
     this.tokenName = name || "token";
   }
+
+  /**
+  * The accountId the currently signed-in user
+  *
+  * @type String
+  */
+  @observable accountId = null;
+
   /**
   * The login token of the current user
   *
@@ -46,6 +54,18 @@ class AuthStore {
     } else {
       Cookies.remove(this.tokenName);
     }
+  }
+
+  get isAuthenticated() {
+    if (this.accountId) {
+      return true;
+    }
+
+    return false;
+  }
+
+  @action setAccountId(accountId) {
+    this.accountId = accountId || null;
   }
 }
 

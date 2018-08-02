@@ -4,6 +4,7 @@ import track from "lib/tracking/track";
 import dispatch from "lib/tracking/dispatch";
 import withApolloClient from "lib/apollo/withApolloClient";
 import withShop from "containers/shop/withShop";
+import withViewer from "containers/account/withViewer";
 import withTags from "containers/tags/withTags";
 import Layout from "components/Layout";
 import withMobX from "lib/stores/withMobX";
@@ -16,9 +17,10 @@ import componentsContext from "../componentsContext";
 import getPageContext from "../lib/theme/getPageContext";
 
 @withApolloClient
-@withShop
-@withTags
 @withMobX
+@withShop
+@withViewer
+@withTags
 @track({}, { dispatch })
 export default class App extends NextApp {
   constructor(props) {
@@ -31,6 +33,7 @@ export default class App extends NextApp {
   componentDidMount() {
     // Fetch and update auth token in auth store
     rootMobXStores.authStore.setTokenFromLocalStorage();
+    rootMobXStores.cartStore.setAnonymousCartCredentialsFromLocalStorage();
     rootMobXStores.keycloakAuthStore.setTokenFromLocalStorage();
 
     // Remove the server-side injected CSS.

@@ -39,6 +39,14 @@ const styles = (theme) => ({
 @observer
 class ProductDetail extends Component {
   static propTypes = {
+    /**
+     * Function to add items to a cart.
+     * Implementation may be provided by addItemsToCart function from the @withCart decorator
+     *
+     * @example addItemsToCart(CartItemInput)
+     * @type Function
+     */
+    addItemsToCart: PropTypes.func,
     classes: PropTypes.object,
     currencyCode: PropTypes.string.isRequired,
     product: PropTypes.object,
@@ -86,6 +94,51 @@ class ProductDetail extends Component {
    */
   handleSelectVariant = (variant) => {
     this.selectVariant(variant);
+  };
+
+  /**
+   * @name handleAddToCartClick
+   * @summary Called when the add to cart button is clicked
+   * @private
+   * @ignore
+   * @param {Number} quantity A positive integer from 0 to infinity, representing the quantity to add to cart
+   * @returns {undefined} No return
+   */
+  handleAddToCartClick = (quantity) => {
+    const {
+      addItemsToCart,
+      currencyCode,
+      product,
+      uiStore: {
+        pdpSelectedOptionId,
+        pdpSelectedVariantId
+      }
+    } = this.props;
+
+    // Get selected variant or variant option
+    const selectedVariant = variantById(product.variants, pdpSelectedVariantId);
+    const selectedOption = variantById(selectedVariant.options, pdpSelectedOptionId);
+    const selectedVariantOrOption = selectedOption || selectedVariant;
+
+    if (selectedVariantOrOption) {
+      // Get the price for the currently selected variant or variant option
+      const price = priceByCurrencyCode(currencyCode, selectedVariantOrOption.pricing);
+
+      // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
+      addItemsToCart([
+        {
+          price: {
+            amount: price.price,
+            currencyCode
+          },
+          productConfiguration: {
+            productId: product.productId, // Pass the productId, not to be confused with _id
+            productVariantId: selectedVariantOrOption.variantId // Pass the variantId, not to be confused with _id
+          },
+          quantity
+        }
+      ]);
+    }
   };
 
   /**
@@ -137,11 +190,6 @@ class ProductDetail extends Component {
       theme,
       uiStore: { pdpSelectedOptionId, pdpSelectedVariantId }
     } = this.props;
-
-    let pdpProductToAddToCart = pdpSelectedVariantId;
-    if (pdpSelectedOptionId) {
-      pdpProductToAddToCart = pdpSelectedOptionId;
-    }
 
     // Set the default media as the top-level product's media
     // (all media on all variants and objects)
@@ -208,7 +256,7 @@ class ProductDetail extends Component {
               currencyCode={currencyCode}
               variants={product.variants}
             />
-            <ProductDetailAddToCart variantId={pdpProductToAddToCart} />
+            <ProductDetailAddToCart onClick={this.handleAddToCartClick} />
           </Grid>
         </Grid>
       </Fragment>
