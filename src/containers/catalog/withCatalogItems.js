@@ -38,10 +38,8 @@ export default (Component) => {
 
       return (
         <Query query={catalogItemsQuery} variables={variables}>
-          {({ loading, data, fetchMore }) => {
-            if (loading) return null;
-
-            const { catalogItems } = data;
+          {({ data, fetchMore }) => {
+            const { catalogItems } = data || {};
 
             return (
               <Component

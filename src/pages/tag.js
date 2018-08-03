@@ -50,11 +50,14 @@ export default class TagShop extends Component {
 
   state = {}
 
-  @trackProductListViewed()
-  componentDidMount() {}
+  componentDidUpdate(prevProps) {
+    if (this.props.catalogItems !== prevProps.catalogItems) {
+      this.trackEvent(this.props);
+    }
+  }
 
   @trackProductListViewed()
-  componentDidUpdate() {}
+  trackEvent() {}
 
   renderHelmet() {
     const { shop, routingStore } = this.props;
