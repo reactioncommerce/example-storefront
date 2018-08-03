@@ -134,8 +134,9 @@ export default class MiniCart extends Component {
                   cart={{ ...cart, checkout }}
                   components={{
                     QuantityInput: "div",
-                    CartItems: (
+                    CartItems: (cartItemProps) => (
                       <CartItems
+                        {...cartItemProps}
                         hasMoreCartItems={hasMoreCartItems}
                         onLoadMoreCartItems={loadMoreCartItems}
                       />
