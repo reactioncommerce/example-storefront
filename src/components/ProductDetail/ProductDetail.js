@@ -4,6 +4,10 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { inject, observer } from "mobx-react";
 import Helmet from "react-helmet";
+// jsonld import will need to be updated in the future to import simply from `jsonld`
+// jsonld caused errors with every other import, this is the only way it works
+// See this ticket: https://github.com/digitalbazaar/jsonld.js/issues/252
+import * as jsonld from "jsonld/dist/node6/lib/jsonld";
 import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
 import trackProductViewed from "lib/tracking/trackProductViewed";
