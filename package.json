@@ -49,6 +49,7 @@
     "graphql-tag": "^2.8.0",
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.0",
+    "jsonld": "^1.0.2",
     "keymirror": "^0.1.1",
     "mdi-material-ui": "^5.2.0",
     "mobx": "^4.1.1",
