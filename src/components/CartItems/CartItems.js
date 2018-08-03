@@ -22,7 +22,7 @@ const styles = (theme) => ({
 class CartItems extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    hasMoreCartItems: PropTypes.boolean,
+    hasMoreCartItems: PropTypes.bool,
     isMiniCart: PropTypes.bool,
     items: PropTypes.arrayOf(PropTypes.shape({
       _id: PropTypes.string,
