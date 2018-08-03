@@ -38,10 +38,10 @@ class CartItems extends Component {
     onRemoveItemFromCart: PropTypes.func.isRequired
   }
 
-  handleItemQuantityChange = (quantity) => {
+  handleItemQuantityChange = (quantity, _id) => {
     const { onChangeCartItemQuantity } = this.props;
 
-    onChangeCartItemQuantity(quantity);
+    onChangeCartItemQuantity(quantity, _id);
   }
 
   handleRemoveItem = (_id) => {
