@@ -8,6 +8,7 @@ import accountCartQuery from "./accountCart.gql";
 import anonymousCartQuery from "./anonymousCart.gql";
 import createCartMutation from "./createCartMutation.gql";
 import addCartItemsMutation from "./addCartItemsMutation.gql";
+import removeCartItemsMutation from "./removeCartItemsMutation.gql";
 import reconcileCartsMutation from "./reconcileCartsMutation.gql";
 
 const { publicRuntimeConfig } = getConfig() || {
@@ -148,6 +149,42 @@ export default (Component) => (
       });
     }
 
+    /**
+     * @name handleRemoveCartItems
+     * @summary Remove items from the cart by id
+     * @private
+     * @ignore
+     * @param {Array|String} itemIds Ids of the products to remove from the cart
+     * @returns {undefined} No return
+     */
+    handleRemoveCartItems = (itemIds) => {
+      const { cartStore, client: apolloClient } = this.props;
+
+      apolloClient.mutate({
+        mutation: removeCartItemsMutation,
+        variables: {
+          input: {
+            cartId: cartStore.anonymousCartId || cartStore.accountCartId,
+            cartItemIds: (Array.isArray(itemIds) && itemIds) || [itemIds],
+            token: cartStore.anonymousCartToken || null
+          }
+        },
+        update: (cache, { data: mutationData }) => {
+          if (mutationData && mutationData.removeCartItems) {
+            const { cart: cartPayload } = mutationData.removeCartItems;
+
+            if (cartPayload) {
+              // Update Apollo cache
+              cache.writeQuery({
+                query: cartPayload.account ? accountCartQuery : anonymousCartQuery,
+                data: { cart: cartPayload }
+              });
+            }
+          }
+        }
+      });
+    }
+
     render() {
       const { authStore, cartStore, shop } = this.props;
       let query = anonymousCartQuery;
@@ -221,6 +258,7 @@ export default (Component) => (
                   <Component
                     {...this.props}
                     hasMoreCartItems={(pageInfo && pageInfo.hasNextPage) || false}
+                    onRemoveCartItems={this.handleRemoveCartItems}
                     loadMoreCartItems={() => {
                       fetchMore({
                         variables: {
