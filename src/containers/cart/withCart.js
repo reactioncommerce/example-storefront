@@ -164,7 +164,7 @@ export default (Component) => (
         variables: {
           input: {
             cartId: cartStore.anonymousCartId || cartStore.accountCartId,
-            cartItemIds: (Array.isArray(cartItems) && cartItems) || [cartItems],
+            items: (Array.isArray(cartItems) && cartItems) || [cartItems],
             token: cartStore.anonymousCartToken || null
           }
         },
