@@ -1,8 +1,5 @@
 fragment CartCommon on Cart {
   _id
-  account {
-    _id
-  }
   createdAt
   shop {
     _id

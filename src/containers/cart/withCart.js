@@ -52,7 +52,6 @@ export default (Component) => (
 
       // Update the anonymousCartId if necessary
       cartStore.setAnonymousCartCredentialsFromLocalStorage();
-      this.isReconcilingCarts = false;
     }
 
     /**
@@ -68,15 +67,13 @@ export default (Component) => (
     reconcileCartsIfNecessary(refetchCart) {
       const { authStore, cartStore, shop, client: apolloClient } = this.props;
 
-      if (cartStore.hasAnonymousCartCredentials && authStore.isAuthenticated && this.isReconcilingCarts === false) {
+      if (cartStore.hasAnonymousCartCredentials && authStore.isAuthenticated && cartStore.isReconcilingCarts === false) {
         // Prevent multiple calls to reconcile cart mutations when one is currently in progress
-        this.isReconcilingCarts = true;
+        cartStore.setIsReconcilingCarts(true);
 
         apolloClient.mutate({
           mutation: reconcileCartsMutation,
           update: (cache, { data: mutationData }) => {
-            this.isReconcilingCarts = false;
-
             // If the mutation data contains a createCart object and we are an anonymous user,
             // then set the anonymous cart details
             if (mutationData && mutationData.reconcileCarts) {
@@ -96,6 +93,8 @@ export default (Component) => (
                 refetchCart && refetchCart();
               }
             }
+
+            cartStore.setIsReconcilingCarts(false);
           },
           variables: {
             input: {
