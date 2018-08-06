@@ -1,0 +1,9 @@
+#import "./cartPayloadFragment.gql"
+
+mutation updateCartItemsQuantity($input: UpdateCartItemsQuantityInput!) {
+  updateCartItemsQuantity(input: $input) {
+    cart {
+      ...CartPayload
+    }
+  }
+}

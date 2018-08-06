@@ -963,9 +963,9 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@reactioncommerce/components-context/-/components-context-1.0.0.tgz#587764cf0d1b0312c786b8e4657379de02e13845"
 
-"@reactioncommerce/components@0.14.3":
-  version "0.14.3"
-  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.14.3.tgz#f3e3b808593e131de420c8e87134137314e64bb8"
+"@reactioncommerce/components@0.14.5":
+  version "0.14.5"
+  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.14.5.tgz#f28cd7ea4521667563a107e9e48c88aa52ec0934"
   dependencies:
     "@material-ui/core" "^1.4.0"
     lodash.debounce "^4.0.8"

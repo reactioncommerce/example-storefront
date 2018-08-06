@@ -10,6 +10,7 @@ import createCartMutation from "./createCartMutation.gql";
 import addCartItemsMutation from "./addCartItemsMutation.gql";
 import removeCartItemsMutation from "./removeCartItemsMutation.gql";
 import reconcileCartsMutation from "./reconcileCartsMutation.gql";
+import updateCartItemsQuantityMutation from "./updateCartItemsQuantityMutation.gql";
 
 const { publicRuntimeConfig } = getConfig() || {
   publicRuntimeConfig: {
@@ -149,6 +150,41 @@ export default (Component) => (
     }
 
     /**
+     * @name handleChangeCartItemsQuantity
+     * @summary Update the quantity of one or more cart items
+     * @ignore
+     * @param {Array<Object>|Object} cartItems An array of objects or a single object of shape: { cartItemId: String, quantity: Int }
+     * @returns {undefined} No return
+     */
+    handleChangeCartItemsQuantity = (cartItems) => {
+      const { cartStore, client: apolloClient } = this.props;
+
+      apolloClient.mutate({
+        mutation: updateCartItemsQuantityMutation,
+        variables: {
+          input: {
+            cartId: cartStore.anonymousCartId || cartStore.accountCartId,
+            items: (Array.isArray(cartItems) && cartItems) || [cartItems],
+            token: cartStore.anonymousCartToken || null
+          }
+        },
+        update: (cache, { data: mutationData }) => {
+          if (mutationData && mutationData.updateCartItemsQuantity) {
+            const { cart: cartPayload } = mutationData.updateCartItemsQuantity;
+
+            if (cartPayload) {
+              // Update Apollo cache
+              cache.writeQuery({
+                query: cartPayload.account ? accountCartQuery : anonymousCartQuery,
+                data: { cart: cartPayload }
+              });
+            }
+          }
+        }
+      });
+    }
+
+    /**
      * @name handleRemoveCartItems
      * @summary Remove items from the cart by id
      * @private
@@ -257,6 +293,7 @@ export default (Component) => (
                   <Component
                     {...this.props}
                     hasMoreCartItems={(pageInfo && pageInfo.hasNextPage) || false}
+                    onChangeCartItemsQuantity={this.handleChangeCartItemsQuantity}
                     onRemoveCartItems={this.handleRemoveCartItems}
                     loadMoreCartItems={() => {
                       fetchMore({

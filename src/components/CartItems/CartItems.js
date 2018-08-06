@@ -4,11 +4,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Button from "@reactioncommerce/components/Button/v1";
 import CartItemsList from "@reactioncommerce/components/CartItems/v1";
 
-const components = {
-  // TODO: Use QuantityInput component when MUI dependency is removed.
-  QuantityInput: "div"
-};
-
 const styles = (theme) => ({
   loadMore: {
     display: "flex",
@@ -43,10 +38,10 @@ class CartItems extends Component {
     onRemoveItemFromCart: PropTypes.func.isRequired
   }
 
-  handleItemQuantityChange = (quantity) => {
+  handleItemQuantityChange = (quantity, _id) => {
     const { onChangeCartItemQuantity } = this.props;
 
-    onChangeCartItemQuantity(quantity);
+    onChangeCartItemQuantity(quantity, _id);
   }
 
   handleRemoveItem = (_id) => {
@@ -69,7 +64,6 @@ class CartItems extends Component {
         <CartItemsList
           isMiniCart={isMiniCart}
           items={items}
-          components={components}
           onChangeCartItemQuantity={this.handleItemQuantityChange}
           onRemoveItemFromCart={this.handleRemoveItem}
         />

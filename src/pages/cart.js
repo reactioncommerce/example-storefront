@@ -51,6 +51,7 @@ class CartPage extends Component {
     classes: PropTypes.object,
     hasMoreCartItems: PropTypes.bool,
     loadMoreCartItems: PropTypes.func,
+    onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -62,7 +63,11 @@ class CartPage extends Component {
     // TODO: handle checkout flow.
   }
 
-  handleItemQuantityChange = (quantity) => quantity
+  handleItemQuantityChange = (quantity, cartItemId) => {
+    const { onChangeCartItemsQuantity } = this.props;
+
+    onChangeCartItemsQuantity({ quantity, cartItemId });
+  }
 
   handleRemoveItem = (_id) => {
     const { onRemoveCartItems } = this.props;

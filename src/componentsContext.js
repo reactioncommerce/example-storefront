@@ -12,8 +12,7 @@ import PhoneNumberInput from "@reactioncommerce/components/PhoneNumberInput/v1";
 import Price from "@reactioncommerce/components/Price/v1";
 import QuantityInput from "@reactioncommerce/components/QuantityInput/v1";
 import Select from "@reactioncommerce/components/Select/v1";
-// TODO: Re-enable the stock warning component in ticket https://github.com/reactioncommerce/reaction-next-starterkit/issues/186
-// import StockWarning from "@reactioncommerce/components/StockWarning/v1";
+import StockWarning from "@reactioncommerce/components/StockWarning/v1";
 import spinner from "@reactioncommerce/components/utils/spinner";
 import TextInput from "@reactioncommerce/components/TextInput/v1";
 
@@ -41,6 +40,6 @@ export default {
   QuantityInput,
   spinner,
   Select,
-  StockWarning: () => null,
+  StockWarning,
   TextInput
 };
