@@ -51,6 +51,7 @@ class ProductDetail extends Component {
     currencyCode: PropTypes.string.isRequired,
     product: PropTypes.object,
     routingStore: PropTypes.object.isRequired,
+    shop: PropTypes.object.isRequired,
     tags: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object).isRequired
     }),
@@ -180,6 +181,51 @@ class ProductDetail extends Component {
     return productPrice;
   }
 
+  renderJSONLd() {
+    const { currencyCode, product, shop } = this.props;
+
+    const priceData = product.pricing[0];
+    const images = product.media.map((image) => image.URLs.original);
+
+    let productAvailability = "http://schema.org/InStock";
+    if (product.isLowQuantity) {
+      productAvailability = "http://schema.org/LimitedAvailability";
+    }
+    if (product.isBackorder && product.isSoldOut) {
+      productAvailability = "http://schema.org/PreOrder";
+    }
+    if (!product.isBackorder && product.isSoldOut) {
+      productAvailability = "http://schema.org/SoldOut";
+    }
+
+    // Recommended data from https://developers.google.com/search/docs/data-types/product
+    const productJSON = {
+      "@context": "http://schema.org/",
+      "@type": "Product",
+      "brand": product.vendor,
+      "description": product.description,
+      "image": images,
+      "name": product.title,
+      "sku": product.sku,
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": currencyCode,
+        "price": priceData.minPrice,
+        "availability": productAvailability,
+        "seller": {
+          "@type": "Organization",
+          "name": shop.name
+        }
+      }
+    };
+
+    return (
+      <script type="application/ld+json">
+        {JSON.stringify(productJSON)}
+      </script>
+    );
+  }
+
   render() {
     const {
       classes,
@@ -223,6 +269,7 @@ class ProductDetail extends Component {
         <Helmet>
           <title>{product.title}</title>
           <meta name="description" content={product.description} />
+          {this.renderJSONLd()}
         </Helmet>
         <Grid container spacing={theme.spacing.unit * 3}>
           <Grid item className={classes.breadcrumbGrid} xs={12}>
