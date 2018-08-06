@@ -30,7 +30,7 @@ const routingStore = {
 
 const shop = {
   name: "Reaction"
-}
+};
 
 const uiStore = {
   appConfig: {
