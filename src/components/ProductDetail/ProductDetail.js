@@ -219,10 +219,9 @@ class ProductDetail extends Component {
     }
 
     return (
-      <script
-        type="application/ld_json"
-        dangerouslySetInnerHTML={{ _html: JSON.stringify(productJSON) }}
-      />
+      <script type="application/ld+json">
+        {JSON.stringify(productJSON)}
+      </script>
     );
   }
 
