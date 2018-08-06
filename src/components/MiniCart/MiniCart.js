@@ -58,7 +58,8 @@ export default class MiniCart extends Component {
     }),
     classes: PropTypes.object.isRequired,
     hasMoreCartItems: PropTypes.bool,
-    loadMoreCartItems: PropTypes.func
+    loadMoreCartItems: PropTypes.func,
+    onRemoveCartItems: PropTypes.func
   }
 
   state = {
@@ -102,7 +103,7 @@ export default class MiniCart extends Component {
   }
 
   render() {
-    const { classes, cart, hasMoreCartItems, loadMoreCartItems } = this.props;
+    const { classes, cart, hasMoreCartItems, loadMoreCartItems, onRemoveCartItems } = this.props;
     const { anchorElement, open } = this.state;
     const id = open ? "simple-popper" : null;
 
@@ -138,6 +139,7 @@ export default class MiniCart extends Component {
                       <CartItems
                         {...cartItemProps}
                         hasMoreCartItems={hasMoreCartItems}
+                        onRemoveItemFromCart={onRemoveCartItems}
                         onLoadMoreCartItems={loadMoreCartItems}
                       />
                     )

@@ -51,6 +51,7 @@ class CartPage extends Component {
     classes: PropTypes.object,
     hasMoreCartItems: PropTypes.bool,
     loadMoreCartItems: PropTypes.func,
+    onRemoveCartItems: PropTypes.func,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -63,7 +64,11 @@ class CartPage extends Component {
 
   handleItemQuantityChange = (quantity) => quantity
 
-  handleRemoveItem = (_id) => _id
+  handleRemoveItem = (_id) => {
+    const { onRemoveCartItems } = this.props;
+
+    onRemoveCartItems(_id);
+  }
 
   renderCartItems() {
     const { cart, hasMoreCartItems, loadMoreCartItems } = this.props;
