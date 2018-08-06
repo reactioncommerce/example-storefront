@@ -181,7 +181,7 @@ class ProductDetail extends Component {
     return productPrice;
   }
 
-  renderJSONLd = () => {
+  renderJSONLd() {
     const { currencyCode, product, shop } = this.props;
 
     const priceData = product.pricing[0];
