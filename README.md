@@ -120,7 +120,7 @@ docker-compose up -d --build
 
 Sometimes we need to test [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) components in the context of the starterkit. Unfortunetly, there isn't an easy wasy to do this within our Docker containers, so we need to run the `starterkit` outside of docker.
 
-1. `cd` to your local [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) repo, and then `cd` into the `package` folder of this repor, and run the command `yarn link` to allow the library to be installed into the starterkit. This will link `@reactioncommerce/components`
+1. `cd` to your local [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) repo, and then `cd` into the `package` folder of this repo, and run the command `yarn link` to allow the library to be installed into the starterkit. This will link `@reactioncommerce/components`
 1. Inside the `reaction-next-starterkit` repo, run the command `yarn link "@reactioncommerce/components"` to set the local version as an override of the published npm version
 1. Temporarily rename your `.yarnrc` file to anything else (i.e. `.yarnrc-temp`)
 1. Inside your `.env` file, change `INTERNAL_GRAPHQL_URL` to equal `http://localhost:3030/graphql-alpha`, the same as the `EXTERNAL_GRAPHQL_URL` 
