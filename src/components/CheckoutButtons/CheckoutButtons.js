@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Button from "@reactioncommerce/components/Button/v1";
-import Link from "components/Link";
+import { Router } from "routes";
 
 export default class CheckoutButtons extends Component {
   static propTypes = {
@@ -24,31 +24,32 @@ export default class CheckoutButtons extends Component {
   }
 
   static defaultProps = {
-    primaryButtonRoute: "/checkout",
+    primaryButtonRoute: "checkout",
     primaryButtonText: "Checkout"
   };
+
+  handleOnClick = () => {
+    const { primaryButtonRoute } = this.props;
+    Router.pushRoute(primaryButtonRoute);
+  }
 
   render() {
     const {
       isDisabled,
       primaryClassName,
-      primaryButtonRoute,
       primaryButtonText
     } = this.props;
 
     return (
-      <Link
-        route={primaryButtonRoute}
+      <Button
+        actionType="important"
+        className={primaryClassName}
+        isDisabled={isDisabled}
+        isFullWidth
+        onClick={this.handleOnClick}
       >
-        <Button
-          actionType="important"
-          className={primaryClassName}
-          isDisabled={isDisabled}
-          isFullWidth
-        >
-          {primaryButtonText}
-        </Button>
-      </Link>
+        {primaryButtonText}
+      </Button>
     );
   }
 }
