@@ -55,7 +55,7 @@ LABEL maintainer="Reaction Commerce <engineering@reactioncommerce.com>" \
       com.reactioncommerce.docker.license=$LICENSE
 
 # Needed in build npm command.
-RUN apk add --no-cache rsync python build-base
+RUN apk add --no-cache rsync
 
 WORKDIR $APP_SOURCE_DIR/..
 COPY package.json yarn.lock $APP_SOURCE_DIR/../
