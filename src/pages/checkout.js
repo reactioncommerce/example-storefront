@@ -17,8 +17,11 @@ const styles = (theme) => ({
     justifyContent: "space-between"
   },
   checkoutTitleContainer: {
-    alignSelf: "center",
-    marginRight: "5rem"
+    alignSelf: "flex-end",
+    width: "8rem",
+    [theme.breakpoints.up("md")]: {
+      width: "10rem"
+    }
   },
   checkoutTitle: {
     fontSize: "1.125rem",
@@ -33,7 +36,7 @@ const styles = (theme) => ({
   checkoutContent: {
     flex: "1",
     maxWidth: theme.layout.mainContentMaxWidth,
-    padding: "2rem"
+    padding: "1rem"
   },
   logo: {
     color: theme.palette.reaction.reactionBlue,
@@ -73,7 +76,7 @@ class Checkout extends Component {
                 </div>
               </Link>
               <div className={classes.checkoutTitleContainer}>
-                <LockIcon style={{ fontSize: 16, color: theme.palette.reaction.black35 }}/>
+                <LockIcon style={{ fontSize: 14, color: theme.palette.reaction.black35 }}/>
                 <Typography className={classes.checkoutTitle}>
                     Checkout
                 </Typography>
