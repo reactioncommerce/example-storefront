@@ -11,6 +11,25 @@ mutation reconcileCarts($input: ReconcileCartsInput!) {
       }
       updatedAt
       expiresAt
+      checkout {
+        summary {
+          itemTotal {
+            displayAmount
+          }
+          fulfillmentTotal {
+            displayAmount
+          }
+          itemTotal {
+            displayAmount
+          }
+          taxTotal {
+            displayAmount
+          }
+          total {
+            displayAmount
+          }
+        }
+      }
       items {
         pageInfo {
           hasNextPage
@@ -73,6 +92,7 @@ mutation reconcileCarts($input: ReconcileCartsInput!) {
             variantTitle
             optionTitle
             updatedAt
+            currentQuantity
           }
         }
       }
