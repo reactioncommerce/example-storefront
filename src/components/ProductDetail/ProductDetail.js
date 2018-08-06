@@ -51,6 +51,7 @@ class ProductDetail extends Component {
     currencyCode: PropTypes.string.isRequired,
     product: PropTypes.object,
     routingStore: PropTypes.object.isRequired,
+    shop: PropTypes.object.isRequired,
     tags: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object).isRequired
     }),
@@ -216,7 +217,7 @@ class ProductDetail extends Component {
           "name": shop.name
         }
       }
-    }
+    };
 
     return (
       <script type="application/ld+json">
