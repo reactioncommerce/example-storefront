@@ -4,10 +4,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { inject, observer } from "mobx-react";
 import Helmet from "react-helmet";
-// jsonld import will need to be updated in the future to import simply from `jsonld`
-// jsonld caused errors with every other import, this is the only way it works
-// See this ticket: https://github.com/digitalbazaar/jsonld.js/issues/252
-import * as jsonld from "jsonld/dist/node6/lib/jsonld";
 import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
 import trackProductViewed from "lib/tracking/trackProductViewed";
@@ -184,6 +180,52 @@ class ProductDetail extends Component {
     return productPrice;
   }
 
+  renderJSONLd = () => {
+    const { currencyCode, product, shop } = this.props;
+
+    const priceData = product.pricing[0];
+    const images = product.media.map((image) => image.URLs.original);
+
+    let productAvailability = "http://schema.org/InStock";
+    if (product.isLowQuantity) {
+      productAvailability = "http://schema.org/LimitedAvailability";
+    }
+    if (product.isBackorder && product.isSoldOut) {
+      productAvailability = "http://schema.org/OutOfStock";
+    }
+    if (!product.isBackorder && product.isSoldOut) {
+      productAvailability = "http://schema.org/SoldOut";
+    }
+
+    // Recommended data from https://developers.google.com/search/docs/data-types/product
+    const productJSON = {
+      "@context": "http://schema.org/",
+      "@type": "Product",
+      "brand": product.vendor,
+      "description": product.description,
+      "image": images,
+      "name": product.title,
+      "sku": product.sku,
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": currencyCode,
+        "price": priceData.minPrice,
+        "availability": productAvailability,
+        "seller": {
+          "@type": "Organization",
+          "name": shop.name
+        }
+      }
+    }
+
+    return (
+      <script
+        type="application/ld_json"
+        dangerouslySetInnerHTML={{ _html: JSON.stringify(productJSON) }}
+      />
+    );
+  }
+
   render() {
     const {
       classes,
@@ -227,6 +269,7 @@ class ProductDetail extends Component {
         <Helmet>
           <title>{product.title}</title>
           <meta name="description" content={product.description} />
+          {this.renderJSONLd()}
         </Helmet>
         <Grid container spacing={theme.spacing.unit * 3}>
           <Grid item className={classes.breadcrumbGrid} xs={12}>
