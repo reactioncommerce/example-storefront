@@ -191,7 +191,7 @@ class ProductDetail extends Component {
       productAvailability = "http://schema.org/LimitedAvailability";
     }
     if (product.isBackorder && product.isSoldOut) {
-      productAvailability = "http://schema.org/OutOfStock";
+      productAvailability = "http://schema.org/PreOrder";
     }
     if (!product.isBackorder && product.isSoldOut) {
       productAvailability = "http://schema.org/SoldOut";
