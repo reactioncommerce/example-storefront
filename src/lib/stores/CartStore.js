@@ -31,6 +31,13 @@ class CartStore {
   @observable accountCartId = null;
 
   /**
+   * Is the cart currently in the process of being reconcoled
+   *
+   * @type Boolean
+   */
+  @observable isReconcilingCarts = false;
+
+  /**
    * @name setAnonymousCartCredentials
    * @summary Set anonymousCartID and anonymousCartToken to local storage and cookies
    * @param {String} anonymousCartId Cart Id from "createCart" mutation
@@ -81,6 +88,16 @@ class CartStore {
     // Call to set, and ensure all credentials are the same in
     // local storage, cookies, and class properties
     this.setAnonymousCartCredentials(anonymousCartId, anonymousCartToken);
+  }
+
+  /**
+   * @name setIsReconcilingCarts
+   * @summary Set the value of isReconcilingCarts
+   * @param {Boolean} value true/false
+   * @returns {undefined} No return
+   */
+  @action setIsReconcilingCarts(value) {
+    this.isReconcilingCarts = value;
   }
 
   /**

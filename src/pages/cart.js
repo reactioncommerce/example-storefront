@@ -7,49 +7,10 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import trackProductViewed from "lib/tracking/trackProductViewed";
 import CartSummary from "@reactioncommerce/components/CartSummary/v1";
+import withCart from "containers/cart/withCart";
 import CartItems from "components/CartItems";
 import CheckoutButtons from "components/CheckoutButtons";
 import Link from "components/Link";
-
-// TODO: Replace this mock product data with real data.
-const items = [{
-  _id: "123",
-  attributes: [{ label: "Color", value: "Red" }, { label: "Size", value: "Medium" }],
-  compareAtPrice: {
-    displayAmount: "$45.00"
-  },
-  currentQuantity: 3,
-  imageURLs: {
-    small: "//placehold.it/150",
-    thumbnail: "//placehold.it/150"
-  },
-  isLowQuantity: true,
-  price: {
-    displayAmount: "$20.00"
-  },
-  productSlug: "/product-slug",
-  productVendor: "Patagonia",
-  title: "Five Count",
-  quantity: 2
-},
-{
-  _id: "456",
-  attributes: [{ label: "Color", value: "Black" }, { label: "Size", value: "10" }],
-  currentQuantity: 500,
-  imageURLs: {
-    small: "//placehold.it/150",
-    thumbnail: "//placehold.it/150"
-  },
-  isLowQuantity: false,
-  price: {
-    displayAmount: "$78.00"
-  },
-  productSlug: "/product-slug",
-  productVendor: "Patagonia",
-  title: "Ticket To Anywhere",
-  quantity: 1
-}];
-// END TODO
 
 const styles = (theme) => ({
   checkoutButtonsContainer: {
@@ -70,12 +31,26 @@ const styles = (theme) => ({
 });
 
 @trackProductViewed()
+@withStyles(styles)
+@withCart
 @inject("uiStore")
 @observer
-@withStyles(styles)
 class CartPage extends Component {
   static propTypes = {
+    cart: PropTypes.shape({
+      items: PropTypes.arrayOf(PropTypes.object),
+      checkout: PropTypes.shape({
+        itemTotal: PropTypes.shape({
+          displayAmount: PropTypes.string
+        }),
+        taxTotal: PropTypes.shape({
+          displayAmount: PropTypes.string
+        })
+      })
+    }),
     classes: PropTypes.object,
+    hasMoreCartItems: PropTypes.bool,
+    loadMoreCartItems: PropTypes.func,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -89,6 +64,24 @@ class CartPage extends Component {
   handleItemQuantityChange = (quantity) => quantity
 
   handleRemoveItem = (_id) => _id
+
+  renderCartItems() {
+    const { cart, hasMoreCartItems, loadMoreCartItems } = this.props;
+
+    if (cart && Array.isArray(cart.items)) {
+      return (
+        <CartItems
+          hasMoreCartItems={hasMoreCartItems}
+          onLoadMoreCartItems={loadMoreCartItems}
+          items={cart.items}
+          onChangeCartItemQuantity={this.handleItemQuantityChange}
+          onRemoveItemFromCart={this.handleRemoveItem}
+        />
+      );
+    }
+
+    return null;
+  }
 
   render() {
     const { classes, shop } = this.props;
@@ -105,11 +98,7 @@ class CartPage extends Component {
           </Typography>
           <Grid container spacing={24}>
             <Grid item xs={12} md={8}>
-              <CartItems
-                items={items}
-                onChangeCartItemQuantity={this.handleItemQuantityChange}
-                onRemoveItemFromCart={this.handleRemoveItem}
-              />
+              {this.renderCartItems()}
             </Grid>
             <Grid item xs={12} md={3}>
               <CartSummary

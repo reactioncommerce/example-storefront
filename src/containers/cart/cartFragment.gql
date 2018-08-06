@@ -1,14 +1,30 @@
 fragment CartCommon on Cart {
   _id
-  account {
-    _id
-  }
   createdAt
   shop {
     _id
   }
   updatedAt
   expiresAt
+  checkout {
+    summary {
+      itemTotal {
+        displayAmount
+      }
+      fulfillmentTotal {
+        displayAmount
+      }
+      itemTotal {
+        displayAmount
+      }
+      taxTotal {
+        displayAmount
+      }
+      total {
+        displayAmount
+      }
+    }
+  }
   items(first: 20, after: $itemsAfterCursor) {
     pageInfo {
       hasNextPage
@@ -71,6 +87,7 @@ fragment CartCommon on Cart {
         variantTitle
         optionTitle
         updatedAt
+        currentQuantity
       }
     }
   }
