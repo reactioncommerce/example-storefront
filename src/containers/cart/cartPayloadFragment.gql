@@ -1,5 +1,8 @@
-fragment CartCommon on Cart {
+fragment CartPayload on Cart {
   _id
+  account {
+    _id
+  }
   createdAt
   shop {
     _id
@@ -25,7 +28,7 @@ fragment CartCommon on Cart {
       }
     }
   }
-  items(first: 20, after: $itemsAfterCursor) {
+  items {
     pageInfo {
       hasNextPage
       endCursor

@@ -2,11 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Mutation, Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
+import getConfig from "next/config";
+import cartItemsConnectionToArray from "lib/utils/cartItemsConnectionToArray";
 import accountCartQuery from "./accountCart.gql";
 import anonymousCartQuery from "./anonymousCart.gql";
 import createCartMutation from "./createCartMutation.gql";
 import addCartItemsMutation from "./addCartItemsMutation.gql";
+import removeCartItemsMutation from "./removeCartItemsMutation.gql";
 import reconcileCartsMutation from "./reconcileCartsMutation.gql";
+
+const { publicRuntimeConfig } = getConfig() || {
+  publicRuntimeConfig: {
+    externalAssetsUrl: ""
+  }
+};
 
 /**
  * withCart higher order query component for creating, fetching, and updating carts
@@ -43,7 +52,6 @@ export default (Component) => (
 
       // Update the anonymousCartId if necessary
       cartStore.setAnonymousCartCredentialsFromLocalStorage();
-      this.isReconcilingCarts = false;
     }
 
     /**
@@ -59,15 +67,13 @@ export default (Component) => (
     reconcileCartsIfNecessary(refetchCart) {
       const { authStore, cartStore, shop, client: apolloClient } = this.props;
 
-      if (cartStore.hasAnonymousCartCredentials && authStore.isAuthenticated && this.isReconcilingCarts === false) {
+      if (cartStore.hasAnonymousCartCredentials && authStore.isAuthenticated && cartStore.isReconcilingCarts === false) {
         // Prevent multiple calls to reconcile cart mutations when one is currently in progress
-        this.isReconcilingCarts = true;
+        cartStore.setIsReconcilingCarts(true);
 
         apolloClient.mutate({
           mutation: reconcileCartsMutation,
           update: (cache, { data: mutationData }) => {
-            this.isReconcilingCarts = false;
-
             // If the mutation data contains a createCart object and we are an anonymous user,
             // then set the anonymous cart details
             if (mutationData && mutationData.reconcileCarts) {
@@ -87,6 +93,8 @@ export default (Component) => (
                 refetchCart && refetchCart();
               }
             }
+
+            cartStore.setIsReconcilingCarts(false);
           },
           variables: {
             input: {
@@ -140,6 +148,42 @@ export default (Component) => (
       });
     }
 
+    /**
+     * @name handleRemoveCartItems
+     * @summary Remove items from the cart by id
+     * @private
+     * @ignore
+     * @param {Array|String} itemIds Ids of the products to remove from the cart
+     * @returns {undefined} No return
+     */
+    handleRemoveCartItems = (itemIds) => {
+      const { cartStore, client: apolloClient } = this.props;
+
+      apolloClient.mutate({
+        mutation: removeCartItemsMutation,
+        variables: {
+          input: {
+            cartId: cartStore.anonymousCartId || cartStore.accountCartId,
+            cartItemIds: (Array.isArray(itemIds) && itemIds) || [itemIds],
+            token: cartStore.anonymousCartToken || null
+          }
+        },
+        update: (cache, { data: mutationData }) => {
+          if (mutationData && mutationData.removeCartItems) {
+            const { cart: cartPayload } = mutationData.removeCartItems;
+
+            if (cartPayload) {
+              // Update Apollo cache
+              cache.writeQuery({
+                query: cartPayload.account ? accountCartQuery : anonymousCartQuery,
+                data: { cart: cartPayload }
+              });
+            }
+          }
+        }
+      });
+    }
+
     render() {
       const { authStore, cartStore, shop } = this.props;
       let query = anonymousCartQuery;
@@ -184,6 +228,16 @@ export default (Component) => (
               this.reconcileCartsIfNecessary(refetchCart);
             }
 
+            let processedCartData = null;
+            if (cart) {
+              processedCartData = {
+                ...cart,
+                items: cartItemsConnectionToArray(cart.items, {
+                  externalAssetsUrl: publicRuntimeConfig.externalAssetsUrl
+                })
+              };
+            }
+
             return (
               <Mutation
                 mutation={cart ? addCartItemsMutation : createCartMutation}
@@ -203,6 +257,7 @@ export default (Component) => (
                   <Component
                     {...this.props}
                     hasMoreCartItems={(pageInfo && pageInfo.hasNextPage) || false}
+                    onRemoveCartItems={this.handleRemoveCartItems}
                     loadMoreCartItems={() => {
                       fetchMore({
                         variables: {
@@ -240,7 +295,7 @@ export default (Component) => (
                         items
                       });
                     }}
-                    cart={cart}
+                    cart={processedCartData}
                   />
                 )}
               </Mutation>

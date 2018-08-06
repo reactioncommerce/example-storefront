@@ -2,17 +2,15 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
+import CartItems from "components/CartItems";
 import IconButton from "@material-ui/core/IconButton";
 import CartIcon from "mdi-material-ui/Cart";
 import { Router } from "routes";
 import Popper from "@material-ui/core/Popper";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Fade from "@material-ui/core/Fade";
-
-const components = {
-  // TODO: Use QuantityInput component when MUI dependency is removed.
-  QuantityInput: "div"
-};
+import withCart from "containers/cart/withCart";
+import withShop from "containers/shop/withShop";
 
 const checkout = {
   summary: {
@@ -25,44 +23,6 @@ const checkout = {
   }
 };
 
-const items = [
-  {
-    _id: "123",
-    attributes: [{ label: "Color", value: "Red" }, { label: "Size", value: "Medium" }],
-    compareAtPrice: {
-      displayAmount: "$45.00"
-    },
-    currentQuantity: 3,
-    imageURLs: {
-      small: "//placehold.it/100",
-      thumbnail: "//placehold.it/100"
-    },
-    isLowQuantity: true,
-    price: {
-      displayAmount: "$20.00"
-    },
-    productSlug: "/product-slug",
-    productVendor: "Patagonia",
-    title: "Undefeated",
-    quantity: 2
-  },
-  {
-    _id: "456",
-    attributes: [{ label: "Color", value: "Black" }, { label: "Size", value: "10" }],
-    currentQuantity: 500,
-    imageURLs: {
-      small: "//placehold.it/100",
-      thumbnail: "//placehold.it/100"
-    },
-    isLowQuantity: false,
-    price: {
-      displayAmount: "$78.00"
-    },
-    productSlug: "/product-slug",
-    productVendor: "Patagonia",
-    title: "Ticket to Anywhere",
-    quantity: 1
-  }];
 
 const styles = ({ palette, zIndex }) => ({
   popper: {
@@ -81,9 +41,25 @@ const closePopper = {
 };
 
 @withStyles(styles, { withTheme: true })
+@withShop
+@withCart
 export default class MiniCart extends Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired
+    cart: PropTypes.shape({
+      items: PropTypes.arrayOf(PropTypes.object),
+      checkout: PropTypes.shape({
+        itemTotal: PropTypes.shape({
+          displayAmount: PropTypes.string
+        }),
+        taxTotal: PropTypes.shape({
+          displayAmount: PropTypes.string
+        })
+      })
+    }),
+    classes: PropTypes.object.isRequired,
+    hasMoreCartItems: PropTypes.bool,
+    loadMoreCartItems: PropTypes.func,
+    onRemoveCartItems: PropTypes.func
   }
 
   state = {
@@ -127,7 +103,7 @@ export default class MiniCart extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, cart, hasMoreCartItems, loadMoreCartItems, onRemoveCartItems } = this.props;
     const { anchorElement, open } = this.state;
     const id = open ? "simple-popper" : null;
 
@@ -155,7 +131,20 @@ export default class MiniCart extends Component {
           {({ TransitionProps }) => (
             <Fade {...TransitionProps}>
               <div className={classes.cart}>
-                <MiniCartComponent cart={{ checkout, items }} components={components} />
+                <MiniCartComponent
+                  cart={{ ...cart, checkout }}
+                  components={{
+                    QuantityInput: "div",
+                    CartItems: (cartItemProps) => (
+                      <CartItems
+                        {...cartItemProps}
+                        hasMoreCartItems={hasMoreCartItems}
+                        onRemoveItemFromCart={onRemoveCartItems}
+                        onLoadMoreCartItems={loadMoreCartItems}
+                      />
+                    )
+                  }}
+                />
               </div>
             </Fade>
           )}

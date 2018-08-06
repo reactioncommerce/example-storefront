@@ -15,29 +15,24 @@ export default (Component) => (
     render() {
       return (
         <Query query={primaryShopIdQuery}>
-          {({ loading, data }) => {
-            if (loading) return null;
-
+          {({ loading: loadingPrimaryShopId, data }) => {
             const { primaryShopId } = data || {};
 
-            if (!primaryShopId) {
-              /* eslint-disable no-console */
-              console.error("No primary shop found");
-              return null;
-            }
-
             return (
-              <Query query={shopQuery} variables={{ shopId: primaryShopId }}>
+              <Query query={shopQuery} variables={{ shopId: primaryShopId }} skip={loadingPrimaryShopId}>
                 {({ loading: loadingShopData, data: shopData }) => {
-                  if (loadingShopData) return null;
-
                   const { shop } = shopData || {};
 
                   // Use mobx-provider to pass shop data through context
                   // as well as passing into the component directly
                   return (
                     <Provider primaryShopId={primaryShopId} shop={shop}>
-                      <Component {...this.props} primaryShopId={primaryShopId} shop={shop} />
+                      <Component
+                        {...this.props}
+                        isLoading={loadingPrimaryShopId || loadingShopData}
+                        primaryShopId={primaryShopId}
+                        shop={shop}
+                      />
                     </Provider>
                   );
                 }}
