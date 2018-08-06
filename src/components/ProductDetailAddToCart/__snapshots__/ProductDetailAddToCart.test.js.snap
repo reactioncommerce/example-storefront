@@ -198,37 +198,28 @@ Array [
         <div
           className="MuiGrid-item-9 MuiGrid-grid-xs-12-48"
         >
-          <a
-            className=""
-            href="/checkout"
+          <div
+            className="Button__ButtonDiv-bnfrK eloVkm"
             onClick={[Function]}
-            onKeyDown={[Function]}
-            role="link"
+            onKeyPress={[Function]}
+            role="button"
             tabIndex={0}
+            title={undefined}
           >
-            <div
-              className="Button__ButtonDiv-bnfrK eloVkm"
-              onClick={[Function]}
-              onKeyPress={[Function]}
-              role="button"
-              tabIndex={0}
-              title={undefined}
-            >
-              <div>
-                Checkout
-              </div>
-              <div
-                className="Button__SpinnerWrap-bgOcuM cCKgPo"
-                style={
-                  Object {
-                    "opacity": 0,
-                    "paddingLeft": 0,
-                    "width": 0,
-                  }
-                }
-              />
+            <div>
+              Checkout
             </div>
-          </a>
+            <div
+              className="Button__SpinnerWrap-bgOcuM cCKgPo"
+              style={
+                Object {
+                  "opacity": 0,
+                  "paddingLeft": 0,
+                  "width": 0,
+                }
+              }
+            />
+          </div>
         </div>
       </div>
     </div>
