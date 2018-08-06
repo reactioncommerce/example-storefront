@@ -28,6 +28,10 @@ const routingStore = {
   }
 };
 
+const shop = {
+  name: "Reaction"
+}
+
 const uiStore = {
   appConfig: {
     publicRuntimeConfig: {
@@ -42,7 +46,7 @@ test("basic snapshot", () => {
   const component = renderer.create((
     <MuiThemeProvider theme={theme}>
       <Provider primaryShopId={"J8Bhq3uTtdgwZx3rz"} routingStore={routingStore} uiStore={uiStore}>
-        <ProductDetail product={sampleData} currencyCode={"USD"} />
+        <ProductDetail product={sampleData} shop={shop} currencyCode={"USD"} />
       </Provider>
     </MuiThemeProvider>
   ));
