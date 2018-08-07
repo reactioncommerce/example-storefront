@@ -91,10 +91,6 @@ export default class MiniCart extends Component {
     this.setState(closePopper);
   }
 
-  handleClickAway = () => {
-    this.setState(closePopper);
-  }
-
   handleOnClick = () => {
     this.setState(closePopper, () => Router.pushRoute("cart"));
   }
