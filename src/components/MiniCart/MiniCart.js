@@ -7,7 +7,6 @@ import IconButton from "@material-ui/core/IconButton";
 import CartIcon from "mdi-material-ui/Cart";
 import { Router } from "routes";
 import Popper from "@material-ui/core/Popper";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
 import withShop from "containers/shop/withShop";
@@ -64,12 +63,14 @@ export default class MiniCart extends Component {
 
   state = {
     open: false,
-    anchorElement: null,
-    enteredPopper: false
+    anchorElement: null
   };
 
   handlePopperOpen = (event) => {
     const { currentTarget } = event;
+
+    this.clearOnCloseTimeout();
+
     this.setState({
       anchorElement: currentTarget,
       open: true
@@ -77,17 +78,13 @@ export default class MiniCart extends Component {
   }
 
   handlePopperClose = () => {
-    const { enteredPopper } = this.state;
-
-    setTimeout(() => {
-      if (!enteredPopper) {
-        this.setState(closePopper);
-      }
+    this.onCloseTimeout = setTimeout(() => {
+      this.setState(closePopper);
     }, 500);
   }
 
   handleEnterPopper = () => {
-    this.setState({ enteredPopper: true });
+    this.clearOnCloseTimeout();
   }
 
   handleLeavePopper = () => {
@@ -102,6 +99,12 @@ export default class MiniCart extends Component {
     this.setState(closePopper, () => Router.pushRoute("cart"));
   }
 
+  clearOnCloseTimeout() {
+    if (this.onCloseTimeout) {
+      window && window.clearTimeout(this.onCloseTimeout);
+    }
+  }
+
   render() {
     const { classes, cart, hasMoreCartItems, loadMoreCartItems, onRemoveCartItems } = this.props;
     const { anchorElement, open } = this.state;
@@ -109,15 +112,13 @@ export default class MiniCart extends Component {
 
     return (
       <Fragment>
-        <ClickAwayListener onClickAway={this.handleClickAway}>
-          <IconButton color="inherit"
-            onMouseEnter={this.handlePopperOpen}
-            onMouseLeave={this.handlePopperClose}
-            onClick={this.handleOnClick}
-          >
-            <CartIcon />
-          </IconButton>
-        </ClickAwayListener>
+        <IconButton color="inherit"
+          onMouseEnter={this.handlePopperOpen}
+          onMouseLeave={this.handlePopperClose}
+          onClick={this.handleOnClick}
+        >
+          <CartIcon />
+        </IconButton>
 
         <Popper
           className={classes.popper}
