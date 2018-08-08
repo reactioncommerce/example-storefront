@@ -86,6 +86,20 @@ class NavigationItemDesktop extends Component {
     this.setState({ isSubNavOpen: false });
   };
 
+  renderMainNav() {
+    const { navItem } = this.props;
+
+    if (!this.hasSubNavItems) {
+      return (
+        <Link route={`${this.linkPath()}`}>
+          {navItem.name}
+        </Link>
+      );
+    }
+
+    return navItem.name;
+  }
+
   renderSubNav(navItemGroup) {
     return (
       <Fragment>
@@ -139,12 +153,12 @@ class NavigationItemDesktop extends Component {
   }
 
   render() {
-    const { classes: { primaryNavItem }, navItem } = this.props;
+    const { classes: { navigationShopAllLink, primaryNavItem }, navItem } = this.props;
 
     return (
       <Fragment>
         <Button className={primaryNavItem} color="inherit" onClick={this.onClick}>
-          {navItem.name}
+          {this.renderMainNav()}
           {this.hasSubNavItems && <Fragment>{this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
         </Button>
         {this.hasSubNavItems && this.renderPopover()}
