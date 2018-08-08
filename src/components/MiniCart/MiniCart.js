@@ -58,6 +58,7 @@ export default class MiniCart extends Component {
     classes: PropTypes.object.isRequired,
     hasMoreCartItems: PropTypes.bool,
     loadMoreCartItems: PropTypes.func,
+    onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func
   }
 
@@ -93,6 +94,12 @@ export default class MiniCart extends Component {
 
   handleOnClick = () => {
     this.setState(closePopper, () => Router.pushRoute("cart"));
+  }
+
+  handleItemQuantityChange = (quantity, cartItemId) => {
+    const { onChangeCartItemsQuantity } = this.props;
+
+    onChangeCartItemsQuantity({ quantity, cartItemId });
   }
 
   clearOnCloseTimeout() {
@@ -137,6 +144,7 @@ export default class MiniCart extends Component {
                         {...cartItemProps}
                         hasMoreCartItems={hasMoreCartItems}
                         onRemoveItemFromCart={onRemoveCartItems}
+                        onChangeCartItemQuantity={this.handleItemQuantityChange}
                         onLoadMoreCartItems={loadMoreCartItems}
                       />
                     )
