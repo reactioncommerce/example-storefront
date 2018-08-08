@@ -36,7 +36,10 @@ const styles = (theme) => ({
     fontSize: "12px"
   },
   primaryNavItem: {
-    textTransform: "capitalize"
+    textTransform: "capitalize",
+    "&:first-child": {
+      paddingLeft: "16px"
+    }
   }
 });
 
@@ -87,12 +90,12 @@ class NavigationItemDesktop extends Component {
   };
 
   renderMainNav() {
-    const { navItem } = this.props;
+    const { classes: { primaryNavItem }, navItem } = this.props;
 
     if (!this.hasSubNavItems) {
       return (
         <Link route={`${this.linkPath()}`}>
-          {navItem.name}
+          <ListItemText disableTypography={true} primary={navItem.name} className={primaryNavItem} />
         </Link>
       );
     }
