@@ -8,9 +8,6 @@ fragment CartCommon on Cart {
   expiresAt
   checkout {
     summary {
-      itemTotal {
-        displayAmount
-      }
       fulfillmentTotal {
         displayAmount
       }
