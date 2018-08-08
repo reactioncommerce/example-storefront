@@ -38,8 +38,12 @@ const styles = (theme) => ({
 class CartPage extends Component {
   static propTypes = {
     cart: PropTypes.shape({
+      totalItems: PropTypes.number,
       items: PropTypes.arrayOf(PropTypes.object),
       checkout: PropTypes.shape({
+        fulfillmentTotal: PropTypes.shape({
+          displayAmount: PropTypes.string
+        }),
         itemTotal: PropTypes.shape({
           displayAmount: PropTypes.string
         }),
@@ -93,8 +97,32 @@ class CartPage extends Component {
     return null;
   }
 
+  renderCartSummary() {
+    const { cart } = this.props;
+
+    if (cart && cart.checkout && cart.checkout.summary) {
+      const {
+        fulfillmentTotal,
+        itemTotal,
+        total
+      } = cart.checkout.summary;
+
+      return (
+        <CartSummary
+          displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
+          displaySubtotal={itemTotal && itemTotal.displayAmount}
+          displayTotal={total && total.displayAmount}
+          itemsQuantity={cart.totalItemQuantity}
+        />
+      );
+    }
+
+    return null;
+  }
+
   render() {
     const { classes, shop } = this.props;
+
 
     return (
       <Fragment>
@@ -111,12 +139,7 @@ class CartPage extends Component {
               {this.renderCartItems()}
             </Grid>
             <Grid item xs={12} md={3}>
-              <CartSummary
-                displayShipping="$10.99"
-                displaySubtotal="$275.77"
-                displayTotal="$286.10"
-                itemsQuantity={3}
-              />
+              {this.renderCartSummary()}
               <div className={classes.checkoutButtonsContainer}>
                 <CheckoutButtons />
               </div>
