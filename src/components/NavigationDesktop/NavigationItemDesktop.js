@@ -75,7 +75,9 @@ class NavigationItemDesktop extends Component {
     return subTags && Array.isArray(subTags.edges) && subTags.edges.length > 0;
   }
 
-  onClick = () => {
+  onClick = (event) => {
+    event.preventDefault();
+
     const { navItem } = this.props;
     if (this.hasSubNavItems) {
       this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
