@@ -12,7 +12,6 @@ describe("NextJS Loading", () => {
     request(url, (err, resp, body) => {
       if (!err && resp.statusCode === 200) {
         const cheer = cheerio.load(body);
-        console.log(body);
         chai.expect(cheer("#__next").find("div")).to.not.be.empty;
       }
     });
