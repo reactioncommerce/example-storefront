@@ -199,7 +199,7 @@ jobs:
       - run:
           name: Test SSR
           command: |
-            docker exec -it reactionapp_next_starterkit \
+            docker run -it -d reactionapp_next_starterkit \
               yarn run test:ssr  
       - run:
           name: Copy test artifacts from Remote Docker
