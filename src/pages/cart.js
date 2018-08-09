@@ -12,6 +12,7 @@ import withCart from "containers/cart/withCart";
 import CartItems from "components/CartItems";
 import CheckoutButtons from "components/CheckoutButtons";
 import Link from "components/Link";
+import { Router } from "routes";
 
 const styles = (theme) => ({
   checkoutButtonsContainer: {
@@ -64,6 +65,10 @@ class CartPage extends Component {
     // TODO: handle checkout flow.
   }
 
+  handleClick = () => {
+    return Router.pushRoute("/");
+  }
+
   handleItemQuantityChange = (quantity, cartItemId) => {
     const { onChangeCartItemsQuantity } = this.props;
 
@@ -91,7 +96,7 @@ class CartPage extends Component {
       );
     }
 
-    return <CartEmptyMessage />;
+    return <CartEmptyMessage onClick={this.handleClick} />;
   }
 
   render() {
