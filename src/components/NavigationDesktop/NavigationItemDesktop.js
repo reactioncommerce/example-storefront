@@ -36,7 +36,7 @@ const styles = (theme) => ({
     fontSize: "12px"
   },
   primaryNavItem: {
-    textTransform: "capitalize",
+    "textTransform": "capitalize",
     "&:first-child": {
       paddingLeft: "16px"
     }
@@ -144,7 +144,7 @@ class NavigationItemDesktop extends Component {
   }
 
   render() {
-    const { classes: { navigationShopAllLink, primaryNavItem }, navItem } = this.props;
+    const { classes: { primaryNavItem }, navItem } = this.props;
 
     return (
       <Fragment>
