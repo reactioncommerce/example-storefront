@@ -199,7 +199,10 @@ jobs:
       - run:
           name: Test SSR
           command: |
-            docker run -it -d reactionapp_next_starterkit \
+            docker run \
+              --env-file docker-cache/.env \
+              --name reactionapp_next_starterkit_ssr \
+              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
               yarn run test:ssr  
       - run:
           name: Copy test artifacts from Remote Docker
