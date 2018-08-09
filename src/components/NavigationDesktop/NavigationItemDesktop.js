@@ -36,10 +36,7 @@ const styles = (theme) => ({
     fontSize: "12px"
   },
   primaryNavItem: {
-    "textTransform": "capitalize",
-    "&:first-child": {
-      paddingLeft: "16px"
-    }
+    textTransform: "capitalize"
   }
 });
 
