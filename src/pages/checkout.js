@@ -5,11 +5,13 @@ import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import CartIcon from "mdi-material-ui/Cart";
 import LockIcon from "mdi-material-ui/Lock";
 import Link from "components/Link";
+import StripeForm from "@reactioncommerce/components/StripeForm/v1";
 
 const styles = (theme) => ({
   headerContainer: {
@@ -57,6 +59,10 @@ class Checkout extends Component {
     theme: PropTypes.object.isRequired
   };
 
+  handlePayment = (event) => {
+    this._stripe.createToken().then(({ token }) => { console.log("token", token); });
+  }
+
   render() {
     const { classes, shop, theme } = this.props;
 
@@ -90,6 +96,8 @@ class Checkout extends Component {
                 <Typography paragraph>
                   <br /><br /><br />Checkout Action components Placeholder
                 </Typography>
+                <StripeForm stripeRef={(stripe) => { (this._stripe = stripe); return this._stripe; }} />
+                <Button onClick={this.handlePayment}>Pay</Button>
               </Grid>
               <Grid item xs={12} md={3}>
                 <Typography>
