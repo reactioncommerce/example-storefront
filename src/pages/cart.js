@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import trackProductViewed from "lib/tracking/trackProductViewed";
+import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
 import CartSummary from "@reactioncommerce/components/CartSummary/v1";
 import withCart from "containers/cart/withCart";
 import CartItems from "components/CartItems";
@@ -91,6 +92,7 @@ class CartPage extends Component {
     }
 
     return null;
+    return <CartEmptyMessage />;
   }
 
   render() {
