@@ -84,17 +84,45 @@ class CartPage extends Component {
 
     if (cart && Array.isArray(cart.items) && cart.items.length) {
       return (
-        <CartItems
-          hasMoreCartItems={hasMoreCartItems}
-          onLoadMoreCartItems={loadMoreCartItems}
-          items={cart.items}
-          onChangeCartItemQuantity={this.handleItemQuantityChange}
-          onRemoveItemFromCart={this.handleRemoveItem}
-        />
+        <Grid item xs={12} md={8}>
+          <CartItems
+            hasMoreCartItems={hasMoreCartItems}
+            onLoadMoreCartItems={loadMoreCartItems}
+            items={cart.items}
+            onChangeCartItemQuantity={this.handleItemQuantityChange}
+            onRemoveItemFromCart={this.handleRemoveItem}
+          />
+        </Grid>
       );
     }
 
-    return <CartEmptyMessage onClick={this.handleClick} />;
+    return (
+      <Grid item xs={12}>
+        <CartEmptyMessage onClick={this.handleClick} />
+      </Grid>
+    );
+  }
+
+  renderCartSummary() {
+    const { cart, classes } = this.props;
+
+    if (cart && Array.isArray(cart.items) && cart.items.length) {
+      return (
+        <Grid item xs={12} md={3}>
+          <CartSummary
+            displayShipping="$10.99"
+            displaySubtotal="$275.77"
+            displayTotal="$286.10"
+            itemsQuantity={3}
+          />
+          <div className={classes.checkoutButtonsContainer}>
+            <CheckoutButtons />
+          </div>
+        </Grid>
+      );
+    }
+
+    return null;
   }
 
   render() {
@@ -111,20 +139,8 @@ class CartPage extends Component {
           Shopping Cart
           </Typography>
           <Grid container spacing={24}>
-            <Grid item xs={12} md={8}>
-              {this.renderCartItems()}
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <CartSummary
-                displayShipping="$10.99"
-                displaySubtotal="$275.77"
-                displayTotal="$286.10"
-                itemsQuantity={3}
-              />
-              <div className={classes.checkoutButtonsContainer}>
-                <CheckoutButtons />
-              </div>
-            </Grid>
+            {this.renderCartItems()}
+            {this.renderCartSummary()}
             <Grid className={classes.customerSupportCopy} item>
               <Typography paragraph variant="caption">
                 Have questions? call <span className={classes.phoneNumber}>1.800.555.5555</span>
