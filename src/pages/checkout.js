@@ -10,6 +10,7 @@ import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import CartIcon from "mdi-material-ui/Cart";
 import LockIcon from "mdi-material-ui/Lock";
 import Link from "components/Link";
+import CheckoutSummary from "components/CheckoutSummary";
 
 const styles = (theme) => ({
   headerContainer: {
@@ -92,9 +93,7 @@ class Checkout extends Component {
                 </Typography>
               </Grid>
               <Grid item xs={12} md={3}>
-                <Typography>
-                  <br /><br /><br />Checkout Cart Review placeholder
-                </Typography>
+                <CheckoutSummary />
               </Grid>
             </Grid>
           </div>
