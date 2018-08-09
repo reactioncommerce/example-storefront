@@ -65,9 +65,7 @@ class CartPage extends Component {
     // TODO: handle checkout flow.
   }
 
-  handleClick = () => {
-    return Router.pushRoute("/");
-  }
+  handleClick = () => Router.pushRoute("/");
 
   handleItemQuantityChange = (quantity, cartItemId) => {
     const { onChangeCartItemsQuantity } = this.props;
