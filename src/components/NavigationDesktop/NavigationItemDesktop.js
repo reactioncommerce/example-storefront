@@ -145,7 +145,7 @@ class NavigationItemDesktop extends Component {
 
     return (
       <Fragment>
-        <Button className={primaryNavItem} color="inherit" onClick={this.onClick} href={`${this.linkPath(navItem)}`}>
+        <Button className={primaryNavItem} color="inherit" onClick={this.onClick} href={this.linkPath(navItem)}>
           {navItem.name}
           {this.hasSubNavItems && <Fragment>{this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
         </Button>
