@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders with 1 level of tags 1`] = `
-<button
+<a
   className="MuiButtonBase-root-30 MuiButton-root-6 MuiButton-text-8 MuiButton-flat-11 MuiButton-colorInherit-25 NavigationItemDesktop-primaryNavItem-5"
-  disabled={false}
+  href="/tag/undefined"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -15,8 +15,8 @@ exports[`renders with 1 level of tags 1`] = `
   onTouchEnd={[Function]}
   onTouchMove={[Function]}
   onTouchStart={[Function]}
+  role="button"
   tabIndex="0"
-  type="button"
 >
   <span
     className="MuiButton-label-7"
@@ -24,13 +24,13 @@ exports[`renders with 1 level of tags 1`] = `
   <span
     className="MuiTouchRipple-root-33"
   />
-</button>
+</a>
 `;
 
 exports[`renders with 2 levels of tags 1`] = `
-<button
+<a
   className="MuiButtonBase-root-30 MuiButton-root-6 MuiButton-text-8 MuiButton-flat-11 MuiButton-colorInherit-25 NavigationItemDesktop-primaryNavItem-5"
-  disabled={false}
+  href="/tag/undefined"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -42,8 +42,8 @@ exports[`renders with 2 levels of tags 1`] = `
   onTouchEnd={[Function]}
   onTouchMove={[Function]}
   onTouchStart={[Function]}
+  role="button"
   tabIndex="0"
-  type="button"
 >
   <span
     className="MuiButton-label-7"
@@ -51,13 +51,13 @@ exports[`renders with 2 levels of tags 1`] = `
   <span
     className="MuiTouchRipple-root-33"
   />
-</button>
+</a>
 `;
 
 exports[`renders with 3 levels of tags 1`] = `
-<button
+<a
   className="MuiButtonBase-root-30 MuiButton-root-6 MuiButton-text-8 MuiButton-flat-11 MuiButton-colorInherit-25 NavigationItemDesktop-primaryNavItem-5"
-  disabled={false}
+  href="/tag/undefined"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -69,8 +69,8 @@ exports[`renders with 3 levels of tags 1`] = `
   onTouchEnd={[Function]}
   onTouchMove={[Function]}
   onTouchStart={[Function]}
+  role="button"
   tabIndex="0"
-  type="button"
 >
   <span
     className="MuiButton-label-7"
@@ -78,5 +78,5 @@ exports[`renders with 3 levels of tags 1`] = `
   <span
     className="MuiTouchRipple-root-33"
   />
-</button>
+</a>
 `;
