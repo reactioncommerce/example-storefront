@@ -79,7 +79,7 @@ class CartPage extends Component {
   renderCartItems() {
     const { cart, hasMoreCartItems, loadMoreCartItems } = this.props;
 
-    if (cart && Array.isArray(cart.items)) {
+    if (cart && Array.isArray(cart.items) && cart.items.length) {
       return (
         <CartItems
           hasMoreCartItems={hasMoreCartItems}
@@ -91,7 +91,6 @@ class CartPage extends Component {
       );
     }
 
-    return null;
     return <CartEmptyMessage />;
   }
 
