@@ -15,6 +15,9 @@ import Link from "components/Link";
 import { Router } from "routes";
 
 const styles = (theme) => ({
+  cartEmptyMessageContainer: {
+    margin: "80px 0"
+  },
   checkoutButtonsContainer: {
     backgroundColor: theme.palette.reaction.black02,
     padding: theme.spacing.unit * 2
@@ -80,7 +83,7 @@ class CartPage extends Component {
   }
 
   renderCartItems() {
-    const { cart, hasMoreCartItems, loadMoreCartItems } = this.props;
+    const { cart, classes, hasMoreCartItems, loadMoreCartItems } = this.props;
 
     if (cart && Array.isArray(cart.items) && cart.items.length) {
       return (
@@ -97,7 +100,7 @@ class CartPage extends Component {
     }
 
     return (
-      <Grid item xs={12}>
+      <Grid item xs={12} className={classes.cartEmptyMessageContainer}>
         <CartEmptyMessage onClick={this.handleClick} />
       </Grid>
     );
