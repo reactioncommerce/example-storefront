@@ -16,7 +16,7 @@ defaults: &defaults
     - DOCKER_NAME: "reaction-next-starterkit"
 
   docker:
-    - image: circleci/node:8-stretch
+    - image: circleci/node:8-stretch-browsers
 
 jobs:
   docker-build-nonprod-and-lint:
@@ -199,10 +199,8 @@ jobs:
       - run:
           name: Test SSR
           command: |
-            docker run \
-              --env-file docker-cache/.env \
-              --name reactionapp_next_starterkit_ssr \
-              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
+            docker start \
+              reactionapp_next_starterkit
               yarn run test:ssr  
       - run:
           name: Copy test artifacts from Remote Docker
