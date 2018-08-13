@@ -113,14 +113,20 @@ class CartPage extends Component {
   renderCartSummary() {
     const { cart, classes } = this.props;
 
-    if (cart && Array.isArray(cart.items) && cart.items.length) {
+    if (cart && cart.checkout && cart.checkout.summary && Array.isArray(cart.items) && cart.items.length) {
+      const {
+        fulfillmentTotal,
+        itemTotal,
+        total
+      } = cart.checkout.summary;
+
       return (
         <Grid item xs={12} md={3}>
           <CartSummary
-            displayShipping="$10.99"
-            displaySubtotal="$275.77"
-            displayTotal="$286.10"
-            itemsQuantity={3}
+            displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
+            displaySubtotal={itemTotal && itemTotal.displayAmount}
+            displayTotal={total && total.displayAmount}
+            itemsQuantity={cart.totalItemQuantity}
           />
           <div className={classes.checkoutButtonsContainer}>
             <CheckoutButtons />
@@ -132,32 +138,8 @@ class CartPage extends Component {
     return null;
   }
 
-  renderCartSummary() {
-    const { cart } = this.props;
-
-    if (cart && cart.checkout && cart.checkout.summary) {
-      const {
-        fulfillmentTotal,
-        itemTotal,
-        total
-      } = cart.checkout.summary;
-
-      return (
-        <CartSummary
-          displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
-          displaySubtotal={itemTotal && itemTotal.displayAmount}
-          displayTotal={total && total.displayAmount}
-          itemsQuantity={cart.totalItemQuantity}
-        />
-      );
-    }
-
-    return null;
-  }
-
   render() {
     const { classes, shop } = this.props;
-
 
     return (
       <Fragment>
