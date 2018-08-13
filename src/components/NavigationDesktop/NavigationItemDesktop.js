@@ -72,7 +72,9 @@ class NavigationItemDesktop extends Component {
     return subTags && Array.isArray(subTags.edges) && subTags.edges.length > 0;
   }
 
-  onClick = () => {
+  onClick = (event) => {
+    event.preventDefault();
+
     const { navItem } = this.props;
     if (this.hasSubNavItems) {
       this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
@@ -143,7 +145,7 @@ class NavigationItemDesktop extends Component {
 
     return (
       <Fragment>
-        <Button className={primaryNavItem} color="inherit" onClick={this.onClick}>
+        <Button className={primaryNavItem} color="inherit" onClick={this.onClick} href={this.linkPath(navItem)}>
           {navItem.name}
           {this.hasSubNavItems && <Fragment>{this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
         </Button>

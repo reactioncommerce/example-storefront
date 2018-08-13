@@ -1,4 +1,6 @@
 # Reaction Storefront Next.js Starter Kit
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit?ref=badge_shield)
+
 
 _**Note:** This project is a work in progress and should not be used in production at this time._
 
@@ -120,14 +122,19 @@ docker-compose up -d --build
 
 Sometimes we need to test [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) components in the context of the starterkit. Unfortunetly, there isn't an easy wasy to do this within our Docker containers, so we need to run the `starterkit` outside of docker.
 
-1. `cd` to your local [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) repo, and then `cd` into the `package` folder of this repo, and run the command `yarn link` to allow the library to be installed into the starterkit. This will link `@reactioncommerce/components`
-1. Inside the `reaction-next-starterkit` repo, run the command `yarn link "@reactioncommerce/components"` to set the local version as an override of the published npm version
-1. Temporarily rename your `.yarnrc` file to anything else (i.e. `.yarnrc-temp`)
+1. `cd` to your local [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) repo.
+1. Git checkout the proper branch that you want to link
+1. `cd` into the `package` folder of this repo, and run the command `yarn install` followed by `yarn build`
+1. After the build is done, `cd` into the new `dist` folder it just built and run `yarn link` to allow the library to be installed into the starterkit. This will link `@reactioncommerce/components`
+1. Inside the `reaction-next-starterkit` repo, temporarily rename your `.yarnrc` file to anything else (i.e. `.yarnrc-temp`)
+1. Run `yarn install` and then the command `yarn link "@reactioncommerce/components"` to set the local version as an override of the published npm version
 1. Inside your `.env` file, change `INTERNAL_GRAPHQL_URL` to equal `http://localhost:3030/graphql-alpha`, the same as the `EXTERNAL_GRAPHQL_URL` 
 1. Start the starterkit locally by running the command `export $(cat .env | xargs) && yarn dev`
 1. Your starterkit should now be running at `localhost:4000`
+    - If you see errors about not being able to find peer dependency packages, that seems to be an issues with yarn linking. You can just temporarily `yarn add` each of those packages in the component library `package/dist` folder. (This folder is gitignored anyway.)
 1. After your changes are tested, shut down the starterkit by running the command `CTRL+C`
-1. `cd` to the `package` folder of the `reaction-component-library` repo. Run the command `yarn unlink "@reactioncommerce/components"` to unlink the local version of the component library
+1. Run `yarn unlink "@reactioncommerce/components"` in the starterkit repo folder
+1. `cd` to the `package/dist` folder of the `reaction-component-library` repo. Run the command `yarn unlink` to unlink the local version of the component library
 1. Undo the renaming of your `.yarnrc` file
 1. Undo the URL change inside your `.env` file
 
@@ -182,3 +189,7 @@ See our [full documentation](./docs)
  ## Reference links for development
  ### CSS in JS
  - [Responsive Breakpoints](https://material-ui.com/layout/css-in-js/#responsive-breakpoints)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit?ref=badge_large)
