@@ -1,0 +1,61 @@
+#import "./fragments.gql"
+
+# Create cart for both anonymous and account users
+mutation createCartMutation($input: CreateCartInput!) {
+  createCart(input: $input) {
+    cart {
+     ...CartPayloadFragment
+    }
+    incorrectPriceFailures {
+      ...IncorrectPriceFailureDetailsFragment
+    }
+    minOrderQuantityFailures {
+      ...MinOrderQuantityFailureDetailsFragment
+    }
+    clientMutationId
+    token
+  }
+}
+
+# Add items to the cart
+mutation addCartItemsMutation($input: AddCartItemsInput!) {
+  addCartItems(input: $input) {
+    cart {
+      ...CartPayloadFragment
+    }
+    incorrectPriceFailures {
+      ...IncorrectPriceFailureDetailsFragment
+    }
+    minOrderQuantityFailures {
+      ...MinOrderQuantityFailureDetailsFragment
+    }
+    clientMutationId
+  }
+}
+
+# Reconcile carts. Usually used to merge an anonymous cart with an account cart
+mutation reconcileCartsMutation($input: ReconcileCartsInput!) {
+  reconcileCarts(input: $input) {
+    cart {
+      ...CartPayloadFragment
+    }
+  }
+}
+
+# Remove items from cart
+mutation removeCartItemsMutation($input: RemoveCartItemsInput!) {
+  removeCartItems(input: $input) {
+    cart {
+      ...CartPayloadFragment
+    }
+  }
+}
+
+# Update the quantities of items in the cart
+mutation updateCartItemsQuantityMutation($input: UpdateCartItemsQuantityInput!) {
+  updateCartItemsQuantity(input: $input) {
+    cart {
+      ...CartPayloadFragment
+    }
+  }
+}

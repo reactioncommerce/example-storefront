@@ -1,9 +1,0 @@
-#import "./cartPayloadFragment.gql"
-
-mutation removeCartItems($input: RemoveCartItemsInput!) {
-  removeCartItems(input: $input) {
-    cart {
-      ...CartPayload
-    }
-  }
-}
