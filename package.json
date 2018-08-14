@@ -23,7 +23,7 @@
     "test:ci": "yarn run test:unit --ci --runInBand --colors",
     "test:unit": "NODE_ENV=jesttest jest",
     "test:unit:watch": "NODE_ENV=jesttest jest --watchAll",
-    "test:ssr" : "mocha tests/ssr"
+    "test:integration" : "mocha tests/integration"
   },
   "eslintConfig": {
     "extends": [
