@@ -6,13 +6,18 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import trackProductViewed from "lib/tracking/trackProductViewed";
+import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
 import CartSummary from "@reactioncommerce/components/CartSummary/v1";
 import withCart from "containers/cart/withCart";
 import CartItems from "components/CartItems";
 import CheckoutButtons from "components/CheckoutButtons";
 import Link from "components/Link";
+import { Router } from "routes";
 
 const styles = (theme) => ({
+  cartEmptyMessageContainer: {
+    margin: "80px 0"
+  },
   checkoutButtonsContainer: {
     backgroundColor: theme.palette.reaction.black02,
     padding: theme.spacing.unit * 2
@@ -38,8 +43,12 @@ const styles = (theme) => ({
 class CartPage extends Component {
   static propTypes = {
     cart: PropTypes.shape({
+      totalItems: PropTypes.number,
       items: PropTypes.arrayOf(PropTypes.object),
       checkout: PropTypes.shape({
+        fulfillmentTotal: PropTypes.shape({
+          displayAmount: PropTypes.string
+        }),
         itemTotal: PropTypes.shape({
           displayAmount: PropTypes.string
         }),
@@ -63,6 +72,8 @@ class CartPage extends Component {
     // TODO: handle checkout flow.
   }
 
+  handleClick = () => Router.pushRoute("/");
+
   handleItemQuantityChange = (quantity, cartItemId) => {
     const { onChangeCartItemsQuantity } = this.props;
 
@@ -76,17 +87,51 @@ class CartPage extends Component {
   }
 
   renderCartItems() {
-    const { cart, hasMoreCartItems, loadMoreCartItems } = this.props;
+    const { cart, classes, hasMoreCartItems, loadMoreCartItems } = this.props;
 
-    if (cart && Array.isArray(cart.items)) {
+    if (cart && Array.isArray(cart.items) && cart.items.length) {
       return (
-        <CartItems
-          hasMoreCartItems={hasMoreCartItems}
-          onLoadMoreCartItems={loadMoreCartItems}
-          items={cart.items}
-          onChangeCartItemQuantity={this.handleItemQuantityChange}
-          onRemoveItemFromCart={this.handleRemoveItem}
-        />
+        <Grid item xs={12} md={8}>
+          <CartItems
+            hasMoreCartItems={hasMoreCartItems}
+            onLoadMoreCartItems={loadMoreCartItems}
+            items={cart.items}
+            onChangeCartItemQuantity={this.handleItemQuantityChange}
+            onRemoveItemFromCart={this.handleRemoveItem}
+          />
+        </Grid>
+      );
+    }
+
+    return (
+      <Grid item xs={12} className={classes.cartEmptyMessageContainer}>
+        <CartEmptyMessage onClick={this.handleClick} />
+      </Grid>
+    );
+  }
+
+  renderCartSummary() {
+    const { cart, classes } = this.props;
+
+    if (cart && cart.checkout && cart.checkout.summary && Array.isArray(cart.items) && cart.items.length) {
+      const {
+        fulfillmentTotal,
+        itemTotal,
+        total
+      } = cart.checkout.summary;
+
+      return (
+        <Grid item xs={12} md={3}>
+          <CartSummary
+            displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
+            displaySubtotal={itemTotal && itemTotal.displayAmount}
+            displayTotal={total && total.displayAmount}
+            itemsQuantity={cart.totalItemQuantity}
+          />
+          <div className={classes.checkoutButtonsContainer}>
+            <CheckoutButtons />
+          </div>
+        </Grid>
       );
     }
 
@@ -107,20 +152,8 @@ class CartPage extends Component {
           Shopping Cart
           </Typography>
           <Grid container spacing={24}>
-            <Grid item xs={12} md={8}>
-              {this.renderCartItems()}
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <CartSummary
-                displayShipping="$10.99"
-                displaySubtotal="$275.77"
-                displayTotal="$286.10"
-                itemsQuantity={3}
-              />
-              <div className={classes.checkoutButtonsContainer}>
-                <CheckoutButtons />
-              </div>
-            </Grid>
+            {this.renderCartItems()}
+            {this.renderCartSummary()}
             <Grid className={classes.customerSupportCopy} item>
               <Typography paragraph variant="caption">
                 Have questions? call <span className={classes.phoneNumber}>1.800.555.5555</span>

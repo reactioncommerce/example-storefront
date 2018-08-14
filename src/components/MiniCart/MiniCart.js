@@ -11,18 +11,6 @@ import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
 import withShop from "containers/shop/withShop";
 
-const checkout = {
-  summary: {
-    itemTotal: {
-      displayAmount: "$25.00"
-    },
-    taxTotal: {
-      displayAmount: "$2.50"
-    }
-  }
-};
-
-
 const styles = ({ palette, zIndex }) => ({
   popper: {
     marginTop: "0.5rem",
@@ -136,7 +124,7 @@ export default class MiniCart extends Component {
             <Fade {...TransitionProps}>
               <div className={classes.cart}>
                 <MiniCartComponent
-                  cart={{ ...cart, checkout }}
+                  cart={cart}
                   components={{
                     QuantityInput: "div",
                     CartItems: (cartItemProps) => (
