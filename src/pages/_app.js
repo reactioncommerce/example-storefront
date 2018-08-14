@@ -1,5 +1,6 @@
 import NextApp, { Container } from "next/app";
 import React from "react";
+import getConfig from "next/config";
 import track from "lib/tracking/track";
 import { StripeProvider } from "react-stripe-elements";
 import dispatch from "lib/tracking/dispatch";
@@ -16,6 +17,8 @@ import JssProvider from "react-jss/lib/JssProvider";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
 import componentsContext from "../componentsContext";
 import getPageContext from "../lib/theme/getPageContext";
+
+const { publicRuntimeConfig } = getConfig();
 
 @withApolloClient
 @withMobX
@@ -44,7 +47,8 @@ export default class App extends NextApp {
       jssStyles.parentNode.removeChild(jssStyles);
     }
 
-    this.setState({ stripe: window.Stripe("pk_test_zggzXnHNapGS1EKUV7BSLn3p") });
+    const { stripePublicApiKey } = publicRuntimeConfig;
+    this.setState({ stripe: window.Stripe(stripePublicApiKey) });
   }
 
   render() {
