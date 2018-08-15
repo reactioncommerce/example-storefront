@@ -197,6 +197,14 @@ jobs:
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
               yarn run test:ci
       - run:
+          name: Integration Test
+          command: |
+            docker run \
+              --env-file docker-cache/.env \
+              --name reactionapp_next_starterkit_ssr \
+              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
+              yarn run test:integration  
+      - run:
           name: Copy test artifacts from Remote Docker
           command: |
             docker cp \

@@ -4,13 +4,17 @@ import { Mutation, Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
 import getConfig from "next/config";
 import cartItemsConnectionToArray from "lib/utils/cartItemsConnectionToArray";
-import accountCartQuery from "./accountCart.gql";
-import anonymousCartQuery from "./anonymousCart.gql";
-import createCartMutation from "./createCartMutation.gql";
-import addCartItemsMutation from "./addCartItemsMutation.gql";
-import removeCartItemsMutation from "./removeCartItemsMutation.gql";
-import reconcileCartsMutation from "./reconcileCartsMutation.gql";
-import updateCartItemsQuantityMutation from "./updateCartItemsQuantityMutation.gql";
+import {
+  createCartMutation,
+  addCartItemsMutation,
+  removeCartItemsMutation,
+  reconcileCartsMutation,
+  updateCartItemsQuantityMutation
+} from "./mutations.gql";
+import {
+  accountCartByAccountIdQuery,
+  anonymousCartByCartIdQuery
+} from "./queries.gql";
 
 const { publicRuntimeConfig } = getConfig() || {
   publicRuntimeConfig: {
@@ -86,7 +90,7 @@ export default (Component) => (
 
                 // Update cache for account cart query
                 cache.writeQuery({
-                  query: accountCartQuery,
+                  query: accountCartByAccountIdQuery,
                   data: { cart: cartPayload }
                 });
 
@@ -175,7 +179,7 @@ export default (Component) => (
             if (cartPayload) {
               // Update Apollo cache
               cache.writeQuery({
-                query: cartPayload.account ? accountCartQuery : anonymousCartQuery,
+                query: cartPayload.account ? accountCartByAccountIdQuery : anonymousCartByCartIdQuery,
                 data: { cart: cartPayload }
               });
             }
@@ -211,7 +215,7 @@ export default (Component) => (
             if (cartPayload) {
               // Update Apollo cache
               cache.writeQuery({
-                query: cartPayload.account ? accountCartQuery : anonymousCartQuery,
+                query: cartPayload.account ? accountCartByAccountIdQuery : anonymousCartByCartIdQuery,
                 data: { cart: cartPayload }
               });
             }
@@ -222,21 +226,21 @@ export default (Component) => (
 
     render() {
       const { authStore, cartStore, shop } = this.props;
-      let query = anonymousCartQuery;
+      let query = anonymousCartByCartIdQuery;
       let variables;
       let skipQuery = false;
 
       // With an anonymous cart
       if (cartStore.hasAnonymousCartCredentials) {
         // Otherwise, set query and variables for fetching an anonymous cart
-        query = anonymousCartQuery;
+        query = anonymousCartByCartIdQuery;
         variables = {
           cartId: cartStore.anonymousCartId,
           token: cartStore.anonymousCartToken
         };
       } else if (authStore.isAuthenticated) {
         // With an authenticated user, update the cart query to find an authenticated cart
-        query = accountCartQuery;
+        query = accountCartByAccountIdQuery;
         variables = {
           accountId: authStore.accountId,
           shopId: shop._id

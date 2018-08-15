@@ -1,0 +1,146 @@
+# Common fields for cart for queries
+fragment CartCommon on Cart {
+  _id
+  createdAt
+  account {
+    _id
+  }
+  shop {
+    _id
+  }
+  updatedAt
+  expiresAt
+  checkout {
+    summary {
+      fulfillmentTotal {
+        displayAmount
+      }
+      itemTotal {
+        displayAmount
+      }
+      taxTotal {
+        displayAmount
+      }
+      total {
+        displayAmount
+      }
+    }
+  }
+  totalItemQuantity
+}
+
+# Fragment for queries that require pagination
+fragment CartQueryFragment on Cart {
+  ...CartCommon
+  items(first: 20, after: $itemsAfterCursor) {
+    ...CartItemConnectionFragment
+  }
+}
+
+# Fragment for use with cart payloads
+fragment CartPayloadFragment on Cart {
+  ...CartCommon
+  items {
+    ...CartItemConnectionFragment
+  }
+}
+
+## Fragment for cart items, used in both queries and mutations
+fragment CartItemConnectionFragment on CartItemConnection {
+  pageInfo {
+    hasNextPage
+    endCursor
+  }
+  edges {
+    node {
+      _id
+      productConfiguration {
+        productId
+        productVariantId
+      }
+      addedAt
+      attributes {
+        label
+        value
+      }
+      createdAt
+      isBackorder
+      isLowQuantity
+      isSoldOut
+      imageURLs {
+        large
+        small
+        original
+        medium
+        thumbnail
+      }
+      metafields {
+        value
+        key
+      }
+      parcel {
+        length
+        width
+        weight
+        height
+      }
+      price {
+        amount
+        displayAmount
+        currency {
+          code
+        }
+      }
+      priceWhenAdded {
+        amount
+        displayAmount
+        currency {
+          code
+        }
+      }
+      productSlug
+      productType
+      quantity
+      shop {
+        _id
+      }
+      title
+      variantTitle
+      optionTitle
+      updatedAt
+      currentQuantity
+    }
+  }
+}
+
+# Fragment for use with payloads related cart. Used solely for mutations
+fragment IncorrectPriceFailureDetailsFragment on IncorrectPriceFailureDetails {
+  currentPrice {
+    amount
+    currency {
+      code
+    }
+    displayAmount
+  }
+  productConfiguration {
+    productId
+    productVariantId
+  }
+  providedPrice {
+    amount
+    currency {
+      code
+    }
+    displayAmount
+  }
+}
+
+# Fragment for use with payloads related cart. Used solely for mutations
+fragment MinOrderQuantityFailureDetailsFragment on MinOrderQuantityFailureDetails {
+  minOrderQuantity
+  productConfiguration {
+    productId
+    productVariantId
+  }
+  quantity
+}

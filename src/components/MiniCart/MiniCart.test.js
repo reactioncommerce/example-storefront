@@ -5,7 +5,7 @@ import theme from "lib/theme/reactionTheme";
 import { MockedProvider } from "react-apollo/test-utils";
 import { Provider } from "mobx-react";
 import shopQuery from "containers/shop/shop.gql";
-import anonymousCartQuery from "containers/cart/anonymousCart.gql";
+import anonymousCartByCartIdQuery from "containers/cart/queries.gql";
 import primaryShopIdQuery from "containers/common-gql/primaryShopId.gql";
 import MiniCart from "./MiniCart";
 
@@ -44,7 +44,7 @@ const mocks = [
   },
   {
     request: {
-      query: anonymousCartQuery,
+      query: anonymousCartByCartIdQuery,
       variables: {
         cartId: "1234",
         token: "1234"
