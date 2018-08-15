@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
 import Grid from "@material-ui/core/Grid";
 import CartSummary from "@reactioncommerce/components/CartSummary/v1";
-import withCart from "containers/cart/withCart";
 import CartItems from "components/CartItems";
 
-@withCart
-@inject("uiStore")
-@observer
 class CheckoutSummary extends Component {
   static propTypes = {
     cart: PropTypes.shape({
@@ -50,14 +45,42 @@ class CheckoutSummary extends Component {
 
     if (cart && Array.isArray(cart.items)) {
       return (
-        <CartItems
-          isMiniCart
-          hasMoreCartItems={hasMoreCartItems}
-          onLoadMoreCartItems={loadMoreCartItems}
-          items={cart.items}
-          onChangeCartItemQuantity={this.handleItemQuantityChange}
-          onRemoveItemFromCart={this.handleRemoveItem}
-        />
+        <Grid item xs={12}>
+          <CartItems
+            isMiniCart
+            hasMoreCartItems={hasMoreCartItems}
+            onLoadMoreCartItems={loadMoreCartItems}
+            items={cart.items}
+            onChangeCartItemQuantity={this.handleItemQuantityChange}
+            onRemoveItemFromCart={this.handleRemoveItem}
+          />
+        </Grid>
+      );
+    }
+
+    return null;
+  }
+
+  renderCartSummary() {
+    const { cart } = this.props;
+
+    if (cart && cart.checkout && cart.checkout.summary) {
+      const {
+        fulfillmentTotal,
+        itemTotal,
+        total
+      } = cart.checkout.summary;
+
+      return (
+        <Grid item xs={12}>
+          <CartSummary
+            isDense
+            displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
+            displaySubtotal={itemTotal && itemTotal.displayAmount}
+            displayTotal={total && total.displayAmount}
+            itemsQuantity={cart.totalItemQuantity}
+          />
+        </Grid>
       );
     }
 
@@ -68,17 +91,8 @@ class CheckoutSummary extends Component {
     return (
       <aside>
         <Grid container spacing={24}>
-          <Grid item xs={12}>
-            {this.renderCartItems()}
-          </Grid>
-          <Grid item xs={12}>
-            <CartSummary
-              displayShipping="$10.99"
-              displaySubtotal="$275.77"
-              displayTotal="$286.10"
-              itemsQuantity={3}
-            />
-          </Grid>
+          {this.renderCartItems()}
+          {this.renderCartSummary()}
         </Grid>
       </aside>
     );
