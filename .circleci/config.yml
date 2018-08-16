@@ -210,7 +210,7 @@ jobs:
           command: | 
             docker run \
               --env-file docker-cache/.env \
-              --name reactionapp_next_starterkit_int \
+              --name reactionapp_next_starterkit_blc \
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
               yarn run test:link
       - run:
