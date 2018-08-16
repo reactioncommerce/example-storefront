@@ -1,6 +1,8 @@
 import NextApp, { Container } from "next/app";
 import React from "react";
+import getConfig from "next/config";
 import track from "lib/tracking/track";
+import { StripeProvider } from "react-stripe-elements";
 import dispatch from "lib/tracking/dispatch";
 import withApolloClient from "lib/apollo/withApolloClient";
 import withShop from "containers/shop/withShop";
@@ -16,6 +18,8 @@ import { ComponentsProvider } from "@reactioncommerce/components-context";
 import componentsContext from "../componentsContext";
 import getPageContext from "../lib/theme/getPageContext";
 
+const { publicRuntimeConfig } = getConfig();
+
 @withApolloClient
 @withMobX
 @withShop
@@ -26,6 +30,7 @@ export default class App extends NextApp {
   constructor(props) {
     super(props);
     this.pageContext = getPageContext();
+    this.state = { stripe: null };
   }
 
   pageContext = null;
@@ -41,6 +46,12 @@ export default class App extends NextApp {
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles);
     }
+
+    const { stripePublicApiKey } = publicRuntimeConfig;
+    if (stripePublicApiKey) {
+      // eslint-disable-next-line react/no-did-mount-set-state
+      this.setState({ stripe: window.Stripe(stripePublicApiKey) });
+    }
   }
 
   render() {
@@ -49,28 +60,30 @@ export default class App extends NextApp {
 
     return (
       <Container>
-        <ComponentsProvider value={componentsContext}>
-          <JssProvider
-            registry={this.pageContext.sheetsRegistry}
-            generateClassName={this.pageContext.generateClassName}
-          >
-            <MuiThemeProvider
-              theme={this.pageContext.theme}
-              sheetsManager={this.pageContext.sheetsManager}
+        <StripeProvider stripe={this.state.stripe}>
+          <ComponentsProvider value={componentsContext}>
+            <JssProvider
+              registry={this.pageContext.sheetsRegistry}
+              generateClassName={this.pageContext.generateClassName}
             >
-              <CssBaseline />
-              {
-                route === "/checkout" ? (
-                  <Component pageContext={this.pageContext} shop={shop} {...rest} />
-                ) : (
-                  <Layout shop={shop}>
+              <MuiThemeProvider
+                theme={this.pageContext.theme}
+                sheetsManager={this.pageContext.sheetsManager}
+              >
+                <CssBaseline />
+                {
+                  route === "/checkout" ? (
                     <Component pageContext={this.pageContext} shop={shop} {...rest} />
-                  </Layout>
-                )
-              }
-            </MuiThemeProvider>
-          </JssProvider>
-        </ComponentsProvider>
+                  ) : (
+                    <Layout shop={shop}>
+                      <Component pageContext={this.pageContext} shop={shop} {...rest} />
+                    </Layout>
+                  )
+                }
+              </MuiThemeProvider>
+            </JssProvider>
+          </ComponentsProvider>
+        </StripeProvider>
       </Container>
     );
   }

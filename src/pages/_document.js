@@ -97,6 +97,7 @@ class HTMLDocument extends Document {
           {globalStyles}
         </Head>
         <body>
+          <script src="https://js.stripe.com/v3/"></script>
           <Main />
           <NextScript />
         </body>
