@@ -208,10 +208,7 @@ jobs:
       - run: 
           name: Broken Link Test
           command: | 
-            docker-compose up -d && \
-            docker run \
-              --rm web \
-              yarn test:link
+            yarn run test:link
       - run:
           name: Copy test artifacts from Remote Docker
           command: |
