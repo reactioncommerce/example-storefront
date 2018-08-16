@@ -207,10 +207,12 @@ jobs:
               yarn run test:integration
       - run:
           name: Install Broken Link Checker
-          command: sudo npm install -g broken-link-checker 
-      -run: 
+          command: | 
+            sudo npm install -g broken-link-checker 
+      - run: 
           name: Broken Link Test
-          command: blc https://localhost:4000 -ro -filter=3
+          command: | 
+            blc https://localhost:4000 -ro -filter=3
       - run:
           name: Copy test artifacts from Remote Docker
           command: |
