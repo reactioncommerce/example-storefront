@@ -41,7 +41,8 @@ const initExport = {
       clientId: process.env.KEYCLOAK_CLIENT_ID,
       url: process.env.KEYCLOAK_URL,
       redirectUri: process.env.KEYCLOAK_REDIRECT_URI
-    }
+    },
+    stripePublicApiKey: process.env.STRIPE_PUBLIC_API_KEY
   },
   webpack: (config) => {
     config.module.rules.push({
