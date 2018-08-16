@@ -22,9 +22,12 @@ const styles = ({ palette, zIndex }) => ({
     backgroundColor: palette.common.white
   },
   emptyCart: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     width: 320,
     height: 320,
-    border: palette.reaction.borderColor
+    border: palette.borders.default
   }
 });
 
@@ -71,6 +74,8 @@ export default class MiniCart extends Component {
       open: true
     });
   }
+
+  handleClick = () => Router.pushRoute("/");
 
   handlePopperClose = () => {
     this.onCloseTimeout = setTimeout(() => {
@@ -127,7 +132,9 @@ export default class MiniCart extends Component {
 
     return (
       <div className={classes.emptyCart}>
-        <CartEmptyMessage onClick={this.handleClick} />
+        <div>
+          <CartEmptyMessage onClick={this.handleClick} />
+        </div>
       </div>
     );
   }
