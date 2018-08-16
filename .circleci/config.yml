@@ -206,13 +206,14 @@ jobs:
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
               yarn run test:integration
       - run: 
-          name: Broken Link Test
+          name: Bring Up Development Server
           command: | 
-            docker run \
-              --env-file docker-cache/.env \
-              --name reactionapp_next_starterkit_blc \
-              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-              yarn run test:link
+            docker-compose up
+      - run:
+          name: Broken Link Test
+          command: |
+            docker-compose run \
+              --rm web yarn test:link
       - run:
           name: Copy test artifacts from Remote Docker
           command: |
