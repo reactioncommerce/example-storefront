@@ -206,6 +206,9 @@ jobs:
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
               yarn run test:integration
       - run:
+          name: Broken Link Test
+          command: sudo npm install -g broken-link-checker && blc https://starterkit-staging.devops.reactioncommerce.com/ -ro -filter=3
+      - run:
           name: Copy test artifacts from Remote Docker
           command: |
             docker cp \
