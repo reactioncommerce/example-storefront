@@ -23,7 +23,7 @@
     "test:ci": "yarn run test:unit --ci --runInBand --colors",
     "test:unit": "NODE_ENV=jesttest jest",
     "test:unit:watch": "NODE_ENV=jesttest jest --watchAll",
-    "test:integration" : "mocha tests/integration"
+    "test:integration": "mocha tests/integration"
   },
   "eslintConfig": {
     "extends": [
@@ -42,6 +42,7 @@
     "apollo-link-error": "^1.0.9",
     "apollo-link-http": "^1.5.4",
     "body-parser": "^1.18.2",
+    "broken-link-checker": "^0.7.8",
     "chalk": "^2.3.2",
     "classnames": "^2.2.5",
     "cookie-parser": "^1.4.3",

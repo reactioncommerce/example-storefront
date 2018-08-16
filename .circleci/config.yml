@@ -178,6 +178,7 @@ jobs:
               --name reactionapp_next_starterkit \
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
               yarn run lint
+
   test:
     <<: *defaults
     steps:
@@ -203,7 +204,12 @@ jobs:
               --env-file docker-cache/.env \
               --name reactionapp_next_starterkit_ssr \
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-              yarn run test:integration  
+              yarn run test:integration
+      - run:
+          name: Broken Link Test
+          command: |
+            npm install broken-link-checker
+            blc http://localhost:4000 -ro -filter=3  
       - run:
           name: Copy test artifacts from Remote Docker
           command: |

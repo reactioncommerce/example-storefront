@@ -5,7 +5,7 @@ const cheerio = require("cheerio");
 const chai = require("chai");
 const request = require("request");
 
-const url = "localhost:3000";
+const url = "http://localhost:4000";
 
 describe("NextJS Loading", () => {
   it("SSR Loads with an HTML Body", () => {
