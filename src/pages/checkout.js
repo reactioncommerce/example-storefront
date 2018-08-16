@@ -57,6 +57,10 @@ class Checkout extends Component {
       items: PropTypes.array
     }),
     classes: PropTypes.object,
+    hasMoreCartItems: PropTypes.bool,
+    loadMoreCartItems: PropTypes.func,
+    onChangeCartItemsQuantity: PropTypes.func,
+    onRemoveCartItems: PropTypes.func,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -65,7 +69,16 @@ class Checkout extends Component {
   };
 
   render() {
-    const { classes, cart, shop, theme } = this.props;
+    const {
+      classes,
+      cart,
+      shop,
+      theme,
+      hasMoreCartItems,
+      loadMoreCartItems,
+      onRemoveCartItems,
+      onChangeCartItemsQuantity
+    } = this.props;
 
     return (
       <Fragment>
@@ -99,7 +112,13 @@ class Checkout extends Component {
                 </Typography>
               </Grid>
               <Grid item xs={12} md={3}>
-                <CheckoutSummary cart={cart} />
+                <CheckoutSummary
+                  cart={cart}
+                  hasMoreCartItems={hasMoreCartItems}
+                  onRemoveCartItems={onRemoveCartItems}
+                  onChangeCartItemsQuantity={onChangeCartItemsQuantity}
+                  onLoadMoreCartItems={loadMoreCartItems}
+                />
               </Grid>
             </Grid>
           </div>
