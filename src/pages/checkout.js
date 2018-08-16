@@ -9,7 +9,9 @@ import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import CartIcon from "mdi-material-ui/Cart";
 import LockIcon from "mdi-material-ui/Lock";
+import withCart from "containers/cart/withCart";
 import Link from "components/Link";
+import CheckoutSummary from "components/CheckoutSummary";
 
 const styles = (theme) => ({
   headerContainer: {
@@ -45,11 +47,20 @@ const styles = (theme) => ({
   }
 });
 
+@withCart
 @observer
 @withStyles(styles, { withTheme: true })
 class Checkout extends Component {
   static propTypes = {
+    cart: PropTypes.shape({
+      checkout: PropTypes.object,
+      items: PropTypes.array
+    }),
     classes: PropTypes.object,
+    hasMoreCartItems: PropTypes.bool,
+    loadMoreCartItems: PropTypes.func,
+    onChangeCartItemsQuantity: PropTypes.func,
+    onRemoveCartItems: PropTypes.func,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -58,7 +69,16 @@ class Checkout extends Component {
   };
 
   render() {
-    const { classes, shop, theme } = this.props;
+    const {
+      classes,
+      cart,
+      shop,
+      theme,
+      hasMoreCartItems,
+      loadMoreCartItems,
+      onRemoveCartItems,
+      onChangeCartItemsQuantity
+    } = this.props;
 
     return (
       <Fragment>
@@ -92,9 +112,13 @@ class Checkout extends Component {
                 </Typography>
               </Grid>
               <Grid item xs={12} md={3}>
-                <Typography>
-                  <br /><br /><br />Checkout Cart Review placeholder
-                </Typography>
+                <CheckoutSummary
+                  cart={cart}
+                  hasMoreCartItems={hasMoreCartItems}
+                  onRemoveCartItems={onRemoveCartItems}
+                  onChangeCartItemsQuantity={onChangeCartItemsQuantity}
+                  onLoadMoreCartItems={loadMoreCartItems}
+                />
               </Grid>
             </Grid>
           </div>
