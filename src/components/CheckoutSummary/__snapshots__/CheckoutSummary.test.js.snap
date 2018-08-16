@@ -58,7 +58,7 @@ exports[`basic snapshot 1`] = `
                       className="CartItemDetail__Attributes-Jfttp dEgfNx"
                     >
                       <p
-                        className="CartItemDetail__Vendor-kupFHr jaiVGb"
+                        className="CartItemDetail__Text-iQjjVf jxAYVa"
                       >
                         Patagonia
                       </p>
@@ -284,7 +284,7 @@ exports[`basic snapshot 1`] = `
                       className="CartItemDetail__Attributes-Jfttp dEgfNx"
                     >
                       <p
-                        className="CartItemDetail__Vendor-kupFHr jaiVGb"
+                        className="CartItemDetail__Text-iQjjVf jxAYVa"
                       >
                         Nike
                       </p>
