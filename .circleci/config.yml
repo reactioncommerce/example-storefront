@@ -208,8 +208,13 @@ jobs:
       - run:
           name: Broken Link Test
           command: |
+<<<<<<< HEAD
             npm install broken-link-checker
             blc http://localhost:4000 -ro -filter=3  
+=======
+          npm install broken-link-checker
+          blc http://localhost:4000 -ro -filter=3  
+>>>>>>> f5d1d55934becd837010ed92760f9f333279854a
       - run:
           name: Copy test artifacts from Remote Docker
           command: |
