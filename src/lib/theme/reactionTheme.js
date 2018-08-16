@@ -34,7 +34,7 @@ const theme = createMuiTheme({
       buttonBorderColor: "#5e7480"
     },
     borders: {
-      default: "1px solid #5e7480"
+      default: "1px solid #e6e6e6"
     },
     reaction: {
       activeElementBorderColor: "#94E8D1",
