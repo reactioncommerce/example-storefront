@@ -28,6 +28,13 @@ class CheckoutSummary extends Component {
     })
   }
 
+  static defaultProps = {
+    hasMoreCartItems: false,
+    loadMoreCartItems() {},
+    onChangeCartItemsQuantity() {},
+    onRemoveCartItems() {}
+  }
+
   handleItemQuantityChange = (quantity, cartItemId) => {
     const { onChangeCartItemsQuantity } = this.props;
 
