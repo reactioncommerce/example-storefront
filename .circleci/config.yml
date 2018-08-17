@@ -206,10 +206,13 @@ jobs:
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
               yarn run test:integration
       - run:
+          name: Install Broken Link Checker
+          command: |
+            sudo npm i -g broken-link-checker
+      - run:
           name: Broken Link Test
           command: |
-            sudo npm i -g broken-link-checker && clear && \
-              blc ${STAGING_URL} -ro -filter=3
+            blc ${STAGING_URL} -ro -filter=3 -e
       - run:
           name: Copy test artifacts from Remote Docker
           command: |
