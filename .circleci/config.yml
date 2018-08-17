@@ -208,7 +208,7 @@ jobs:
       - run:
           name: Broken Link Test
           command: |
-            sudo npm i -g broken-link-checker && \
+            sudo npm i -g broken-link-checker && clear && \
               blc ${STAGING_URL} -ro -filter=3
       - run:
           name: Copy test artifacts from Remote Docker
