@@ -24,7 +24,7 @@
     "test:unit": "NODE_ENV=jesttest jest",
     "test:unit:watch": "NODE_ENV=jesttest jest --watchAll",
     "test:integration": "mocha tests/integration",
-    "test:link": "blc http://localhost:4000 -ro -filter=3 -e"
+    "test:link": "blc http://web.reaction-api:4000 -ro -filter=3 -e"
   },
   "eslintConfig": {
     "extends": [
