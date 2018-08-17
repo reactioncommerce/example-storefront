@@ -208,7 +208,7 @@ jobs:
       - run:
           name: Install Broken Link Checker
           command: |
-            sudo npm i -g broken-link-checker
+            yarn add broken-link-checker
       - run:
           name: Broken Link Test
           command: |
