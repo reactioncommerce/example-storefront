@@ -76,6 +76,7 @@ export default class MiniCart extends Component {
   }
 
   handleClick = () => Router.pushRoute("/");
+  handleCheckoutButtonClick = () => Router.pushRoute("checkout");
 
   handlePopperClose = () => {
     this.onCloseTimeout = setTimeout(() => {
@@ -114,6 +115,7 @@ export default class MiniCart extends Component {
       return (
         <MiniCartComponent
           cart={cart}
+          onCheckoutButtonClick={this.handleCheckoutButtonClick}
           components={{
             QuantityInput: "div",
             CartItems: (cartItemProps) => (
