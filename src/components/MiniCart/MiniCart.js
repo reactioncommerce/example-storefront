@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
 import CartItems from "components/CartItems";
+import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
 import IconButton from "@material-ui/core/IconButton";
 import CartIcon from "mdi-material-ui/Cart";
 import { Router } from "routes";
@@ -19,6 +20,14 @@ const styles = ({ palette, zIndex }) => ({
   },
   cart: {
     backgroundColor: palette.common.white
+  },
+  emptyCart: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: 320,
+    height: 320,
+    border: palette.borders.default
   }
 });
 
@@ -27,7 +36,7 @@ const closePopper = {
   open: false
 };
 
-@withStyles(styles, { withTheme: true })
+@withStyles(styles)
 @withShop
 @withCart
 export default class MiniCart extends Component {
@@ -66,6 +75,8 @@ export default class MiniCart extends Component {
     });
   }
 
+  handleClick = () => Router.pushRoute("/");
+
   handlePopperClose = () => {
     this.onCloseTimeout = setTimeout(() => {
       this.setState(closePopper);
@@ -96,8 +107,40 @@ export default class MiniCart extends Component {
     }
   }
 
+  renderMiniCart() {
+    const { cart, classes, hasMoreCartItems, loadMoreCartItems, onRemoveCartItems } = this.props;
+
+    if (cart && Array.isArray(cart.items) && cart.items.length) {
+      return (
+        <MiniCartComponent
+          cart={cart}
+          components={{
+            QuantityInput: "div",
+            CartItems: (cartItemProps) => (
+              <CartItems
+                {...cartItemProps}
+                hasMoreCartItems={hasMoreCartItems}
+                onRemoveItemFromCart={onRemoveCartItems}
+                onChangeCartItemQuantity={this.handleItemQuantityChange}
+                onLoadMoreCartItems={loadMoreCartItems}
+              />
+            )
+          }}
+        />
+      );
+    }
+
+    return (
+      <div className={classes.emptyCart}>
+        <div>
+          <CartEmptyMessage onClick={this.handleClick} />
+        </div>
+      </div>
+    );
+  }
+
   render() {
-    const { classes, cart, hasMoreCartItems, loadMoreCartItems, onRemoveCartItems } = this.props;
+    const { classes } = this.props;
     const { anchorElement, open } = this.state;
     const id = open ? "simple-popper" : null;
 
@@ -123,21 +166,7 @@ export default class MiniCart extends Component {
           {({ TransitionProps }) => (
             <Fade {...TransitionProps}>
               <div className={classes.cart}>
-                <MiniCartComponent
-                  cart={cart}
-                  components={{
-                    QuantityInput: "div",
-                    CartItems: (cartItemProps) => (
-                      <CartItems
-                        {...cartItemProps}
-                        hasMoreCartItems={hasMoreCartItems}
-                        onRemoveItemFromCart={onRemoveCartItems}
-                        onChangeCartItemQuantity={this.handleItemQuantityChange}
-                        onLoadMoreCartItems={loadMoreCartItems}
-                      />
-                    )
-                  }}
-                />
+                {this.renderMiniCart()}
               </div>
             </Fade>
           )}
