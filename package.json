@@ -23,8 +23,7 @@
     "test:ci": "yarn run test:unit --ci --runInBand --colors",
     "test:unit": "NODE_ENV=jesttest jest",
     "test:unit:watch": "NODE_ENV=jesttest jest --watchAll",
-    "test:integration": "mocha tests/integration",
-    "test:link": "blc http://localhost:4000 -ro -filter=3"
+    "test:integration": "mocha tests/integration"
   },
   "eslintConfig": {
     "extends": [
@@ -80,7 +79,6 @@
     "babel-plugin-module-resolver": "^3.1.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "broken-link-checker": "^0.7.8",
     "chai": "^4.1.2",
     "chai-cheerio": "^1.0.0",
     "cheerio": "^1.0.0-rc.2",

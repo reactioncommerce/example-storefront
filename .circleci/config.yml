@@ -208,11 +208,8 @@ jobs:
       - run:
           name: Broken Link Test
           command: |
-            docker run \
-              --env-file docker-cache/.env \
-              --name reactionapp_next_starterkit_blc \
-              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-              yarn run test:link
+            sudo npm i -g broken-link-checker && \
+              blc ${STAGING_URL} -ro -filter=3
       - run:
           name: Copy test artifacts from Remote Docker
           command: |
