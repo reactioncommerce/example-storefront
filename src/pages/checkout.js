@@ -102,7 +102,7 @@ class Checkout extends Component {
   };
 
   // eslint-disable-next-line promise/avoid-new
-  mockMutation = (data) => new Promise((resolve, reject) => {
+  mockMutation = () => new Promise((resolve) => {
     setTimeout(() => {
       this.setState({
         cart: {
