@@ -66,6 +66,9 @@ class HTMLDocument extends Document {
     scripts = [...scripts, {
       type: "text/javascript",
       src: `${keycloakConfig.url}/js/keycloak.js`
+    }, {
+      type: "text/javascript",
+      src: "https://js.stripe.com/v3/"
     }];
 
     return (
@@ -97,7 +100,6 @@ class HTMLDocument extends Document {
           {globalStyles}
         </Head>
         <body>
-          <script src="https://js.stripe.com/v3/"></script>
           <Main />
           <NextScript />
         </body>
