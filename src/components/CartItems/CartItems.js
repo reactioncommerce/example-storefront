@@ -19,6 +19,7 @@ class CartItems extends Component {
     classes: PropTypes.object,
     hasMoreCartItems: PropTypes.bool,
     isMiniCart: PropTypes.bool,
+    isReadOnly: PropTypes.bool,
     items: PropTypes.arrayOf(PropTypes.shape({
       _id: PropTypes.string,
       attributes: PropTypes.arrayOf(PropTypes.object),
@@ -55,6 +56,7 @@ class CartItems extends Component {
       classes,
       items,
       isMiniCart,
+      isReadOnly,
       hasMoreCartItems,
       onLoadMoreCartItems
     } = this.props;
@@ -63,6 +65,7 @@ class CartItems extends Component {
       <Fragment>
         <CartItemsList
           isMiniCart={isMiniCart}
+          isReadOnly={isReadOnly}
           items={items}
           onChangeCartItemQuantity={this.handleItemQuantityChange}
           onRemoveItemFromCart={this.handleRemoveItem}

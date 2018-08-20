@@ -5,16 +5,39 @@ import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import CheckoutActions from "@reactioncommerce/components/CheckoutActions/v1";
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
+import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import CartIcon from "mdi-material-ui/Cart";
 import LockIcon from "mdi-material-ui/Lock";
+import withCart from "containers/cart/withCart";
 import Link from "components/Link";
+import CheckoutSummary from "components/CheckoutSummary";
 
 const styles = (theme) => ({
-  headerContainer: {
+  checkoutActions: {
+    maxWidth: "600px",
+    alignSelf: "flex-end",
+    [theme.breakpoints.up("md")]: {
+      paddingRight: "2rem"
+    }
+  },
+  cartSummary: {
+    maxWidth: "400px",
+    alignSelf: "flex-start",
+    [theme.breakpoints.up("md")]: {
+      paddingRight: "2rem"
+    }
+  },
+  checkoutContent: {
+    flex: "1",
+    maxWidth: theme.layout.mainContentMaxWidth,
+    padding: "1rem"
+  },
+  checkoutContentContainer: {
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "center"
   },
   checkoutTitleContainer: {
     alignSelf: "flex-end",
@@ -29,14 +52,14 @@ const styles = (theme) => ({
     display: "inline",
     marginLeft: "0.3rem"
   },
-  checkoutContentContainer: {
+  flexContainer: {
     display: "flex",
-    justifyContent: "center"
+    flexDirection: "column"
   },
-  checkoutContent: {
-    flex: "1",
-    maxWidth: theme.layout.mainContentMaxWidth,
-    padding: "1rem"
+  headerContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    marginBottom: "2rem"
   },
   logo: {
     color: theme.palette.reaction.reactionBlue,
@@ -45,11 +68,32 @@ const styles = (theme) => ({
   }
 });
 
+const mockAddress = {
+  address1: "7742 Hwy 23",
+  address2: "",
+  country: "US",
+  city: "Belle Chasse",
+  firstName: "Salvos",
+  lastName: "Seafood",
+  postal: "70037",
+  region: "LA",
+  phone: "(504) 393-7303"
+};
+
+@withCart
 @observer
 @withStyles(styles, { withTheme: true })
 class Checkout extends Component {
   static propTypes = {
+    cart: PropTypes.shape({
+      checkout: PropTypes.object,
+      items: PropTypes.array
+    }),
     classes: PropTypes.object,
+    hasMoreCartItems: PropTypes.bool,
+    loadMoreCartItems: PropTypes.func,
+    onChangeCartItemsQuantity: PropTypes.func,
+    onRemoveCartItems: PropTypes.func,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -57,8 +101,54 @@ class Checkout extends Component {
     theme: PropTypes.object.isRequired
   };
 
+  // eslint-disable-next-line promise/avoid-new
+  mockMutation = () => new Promise((resolve) => {
+    setTimeout(() => {
+      this.setState({
+        cart: {
+          fulfillmentGroup: {
+            data: {
+              shippingAddress: mockAddress
+            }
+          }
+        }
+      });
+      resolve(mockAddress);
+    }, 2000, { mockAddress });
+  });
+
   render() {
-    const { classes, shop, theme } = this.props;
+    const {
+      classes,
+      cart,
+      shop,
+      theme,
+      hasMoreCartItems,
+      loadMoreCartItems,
+      onRemoveCartItems,
+      onChangeCartItemsQuantity
+    } = this.props;
+
+    const actions = [
+      {
+        label: "Shipping Information",
+        component: ShippingAddressCheckoutAction,
+        onSubmit: this.mockMutation,
+        props: null
+      },
+      {
+        label: "Second Shipping Information",
+        component: ShippingAddressCheckoutAction,
+        onSubmit: this.mockMutation,
+        props: {
+          fulfillmentGroup: {
+            data: {
+              shippingAddress: mockAddress
+            }
+          }
+        }
+      }
+    ];
 
     return (
       <Fragment>
@@ -86,15 +176,25 @@ class Checkout extends Component {
               </Link>
             </div>
             <Grid container spacing={24} >
-              <Grid item xs={12} md={8}>
-                <Typography paragraph>
-                  <br /><br /><br />Checkout Action components Placeholder
-                </Typography>
+              <Grid item xs={12} md={7}>
+                <div className={classes.flexContainer}>
+                  <div className={classes.checkoutActions}>
+                    <CheckoutActions actions={actions} />
+                  </div>
+                </div>
               </Grid>
-              <Grid item xs={12} md={3}>
-                <Typography>
-                  <br /><br /><br />Checkout Cart Review placeholder
-                </Typography>
+              <Grid item xs={12} md={5}>
+                <div className={classes.flexContainer}>
+                  <div className={classes.cartSummary}>
+                    <CheckoutSummary
+                      cart={cart}
+                      hasMoreCartItems={hasMoreCartItems}
+                      onRemoveCartItems={onRemoveCartItems}
+                      onChangeCartItemsQuantity={onChangeCartItemsQuantity}
+                      onLoadMoreCartItems={loadMoreCartItems}
+                    />
+                  </div>
+                </div>
               </Grid>
             </Grid>
           </div>

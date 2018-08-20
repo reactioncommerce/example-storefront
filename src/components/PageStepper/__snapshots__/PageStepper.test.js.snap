@@ -8,7 +8,7 @@ exports[`hides next button, shows previous button 1`] = `
     className="MuiGrid-item-3"
   >
     <button
-      className="MuiButtonBase-root-123 MuiButton-root-99 MuiButton-contained-108 MuiButton-raised-111"
+      className="MuiButtonBase-root-125 MuiButton-root-99 MuiButton-contained-110 MuiButton-raised-113"
       disabled={false}
       onBlur={[Function]}
       onClick={undefined}
@@ -30,7 +30,7 @@ exports[`hides next button, shows previous button 1`] = `
         Previous
       </span>
       <span
-        className="MuiTouchRipple-root-126"
+        className="MuiTouchRipple-root-128"
       />
     </button>
   </div>
@@ -48,7 +48,7 @@ exports[`shows both next and previous buttons 1`] = `
     className="MuiGrid-item-3"
   >
     <button
-      className="MuiButtonBase-root-123 MuiButton-root-99 MuiButton-contained-108 MuiButton-raised-111"
+      className="MuiButtonBase-root-125 MuiButton-root-99 MuiButton-contained-110 MuiButton-raised-113"
       disabled={false}
       onBlur={[Function]}
       onClick={undefined}
@@ -70,7 +70,7 @@ exports[`shows both next and previous buttons 1`] = `
         Previous
       </span>
       <span
-        className="MuiTouchRipple-root-126"
+        className="MuiTouchRipple-root-128"
       />
     </button>
   </div>
@@ -78,7 +78,7 @@ exports[`shows both next and previous buttons 1`] = `
     className="MuiGrid-item-3"
   >
     <button
-      className="MuiButtonBase-root-123 MuiButton-root-99 MuiButton-contained-108 MuiButton-raised-111"
+      className="MuiButtonBase-root-125 MuiButton-root-99 MuiButton-contained-110 MuiButton-raised-113"
       disabled={false}
       onBlur={[Function]}
       onClick={undefined}
@@ -100,7 +100,7 @@ exports[`shows both next and previous buttons 1`] = `
         Next
       </span>
       <span
-        className="MuiTouchRipple-root-126"
+        className="MuiTouchRipple-root-128"
       />
     </button>
   </div>
@@ -118,7 +118,7 @@ exports[`shows next button, hides previous button 1`] = `
     className="MuiGrid-item-3"
   >
     <button
-      className="MuiButtonBase-root-123 MuiButton-root-99 MuiButton-contained-108 MuiButton-raised-111"
+      className="MuiButtonBase-root-125 MuiButton-root-99 MuiButton-contained-110 MuiButton-raised-113"
       disabled={false}
       onBlur={[Function]}
       onClick={undefined}
@@ -140,7 +140,7 @@ exports[`shows next button, hides previous button 1`] = `
         Next
       </span>
       <span
-        className="MuiTouchRipple-root-126"
+        className="MuiTouchRipple-root-128"
       />
     </button>
   </div>
