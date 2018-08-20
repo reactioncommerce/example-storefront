@@ -29,7 +29,7 @@ exports[`basic snapshot 1`] = `
           tabIndex={-1}
         >
           <span
-            className="MuiChip-label-130"
+            className="MuiChip-label-138"
           >
             Shoes
           </span>
@@ -55,7 +55,7 @@ exports[`basic snapshot 1`] = `
           tabIndex={-1}
         >
           <span
-            className="MuiChip-label-130"
+            className="MuiChip-label-138"
           >
             Shop
           </span>

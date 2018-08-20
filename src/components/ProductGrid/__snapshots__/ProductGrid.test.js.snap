@@ -2,15 +2,15 @@
 
 exports[`Empty product grid message 1`] = `
 <div
-  className="inject-ProductGridEmptyMessage-with-routingStore-root-217"
+  className="inject-ProductGridEmptyMessage-with-routingStore-root-219"
 >
   <p
-    className="MuiTypography-root-157 MuiTypography-body1-166 MuiTypography-paragraph-175 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-219"
+    className="MuiTypography-root-157 MuiTypography-body1-166 MuiTypography-paragraph-175 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-221"
   >
     Sorry! We couldn't find what you're looking for.
   </p>
   <p
-    className="MuiTypography-root-157 MuiTypography-body1-166 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-218"
+    className="MuiTypography-root-157 MuiTypography-body1-166 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-220"
   >
     <a
       className=""
@@ -276,7 +276,7 @@ Array [
       className="MuiGrid-item-3"
     >
       <button
-        className="MuiButtonBase-root-207 MuiButton-root-183 MuiButton-contained-192 MuiButton-raised-195"
+        className="MuiButtonBase-root-209 MuiButton-root-183 MuiButton-contained-194 MuiButton-raised-197"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -298,7 +298,7 @@ Array [
           Previous
         </span>
         <span
-          className="MuiTouchRipple-root-210"
+          className="MuiTouchRipple-root-212"
         />
       </button>
     </div>
