@@ -1712,6 +1712,10 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
+batch-processor@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/batch-processor/-/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"
+
 bcrypt-pbkdf@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.1.tgz#63bc5dcb61331b92bc05fd528953c33462a06f8d"
@@ -2373,6 +2377,10 @@ constants-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
 
+container-query-toolkit@0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/container-query-toolkit/-/container-query-toolkit-0.1.3.tgz#79ece9fe491d9187b7051247067f1faac6ce00b0"
+
 contains-path@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/contains-path/-/contains-path-0.1.0.tgz#fe8cf184ff6670b6baef01a9d4861a5cbec4120a"
@@ -2873,6 +2881,12 @@ ee-first@1.1.1:
 electron-to-chromium@^1.3.45:
   version "1.3.47"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.47.tgz#764e887ca9104d01a0ac8eabee7dfc0e2ce14104"
+
+element-resize-detector@1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/element-resize-detector/-/element-resize-detector-1.1.13.tgz#f61907e98a91b1ad215f92790bc15113df68444d"
+  dependencies:
+    batch-processor "^1.0.0"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -6580,6 +6594,13 @@ react-apollo@^2.1.3:
     lodash "4.17.5"
     prop-types "^15.6.0"
 
+react-container-query@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/react-container-query/-/react-container-query-0.11.0.tgz#b07ac2794612499dd8f2d1759b72e9c415e53567"
+  dependencies:
+    container-query-toolkit "0.1.3"
+    resize-observer-lite "0.2.3"
+
 react-dom@16.4.2:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.2.tgz#4afed569689f2c561d2b8da0b819669c38a0bda4"
@@ -7027,6 +7048,12 @@ require-uncached@^1.0.3:
 reselect@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
+
+resize-observer-lite@0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/resize-observer-lite/-/resize-observer-lite-0.2.3.tgz#b557f378e2ce9b9aab1dc71a91047bd7ed1d8915"
+  dependencies:
+    element-resize-detector "1.1.13"
 
 resolve-cwd@^2.0.0:
   version "2.0.0"
