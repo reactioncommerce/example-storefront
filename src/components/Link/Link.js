@@ -7,7 +7,7 @@ import track from "lib/tracking/track";
 
 @track((ownProps) => ({
   component: "Link",
-  url: ownProps.route,
+  url: ownProps.route || ownProps.href,
   params: ownProps.params
 }))
 class Link extends Component {
@@ -47,7 +47,7 @@ class Link extends Component {
     } = this.props;
 
     return (
-      <NextLink {...props} passHref>
+      <NextLink route={props.route || props.href} {...props} passHref>
         <a
           className={classNames(className)}
           onClick={this.handleClick}

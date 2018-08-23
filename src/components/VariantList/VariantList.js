@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import BadgeOverlay from "@reactioncommerce/components/BadgeOverlay/v1";
+import { badgeStatus } from "@reactioncommerce/components/BadgeOverlay/v1/utils";
 import VariantItem from "components/VariantItem";
 import ProductDetailOptionsList from "components/ProductDetailOptionsList";
-import BadgeOverlay from "components/BadgeOverlay";
-import badgeStatus from "lib/utils/badgeStatus";
 import Divider from "components/Divider";
 
 const styles = (theme) => ({

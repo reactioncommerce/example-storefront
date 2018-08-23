@@ -272,9 +272,7 @@ export default (Component) => (
             if (cart) {
               processedCartData = {
                 ...cart,
-                items: cartItemsConnectionToArray(cart.items, {
-                  externalAssetsUrl: publicRuntimeConfig.externalAssetsUrl
-                })
+                items: cartItemsConnectionToArray(cart.items)
               };
             }
 
