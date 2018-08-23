@@ -89,7 +89,9 @@ class Img extends Component {
 
   static defaultProps = {
     altText: "",
-    isHero: false
+    isHero: false,
+    presrc: "",
+    src: ""
   };
 
   state = { ready: false };

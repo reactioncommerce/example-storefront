@@ -528,7 +528,7 @@ Details can be added below the image for more specific product information.
           className="VariantList-alert-176"
         >
           <div
-            className="BadgeOverlay-badgeOverlay-179 BadgeOverlay-faded-180"
+            className="BadgeOverlay__Overlay-gvAWwt cDasYZ"
           />
         </div>
       </div>
@@ -565,28 +565,28 @@ Details can be added below the image for more specific product information.
         </button>
       </div>
       <div
-        className="Divider-container-190"
+        className="Divider-container-179"
       >
         <hr
-          className="Divider-item-192"
+          className="Divider-item-181"
         />
         <span
-          className="MuiTypography-root-132 MuiTypography-body1-141 Divider-label-191"
+          className="MuiTypography-root-132 MuiTypography-body1-141 Divider-label-180"
         >
           Available Options
         </span>
         <hr
-          className="Divider-item-192"
+          className="Divider-item-181"
         />
       </div>
       <div
-        className="MuiGrid-container-3 MuiGrid-spacing-xs-8-25 OptionsList-root-193"
+        className="MuiGrid-container-3 MuiGrid-spacing-xs-8-25 OptionsList-root-182"
       >
         <div
           className="MuiGrid-item-4"
         >
           <button
-            className="MuiButtonBase-root-120 ProductDetailOption-optionButton-196"
+            className="MuiButtonBase-root-120 ProductDetailOption-optionButton-185"
             disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
@@ -603,16 +603,16 @@ Details can be added below the image for more specific product information.
             type="button"
           >
             <span
-              className="MuiTypography-root-132 MuiTypography-body1-141 ProductDetailOption-optionText-197"
+              className="MuiTypography-root-132 MuiTypography-body1-141 ProductDetailOption-optionText-186"
             >
               Red
             </span>
           </button>
           <div
-            className="OptionsList-alert-194"
+            className="OptionsList-alert-183"
           >
             <div
-              className="BadgeOverlay-badgeOverlay-179"
+              className="BadgeOverlay__Overlay-gvAWwt gJVwBl"
             />
           </div>
         </div>
@@ -620,7 +620,7 @@ Details can be added below the image for more specific product information.
           className="MuiGrid-item-4"
         >
           <button
-            className="MuiButtonBase-root-120 ProductDetailOption-optionButton-196"
+            className="MuiButtonBase-root-120 ProductDetailOption-optionButton-185"
             disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
@@ -637,7 +637,7 @@ Details can be added below the image for more specific product information.
             type="button"
           >
             <span
-              className="MuiTypography-root-132 MuiTypography-body1-141 ProductDetailOption-optionText-197"
+              className="MuiTypography-root-132 MuiTypography-body1-141 ProductDetailOption-optionText-186"
             >
               Green
             </span>
@@ -649,35 +649,35 @@ Details can be added below the image for more specific product information.
       className="MuiGrid-container-3"
     >
       <div
-        className="MuiGrid-item-4 MuiGrid-grid-xs-12-43 inject-ProductDetailAddToCart-with-uiStore-quantityGrid-203"
+        className="MuiGrid-item-4 MuiGrid-grid-xs-12-43 inject-ProductDetailAddToCart-with-uiStore-quantityGrid-192"
       >
         <div
-          className="Divider-container-190"
+          className="Divider-container-179"
         >
           <hr
-            className="Divider-item-192"
+            className="Divider-item-181"
           />
           <hr
-            className="Divider-item-192"
+            className="Divider-item-181"
           />
         </div>
         <span
-          className="MuiTypography-root-132 MuiTypography-body1-141 inject-ProductDetailAddToCart-with-uiStore-quantityTypography-205"
+          className="MuiTypography-root-132 MuiTypography-body1-141 inject-ProductDetailAddToCart-with-uiStore-quantityTypography-194"
         >
           Quantity
         </span>
         <div
           aria-describedby={undefined}
-          className="MuiFormControl-root-206"
+          className="MuiFormControl-root-195"
         >
           <div
-            className="MuiInput-root-210 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-202 MuiInput-formControl-211"
+            className="MuiInput-root-199 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-191 MuiInput-formControl-200"
           >
             <div
-              className="MuiInputAdornment-root-223"
+              className="MuiInputAdornment-root-212"
             >
               <button
-                className="MuiButtonBase-root-120 inject-ProductDetailAddToCart-with-uiStore-incrementButton-201"
+                className="MuiButtonBase-root-120 inject-ProductDetailAddToCart-with-uiStore-incrementButton-190"
                 color="default"
                 disabled={undefined}
                 onBlur={[Function]}
@@ -717,7 +717,7 @@ Details can be added below the image for more specific product information.
               aria-invalid={false}
               autoComplete={undefined}
               autoFocus={undefined}
-              className="MuiInput-input-218 inject-ProductDetailAddToCart-with-uiStore-quantityInput-204"
+              className="MuiInput-input-207 inject-ProductDetailAddToCart-with-uiStore-quantityInput-193"
               defaultValue={undefined}
               disabled={false}
               id="addToCartQuantityInput"
@@ -735,10 +735,10 @@ Details can be added below the image for more specific product information.
               value={1}
             />
             <div
-              className="MuiInputAdornment-root-223"
+              className="MuiInputAdornment-root-212"
             >
               <button
-                className="MuiButtonBase-root-120 inject-ProductDetailAddToCart-with-uiStore-incrementButton-201"
+                className="MuiButtonBase-root-120 inject-ProductDetailAddToCart-with-uiStore-incrementButton-190"
                 color="default"
                 disabled={undefined}
                 onBlur={[Function]}
@@ -781,7 +781,7 @@ Details can be added below the image for more specific product information.
         className="MuiGrid-item-4 MuiGrid-grid-xs-12-43"
       >
         <button
-          className="MuiButtonBase-root-120 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-199"
+          className="MuiButtonBase-root-120 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-188"
           disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
@@ -798,7 +798,7 @@ Details can be added below the image for more specific product information.
           type="button"
         >
           <span
-            className="MuiTypography-root-132 MuiTypography-body1-141 inject-ProductDetailAddToCart-with-uiStore-addToCartText-200"
+            className="MuiTypography-root-132 MuiTypography-body1-141 inject-ProductDetailAddToCart-with-uiStore-addToCartText-189"
           >
             Add to cart
           </span>
@@ -809,29 +809,29 @@ Details can be added below the image for more specific product information.
       </div>
     </div>
     <div
-      className="HiddenCss-mdUp-241"
+      className="HiddenCss-mdUp-230"
     >
       <div
-        className="inject-CartPopover-with-uiStore-container-226 inject-CartPopover-with-uiStore-isContainerHidden-228"
+        className="inject-CartPopover-with-uiStore-container-215 inject-CartPopover-with-uiStore-isContainerHidden-217"
       >
         <div
-          className="MuiGrid-container-3 MuiGrid-spacing-xs-24-27 inject-CartPopover-with-uiStore-gridContainer-227"
+          className="MuiGrid-container-3 MuiGrid-spacing-xs-24-27 inject-CartPopover-with-uiStore-gridContainer-216"
         >
           <div
-            className="MuiGrid-item-4 MuiGrid-grid-xs-12-43 inject-CartPopover-with-uiStore-containerItem-230"
+            className="MuiGrid-item-4 MuiGrid-grid-xs-12-43 inject-CartPopover-with-uiStore-containerItem-219"
           >
             <img
               alt="Item Title"
-              className="inject-CartPopover-with-uiStore-addedToCartImg-231"
+              className="inject-CartPopover-with-uiStore-addedToCartImg-220"
               src="//placehold.it/100"
             />
             <span
-              className="MuiTypography-root-132 MuiTypography-body1-141 inject-CartPopover-with-uiStore-addedToCartText-233"
+              className="MuiTypography-root-132 MuiTypography-body1-141 inject-CartPopover-with-uiStore-addedToCartText-222"
             >
               10
                "
               <span
-                className="inject-CartPopover-with-uiStore-addedToCartItemName-232"
+                className="inject-CartPopover-with-uiStore-addedToCartItemName-221"
               >
                 Item Title
               </span>

@@ -22,6 +22,14 @@ const routingStore = {
   }
 };
 
+const mockComponents = {
+  BadgeOverlay: "BadgeOverlay",
+  CatalogGridItem: "CatalogGridItem",
+  Link: "Link",
+  Price: "Price",
+  ProgressiveImage: "ProgressiveImage"
+};
+
 test("basic snapshot", () => {
   const pageInfo = {
     hasNextPage: false,
@@ -36,6 +44,7 @@ test("basic snapshot", () => {
     <MuiThemeProvider theme={theme}>
       <Provider routingStore={routingStore} uiStore={uiStore}>
         <ProductGrid
+          components={mockComponents}
           catalogItems={products}
           currencyCode="USD"
           pageInfo={pageInfo}
@@ -66,6 +75,7 @@ test("Empty product grid message", () => {
     <MuiThemeProvider theme={theme}>
       <Provider routingStore={routingStore} uiStore={uiStore}>
         <ProductGrid
+          components={mockComponents}
           catalogItems={null}
           currencyCode="USD"
           pageInfo={pageInfo}

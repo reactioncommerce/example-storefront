@@ -7,7 +7,7 @@ exports[`Img snapshot 1`] = `
   <img
     alt=""
     className="Img-img-3 Img-imgLoading-5 "
-    src={undefined}
+    src=""
   />
 </div>
 `;
