@@ -16,12 +16,6 @@ import {
   anonymousCartByCartIdQuery
 } from "./queries.gql";
 
-const { publicRuntimeConfig } = getConfig() || {
-  publicRuntimeConfig: {
-    externalAssetsUrl: ""
-  }
-};
-
 /**
  * withCart higher order query component for creating, fetching, and updating carts
  * @name WithCart
