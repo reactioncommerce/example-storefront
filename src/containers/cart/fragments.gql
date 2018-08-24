@@ -8,6 +8,7 @@ fragment CartCommon on Cart {
   shop {
     _id
   }
+  email
   updatedAt
   expiresAt
   checkout {
