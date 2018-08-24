@@ -6,6 +6,7 @@ import CartItem from "@reactioncommerce/components/CartItem/v1";
 import CartItemDetail from "@reactioncommerce/components/CartItemDetail/v1";
 import CartItems from "@reactioncommerce/components/CartItems/v1";
 import CartSummary from "@reactioncommerce/components/CartSummary/v1";
+import Checkbox from "@reactioncommerce/components/Checkbox/v1";
 import CheckoutAction from "@reactioncommerce/components/CheckoutAction/v1";
 import CheckoutActionComplete from "@reactioncommerce/components/CheckoutActionComplete/v1";
 import CheckoutActionIncomplete from "@reactioncommerce/components/CheckoutActionIncomplete/v1";
@@ -25,7 +26,16 @@ const FontIcon = styled.i`
   vertical-align: middle;
 `;
 
-const iconClear = <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" style={{ height: "100%", maxHeight: "100%", verticalAlign: "middle" }}><path d="M9.926 9.105l-2.105-2.105 2.105-2.105-0.82-0.82-2.105 2.105-2.105-2.105-0.82 0.82 2.105 2.105-2.105 2.105 0.82 0.82 2.105-2.105 2.105 2.105zM7 1.176c3.227 0 5.824 2.598 5.824 5.824s-2.598 5.824-5.824 5.824-5.824-2.598-5.824-5.824 2.598-5.824 5.824-5.824z" /></svg>;
+const iconClear = (
+  <svg
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 14 14"
+    style={{ height: "100%", maxHeight: "100%", verticalAlign: "middle" }}
+  >
+    <path d="M9.926 9.105l-2.105-2.105 2.105-2.105-0.82-0.82-2.105 2.105-2.105-2.105-0.82 0.82 2.105 2.105-2.105 2.105 0.82 0.82 2.105-2.105 2.105 2.105zM7 1.176c3.227 0 5.824 2.598 5.824 5.824s-2.598 5.824-5.824 5.824-5.824-2.598-5.824-5.824 2.598-5.824 5.824-5.824z" />
+  </svg>
+);
 
 export default {
   AddressForm,
@@ -34,6 +44,7 @@ export default {
   CartItemDetail,
   CartItems,
   CartSummary,
+  Checkbox,
   CheckoutAction,
   CheckoutActionComplete,
   CheckoutActionIncomplete,
@@ -41,7 +52,7 @@ export default {
   Field,
   iconClear,
   iconError: <FontIcon className="fas fa-exclamation-triangle" />,
-  iconValid: (<FontIcon className="far fa-check-circle" />),
+  iconValid: <FontIcon className="far fa-check-circle" />,
   MiniCartSummary,
   PhoneNumberInput,
   Price,
