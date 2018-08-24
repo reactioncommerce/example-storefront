@@ -6,7 +6,9 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import CheckoutActions from "@reactioncommerce/components/CheckoutActions/v1";
+import CheckoutEmailAddress from "@reactioncommerce/components/CheckoutEmailAddress/v1";
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
+import GuestForm from "@reactioncommerce/components/GuestForm/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import CartIcon from "mdi-material-ui/Cart";
@@ -86,7 +88,9 @@ const mockAddress = {
 class Checkout extends Component {
   static propTypes = {
     cart: PropTypes.shape({
+      account: PropTypes.object,
       checkout: PropTypes.object,
+      email: PropTypes.string,
       items: PropTypes.array
     }),
     classes: PropTypes.object,
@@ -94,6 +98,7 @@ class Checkout extends Component {
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
+    setEmailOnAnonymousCart: PropTypes.func,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -102,27 +107,50 @@ class Checkout extends Component {
   };
 
   // eslint-disable-next-line promise/avoid-new
-  mockMutation = () => new Promise((resolve) => {
-    setTimeout(() => {
-      this.setState({
-        cart: {
-          fulfillmentGroup: {
-            data: {
-              shippingAddress: mockAddress
+  mockMutation = () =>
+    new Promise((resolve) => {
+      setTimeout(
+        () => {
+          this.setState({
+            cart: {
+              fulfillmentGroup: {
+                data: {
+                  shippingAddress: mockAddress
+                }
+              }
             }
-          }
-        }
-      });
-      resolve(mockAddress);
-    }, 2000, { mockAddress });
-  });
+          });
+          resolve(mockAddress);
+        },
+        2000,
+        { mockAddress }
+      );
+    });
 
-  render() {
+  renderLogin() {
+    const { classes, setEmailOnAnonymousCart } = this.props;
+    return (
+      <Grid container spacing={24}>
+        <Grid item xs={12} md={7}>
+          <div className={classes.flexContainer}>
+            <div className={classes.checkoutActions} />
+          </div>
+        </Grid>
+        <Grid item xs={12} md={5}>
+          <div className={classes.flexContainer}>
+            <div className={classes.cartSummary}>
+              <GuestForm onSubmit={setEmailOnAnonymousCart} />
+            </div>
+          </div>
+        </Grid>
+      </Grid>
+    );
+  }
+
+  renderCheckout() {
     const {
       classes,
       cart,
-      shop,
-      theme,
       hasMoreCartItems,
       loadMoreCartItems,
       onRemoveCartItems,
@@ -150,6 +178,41 @@ class Checkout extends Component {
       }
     ];
 
+    const hasAccount = !!cart.account;
+    const displayEmail = hasAccount ? cart.account.emailRecords[0].address : cart.email;
+
+    return (
+      <Grid container spacing={24}>
+        <Grid item xs={12} md={7}>
+          <div className={classes.flexContainer}>
+            <div className={classes.checkoutActions}>
+              <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} />
+              <CheckoutActions actions={actions} />
+            </div>
+          </div>
+        </Grid>
+        <Grid item xs={12} md={5}>
+          <div className={classes.flexContainer}>
+            <div className={classes.cartSummary}>
+              <CheckoutSummary
+                cart={cart}
+                hasMoreCartItems={hasMoreCartItems}
+                onRemoveCartItems={onRemoveCartItems}
+                onChangeCartItemsQuantity={onChangeCartItemsQuantity}
+                onLoadMoreCartItems={loadMoreCartItems}
+              />
+            </div>
+          </div>
+        </Grid>
+      </Grid>
+    );
+  }
+
+  render() {
+    const { classes, cart, shop, theme } = this.props;
+
+    console.log("this is my cart!", cart);
+
     return (
       <Fragment>
         <Helmet>
@@ -166,37 +229,14 @@ class Checkout extends Component {
                 </div>
               </Link>
               <div className={classes.checkoutTitleContainer}>
-                <LockIcon style={{ fontSize: 14, color: theme.palette.reaction.black35 }}/>
-                <Typography className={classes.checkoutTitle}>
-                    Checkout
-                </Typography>
+                <LockIcon style={{ fontSize: 14, color: theme.palette.reaction.black35 }} />
+                <Typography className={classes.checkoutTitle}>Checkout</Typography>
               </div>
               <Link route="cart">
                 <CartIcon />
               </Link>
             </div>
-            <Grid container spacing={24} >
-              <Grid item xs={12} md={7}>
-                <div className={classes.flexContainer}>
-                  <div className={classes.checkoutActions}>
-                    <CheckoutActions actions={actions} />
-                  </div>
-                </div>
-              </Grid>
-              <Grid item xs={12} md={5}>
-                <div className={classes.flexContainer}>
-                  <div className={classes.cartSummary}>
-                    <CheckoutSummary
-                      cart={cart}
-                      hasMoreCartItems={hasMoreCartItems}
-                      onRemoveCartItems={onRemoveCartItems}
-                      onChangeCartItemsQuantity={onChangeCartItemsQuantity}
-                      onLoadMoreCartItems={loadMoreCartItems}
-                    />
-                  </div>
-                </div>
-              </Grid>
-            </Grid>
+            {cart.account === null && !cart.email ? this.renderLogin() : this.renderCheckout()}
           </div>
         </section>
       </Fragment>
