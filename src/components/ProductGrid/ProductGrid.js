@@ -54,7 +54,7 @@ export default class ProductGrid extends Component {
   }
 
   @trackProductClicked()
-  onItemClick = (event, product) => {}
+  onItemClick = (event, product) => {} // eslint-disable-line no-unused-vars
 
   render() {
     const { catalogItems, pageInfo } = this.props;
