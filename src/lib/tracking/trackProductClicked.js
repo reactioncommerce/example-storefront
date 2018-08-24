@@ -12,7 +12,7 @@ export default (options) => (
   track((props, state, methodArgs) => {
     let data = {};
 
-    const product = methodArgs[1];
+    const product = methodArgs && methodArgs[1];
 
     // If product data is provided as a prop, then process the data for tracking
     if (product) {

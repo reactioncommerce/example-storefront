@@ -143,6 +143,7 @@ Array [
       >
         <CatalogGridItem
           currencyCode="USD"
+          onClick={[Function]}
           placeholderImageURL="/resources/placeholder.gif"
           product={
             Object {
@@ -184,6 +185,7 @@ Array [
       >
         <CatalogGridItem
           currencyCode="USD"
+          onClick={[Function]}
           placeholderImageURL="/resources/placeholder.gif"
           product={
             Object {
