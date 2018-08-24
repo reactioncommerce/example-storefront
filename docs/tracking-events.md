@@ -272,10 +272,8 @@ class ProductGrid extends Component {
     products: PropTypes.array
   }
 
-  // Track event on component mount,
-  // trackProductClicked, expects the prop `product` to be supplied to component
-  @trackProductClicked()
-  onItemClick() {
+  @trackProductClicked() // Expects second arg of function to be product
+  onItemClick(event, product) {
     // Do nothing, Link component handles routing
   }
 
