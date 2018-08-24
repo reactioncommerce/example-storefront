@@ -8,9 +8,7 @@ import products from "./__mocks__/products.mock";
 
 const uiStore = {
   appConfig: {
-    publicRuntimeConfig: {
-      externalAssetsUrl: "http://localhost:3000"
-    }
+    publicRuntimeConfig: {}
   }
 };
 

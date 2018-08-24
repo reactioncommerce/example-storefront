@@ -6,7 +6,6 @@ import MediaGalleryItem from "./MediaGalleryItem";
 const uiStore = {
   appConfig: {
     publicRuntimeConfig: {
-      externalAssetsUrl: "",
       placeholderImageUrls: {
         productGrid: ""
       }
