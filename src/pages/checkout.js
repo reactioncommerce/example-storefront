@@ -133,7 +133,7 @@ class Checkout extends Component {
       <Grid container spacing={24}>
         <Grid item xs={12} md={7}>
           <div className={classes.flexContainer}>
-            <div className={classes.checkoutActions} />
+            <div className={classes.checkoutActions}>Login/Register</div>
           </div>
         </Grid>
         <Grid item xs={12} md={5}>
@@ -210,8 +210,6 @@ class Checkout extends Component {
 
   render() {
     const { classes, cart, shop, theme } = this.props;
-
-    console.log("this is my cart!", cart);
 
     return (
       <Fragment>
