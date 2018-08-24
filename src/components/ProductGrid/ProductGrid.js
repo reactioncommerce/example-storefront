@@ -54,7 +54,7 @@ export default class ProductGrid extends Component {
   }
 
   @trackProductClicked()
-  onItemClick = () => {};
+  onItemClick = (event, product) => {}
 
   render() {
     const { catalogItems, pageInfo } = this.props;
