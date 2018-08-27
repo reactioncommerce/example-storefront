@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { Router } from "routes";
 import { observer } from "mobx-react";
 import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
@@ -99,13 +100,17 @@ class Checkout extends Component {
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
-    setEmailOnAnonymousCart: PropTypes.func,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
     }),
     theme: PropTypes.object.isRequired
   };
+
+  static getDerivedStateFromProps({ cart }) {
+    if (cart.account === null && !cart.email) Router.pushRoute("login", "", { customProp: "please next" });
+    return null;
+  }
 
   // eslint-disable-next-line promise/avoid-new
   mockMutation = () =>
@@ -235,7 +240,12 @@ class Checkout extends Component {
                 </div>
               </Link>
               <div className={classes.checkoutTitleContainer}>
-                <LockIcon style={{ fontSize: 14, color: theme.palette.reaction.black35 }} />
+                <LockIcon
+                  style={{
+                    fontSize: 14,
+                    color: theme.palette.reaction.black35
+                  }}
+                />
                 <Typography className={classes.checkoutTitle}>Checkout</Typography>
               </div>
               <Link route="cart">
