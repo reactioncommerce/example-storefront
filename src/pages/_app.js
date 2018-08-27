@@ -72,7 +72,7 @@ export default class App extends NextApp {
               >
                 <CssBaseline />
                 {
-                  route === "/checkout" ? (
+                  (route === "/checkout" || route === "/login") ? (
                     <Component pageContext={this.pageContext} shop={shop} {...rest} />
                   ) : (
                     <Layout shop={shop}>
