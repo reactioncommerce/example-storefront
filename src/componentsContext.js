@@ -21,7 +21,7 @@ import SelectableItem from "@reactioncommerce/components/SelectableItem/v1";
 import SelectableList from "@reactioncommerce/components/SelectableList/v1";
 import StockWarning from "@reactioncommerce/components/StockWarning/v1";
 import StripeForm from "@reactioncommerce/components/StripeForm/v1";
-import spinner from "@reactioncommerce/components/utils/spinner";
+import spinner from "@reactioncommerce/components/svg/spinner";
 import TextInput from "@reactioncommerce/components/TextInput/v1";
 
 const FontIcon = styled.i`
