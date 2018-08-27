@@ -10,6 +10,7 @@ import CheckoutEmailAddress from "@reactioncommerce/components/CheckoutEmailAddr
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
 import GuestForm from "@reactioncommerce/components/GuestForm/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
+import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaymentCheckoutAction/v1";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import CartIcon from "mdi-material-ui/Cart";
 import LockIcon from "mdi-material-ui/Lock";
@@ -161,17 +162,24 @@ class Checkout extends Component {
       {
         label: "Shipping Information",
         component: ShippingAddressCheckoutAction,
-        onSubmit: this.mockMutation,
-        props: null
-      },
-      {
-        label: "Second Shipping Information",
-        component: ShippingAddressCheckoutAction,
+        status: "active",
         onSubmit: this.mockMutation,
         props: {
-          fulfillmentGroup: {
+          fulfillmentGroup: cart.checkout.fulfillmentGroups[0]
+        }
+      },
+      {
+        label: "Payment Information",
+        component: StripePaymentCheckoutAction,
+        status: "incomplete",
+        onSubmit: this.mockMutation,
+        props: {
+          payments: {
+            _id: 1,
+            name: "reactionstripe",
             data: {
-              shippingAddress: mockAddress
+              billingAddress: null,
+              displayName: null
             }
           }
         }
