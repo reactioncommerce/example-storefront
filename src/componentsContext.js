@@ -1,5 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import iconClear from "@reactioncommerce/components/svg/iconClear";
+import iconError from "@reactioncommerce/components/svg/iconError";
+import iconValid from "@reactioncommerce/components/svg/iconValid";
+import iconAmericanExpress from "@reactioncommerce/components/svg/iconAmericanExpress";
+import iconDiscover from "@reactioncommerce/components/svg/iconDiscover";
+import iconMastercard from "@reactioncommerce/components/svg/iconMastercard";
+import iconVisa from "@reactioncommerce/components/svg/iconVisa";
+import spinner from "@reactioncommerce/components/svg/spinner";
 import AddressForm from "@reactioncommerce/components/AddressForm/v1";
 import Button from "@reactioncommerce/components/Button/v1";
 import CartItem from "@reactioncommerce/components/CartItem/v1";
@@ -21,24 +27,7 @@ import SelectableItem from "@reactioncommerce/components/SelectableItem/v1";
 import SelectableList from "@reactioncommerce/components/SelectableList/v1";
 import StockWarning from "@reactioncommerce/components/StockWarning/v1";
 import StripeForm from "@reactioncommerce/components/StripeForm/v1";
-import spinner from "@reactioncommerce/components/svg/spinner";
 import TextInput from "@reactioncommerce/components/TextInput/v1";
-
-const FontIcon = styled.i`
-  font-size: 1em;
-  vertical-align: middle;
-`;
-
-const iconClear = (
-  <svg
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 14 14"
-    style={{ height: "100%", maxHeight: "100%", verticalAlign: "middle" }}
-  >
-    <path d="M9.926 9.105l-2.105-2.105 2.105-2.105-0.82-0.82-2.105 2.105-2.105-2.105-0.82 0.82 2.105 2.105-2.105 2.105 0.82 0.82 2.105-2.105 2.105 2.105zM7 1.176c3.227 0 5.824 2.598 5.824 5.824s-2.598 5.824-5.824 5.824-5.824-2.598-5.824-5.824 2.598-5.824 5.824-5.824z" />
-  </svg>
-);
 
 export default {
   AddressForm,
@@ -53,9 +42,13 @@ export default {
   CheckoutActionIncomplete,
   ErrorsBlock,
   Field,
+  iconAmericanExpress,
   iconClear,
-  iconError: <FontIcon className="fas fa-exclamation-triangle" />,
-  iconValid: <FontIcon className="far fa-check-circle" />,
+  iconDiscover,
+  iconError,
+  iconMastercard,
+  iconValid,
+  iconVisa,
   MiniCartSummary,
   PhoneNumberInput,
   Price,
