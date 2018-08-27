@@ -17,7 +17,10 @@ import PhoneNumberInput from "@reactioncommerce/components/PhoneNumberInput/v1";
 import Price from "@reactioncommerce/components/Price/v1";
 import QuantityInput from "@reactioncommerce/components/QuantityInput/v1";
 import Select from "@reactioncommerce/components/Select/v1";
+import SelectableItem from "@reactioncommerce/components/SelectableItem/v1";
+import SelectableList from "@reactioncommerce/components/SelectableList/v1";
 import StockWarning from "@reactioncommerce/components/StockWarning/v1";
+import StripeForm from "@reactioncommerce/components/StripeForm/v1";
 import spinner from "@reactioncommerce/components/utils/spinner";
 import TextInput from "@reactioncommerce/components/TextInput/v1";
 
@@ -59,6 +62,9 @@ export default {
   QuantityInput,
   spinner,
   Select,
+  SelectableItem,
+  SelectableList,
   StockWarning,
+  StripeForm,
   TextInput
 };
