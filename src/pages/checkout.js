@@ -20,6 +20,7 @@ import CheckoutSummary from "components/CheckoutSummary";
 
 const styles = (theme) => ({
   checkoutActions: {
+    width: "100%",
     maxWidth: "600px",
     alignSelf: "flex-end",
     [theme.breakpoints.up("md")]: {
@@ -71,17 +72,51 @@ const styles = (theme) => ({
   }
 });
 
-const mockAddress = {
-  address1: "7742 Hwy 23",
-  address2: "",
-  country: "US",
-  city: "Belle Chasse",
-  firstName: "Salvos",
-  lastName: "Seafood",
-  postal: "70037",
-  region: "LA",
-  phone: "(504) 393-7303"
-};
+const fulfillmentGroups = [{
+  _id: 1,
+  type: "shipping",
+  data: {
+    shippingAddress: null
+  }
+}];
+
+const paymentMethods = [{
+  _id: 1,
+  name: "reactionstripe",
+  data: {
+    billingAddress: null,
+    displayName: null
+  }
+}];
+
+/**
+ * Determines if a shipping method has been set for the "Shipping Information"
+ * checkout action. The return value of either complete or incomplete will
+ * be used to render status of the checkout action.
+ *
+ * @returns {String} complete or incomplete
+ */
+function getShippingStatus() {
+  const groupWithoutAddress = fulfillmentGroups.find((group) => {
+    const shippingGroup = group.type === "shipping";
+    return shippingGroup && !group.data.shippingAddress;
+  });
+
+  return (groupWithoutAddress) ? "incomplete" : "complete";
+}
+
+/**
+ * Determines if a payment method has been set for the "Payment Information"
+ * checkout action. The return value of either complete or incomplete will
+ * be used to render status of the checkout action.
+ *
+ * @returns {String} complete or incomplete
+ */
+function getPaymentStatus() {
+  const paymentWithoutData = paymentMethods.find((payment) => !payment.data.displayName);
+
+  return (paymentWithoutData) ? "incomplete" : "complete";
+}
 
 @withCart
 @observer
@@ -107,30 +142,41 @@ class Checkout extends Component {
   };
 
   static getDerivedStateFromProps({ cart }) {
-    if (cart.account === null && !cart.email) Router.pushRoute("login", "", { customProp: "please next" });
+    if (cart && cart.account === null && !cart.email) Router.pushRoute("login", "", { customProp: "please next" });
     return null;
   }
 
-  // eslint-disable-next-line promise/avoid-new
-  mockMutation = () =>
+  state = {}
+
+  setShippingAddress = (data) =>
+    // eslint-disable-next-line promise/avoid-new
     new Promise((resolve) => {
-      setTimeout(
-        () => {
-          this.setState({
-            cart: {
-              fulfillmentGroup: {
-                data: {
-                  shippingAddress: mockAddress
-                }
-              }
-            }
-          });
-          resolve(mockAddress);
-        },
-        2000,
-        { mockAddress }
-      );
+      setTimeout(() => {
+        fulfillmentGroups[0].data.shippingAddress = data;
+        // TODO: this.forceUpdate() will be removed once state is tracked by MobX
+        this.forceUpdate();
+        resolve(data);
+      }, 1000, { data });
+    })
+
+
+  setPaymentMethod = (data) => {
+    const { billingAddress, token: { card } } = data;
+    const payment = {
+      billingAddress,
+      displayName: `${card.brand} ending in ${card.last4}`
+    };
+
+    // eslint-disable-next-line promise/avoid-new
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        paymentMethods[0].data = payment;
+        // TODO: this.forceUpdate() will be removed once state is tracked by MobX
+        this.forceUpdate();
+        resolve(payment);
+      }, 1000, { payment });
     });
+  }
 
   renderCheckout() {
     const {
@@ -142,30 +188,25 @@ class Checkout extends Component {
       onChangeCartItemsQuantity
     } = this.props;
 
+    if (!cart) return null;
+
     const actions = [
       {
         label: "Shipping Information",
+        status: getShippingStatus(),
         component: ShippingAddressCheckoutAction,
-        status: "active",
-        onSubmit: this.mockMutation,
+        onSubmit: this.setShippingAddress,
         props: {
-          fulfillmentGroup: cart.checkout.fulfillmentGroups[0]
+          fulfillmentGroup: fulfillmentGroups[0]
         }
       },
       {
         label: "Payment Information",
+        status: getPaymentStatus(),
         component: StripePaymentCheckoutAction,
-        status: "incomplete",
-        onSubmit: this.mockMutation,
+        onSubmit: this.setPaymentMethod,
         props: {
-          payments: {
-            _id: 1,
-            name: "reactionstripe",
-            data: {
-              billingAddress: null,
-              displayName: null
-            }
-          }
+          payment: paymentMethods[0]
         }
       }
     ];
@@ -178,7 +219,11 @@ class Checkout extends Component {
         <Grid item xs={12} md={7}>
           <div className={classes.flexContainer}>
             <div className={classes.checkoutActions}>
-              <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} />
+              {
+                displayEmail ?
+                  <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} />
+                  : null
+              }
               <CheckoutActions actions={actions} />
             </div>
           </div>
