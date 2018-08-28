@@ -9,7 +9,6 @@ import Grid from "@material-ui/core/Grid";
 import CheckoutActions from "@reactioncommerce/components/CheckoutActions/v1";
 import CheckoutEmailAddress from "@reactioncommerce/components/CheckoutEmailAddress/v1";
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
-import GuestForm from "@reactioncommerce/components/GuestForm/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
 import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaymentCheckoutAction/v1";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
@@ -133,26 +132,6 @@ class Checkout extends Component {
       );
     });
 
-  renderLogin() {
-    const { classes, setEmailOnAnonymousCart } = this.props;
-    return (
-      <Grid container spacing={24}>
-        <Grid item xs={12} md={7}>
-          <div className={classes.flexContainer}>
-            <div className={classes.checkoutActions}>Login/Register</div>
-          </div>
-        </Grid>
-        <Grid item xs={12} md={5}>
-          <div className={classes.flexContainer}>
-            <div className={classes.cartSummary}>
-              <GuestForm onSubmit={setEmailOnAnonymousCart} />
-            </div>
-          </div>
-        </Grid>
-      </Grid>
-    );
-  }
-
   renderCheckout() {
     const {
       classes,
@@ -222,7 +201,7 @@ class Checkout extends Component {
   }
 
   render() {
-    const { classes, cart, shop, theme } = this.props;
+    const { classes, shop, theme } = this.props;
 
     return (
       <Fragment>
@@ -252,7 +231,7 @@ class Checkout extends Component {
                 <CartIcon />
               </Link>
             </div>
-            {cart.account === null && !cart.email ? this.renderLogin() : this.renderCheckout()}
+            {this.renderCheckout()}
           </div>
         </section>
       </Fragment>
