@@ -229,7 +229,7 @@ exports[`basic snapshot 1`] = `
                   $45.00
                 </del>
                 <span
-                  className="Price__Span-cHkFMo hTtbIl"
+                  className="Price__Span-cHkFMo eGYnOf"
                 >
                   $20.00
                 </span>
@@ -443,7 +443,7 @@ exports[`basic snapshot 1`] = `
               <div>
                 
                 <span
-                  className="Price__Span-cHkFMo hTtbIl"
+                  className="Price__Span-cHkFMo eGYnOf"
                 >
                   $78.00
                 </span>
