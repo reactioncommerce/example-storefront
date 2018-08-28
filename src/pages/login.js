@@ -109,13 +109,11 @@ export default class Login extends Component {
   };
 
   static getDerivedStateFromProps({ cart }) {
-    if (cart.account !== null || cart.email) Router.back();
+    if ((cart && cart.account !== null) || (cart && cart.email)) Router.back();
     return null;
   }
 
-  handleBackClick = () => {
-    Router.back();
-  };
+  state = {}
 
   handleLoginClick = () => {
     // TODO: Redirect to Auth solution
@@ -131,10 +129,11 @@ export default class Login extends Component {
 
   renderHeader() {
     const { classes, shop } = this.props;
+
     return (
       <div className={classes.header}>
         <div className={classes.headerFlex}>
-          <Link className={classes.backLink} onClick={this.handleBackClick}>
+          <Link route="/" className={classes.backLink}>
             <ChevronLeftIcon style={{ fontSize: 18, color: "inherit", verticalAlign: "sub", transition: "none" }} />
             <span className={classes.backLinkText}>Back</span>
           </Link>
