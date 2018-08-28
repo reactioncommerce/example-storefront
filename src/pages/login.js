@@ -84,7 +84,12 @@ export default class Login extends Component {
     })
   };
 
-  handleBackClick = (event) => {
+  static getDerivedStateFromProps({ cart }) {
+    if (cart.account !== null || cart.email) Router.back();
+    return null;
+  }
+
+  handleBackClick = () => {
     Router.back();
   };
 
