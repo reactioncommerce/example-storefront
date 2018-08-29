@@ -276,6 +276,6 @@ workflows:
       - deploy-to-ecs:
           requires:
             - docker-push
-          filters:
-            branches:
-              only: /^master$/
+#          filters:
+#            branches:
+#              only: /^master$/
