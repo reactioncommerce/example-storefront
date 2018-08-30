@@ -1,13 +1,16 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { Router } from "routes";
 import { observer } from "mobx-react";
 import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import CheckoutActions from "@reactioncommerce/components/CheckoutActions/v1";
+import CheckoutEmailAddress from "@reactioncommerce/components/CheckoutEmailAddress/v1";
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
+import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaymentCheckoutAction/v1";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import CartIcon from "mdi-material-ui/Cart";
 import LockIcon from "mdi-material-ui/Lock";
@@ -17,6 +20,7 @@ import CheckoutSummary from "components/CheckoutSummary";
 
 const styles = (theme) => ({
   checkoutActions: {
+    width: "100%",
     maxWidth: "600px",
     alignSelf: "flex-end",
     [theme.breakpoints.up("md")]: {
@@ -68,17 +72,51 @@ const styles = (theme) => ({
   }
 });
 
-const mockAddress = {
-  address1: "7742 Hwy 23",
-  address2: "",
-  country: "US",
-  city: "Belle Chasse",
-  firstName: "Salvos",
-  lastName: "Seafood",
-  postal: "70037",
-  region: "LA",
-  phone: "(504) 393-7303"
-};
+const fulfillmentGroups = [{
+  _id: 1,
+  type: "shipping",
+  data: {
+    shippingAddress: null
+  }
+}];
+
+const paymentMethods = [{
+  _id: 1,
+  name: "reactionstripe",
+  data: {
+    billingAddress: null,
+    displayName: null
+  }
+}];
+
+/**
+ * Determines if a shipping method has been set for the "Shipping Information"
+ * checkout action. The return value of either complete or incomplete will
+ * be used to render status of the checkout action.
+ *
+ * @returns {String} complete or incomplete
+ */
+function getShippingStatus() {
+  const groupWithoutAddress = fulfillmentGroups.find((group) => {
+    const shippingGroup = group.type === "shipping";
+    return shippingGroup && !group.data.shippingAddress;
+  });
+
+  return (groupWithoutAddress) ? "incomplete" : "complete";
+}
+
+/**
+ * Determines if a payment method has been set for the "Payment Information"
+ * checkout action. The return value of either complete or incomplete will
+ * be used to render status of the checkout action.
+ *
+ * @returns {String} complete or incomplete
+ */
+function getPaymentStatus() {
+  const paymentWithoutData = paymentMethods.find((payment) => !payment.data.displayName);
+
+  return (paymentWithoutData) ? "incomplete" : "complete";
+}
 
 @withCart
 @observer
@@ -86,7 +124,9 @@ const mockAddress = {
 class Checkout extends Component {
   static propTypes = {
     cart: PropTypes.shape({
+      account: PropTypes.object,
       checkout: PropTypes.object,
+      email: PropTypes.string,
       items: PropTypes.array
     }),
     classes: PropTypes.object,
@@ -101,54 +141,112 @@ class Checkout extends Component {
     theme: PropTypes.object.isRequired
   };
 
-  // eslint-disable-next-line promise/avoid-new
-  mockMutation = () => new Promise((resolve) => {
-    setTimeout(() => {
-      this.setState({
-        cart: {
-          fulfillmentGroup: {
-            data: {
-              shippingAddress: mockAddress
-            }
-          }
-        }
-      });
-      resolve(mockAddress);
-    }, 2000, { mockAddress });
-  });
+  static getDerivedStateFromProps({ cart }) {
+    if (cart && cart.account === null && !cart.email) Router.pushRoute("login", "", { customProp: "please next" });
+    return null;
+  }
 
-  render() {
+  state = {}
+
+  setShippingAddress = (data) =>
+    // eslint-disable-next-line promise/avoid-new
+    new Promise((resolve) => {
+      setTimeout(() => {
+        fulfillmentGroups[0].data.shippingAddress = data;
+        // TODO: this.forceUpdate() will be removed once state is tracked by MobX
+        this.forceUpdate();
+        resolve(data);
+      }, 1000, { data });
+    })
+
+
+  setPaymentMethod = (data) => {
+    const { billingAddress, token: { card } } = data;
+    const payment = {
+      billingAddress,
+      displayName: `${card.brand} ending in ${card.last4}`
+    };
+
+    // eslint-disable-next-line promise/avoid-new
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        paymentMethods[0].data = payment;
+        // TODO: this.forceUpdate() will be removed once state is tracked by MobX
+        this.forceUpdate();
+        resolve(payment);
+      }, 1000, { payment });
+    });
+  }
+
+  renderCheckout() {
     const {
       classes,
       cart,
-      shop,
-      theme,
       hasMoreCartItems,
       loadMoreCartItems,
       onRemoveCartItems,
       onChangeCartItemsQuantity
     } = this.props;
 
+    if (!cart) return null;
+
     const actions = [
       {
         label: "Shipping Information",
+        status: getShippingStatus(),
         component: ShippingAddressCheckoutAction,
-        onSubmit: this.mockMutation,
-        props: null
+        onSubmit: this.setShippingAddress,
+        props: {
+          fulfillmentGroup: fulfillmentGroups[0]
+        }
       },
       {
-        label: "Second Shipping Information",
-        component: ShippingAddressCheckoutAction,
-        onSubmit: this.mockMutation,
+        label: "Payment Information",
+        status: getPaymentStatus(),
+        component: StripePaymentCheckoutAction,
+        onSubmit: this.setPaymentMethod,
         props: {
-          fulfillmentGroup: {
-            data: {
-              shippingAddress: mockAddress
-            }
-          }
+          payment: paymentMethods[0]
         }
       }
     ];
+
+    const hasAccount = !!cart.account;
+    const displayEmail = hasAccount ? cart.account.emailRecords[0].address : cart.email;
+
+    return (
+      <Grid container spacing={24}>
+        <Grid item xs={12} md={7}>
+          <div className={classes.flexContainer}>
+            <div className={classes.checkoutActions}>
+              {
+                displayEmail ?
+                  <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} />
+                  : null
+              }
+              <CheckoutActions actions={actions} />
+            </div>
+          </div>
+        </Grid>
+        <Grid item xs={12} md={5}>
+          <div className={classes.flexContainer}>
+            <div className={classes.cartSummary}>
+              <CheckoutSummary
+                cart={cart}
+                hasMoreCartItems={hasMoreCartItems}
+                onRemoveCartItems={onRemoveCartItems}
+                onChangeCartItemsQuantity={onChangeCartItemsQuantity}
+                onLoadMoreCartItems={loadMoreCartItems}
+              />
+            </div>
+          </div>
+        </Grid>
+      </Grid>
+    );
+  }
+
+  render() {
+    const { classes, shop, theme } = this.props;
 
     return (
       <Fragment>
@@ -166,37 +264,19 @@ class Checkout extends Component {
                 </div>
               </Link>
               <div className={classes.checkoutTitleContainer}>
-                <LockIcon style={{ fontSize: 14, color: theme.palette.reaction.black35 }}/>
-                <Typography className={classes.checkoutTitle}>
-                    Checkout
-                </Typography>
+                <LockIcon
+                  style={{
+                    fontSize: 14,
+                    color: theme.palette.reaction.black35
+                  }}
+                />
+                <Typography className={classes.checkoutTitle}>Checkout</Typography>
               </div>
               <Link route="cart">
                 <CartIcon />
               </Link>
             </div>
-            <Grid container spacing={24} >
-              <Grid item xs={12} md={7}>
-                <div className={classes.flexContainer}>
-                  <div className={classes.checkoutActions}>
-                    <CheckoutActions actions={actions} />
-                  </div>
-                </div>
-              </Grid>
-              <Grid item xs={12} md={5}>
-                <div className={classes.flexContainer}>
-                  <div className={classes.cartSummary}>
-                    <CheckoutSummary
-                      cart={cart}
-                      hasMoreCartItems={hasMoreCartItems}
-                      onRemoveCartItems={onRemoveCartItems}
-                      onChangeCartItemsQuantity={onChangeCartItemsQuantity}
-                      onLoadMoreCartItems={loadMoreCartItems}
-                    />
-                  </div>
-                </div>
-              </Grid>
-            </Grid>
+            {this.renderCheckout()}
           </div>
         </section>
       </Fragment>

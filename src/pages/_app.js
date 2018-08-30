@@ -49,41 +49,44 @@ export default class App extends NextApp {
 
     const { stripePublicApiKey } = publicRuntimeConfig;
     if (stripePublicApiKey) {
-      // eslint-disable-next-line react/no-did-mount-set-state
-      this.setState({ stripe: window.Stripe(stripePublicApiKey) });
+      if (window.Stripe) {
+        // eslint-disable-next-line react/no-did-mount-set-state
+        this.setState({ stripe: window.Stripe(stripePublicApiKey) });
+      }
     }
   }
 
   render() {
     const { Component, shop, ...rest } = this.props;
     const { route } = this.props.router;
+    const { stripe } = this.state;
 
     return (
       <Container>
-        <StripeProvider stripe={this.state.stripe}>
-          <ComponentsProvider value={componentsContext}>
-            <JssProvider
-              registry={this.pageContext.sheetsRegistry}
-              generateClassName={this.pageContext.generateClassName}
+        <ComponentsProvider value={componentsContext}>
+          <JssProvider
+            registry={this.pageContext.sheetsRegistry}
+            generateClassName={this.pageContext.generateClassName}
+          >
+            <MuiThemeProvider
+              theme={this.pageContext.theme}
+              sheetsManager={this.pageContext.sheetsManager}
             >
-              <MuiThemeProvider
-                theme={this.pageContext.theme}
-                sheetsManager={this.pageContext.sheetsManager}
-              >
-                <CssBaseline />
-                {
-                  route === "/checkout" ? (
+              <CssBaseline />
+              {
+                (route === "/checkout" || route === "/login") ? (
+                  <StripeProvider stripe={stripe}>
                     <Component pageContext={this.pageContext} shop={shop} {...rest} />
-                  ) : (
-                    <Layout shop={shop}>
-                      <Component pageContext={this.pageContext} shop={shop} {...rest} />
-                    </Layout>
-                  )
-                }
-              </MuiThemeProvider>
-            </JssProvider>
-          </ComponentsProvider>
-        </StripeProvider>
+                  </StripeProvider>
+                ) : (
+                  <Layout shop={shop}>
+                    <Component pageContext={this.pageContext} shop={shop} {...rest} />
+                  </Layout>
+                )
+              }
+            </MuiThemeProvider>
+          </JssProvider>
+        </ComponentsProvider>
       </Container>
     );
   }

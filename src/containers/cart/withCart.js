@@ -8,6 +8,7 @@ import {
   addCartItemsMutation,
   removeCartItemsMutation,
   reconcileCartsMutation,
+  setEmailOnAnonymousCartMutation,
   updateCartItemsQuantityMutation
 } from "./mutations.gql";
 import {
@@ -217,6 +218,29 @@ export default (Component) => (
       });
     }
 
+    /**
+     *
+     * @name handleSetEmailOnAnonymousCart
+     * @summary Call when `setEmailOnAnonymousCart` callback is called
+     * @param {Funtion} mutation An Apollo mutation function
+     * @param {string} email An email address to be set on an anonymous cart
+     * @return {undefined} No return
+     */
+    handleSetEmailOnAnonymousCart = ({ email }) => {
+      const { cartStore, client: apolloClient } = this.props;
+      apolloClient.mutate({
+        mutation: setEmailOnAnonymousCartMutation,
+        variables: {
+          input: {
+            cartId: cartStore.anonymousCartId,
+            email,
+            token: cartStore.anonymousCartToken
+          }
+        }
+      });
+    }
+
+
     render() {
       const { authStore, cartStore, shop } = this.props;
       let query = anonymousCartByCartIdQuery;
@@ -327,6 +351,7 @@ export default (Component) => (
                         items
                       });
                     }}
+                    setEmailOnAnonymousCart={this.handleSetEmailOnAnonymousCart}
                     cart={processedCartData}
                   />
                 )}
