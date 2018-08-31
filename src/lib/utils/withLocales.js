@@ -2,6 +2,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+/**
+ *
+ * @name withLocales
+ * @summary Imports locles.json and provides it to components via props
+ * @param {Object} ComponentWithLocales - The component you want to provide locales
+ * @return {Class} - React component with locles on props
+ */
 export default function withLocales(ComponentWithLocales) {
   class WithLocales extends Component {
     static propTypes = {
@@ -20,9 +27,14 @@ export default function withLocales(ComponentWithLocales) {
     async componentDidMount() {
       const { locales: currentLocales } = this.state;
       if (Object.keys(currentLocales).length === 0) {
-        await this.loadLocales().then((locales) => {
-          this.setState({ locales });
-        });
+        await this.loadLocales()
+          .then((locales) => {
+            this.setState({ locales });
+          })
+          .catch((error) => {
+            // eslint-disable-next-line
+            console.error(error);
+          });
       }
     }
 
