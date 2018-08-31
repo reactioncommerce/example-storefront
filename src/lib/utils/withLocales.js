@@ -27,14 +27,10 @@ export default function withLocales(ComponentWithLocales) {
     async componentDidMount() {
       const { locales: currentLocales } = this.state;
       if (Object.keys(currentLocales).length === 0) {
-        await this.loadLocales()
-          .then((locales) => {
-            this.setState({ locales });
-          })
-          .catch((error) => {
-            // eslint-disable-next-line
-            console.error(error);
-          });
+        // eslint-disable-next-line
+        await this.loadLocales().then((locales) => {
+          this.setState({ locales });
+        });
       }
     }
 
