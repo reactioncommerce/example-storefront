@@ -14,6 +14,7 @@ fragment CartCommon on Cart {
   checkout {
     fulfillmentGroups {
       _id
+      type
       data {
         shippingAddress {
           _id
