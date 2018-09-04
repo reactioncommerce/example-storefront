@@ -1,13 +1,12 @@
-// example HOC
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 /**
  *
  * @name withLocales
- * @summary Imports locles.json and provides it to components via props
+ * @summary Imports locales.json and provides it to components via props
  * @param {Object} ComponentWithLocales - The component you want to provide locales
- * @return {Class} - React component with locles on props
+ * @return {Class} - React component with locales on props
  */
 export default function withLocales(ComponentWithLocales) {
   class WithLocales extends Component {
