@@ -33,9 +33,13 @@ import SelectableList from "@reactioncommerce/components/SelectableList/v1";
 import StockWarning from "@reactioncommerce/components/StockWarning/v1";
 import StripeForm from "@reactioncommerce/components/StripeForm/v1";
 import TextInput from "@reactioncommerce/components/TextInput/v1";
+import withLocales from "./lib/utils/withLocales";
+
+// Providing locales data
+const AddressFormWithLocales = withLocales(AddressForm);
 
 export default {
-  AddressForm,
+  AddressForm: AddressFormWithLocales,
   BadgeOverlay,
   Button,
   CartItem,
