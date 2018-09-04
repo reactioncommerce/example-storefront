@@ -280,10 +280,10 @@ export default (Component) => (
      * @param {Function} mutation An Apollo mutation function
      * @return {undefined} No return
      */
-    handleSetShippingAddress = async (address) => {
+    handleSetShippingAddress = (address) => {
       const { cartStore, client: apolloClient } = this.props;
 
-      const { data } = await apolloClient.mutate({
+      return apolloClient.mutate({
         mutation: setShippingAddressCartMutation,
         variables: {
           input: {
@@ -293,19 +293,6 @@ export default (Component) => (
           }
         }
       });
-
-      // Set fulfillmentOption
-      console.log("response", data);
-
-      const fulfillmentGroup = data.setShippingAddressOnCart.cart.checkout.fulfillmentGroups[0];
-      // TODO: base64 encode and namespace _ids
-      const fulfillmentOption = {
-        fulfillmentGroupId: fulfillmentGroup._id,
-        fulfillmentMethodId: fulfillmentGroup.data.shippingAddress._id
-      };
-
-      console.log("option", fulfillmentOption);
-      this.handleSetFulfillmentOption(fulfillmentOption);
     }
 
     render() {

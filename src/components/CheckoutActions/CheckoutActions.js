@@ -5,7 +5,11 @@ import Actions from "@reactioncommerce/components/CheckoutActions/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
 import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaymentCheckoutAction/v1";
 import withCart from "containers/cart/withCart";
-import { isFulfillmentOptionSet, isPaymentMethodSet } from "lib/utils/cartUtils";
+import {
+  adaptAddressToFormFields,
+  isFulfillmentOptionSet,
+  isPaymentMethodSet
+} from "lib/utils/cartUtils";
 
 // TODO: remove this mocked payment method
 const paymentMethods = [{
@@ -39,7 +43,7 @@ export default class CheckoutActions extends Component {
     // Omit firstName, lastName props as they are not in AddressInput type
     // The address form and GraphQL endpoint need to be made consistent
     const { firstName, lastName, ...rest } = address;
-    return onSetShippingAddress({
+    onSetShippingAddress({
       fullName: `${address.firstName} ${address.lastName}`,
       ...rest
     });
@@ -65,28 +69,34 @@ export default class CheckoutActions extends Component {
 
   render() {
     const { checkout: { fulfillmentGroups } } = this.props.cart;
-    // console.log("props", this.props);
-
-    const shippingStatus = isFulfillmentOptionSet(fulfillmentGroups) ? "complete" : "incomplete";
-    const paymentStatus = isPaymentMethodSet(paymentMethods) ? "complete" : "incomplete";
+    const isShippingAddressSet = isFulfillmentOptionSet(fulfillmentGroups);
+    const isPaymentSet = isPaymentMethodSet(paymentMethods);
+    let fulfillmentGroup = fulfillmentGroups[0];
+    if (isShippingAddressSet) {
+      fulfillmentGroup = {
+        data: {
+          shippingAddress: adaptAddressToFormFields(fulfillmentGroup.data.shippingAddress)
+        }
+      };
+    }
 
     const actions = [
       {
         label: "Shipping Information",
-        status: shippingStatus,
+        status: isShippingAddressSet ? "complete" : "incomplete",
         component: ShippingAddressCheckoutAction,
         onSubmit: this.setShippingAddress,
         props: {
-          fulfillmentGroup: shippingStatus === "complete" ? fulfillmentGroups[0] : null
+          fulfillmentGroup
         }
       },
       {
         label: "Payment Information",
-        status: paymentStatus,
+        status: isPaymentSet ? "complete" : "incomplete",
         component: StripePaymentCheckoutAction,
         onSubmit: this.setPaymentMethod,
         props: {
-          payment: paymentStatus === "complete" ? paymentMethods[0] : null
+          payment: paymentMethods[0]
         }
       }
     ];
