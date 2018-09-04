@@ -5,9 +5,13 @@ ignore:
   'npm:braces:20180219':
     - '*':
         reason: Waiting for Next.js 6 to update to Babel 7 beta.47 (https://github.com/babel/babel/issues/8034)
-        expires: 2018-08-30T00:00:00.000Z
+        expires: 2018-09-30T00:00:00.000Z
   'npm:chownr:20180731':
     - '*':
         reason: Waiting on next-routes(https://github.com/fridays/next-routes) to fix this vulnerability
-        expires: 2018-08-30T00:00:00.000Z
+        expires: 2018-09-30T00:00:00.000Z
+  'npm:mem:20180117':
+    - '*':
+        reason: Waiting on next-routes(https://github.com/fridays/next-routes) to fix this vulnerability
+        expires: 2018-09-30T00:00:00.000Z
 patch: {}
