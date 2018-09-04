@@ -256,9 +256,9 @@ class ProductDetailPage extends Component {
 
 ## Track a Product Clicked event
 
-Tracking the `Product Viewed` Segment event provided HOC `trackProductViewed`.
+Tracking the `Product Clicked` Segment event provided HOC `trackProductClicked`.
 
-See `src/components/ProductDetail/ProductDetail.js` for the full example.
+See `src/components/ProductGrid/ProductGrid.js` for the full example.
 
 ```js
 import React, { Component } from "react";
@@ -266,25 +266,21 @@ import PropTypes from "prop-types";
 import track from "lib/tracking/track";
 import trackProductClicked from "lib/tracking/trackProductClicked";
 
-// Product list item.
 @track()
-class ProductItem extends Component {
+class ProductGrid extends Component {
   static propTypes = {
-    product: PropTypes.object.isRequired
+    products: PropTypes.array
   }
 
-  // Track event on component mount,
-  // trackProductClicked, expects the prop `product` to be supplied to component
-  @trackProductClicked()
-  handleClick() {
-    // Do something on product clicked, like routing to a new page or view
+  @trackProductClicked() // Expects second arg of function to be product
+  onItemClick(event, product) {
+    // Do nothing, Link component handles routing
   }
 
   render() {
+    const { products } = this.props;
     return (
-      <button onClick={this.handleClick}>
-        {this.props.product.title}
-      </button>
+      <CatalogGrid products={products} onItemClick={this.onItemClick} />
     );
   }
 }

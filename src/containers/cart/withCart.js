@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Mutation, Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
-import getConfig from "next/config";
 import cartItemsConnectionToArray from "lib/utils/cartItemsConnectionToArray";
 import {
   createCartMutation,
@@ -18,12 +17,6 @@ import {
   accountCartByAccountIdQuery,
   anonymousCartByCartIdQuery
 } from "./queries.gql";
-
-const { publicRuntimeConfig } = getConfig() || {
-  publicRuntimeConfig: {
-    externalAssetsUrl: ""
-  }
-};
 
 /**
  * withCart higher order query component for creating, fetching, and updating carts
@@ -343,9 +336,7 @@ export default (Component) => (
             if (cart) {
               processedCartData = {
                 ...cart,
-                items: cartItemsConnectionToArray(cart.items, {
-                  externalAssetsUrl: publicRuntimeConfig.externalAssetsUrl
-                })
+                items: cartItemsConnectionToArray(cart.items)
               };
             }
 
