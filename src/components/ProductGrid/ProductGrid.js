@@ -66,7 +66,12 @@ export default class ProductGrid extends Component {
       <Fragment>
         {this.renderFilters()}
         <Grid container spacing={24}>
-          <CatalogGrid products={products} onItemClick={this.onItemClick} {...this.props} />
+          <CatalogGrid
+            products={products}
+            onItemClick={this.onItemClick}
+            placeholderImageURL="/static/placeholder.gif"
+            {...this.props}
+          />
         </Grid>
 
         { pageInfo && <PageStepper pageInfo={pageInfo} /> }
