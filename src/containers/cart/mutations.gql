@@ -51,6 +51,16 @@ mutation removeCartItemsMutation($input: RemoveCartItemsInput!) {
   }
 }
 
+
+# Set email on anonymous cart for guest checkout
+mutation setEmailOnAnonymousCartMutation($input: SetEmailOnAnonymousCartInput!) {
+  setEmailOnAnonymousCart(input: $input) {
+    cart {
+      ...CartPayloadFragment
+    }
+  }
+}
+
 # Update the quantities of items in the cart
 mutation updateCartItemsQuantityMutation($input: UpdateCartItemsQuantityInput!) {
   updateCartItemsQuantity(input: $input) {

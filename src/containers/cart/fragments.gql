@@ -8,9 +8,43 @@ fragment CartCommon on Cart {
   shop {
     _id
   }
+  email
   updatedAt
   expiresAt
   checkout {
+    fulfillmentGroups {
+      _id
+      data {
+        shippingAddress {
+          _id
+          address1
+          address2
+          city
+          company
+          country
+          failedValidation
+          fullName
+          isBillingDefault
+          isCommercial
+          isShippingDefault
+          phone
+          postal
+          region
+        }
+      }
+      availableFulfillmentOptions {
+        price {
+          displayAmount
+        }
+        fulfillmentMethod {
+          _id
+          displayName
+        }
+      }
+    }
+    payments{
+      _id
+    }
     summary {
       fulfillmentTotal {
         displayAmount

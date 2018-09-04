@@ -144,41 +144,67 @@ Array [
         <CatalogGridItem
           currencyCode="USD"
           onClick={[Function]}
-          placeholderImageURL="/resources/placeholder.gif"
-          product={
-            Object {
-              "_id": "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6am5hOTVrYTlhTmtNeXRteGg=",
-              "description": "Great jacket!",
-              "isBackorder": false,
-              "isLowQuantity": false,
-              "isSoldOut": true,
-              "pricing": Array [
-                Object {
-                  "compareAtPrice": null,
-                  "currency": Object {
-                    "code": "USD",
-                  },
-                  "displayPrice": "$12.99 - $19.99",
-                  "price": 19.99,
-                },
-              ],
-              "primaryImage": Object {
-                "URLs": Object {
-                  "large": "/assets/files/Media/aHEWna7yeBvNFM9bL/large/25580_CICN.jpg",
-                  "medium": "/assets/files/Media/aHEWna7yeBvNFM9bL/medium/25580_CICN.jpg",
-                  "small": "/assets/files/Media/aHEWna7yeBvNFM9bL/small/25580_CICN.png",
-                  "thumbnail": "/assets/files/Media/aHEWna7yeBvNFM9bL/thumbnail/25580_CICN.png",
-                },
-                "priority": 0,
-                "productId": "cmVhY3Rpb24vcHJvZHVjdDpqbmE5NWthOWFOa015dG14aA==",
-                "toGrid": 1,
-              },
-              "slug": "men's-lightweigth-synchilla",
-              "title": "Men's Lightweigth Synchilla",
-              "vendor": "Patagonia",
-            }
-          }
-        />
+          onKeyDown={[Function]}
+          role="link"
+          tabIndex={0}
+        >
+          <div
+            className="BadgeOverlay-badgeOverlay-137 BadgeOverlay-faded-138"
+          >
+            <div
+              className="Badge-badge-148 BadgeOverlay-status-139 BadgeOverlay-soldOut-144"
+            >
+              <span
+                className="Badge-labelStyle-149"
+              >
+                Sold Out
+              </span>
+            </div>
+            <div
+              className="WithTracking-ProductItem--productMedia-135"
+            >
+              <div
+                className="Img-imgWrapper-151 "
+              >
+                <img
+                  alt=""
+                  className="Img-img-153 Img-imgLoading-155 "
+                  src="http://localhost:3000/assets/files/Media/aHEWna7yeBvNFM9bL/thumbnail/25580_CICN.png"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="WithTracking-ProductItem--productInfo-134"
+              >
+                <aside
+                  className="MuiTypography-root-157 MuiTypography-body2-165"
+                >
+                  Men's Lightweigth Synchilla
+                </aside>
+                <div
+                  className="MuiTypography-root-157 MuiTypography-body1-166"
+                >
+                  <div>
+                    <span
+                      className="Price__Span-cHkFMo eGYnOf"
+                    >
+                      $12.99 - $19.99
+                    </span>
+
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p
+                  className="MuiTypography-root-157 MuiTypography-body1-166"
+                >
+                  Patagonia
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
       <div
         className="CatalogGrid__GridItem-eahVxr kvUYzf"
@@ -186,48 +212,58 @@ Array [
         <CatalogGridItem
           currencyCode="USD"
           onClick={[Function]}
-          placeholderImageURL="/resources/placeholder.gif"
-          product={
-            Object {
-              "_id": "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
-              "description": "Sign in as administrator to edit.
-You can clone this product from the product grid.
-You can upload images click or drag in image box on the left here.
-Tag this product below, and then add tag in navigation.
-Click the bookmark in the tag to set product url.
-Option variants, price, quantity, and child variants are created by clicking on the variant below, clone the variant to add more options.
-Details can be added below the image for more specific product information.
- Login next to the cart, and then click the dashboard icon for more tools.",
-              "isBackorder": false,
-              "isLowQuantity": false,
-              "isSoldOut": false,
-              "pricing": Array [
-                Object {
-                  "compareAtPrice": null,
-                  "currency": Object {
-                    "code": "USD",
-                  },
-                  "displayPrice": "$12.99 - $19.99",
-                  "price": 19.99,
-                },
-              ],
-              "primaryImage": Object {
-                "URLs": Object {
-                  "large": "/assets/files/Media/mmY4m9gwPK2uFEZ8w/large/product_image.jpg",
-                  "medium": "/assets/files/Media/mmY4m9gwPK2uFEZ8w/medium/product_image.jpg",
-                  "small": "/assets/files/Media/mmY4m9gwPK2uFEZ8w/small/product_image.png",
-                  "thumbnail": "/assets/files/Media/mmY4m9gwPK2uFEZ8w/thumbnail/product_image.png",
-                },
-                "priority": 0,
-                "productId": "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
-                "toGrid": 1,
-              },
-              "slug": "example-product",
-              "title": "Basic Reaction Product",
-              "vendor": "Reaction Commerce",
-            }
-          }
-        />
+          onKeyDown={[Function]}
+          role="link"
+          tabIndex={0}
+        >
+          <div
+            className="BadgeOverlay-badgeOverlay-137"
+          >
+            <div
+              className="WithTracking-ProductItem--productMedia-135"
+            >
+              <div
+                className="Img-imgWrapper-151 "
+              >
+                <img
+                  alt=""
+                  className="Img-img-153 Img-imgLoading-155 "
+                  src="http://localhost:3000/assets/files/Media/mmY4m9gwPK2uFEZ8w/thumbnail/product_image.png"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="WithTracking-ProductItem--productInfo-134"
+              >
+                <aside
+                  className="MuiTypography-root-157 MuiTypography-body2-165"
+                >
+                  Basic Reaction Product
+                </aside>
+                <div
+                  className="MuiTypography-root-157 MuiTypography-body1-166"
+                >
+                  <div>
+                    <span
+                      className="Price__Span-cHkFMo eGYnOf"
+                    >
+                      $12.99 - $19.99
+                    </span>
+
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p
+                  className="MuiTypography-root-157 MuiTypography-body1-166"
+                >
+                  Reaction Commerce
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </div>,

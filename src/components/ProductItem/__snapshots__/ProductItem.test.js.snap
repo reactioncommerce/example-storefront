@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div>
+  <a
+    className=""
+    href="/product/example-product"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="link"
+    tabIndex={0}
+  >
+    <div
+      className="BadgeOverlay-badgeOverlay-5"
+    >
+      <div
+        className="WithTracking-ProductItem--productMedia-3"
+      >
+        <div
+          className="Img-imgWrapper-16 "
+        >
+          <img
+            alt=""
+            className="Img-img-18 Img-imgLoading-20 "
+            src=""
+          />
+        </div>
+      </div>
+      <div>
+        <div
+          className="WithTracking-ProductItem--productInfo-2"
+        >
+          <aside
+            className="MuiTypography-root-22 MuiTypography-body2-30"
+          >
+            Reaction Sample Product
+          </aside>
+          <div
+            className="MuiTypography-root-22 MuiTypography-body1-31"
+          >
+            <div>
+              <span
+                className="Price__Span-cHkFMo eGYnOf"
+              >
+                $12.99 - $19.99
+              </span>
+              
+            </div>
+          </div>
+        </div>
+        <div>
+          <p
+            className="MuiTypography-root-22 MuiTypography-body1-31"
+          >
+            Example Manufacturer
+          </p>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+`;
