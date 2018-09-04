@@ -6,11 +6,9 @@ import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import CheckoutActions from "@reactioncommerce/components/CheckoutActions/v1";
+import CheckoutActions from "components/CheckoutActions";
 import CheckoutEmailAddress from "@reactioncommerce/components/CheckoutEmailAddress/v1";
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
-import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
-import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaymentCheckoutAction/v1";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import CartIcon from "mdi-material-ui/Cart";
 import LockIcon from "mdi-material-ui/Lock";
@@ -72,52 +70,6 @@ const styles = (theme) => ({
   }
 });
 
-const fulfillmentGroups = [{
-  _id: 1,
-  type: "shipping",
-  data: {
-    shippingAddress: null
-  }
-}];
-
-const paymentMethods = [{
-  _id: 1,
-  name: "reactionstripe",
-  data: {
-    billingAddress: null,
-    displayName: null
-  }
-}];
-
-/**
- * Determines if a shipping method has been set for the "Shipping Information"
- * checkout action. The return value of either complete or incomplete will
- * be used to render status of the checkout action.
- *
- * @returns {String} complete or incomplete
- */
-function getShippingStatus() {
-  const groupWithoutAddress = fulfillmentGroups.find((group) => {
-    const shippingGroup = group.type === "shipping";
-    return shippingGroup && !group.data.shippingAddress;
-  });
-
-  return (groupWithoutAddress) ? "incomplete" : "complete";
-}
-
-/**
- * Determines if a payment method has been set for the "Payment Information"
- * checkout action. The return value of either complete or incomplete will
- * be used to render status of the checkout action.
- *
- * @returns {String} complete or incomplete
- */
-function getPaymentStatus() {
-  const paymentWithoutData = paymentMethods.find((payment) => !payment.data.displayName);
-
-  return (paymentWithoutData) ? "incomplete" : "complete";
-}
-
 @withCart
 @observer
 @withStyles(styles, { withTheme: true })
@@ -148,35 +100,6 @@ class Checkout extends Component {
 
   state = {}
 
-  setShippingAddress = (data) =>
-    // eslint-disable-next-line promise/avoid-new
-    new Promise((resolve) => {
-      setTimeout(() => {
-        fulfillmentGroups[0].data.shippingAddress = data;
-        // TODO: this.forceUpdate() will be removed once state is tracked by MobX
-        this.forceUpdate();
-        resolve(data);
-      }, 1000, { data });
-    })
-
-
-  setPaymentMethod = (data) => {
-    const { billingAddress, token: { card } } = data;
-    const payment = {
-      billingAddress,
-      displayName: `${card.brand} ending in ${card.last4}`
-    };
-
-    // eslint-disable-next-line promise/avoid-new
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        paymentMethods[0].data = payment;
-        // TODO: this.forceUpdate() will be removed once state is tracked by MobX
-        this.forceUpdate();
-        resolve(payment);
-      }, 1000, { payment });
-    });
-  }
 
   renderCheckout() {
     const {
@@ -189,27 +112,6 @@ class Checkout extends Component {
     } = this.props;
 
     if (!cart) return null;
-
-    const actions = [
-      {
-        label: "Shipping Information",
-        status: getShippingStatus(),
-        component: ShippingAddressCheckoutAction,
-        onSubmit: this.setShippingAddress,
-        props: {
-          fulfillmentGroup: fulfillmentGroups[0]
-        }
-      },
-      {
-        label: "Payment Information",
-        status: getPaymentStatus(),
-        component: StripePaymentCheckoutAction,
-        onSubmit: this.setPaymentMethod,
-        props: {
-          payment: paymentMethods[0]
-        }
-      }
-    ];
 
     const hasAccount = !!cart.account;
     const displayEmail = hasAccount ? cart.account.emailRecords[0].address : cart.email;
@@ -224,7 +126,7 @@ class Checkout extends Component {
                   <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} />
                   : null
               }
-              <CheckoutActions actions={actions} />
+              <CheckoutActions />
             </div>
           </div>
         </Grid>
