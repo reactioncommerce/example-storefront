@@ -358,7 +358,7 @@ export default (Component) => (
                 {(mutationFunction) => (
                   <Component
                     {...this.props}
-                    isLoading={isLoading}
+                    isLoading={skipQuery ? false : isLoading}
                     hasMoreCartItems={(pageInfo && pageInfo.hasNextPage) || false}
                     onChangeCartItemsQuantity={this.handleChangeCartItemsQuantity}
                     onRemoveCartItems={this.handleRemoveCartItems}
