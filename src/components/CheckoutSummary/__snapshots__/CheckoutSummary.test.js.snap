@@ -82,6 +82,12 @@ exports[`basic snapshot 1`] = `
                          
                         Medium
                       </p>
+                      <p
+                        className="CartItemDetail__Text-iQjjVf jxAYVa"
+                      >
+                        Quantity: 
+                        2
+                      </p>
                     </div>
                   </div>
                   <div
@@ -92,131 +98,7 @@ exports[`basic snapshot 1`] = `
                      in stock
                   </div>
                 </div>
-                <div
-                  className="CartItem__ItemContentQuantityInput-ifRgcr jiBlxW"
-                >
-                  <div
-                    aria-describedby={undefined}
-                    className="MuiFormControl-root-4"
-                  >
-                    <div
-                      className="MuiInput-root-8 QuantityInput-quantityContainer-2 MuiInput-formControl-9"
-                    >
-                      <div
-                        className="MuiInputAdornment-root-21"
-                      >
-                        <button
-                          className="MuiButtonBase-root-24 QuantityInput-incrementButton-1"
-                          color="default"
-                          disabled={undefined}
-                          onBlur={[Function]}
-                          onClick={[Function]}
-                          onFocus={[Function]}
-                          onKeyDown={[Function]}
-                          onKeyUp={[Function]}
-                          onMouseDown={[Function]}
-                          onMouseLeave={[Function]}
-                          onMouseUp={[Function]}
-                          onTouchEnd={[Function]}
-                          onTouchMove={[Function]}
-                          onTouchStart={[Function]}
-                          tabIndex="0"
-                          type="button"
-                          variant="outlined"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            className="MuiSvgIcon-root-99"
-                            color={undefined}
-                            focusable="false"
-                            style={
-                              Object {
-                                "fontSize": "14px",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                          >
-                            <g>
-                              <path
-                                d="M19,13H5V11H19V13Z"
-                              />
-                            </g>
-                          </svg>
-                        </button>
-                      </div>
-                      <input
-                        aria-invalid={false}
-                        autoComplete={undefined}
-                        autoFocus={undefined}
-                        className="MuiInput-input-16 QuantityInput-quantityInput-3"
-                        defaultValue={undefined}
-                        disabled={false}
-                        id="addToCartQuantityInput"
-                        name={undefined}
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        onKeyDown={undefined}
-                        onKeyUp={undefined}
-                        placeholder={undefined}
-                        readOnly={undefined}
-                        required={undefined}
-                        rows={undefined}
-                        type="text"
-                        value={2}
-                      />
-                      <div
-                        className="MuiInputAdornment-root-21"
-                      >
-                        <button
-                          className="MuiButtonBase-root-24 QuantityInput-incrementButton-1"
-                          color="default"
-                          disabled={undefined}
-                          onBlur={[Function]}
-                          onClick={[Function]}
-                          onFocus={[Function]}
-                          onKeyDown={[Function]}
-                          onKeyUp={[Function]}
-                          onMouseDown={[Function]}
-                          onMouseLeave={[Function]}
-                          onMouseUp={[Function]}
-                          onTouchEnd={[Function]}
-                          onTouchMove={[Function]}
-                          onTouchStart={[Function]}
-                          tabIndex="0"
-                          type="button"
-                          variant="outlined"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            className="MuiSvgIcon-root-99"
-                            color={undefined}
-                            focusable="false"
-                            style={
-                              Object {
-                                "fontSize": "14px",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                          >
-                            <g>
-                              <path
-                                d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
-                              />
-                            </g>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
-              <button
-                className="CartItem__ItemRemoveButton-lnwubi glyIsk"
-                onClick={[Function]}
-              >
-                Remove
-              </button>
             </div>
             <div
               className="CartItem__ItemContentPrice-lcfJQP eaPRuH"
@@ -308,134 +190,16 @@ exports[`basic snapshot 1`] = `
                          
                         10
                       </p>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="CartItem__ItemContentQuantityInput-ifRgcr jiBlxW"
-                >
-                  <div
-                    aria-describedby={undefined}
-                    className="MuiFormControl-root-4"
-                  >
-                    <div
-                      className="MuiInput-root-8 QuantityInput-quantityContainer-2 MuiInput-formControl-9"
-                    >
-                      <div
-                        className="MuiInputAdornment-root-21"
+                      <p
+                        className="CartItemDetail__Text-iQjjVf jxAYVa"
                       >
-                        <button
-                          className="MuiButtonBase-root-24 QuantityInput-incrementButton-1"
-                          color="default"
-                          disabled={undefined}
-                          onBlur={[Function]}
-                          onClick={[Function]}
-                          onFocus={[Function]}
-                          onKeyDown={[Function]}
-                          onKeyUp={[Function]}
-                          onMouseDown={[Function]}
-                          onMouseLeave={[Function]}
-                          onMouseUp={[Function]}
-                          onTouchEnd={[Function]}
-                          onTouchMove={[Function]}
-                          onTouchStart={[Function]}
-                          tabIndex="0"
-                          type="button"
-                          variant="outlined"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            className="MuiSvgIcon-root-99"
-                            color={undefined}
-                            focusable="false"
-                            style={
-                              Object {
-                                "fontSize": "14px",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                          >
-                            <g>
-                              <path
-                                d="M19,13H5V11H19V13Z"
-                              />
-                            </g>
-                          </svg>
-                        </button>
-                      </div>
-                      <input
-                        aria-invalid={false}
-                        autoComplete={undefined}
-                        autoFocus={undefined}
-                        className="MuiInput-input-16 QuantityInput-quantityInput-3"
-                        defaultValue={undefined}
-                        disabled={false}
-                        id="addToCartQuantityInput"
-                        name={undefined}
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        onKeyDown={undefined}
-                        onKeyUp={undefined}
-                        placeholder={undefined}
-                        readOnly={undefined}
-                        required={undefined}
-                        rows={undefined}
-                        type="text"
-                        value={1}
-                      />
-                      <div
-                        className="MuiInputAdornment-root-21"
-                      >
-                        <button
-                          className="MuiButtonBase-root-24 QuantityInput-incrementButton-1"
-                          color="default"
-                          disabled={undefined}
-                          onBlur={[Function]}
-                          onClick={[Function]}
-                          onFocus={[Function]}
-                          onKeyDown={[Function]}
-                          onKeyUp={[Function]}
-                          onMouseDown={[Function]}
-                          onMouseLeave={[Function]}
-                          onMouseUp={[Function]}
-                          onTouchEnd={[Function]}
-                          onTouchMove={[Function]}
-                          onTouchStart={[Function]}
-                          tabIndex="0"
-                          type="button"
-                          variant="outlined"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            className="MuiSvgIcon-root-99"
-                            color={undefined}
-                            focusable="false"
-                            style={
-                              Object {
-                                "fontSize": "14px",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                          >
-                            <g>
-                              <path
-                                d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
-                              />
-                            </g>
-                          </svg>
-                        </button>
-                      </div>
+                        Quantity: 
+                        1
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
-              <button
-                className="CartItem__ItemRemoveButton-lnwubi glyIsk"
-                onClick={[Function]}
-              >
-                Remove
-              </button>
             </div>
             <div
               className="CartItem__ItemContentPrice-lcfJQP eaPRuH"

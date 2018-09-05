@@ -55,6 +55,7 @@ class CheckoutSummary extends Component {
         <Grid item xs={12}>
           <CartItems
             isMiniCart
+            isReadOnly
             hasMoreCartItems={hasMoreCartItems}
             onLoadMoreCartItems={loadMoreCartItems}
             items={cart.items}
