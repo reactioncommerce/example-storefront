@@ -316,7 +316,7 @@ export default (Component) => (
 
       return (
         <Query query={query} variables={variables} skip={skipQuery}>
-          {({ data: cartData, fetchMore, refetch: refetchCart }) => {
+          {({ loading: isLoading, data: cartData, fetchMore, refetch: refetchCart }) => {
             const { cart } = cartData || {};
             const { pageInfo } = (cart && cart.items) || {};
 
@@ -358,6 +358,7 @@ export default (Component) => (
                 {(mutationFunction) => (
                   <Component
                     {...this.props}
+                    isLoading={isLoading}
                     hasMoreCartItems={(pageInfo && pageInfo.hasNextPage) || false}
                     onChangeCartItemsQuantity={this.handleChangeCartItemsQuantity}
                     onRemoveCartItems={this.handleRemoveCartItems}
