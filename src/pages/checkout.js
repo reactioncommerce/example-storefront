@@ -96,6 +96,7 @@ class Checkout extends Component {
     }),
     classes: PropTypes.object,
     hasMoreCartItems: PropTypes.bool,
+    isLoading: PropTypes.bool,
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
