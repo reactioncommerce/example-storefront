@@ -6,6 +6,7 @@ import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
 import CheckoutActions from "components/CheckoutActions";
 import CheckoutEmailAddress from "@reactioncommerce/components/CheckoutEmailAddress/v1";
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
@@ -63,6 +64,18 @@ const styles = (theme) => ({
     justifyContent: "space-between",
     marginBottom: "2rem"
   },
+  emptyCartContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  emptyCart: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: 320,
+    height: 320
+  },
   logo: {
     color: theme.palette.reaction.reactionBlue,
     marginRight: theme.spacing.unit,
@@ -100,18 +113,32 @@ class Checkout extends Component {
 
   state = {}
 
+  handleCartEmptyClick = () => Router.pushRoute("/")
 
   renderCheckout() {
     const {
       classes,
       cart,
       hasMoreCartItems,
+      isLoading,
       loadMoreCartItems,
       onRemoveCartItems,
       onChangeCartItemsQuantity
     } = this.props;
 
-    if (!cart) return null;
+    if (isLoading) return null;
+
+    if (!cart || (cart && Array.isArray(cart.items) && cart.items.length === 0)) {
+      return (
+        <div className={classes.emptyCartContainer}>
+          <div className={classes.emptyCart}>
+            <div>
+              <CartEmptyMessage onClick={this.handleCartEmptyClick} />
+            </div>
+          </div>
+        </div>
+      );
+    }
 
     const hasAccount = !!cart.account;
     const displayEmail = hasAccount ? cart.account.emailRecords[0].address : cart.email;
