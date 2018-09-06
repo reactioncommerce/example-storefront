@@ -38,10 +38,10 @@ class CartStore {
   @observable isReconcilingCarts = false;
 
   /**
- * The Stripe token that stores encrypted user payment data
- *
- * @type Object
- */
+   * The Stripe token that stores encrypted user payment data
+   *
+   * @type Object
+   */
   @observable stripeToken = null;
 
   /**
