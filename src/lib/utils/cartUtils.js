@@ -15,18 +15,6 @@ export function isShippingAddressSet(fulfillmentGroups) {
 }
 
 /**
- * Determines if at least one payment method has been selected by the user
- *
- * @param {Array} paymentMethods - An array of available and active payment methods
- * @returns {Boolean} true if a payment method has been selected, false otherwise.
- */
-export function isPaymentMethodSet(paymentMethods) {
-  const setPaymentMethod = paymentMethods.find((payment) => payment.data.displayName);
-
-  return setPaymentMethod;
-}
-
-/**
  * Filters an address object so that it only contain props that have a corresponding form field.
  *
  * @param {Object} address - a shipping address object
