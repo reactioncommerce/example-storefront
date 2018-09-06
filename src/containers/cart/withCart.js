@@ -12,7 +12,8 @@ import {
   setEmailOnAnonymousCartMutation,
   setFulfillmentOptionCartMutation,
   setShippingAddressCartMutation,
-  updateCartItemsQuantityMutation
+  updateCartItemsQuantityMutation,
+  updateFulfillmentOptionsForGroup
 } from "./mutations.gql";
 import {
   accountCartByAccountIdQuery,
@@ -247,12 +248,32 @@ export default (Component) => (
         }
       });
     }
+    /**
+     * @name handleUpdateFulfillmentOptionsForGroup
+     * @summary Sets a fulfillment method for items in a cart
+     * @param {String} fulfillmentGroupId - Id of the group to update options for.
+     * @param {Function} mutation An Apollo mutation function
+     * @return {undefined} No return
+     */
+    handleUpdateFulfillmentOptionsForGroup = (fulfillmentGroupId) => {
+      const { cartStore, client: apolloClient } = this.props;
+
+      apolloClient.mutate({
+        mutation: updateFulfillmentOptionsForGroup,
+        variables: {
+          input: {
+            cartId: cartStore.anonymousCartId,
+            cartToken: cartStore.anonymousCartToken,
+            fulfillmentGroupId
+          }
+        }
+      });
+    }
 
     /**
      * @name handleSetFulfillmentOption
      * @summary Sets a fulfillment method for items in a cart
-     * @param {Object} fulfillmentOption - an object with the following props:
-     * cartId, cartToken, fulfillmentGroupId, fulfillmentMethodId
+     * @param {Object} fulfillmentOption - an object with the following props: fulfillmentGroupId, fulfillmentMethodId
      * @param {Function} mutation An Apollo mutation function
      * @return {undefined} No return
      */
@@ -275,15 +296,14 @@ export default (Component) => (
     /**
      * @name handleSetShippingAddress
      * @summary Sets the shipping address for the cart
-     * @param {Object} address - an object with the following props:
-     *  address, addressId(optional), cartId, cartToken
+     * @param {Object} address - The shipping address
      * @param {Function} mutation An Apollo mutation function
      * @return {undefined} No return
      */
-    handleSetShippingAddress = (address) => {
+    handleSetShippingAddress = async (address) => {
       const { cartStore, client: apolloClient } = this.props;
 
-      return apolloClient.mutate({
+      const result = await apolloClient.mutate({
         mutation: setShippingAddressCartMutation,
         variables: {
           input: {
@@ -293,6 +313,10 @@ export default (Component) => (
           }
         }
       });
+
+      // Update fulfillment options for current cart
+      const { data: { setShippingAddressOnCart: { cart } } } = result;
+      this.handleUpdateFulfillmentOptionsForGroup(cart.checkout.fulfillmentGroups[0]._id);
     }
 
     render() {
@@ -408,7 +432,7 @@ export default (Component) => (
                       });
                     }}
                     setEmailOnAnonymousCart={this.handleSetEmailOnAnonymousCart}
-                    checkout={{
+                    checkoutMutations={{
                       onSetFulfillmentOption: this.handleSetFulfillmentOption,
                       onSetShippingAddress: this.handleSetShippingAddress
                     }}

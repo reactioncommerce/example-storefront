@@ -87,3 +87,12 @@ mutation updateCartItemsQuantityMutation($input: UpdateCartItemsQuantityInput!) 
     }
   }
 }
+
+# Update fulfillment options for the provided fulfillment group
+mutation updateFulfillmentOptionsForGroup($input: UpdateFulfillmentOptionsForGroupInput!) {
+  updateFulfillmentOptionsForGroup(input: $input) {
+    cart {
+      ...CartPayloadFragment
+    }
+  }
+}
