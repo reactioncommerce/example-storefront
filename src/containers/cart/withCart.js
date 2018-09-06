@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Mutation, Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
-import getConfig from "next/config";
 import cartItemsConnectionToArray from "lib/utils/cartItemsConnectionToArray";
 import {
   createCartMutation,
@@ -19,12 +18,6 @@ import {
   accountCartByAccountIdQuery,
   anonymousCartByCartIdQuery
 } from "./queries.gql";
-
-const { publicRuntimeConfig } = getConfig() || {
-  publicRuntimeConfig: {
-    externalAssetsUrl: ""
-  }
-};
 
 /**
  * withCart higher order query component for creating, fetching, and updating carts
@@ -347,7 +340,7 @@ export default (Component) => (
 
       return (
         <Query query={query} variables={variables} skip={skipQuery}>
-          {({ data: cartData, fetchMore, refetch: refetchCart }) => {
+          {({ loading: isLoading, data: cartData, fetchMore, refetch: refetchCart }) => {
             const { cart } = cartData || {};
             const { pageInfo } = (cart && cart.items) || {};
 
@@ -367,9 +360,7 @@ export default (Component) => (
             if (cart) {
               processedCartData = {
                 ...cart,
-                items: cartItemsConnectionToArray(cart.items, {
-                  externalAssetsUrl: publicRuntimeConfig.externalAssetsUrl
-                })
+                items: cartItemsConnectionToArray(cart.items)
               };
             }
 
@@ -391,6 +382,7 @@ export default (Component) => (
                 {(mutationFunction) => (
                   <Component
                     {...this.props}
+                    isLoading={skipQuery ? false : isLoading}
                     hasMoreCartItems={(pageInfo && pageInfo.hasNextPage) || false}
                     onChangeCartItemsQuantity={this.handleChangeCartItemsQuantity}
                     onRemoveCartItems={this.handleRemoveCartItems}

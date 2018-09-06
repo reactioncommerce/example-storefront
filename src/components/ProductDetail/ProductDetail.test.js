@@ -33,11 +33,6 @@ const shop = {
 };
 
 const uiStore = {
-  appConfig: {
-    publicRuntimeConfig: {
-      externalAssetsUrl: ""
-    }
-  },
   pdpSelectedVariantId: "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3RWYXJpYW50OjZxaXFQd0JrZUpkdGRRYzRH",
   setPDPSelectedVariantId: jest.fn().mockName("uiStore.setPDPSelectedVariantId")
 };
