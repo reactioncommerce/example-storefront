@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import BadgeOverlay from "@reactioncommerce/components/BadgeOverlay/v1";
-import { badgeStatus } from "@reactioncommerce/components/BadgeOverlay/v1/utils";
+import { badgeStatus, BADGE_LABELS } from "@reactioncommerce/components/BadgeOverlay/v1/utils";
 import VariantItem from "components/VariantItem";
 import ProductDetailOptionsList from "components/ProductDetailOptionsList";
 import Divider from "components/Divider";
@@ -56,7 +56,7 @@ export default class VariantList extends Component {
 
   renderInventoryStatus(variant) {
     const { classes } = this.props;
-    const status = badgeStatus(variant);
+    const status = badgeStatus(variant, BADGE_LABELS);
 
     if (!status) return null;
 
