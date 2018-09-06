@@ -8,19 +8,8 @@ import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaym
 import withCart from "containers/cart/withCart";
 import {
   adaptAddressToFormFields,
-  isShippingAddressSet,
-  isPaymentMethodSet
+  isShippingAddressSet
 } from "lib/utils/cartUtils";
-
-// TODO: remove this mocked payment method
-const paymentMethods = [{
-  _id: 1,
-  name: "reactionstripe",
-  data: {
-    billingAddress: null,
-    displayName: null
-  }
-}];
 
 @withCart
 @observer
@@ -31,6 +20,9 @@ export default class CheckoutActions extends Component {
       checkout: PropTypes.object,
       email: PropTypes.string,
       items: PropTypes.array
+    }),
+    cartStore: PropTypes.shape({
+      stripeToken: PropTypes.object
     }),
     checkoutMutations: PropTypes.shape({
       // onUpdateFulfillmentOptionsForGroup: PropTypes.func.isRequired,
@@ -62,43 +54,39 @@ export default class CheckoutActions extends Component {
     onSetFulfillmentOption(fulfillmentOption);
   }
 
-  setPaymentMethod = (data) => {
-    const { billingAddress, token: { card } } = data;
-    const payment = {
-      billingAddress,
-      displayName: `${card.brand} ending in ${card.last4}`
-    };
+  setPaymentMethod = (stripeToken) => {
+    const { cartStore } = this.props;
 
-    // eslint-disable-next-line promise/avoid-new
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        paymentMethods[0].data = payment;
-        // TODO: this.forceUpdate() will be removed once state is tracked by MobX
-        this.forceUpdate();
-        resolve(payment);
-      }, 1000, { payment });
-    });
+    // Store stripe token in MobX store
+    cartStore.setStripeToken(stripeToken);
   }
 
   render() {
+    const { cartStore: { stripeToken } } = this.props;
     const { checkout: { fulfillmentGroups } } = this.props.cart;
     const shippingAddressSet = isShippingAddressSet(fulfillmentGroups);
-    const isPaymentSet = isPaymentMethodSet(paymentMethods);
     const fulfillmentGroup = fulfillmentGroups[0];
 
 
-    let shippingAddress = {
-      data: {
-        shippingAddress: null
-      }
-    };
-
+    let shippingAddress = { data: { shippingAddress: null } };
     // Adapt shipping address to match fields in the AddressForm component.
     // fullName is split into firstName and lastName
     if (shippingAddressSet) {
       shippingAddress = {
         data: {
           shippingAddress: adaptAddressToFormFields(fulfillmentGroup.data.shippingAddress)
+        }
+      };
+    }
+
+    let paymentData = null;
+    if (stripeToken) {
+      const { billingAddress, token: { card } } = stripeToken;
+      const displayName = `${card.brand} ending in ${card.last4}`;
+      paymentData = {
+        data: {
+          billingAddress,
+          displayName
         }
       };
     }
@@ -124,11 +112,11 @@ export default class CheckoutActions extends Component {
       },
       {
         label: "Payment Information",
-        status: isPaymentSet ? "complete" : "incomplete",
+        status: stripeToken ? "complete" : "incomplete",
         component: StripePaymentCheckoutAction,
         onSubmit: this.setPaymentMethod,
         props: {
-          payment: paymentMethods[0]
+          payment: paymentData
         }
       }
     ];
