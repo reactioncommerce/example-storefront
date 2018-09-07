@@ -18,28 +18,29 @@ import withCart from "containers/cart/withCart";
 import Link from "components/Link";
 import CheckoutSummary from "components/CheckoutSummary";
 import OrderFulfillmentGroups from "components/OrderFulfillmentGroups";
+import OrderSummary from "components/OrderSummary";
 
 
 const styles = (theme) => ({
-  checkoutActions: {
+  section: {
+    paddingTop: theme.spacing.unit * 2
+  },
+  sectionHeader: {
+    marginBottom: theme.spacing.unit * 3
+  },
+  title: {
+    marginBottom: theme.spacing.unit * 3
+  },
+  orderDetails: {
     width: "100%",
-    maxWidth: "600px",
-    alignSelf: "flex-end",
-    [theme.breakpoints.up("md")]: {
-      paddingRight: "2rem"
-    }
+    maxWidth: 600
   },
   cartSummary: {
-    maxWidth: "400px",
-    alignSelf: "flex-start",
-    [theme.breakpoints.up("md")]: {
-      paddingRight: "2rem"
-    }
+
   },
   checkoutContent: {
     flex: "1",
     maxWidth: theme.layout.mainContentMaxWidth,
-    padding: "1rem"
   },
   checkoutContentContainer: {
     display: "flex",
@@ -139,17 +140,13 @@ class CheckoutComplete extends Component {
     const displayEmail = hasAccount ? cart.account.emailRecords[0].address : cart.email;
 
     return (
-      <Grid container spacing={24}>
-        <Grid item xs={12} md={12}>
-          <div className={classes.flexContainer}>
-            <div className={classes.cartSummary}>
-              <OrderFulfillmentGroups
-                cart={cart}
-              />
-            </div>
-          </div>
-        </Grid>
-      </Grid>
+      <div className={classes.flexContainer}>
+        <div className={classes.cartSummary}>
+          <OrderFulfillmentGroups
+            cart={cart}
+          />
+        </div>
+      </div>
     );
   }
 
@@ -165,13 +162,7 @@ class CheckoutComplete extends Component {
 
       return (
         <Grid item xs={12}>
-          <CartSummary
-            isDense
-            displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
-            displaySubtotal={itemTotal && itemTotal.displayAmount}
-            displayTotal={total && total.displayAmount}
-            itemsQuantity={cart.totalItemQuantity}
-          />
+          <OrderSummary order={cart} />
         </Grid>
       );
     }
@@ -188,12 +179,23 @@ class CheckoutComplete extends Component {
           <title>{shop && shop.name} | Checkout</title>
           <meta name="description" content={shop && shop.description} />
         </Helmet>
-        <section className={classes.checkoutContentContainer}>
-          <div className={classes.checkoutContent}>
-            {this.renderCheckout()}
-            {this.renderSummary()}
+        <div className={classes.checkoutContentContainer}>
+          <div className={classes.orderDetails}>
+            <section className={classes.section}>
+              <header className={classes.sectionHeader}>
+                <Typography className={classes.title} variant="title">{"Thank you for your order"}</Typography>
+                <Typography variant="body1">{"Your order number is"} <strong>{"000"}</strong></Typography>
+                <Typography variant="body1">{"We've send a confirmation email to"} <strong>{"sample@email.com"}</strong></Typography>
+              </header>
+              <div className={classes.checkoutContent}>
+                {this.renderCheckout()}
+              </div>
+            </section>
+            <section className={classes.section}>
+              {this.renderSummary()}
+            </section>
           </div>
-        </section>
+        </div>
       </Fragment>
     );
   }
