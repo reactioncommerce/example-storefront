@@ -1,10 +1,20 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
-import CheckoutActionComplete from "@reactioncommerce/components/CheckoutActionComplete/v1";
-import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
 import CartItems from "components/CartItems";
 
+const styles = (theme) => ({
+  fulfillmentGroup: {
+    border: theme.palette.borders.default
+  },
+  fulfillmentDetails: {
+    padding: theme.spacing.unit * 2
+  }
+});
+
+@withStyles(styles)
 class OrderFulfillmentGroup extends Component {
   static propTypes = {
     cart: PropTypes.shape({
@@ -72,22 +82,46 @@ class OrderFulfillmentGroup extends Component {
   }
 
   renderFulfillmentInfo() {
-    const { cart, fulfillmentGroup } = this.props;
+    const { cart, classes, fulfillmentGroup } = this.props;
 
     if (cart && cart.checkout && cart.checkout.summary) {
       let address;
 
-      if (cart.checkout && cart.checkout.fulfillmentGroup) {
-        address = ShippingAddressCheckoutAction.renderComplete({ fulfillmentGroup });
+      if (fulfillmentGroup) {
+        const { data: { shippingAddress } } = fulfillmentGroup;
+
+        address = (
+          <Typography variant="body2">
+            {(shippingAddress.firstName || shippingAddress.lastName) && (
+              <span>
+                {shippingAddress.firstName} {shippingAddress.lastName}
+                <br />
+              </span>
+            )}
+            {shippingAddress.address1}
+            <br />
+            {(shippingAddress.address2 && shippingAddress.address2 !== "") && (
+              <span>
+                {shippingAddress.address2} <br />
+              </span>
+            )}
+            {shippingAddress.city}, {shippingAddress.region} {shippingAddress.postal} <br />
+            {shippingAddress.country}
+          </Typography>
+        );
       }
 
       return (
-        <Grid item xs={12}>
-          <CheckoutActionComplete
-            content={address}
-            label="Shipping Address"
-          />
-        </Grid>
+        <div className={classes.fulfillmentDetails}>
+          <Grid container spacing={24}>
+            <Grid item xs={3}>
+              <Typography variant="subheading">{"Shipping Address"}</Typography>
+            </Grid>
+            <Grid item xs={9}>
+              {address}
+            </Grid>
+          </Grid>
+        </div>
       );
     }
 
@@ -95,13 +129,13 @@ class OrderFulfillmentGroup extends Component {
   }
 
   render() {
+    const { classes } = this.props;
+
     return (
-      <aside>
-        <Grid container spacing={24}>
-          {this.renderItems()}
-          {this.renderFulfillmentInfo()}
-        </Grid>
-      </aside>
+      <section className={classes.fulfillmentGroup}>
+        {this.renderItems()}
+        {this.renderFulfillmentInfo()}
+      </section>
     );
   }
 }
