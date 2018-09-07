@@ -1,0 +1,9 @@
+# Common fields for order for queries
+fragment OrderCommon on Order {
+  # ...fields
+}
+
+# Fragment for order query
+fragment OrderQueryFragment on Cart {
+  ...OrderCommon
+}
