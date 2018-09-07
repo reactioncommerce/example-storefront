@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import Grid from "@material-ui/core/Grid";
 import OrderFulfillmentGroup from "components/OrderFulfillmentGroup";
 
 class OrderFulfillmentGroups extends Component {
@@ -40,11 +39,9 @@ class OrderFulfillmentGroups extends Component {
 
   render() {
     return (
-      <aside>
-        <Grid container spacing={24}>
-          {this.renderFulfillmentGroups()}
-        </Grid>
-      </aside>
+      <Fragment>
+        {this.renderFulfillmentGroups()}
+      </Fragment>
     );
   }
 }
