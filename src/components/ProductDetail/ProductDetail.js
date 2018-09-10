@@ -111,6 +111,8 @@ class ProductDetail extends Component {
       currencyCode,
       product,
       uiStore: {
+        openCart,
+        closeCart,
         pdpSelectedOptionId,
         pdpSelectedVariantId
       }
@@ -140,6 +142,9 @@ class ProductDetail extends Component {
         }
       ]);
     }
+
+    openCart(); // Open the cart
+    closeCart(3000); // Close the cart after a 3 second delay
   };
 
   /**
