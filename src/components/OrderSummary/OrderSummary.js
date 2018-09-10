@@ -5,6 +5,17 @@ import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import CartSummary from "@reactioncommerce/components/CartSummary/v1";
+import styled from "styled-components";
+
+// Use styled components to adjust the styling of the
+// cart summary component to fit inside a bordered box
+const OrderSummaryContainer = styled.div`
+  table td {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-bottom: none;
+  }
+`;
 
 const styles = (theme) => ({
   summary: {
@@ -53,7 +64,7 @@ class OrderSummary extends Component {
       } = cart.checkout.summary;
 
       return (
-        <Grid item xs={12}>
+        <OrderSummaryContainer>
           <CartSummary
             isDense
             displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
@@ -61,7 +72,7 @@ class OrderSummary extends Component {
             displayTotal={total && total.displayAmount}
             itemsQuantity={cart.totalItemQuantity}
           />
-        </Grid>
+        </OrderSummaryContainer>
       );
     }
 
