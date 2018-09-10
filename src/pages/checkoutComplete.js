@@ -7,16 +7,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
-import CartSummary from "@reactioncommerce/components/CartSummary/v1";
-import CheckoutActions from "components/CheckoutActions";
-import CheckoutEmailAddress from "@reactioncommerce/components/CheckoutEmailAddress/v1";
-import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
-import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
-import CartIcon from "mdi-material-ui/Cart";
-import LockIcon from "mdi-material-ui/Lock";
 import withCart from "containers/cart/withCart";
 import Link from "components/Link";
-import CheckoutSummary from "components/CheckoutSummary";
 import OrderFulfillmentGroups from "components/OrderFulfillmentGroups";
 import OrderSummary from "components/OrderSummary";
 
@@ -154,12 +146,6 @@ class CheckoutComplete extends Component {
     const { cart } = this.props;
 
     if (cart && cart.checkout && cart.checkout.summary) {
-      const {
-        fulfillmentTotal,
-        itemTotal,
-        total
-      } = cart.checkout.summary;
-
       return (
         <Grid item xs={12}>
           <OrderSummary order={cart} />
