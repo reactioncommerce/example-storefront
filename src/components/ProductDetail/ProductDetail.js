@@ -59,7 +59,7 @@ class ProductDetail extends Component {
     }),
     theme: PropTypes.object,
     uiStore: PropTypes.object.isRequired,
-    width: PropTypes.number.isRequired
+    width: PropTypes.string.isRequired
   }
 
   componentDidMount() {
