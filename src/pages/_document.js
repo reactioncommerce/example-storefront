@@ -56,8 +56,9 @@ class HTMLDocument extends Document {
     const { publicRuntimeConfig } = getConfig();
     const { keycloakConfig } = publicRuntimeConfig;
     const links = [
-      ...favicons,
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" }
+      { rel: "canonical", href: process.env.CANONICAL_URL },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" },
+      ...favicons
     ];
     const meta = [
       // Use minimum-scale=1 to enable GPU rasterization
@@ -91,8 +92,10 @@ class HTMLDocument extends Document {
           <Helmet htmlAttributes={{ lang: "en", dir: "ltr" }} />
           {meta.map((tag) => <meta {...tag} />)}
           {links.map((link) => <link {...link} />)}
-          {scripts.map((script) =>
-            (script.innerHTML ? <script type={script.type}>{script.innerHTML}</script> : <script {...script} />))}
+          {scripts.map(
+            (script) =>
+              script.innerHTML ? <script type={script.type}>{script.innerHTML}</script> : <script {...script} />
+          )}
           {helmet.base.toComponent()}
           {helmet.title.toComponent()}
           {helmet.meta.toComponent()}
