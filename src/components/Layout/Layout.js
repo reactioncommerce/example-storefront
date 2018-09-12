@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Header from "components/Header";
 import Footer from "components/Footer";
@@ -28,23 +27,18 @@ class Layout extends Component {
     classes: PropTypes.object,
     shop: PropTypes.shape({
       name: PropTypes.string
-    }).isRequired,
-    title: PropTypes.string
+    }).isRequired
   };
 
   static defaultProps = {
-    classes: {},
-    title: ""
+    classes: {}
   };
 
   render() {
-    const { classes, children, shop, title } = this.props;
+    const { classes, children, shop } = this.props;
 
     return (
       <React.Fragment>
-        <Helmet>
-          <title>{title}</title>
-        </Helmet>
         <div className={classes.root}>
           <Header shop={shop} />
           <main className={classes.main}>
