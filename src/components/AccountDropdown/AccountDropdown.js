@@ -10,12 +10,7 @@ import AccountIcon from "mdi-material-ui/Account";
 import Popover from "@material-ui/core/Popover";
 import { login } from "lib/auth";
 
-const styles = (theme) => ({
-  accountDropdown: {
-    width: 320,
-    padding: theme.spacing.unit * 2
-  }
-});
+const styles = (theme) => (theme.AccountDropdown);
 
 @withStyles(styles)
 @inject("authStore")

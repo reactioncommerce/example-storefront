@@ -12,24 +12,7 @@ import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
 import withShop from "containers/shop/withShop";
 
-const styles = ({ palette, zIndex }) => ({
-  popper: {
-    marginTop: "0.5rem",
-    marginRight: "1rem",
-    zIndex: zIndex.modal
-  },
-  cart: {
-    backgroundColor: palette.common.white
-  },
-  emptyCart: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: 320,
-    height: 320,
-    border: palette.borders.default
-  }
-});
+const styles = (theme) => theme.MiniCart;
 
 const closePopper = {
   anchorElement: null,

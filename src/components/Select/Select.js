@@ -5,29 +5,7 @@ import MuiSelect from "@material-ui/core/Select";
 import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 
-const styles = (theme) => ({
-  popOver: {
-    border: theme.palette.borders.default,
-    boxShadow: "none"
-  },
-  menuItem: {
-    fontSize: "1rem",
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit
-  },
-  selectMenu: {
-    fontSize: "1rem",
-    border: theme.palette.borders.default,
-    paddingLeft: theme.spacing.unit,
-    borderRadius: theme.borderRadii.default
-  },
-  selected: {
-    backgroundColor: theme.palette.action.hover
-  },
-  input: {
-    width: theme.spacing.unit * 21
-  }
-});
+const styles = (theme) => theme.Select;
 
 @withStyles(styles)
 class Select extends Component {

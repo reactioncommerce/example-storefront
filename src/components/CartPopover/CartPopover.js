@@ -9,60 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import CheckoutButtons from "components/CheckoutButtons";
 
 
-const styles = (theme) => ({
-  container: {
-    "alignItems": "center",
-    "backgroundColor": theme.palette.reaction.white,
-    "boxShadow": theme.boxShadow.depth2,
-    "display": "flex",
-    "marginLeft": "auto",
-    "marginRight": "auto",
-    "maxWidth": "400px",
-    "paddingTop": "12px",
-    "position": "fixed",
-    "right": 0,
-    "top": 0,
-    "transitionDuration": "400ms",
-    "transitionProperty": "transform",
-    "transitionTimingFunction": "linear",
-    "zIndex": theme.zIndex.appBar + 1,
-    "&:hover": {
-      transform: "translate(0px, 0px)"
-    }
-  },
-  gridContainer: {
-    padding: "10px"
-  },
-  isContainerHidden: {
-    transform: "translate(400px, 0px)"
-  },
-  isContainerVisible: {
-    transform: "translate(0px, 0px)"
-  },
-  containerItem: {
-    alignItems: "center",
-    display: "flex"
-  },
-  addedToCartImg: {
-    height: "40px",
-    marginRight: "10px",
-    width: "40px"
-  },
-  addedToCartItemName: {
-    maxWidth: "200px",
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    fontWeight: theme.typography.fontWeightMedium,
-    display: "inline-block",
-    lineHeight: "0.8em"
-  },
-  addedToCartText: {
-    color: theme.palette.primary.dark,
-    display: "inline",
-    fontSize: theme.typography.fontSize * 0.875
-  }
-});
+const styles = (theme) => theme.CartPopover;
 
 @withStyles(styles, { withTheme: true })
 @inject("uiStore")

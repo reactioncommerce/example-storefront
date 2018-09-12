@@ -4,14 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Button from "@reactioncommerce/components/Button/v1";
 import CartItemsList from "@reactioncommerce/components/CartItems/v1";
 
-const styles = (theme) => ({
-  loadMore: {
-    display: "flex",
-    justifyContent: "center",
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
-  }
-});
+const styles = (theme) => theme.CartItems;
 
 @withStyles(styles)
 class CartItems extends Component {

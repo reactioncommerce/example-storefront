@@ -4,12 +4,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const styles = (theme) => ({
-  root: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
-  }
-});
+const styles = (theme) => theme.PageStepper;
 
 @withStyles(styles)
 export default class PageStepper extends Component {

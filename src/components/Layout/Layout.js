@@ -6,20 +6,7 @@ import Header from "components/Header";
 import Footer from "components/Footer";
 import { Cart } from "components/Cart";
 
-const styles = (theme) => ({
-  root: {
-    minHeight: "100vh"
-  },
-  main: {
-    flex: "1 1 auto",
-    maxWidth: theme.layout.mainContentMaxWidth,
-    marginLeft: "auto",
-    marginRight: "auto"
-  },
-  article: {
-    padding: theme.spacing.unit * 3
-  }
-});
+const styles = (theme) => theme.Layout;
 
 @withStyles(styles)
 class Layout extends Component {

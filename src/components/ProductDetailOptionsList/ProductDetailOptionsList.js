@@ -7,23 +7,7 @@ import BadgeOverlay from "@reactioncommerce/components/BadgeOverlay/v1";
 import { BADGE_LABELS, BADGE_TYPES, badgeStatus } from "@reactioncommerce/components/BadgeOverlay/v1/utils";
 import ProductDetailOption from "components/ProductDetailOption";
 
-const styles = (theme) => ({
-  root: {
-    position: "relative",
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit
-  },
-  alert: {
-    display: "flex",
-    top: -theme.spacing.unit * 2,
-    right: theme.spacing.unit * 1
-  },
-  badge: {
-    fontSize: "0.5rem",
-    top: -theme.spacing.unit,
-    left: theme.spacing.unit * 11
-  }
-});
+const styles = (theme) => theme.ProductDetailOptionList;
 
 @withStyles(styles, { withTheme: true })
 @observer

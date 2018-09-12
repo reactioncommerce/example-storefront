@@ -6,14 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Link from "components/Link";
 
-const styles = (theme) => ({
-  title: {
-    marginBottom: theme.spacing.unit
-  },
-  chip: {
-    cursor: "pointer"
-  }
-});
+const styles = (theme) => theme.TagGrid;
 
 /**
  * Tag grid - displays a grid of tags

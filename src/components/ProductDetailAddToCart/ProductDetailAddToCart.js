@@ -42,55 +42,7 @@ const cartItem = {
 // pending the GraphQL endpoint being hooked up
 // Remove the code between these comments when live data is available
 
-const styles = (theme) => ({
-  addToCartButton: {
-    "padding": theme.spacing.unit,
-    "backgroundColor": theme.palette.primary.light,
-    "borderRadius": theme.palette.reaction.buttonBorderRadius,
-    "minWidth": "66%",
-    "&:hover": {
-      borderColor: theme.palette.reaction.activeElementBorderColor
-    },
-    "&:focus": {
-      outline: "auto 5px -webkit-focus-ring-color"
-    }
-  },
-  addToCartText: {
-    color: theme.palette.primary.contrastText,
-    fontWeight: 600
-  },
-  incrementButton: {
-    backgroundColor: theme.palette.reaction.black02,
-    color: theme.palette.reaction.coolGray500,
-    fontSize: "12px",
-    padding: 6
-  },
-  quantityContainer: {
-    padding: 0,
-    border: `1px solid ${theme.palette.reaction.black15}`,
-    backgroundColor: theme.palette.common.white,
-    borderRadius: theme.palette.reaction.buttonBorderRadius
-  },
-  quantityGrid: {
-    marginBottom: theme.spacing.unit * 3
-  },
-  quantityInput: {
-    "color": theme.palette.reaction.coolGray500,
-    "fontSize": "12px",
-    "width": "40px",
-    "textAlign": "center",
-    "&:focus": {
-      borderColor: "#80bdff",
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)"
-    },
-    "borderLeft": `1px solid ${theme.palette.reaction.black15}`,
-    "borderRight": `1px solid ${theme.palette.reaction.black15}`
-  },
-  quantityTypography: {
-    color: theme.palette.reaction.coolGray500,
-    marginBottom: theme.spacing.unit * 2
-  }
-});
+const styles = (theme) => theme.ProductDetailAddToCart;
 
 
 @withStyles(styles)

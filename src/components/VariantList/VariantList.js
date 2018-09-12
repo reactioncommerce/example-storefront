@@ -7,21 +7,7 @@ import VariantItem from "components/VariantItem";
 import ProductDetailOptionsList from "components/ProductDetailOptionsList";
 import Divider from "components/Divider";
 
-const styles = (theme) => ({
-  variantsContainer: {
-  },
-  variantItem: {
-    position: "relative",
-    marginTop: theme.spacing.unit * 1.25,
-    marginBottom: theme.spacing.unit * 1.25
-  },
-  alert: {
-    display: "flex",
-    position: "absolute",
-    top: -theme.spacing.unit * 2,
-    right: theme.spacing.unit * 11
-  }
-});
+const styles = (theme) => theme.VariantList;
 
 @withStyles(styles)
 export default class VariantList extends Component {

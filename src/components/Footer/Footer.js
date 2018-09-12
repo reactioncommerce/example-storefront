@@ -5,14 +5,7 @@ import Typography from "@material-ui/core/Typography";
 
 const date = new Date();
 
-const styles = (theme) => ({
-  footer: {
-    alignItems: "center",
-    display: "flex",
-    justifyContent: "center",
-    marginBottom: theme.spacing.unit * 2
-  }
-});
+const styles = (theme) => theme.Footer;
 
 const Footer = ({ ...props }) => (
   <footer className={props.classes.footer}>

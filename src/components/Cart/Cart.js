@@ -4,11 +4,7 @@ import { inject, observer } from "mobx-react";
 import { withStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 
-const styles = () => ({
-  cart: {
-    width: "90vw"
-  }
-});
+const styles = (theme) => theme.Cart;
 
 @withStyles(styles)
 @inject("uiStore")
