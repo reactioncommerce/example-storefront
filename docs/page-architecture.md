@@ -11,5 +11,39 @@ Common dependencies are injected in the root level component, `_app.js`, and wil
 ## Adding A New Page
 To add a new page, create a new page in the `src/pages` directory, to use a custom route add it to the `routes` file in the projects root.
 
+## Head Tags: Title, Meta, Link, ETC...
+### General/Static Tags
+Within the Storefront the `_document.js` component handles creating the initial HTML document, this is where we'll define static/general `<head />` tags we need to include on every page. These tags might include meta "viewport", canonical or external resource (fonts, favicons, 3rd party CSS) links and script tags. Since these tags will not need to change they are nested directly inside the nextjs `<Head />` component and not as props on  the react-helmet `<Helmet />`.
+
+### Dynamic Tags
+Titles, descriptions and other page specific `<head />` tags may need to be updated as routes change. Add all page specific tags to the react-helmet `<Helmet />` component within the individual page component.
+
+**Example**
+
+```jsx
+// src/pages/index.js
+
+// Storefront.render
+<Fragment>
+  <Helmet
+    title={`${shop && shop.name} | ${shop && shop.description}`}
+    meta={[{ name: "description", content: shop && shop.description }]}
+  />
+  <ProductGrid catalogItems={catalog} />
+</Fragment>
+
+// src/pages/product.js
+
+// Product.render
+<Fragment>
+  <Helmet
+    title={`${product && product.title} | ${shop && shop.name}`}
+    meta={{ name: "description", content: product && product.description }}
+    script={[{ type: "application/ld+json", innerHTML: buildProductJSONLd(product) }]}
+  />
+  <ProductDetail product={product} />
+</Fragment>
+```
+
 ## Executing GraphQL Queries
 ApolloClient's [Query](https://www.apollographql.com/docs/react/essentials/queries.html#basic) component is used within a HOC to manage GraqhQL queries. The HOC is used to decorate the target component that will receive a query's respone data as props. Reference `src/containers/catalog/withCatalogItems` for a concrete example.
