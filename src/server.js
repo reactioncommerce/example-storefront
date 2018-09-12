@@ -50,7 +50,7 @@ app
     server.get("/auth2", passport.authenticate("oauth2"));
 
     // This endpoint handles OAuth2 requests (exchanges code for token)
-    server.get("/callback", passport.authenticate("oauth2"), (req, res, next) => {
+    server.get("/callback", passport.authenticate("oauth2"), (req, res) => {
       // After success, redirect to the page we came from originally
       res.redirect("/");
     });
