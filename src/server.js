@@ -55,6 +55,11 @@ app
       res.redirect("/");
     });
 
+    server.get("/logout", (req, res) => {
+      req.logout();
+      res.redirect("/");
+    });
+
     // Setup next routes
     server.use(routeHandler);
 
