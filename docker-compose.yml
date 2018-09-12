@@ -1,9 +1,9 @@
 version: '3.4'
 
 networks:
-  reaction-api:
+  graphql:
     external:
-      name: reaction-api
+      name: graphql.reaction.localhost
 
 services:
   web:
@@ -17,7 +17,7 @@ services:
     environment:
       REACTION_APP_NAME: "reaction-next-starterkit.web"
     networks:
-      reaction-api:
+      graphql:
         aliases:
           - storefront
     ports:

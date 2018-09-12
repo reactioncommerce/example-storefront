@@ -31,7 +31,7 @@ _Follow steps as necessary. If you already have Reaction installed, you may be a
 
     You'll need to create a docker network for the GraphQL service and the Reaction Storefront to communicate
     ```
-    docker network create reaction-api
+    docker network create graphql.reaction.localhost
     ```
     You can run `docker network ls` to verify the network has been created.
 
@@ -128,7 +128,7 @@ Sometimes we need to test [`reaction-component-library`](https://github.com/reac
 1. After the build is done, `cd` into the new `dist` folder it just built and run `yarn link` to allow the library to be installed into the starterkit. This will link `@reactioncommerce/components`
 1. Inside the `reaction-next-starterkit` repo, temporarily rename your `.yarnrc` file to anything else (i.e. `.yarnrc-temp`)
 1. Run `yarn install` and then the command `yarn link "@reactioncommerce/components"` to set the local version as an override of the published npm version
-1. Inside your `.env` file, change `INTERNAL_GRAPHQL_URL` to equal `http://localhost:3030/graphql-alpha`, the same as the `EXTERNAL_GRAPHQL_URL` 
+1. Inside your `.env` file, change `INTERNAL_GRAPHQL_URL` to equal `http://localhost:3030/graphql-alpha`, the same as the `EXTERNAL_GRAPHQL_URL`
 1. Start the starterkit locally by running the command `export $(cat .env | xargs) && yarn dev`
 1. Your starterkit should now be running at `localhost:4000`
     - If you see errors about not being able to find peer dependency packages, that seems to be an issues with yarn linking. You can just temporarily `yarn add` each of those packages in the component library `package/dist` folder. (This folder is gitignored anyway.)
@@ -164,7 +164,7 @@ docker build -t reaction-storefront --build-arg BUILD_ENV=production .
 To start the app in production mode execute:
 
 ```
-docker run -d --name storefront -p ${port}:4000 --env-file .env --network reaction-api reaction-storefront
+docker run -d --name storefront -p ${port}:4000 --env-file .env --network graphql reaction-storefront
 ```
 
 To stop the docker container after starting it with the above command
