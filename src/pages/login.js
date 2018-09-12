@@ -43,10 +43,10 @@ const styles = (theme) => ({
     }
   },
   backLink: {
-    "color": theme.palette.reaction.black80,
-    "cursor": "pointer",
-    "fontFamily": theme.typography.fontFamily,
-    "fontSize": 14,
+    color: theme.palette.reaction.black80,
+    cursor: "pointer",
+    fontFamily: theme.typography.fontFamily,
+    fontSize: 14,
     "&:hover": {
       color: theme.palette.reaction.reactionBlue400
     }
@@ -113,7 +113,7 @@ export default class Login extends Component {
     return null;
   }
 
-  state = {}
+  state = {};
 
   handleLoginClick = () => {
     // TODO: Redirect to Auth solution
@@ -188,10 +188,10 @@ export default class Login extends Component {
     const { classes, shop } = this.props;
     return (
       <Fragment>
-        <Helmet>
-          <title>{shop && shop.name} | Login</title>
-          <meta name="description" content={shop && shop.description} />
-        </Helmet>
+        <Helmet
+          title={`Login | ${shop && shop.name}`}
+          meta={[{ name: "description", content: shop && shop.description }]}
+        />
         <CheckoutTopHat checkoutMessage="Free Shipping + Free Returns" />
         <div className={classes.root}>
           {this.renderHeader()}
