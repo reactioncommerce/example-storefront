@@ -91,10 +91,8 @@ class HTMLDocument extends Document {
           <Helmet htmlAttributes={{ lang: "en", dir: "ltr" }} />
           {meta.map((tag) => <meta {...tag} />)}
           {links.map((link) => <link {...link} />)}
-          {scripts.map(
-            (script) =>
-              script.innerHTML ? <script type={script.type}>{script.innerHTML}</script> : <script {...script} />
-          )}
+          {scripts.map((script) =>
+            (script.innerHTML ? <script type={script.type}>{script.innerHTML}</script> : <script {...script} />))}
           {helmet.base.toComponent()}
           {helmet.title.toComponent()}
           {helmet.meta.toComponent()}
