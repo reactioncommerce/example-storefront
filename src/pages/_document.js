@@ -63,13 +63,17 @@ class HTMLDocument extends Document {
       innerHTML: provider.renderScript()
     }));
 
-    scripts = [...scripts, {
-      type: "text/javascript",
-      src: `${keycloakConfig.url}/js/keycloak.js`
-    }, {
-      type: "text/javascript",
-      src: "https://js.stripe.com/v3/"
-    }];
+    scripts = [
+      ...scripts,
+      {
+        type: "text/javascript",
+        src: `${keycloakConfig.url}/js/keycloak.js`
+      },
+      {
+        type: "text/javascript",
+        src: "https://js.stripe.com/v3/"
+      }
+    ];
 
     return (
       <html lang="en" {...htmlAttrs}>
@@ -87,7 +91,6 @@ class HTMLDocument extends Document {
               // PWA primary color
               { name: "theme-color", content: pageContext.theme.palette.primary.main }
             ]}
-            link={[...favicons, { href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" }]}
             script={scripts}
           />
           {helmet.base.toComponent()}
@@ -97,6 +100,9 @@ class HTMLDocument extends Document {
           {helmet.style.toComponent()}
           {helmet.script.toComponent()}
           {helmet.noscript.toComponent()}
+          {[...favicons, { href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" }].forEach(
+            (link) => <link {...link} />
+          )}
           {globalStyles}
         </Head>
         <body>
