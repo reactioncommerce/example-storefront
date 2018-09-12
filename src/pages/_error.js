@@ -41,7 +41,7 @@ export default class Error extends Component {
   }
 
   static defaultProps = {
-    subtitle: "Error"
+    subtitle: "Page Not Found"
   };
 
   render() {
@@ -49,7 +49,7 @@ export default class Error extends Component {
 
     return (
       <div className={classes.root}>
-        <Helmet title={`${shop && shop.name} | ${subtitle}`} />
+        <Helmet title={`${subtitle} | ${shop && shop.name}`} />
         {statusCode ? (
           <Typography> `An error ${statusCode} occurred on server`</Typography>
         ) : (
