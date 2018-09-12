@@ -12,11 +12,11 @@ Common dependencies are injected in the root level component, `_app.js`, and wil
 To add a new page, create a new page in the `src/pages` directory, to use a custom route add it to the `routes` file in the projects root.
 
 ## Head Tags: Title, Meta, Link, etc...
-### General/Static Tags
-Within the Storefront the `_document.js` component handles creating the initial HTML document, this is where we'll define static/general `<head />` tags we need to include on every page. These tags might include meta "viewport", canonical or external resource (fonts, favicons, 3rd party CSS) links and script tags. Since these tags will not need to change they are nested directly inside the nextjs `<Head />` component and not as props on  the react-helmet `<Helmet />`.
+### Static Tags
+Within the Storefront the `_document.js` component handles creating the initial HTML markup, this is where we define static/general `<head />` tags to include on every page. These meta, link and script tags are nested directly inside the nextjs `<Head />` component since they will never change.
 
 ### Dynamic Tags
-Titles, descriptions and other page specific `<head />` tags may need to be updated as routes change. Add all page specific tags to the react-helmet `<Helmet />` component within the individual page component.
+Titles, descriptions and other page specific `<head />` tags may need to be updated as routes change. Add all page specific `<head />` tags to the react-helmet `<Helmet />` component within the individual page component.
 
 **Example**
 
