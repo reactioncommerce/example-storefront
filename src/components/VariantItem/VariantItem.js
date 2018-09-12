@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 
-import styles from "./styles";
+const styles = (theme) => theme.VariantItem;
 
 @withStyles(styles)
 class VariantItem extends Component {
