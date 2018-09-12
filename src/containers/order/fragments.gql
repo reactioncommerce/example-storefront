@@ -6,64 +6,110 @@ fragment OrderCommon on Order {
   }
   cartId
   createdAt
-  currencyCode
   email
   fulfillmentGroups {
     _id
     data {
-      shippingAddress
+      ... on ShippingOrderFulfillmentGroupData {
+        shippingAddress {
+          _id
+          address1
+          address2
+          city
+          company
+          country
+          fullName
+          isCommercial
+          isShippingDefault
+          phone
+          postal
+          region
+        }
+      }
     }
     items {
+      nodes {
+        _id
+        addedAt
+        createdAt
+        imageURLs {
+          large
+          medium
+          original
+          small
+          thumbnail
+        }
+        isTaxable
+        optionTitle
+        parcel {
+          containers
+          distanceUnit
+          height
+          length
+          massUnit
+          weight
+          width
+        }
+        price {
+          amount
+          currency {
+            code
+          }
+          displayAmount
+        }
+        productConfiguration {
+          productId
+          productVariantId
+        }
+        productSlug
+        productType
+        productVendor
+        quantity
+        shop {
+          _id
+        }
+        subtotal {
+          amount
+          currency {
+            code
+          }
+          displayAmount
+        }
+        taxCode
+        title
+        updatedAt
+        variantTitle
+      }
+    }
+    payment {
       _id
-      addedAt
-      createdAt
-      imageURLs {
-        large
-        medium
-        original
-        small
-        thumbnail
-      }
-      isTaxable
-      optionTitle
-      parcel {
-        containers
-        distanceUnit
-        height
-        length
-        massUnit
-        weight
-        width
-      }
-      price {
-        amount,
+      amount {
+        amount
         currency {
           code
         }
         displayAmount
       }
-      productConfiguration {
-        productId
-        productVariantId
-      }
-      productSlug
-      productType
-      productVendor
-      quantity
-      shop {
-        _id
-      }
-      subtotal
-      taxCode
-      title
-      updatedAt
-      variantTitle
-    }
-    payment {
-      _id
-      amount
       createdAt
-      data
+      data {
+        ... on StripeCardPaymentData {
+          chargeId
+          billingAddress {
+            _id
+            address1
+            address2
+            city
+            company
+            country
+            fullName
+            isCommercial
+            isShippingDefault
+            phone
+            postal
+            region
+          }
+        }
+      }
       displayName
       method {
         name
@@ -79,14 +125,14 @@ fragment OrderCommon on Order {
         name
       }
       handlingPrice {
-        amount,
+        amount
         currency {
           code
         }
         displayAmount
       }
       price {
-        amount,
+        amount
         currency {
           code
         }
@@ -105,7 +151,8 @@ fragment OrderCommon on Order {
   updatedAt
 }
 
+
 # Fragment for order query
-fragment OrderQueryFragment on Cart {
+fragment OrderQueryFragment on Order {
   ...OrderCommon
 }
