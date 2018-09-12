@@ -35,11 +35,24 @@ fragment CartCommon on Cart {
       }
       availableFulfillmentOptions {
         price {
+          amount
           displayAmount
         }
         fulfillmentMethod {
           _id
+          name
           displayName
+        }
+      }
+      selectedFulfillmentOption {
+        fulfillmentMethod {
+          _id
+          name
+          displayName
+        }
+        price {
+          amount
+          displayAmount
         }
       }
     }

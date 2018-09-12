@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import { observer } from "mobx-react";
 import BadgeOverlay from "@reactioncommerce/components/BadgeOverlay/v1";
-import { BADGE_TYPES, badgeStatus } from "@reactioncommerce/components/BadgeOverlay/v1/utils";
+import { BADGE_LABELS, BADGE_TYPES, badgeStatus } from "@reactioncommerce/components/BadgeOverlay/v1/utils";
 import ProductDetailOption from "components/ProductDetailOption";
 
 const styles = (theme) => ({
@@ -39,7 +39,7 @@ export default class OptionsList extends Component {
 
   renderInventoryStatus(option) {
     const { classes } = this.props;
-    const status = badgeStatus(option);
+    const status = badgeStatus(option, BADGE_LABELS);
 
     if (!status) return null;
 

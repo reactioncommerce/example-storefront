@@ -38,6 +38,13 @@ class CartStore {
   @observable isReconcilingCarts = false;
 
   /**
+   * The Stripe token that stores encrypted user payment data
+   *
+   * @type Object
+   */
+  @observable stripeToken = null;
+
+  /**
    * @name setAnonymousCartCredentials
    * @summary Set anonymousCartID and anonymousCartToken to local storage and cookies
    * @param {String} anonymousCartId Cart Id from "createCart" mutation
@@ -115,6 +122,14 @@ class CartStore {
 
   @action setAccountCartId(value) {
     this.accountCartId = value;
+  }
+
+  get stripeToken() {
+    return this.stripeToken;
+  }
+
+  @action setStripeToken(value) {
+    this.stripeToken = value;
   }
 }
 

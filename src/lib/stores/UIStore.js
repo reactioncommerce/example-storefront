@@ -86,8 +86,45 @@ class UIStore {
     this.pdpSelectedOptionId = optionId;
   }
 
-  @action closeCart() {
-    this.isCartOpen = false;
+  /**
+   * @name openCart
+   * @summary Open the mini-cart drawer
+   * @returns {undefined} No return
+   */
+  @action openCart = () => {
+    this.isCartOpen = true;
+    this.clearOpenCartTimeout();
+  }
+
+  /**
+   * @name closeCart
+   * @summary Close the mini-cart drawer, optionally supply a delay
+   * @param {Number} delay Time in milliseconds to keep cart open after which it will be closed
+   * @returns {undefined} No return
+   */
+  @action closeCart = (delay = 500) => {
+    this.openCartTimeout = setTimeout(action(() => {
+      this.isCartOpen = false;
+      this.clearOpenCartTimeout();
+    }), delay);
+  }
+
+  @action openCartWithTimeout = (delay = 3000) => {
+    this.openCart();
+
+    this.openCartTimeout = setTimeout(action(() => {
+      this.isCartOpen = false;
+      clearTimeout(this.openCartTimeout);
+    }), delay);
+  }
+
+  /**
+   * @name clearOpenCartTimeout
+   * @summary Clear the cart open timeout
+   * @returns {undefined} No return
+   */
+  clearOpenCartTimeout = () => {
+    this.openCartTimeout && clearTimeout(this.openCartTimeout);
   }
 
   @action toggleCartOpen() {
