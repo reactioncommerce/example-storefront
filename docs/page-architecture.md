@@ -37,7 +37,7 @@ Titles, descriptions and other page specific `<head />` tags may need to be upda
 <Fragment>
   <Helmet
     title={`${product && product.title} | ${shop && shop.name}`}
-    meta={{ name: "description", content: product && product.description }}
+    meta={[{ name: "description", content: product && product.description }]}
     script={[{ type: "application/ld+json", innerHTML: buildProductJSONLd(product) }]}
   />
   <ProductDetail product={product} />

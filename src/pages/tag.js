@@ -78,7 +78,7 @@ export default class TagShop extends Component {
       <Fragment>
         <Helmet
           title={`${tag && tag.name} | ${shop && shop.name}`}
-          meta={{ name: "description", content: shop && shop.description }}
+          meta={[{ name: "description", content: shop && shop.description }]}
         />
         <Breadcrumbs isTagGrid={true} tag={tag} tags={tags} />
         <ProductGridHero tag={tag} />

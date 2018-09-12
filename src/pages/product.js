@@ -87,7 +87,7 @@ class ProductDetailPage extends Component {
       <Fragment>
         <Helmet
           title={`${product && product.title} | ${shop && shop.name}`}
-          meta={{ name: "description", content: product && product.description }}
+          meta={[{ name: "description", content: product && product.description }]}
           script={[{ type: "application/ld+json", innerHTML: this.buildJSONLd() }]}
         />
         <ProductDetail
