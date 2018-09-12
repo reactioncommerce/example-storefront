@@ -17,19 +17,13 @@ const styles = (theme) => ({
 @withStyles(styles)
 class OrderFulfillmentGroup extends Component {
   static propTypes = {
-    cart: PropTypes.shape({
+    classes: PropTypes.object,
+    fulfillmentGroup: PropTypes.shape({
       items: PropTypes.arrayOf(PropTypes.object),
-      checkout: PropTypes.shape({
-        itemTotal: PropTypes.shape({
-          displayAmount: PropTypes.string
-        }),
-        taxTotal: PropTypes.shape({
-          displayAmount: PropTypes.string
-        })
+      data: PropTypes.shape({
+        shippingAddress: PropTypes.object
       })
     }),
-    classes: PropTypes.object,
-    fulfillmentGroup: PropTypes.object,
     hasMoreCartItems: PropTypes.bool,
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
@@ -60,9 +54,9 @@ class OrderFulfillmentGroup extends Component {
   }
 
   renderItems() {
-    const { cart, hasMoreCartItems, loadMoreCartItems } = this.props;
+    const { fulfillmentGroup, hasMoreCartItems, loadMoreCartItems } = this.props;
 
-    if (cart && Array.isArray(cart.items)) {
+    if (fulfillmentGroup && Array.isArray(fulfillmentGroup.items.nodes)) {
       return (
         <Grid item xs={12}>
           <CartItems
@@ -70,7 +64,7 @@ class OrderFulfillmentGroup extends Component {
             isReadOnly
             hasMoreCartItems={hasMoreCartItems}
             onLoadMoreCartItems={loadMoreCartItems}
-            items={cart.items}
+            items={fulfillmentGroup.items.nodes}
             onChangeCartItemQuantity={this.handleItemQuantityChange}
             onRemoveItemFromCart={this.handleRemoveItem}
           />
@@ -82,34 +76,29 @@ class OrderFulfillmentGroup extends Component {
   }
 
   renderFulfillmentInfo() {
-    const { cart, classes, fulfillmentGroup } = this.props;
+    const { classes, fulfillmentGroup } = this.props;
 
-    if (cart && cart.checkout && cart.checkout.summary) {
-      let address;
-
-      if (fulfillmentGroup) {
-        const { data: { shippingAddress } } = fulfillmentGroup;
-
-        address = (
-          <Typography variant="body2">
-            {(shippingAddress.firstName || shippingAddress.lastName) && (
-              <span>
-                {shippingAddress.firstName} {shippingAddress.lastName}
-                <br />
-              </span>
-            )}
-            {shippingAddress.address1}
-            <br />
-            {(shippingAddress.address2 && shippingAddress.address2 !== "") && (
-              <span>
-                {shippingAddress.address2} <br />
-              </span>
-            )}
-            {shippingAddress.city}, {shippingAddress.region} {shippingAddress.postal} <br />
-            {shippingAddress.country}
-          </Typography>
-        );
-      }
+    if (fulfillmentGroup.data && fulfillmentGroup.data.shippingAddress) {
+      const { data: { shippingAddress } } = fulfillmentGroup;
+      const address = (
+        <Typography variant="body2">
+          {(shippingAddress.firstName || shippingAddress.lastName) && (
+            <span>
+              {shippingAddress.firstName} {shippingAddress.lastName}
+              <br />
+            </span>
+          )}
+          {shippingAddress.address1}
+          <br />
+          {(shippingAddress.address2 && shippingAddress.address2 !== "") && (
+            <span>
+              {shippingAddress.address2} <br />
+            </span>
+          )}
+          {shippingAddress.city}, {shippingAddress.region} {shippingAddress.postal} <br />
+          {shippingAddress.country}
+        </Typography>
+      );
 
       return (
         <div className={classes.fulfillmentDetails}>
