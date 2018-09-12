@@ -23,12 +23,12 @@ class OrderFulfillmentGroups extends Component {
   }
 
   renderFulfillmentGroups() {
-    const { cart } = this.props;
+    const { order } = this.props;
 
-    if (cart.checkout && Array.isArray(cart.checkout.fulfillmentGroups)) {
-      return cart.checkout.fulfillmentGroups.map((fulfillmentGroup) => (
+    if (order && Array.isArray(order.fulfillmentGroups)) {
+      return order.fulfillmentGroups.map((fulfillmentGroup) => (
         <OrderFulfillmentGroup
-          cart={cart}
+          order={order}
           fulfillmentGroup={fulfillmentGroup}
         />
       ));
