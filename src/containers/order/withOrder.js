@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
-import { orderByOrderId } from "./queries.gql";
+import { orderById } from "./queries.gql";
 
 /**
  * withOrder higher order query component for fetching an order
@@ -29,6 +29,7 @@ export default (Component) => (
       client: PropTypes.shape({
         mutate: PropTypes.func.isRequired
       }),
+      primaryShopId: PropTypes.string.isRequired,
       routingStore: PropTypes.shape({
         query: PropTypes.shape({
           orderId: PropTypes.string.isRequired,
@@ -38,15 +39,16 @@ export default (Component) => (
     }
 
     render() {
-      const { authStore, cartStore, routingStore } = this.props;
+      const { primaryShopId, routingStore } = this.props;
 
       const variables = {
         id: routingStore.query.orderId,
-        token: routingStore.query.token || (!authStore.isAuthenticated && cartStore.anonymousCartToken)
+        shopId: primaryShopId,
+        token: routingStore.query.token || null
       };
 
       return (
-        <Query query={orderByOrderId} variables={variables}>
+        <Query query={orderById} variables={variables}>
           {({ loading: isLoading, data: orderData }) => {
             const { order } = orderData || {};
 
