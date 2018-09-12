@@ -1,8 +1,8 @@
 #import "./fragments.gql"
 
 # Get an order
-query orderByOrderId($orderId: ID!, $token: String) {
-  order: orderByOrderId(cartId: $cartId, token: $token) {
+query orderById($id: ID!, $shopId: ID!, $token: String) {
+  order: orderById(id: $id, shopId: $shopId, token: $token) {
     ...OrderQueryFragment
   }
 }
