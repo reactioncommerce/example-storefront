@@ -140,7 +140,17 @@ const theme = createMuiTheme({
     fontWeightLight: 200,
     fontWeightRegular: 400,
     fontWeightMedium: 700,
-    fontWeightBold: 700
+    fontWeightBold: 700,
+    body2: {
+      fontSize: 14,
+      fontWeight: 400,
+      color: "#595959"
+    },
+    subheading: {
+      fontSize: 14,
+      fontWeight: 600,
+      color: "#737373"
+    }
   }
 });
 
