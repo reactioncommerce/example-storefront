@@ -59,19 +59,19 @@ class ProductDetailPage extends Component {
     const productJSON = {
       "@context": "http://schema.org/",
       "@type": "Product",
-      brand: product.vendor,
-      description: product.description,
-      image: images,
-      name: product.title,
-      sku: product.sku,
-      offers: {
+      "brand": product.vendor,
+      "description": product.description,
+      "image": images,
+      "name": product.title,
+      "sku": product.sku,
+      "offers": {
         "@type": "Offer",
-        priceCurrency: currencyCode,
-        price: priceData.minPrice,
-        availability: productAvailability,
-        seller: {
+        "priceCurrency": currencyCode,
+        "price": priceData.minPrice,
+        "availability": productAvailability,
+        "seller": {
           "@type": "Organization",
-          name: shop.name
+          "name": shop.name
         }
       }
     };
