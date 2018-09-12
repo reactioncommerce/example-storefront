@@ -6,9 +6,7 @@ import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
-import withCart from "containers/cart/withCart";
-import Link from "components/Link";
+import withOrder from "containers/order/withOrder";
 import OrderFulfillmentGroups from "components/OrderFulfillmentGroups";
 import OrderSummary from "components/OrderSummary";
 
@@ -32,7 +30,7 @@ const styles = (theme) => ({
   },
   checkoutContent: {
     flex: "1",
-    maxWidth: theme.layout.mainContentMaxWidth,
+    maxWidth: theme.layout.mainContentMaxWidth
   },
   checkoutContentContainer: {
     display: "flex",
@@ -79,23 +77,18 @@ const styles = (theme) => ({
   }
 });
 
-@withCart
+@withOrder
 @observer
 @withStyles(styles, { withTheme: true })
 class CheckoutComplete extends Component {
   static propTypes = {
-    cart: PropTypes.shape({
-      account: PropTypes.object,
-      checkout: PropTypes.object,
-      email: PropTypes.string,
-      items: PropTypes.array
-    }),
     classes: PropTypes.object,
     hasMoreCartItems: PropTypes.bool,
     isLoading: PropTypes.bool,
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
+    order: PropTypes.object,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -107,35 +100,20 @@ class CheckoutComplete extends Component {
 
   handleCartEmptyClick = () => Router.pushRoute("/")
 
-  renderCheckout() {
+  renderFulfillmentGroups() {
     const {
       classes,
-      cart,
-      isLoading,
+      order,
+      isLoading
     } = this.props;
 
     if (isLoading) return null;
-
-    if (!cart || (cart && Array.isArray(cart.items) && cart.items.length === 0)) {
-      return (
-        <div className={classes.emptyCartContainer}>
-          <div className={classes.emptyCart}>
-            <div>
-              <CartEmptyMessage onClick={this.handleCartEmptyClick} />
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    const hasAccount = !!cart.account;
-    const displayEmail = hasAccount ? cart.account.emailRecords[0].address : cart.email;
 
     return (
       <div className={classes.flexContainer}>
         <div className={classes.cartSummary}>
           <OrderFulfillmentGroups
-            cart={cart}
+            order={order}
           />
         </div>
       </div>
@@ -143,12 +121,12 @@ class CheckoutComplete extends Component {
   }
 
   renderSummary() {
-    const { cart } = this.props;
+    const { order } = this.props;
 
-    if (cart && cart.checkout && cart.checkout.summary) {
+    if (order) {
       return (
         <Grid item xs={12}>
-          <OrderSummary order={cart} />
+          <OrderSummary order={order} />
         </Grid>
       );
     }
@@ -157,7 +135,7 @@ class CheckoutComplete extends Component {
   }
 
   render() {
-    const { classes, shop } = this.props;
+    const { classes, shop, order } = this.props;
 
     return (
       <Fragment>
@@ -170,11 +148,11 @@ class CheckoutComplete extends Component {
             <section className={classes.section}>
               <header className={classes.sectionHeader}>
                 <Typography className={classes.title} variant="title">{"Thank you for your order"}</Typography>
-                <Typography variant="body1">{"Your order number is"} <strong>{"000"}</strong></Typography>
-                <Typography variant="body1">{"We've send a confirmation email to"} <strong>{"sample@email.com"}</strong></Typography>
+                <Typography variant="body1">{"Your order number is"} <strong>{order && order._id}</strong></Typography>
+                <Typography variant="body1">{"We've send a confirmation email to"} <strong>{order && order.email}</strong></Typography>
               </header>
               <div className={classes.checkoutContent}>
-                {this.renderCheckout()}
+                {this.renderFulfillmentGroups()}
               </div>
             </section>
             <section className={classes.section}>
