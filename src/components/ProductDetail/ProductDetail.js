@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import { inject, observer } from "mobx-react";
 import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
@@ -32,6 +33,7 @@ const styles = (theme) => ({
  * @param {Object} props Component props
  * @returns {React.Component} React component node that represents a product detail view
  */
+@withWidth()
 @withStyles(styles, { withTheme: true })
 @inject("routingStore", "uiStore")
 @track()
@@ -55,7 +57,8 @@ class ProductDetail extends Component {
       edges: PropTypes.arrayOf(PropTypes.object).isRequired
     }),
     theme: PropTypes.object,
-    uiStore: PropTypes.object.isRequired
+    uiStore: PropTypes.object.isRequired,
+    width: PropTypes.string.isRequired
   };
 
   componentDidMount() {
@@ -109,7 +112,8 @@ class ProductDetail extends Component {
       addItemsToCart,
       currencyCode,
       product,
-      uiStore: { pdpSelectedOptionId, pdpSelectedVariantId }
+      uiStore: { openCart, closeCart, pdpSelectedOptionId, pdpSelectedVariantId },
+      width
     } = this.props;
 
     // Get selected variant or variant option
@@ -135,6 +139,11 @@ class ProductDetail extends Component {
           quantity
         }
       ]);
+    }
+
+    if (isWidthUp("md", width)) {
+      openCart(); // Open the cart
+      closeCart(3000); // Close the cart after a 3 second delay
     }
   };
 
