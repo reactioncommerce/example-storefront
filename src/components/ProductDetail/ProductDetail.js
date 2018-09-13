@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import Hidden from "@material-ui/core/Hidden";
 import { inject, observer } from "mobx-react";
 import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
@@ -227,9 +228,11 @@ class ProductDetail extends Component {
     return (
       <Fragment>
         <Grid container spacing={theme.spacing.unit * 3}>
-          <Grid item className={classes.breadcrumbGrid} xs={12}>
-            <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
-          </Grid>
+          <Hidden xsDown>
+            <Grid item className={classes.breadcrumbGrid} xs={12}>
+              <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
+            </Grid>
+          </Hidden>
           <Grid item xs={12} sm={6}>
             <div className={classes.section}>
               <MediaGallery mediaItems={pdpMediaItems} />
