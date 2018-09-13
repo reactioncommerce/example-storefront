@@ -36,9 +36,8 @@ const styles = (theme) => ({
 class OrderSummary extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    order: PropTypes.shape({
-      items: PropTypes.arrayOf(PropTypes.object),
-      checkout: PropTypes.shape({
+    fulfillmentGroup: PropTypes.shape({
+      summary: PropTypes.shape({
         itemTotal: PropTypes.shape({
           displayAmount: PropTypes.string
         }),
@@ -54,14 +53,14 @@ class OrderSummary extends Component {
   }
 
   renderSummary() {
-    const { order: cart } = this.props;
+    const { fulfillmentGroup } = this.props;
 
-    if (cart && cart.checkout && cart.checkout.summary) {
+    if (fulfillmentGroup && fulfillmentGroup.summary) {
       const {
         fulfillmentTotal,
         itemTotal,
         total
-      } = cart.checkout.summary;
+      } = fulfillmentGroup.summary;
 
       return (
         <OrderSummaryContainer>
