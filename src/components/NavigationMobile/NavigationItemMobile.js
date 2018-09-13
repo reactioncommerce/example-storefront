@@ -71,7 +71,6 @@ class NavigationItemMobile extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.subNav}>
-        <Divider />
         {navItemGroup.subTags.edges.map(({ node: navItemGroupItem }, index) => (
           <MenuItem className={classes.nested} dense inset key={index}>
             <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroupItem.name} />
