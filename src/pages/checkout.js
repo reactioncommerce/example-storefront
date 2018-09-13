@@ -100,6 +100,7 @@ class Checkout extends Component {
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
+    primaryShopId: PropTypes.string.isRequired,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -124,7 +125,8 @@ class Checkout extends Component {
       isLoading,
       loadMoreCartItems,
       onRemoveCartItems,
-      onChangeCartItemsQuantity
+      onChangeCartItemsQuantity,
+      primaryShopId
     } = this.props;
 
     if (isLoading) return null;
@@ -154,7 +156,7 @@ class Checkout extends Component {
                   <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} />
                   : null
               }
-              <CheckoutActions />
+              <CheckoutActions primaryShopId={primaryShopId} />
             </div>
           </div>
         </Grid>

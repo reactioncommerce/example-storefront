@@ -7,6 +7,7 @@ import FulfillmentOptionsCheckoutAction from "@reactioncommerce/components/Fulfi
 import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaymentCheckoutAction/v1";
 import FinalReviewCheckoutAction from "@reactioncommerce/components/FinalReviewCheckoutAction/v1";
 import withCart from "containers/cart/withCart";
+import withPlaceStripeOrder from "containers/order/withPlaceStripeOrder";
 import {
   adaptAddressToFormFields,
   isShippingAddressSet
@@ -57,6 +58,7 @@ const checkoutSummary = {
 };
 
 @withCart
+@withPlaceStripeOrder
 @observer
 export default class CheckoutActions extends Component {
   static propTypes = {
@@ -72,8 +74,9 @@ export default class CheckoutActions extends Component {
     checkoutMutations: PropTypes.shape({
       // onUpdateFulfillmentOptionsForGroup: PropTypes.func.isRequired,
       onSetFulfillmentOption: PropTypes.func.isRequired,
-      onSetShippingAddress: PropTypes.func.required
-    })
+      onSetShippingAddress: PropTypes.func.isRequired
+    }),
+    placeOrderWithStripeCard: PropTypes.func.isRequired
   };
 
   setShippingAddress = (address) => {
@@ -107,6 +110,7 @@ export default class CheckoutActions extends Component {
   }
 
   placeOrder = () => {
+    const { placeOrderWithStripeCard } = this.props;
     // TODO: place order
   }
 
