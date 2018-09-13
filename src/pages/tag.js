@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { observer, inject } from "mobx-react";
 import Helmet from "react-helmet";
@@ -48,7 +48,7 @@ export default class TagShop extends Component {
     return null;
   }
 
-  state = {}
+  state = {};
 
   componentDidUpdate(prevProps) {
     if (this.props.catalogItems !== prevProps.catalogItems) {
@@ -59,45 +59,27 @@ export default class TagShop extends Component {
   @trackProductListViewed()
   trackEvent() {}
 
-  renderHelmet() {
-    const { shop, routingStore } = this.props;
-    const title = routingStore.query.slug || shop.name;
-    const pageTitle = title[0].toUpperCase() + title.slice(1); // TODO: rethink capitalization of tag
-
-    return (
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={shop && shop.description} />
-      </Helmet>
-    );
-  }
-
   setPageSize = (pageSize) => {
     this.props.routingStore.setSearch({ limit: pageSize });
     this.props.uiStore.setPageSize(pageSize);
-  }
+  };
 
   setSortBy = (sortBy) => {
     this.props.routingStore.setSearch({ sortby: sortBy });
     this.props.uiStore.setSortBy(sortBy);
-  }
+  };
 
   render() {
-    const {
-      catalogItems,
-      catalogItemsPageInfo,
-      routingStore: { query },
-      shop,
-      tag,
-      tags,
-      uiStore
-    } = this.props;
-    const pageSize = (query && query.limit) ? parseInt(query.limit, 10) : uiStore.pageSize;
-    const sortBy = (query && query.sortby) ? query.sortby : uiStore.sortBy;
+    const { catalogItems, catalogItemsPageInfo, routingStore: { query }, shop, tag, tags, uiStore } = this.props;
+    const pageSize = query && query.limit ? parseInt(query.limit, 10) : uiStore.pageSize;
+    const sortBy = query && query.sortby ? query.sortby : uiStore.sortBy;
 
     return (
-      <React.Fragment>
-        {this.renderHelmet()}
+      <Fragment>
+        <Helmet
+          title={`${tag && tag.name} | ${shop && shop.name}`}
+          meta={[{ name: "description", content: shop && shop.description }]}
+        />
         <Breadcrumbs isTagGrid={true} tag={tag} tags={tags} />
         <ProductGridHero tag={tag} />
         <ProductGrid
@@ -109,7 +91,7 @@ export default class TagShop extends Component {
           setSortBy={this.setSortBy}
           sortBy={sortBy}
         />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

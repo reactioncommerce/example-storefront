@@ -53,43 +53,47 @@ class HTMLDocument extends Document {
   render() {
     const { pageContext, helmet } = this.props;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
-    let scripts = [];
     const { publicRuntimeConfig } = getConfig();
     const { keycloakConfig } = publicRuntimeConfig;
+    const links = [
+      { rel: "canonical", href: process.env.CANONICAL_URL },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" },
+      ...favicons
+    ];
+    const meta = [
+      // Use minimum-scale=1 to enable GPU rasterization
+      {
+        name: "viewport",
+        content: "user-scalable=0, initial-scale=1 minimum-scale=1, width=device-width, height=device-height"
+      },
+      // PWA primary color
+      { name: "theme-color", content: pageContext.theme.palette.primary.main }
+    ];
 
-    // Render analytics  scripts
-    scripts = analyticsProviders.map((provider) => ({
-      type: "text/javascript",
-      innerHTML: provider.renderScript()
-    }));
-
-    scripts = [...scripts, {
-      type: "text/javascript",
-      src: `${keycloakConfig.url}/js/keycloak.js`
-    }, {
-      type: "text/javascript",
-      src: "https://js.stripe.com/v3/"
-    }];
+    const scripts = [
+      // Render analytics  scripts
+      ...analyticsProviders.map((provider) => ({
+        type: "text/javascript",
+        innerHTML: provider.renderScript()
+      })),
+      {
+        type: "text/javascript",
+        src: `${keycloakConfig.url}/js/keycloak.js`
+      },
+      {
+        type: "text/javascript",
+        src: "https://js.stripe.com/v3/"
+      }
+    ];
 
     return (
       <html lang="en" {...htmlAttrs}>
         <Head>
-          <Helmet
-            htmlAttributes={{ lang: "en", dir: "ltr" }}
-            title="My Store"
-            meta={[
-              { charSet: "utf-8" },
-              // Use minimum-scale=1 to enable GPU rasterization
-              {
-                name: "viewport",
-                content: "user-scalable=0, initial-scale=1 minimum-scale=1, width=device-width, height=device-height"
-              },
-              // PWA primary color
-              { name: "theme-color", content: pageContext.theme.palette.primary.main }
-            ]}
-            link={[...favicons, { href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" }]}
-            script={scripts}
-          />
+          <Helmet htmlAttributes={{ lang: "en", dir: "ltr" }} />
+          {meta.map((tag) => <meta {...tag} />)}
+          {links.map((link) => <link {...link} />)}
+          {scripts.map((script) =>
+            (script.innerHTML ? <script type={script.type}>{script.innerHTML}</script> : <script {...script} />))}
           {helmet.base.toComponent()}
           {helmet.title.toComponent()}
           {helmet.meta.toComponent()}
