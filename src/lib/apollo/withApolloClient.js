@@ -23,7 +23,8 @@ export default (App) =>
       // Provide the `url` prop data in case a GraphQL query uses it
       rootMobxStores.routingStore.updateRoute({ query, pathname });
 
-      const apollo = initApollo({ cookies: req && req.cookies });
+      const user = req && req.session && req.session.passport && req.session.passport.user && JSON.parse(req.session.passport.user);
+      const apollo = initApollo({ cookies: req && req.cookies }, { accessToken: user && user.accessToken });
 
       ctx.ctx.apolloClient = apollo;
 
@@ -71,7 +72,8 @@ export default (App) =>
 
       return {
         ...appProps,
-        apolloState
+        apolloState,
+        accessToken: user && user.accessToken
       };
     }
 
@@ -86,7 +88,7 @@ export default (App) =>
       super(props);
       // `getDataFromTree` renders the component first, then the client is passed off as a property.
       // After that, rendering is done using Next's normal rendering pipeline
-      this.apollo = initApollo(props.apolloState.data);
+      this.apollo = initApollo(props.apolloState.data, { accessToken: props.accessToken });
 
       // State must be initialized if getDerivedStateFromProps is used
       this.state = {};

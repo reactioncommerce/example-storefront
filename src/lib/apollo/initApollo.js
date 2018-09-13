@@ -48,7 +48,7 @@ if (!process.browser) {
   global.fetch = fetch;
 }
 
-const create = (initialState) => {
+const create = (initialState, options) => {
   // error handling for Apollo Link
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors) {
@@ -72,7 +72,8 @@ const create = (initialState) => {
       headers: {
         ...headers,
         "meteor-login-token": `${meteorToken || ""}`,
-        "Authorization": keycloakToken ? `Bearer ${keycloakToken}` : ""
+        // "Authorization": keycloakToken ? `Bearer ${keycloakToken}` : ""
+        "Authorization": options.accessToken
       }
     };
   });
@@ -93,15 +94,15 @@ const create = (initialState) => {
  * @param {Object} options Additional options to initialize the Apollo client with
  * @return {ApolloClient} Apollo client instance
  */
-export default function initApollo(initialState) {
+export default function initApollo(initialState, options) {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (!process.browser) {
-    return create(initialState);
+    return create(initialState, options);
   }
 
   if (!apolloClient) {
-    apolloClient = create(initialState);
+    apolloClient = create(initialState, options);
   }
 
   return apolloClient;
