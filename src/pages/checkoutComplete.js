@@ -5,16 +5,10 @@ import { observer } from "mobx-react";
 import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import withOrder from "containers/order/withOrder";
 import OrderFulfillmentGroups from "components/OrderFulfillmentGroups";
-import OrderSummary from "components/OrderSummary";
-
 
 const styles = (theme) => ({
-  section: {
-    paddingTop: theme.spacing.unit * 2
-  },
   sectionHeader: {
     marginBottom: theme.spacing.unit * 3
   },
@@ -25,9 +19,7 @@ const styles = (theme) => ({
     width: "100%",
     maxWidth: 600
   },
-  cartSummary: {
-
-  },
+  fulfillmentGroups: {},
   checkoutContent: {
     flex: "1",
     maxWidth: theme.layout.mainContentMaxWidth
@@ -111,27 +103,13 @@ class CheckoutComplete extends Component {
 
     return (
       <div className={classes.flexContainer}>
-        <div className={classes.cartSummary}>
+        <div className={classes.fulfillmentGroups}>
           <OrderFulfillmentGroups
             order={order}
           />
         </div>
       </div>
     );
-  }
-
-  renderSummary() {
-    const { order } = this.props;
-
-    if (order) {
-      return (
-        <Grid item xs={12}>
-          <OrderSummary order={order} />
-        </Grid>
-      );
-    }
-
-    return null;
   }
 
   render() {
@@ -154,9 +132,6 @@ class CheckoutComplete extends Component {
               <div className={classes.checkoutContent}>
                 {this.renderFulfillmentGroups()}
               </div>
-            </section>
-            <section className={classes.section}>
-              {this.renderSummary()}
             </section>
           </div>
         </div>

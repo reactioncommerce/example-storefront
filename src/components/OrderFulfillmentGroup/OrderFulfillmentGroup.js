@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import CartItems from "components/CartItems";
+import OrderSummary from "components/OrderSummary";
 
 const styles = (theme) => ({
   fulfillmentGroup: {
@@ -11,6 +12,9 @@ const styles = (theme) => ({
   },
   fulfillmentDetails: {
     padding: theme.spacing.unit * 2
+  },
+  summary: {
+    paddingTop: theme.spacing.unit * 2
   }
 });
 
@@ -118,13 +122,18 @@ class OrderFulfillmentGroup extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, fulfillmentGroup } = this.props;
 
     return (
-      <section className={classes.fulfillmentGroup}>
-        {this.renderItems()}
-        {this.renderFulfillmentInfo()}
-      </section>
+      <Fragment>
+        <section className={classes.fulfillmentGroup}>
+          {this.renderItems()}
+          {this.renderFulfillmentInfo()}
+        </section>
+        <section className={classes.summary}>
+          <OrderSummary fulfillmentGroup={fulfillmentGroup} />
+        </section>
+      </Fragment>
     );
   }
 }
