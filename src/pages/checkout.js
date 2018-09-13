@@ -113,9 +113,9 @@ class Checkout extends Component {
     return null;
   }
 
-  state = {}
+  state = {};
 
-  handleCartEmptyClick = () => Router.pushRoute("/")
+  handleCartEmptyClick = () => Router.pushRoute("/");
 
   renderCheckout() {
     const {
@@ -151,11 +151,7 @@ class Checkout extends Component {
         <Grid item xs={12} md={7}>
           <div className={classes.flexContainer}>
             <div className={classes.checkoutActions}>
-              {
-                displayEmail ?
-                  <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} />
-                  : null
-              }
+              {displayEmail ? <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} /> : null}
               <CheckoutActions primaryShopId={primaryShopId} />
             </div>
           </div>
@@ -182,10 +178,10 @@ class Checkout extends Component {
 
     return (
       <Fragment>
-        <Helmet>
-          <title>{shop && shop.name} | Checkout</title>
-          <meta name="description" content={shop && shop.description} />
-        </Helmet>
+        <Helmet
+          title={`Checkout | ${shop && shop.name}`}
+          meta={[{ name: "description", content: shop && shop.description }]}
+        />
         <CheckoutTopHat checkoutMessage="Free Shipping + Free Returns" />
         <section className={classes.checkoutContentContainer}>
           <div className={classes.checkoutContent}>

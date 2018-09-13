@@ -27,7 +27,7 @@ export default class Error extends Component {
     shop: PropTypes.object,
     statusCode: PropTypes.object,
     subtitle: PropTypes.string
-  }
+  };
 
   static getInitialProps({ res, err }) {
     let { statusCode } = res;
@@ -41,22 +41,22 @@ export default class Error extends Component {
   }
 
   static defaultProps = {
-    subtitle: "Error"
-  }
+    subtitle: "Page Not Found"
+  };
 
   render() {
     const { classes, shop, statusCode, subtitle } = this.props;
 
     return (
       <div className={classes.root}>
-        <Helmet>
-          <title> {shop && shop.name} | {subtitle}</title>
-        </Helmet>
+        <Helmet title={`${subtitle} | ${shop && shop.name}`} />
         {statusCode ? (
           <Typography> `An error ${statusCode} occurred on server`</Typography>
         ) : (
           <Fragment>
-            <Typography className={classes.errorMessage} paragraph>Sorry! We couldn't find what you're looking for.</Typography>
+            <Typography className={classes.errorMessage} paragraph>
+              Sorry! We couldn't find what you're looking for.
+            </Typography>
             <Typography className={classes.errorLink}>
               <Link route="/">Home</Link>
             </Typography>

@@ -89,7 +89,9 @@ test("basic snapshot", () => {
   const component = renderer.create((
     <MockedProvider mocks={mocks} addTypename={false}>
       <MuiThemeProvider theme={theme}>
-        <Provider primaryShopId={shop._id} cartStore={cartStore} authStore={authStore} shop={shop} uiStore={uiStore}>
+        <Provider primaryShopId={shop._id} cartStore={cartStore} authStore={authStore} shop={shop}
+          uiStore={uiStore}
+        >
           <MiniCart />
         </Provider>
       </MuiThemeProvider>

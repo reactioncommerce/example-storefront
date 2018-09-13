@@ -61,10 +61,10 @@ class Shop extends Component {
 
     return (
       <Fragment>
-        <Helmet>
-          <title>{shop && shop.name}</title>
-          <meta name="description" content={shop && shop.description} />
-        </Helmet>
+        <Helmet
+          title={`${shop && shop.name} | ${shop && shop.description}`}
+          meta={[{ name: "description", content: shop && shop.description }]}
+        />
         <ProductGrid
           catalogItems={catalogItems}
           currencyCode={shop.currency.code}
