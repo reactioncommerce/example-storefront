@@ -85,7 +85,6 @@ class HTMLDocument extends Document {
         src: "https://js.stripe.com/v3/"
       }
     ];
-
     return (
       <html lang="en" {...htmlAttrs}>
         <Head>
@@ -93,7 +92,12 @@ class HTMLDocument extends Document {
           {meta.map((tag) => <meta {...tag} />)}
           {links.map((link) => <link {...link} />)}
           {scripts.map((script) =>
-            (script.innerHTML ? <script type={script.type}>{script.innerHTML}</script> : <script {...script} />))}
+            (script.innerHTML ? (
+            /* eslint-disable-next-line */
+              <script type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} />
+            ) : (
+              <script {...script} />
+            )))}
           {helmet.base.toComponent()}
           {helmet.title.toComponent()}
           {helmet.meta.toComponent()}
