@@ -1,23 +1,22 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import theme from "lib/theme/reactionTheme";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
-import components from "../../lib/theme/components";
-import CheckoutSummary from "./CheckoutSummary";
+import componentsContext from "componentsContext";
+import OrderSummary from "./OrderSummary";
 
-const testCart = {
-  checkout: {
-    summary: {
-      itemTotal: {
-        displayAmount: "$118"
-      },
-      total: {
-        displayAmount: "$118"
-      }
+const testFulfillmentGroup = {
+  summary: {
+    itemTotal: {
+      displayAmount: "$118"
+    },
+    total: {
+      displayAmount: "$118"
     }
   },
-  totalItemQuantity: 3,
-  items: [
-    {
+  items: {
+    nodes: [{
       _id: "123",
       attributes: [
         { label: "Color", value: "Red" },
@@ -59,16 +58,27 @@ const testCart = {
       productSlug: "/product-slug",
       title: "Another Great Product",
       quantity: 1
+    }]
+  },
+  payment: {
+    displayName: "Example Payment"
+  },
+  selectedFulfillmentOption: {
+    fulfillmentMethod: {
+      displayName: "Free Shipping",
+      group: "Ground"
     }
-  ]
+  }
 };
 
 test("basic snapshot", () => {
   const component = renderer.create((
-    <ComponentsProvider value={components}>
-      <CheckoutSummary
-        cart={testCart}
-      />
+    <ComponentsProvider value={componentsContext}>
+      <MuiThemeProvider theme={theme}>
+        <OrderSummary
+          fulfillmentGroup={testFulfillmentGroup}
+        />
+      </MuiThemeProvider>
     </ComponentsProvider>
   ));
 

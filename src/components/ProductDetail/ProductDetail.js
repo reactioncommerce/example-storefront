@@ -2,8 +2,8 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import { inject, observer } from "mobx-react";
-import Helmet from "react-helmet";
 import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
 import trackProductViewed from "lib/tracking/trackProductViewed";
@@ -33,6 +33,7 @@ const styles = (theme) => ({
  * @param {Object} props Component props
  * @returns {React.Component} React component node that represents a product detail view
  */
+@withWidth()
 @withStyles(styles, { withTheme: true })
 @inject("routingStore", "uiStore")
 @track()
@@ -56,8 +57,9 @@ class ProductDetail extends Component {
       edges: PropTypes.arrayOf(PropTypes.object).isRequired
     }),
     theme: PropTypes.object,
-    uiStore: PropTypes.object.isRequired
-  }
+    uiStore: PropTypes.object.isRequired,
+    width: PropTypes.string.isRequired
+  };
 
   componentDidMount() {
     const { product } = this.props;
@@ -110,10 +112,8 @@ class ProductDetail extends Component {
       addItemsToCart,
       currencyCode,
       product,
-      uiStore: {
-        pdpSelectedOptionId,
-        pdpSelectedVariantId
-      }
+      uiStore: { openCart, closeCart, pdpSelectedOptionId, pdpSelectedVariantId },
+      width
     } = this.props;
 
     // Get selected variant or variant option
@@ -139,6 +139,11 @@ class ProductDetail extends Component {
           quantity
         }
       ]);
+    }
+
+    if (isWidthUp("md", width)) {
+      openCart(); // Open the cart
+      closeCart(3000); // Close the cart after a 3 second delay
     }
   };
 
@@ -181,51 +186,6 @@ class ProductDetail extends Component {
     return productPrice;
   }
 
-  renderJSONLd() {
-    const { currencyCode, product, shop } = this.props;
-
-    const priceData = product.pricing[0];
-    const images = product.media.map((image) => image.URLs.original);
-
-    let productAvailability = "http://schema.org/InStock";
-    if (product.isLowQuantity) {
-      productAvailability = "http://schema.org/LimitedAvailability";
-    }
-    if (product.isBackorder && product.isSoldOut) {
-      productAvailability = "http://schema.org/PreOrder";
-    }
-    if (!product.isBackorder && product.isSoldOut) {
-      productAvailability = "http://schema.org/SoldOut";
-    }
-
-    // Recommended data from https://developers.google.com/search/docs/data-types/product
-    const productJSON = {
-      "@context": "http://schema.org/",
-      "@type": "Product",
-      "brand": product.vendor,
-      "description": product.description,
-      "image": images,
-      "name": product.title,
-      "sku": product.sku,
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": currencyCode,
-        "price": priceData.minPrice,
-        "availability": productAvailability,
-        "seller": {
-          "@type": "Organization",
-          "name": shop.name
-        }
-      }
-    };
-
-    return (
-      <script type="application/ld+json">
-        {JSON.stringify(productJSON)}
-      </script>
-    );
-  }
-
   render() {
     const {
       classes,
@@ -266,11 +226,6 @@ class ProductDetail extends Component {
 
     return (
       <Fragment>
-        <Helmet>
-          <title>{product.title}</title>
-          <meta name="description" content={product.description} />
-          {this.renderJSONLd()}
-        </Helmet>
         <Grid container spacing={theme.spacing.unit * 3}>
           <Grid item className={classes.breadcrumbGrid} xs={12}>
             <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
@@ -285,10 +240,7 @@ class ProductDetail extends Component {
           </Grid>
 
           <Grid item xs={12} sm={6}>
-            <ProductDetailTitle
-              pageTitle={product.pageTitle}
-              title={product.title}
-            />
+            <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
             <ProductDetailInfo
               priceRange={productPrice.displayPrice}
               description={product.description}

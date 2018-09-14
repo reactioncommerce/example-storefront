@@ -1,3 +1,12 @@
+/**
+ * All Reaction Design System components are injected into the app from this single file.
+ * This allows you to easily swap out one of the default components for your own, everywhere
+ * in the app. It also allows you to take updates to the `@reactioncommerce/components` package
+ * without worrying about it pulling in new component versions everywhere automatically. Instead,
+ * you can switch from the `v1` import path to the `v2` import path, e.g., for a single component
+ * when you're ready.
+ */
+
 import iconClear from "@reactioncommerce/components/svg/iconClear";
 import iconError from "@reactioncommerce/components/svg/iconError";
 import iconValid from "@reactioncommerce/components/svg/iconValid";
@@ -33,7 +42,7 @@ import SelectableList from "@reactioncommerce/components/SelectableList/v1";
 import StockWarning from "@reactioncommerce/components/StockWarning/v1";
 import StripeForm from "@reactioncommerce/components/StripeForm/v1";
 import TextInput from "@reactioncommerce/components/TextInput/v1";
-import withLocales from "./lib/utils/withLocales";
+import withLocales from "../utils/withLocales";
 
 // Providing locales data
 const AddressFormWithLocales = withLocales(AddressForm);
