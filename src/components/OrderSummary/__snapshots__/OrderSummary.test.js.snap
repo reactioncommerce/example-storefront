@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="OrderSummary-summary-1"
+>
+  <div
+    className="OrderSummary-header-2"
+  >
+    <div
+      className="MuiGrid-container-5 MuiGrid-spacing-xs-24-29"
+    >
+      <div
+        className="MuiGrid-item-6 MuiGrid-grid-xs-3-36"
+      >
+        <h3
+          className="MuiTypography-root-102 MuiTypography-subheading-109"
+        >
+          Payment Method
+        </h3>
+      </div>
+      <div
+        className="MuiGrid-item-6 MuiGrid-grid-xs-3-36"
+      >
+        <aside
+          className="MuiTypography-root-102 MuiTypography-body2-110"
+        >
+          Example Payment
+        </aside>
+      </div>
+    </div>
+  </div>
+  <hr
+    className="MuiDivider-root-127"
+  />
+  <div
+    className="sc-bdVaJa iXzmsn"
+  >
+    <table
+      className="CartSummary__Table-cWcArh gWGRvE"
+    >
+      <tbody>
+        <tr>
+          <td
+            className="CartSummary__Td-jXBgKC bUBGM"
+          >
+            Item total
+          </td>
+          <td
+            className="CartSummary__Td-boDvWU sYgOn"
+          >
+            $118
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="CartSummary__Td-jXBgKC bUBGM"
+          >
+            Shipping
+          </td>
+          <td
+            className="CartSummary__Td-boDvWU sYgOn"
+          />
+        </tr>
+        <tr>
+          <td
+            className="CartSummary__Td-jXBgKC bUBGM"
+          >
+            Tax
+          </td>
+          <td
+            className="CartSummary__Td-boDvWU sYgOn"
+          >
+            -
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="CartSummary__Td-jXBgKC isuVSE"
+          >
+            Order total
+          </td>
+          <td
+            className="CartSummary__Td-boDvWU FDHoo"
+          >
+            <span
+              className="CartSummary__Total-BZUQP bdUKHv"
+            >
+              $118
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

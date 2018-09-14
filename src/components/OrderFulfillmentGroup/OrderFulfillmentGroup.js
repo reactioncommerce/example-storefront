@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import CartItems from "components/CartItems";
+import OrderSummary from "components/OrderSummary";
 
 const styles = (theme) => ({
   fulfillmentGroup: {
@@ -11,6 +12,15 @@ const styles = (theme) => ({
   },
   fulfillmentDetails: {
     padding: theme.spacing.unit * 2
+  },
+  header: {
+    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
+  },
+  headerRightColumn: {
+    textAlign: "right"
+  },
+  summary: {
+    paddingTop: theme.spacing.unit * 2
   }
 });
 
@@ -19,7 +29,9 @@ class OrderFulfillmentGroup extends Component {
   static propTypes = {
     classes: PropTypes.object,
     fulfillmentGroup: PropTypes.shape({
-      items: PropTypes.arrayOf(PropTypes.object),
+      items: PropTypes.shape({
+        nodes: PropTypes.arrayOf(PropTypes.object)
+      }),
       data: PropTypes.shape({
         shippingAddress: PropTypes.object
       })
@@ -118,13 +130,28 @@ class OrderFulfillmentGroup extends Component {
   }
 
   render() {
-    const { classes } = this.props;
-
+    const { classes, fulfillmentGroup } = this.props;
+    const { fulfillmentMethod } = fulfillmentGroup.selectedFulfillmentOption;
     return (
-      <section className={classes.fulfillmentGroup}>
-        {this.renderItems()}
-        {this.renderFulfillmentInfo()}
-      </section>
+      <Fragment>
+        <section className={classes.fulfillmentGroup}>
+          <header className={classes.header}>
+            <Grid container spacing={24}>
+              <Grid item xs={6}>
+                <Typography variant="subheading">{fulfillmentMethod.displayName}</Typography>
+              </Grid>
+              <Grid item xs={6} className={classes.headerRightColumn}>
+                <Typography variant="body2">{fulfillmentMethod.group}</Typography>
+              </Grid>
+            </Grid>
+          </header>
+          {this.renderItems()}
+          {this.renderFulfillmentInfo()}
+        </section>
+        <section className={classes.summary}>
+          <OrderSummary fulfillmentGroup={fulfillmentGroup} />
+        </section>
+      </Fragment>
     );
   }
 }
