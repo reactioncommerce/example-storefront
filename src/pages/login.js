@@ -116,15 +116,11 @@ export default class Login extends Component {
   state = {};
 
   handleLoginClick = () => {
-    // TODO: Redirect to Auth solution
-    // eslint-disable-next-line
-    console.log("login buttton clicked!");
+    Router.pushRoute("/auth2");
   };
 
   handleRegisterClick = () => {
-    // TODO: Redirect to Auth solution
-    // eslint-disable-next-line
-    console.log("register buttton clicked!");
+    Router.pushRoute("/auth2");
   };
 
   renderHeader() {
