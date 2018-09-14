@@ -16,6 +16,9 @@ class OrderFulfillmentGroups extends Component {
       })
     }),
     classes: PropTypes.object,
+    order: PropTypes.shape({
+      fulfillmentGroups: PropTypes.arrayOf(PropTypes.object)
+    }),
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
