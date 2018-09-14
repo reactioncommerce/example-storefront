@@ -71,6 +71,9 @@ class CartStore {
       // Remove cookies
       Cookies.remove(this.ANONYMOUS_CART_ID_KEY_NAME);
       Cookies.remove(this.ANONYMOUS_CART_TOKEN_KEY_NAME);
+
+      // Clear stripe token
+      this.stripeToken = null;
     }
   }
 

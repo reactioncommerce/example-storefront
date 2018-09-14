@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
+import { Router } from "routes";
 import { placeOrderWithStripeCardPayment } from "./mutations.gql";
 
 /**
@@ -26,30 +27,42 @@ export default (Component) => (
       }),
       client: PropTypes.shape({
         mutate: PropTypes.func.isRequired
-      }),
-      primaryShopId: PropTypes.string.isRequired
+      })
     }
 
-    handlePlaceOrderWithStripeCard = async (userOrder) => {
-      const { cartStore: { stripeToken }, client: apolloClient } = this.props;
+    handlePlaceOrderWithStripeCard = async (order) => {
+      const { cartStore, client: apolloClient } = this.props;
+      const { fulfillmentGroups } = order;
+      const { stripeToken: { billingAddress, token } } = cartStore;
+
       const payment = {
-        billingAddress: stripeToken.billingAddress,
-        stripeTokenId: stripeToken.id
+        // If the users provided a billing address use it, otherwise, use the shipping address
+        billingAddress: billingAddress || fulfillmentGroups[0].data.shippingAddress,
+        stripeTokenId: token.id
       };
 
-      const result = await apolloClient.mutate({
+      const { data, error } = await apolloClient.mutate({
         mutation: placeOrderWithStripeCardPayment,
         variables: {
           input: {
-            order: userOrder,
+            order,
             payment
           }
         }
       });
 
-      // TODO: Check result to ensure success
+      // If success
+      if (data && !error) {
+        const { placeOrderWithStripeCardPayment: { orders } } = data;
 
-      // TODO: route user to order complete page.
+        // Clear cart
+        cartStore.clearAnonymousCartCredentials();
+
+        // Send user to order confirmation page
+        Router.pushRoute("checkout-complete", { orderId: orders[0]._id });
+      }
+
+      // TODO: if an error occurred, notify user
     }
 
     render() {

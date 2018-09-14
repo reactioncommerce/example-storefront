@@ -100,7 +100,6 @@ class Checkout extends Component {
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
-    primaryShopId: PropTypes.string.isRequired,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -125,8 +124,7 @@ class Checkout extends Component {
       isLoading,
       loadMoreCartItems,
       onRemoveCartItems,
-      onChangeCartItemsQuantity,
-      primaryShopId
+      onChangeCartItemsQuantity
     } = this.props;
 
     if (isLoading) return null;
@@ -152,7 +150,7 @@ class Checkout extends Component {
           <div className={classes.flexContainer}>
             <div className={classes.checkoutActions}>
               {displayEmail ? <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} /> : null}
-              <CheckoutActions primaryShopId={primaryShopId} />
+              <CheckoutActions />
             </div>
           </div>
         </Grid>

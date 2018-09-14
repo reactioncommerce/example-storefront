@@ -110,8 +110,55 @@ export default class CheckoutActions extends Component {
   }
 
   placeOrder = () => {
-    const { placeOrderWithStripeCard } = this.props;
-    // TODO: place order
+    const { cart, cartStore, placeOrderWithStripeCard } = this.props;
+    const cartId = cartStore.hasAccountCart ? cartStore.accountCartId : cartStore.anonymousCartId;
+    const { email, checkout, shop } = cart;
+    const fulfillmentGroups = checkout.fulfillmentGroups.map((group) => {
+      const address = group.data.shippingAddress;
+      const { selectedFulfillmentOption } = group;
+      const shippingAddress = {
+        address1: address.address1,
+        address2: address.address2,
+        city: address.city,
+        country: address.country,
+        fullName: address.fullName,
+        isCommercial: address.isCommercial,
+        phone: address.phone,
+        postal: address.postal,
+        region: address.region
+      };
+
+      const items = cart.items.map((item) => ({
+        addedAt: item.addedAt,
+        price: item.priceWhenAdded.amount,
+        productConfiguration: {
+          productId: item.productConfiguration.productId,
+          productVariantId: item.productConfiguration.productVariantId
+        },
+        quantity: item.quantity
+      }));
+
+      return {
+        data: {
+          shippingAddress
+        },
+        items,
+        selectedFulfillmentMethodId: selectedFulfillmentOption.fulfillmentMethod._id,
+        shopId: shop._id,
+        totalPrice: checkout.summary.total.amount,
+        type: group.type
+      };
+    });
+
+    const order = {
+      cartId,
+      currencyCode: "USD", // TODO: Make dynamic once the currency selector is added
+      email,
+      fulfillmentGroups,
+      shopId: shop._id
+    };
+
+    placeOrderWithStripeCard(order);
   }
 
   render() {
