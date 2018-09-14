@@ -8,6 +8,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import AccountIcon from "mdi-material-ui/Account";
 import Popover from "@material-ui/core/Popover";
+import ViewerInfo from "@reactioncommerce/components/ViewerInfo/v1";
 import { login } from "lib/auth";
 
 const styles = (theme) => ({
@@ -85,7 +86,7 @@ class AccountDropdown extends Component {
   }
 
   render() {
-    const { classes, keycloakAuthStore } = this.props;
+    const { classes, authStore, keycloakAuthStore } = this.props;
     const { anchorElement, token } = this.state;
 
     return (
@@ -104,30 +105,18 @@ class AccountDropdown extends Component {
           onClose={this.onClose}
         >
           <div className={classes.accountDropdown}>
-            <TextField
-              fullWidth={true}
-              label="Login Token"
-              onChange={this.onTokenChange}
-              value={token}
-            />
-
-            <DialogActions>
-              <Button color="primary" onClick={this.onTokenSave}>
-                Save Token
+            {authStore.isAuthenticated ?
+              <div>
+                <ViewerInfo viewer={authStore.account} />
+                <Button color="primary" href="/logout">
+                  Logout
+                </Button>
+              </div>
+              :
+              <Button color="primary" href="/auth2">
+                Login
               </Button>
-            </DialogActions>
-            <hr/>
-            <DialogActions>
-              {!keycloakAuthStore.token ?
-                <Button color="primary" onClick={this.onLogin}>
-                  Login with Keycloak
-                </Button>
-                :
-                <Button color="primary" onClick={this.onLogout}>
-                  Logout of Keycloak
-                </Button>
-              }
-            </DialogActions>
+            }
           </div>
         </Popover>
       </Fragment>
