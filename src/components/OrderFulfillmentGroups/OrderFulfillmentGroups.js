@@ -18,8 +18,9 @@ class OrderFulfillmentGroups extends Component {
     const { order } = this.props;
 
     if (order && Array.isArray(order.fulfillmentGroups)) {
-      return order.fulfillmentGroups.map((fulfillmentGroup) => (
+      return order.fulfillmentGroups.map((fulfillmentGroup, index) => (
         <OrderFulfillmentGroup
+          key={index}
           fulfillmentGroup={fulfillmentGroup}
         />
       ));
