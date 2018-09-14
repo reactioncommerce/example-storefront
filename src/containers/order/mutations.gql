@@ -5,6 +5,7 @@ mutation placeOrderWithStripeCardPayment( $input: PlaceOrderWithStripeCardPaymen
   placeOrderWithStripeCardPayment(input: $input) {
     orders {
       ...OrderQueryFragment
-    }
+    },
+    token
   }
 }

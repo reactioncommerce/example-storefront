@@ -114,7 +114,7 @@ export default class CheckoutActions extends Component {
       shopId: shop._id
     };
 
-    placeOrderWithStripeCard(order);
+    return placeOrderWithStripeCard(order);
   }
 
   render() {

@@ -33,12 +33,12 @@ export default (Component) => (
     handlePlaceOrderWithStripeCard = async (order) => {
       const { cartStore, client: apolloClient } = this.props;
       const { fulfillmentGroups } = order;
-      const { stripeToken: { billingAddress, token } } = cartStore;
+      const { stripeToken: { billingAddress } } = cartStore;
 
       const payment = {
         // If the users provided a billing address use it, otherwise, use the shipping address
         billingAddress: billingAddress || fulfillmentGroups[0].data.shippingAddress,
-        stripeTokenId: token.id
+        stripeTokenId: cartStore.stripeToken.token.id
       };
 
       const { data, error } = await apolloClient.mutate({
@@ -53,13 +53,13 @@ export default (Component) => (
 
       // If success
       if (data && !error) {
-        const { placeOrderWithStripeCardPayment: { orders } } = data;
+        const { placeOrderWithStripeCardPayment: { orders, token } } = data;
 
         // Clear cart
         cartStore.clearAnonymousCartCredentials();
 
         // Send user to order confirmation page
-        Router.pushRoute("checkoutComplete", { orderId: orders[0]._id });
+        Router.pushRoute("checkoutComplete", { orderId: orders[0]._id, token });
       }
 
       // TODO: if an error occurred, notify user
