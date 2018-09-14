@@ -126,7 +126,7 @@ class CheckoutComplete extends Component {
             <section className={classes.section}>
               <header className={classes.sectionHeader}>
                 <Typography className={classes.title} variant="title">{"Thank you for your order"}</Typography>
-                <Typography variant="body1">{"Your order number is"} <strong>{order && order._id}</strong></Typography>
+                <Typography variant="body1">{"Your order ID is"} <strong>{order && order._id}</strong></Typography>
                 <Typography variant="body1">{"We've send a confirmation email to"} <strong>{order && order.email}</strong></Typography>
               </header>
               <div className={classes.checkoutContent}>
