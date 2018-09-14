@@ -28,7 +28,6 @@ class OrderFulfillmentGroups extends Component {
     if (order && Array.isArray(order.fulfillmentGroups)) {
       return order.fulfillmentGroups.map((fulfillmentGroup) => (
         <OrderFulfillmentGroup
-          order={order}
           fulfillmentGroup={fulfillmentGroup}
         />
       ));
