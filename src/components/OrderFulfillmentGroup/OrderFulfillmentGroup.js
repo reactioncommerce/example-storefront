@@ -29,7 +29,9 @@ class OrderFulfillmentGroup extends Component {
   static propTypes = {
     classes: PropTypes.object,
     fulfillmentGroup: PropTypes.shape({
-      items: PropTypes.arrayOf(PropTypes.object),
+      items: PropTypes.shape({
+        nodes: PropTypes.arrayOf(PropTypes.object)
+      }),
       data: PropTypes.shape({
         shippingAddress: PropTypes.object
       })
