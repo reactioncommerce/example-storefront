@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
-import componentsContext from "componentsContext";
+import components from "../../lib/theme/components";
 import CheckoutSummary from "./CheckoutSummary";
 
 const testCart = {
@@ -65,7 +65,7 @@ const testCart = {
 
 test("basic snapshot", () => {
   const component = renderer.create((
-    <ComponentsProvider value={componentsContext}>
+    <ComponentsProvider value={components}>
       <CheckoutSummary
         cart={testCart}
       />
