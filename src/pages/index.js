@@ -58,11 +58,12 @@ class Shop extends Component {
     const { catalogItems, catalogItemsPageInfo, uiStore, routingStore: { query }, shop } = this.props;
     const pageSize = query && inPageSizes(query.limit) ? parseInt(query.limit, 10) : uiStore.pageSize;
     const sortBy = query && query.sortby ? query.sortby : uiStore.sortBy;
+    const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : shop.name;
 
     return (
       <Fragment>
         <Helmet
-          title={`${shop && shop.name} | ${shop && shop.description}`}
+          title={pageTitle}
           meta={[{ name: "description", content: shop && shop.description }]}
         />
         <ProductGrid
