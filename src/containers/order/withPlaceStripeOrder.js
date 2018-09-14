@@ -59,7 +59,7 @@ export default (Component) => (
         cartStore.clearAnonymousCartCredentials();
 
         // Send user to order confirmation page
-        Router.pushRoute("checkout-complete", { orderId: orders[0]._id });
+        Router.pushRoute("checkoutComplete", { orderId: orders[0]._id });
       }
 
       // TODO: if an error occurred, notify user
