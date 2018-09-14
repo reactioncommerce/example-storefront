@@ -13,28 +13,7 @@ import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import Link from "components/Link";
 import MiniCart from "components/MiniCart";
 
-const styles = (theme) => ({
-  appBar: {
-    backgroundColor: theme.palette.reaction.white,
-    borderBottom: `solid 1px ${theme.palette.reaction.black05}`,
-    color: theme.palette.reaction.coolGrey500
-  },
-  controls: {
-    alignItems: "inherit",
-    display: "inherit",
-    flex: 1
-  },
-  title: {
-    color: theme.palette.reaction.reactionBlue,
-    marginRight: theme.spacing.unit,
-    borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
-  },
-  toolbar: {
-    alignItems: "center",
-    display: "flex",
-    justifyContent: "space-between"
-  }
-});
+const styles = (theme) => (theme.Header);
 
 @withStyles(styles)
 @inject("uiStore")

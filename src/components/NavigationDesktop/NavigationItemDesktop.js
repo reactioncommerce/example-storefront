@@ -15,30 +15,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { Router } from "routes";
 import Link from "components/Link";
 
-const styles = (theme) => ({
-  popover: {
-    maxWidth: "100vw",
-    padding: theme.spacing.unit * 2,
-    width: "100vw"
-  },
-  grid: {
-    width: "100vw"
-  },
-  navigationShopAllLink: {
-    display: "flex",
-    textDecoration: "underline",
-    fontSize: "14px",
-    marginTop: theme.spacing.unit * 6,
-    marginBottom: theme.spacing.unit * 2,
-    fontFamily: theme.typography.fontFamily
-  },
-  navigationShopAllLinkIcon: {
-    fontSize: "12px"
-  },
-  primaryNavItem: {
-    textTransform: "capitalize"
-  }
-});
+const styles = (theme) => (theme.NavigationItemDesktop);
 
 @inject("routingStore")
 @withStyles(styles)

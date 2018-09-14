@@ -10,12 +10,7 @@ import PageSizeSelector from "components/PageSizeSelector";
 import SortBySelector from "components/SortBySelector";
 import ProductGridEmptyMessage from "./ProductGridEmptyMessage";
 
-const styles = (theme) => ({
-  filters: {
-    justifyContent: "flex-end",
-    marginBottom: theme.spacing.unit * 2
-  }
-});
+const styles = (theme) => theme.ProductGrid;
 
 @withStyles(styles)
 @track()

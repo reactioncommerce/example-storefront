@@ -13,40 +13,7 @@ import { withStyles } from "@material-ui/core/styles";
  * @extends Component
  */
 
-const styles = ({ palette, transitions, zIndex }) => ({
-  imgWrapper: {
-    backgroundColor: palette.common.white, // palette.grey["100"],
-    display: "block",
-    height: 0,
-    overflow: "hidden",
-    paddingTop: "100%",
-    position: "relative",
-    width: "100%"
-  },
-  imgHeroWrapper: {
-    paddingTop: "30%"
-  },
-  img: {
-    height: "auto",
-    left: "50%",
-    opacity: 1,
-    position: "absolute",
-    transition: `opacity ${transitions.duration.standard}ms ${transitions.easing.easeInOut}`,
-    top: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "100%"
-  },
-  imgLoaded: {
-    zIndex: zIndex.mobileStepper
-  },
-  imgLoading: {
-    filter: "blur(8px)",
-    zIndex: zIndex.appBar
-  },
-  imgHidden: {
-    opacity: 0
-  }
-});
+const styles = (theme) => theme.Img;
 
 @withStyles(styles, { withTheme: true })
 class Img extends Component {

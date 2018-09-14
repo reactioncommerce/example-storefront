@@ -4,17 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Img from "components/Img";
 
-const styles = (theme) => ({
-  heroImg: {
-    width: "100%",
-    height: "325px",
-    objectFit: "cover"
-  },
-  heroGridContainer: {
-    maxWidth: theme.layout.mainContentMaxWidth,
-    margin: "40px auto"
-  }
-});
+const styles = (theme) => theme.ProductGridHero;
 
 @withStyles(styles)
 export default class ProductGridHero extends Component {

@@ -12,16 +12,7 @@ import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 import { withStyles } from "@material-ui/core/styles";
 
-const styles = (theme) => ({
-  subNav: {
-    marginBottom: theme.spacing.unit * 2
-  },
-  listItemTextInset: {
-    "&:first-child": {
-      paddingLeft: theme.spacing.unit * 3
-    }
-  }
-});
+const styles = (theme) => theme.NavigationItemMobile;
 
 @inject("routingStore")
 @withStyles(styles)

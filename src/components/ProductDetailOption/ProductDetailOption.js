@@ -4,7 +4,8 @@ import { withStyles } from "@material-ui/core/styles";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
-import styles from "./styles";
+
+const styles = (theme) => theme.ProductDetailOption;
 
 @withStyles(styles)
 export default class ProductDetailOption extends Component {

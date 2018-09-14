@@ -5,20 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Link from "components/Link";
 
-const styles = (theme) => ({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    marginTop: "4rem"
-  },
-  actionMessage: {
-    color: theme.palette.reaction.coolGrey400
-  },
-  notFoundMessage: {
-    color: theme.palette.reaction.black65
-  }
-});
+const styles = (theme) => theme.ProductGridEmptyMessage;
 
 @withStyles(styles)
 @inject("routingStore")

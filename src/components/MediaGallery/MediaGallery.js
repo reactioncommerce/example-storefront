@@ -6,20 +6,7 @@ import MediaGalleryItem from "components/MediaGalleryItem";
 import Img from "components/Img";
 import getConfig from "next/config";
 
-const styles = (theme) => ({
-  root: {
-    width: "100%"
-  },
-  featured: {
-    display: "flex",
-    justifyContent: "center",
-    marginBottom: theme.spacing.unit
-  },
-  featuredImage: {
-    flex: 0,
-    height: "100%"
-  }
-});
+const styles = (theme) => theme.MediaGallery;
 
 /**
  * Product detail media gallery

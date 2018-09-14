@@ -5,26 +5,7 @@ import ChevronRight from "mdi-material-ui/ChevronRight";
 import Link from "components/Link";
 
 
-const styles = (theme) => ({
-  container: {
-    display: "flex",
-    alignItems: "center",
-    maxWidth: theme.layout.mainContentMaxWidth,
-    marginLeft: "auto",
-    marginRight: "auto"
-  },
-  breadcrumbLink: {
-    fontSize: "14px",
-    fontFamily: theme.typography.fontFamily,
-    color: "#3c3c3c",
-    border: 0,
-    textDecoration: "underline",
-    margin: "0 7px"
-  },
-  breadcrumbIcon: {
-    fontSize: "14px"
-  }
-});
+const styles = (theme) => (theme.Breadcrumbs);
 
 @withStyles(styles)
 class Breadcrumbs extends Component {

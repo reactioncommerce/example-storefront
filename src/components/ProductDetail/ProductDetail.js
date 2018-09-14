@@ -17,15 +17,7 @@ import { Router } from "routes";
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import variantById from "lib/utils/variantById";
 
-const styles = (theme) => ({
-  section: {
-    marginBottom: theme.spacing.unit * 2
-  },
-  breadcrumbGrid: {
-    marginBottom: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2
-  }
-});
+const styles = (theme) => theme.ProductDetail;
 
 /**
  * Product detail component

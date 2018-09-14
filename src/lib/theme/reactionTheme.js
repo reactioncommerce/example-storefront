@@ -1,9 +1,12 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
-const theme = createMuiTheme({
+const baseTheme = createMuiTheme({
   layout: {
     mainContentMaxWidth: "1440px",
     mainLoginMaxWidth: "1024px"
+  },
+  title: {
+    color: "#1999DD",
   },
   palette: {
     primary: {
@@ -132,7 +135,8 @@ const theme = createMuiTheme({
     depth2: "0 0 1rem #808080"
   },
   spacing: {
-    unithalf: 4
+    unithalf: 4,
+    unit: 8
   },
   typography: {
     fontFamily: "Source Sans Pro, Helvetica Neue, Helvetica, sans-serif",
@@ -142,6 +146,493 @@ const theme = createMuiTheme({
     fontWeightMedium: 700,
     fontWeightBold: 700
   }
+});
+
+
+const reactionTheme = {
+  Header: {
+    appBar: {
+      backgroundColor: baseTheme.palette.reaction.white,
+      borderBottom: `solid 1px ${baseTheme.palette.reaction.black05}`,
+      color: baseTheme.palette.reaction.coolGrey500
+    },
+    controls: {
+      alignItems: "inherit",
+      display: "inherit",
+      flex: 1
+    },
+    title: {
+      color: baseTheme.palette.reaction.black,
+      marginRight: baseTheme.spacing.unit,
+      borderBottom: `solid 5px ${baseTheme.palette.reaction.reactionBlue200}`
+    },
+    toolbar: {
+      alignItems: "center",
+      display: "flex",
+      justifyContent: "space-between"
+    }
+  },
+  AccountDropdown: {
+    accountDropdown: {
+      width: 320,
+      padding: baseTheme.spacing.unit * 2
+    }
+  },
+  Breadcrumbs: {
+    container: {
+      display: "flex",
+      alignItems: "center",
+      maxWidth: baseTheme.layout.mainContentMaxWidth,
+      marginLeft: "auto",
+      marginRight: "auto"
+    },
+    breadcrumbLink: {
+      fontSize: "14px",
+      fontFamily: baseTheme.typography.fontFamily,
+      color: "#3c3c3c",
+      border: 0,
+      textDecoration: "underline",
+      margin: "0 7px"
+    },
+    breadcrumbIcon: {
+      fontSize: "14px"
+    }
+  },
+  Cart: {
+    cart: {
+      width: "90vw"
+    }
+  },
+  CartItems: {
+    loadMore: {
+      display: "flex",
+      justifyContent: "center",
+      marginTop: baseTheme.spacing.unit * 2,
+      marginBottom: baseTheme.spacing.unit * 2
+    }
+  },
+  CartPopover: {
+    container: {
+      "alignItems": "center",
+      "backgroundColor": baseTheme.palette.reaction.white,
+      "boxShadow": baseTheme.boxShadow.depth2,
+      "display": "flex",
+      "marginLeft": "auto",
+      "marginRight": "auto",
+      "maxWidth": "400px",
+      "paddingTop": "12px",
+      "position": "fixed",
+      "right": 0,
+      "top": 0,
+      "transitionDuration": "400ms",
+      "transitionProperty": "transform",
+      "transitionTimingFunction": "linear",
+      "zIndex": baseTheme.zIndex.appBar + 1,
+      "&:hover": {
+        transform: "translate(0px, 0px)"
+      }
+    },
+    gridContainer: {
+      padding: "10px"
+    },
+    isContainerHidden: {
+      transform: "translate(400px, 0px)"
+    },
+    isContainerVisible: {
+      transform: "translate(0px, 0px)"
+    },
+    containerItem: {
+      alignItems: "center",
+      display: "flex"
+    },
+    addedToCartImg: {
+      height: "40px",
+      marginRight: "10px",
+      width: "40px"
+    },
+    addedToCartItemName: {
+      maxWidth: "200px",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      fontWeight: baseTheme.typography.fontWeightMedium,
+      display: "inline-block",
+      lineHeight: "0.8em"
+    },
+    addedToCartText: {
+      color: baseTheme.palette.primary.dark,
+      display: "inline",
+      fontSize: baseTheme.typography.fontSize * 0.875
+    }
+  },
+  Divider: {
+    container: {
+      display: "flex",
+      alignItems: "center"
+    },
+    label: {
+      flex: 0,
+      flexBasis: "auto",
+      textTransform: "uppercase",
+      fontWeight: baseTheme.typography.fontWeightBold,
+      fontSize: "0.7rem",
+      paddingRight: baseTheme.spacing.unit,
+      paddingLeft: baseTheme.spacing.unit,
+      letterSpacing: "0.1rem"
+    },
+    item: {
+      flex: "1 1 auto",
+      border: 0,
+      borderTop: "1px solid",
+      borderColor: baseTheme.palette.reaction.borderColor,
+      marginTop: baseTheme.spacing.unit * 2,
+      marginBottom: baseTheme.spacing.unit * 2
+    }
+  },
+  Footer: {
+    footer: {
+      alignItems: "center",
+      display: "flex",
+      justifyContent: "center",
+      marginBottom: baseTheme.spacing.unit * 2
+    }
+  },
+  Img: {
+    imgWrapper: {
+      backgroundColor: baseTheme.palette.common.white, // palette.grey["100"],
+      display: "block",
+      height: 0,
+      overflow: "hidden",
+      paddingTop: "100%",
+      position: "relative",
+      width: "100%"
+    },
+    imgHeroWrapper: {
+      paddingTop: "30%"
+    },
+    img: {
+      height: "auto",
+      left: "50%",
+      opacity: 1,
+      position: "absolute",
+      transition: `opacity ${baseTheme.transitions.duration.standard}ms ${baseTheme.transitions.easing.easeInOut}`,
+      top: "50%",
+      transform: "translate(-50%, -50%)",
+      width: "100%"
+    },
+    imgLoaded: {
+      zIndex: baseTheme.zIndex.mobileStepper
+    },
+    imgLoading: {
+      filter: "blur(8px)",
+      zIndex: baseTheme.zIndex.appBar
+    },
+    imgHidden: {
+      opacity: 0
+    }
+  },
+  Layout: {
+    root: {
+      minHeight: "100vh"
+    },
+    main: {
+      flex: "1 1 auto",
+      maxWidth: baseTheme.layout.mainContentMaxWidth,
+      marginLeft: "auto",
+      marginRight: "auto"
+    },
+    article: {
+      padding: baseTheme.spacing.unit * 3
+    }
+  },
+  MediaGallery: {
+    root: {
+      width: "100%"
+    },
+    featured: {
+      display: "flex",
+      justifyContent: "center",
+      marginBottom: baseTheme.spacing.unit
+    },
+    featuredImage: {
+      flex: 0,
+      height: "100%"
+    }
+  },
+  MediaGalleryItem: {
+    root: {
+      width: "100%"
+    }
+  },
+  MiniCart: {
+    popper: {
+      marginTop: "0.5rem",
+      marginRight: "1rem",
+      zIndex: baseTheme.zIndex.modal
+    },
+    cart: {
+      backgroundColor: baseTheme.palette.common.white
+    },
+    emptyCart: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: 320,
+      height: 320,
+      border: baseTheme.palette.borders.default
+    }
+  },
+  NavigationItemDesktop: {
+    popover: {
+      maxWidth: "100vw",
+      padding: baseTheme.spacing.unit * 2,
+      width: "100vw"
+    },
+    grid: {
+      width: "100vw"
+    },
+    navigationShopAllLink: {
+      display: "flex",
+      textDecoration: "underline",
+      fontSize: "14px",
+      marginTop: baseTheme.spacing.unit * 6,
+      marginBottom: baseTheme.spacing.unit * 2,
+      fontFamily: baseTheme.typography.fontFamily
+    },
+    navigationShopAllLinkIcon: {
+      fontSize: "12px"
+    },
+    primaryNavItem: {
+      textTransform: "capitalize"
+    }
+  },
+  NavigationItemMobile: {
+    subNav: {
+      marginBottom: baseTheme.spacing.unit * 2
+    },
+    listItemTextInset: {
+      "&:first-child": {
+        paddingLeft: baseTheme.spacing.unit * 3
+      }
+    }
+  },
+  NavigationMobile: {
+    nav: {
+      width: 320
+    }
+  },
+  PageStepper: {
+    root: {
+      paddingTop: baseTheme.spacing.unit * 2,
+      paddingBottom: baseTheme.spacing.unit * 2
+    }
+  },
+  ProductDetail: {
+    section: {
+      marginBottom: baseTheme.spacing.unit * 2
+    },
+    breadcrumbGrid: {
+      marginBottom: baseTheme.spacing.unit * 2,
+      marginTop: baseTheme.spacing.unit * 2
+    }
+  },
+  ProductDetailAddToCart: {
+    addToCartButton: {
+      "padding": baseTheme.spacing.unit,
+      "backgroundColor": baseTheme.palette.primary.light,
+      "borderRadius": baseTheme.palette.reaction.buttonBorderRadius,
+      "minWidth": "66%",
+      "&:hover": {
+        borderColor: baseTheme.palette.reaction.activeElementBorderColor
+      },
+      "&:focus": {
+        outline: "auto 5px -webkit-focus-ring-color"
+      }
+    },
+    addToCartText: {
+      color: baseTheme.palette.primary.contrastText,
+      fontWeight: 600
+    },
+    incrementButton: {
+      backgroundColor: baseTheme.palette.reaction.black02,
+      color: baseTheme.palette.reaction.coolGray500,
+      fontSize: "12px",
+      padding: 6
+    },
+    quantityContainer: {
+      padding: 0,
+      border: `1px solid ${baseTheme.palette.reaction.black15}`,
+      backgroundColor: baseTheme.palette.common.white,
+      borderRadius: baseTheme.palette.reaction.buttonBorderRadius
+    },
+    quantityGrid: {
+      marginBottom: baseTheme.spacing.unit * 3
+    },
+    quantityInput: {
+      "color": baseTheme.palette.reaction.coolGray500,
+      "fontSize": "12px",
+      "width": "40px",
+      "textAlign": "center",
+      "&:focus": {
+        borderColor: "#80bdff",
+        boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)"
+      },
+      "borderLeft": `1px solid ${baseTheme.palette.reaction.black15}`,
+      "borderRight": `1px solid ${baseTheme.palette.reaction.black15}`
+    },
+    quantityTypography: {
+      color: baseTheme.palette.reaction.coolGray500,
+      marginBottom: baseTheme.spacing.unit * 2
+    }
+  },
+  ProductDetailOption: {
+    optionButton: {
+      "fontWeight": 600,
+      "padding": baseTheme.spacing.unit,
+      "borderRadius": "2px",
+      "backgroundColor": baseTheme.palette.primary.contrastText,
+      "border": "1px solid",
+      "minWidth": 150,
+      "borderColor": baseTheme.palette.reaction.borderColor,
+      "&:hover": {
+        borderColor: baseTheme.palette.reaction.activeElementBorderColor
+      },
+      "&:focus": {
+        outline: "auto 5px -webkit-focus-ring-color"
+      }
+    },
+    optionText: {
+      fontWeight: 500,
+      fontSize: "0.9rem"
+    },
+    isSelected: {
+      borderColor: baseTheme.palette.reaction.activeElementBorderColor
+    }
+  },
+  ProductDetailOptionsList: {
+    root: {
+      position: "relative",
+      marginTop: baseTheme.spacing.unit,
+      marginBottom: baseTheme.spacing.unit
+    },
+    alert: {
+      display: "flex",
+      top: -baseTheme.spacing.unit * 2,
+      right: baseTheme.spacing.unit * 1
+    },
+    badge: {
+      fontSize: "0.5rem",
+      top: -baseTheme.spacing.unit,
+      left: baseTheme.spacing.unit * 11
+    }
+  },
+  ProductGrid: {
+    filters: {
+      justifyContent: "flex-end",
+      marginBottom: baseTheme.spacing.unit * 2
+    }
+  },
+  ProductGridEmptyMessage: {
+    root: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      marginTop: "4rem"
+    },
+    actionMessage: {
+      color: baseTheme.palette.reaction.coolGrey400
+    },
+    notFoundMessage: {
+      color: baseTheme.palette.reaction.black65
+    }
+  },
+  ProductGridHero: {
+    heroImg: {
+      width: "100%",
+      height: "325px",
+      objectFit: "cover"
+    },
+    heroGridContainer: {
+      maxWidth: baseTheme.layout.mainContentMaxWidth,
+      margin: "40px auto"
+    }
+  },
+  Select: {
+    popOver: {
+      border: baseTheme.palette.borders.default,
+      boxShadow: "none"
+    },
+    menuItem: {
+      fontSize: "1rem",
+      paddingTop: baseTheme.spacing.unit,
+      paddingBottom: baseTheme.spacing.unit
+    },
+    selectMenu: {
+      fontSize: "1rem",
+      border: baseTheme.palette.borders.default,
+      paddingLeft: baseTheme.spacing.unit,
+      borderRadius: baseTheme.borderRadii.default
+    },
+    selected: {
+      backgroundColor: baseTheme.palette.action.hover
+    },
+    input: {
+      width: baseTheme.spacing.unit * 21
+    }
+  },
+  TagGrid: {
+    title: {
+      marginBottom: baseTheme.spacing.unit
+    },
+    chip: {
+      cursor: "pointer"
+    }
+  },
+  VariantItem: {
+    variantButton: {
+      "display": "flex",
+      "justifyContent": "space-between",
+      "textTransform": "none",
+      "width": "100%",
+      "borderRadius": "2px",
+      "backgroundColor": baseTheme.palette.primary.contrastText,
+      "border": "1px solid",
+      "borderColor": baseTheme.palette.reaction.borderColor,
+      "padding": baseTheme.spacing.unit * 2,
+      "&:hover": {
+        border: "1px solid",
+        borderColor: baseTheme.palette.reaction.activeElementBorderColor,
+        backgroundColor: baseTheme.palette.primary.contrastText
+      },
+      "&:focus": {
+        outline: "auto 5px -webkit-focus-ring-color"
+      }
+    },
+    activeVariant: {
+      border: "1px solid",
+      borderColor: baseTheme.palette.reaction.activeElementBorderColor
+    }
+  },
+  VariantList: {
+    variantsContainer: {
+    },
+    variantItem: {
+      position: "relative",
+      marginTop: baseTheme.spacing.unit * 1.25,
+      marginBottom: baseTheme.spacing.unit * 1.25
+    },
+    alert: {
+      display: "flex",
+      position: "absolute",
+      top: -baseTheme.spacing.unit * 2,
+      right: baseTheme.spacing.unit * 11
+    }
+  }
+}
+
+const theme = createMuiTheme({
+  ...baseTheme,
+  ...reactionTheme
 });
 
 export default theme;

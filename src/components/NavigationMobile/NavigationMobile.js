@@ -7,11 +7,7 @@ import MenuList from "@material-ui/core/MenuList";
 import { NavigationItemMobile } from "components/NavigationMobile";
 import withNavigationTags from "../../containers/tags/withNavigationTags";
 
-const styles = () => ({
-  nav: {
-    width: 320
-  }
-});
+const styles = (theme) => theme.NavigationMobile;
 
 @withStyles(styles)
 @withNavigationTags

@@ -4,11 +4,7 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Img from "components/Img";
 
-const styles = () => ({
-  root: {
-    width: "100%"
-  }
-});
+const styles = (theme) => theme.MediaGalleryItem;
 
 /**
  * Product detail media gallery item
