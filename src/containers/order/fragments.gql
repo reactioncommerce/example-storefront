@@ -142,6 +142,20 @@ fragment OrderCommon on Order {
     shop {
       _id
     }
+    summary {
+      fulfillmentTotal {
+        displayAmount
+      }
+      itemTotal {
+        displayAmount
+      }
+      taxTotal {
+        displayAmount
+      }
+      total {
+        displayAmount
+      }
+    }
     type
   }
   shop {
