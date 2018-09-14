@@ -1,0 +1,345 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+Array [
+  <section
+    className="OrderFulfillmentGroup-fulfillmentGroup-1"
+  >
+    <header
+      className="OrderFulfillmentGroup-header-3"
+    >
+      <div
+        className="MuiGrid-container-6 MuiGrid-spacing-xs-24-30"
+      >
+        <div
+          className="MuiGrid-item-7 MuiGrid-grid-xs-6-40"
+        >
+          <h3
+            className="MuiTypography-root-103 MuiTypography-subheading-110"
+          >
+            Free Shipping
+          </h3>
+        </div>
+        <div
+          className="MuiGrid-item-7 MuiGrid-grid-xs-6-40 OrderFulfillmentGroup-headerRightColumn-4"
+        >
+          <aside
+            className="MuiTypography-root-103 MuiTypography-body2-111"
+          >
+            Ground
+          </aside>
+        </div>
+      </div>
+    </header>
+    <div
+      className="MuiGrid-item-7 MuiGrid-grid-xs-12-46"
+    >
+      <div
+        className="CartItems__Items-gEXRwN gdnVAG"
+      >
+        <div
+          className="CartItem__Item-ghDCXl cfXPgA"
+        >
+          <a
+            href="/product-slug"
+          >
+            <picture>
+              
+              <img
+                alt=""
+                src="//placehold.it/100"
+                style={
+                  Object {
+                    "display": "block",
+                  }
+                }
+              />
+            </picture>
+          </a>
+          <div
+            className="CartItem__ItemContent-fAfWVu iOkAew"
+          >
+            <div
+              className="CartItem__ItemContentDetail-huMIJe gVwWKq"
+            >
+              <div
+                className="CartItem__ItemContentDetailInner-eKJgRu cjjvqv"
+              >
+                <div
+                  className="CartItem__ItemContentDetailInfo-kmZYEG epAHLA"
+                >
+                  <div
+                    className="CartItemDetail__Detail-xugoC bPXJMk"
+                  >
+                    <h3
+                      className="CartItemDetail__Title-iDNyNA ckBsQI"
+                    >
+                      <a
+                        href="/product-slug"
+                      >
+                        A Great Product
+                      </a>
+                    </h3>
+                    <div
+                      className="CartItemDetail__Attributes-Jfttp dEgfNx"
+                    >
+                      <p
+                        className="CartItemDetail__Text-iQjjVf jxAYVa"
+                      >
+                        Patagonia
+                      </p>
+                      <p
+                        className="CartItemDetail__Attr-cEjNLZ gFtQDZ"
+                      >
+                        <span>
+                          Color
+                          :
+                        </span>
+                         
+                        Red
+                      </p>
+                      <p
+                        className="CartItemDetail__Attr-cEjNLZ gFtQDZ"
+                      >
+                        <span>
+                          Size
+                          :
+                        </span>
+                         
+                        Medium
+                      </p>
+                      <p
+                        className="CartItemDetail__Text-iQjjVf jxAYVa"
+                      >
+                        Quantity: 
+                        2
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    className="StockWarning__Span-niCBr hrChZc"
+                  >
+                    Only 
+                    3
+                     in stock
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="CartItem__ItemContentPrice-lcfJQP eaPRuH"
+            >
+              <div>
+                
+                <del
+                  className="Price__Del-bTXnTw juwrQs"
+                >
+                  $45.00
+                </del>
+                <span
+                  className="Price__Span-cHkFMo eGYnOf"
+                >
+                  $20.00
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CartItem__Item-ghDCXl cfXPgA"
+        >
+          <a
+            href="/product-slug"
+          >
+            <picture>
+              
+              <img
+                alt=""
+                src="//placehold.it/100"
+                style={
+                  Object {
+                    "display": "block",
+                  }
+                }
+              />
+            </picture>
+          </a>
+          <div
+            className="CartItem__ItemContent-fAfWVu iOkAew"
+          >
+            <div
+              className="CartItem__ItemContentDetail-huMIJe gVwWKq"
+            >
+              <div
+                className="CartItem__ItemContentDetailInner-eKJgRu cjjvqv"
+              >
+                <div
+                  className="CartItem__ItemContentDetailInfo-kmZYEG epAHLA"
+                >
+                  <div
+                    className="CartItemDetail__Detail-xugoC bPXJMk"
+                  >
+                    <h3
+                      className="CartItemDetail__Title-iDNyNA ckBsQI"
+                    >
+                      <a
+                        href="/product-slug"
+                      >
+                        Another Great Product
+                      </a>
+                    </h3>
+                    <div
+                      className="CartItemDetail__Attributes-Jfttp dEgfNx"
+                    >
+                      <p
+                        className="CartItemDetail__Text-iQjjVf jxAYVa"
+                      >
+                        Nike
+                      </p>
+                      <p
+                        className="CartItemDetail__Attr-cEjNLZ gFtQDZ"
+                      >
+                        <span>
+                          Color
+                          :
+                        </span>
+                         
+                        Black
+                      </p>
+                      <p
+                        className="CartItemDetail__Attr-cEjNLZ gFtQDZ"
+                      >
+                        <span>
+                          Size
+                          :
+                        </span>
+                         
+                        10
+                      </p>
+                      <p
+                        className="CartItemDetail__Text-iQjjVf jxAYVa"
+                      >
+                        Quantity: 
+                        1
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="CartItem__ItemContentPrice-lcfJQP eaPRuH"
+            >
+              <div>
+                
+                <span
+                  className="Price__Span-cHkFMo eGYnOf"
+                >
+                  $78.00
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>,
+  <section
+    className="OrderFulfillmentGroup-summary-5"
+  >
+    <div
+      className="OrderSummary-summary-129"
+    >
+      <div
+        className="OrderSummary-header-130"
+      >
+        <div
+          className="MuiGrid-container-6 MuiGrid-spacing-xs-24-30"
+        >
+          <div
+            className="MuiGrid-item-7 MuiGrid-grid-xs-3-37"
+          >
+            <h3
+              className="MuiTypography-root-103 MuiTypography-subheading-110"
+            >
+              Payment Method
+            </h3>
+          </div>
+          <div
+            className="MuiGrid-item-7 MuiGrid-grid-xs-3-37"
+          >
+            <aside
+              className="MuiTypography-root-103 MuiTypography-body2-111"
+            >
+              Example Payment
+            </aside>
+          </div>
+        </div>
+      </div>
+      <hr
+        className="MuiDivider-root-133"
+      />
+      <div
+        className="sc-bdVaJa iXzmsn"
+      >
+        <table
+          className="CartSummary__Table-cWcArh gWGRvE"
+        >
+          <tbody>
+            <tr>
+              <td
+                className="CartSummary__Td-jXBgKC bUBGM"
+              >
+                Item total
+              </td>
+              <td
+                className="CartSummary__Td-boDvWU sYgOn"
+              >
+                $118
+              </td>
+            </tr>
+            <tr>
+              <td
+                className="CartSummary__Td-jXBgKC bUBGM"
+              >
+                Shipping
+              </td>
+              <td
+                className="CartSummary__Td-boDvWU sYgOn"
+              />
+            </tr>
+            <tr>
+              <td
+                className="CartSummary__Td-jXBgKC bUBGM"
+              >
+                Tax
+              </td>
+              <td
+                className="CartSummary__Td-boDvWU sYgOn"
+              >
+                -
+              </td>
+            </tr>
+            <tr>
+              <td
+                className="CartSummary__Td-jXBgKC isuVSE"
+              >
+                Order total
+              </td>
+              <td
+                className="CartSummary__Td-boDvWU FDHoo"
+              >
+                <span
+                  className="CartSummary__Total-BZUQP bdUKHv"
+                >
+                  $118
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>,
+]
+`;
