@@ -13,6 +13,12 @@ const styles = (theme) => ({
   fulfillmentDetails: {
     padding: theme.spacing.unit * 2
   },
+  header: {
+    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
+  },
+  headerRightColumn: {
+    textAlign: "right"
+  },
   summary: {
     paddingTop: theme.spacing.unit * 2
   }
@@ -123,10 +129,20 @@ class OrderFulfillmentGroup extends Component {
 
   render() {
     const { classes, fulfillmentGroup } = this.props;
-
+    const { fulfillmentMethod } = fulfillmentGroup.selectedFulfillmentOption;
     return (
       <Fragment>
         <section className={classes.fulfillmentGroup}>
+          <header className={classes.header}>
+            <Grid container spacing={24}>
+              <Grid item xs={6}>
+                <Typography variant="subheading">{fulfillmentMethod.displayName}</Typography>
+              </Grid>
+              <Grid item xs={6} className={classes.headerRightColumn}>
+                <Typography variant="body2">{fulfillmentMethod.group}</Typography>
+              </Grid>
+            </Grid>
+          </header>
           {this.renderItems()}
           {this.renderFulfillmentInfo()}
         </section>
