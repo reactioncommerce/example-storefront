@@ -56,9 +56,6 @@ fragment CartCommon on Cart {
         }
       }
     }
-    payments{
-      _id
-    }
     summary {
       fulfillmentTotal {
         displayAmount
