@@ -69,7 +69,6 @@ class OrderSummary extends Component {
             displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
             displaySubtotal={itemTotal && itemTotal.displayAmount}
             displayTotal={total && total.displayAmount}
-            itemsQuantity={cart.totalItemQuantity}
           />
         </OrderSummaryContainer>
       );
