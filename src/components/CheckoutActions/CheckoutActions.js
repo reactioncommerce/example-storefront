@@ -13,50 +13,6 @@ import {
   isShippingAddressSet
 } from "lib/utils/cartUtils";
 
-const checkoutSummary = {
-  displayShipping: "$5.25",
-  displaySubtotal: "$118.00",
-  displayTotal: "$135.58",
-  displayTax: "$12.33",
-  items: [{
-    _id: "123",
-    attributes: [{ label: "Color", value: "Red" }, { label: "Size", value: "Medium" }],
-    compareAtPrice: {
-      displayAmount: "$45.00"
-    },
-    currentQuantity: 3,
-    imageURLs: {
-      small: "//placehold.it/150",
-      thumbnail: "//placehold.it/100"
-    },
-    isLowQuantity: true,
-    price: {
-      displayAmount: "$20.00"
-    },
-    productSlug: "/product-slug",
-    productVendor: "Patagonia",
-    title: "A Great Product",
-    quantity: 2
-  },
-  {
-    _id: "456",
-    attributes: [{ label: "Color", value: "Black" }, { label: "Size", value: "10" }],
-    currentQuantity: 500,
-    imageURLs: {
-      small: "//placehold.it/150",
-      thumbnail: "//placehold.it/100"
-    },
-    isLowQuantity: false,
-    price: {
-      displayAmount: "$78.00"
-    },
-    productSlug: "/product-slug",
-    productVendor: "Patagonia",
-    title: "Another Great Product",
-    quantity: 1
-  }]
-};
-
 @withCart
 @withPlaceStripeOrder
 @observer
@@ -163,10 +119,9 @@ export default class CheckoutActions extends Component {
 
   render() {
     const { cartStore: { stripeToken } } = this.props;
-    const { checkout: { fulfillmentGroups } } = this.props.cart;
+    const { checkout: { fulfillmentGroups, summary }, items } = this.props.cart;
     const shippingAddressSet = isShippingAddressSet(fulfillmentGroups);
     const fulfillmentGroup = fulfillmentGroups[0];
-
 
     let shippingAddress = { data: { shippingAddress: null } };
     // Adapt shipping address to match fields in the AddressForm component.
@@ -190,6 +145,16 @@ export default class CheckoutActions extends Component {
         }
       };
     }
+
+    // Order summary
+    const { fulfillmentTotal, itemTotal, taxTotal, total } = summary;
+    const checkoutSummary = {
+      displayShipping: fulfillmentTotal && fulfillmentTotal.displayAmount,
+      displaySubtotal: itemTotal && itemTotal.displayAmount,
+      displayTotal: total && total.displayAmount,
+      displayTax: taxTotal && taxTotal.displayAmount,
+      items
+    };
 
     const actions = [
       {
