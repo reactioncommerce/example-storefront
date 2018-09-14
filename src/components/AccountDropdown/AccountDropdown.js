@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import { withStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
-import TextField from "@material-ui/core/TextField";
-import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import AccountIcon from "mdi-material-ui/Account";
 import Popover from "@material-ui/core/Popover";
@@ -20,13 +18,11 @@ const styles = (theme) => ({
 
 @withStyles(styles)
 @inject("authStore")
-@inject("keycloakAuthStore")
 @observer
 class AccountDropdown extends Component {
   static propTypes = {
     authStore: PropTypes.object.isRequired,
-    classes: PropTypes.object,
-    keycloakAuthStore: PropTypes.object.isRequired
+    classes: PropTypes.object
   };
 
   static defaultProps = {
@@ -49,10 +45,7 @@ class AccountDropdown extends Component {
   }
 
   state = {
-    anchorElement: null,
-    prevToken: "",
-    token: "",
-    keycloakToken: this.props.keycloakAuthStore.token
+    anchorElement: null
   };
 
   toggleOpen = (event) => {
@@ -86,8 +79,8 @@ class AccountDropdown extends Component {
   }
 
   render() {
-    const { classes, authStore, keycloakAuthStore } = this.props;
-    const { anchorElement, token } = this.state;
+    const { classes, authStore } = this.props;
+    const { anchorElement } = this.state;
 
     return (
       <Fragment>
@@ -106,16 +99,21 @@ class AccountDropdown extends Component {
         >
           <div className={classes.accountDropdown}>
             {authStore.isAuthenticated ?
-              <div>
+              <Fragment>
                 <ViewerInfo viewer={authStore.account} />
-                <Button color="primary" href="/logout">
+                <Button color="primary" fullWidth href="/logout" variant="raised">
                   Logout
                 </Button>
-              </div>
+              </Fragment>
               :
-              <Button color="primary" href="/auth2">
-                Login
-              </Button>
+              <Fragment>
+                <Button color="primary" fullWidth href="/auth2" variant="raised">
+                  Login
+                </Button>
+                <Button color="primary" fullWidth href="/auth2">
+                  Create Account
+                </Button>
+              </Fragment>
             }
           </div>
         </Popover>
