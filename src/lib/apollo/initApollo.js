@@ -66,17 +66,12 @@ const create = (initialState, options) => {
 
   // Set auth context
   // https://github.com/apollographql/apollo-link/tree/master/packages/apollo-link-context
-  const authLink = setContext((__, { headers }) => {
-    const { meteorToken, keycloakToken } = getAuthTokens(initialState && initialState.cookies);
-    return {
-      headers: {
-        ...headers,
-        "meteor-login-token": `${meteorToken || ""}`,
-        // "Authorization": keycloakToken ? `Bearer ${keycloakToken}` : ""
-        "Authorization": options.accessToken
-      }
-    };
-  });
+  const authLink = setContext((__, { headers }) => ({
+    headers: {
+      ...headers,
+      Authorization: options.accessToken
+    }
+  }));
 
   const httpLink = new HttpLink({ uri: `${graphqlUrl}`, credentials: "same-origin" });
 
