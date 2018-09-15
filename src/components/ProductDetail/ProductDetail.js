@@ -227,7 +227,7 @@ class ProductDetail extends Component {
 
     return (
       <Fragment>
-        <Grid container spacing={theme.spacing.unit * 3}>
+        <Grid container spacing={theme.spacing.unit * 5}>
           <Hidden xsDown>
             <Grid item className={classes.breadcrumbGrid} xs={12}>
               <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
