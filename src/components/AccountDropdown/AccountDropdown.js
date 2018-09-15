@@ -13,6 +13,9 @@ const styles = (theme) => ({
   accountDropdown: {
     width: 320,
     padding: theme.spacing.unit * 2
+  },
+  authContent: {
+    marginBottom: theme.spacing.unit * 2
   }
 });
 
@@ -100,16 +103,25 @@ class AccountDropdown extends Component {
           <div className={classes.accountDropdown}>
             {authStore.isAuthenticated ?
               <Fragment>
-                <ViewerInfo viewer={authStore.account} />
+                <div className={classes.authContent}>
+                  <ViewerInfo
+                    viewer={{
+                      firstName: authStore.account.name,
+                      lastName: " "
+                    }}
+                  />
+                </div>
                 <Button color="primary" fullWidth href="/logout" variant="raised">
-                  Logout
+                  Sign Out
                 </Button>
               </Fragment>
               :
               <Fragment>
-                <Button color="primary" fullWidth href="/auth2" variant="raised">
-                  Login
-                </Button>
+                <div className={classes.authContent}>
+                  <Button color="primary" fullWidth href="/auth2" variant="raised">
+                    Sign In
+                  </Button>
+                </div>
                 <Button color="primary" fullWidth href="/auth2">
                   Create Account
                 </Button>
