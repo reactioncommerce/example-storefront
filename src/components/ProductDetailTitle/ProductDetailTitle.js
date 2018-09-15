@@ -17,17 +17,22 @@ class ProductDetailTitle extends Component {
     /**
      * Main title, the h1 for the page
      */
-    title: PropTypes.string
+    title: PropTypes.string,
+
+    /**
+     * Typography theme variant
+     */
+    variant: PropTypes.string
   }
   render() {
-    const { title, pageTitle } = this.props;
+    const { pageTitle, title, variant = "display2" } = this.props;
 
     // Render nothing if neither the title nor pageTitle exists
     if (!title && !pageTitle) return null;
 
     return (
       <Grid item sm={12}>
-        {title && <Typography gutterBottom={true} variant="display2">{title}</Typography>}
+        {title && <Typography gutterBottom={true} variant={variant}>{title}</Typography>}
         {pageTitle && <Typography color="primary" component="h2" variant="title">{pageTitle}</Typography>}
       </Grid>
     );
