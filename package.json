@@ -24,7 +24,7 @@
     "test:unit": "NODE_ENV=jesttest jest",
     "test:unit:watch": "NODE_ENV=jesttest jest --watchAll",
     "test:integration": "mocha tests/integration",
-    "test:link": "blc http://web.reaction-api:4000 -ro -filter=3 -e"
+    "test:link": "blc http://web.api.reaction.localhost:4000 -ro -filter=3 -e"
   },
   "eslintConfig": {
     "extends": [
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^1.5.0",
-    "@reactioncommerce/components": "0.34.1",
+    "@reactioncommerce/components": "0.35.1",
     "@reactioncommerce/components-context": "^1.0.0",
     "@segment/snippet": "^4.3.1",
     "apollo-cache-inmemory": "^1.1.11",
