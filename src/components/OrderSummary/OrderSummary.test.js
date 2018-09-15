@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "lib/theme/reactionTheme";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
-import componentsContext from "componentsContext";
+import components from "lib/theme/components";
 import OrderSummary from "./OrderSummary";
 
 const testFulfillmentGroup = {
@@ -73,7 +73,7 @@ const testFulfillmentGroup = {
 
 test("basic snapshot", () => {
   const component = renderer.create((
-    <ComponentsProvider value={componentsContext}>
+    <ComponentsProvider value={components}>
       <MuiThemeProvider theme={theme}>
         <OrderSummary
           fulfillmentGroup={testFulfillmentGroup}
