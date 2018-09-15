@@ -80,9 +80,19 @@ export default (App) =>
     static displayName = `WithApolloClient(${getComponentDisplayName(App)})`;
 
     static propTypes = {
+      accessToken: PropTypes.string,
       apolloState: PropTypes.object.isRequired,
       router: PropTypes.object
     };
+
+    static getDerivedStateFromProps(nextProps) {
+      const { pathname, query } = nextProps.router;
+
+      // Update routing store with pathname and query after route change
+      rootMobxStores.routingStore.updateRoute({ pathname, query });
+
+      return null;
+    }
 
     constructor(props) {
       super(props);
@@ -92,15 +102,6 @@ export default (App) =>
 
       // State must be initialized if getDerivedStateFromProps is used
       this.state = {};
-    }
-
-    static getDerivedStateFromProps(nextProps) {
-      const { pathname, query } = nextProps.router;
-
-      // Update routing store with pathname and query after route change
-      rootMobxStores.routingStore.updateRoute({ pathname, query });
-
-      return null;
     }
 
     render() {
