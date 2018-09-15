@@ -1,10 +1,12 @@
 import { ApolloClient } from "apollo-client";
+import { ApolloLink } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import { setContext } from "apollo-link-context";
 import { onError } from "apollo-link-error";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import fetch from "isomorphic-fetch";
 import getConfig from "next/config";
+import { omitTypenameLink } from "./omitVariableTypenameLink";
 
 /**
  * Get auth tokens from local storage and include with the request
@@ -78,7 +80,7 @@ const create = (initialState, options) => {
   return new ApolloClient({
     connectToDevTools: process.browser,
     ssrMode: !process.browser,
-    link: authLink.concat(errorLink.concat(httpLink)),
+    link: ApolloLink.from([omitTypenameLink, authLink, errorLink, httpLink]),
     cache: new InMemoryCache().restore(initialState || {})
   });
 };

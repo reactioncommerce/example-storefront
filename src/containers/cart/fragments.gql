@@ -7,6 +7,9 @@ fragment CartCommon on Cart {
   }
   shop {
     _id
+    currency {
+      code
+    }
   }
   email
   updatedAt
@@ -17,13 +20,11 @@ fragment CartCommon on Cart {
       type
       data {
         shippingAddress {
-          _id
           address1
           address2
           city
           company
           country
-          failedValidation
           fullName
           isBillingDefault
           isCommercial
@@ -54,6 +55,10 @@ fragment CartCommon on Cart {
           amount
           displayAmount
         }
+        handlingPrice {
+          amount
+          displayAmount
+        }
       }
     }
     summary {
@@ -67,6 +72,7 @@ fragment CartCommon on Cart {
         displayAmount
       }
       total {
+        amount
         displayAmount
       }
     }
