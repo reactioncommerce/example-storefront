@@ -77,7 +77,6 @@ class AccountDropdown extends Component {
   }
 
   onLogout = () => {
-    this.props.keycloakAuthStore.unsetToken("keycloakToken");
     window.location.reload();
   }
 
