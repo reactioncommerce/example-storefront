@@ -5,13 +5,16 @@ import Actions from "@reactioncommerce/components/CheckoutActions/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
 import FulfillmentOptionsCheckoutAction from "@reactioncommerce/components/FulfillmentOptionsCheckoutAction/v1";
 import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaymentCheckoutAction/v1";
+import FinalReviewCheckoutAction from "@reactioncommerce/components/FinalReviewCheckoutAction/v1";
 import withCart from "containers/cart/withCart";
+import withPlaceStripeOrder from "containers/order/withPlaceStripeOrder";
 import {
   adaptAddressToFormFields,
   isShippingAddressSet
 } from "lib/utils/cartUtils";
 
 @withCart
+@withPlaceStripeOrder
 @observer
 export default class CheckoutActions extends Component {
   static propTypes = {
@@ -27,8 +30,9 @@ export default class CheckoutActions extends Component {
     checkoutMutations: PropTypes.shape({
       // onUpdateFulfillmentOptionsForGroup: PropTypes.func.isRequired,
       onSetFulfillmentOption: PropTypes.func.isRequired,
-      onSetShippingAddress: PropTypes.func.required
-    })
+      onSetShippingAddress: PropTypes.func.isRequired
+    }),
+    placeOrderWithStripeCard: PropTypes.func.isRequired
   };
 
   setShippingAddress = (address) => {
@@ -61,12 +65,47 @@ export default class CheckoutActions extends Component {
     cartStore.setStripeToken(stripeToken);
   }
 
+  placeOrder = () => {
+    const { cart, cartStore, placeOrderWithStripeCard } = this.props;
+    const cartId = cartStore.hasAccountCart ? cartStore.accountCartId : cartStore.anonymousCartId;
+    const { checkout, email, shop } = cart;
+    const fulfillmentGroups = checkout.fulfillmentGroups.map((group) => {
+      const { data } = group;
+      const { selectedFulfillmentOption } = group;
+
+      const items = cart.items.map((item) => ({
+        addedAt: item.addedAt,
+        price: item.price.amount,
+        productConfiguration: item.productConfiguration,
+        quantity: item.quantity
+      }));
+
+      return {
+        data,
+        items,
+        selectedFulfillmentMethodId: selectedFulfillmentOption.fulfillmentMethod._id,
+        shopId: shop._id,
+        totalPrice: checkout.summary.total.amount,
+        type: group.type
+      };
+    });
+
+    const order = {
+      cartId,
+      currencyCode: shop.currency.code,
+      email,
+      fulfillmentGroups,
+      shopId: shop._id
+    };
+
+    return placeOrderWithStripeCard(order);
+  }
+
   render() {
     const { cartStore: { stripeToken } } = this.props;
-    const { checkout: { fulfillmentGroups } } = this.props.cart;
+    const { checkout: { fulfillmentGroups, summary }, items } = this.props.cart;
     const shippingAddressSet = isShippingAddressSet(fulfillmentGroups);
     const fulfillmentGroup = fulfillmentGroups[0];
-
 
     let shippingAddress = { data: { shippingAddress: null } };
     // Adapt shipping address to match fields in the AddressForm component.
@@ -90,6 +129,16 @@ export default class CheckoutActions extends Component {
         }
       };
     }
+
+    // Order summary
+    const { fulfillmentTotal, itemTotal, taxTotal, total } = summary;
+    const checkoutSummary = {
+      displayShipping: fulfillmentTotal && fulfillmentTotal.displayAmount,
+      displaySubtotal: itemTotal.displayAmount,
+      displayTotal: total.displayAmount,
+      displayTax: taxTotal && taxTotal.displayAmount,
+      items
+    };
 
     const actions = [
       {
@@ -117,6 +166,15 @@ export default class CheckoutActions extends Component {
         onSubmit: this.setPaymentMethod,
         props: {
           payment: paymentData
+        }
+      },
+      {
+        label: "Review and place order",
+        status: "incomplete",
+        component: FinalReviewCheckoutAction,
+        onSubmit: this.placeOrder,
+        props: {
+          checkoutSummary
         }
       }
     ];

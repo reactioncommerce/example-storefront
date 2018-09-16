@@ -72,11 +72,15 @@ const testOrder = {
 };
 
 test("basic snapshot", () => {
-  const component = renderer.create(<ComponentsProvider value={components}>
-    <MuiThemeProvider theme={theme}>
-      <OrderFulfillmentGroups order={testOrder} />
-    </MuiThemeProvider>
-  </ComponentsProvider>);
+  const component = renderer.create((
+    <ComponentsProvider value={components}>
+      <MuiThemeProvider theme={theme}>
+        <OrderFulfillmentGroups
+          order={testOrder}
+        />
+      </MuiThemeProvider>
+    </ComponentsProvider>
+  ));
 
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
