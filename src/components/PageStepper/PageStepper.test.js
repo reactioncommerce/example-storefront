@@ -45,10 +45,10 @@ test("click next button", () => {
 
   const wrapper = mount(<PageStepper pageInfo={pageInfo} />);
 
-  // const buttonElement = wrapper.find(Button);
-  // expect(buttonElement.length).toBe(1);
-  // buttonElement.simulate("click");
-  // expect(pageInfo.loadNextPage).toHaveBeenCalled();
+  const buttonElement = wrapper.find(Button);
+  expect(buttonElement.length).toBe(1);
+  buttonElement.simulate("click");
+  expect(pageInfo.loadNextPage).toHaveBeenCalled();
 });
 
 test("click previous button", () => {

@@ -90,7 +90,7 @@ const styles = (theme) => ({
     "borderRight": `1px solid ${theme.palette.reaction.black15}`
   },
   quantitySvg: {
-    "fontSize": "18px",
+    fontSize: "18px"
   },
   quantityTypography: {
     color: theme.palette.reaction.coolGray500,

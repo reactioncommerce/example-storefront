@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { inject } from "mobx-react";
 import { Router } from "routes";
-import Divider from "@material-ui/core/Divider";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Collapse from "@material-ui/core/Collapse";
