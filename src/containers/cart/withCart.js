@@ -117,25 +117,27 @@ export default (Component) => (
      * @param {Function} mutation An Apollo mutation function
      * @param {Object} data An an object containing input data for mutations
      * @param {Array} data.items An an array of CartItemInput objects
+     * @param {Boolean} isCreating True if the mutation is CreateCart. CreateCartInput does
+     *   not allow `cartId` or `token` while `AddCartItemsInput` needs them.
      * @returns {undefined} No return
      */
-    handleAddItemsToCart(mutation, data) {
+    handleAddItemsToCart(mutation, data, isCreating) {
       const { authStore, cartStore, shop } = this.props;
       const input = {
         items: data.items
       };
 
-      if (authStore.isAuthenticated === false && cartStore.hasAnonymousCartCredentials) {
+      if (!isCreating && !authStore.isAuthenticated && cartStore.hasAnonymousCartCredentials) {
         // Given an anonymous user, with a cart, add token and cartId to input
         const { anonymousCartId, anonymousCartToken } = cartStore;
 
         // Add items to an existing anonymous cart
         input.token = anonymousCartToken;
         input.cartId = anonymousCartId;
-      } else if (authStore.isAuthenticated === true && cartStore.hasAccountCart) {
+      } else if (!isCreating && authStore.isAuthenticated && cartStore.hasAccountCart) {
         // With an account and an account cart, set the accountCartId on the input object
         input.cartId = cartStore.accountCartId;
-      } else if (!cartStore.hasAccountCart && !cartStore.hasAnonymousCartCredentials) {
+      } else if (isCreating) {
         // With no anonymous or account cart, add shop Id to input as it will be needed for the create cart mutation
         input.shopId = shop._id;
       }
@@ -419,9 +421,7 @@ export default (Component) => (
                       });
                     }}
                     addItemsToCart={(items) => {
-                      this.handleAddItemsToCart(mutationFunction, {
-                        items
-                      });
+                      this.handleAddItemsToCart(mutationFunction, { items }, !cart);
                     }}
                     setEmailOnAnonymousCart={this.handleSetEmailOnAnonymousCart}
                     checkoutMutations={{
