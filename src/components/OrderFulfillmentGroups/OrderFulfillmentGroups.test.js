@@ -7,70 +7,68 @@ import components from "lib/theme/components";
 import OrderFulfillmentGroups from "./OrderFulfillmentGroups";
 
 const testOrder = {
-  fulfillmentGroups: [{
-    summary: {
-      itemTotal: {
-        displayAmount: "$118"
+  fulfillmentGroups: [
+    {
+      summary: {
+        itemTotal: {
+          displayAmount: "$118"
+        },
+        total: {
+          displayAmount: "$118"
+        }
       },
-      total: {
-        displayAmount: "$118"
-      }
-    },
-    items: {
-      nodes: [{
-        _id: "123",
-        attributes: [
-          { label: "Color", value: "Red" },
-          { label: "Size", value: "Medium" }
-        ],
-        compareAtPrice: {
-          displayAmount: "$45.00"
-        },
-        currentQuantity: 3,
-        imageURLs: {
-          small: "//placehold.it/150",
-          thumbnail: "//placehold.it/100"
-        },
-        isLowQuantity: true,
-        price: {
-          displayAmount: "$20.00"
-        },
-        productSlug: "/product-slug",
-        productVendor: "Patagonia",
-        title: "A Great Product",
-        quantity: 2
+      items: {
+        nodes: [
+          {
+            _id: "123",
+            attributes: [{ label: "Color", value: "Red" }, { label: "Size", value: "Medium" }],
+            compareAtPrice: {
+              displayAmount: "$45.00"
+            },
+            currentQuantity: 3,
+            imageURLs: {
+              small: "//placehold.it/150",
+              thumbnail: "//placehold.it/100"
+            },
+            isLowQuantity: true,
+            price: {
+              displayAmount: "$20.00"
+            },
+            productSlug: "/product-slug",
+            productVendor: "Patagonia",
+            title: "A Great Product",
+            quantity: 2
+          },
+          {
+            _id: "456",
+            attributes: [{ label: "Color", value: "Black" }, { label: "Size", value: "10" }],
+            currentQuantity: 500,
+            imageURLs: {
+              small: "//placehold.it/150",
+              thumbnail: "//placehold.it/100"
+            },
+            isLowQuantity: false,
+            price: {
+              displayAmount: "$78.00"
+            },
+            productVendor: "Nike",
+            productSlug: "/product-slug",
+            title: "Another Great Product",
+            quantity: 1
+          }
+        ]
       },
-      {
-        _id: "456",
-        attributes: [
-          { label: "Color", value: "Black" },
-          { label: "Size", value: "10" }
-        ],
-        currentQuantity: 500,
-        imageURLs: {
-          small: "//placehold.it/150",
-          thumbnail: "//placehold.it/100"
-        },
-        isLowQuantity: false,
-        price: {
-          displayAmount: "$78.00"
-        },
-        productVendor: "Nike",
-        productSlug: "/product-slug",
-        title: "Another Great Product",
-        quantity: 1
-      }]
-    },
-    payment: {
-      displayName: "Example Payment"
-    },
-    selectedFulfillmentOption: {
-      fulfillmentMethod: {
-        displayName: "Free Shipping",
-        group: "Ground"
+      payment: {
+        displayName: "Example Payment"
+      },
+      selectedFulfillmentOption: {
+        fulfillmentMethod: {
+          displayName: "Free Shipping",
+          group: "Ground"
+        }
       }
     }
-  }]
+  ]
 };
 
 test("basic snapshot", () => {

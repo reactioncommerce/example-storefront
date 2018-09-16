@@ -108,12 +108,12 @@ export default class Login extends Component {
     theme: PropTypes.object.isRequired
   };
 
-  static getDerivedStateFromProps({ cart }) {
-    if ((cart && cart.account !== null) || (cart && cart.email)) Router.back();
-    return null;
-  }
-
   state = {};
+
+  componentDidMount() {
+    const { cart } = this.props;
+    if ((cart && cart.account !== null) || (cart && cart.email)) Router.back();
+  }
 
   handleLoginClick = () => {
     // TODO: Redirect to Auth solution

@@ -51,7 +51,7 @@ export default (Component) => {
                   queryName: "catalogItems",
                   limit: uiStore.pageSize
                 })}
-                catalogItems={catalogItems && catalogItems.edges || []}
+                catalogItems={(catalogItems && catalogItems.edges) || []}
               />
             );
           }}
