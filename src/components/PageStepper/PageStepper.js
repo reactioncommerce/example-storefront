@@ -31,12 +31,12 @@ export default class PageStepper extends Component {
       <Grid className={classes.root} container justify="space-between">
         <Grid item>
           {pageInfo.hasPreviousPage &&
-            <Button onClick={pageInfo.loadPreviousPage} variant="raised">{"Previous"}</Button>
+            <Button onClick={pageInfo.loadPreviousPage}>Previous</Button>
           }
         </Grid>
         <Grid item>
           {pageInfo.hasNextPage &&
-            <Button onClick={pageInfo.loadNextPage} variant="raised">{"Next"}</Button>
+            <Button onClick={pageInfo.loadNextPage}>Next</Button>
           }
         </Grid>
       </Grid>
