@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Button from "@material-ui/core/Button";
+import Button from "@reactioncommerce/components/Button/v1";
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -31,12 +31,12 @@ export default class PageStepper extends Component {
       <Grid className={classes.root} container justify="space-between">
         <Grid item>
           {pageInfo.hasPreviousPage &&
-            <Button onClick={pageInfo.loadPreviousPage} variant="raised">{"Previous"}</Button>
+            <Button onClick={pageInfo.loadPreviousPage}>Previous</Button>
           }
         </Grid>
         <Grid item>
           {pageInfo.hasNextPage &&
-            <Button onClick={pageInfo.loadNextPage} variant="raised">{"Next"}</Button>
+            <Button onClick={pageInfo.loadNextPage}>Next</Button>
           }
         </Grid>
       </Grid>

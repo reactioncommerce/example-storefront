@@ -10,6 +10,10 @@ const styles = (theme) => ({
     justifyContent: "center",
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2
+  },
+  cfXPgA: {
+    paddingLeft: 0,
+    paddingRight: 0
   }
 });
 

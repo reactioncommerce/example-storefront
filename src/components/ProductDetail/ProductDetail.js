@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import Hidden from "@material-ui/core/Hidden";
 import { inject, observer } from "mobx-react";
 import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
@@ -226,21 +227,35 @@ class ProductDetail extends Component {
 
     return (
       <Fragment>
-        <Grid container spacing={theme.spacing.unit * 3}>
-          <Grid item className={classes.breadcrumbGrid} xs={12}>
-            <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
-          </Grid>
+        <Grid container spacing={theme.spacing.unit * 5}>
+          <Hidden smUp>
+            <ProductDetailTitle
+              pageTitle={product.pageTitle}
+              title={product.title}
+              classes={classes.title}
+              variant="display1"
+            />
+          </Hidden>
+          <Hidden xsDown>
+            <Grid item className={classes.breadcrumbGrid} xs={12}>
+              <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
+            </Grid>
+          </Hidden>
           <Grid item xs={12} sm={6}>
             <div className={classes.section}>
               <MediaGallery mediaItems={pdpMediaItems} />
             </div>
-            <div className={classes.section}>
-              <TagGrid tags={product.tags.nodes} />
-            </div>
+            <Hidden xsDown>
+              <div className={classes.section}>
+                <TagGrid tags={product.tags.nodes} />
+              </div>
+            </Hidden>
           </Grid>
 
           <Grid item xs={12} sm={6}>
-            <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
+            <Hidden xsDown>
+              <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
+            </Hidden>
             <ProductDetailInfo
               priceRange={productPrice.displayPrice}
               description={product.description}
