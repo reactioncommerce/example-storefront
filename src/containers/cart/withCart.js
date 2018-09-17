@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Mutation, Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
 import cartItemsConnectionToArray from "lib/utils/cartItemsConnectionToArray";
+import withShop from "containers/shop/withShop";
 import {
   createCartMutation,
   addCartItemsMutation,
@@ -27,6 +28,7 @@ import {
  */
 export default (Component) => (
   @withApollo
+  @withShop
   @inject("cartStore", "authStore")
   @observer
   class WithCart extends React.Component {
@@ -231,14 +233,14 @@ export default (Component) => (
      * @return {undefined} No return
      */
     handleSetEmailOnAnonymousCart = ({ email }) => {
-      const { cartStore, client: apolloClient } = this.props;
+      const { client: apolloClient } = this.props;
+
       apolloClient.mutate({
         mutation: setEmailOnAnonymousCartMutation,
         variables: {
           input: {
-            cartId: cartStore.anonymousCartId,
-            email,
-            token: cartStore.anonymousCartToken
+            ...this.cartIdAndToken,
+            email
           }
         }
       });
@@ -251,18 +253,32 @@ export default (Component) => (
      * @return {undefined} No return
      */
     handleUpdateFulfillmentOptionsForGroup = (fulfillmentGroupId) => {
-      const { cartStore, client: apolloClient } = this.props;
+      const { client: apolloClient } = this.props;
+
 
       apolloClient.mutate({
         mutation: updateFulfillmentOptionsForGroup,
         variables: {
           input: {
-            cartId: cartStore.anonymousCartId,
-            cartToken: cartStore.anonymousCartToken,
+            ...this.cartIdAndToken,
             fulfillmentGroupId
           }
         }
       });
+    }
+
+    get cartIdAndToken() {
+      const { cartStore } = this.props;
+      const { accountCartId, anonymousCartId, anonymousCartToken } = cartStore;
+      let cartToken = {};
+      if (!accountCartId) {
+        cartToken = { cartToken: anonymousCartToken };
+      }
+
+      return {
+        cartId: accountCartId || anonymousCartId,
+        ...cartToken
+      };
     }
 
     /**
@@ -273,14 +289,13 @@ export default (Component) => (
      * @return {undefined} No return
      */
     handleSetFulfillmentOption = ({ fulfillmentGroupId, fulfillmentMethodId }) => {
-      const { cartStore, client: apolloClient } = this.props;
+      const { client: apolloClient } = this.props;
 
       apolloClient.mutate({
         mutation: setFulfillmentOptionCartMutation,
         variables: {
           input: {
-            cartId: cartStore.anonymousCartId,
-            cartToken: cartStore.anonymousCartToken,
+            ...this.cartIdAndToken,
             fulfillmentGroupId,
             fulfillmentMethodId
           }
@@ -296,14 +311,13 @@ export default (Component) => (
      * @return {undefined} No return
      */
     handleSetShippingAddress = async (address) => {
-      const { cartStore, client: apolloClient } = this.props;
+      const { client: apolloClient } = this.props;
 
       const result = await apolloClient.mutate({
         mutation: setShippingAddressCartMutation,
         variables: {
           input: {
-            cartId: cartStore.anonymousCartId,
-            cartToken: cartStore.anonymousCartToken,
+            ...this.cartIdAndToken,
             address
           }
         }

@@ -27,7 +27,7 @@ export default (Component) => (
         <Query query={viewerQuery}>
           {({ data }) => {
             if (data && data.viewer) {
-              authStore.setAccountId(data.viewer._id);
+              authStore.setAccount(data.viewer);
             }
 
             return (
