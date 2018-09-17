@@ -13,7 +13,7 @@ import { placeOrderWithStripeCardPayment } from "./mutations.gql";
  */
 export default (Component) => (
   @withApollo
-  @inject("cartStore", "routingStore")
+  @inject("authStore", "cartStore", "routingStore")
   @observer
   class WithPlaceStripeOrder extends React.Component {
     static propTypes = {
@@ -31,9 +31,18 @@ export default (Component) => (
     }
 
     handlePlaceOrderWithStripeCard = async (order) => {
-      const { cartStore, client: apolloClient } = this.props;
+      const { authStore, cartStore, client: apolloClient } = this.props;
       const { fulfillmentGroups } = order;
       const { stripeToken: { billingAddress } } = cartStore;
+
+      const accountOrder = Object.assign({}, order);
+      if (authStore.account) {
+        const { account: { emailRecords } } = authStore; 
+        if (Array.isArray(emailRecords.slice())) {
+          accountOrder.email = emailRecords[0].address;
+        }
+        // TODO: throw error, complain
+      }
 
       const payment = {
         // If the users provided a billing address use it, otherwise, use the shipping address
@@ -45,7 +54,7 @@ export default (Component) => (
         mutation: placeOrderWithStripeCardPayment,
         variables: {
           input: {
-            order,
+            order: accountOrder,
             payment
           }
         }
@@ -57,6 +66,8 @@ export default (Component) => (
 
         // Clear cart
         cartStore.clearAnonymousCartCredentials();
+
+        //TODO: Clear cart page NextJS cache
 
         // Send user to order confirmation page
         Router.pushRoute("checkoutComplete", { orderId: orders[0]._id, token });
