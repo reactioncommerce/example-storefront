@@ -6,16 +6,27 @@ import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Button from "@reactioncommerce/components/Button/v1";
 import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
 import CheckoutActions from "components/CheckoutActions";
 import CheckoutEmailAddress from "@reactioncommerce/components/CheckoutEmailAddress/v1";
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
+import GuestForm from "@reactioncommerce/components/GuestForm/v1";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import CartIcon from "mdi-material-ui/Cart";
+import ChevronLeftIcon from "mdi-material-ui/ChevronLeft";
 import LockIcon from "mdi-material-ui/Lock";
 import withCart from "containers/cart/withCart";
 import Link from "components/Link";
 import CheckoutSummary from "components/CheckoutSummary";
+
+// flex wrapper jss mixin
+const flexWrapper = () => ({
+  alignItems: "stretch",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start"
+});
 
 const styles = (theme) => ({
   checkoutActions: {
@@ -62,7 +73,9 @@ const styles = (theme) => ({
   headerContainer: {
     display: "flex",
     justifyContent: "space-between",
-    marginBottom: "2rem"
+    margin: "0 auto",
+    maxWidth: theme.layout.mainContentMaxWidth,
+    padding: "1rem"
   },
   emptyCartContainer: {
     display: "flex",
@@ -80,8 +93,78 @@ const styles = (theme) => ({
     color: theme.palette.reaction.reactionBlue,
     marginRight: theme.spacing.unit,
     borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
-  }
+  },
+  // login view styles
+  loginWrapper: {
+    ...flexWrapper(theme),
+    paddingBottom: theme.spacing.unit * 8,
+    [theme.breakpoints.up("md")]: {
+      minHeight: "400px",
+      paddingBottom: 0,
+      paddingRight: theme.spacing.unit * 8
+    }
+  },
+  guestWrapper: {
+    ...flexWrapper(theme),
+    borderTop: `solid 1px ${theme.palette.reaction.black10}`,
+    paddingTop: theme.spacing.unit * 8,
+    [theme.breakpoints.up("md")]: {
+      borderLeft: `solid 1px ${theme.palette.reaction.black10}`,
+      borderTop: "none",
+      paddingLeft: theme.spacing.unit * 8,
+      paddingTop: 0
+    }
+  },
+  backLink: {
+    color: theme.palette.reaction.black80,
+    cursor: "pointer",
+    fontFamily: theme.typography.fontFamily,
+    fontSize: 14,
+    "&:hover": {
+      color: theme.palette.reaction.reactionBlue400
+    }
+  },
+  backLinkText: {
+    letterSpacing: "0.3px",
+    lineHeight: 1.71,
+    marginLeft: theme.spacing.unit,
+    textDecoration: "underline"
+  },
+  loginButton: {
+    marginTop: theme.spacing.unit * 3
+  },
+  headerCenter: {},
+  headerFlex: {
+    alignSelf: "center",
+    flex: "1 1 1%"
+  },
+  header: {
+    alignContent: "center",
+    borderBottom: `solid 1px ${theme.palette.reaction.black10}`,
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: theme.spacing.unit * 3,
+    padding: theme.spacing.unit * 3
+  },
+  // logo: {
+  //   color: theme.palette.reaction.reactionBlue,
+  //   margin: "auto",
+  //   borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
+  // },
+  main: {
+    flex: "1 1 auto",
+    maxWidth: theme.layout.mainLoginMaxWidth,
+    minHeight: "calc(100vh - 135px)",
+    margin: "0 auto",
+    padding: `${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px 0`,
+    [theme.breakpoints.up("md")]: {
+      padding: `${theme.spacing.unit * 10}px ${theme.spacing.unit * 3}px 0`
+    }
+  },
+  root: {}
 });
+
+const hasIdentityCheck = (cart) => !!((cart && cart.account !== null) || (cart && cart.email));
 
 @withCart
 @observer
@@ -100,6 +183,8 @@ class Checkout extends Component {
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
+    router: PropTypes.object,
+    setEmailOnAnonymousCart: PropTypes.func,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -110,13 +195,158 @@ class Checkout extends Component {
   state = {};
 
   componentDidMount() {
-    const { cart } = this.props;
-    if (cart && cart.account === null && !cart.email) Router.replaceRoute("/login");
+    this.handleRouteChange();
   }
+
+  componentDidUpdate() {
+    this.handleRouteChange();
+  }
+
+  /**
+   *
+   * @name handleRouteChange
+   * @summary Determines which /cart route (/cart/login || /cart/checkout) to display.
+   * @return undefined
+   */
+  handleRouteChange = () => {
+    const { cart, router: { asPath } } = this.props;
+    // Skipping if the `cart` is not available
+    if (!cart) return;
+    if (hasIdentityCheck(cart) && asPath === "/cart/login") {
+      Router.replaceRoute("/cart/checkout", {}, { shallow: true });
+    } else if (!hasIdentityCheck(cart) && asPath === "/cart/checkout") {
+      Router.replaceRoute("/cart/login", {}, { shallow: true });
+    }
+  };
 
   handleCartEmptyClick = () => Router.pushRoute("/");
 
-  renderCheckout() {
+  /**
+   *
+   * @name hasIdentity
+   * @summary Returns `true` if a customer is signed in or has set a "guest email" on their cart
+   * @return {Boolean}
+   */
+  get hasIdentity() {
+    const { cart } = this.props;
+    return hasIdentityCheck(cart);
+  }
+
+  // render page head
+  renderCheckoutHead() {
+    const { shop } = this.props;
+    const pageTitle = this.hasIdentity ? `Checkout | ${shop && shop.name}` : `Login | ${shop && shop.name}`;
+    return <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />;
+  }
+
+  // render page top bar
+  renderCheckoutTopHat() {
+    return <CheckoutTopHat checkoutMessage="Free Shipping + Free Returns" />;
+  }
+
+  // render page header
+  renderCheckoutHeader() {
+    return this.hasIdentity ? this.renderCheckoutActionsHeader() : this.renderLoginHeader();
+  }
+
+  renderLoginHeader() {
+    const { classes, shop } = this.props;
+
+    return (
+      <div className={classes.header}>
+        <div className={classes.headerFlex}>
+          <Link route="/" className={classes.backLink}>
+            <ChevronLeftIcon style={{ fontSize: 18, color: "inherit", verticalAlign: "sub", transition: "none" }} />
+            <span className={classes.backLinkText}>Back</span>
+          </Link>
+        </div>
+
+        <Link route="home">
+          <div className={classes.logo}>
+            <ShopLogo shopName={shop.name} />
+          </div>
+        </Link>
+
+        <div className={classes.headerFlex} />
+      </div>
+    );
+  }
+
+  renderCheckoutActionsHeader() {
+    const { classes, shop, theme } = this.props;
+    return (
+      <div className={classes.headerContainer}>
+        <Link route="home">
+          <div className={classes.logo}>
+            <ShopLogo shopName={shop.name} />
+          </div>
+        </Link>
+        <div className={classes.checkoutTitleContainer}>
+          <LockIcon
+            style={{
+              fontSize: 14,
+              color: theme.palette.reaction.black35
+            }}
+          />
+          <Typography className={classes.checkoutTitle}>Checkout</Typography>
+        </div>
+        <Link route="cart">
+          <CartIcon />
+        </Link>
+      </div>
+    );
+  }
+
+  renderCheckoutContent() {
+    const { cart, router: { asPath } } = this.props;
+    // sanity check that "tries" to render the correct /cart view if SSR doesn't provide the `cart`
+    if (!cart) return asPath === "/cart/checkout" ? this.renderCheckoutActions() : this.renderCheckoutLogin();
+    return this.hasIdentity ? this.renderCheckoutActions() : this.renderCheckoutLogin();
+  }
+
+  // render page content: login || checkout
+  renderCheckoutLogin() {
+    const { classes, setEmailOnAnonymousCart } = this.props;
+    return (
+      <main className={classes.main}>
+        <Grid container>
+          <Grid item xs={12} md={7}>
+            <div className={classes.loginWrapper}>
+              <Typography variant="title" gutterBottom>
+                Returning Customer
+              </Typography>
+              <Button
+                onClick={this.handleLoginClick}
+                actionType="important"
+                isFullWidth
+                className={classes.loginButton}
+              >
+                Login
+              </Button>
+              <Button
+                onClick={this.handleRegisterClick}
+                actionType="secondary"
+                isFullWidth
+                className={classes.loginButton}
+              >
+                Create a new account
+              </Button>
+            </div>
+          </Grid>
+          <Grid item xs={12} md={5}>
+            <div className={classes.guestWrapper}>
+              <Typography variant="title" gutterBottom>
+                Guest Checkout
+              </Typography>
+              <GuestForm onSubmit={setEmailOnAnonymousCart} />
+            </div>
+          </Grid>
+        </Grid>
+      </main>
+    );
+  }
+
+  renderCheckoutActions() {
     const {
       classes,
       cart,
@@ -145,66 +375,45 @@ class Checkout extends Component {
     const displayEmail = hasAccount ? cart.account.emailRecords[0].address : cart.email;
 
     return (
-      <Grid container spacing={24}>
-        <Grid item xs={12} md={7}>
-          <div className={classes.flexContainer}>
-            <div className={classes.checkoutActions}>
-              {displayEmail ? <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} /> : null}
-              <CheckoutActions />
-            </div>
-          </div>
-        </Grid>
-        <Grid item xs={12} md={5}>
-          <div className={classes.flexContainer}>
-            <div className={classes.cartSummary}>
-              <CheckoutSummary
-                cart={cart}
-                hasMoreCartItems={hasMoreCartItems}
-                onRemoveCartItems={onRemoveCartItems}
-                onChangeCartItemsQuantity={onChangeCartItemsQuantity}
-                onLoadMoreCartItems={loadMoreCartItems}
-              />
-            </div>
-          </div>
-        </Grid>
-      </Grid>
+      <div className={classes.checkoutContentContainer}>
+        <div className={classes.checkoutContent}>
+          <Grid container spacing={24}>
+            <Grid item xs={12} md={7}>
+              <div className={classes.flexContainer}>
+                <div className={classes.checkoutActions}>
+                  {displayEmail ? (
+                    <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} />
+                  ) : null}
+                  <CheckoutActions />
+                </div>
+              </div>
+            </Grid>
+            <Grid item xs={12} md={5}>
+              <div className={classes.flexContainer}>
+                <div className={classes.cartSummary}>
+                  <CheckoutSummary
+                    cart={cart}
+                    hasMoreCartItems={hasMoreCartItems}
+                    onRemoveCartItems={onRemoveCartItems}
+                    onChangeCartItemsQuantity={onChangeCartItemsQuantity}
+                    onLoadMoreCartItems={loadMoreCartItems}
+                  />
+                </div>
+              </div>
+            </Grid>
+          </Grid>
+        </div>
+      </div>
     );
   }
 
   render() {
-    const { classes, shop, theme } = this.props;
-
     return (
       <Fragment>
-        <Helmet
-          title={`Checkout | ${shop && shop.name}`}
-          meta={[{ name: "description", content: shop && shop.description }]}
-        />
-        <CheckoutTopHat checkoutMessage="Free Shipping + Free Returns" />
-        <section className={classes.checkoutContentContainer}>
-          <div className={classes.checkoutContent}>
-            <div className={classes.headerContainer}>
-              <Link route="home">
-                <div className={classes.logo}>
-                  <ShopLogo shopName={shop.name} />
-                </div>
-              </Link>
-              <div className={classes.checkoutTitleContainer}>
-                <LockIcon
-                  style={{
-                    fontSize: 14,
-                    color: theme.palette.reaction.black35
-                  }}
-                />
-                <Typography className={classes.checkoutTitle}>Checkout</Typography>
-              </div>
-              <Link route="cart">
-                <CartIcon />
-              </Link>
-            </div>
-            {this.renderCheckout()}
-          </div>
-        </section>
+        {this.renderCheckoutHead()}
+        {this.renderCheckoutTopHat()}
+        {this.renderCheckoutHeader()}
+        {this.renderCheckoutContent()}
       </Fragment>
     );
   }
