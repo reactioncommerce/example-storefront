@@ -240,7 +240,7 @@ export default (Component) => (
         variables: {
           input: {
             ...this.cartIdAndToken,
-            email,
+            email
           }
         }
       });
@@ -267,18 +267,18 @@ export default (Component) => (
       });
     }
 
-    get cartIdAndToken()  {
+    get cartIdAndToken() {
       const { cartStore } = this.props;
       const { accountCartId, anonymousCartId, anonymousCartToken } = cartStore;
       let cartToken = {};
       if (!accountCartId) {
-        cartToken  = { cartToken: anonymousCartToken }
+        cartToken = { cartToken: anonymousCartToken };
       }
 
       return {
         cartId: accountCartId || anonymousCartId,
         ...cartToken
-      }
+      };
     }
 
     /**

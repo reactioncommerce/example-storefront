@@ -46,7 +46,7 @@ const create = (initialState, options) => {
 
   let authorizationHeader = {};
   if (options.accessToken) {
-    authorizationHeader = { Authorization: options.accessToken}
+    authorizationHeader = { Authorization: options.accessToken };
   }
 
   // Set auth context
