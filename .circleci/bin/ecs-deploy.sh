@@ -10,21 +10,26 @@ if [ -z "${AWS_REGION}" ]; then
         AWS_REGION=us-west-2
 fi
 
-APP_DIR_NAME=devops/aws/app
-APPS=$(ls ${APP_DIR_NAME})
+ENVIRONMENT=staging
+SERVICE_DIR_NAME=.reaction/devops/aws/services
+SERVICES=$(ls ${SERVICE_DIR_NAME})
 
-for APP in $APPS; do
-	echo "START PROCESSING APPLICATION ${APP}"
+for SERVICE in $SERVICES; do
+        DISABLED=$(echo $SERVICE | grep disabled)
+        if [ "${DISABLED}" == "${SERVICE}" ]; then
+            continue
+        fi
+	echo "START PROCESSING SERVICE ${SERVICE}"
 
-	MANIFEST_FILE="${APP_DIR_NAME}/${APP}/manifest.yaml"
-	if [ ! -f ${MANIFEST_FILE} ]; then
-	    echo "Application manifest file not found!"
+	cd ${SERVICE_DIR_NAME}/${SERVICE}
+
+	PROPEL_CONFIG_FILE="propel-${ENVIRONMENT}.yaml"
+	if [ ! -f ${PROPEL_CONFIG_FILE} ]; then
+	    echo "Propel configuration file not found!"
 	    exit 1
 	fi
 
-	ENV_NAME=$(/usr/local/bin/yq r $MANIFEST_FILE "environment.name")
-
-	ENV_NAME_UPPERCASE=$(echo $ENV_NAME | awk '{print toupper($0)}')
+	ENV_NAME_UPPERCASE=$(echo $ENVIRONMENT | awk '{print toupper($0)}')
 	AWS_ACCESS_KEY_ID_VAR_NAME=CLOUDFORMATION_${ENV_NAME_UPPERCASE}_AWS_ACCESS_KEY_ID
 	AWS_SECRET_ACCESS_KEY_VAR_NAME=CLOUDFORMATION_${ENV_NAME_UPPERCASE}_AWS_SECRET_ACCESS_KEY
 
@@ -50,10 +55,10 @@ for APP in $APPS; do
 	sudo mv propel /usr/local/bin/propel
 	sudo chmod +x /usr/local/bin/propel
 
-	cd ${APP_DIR_NAME}/${APP}
 	RELEASE_DESCRIPTION="CircleCI build URL: ${CIRCLE_BUILD_URL}"
-	propel release create --deploy --descr "${RELEASE_DESCRIPTION}"
-	echo "END PROCESSING APPLICATION ${APP}"
+        propel release create --deploy --descr "${RELEASE_DESCRIPTION}" -f ${PROPEL_CONFIG_FILE}
+	
+	echo "END PROCESSING SERVICE ${SERVICE}"
 	
 	cd -
 done
