@@ -168,7 +168,7 @@ class Checkout extends Component {
    *
    * @name handleRouteChange
    * @summary Determines which /cart route (/cart/login || /cart/checkout) to display.
-   * @return undefined
+   * @return {undefined}
    */
   handleRouteChange = () => {
     const { cart, router: { asPath } } = this.props;
