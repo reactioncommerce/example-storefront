@@ -6,12 +6,11 @@ import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Button from "@reactioncommerce/components/Button/v1";
 import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
 import CheckoutActions from "components/CheckoutActions";
 import CheckoutEmailAddress from "@reactioncommerce/components/CheckoutEmailAddress/v1";
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
-import GuestForm from "@reactioncommerce/components/GuestForm/v1";
+import Entry from "components/Entry";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import CartIcon from "mdi-material-ui/Cart";
 import ChevronLeftIcon from "mdi-material-ui/ChevronLeft";
@@ -19,14 +18,6 @@ import LockIcon from "mdi-material-ui/Lock";
 import withCart from "containers/cart/withCart";
 import Link from "components/Link";
 import CheckoutSummary from "components/CheckoutSummary";
-
-// flex wrapper jss mixin
-const flexWrapper = () => ({
-  alignItems: "stretch",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "flex-start"
-});
 
 const styles = (theme) => ({
   checkoutActions: {
@@ -95,31 +86,11 @@ const styles = (theme) => ({
     borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
   },
   // login view styles
-  loginWrapper: {
-    ...flexWrapper(theme),
-    paddingBottom: theme.spacing.unit * 8,
-    [theme.breakpoints.up("md")]: {
-      minHeight: "400px",
-      paddingBottom: 0,
-      paddingRight: theme.spacing.unit * 8
-    }
-  },
-  guestWrapper: {
-    ...flexWrapper(theme),
-    borderTop: `solid 1px ${theme.palette.reaction.black10}`,
-    paddingTop: theme.spacing.unit * 8,
-    [theme.breakpoints.up("md")]: {
-      borderLeft: `solid 1px ${theme.palette.reaction.black10}`,
-      borderTop: "none",
-      paddingLeft: theme.spacing.unit * 8,
-      paddingTop: 0
-    }
-  },
   backLink: {
-    "color": theme.palette.reaction.black80,
-    "cursor": "pointer",
-    "fontFamily": theme.typography.fontFamily,
-    "fontSize": 14,
+    color: theme.palette.reaction.black80,
+    cursor: "pointer",
+    fontFamily: theme.typography.fontFamily,
+    fontSize: 14,
     "&:hover": {
       color: theme.palette.reaction.reactionBlue400
     }
@@ -130,10 +101,6 @@ const styles = (theme) => ({
     marginLeft: theme.spacing.unit,
     textDecoration: "underline"
   },
-  loginButton: {
-    marginTop: theme.spacing.unit * 3
-  },
-  headerCenter: {},
   headerFlex: {
     alignSelf: "center",
     flex: "1 1 1%"
@@ -146,11 +113,6 @@ const styles = (theme) => ({
     marginBottom: theme.spacing.unit * 3,
     padding: theme.spacing.unit * 3
   },
-  // logo: {
-  //   color: theme.palette.reaction.reactionBlue,
-  //   margin: "auto",
-  //   borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
-  // },
   main: {
     flex: "1 1 auto",
     maxWidth: theme.layout.mainLoginMaxWidth,
@@ -307,41 +269,10 @@ class Checkout extends Component {
   // render page content: login || checkout
   renderCheckoutLogin() {
     const { classes, setEmailOnAnonymousCart } = this.props;
+
     return (
       <main className={classes.main}>
-        <Grid container>
-          <Grid item xs={12} md={7}>
-            <div className={classes.loginWrapper}>
-              <Typography variant="title" gutterBottom>
-                Returning Customer
-              </Typography>
-              <Button
-                onClick={this.handleLoginClick}
-                actionType="important"
-                isFullWidth
-                className={classes.loginButton}
-              >
-                Login
-              </Button>
-              <Button
-                onClick={this.handleRegisterClick}
-                actionType="secondary"
-                isFullWidth
-                className={classes.loginButton}
-              >
-                Create a new account
-              </Button>
-            </div>
-          </Grid>
-          <Grid item xs={12} md={5}>
-            <div className={classes.guestWrapper}>
-              <Typography variant="title" gutterBottom>
-                Guest Checkout
-              </Typography>
-              <GuestForm onSubmit={setEmailOnAnonymousCart} />
-            </div>
-          </Grid>
-        </Grid>
+        <Entry setEmailOnAnonymousCart={setEmailOnAnonymousCart} />
       </main>
     );
   }
