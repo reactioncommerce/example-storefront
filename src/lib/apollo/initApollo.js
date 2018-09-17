@@ -44,12 +44,17 @@ const create = (initialState, options) => {
     }
   });
 
+  let authorizationHeader = {};
+  if (options.accessToken) {
+    authorizationHeader = { Authorization: options.accessToken}
+  }
+
   // Set auth context
   // https://github.com/apollographql/apollo-link/tree/master/packages/apollo-link-context
   const authLink = setContext((__, { headers }) => ({
     headers: {
       ...headers,
-      Authorization: options.accessToken
+      ...authorizationHeader
     }
   }));
 
