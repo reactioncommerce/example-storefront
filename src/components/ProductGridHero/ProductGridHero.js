@@ -12,7 +12,7 @@ const styles = (theme) => ({
   },
   heroGridContainer: {
     maxWidth: theme.layout.mainContentMaxWidth,
-    margin: "40px auto"
+    margin: "20px auto"
   }
 });
 

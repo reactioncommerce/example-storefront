@@ -1,0 +1,1 @@
+To prevent filename clashes when updating to newer versions of this codebase, we recommend that you put your custom components, functions, and other files in this `/src/custom` folder.

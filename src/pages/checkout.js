@@ -107,12 +107,12 @@ class Checkout extends Component {
     theme: PropTypes.object.isRequired
   };
 
-  static getDerivedStateFromProps({ cart }) {
-    if (cart && cart.account === null && !cart.email) Router.pushRoute("login", "", { customProp: "please next" });
-    return null;
-  }
-
   state = {};
+
+  componentDidMount() {
+    const { cart } = this.props;
+    if (cart && cart.account === null && !cart.email) Router.replaceRoute("/login");
+  }
 
   handleCartEmptyClick = () => Router.pushRoute("/");
 

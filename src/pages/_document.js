@@ -89,14 +89,14 @@ class HTMLDocument extends Document {
       <html lang="en" {...htmlAttrs}>
         <Head>
           <Helmet htmlAttributes={{ lang: "en", dir: "ltr" }} />
-          {meta.map((tag) => <meta {...tag} />)}
-          {links.map((link) => <link {...link} />)}
-          {scripts.map((script) =>
+          {meta.map((tag, index) => <meta key={index} {...tag} />)}
+          {links.map((link, index) => <link key={index} {...link} />)}
+          {scripts.map((script, index) =>
             (script.innerHTML ? (
             /* eslint-disable-next-line */
-              <script type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} />
+              <script key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} />
             ) : (
-              <script {...script} />
+              <script key={index} {...script} />
             )))}
           {helmet.base.toComponent()}
           {helmet.title.toComponent()}
