@@ -87,10 +87,10 @@ const styles = (theme) => ({
   },
   // login view styles
   backLink: {
-    color: theme.palette.reaction.black80,
-    cursor: "pointer",
-    fontFamily: theme.typography.fontFamily,
-    fontSize: 14,
+    "color": theme.palette.reaction.black80,
+    "cursor": "pointer",
+    "fontFamily": theme.typography.fontFamily,
+    "fontSize": 14,
     "&:hover": {
       color: theme.palette.reaction.reactionBlue400
     }

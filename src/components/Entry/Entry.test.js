@@ -6,13 +6,9 @@ import theme from "lib/theme/reactionTheme";
 import Entry from "./";
 
 test("basic snapshot", () => {
-  const component = renderer.create(
-    shallow(
-      <MuiThemeProvider theme={theme}>
-        <Entry />
-      </MuiThemeProvider>
-    ).get(3)
-  );
+  const component = renderer.create(shallow(<MuiThemeProvider theme={theme}>
+    <Entry />
+  </MuiThemeProvider>).get(3));
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
