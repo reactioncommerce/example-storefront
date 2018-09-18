@@ -40,7 +40,7 @@ export default (Component) => (
       const { stripeToken: { billingAddress } } = cartStore;
 
       const accountOrder = Object.assign({}, order);
-      if (authStore.account) {
+      if (authStore.account.emailRecords) {
         const { account: { emailRecords } } = authStore;
         if (Array.isArray(emailRecords.slice())) {
           accountOrder.email = emailRecords[0].address;

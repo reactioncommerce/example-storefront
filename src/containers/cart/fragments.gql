@@ -4,6 +4,9 @@ fragment CartCommon on Cart {
   createdAt
   account {
     _id
+    emailRecords {
+      address
+    }
   }
   shop {
     _id
