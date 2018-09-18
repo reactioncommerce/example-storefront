@@ -17,7 +17,7 @@ const flexWrapper = () => ({
 
 const styles = (theme) => ({
   loginWrapper: {
-    ...flexWrapper(theme),
+    ...flexWrapper(),
     paddingBottom: theme.spacing.unit * 8,
     [theme.breakpoints.up("md")]: {
       minHeight: "400px",
@@ -29,7 +29,7 @@ const styles = (theme) => ({
     marginTop: theme.spacing.unit * 3
   },
   guestWrapper: {
-    ...flexWrapper(theme),
+    ...flexWrapper(),
     borderTop: `solid 1px ${theme.palette.reaction.black10}`,
     paddingTop: theme.spacing.unit * 8,
     [theme.breakpoints.up("md")]: {
@@ -45,7 +45,6 @@ const styles = (theme) => ({
 export default class Entry extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    components: PropTypes.object,
     onLoginButtonClick: PropTypes.func,
     onRegisterButtonClick: PropTypes.func,
     setEmailOnAnonymousCart: PropTypes.func,
