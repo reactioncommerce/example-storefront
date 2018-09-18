@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import { withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
 import { Router } from "routes";
+import {
+  accountCartByAccountIdQuery,
+  anonymousCartByCartIdQuery
+} from "../cart/queries.gql";
 import { placeOrderWithStripeCardPayment } from "./mutations.gql";
 
 /**
@@ -13,7 +17,7 @@ import { placeOrderWithStripeCardPayment } from "./mutations.gql";
  */
 export default (Component) => (
   @withApollo
-  @inject("cartStore", "routingStore")
+  @inject("authStore", "cartStore", "routingStore")
   @observer
   class WithPlaceStripeOrder extends React.Component {
     static propTypes = {
@@ -31,9 +35,18 @@ export default (Component) => (
     }
 
     handlePlaceOrderWithStripeCard = async (order) => {
-      const { cartStore, client: apolloClient } = this.props;
+      const { authStore, cartStore, client: apolloClient } = this.props;
       const { fulfillmentGroups } = order;
       const { stripeToken: { billingAddress } } = cartStore;
+
+      const accountOrder = Object.assign({}, order);
+      if (authStore.account) {
+        const { account: { emailRecords } } = authStore;
+        if (Array.isArray(emailRecords.slice())) {
+          accountOrder.email = emailRecords[0].address;
+        }
+        // TODO: throw error, complain
+      }
 
       const payment = {
         // If the users provided a billing address use it, otherwise, use the shipping address
@@ -45,9 +58,21 @@ export default (Component) => (
         mutation: placeOrderWithStripeCardPayment,
         variables: {
           input: {
-            order,
+            order: accountOrder,
             payment
           }
+        },
+        update: (cache) => {
+          // TODO: revisit and verify this actually clears the apollo cache
+          cache.writeQuery({
+            query: accountCartByAccountIdQuery,
+            data: { cart: null }
+          });
+
+          cache.writeQuery({
+            query: anonymousCartByCartIdQuery,
+            data: { cart: null }
+          });
         }
       });
 
@@ -55,7 +80,7 @@ export default (Component) => (
       if (data && !error) {
         const { placeOrderWithStripeCardPayment: { orders, token } } = data;
 
-        // Clear cart
+        // Clear anonymous cart
         cartStore.clearAnonymousCartCredentials();
 
         // Send user to order confirmation page

@@ -50,11 +50,9 @@ export default class App extends NextApp {
     }
 
     const { stripePublicApiKey } = publicRuntimeConfig;
-    if (stripePublicApiKey) {
-      if (window.Stripe) {
-        // eslint-disable-next-line react/no-did-mount-set-state
-        this.setState({ stripe: window.Stripe(stripePublicApiKey) });
-      }
+    if (stripePublicApiKey && window.Stripe) {
+      // eslint-disable-next-line react/no-did-mount-set-state
+      this.setState({ stripe: window.Stripe(stripePublicApiKey) });
     }
   }
 

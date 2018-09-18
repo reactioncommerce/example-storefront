@@ -303,7 +303,7 @@ class Checkout extends Component {
     }
 
     const hasAccount = !!cart.account;
-    const displayEmail = hasAccount ? cart.account.emailRecords[0].address : cart.email;
+    const displayEmail = (hasAccount && Array.isArray(cart.account.emailRecords) && cart.account.emailRecords[0].address) || cart.email;
 
     return (
       <div className={classes.checkoutContentContainer}>

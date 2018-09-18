@@ -3,29 +3,29 @@ import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import { withStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
-import TextField from "@material-ui/core/TextField";
-import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import AccountIcon from "mdi-material-ui/Account";
 import Popover from "@material-ui/core/Popover";
+import ViewerInfo from "@reactioncommerce/components/ViewerInfo/v1";
 import { login } from "lib/auth";
 
 const styles = (theme) => ({
   accountDropdown: {
     width: 320,
     padding: theme.spacing.unit * 2
+  },
+  authContent: {
+    marginBottom: theme.spacing.unit * 2
   }
 });
 
 @withStyles(styles)
 @inject("authStore")
-@inject("keycloakAuthStore")
 @observer
 class AccountDropdown extends Component {
   static propTypes = {
     authStore: PropTypes.object.isRequired,
-    classes: PropTypes.object,
-    keycloakAuthStore: PropTypes.object.isRequired
+    classes: PropTypes.object
   };
 
   static defaultProps = {
@@ -48,10 +48,7 @@ class AccountDropdown extends Component {
   }
 
   state = {
-    anchorElement: null,
-    prevToken: "",
-    token: "",
-    keycloakToken: this.props.keycloakAuthStore.token
+    anchorElement: null
   };
 
   toggleOpen = (event) => {
@@ -80,13 +77,12 @@ class AccountDropdown extends Component {
   }
 
   onLogout = () => {
-    this.props.keycloakAuthStore.unsetToken("keycloakToken");
     window.location.reload();
   }
 
   render() {
-    const { classes, keycloakAuthStore } = this.props;
-    const { anchorElement, token } = this.state;
+    const { classes, authStore } = this.props;
+    const { anchorElement } = this.state;
 
     return (
       <Fragment>
@@ -104,30 +100,32 @@ class AccountDropdown extends Component {
           onClose={this.onClose}
         >
           <div className={classes.accountDropdown}>
-            <TextField
-              fullWidth={true}
-              label="Login Token"
-              onChange={this.onTokenChange}
-              value={token}
-            />
-
-            <DialogActions>
-              <Button color="primary" onClick={this.onTokenSave}>
-                Save Token
-              </Button>
-            </DialogActions>
-            <hr/>
-            <DialogActions>
-              {!keycloakAuthStore.token ?
-                <Button color="primary" onClick={this.onLogin}>
-                  Login with Keycloak
+            {authStore.isAuthenticated ?
+              <Fragment>
+                <div className={classes.authContent}>
+                  <ViewerInfo
+                    viewer={{
+                      firstName: authStore.account.name,
+                      lastName: " "
+                    }}
+                  />
+                </div>
+                <Button color="primary" fullWidth href="/logout" variant="raised">
+                  Sign Out
                 </Button>
-                :
-                <Button color="primary" onClick={this.onLogout}>
-                  Logout of Keycloak
+              </Fragment>
+              :
+              <Fragment>
+                <div className={classes.authContent}>
+                  <Button color="primary" fullWidth href="/auth2" variant="raised">
+                    Sign In
+                  </Button>
+                </div>
+                <Button color="primary" fullWidth href="/auth2">
+                  Create Account
                 </Button>
-              }
-            </DialogActions>
+              </Fragment>
+            }
           </div>
         </Popover>
       </Fragment>

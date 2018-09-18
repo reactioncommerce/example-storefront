@@ -4,6 +4,9 @@ networks:
   api:
     external:
       name: api.reaction.localhost
+  auth.reaction.localhost:
+    external:
+      name: auth.reaction.localhost
 
 services:
   web:
@@ -20,6 +23,7 @@ services:
       api:
         aliases:
           - storefront
+      auth.reaction.localhost:
     ports:
       - 4000:4000
     volumes:
