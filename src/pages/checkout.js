@@ -186,8 +186,8 @@ class Checkout extends Component {
   /**
    *
    * @name hasIdentity
-   * @summary Returns `true` if a customer is signed in or has set a "guest email" on their cart
-   * @return {Boolean}
+   * @summary `true` if a customer is signed in or has set a "guest email" on their cart.
+   * @return {Boolean} - true if cart.account or cart.email are set.
    */
   get hasIdentity() {
     const { cart } = this.props;
