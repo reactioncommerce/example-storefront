@@ -35,11 +35,13 @@ export default class RoutingStore {
    */
   @observable tag = {};
 
-  @action setTag = (tag) => {
+  @action
+  setTag = (tag) => {
     this.tag = tag;
-  }
+  };
 
-  @action updateRoute({ pathname, query }) {
+  @action
+  updateRoute({ pathname, query }) {
     this.pathname = pathname;
     this.query = query;
   }
@@ -50,14 +52,15 @@ export default class RoutingStore {
    * @param {String} search Search query string first=1&after=123
    * @returns {String} full url with query string
    */
-  @action setSearch(search) {
+  @action
+  setSearch(search) {
     const _query = { ...toJS(this.query), ...search };
     const _slug = _query.slug;
+    const _limit = parseInt(_query.limit, 10);
     delete _query.slug;
 
     // Validate limit
-    _query.limit = inPageSizes(_query.limit) ? _query.limit : PAGE_SIZES._20;
-
+    _query.limit = inPageSizes(_limit) ? _limit : PAGE_SIZES._20;
     let urlQueryString = "";
     Object.keys(_query).forEach((key, index, arr) => {
       urlQueryString += `${key}=${_query[key]}`;
