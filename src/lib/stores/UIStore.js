@@ -79,7 +79,20 @@ class UIStore {
    */
   @observable pdpSelectedVariantId = null;
 
+  /**
+   * Shop locales info loaded via a json file if needed.
+   */
+  @observable locales = {};
+
   /* ACTIONS */
+  /**
+   * @name setLocales
+   * @summary adds loaded locales data to store.
+   * @returns {undefined} No return
+   */
+  @action setLocales(locales) {
+    this.locales = locales;
+  }
 
   @action setPDPSelectedVariantId(variantId, optionId) {
     this.pdpSelectedVariantId = variantId;
