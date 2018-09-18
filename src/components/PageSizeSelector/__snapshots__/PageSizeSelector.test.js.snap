@@ -2,7 +2,8 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="MuiInput-root-11 Select-input-5"
+  className="MuiInputBase-root-26 MuiInput-root-13 Select-input-5"
+  onClick={[Function]}
 >
   <div
     className="MuiSelect-root-6"
@@ -11,7 +12,7 @@ exports[`basic snapshot 1`] = `
       aria-haspopup="true"
       aria-owns={null}
       aria-pressed="false"
-      className="MuiSelect-select-7 MuiSelect-selectMenu-8 Select-selectMenu-3 MuiInput-input-19"
+      className="MuiSelect-select-7 MuiSelect-selectMenu-10 Select-selectMenu-3 MuiInputBase-input-36 MuiInput-input-21"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -36,9 +37,10 @@ exports[`basic snapshot 1`] = `
     />
     <svg
       aria-hidden="true"
-      className="MuiSvgIcon-root-24 MuiSelect-icon-10"
+      className="MuiSvgIcon-root-43 MuiSelect-icon-12"
       color={undefined}
       focusable="false"
+      role="presentation"
       viewBox="0 0 24 24"
     >
       <path

@@ -236,13 +236,13 @@ export default (Component) => (
       const { cartStore: { anonymousCartToken }, client: apolloClient } = this.props;
       // Omit cartToken, as for this particular input type the
       // the param is named token
-      const { cartToken, ...rest} = this.cartIdAndCartToken;
+      const { cartToken, ...rest } = this.cartIdAndCartToken;
 
       apolloClient.mutate({
         mutation: setEmailOnAnonymousCartMutation,
         variables: {
           input: {
-            ...{...{ token: anonymousCartToken}, ...rest },
+            ...{ ...{ token: anonymousCartToken }, ...rest },
             email
           }
         }
