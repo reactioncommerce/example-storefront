@@ -83,6 +83,7 @@ class UIStore {
    * Shop locales info loaded via a json file if needed.
    *
    * @type Object
+   * @default {}
    */
   @observable locales = {};
 
