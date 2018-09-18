@@ -5,7 +5,7 @@ import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
 import { Provider } from "mobx-react";
 import analyticsProviders from "analytics";
-import getConfig from "next/config";
+// import getConfig from "next/config";
 import rootMobxStores from "../lib/stores";
 import favicons from "../lib/utils/favicons";
 import globalStyles from "../lib/theme/globalStyles";
@@ -53,8 +53,8 @@ class HTMLDocument extends Document {
   render() {
     const { pageContext, helmet } = this.props;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
-    const { publicRuntimeConfig } = getConfig();
-    const { keycloakConfig } = publicRuntimeConfig;
+    // const { publicRuntimeConfig } = getConfig();
+    // const { keycloakConfig } = publicRuntimeConfig;
     const links = [
       { rel: "canonical", href: process.env.CANONICAL_URL },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" },
@@ -76,10 +76,10 @@ class HTMLDocument extends Document {
         type: "text/javascript",
         innerHTML: provider.renderScript()
       })),
-      {
-        type: "text/javascript",
-        src: `${keycloakConfig.url}/js/keycloak.js`
-      },
+      // {
+      //   type: "text/javascript",
+      //   src: `${keycloakConfig.url}/js/keycloak.js`
+      // },
       {
         type: "text/javascript",
         src: "https://js.stripe.com/v3/"
