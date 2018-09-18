@@ -54,6 +54,13 @@ export default class TagShop extends Component {
     if (this.props.catalogItems !== prevProps.catalogItems) {
       this.trackEvent(this.props);
     }
+
+    if (this.props.tag !== prevProps.tag) {
+      this.props.routingStore.setSearch({
+        before: null,
+        after: null
+      });
+    }
   }
 
   @trackProductListViewed()

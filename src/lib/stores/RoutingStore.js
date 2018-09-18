@@ -59,6 +59,13 @@ export default class RoutingStore {
     const _limit = parseInt(_query.limit, 10);
     delete _query.slug;
 
+    // Handle deleting query params
+    for (const key of Object.keys(_query)) {
+      if (_query[key] === null) {
+        delete _query[key];
+      }
+    }
+
     // Validate limit
     _query.limit = inPageSizes(_limit) ? _limit : PAGE_SIZES._20;
     let urlQueryString = "";
