@@ -12,7 +12,7 @@ exports[`basic snapshot 1`] = `
         className="CartItems__Items-gEXRwN gdnVAG"
       >
         <div
-          className="CartItem__Item-ghDCXl cfXPgA"
+          className="CartItem__Item-ghDCXl gKDHYG"
         >
           <a
             href="/product-slug"
@@ -120,7 +120,7 @@ exports[`basic snapshot 1`] = `
           </div>
         </div>
         <div
-          className="CartItem__Item-ghDCXl cfXPgA"
+          className="CartItem__Item-ghDCXl gKDHYG"
         >
           <a
             href="/product-slug"
