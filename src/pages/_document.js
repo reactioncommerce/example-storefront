@@ -76,10 +76,10 @@ class HTMLDocument extends Document {
         type: "text/javascript",
         innerHTML: provider.renderScript()
       })),
-      {
-        type: "text/javascript",
-        src: `${keycloakConfig.url}/js/keycloak.js`
-      },
+      // {
+      //   type: "text/javascript",
+      //   src: `${keycloakConfig.url}/js/keycloak.js`
+      // },
       {
         type: "text/javascript",
         src: "https://js.stripe.com/v3/"
