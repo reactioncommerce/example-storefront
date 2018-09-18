@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { inject, observer } from "mobx-react";
 
 /**
  *
@@ -9,26 +10,30 @@ import PropTypes from "prop-types";
  * @return {Class} - React component with locales on props
  */
 export default function withLocales(ComponentWithLocales) {
+  @inject("uiStore")
+  @observer
   class WithLocales extends Component {
     static propTypes = {
       forwardRef: PropTypes.func,
-      locales: PropTypes.object
+      locales: PropTypes.object,
+      uiStore: PropTypes.object
     };
 
     static defaultProps = {
       locales: {}
     };
 
-    state = {
-      locales: this.props.locales
-    };
+    // state = {
+    //   locales: this.props.locales
+    // };
 
     async componentDidMount() {
-      const { locales: currentLocales } = this.state;
+      const { uiStore } = this.props;
+      const { locales: currentLocales } = uiStore;
       if (Object.keys(currentLocales).length === 0) {
         // eslint-disable-next-line
         await this.loadLocales().then((locales) => {
-          this.setState({ locales });
+          uiStore.setLocales(locales);
         });
       }
     }
@@ -46,7 +51,8 @@ export default function withLocales(ComponentWithLocales) {
     }
 
     render() {
-      const { locales } = this.state;
+      const { uiStore } = this.props;
+      const { locales } = uiStore;
       return <ComponentWithLocales ref={this.props.forwardRef} {...this.props} locales={locales} />;
     }
   }
