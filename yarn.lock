@@ -5413,6 +5413,10 @@ mdi-material-ui@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/mdi-material-ui/-/mdi-material-ui-5.2.0.tgz#494b4e2881605ebcff6510f31f3c386f6b12a151"
 
+mdi-material-ui@^5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/mdi-material-ui/-/mdi-material-ui-5.4.0.tgz#355526e342414bb5a320bd35cdbd4b653fadea18"
+
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
