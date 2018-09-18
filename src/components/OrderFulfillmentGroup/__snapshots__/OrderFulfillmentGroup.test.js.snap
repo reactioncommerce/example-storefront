@@ -248,10 +248,10 @@ Array [
     className="OrderFulfillmentGroup-summary-5"
   >
     <div
-      className="OrderSummary-summary-130"
+      className="OrderSummary-summary-131"
     >
       <div
-        className="OrderSummary-header-131"
+        className="OrderSummary-header-132"
       >
         <div
           className="MuiGrid-container-6 MuiGrid-spacing-xs-24-30"
@@ -277,7 +277,7 @@ Array [
         </div>
       </div>
       <hr
-        className="MuiDivider-root-134"
+        className="MuiDivider-root-135"
       />
       <div
         className="sc-bdVaJa iXzmsn"

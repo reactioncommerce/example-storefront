@@ -25,16 +25,17 @@ Array [
       </span>
       <div
         aria-describedby={undefined}
-        className="MuiFormControl-root-134"
+        className="MuiFormControl-root-135"
       >
         <div
-          className="MuiInput-root-138 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-4 MuiInput-formControl-139"
+          className="MuiInputBase-root-152 MuiInput-root-139 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-4 MuiInputBase-formControl-153 MuiInput-formControl-140 MuiInputBase-adornedStart-156 MuiInputBase-adornedEnd-157"
+          onClick={[Function]}
         >
           <div
-            className="MuiInputAdornment-root-151"
+            className="MuiInputAdornment-root-169"
           >
             <button
-              className="MuiButtonBase-root-154 inject-ProductDetailAddToCart-with-uiStore-incrementButton-3"
+              className="MuiButtonBase-root-173 inject-ProductDetailAddToCart-with-uiStore-incrementButton-3"
               color="default"
               disabled={undefined}
               onBlur={[Function]}
@@ -54,19 +55,18 @@ Array [
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-157 inject-ProductDetailAddToCart-with-uiStore-quantitySvg-7"
+                className="MuiSvgIcon-root-176 inject-ProductDetailAddToCart-with-uiStore-quantitySvg-7"
                 color={undefined}
                 focusable="false"
+                role="presentation"
                 viewBox="0 0 24 24"
               >
-                <g>
-                  <path
-                    d="M19,13H5V11H19V13Z"
-                  />
-                </g>
+                <path
+                  d="M19,13H5V11H19V13Z"
+                />
               </svg>
               <span
-                className="MuiTouchRipple-root-164"
+                className="MuiTouchRipple-root-185"
               />
             </button>
           </div>
@@ -74,7 +74,7 @@ Array [
             aria-invalid={false}
             autoComplete={undefined}
             autoFocus={undefined}
-            className="MuiInput-input-146 inject-ProductDetailAddToCart-with-uiStore-quantityInput-6"
+            className="MuiInputBase-input-162 MuiInput-input-147 inject-ProductDetailAddToCart-with-uiStore-quantityInput-6 MuiInputBase-inputAdornedStart-167 MuiInputBase-inputAdornedEnd-168"
             defaultValue={undefined}
             disabled={false}
             id="addToCartQuantityInput"
@@ -92,10 +92,10 @@ Array [
             value={1}
           />
           <div
-            className="MuiInputAdornment-root-151"
+            className="MuiInputAdornment-root-169"
           >
             <button
-              className="MuiButtonBase-root-154 inject-ProductDetailAddToCart-with-uiStore-incrementButton-3"
+              className="MuiButtonBase-root-173 inject-ProductDetailAddToCart-with-uiStore-incrementButton-3"
               color="default"
               disabled={undefined}
               onBlur={[Function]}
@@ -115,19 +115,18 @@ Array [
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-157 inject-ProductDetailAddToCart-with-uiStore-quantitySvg-7"
+                className="MuiSvgIcon-root-176 inject-ProductDetailAddToCart-with-uiStore-quantitySvg-7"
                 color={undefined}
                 focusable="false"
+                role="presentation"
                 viewBox="0 0 24 24"
               >
-                <g>
-                  <path
-                    d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
-                  />
-                </g>
+                <path
+                  d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                />
               </svg>
               <span
-                className="MuiTouchRipple-root-164"
+                className="MuiTouchRipple-root-185"
               />
             </button>
           </div>
@@ -138,7 +137,7 @@ Array [
       className="MuiGrid-item-10 MuiGrid-grid-xs-12-49"
     >
       <button
-        className="MuiButtonBase-root-154 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-1"
+        className="MuiButtonBase-root-173 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-1"
         disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
@@ -160,35 +159,35 @@ Array [
           Add to cart
         </span>
         <span
-          className="MuiTouchRipple-root-164"
+          className="MuiTouchRipple-root-185"
         />
       </button>
     </div>
   </div>,
   <div
-    className="HiddenCss-mdUp-186"
+    className="HiddenCss-mdUp-207"
   >
     <div
-      className="inject-CartPopover-with-uiStore-container-171 inject-CartPopover-with-uiStore-isContainerHidden-173"
+      className="inject-CartPopover-with-uiStore-container-192 inject-CartPopover-with-uiStore-isContainerHidden-194"
     >
       <div
-        className="MuiGrid-container-9 MuiGrid-spacing-xs-24-33 inject-CartPopover-with-uiStore-gridContainer-172"
+        className="MuiGrid-container-9 MuiGrid-spacing-xs-24-33 inject-CartPopover-with-uiStore-gridContainer-193"
       >
         <div
-          className="MuiGrid-item-10 MuiGrid-grid-xs-12-49 inject-CartPopover-with-uiStore-containerItem-175"
+          className="MuiGrid-item-10 MuiGrid-grid-xs-12-49 inject-CartPopover-with-uiStore-containerItem-196"
         >
           <img
             alt="Item Title"
-            className="inject-CartPopover-with-uiStore-addedToCartImg-176"
+            className="inject-CartPopover-with-uiStore-addedToCartImg-197"
             src="//placehold.it/100"
           />
           <span
-            className="MuiTypography-root-109 MuiTypography-body1-118 inject-CartPopover-with-uiStore-addedToCartText-178"
+            className="MuiTypography-root-109 MuiTypography-body1-118 inject-CartPopover-with-uiStore-addedToCartText-199"
           >
             10
              "
             <span
-              className="inject-CartPopover-with-uiStore-addedToCartItemName-177"
+              className="inject-CartPopover-with-uiStore-addedToCartItemName-198"
             >
               Item Title
             </span>
