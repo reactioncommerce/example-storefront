@@ -8,6 +8,7 @@ import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
 import IconButton from "@material-ui/core/IconButton";
 import CartIcon from "mdi-material-ui/Cart";
 import { Router } from "routes";
+import Badge from "@material-ui/core/Badge";
 import Popper from "@material-ui/core/Popper";
 import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
@@ -29,6 +30,12 @@ const styles = ({ palette, zIndex }) => ({
     width: 320,
     height: 320,
     border: palette.borders.default
+  },
+  badge: {
+    width: 20,
+    height: 20,
+    top: 10,
+    left: 20
   }
 });
 
@@ -146,9 +153,10 @@ export default class MiniCart extends Component {
   }
 
   render() {
-    const { classes, uiStore } = this.props;
+    const { cart, classes, uiStore } = this.props;
     const { isCartOpen } = uiStore;
-    const id = isCartOpen ? "simple-popper" : null;
+    const id = (isCartOpen) ? "simple-popper" : null;
+    const cartQuantity = (cart && Array.isArray(cart.items) && cart.items.length) || 0;
 
     return (
       <Fragment>
@@ -158,7 +166,13 @@ export default class MiniCart extends Component {
             onMouseLeave={this.handlePopperClose}
             onClick={this.handleOnClick}
           >
-            <CartIcon />
+            <Badge
+              badgeContent={cartQuantity}
+              color="primary"
+              classes={{ badge: classes.badge }}
+            >
+              <CartIcon />
+            </Badge>
           </IconButton>
         </div>
 
