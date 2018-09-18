@@ -233,13 +233,16 @@ export default (Component) => (
      * @return {undefined} No return
      */
     handleSetEmailOnAnonymousCart = ({ email }) => {
-      const { client: apolloClient } = this.props;
+      const { cartStore: { anonymousCartToken }, client: apolloClient } = this.props;
+      // Omit cartToken, as for this particular input type the
+      // the param is named token
+      const { cartToken, ...rest} = this.cartIdAndCartToken;
 
       apolloClient.mutate({
         mutation: setEmailOnAnonymousCartMutation,
         variables: {
           input: {
-            ...this.cartIdAndToken,
+            ...{...{ token: anonymousCartToken}, ...rest },
             email
           }
         }
@@ -260,14 +263,14 @@ export default (Component) => (
         mutation: updateFulfillmentOptionsForGroup,
         variables: {
           input: {
-            ...this.cartIdAndToken,
+            ...this.cartIdAndCartToken,
             fulfillmentGroupId
           }
         }
       });
     }
 
-    get cartIdAndToken() {
+    get cartIdAndCartToken() {
       const { cartStore } = this.props;
       const { accountCartId, anonymousCartId, anonymousCartToken } = cartStore;
       let cartToken = {};
@@ -295,7 +298,7 @@ export default (Component) => (
         mutation: setFulfillmentOptionCartMutation,
         variables: {
           input: {
-            ...this.cartIdAndToken,
+            ...this.cartIdAndCartToken,
             fulfillmentGroupId,
             fulfillmentMethodId
           }
@@ -317,7 +320,7 @@ export default (Component) => (
         mutation: setShippingAddressCartMutation,
         variables: {
           input: {
-            ...this.cartIdAndToken,
+            ...this.cartIdAndCartToken,
             address
           }
         }
