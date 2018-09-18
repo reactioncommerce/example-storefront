@@ -91,6 +91,7 @@ class UIStore {
   /**
    * @name setLocales
    * @summary adds loaded locales data to store.
+   * @param {Object} locales locales data loaded via json.
    * @returns {undefined} No return
    */
   @action setLocales(locales) {
