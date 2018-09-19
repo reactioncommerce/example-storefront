@@ -24,7 +24,7 @@ export default class CheckoutButtons extends Component {
   }
 
   static defaultProps = {
-    primaryButtonRoute: "checkout",
+    primaryButtonRoute: "/cart/checkout",
     primaryButtonText: "Checkout"
   };
 

@@ -90,7 +90,7 @@ export default class MiniCart extends Component {
   }
 
   handleClick = () => Router.pushRoute("/");
-  handleCheckoutButtonClick = () => Router.pushRoute("checkout");
+  handleCheckoutButtonClick = () => Router.pushRoute("/cart/checkout");
 
   handlePopperClose = () => {
     const { closeCart } = this.props.uiStore;
