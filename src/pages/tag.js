@@ -44,6 +44,10 @@ export default class TagShop extends Component {
     const { routingStore, tag } = props;
     if (routingStore.tag._id !== tag._id) {
       routingStore.setTag(tag);
+      routingStore.setSearch({
+        before: null,
+        after: null
+      });
     }
     return null;
   }
@@ -53,13 +57,6 @@ export default class TagShop extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.catalogItems !== prevProps.catalogItems) {
       this.trackEvent(this.props);
-    }
-
-    if (this.props.tag !== prevProps.tag) {
-      this.props.routingStore.setSearch({
-        before: null,
-        after: null
-      });
     }
   }
 
