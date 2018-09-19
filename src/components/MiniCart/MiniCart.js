@@ -156,7 +156,6 @@ export default class MiniCart extends Component {
     const { cart, classes, uiStore } = this.props;
     const { isCartOpen } = uiStore;
     const id = (isCartOpen) ? "simple-popper" : null;
-    const cartQuantity = (cart && Array.isArray(cart.items) && cart.items.length) || 0;
 
     return (
       <Fragment>
@@ -166,10 +165,10 @@ export default class MiniCart extends Component {
             onMouseLeave={this.handlePopperClose}
             onClick={this.handleOnClick}
           >
-            {(cartQuantity > 0)
+            {(cart && cart.totalItemQuantity > 0)
               ? (
                 <Badge
-                  badgeContent={cartQuantity}
+                  badgeContent={cart.totalItemQuantity}
                   color="primary"
                   classes={{ badge: classes.badge }}
                 >
