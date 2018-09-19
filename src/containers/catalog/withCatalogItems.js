@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import { Query } from "react-apollo";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import { pagination, paginationVariablesFromUrlParams } from "lib/helpers/pagination";
 import catalogItemsQuery from "./catalogItems.gql";
 
@@ -11,7 +12,7 @@ import catalogItemsQuery from "./catalogItems.gql";
  * @param {React.Component} Component to decorate and apply
  * @returns {React.Component} - component decorated with primaryShopId and catalog as props
  */
-export default (Component) => {
+export default function withCatalogItems(Component) {
   @inject("primaryShopId")
   @inject("routingStore")
   @inject("uiStore")
@@ -60,6 +61,8 @@ export default (Component) => {
       );
     }
   }
+
+  hoistNonReactStatic(CatalogItems, Component);
 
   return CatalogItems;
 };

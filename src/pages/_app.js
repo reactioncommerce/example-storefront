@@ -29,6 +29,16 @@ const { publicRuntimeConfig } = getConfig();
 @withTags
 @track({}, { dispatch })
 export default class App extends NextApp {
+  static async getInitialProps({ Component, router, ctx }) {
+    let pageProps = {}
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
+    return { pageProps };
+  }
+
   constructor(props) {
     super(props);
     this.pageContext = getPageContext();
@@ -57,7 +67,7 @@ export default class App extends NextApp {
   }
 
   render() {
-    const { Component, shop, ...rest } = this.props;
+    const { Component, pageProps, shop, ...rest } = this.props;
     const { route } = this.props.router;
     const { stripe } = this.state;
 
@@ -77,11 +87,11 @@ export default class App extends NextApp {
                 {
                   (route === "/checkout" || route === "/login") ? (
                     <StripeProvider stripe={stripe}>
-                      <Component pageContext={this.pageContext} shop={shop} {...rest} />
+                      <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
                     </StripeProvider>
                   ) : (
                     <Layout shop={shop}>
-                      <Component pageContext={this.pageContext} shop={shop} {...rest} />
+                      <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
                     </Layout>
                   )
                 }

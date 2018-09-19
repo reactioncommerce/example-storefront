@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
 import { inject, observer } from "mobx-react";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import viewerQuery from "./viewer.gql";
 
 /**
@@ -10,7 +11,7 @@ import viewerQuery from "./viewer.gql";
  * @param {React.Component} Component to decorate
  * @returns {React.Component} - Component with `viewer` prop
  */
-export default (Component) => (
+export default function withViewer(Component) {
   @inject("authStore")
   @observer
   class WithViewer extends React.Component {
@@ -41,4 +42,8 @@ export default (Component) => (
       );
     }
   }
-);
+
+  hoistNonReactStatic(WithViewer, Component);
+
+  return WithViewer;
+}

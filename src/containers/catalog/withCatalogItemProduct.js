@@ -1,16 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import catalogItemProductQuery from "./catalogItemProduct.gql";
 
 /**
- * withCatalogItem higher order query component for fetching primaryShopId and catalog data
- * @name withCatalogItem
+ * withCatalogItemProduct higher order query component for fetching primaryShopId and catalog data
+ * @name withCatalogItemProduct
  * @param {React.Component} Component to decorate and apply
  * @returns {React.Component} - component decorated with primaryShopId and catalog as props
  */
-export default (Component) => (
-  class WithCatalogItem extends React.Component {
+export default function withCatalogItemProduct(Component) {
+  class WithCatalogItemProduct extends React.Component {
     static propTypes = {
       router: PropTypes.object.isRequired
     }
@@ -32,4 +33,8 @@ export default (Component) => (
       );
     }
   }
-);
+
+  hoistNonReactStatic(WithCatalogItemProduct, Component);
+
+  return WithCatalogItemProduct;
+}
