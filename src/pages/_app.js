@@ -57,7 +57,7 @@ export default class App extends NextApp {
   }
 
   render() {
-    const { Component, shop, ...rest } = this.props;
+    const { Component, shop, viewer, ...rest } = this.props;
     const { route } = this.props.router;
     const { stripe } = this.state;
 
@@ -80,7 +80,7 @@ export default class App extends NextApp {
                       <Component pageContext={this.pageContext} shop={shop} {...rest} />
                     </StripeProvider>
                   ) : (
-                    <Layout shop={shop}>
+                      <Layout shop={shop} viewer={viewer}>
                       <Component pageContext={this.pageContext} shop={shop} {...rest} />
                     </Layout>
                   )
