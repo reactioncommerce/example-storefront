@@ -17,7 +17,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkProductGrid" })
 @track()
 export default class ProductGrid extends Component {
   static propTypes = {
