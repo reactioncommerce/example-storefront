@@ -8,7 +8,6 @@ import analyticsProviders from "analytics";
 // import getConfig from "next/config";
 import rootMobxStores from "../lib/stores";
 import favicons from "../lib/utils/favicons";
-import globalStyles from "../lib/theme/globalStyles";
 
 class HTMLDocument extends Document {
   static getInitialProps = (ctx) => {
@@ -105,7 +104,6 @@ class HTMLDocument extends Document {
           {helmet.style.toComponent()}
           {helmet.script.toComponent()}
           {helmet.noscript.toComponent()}
-          {globalStyles}
         </Head>
         <body>
           <Main />
