@@ -14,7 +14,7 @@ const styles = () => ({
  * Product detail media gallery item
  * @class ProductDetailMediaGalleryItem
  */
-@withStyles(styles)
+@withStyles(styles, { name: "SkMediaGalleryItem" })
 class MediaGalleryItem extends Component {
   static propTypes = {
     /**
