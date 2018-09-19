@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="MuiGrid-container-4"
+>
+  <div
+    className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 MuiGrid-grid-md-7-67"
+  >
+    <div
+      className="Entry-loginWrapper-1"
+    >
+      <h2
+        className="MuiTypography-root-101 MuiTypography-title-107 MuiTypography-gutterBottom-118"
+      >
+        Returning Customer
+      </h2>
+      <div
+        className="Entry-loginButton-2 Button__ButtonDiv-bnfrK eloVkm"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex={0}
+        title={undefined}
+      >
+        <div>
+          Login
+        </div>
+        <div
+          className="Button__SpinnerWrap-bgOcuM cCKgPo"
+          style={
+            Object {
+              "opacity": 0,
+              "paddingLeft": 0,
+              "width": 0,
+            }
+          }
+        >
+          <svg
+            className="spinner__SpinnerSvg-iBTUvT bunzNs"
+            height="40px"
+            style={
+              Object {
+                "enableBackground": "new 0 0 50 50",
+              }
+            }
+            version="1.1"
+            viewBox="0 0 50 50"
+            width="40px"
+            x="0px"
+            y="0px"
+          >
+            <path
+              d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z"
+              fill="#000"
+            >
+              <animateTransform
+                attributeName="transform"
+                attributeType="xml"
+                dur="1s"
+                from="0 25 25"
+                repeatCount="indefinite"
+                to="360 25 25"
+                type="rotate"
+              />
+            </path>
+          </svg>
+        </div>
+      </div>
+      <div
+        className="Entry-loginButton-2 Button__ButtonDiv-bnfrK jNrbdB"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex={0}
+        title={undefined}
+      >
+        <div>
+          Create a new account
+        </div>
+        <div
+          className="Button__SpinnerWrap-bgOcuM fcVXSk"
+          style={
+            Object {
+              "opacity": 0,
+              "paddingLeft": 0,
+              "width": 0,
+            }
+          }
+        >
+          <svg
+            className="spinner__SpinnerSvg-iBTUvT bunzNs"
+            height="40px"
+            style={
+              Object {
+                "enableBackground": "new 0 0 50 50",
+              }
+            }
+            version="1.1"
+            viewBox="0 0 50 50"
+            width="40px"
+            x="0px"
+            y="0px"
+          >
+            <path
+              d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z"
+              fill="#000"
+            >
+              <animateTransform
+                attributeName="transform"
+                attributeType="xml"
+                dur="1s"
+                from="0 25 25"
+                repeatCount="indefinite"
+                to="360 25 25"
+                type="rotate"
+              />
+            </path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 MuiGrid-grid-md-5-65"
+  >
+    <div
+      className="Entry-guestWrapper-3"
+    >
+      <h2
+        className="MuiTypography-root-101 MuiTypography-title-107 MuiTypography-gutterBottom-118"
+      >
+        Guest Checkout
+      </h2>
+      <div
+        className={null}
+        style={Object {}}
+      >
+        <div
+          className="required Field__StyledField-kQcQjL lnhSLv"
+        >
+          <label
+            className="Field__StyledLabel-gsQloH iDRsBJ"
+            htmlFor={undefined}
+          >
+            Email Address
+          </label>
+          <div
+            className="TextInput__InputWrapper-dGJJJl bGPXhB"
+            value=""
+          >
+            <input
+              className="TextInput__StyledInput-loReSQ cKYvwP"
+              id="email_GuestForm_1"
+              maxLength={undefined}
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              placeholder="Email address"
+              readOnly={false}
+              type="email"
+              value=""
+            />
+          </div>
+          <span
+            className="Field__StyledHelpText-iiSdPK dTOPZc"
+          >
+            You will have the option to create an account and save your details after checkout.
+          </span>
+        </div>
+        <div
+          className="GuestForm__FormAction-fhrWsN gMhMif"
+        >
+          <div
+            className="Button__ButtonDiv-bnfrK hRmBpg"
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            tabIndex={0}
+            title={undefined}
+          >
+            <div>
+              Continue as guest
+            </div>
+            <div
+              className="Button__SpinnerWrap-bgOcuM fcVXSk"
+              style={
+                Object {
+                  "opacity": 0,
+                  "paddingLeft": 0,
+                  "width": 0,
+                }
+              }
+            >
+              <svg
+                className="spinner__SpinnerSvg-iBTUvT bunzNs"
+                height="40px"
+                style={
+                  Object {
+                    "enableBackground": "new 0 0 50 50",
+                  }
+                }
+                version="1.1"
+                viewBox="0 0 50 50"
+                width="40px"
+                x="0px"
+                y="0px"
+              >
+                <path
+                  d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z"
+                  fill="#000"
+                >
+                  <animateTransform
+                    attributeName="transform"
+                    attributeType="xml"
+                    dur="1s"
+                    from="0 25 25"
+                    repeatCount="indefinite"
+                    to="360 25 25"
+                    type="rotate"
+                  />
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
