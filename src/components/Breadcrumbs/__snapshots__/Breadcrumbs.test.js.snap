@@ -5,7 +5,7 @@ exports[`tagGrid secondlevel tag 1`] = `
   className="Breadcrumbs-container-1"
 >
   <a
-    className="Link-a-4 "
+    className="Link-anchor-4"
     href="/"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -23,16 +23,15 @@ exports[`tagGrid secondlevel tag 1`] = `
     className="MuiSvgIcon-root-5 Breadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
+    role="presentation"
     viewBox="0 0 24 24"
   >
-    <g>
-      <path
-        d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-      />
-    </g>
+    <path
+      d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+    />
   </svg>
   <a
-    className="Link-a-4 "
+    className="Link-anchor-4"
     href="/tag/tag-a"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -50,16 +49,15 @@ exports[`tagGrid secondlevel tag 1`] = `
     className="MuiSvgIcon-root-5 Breadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
+    role="presentation"
     viewBox="0 0 24 24"
   >
-    <g>
-      <path
-        d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-      />
-    </g>
+    <path
+      d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+    />
   </svg>
   <a
-    className="Link-a-4 "
+    className="Link-anchor-4"
     href="/tag/tag-a-1"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -80,7 +78,7 @@ exports[`tagGrid top level tag 1`] = `
   className="Breadcrumbs-container-1"
 >
   <a
-    className="Link-a-4 "
+    className="Link-anchor-4"
     href="/"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -98,16 +96,15 @@ exports[`tagGrid top level tag 1`] = `
     className="MuiSvgIcon-root-5 Breadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
+    role="presentation"
     viewBox="0 0 24 24"
   >
-    <g>
-      <path
-        d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-      />
-    </g>
+    <path
+      d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+    />
   </svg>
   <a
-    className="Link-a-4 "
+    className="Link-anchor-4"
     href="/tag/tag-a"
     onClick={[Function]}
     onKeyDown={[Function]}

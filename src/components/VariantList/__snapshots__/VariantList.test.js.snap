@@ -76,28 +76,28 @@ exports[`basic snapshot 1`] = `
     </button>
   </div>
   <div
-    className="Divider-container-34"
+    className="Divider-container-35"
   >
     <hr
-      className="Divider-item-36"
+      className="Divider-item-37"
     />
     <span
-      className="MuiTypography-root-9 MuiTypography-body1-18 Divider-label-35"
+      className="MuiTypography-root-9 MuiTypography-body1-18 Divider-label-36"
     >
       Available Options
     </span>
     <hr
-      className="Divider-item-36"
+      className="Divider-item-37"
     />
   </div>
   <div
-    className="MuiGrid-container-40 MuiGrid-spacing-xs-8-62 OptionsList-root-37"
+    className="MuiGrid-container-41 MuiGrid-spacing-xs-8-63 OptionsList-root-38"
   >
     <div
-      className="MuiGrid-item-41"
+      className="MuiGrid-item-42"
     >
       <button
-        className="MuiButtonBase-root-6 ProductDetailOption-optionButton-137 ProductDetailOption-isSelected-139"
+        className="MuiButtonBase-root-6 ProductDetailOption-optionButton-138 ProductDetailOption-isSelected-140"
         disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
@@ -114,13 +114,13 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiTypography-root-9 MuiTypography-body1-18 ProductDetailOption-optionText-138"
+          className="MuiTypography-root-9 MuiTypography-body1-18 ProductDetailOption-optionText-139"
         >
           Red
         </span>
       </button>
       <div
-        className="OptionsList-alert-38"
+        className="OptionsList-alert-39"
       >
         <div
           className="BadgeOverlay__Overlay-gvAWwt gJVwBl"
@@ -128,10 +128,10 @@ exports[`basic snapshot 1`] = `
       </div>
     </div>
     <div
-      className="MuiGrid-item-41"
+      className="MuiGrid-item-42"
     >
       <button
-        className="MuiButtonBase-root-6 ProductDetailOption-optionButton-137"
+        className="MuiButtonBase-root-6 ProductDetailOption-optionButton-138"
         disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
@@ -148,7 +148,7 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiTypography-root-9 MuiTypography-body1-18 ProductDetailOption-optionText-138"
+          className="MuiTypography-root-9 MuiTypography-body1-18 ProductDetailOption-optionText-139"
         >
           Green
         </span>
