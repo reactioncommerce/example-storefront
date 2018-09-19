@@ -8,7 +8,7 @@ import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 
 import styles from "./styles";
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkVariantItem" })
 class VariantItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
