@@ -1,41 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
-import Error from "../../pages/_error";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import catalogItemProductQuery from "./catalogItemProduct.gql";
 
 /**
- * withCatalogItem higher order query component for fetching primaryShopId and catalog data
- * @name withCatalogItem
+ * withCatalogItemProduct higher order query component for fetching primaryShopId and catalog data
+ * @name withCatalogItemProduct
  * @param {React.Component} Component to decorate and apply
  * @returns {React.Component} - component decorated with primaryShopId and catalog as props
  */
-export default (Component) => (
-  class WithCatalogItem extends React.Component {
+export default function withCatalogItemProduct(Component) {
+  class WithCatalogItemProduct extends React.Component {
     static propTypes = {
-      router: PropTypes.object.isRequired,
-      shop: PropTypes.object.isRequired
+      router: PropTypes.object.isRequired
     }
 
     render() {
-      const { router: { query }, shop } = this.props;
+      const { router: { query } } = this.props;
 
       return (
         <Query query={catalogItemProductQuery} variables={{ slugOrId: query.slugOrId }}>
-          {({ loading, data }) => {
-            if (loading) return null;
-
+          {({ data, loading }) => {
             const { catalogItemProduct } = data;
+            const { product } = catalogItemProduct || {};
 
-            // If no product was found, render "Not Found" page
-            return catalogItemProduct ? (
-              <Component {...this.props} product={catalogItemProduct.product} />
-            ) : (
-              (<Error shop={shop} subtitle="Not Found" />)
+            return (
+              <Component {...this.props} isLoadingProduct={loading} product={product} />
             );
           }}
         </Query>
       );
     }
   }
-);
+
+  hoistNonReactStatic(WithCatalogItemProduct, Component);
+
+  return WithCatalogItemProduct;
+}

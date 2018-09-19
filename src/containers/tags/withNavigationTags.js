@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { computed, observable, action, toJS } from "mobx";
 import { inject, observer } from "mobx-react";
+import hoistNonReactStatic from "hoist-non-react-statics";
 
 /**
  * withNavigationTags higher order query component for fetching tags for the navigation
@@ -9,7 +10,7 @@ import { inject, observer } from "mobx-react";
  * @param {React.Component} Component to decorate
  * @returns {React.Component} - Component with `navItems` prop
  */
-export default (Component) => (
+export default function withNavigationTags(Component) {
   @inject("primaryShopId")
   @inject("tags")
   @observer
@@ -90,4 +91,8 @@ export default (Component) => (
       );
     }
   }
-);
+
+  hoistNonReactStatic(NavigationTags, Component);
+
+  return NavigationTags;
+}

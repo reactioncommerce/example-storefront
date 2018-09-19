@@ -16,6 +16,7 @@
   "env": {
     "development": {
       "plugins": [
+        "babel-plugin-styled-components",
         ["module-resolver", {"root": ["./src", "./config"]}],
         "transform-decorators-legacy",
         "transform-class-properties"
@@ -23,6 +24,7 @@
     },
     "production": {
       "plugins": [
+        "babel-plugin-styled-components",
         ["module-resolver", {"root": ["./src", "./config"]}],
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         ["@babel/plugin-proposal-class-properties", { "loose": true }]
@@ -30,6 +32,7 @@
     },
     "jesttest": {
       "plugins": [
+        "babel-plugin-styled-components",
         ["module-resolver", {"root": ["./src", "./config"]}],
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         ["@babel/plugin-proposal-class-properties", { "loose": true }]
