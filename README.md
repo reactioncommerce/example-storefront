@@ -1,22 +1,34 @@
 # Reaction Storefront Next.js Starter Kit
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit?ref=badge_shield)
 
-
 _**Note:** This project is a work in progress and should not be used in production at this time._
 
-Reference Storefront application for [Reaction Commerce](https://reactioncommerce.com/).
+Reference headless ecommerce storefront starter kit application for [Reaction Commerce](https://reactioncommerce.com/), featuring [React](https://reactjs.org/), [Next.js](https://nextjs.org/) and [Apollo](https://www.apollographql.com/docs/react/) to connect to the [Reaction GraphQL API](https://github.com/reactioncommerce/reaction/), available as of Reaction v2.0.0.
+
+## Features
+
+- Headless ecommerce starter kit with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [MobX](https://mobx.js.org/getting-started.html), [GraphQL](https://graphql.org/), [Apollo](https://www.apollographql.com/docs/react/)
+- Server-side rendering
+- Payments with [Stripe](https://stripe.com/)
+- Analytics with [Segment](https://segment.com/)
+- Reusable, customizable, themeable ecommerce React components from the new [Reaction Component Library](https://www.npmjs.com/package/@reactioncommerce/components) with [Styled Components](https://www.styled-components.com/)
+- Fully-configured test suite: Jest snapshot testing, Mocha integration testing
+- Written in ES6, configured with ES6
+- Containerized with Docker
 
 ## Getting Started
 _Follow steps as necessary. If you already have Reaction installed, you may be able to skip some of these steps._
 
 0. Prerequesites
 - Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/). Docker Compose is included when installing Docker on Mac and Windows, but will need to be installed separately on Linux.
+- Sign up for a [Stripe](https://stripe.com/) API key, for payment processing.
+- Optional: Sign up for a [Segment](https://segment.com/) API key, for analytics.
 
-1. Clone the main [Reaction repo](https://github.com/reactioncommerce/reaction) and checkout the `release-1.15.0` branch
+1. Clone the main [Reaction repo](https://github.com/reactioncommerce/reaction) and checkout the `release-2.0.0` branch
     ```sh
     git clone git@github.com:reactioncommerce/reaction.git
     cd reaction
-    git checkout release-1.15.0
+    git checkout release-2.0.0
 
     # change directory to the parent of your reaction install
     cd ..
@@ -40,7 +52,6 @@ _Follow steps as necessary. If you already have Reaction installed, you may be a
     ```
     docker-compose up -d --build
     ```
-    You'll need to run the full app at least once in order for step 5 to work. After this initial run, if you don't want to start the Reaction Meteor app, you can just run `docker-compose up -d devserver`
 
 5. Generate a Meteor login token
 
@@ -54,13 +65,38 @@ _Follow steps as necessary. If you already have Reaction installed, you may be a
     ```sh
     cp .env.example .env
     ```
+
+    Add your Stripe and Segment API keys in the `.env` file, for payment processing and analytics.
+
 7. Start the storefront application in development mode using Docker Compose
-    ```
+    ```sh
     docker-compose up -d --build
     ```
 
 8. Visit the storefront on `localhost:4000`
 
+## Documentation
+- [Starter Kit full documentation](./docs) 
+- [Reaction Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](https://stoic-hodgkin-c0179e.netlify.com/)
+- [Reaction Docs: Using GraphQL](https://docs.reactioncommerce.com/docs/graphql-using)
+- [Reaction Docs: Testing with Jest](https://docs.reactioncommerce.com/docs/testing-reaction)
+- [Reaction Docs: Develping with Docker](https://docs.reactioncommerce.com/docs/installation-docker-development
+)
+
+## Configuration
+
+### Set up Stripe
+
+When running the storefront from a new Reaction shop, you will need to configure Stripe payment processing and shipping options to test a complete order checkout flow. After signing up for a Stripe API key, follow these steps:
+
+1. Add public Stripe API key (`STRIPE_PUBLIC_API_KEY`) to `.env`.
+2. Open the Reaction Classic app, at `http://localhost:3000`. Log in as an Admin user.
+3. Open **Payments**: Enable Stripe by checking the box. Add a Stripe secret key and public key.
+4. Open **Shipping**: Enable flat-rate shipping by checking the box. Enable at least one type of flat-rate shipping by clicking on the option in the table and checking the box.
+
+### Set up Analytics event tracking
+
+Read the docs for [setting up Segment or a custom analytics tracker](docs/tracking-events.md)
 
 ## Development
 
@@ -174,21 +210,6 @@ docker stop storefront
 
 _**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at. I'm partial to 4040_
 _**NOTE:** The above command is assuming ether the `devserver` or `reaction` is also running._
-
-## Documentation
-See our [full documentation](./docs)
-
-## Features
- - [Docker](https://docs.docker.com)
- - [React](https://reactjs.org/)
- - [Apollo](https://www.apollographql.com/docs/react/)
- - [MobX](https://mobx.js.org/getting-started.html)
- - [nextjs](https://github.com/zeit/next.js/)
- - [Material UI](https://material-ui.com/)
-
- ## Reference links for development
- ### CSS in JS
- - [Responsive Breakpoints](https://material-ui.com/layout/css-in-js/#responsive-breakpoints)
 
 
 ## License
