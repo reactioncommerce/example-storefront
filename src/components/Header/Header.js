@@ -36,7 +36,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkHeader" })
 @inject("uiStore")
 class Header extends Component {
   static propTypes = {
