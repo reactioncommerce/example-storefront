@@ -23,10 +23,6 @@ export default function withLocales(ComponentWithLocales) {
       locales: {}
     };
 
-    // state = {
-    //   locales: this.props.locales
-    // };
-
     async componentDidMount() {
       const { uiStore } = this.props;
       const { locales: currentLocales } = uiStore;
