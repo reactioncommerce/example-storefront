@@ -253,7 +253,7 @@ Array [
       className="CatalogGrid__GridContainer-iLBjFm bXBNVP"
     >
       <div
-        className="CatalogGrid__GridItem-eahVxr FBXTD"
+        className="CatalogGrid__GridItem-eahVxr kvUYzf"
       >
         <CatalogGridItem
           currencyCode="USD"
@@ -295,7 +295,7 @@ Array [
         />
       </div>
       <div
-        className="CatalogGrid__GridItem-eahVxr FBXTD"
+        className="CatalogGrid__GridItem-eahVxr kvUYzf"
       >
         <CatalogGridItem
           currencyCode="USD"

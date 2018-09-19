@@ -16,6 +16,12 @@ function getComponentDisplayName(Component) {
   return Component.displayName || Component.name || "Unknown";
 }
 
+/**
+ * @name withApolloClient
+ * @summary Wraps the component with a configured Apollo client provider
+ * @param {React.Component} WrappedComponent Component to wrap
+ * @returns {React.Component} Higher order component
+ */
 export default function withApolloClient(WrappedComponent) {
   class WithApolloClient extends React.Component {
     static async getInitialProps(ctx) {

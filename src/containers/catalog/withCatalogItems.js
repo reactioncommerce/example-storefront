@@ -65,4 +65,4 @@ export default function withCatalogItems(Component) {
   hoistNonReactStatic(CatalogItems, Component);
 
   return CatalogItems;
-};
+}

@@ -48,4 +48,4 @@ export default function withShop(Component) {
   hoistNonReactStatic(Shop, Component);
 
   return Shop;
-};
+}

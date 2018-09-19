@@ -29,8 +29,8 @@ const { publicRuntimeConfig } = getConfig();
 @withTags
 @track({}, { dispatch })
 export default class App extends NextApp {
-  static async getInitialProps({ Component, router, ctx }) {
-    let pageProps = {}
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {};
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);

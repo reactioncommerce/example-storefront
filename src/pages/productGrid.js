@@ -34,7 +34,7 @@ class ProductGridPage extends Component {
   static async getInitialProps({ req }) {
     // It is not perfect, but the only way we can guess at the screen width of the
     // requesting device is to parse the `user-agent` header it sends.
-    const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
+    const userAgent = req ? req.headers["user-agent"] : navigator.userAgent;
     const width = (userAgent && userAgent.indexOf("Mobi")) > -1 ? 320 : 1024;
 
     return { initialGridSize: { width } };
