@@ -32,7 +32,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkOrderSummary" })
 class OrderSummary extends Component {
   static propTypes = {
     classes: PropTypes.object,
