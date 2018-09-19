@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 import { withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
 import { Router } from "routes";
-import {
-  accountCartByAccountIdQuery,
-  anonymousCartByCartIdQuery
-} from "../cart/queries.gql";
 import { placeOrderWithStripeCardPayment } from "./mutations.gql";
 
 /**
@@ -61,18 +57,6 @@ export default (Component) => (
             order: accountOrder,
             payment
           }
-        },
-        update: (cache) => {
-          // TODO: revisit and verify this actually clears the apollo cache
-          cache.writeQuery({
-            query: accountCartByAccountIdQuery,
-            data: { cart: null }
-          });
-
-          cache.writeQuery({
-            query: anonymousCartByCartIdQuery,
-            data: { cart: null }
-          });
         }
       });
 
@@ -81,7 +65,9 @@ export default (Component) => (
         const { placeOrderWithStripeCardPayment: { orders, token } } = data;
 
         // Clear anonymous cart
-        cartStore.clearAnonymousCartCredentials();
+        if (!authStore.isAuthenticated) {
+          cartStore.clearAnonymousCartCredentials();
+        }
 
         // Send user to order confirmation page
         Router.pushRoute("checkoutComplete", { orderId: orders[0]._id, token });
