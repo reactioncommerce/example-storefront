@@ -10,6 +10,7 @@ import { NavigationDesktop } from "components/NavigationDesktop";
 import { NavigationMobile, NavigationToggleMobile } from "components/NavigationMobile";
 import AccountDropdown from "components/AccountDropdown";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
+import ViewerInfo from "@reactioncommerce/components/ViewerInfo/v1";
 import Link from "components/Link";
 import MiniCart from "components/MiniCart";
 
@@ -46,7 +47,8 @@ class Header extends Component {
     }).isRequired,
     uiStore: PropTypes.shape({
       toggleMenuDrawerOpen: PropTypes.func.isRequired
-    }).isRequired
+    }).isRequired,
+    viewer: PropTypes
   };
 
   static defaultProps = {
@@ -58,7 +60,7 @@ class Header extends Component {
   };
 
   render() {
-    const { classes: { appBar, controls, toolbar, title }, shop } = this.props;
+    const { classes: { appBar, controls, toolbar, title }, shop, viewer } = this.props;
 
     return (
       <AppBar position="static" elevation={0} className={appBar}>
@@ -79,7 +81,7 @@ class Header extends Component {
             </Hidden>
           </div>
 
-          <AccountDropdown />
+          {viewer ? <ViewerInfo viewer={viewer} /> : <AccountDropdown />}
           <MiniCart />
         </Toolbar>
         <NavigationMobile />
