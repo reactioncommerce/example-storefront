@@ -19,7 +19,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkAccountDropdown" })
 @inject("authStore")
 @observer
 class AccountDropdown extends Component {
