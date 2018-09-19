@@ -48,7 +48,7 @@ const styles = ({ palette, transitions, zIndex }) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true })
+@withStyles(styles, { withTheme: true, name: "SkImg" })
 class Img extends Component {
   static propTypes = {
     /**
