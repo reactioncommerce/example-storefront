@@ -26,4 +26,4 @@ Footer.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(styles)(Footer);
+export default withStyles(styles, { name: "SkFooter" })(Footer);
