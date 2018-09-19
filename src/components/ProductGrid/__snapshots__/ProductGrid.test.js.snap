@@ -122,7 +122,7 @@ Array [
       className="MuiTypography-root-158 MuiTypography-body1-167 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-156"
     >
       <a
-        className=""
+        className="Link-anchor-184"
         href="tag/test-tag"
         onClick={[Function]}
         onKeyDown={[Function]}

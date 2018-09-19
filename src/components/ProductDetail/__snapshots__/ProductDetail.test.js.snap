@@ -11,7 +11,7 @@ exports[`basic snapshot 1`] = `
       className="Breadcrumbs-container-238"
     >
       <a
-        className=""
+        className="Link-anchor-241"
         href="/"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -37,7 +37,7 @@ exports[`basic snapshot 1`] = `
         />
       </svg>
       <a
-        className=""
+        className="Link-anchor-241"
         href="/tag/tag-a"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -63,7 +63,7 @@ exports[`basic snapshot 1`] = `
         />
       </svg>
       <a
-        className=""
+        className="Link-anchor-241"
         href="/product/example-product"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -387,7 +387,7 @@ exports[`basic snapshot 1`] = `
     >
       <section>
         <h2
-          className="MuiTypography-root-120 MuiTypography-title-126 TagGrid-title-241"
+          className="MuiTypography-root-120 MuiTypography-title-126 TagGrid-title-242"
         >
           Tags
         </h2>
@@ -398,7 +398,7 @@ exports[`basic snapshot 1`] = `
             className="MuiGrid-item-4"
           >
             <a
-              className=""
+              className="Link-anchor-241"
               href="/tag/shoes"
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -406,7 +406,7 @@ exports[`basic snapshot 1`] = `
               tabIndex={0}
             >
               <div
-                className="MuiChip-root-243 TagGrid-chip-242"
+                className="MuiChip-root-244 TagGrid-chip-243"
                 onClick={undefined}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -414,7 +414,7 @@ exports[`basic snapshot 1`] = `
                 tabIndex={-1}
               >
                 <span
-                  className="MuiChip-label-262"
+                  className="MuiChip-label-263"
                 >
                   Shoes
                 </span>
@@ -425,7 +425,7 @@ exports[`basic snapshot 1`] = `
             className="MuiGrid-item-4"
           >
             <a
-              className=""
+              className="Link-anchor-241"
               href="/tag/shop"
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -433,7 +433,7 @@ exports[`basic snapshot 1`] = `
               tabIndex={0}
             >
               <div
-                className="MuiChip-root-243 TagGrid-chip-242"
+                className="MuiChip-root-244 TagGrid-chip-243"
                 onClick={undefined}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -441,7 +441,7 @@ exports[`basic snapshot 1`] = `
                 tabIndex={-1}
               >
                 <span
-                  className="MuiChip-label-262"
+                  className="MuiChip-label-263"
                 >
                   Shop
                 </span>

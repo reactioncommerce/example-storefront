@@ -7,7 +7,6 @@ import analyticsProviders from "analytics";
 import { ServerStyleSheet } from "styled-components";
 // import getConfig from "next/config";
 import favicons from "../lib/utils/favicons";
-import globalStyles from "../lib/theme/globalStyles";
 
 /**
  * For details about the styled-components SSR code in this file, see https://www.styled-components.com/docs/advanced#nextjs
@@ -110,7 +109,6 @@ class HTMLDocument extends Document {
           {helmet.style.toComponent()}
           {helmet.script.toComponent()}
           {helmet.noscript.toComponent()}
-          {globalStyles}
           {styledComponentsStyleTags}
         </Head>
         <body>

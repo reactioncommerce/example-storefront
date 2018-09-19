@@ -45,6 +45,10 @@ export default class TagGridPage extends Component {
     const { routingStore, tag } = props;
     if (routingStore.tag._id !== tag._id) {
       routingStore.setTag(tag);
+      routingStore.setSearch({
+        before: null,
+        after: null
+      });
     }
     return null;
   }
