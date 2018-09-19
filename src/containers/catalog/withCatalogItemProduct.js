@@ -12,12 +12,11 @@ import catalogItemProductQuery from "./catalogItemProduct.gql";
 export default (Component) => (
   class WithCatalogItem extends React.Component {
     static propTypes = {
-      router: PropTypes.object.isRequired,
-      shop: PropTypes.object.isRequired
+      router: PropTypes.object.isRequired
     }
 
     render() {
-      const { router: { query }, shop } = this.props;
+      const { router: { query } } = this.props;
 
       return (
         <Query query={catalogItemProductQuery} variables={{ slugOrId: query.slugOrId }}>

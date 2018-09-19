@@ -25,18 +25,18 @@ class PageLoading extends Component {
     delayIsDone: false
   }
 
-  componentWillUnmount() {
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
-  }
-
   componentDidMount() {
     this.timeout = setTimeout(() => {
       this.setState({
         delayIsDone: true
       });
     }, 800);
+  }
+
+  componentWillUnmount() {
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
   }
 
   renderSpinner() {
@@ -66,7 +66,7 @@ class PageLoading extends Component {
             keySplines="0.45 0 0.9 0.55;0 0.45 0.55 0.9"
             begin="0s"
             repeatCount="indefinite"
-          ></animate>
+          />
         </circle>
       </svg>
     );

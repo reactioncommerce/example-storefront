@@ -79,7 +79,7 @@ export default class ProductGrid extends Component {
         </Grid>
         {pageInfo && <PageStepper pageInfo={pageInfo} />}
       </Fragment>
-    )
+    );
   }
 
   render() {

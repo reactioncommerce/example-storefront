@@ -4,9 +4,8 @@ import Document, { Head, Main, NextScript } from "next/document";
 import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
 import analyticsProviders from "analytics";
-import { ServerStyleSheet } from 'styled-components'
+import { ServerStyleSheet } from "styled-components";
 // import getConfig from "next/config";
-import rootMobxStores from "../lib/stores";
 import favicons from "../lib/utils/favicons";
 import globalStyles from "../lib/theme/globalStyles";
 
