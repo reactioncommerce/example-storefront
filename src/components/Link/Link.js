@@ -7,7 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import track from "lib/tracking/track";
 
 const styles = () => ({
-  a: {
+  anchor: {
     color: "inherit",
     textDecoration: "none"
   }
@@ -22,8 +22,8 @@ const styles = () => ({
 class Link extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    classes: PropTypes.object,
     className: PropTypes.string,
+    classes: PropTypes.object,
     onClick: PropTypes.func
   }
 
@@ -60,7 +60,7 @@ class Link extends Component {
     return (
       <NextLink route={props.route || props.href} {...props} passHref>
         <a
-          className={`${classes.a} ${className || ""}`}
+          className={classNames(classes.anchor, className)}
           onClick={this.handleClick}
           onKeyDown={this.handleKeyDown}
           role="link"
