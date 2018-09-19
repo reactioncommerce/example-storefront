@@ -10,7 +10,7 @@ const styles = () => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkCart" })
 @inject("uiStore")
 @observer
 class Cart extends Component {
