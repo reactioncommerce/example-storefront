@@ -10,10 +10,11 @@ import { inPageSizes } from "lib/utils/pageSizes";
 @withCatalogItems
 @inject("routingStore", "uiStore")
 @observer
-class Shop extends Component {
+class ProductGridPage extends Component {
   static propTypes = {
     catalogItems: PropTypes.array,
     catalogItemsPageInfo: PropTypes.object,
+    isLoadingCatalogItems: PropTypes.bool,
     routingStore: PropTypes.object,
     shop: PropTypes.shape({
       currency: PropTypes.shape({
@@ -55,7 +56,14 @@ class Shop extends Component {
   };
 
   render() {
-    const { catalogItems, catalogItemsPageInfo, uiStore, routingStore: { query }, shop } = this.props;
+    const {
+      catalogItems,
+      catalogItemsPageInfo,
+      isLoadingCatalogItems,
+      routingStore: { query },
+      shop,
+      uiStore
+    } = this.props;
     const pageSize = query && inPageSizes(query.limit) ? parseInt(query.limit, 10) : uiStore.pageSize;
     const sortBy = query && query.sortby ? query.sortby : uiStore.sortBy;
     const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : shop.name;
@@ -69,6 +77,7 @@ class Shop extends Component {
         <ProductGrid
           catalogItems={catalogItems}
           currencyCode={shop.currency.code}
+          isLoadingCatalogItems={isLoadingCatalogItems}
           pageInfo={catalogItemsPageInfo}
           pageSize={pageSize}
           setPageSize={this.setPageSize}
@@ -80,4 +89,4 @@ class Shop extends Component {
   }
 }
 
-export default Shop;
+export default ProductGridPage;

@@ -38,7 +38,7 @@ export default (Component) => {
 
       return (
         <Query query={catalogItemsQuery} variables={variables}>
-          {({ data, fetchMore }) => {
+          {({ data, fetchMore, loading }) => {
             const { catalogItems } = data || {};
 
             return (
@@ -52,6 +52,7 @@ export default (Component) => {
                   limit: uiStore.pageSize
                 })}
                 catalogItems={(catalogItems && catalogItems.edges) || []}
+                isLoadingCatalogItems={loading}
               />
             );
           }}

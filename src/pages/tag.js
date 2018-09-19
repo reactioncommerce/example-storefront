@@ -13,11 +13,12 @@ import trackProductListViewed from "lib/tracking/trackProductListViewed";
 @withCatalogItems
 @inject("routingStore", "uiStore")
 @observer
-export default class TagShop extends Component {
+export default class TagGridPage extends Component {
   static propTypes = {
     catalogItems: PropTypes.array.isRequired,
     catalogItemsPageInfo: PropTypes.object,
     classes: PropTypes.object,
+    isLoadingCatalogItems: PropTypes.bool,
     routingStore: PropTypes.object,
     shop: PropTypes.shape({
       currency: PropTypes.shape({
@@ -70,7 +71,16 @@ export default class TagShop extends Component {
   };
 
   render() {
-    const { catalogItems, catalogItemsPageInfo, routingStore: { query }, shop, tag, tags, uiStore } = this.props;
+    const {
+      catalogItems,
+      catalogItemsPageInfo,
+      isLoadingCatalogItems,
+      routingStore: { query },
+      shop,
+      tag,
+      tags,
+      uiStore
+    } = this.props;
     const pageSize = query && query.limit ? parseInt(query.limit, 10) : uiStore.pageSize;
     const sortBy = query && query.sortby ? query.sortby : uiStore.sortBy;
 
@@ -85,6 +95,7 @@ export default class TagShop extends Component {
         <ProductGrid
           catalogItems={catalogItems}
           currencyCode={shop.currency.code}
+          isLoadingCatalogItems={isLoadingCatalogItems}
           pageInfo={catalogItemsPageInfo}
           pageSize={pageSize}
           setPageSize={this.setPageSize}

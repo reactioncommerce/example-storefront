@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import CatalogGrid from "@reactioncommerce/components/CatalogGrid/v1";
 import track from "lib/tracking/track";
 import trackProductClicked from "lib/tracking/trackProductClicked";
+import PageLoading from "components/PageLoading";
 import PageStepper from "components/PageStepper";
 import PageSizeSelector from "components/PageSizeSelector";
 import SortBySelector from "components/SortBySelector";
@@ -24,6 +25,7 @@ export default class ProductGrid extends Component {
     catalogItems: PropTypes.arrayOf(PropTypes.object),
     classes: PropTypes.object,
     currencyCode: PropTypes.string.isRequired,
+    isLoadingCatalogItems: PropTypes.bool,
     pageInfo: PropTypes.shape({
       startCursor: PropTypes.string,
       endCursor: PropTypes.string,
@@ -57,7 +59,7 @@ export default class ProductGrid extends Component {
   onItemClick = (event, product) => {} // eslint-disable-line no-unused-vars
 
   render() {
-    const { catalogItems, pageInfo } = this.props;
+    const { catalogItems, isLoadingCatalogItems, pageInfo } = this.props;
     const products = (catalogItems || []).map((item) => item.node.product);
 
     if (products.length === 0) return <ProductGridEmptyMessage />;
@@ -65,16 +67,18 @@ export default class ProductGrid extends Component {
     return (
       <Fragment>
         {this.renderFilters()}
-        <Grid container spacing={24}>
+
+        {isLoadingCatalogItems && <PageLoading />}
+        {!isLoadingCatalogItems && <Grid container spacing={24}>
           <CatalogGrid
             products={products}
             onItemClick={this.onItemClick}
             placeholderImageURL="/static/placeholder.gif"
             {...this.props}
           />
-        </Grid>
+        </Grid>}
 
-        { pageInfo && <PageStepper pageInfo={pageInfo} /> }
+        {!isLoadingCatalogItems && pageInfo && <PageStepper pageInfo={pageInfo} />}
       </Fragment>
     );
   }
