@@ -101,12 +101,12 @@ Read the docs for [setting up Segment or a custom analytics tracker](docs/tracki
 ## Development
 
 ### Build and run in development mode with logs
-```
+```sh
 docker-compose up -d && docker-compose logs -f
 ```
 
 ### Running Commands inside the container
-```
+```sh
 docker-compose run --rm web [command]
 ```
 Run any command inside a Docker container and then remove the container. Use this to run any tooling operations. Remember your project directory will be mounted and things will usually just work.
@@ -176,40 +176,45 @@ Sometimes we need to test [`reaction-component-library`](https://github.com/reac
 
 ## Cleanup Containers
 Stop, and retain containers:
-```
+```sh
 docker-compose stop
 ```
 
 Stop, and remove containers:
-```
+```sh
 docker-compose down
 ```
 
 Stop, and remove containers, volumes and built images:
-```
+```sh
 docker-compose down -v --rmi local
 ```
 
-## Production
-Running the command below will build the starterkit for production.
+## Building and running the production app locally
 
-```
+Sometimes it is helpful during development to make a production build of the app and run that locally.
+
+Run this command to build a Docker image with the production build of the app in it:
+
+```sh
 docker build -t reaction-storefront --build-arg BUILD_ENV=production .
 ```
 
-To start the app in production mode execute:
+Then, to start the app on your machine, make sure the Reaction API container is already running and enter:
 
-```
+```sh
 docker run -d --name storefront -p ${port}:4000 --env-file .env --network api.reaction.localhost reaction-storefront
 ```
 
-To stop the docker container after starting it with the above command
-```
+_**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at._
+
+_**NOTE:** This is not the way to run the app in actual production deployment. This is only for running the production build locally for development, demo or trial purposes._
+
+To stop the Docker container after starting it with the above command, use:
+
+```sh
 docker stop storefront
 ```
-
-_**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at. I'm partial to 4040_
-_**NOTE:** The above command is assuming ether the `devserver` or `reaction` is also running._
 
 
 ## License
