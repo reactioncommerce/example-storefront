@@ -1,6 +1,26 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
 
+const styles = () => ({
+  svg: {
+    background: "none"
+  },
+  wrapper: {
+    alignItems: "center",
+    display: "flex",
+    height: "75vh",
+    justifyContent: "center"
+  }
+});
+
+@withStyles(styles, { withTheme: true })
 class PageLoading extends Component {
+  static propTypes = {
+    classes: PropTypes.object,
+    theme: PropTypes.object
+  };
+
   state = {
     delayIsDone: false
   }
@@ -11,7 +31,6 @@ class PageLoading extends Component {
     }
   }
 
-
   componentDidMount() {
     this.timeout = setTimeout(() => {
       this.setState({
@@ -21,12 +40,13 @@ class PageLoading extends Component {
   }
 
   renderSpinner() {
+    const { classes, theme } = this.props;
+
     return (
       <svg
-        className="lds-ball"
+        className={classes.svg}
         height="150px"
         preserveAspectRatio="xMidYMid"
-        style={{ background: "none" }}
         viewBox="0 0 100 100"
         width="150px"
         xmlns="http://www.w3.org/2000/svg"
@@ -34,10 +54,7 @@ class PageLoading extends Component {
         <circle
           cx="50"
           cy="36.7846"
-          fill="#58A8DB"
-          ng-attr-cy="{{config.cy}}"
-          ng-attr-fill="{{config.color}}"
-          ng-attr-r="{{config.radius}}"
+          fill={theme.palette.reaction.pageLoading.color}
           r="13"
         >
           <animate
@@ -56,10 +73,11 @@ class PageLoading extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     const { delayIsDone } = this.state;
 
     return (
-      <div style={{ height: "75vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
+      <div className={classes.wrapper}>
         {!!delayIsDone && this.renderSpinner()}
       </div>
     );

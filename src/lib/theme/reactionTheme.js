@@ -114,6 +114,9 @@ const theme = createMuiTheme({
       red400: "#bc1d2b",
       red500: "#5e3033",
       red600: "#3c1f21",
+      pageLoading: {
+        color: "#58A8DB"
+      },
       teal: "#8ce0c9",
       teal100: "#edfdf8",
       teal200: "#d9ece6",
