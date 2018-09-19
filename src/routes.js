@@ -4,6 +4,7 @@ routes
   .add("home", "/", "index")
   .add("cart", "/cart", "cart")
   .add("checkout", "/cart/checkout", "checkout")
+  .add("checkoutLogin", "/cart/login", "checkout")
   .add("checkoutComplete", "/checkout/order/:orderId", "checkoutComplete")
   .add("login", "/login", "login")
   .add("shopProduct", "/shop/:shopSlug/product/:slugOrId", "product")
