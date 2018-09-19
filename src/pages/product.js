@@ -4,6 +4,7 @@ import Helmet from "react-helmet";
 import withCart from "containers/cart/withCart";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import ProductDetail from "components/ProductDetail";
+import PageLoading from "components/PageLoading";
 
 @withCart
 @withCatalogItemProduct
@@ -16,6 +17,7 @@ class ProductDetailPage extends Component {
      * @type function
      */
     addItemsToCart: PropTypes.func,
+    isLoadingProduct: PropTypes.bool,
     /**
      * Catalog Product item
      */
@@ -80,8 +82,8 @@ class ProductDetailPage extends Component {
   }
 
   render() {
-    const currencyCode = this.props.shop.currency.code || "USD";
-    const { product, shop } = this.props;
+    const { addItemsToCart, isLoadingProduct, product, shop, tags } = this.props;
+    const currencyCode = (shop && shop.currency.code) || "USD";
 
     return (
       <Fragment>
@@ -90,13 +92,14 @@ class ProductDetailPage extends Component {
           meta={[{ name: "description", content: product && product.description }]}
           script={[{ type: "application/ld+json", innerHTML: this.buildJSONLd() }]}
         />
-        <ProductDetail
-          addItemsToCart={this.props.addItemsToCart}
+        {!!isLoadingProduct && <PageLoading />}
+        {!isLoadingProduct && <ProductDetail
+          addItemsToCart={addItemsToCart}
           currencyCode={currencyCode}
-          product={this.props.product}
-          shop={this.props.shop}
-          tags={this.props.tags}
-        />
+          product={product}
+          shop={shop}
+          tags={tags}
+        />}
       </Fragment>
     );
   }

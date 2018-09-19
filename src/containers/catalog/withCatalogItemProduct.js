@@ -23,15 +23,15 @@ export default (Component) => (
       return (
         <Query query={catalogItemProductQuery} variables={{ slugOrId: query.slugOrId }}>
           {({ loading, data }) => {
-            if (loading) return null;
-
             const { catalogItemProduct } = data;
+            const { product } = catalogItemProduct || {};
 
-            // If no product was found, render "Not Found" page
-            return catalogItemProduct ? (
-              <Component {...this.props} product={catalogItemProduct.product} />
-            ) : (
-              (<Error shop={shop} subtitle="Not Found" />)
+            if (!loading && !product) {
+              return <Error shop={shop} subtitle="Not Found" />;
+            }
+
+            return (
+              <Component {...this.props} isLoadingProduct={loading} product={product} />
             );
           }}
         </Query>
