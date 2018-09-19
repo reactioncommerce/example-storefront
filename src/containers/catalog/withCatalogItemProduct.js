@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
-import Error from "../../pages/_error";
 import catalogItemProductQuery from "./catalogItemProduct.gql";
 
 /**
@@ -22,13 +21,9 @@ export default (Component) => (
 
       return (
         <Query query={catalogItemProductQuery} variables={{ slugOrId: query.slugOrId }}>
-          {({ loading, data }) => {
+          {({ data, loading }) => {
             const { catalogItemProduct } = data;
             const { product } = catalogItemProduct || {};
-
-            if (!loading && !product) {
-              return <Error shop={shop} subtitle="Not Found" />;
-            }
 
             return (
               <Component {...this.props} isLoadingProduct={loading} product={product} />

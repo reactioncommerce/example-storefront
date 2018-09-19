@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
+import ErrorPage from "./_error";
 import withCart from "containers/cart/withCart";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import ProductDetail from "components/ProductDetail";
@@ -21,7 +22,7 @@ class ProductDetailPage extends Component {
     /**
      * Catalog Product item
      */
-    product: PropTypes.object.isRequired,
+    product: PropTypes.object,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       currency: PropTypes.shape({
@@ -40,9 +41,11 @@ class ProductDetailPage extends Component {
    * @return {String} Stringified product jsonld
    */
   buildJSONLd() {
-    const currencyCode = this.props.shop.currency.code || "USD";
     const { product, shop } = this.props;
 
+    if (!product || !shop) return "";
+
+    const currencyCode = shop.currency.code || "USD";
     const priceData = product.pricing[0];
     const images = product.media.map((image) => image.URLs.original);
 
@@ -81,9 +84,27 @@ class ProductDetailPage extends Component {
     return JSON.stringify(productJSON);
   }
 
-  render() {
+  renderMainArea() {
     const { addItemsToCart, isLoadingProduct, product, shop, tags } = this.props;
     const currencyCode = (shop && shop.currency.code) || "USD";
+
+    if (isLoadingProduct) return <PageLoading />;
+
+    if (!product) return <ErrorPage shop={shop} subtitle="Not Found" />;
+
+    return (
+      <ProductDetail
+        addItemsToCart={addItemsToCart}
+        currencyCode={currencyCode}
+        product={product}
+        shop={shop}
+        tags={tags}
+      />
+    );
+  }
+
+  render() {
+    const { product, shop } = this.props;
 
     return (
       <Fragment>
@@ -92,14 +113,7 @@ class ProductDetailPage extends Component {
           meta={[{ name: "description", content: product && product.description }]}
           script={[{ type: "application/ld+json", innerHTML: this.buildJSONLd() }]}
         />
-        {!!isLoadingProduct && <PageLoading />}
-        {!isLoadingProduct && <ProductDetail
-          addItemsToCart={addItemsToCart}
-          currencyCode={currencyCode}
-          product={product}
-          shop={shop}
-          tags={tags}
-        />}
+        {this.renderMainArea()}
       </Fragment>
     );
   }

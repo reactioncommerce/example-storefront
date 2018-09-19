@@ -58,27 +58,35 @@ export default class ProductGrid extends Component {
   @trackProductClicked()
   onItemClick = (event, product) => {} // eslint-disable-line no-unused-vars
 
-  render() {
+  renderMainArea() {
     const { catalogItems, isLoadingCatalogItems, pageInfo } = this.props;
-    const products = (catalogItems || []).map((item) => item.node.product);
 
+    if (isLoadingCatalogItems) return <PageLoading />;
+
+    const products = (catalogItems || []).map((item) => item.node.product);
     if (products.length === 0) return <ProductGridEmptyMessage />;
 
     return (
       <Fragment>
-        {this.renderFilters()}
-
-        {isLoadingCatalogItems && <PageLoading />}
-        {!isLoadingCatalogItems && <Grid container spacing={24}>
+        <Grid container spacing={24}>
           <CatalogGrid
-            products={products}
+            initialSize={{ width: 1000 }}
             onItemClick={this.onItemClick}
+            products={products}
             placeholderImageURL="/static/placeholder.gif"
             {...this.props}
           />
-        </Grid>}
+        </Grid>
+        {pageInfo && <PageStepper pageInfo={pageInfo} />}
+      </Fragment>
+    )
+  }
 
-        {!isLoadingCatalogItems && pageInfo && <PageStepper pageInfo={pageInfo} />}
+  render() {
+    return (
+      <Fragment>
+        {this.renderFilters()}
+        {this.renderMainArea()}
       </Fragment>
     );
   }
