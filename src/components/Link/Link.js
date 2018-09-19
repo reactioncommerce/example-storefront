@@ -18,7 +18,7 @@ const styles = () => ({
   url: ownProps.route || ownProps.href,
   params: ownProps.params
 }))
-@withStyles(styles)
+@withStyles(styles, { name: "SkLink" })
 class Link extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
