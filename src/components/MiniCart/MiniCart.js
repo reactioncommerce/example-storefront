@@ -166,13 +166,18 @@ export default class MiniCart extends Component {
             onMouseLeave={this.handlePopperClose}
             onClick={this.handleOnClick}
           >
-            <Badge
-              badgeContent={cartQuantity}
-              color="primary"
-              classes={{ badge: classes.badge }}
-            >
-              <CartIcon />
-            </Badge>
+          {(cartQuantity > 0)
+            ? (
+              <Badge
+                badgeContent={cartQuantity}
+                color="primary"
+                classes={{ badge: classes.badge }}
+              >
+                <CartIcon />
+              </Badge>
+            )
+            : <CartIcon />
+          }
           </IconButton>
         </div>
 
