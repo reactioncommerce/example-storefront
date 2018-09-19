@@ -29,7 +29,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkBreadcrumbs" })
 class Breadcrumbs extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
