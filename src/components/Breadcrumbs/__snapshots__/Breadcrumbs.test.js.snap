@@ -5,7 +5,7 @@ exports[`tagGrid secondlevel tag 1`] = `
   className="Breadcrumbs-container-1"
 >
   <a
-    className=""
+    className="Link-a-4 "
     href="/"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -20,7 +20,7 @@ exports[`tagGrid secondlevel tag 1`] = `
   </a>
   <svg
     aria-hidden="true"
-    className="MuiSvgIcon-root-4 Breadcrumbs-breadcrumbIcon-3"
+    className="MuiSvgIcon-root-5 Breadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
     viewBox="0 0 24 24"
@@ -32,7 +32,7 @@ exports[`tagGrid secondlevel tag 1`] = `
     </g>
   </svg>
   <a
-    className=""
+    className="Link-a-4 "
     href="/tag/tag-a"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -47,7 +47,7 @@ exports[`tagGrid secondlevel tag 1`] = `
   </a>
   <svg
     aria-hidden="true"
-    className="MuiSvgIcon-root-4 Breadcrumbs-breadcrumbIcon-3"
+    className="MuiSvgIcon-root-5 Breadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
     viewBox="0 0 24 24"
@@ -59,7 +59,7 @@ exports[`tagGrid secondlevel tag 1`] = `
     </g>
   </svg>
   <a
-    className=""
+    className="Link-a-4 "
     href="/tag/tag-a-1"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -80,7 +80,7 @@ exports[`tagGrid top level tag 1`] = `
   className="Breadcrumbs-container-1"
 >
   <a
-    className=""
+    className="Link-a-4 "
     href="/"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -95,7 +95,7 @@ exports[`tagGrid top level tag 1`] = `
   </a>
   <svg
     aria-hidden="true"
-    className="MuiSvgIcon-root-4 Breadcrumbs-breadcrumbIcon-3"
+    className="MuiSvgIcon-root-5 Breadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
     viewBox="0 0 24 24"
@@ -107,7 +107,7 @@ exports[`tagGrid top level tag 1`] = `
     </g>
   </svg>
   <a
-    className=""
+    className="Link-a-4 "
     href="/tag/tag-a"
     onClick={[Function]}
     onKeyDown={[Function]}

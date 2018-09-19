@@ -13,7 +13,7 @@ exports[`Empty product grid message 1`] = `
     className="MuiTypography-root-137 MuiTypography-body1-146 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-135"
   >
     <a
-      className=""
+      className="Link-a-162 "
       href="tag/test-tag"
       onClick={[Function]}
       onKeyDown={[Function]}

@@ -2,7 +2,7 @@
 
 exports[`basic snapshot 1`] = `
 <a
-  className=""
+  className="Link-a-1 "
   href="/next"
   onClick={[Function]}
   onKeyDown={[Function]}

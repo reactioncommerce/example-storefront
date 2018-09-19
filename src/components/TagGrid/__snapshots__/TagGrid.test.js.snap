@@ -14,7 +14,7 @@ exports[`basic snapshot 1`] = `
       className="MuiGrid-item-29"
     >
       <a
-        className=""
+        className="Link-a-125 "
         href="/tag/shoes"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -22,14 +22,14 @@ exports[`basic snapshot 1`] = `
         tabIndex={0}
       >
         <div
-          className="MuiChip-root-125 TagGrid-chip-2"
+          className="MuiChip-root-126 TagGrid-chip-2"
           onClick={undefined}
           onKeyDown={[Function]}
           role="button"
           tabIndex={-1}
         >
           <span
-            className="MuiChip-label-138"
+            className="MuiChip-label-139"
           >
             Shoes
           </span>
@@ -40,7 +40,7 @@ exports[`basic snapshot 1`] = `
       className="MuiGrid-item-29"
     >
       <a
-        className=""
+        className="Link-a-125 "
         href="/tag/shop"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -48,14 +48,14 @@ exports[`basic snapshot 1`] = `
         tabIndex={0}
       >
         <div
-          className="MuiChip-root-125 TagGrid-chip-2"
+          className="MuiChip-root-126 TagGrid-chip-2"
           onClick={undefined}
           onKeyDown={[Function]}
           role="button"
           tabIndex={-1}
         >
           <span
-            className="MuiChip-label-138"
+            className="MuiChip-label-139"
           >
             Shop
           </span>
