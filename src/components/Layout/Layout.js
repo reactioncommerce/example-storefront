@@ -19,7 +19,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkLayout" })
 class Layout extends Component {
   static propTypes = {
     children: PropTypes.node,
