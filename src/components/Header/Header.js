@@ -48,7 +48,7 @@ class Header extends Component {
     uiStore: PropTypes.shape({
       toggleMenuDrawerOpen: PropTypes.func.isRequired
     }).isRequired,
-    viewer: PropTypes
+    viewer: PropTypes.object
   };
 
   static defaultProps = {
@@ -58,6 +58,24 @@ class Header extends Component {
   handleNavigationToggleClick = () => {
     this.props.uiStore.toggleMenuDrawerOpen();
   };
+
+  // TODO: quick fix until we figure out the viewer name stuff.
+  get tempViewerInfoViewer() {
+    const { viewer: { name } } = this.props;
+    const firstName = name
+      .split(" ")
+      .slice(0, -1)
+      .join(" ");
+    const lastName = name
+      .split(" ")
+      .slice(-1)
+      .join(" ");
+
+    return {
+      firstName,
+      lastName
+    };
+  }
 
   render() {
     const { classes: { appBar, controls, toolbar, title }, shop, viewer } = this.props;
@@ -81,7 +99,7 @@ class Header extends Component {
             </Hidden>
           </div>
 
-          {viewer ? <ViewerInfo viewer={viewer} /> : <AccountDropdown />}
+          {viewer ? <ViewerInfo viewer={this.tempViewerInfoViewer} /> : <AccountDropdown />}
           <MiniCart />
         </Toolbar>
         <NavigationMobile />
