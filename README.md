@@ -17,71 +17,33 @@ Reference headless ecommerce storefront starter kit application for [Reaction Co
 - Containerized with Docker
 
 ## Getting Started
-_Follow steps as necessary. If you already have Reaction installed, you may be able to skip some of these steps._
 
-0. Prerequesites
+1. Requirements:
+
 - Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/). Docker Compose is included when installing Docker on Mac and Windows, but will need to be installed separately on Linux.
-- Sign up for a [Stripe](https://stripe.com/) API key, for payment processing.
-- Optional: Sign up for a [Segment](https://segment.com/) API key, for analytics.
+- Install [Node.js](https://nodejs.org/en/)
+- Install [Reaction Platform](https://github.com/reactioncommerce/reaction-platform)
+- Make sure you are not running any applications on ports `3000` and `4000`.
 
-1. Clone the main [Reaction repo](https://github.com/reactioncommerce/reaction) and checkout the `release-2.0.0` branch
-    ```sh
-    git clone git@github.com:reactioncommerce/reaction.git
-    cd reaction
-    git checkout release-2.0.0
+1. Follow the instructions at [Reaction Platform](https://github.com/reactioncommerce/reaction-platform) to run Reaction, Reaction Hydra and the starterkit with Reaction Platform.
 
-    # change directory to the parent of your reaction install
-    cd ..
-    ```
+After the initial bootstrapping, you can use `make start` to start all the necessary containers:
 
-2. Clone this repo
-    ```sh
-    git clone git@github.com:reactioncommerce/reaction-next-starterkit.git
-    ```
+```sh
+make start
+```
 
-3. Create a local docker network
+1. Once you start the `make` process, you can The Platform will start running the following apps at these URLs:
 
-    You'll need to create a docker network for the GraphQL service and the Reaction Storefront to communicate
-    ```
-    docker network create api.reaction.localhost
-    ```
-    You can run `docker network ls` to verify the network has been created.
+| Application  | URL                     |
+| ------------ | ----------------------- |
+| `starterkit` | localhost:4000          |
+| GraphQL API  | localhost:3000/graphiql |
+| `reaction`   | localhost:3000          |
 
-4. Start Reaction's GraphQL server
-    From your `reaction` directory run
-    ```
-    docker-compose up -d --build
-    ```
+Visit the storefront at `localhost:4000` and the GraphQL API playground at `localhost:3000/graphiql`.
 
-5. Generate a Meteor login token
-
-    _This process will be eliminated once we've built out the GraphQL API for authentication_
-    - Visit the Reaction Meteor shop [localhost:3000](http://localhost:3000)
-    - Open devtools and copy the Meteor.loginToken from `localStorage`.
-
-6. Setup the Storefront environment
-
-    Navigate to the `reaction-next-starterkit` directory and create a `.env` file.
-    ```sh
-    cp .env.example .env
-    ```
-
-    Add your Stripe and Segment API keys in the `.env` file, for payment processing and analytics.
-
-7. Start the storefront application in development mode using Docker Compose
-    ```sh
-    docker-compose up -d --build
-    ```
-
-8. Visit the storefront on `localhost:4000`
-
-## Documentation
-- [Starter Kit full documentation](./docs) 
-- [Reaction Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](https://stoic-hodgkin-c0179e.netlify.com/)
-- [Reaction Docs: Using GraphQL](https://docs.reactioncommerce.com/docs/graphql-using)
-- [Reaction Docs: Testing with Jest](https://docs.reactioncommerce.com/docs/testing-reaction)
-- [Reaction Docs: Develping with Docker](https://docs.reactioncommerce.com/docs/installation-docker-development
-)
+1. To view the logs for the Starterkit, run: `docker logs reaction-next-starterkit_web_1 -f`
 
 ## Configuration
 
@@ -98,7 +60,21 @@ When running the storefront from a new Reaction shop, you will need to configure
 
 Read the docs for [setting up Segment or a custom analytics tracker](docs/tracking-events.md)
 
+## Documentation
+- [Starter Kit full documentation](./docs) 
+- [Reaction Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](https://stoic-hodgkin-c0179e.netlify.com/)
+- [Reaction Docs: Using GraphQL](https://docs.reactioncommerce.com/docs/graphql-using)
+- [Reaction Docs: Testing with Jest](https://docs.reactioncommerce.com/docs/testing-reaction)
+- [Reaction Docs: Develping with Docker](https://docs.reactioncommerce.com/docs/installation-docker-development
+)
+
 ## Development
+
+The Reaction Platform runs the Starterkit with Docker, so you will have to use Docker commands to view logs, run commands inside the container and more. To run commands specifically for the Starterkit, make sure to change directories into the `reaction-next-starterkit` directory first from `reaction-platform`:
+
+```sh
+cd reaction-next-starterkit
+```
 
 ### Build and run in development mode with logs
 ```sh
@@ -215,7 +191,6 @@ To stop the Docker container after starting it with the above command, use:
 ```sh
 docker stop storefront
 ```
-
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit?ref=badge_large)
