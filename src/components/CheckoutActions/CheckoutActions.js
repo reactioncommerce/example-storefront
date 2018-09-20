@@ -102,7 +102,9 @@ export default class CheckoutActions extends Component {
   }
 
   render() {
-    if (!this.props.cart) return null;
+    if (!this.props.cart) {
+      return null;
+    }
 
     const { cartStore: { stripeToken } } = this.props;
     const { checkout: { fulfillmentGroups, summary }, items } = this.props.cart;

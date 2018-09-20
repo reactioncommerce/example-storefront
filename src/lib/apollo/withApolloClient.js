@@ -3,8 +3,12 @@ import PropTypes from "prop-types";
 import { ApolloProvider, getDataFromTree } from "react-apollo";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import Head from "next/head";
+import getConfig from "next/config";
 import rootMobxStores from "lib/stores";
+import logger from "../logger";
 import initApollo from "./initApollo";
+
+const { serverRuntimeConfig } = getConfig();
 
 /**
  * Get the display name of a component
@@ -63,8 +67,11 @@ export default function withApolloClient(WrappedComponent) {
           // Prevent Apollo Client GraphQL errors from crashing SSR.
           // Handle them in components via the data.error prop:
           // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
-          // eslint-disable-next-line no-console
-          console.error("Error while running `getDataFromTree`", error);
+          if (error.networkError) {
+            logger.error(`Unable to access the GraphQL API. Is it running and accessible at ${serverRuntimeConfig.graphqlUrl} from the Storefront UI server?`);
+          } else {
+            logger.error("Error while running `getDataFromTree`:", error);
+          }
         }
 
         // getDataFromTree does not call componentWillUnmount

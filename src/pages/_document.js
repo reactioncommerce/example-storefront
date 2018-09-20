@@ -44,8 +44,9 @@ class HTMLDocument extends Document {
         <Fragment>
           <style
             id="jss-server-side"
+            // pageContext is undefined when there was an Apollo network error. Avoid extra errors
             // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: pageContext.sheetsRegistry.toString() }}
+            dangerouslySetInnerHTML={{ __html: pageContext ? pageContext.sheetsRegistry.toString() : "" }}
           />
           {flush() || null}
         </Fragment>
@@ -69,10 +70,14 @@ class HTMLDocument extends Document {
       {
         name: "viewport",
         content: "user-scalable=0, initial-scale=1 minimum-scale=1, width=device-width, height=device-height"
-      },
-      // PWA primary color
-      { name: "theme-color", content: pageContext.theme.palette.primary.main }
+      }
     ];
+
+    // PWA primary color
+    // pageContext is undefined when there was an Apollo network error. Avoid extra errors
+    if (pageContext) {
+      meta.push({ name: "theme-color", content: pageContext.theme.palette.primary.main });
+    }
 
     const scripts = [
       // Render analytics  scripts
