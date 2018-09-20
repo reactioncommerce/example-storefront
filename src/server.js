@@ -47,17 +47,20 @@ app
     server.use(cookieParser());
 
     // This endpoint initializes the OAuth2 request
-    server.get("/auth2", passport.authenticate("oauth2"));
+    server.get("/auth2", (req, res, next) => {
+      if (!req.user) req.session.redirectTo = req.get("Referer");
+      next();
+    }, passport.authenticate("oauth2"));
 
     // This endpoint handles OAuth2 requests (exchanges code for token)
     server.get("/callback", passport.authenticate("oauth2"), (req, res) => {
       // After success, redirect to the page we came from originally
-      res.redirect("/");
+      res.redirect(req.session.redirectTo);
     });
 
     server.get("/logout", (req, res) => {
       req.logout();
-      res.redirect("/");
+      res.redirect(req.get("Referer"));
     });
 
     // Setup next routes
