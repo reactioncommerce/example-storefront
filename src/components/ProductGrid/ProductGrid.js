@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import CatalogGrid from "@reactioncommerce/components/CatalogGrid/v1";
 import track from "lib/tracking/track";
 import trackProductClicked from "lib/tracking/trackProductClicked";
+import PageLoading from "components/PageLoading";
 import PageStepper from "components/PageStepper";
 import PageSizeSelector from "components/PageSizeSelector";
 import SortBySelector from "components/SortBySelector";
@@ -24,6 +25,8 @@ export default class ProductGrid extends Component {
     catalogItems: PropTypes.arrayOf(PropTypes.object),
     classes: PropTypes.object,
     currencyCode: PropTypes.string.isRequired,
+    initialSize: PropTypes.object,
+    isLoadingCatalogItems: PropTypes.bool,
     pageInfo: PropTypes.shape({
       startCursor: PropTypes.string,
       endCursor: PropTypes.string,
@@ -56,25 +59,35 @@ export default class ProductGrid extends Component {
   @trackProductClicked()
   onItemClick = (event, product) => {} // eslint-disable-line no-unused-vars
 
-  render() {
-    const { catalogItems, pageInfo } = this.props;
-    const products = (catalogItems || []).map((item) => item.node.product);
+  renderMainArea() {
+    const { catalogItems, initialSize, isLoadingCatalogItems, pageInfo } = this.props;
 
+    if (isLoadingCatalogItems) return <PageLoading />;
+
+    const products = (catalogItems || []).map((item) => item.node.product);
     if (products.length === 0) return <ProductGridEmptyMessage />;
 
     return (
       <Fragment>
-        {this.renderFilters()}
         <Grid container spacing={24}>
           <CatalogGrid
-            products={products}
+            initialSize={initialSize}
             onItemClick={this.onItemClick}
+            products={products}
             placeholderImageURL="/static/placeholder.gif"
             {...this.props}
           />
         </Grid>
+        {pageInfo && <PageStepper pageInfo={pageInfo} />}
+      </Fragment>
+    );
+  }
 
-        { pageInfo && <PageStepper pageInfo={pageInfo} /> }
+  render() {
+    return (
+      <Fragment>
+        {this.renderFilters()}
+        {this.renderMainArea()}
       </Fragment>
     );
   }

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Mutation, Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import cartItemsConnectionToArray from "lib/utils/cartItemsConnectionToArray";
 import withShop from "containers/shop/withShop";
 import {
@@ -26,7 +27,7 @@ import {
  * @param {React.Component} Component to decorate
  * @returns {React.Component} - Component with `cart` props and callbacks
  */
-export default (Component) => (
+export default function withCart(Component) {
   @withApollo
   @withShop
   @inject("cartStore", "authStore")
@@ -248,6 +249,7 @@ export default (Component) => (
         }
       });
     }
+
     /**
      * @name handleUpdateFulfillmentOptionsForGroup
      * @summary Sets a fulfillment method for items in a cart
@@ -401,10 +403,16 @@ export default (Component) => (
                 {(mutationFunction) => (
                   <Component
                     {...this.props}
-                    isLoading={skipQuery ? false : isLoading}
+                    addItemsToCart={(items) => {
+                      this.handleAddItemsToCart(mutationFunction, { items }, !cart);
+                    }}
+                    cart={processedCartData}
+                    checkoutMutations={{
+                      onSetFulfillmentOption: this.handleSetFulfillmentOption,
+                      onSetShippingAddress: this.handleSetShippingAddress
+                    }}
                     hasMoreCartItems={(pageInfo && pageInfo.hasNextPage) || false}
-                    onChangeCartItemsQuantity={this.handleChangeCartItemsQuantity}
-                    onRemoveCartItems={this.handleRemoveCartItems}
+                    isLoading={skipQuery ? false : isLoading}
                     loadMoreCartItems={() => {
                       fetchMore({
                         variables: {
@@ -437,15 +445,10 @@ export default (Component) => (
                         }
                       });
                     }}
-                    addItemsToCart={(items) => {
-                      this.handleAddItemsToCart(mutationFunction, { items }, !cart);
-                    }}
+                    onChangeCartItemsQuantity={this.handleChangeCartItemsQuantity}
+                    onRemoveCartItems={this.handleRemoveCartItems}
+                    refetchCart={refetchCart}
                     setEmailOnAnonymousCart={this.handleSetEmailOnAnonymousCart}
-                    checkoutMutations={{
-                      onSetFulfillmentOption: this.handleSetFulfillmentOption,
-                      onSetShippingAddress: this.handleSetShippingAddress
-                    }}
-                    cart={processedCartData}
                   />
                 )}
               </Mutation>
@@ -456,4 +459,8 @@ export default (Component) => (
       );
     }
   }
-);
+
+  hoistNonReactStatic(WithCart, Component);
+
+  return WithCart;
+}

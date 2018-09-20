@@ -3,7 +3,7 @@
 exports[`basic snapshot 1`] = `
 <div>
   <button
-    className="MuiButtonBase-root-10 MuiIconButton-root-4 MuiIconButton-colorInherit-5"
+    className="MuiButtonBase-root-11 MuiIconButton-root-5 MuiIconButton-colorInherit-6"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -21,11 +21,11 @@ exports[`basic snapshot 1`] = `
     type="button"
   >
     <span
-      className="MuiIconButton-label-9"
+      className="MuiIconButton-label-10"
     >
       <svg
         aria-hidden="true"
-        className="MuiSvgIcon-root-13"
+        className="MuiSvgIcon-root-14"
         color={undefined}
         focusable="false"
         role="presentation"
@@ -37,7 +37,7 @@ exports[`basic snapshot 1`] = `
       </svg>
     </span>
     <span
-      className="MuiTouchRipple-root-22"
+      className="MuiTouchRipple-root-23"
     />
   </button>
 </div>
