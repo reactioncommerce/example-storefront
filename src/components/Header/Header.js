@@ -60,16 +60,21 @@ class Header extends Component {
   };
 
   // TODO: quick fix until we figure out the viewer name stuff.
-  get tempViewerInfoViewer() {
+  // See https://github.com/reactioncommerce/reaction/issues/4646
+  get splitNames() {
     const { viewer: { name } } = this.props;
-    const firstName = name
-      .split(" ")
-      .slice(0, -1)
-      .join(" ");
-    const lastName = name
-      .split(" ")
-      .slice(-1)
-      .join(" ");
+    const firstName =
+      name &&
+      name
+        .split(" ")
+        .slice(0, -1)
+        .join(" ");
+    const lastName =
+      name &&
+      name
+        .split(" ")
+        .slice(-1)
+        .join(" ");
 
     return {
       firstName,
@@ -99,7 +104,7 @@ class Header extends Component {
             </Hidden>
           </div>
 
-          {viewer ? <ViewerInfo viewer={this.tempViewerInfoViewer} /> : <AccountDropdown />}
+          {viewer ? <ViewerInfo viewer={{ ...this.splitNames, ...viewer }} /> : <AccountDropdown />}
           <MiniCart />
         </Toolbar>
         <NavigationMobile />
