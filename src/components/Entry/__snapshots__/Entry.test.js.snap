@@ -8,7 +8,7 @@ exports[`basic snapshot 1`] = `
     className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 MuiGrid-grid-md-7-67"
   >
     <div
-      className="Entry-loginWrapper-1"
+      className="SkEntry-loginWrapper-1"
     >
       <h2
         className="MuiTypography-root-101 MuiTypography-title-107 MuiTypography-gutterBottom-119"
@@ -16,7 +16,7 @@ exports[`basic snapshot 1`] = `
         Returning Customer
       </h2>
       <div
-        className="Entry-loginButton-2 Button__ButtonDiv-bnfrK eloVkm"
+        className="SkEntry-loginButton-2 Button__ButtonDiv-bnfrK eloVkm"
         onClick={[Function]}
         onKeyPress={[Function]}
         role="button"
@@ -68,7 +68,7 @@ exports[`basic snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Entry-loginButton-2 Button__ButtonDiv-bnfrK jNrbdB"
+        className="SkEntry-loginButton-2 Button__ButtonDiv-bnfrK jNrbdB"
         onClick={[Function]}
         onKeyPress={[Function]}
         role="button"
@@ -125,7 +125,7 @@ exports[`basic snapshot 1`] = `
     className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 MuiGrid-grid-md-5-65"
   >
     <div
-      className="Entry-guestWrapper-3"
+      className="SkEntry-guestWrapper-3"
     >
       <h2
         className="MuiTypography-root-101 MuiTypography-title-107 MuiTypography-gutterBottom-119"

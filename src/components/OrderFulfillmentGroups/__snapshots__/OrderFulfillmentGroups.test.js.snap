@@ -3,10 +3,10 @@
 exports[`basic snapshot 1`] = `
 Array [
   <section
-    className="OrderFulfillmentGroup-fulfillmentGroup-1"
+    className="SkOrderFulfillmentGroup-fulfillmentGroup-1"
   >
     <header
-      className="OrderFulfillmentGroup-header-3"
+      className="SkOrderFulfillmentGroup-header-3"
     >
       <div
         className="MuiGrid-container-6 MuiGrid-spacing-xs-24-30"
@@ -21,7 +21,7 @@ Array [
           </h3>
         </div>
         <div
-          className="MuiGrid-item-7 MuiGrid-grid-xs-6-40 OrderFulfillmentGroup-headerRightColumn-4"
+          className="MuiGrid-item-7 MuiGrid-grid-xs-6-40 SkOrderFulfillmentGroup-headerRightColumn-4"
         >
           <aside
             className="MuiTypography-root-103 MuiTypography-body2-111"
@@ -245,13 +245,13 @@ Array [
     </div>
   </section>,
   <section
-    className="OrderFulfillmentGroup-summary-5"
+    className="SkOrderFulfillmentGroup-summary-5"
   >
     <div
-      className="OrderSummary-summary-131"
+      className="SkOrderSummary-summary-131"
     >
       <div
-        className="OrderSummary-header-132"
+        className="SkOrderSummary-header-132"
       >
         <div
           className="MuiGrid-container-6 MuiGrid-spacing-xs-24-30"

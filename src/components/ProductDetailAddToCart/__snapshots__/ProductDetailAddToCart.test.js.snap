@@ -6,20 +6,20 @@ Array [
     className="MuiGrid-container-9"
   >
     <div
-      className="MuiGrid-item-10 MuiGrid-grid-xs-12-49 inject-ProductDetailAddToCart-with-uiStore-quantityGrid-5"
+      className="MuiGrid-item-10 MuiGrid-grid-xs-12-49 SkProductDetailAddToCart-quantityGrid-5"
     >
       <div
-        className="Divider-container-106"
+        className="SkDivider-container-106"
       >
         <hr
-          className="Divider-item-108"
+          className="SkDivider-item-108"
         />
         <hr
-          className="Divider-item-108"
+          className="SkDivider-item-108"
         />
       </div>
       <span
-        className="MuiTypography-root-109 MuiTypography-body1-118 inject-ProductDetailAddToCart-with-uiStore-quantityTypography-8"
+        className="MuiTypography-root-109 MuiTypography-body1-118 SkProductDetailAddToCart-quantityTypography-8"
       >
         Quantity
       </span>
@@ -28,14 +28,14 @@ Array [
         className="MuiFormControl-root-135"
       >
         <div
-          className="MuiInputBase-root-152 MuiInput-root-139 inject-ProductDetailAddToCart-with-uiStore-quantityContainer-4 MuiInputBase-formControl-153 MuiInput-formControl-140 MuiInputBase-adornedStart-156 MuiInputBase-adornedEnd-157"
+          className="MuiInputBase-root-152 MuiInput-root-139 SkProductDetailAddToCart-quantityContainer-4 MuiInputBase-formControl-153 MuiInput-formControl-140 MuiInputBase-adornedStart-156 MuiInputBase-adornedEnd-157"
           onClick={[Function]}
         >
           <div
             className="MuiInputAdornment-root-169"
           >
             <button
-              className="MuiButtonBase-root-173 inject-ProductDetailAddToCart-with-uiStore-incrementButton-3"
+              className="MuiButtonBase-root-173 SkProductDetailAddToCart-incrementButton-3"
               color="default"
               disabled={undefined}
               onBlur={[Function]}
@@ -55,7 +55,7 @@ Array [
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-176 inject-ProductDetailAddToCart-with-uiStore-quantitySvg-7"
+                className="MuiSvgIcon-root-176 SkProductDetailAddToCart-quantitySvg-7"
                 color={undefined}
                 focusable="false"
                 role="presentation"
@@ -74,7 +74,7 @@ Array [
             aria-invalid={false}
             autoComplete={undefined}
             autoFocus={undefined}
-            className="MuiInputBase-input-162 MuiInput-input-147 inject-ProductDetailAddToCart-with-uiStore-quantityInput-6 MuiInputBase-inputAdornedStart-167 MuiInputBase-inputAdornedEnd-168"
+            className="MuiInputBase-input-162 MuiInput-input-147 SkProductDetailAddToCart-quantityInput-6 MuiInputBase-inputAdornedStart-167 MuiInputBase-inputAdornedEnd-168"
             defaultValue={undefined}
             disabled={false}
             id="addToCartQuantityInput"
@@ -95,7 +95,7 @@ Array [
             className="MuiInputAdornment-root-169"
           >
             <button
-              className="MuiButtonBase-root-173 inject-ProductDetailAddToCart-with-uiStore-incrementButton-3"
+              className="MuiButtonBase-root-173 SkProductDetailAddToCart-incrementButton-3"
               color="default"
               disabled={undefined}
               onBlur={[Function]}
@@ -115,7 +115,7 @@ Array [
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-176 inject-ProductDetailAddToCart-with-uiStore-quantitySvg-7"
+                className="MuiSvgIcon-root-176 SkProductDetailAddToCart-quantitySvg-7"
                 color={undefined}
                 focusable="false"
                 role="presentation"
@@ -137,7 +137,7 @@ Array [
       className="MuiGrid-item-10 MuiGrid-grid-xs-12-49"
     >
       <button
-        className="MuiButtonBase-root-173 inject-ProductDetailAddToCart-with-uiStore-addToCartButton-1"
+        className="MuiButtonBase-root-173 SkProductDetailAddToCart-addToCartButton-1"
         disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
@@ -154,7 +154,7 @@ Array [
         type="button"
       >
         <span
-          className="MuiTypography-root-109 MuiTypography-body1-118 inject-ProductDetailAddToCart-with-uiStore-addToCartText-2"
+          className="MuiTypography-root-109 MuiTypography-body1-118 SkProductDetailAddToCart-addToCartText-2"
         >
           Add to cart
         </span>
@@ -168,26 +168,26 @@ Array [
     className="HiddenCss-mdUp-207"
   >
     <div
-      className="inject-CartPopover-with-uiStore-container-192 inject-CartPopover-with-uiStore-isContainerHidden-194"
+      className="SkCartPopover-container-192 SkCartPopover-isContainerHidden-194"
     >
       <div
-        className="MuiGrid-container-9 MuiGrid-spacing-xs-24-33 inject-CartPopover-with-uiStore-gridContainer-193"
+        className="MuiGrid-container-9 MuiGrid-spacing-xs-24-33 SkCartPopover-gridContainer-193"
       >
         <div
-          className="MuiGrid-item-10 MuiGrid-grid-xs-12-49 inject-CartPopover-with-uiStore-containerItem-196"
+          className="MuiGrid-item-10 MuiGrid-grid-xs-12-49 SkCartPopover-containerItem-196"
         >
           <img
             alt="Item Title"
-            className="inject-CartPopover-with-uiStore-addedToCartImg-197"
+            className="SkCartPopover-addedToCartImg-197"
             src="//placehold.it/100"
           />
           <span
-            className="MuiTypography-root-109 MuiTypography-body1-118 inject-CartPopover-with-uiStore-addedToCartText-199"
+            className="MuiTypography-root-109 MuiTypography-body1-118 SkCartPopover-addedToCartText-199"
           >
             10
              "
             <span
-              className="inject-CartPopover-with-uiStore-addedToCartItemName-198"
+              className="SkCartPopover-addedToCartItemName-198"
             >
               Item Title
             </span>
