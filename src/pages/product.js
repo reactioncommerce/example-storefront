@@ -4,6 +4,8 @@ import Helmet from "react-helmet";
 import withCart from "containers/cart/withCart";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import ProductDetail from "components/ProductDetail";
+import PageLoading from "components/PageLoading";
+import ErrorPage from "./_error";
 
 @withCart
 @withCatalogItemProduct
@@ -16,10 +18,11 @@ class ProductDetailPage extends Component {
      * @type function
      */
     addItemsToCart: PropTypes.func,
+    isLoadingProduct: PropTypes.bool,
     /**
      * Catalog Product item
      */
-    product: PropTypes.object.isRequired,
+    product: PropTypes.object,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       currency: PropTypes.shape({
@@ -38,9 +41,11 @@ class ProductDetailPage extends Component {
    * @return {String} Stringified product jsonld
    */
   buildJSONLd() {
-    const currencyCode = this.props.shop.currency.code || "USD";
     const { product, shop } = this.props;
 
+    if (!product || !shop) return "";
+
+    const currencyCode = shop.currency.code || "USD";
     const priceData = product.pricing[0];
     const images = product.media.map((image) => image.URLs.original);
 
@@ -79,8 +84,26 @@ class ProductDetailPage extends Component {
     return JSON.stringify(productJSON);
   }
 
+  renderMainArea() {
+    const { addItemsToCart, isLoadingProduct, product, shop, tags } = this.props;
+    const currencyCode = (shop && shop.currency.code) || "USD";
+
+    if (isLoadingProduct) return <PageLoading />;
+
+    if (!product) return <ErrorPage shop={shop} subtitle="Not Found" />;
+
+    return (
+      <ProductDetail
+        addItemsToCart={addItemsToCart}
+        currencyCode={currencyCode}
+        product={product}
+        shop={shop}
+        tags={tags}
+      />
+    );
+  }
+
   render() {
-    const currencyCode = this.props.shop.currency.code || "USD";
     const { product, shop } = this.props;
 
     return (
@@ -90,13 +113,7 @@ class ProductDetailPage extends Component {
           meta={[{ name: "description", content: product && product.description }]}
           script={[{ type: "application/ld+json", innerHTML: this.buildJSONLd() }]}
         />
-        <ProductDetail
-          addItemsToCart={this.props.addItemsToCart}
-          currencyCode={currencyCode}
-          product={this.props.product}
-          shop={this.props.shop}
-          tags={this.props.tags}
-        />
+        {this.renderMainArea()}
       </Fragment>
     );
   }

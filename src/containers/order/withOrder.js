@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import { orderById } from "./queries.gql";
 
 /**
@@ -10,7 +11,7 @@ import { orderById } from "./queries.gql";
  * @param {React.Component} Component to decorate
  * @returns {React.Component} - Component with `cart` props and callbacks
  */
-export default (Component) => (
+export default function withOrder(Component) {
   @withApollo
   @inject("cartStore", "routingStore")
   @observer
@@ -64,4 +65,8 @@ export default (Component) => (
       );
     }
   }
-);
+
+  hoistNonReactStatic(WithOrder, Component);
+
+  return WithOrder;
+}

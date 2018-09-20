@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ApolloProvider, getDataFromTree } from "react-apollo";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import Head from "next/head";
 import rootMobxStores from "lib/stores";
 import initApollo from "./initApollo";
@@ -15,7 +16,13 @@ function getComponentDisplayName(Component) {
   return Component.displayName || Component.name || "Unknown";
 }
 
-export default (App) =>
+/**
+ * @name withApolloClient
+ * @summary Wraps the component with a configured Apollo client provider
+ * @param {React.Component} WrappedComponent Component to wrap
+ * @returns {React.Component} Higher order component
+ */
+export default function withApolloClient(WrappedComponent) {
   class WithApolloClient extends React.Component {
     static async getInitialProps(ctx) {
       const { Component, router, ctx: { req, res, query, pathname } } = ctx;
@@ -28,9 +35,9 @@ export default (App) =>
 
       ctx.ctx.apolloClient = apollo;
 
-      let appProps = {};
-      if (App.getInitialProps) {
-        appProps = await App.getInitialProps(ctx);
+      let wrappedComponentProps = {};
+      if (WrappedComponent.getInitialProps) {
+        wrappedComponentProps = await WrappedComponent.getInitialProps(ctx);
       }
 
       if (res && res.finished) {
@@ -49,7 +56,7 @@ export default (App) =>
           // eslint-disable-next-line
           await getDataFromTree(
             <ApolloProvider client={apollo}>
-              <App {...appProps} Component={Component} router={router} />
+              <WrappedComponent {...wrappedComponentProps} Component={Component} router={router} />
             </ApolloProvider>
           ); // eslint-disable-line
         } catch (error) {
@@ -71,13 +78,13 @@ export default (App) =>
       }
 
       return {
-        ...appProps,
+        ...wrappedComponentProps,
         apolloState,
         accessToken: user && user.accessToken
       };
     }
 
-    static displayName = `WithApolloClient(${getComponentDisplayName(App)})`;
+    static displayName = `WithApolloClient(${getComponentDisplayName(WrappedComponent)})`;
 
     static propTypes = {
       accessToken: PropTypes.string,
@@ -107,8 +114,14 @@ export default (App) =>
     render() {
       return (
         <ApolloProvider client={this.apollo}>
-          <App {...this.props} />
+          <WrappedComponent {...this.props} />
         </ApolloProvider>
       );
     }
-  };
+  }
+
+  // Exclude copying `getInitialProps` because WithApolloClient has its own
+  hoistNonReactStatic(WithApolloClient, WrappedComponent, { getInitialProps: true });
+
+  return WithApolloClient;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Mutation, Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import cartItemsConnectionToArray from "lib/utils/cartItemsConnectionToArray";
 import withShop from "containers/shop/withShop";
 import {
@@ -26,7 +27,7 @@ import {
  * @param {React.Component} Component to decorate
  * @returns {React.Component} - Component with `cart` props and callbacks
  */
-export default (Component) => (
+export default function withCart(Component) {
   @withApollo
   @withShop
   @inject("cartStore", "authStore")
@@ -456,4 +457,8 @@ export default (Component) => (
       );
     }
   }
-);
+
+  hoistNonReactStatic(WithCart, Component);
+
+  return WithCart;
+}
