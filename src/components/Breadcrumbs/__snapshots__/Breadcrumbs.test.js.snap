@@ -2,10 +2,10 @@
 
 exports[`tagGrid secondlevel tag 1`] = `
 <div
-  className="Breadcrumbs-container-1"
+  className="SkBreadcrumbs-container-1"
 >
   <a
-    className="Link-anchor-4"
+    className="SkLink-anchor-4"
     href="/"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -13,14 +13,14 @@ exports[`tagGrid secondlevel tag 1`] = `
     tabIndex={0}
   >
     <span
-      className="Breadcrumbs-breadcrumbLink-2"
+      className="SkBreadcrumbs-breadcrumbLink-2"
     >
       Home
     </span>
   </a>
   <svg
     aria-hidden="true"
-    className="MuiSvgIcon-root-5 Breadcrumbs-breadcrumbIcon-3"
+    className="MuiSvgIcon-root-5 SkBreadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
     role="presentation"
@@ -31,7 +31,7 @@ exports[`tagGrid secondlevel tag 1`] = `
     />
   </svg>
   <a
-    className="Link-anchor-4"
+    className="SkLink-anchor-4"
     href="/tag/tag-a"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -39,14 +39,14 @@ exports[`tagGrid secondlevel tag 1`] = `
     tabIndex={0}
   >
     <span
-      className="Breadcrumbs-breadcrumbLink-2"
+      className="SkBreadcrumbs-breadcrumbLink-2"
     >
       Tag A
     </span>
   </a>
   <svg
     aria-hidden="true"
-    className="MuiSvgIcon-root-5 Breadcrumbs-breadcrumbIcon-3"
+    className="MuiSvgIcon-root-5 SkBreadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
     role="presentation"
@@ -57,7 +57,7 @@ exports[`tagGrid secondlevel tag 1`] = `
     />
   </svg>
   <a
-    className="Link-anchor-4"
+    className="SkLink-anchor-4"
     href="/tag/tag-a-1"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -65,7 +65,7 @@ exports[`tagGrid secondlevel tag 1`] = `
     tabIndex={0}
   >
     <span
-      className="Breadcrumbs-breadcrumbLink-2"
+      className="SkBreadcrumbs-breadcrumbLink-2"
     >
       Tag A-1
     </span>
@@ -75,10 +75,10 @@ exports[`tagGrid secondlevel tag 1`] = `
 
 exports[`tagGrid top level tag 1`] = `
 <div
-  className="Breadcrumbs-container-1"
+  className="SkBreadcrumbs-container-1"
 >
   <a
-    className="Link-anchor-4"
+    className="SkLink-anchor-4"
     href="/"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -86,14 +86,14 @@ exports[`tagGrid top level tag 1`] = `
     tabIndex={0}
   >
     <span
-      className="Breadcrumbs-breadcrumbLink-2"
+      className="SkBreadcrumbs-breadcrumbLink-2"
     >
       Home
     </span>
   </a>
   <svg
     aria-hidden="true"
-    className="MuiSvgIcon-root-5 Breadcrumbs-breadcrumbIcon-3"
+    className="MuiSvgIcon-root-5 SkBreadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
     role="presentation"
@@ -104,7 +104,7 @@ exports[`tagGrid top level tag 1`] = `
     />
   </svg>
   <a
-    className="Link-anchor-4"
+    className="SkLink-anchor-4"
     href="/tag/tag-a"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -112,7 +112,7 @@ exports[`tagGrid top level tag 1`] = `
     tabIndex={0}
   >
     <span
-      className="Breadcrumbs-breadcrumbLink-2"
+      className="SkBreadcrumbs-breadcrumbLink-2"
     >
       Tag A
     </span>

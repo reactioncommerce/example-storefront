@@ -42,7 +42,7 @@ const styles = (theme) => ({
 });
 
 @inject("routingStore")
-@withStyles(styles)
+@withStyles(styles, { name: "SkNavigationItemDesktop" })
 class NavigationItemDesktop extends Component {
   static propTypes = {
     classes: PropTypes.object,

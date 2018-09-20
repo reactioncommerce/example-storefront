@@ -41,7 +41,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true })
+@withStyles(styles, { withTheme: true, name: "SkEntry" })
 export default class Entry extends Component {
   static propTypes = {
     classes: PropTypes.object,

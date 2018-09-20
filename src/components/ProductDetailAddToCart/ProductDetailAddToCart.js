@@ -99,7 +99,7 @@ const styles = (theme) => ({
 });
 
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkProductDetailAddToCart" })
 @inject("uiStore")
 @observer
 export default class ProductDetailAddToCart extends Component {

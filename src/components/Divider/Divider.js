@@ -33,7 +33,7 @@ const styles = (theme) => ({
  * @export
  * @class Divider
  */
-@withStyles(styles)
+@withStyles(styles, { name: "SkDivider" })
 export default class Divider extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,

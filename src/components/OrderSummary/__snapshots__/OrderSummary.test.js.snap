@@ -2,10 +2,10 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="OrderSummary-summary-1"
+  className="SkOrderSummary-summary-1"
 >
   <div
-    className="OrderSummary-header-2"
+    className="SkOrderSummary-header-2"
   >
     <div
       className="MuiGrid-container-5 MuiGrid-spacing-xs-24-29"

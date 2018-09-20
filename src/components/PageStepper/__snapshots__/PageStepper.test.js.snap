@@ -2,7 +2,7 @@
 
 exports[`hides next button, shows previous button 1`] = `
 <div
-  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-1"
+  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 SkPageStepper-root-1"
 >
   <div
     className="MuiGrid-item-3"
@@ -38,7 +38,7 @@ exports[`hides next button, shows previous button 1`] = `
 
 exports[`shows both next and previous buttons 1`] = `
 <div
-  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-1"
+  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 SkPageStepper-root-1"
 >
   <div
     className="MuiGrid-item-3"
@@ -97,7 +97,7 @@ exports[`shows both next and previous buttons 1`] = `
 
 exports[`shows next button, hides previous button 1`] = `
 <div
-  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-1"
+  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 SkPageStepper-root-1"
 >
   <div
     className="MuiGrid-item-3"

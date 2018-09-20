@@ -24,7 +24,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkOrderFulfillmentGroup" })
 class OrderFulfillmentGroup extends Component {
   static propTypes = {
     classes: PropTypes.object,

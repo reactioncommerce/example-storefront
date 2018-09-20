@@ -2,7 +2,7 @@
 
 exports[`renders with 1 level of tags 1`] = `
 <a
-  className="MuiButtonBase-root-32 MuiButton-root-6 MuiButton-text-8 MuiButton-flat-11 MuiButton-colorInherit-27 NavigationItemDesktop-primaryNavItem-5"
+  className="MuiButtonBase-root-32 MuiButton-root-6 MuiButton-text-8 MuiButton-flat-11 MuiButton-colorInherit-27 SkNavigationItemDesktop-primaryNavItem-5"
   href="/tag/undefined"
   onBlur={[Function]}
   onClick={[Function]}
@@ -29,7 +29,7 @@ exports[`renders with 1 level of tags 1`] = `
 
 exports[`renders with 2 levels of tags 1`] = `
 <a
-  className="MuiButtonBase-root-32 MuiButton-root-6 MuiButton-text-8 MuiButton-flat-11 MuiButton-colorInherit-27 NavigationItemDesktop-primaryNavItem-5"
+  className="MuiButtonBase-root-32 MuiButton-root-6 MuiButton-text-8 MuiButton-flat-11 MuiButton-colorInherit-27 SkNavigationItemDesktop-primaryNavItem-5"
   href="/tag/undefined"
   onBlur={[Function]}
   onClick={[Function]}
@@ -56,7 +56,7 @@ exports[`renders with 2 levels of tags 1`] = `
 
 exports[`renders with 3 levels of tags 1`] = `
 <a
-  className="MuiButtonBase-root-32 MuiButton-root-6 MuiButton-text-8 MuiButton-flat-11 MuiButton-colorInherit-27 NavigationItemDesktop-primaryNavItem-5"
+  className="MuiButtonBase-root-32 MuiButton-root-6 MuiButton-text-8 MuiButton-flat-11 MuiButton-colorInherit-27 SkNavigationItemDesktop-primaryNavItem-5"
   href="/tag/undefined"
   onBlur={[Function]}
   onClick={[Function]}

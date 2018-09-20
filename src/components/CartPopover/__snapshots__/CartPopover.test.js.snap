@@ -5,26 +5,26 @@ exports[`do not show cartpopover 1`] = `
   className="HiddenCss-mdUp-16"
 >
   <div
-    className="inject-CartPopover-with-uiStore-container-1 inject-CartPopover-with-uiStore-isContainerHidden-3"
+    className="SkCartPopover-container-1 SkCartPopover-isContainerHidden-3"
   >
     <div
-      className="MuiGrid-container-24 MuiGrid-spacing-xs-24-48 inject-CartPopover-with-uiStore-gridContainer-2"
+      className="MuiGrid-container-24 MuiGrid-spacing-xs-24-48 SkCartPopover-gridContainer-2"
     >
       <div
-        className="MuiGrid-item-25 MuiGrid-grid-xs-12-64 inject-CartPopover-with-uiStore-containerItem-5"
+        className="MuiGrid-item-25 MuiGrid-grid-xs-12-64 SkCartPopover-containerItem-5"
       >
         <img
           alt="Item Title"
-          className="inject-CartPopover-with-uiStore-addedToCartImg-6"
+          className="SkCartPopover-addedToCartImg-6"
           src="//placehold.it/100"
         />
         <span
-          className="MuiTypography-root-121 MuiTypography-body1-130 inject-CartPopover-with-uiStore-addedToCartText-8"
+          className="MuiTypography-root-121 MuiTypography-body1-130 SkCartPopover-addedToCartText-8"
         >
           10
            "
           <span
-            className="inject-CartPopover-with-uiStore-addedToCartItemName-7"
+            className="SkCartPopover-addedToCartItemName-7"
           >
             Item Title
           </span>
@@ -67,26 +67,26 @@ exports[`show cartpopover 1`] = `
   className="HiddenCss-mdUp-16"
 >
   <div
-    className="inject-CartPopover-with-uiStore-container-1 inject-CartPopover-with-uiStore-isContainerVisible-4"
+    className="SkCartPopover-container-1 SkCartPopover-isContainerVisible-4"
   >
     <div
-      className="MuiGrid-container-24 MuiGrid-spacing-xs-24-48 inject-CartPopover-with-uiStore-gridContainer-2"
+      className="MuiGrid-container-24 MuiGrid-spacing-xs-24-48 SkCartPopover-gridContainer-2"
     >
       <div
-        className="MuiGrid-item-25 MuiGrid-grid-xs-12-64 inject-CartPopover-with-uiStore-containerItem-5"
+        className="MuiGrid-item-25 MuiGrid-grid-xs-12-64 SkCartPopover-containerItem-5"
       >
         <img
           alt="Item Title"
-          className="inject-CartPopover-with-uiStore-addedToCartImg-6"
+          className="SkCartPopover-addedToCartImg-6"
           src="//placehold.it/100"
         />
         <span
-          className="MuiTypography-root-121 MuiTypography-body1-130 inject-CartPopover-with-uiStore-addedToCartText-8"
+          className="MuiTypography-root-121 MuiTypography-body1-130 SkCartPopover-addedToCartText-8"
         >
           10
            "
           <span
-            className="inject-CartPopover-with-uiStore-addedToCartItemName-7"
+            className="SkCartPopover-addedToCartItemName-7"
           >
             Item Title
           </span>

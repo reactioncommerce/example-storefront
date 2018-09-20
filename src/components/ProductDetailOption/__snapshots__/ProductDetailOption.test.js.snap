@@ -2,7 +2,7 @@
 
 exports[`basic snapshot 1`] = `
 <button
-  className="MuiButtonBase-root-4 ProductDetailOption-optionButton-1"
+  className="MuiButtonBase-root-4 SkProductDetailOption-optionButton-1"
   disabled={undefined}
   onBlur={[Function]}
   onClick={[Function]}
@@ -19,7 +19,7 @@ exports[`basic snapshot 1`] = `
   type="button"
 >
   <span
-    className="MuiTypography-root-7 MuiTypography-body1-16 ProductDetailOption-optionText-2"
+    className="MuiTypography-root-7 MuiTypography-body1-16 SkProductDetailOption-optionText-2"
   >
     Blue
   </span>

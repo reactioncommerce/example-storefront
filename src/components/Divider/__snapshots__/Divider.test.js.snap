@@ -2,13 +2,13 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="Divider-container-1"
+  className="SkDivider-container-1"
 >
   <hr
-    className="Divider-item-3"
+    className="SkDivider-item-3"
   />
   <hr
-    className="Divider-item-3"
+    className="SkDivider-item-3"
   />
 </div>
 `;
