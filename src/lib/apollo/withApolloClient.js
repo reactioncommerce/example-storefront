@@ -5,6 +5,7 @@ import hoistNonReactStatic from "hoist-non-react-statics";
 import Head from "next/head";
 import getConfig from "next/config";
 import rootMobxStores from "lib/stores";
+import logger from "../logger";
 import initApollo from "./initApollo";
 
 const { serverRuntimeConfig } = getConfig();
@@ -66,11 +67,10 @@ export default function withApolloClient(WrappedComponent) {
           // Prevent Apollo Client GraphQL errors from crashing SSR.
           // Handle them in components via the data.error prop:
           // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
-          // eslint-disable-next-line no-console
           if (error.networkError) {
-            console.error(`Unable to access the GraphQL API. Is it running and accessible at ${serverRuntimeConfig.graphqlUrl} from the Storefront UI server?`);
+            logger.error(`Unable to access the GraphQL API. Is it running and accessible at ${serverRuntimeConfig.graphqlUrl} from the Storefront UI server?`);
           } else {
-            console.error("Error while running `getDataFromTree`:", error);
+            logger.error("Error while running `getDataFromTree`:", error);
           }
         }
 

@@ -44,8 +44,8 @@ class HTMLDocument extends Document {
         <Fragment>
           <style
             id="jss-server-side"
-            // eslint-disable-next-line react/no-danger
             // pageContext is undefined when there was an Apollo network error. Avoid extra errors
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: pageContext ? pageContext.sheetsRegistry.toString() : "" }}
           />
           {flush() || null}

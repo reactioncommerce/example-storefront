@@ -56,9 +56,9 @@ class PageLoading extends Component {
           cy="50"
           fill="none"
           r="30"
-          stroke-dasharray="47.12388980384689 47.12388980384689"
-          stroke-linecap="round"
-          stroke-width="2"
+          strokeDasharray="47.12388980384689 47.12388980384689"
+          strokeLinecap="round"
+          strokeWidth="2"
           stroke={theme.palette.reaction.pageLoading.outerColor}
           transform="rotate(37.5323 50 50)"
         >
@@ -78,10 +78,10 @@ class PageLoading extends Component {
           cy="50"
           fill="none"
           r="27"
-          stroke-dasharray="42.411500823462205 42.411500823462205"
-          stroke-dashoffset="42.411500823462205"
-          stroke-linecap="round"
-          stroke-width="2"
+          strokeDasharray="42.411500823462205 42.411500823462205"
+          strokeDashoffset="42.411500823462205"
+          strokeLinecap="round"
+          strokeWidth="2"
           stroke={theme.palette.reaction.pageLoading.innerColor}
           transform="rotate(-37.5323 50 50)"
         >
