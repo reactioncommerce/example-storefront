@@ -45,27 +45,55 @@ class PageLoading extends Component {
     return (
       <svg
         className={classes.svg}
-        height="150px"
+        height={200}
         preserveAspectRatio="xMidYMid"
         viewBox="0 0 100 100"
-        width="150px"
+        width={200}
         xmlns="http://www.w3.org/2000/svg"
       >
         <circle
           cx="50"
-          cy="36.7846"
-          fill={theme.palette.reaction.pageLoading.color}
-          r="13"
+          cy="50"
+          fill="none"
+          r="30"
+          stroke-dasharray="47.12388980384689 47.12388980384689"
+          stroke-linecap="round"
+          stroke-width="2"
+          stroke={theme.palette.reaction.pageLoading.outerColor}
+          transform="rotate(37.5323 50 50)"
         >
-          <animate
-            attributeName="cy"
-            calcMode="spline"
-            values="23;77;23"
-            keyTimes="0;0.5;1"
-            dur="1.2"
-            keySplines="0.45 0 0.9 0.55;0 0.45 0.55 0.9"
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            calcMode="linear"
+            values="0 50 50;360 50 50"
+            keyTimes="0;1"
+            dur="1.1s"
             begin="0s"
             repeatCount="indefinite"
+          />
+        </circle>
+        <circle
+          cx="50"
+          cy="50"
+          fill="none"
+          r="27"
+          stroke-dasharray="42.411500823462205 42.411500823462205"
+          stroke-dashoffset="42.411500823462205"
+          stroke-linecap="round"
+          stroke-width="2"
+          stroke={theme.palette.reaction.pageLoading.innerColor}
+          transform="rotate(-37.5323 50 50)"
+        >
+          <animateTransform
+            attributeName="transform"
+            begin="0s"
+            calcMode="linear"
+            dur="1.1s"
+            keyTimes="0;1"
+            repeatCount="indefinite"
+            type="rotate"
+            values="0 50 50;-360 50 50"
           />
         </circle>
       </svg>
