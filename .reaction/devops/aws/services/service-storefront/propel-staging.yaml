@@ -27,7 +27,6 @@ environment:
         env_params:
         - name: INTERNAL_GRAPHQL_URL
         - name: EXTERNAL_GRAPHQL_URL
-        - name: EXTERNAL_ASSETS_URL
         - name: FAVICON_URL
         - name: PLACEHOLDER_IMAGE_URL_GALLERY
         - name: PLACEHOLDER_IMAGE_URL_GRID
@@ -38,3 +37,11 @@ environment:
         - name: KEYCLOAK_URL
         - name: KEYCLOAK_REDIRECT_URI
         - name: STRIPE_PUBLIC_API_KEY
+        - name: OAUTH2_AUTH_URL
+        - name: OAUTH2_TOKEN_URL
+        - name: OAUTH2_CLIENT_ID
+        - name: OAUTH2_CLIENT_SECRET
+        - name: OAUTH2_REDIRECT_URL
+        - name: PASSPORT_SESSION_SECRET
+        - name: CANONICAL_URL
+
