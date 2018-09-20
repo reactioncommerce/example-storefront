@@ -11,7 +11,7 @@ Reference headless ecommerce storefront starter kit application for [Reaction Co
 - Server-side rendering
 - Payments with [Stripe](https://stripe.com/)
 - Analytics with [Segment](https://segment.com/)
-- Reusable, customizable, themeable ecommerce React components from the new [Reaction Component Library](https://www.npmjs.com/package/@reactioncommerce/components) with [Styled Components](https://www.styled-components.com/)
+- Reusable, customizable, themeable ecommerce React components from the new [Reaction Component Library](https://github.com/reactioncommerce/reaction-component-library/) with [Styled Components](https://www.styled-components.com/)
 - Fully-configured test suite: Jest snapshot testing, Mocha integration testing
 - Written in ES6, configured with ES6
 - Containerized with Docker
