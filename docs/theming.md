@@ -2,7 +2,7 @@
 
 ## Styling StarterKit and Material UI components
 
-Most of the components in the starter kit are based on the [Material UI](https://material-ui.com) components. As such, they can usually be customized with the same methods as the base Material UI components.
+Most of the components in the starter kit are based on the [Material UI](https://material-ui.com) components. As such, they can usually be customized using the same methods as the base Material UI components.
 
 ### Changing theme variables
 
@@ -41,12 +41,10 @@ For more information on how to override styles please consult the [Material UI g
 
 #### Theme overrides example
 
-To add custom overrides, simply add an `overrides` object to the theme. The `overrides` object contains a key which matches the component name, and the value being an object with your overrides to apply to that component.
+To add custom overrides, simply add an `overrides` object to the theme. The `overrides` object contains a key which matches the component name with a prefix, and the value being an object with your overrides to apply to that component.
 
-
-- Starter kit components are prefixed with `Sk` in the theme. e.g. `SkHeader`.
+- Starter Kit components are prefixed with `Sk` in the theme. e.g. `SkHeader`.
 - Material UI components are prefixed with `Mui` in the theme. e.g. `MuiAppBar`.
-
 
 **src/lib/theme/reactionTheme.js**
 
@@ -56,9 +54,9 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const theme = createMuiTheme({
   overrides: {
     // Override styles for the Starter kit header
-    SkHeader: {
-      appBar: {
-        backgroundColor: "green"
+    SkHeader: { // Name of the component
+      appBar: { // Class name to override
+        backgroundColor: "green" // Property to add or override
       }
     }
   },
