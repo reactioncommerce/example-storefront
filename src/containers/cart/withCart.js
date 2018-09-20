@@ -249,6 +249,7 @@ export default function withCart(Component) {
         }
       });
     }
+
     /**
      * @name handleUpdateFulfillmentOptionsForGroup
      * @summary Sets a fulfillment method for items in a cart
@@ -402,10 +403,16 @@ export default function withCart(Component) {
                 {(mutationFunction) => (
                   <Component
                     {...this.props}
-                    isLoading={skipQuery ? false : isLoading}
+                    addItemsToCart={(items) => {
+                      this.handleAddItemsToCart(mutationFunction, { items }, !cart);
+                    }}
+                    cart={processedCartData}
+                    checkoutMutations={{
+                      onSetFulfillmentOption: this.handleSetFulfillmentOption,
+                      onSetShippingAddress: this.handleSetShippingAddress
+                    }}
                     hasMoreCartItems={(pageInfo && pageInfo.hasNextPage) || false}
-                    onChangeCartItemsQuantity={this.handleChangeCartItemsQuantity}
-                    onRemoveCartItems={this.handleRemoveCartItems}
+                    isLoading={skipQuery ? false : isLoading}
                     loadMoreCartItems={() => {
                       fetchMore({
                         variables: {
@@ -438,15 +445,10 @@ export default function withCart(Component) {
                         }
                       });
                     }}
-                    addItemsToCart={(items) => {
-                      this.handleAddItemsToCart(mutationFunction, { items }, !cart);
-                    }}
+                    onChangeCartItemsQuantity={this.handleChangeCartItemsQuantity}
+                    onRemoveCartItems={this.handleRemoveCartItems}
+                    refetchCart={refetchCart}
                     setEmailOnAnonymousCart={this.handleSetEmailOnAnonymousCart}
-                    checkoutMutations={{
-                      onSetFulfillmentOption: this.handleSetFulfillmentOption,
-                      onSetShippingAddress: this.handleSetShippingAddress
-                    }}
-                    cart={processedCartData}
                   />
                 )}
               </Mutation>

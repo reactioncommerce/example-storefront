@@ -7,6 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import withOrder from "containers/order/withOrder";
 import OrderFulfillmentGroups from "components/OrderFulfillmentGroups";
+import withCart from "containers/cart/withCart";
 
 const styles = (theme) => ({
   sectionHeader: {
@@ -70,6 +71,7 @@ const styles = (theme) => ({
 });
 
 @withOrder
+@withCart
 @observer
 @withStyles(styles, { withTheme: true })
 class CheckoutComplete extends Component {
@@ -81,6 +83,7 @@ class CheckoutComplete extends Component {
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
     order: PropTypes.object,
+    refetchCart: PropTypes.func.isRequired,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -89,6 +92,12 @@ class CheckoutComplete extends Component {
   };
 
   state = {}
+
+  componentDidMount() {
+    const { refetchCart } = this.props;
+
+    refetchCart();
+  }
 
   handleCartEmptyClick = () => Router.pushRoute("/")
 
