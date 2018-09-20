@@ -13,6 +13,12 @@ import router from "./routes";
 const app = nextApp({ dir: appPath, dev });
 const routeHandler = router.getRequestHandler(app);
 
+// This is needed to allow custom parameters (e.g loginActions) to be included
+// when requesting authorization. This is setup to allow only loginAction to pass through
+OAuth2Strategy.prototype.authorizationParams = function (options = {}) {
+  return { loginAction: options.loginAction };
+};
+
 useStaticRendering(true);
 
 passport.use("oauth2", new OAuth2Strategy({
@@ -46,11 +52,15 @@ app
     server.use(passport.session());
     server.use(cookieParser());
 
-    // This endpoint initializes the OAuth2 request
-    server.get("/auth2", (req, res, next) => {
+    server.get("/signin", (req, res, next) => {
       if (!req.user) req.session.redirectTo = req.get("Referer");
       next(); // eslint-disable-line promise/no-callback-in-promise
-    }, passport.authenticate("oauth2"));
+    }, passport.authenticate("oauth2", { loginAction: "signin" }));
+
+    server.get("/signup", (req, res, next) => {
+      if (!req.user) req.session.redirectTo = req.get("Referer");
+      next(); // eslint-disable-line promise/no-callback-in-promise
+    }, passport.authenticate("oauth2", { loginAction: "signup" }));
 
     // This endpoint handles OAuth2 requests (exchanges code for token)
     server.get("/callback", passport.authenticate("oauth2"), (req, res) => {

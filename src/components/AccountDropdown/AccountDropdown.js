@@ -117,11 +117,11 @@ class AccountDropdown extends Component {
               :
               <Fragment>
                 <div className={classes.authContent}>
-                  <Button color="primary" fullWidth href="/auth2" variant="raised">
+                  <Button color="primary" fullWidth href="/signin" variant="raised">
                     Sign In
                   </Button>
                 </div>
-                <Button color="primary" fullWidth href="/auth2">
+                <Button color="primary" fullWidth href="/signup">
                   Create Account
                 </Button>
               </Fragment>
