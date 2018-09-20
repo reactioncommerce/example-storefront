@@ -17,6 +17,7 @@ import Link from "components/Link";
 
 const styles = (theme) => ({
   popover: {
+    left: "0!important",
     maxWidth: "100vw",
     padding: theme.spacing.unit * 2,
     width: "100vw"
@@ -41,7 +42,7 @@ const styles = (theme) => ({
 });
 
 @inject("routingStore")
-@withStyles(styles)
+@withStyles(styles, { name: "SkNavigationItemDesktop" })
 class NavigationItemDesktop extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -89,18 +90,17 @@ class NavigationItemDesktop extends Component {
   };
 
   renderSubNav(navItemGroup) {
-    return (
-      <Fragment>
-        <Divider />
-        {navItemGroup.subTags.edges.map(({ node: navItem }, index) => (
-          <MenuItem dense key={index}>
-            <Link onClick={this.onClose} route={`${this.linkPath(navItem)}`}>
-              <ListItemText primary={navItem.name} />
-            </Link>
-          </MenuItem>
-        ))}
-      </Fragment>
-    );
+    const menuItems = navItemGroup.subTags.edges.map(({ node: navItem }, index) => (
+      <MenuItem dense key={index}>
+        <Link onClick={this.onClose} route={`${this.linkPath(navItem)}`}>
+          <ListItemText primary={navItem.name} />
+        </Link>
+      </MenuItem>
+    ));
+
+    menuItems.unshift(<Divider key="divider" />);
+
+    return menuItems;
   }
 
   renderPopover() {
@@ -110,8 +110,8 @@ class NavigationItemDesktop extends Component {
       return (
         <Popover
           classes={{ paper: classes.popover }}
-          anchorReference={"anchorPosition"}
-          anchorPosition={{ top: 64 }}
+          anchorReference="anchorPosition"
+          anchorPosition={{ left: 0, top: 64 }}
           elevation={1}
           onClose={this.onClose}
           open={this.state.isSubNavOpen}

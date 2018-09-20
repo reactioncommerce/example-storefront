@@ -64,7 +64,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true })
+@withStyles(styles, { withTheme: true, name: "SkCartPopover" })
 @inject("uiStore")
 @observer
 class CartPopover extends Component {

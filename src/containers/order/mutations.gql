@@ -1,0 +1,11 @@
+#import "./fragments.gql"
+
+# place an order with a stripe payment method
+mutation placeOrderWithStripeCardPayment( $input: PlaceOrderWithStripeCardPaymentInput!) {
+  placeOrderWithStripeCardPayment(input: $input) {
+    orders {
+      ...OrderQueryFragment
+    },
+    token
+  }
+}

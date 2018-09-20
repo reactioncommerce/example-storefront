@@ -3,9 +3,8 @@ import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import { observer } from "mobx-react";
-import badgeStatus from "lib/utils/badgeStatus";
-import { BADGE_TYPES } from "lib/utils/badgeTypes";
-import BadgeOverlay from "components/BadgeOverlay";
+import BadgeOverlay from "@reactioncommerce/components/BadgeOverlay/v1";
+import { BADGE_LABELS, BADGE_TYPES, badgeStatus } from "@reactioncommerce/components/BadgeOverlay/v1/utils";
 import ProductDetailOption from "components/ProductDetailOption";
 
 const styles = (theme) => ({
@@ -26,7 +25,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true })
+@withStyles(styles, { withTheme: true, name: "SkOptionsList" })
 @observer
 export default class OptionsList extends Component {
   static propTypes = {
@@ -40,7 +39,7 @@ export default class OptionsList extends Component {
 
   renderInventoryStatus(option) {
     const { classes } = this.props;
-    const status = badgeStatus(option);
+    const status = badgeStatus(option, BADGE_LABELS);
 
     if (!status) return null;
 

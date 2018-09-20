@@ -66,11 +66,11 @@ class CartPage extends Component {
       name: PropTypes.string.isRequired,
       description: PropTypes.string
     })
-  }
+  };
 
   handleCheckOut = () => {
     // TODO: handle checkout flow.
-  }
+  };
 
   handleClick = () => Router.pushRoute("/");
 
@@ -78,13 +78,13 @@ class CartPage extends Component {
     const { onChangeCartItemsQuantity } = this.props;
 
     onChangeCartItemsQuantity({ quantity, cartItemId });
-  }
+  };
 
   handleRemoveItem = (_id) => {
     const { onRemoveCartItems } = this.props;
 
     onRemoveCartItems(_id);
-  }
+  };
 
   renderCartItems() {
     const { cart, classes, hasMoreCartItems, loadMoreCartItems } = this.props;
@@ -114,11 +114,7 @@ class CartPage extends Component {
     const { cart, classes } = this.props;
 
     if (cart && cart.checkout && cart.checkout.summary && Array.isArray(cart.items) && cart.items.length) {
-      const {
-        fulfillmentTotal,
-        itemTotal,
-        total
-      } = cart.checkout.summary;
+      const { fulfillmentTotal, itemTotal, total } = cart.checkout.summary;
 
       return (
         <Grid item xs={12} md={3}>
@@ -143,13 +139,13 @@ class CartPage extends Component {
 
     return (
       <Fragment>
-        <Helmet>
-          <title>{shop && shop.name} | Cart</title>
-          <meta name="description" content={shop && shop.description} />
-        </Helmet>
+        <Helmet
+          title={`Cart | ${shop && shop.name}`}
+          meta={[{ name: "description", content: shop && shop.description }]}
+        />
         <section>
           <Typography className={classes.title} variant="title" align="center">
-          Shopping Cart
+            Shopping Cart
           </Typography>
           <Grid container spacing={24}>
             {this.renderCartItems()}
@@ -159,14 +155,10 @@ class CartPage extends Component {
                 Have questions? call <span className={classes.phoneNumber}>1.800.555.5555</span>
               </Typography>
               <Typography paragraph variant="caption">
-                <Link href="#">
-                Shipping information
-                </Link>
+                <Link href="#">Shipping information</Link>
               </Typography>
               <Typography paragraph variant="caption">
-                <Link href="#">
-                Return policy
-                </Link>
+                <Link href="#">Return policy</Link>
               </Typography>
             </Grid>
           </Grid>

@@ -6,13 +6,14 @@ import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import CheckoutActions from "@reactioncommerce/components/CheckoutActions/v1";
+import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
+import CheckoutActions from "components/CheckoutActions";
 import CheckoutEmailAddress from "@reactioncommerce/components/CheckoutEmailAddress/v1";
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
-import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
-import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaymentCheckoutAction/v1";
+import Entry from "components/Entry";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import CartIcon from "mdi-material-ui/Cart";
+import ChevronLeftIcon from "mdi-material-ui/ChevronLeft";
 import LockIcon from "mdi-material-ui/Lock";
 import withCart from "containers/cart/withCart";
 import Link from "components/Link";
@@ -63,60 +64,69 @@ const styles = (theme) => ({
   headerContainer: {
     display: "flex",
     justifyContent: "space-between",
-    marginBottom: "2rem"
+    margin: "0 auto",
+    maxWidth: theme.layout.mainContentMaxWidth,
+    padding: "1rem"
+  },
+  emptyCartContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  emptyCart: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: 320,
+    height: 320
   },
   logo: {
     color: theme.palette.reaction.reactionBlue,
     marginRight: theme.spacing.unit,
     borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
-  }
+  },
+  // login view styles
+  backLink: {
+    "color": theme.palette.reaction.black80,
+    "cursor": "pointer",
+    "fontFamily": theme.typography.fontFamily,
+    "fontSize": 14,
+    "&:hover": {
+      color: theme.palette.reaction.reactionBlue400
+    }
+  },
+  backLinkText: {
+    letterSpacing: "0.3px",
+    lineHeight: 1.71,
+    marginLeft: theme.spacing.unit,
+    textDecoration: "underline"
+  },
+  headerFlex: {
+    alignSelf: "center",
+    flex: "1 1 1%"
+  },
+  header: {
+    alignContent: "center",
+    borderBottom: `solid 1px ${theme.palette.reaction.black10}`,
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: theme.spacing.unit * 3,
+    padding: theme.spacing.unit * 3
+  },
+  main: {
+    flex: "1 1 auto",
+    maxWidth: theme.layout.mainLoginMaxWidth,
+    minHeight: "calc(100vh - 135px)",
+    margin: "0 auto",
+    padding: `${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px 0`,
+    [theme.breakpoints.up("md")]: {
+      padding: `${theme.spacing.unit * 10}px ${theme.spacing.unit * 3}px 0`
+    }
+  },
+  root: {}
 });
 
-const fulfillmentGroups = [{
-  _id: 1,
-  type: "shipping",
-  data: {
-    shippingAddress: null
-  }
-}];
-
-const paymentMethods = [{
-  _id: 1,
-  name: "reactionstripe",
-  data: {
-    billingAddress: null,
-    displayName: null
-  }
-}];
-
-/**
- * Determines if a shipping method has been set for the "Shipping Information"
- * checkout action. The return value of either complete or incomplete will
- * be used to render status of the checkout action.
- *
- * @returns {String} complete or incomplete
- */
-function getShippingStatus() {
-  const groupWithoutAddress = fulfillmentGroups.find((group) => {
-    const shippingGroup = group.type === "shipping";
-    return shippingGroup && !group.data.shippingAddress;
-  });
-
-  return (groupWithoutAddress) ? "incomplete" : "complete";
-}
-
-/**
- * Determines if a payment method has been set for the "Payment Information"
- * checkout action. The return value of either complete or incomplete will
- * be used to render status of the checkout action.
- *
- * @returns {String} complete or incomplete
- */
-function getPaymentStatus() {
-  const paymentWithoutData = paymentMethods.find((payment) => !payment.data.displayName);
-
-  return (paymentWithoutData) ? "incomplete" : "complete";
-}
+const hasIdentityCheck = (cart) => !!((cart && cart.account !== null) || (cart && cart.email));
 
 @withCart
 @observer
@@ -131,9 +141,12 @@ class Checkout extends Component {
     }),
     classes: PropTypes.object,
     hasMoreCartItems: PropTypes.bool,
+    isLoading: PropTypes.bool,
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
+    router: PropTypes.object,
+    setEmailOnAnonymousCart: PropTypes.func,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -141,144 +154,197 @@ class Checkout extends Component {
     theme: PropTypes.object.isRequired
   };
 
-  static getDerivedStateFromProps({ cart }) {
-    if (cart && cart.account === null && !cart.email) Router.pushRoute("login", "", { customProp: "please next" });
-    return null;
+  state = {};
+
+  componentDidMount() {
+    this.handleRouteChange();
   }
 
-  state = {}
-
-  setShippingAddress = (data) =>
-    // eslint-disable-next-line promise/avoid-new
-    new Promise((resolve) => {
-      setTimeout(() => {
-        fulfillmentGroups[0].data.shippingAddress = data;
-        // TODO: this.forceUpdate() will be removed once state is tracked by MobX
-        this.forceUpdate();
-        resolve(data);
-      }, 1000, { data });
-    })
-
-
-  setPaymentMethod = (data) => {
-    const { billingAddress, token: { card } } = data;
-    const payment = {
-      billingAddress,
-      displayName: `${card.brand} ending in ${card.last4}`
-    };
-
-    // eslint-disable-next-line promise/avoid-new
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        paymentMethods[0].data = payment;
-        // TODO: this.forceUpdate() will be removed once state is tracked by MobX
-        this.forceUpdate();
-        resolve(payment);
-      }, 1000, { payment });
-    });
+  componentDidUpdate() {
+    this.handleRouteChange();
   }
 
-  renderCheckout() {
+  /**
+   *
+   * @name handleRouteChange
+   * @summary Determines which /cart route (/cart/login || /cart/checkout) to display.
+   * @return {undefined}
+   */
+  handleRouteChange = () => {
+    const { cart, router: { asPath } } = this.props;
+    // Skipping if the `cart` is not available
+    if (!cart) return;
+    if (hasIdentityCheck(cart) && asPath === "/cart/login") {
+      Router.replaceRoute("/cart/checkout", {}, { shallow: true });
+    } else if (!hasIdentityCheck(cart) && asPath === "/cart/checkout") {
+      Router.replaceRoute("/cart/login", {}, { shallow: true });
+    }
+  };
+
+  handleCartEmptyClick = () => Router.pushRoute("/");
+
+  /**
+   *
+   * @name hasIdentity
+   * @summary `true` if a customer is signed in or has set a "guest email" on their cart.
+   * @return {Boolean} - true if cart.account or cart.email are set.
+   */
+  get hasIdentity() {
+    const { cart } = this.props;
+    return hasIdentityCheck(cart);
+  }
+
+  // render page head
+  renderCheckoutHead() {
+    const { shop } = this.props;
+    const pageTitle = this.hasIdentity ? `Checkout | ${shop && shop.name}` : `Login | ${shop && shop.name}`;
+    return <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />;
+  }
+
+  // render page top bar
+  renderCheckoutTopHat() {
+    return <CheckoutTopHat checkoutMessage="Free Shipping + Free Returns" />;
+  }
+
+  // render page header
+  renderCheckoutHeader() {
+    return this.hasIdentity ? this.renderCheckoutActionsHeader() : this.renderLoginHeader();
+  }
+
+  renderLoginHeader() {
+    const { classes, shop } = this.props;
+
+    return (
+      <div className={classes.header}>
+        <div className={classes.headerFlex}>
+          <Link route="/" className={classes.backLink}>
+            <ChevronLeftIcon style={{ fontSize: 18, color: "inherit", verticalAlign: "sub", transition: "none" }} />
+            <span className={classes.backLinkText}>Back</span>
+          </Link>
+        </div>
+
+        <Link route="home">
+          <div className={classes.logo}>
+            <ShopLogo shopName={shop.name} />
+          </div>
+        </Link>
+
+        <div className={classes.headerFlex} />
+      </div>
+    );
+  }
+
+  renderCheckoutActionsHeader() {
+    const { classes, shop, theme } = this.props;
+    return (
+      <div className={classes.headerContainer}>
+        <Link route="home">
+          <div className={classes.logo}>
+            <ShopLogo shopName={shop.name} />
+          </div>
+        </Link>
+        <div className={classes.checkoutTitleContainer}>
+          <LockIcon
+            style={{
+              fontSize: 14,
+              color: theme.palette.reaction.black35
+            }}
+          />
+          <Typography className={classes.checkoutTitle}>Checkout</Typography>
+        </div>
+        <Link route="cart">
+          <CartIcon />
+        </Link>
+      </div>
+    );
+  }
+
+  renderCheckoutContent() {
+    const { cart, router: { asPath } } = this.props;
+    // sanity check that "tries" to render the correct /cart view if SSR doesn't provide the `cart`
+    if (!cart) return asPath === "/cart/checkout" ? this.renderCheckoutActions() : this.renderCheckoutLogin();
+    return this.hasIdentity ? this.renderCheckoutActions() : this.renderCheckoutLogin();
+  }
+
+  // render page content: login || checkout
+  renderCheckoutLogin() {
+    const { classes, setEmailOnAnonymousCart } = this.props;
+
+    return (
+      <main className={classes.main}>
+        <Entry setEmailOnAnonymousCart={setEmailOnAnonymousCart} />
+      </main>
+    );
+  }
+
+  renderCheckoutActions() {
     const {
       classes,
       cart,
       hasMoreCartItems,
+      isLoading,
       loadMoreCartItems,
       onRemoveCartItems,
       onChangeCartItemsQuantity
     } = this.props;
 
-    if (!cart) return null;
+    if (isLoading) return null;
 
-    const actions = [
-      {
-        label: "Shipping Information",
-        status: getShippingStatus(),
-        component: ShippingAddressCheckoutAction,
-        onSubmit: this.setShippingAddress,
-        props: {
-          fulfillmentGroup: fulfillmentGroups[0]
-        }
-      },
-      {
-        label: "Payment Information",
-        status: getPaymentStatus(),
-        component: StripePaymentCheckoutAction,
-        onSubmit: this.setPaymentMethod,
-        props: {
-          payment: paymentMethods[0]
-        }
-      }
-    ];
+    if (!cart || (cart && Array.isArray(cart.items) && cart.items.length === 0)) {
+      return (
+        <div className={classes.emptyCartContainer}>
+          <div className={classes.emptyCart}>
+            <div>
+              <CartEmptyMessage onClick={this.handleCartEmptyClick} />
+            </div>
+          </div>
+        </div>
+      );
+    }
 
     const hasAccount = !!cart.account;
-    const displayEmail = hasAccount ? cart.account.emailRecords[0].address : cart.email;
+    const displayEmail = (hasAccount && Array.isArray(cart.account.emailRecords) && cart.account.emailRecords[0].address) || cart.email;
 
     return (
-      <Grid container spacing={24}>
-        <Grid item xs={12} md={7}>
-          <div className={classes.flexContainer}>
-            <div className={classes.checkoutActions}>
-              {
-                displayEmail ?
-                  <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} />
-                  : null
-              }
-              <CheckoutActions actions={actions} />
-            </div>
-          </div>
-        </Grid>
-        <Grid item xs={12} md={5}>
-          <div className={classes.flexContainer}>
-            <div className={classes.cartSummary}>
-              <CheckoutSummary
-                cart={cart}
-                hasMoreCartItems={hasMoreCartItems}
-                onRemoveCartItems={onRemoveCartItems}
-                onChangeCartItemsQuantity={onChangeCartItemsQuantity}
-                onLoadMoreCartItems={loadMoreCartItems}
-              />
-            </div>
-          </div>
-        </Grid>
-      </Grid>
+      <div className={classes.checkoutContentContainer}>
+        <div className={classes.checkoutContent}>
+          <Grid container spacing={24}>
+            <Grid item xs={12} md={7}>
+              <div className={classes.flexContainer}>
+                <div className={classes.checkoutActions}>
+                  {displayEmail ? (
+                    <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} />
+                  ) : null}
+                  <CheckoutActions />
+                </div>
+              </div>
+            </Grid>
+            <Grid item xs={12} md={5}>
+              <div className={classes.flexContainer}>
+                <div className={classes.cartSummary}>
+                  <CheckoutSummary
+                    cart={cart}
+                    hasMoreCartItems={hasMoreCartItems}
+                    onRemoveCartItems={onRemoveCartItems}
+                    onChangeCartItemsQuantity={onChangeCartItemsQuantity}
+                    onLoadMoreCartItems={loadMoreCartItems}
+                  />
+                </div>
+              </div>
+            </Grid>
+          </Grid>
+        </div>
+      </div>
     );
   }
 
   render() {
-    const { classes, shop, theme } = this.props;
-
     return (
       <Fragment>
-        <Helmet>
-          <title>{shop && shop.name} | Checkout</title>
-          <meta name="description" content={shop && shop.description} />
-        </Helmet>
-        <CheckoutTopHat checkoutMessage="Free Shipping + Free Returns" />
-        <section className={classes.checkoutContentContainer}>
-          <div className={classes.checkoutContent}>
-            <div className={classes.headerContainer}>
-              <Link route="home">
-                <div className={classes.logo}>
-                  <ShopLogo shopName={shop.name} />
-                </div>
-              </Link>
-              <div className={classes.checkoutTitleContainer}>
-                <LockIcon
-                  style={{
-                    fontSize: 14,
-                    color: theme.palette.reaction.black35
-                  }}
-                />
-                <Typography className={classes.checkoutTitle}>Checkout</Typography>
-              </div>
-              <Link route="cart">
-                <CartIcon />
-              </Link>
-            </div>
-            {this.renderCheckout()}
-          </div>
-        </section>
+        {this.renderCheckoutHead()}
+        {this.renderCheckoutTopHat()}
+        {this.renderCheckoutHeader()}
+        {this.renderCheckoutContent()}
       </Fragment>
     );
   }

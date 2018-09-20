@@ -12,17 +12,24 @@ class AuthStore {
   }
 
   /**
-  * The accountId the currently signed-in user
-  *
-  * @type String
-  */
+   * The accountId of the currently signed-in user
+   *
+   * @type String
+   */
   @observable accountId = null;
 
   /**
-  * The login token of the current user
-  *
-  * @type String
-  */
+   * The account data of the currently signed-in user
+   *
+   * @type String
+   */
+  @observable account = {};
+
+  /**
+   * The login token of the current user
+   *
+   * @type String
+   */
   @observable token = "";
 
   @action setToken(token) {
@@ -64,8 +71,9 @@ class AuthStore {
     return false;
   }
 
-  @action setAccountId(accountId) {
-    this.accountId = accountId || null;
+  @action setAccount(account) {
+    this.accountId = account._id || null;
+    this.account = account;
   }
 }
 

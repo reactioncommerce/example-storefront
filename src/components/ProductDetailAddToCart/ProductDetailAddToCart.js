@@ -45,7 +45,7 @@ const cartItem = {
 const styles = (theme) => ({
   addToCartButton: {
     "padding": theme.spacing.unit,
-    "backgroundColor": theme.palette.primary.light,
+    "backgroundColor": theme.palette.primary.main,
     "borderRadius": theme.palette.reaction.buttonBorderRadius,
     "minWidth": "66%",
     "&:hover": {
@@ -53,6 +53,9 @@ const styles = (theme) => ({
     },
     "&:focus": {
       outline: "auto 5px -webkit-focus-ring-color"
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "100%"
     }
   },
   addToCartText: {
@@ -86,6 +89,9 @@ const styles = (theme) => ({
     "borderLeft": `1px solid ${theme.palette.reaction.black15}`,
     "borderRight": `1px solid ${theme.palette.reaction.black15}`
   },
+  quantitySvg: {
+    fontSize: "18px"
+  },
   quantityTypography: {
     color: theme.palette.reaction.coolGray500,
     marginBottom: theme.spacing.unit * 2
@@ -93,7 +99,7 @@ const styles = (theme) => ({
 });
 
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkProductDetailAddToCart" })
 @inject("uiStore")
 @observer
 export default class ProductDetailAddToCart extends Component {
@@ -168,6 +174,7 @@ export default class ProductDetailAddToCart extends Component {
         quantityContainer,
         quantityGrid,
         quantityInput,
+        quantitySvg,
         quantityTypography
       }
     } = this.props;
@@ -193,7 +200,7 @@ export default class ProductDetailAddToCart extends Component {
                       onClick={this.handleDecrementButton}
                       className={incrementButton}
                     >
-                      <Minus />
+                      <Minus className={quantitySvg} />
                     </ButtonBase>
                   </InputAdornment>
                 ),
@@ -205,7 +212,7 @@ export default class ProductDetailAddToCart extends Component {
                       onClick={this.handleIncrementButton}
                       className={incrementButton}
                     >
-                      <Plus />
+                      <Plus className={quantitySvg} />
                     </ButtonBase>
                   </InputAdornment>
                 ),

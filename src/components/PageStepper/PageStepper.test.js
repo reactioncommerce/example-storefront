@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
+import Button from "@reactioncommerce/components/Button/v1";
 import PageStepper from "./PageStepper";
 
 test("shows next button, hides previous button", () => {
@@ -44,8 +45,9 @@ test("click next button", () => {
 
   const wrapper = mount(<PageStepper pageInfo={pageInfo} />);
 
-  expect(wrapper.find("button").length).toBe(1);
-  wrapper.find("button").simulate("click");
+  const buttonElement = wrapper.find(Button);
+  expect(buttonElement.length).toBe(1);
+  buttonElement.simulate("click");
   expect(pageInfo.loadNextPage).toHaveBeenCalled();
 });
 
@@ -57,7 +59,8 @@ test("click previous button", () => {
 
   const wrapper = mount(<PageStepper pageInfo={pageInfo} />);
 
-  expect(wrapper.find("button").length).toBe(1);
-  wrapper.find("button").simulate("click");
+  const buttonElement = wrapper.find(Button);
+  expect(buttonElement.length).toBe(1);
+  buttonElement.simulate("click");
   expect(pageInfo.loadPreviousPage).toHaveBeenCalled();
 });

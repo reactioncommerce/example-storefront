@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Header from "components/Header";
 import Footer from "components/Footer";
-import { Cart } from "components/Cart";
 
 const styles = (theme) => ({
   root: {
@@ -21,30 +19,25 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkLayout" })
 class Layout extends Component {
   static propTypes = {
     children: PropTypes.node,
     classes: PropTypes.object,
     shop: PropTypes.shape({
       name: PropTypes.string
-    }).isRequired,
-    title: PropTypes.string
+    }).isRequired
   };
 
   static defaultProps = {
-    classes: {},
-    title: ""
+    classes: {}
   };
 
   render() {
-    const { classes, children, shop, title } = this.props;
+    const { classes, children, shop } = this.props;
 
     return (
       <React.Fragment>
-        <Helmet>
-          <title>{title}</title>
-        </Helmet>
         <div className={classes.root}>
           <Header shop={shop} />
           <main className={classes.main}>
@@ -52,7 +45,6 @@ class Layout extends Component {
           </main>
           <Footer />
         </div>
-        <Cart />
       </React.Fragment>
     );
   }

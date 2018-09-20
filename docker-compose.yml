@@ -1,9 +1,12 @@
 version: '3.4'
 
 networks:
-  reaction-api:
+  api:
     external:
-      name: reaction-api
+      name: api.reaction.localhost
+  auth.reaction.localhost:
+    external:
+      name: auth.reaction.localhost
 
 services:
   web:
@@ -17,9 +20,10 @@ services:
     environment:
       REACTION_APP_NAME: "reaction-next-starterkit.web"
     networks:
-      reaction-api:
+      api:
         aliases:
           - storefront
+      auth.reaction.localhost:
     ports:
       - 4000:4000
     volumes:

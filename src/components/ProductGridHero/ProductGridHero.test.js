@@ -8,7 +8,6 @@ import ProductGridHero from "./ProductGridHero";
 const uiStore = {
   appConfig: {
     publicRuntimeConfig: {
-      externalAssetsUrl: "",
       placeholderImageUrls: {
         productGrid: ""
       }

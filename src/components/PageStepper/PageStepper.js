@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Button from "@material-ui/core/Button";
+import Button from "@reactioncommerce/components/Button/v1";
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -11,7 +11,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkPageStepper" })
 export default class PageStepper extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -24,6 +24,26 @@ export default class PageStepper extends Component {
     theme: PropTypes.object
   };
 
+  handleNextClick = () => {
+    const { pageInfo } = this.props;
+
+    if (typeof window !== "undefined" && typeof window.scrollTo === "function") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    pageInfo.loadNextPage();
+  }
+
+  handlePreviousClick = () => {
+    const { pageInfo } = this.props;
+
+    if (typeof window !== "undefined" && typeof window.scrollTo === "function") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    pageInfo.loadPreviousPage();
+  }
+
   render() {
     const { classes, pageInfo } = this.props;
 
@@ -31,12 +51,12 @@ export default class PageStepper extends Component {
       <Grid className={classes.root} container justify="space-between">
         <Grid item>
           {pageInfo.hasPreviousPage &&
-            <Button onClick={pageInfo.loadPreviousPage} variant="raised">{"Previous"}</Button>
+            <Button onClick={this.handlePreviousClick}>Previous</Button>
           }
         </Grid>
         <Grid item>
           {pageInfo.hasNextPage &&
-            <Button onClick={pageInfo.loadNextPage} variant="raised">{"Next"}</Button>
+            <Button onClick={this.handleNextClick}>Next</Button>
           }
         </Grid>
       </Grid>

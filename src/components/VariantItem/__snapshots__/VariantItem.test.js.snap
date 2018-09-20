@@ -2,7 +2,7 @@
 
 exports[`basic snapshot 1`] = `
 <button
-  className="MuiButtonBase-root-3 VariantItem-variantButton-1 VariantItem-activeVariant-2"
+  className="MuiButtonBase-root-3 SkVariantItem-variantButton-1 SkVariantItem-activeVariant-2"
   disabled={undefined}
   onBlur={[Function]}
   onClick={[Function]}

@@ -2,7 +2,10 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
-import ProductItem from "components/ProductItem";
+import CatalogGrid from "@reactioncommerce/components/CatalogGrid/v1";
+import track from "lib/tracking/track";
+import trackProductClicked from "lib/tracking/trackProductClicked";
+import PageLoading from "components/PageLoading";
 import PageStepper from "components/PageStepper";
 import PageSizeSelector from "components/PageSizeSelector";
 import SortBySelector from "components/SortBySelector";
@@ -15,12 +18,15 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkProductGrid" })
+@track()
 export default class ProductGrid extends Component {
   static propTypes = {
     catalogItems: PropTypes.arrayOf(PropTypes.object),
     classes: PropTypes.object,
     currencyCode: PropTypes.string.isRequired,
+    initialSize: PropTypes.object,
+    isLoadingCatalogItems: PropTypes.bool,
     pageInfo: PropTypes.shape({
       startCursor: PropTypes.string,
       endCursor: PropTypes.string,
@@ -34,24 +40,6 @@ export default class ProductGrid extends Component {
     setSortBy: PropTypes.func.isRequired,
     sortBy: PropTypes.string.isRequired
   };
-
-  renderProduct = (edge) => {
-    const { node: { product } } = edge;
-    const { currencyCode } = this.props;
-    const { _id } = product;
-    const gridItemProps = {
-      key: _id,
-      xs: 12,
-      sm: 4,
-      md: 3
-    };
-
-    return (
-      <Grid item {...gridItemProps}>
-        <ProductItem product={product} currencyCode={currencyCode} />
-      </Grid>
-    );
-  }
 
   renderFilters() {
     const { classes, pageSize, setPageSize, setSortBy, sortBy } = this.props;
@@ -68,19 +56,38 @@ export default class ProductGrid extends Component {
     );
   }
 
-  render() {
-    const { catalogItems, pageInfo } = this.props;
+  @trackProductClicked()
+  onItemClick = (event, product) => {} // eslint-disable-line no-unused-vars
 
-    if (!catalogItems || !catalogItems.length) return <ProductGridEmptyMessage />;
+  renderMainArea() {
+    const { catalogItems, initialSize, isLoadingCatalogItems, pageInfo } = this.props;
+
+    if (isLoadingCatalogItems) return <PageLoading />;
+
+    const products = (catalogItems || []).map((item) => item.node.product);
+    if (products.length === 0) return <ProductGridEmptyMessage />;
 
     return (
       <Fragment>
-        {this.renderFilters()}
         <Grid container spacing={24}>
-          {(catalogItems && catalogItems.length) ? catalogItems.map(this.renderProduct) : null}
+          <CatalogGrid
+            initialSize={initialSize}
+            onItemClick={this.onItemClick}
+            products={products}
+            placeholderImageURL="/static/placeholder.gif"
+            {...this.props}
+          />
         </Grid>
+        {pageInfo && <PageStepper pageInfo={pageInfo} />}
+      </Fragment>
+    );
+  }
 
-        { pageInfo && <PageStepper pageInfo={pageInfo} /> }
+  render() {
+    return (
+      <Fragment>
+        {this.renderFilters()}
+        {this.renderMainArea()}
       </Fragment>
     );
   }

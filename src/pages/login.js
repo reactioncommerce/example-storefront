@@ -3,45 +3,15 @@ import PropTypes from "prop-types";
 import { Router } from "routes";
 import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Button from "@reactioncommerce/components/Button/v1";
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
-import GuestForm from "@reactioncommerce/components/GuestForm/v1";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import withCart from "containers/cart/withCart";
+import Entry from "components/Entry";
 import Link from "components/Link";
 
 import ChevronLeftIcon from "mdi-material-ui/ChevronLeft";
 
-const flexWrapper = () => ({
-  alignItems: "stretch",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "flex-start"
-});
-
 const styles = (theme) => ({
-  loginWrapper: {
-    ...flexWrapper(theme),
-    paddingBottom: theme.spacing.unit * 8,
-    [theme.breakpoints.up("md")]: {
-      minHeight: "400px",
-      paddingBottom: 0,
-      paddingRight: theme.spacing.unit * 8
-    }
-  },
-  guestWrapper: {
-    ...flexWrapper(theme),
-    borderTop: `solid 1px ${theme.palette.reaction.black10}`,
-    paddingTop: theme.spacing.unit * 8,
-    [theme.breakpoints.up("md")]: {
-      borderLeft: `solid 1px ${theme.palette.reaction.black10}`,
-      borderTop: "none",
-      paddingLeft: theme.spacing.unit * 8,
-      paddingTop: 0
-    }
-  },
   backLink: {
     "color": theme.palette.reaction.black80,
     "cursor": "pointer",
@@ -57,10 +27,6 @@ const styles = (theme) => ({
     marginLeft: theme.spacing.unit,
     textDecoration: "underline"
   },
-  loginButton: {
-    marginTop: theme.spacing.unit * 3
-  },
-  headerCenter: {},
   headerFlex: {
     alignSelf: "center",
     flex: "1 1 1%"
@@ -108,24 +74,12 @@ export default class Login extends Component {
     theme: PropTypes.object.isRequired
   };
 
-  static getDerivedStateFromProps({ cart }) {
+  state = {};
+
+  componentDidMount() {
+    const { cart } = this.props;
     if ((cart && cart.account !== null) || (cart && cart.email)) Router.back();
-    return null;
   }
-
-  state = {}
-
-  handleLoginClick = () => {
-    // TODO: Redirect to Auth solution
-    // eslint-disable-next-line
-    console.log("login buttton clicked!");
-  };
-
-  handleRegisterClick = () => {
-    // TODO: Redirect to Auth solution
-    // eslint-disable-next-line
-    console.log("register buttton clicked!");
-  };
 
   renderHeader() {
     const { classes, shop } = this.props;
@@ -150,52 +104,23 @@ export default class Login extends Component {
     );
   }
 
-  renderCheckoutLogin() {
-    const { classes, setEmailOnAnonymousCart } = this.props;
-    return (
-      <Grid container>
-        <Grid item xs={12} md={7}>
-          <div className={classes.loginWrapper}>
-            <Typography variant="title" gutterBottom>
-              Returning Customer
-            </Typography>
-            <Button onClick={this.handleLoginClick} actionType="important" isFullWidth className={classes.loginButton}>
-              Login
-            </Button>
-            <Button
-              onClick={this.handleRegisterClick}
-              actionType="secondary"
-              isFullWidth
-              className={classes.loginButton}
-            >
-              Create a new account
-            </Button>
-          </div>
-        </Grid>
-        <Grid item xs={12} md={5}>
-          <div className={classes.guestWrapper}>
-            <Typography variant="title" gutterBottom>
-              Guest Checkout
-            </Typography>
-            <GuestForm onSubmit={setEmailOnAnonymousCart} />
-          </div>
-        </Grid>
-      </Grid>
-    );
+  renderEntry() {
+    const { setEmailOnAnonymousCart } = this.props;
+    return <Entry setEmailOnAnonymousCart={setEmailOnAnonymousCart} />;
   }
 
   render() {
     const { classes, shop } = this.props;
     return (
       <Fragment>
-        <Helmet>
-          <title>{shop && shop.name} | Login</title>
-          <meta name="description" content={shop && shop.description} />
-        </Helmet>
+        <Helmet
+          title={`Login | ${shop && shop.name}`}
+          meta={[{ name: "description", content: shop && shop.description }]}
+        />
         <CheckoutTopHat checkoutMessage="Free Shipping + Free Returns" />
         <div className={classes.root}>
           {this.renderHeader()}
-          <main className={classes.main}>{this.renderCheckoutLogin()}</main>
+          <main className={classes.main}>{this.renderEntry()}</main>
         </div>
       </Fragment>
     );

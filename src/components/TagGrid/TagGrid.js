@@ -18,7 +18,7 @@ const styles = (theme) => ({
 /**
  * Tag grid - displays a grid of tags
  */
-@withStyles(styles, { withTheme: true })
+@withStyles(styles, { withTheme: true, name: "SkTagGrid" })
 export default class TagGrid extends Component {
   static propTypes = {
     /**

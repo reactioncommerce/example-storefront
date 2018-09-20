@@ -2,20 +2,20 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="MuiGrid-container-4 MediaGallery-root-1"
+  className="MuiGrid-container-4 SkMediaGallery-root-1"
 >
   <div
     className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 MuiGrid-grid-sm-12-58"
   >
     <div
-      className="MediaGallery-featured-2"
+      className="SkMediaGallery-featured-2"
     >
       <div
-        className="Img-imgWrapper-101 "
+        className="SkImg-imgWrapper-101 "
       >
         <img
           alt=""
-          className="Img-img-103 Img-imgLoading-105 "
+          className="SkImg-img-103 SkImg-imgLoading-105 "
           src="/resources/placeholder.gif"
         />
       </div>
@@ -27,7 +27,7 @@ exports[`basic snapshot 1`] = `
         className="MuiGrid-item-5 MuiGrid-grid-xs-3-35 MuiGrid-grid-sm-2-48"
       >
         <button
-          className="MuiButtonBase-root-108 MediaGalleryItem-root-107"
+          className="MuiButtonBase-root-108 SkMediaGalleryItem-root-107"
           disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
@@ -44,11 +44,11 @@ exports[`basic snapshot 1`] = `
           type="button"
         >
           <div
-            className="Img-imgWrapper-101 "
+            className="SkImg-imgWrapper-101 "
           >
             <img
               alt=""
-              className="Img-img-103 Img-imgLoading-105 "
+              className="SkImg-img-103 SkImg-imgLoading-105 "
               src="/resources/placeholder.gif"
             />
           </div>
@@ -61,7 +61,7 @@ exports[`basic snapshot 1`] = `
         className="MuiGrid-item-5 MuiGrid-grid-xs-3-35 MuiGrid-grid-sm-2-48"
       >
         <button
-          className="MuiButtonBase-root-108 MediaGalleryItem-root-107"
+          className="MuiButtonBase-root-108 SkMediaGalleryItem-root-107"
           disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
@@ -78,11 +78,11 @@ exports[`basic snapshot 1`] = `
           type="button"
         >
           <div
-            className="Img-imgWrapper-101 "
+            className="SkImg-imgWrapper-101 "
           >
             <img
               alt=""
-              className="Img-img-103 Img-imgLoading-105 "
+              className="SkImg-img-103 SkImg-imgLoading-105 "
               src="/resources/placeholder.gif"
             />
           </div>

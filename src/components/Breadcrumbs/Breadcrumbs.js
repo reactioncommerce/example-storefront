@@ -11,7 +11,10 @@ const styles = (theme) => ({
     alignItems: "center",
     maxWidth: theme.layout.mainContentMaxWidth,
     marginLeft: "auto",
-    marginRight: "auto"
+    marginRight: "auto",
+    [theme.breakpoints.down("xs")]: {
+      justifyContent: "center"
+    }
   },
   breadcrumbLink: {
     fontSize: "14px",
@@ -26,7 +29,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkBreadcrumbs" })
 class Breadcrumbs extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,

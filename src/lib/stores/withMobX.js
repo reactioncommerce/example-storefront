@@ -1,5 +1,6 @@
 import React from "react";
 import { Provider } from "mobx-react";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import rootMobxStores from "./index";
 
 /**
@@ -18,6 +19,8 @@ function withMobX(Component) {
       );
     }
   }
+
+  hoistNonReactStatic(WithMobX, Component);
 
   return WithMobX;
 }

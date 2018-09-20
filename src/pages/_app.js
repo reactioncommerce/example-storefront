@@ -1,8 +1,13 @@
 import NextApp, { Container } from "next/app";
 import React from "react";
+import { ThemeProvider as RuiThemeProvider } from "styled-components";
+import { StripeProvider } from "react-stripe-elements";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import JssProvider from "react-jss/lib/JssProvider";
+import { ComponentsProvider } from "@reactioncommerce/components-context";
 import getConfig from "next/config";
 import track from "lib/tracking/track";
-import { StripeProvider } from "react-stripe-elements";
 import dispatch from "lib/tracking/dispatch";
 import withApolloClient from "lib/apollo/withApolloClient";
 import withShop from "containers/shop/withShop";
@@ -11,12 +16,9 @@ import withTags from "containers/tags/withTags";
 import Layout from "components/Layout";
 import withMobX from "lib/stores/withMobX";
 import rootMobXStores from "lib/stores";
-import { MuiThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import JssProvider from "react-jss/lib/JssProvider";
-import { ComponentsProvider } from "@reactioncommerce/components-context";
-import componentsContext from "../componentsContext";
+import components from "../lib/theme/components";
 import getPageContext from "../lib/theme/getPageContext";
+import componentTheme from "../lib/theme/componentTheme";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -27,6 +29,16 @@ const { publicRuntimeConfig } = getConfig();
 @withTags
 @track({}, { dispatch })
 export default class App extends NextApp {
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {};
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
+    return { pageProps };
+  }
+
   constructor(props) {
     super(props);
     this.pageContext = getPageContext();
@@ -48,43 +60,43 @@ export default class App extends NextApp {
     }
 
     const { stripePublicApiKey } = publicRuntimeConfig;
-    if (stripePublicApiKey) {
-      if (window.Stripe) {
-        // eslint-disable-next-line react/no-did-mount-set-state
-        this.setState({ stripe: window.Stripe(stripePublicApiKey) });
-      }
+    if (stripePublicApiKey && window.Stripe) {
+      // eslint-disable-next-line react/no-did-mount-set-state
+      this.setState({ stripe: window.Stripe(stripePublicApiKey) });
     }
   }
 
   render() {
-    const { Component, shop, ...rest } = this.props;
+    const { Component, pageProps, shop, ...rest } = this.props;
     const { route } = this.props.router;
     const { stripe } = this.state;
 
     return (
       <Container>
-        <ComponentsProvider value={componentsContext}>
+        <ComponentsProvider value={components}>
           <JssProvider
             registry={this.pageContext.sheetsRegistry}
             generateClassName={this.pageContext.generateClassName}
           >
-            <MuiThemeProvider
-              theme={this.pageContext.theme}
-              sheetsManager={this.pageContext.sheetsManager}
-            >
-              <CssBaseline />
-              {
-                (route === "/checkout" || route === "/login") ? (
-                  <StripeProvider stripe={stripe}>
-                    <Component pageContext={this.pageContext} shop={shop} {...rest} />
-                  </StripeProvider>
-                ) : (
-                  <Layout shop={shop}>
-                    <Component pageContext={this.pageContext} shop={shop} {...rest} />
-                  </Layout>
-                )
-              }
-            </MuiThemeProvider>
+            <RuiThemeProvider theme={componentTheme}>
+              <MuiThemeProvider
+                theme={this.pageContext.theme}
+                sheetsManager={this.pageContext.sheetsManager}
+              >
+                <CssBaseline />
+                {
+                  (route === "/checkout" || route === "/login") ? (
+                    <StripeProvider stripe={stripe}>
+                      <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
+                    </StripeProvider>
+                  ) : (
+                    <Layout shop={shop}>
+                      <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
+                    </Layout>
+                  )
+                }
+              </MuiThemeProvider>
+            </RuiThemeProvider>
           </JssProvider>
         </ComponentsProvider>
       </Container>

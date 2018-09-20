@@ -12,11 +12,11 @@ const styles = (theme) => ({
   },
   heroGridContainer: {
     maxWidth: theme.layout.mainContentMaxWidth,
-    margin: "40px auto"
+    margin: "20px auto"
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkProductGridHero" })
 export default class ProductGridHero extends Component {
   static propTypes = {
     classes: PropTypes.object,

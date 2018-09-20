@@ -3,17 +3,27 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link as NextLink } from "routes";
 import classNames from "classnames";
+import { withStyles } from "@material-ui/core/styles";
 import track from "lib/tracking/track";
+
+const styles = () => ({
+  anchor: {
+    color: "inherit",
+    textDecoration: "none"
+  }
+});
 
 @track((ownProps) => ({
   component: "Link",
-  url: ownProps.route,
+  url: ownProps.route || ownProps.href,
   params: ownProps.params
 }))
+@withStyles(styles, { name: "SkLink" })
 class Link extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
+    classes: PropTypes.object,
     onClick: PropTypes.func
   }
 
@@ -40,6 +50,7 @@ class Link extends Component {
   render() {
     const {
       children,
+      classes,
       className,
       tracking, // eslint-disable-line
       onClick,
@@ -47,9 +58,9 @@ class Link extends Component {
     } = this.props;
 
     return (
-      <NextLink {...props} passHref>
+      <NextLink route={props.route || props.href} {...props} passHref>
         <a
-          className={classNames(className)}
+          className={classNames(classes.anchor, className)}
           onClick={this.handleClick}
           onKeyDown={this.handleKeyDown}
           role="link"

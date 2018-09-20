@@ -10,10 +10,14 @@ const styles = (theme) => ({
     justifyContent: "center",
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2
+  },
+  cfXPgA: {
+    paddingLeft: 0,
+    paddingRight: 0
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkCartItems" })
 class CartItems extends Component {
   static propTypes = {
     classes: PropTypes.object,

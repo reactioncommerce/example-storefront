@@ -4,9 +4,15 @@ fragment CartCommon on Cart {
   createdAt
   account {
     _id
+    emailRecords {
+      address
+    }
   }
   shop {
     _id
+    currency {
+      code
+    }
   }
   email
   updatedAt
@@ -14,15 +20,14 @@ fragment CartCommon on Cart {
   checkout {
     fulfillmentGroups {
       _id
+      type
       data {
         shippingAddress {
-          _id
           address1
           address2
           city
           company
           country
-          failedValidation
           fullName
           isBillingDefault
           isCommercial
@@ -34,16 +39,30 @@ fragment CartCommon on Cart {
       }
       availableFulfillmentOptions {
         price {
+          amount
           displayAmount
         }
         fulfillmentMethod {
           _id
+          name
           displayName
         }
       }
-    }
-    payments{
-      _id
+      selectedFulfillmentOption {
+        fulfillmentMethod {
+          _id
+          name
+          displayName
+        }
+        price {
+          amount
+          displayAmount
+        }
+        handlingPrice {
+          amount
+          displayAmount
+        }
+      }
     }
     summary {
       fulfillmentTotal {
@@ -56,6 +75,7 @@ fragment CartCommon on Cart {
         displayAmount
       }
       total {
+        amount
         displayAmount
       }
     }

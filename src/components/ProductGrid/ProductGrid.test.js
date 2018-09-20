@@ -8,9 +8,7 @@ import products from "./__mocks__/products.mock";
 
 const uiStore = {
   appConfig: {
-    publicRuntimeConfig: {
-      externalAssetsUrl: "http://localhost:3000"
-    }
+    publicRuntimeConfig: {}
   }
 };
 
@@ -20,6 +18,14 @@ const routingStore = {
     slug: "test-tag",
     querystring: "?this&that"
   }
+};
+
+const mockComponents = {
+  BadgeOverlay: "BadgeOverlay",
+  CatalogGridItem: "CatalogGridItem",
+  Link: "Link",
+  Price: "Price",
+  ProgressiveImage: "ProgressiveImage"
 };
 
 test("basic snapshot", () => {
@@ -36,6 +42,7 @@ test("basic snapshot", () => {
     <MuiThemeProvider theme={theme}>
       <Provider routingStore={routingStore} uiStore={uiStore}>
         <ProductGrid
+          components={mockComponents}
           catalogItems={products}
           currencyCode="USD"
           pageInfo={pageInfo}
@@ -66,6 +73,7 @@ test("Empty product grid message", () => {
     <MuiThemeProvider theme={theme}>
       <Provider routingStore={routingStore} uiStore={uiStore}>
         <ProductGrid
+          components={mockComponents}
           catalogItems={null}
           currencyCode="USD"
           pageInfo={pageInfo}

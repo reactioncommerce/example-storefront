@@ -4,7 +4,7 @@ exports[`snapshop of tagWithoutMedia 1`] = `null`;
 
 exports[`snapshot of tagWithMedia 1`] = `
 <section
-  className="ProductGridHero-heroGridContainer-2"
+  className="SkProductGridHero-heroGridContainer-2"
 >
   <div
     className="MuiGrid-container-3 MuiGrid-spacing-xs-24-27"
@@ -13,11 +13,11 @@ exports[`snapshot of tagWithMedia 1`] = `
       className="MuiGrid-item-4 MuiGrid-grid-xs-12-43"
     >
       <div
-        className="Img-imgWrapper-100 Img-imgHeroWrapper-101"
+        className="SkImg-imgWrapper-100 SkImg-imgHeroWrapper-101"
       >
         <img
           alt=""
-          className="Img-img-102 Img-imgLoading-104 "
+          className="SkImg-img-102 SkImg-imgLoading-104 "
           src=""
         />
       </div>

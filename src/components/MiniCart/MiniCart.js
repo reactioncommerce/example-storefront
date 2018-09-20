@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { inject, observer } from "mobx-react";
 import { withStyles } from "@material-ui/core/styles";
 import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
 import CartItems from "components/CartItems";
@@ -7,6 +8,7 @@ import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
 import IconButton from "@material-ui/core/IconButton";
 import CartIcon from "mdi-material-ui/Cart";
 import { Router } from "routes";
+import Badge from "@material-ui/core/Badge";
 import Popper from "@material-ui/core/Popper";
 import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
@@ -28,17 +30,20 @@ const styles = ({ palette, zIndex }) => ({
     width: 320,
     height: 320,
     border: palette.borders.default
+  },
+  badge: {
+    width: 20,
+    height: 20,
+    top: 10,
+    left: 20
   }
 });
 
-const closePopper = {
-  anchorElement: null,
-  open: false
-};
-
-@withStyles(styles)
+@withStyles(styles, { name: "SkMiniCart" })
 @withShop
 @withCart
+@inject("uiStore")
+@observer
 export default class MiniCart extends Component {
   static propTypes = {
     cart: PropTypes.shape({
@@ -56,7 +61,20 @@ export default class MiniCart extends Component {
     hasMoreCartItems: PropTypes.bool,
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
-    onRemoveCartItems: PropTypes.func
+    onRemoveCartItems: PropTypes.func,
+    uiStore: PropTypes.shape({
+      isCartOpen: PropTypes.bool.isRequired,
+      openCart: PropTypes.func.isRequired,
+      closeCart: PropTypes.func.isRequired
+    })
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.setPopoverAnchorEl = (element) => {
+      this.anchorElement = element;
+    };
   }
 
   state = {
@@ -64,48 +82,41 @@ export default class MiniCart extends Component {
     anchorElement: null
   };
 
-  handlePopperOpen = (event) => {
-    const { currentTarget } = event;
+  anchorElement = null
 
-    this.clearOnCloseTimeout();
-
-    this.setState({
-      anchorElement: currentTarget,
-      open: true
-    });
+  handlePopperOpen = () => {
+    const { openCart } = this.props.uiStore;
+    openCart();
   }
 
   handleClick = () => Router.pushRoute("/");
-  handleCheckoutButtonClick = () => Router.pushRoute("checkout");
+  handleCheckoutButtonClick = () => Router.pushRoute("/cart/checkout");
 
   handlePopperClose = () => {
-    this.onCloseTimeout = setTimeout(() => {
-      this.setState(closePopper);
-    }, 500);
+    const { closeCart } = this.props.uiStore;
+    closeCart();
   }
 
   handleEnterPopper = () => {
-    this.clearOnCloseTimeout();
+    const { openCart } = this.props.uiStore;
+    openCart();
   }
 
   handleLeavePopper = () => {
-    this.setState(closePopper);
+    const { closeCart } = this.props.uiStore;
+    closeCart();
   }
 
   handleOnClick = () => {
-    this.setState(closePopper, () => Router.pushRoute("cart"));
+    const { closeCart } = this.props.uiStore;
+    closeCart();
+    Router.pushRoute("cart");
   }
 
   handleItemQuantityChange = (quantity, cartItemId) => {
     const { onChangeCartItemsQuantity } = this.props;
 
     onChangeCartItemsQuantity({ quantity, cartItemId });
-  }
-
-  clearOnCloseTimeout() {
-    if (this.onCloseTimeout) {
-      window && window.clearTimeout(this.onCloseTimeout);
-    }
   }
 
   renderMiniCart() {
@@ -142,25 +153,38 @@ export default class MiniCart extends Component {
   }
 
   render() {
-    const { classes } = this.props;
-    const { anchorElement, open } = this.state;
-    const id = open ? "simple-popper" : null;
+    const { cart, classes, uiStore } = this.props;
+    const { isCartOpen } = uiStore;
+    const id = (isCartOpen) ? "simple-popper" : null;
 
     return (
       <Fragment>
-        <IconButton color="inherit"
-          onMouseEnter={this.handlePopperOpen}
-          onMouseLeave={this.handlePopperClose}
-          onClick={this.handleOnClick}
-        >
-          <CartIcon />
-        </IconButton>
+        <div ref={this.setPopoverAnchorEl}>
+          <IconButton color="inherit"
+            onMouseEnter={this.handlePopperOpen}
+            onMouseLeave={this.handlePopperClose}
+            onClick={this.handleOnClick}
+          >
+            {(cart && cart.totalItemQuantity > 0)
+              ? (
+                <Badge
+                  badgeContent={cart.totalItemQuantity}
+                  color="primary"
+                  classes={{ badge: classes.badge }}
+                >
+                  <CartIcon />
+                </Badge>
+              )
+              : <CartIcon />
+            }
+          </IconButton>
+        </div>
 
         <Popper
           className={classes.popper}
           id={id}
-          open={open}
-          anchorEl={anchorElement}
+          open={isCartOpen}
+          anchorEl={this.anchorElement}
           transition
           onMouseEnter={this.handleEnterPopper}
           onMouseLeave={this.handleLeavePopper}

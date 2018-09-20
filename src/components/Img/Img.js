@@ -48,7 +48,7 @@ const styles = ({ palette, transitions, zIndex }) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true })
+@withStyles(styles, { withTheme: true, name: "SkImg" })
 class Img extends Component {
   static propTypes = {
     /**
@@ -89,7 +89,9 @@ class Img extends Component {
 
   static defaultProps = {
     altText: "",
-    isHero: false
+    isHero: false,
+    presrc: "",
+    src: ""
   };
 
   state = { ready: false };

@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { inject } from "mobx-react";
 import { Router } from "routes";
-import Divider from "@material-ui/core/Divider";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Collapse from "@material-ui/core/Collapse";
@@ -24,7 +23,7 @@ const styles = (theme) => ({
 });
 
 @inject("routingStore")
-@withStyles(styles)
+@withStyles(styles, { name: "SkNavigationItemMobile" })
 class NavigationItemMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -71,7 +70,6 @@ class NavigationItemMobile extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.subNav}>
-        <Divider />
         {navItemGroup.subTags.edges.map(({ node: navItemGroupItem }, index) => (
           <MenuItem className={classes.nested} dense inset key={index}>
             <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroupItem.name} />

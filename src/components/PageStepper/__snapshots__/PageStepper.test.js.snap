@@ -2,37 +2,33 @@
 
 exports[`hides next button, shows previous button 1`] = `
 <div
-  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-1"
+  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 SkPageStepper-root-1"
 >
   <div
     className="MuiGrid-item-3"
   >
-    <button
-      className="MuiButtonBase-root-125 MuiButton-root-99 MuiButton-contained-110 MuiButton-raised-113"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={undefined}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
+    <div
+      className="Button__ButtonDiv-bnfrK cnBjlR"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      tabIndex={0}
+      title={undefined}
     >
-      <span
-        className="MuiButton-label-100"
-      >
+      <div>
         Previous
-      </span>
-      <span
-        className="MuiTouchRipple-root-128"
+      </div>
+      <div
+        className="Button__SpinnerWrap-bgOcuM cCKgPo"
+        style={
+          Object {
+            "opacity": 0,
+            "paddingLeft": 0,
+            "width": 0,
+          }
+        }
       />
-    </button>
+    </div>
   </div>
   <div
     className="MuiGrid-item-3"
@@ -42,74 +38,66 @@ exports[`hides next button, shows previous button 1`] = `
 
 exports[`shows both next and previous buttons 1`] = `
 <div
-  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-1"
+  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 SkPageStepper-root-1"
 >
   <div
     className="MuiGrid-item-3"
   >
-    <button
-      className="MuiButtonBase-root-125 MuiButton-root-99 MuiButton-contained-110 MuiButton-raised-113"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={undefined}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
+    <div
+      className="Button__ButtonDiv-bnfrK cnBjlR"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      tabIndex={0}
+      title={undefined}
     >
-      <span
-        className="MuiButton-label-100"
-      >
+      <div>
         Previous
-      </span>
-      <span
-        className="MuiTouchRipple-root-128"
+      </div>
+      <div
+        className="Button__SpinnerWrap-bgOcuM cCKgPo"
+        style={
+          Object {
+            "opacity": 0,
+            "paddingLeft": 0,
+            "width": 0,
+          }
+        }
       />
-    </button>
+    </div>
   </div>
   <div
     className="MuiGrid-item-3"
   >
-    <button
-      className="MuiButtonBase-root-125 MuiButton-root-99 MuiButton-contained-110 MuiButton-raised-113"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={undefined}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
+    <div
+      className="Button__ButtonDiv-bnfrK cnBjlR"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      tabIndex={0}
+      title={undefined}
     >
-      <span
-        className="MuiButton-label-100"
-      >
+      <div>
         Next
-      </span>
-      <span
-        className="MuiTouchRipple-root-128"
+      </div>
+      <div
+        className="Button__SpinnerWrap-bgOcuM cCKgPo"
+        style={
+          Object {
+            "opacity": 0,
+            "paddingLeft": 0,
+            "width": 0,
+          }
+        }
       />
-    </button>
+    </div>
   </div>
 </div>
 `;
 
 exports[`shows next button, hides previous button 1`] = `
 <div
-  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-1"
+  className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 SkPageStepper-root-1"
 >
   <div
     className="MuiGrid-item-3"
@@ -117,32 +105,28 @@ exports[`shows next button, hides previous button 1`] = `
   <div
     className="MuiGrid-item-3"
   >
-    <button
-      className="MuiButtonBase-root-125 MuiButton-root-99 MuiButton-contained-110 MuiButton-raised-113"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={undefined}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
+    <div
+      className="Button__ButtonDiv-bnfrK cnBjlR"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      tabIndex={0}
+      title={undefined}
     >
-      <span
-        className="MuiButton-label-100"
-      >
+      <div>
         Next
-      </span>
-      <span
-        className="MuiTouchRipple-root-128"
+      </div>
+      <div
+        className="Button__SpinnerWrap-bgOcuM cCKgPo"
+        style={
+          Object {
+            "opacity": 0,
+            "paddingLeft": 0,
+            "width": 0,
+          }
+        }
       />
-    </button>
+    </div>
   </div>
 </div>
 `;

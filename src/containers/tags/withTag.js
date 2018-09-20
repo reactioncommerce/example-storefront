@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import tagQuery from "./tag.gql";
 
 /**
@@ -9,7 +10,7 @@ import tagQuery from "./tag.gql";
  * @param {React.Component} Component to decorate
  * @returns {React.Component} - Component with `tag` prop
  */
-export default (Component) => (
+export default function withTag(Component) {
   class WithTag extends React.Component {
     static propTypes = {
       /**
@@ -38,4 +39,8 @@ export default (Component) => (
       );
     }
   }
-);
+
+  hoistNonReactStatic(WithTag, Component);
+
+  return WithTag;
+}

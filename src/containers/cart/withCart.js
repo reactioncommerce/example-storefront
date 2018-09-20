@@ -2,26 +2,24 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Mutation, Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
-import getConfig from "next/config";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import cartItemsConnectionToArray from "lib/utils/cartItemsConnectionToArray";
+import withShop from "containers/shop/withShop";
 import {
   createCartMutation,
   addCartItemsMutation,
   removeCartItemsMutation,
   reconcileCartsMutation,
   setEmailOnAnonymousCartMutation,
-  updateCartItemsQuantityMutation
+  setFulfillmentOptionCartMutation,
+  setShippingAddressCartMutation,
+  updateCartItemsQuantityMutation,
+  updateFulfillmentOptionsForGroup
 } from "./mutations.gql";
 import {
   accountCartByAccountIdQuery,
   anonymousCartByCartIdQuery
 } from "./queries.gql";
-
-const { publicRuntimeConfig } = getConfig() || {
-  publicRuntimeConfig: {
-    externalAssetsUrl: ""
-  }
-};
 
 /**
  * withCart higher order query component for creating, fetching, and updating carts
@@ -29,8 +27,9 @@ const { publicRuntimeConfig } = getConfig() || {
  * @param {React.Component} Component to decorate
  * @returns {React.Component} - Component with `cart` props and callbacks
  */
-export default (Component) => (
+export default function withCart(Component) {
   @withApollo
+  @withShop
   @inject("cartStore", "authStore")
   @observer
   class WithCart extends React.Component {
@@ -121,25 +120,27 @@ export default (Component) => (
      * @param {Function} mutation An Apollo mutation function
      * @param {Object} data An an object containing input data for mutations
      * @param {Array} data.items An an array of CartItemInput objects
+     * @param {Boolean} isCreating True if the mutation is CreateCart. CreateCartInput does
+     *   not allow `cartId` or `token` while `AddCartItemsInput` needs them.
      * @returns {undefined} No return
      */
-    handleAddItemsToCart(mutation, data) {
+    handleAddItemsToCart(mutation, data, isCreating) {
       const { authStore, cartStore, shop } = this.props;
       const input = {
         items: data.items
       };
 
-      if (authStore.isAuthenticated === false && cartStore.hasAnonymousCartCredentials) {
+      if (!isCreating && !authStore.isAuthenticated && cartStore.hasAnonymousCartCredentials) {
         // Given an anonymous user, with a cart, add token and cartId to input
         const { anonymousCartId, anonymousCartToken } = cartStore;
 
         // Add items to an existing anonymous cart
         input.token = anonymousCartToken;
         input.cartId = anonymousCartId;
-      } else if (authStore.isAuthenticated === true && cartStore.hasAccountCart) {
+      } else if (!isCreating && authStore.isAuthenticated && cartStore.hasAccountCart) {
         // With an account and an account cart, set the accountCartId on the input object
         input.cartId = cartStore.accountCartId;
-      } else if (!cartStore.hasAccountCart && !cartStore.hasAnonymousCartCredentials) {
+      } else if (isCreating) {
         // With no anonymous or account cart, add shop Id to input as it will be needed for the create cart mutation
         input.shopId = shop._id;
       }
@@ -226,27 +227,111 @@ export default (Component) => (
     }
 
     /**
-     *
      * @name handleSetEmailOnAnonymousCart
      * @summary Call when `setEmailOnAnonymousCart` callback is called
-     * @param {Funtion} mutation An Apollo mutation function
+     * @param {Function} mutation An Apollo mutation function
      * @param {string} email An email address to be set on an anonymous cart
      * @return {undefined} No return
      */
     handleSetEmailOnAnonymousCart = ({ email }) => {
-      const { cartStore, client: apolloClient } = this.props;
+      const { cartStore: { anonymousCartToken }, client: apolloClient } = this.props;
+      // Omit cartToken, as for this particular input type the
+      // the param is named token
+      const { cartToken, ...rest } = this.cartIdAndCartToken;
+
       apolloClient.mutate({
         mutation: setEmailOnAnonymousCartMutation,
         variables: {
           input: {
-            cartId: cartStore.anonymousCartId,
-            email,
-            token: cartStore.anonymousCartToken
+            ...{ ...{ token: anonymousCartToken }, ...rest },
+            email
           }
         }
       });
     }
 
+    /**
+     * @name handleUpdateFulfillmentOptionsForGroup
+     * @summary Sets a fulfillment method for items in a cart
+     * @param {String} fulfillmentGroupId - Id of the group to update options for.
+     * @param {Function} mutation An Apollo mutation function
+     * @return {undefined} No return
+     */
+    handleUpdateFulfillmentOptionsForGroup = (fulfillmentGroupId) => {
+      const { client: apolloClient } = this.props;
+
+
+      apolloClient.mutate({
+        mutation: updateFulfillmentOptionsForGroup,
+        variables: {
+          input: {
+            ...this.cartIdAndCartToken,
+            fulfillmentGroupId
+          }
+        }
+      });
+    }
+
+    get cartIdAndCartToken() {
+      const { cartStore } = this.props;
+      const { accountCartId, anonymousCartId, anonymousCartToken } = cartStore;
+      let cartToken = {};
+      if (!accountCartId) {
+        cartToken = { cartToken: anonymousCartToken };
+      }
+
+      return {
+        cartId: accountCartId || anonymousCartId,
+        ...cartToken
+      };
+    }
+
+    /**
+     * @name handleSetFulfillmentOption
+     * @summary Sets a fulfillment method for items in a cart
+     * @param {Object} fulfillmentOption - an object with the following props: fulfillmentGroupId, fulfillmentMethodId
+     * @param {Function} mutation An Apollo mutation function
+     * @return {undefined} No return
+     */
+    handleSetFulfillmentOption = ({ fulfillmentGroupId, fulfillmentMethodId }) => {
+      const { client: apolloClient } = this.props;
+
+      apolloClient.mutate({
+        mutation: setFulfillmentOptionCartMutation,
+        variables: {
+          input: {
+            ...this.cartIdAndCartToken,
+            fulfillmentGroupId,
+            fulfillmentMethodId
+          }
+        }
+      });
+    }
+
+    /**
+     * @name handleSetShippingAddress
+     * @summary Sets the shipping address for the cart
+     * @param {Object} address - The shipping address
+     * @param {Function} mutation An Apollo mutation function
+     * @return {undefined} No return
+     */
+    handleSetShippingAddress = async (address) => {
+      const { client: apolloClient } = this.props;
+
+      const result = await apolloClient.mutate({
+        mutation: setShippingAddressCartMutation,
+        variables: {
+          input: {
+            ...this.cartIdAndCartToken,
+            address
+          }
+        }
+      });
+
+      // Update fulfillment options for current cart
+      const { data: { setShippingAddressOnCart: { cart } } } = result;
+      this.handleUpdateFulfillmentOptionsForGroup(cart.checkout.fulfillmentGroups[0]._id);
+    }
 
     render() {
       const { authStore, cartStore, shop } = this.props;
@@ -276,7 +361,7 @@ export default (Component) => (
 
       return (
         <Query query={query} variables={variables} skip={skipQuery}>
-          {({ data: cartData, fetchMore, refetch: refetchCart }) => {
+          {({ loading: isLoading, data: cartData, fetchMore, refetch: refetchCart }) => {
             const { cart } = cartData || {};
             const { pageInfo } = (cart && cart.items) || {};
 
@@ -296,9 +381,7 @@ export default (Component) => (
             if (cart) {
               processedCartData = {
                 ...cart,
-                items: cartItemsConnectionToArray(cart.items, {
-                  externalAssetsUrl: publicRuntimeConfig.externalAssetsUrl
-                })
+                items: cartItemsConnectionToArray(cart.items)
               };
             }
 
@@ -320,9 +403,16 @@ export default (Component) => (
                 {(mutationFunction) => (
                   <Component
                     {...this.props}
+                    addItemsToCart={(items) => {
+                      this.handleAddItemsToCart(mutationFunction, { items }, !cart);
+                    }}
+                    cart={processedCartData}
+                    checkoutMutations={{
+                      onSetFulfillmentOption: this.handleSetFulfillmentOption,
+                      onSetShippingAddress: this.handleSetShippingAddress
+                    }}
                     hasMoreCartItems={(pageInfo && pageInfo.hasNextPage) || false}
-                    onChangeCartItemsQuantity={this.handleChangeCartItemsQuantity}
-                    onRemoveCartItems={this.handleRemoveCartItems}
+                    isLoading={skipQuery ? false : isLoading}
                     loadMoreCartItems={() => {
                       fetchMore({
                         variables: {
@@ -355,13 +445,10 @@ export default (Component) => (
                         }
                       });
                     }}
-                    addItemsToCart={(items) => {
-                      this.handleAddItemsToCart(mutationFunction, {
-                        items
-                      });
-                    }}
+                    onChangeCartItemsQuantity={this.handleChangeCartItemsQuantity}
+                    onRemoveCartItems={this.handleRemoveCartItems}
+                    refetchCart={refetchCart}
                     setEmailOnAnonymousCart={this.handleSetEmailOnAnonymousCart}
-                    cart={processedCartData}
                   />
                 )}
               </Mutation>
@@ -372,4 +459,8 @@ export default (Component) => (
       );
     }
   }
-);
+
+  hoistNonReactStatic(WithCart, Component);
+
+  return WithCart;
+}
