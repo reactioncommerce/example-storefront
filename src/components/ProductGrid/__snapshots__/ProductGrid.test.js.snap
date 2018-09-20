@@ -1,29 +1,139 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Empty product grid message 1`] = `
-<div
-  className="inject-ProductGridEmptyMessage-with-routingStore-root-155"
->
-  <p
-    className="MuiTypography-root-158 MuiTypography-body1-167 MuiTypography-paragraph-177 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-157"
+Array [
+  <div
+    className="MuiGrid-container-2 MuiGrid-spacing-xs-8-24 WithTracking-ProductGrid--filters-1"
   >
-    Sorry! We couldn't find what you're looking for.
-  </p>
-  <p
-    className="MuiTypography-root-158 MuiTypography-body1-167 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-156"
-  >
-    <a
-      className="Link-anchor-184"
-      href="tag/test-tag"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      role="link"
-      tabIndex={0}
+    <div
+      className="MuiGrid-item-3"
     >
-      Clear filters
-    </a>
-  </p>
-</div>
+      <div
+        className="MuiInputBase-root-124 MuiInput-root-111 Select-input-103"
+        onClick={[Function]}
+      >
+        <div
+          className="MuiSelect-root-104"
+        >
+          <div
+            aria-haspopup="true"
+            aria-owns={null}
+            aria-pressed="false"
+            className="MuiSelect-select-105 MuiSelect-selectMenu-108 Select-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            20 Products
+          </div>
+          <input
+            autoComplete={undefined}
+            autoFocus={undefined}
+            defaultValue={undefined}
+            id="page-size"
+            name="pageSize"
+            onKeyDown={undefined}
+            onKeyUp={undefined}
+            placeholder={undefined}
+            rows={undefined}
+            type="hidden"
+            value={20}
+          />
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-141 MuiSelect-icon-110"
+            color={undefined}
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-item-3"
+    >
+      <div
+        className="MuiInputBase-root-124 MuiInput-root-111 Select-input-103"
+        onClick={[Function]}
+      >
+        <div
+          className="MuiSelect-root-104"
+        >
+          <div
+            aria-haspopup="true"
+            aria-owns={null}
+            aria-pressed="false"
+            className="MuiSelect-select-105 MuiSelect-selectMenu-108 Select-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            Newest
+          </div>
+          <input
+            autoComplete={undefined}
+            autoFocus={undefined}
+            defaultValue={undefined}
+            id="sort-by"
+            name="sortBy"
+            onKeyDown={undefined}
+            onKeyUp={undefined}
+            placeholder={undefined}
+            rows={undefined}
+            type="hidden"
+            value="updatedAt-desc"
+          />
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-141 MuiSelect-icon-110"
+            color={undefined}
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="inject-ProductGridEmptyMessage-with-routingStore-root-155"
+  >
+    <p
+      className="MuiTypography-root-158 MuiTypography-body1-167 MuiTypography-paragraph-177 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-157"
+    >
+      Sorry! We couldn't find what you're looking for.
+    </p>
+    <p
+      className="MuiTypography-root-158 MuiTypography-body1-167 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-156"
+    >
+      <a
+        className="Link-anchor-184"
+        href="tag/test-tag"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="link"
+        tabIndex={0}
+      >
+        Clear filters
+      </a>
+    </p>
+  </div>,
+]
 `;
 
 exports[`basic snapshot 1`] = `

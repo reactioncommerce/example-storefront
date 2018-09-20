@@ -29,6 +29,16 @@ const { publicRuntimeConfig } = getConfig();
 @withTags
 @track({}, { dispatch })
 export default class App extends NextApp {
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {};
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
+    return { pageProps };
+  }
+
   constructor(props) {
     super(props);
     this.pageContext = getPageContext();
@@ -57,7 +67,7 @@ export default class App extends NextApp {
   }
 
   render() {
-    const { Component, shop, viewer, ...rest } = this.props;
+    const { Component, pageProps, shop, viewer, ...rest } = this.props;
     const { route } = this.props.router;
     const { stripe } = this.state;
 
@@ -69,22 +79,17 @@ export default class App extends NextApp {
             generateClassName={this.pageContext.generateClassName}
           >
             <RuiThemeProvider theme={componentTheme}>
-              <MuiThemeProvider
-                theme={this.pageContext.theme}
-                sheetsManager={this.pageContext.sheetsManager}
-              >
+              <MuiThemeProvider theme={this.pageContext.theme} sheetsManager={this.pageContext.sheetsManager}>
                 <CssBaseline />
-                {
-                  (route === "/checkout" || route === "/login") ? (
-                    <StripeProvider stripe={stripe}>
-                      <Component pageContext={this.pageContext} shop={shop} {...rest} />
-                    </StripeProvider>
-                  ) : (
-                      <Layout shop={shop} viewer={viewer}>
-                      <Component pageContext={this.pageContext} shop={shop} {...rest} />
-                    </Layout>
-                  )
-                }
+                {route === "/checkout" || route === "/login" ? (
+                  <StripeProvider stripe={stripe}>
+                    <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
+                  </StripeProvider>
+                ) : (
+                  <Layout shop={shop} viewer={viewer}>
+                    <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
+                  </Layout>
+                )}
               </MuiThemeProvider>
             </RuiThemeProvider>
           </JssProvider>

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { inject, Provider } from "mobx-react";
 import { Query } from "react-apollo";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import tagsQuery from "./tags.gql";
 
 /**
@@ -10,7 +11,7 @@ import tagsQuery from "./tags.gql";
  * @param {React.Component} Component to decorate
  * @returns {React.Component} - Component with `tag` prop
  */
-export default (Component) => (
+export default function withTag(Component) {
   @inject("primaryShopId")
   class WithTag extends React.Component {
     static propTypes = {
@@ -97,4 +98,8 @@ export default (Component) => (
       );
     }
   }
-);
+
+  hoistNonReactStatic(WithTag, Component);
+
+  return WithTag;
+}

@@ -81,6 +81,12 @@
   dependencies:
     "@babel/types" "7.0.0-beta.42"
 
+"@babel/helper-annotate-as-pure@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.0.0.tgz#323d39dd0b50e10c7c06ca7d7638e6864d8c5c32"
+  dependencies:
+    "@babel/types" "^7.0.0"
+
 "@babel/helper-builder-binary-assignment-operator-visitor@7.0.0-beta.42":
   version "7.0.0-beta.42"
   resolved "https://registry.yarnpkg.com/@babel/helper-builder-binary-assignment-operator-visitor/-/helper-builder-binary-assignment-operator-visitor-7.0.0-beta.42.tgz#7305281eb996954c47f87ec7710e2a9a8edd8077"
@@ -837,6 +843,14 @@
     lodash "^4.17.5"
     to-fast-properties "^2.0.0"
 
+"@babel/types@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.0.0.tgz#6e191793d3c854d19c6749989e3bc55f0e962118"
+  dependencies:
+    esutils "^2.0.2"
+    lodash "^4.17.10"
+    to-fast-properties "^2.0.0"
+
 "@emotion/babel-utils@^0.6.4":
   version "0.6.8"
   resolved "https://registry.yarnpkg.com/@emotion/babel-utils/-/babel-utils-0.6.8.tgz#1ebb41b789e345bbdf3dd6c73d0df2c4fa7d01db"
@@ -1547,6 +1561,13 @@ babel-plugin-module-resolver@^3.1.1:
 babel-plugin-react-require@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-react-require/-/babel-plugin-react-require-3.0.0.tgz#2e4e7b4496b93a654a1c80042276de4e4eeb20e3"
+
+babel-plugin-styled-components@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.7.1.tgz#c291d2a48ec77bb0828275b87696b6594a2f80f9"
+  dependencies:
+    "@babel/helper-annotate-as-pure" "^7.0.0"
+    lodash "^4.17.10"
 
 babel-plugin-syntax-class-properties@^6.8.0:
   version "6.13.0"

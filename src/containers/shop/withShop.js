@@ -1,6 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
 import { Provider } from "mobx-react";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import primaryShopIdQuery from "../common-gql/primaryShopId.gql";
 import shopQuery from "./shop.gql";
 
@@ -10,7 +11,7 @@ import shopQuery from "./shop.gql";
  * @param {React.Component} Component to decorate and apply
  * @returns {React.Component} - component decorated with primaryShopId and shop as props
  */
-export default (Component) => (
+export default function withShop(Component) {
   class Shop extends React.Component {
     render() {
       return (
@@ -43,4 +44,8 @@ export default (Component) => (
       );
     }
   }
-);
+
+  hoistNonReactStatic(Shop, Component);
+
+  return Shop;
+}
