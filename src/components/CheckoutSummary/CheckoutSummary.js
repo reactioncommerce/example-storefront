@@ -1,9 +1,17 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Grid from "@material-ui/core/Grid";
-import CartSummary from "@reactioncommerce/components/CartSummary/v1";
 import CartItems from "components/CartItems";
+import CartSummary from "@reactioncommerce/components/CartSummary/v1";
+import Grid from "@material-ui/core/Grid";
+import PropTypes from "prop-types";
+import React, { Component } from "react";
+import { withStyles } from "@material-ui/core/styles";
 
+const styles = (theme) => ({
+  summary: {
+    borderTop: theme.palette.borders.default
+  }
+});
+
+@withStyles(styles, { name: "SkCheckoutSummary" })
 class CheckoutSummary extends Component {
   static propTypes = {
     cart: PropTypes.shape({
@@ -70,7 +78,7 @@ class CheckoutSummary extends Component {
   }
 
   renderCartSummary() {
-    const { cart } = this.props;
+    const { cart, classes } = this.props;
 
     if (cart && cart.checkout && cart.checkout.summary) {
       const {
@@ -80,7 +88,7 @@ class CheckoutSummary extends Component {
       } = cart.checkout.summary;
 
       return (
-        <Grid item xs={12}>
+        <Grid item xs={12} className={classes.summary}>
           <CartSummary
             isDense
             displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
