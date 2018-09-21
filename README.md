@@ -3,11 +3,12 @@
 
 _**Note:** This project is a work in progress and should not be used in production at this time._
 
-Reference headless ecommerce storefront starter kit application for [Reaction Commerce](https://reactioncommerce.com/), featuring [React](https://reactjs.org/), [Next.js](https://nextjs.org/) and [Apollo](https://www.apollographql.com/docs/react/) to connect to the [Reaction GraphQL API](https://github.com/reactioncommerce/reaction/), available as of Reaction v2.0.0.
+Reference headless ecommerce storefront for [Reaction Commerce](https://reactioncommerce.com/) v 2.0.0.
 
 ## Features
 
-- Headless ecommerce starter kit with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [MobX](https://mobx.js.org/getting-started.html), [GraphQL](https://graphql.org/), [Apollo](https://www.apollographql.com/docs/react/)
+- Headless ecommerce starter kit built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [MobX](https://mobx.js.org/getting-started.html), [GraphQL](https://graphql.org/), [Apollo Client](https://www.apollographql.com/docs/react/)
+- [Reaction GraphQL API](https://github.com/reactioncommerce/reaction/tree/master/imports/plugins/core/graphql/server/no-meteor) integration
 - Server-side rendering
 - Payments with [Stripe](https://stripe.com/)
 - Analytics with [Segment](https://segment.com/)
