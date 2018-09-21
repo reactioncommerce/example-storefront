@@ -42,12 +42,12 @@ const cartItem = {
 // pending the GraphQL endpoint being hooked up
 // Remove the code between these comments when live data is available
 
-const styles = (theme) => ({
+const styles = theme => ({
   addToCartButton: {
-    "padding": theme.spacing.unit,
-    "backgroundColor": theme.palette.primary.main,
-    "borderRadius": theme.palette.reaction.buttonBorderRadius,
-    "minWidth": "66%",
+    padding: theme.spacing.unit,
+    backgroundColor: theme.palette.primary.main,
+    borderRadius: theme.palette.reaction.buttonBorderRadius,
+    minWidth: "66%",
     "&:hover": {
       borderColor: theme.palette.reaction.activeElementBorderColor
     },
@@ -78,16 +78,16 @@ const styles = (theme) => ({
     marginBottom: theme.spacing.unit * 3
   },
   quantityInput: {
-    "color": theme.palette.reaction.coolGray500,
-    "fontSize": "12px",
-    "width": "40px",
-    "textAlign": "center",
+    color: theme.palette.reaction.coolGray500,
+    fontSize: "12px",
+    width: "40px",
+    textAlign: "center",
     "&:focus": {
       borderColor: "#80bdff",
       boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)"
     },
-    "borderLeft": `1px solid ${theme.palette.reaction.black15}`,
-    "borderRight": `1px solid ${theme.palette.reaction.black15}`
+    borderLeft: `1px solid ${theme.palette.reaction.black15}`,
+    borderRight: `1px solid ${theme.palette.reaction.black15}`
   },
   quantitySvg: {
     fontSize: "18px"
@@ -97,7 +97,6 @@ const styles = (theme) => ({
     marginBottom: theme.spacing.unit * 2
   }
 });
-
 
 @withStyles(styles, { name: "SkProductDetailAddToCart" })
 @inject("uiStore")
@@ -142,9 +141,9 @@ export default class ProductDetailAddToCart extends Component {
     setTimeout(() => {
       uiStore.closeCartPopover();
     }, 3000);
-  }
+  };
 
-  handleQuantityInputChange = (event) => {
+  handleQuantityInputChange = event => {
     const { value } = event.target;
 
     const numericValue = Math.floor(Number(value));
@@ -154,13 +153,13 @@ export default class ProductDetailAddToCart extends Component {
     }
 
     return this.setState({ addToCartQuantity: numericValue });
-  }
+  };
 
   handleIncrementButton = () => {
     const value = this.state.addToCartQuantity + 1;
 
     this.setState({ addToCartQuantity: value });
-  }
+  };
 
   handleDecrementButton = () => {
     const value = this.state.addToCartQuantity - 1;
@@ -168,7 +167,7 @@ export default class ProductDetailAddToCart extends Component {
     if (value >= 1) {
       this.setState({ addToCartQuantity: value });
     }
-  }
+  };
 
   render() {
     const {
@@ -191,7 +190,9 @@ export default class ProductDetailAddToCart extends Component {
         <Grid container>
           <Grid item xs={12} className={quantityGrid}>
             <Divider />
-            <Typography component="span" className={quantityTypography}>Quantity</Typography>
+            <Typography component="span" className={quantityTypography}>
+              Quantity
+            </Typography>
             <TextField
               id="addToCartQuantityInput"
               value={addToCartQuantity}
@@ -204,6 +205,7 @@ export default class ProductDetailAddToCart extends Component {
                       variant="outlined"
                       onClick={this.handleDecrementButton}
                       className={incrementButton}
+                      disableRipple
                     >
                       <Minus className={quantitySvg} />
                     </ButtonBase>
@@ -216,6 +218,7 @@ export default class ProductDetailAddToCart extends Component {
                       color="default"
                       onClick={this.handleIncrementButton}
                       className={incrementButton}
+                      disableRipple
                     >
                       <Plus className={quantitySvg} />
                     </ButtonBase>
@@ -230,10 +233,7 @@ export default class ProductDetailAddToCart extends Component {
             />
           </Grid>
           <Grid item xs={12}>
-            <ButtonBase
-              onClick={this.handleOnClick}
-              className={addToCartButton}
-            >
+            <ButtonBase onClick={this.handleOnClick} className={addToCartButton} disableRipple>
               <Typography className={addToCartText} component="span" variant="body1">
                 Add to cart
               </Typography>
