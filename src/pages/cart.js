@@ -32,6 +32,10 @@ const styles = (theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
     marginTop: "1.6rem",
     marginBottom: "3.1rem"
+  },
+  itemWrapper: {
+    borderTop: theme.palette.borders.default,
+    borderBottom: theme.palette.borders.default
   }
 });
 
@@ -92,13 +96,15 @@ class CartPage extends Component {
     if (cart && Array.isArray(cart.items) && cart.items.length) {
       return (
         <Grid item xs={12} md={8}>
-          <CartItems
-            hasMoreCartItems={hasMoreCartItems}
-            onLoadMoreCartItems={loadMoreCartItems}
-            items={cart.items}
-            onChangeCartItemQuantity={this.handleItemQuantityChange}
-            onRemoveItemFromCart={this.handleRemoveItem}
-          />
+          <div className={classes.itemWrapper}>
+            <CartItems
+              hasMoreCartItems={hasMoreCartItems}
+              onLoadMoreCartItems={loadMoreCartItems}
+              items={cart.items}
+              onChangeCartItemQuantity={this.handleItemQuantityChange}
+              onRemoveItemFromCart={this.handleRemoveItem}
+            />
+          </div>
         </Grid>
       );
     }
