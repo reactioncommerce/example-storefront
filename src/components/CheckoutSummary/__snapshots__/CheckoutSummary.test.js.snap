@@ -12,7 +12,7 @@ exports[`basic snapshot 1`] = `
         className="CartItems__Items-gEXRwN gdnVAG"
       >
         <div
-          className="CartItem__Item-ghDCXl gKDHYG"
+          className="CartItem__Item-ghDCXl cOMnbm"
         >
           <a
             href="/product-slug"
@@ -120,7 +120,7 @@ exports[`basic snapshot 1`] = `
           </div>
         </div>
         <div
-          className="CartItem__Item-ghDCXl gKDHYG"
+          className="CartItem__Item-ghDCXl cOMnbm"
         >
           <a
             href="/product-slug"
@@ -226,46 +226,46 @@ exports[`basic snapshot 1`] = `
         <tbody>
           <tr>
             <td
-              className="CartSummary__Td-jXBgKC hdqJNm"
+              className="CartSummary__Td-jXBgKC jKaJQb"
             >
               Item total
             </td>
             <td
-              className="CartSummary__Td-boDvWU dNHWhU"
+              className="CartSummary__Td-boDvWU kKknSH"
             >
               $118
             </td>
           </tr>
           <tr>
             <td
-              className="CartSummary__Td-jXBgKC hdqJNm"
+              className="CartSummary__Td-jXBgKC jKaJQb"
             >
               Shipping
             </td>
             <td
-              className="CartSummary__Td-boDvWU dNHWhU"
+              className="CartSummary__Td-boDvWU kKknSH"
             />
           </tr>
           <tr>
             <td
-              className="CartSummary__Td-jXBgKC hdqJNm"
+              className="CartSummary__Td-jXBgKC jKaJQb"
             >
               Tax
             </td>
             <td
-              className="CartSummary__Td-boDvWU dNHWhU"
+              className="CartSummary__Td-boDvWU kKknSH"
             >
               -
             </td>
           </tr>
           <tr>
             <td
-              className="CartSummary__Td-jXBgKC hViozU"
+              className="CartSummary__Td-jXBgKC grsCCy"
             >
               Order total
             </td>
             <td
-              className="CartSummary__Td-boDvWU cttmNN"
+              className="CartSummary__Td-boDvWU xcYQR"
             >
               <span
                 className="CartSummary__Total-BZUQP bdUKHv"
