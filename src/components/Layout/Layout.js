@@ -26,7 +26,8 @@ class Layout extends Component {
     classes: PropTypes.object,
     shop: PropTypes.shape({
       name: PropTypes.string
-    }).isRequired
+    }).isRequired,
+    viewer: PropTypes.object
   };
 
   static defaultProps = {
@@ -34,12 +35,12 @@ class Layout extends Component {
   };
 
   render() {
-    const { classes, children, shop } = this.props;
+    const { classes, children, shop, viewer } = this.props;
 
     return (
       <React.Fragment>
         <div className={classes.root}>
-          <Header shop={shop} />
+          <Header shop={shop} viewer={viewer} />
           <main className={classes.main}>
             <article className={classes.article}>{children}</article>
           </main>
