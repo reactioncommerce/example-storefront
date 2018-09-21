@@ -49,7 +49,7 @@ app
     // This endpoint initializes the OAuth2 request
     server.get("/auth2", (req, res, next) => {
       if (!req.user) req.session.redirectTo = req.get("Referer");
-      next();
+      next(); // eslint-disable-line promise/no-callback-in-promise
     }, passport.authenticate("oauth2"));
 
     // This endpoint handles OAuth2 requests (exchanges code for token)
