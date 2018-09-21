@@ -2,7 +2,7 @@
 
 exports[`basic snapshot 1`] = `
 <button
-  className="MuiButtonBase-root-2 MediaGalleryItem-root-1"
+  className="MuiButtonBase-root-2 SkMediaGalleryItem-root-1"
   disabled={undefined}
   onBlur={[Function]}
   onClick={[Function]}
@@ -19,11 +19,11 @@ exports[`basic snapshot 1`] = `
   type="button"
 >
   <div
-    className="Img-imgWrapper-5 "
+    className="SkImg-imgWrapper-5 "
   >
     <img
       alt=""
-      className="Img-img-7 Img-imgLoading-9 "
+      className="SkImg-img-7 SkImg-imgLoading-9 "
       src="/resources/placeholder.gif"
     />
   </div>

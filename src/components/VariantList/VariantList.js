@@ -23,7 +23,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkVariantList" })
 export default class VariantList extends Component {
   static propTypes = {
     classes: PropTypes.object,

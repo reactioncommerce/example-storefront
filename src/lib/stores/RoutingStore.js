@@ -86,7 +86,7 @@ export default class RoutingStore {
       path = `${this.pathname}?${this.queryString}`;
     }
 
-    Router.replaceRoute(path, path, { shallow: true });
+    Router.pushRoute(path, path, { shallow: true });
     return path;
   }
 }

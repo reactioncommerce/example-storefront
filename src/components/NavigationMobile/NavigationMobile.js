@@ -13,7 +13,7 @@ const styles = () => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkNavigationMobile" })
 @withNavigationTags
 @inject("uiStore")
 @observer

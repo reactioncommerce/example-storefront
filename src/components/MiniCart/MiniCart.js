@@ -39,7 +39,7 @@ const styles = ({ palette, zIndex }) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkMiniCart" })
 @withShop
 @withCart
 @inject("uiStore")

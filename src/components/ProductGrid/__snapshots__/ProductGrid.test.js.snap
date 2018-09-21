@@ -3,13 +3,13 @@
 exports[`Empty product grid message 1`] = `
 Array [
   <div
-    className="MuiGrid-container-2 MuiGrid-spacing-xs-8-24 WithTracking-ProductGrid--filters-1"
+    className="MuiGrid-container-2 MuiGrid-spacing-xs-8-24 SkProductGrid-filters-1"
   >
     <div
       className="MuiGrid-item-3"
     >
       <div
-        className="MuiInputBase-root-124 MuiInput-root-111 Select-input-103"
+        className="MuiInputBase-root-124 MuiInput-root-111 SkSelect-input-103"
         onClick={[Function]}
       >
         <div
@@ -19,7 +19,7 @@ Array [
             aria-haspopup="true"
             aria-owns={null}
             aria-pressed="false"
-            className="MuiSelect-select-105 MuiSelect-selectMenu-108 Select-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
+            className="MuiSelect-select-105 MuiSelect-selectMenu-108 SkSelect-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -61,7 +61,7 @@ Array [
       className="MuiGrid-item-3"
     >
       <div
-        className="MuiInputBase-root-124 MuiInput-root-111 Select-input-103"
+        className="MuiInputBase-root-124 MuiInput-root-111 SkSelect-input-103"
         onClick={[Function]}
       >
         <div
@@ -71,7 +71,7 @@ Array [
             aria-haspopup="true"
             aria-owns={null}
             aria-pressed="false"
-            className="MuiSelect-select-105 MuiSelect-selectMenu-108 Select-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
+            className="MuiSelect-select-105 MuiSelect-selectMenu-108 SkSelect-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -122,7 +122,7 @@ Array [
       className="MuiTypography-root-158 MuiTypography-body1-167 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-156"
     >
       <a
-        className="Link-anchor-184"
+        className="SkLink-anchor-184"
         href="tag/test-tag"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -139,13 +139,13 @@ Array [
 exports[`basic snapshot 1`] = `
 Array [
   <div
-    className="MuiGrid-container-2 MuiGrid-spacing-xs-8-24 WithTracking-ProductGrid--filters-1"
+    className="MuiGrid-container-2 MuiGrid-spacing-xs-8-24 SkProductGrid-filters-1"
   >
     <div
       className="MuiGrid-item-3"
     >
       <div
-        className="MuiInputBase-root-124 MuiInput-root-111 Select-input-103"
+        className="MuiInputBase-root-124 MuiInput-root-111 SkSelect-input-103"
         onClick={[Function]}
       >
         <div
@@ -155,7 +155,7 @@ Array [
             aria-haspopup="true"
             aria-owns={null}
             aria-pressed="false"
-            className="MuiSelect-select-105 MuiSelect-selectMenu-108 Select-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
+            className="MuiSelect-select-105 MuiSelect-selectMenu-108 SkSelect-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -197,7 +197,7 @@ Array [
       className="MuiGrid-item-3"
     >
       <div
-        className="MuiInputBase-root-124 MuiInput-root-111 Select-input-103"
+        className="MuiInputBase-root-124 MuiInput-root-111 SkSelect-input-103"
         onClick={[Function]}
       >
         <div
@@ -207,7 +207,7 @@ Array [
             aria-haspopup="true"
             aria-owns={null}
             aria-pressed="false"
-            className="MuiSelect-select-105 MuiSelect-selectMenu-108 Select-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
+            className="MuiSelect-select-105 MuiSelect-selectMenu-108 SkSelect-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -346,7 +346,7 @@ Details can be added below the image for more specific product information.
     </div>
   </div>,
   <div
-    className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 PageStepper-root-154"
+    className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 SkPageStepper-root-154"
   >
     <div
       className="MuiGrid-item-3"

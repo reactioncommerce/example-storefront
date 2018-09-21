@@ -2,11 +2,11 @@
 
 exports[`Img snapshot 1`] = `
 <div
-  className="Img-imgWrapper-1 "
+  className="SkImg-imgWrapper-1 "
 >
   <img
     alt=""
-    className="Img-img-3 Img-imgLoading-5 "
+    className="SkImg-img-3 SkImg-imgLoading-5 "
     src=""
   />
 </div>

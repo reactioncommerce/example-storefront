@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import styles from "./styles";
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkProductDetailOption" })
 export default class ProductDetailOption extends Component {
   static propTypes = {
     classes: PropTypes.object,

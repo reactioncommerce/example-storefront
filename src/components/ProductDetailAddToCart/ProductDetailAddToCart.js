@@ -99,7 +99,7 @@ const styles = (theme) => ({
 });
 
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkProductDetailAddToCart" })
 @inject("uiStore")
 @observer
 export default class ProductDetailAddToCart extends Component {
@@ -121,11 +121,16 @@ export default class ProductDetailAddToCart extends Component {
     addToCartQuantity: 1
   };
 
-  handleOnClick = () => {
+  handleOnClick = async () => {
     const { onClick, uiStore } = this.props;
 
     // Pass chosen quantity to onClick callback
-    onClick(this.state.addToCartQuantity);
+    await onClick(this.state.addToCartQuantity);
+
+    // Scroll to the top
+    if (typeof window !== "undefined" && typeof window.scrollTo === "function") {
+      window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
+    }
 
     // Reset cart quantity to 1 after items are added to cart
     this.setState({ addToCartQuantity: 1 });

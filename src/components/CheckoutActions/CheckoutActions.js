@@ -41,7 +41,7 @@ export default class CheckoutActions extends Component {
     // Omit firstName, lastName props as they are not in AddressInput type
     // The address form and GraphQL endpoint need to be made consistent
     const { firstName, lastName, ...rest } = address;
-    onSetShippingAddress({
+    return onSetShippingAddress({
       fullName: `${address.firstName} ${address.lastName}`,
       ...rest
     });
@@ -55,7 +55,7 @@ export default class CheckoutActions extends Component {
       fulfillmentMethodId: shippingMethod.selectedFulfillmentOption.fulfillmentMethod._id
     };
 
-    onSetFulfillmentOption(fulfillmentOption);
+    return onSetFulfillmentOption(fulfillmentOption);
   }
 
   setPaymentMethod = (stripeToken) => {
@@ -102,6 +102,10 @@ export default class CheckoutActions extends Component {
   }
 
   render() {
+    if (!this.props.cart) {
+      return null;
+    }
+
     const { cartStore: { stripeToken } } = this.props;
     const { checkout: { fulfillmentGroups, summary }, items } = this.props.cart;
     const shippingAddressSet = isShippingAddressSet(fulfillmentGroups);

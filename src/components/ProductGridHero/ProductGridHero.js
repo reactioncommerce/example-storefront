@@ -16,7 +16,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkProductGridHero" })
 export default class ProductGridHero extends Component {
   static propTypes = {
     classes: PropTypes.object,

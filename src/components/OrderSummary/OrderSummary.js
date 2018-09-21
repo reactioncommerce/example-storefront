@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 // Use styled components to adjust the styling of the
 // cart summary component to fit inside a bordered box
-const OrderSummaryContainer = styled.div`
+export const OrderSummaryContainer = styled.div`
   table td {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -32,7 +32,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkOrderSummary" })
 class OrderSummary extends Component {
   static propTypes = {
     classes: PropTypes.object,

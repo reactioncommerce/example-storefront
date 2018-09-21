@@ -29,7 +29,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
+@withStyles(styles, { name: "SkSelect" })
 class Select extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,

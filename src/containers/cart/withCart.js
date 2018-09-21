@@ -124,7 +124,7 @@ export default function withCart(Component) {
      *   not allow `cartId` or `token` while `AddCartItemsInput` needs them.
      * @returns {undefined} No return
      */
-    handleAddItemsToCart(mutation, data, isCreating) {
+    async handleAddItemsToCart(mutation, data, isCreating) {
       const { authStore, cartStore, shop } = this.props;
       const input = {
         items: data.items
@@ -148,7 +148,7 @@ export default function withCart(Component) {
       // Run the mutation function provided as a param.
       // It may take the form of `createCart` or `addCartItems` depending on the
       // availability of a cart for either an anonymous or logged-in account.
-      mutation({
+      await mutation({
         variables: {
           input
         }
@@ -233,13 +233,13 @@ export default function withCart(Component) {
      * @param {string} email An email address to be set on an anonymous cart
      * @return {undefined} No return
      */
-    handleSetEmailOnAnonymousCart = ({ email }) => {
+    handleSetEmailOnAnonymousCart = async ({ email }) => {
       const { cartStore: { anonymousCartToken }, client: apolloClient } = this.props;
       // Omit cartToken, as for this particular input type the
       // the param is named token
       const { cartToken, ...rest } = this.cartIdAndCartToken;
 
-      apolloClient.mutate({
+      await apolloClient.mutate({
         mutation: setEmailOnAnonymousCartMutation,
         variables: {
           input: {
@@ -249,6 +249,7 @@ export default function withCart(Component) {
         }
       });
     }
+
     /**
      * @name handleUpdateFulfillmentOptionsForGroup
      * @summary Sets a fulfillment method for items in a cart
@@ -256,11 +257,11 @@ export default function withCart(Component) {
      * @param {Function} mutation An Apollo mutation function
      * @return {undefined} No return
      */
-    handleUpdateFulfillmentOptionsForGroup = (fulfillmentGroupId) => {
+    handleUpdateFulfillmentOptionsForGroup = async (fulfillmentGroupId) => {
       const { client: apolloClient } = this.props;
 
 
-      apolloClient.mutate({
+      await apolloClient.mutate({
         mutation: updateFulfillmentOptionsForGroup,
         variables: {
           input: {
@@ -292,10 +293,10 @@ export default function withCart(Component) {
      * @param {Function} mutation An Apollo mutation function
      * @return {undefined} No return
      */
-    handleSetFulfillmentOption = ({ fulfillmentGroupId, fulfillmentMethodId }) => {
+    handleSetFulfillmentOption = async ({ fulfillmentGroupId, fulfillmentMethodId }) => {
       const { client: apolloClient } = this.props;
 
-      apolloClient.mutate({
+      await apolloClient.mutate({
         mutation: setFulfillmentOptionCartMutation,
         variables: {
           input: {
@@ -329,7 +330,7 @@ export default function withCart(Component) {
 
       // Update fulfillment options for current cart
       const { data: { setShippingAddressOnCart: { cart } } } = result;
-      this.handleUpdateFulfillmentOptionsForGroup(cart.checkout.fulfillmentGroups[0]._id);
+      await this.handleUpdateFulfillmentOptionsForGroup(cart.checkout.fulfillmentGroups[0]._id);
     }
 
     render() {
@@ -402,10 +403,16 @@ export default function withCart(Component) {
                 {(mutationFunction) => (
                   <Component
                     {...this.props}
-                    isLoading={skipQuery ? false : isLoading}
+                    addItemsToCart={async (items) => {
+                      await this.handleAddItemsToCart(mutationFunction, { items }, !cart);
+                    }}
+                    cart={processedCartData}
+                    checkoutMutations={{
+                      onSetFulfillmentOption: this.handleSetFulfillmentOption,
+                      onSetShippingAddress: this.handleSetShippingAddress
+                    }}
                     hasMoreCartItems={(pageInfo && pageInfo.hasNextPage) || false}
-                    onChangeCartItemsQuantity={this.handleChangeCartItemsQuantity}
-                    onRemoveCartItems={this.handleRemoveCartItems}
+                    isLoading={skipQuery ? false : isLoading}
                     loadMoreCartItems={() => {
                       fetchMore({
                         variables: {
@@ -438,15 +445,10 @@ export default function withCart(Component) {
                         }
                       });
                     }}
-                    addItemsToCart={(items) => {
-                      this.handleAddItemsToCart(mutationFunction, { items }, !cart);
-                    }}
+                    onChangeCartItemsQuantity={this.handleChangeCartItemsQuantity}
+                    onRemoveCartItems={this.handleRemoveCartItems}
+                    refetchCart={refetchCart}
                     setEmailOnAnonymousCart={this.handleSetEmailOnAnonymousCart}
-                    checkoutMutations={{
-                      onSetFulfillmentOption: this.handleSetFulfillmentOption,
-                      onSetShippingAddress: this.handleSetShippingAddress
-                    }}
-                    cart={processedCartData}
                   />
                 )}
               </Mutation>
