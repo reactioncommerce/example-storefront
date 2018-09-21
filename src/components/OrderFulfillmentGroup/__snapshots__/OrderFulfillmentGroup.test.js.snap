@@ -288,46 +288,46 @@ Array [
           <tbody>
             <tr>
               <td
-                className="CartSummary__Td-jXBgKC bUBGM"
+                className="CartSummary__Td-jXBgKC hdqJNm"
               >
                 Item total
               </td>
               <td
-                className="CartSummary__Td-boDvWU sYgOn"
+                className="CartSummary__Td-boDvWU dNHWhU"
               >
                 $118
               </td>
             </tr>
             <tr>
               <td
-                className="CartSummary__Td-jXBgKC bUBGM"
+                className="CartSummary__Td-jXBgKC hdqJNm"
               >
                 Shipping
               </td>
               <td
-                className="CartSummary__Td-boDvWU sYgOn"
+                className="CartSummary__Td-boDvWU dNHWhU"
               />
             </tr>
             <tr>
               <td
-                className="CartSummary__Td-jXBgKC bUBGM"
+                className="CartSummary__Td-jXBgKC hdqJNm"
               >
                 Tax
               </td>
               <td
-                className="CartSummary__Td-boDvWU sYgOn"
+                className="CartSummary__Td-boDvWU dNHWhU"
               >
                 -
               </td>
             </tr>
             <tr>
               <td
-                className="CartSummary__Td-jXBgKC isuVSE"
+                className="CartSummary__Td-jXBgKC hViozU"
               >
                 Order total
               </td>
               <td
-                className="CartSummary__Td-boDvWU FDHoo"
+                className="CartSummary__Td-boDvWU cttmNN"
               >
                 <span
                   className="CartSummary__Total-BZUQP bdUKHv"
