@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.1.0",
-    "@reactioncommerce/components": "^0.39.1",
+    "@reactioncommerce/components": "0.39.1",
     "@reactioncommerce/components-context": "^1.0.0",
     "@segment/snippet": "^4.3.1",
     "apollo-cache-inmemory": "^1.1.11",

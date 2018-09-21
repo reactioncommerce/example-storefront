@@ -943,7 +943,7 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@reactioncommerce/components-context/-/components-context-1.0.0.tgz#587764cf0d1b0312c786b8e4657379de02e13845"
 
-"@reactioncommerce/components@^0.39.1":
+"@reactioncommerce/components@0.39.1":
   version "0.39.1"
   resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.39.1.tgz#1fe5f7e1797d4f5c6c6b6ee0c9000fa39e150a6b"
   dependencies:
