@@ -114,7 +114,7 @@ export default class ProductDetailAddToCart extends Component {
 
   static defaultProps = {
     classes: {},
-    onClick: () => {}
+    onClick: () => { }
   };
 
   state = {
@@ -204,6 +204,7 @@ export default class ProductDetailAddToCart extends Component {
                       variant="outlined"
                       onClick={this.handleDecrementButton}
                       className={incrementButton}
+                      disableRipple
                     >
                       <Minus className={quantitySvg} />
                     </ButtonBase>
@@ -216,6 +217,7 @@ export default class ProductDetailAddToCart extends Component {
                       color="default"
                       onClick={this.handleIncrementButton}
                       className={incrementButton}
+                      disableRipple
                     >
                       <Plus className={quantitySvg} />
                     </ButtonBase>
@@ -233,6 +235,7 @@ export default class ProductDetailAddToCart extends Component {
             <ButtonBase
               onClick={this.handleOnClick}
               className={addToCartButton}
+              disableRipple
             >
               <Typography className={addToCartText} component="span" variant="body1">
                 Add to cart

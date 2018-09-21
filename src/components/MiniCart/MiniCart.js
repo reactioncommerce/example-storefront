@@ -164,6 +164,7 @@ export default class MiniCart extends Component {
             onMouseEnter={this.handlePopperOpen}
             onMouseLeave={this.handlePopperClose}
             onClick={this.handleOnClick}
+            disableRipple
           >
             {(cart && cart.totalItemQuantity > 0)
               ? (

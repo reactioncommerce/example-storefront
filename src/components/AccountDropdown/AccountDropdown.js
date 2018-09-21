@@ -86,7 +86,7 @@ class AccountDropdown extends Component {
 
     return (
       <Fragment>
-        <IconButton color="inherit" onClick={this.toggleOpen}>
+        <IconButton color="inherit" onClick={this.toggleOpen} disableRipple>
           <AccountIcon />
         </IconButton>
 
@@ -110,18 +110,18 @@ class AccountDropdown extends Component {
                     }}
                   />
                 </div>
-                <Button color="primary" fullWidth href="/logout" variant="raised">
+                <Button color="primary" fullWidth href="/logout" variant="raised" disableRipple>
                   Sign Out
                 </Button>
               </Fragment>
               :
               <Fragment>
                 <div className={classes.authContent}>
-                  <Button color="primary" fullWidth href="/auth2" variant="raised">
+                  <Button color="primary" fullWidth href="/auth2" variant="raised" disableRipple>
                     Sign In
                   </Button>
                 </div>
-                <Button color="primary" fullWidth href="/auth2">
+                <Button color="primary" fullWidth href="/auth2" disableRipple>
                   Create Account
                 </Button>
               </Fragment>
