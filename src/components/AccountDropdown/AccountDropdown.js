@@ -9,7 +9,7 @@ import Popover from "@material-ui/core/Popover";
 import ViewerInfo from "@reactioncommerce/components/ViewerInfo/v1";
 import { login } from "lib/auth";
 
-const styles = (theme) => ({
+const styles = theme => ({
   accountDropdown: {
     width: 320,
     padding: theme.spacing.unit * 2
@@ -51,17 +51,17 @@ class AccountDropdown extends Component {
     anchorElement: null
   };
 
-  toggleOpen = (event) => {
+  toggleOpen = event => {
     this.setState({ anchorElement: event.currentTarget });
-  }
+  };
 
   onClose = () => {
     this.setState({ anchorElement: null });
-  }
+  };
 
-  onTokenChange = (event) => {
+  onTokenChange = event => {
     this.setState({ token: event.target.value || "" });
-  }
+  };
 
   onTokenSave = () => {
     const { authStore } = this.props;
@@ -70,15 +70,15 @@ class AccountDropdown extends Component {
 
     // Reload so the auth changes can be reflected on server and in browser
     window.location.reload();
-  }
+  };
 
   onLogin = () => {
     login();
-  }
+  };
 
   onLogout = () => {
     window.location.reload();
-  }
+  };
 
   render() {
     const { classes, authStore } = this.props;
@@ -86,7 +86,7 @@ class AccountDropdown extends Component {
 
     return (
       <Fragment>
-        <IconButton color="inherit" onClick={this.toggleOpen}>
+        <IconButton color="inherit" onClick={this.toggleOpen} disableRipple>
           <AccountIcon />
         </IconButton>
 
@@ -100,7 +100,7 @@ class AccountDropdown extends Component {
           onClose={this.onClose}
         >
           <div className={classes.accountDropdown}>
-            {authStore.isAuthenticated ?
+            {authStore.isAuthenticated ? (
               <Fragment>
                 <div className={classes.authContent}>
                   <ViewerInfo
@@ -110,22 +110,22 @@ class AccountDropdown extends Component {
                     }}
                   />
                 </div>
-                <Button color="primary" fullWidth href="/logout" variant="raised">
+                <Button color="primary" fullWidth href="/logout" variant="raised" disableRipple>
                   Sign Out
                 </Button>
               </Fragment>
-              :
+            ) : (
               <Fragment>
                 <div className={classes.authContent}>
-                  <Button color="primary" fullWidth href="/auth2" variant="raised">
+                  <Button color="primary" fullWidth href="/auth2" variant="raised" disableRipple>
                     Sign In
                   </Button>
                 </div>
-                <Button color="primary" fullWidth href="/auth2">
+                <Button color="primary" fullWidth href="/auth2" disableRipple>
                   Create Account
                 </Button>
               </Fragment>
-            }
+            )}
           </div>
         </Popover>
       </Fragment>
