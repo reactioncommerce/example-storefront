@@ -108,12 +108,12 @@ class ProductDetail extends Component {
    * @param {Number} quantity A positive integer from 0 to infinity, representing the quantity to add to cart
    * @returns {undefined} No return
    */
-  handleAddToCartClick = (quantity) => {
+  handleAddToCartClick = async (quantity) => {
     const {
       addItemsToCart,
       currencyCode,
       product,
-      uiStore: { openCart, closeCart, pdpSelectedOptionId, pdpSelectedVariantId },
+      uiStore: { openCartWithTimeout, pdpSelectedOptionId, pdpSelectedVariantId },
       width
     } = this.props;
 
@@ -127,7 +127,7 @@ class ProductDetail extends Component {
       const price = priceByCurrencyCode(currencyCode, selectedVariantOrOption.pricing);
 
       // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
-      addItemsToCart([
+      await addItemsToCart([
         {
           price: {
             amount: price.price,
@@ -143,8 +143,8 @@ class ProductDetail extends Component {
     }
 
     if (isWidthUp("md", width)) {
-      openCart(); // Open the cart
-      closeCart(3000); // Close the cart after a 3 second delay
+      // Open the cart, and close after a 3 second delay
+      openCartWithTimeout(3000);
     }
   };
 
