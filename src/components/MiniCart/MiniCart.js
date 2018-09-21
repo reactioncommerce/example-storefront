@@ -67,12 +67,12 @@ export default class MiniCart extends Component {
       openCart: PropTypes.func.isRequired,
       closeCart: PropTypes.func.isRequired
     })
-  }
+  };
 
   constructor(props) {
     super(props);
 
-    this.setPopoverAnchorEl = (element) => {
+    this.setPopoverAnchorEl = element => {
       this.anchorElement = element;
     };
   }
@@ -82,12 +82,12 @@ export default class MiniCart extends Component {
     anchorElement: null
   };
 
-  anchorElement = null
+  anchorElement = null;
 
   handlePopperOpen = () => {
     const { openCart } = this.props.uiStore;
     openCart();
-  }
+  };
 
   handleClick = () => Router.pushRoute("/");
   handleCheckoutButtonClick = () => Router.pushRoute("/cart/checkout");
@@ -95,29 +95,29 @@ export default class MiniCart extends Component {
   handlePopperClose = () => {
     const { closeCart } = this.props.uiStore;
     closeCart();
-  }
+  };
 
   handleEnterPopper = () => {
     const { openCart } = this.props.uiStore;
     openCart();
-  }
+  };
 
   handleLeavePopper = () => {
     const { closeCart } = this.props.uiStore;
     closeCart();
-  }
+  };
 
   handleOnClick = () => {
     const { closeCart } = this.props.uiStore;
     closeCart();
     Router.pushRoute("cart");
-  }
+  };
 
   handleItemQuantityChange = (quantity, cartItemId) => {
     const { onChangeCartItemsQuantity } = this.props;
 
     onChangeCartItemsQuantity({ quantity, cartItemId });
-  }
+  };
 
   renderMiniCart() {
     const { cart, classes, hasMoreCartItems, loadMoreCartItems, onRemoveCartItems } = this.props;
@@ -129,7 +129,7 @@ export default class MiniCart extends Component {
           onCheckoutButtonClick={this.handleCheckoutButtonClick}
           components={{
             QuantityInput: "div",
-            CartItems: (cartItemProps) => (
+            CartItems: cartItemProps => (
               <CartItems
                 {...cartItemProps}
                 hasMoreCartItems={hasMoreCartItems}
@@ -160,10 +160,12 @@ export default class MiniCart extends Component {
     return (
       <Fragment>
         <div ref={this.setPopoverAnchorEl}>
-          <IconButton color="inherit"
+          <IconButton
+            color="inherit"
             onMouseEnter={this.handlePopperOpen}
             onMouseLeave={this.handlePopperClose}
             onClick={this.handleOnClick}
+            disableRipple
           >
             {(cart && cart.totalItemQuantity > 0)
               ? (
@@ -191,9 +193,7 @@ export default class MiniCart extends Component {
         >
           {({ TransitionProps }) => (
             <Fade {...TransitionProps}>
-              <div className={classes.cart}>
-                {this.renderMiniCart()}
-              </div>
+              <div className={classes.cart}>{this.renderMiniCart()}</div>
             </Fade>
           )}
         </Popper>

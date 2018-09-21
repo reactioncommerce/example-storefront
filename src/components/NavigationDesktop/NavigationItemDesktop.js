@@ -15,7 +15,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { Router } from "routes";
 import Link from "components/Link";
 
-const styles = (theme) => ({
+const styles = theme => ({
   popover: {
     left: "0!important",
     maxWidth: "100vw",
@@ -58,7 +58,7 @@ class NavigationItemDesktop extends Component {
 
   state = { isSubNavOpen: false };
 
-  linkPath = (providedNavItem) => {
+  linkPath = providedNavItem => {
     const { navItem, routingStore } = this.props;
 
     const currentNavItem = providedNavItem || navItem;
@@ -66,14 +66,16 @@ class NavigationItemDesktop extends Component {
     return routingStore.queryString !== ""
       ? `/tag/${currentNavItem.slug}?${routingStore.queryString}`
       : `/tag/${currentNavItem.slug}`;
-  }
+  };
 
   get hasSubNavItems() {
-    const { navItem: { subTags } } = this.props;
+    const {
+      navItem: { subTags }
+    } = this.props;
     return subTags && Array.isArray(subTags.edges) && subTags.edges.length > 0;
   }
 
-  onClick = (event) => {
+  onClick = event => {
     event.preventDefault();
 
     const { navItem } = this.props;
@@ -104,7 +106,11 @@ class NavigationItemDesktop extends Component {
   }
 
   renderPopover() {
-    const { classes, navItem, navItem: { subTags } } = this.props;
+    const {
+      classes,
+      navItem,
+      navItem: { subTags }
+    } = this.props;
 
     if (subTags) {
       return (
@@ -131,7 +137,9 @@ class NavigationItemDesktop extends Component {
             ))}
           </Grid>
           <Link className={classes.navigationShopAllLink} onClick={this.onClose} route={`${this.linkPath()}`}>
-            <span>Shop all {navItem.name} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
+            <span>
+              Shop all {navItem.name} <ChevronRight className={classes.navigationShopAllLinkIcon} />
+            </span>
           </Link>
         </Popover>
       );
@@ -141,13 +149,24 @@ class NavigationItemDesktop extends Component {
   }
 
   render() {
-    const { classes: { primaryNavItem }, navItem } = this.props;
+    const {
+      classes: { primaryNavItem },
+      navItem
+    } = this.props;
 
     return (
       <Fragment>
-        <Button className={primaryNavItem} color="inherit" onClick={this.onClick} href={this.linkPath(navItem)}>
+        <Button
+          disableRipple
+          className={primaryNavItem}
+          color="inherit"
+          onClick={this.onClick}
+          href={this.linkPath(navItem)}
+        >
           {navItem.name}
-          {this.hasSubNavItems && <Fragment>{this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
+          {this.hasSubNavItems && (
+            <Fragment>{this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>
+          )}
         </Button>
         {this.hasSubNavItems && this.renderPopover()}
       </Fragment>
