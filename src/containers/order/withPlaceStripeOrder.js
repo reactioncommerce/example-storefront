@@ -13,7 +13,7 @@ import { placeOrderWithStripeCardPayment } from "./mutations.gql";
  */
 export default (Component) => (
   @withApollo
-  @inject("authStore", "cartStore", "routingStore")
+  @inject("authStore", "cartStore", "uiStore", "routingStore")
   @observer
   class WithPlaceStripeOrder extends React.Component {
     static propTypes = {
@@ -31,7 +31,7 @@ export default (Component) => (
     }
 
     handlePlaceOrderWithStripeCard = async (order) => {
-      const { authStore, cartStore, client: apolloClient } = this.props;
+      const { authStore, cartStore, uiStore, client: apolloClient } = this.props;
       const { fulfillmentGroups } = order;
       const { stripeToken: { billingAddress } } = cartStore;
 
@@ -63,6 +63,7 @@ export default (Component) => (
       // If success
       if (data && !error) {
         const { placeOrderWithStripeCardPayment: { orders, token } } = data;
+        uiStore.closeCart();
 
         // Clear anonymous cart
         if (!authStore.isAuthenticated) {
