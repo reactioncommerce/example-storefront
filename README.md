@@ -71,7 +71,7 @@ Read the docs for [setting up Segment or a custom analytics tracker](docs/tracki
 
 ## Development
 
-The Reaction Platform runs the Starterkit with Docker, so you will have to use Docker commands to view logs, run commands inside the container and more. To run commands specifically for the Starterkit, make sure to change directories into the `reaction-next-starterkit` directory first from `reaction-platform`:
+The Reaction Platform runs the Starterkit with Docker, so you will have to use Docker commands to view logs, run commands inside the container and more. To run commands specifically for the Starterkit, make sure to change directories into the `reaction-next-starterkit` directory within the `reaction-platform` repository:
 
 ```sh
 cd reaction-next-starterkit
