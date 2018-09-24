@@ -23,13 +23,12 @@ exports[`tagGrid secondlevel tag 1`] = `
     className="MuiSvgIcon-root-5 SkBreadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
+    role="presentation"
     viewBox="0 0 24 24"
   >
-    <g>
-      <path
-        d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-      />
-    </g>
+    <path
+      d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+    />
   </svg>
   <a
     className="SkLink-anchor-4"
@@ -50,13 +49,12 @@ exports[`tagGrid secondlevel tag 1`] = `
     className="MuiSvgIcon-root-5 SkBreadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
+    role="presentation"
     viewBox="0 0 24 24"
   >
-    <g>
-      <path
-        d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-      />
-    </g>
+    <path
+      d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+    />
   </svg>
   <a
     className="SkLink-anchor-4"
@@ -98,13 +96,12 @@ exports[`tagGrid top level tag 1`] = `
     className="MuiSvgIcon-root-5 SkBreadcrumbs-breadcrumbIcon-3"
     color={undefined}
     focusable="false"
+    role="presentation"
     viewBox="0 0 24 24"
   >
-    <g>
-      <path
-        d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-      />
-    </g>
+    <path
+      d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+    />
   </svg>
   <a
     className="SkLink-anchor-4"

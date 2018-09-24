@@ -25,16 +25,17 @@ Array [
       </span>
       <div
         aria-describedby={undefined}
-        className="MuiFormControl-root-134"
+        className="MuiFormControl-root-135"
       >
         <div
-          className="MuiInput-root-138 SkProductDetailAddToCart-quantityContainer-4 MuiInput-formControl-139"
+          className="MuiInputBase-root-152 MuiInput-root-139 SkProductDetailAddToCart-quantityContainer-4 MuiInputBase-formControl-153 MuiInput-formControl-140 MuiInputBase-adornedStart-156 MuiInputBase-adornedEnd-157"
+          onClick={[Function]}
         >
           <div
-            className="MuiInputAdornment-root-151"
+            className="MuiInputAdornment-root-169"
           >
             <button
-              className="MuiButtonBase-root-154 SkProductDetailAddToCart-incrementButton-3"
+              className="MuiButtonBase-root-173 SkProductDetailAddToCart-incrementButton-3"
               color="default"
               disabled={undefined}
               onBlur={[Function]}
@@ -54,16 +55,15 @@ Array [
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-157 SkProductDetailAddToCart-quantitySvg-7"
+                className="MuiSvgIcon-root-176 SkProductDetailAddToCart-quantitySvg-7"
                 color={undefined}
                 focusable="false"
+                role="presentation"
                 viewBox="0 0 24 24"
               >
-                <g>
-                  <path
-                    d="M19,13H5V11H19V13Z"
-                  />
-                </g>
+                <path
+                  d="M19,13H5V11H19V13Z"
+                />
               </svg>
             </button>
           </div>
@@ -71,7 +71,7 @@ Array [
             aria-invalid={false}
             autoComplete={undefined}
             autoFocus={undefined}
-            className="MuiInput-input-146 SkProductDetailAddToCart-quantityInput-6"
+            className="MuiInputBase-input-162 MuiInput-input-147 SkProductDetailAddToCart-quantityInput-6 MuiInputBase-inputAdornedStart-167 MuiInputBase-inputAdornedEnd-168"
             defaultValue={undefined}
             disabled={false}
             id="addToCartQuantityInput"
@@ -89,10 +89,10 @@ Array [
             value={1}
           />
           <div
-            className="MuiInputAdornment-root-151"
+            className="MuiInputAdornment-root-169"
           >
             <button
-              className="MuiButtonBase-root-154 SkProductDetailAddToCart-incrementButton-3"
+              className="MuiButtonBase-root-173 SkProductDetailAddToCart-incrementButton-3"
               color="default"
               disabled={undefined}
               onBlur={[Function]}
@@ -112,16 +112,15 @@ Array [
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-157 SkProductDetailAddToCart-quantitySvg-7"
+                className="MuiSvgIcon-root-176 SkProductDetailAddToCart-quantitySvg-7"
                 color={undefined}
                 focusable="false"
+                role="presentation"
                 viewBox="0 0 24 24"
               >
-                <g>
-                  <path
-                    d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
-                  />
-                </g>
+                <path
+                  d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                />
               </svg>
             </button>
           </div>
@@ -132,7 +131,7 @@ Array [
       className="MuiGrid-item-10 MuiGrid-grid-xs-12-49"
     >
       <button
-        className="MuiButtonBase-root-154 SkProductDetailAddToCart-addToCartButton-1"
+        className="MuiButtonBase-root-173 SkProductDetailAddToCart-addToCartButton-1"
         disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
@@ -157,29 +156,29 @@ Array [
     </div>
   </div>,
   <div
-    className="HiddenCss-mdUp-179"
+    className="HiddenCss-mdUp-200"
   >
     <div
-      className="SkCartPopover-container-164 SkCartPopover-isContainerHidden-166"
+      className="SkCartPopover-container-185 SkCartPopover-isContainerHidden-187"
     >
       <div
-        className="MuiGrid-container-9 MuiGrid-spacing-xs-24-33 SkCartPopover-gridContainer-165"
+        className="MuiGrid-container-9 MuiGrid-spacing-xs-24-33 SkCartPopover-gridContainer-186"
       >
         <div
-          className="MuiGrid-item-10 MuiGrid-grid-xs-12-49 SkCartPopover-containerItem-168"
+          className="MuiGrid-item-10 MuiGrid-grid-xs-12-49 SkCartPopover-containerItem-189"
         >
           <img
             alt="Item Title"
-            className="SkCartPopover-addedToCartImg-169"
+            className="SkCartPopover-addedToCartImg-190"
             src="//placehold.it/100"
           />
           <span
-            className="MuiTypography-root-109 MuiTypography-body1-118 SkCartPopover-addedToCartText-171"
+            className="MuiTypography-root-109 MuiTypography-body1-118 SkCartPopover-addedToCartText-192"
           >
             10
              "
             <span
-              className="SkCartPopover-addedToCartItemName-170"
+              className="SkCartPopover-addedToCartItemName-191"
             >
               Item Title
             </span>
