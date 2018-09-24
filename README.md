@@ -50,7 +50,7 @@ Visit the storefront at `localhost:4000` and the GraphQL API playground at `loca
 
 ### Set up Stripe
 
-When running the storefront and Reaction for the first time,, you will need to configure Stripe payment processing and shipping options to test a complete order checkout flow. After signing up for a Stripe API key, follow these steps:
+When running the storefront and Reaction for the first time, you will need to configure Stripe payment processing and shipping options to test a complete order checkout flow. After signing up for a Stripe API key, follow these steps:
 
 1. Add public Stripe API key (`STRIPE_PUBLIC_API_KEY`) to `.env`.
 2. Open the Reaction Classic app, at `http://localhost:3000`. Log in as an Admin user.
