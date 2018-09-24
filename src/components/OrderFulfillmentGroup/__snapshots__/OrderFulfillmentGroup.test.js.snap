@@ -38,7 +38,7 @@ Array [
         className="CartItems__Items-gEXRwN gdnVAG"
       >
         <div
-          className="CartItem__Item-ghDCXl cOMnbm"
+          className="CartItem__Item-ghDCXl cfXPgA"
         >
           <a
             href="/product-slug"
@@ -146,7 +146,7 @@ Array [
           </div>
         </div>
         <div
-          className="CartItem__Item-ghDCXl cOMnbm"
+          className="CartItem__Item-ghDCXl cfXPgA"
         >
           <a
             href="/product-slug"
@@ -248,10 +248,10 @@ Array [
     className="SkOrderFulfillmentGroup-summary-5"
   >
     <div
-      className="SkOrderSummary-summary-131"
+      className="SkOrderSummary-summary-130"
     >
       <div
-        className="SkOrderSummary-header-132"
+        className="SkOrderSummary-header-131"
       >
         <div
           className="MuiGrid-container-6 MuiGrid-spacing-xs-24-30"
@@ -277,7 +277,7 @@ Array [
         </div>
       </div>
       <hr
-        className="MuiDivider-root-135"
+        className="MuiDivider-root-134"
       />
       <div
         className="OrderSummary__OrderSummaryContainer-sc-1cvbk1h-0 hsLQId"
@@ -288,46 +288,46 @@ Array [
           <tbody>
             <tr>
               <td
-                className="CartSummary__Td-jXBgKC jKaJQb"
+                className="CartSummary__Td-jXBgKC bUBGM"
               >
                 Item total
               </td>
               <td
-                className="CartSummary__Td-boDvWU kKknSH"
+                className="CartSummary__Td-boDvWU sYgOn"
               >
                 $118
               </td>
             </tr>
             <tr>
               <td
-                className="CartSummary__Td-jXBgKC jKaJQb"
+                className="CartSummary__Td-jXBgKC bUBGM"
               >
                 Shipping
               </td>
               <td
-                className="CartSummary__Td-boDvWU kKknSH"
+                className="CartSummary__Td-boDvWU sYgOn"
               />
             </tr>
             <tr>
               <td
-                className="CartSummary__Td-jXBgKC jKaJQb"
+                className="CartSummary__Td-jXBgKC bUBGM"
               >
                 Tax
               </td>
               <td
-                className="CartSummary__Td-boDvWU kKknSH"
+                className="CartSummary__Td-boDvWU sYgOn"
               >
                 -
               </td>
             </tr>
             <tr>
               <td
-                className="CartSummary__Td-jXBgKC grsCCy"
+                className="CartSummary__Td-jXBgKC isuVSE"
               >
                 Order total
               </td>
               <td
-                className="CartSummary__Td-boDvWU xcYQR"
+                className="CartSummary__Td-boDvWU FDHoo"
               >
                 <span
                   className="CartSummary__Total-BZUQP bdUKHv"

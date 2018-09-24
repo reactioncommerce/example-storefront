@@ -9,8 +9,7 @@ Array [
       className="MuiGrid-item-3"
     >
       <div
-        className="MuiInputBase-root-124 MuiInput-root-111 SkSelect-input-103"
-        onClick={[Function]}
+        className="MuiInput-root-109 SkSelect-input-103"
       >
         <div
           className="MuiSelect-root-104"
@@ -19,7 +18,7 @@ Array [
             aria-haspopup="true"
             aria-owns={null}
             aria-pressed="false"
-            className="MuiSelect-select-105 MuiSelect-selectMenu-108 SkSelect-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
+            className="MuiSelect-select-105 MuiSelect-selectMenu-106 SkSelect-selectMenu-101 MuiInput-input-117"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -44,10 +43,9 @@ Array [
           />
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-141 MuiSelect-icon-110"
+            className="MuiSvgIcon-root-122 MuiSelect-icon-108"
             color={undefined}
             focusable="false"
-            role="presentation"
             viewBox="0 0 24 24"
           >
             <path
@@ -61,8 +59,7 @@ Array [
       className="MuiGrid-item-3"
     >
       <div
-        className="MuiInputBase-root-124 MuiInput-root-111 SkSelect-input-103"
-        onClick={[Function]}
+        className="MuiInput-root-109 SkSelect-input-103"
       >
         <div
           className="MuiSelect-root-104"
@@ -71,7 +68,7 @@ Array [
             aria-haspopup="true"
             aria-owns={null}
             aria-pressed="false"
-            className="MuiSelect-select-105 MuiSelect-selectMenu-108 SkSelect-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
+            className="MuiSelect-select-105 MuiSelect-selectMenu-106 SkSelect-selectMenu-101 MuiInput-input-117"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -96,10 +93,9 @@ Array [
           />
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-141 MuiSelect-icon-110"
+            className="MuiSvgIcon-root-122 MuiSelect-icon-108"
             color={undefined}
             focusable="false"
-            role="presentation"
             viewBox="0 0 24 24"
           >
             <path
@@ -111,18 +107,18 @@ Array [
     </div>
   </div>,
   <div
-    className="inject-ProductGridEmptyMessage-with-routingStore-root-155"
+    className="inject-ProductGridEmptyMessage-with-routingStore-root-134"
   >
     <p
-      className="MuiTypography-root-158 MuiTypography-body1-167 MuiTypography-paragraph-177 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-157"
+      className="MuiTypography-root-137 MuiTypography-body1-146 MuiTypography-paragraph-155 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-136"
     >
       Sorry! We couldn't find what you're looking for.
     </p>
     <p
-      className="MuiTypography-root-158 MuiTypography-body1-167 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-156"
+      className="MuiTypography-root-137 MuiTypography-body1-146 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-135"
     >
       <a
-        className="SkLink-anchor-184"
+        className="SkLink-anchor-162"
         href="tag/test-tag"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -145,8 +141,7 @@ Array [
       className="MuiGrid-item-3"
     >
       <div
-        className="MuiInputBase-root-124 MuiInput-root-111 SkSelect-input-103"
-        onClick={[Function]}
+        className="MuiInput-root-109 SkSelect-input-103"
       >
         <div
           className="MuiSelect-root-104"
@@ -155,7 +150,7 @@ Array [
             aria-haspopup="true"
             aria-owns={null}
             aria-pressed="false"
-            className="MuiSelect-select-105 MuiSelect-selectMenu-108 SkSelect-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
+            className="MuiSelect-select-105 MuiSelect-selectMenu-106 SkSelect-selectMenu-101 MuiInput-input-117"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -180,10 +175,9 @@ Array [
           />
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-141 MuiSelect-icon-110"
+            className="MuiSvgIcon-root-122 MuiSelect-icon-108"
             color={undefined}
             focusable="false"
-            role="presentation"
             viewBox="0 0 24 24"
           >
             <path
@@ -197,8 +191,7 @@ Array [
       className="MuiGrid-item-3"
     >
       <div
-        className="MuiInputBase-root-124 MuiInput-root-111 SkSelect-input-103"
-        onClick={[Function]}
+        className="MuiInput-root-109 SkSelect-input-103"
       >
         <div
           className="MuiSelect-root-104"
@@ -207,7 +200,7 @@ Array [
             aria-haspopup="true"
             aria-owns={null}
             aria-pressed="false"
-            className="MuiSelect-select-105 MuiSelect-selectMenu-108 SkSelect-selectMenu-101 MuiInputBase-input-134 MuiInput-input-119"
+            className="MuiSelect-select-105 MuiSelect-selectMenu-106 SkSelect-selectMenu-101 MuiInput-input-117"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -232,10 +225,9 @@ Array [
           />
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-141 MuiSelect-icon-110"
+            className="MuiSvgIcon-root-122 MuiSelect-icon-108"
             color={undefined}
             focusable="false"
-            role="presentation"
             viewBox="0 0 24 24"
           >
             <path
@@ -346,7 +338,7 @@ Details can be added below the image for more specific product information.
     </div>
   </div>,
   <div
-    className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 SkPageStepper-root-154"
+    className="MuiGrid-container-2 MuiGrid-justify-xs-space-between-21 SkPageStepper-root-133"
   >
     <div
       className="MuiGrid-item-3"

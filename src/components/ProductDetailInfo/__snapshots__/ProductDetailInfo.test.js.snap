@@ -5,7 +5,7 @@ exports[`basic snapshot 1`] = `
   className="MuiGrid-item-2 MuiGrid-grid-sm-12-55"
 >
   <div
-    className="MuiTypography-root-98 MuiTypography-title-104 MuiTypography-gutterBottom-116"
+    className="MuiTypography-root-98 MuiTypography-title-104 MuiTypography-gutterBottom-115"
   >
     $19.99
   </div>
@@ -41,7 +41,7 @@ exports[`snapshot with price and description 1`] = `
   className="MuiGrid-item-2 MuiGrid-grid-sm-12-55"
 >
   <div
-    className="MuiTypography-root-98 MuiTypography-title-104 MuiTypography-gutterBottom-116"
+    className="MuiTypography-root-98 MuiTypography-title-104 MuiTypography-gutterBottom-115"
   >
     $19.99
   </div>
@@ -58,7 +58,7 @@ exports[`snapshot with price only 1`] = `
   className="MuiGrid-item-2 MuiGrid-grid-sm-12-55"
 >
   <div
-    className="MuiTypography-root-98 MuiTypography-title-104 MuiTypography-gutterBottom-116"
+    className="MuiTypography-root-98 MuiTypography-title-104 MuiTypography-gutterBottom-115"
   >
     $19.99
   </div>

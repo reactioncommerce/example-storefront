@@ -4,7 +4,7 @@ exports[`renders with 1 level of tags 1`] = `null`;
 
 exports[`renders with 2 levels of tags 1`] = `
 <li
-  className="MuiButtonBase-root-16 MuiListItem-root-5 MuiListItem-default-8 MuiListItem-gutters-12 MuiListItem-button-13 MuiMenuItem-root-3"
+  className="MuiButtonBase-root-15 MuiListItem-root-5 MuiListItem-default-8 MuiListItem-gutters-12 MuiListItem-button-13 MuiMenuItem-root-3"
   color="inherit"
   onBlur={[Function]}
   onClick={[Function]}
@@ -21,35 +21,36 @@ exports[`renders with 2 levels of tags 1`] = `
   tabIndex={-1}
 >
   <div
-    className="MuiListItemText-root-19"
+    className="MuiListItemText-root-18"
   >
     <span
-      className="MuiTypography-root-25 MuiTypography-subheading-32 MuiListItemText-primary-22"
+      className="MuiTypography-root-24 MuiTypography-subheading-31 MuiListItemText-primary-21"
     >
       Tag Name
     </span>
   </div>
   <svg
     aria-hidden="true"
-    className="MuiSvgIcon-root-52 MuiListItemIcon-root-51"
+    className="MuiSvgIcon-root-50 MuiListItemIcon-root-49"
     color={undefined}
     focusable="false"
-    role="presentation"
     viewBox="0 0 24 24"
   >
-    <path
-      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-    />
+    <g>
+      <path
+        d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+      />
+    </g>
   </svg>
   <span
-    className="MuiTouchRipple-root-61"
+    className="MuiTouchRipple-root-57"
   />
 </li>
 `;
 
 exports[`renders with 3 levels of tags 1`] = `
 <li
-  className="MuiButtonBase-root-16 MuiListItem-root-5 MuiListItem-default-8 MuiListItem-gutters-12 MuiListItem-button-13 MuiMenuItem-root-3"
+  className="MuiButtonBase-root-15 MuiListItem-root-5 MuiListItem-default-8 MuiListItem-gutters-12 MuiListItem-button-13 MuiMenuItem-root-3"
   color="inherit"
   onBlur={[Function]}
   onClick={[Function]}
@@ -66,28 +67,29 @@ exports[`renders with 3 levels of tags 1`] = `
   tabIndex={-1}
 >
   <div
-    className="MuiListItemText-root-19"
+    className="MuiListItemText-root-18"
   >
     <span
-      className="MuiTypography-root-25 MuiTypography-subheading-32 MuiListItemText-primary-22"
+      className="MuiTypography-root-24 MuiTypography-subheading-31 MuiListItemText-primary-21"
     >
       Tag Name
     </span>
   </div>
   <svg
     aria-hidden="true"
-    className="MuiSvgIcon-root-52 MuiListItemIcon-root-51"
+    className="MuiSvgIcon-root-50 MuiListItemIcon-root-49"
     color={undefined}
     focusable="false"
-    role="presentation"
     viewBox="0 0 24 24"
   >
-    <path
-      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-    />
+    <g>
+      <path
+        d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+      />
+    </g>
   </svg>
   <span
-    className="MuiTouchRipple-root-61"
+    className="MuiTouchRipple-root-57"
   />
 </li>
 `;

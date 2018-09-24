@@ -8,13 +8,13 @@ exports[`basic snapshot 1`] = `
     Tags
   </h2>
   <div
-    className="MuiGrid-container-29 MuiGrid-spacing-xs-8-51"
+    className="MuiGrid-container-28 MuiGrid-spacing-xs-8-50"
   >
     <div
-      className="MuiGrid-item-30"
+      className="MuiGrid-item-29"
     >
       <a
-        className="SkLink-anchor-126"
+        className="SkLink-anchor-125"
         href="/tag/shoes"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -22,15 +22,14 @@ exports[`basic snapshot 1`] = `
         tabIndex={0}
       >
         <div
-          className="MuiChip-root-127 SkTagGrid-chip-2"
+          className="MuiChip-root-126 SkTagGrid-chip-2"
           onClick={undefined}
           onKeyDown={[Function]}
-          onKeyUp={[Function]}
           role="button"
           tabIndex={-1}
         >
           <span
-            className="MuiChip-label-146"
+            className="MuiChip-label-139"
           >
             Shoes
           </span>
@@ -38,10 +37,10 @@ exports[`basic snapshot 1`] = `
       </a>
     </div>
     <div
-      className="MuiGrid-item-30"
+      className="MuiGrid-item-29"
     >
       <a
-        className="SkLink-anchor-126"
+        className="SkLink-anchor-125"
         href="/tag/shop"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -49,15 +48,14 @@ exports[`basic snapshot 1`] = `
         tabIndex={0}
       >
         <div
-          className="MuiChip-root-127 SkTagGrid-chip-2"
+          className="MuiChip-root-126 SkTagGrid-chip-2"
           onClick={undefined}
           onKeyDown={[Function]}
-          onKeyUp={[Function]}
           role="button"
           tabIndex={-1}
         >
           <span
-            className="MuiChip-label-146"
+            className="MuiChip-label-139"
           >
             Shop
           </span>

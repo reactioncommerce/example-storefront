@@ -11,7 +11,7 @@ exports[`basic snapshot 1`] = `
       className="SkEntry-loginWrapper-1"
     >
       <h2
-        className="MuiTypography-root-101 MuiTypography-title-107 MuiTypography-gutterBottom-119"
+        className="MuiTypography-root-101 MuiTypography-title-107 MuiTypography-gutterBottom-118"
       >
         Returning Customer
       </h2>
@@ -128,7 +128,7 @@ exports[`basic snapshot 1`] = `
       className="SkEntry-guestWrapper-3"
     >
       <h2
-        className="MuiTypography-root-101 MuiTypography-title-107 MuiTypography-gutterBottom-119"
+        className="MuiTypography-root-101 MuiTypography-title-107 MuiTypography-gutterBottom-118"
       >
         Guest Checkout
       </h2>
