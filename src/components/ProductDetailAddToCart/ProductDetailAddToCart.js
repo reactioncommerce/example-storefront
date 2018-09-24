@@ -107,8 +107,7 @@ export default class ProductDetailAddToCart extends Component {
     classes: PropTypes.object,
     onClick: PropTypes.func,
     uiStore: PropTypes.shape({
-      closeCartPopover: PropTypes.func,
-      openCartPopover: PropTypes.func
+      openCartWithTimeout: PropTypes.func
     }).isRequired
   };
 
@@ -135,13 +134,9 @@ export default class ProductDetailAddToCart extends Component {
     // Reset cart quantity to 1 after items are added to cart
     this.setState({ addToCartQuantity: 1 });
 
-    // Open cart popover on addToCart
-    uiStore.openCartPopover();
+    // Open cart popper on addToCart
+    uiStore.openCartWithTimeout();
 
-    // Close cart popover after 3 seconds
-    setTimeout(() => {
-      uiStore.closeCartPopover();
-    }, 3000);
   }
 
   handleQuantityInputChange = (event) => {

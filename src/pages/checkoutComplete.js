@@ -1,15 +1,13 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Router } from "routes";
-import { inject, observer } from "mobx-react";
+import { observer } from "mobx-react";
 import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import withOrder from "containers/order/withOrder";
 import OrderFulfillmentGroups from "components/OrderFulfillmentGroups";
 import withCart from "containers/cart/withCart";
-import { withApollo } from "react-apollo";
-import { accountCartByAccountIdQuery } from "../containers/cart/queries.gql";
 
 const styles = (theme) => ({
   sectionHeader: {
@@ -72,15 +70,12 @@ const styles = (theme) => ({
   }
 });
 
-@withApollo
-@withOrder
 @withCart
-@inject("authStore", "uiStore")
+@withOrder
 @observer
 @withStyles(styles, { withTheme: true })
 class CheckoutComplete extends Component {
   static propTypes = {
-    authStore: PropTypes.object.isRequired,
     classes: PropTypes.object,
     client: PropTypes.object.isRequired,
     hasMoreCartItems: PropTypes.bool,
@@ -99,23 +94,9 @@ class CheckoutComplete extends Component {
   state = {};
 
   componentDidMount() {
-    const {
-      authStore,
-      client: { cache },
-      shop
-    } = this.props;
+    const { clearAuthenticatedUsersCart } = this.props;
 
-    if (authStore.isAuthenticated) {
-      // Clear user's cart
-      cache.writeQuery({
-        query: accountCartByAccountIdQuery,
-        data: { cart: null },
-        variables: {
-          accountId: authStore.accountId,
-          shopId: shop._id
-        }
-      });
-    }
+    clearAuthenticatedUsersCart();
   }
 
   handleCartEmptyClick = () => Router.pushRoute("/");
