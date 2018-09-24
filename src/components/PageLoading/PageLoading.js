@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
 const styles = () => ({
   svg: {
@@ -10,7 +11,11 @@ const styles = () => ({
     alignItems: "center",
     display: "flex",
     height: "75vh",
-    justifyContent: "center"
+    justifyContent: "center",
+    flexDirection: "column"
+  },
+  message: {
+    marginTop: "20px"
   }
 });
 
@@ -18,8 +23,13 @@ const styles = () => ({
 class PageLoading extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    message: PropTypes.string,
     theme: PropTypes.object
   };
+
+  static defaultProps = {
+    message: null
+  }
 
   state = {
     delayIsDone: false
@@ -100,6 +110,18 @@ class PageLoading extends Component {
     );
   }
 
+  renderMessage = () => {
+    const { classes, message } = this.props;
+
+    if (!message) {
+      return null;
+    }
+
+    return (
+      <Typography variant="body1" className={classes.message}>{message}</Typography>
+    )
+  }
+
   render() {
     const { classes } = this.props;
     const { delayIsDone } = this.state;
@@ -107,6 +129,7 @@ class PageLoading extends Component {
     return (
       <div className={classes.wrapper}>
         {!!delayIsDone && this.renderSpinner()}
+        {!!delayIsDone && this.renderMessage()}
       </div>
     );
   }

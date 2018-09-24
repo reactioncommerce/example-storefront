@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { observer } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import Actions from "@reactioncommerce/components/CheckoutActions/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
 import FulfillmentOptionsCheckoutAction from "@reactioncommerce/components/FulfillmentOptionsCheckoutAction/v1";
@@ -8,6 +8,8 @@ import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaym
 import FinalReviewCheckoutAction from "@reactioncommerce/components/FinalReviewCheckoutAction/v1";
 import withCart from "containers/cart/withCart";
 import withPlaceStripeOrder from "containers/order/withPlaceStripeOrder";
+import PageLoading from "components/PageLoading";
+import { Router } from "routes";
 import {
   adaptAddressToFormFields,
   isShippingAddressSet
@@ -15,6 +17,7 @@ import {
 
 @withCart
 @withPlaceStripeOrder
+@inject("authStore")
 @observer
 export default class CheckoutActions extends Component {
   static propTypes = {
@@ -34,6 +37,10 @@ export default class CheckoutActions extends Component {
     }),
     placeOrderWithStripeCard: PropTypes.func.isRequired
   };
+
+  state = {
+    placingOrder: false
+  }
 
   setShippingAddress = (address) => {
     const { checkoutMutations: { onSetShippingAddress } } = this.props;
@@ -65,8 +72,8 @@ export default class CheckoutActions extends Component {
     cartStore.setStripeToken(stripeToken);
   }
 
-  placeOrder = () => {
-    const { cart, cartStore, placeOrderWithStripeCard } = this.props;
+  placeOrder = async () => {
+    const { authStore, cart, cartStore, placeOrderWithStripeCard } = this.props;
     const cartId = cartStore.hasAccountCart ? cartStore.accountCartId : cartStore.anonymousCartId;
     const { checkout, email, shop } = cart;
     const fulfillmentGroups = checkout.fulfillmentGroups.map((group) => {
@@ -98,12 +105,34 @@ export default class CheckoutActions extends Component {
       shopId: shop._id
     };
 
-    return placeOrderWithStripeCard(order);
+    this.setState({ placingOrder: true });
+
+    const { data, error } = await placeOrderWithStripeCard(order);
+
+    // If success
+    if (data && !error) {
+      const { placeOrderWithStripeCardPayment: { orders, token } } = data;
+
+      // Clear anonymous cart
+      if (!authStore.isAuthenticated) {
+        cartStore.clearAnonymousCartCredentials();
+      }
+
+      // Send user to order confirmation page
+      Router.pushRoute("checkoutComplete", { orderId: orders[0]._id, token });
+    }
+
+    // TODO: if an error occurred, notify user
+
   }
 
   render() {
     if (!this.props.cart) {
       return null;
+    }
+
+    if (this.state.placingOrder) {
+      return <PageLoading message="Placing your order..."/>;
     }
 
     const { cartStore: { stripeToken } } = this.props;

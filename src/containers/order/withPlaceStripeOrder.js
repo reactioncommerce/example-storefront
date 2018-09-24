@@ -50,7 +50,7 @@ export default (Component) => (
         stripeTokenId: cartStore.stripeToken.token.id
       };
 
-      const { data, error } = await apolloClient.mutate({
+      return apolloClient.mutate({
         mutation: placeOrderWithStripeCardPayment,
         variables: {
           input: {
@@ -59,21 +59,6 @@ export default (Component) => (
           }
         }
       });
-
-      // If success
-      if (data && !error) {
-        const { placeOrderWithStripeCardPayment: { orders, token } } = data;
-
-        // Clear anonymous cart
-        if (!authStore.isAuthenticated) {
-          cartStore.clearAnonymousCartCredentials();
-        }
-
-        // Send user to order confirmation page
-        Router.pushRoute("checkoutComplete", { orderId: orders[0]._id, token });
-      }
-
-      // TODO: if an error occurred, notify user
     }
 
     render() {
