@@ -34,7 +34,7 @@ After the initial bootstrapping, you can use `make start` to start all the neces
 make start
 ```
 
-1. Once you start the `make` process, you can The Platform will start running the following apps at these URLs:
+1. Once the `make` process finishes, the Reaction Platform services will be accessible at the following URLs:
 
 | Application  | URL                     |
 | ------------ | ----------------------- |
@@ -44,13 +44,13 @@ make start
 
 Visit the storefront at `localhost:4000` and the GraphQL API playground at `localhost:3000/graphiql`.
 
-1. To view the logs for the Starterkit, run: `docker logs reaction-next-starterkit_web_1 -f`
+1. To view the logs for the Starterkit, run: `docker-compose logs -f`
 
 ## Configuration
 
 ### Set up Stripe
 
-When running the storefront from a new Reaction shop, you will need to configure Stripe payment processing and shipping options to test a complete order checkout flow. After signing up for a Stripe API key, follow these steps:
+When running the storefront and Reaction for the first time,, you will need to configure Stripe payment processing and shipping options to test a complete order checkout flow. After signing up for a Stripe API key, follow these steps:
 
 1. Add public Stripe API key (`STRIPE_PUBLIC_API_KEY`) to `.env`.
 2. Open the Reaction Classic app, at `http://localhost:3000`. Log in as an Admin user.
