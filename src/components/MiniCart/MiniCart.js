@@ -90,11 +90,15 @@ export default class MiniCart extends Component {
   }
 
   handleClick = () => Router.pushRoute("/");
-  handleCheckoutButtonClick = () => Router.pushRoute("/cart/checkout");
+
+  handleCheckoutButtonClick = () => {
+    this.handleLeavePopper();
+    Router.pushRoute("/cart/checkout");
+  }
 
   handlePopperClose = () => {
     const { closeCart } = this.props.uiStore;
-    closeCart();
+    closeCart(0);
   }
 
   handleEnterPopper = () => {
