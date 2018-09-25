@@ -136,7 +136,6 @@ export default class ProductDetailAddToCart extends Component {
 
     // Open cart popper on addToCart
     uiStore.openCartWithTimeout();
-
   }
 
   handleQuantityInputChange = (event) => {

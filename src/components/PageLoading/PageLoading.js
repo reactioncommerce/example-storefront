@@ -119,7 +119,7 @@ class PageLoading extends Component {
 
     return (
       <Typography variant="body1" className={classes.message}>{message}</Typography>
-    )
+    );
   }
 
   render() {

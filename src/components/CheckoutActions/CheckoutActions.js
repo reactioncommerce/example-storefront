@@ -123,7 +123,6 @@ export default class CheckoutActions extends Component {
     }
 
     // TODO: if an error occurred, notify user
-
   }
 
   render() {

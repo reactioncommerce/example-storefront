@@ -57,11 +57,10 @@ export default function withCart(Component) {
 
       // Update the anonymousCartId if necessary
       cartStore.setAnonymousCartCredentialsFromLocalStorage();
-
     }
 
     /**
-     * Clears an authenticated user's cart, this method is 
+     * Clears an authenticated user's cart, this method is
      * called after successfully placing on order.
      * @name clearAuthenticatedUsersCart
      * @summary Called when an authenticated user's cart needs to be cleared.

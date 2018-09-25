@@ -77,6 +77,7 @@ const styles = (theme) => ({
 class CheckoutComplete extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    clearAuthenticatedUsersCart: PropTypes.func.isRequired,
     client: PropTypes.object.isRequired,
     hasMoreCartItems: PropTypes.bool,
     isLoading: PropTypes.bool,
@@ -99,7 +100,9 @@ class CheckoutComplete extends Component {
     clearAuthenticatedUsersCart();
   }
 
-  handleCartEmptyClick = () => Router.pushRoute("/");
+  handleCartEmptyClick = () => {
+    Router.pushRoute("/");
+  }
 
   renderFulfillmentGroups() {
     const { classes, order, isLoading } = this.props;

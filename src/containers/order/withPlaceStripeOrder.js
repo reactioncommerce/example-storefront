@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
-import { Router } from "routes";
 import { placeOrderWithStripeCardPayment } from "./mutations.gql";
 
 /**
@@ -13,7 +12,7 @@ import { placeOrderWithStripeCardPayment } from "./mutations.gql";
  */
 export default (Component) => (
   @withApollo
-  @inject("authStore", "cartStore", "uiStore", "routingStore")
+  @inject("authStore", "cartStore", "routingStore")
   @observer
   class WithPlaceStripeOrder extends React.Component {
     static propTypes = {
@@ -31,7 +30,7 @@ export default (Component) => (
     }
 
     handlePlaceOrderWithStripeCard = async (order) => {
-      const { authStore, cartStore, uiStore, client: apolloClient } = this.props;
+      const { authStore, cartStore, client: apolloClient } = this.props;
       const { fulfillmentGroups } = order;
       const { stripeToken: { billingAddress } } = cartStore;
 
