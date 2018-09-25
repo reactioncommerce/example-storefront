@@ -131,7 +131,7 @@ export default class CheckoutActions extends Component {
     }
 
     if (this.state.placingOrder) {
-      return <PageLoading message="Placing your order..."/>;
+      return <PageLoading delay={0} message="Placing your order..."/>;
     }
 
     const { cartStore: { stripeToken } } = this.props;

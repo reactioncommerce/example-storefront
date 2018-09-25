@@ -23,11 +23,13 @@ const styles = () => ({
 class PageLoading extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    delay: PropTypes.number,
     message: PropTypes.string,
     theme: PropTypes.object
   };
 
   static defaultProps = {
+    delay: 800,
     message: null
   }
 
@@ -36,11 +38,13 @@ class PageLoading extends Component {
   }
 
   componentDidMount() {
+    const { delay } = this.props;
+
     this.timeout = setTimeout(() => {
       this.setState({
         delayIsDone: true
       });
-    }, 800);
+    }, delay);
   }
 
   componentWillUnmount() {
