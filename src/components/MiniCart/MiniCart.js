@@ -27,7 +27,7 @@ const styles = ({ palette, zIndex }) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: 320,
+    width: 360,
     height: 320,
     border: palette.borders.default
   },
