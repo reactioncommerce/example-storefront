@@ -26,7 +26,7 @@ Reference headless ecommerce storefront for [Reaction Commerce](https://reaction
 - Install [Reaction Platform](https://github.com/reactioncommerce/reaction-platform)
 - Make sure you are not running any applications on ports `3000` and `4000`.
 
-1. Follow the instructions at [Reaction Platform](https://github.com/reactioncommerce/reaction-platform) to run Reaction, Reaction Hydra and the starterkit with Reaction Platform.
+2. Follow the instructions at [Reaction Platform](https://github.com/reactioncommerce/reaction-platform) to run Reaction, Reaction Hydra and the starterkit with Reaction Platform.
 
 After the initial bootstrapping, you can use `make start` to start all the necessary containers:
 
@@ -34,7 +34,7 @@ After the initial bootstrapping, you can use `make start` to start all the neces
 make start
 ```
 
-1. Once the `make` process finishes, the Reaction Platform services will be accessible at the following URLs:
+3. Once the `make` process finishes, the Reaction Platform services will be accessible at the following URLs:
 
 | Application  | URL                     |
 | ------------ | ----------------------- |
@@ -44,7 +44,7 @@ make start
 
 Visit the storefront at `localhost:4000` and the GraphQL API playground at `localhost:3000/graphiql`.
 
-1. To view the logs for the Starterkit, run: `docker-compose logs -f`
+4. To view the logs for the Starterkit, run: `docker-compose logs -f`
 
 ## Configuration
 
