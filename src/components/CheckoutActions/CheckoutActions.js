@@ -72,8 +72,8 @@ export default class CheckoutActions extends Component {
     cartStore.setStripeToken(stripeToken);
   }
 
-  placeOrder = async () => {
-    const { authStore, cart, cartStore, placeOrderWithStripeCard } = this.props;
+  buildOrder = () => {
+    const { cart, cartStore } = this.props;
     const cartId = cartStore.hasAccountCart ? cartStore.accountCartId : cartStore.anonymousCartId;
     const { checkout, email, shop } = cart;
     const fulfillmentGroups = checkout.fulfillmentGroups.map((group) => {
@@ -105,8 +105,14 @@ export default class CheckoutActions extends Component {
       shopId: shop._id
     };
 
-    this.setState({ placingOrder: true });
+    this.setState({ placingOrder: true }, () => {
+      this.placeOrder(order)
+    });
 
+  }
+
+  placeOrder = async (order) => {
+    const { authStore, cartStore, placeOrderWithStripeCard } = this.props;
     const { data, error } = await placeOrderWithStripeCard(order);
 
     // If success
@@ -204,7 +210,7 @@ export default class CheckoutActions extends Component {
         label: "Review and place order",
         status: "incomplete",
         component: FinalReviewCheckoutAction,
-        onSubmit: this.placeOrder,
+        onSubmit: this.buildOrder,
         props: {
           checkoutSummary
         }
