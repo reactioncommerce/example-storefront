@@ -66,10 +66,11 @@ class OrderFulfillmentGroup extends Component {
   }
 
   renderItems() {
-    const { fulfillmentGroup, hasMoreCartItems, loadMoreCartItems } = this.props;
+    const { classes, fulfillmentGroup, hasMoreCartItems, loadMoreCartItems } = this.props;
 
     if (fulfillmentGroup && Array.isArray(fulfillmentGroup.items.nodes)) {
       return (
+        <div className={classes.fulfillmentDetails}>
         <Grid item xs={12}>
           <CartItems
             isMiniCart
@@ -81,6 +82,7 @@ class OrderFulfillmentGroup extends Component {
             onRemoveItemFromCart={this.handleRemoveItem}
           />
         </Grid>
+        </div>
       );
     }
 
