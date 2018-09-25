@@ -106,9 +106,8 @@ export default class CheckoutActions extends Component {
     };
 
     this.setState({ placingOrder: true }, () => {
-      this.placeOrder(order)
+      this.placeOrder(order);
     });
-
   }
 
   placeOrder = async (order) => {
