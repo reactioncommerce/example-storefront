@@ -71,17 +71,17 @@ class OrderFulfillmentGroup extends Component {
     if (fulfillmentGroup && Array.isArray(fulfillmentGroup.items.nodes)) {
       return (
         <div className={classes.fulfillmentDetails}>
-        <Grid item xs={12}>
-          <CartItems
-            isMiniCart
-            isReadOnly
-            hasMoreCartItems={hasMoreCartItems}
-            onLoadMoreCartItems={loadMoreCartItems}
-            items={fulfillmentGroup.items.nodes}
-            onChangeCartItemQuantity={this.handleItemQuantityChange}
-            onRemoveItemFromCart={this.handleRemoveItem}
-          />
-        </Grid>
+          <Grid item xs={12}>
+            <CartItems
+              isMiniCart
+              isReadOnly
+              hasMoreCartItems={hasMoreCartItems}
+              onLoadMoreCartItems={loadMoreCartItems}
+              items={fulfillmentGroup.items.nodes}
+              onChangeCartItemQuantity={this.handleItemQuantityChange}
+              onRemoveItemFromCart={this.handleRemoveItem}
+            />
+          </Grid>
         </div>
       );
     }
