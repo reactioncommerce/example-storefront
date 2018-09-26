@@ -142,7 +142,6 @@ export default class CheckoutActions extends Component {
         fullScreen
         open={isPlacingOrder}
         onClose={this.handleClose}
-        TransitionComponent={(props) => <Fade in={true} {...props} />}
       >
         <PageLoading delay={0} message="Placing your order..."/>
       </Dialog>
