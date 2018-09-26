@@ -11,7 +11,6 @@ import withPlaceStripeOrder from "containers/order/withPlaceStripeOrder";
 import Dialog from "@material-ui/core/Dialog";
 import PageLoading from "components/PageLoading";
 import { Router } from "routes";
-import Fade from "@material-ui/core/Fade";
 import {
   adaptAddressToFormFields,
   isShippingAddressSet
