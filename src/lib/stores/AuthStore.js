@@ -71,9 +71,32 @@ class AuthStore {
     return false;
   }
 
+  // TODO: Temporary workaround until name fields get added from GQL
+  // See https://github.com/reactioncommerce/reaction/issues/4646
+  splitNames(account) {
+    const { name } = account;
+    const firstName =
+      name &&
+      name
+        .split(" ")
+        .slice(0, -1)
+        .join(" ");
+    const lastName =
+      name &&
+      name
+        .split(" ")
+        .slice(-1)
+        .join(" ");
+
+    return {
+      firstName,
+      lastName
+    };
+  }
+
   @action setAccount(account) {
     this.accountId = account._id || null;
-    this.account = account;
+    this.account = { ...this.splitNames(account), ...account };
   }
 }
 
