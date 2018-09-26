@@ -34,8 +34,5 @@ exports[`basic snapshot 1`] = `
       />
     </svg>
   </span>
-  <span
-    className="MuiTouchRipple-root-21"
-  />
 </button>
 `;

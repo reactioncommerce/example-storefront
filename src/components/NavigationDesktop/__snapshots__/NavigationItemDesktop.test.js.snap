@@ -21,9 +21,6 @@ exports[`renders with 1 level of tags 1`] = `
   <span
     className="MuiButton-label-7"
   />
-  <span
-    className="MuiTouchRipple-root-35"
-  />
 </a>
 `;
 
@@ -48,9 +45,6 @@ exports[`renders with 2 levels of tags 1`] = `
   <span
     className="MuiButton-label-7"
   />
-  <span
-    className="MuiTouchRipple-root-35"
-  />
 </a>
 `;
 
@@ -74,9 +68,6 @@ exports[`renders with 3 levels of tags 1`] = `
 >
   <span
     className="MuiButton-label-7"
-  />
-  <span
-    className="MuiTouchRipple-root-35"
   />
 </a>
 `;

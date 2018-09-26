@@ -65,9 +65,6 @@ Array [
                   d="M19,13H5V11H19V13Z"
                 />
               </svg>
-              <span
-                className="MuiTouchRipple-root-185"
-              />
             </button>
           </div>
           <input
@@ -125,9 +122,6 @@ Array [
                   d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
                 />
               </svg>
-              <span
-                className="MuiTouchRipple-root-185"
-              />
             </button>
           </div>
         </div>
@@ -158,36 +152,33 @@ Array [
         >
           Add to cart
         </span>
-        <span
-          className="MuiTouchRipple-root-185"
-        />
       </button>
     </div>
   </div>,
   <div
-    className="HiddenCss-mdUp-207"
+    className="HiddenCss-mdUp-200"
   >
     <div
-      className="SkCartPopover-container-192 SkCartPopover-isContainerHidden-194"
+      className="SkCartPopover-container-185 SkCartPopover-isContainerHidden-187"
     >
       <div
-        className="MuiGrid-container-9 MuiGrid-spacing-xs-24-33 SkCartPopover-gridContainer-193"
+        className="MuiGrid-container-9 MuiGrid-spacing-xs-24-33 SkCartPopover-gridContainer-186"
       >
         <div
-          className="MuiGrid-item-10 MuiGrid-grid-xs-12-49 SkCartPopover-containerItem-196"
+          className="MuiGrid-item-10 MuiGrid-grid-xs-12-49 SkCartPopover-containerItem-189"
         >
           <img
             alt="Item Title"
-            className="SkCartPopover-addedToCartImg-197"
+            className="SkCartPopover-addedToCartImg-190"
             src="//placehold.it/100"
           />
           <span
-            className="MuiTypography-root-109 MuiTypography-body1-118 SkCartPopover-addedToCartText-199"
+            className="MuiTypography-root-109 MuiTypography-body1-118 SkCartPopover-addedToCartText-192"
           >
             10
              "
             <span
-              className="SkCartPopover-addedToCartItemName-198"
+              className="SkCartPopover-addedToCartItemName-191"
             >
               Item Title
             </span>
