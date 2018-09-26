@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser";
 import express from "express";
 import session from "express-session";
 import nextApp from "next";
+import request from "request";
 import { useStaticRendering } from "mobx-react";
 import logger from "lib/logger";
 import passport from "passport";
@@ -12,6 +13,12 @@ import router from "./routes";
 
 const app = nextApp({ dir: appPath, dev });
 const routeHandler = router.getRequestHandler(app);
+const decodeOpaqueId = (opaqueId) => {
+  if (opaqueId === undefined || opaqueId === null) return null;
+  const unencoded = Buffer.from(opaqueId, "base64").toString("utf8");
+  const [namespace, id] = unencoded.split(":");
+  return { namespace, id };
+};
 
 // This is needed to allow custom parameters (e.g loginActions) to be included
 // when requesting authorization. This is setup to allow only loginAction to pass through
@@ -68,9 +75,14 @@ app
       res.redirect(req.session.redirectTo || "/");
     });
 
-    server.get("/logout", (req, res) => {
-      req.logout();
-      res.redirect(req.get("Referer") || "/");
+    server.get("/logout/:userId", (req, res) => {
+      const { id } = decodeOpaqueId(req.params.userId);
+      request(`${process.env.OAUTH2_IDP_HOST_URL}logout?userId=${id}`, (error) => {
+        if (!error) {
+          req.logout();
+          res.redirect(req.get("Referer") || "/");
+        }
+      });
     });
 
     // Setup next routes
