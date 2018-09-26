@@ -60,6 +60,33 @@ export default function withCart(Component) {
     }
 
     /**
+     * Clears an authenticated user's cart, this method is
+     * called after successfully placing on order.
+     * @name clearAuthenticatedUsersCart
+     * @summary Called when an authenticated user's cart needs to be cleared.
+     * @private
+     * @returns {undefined} No return
+     */
+    clearAuthenticatedUsersCart = () => {
+      const {
+        authStore,
+        client: { cache },
+        shop
+      } = this.props;
+
+      if (authStore.isAuthenticated) {
+        cache.writeQuery({
+          query: accountCartByAccountIdQuery,
+          data: { cart: null },
+          variables: {
+            accountId: authStore.accountId,
+            shopId: shop._id
+          }
+        });
+      }
+    }
+
+    /**
      * Reconcile an anonymous and account cart when an anonymous user signs in
      * and they have an anonymous cart.
      * @name reconcileCartsIfNecessary
@@ -447,6 +474,7 @@ export default function withCart(Component) {
                     }}
                     onChangeCartItemsQuantity={this.handleChangeCartItemsQuantity}
                     onRemoveCartItems={this.handleRemoveCartItems}
+                    clearAuthenticatedUsersCart={this.clearAuthenticatedUsersCart}
                     refetchCart={refetchCart}
                     setEmailOnAnonymousCart={this.handleSetEmailOnAnonymousCart}
                   />
