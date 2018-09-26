@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import Actions from "@reactioncommerce/components/CheckoutActions/v1";
@@ -8,8 +8,10 @@ import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaym
 import FinalReviewCheckoutAction from "@reactioncommerce/components/FinalReviewCheckoutAction/v1";
 import withCart from "containers/cart/withCart";
 import withPlaceStripeOrder from "containers/order/withPlaceStripeOrder";
+import Dialog from "@material-ui/core/Dialog";
 import PageLoading from "components/PageLoading";
 import { Router } from "routes";
+import Fade from "@material-ui/core/Fade";
 import {
   adaptAddressToFormFields,
   isShippingAddressSet
@@ -39,7 +41,7 @@ export default class CheckoutActions extends Component {
   };
 
   state = {
-    placingOrder: false
+    isPlacingOrder: false
   }
 
   setShippingAddress = (address) => {
@@ -72,7 +74,7 @@ export default class CheckoutActions extends Component {
     cartStore.setStripeToken(stripeToken);
   }
 
-  buildOrder = () => {
+  buildOrder = async () => {
     const { cart, cartStore } = this.props;
     const cartId = cartStore.hasAccountCart ? cartStore.accountCartId : cartStore.anonymousCartId;
     const { checkout, email, shop } = cart;
@@ -105,9 +107,7 @@ export default class CheckoutActions extends Component {
       shopId: shop._id
     };
 
-    this.setState({ placingOrder: true }, () => {
-      this.placeOrder(order);
-    });
+    return this.setState({ isPlacingOrder: true }, () => this.placeOrder(order));
   }
 
   placeOrder = async (order) => {
@@ -130,13 +130,28 @@ export default class CheckoutActions extends Component {
     // TODO: if an error occurred, notify user
   }
 
+  handleClose = () => {
+    // TODO: if an error occurs, then close dialog
+  }
+
+  renderPlacingOrderOverlay = () => {
+    const { isPlacingOrder } = this.state;
+
+    return (
+      <Dialog
+        fullScreen
+        open={isPlacingOrder}
+        onClose={this.handleClose}
+        TransitionComponent={(props) => <Fade in={true} {...props} />}
+      >
+        <PageLoading delay={0} message="Placing your order..."/>
+      </Dialog>
+    );
+  }
+
   render() {
     if (!this.props.cart) {
       return null;
-    }
-
-    if (this.state.placingOrder) {
-      return <PageLoading delay={0} message="Placing your order..."/>;
     }
 
     const { cartStore: { stripeToken } } = this.props;
@@ -216,7 +231,10 @@ export default class CheckoutActions extends Component {
       }
     ];
     return (
-      <Actions actions={actions} />
+      <Fragment>
+        {this.renderPlacingOrderOverlay()}
+        <Actions actions={actions} />
+      </Fragment>
     );
   }
 }
