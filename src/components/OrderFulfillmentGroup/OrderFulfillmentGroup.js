@@ -66,21 +66,23 @@ class OrderFulfillmentGroup extends Component {
   }
 
   renderItems() {
-    const { fulfillmentGroup, hasMoreCartItems, loadMoreCartItems } = this.props;
+    const { classes, fulfillmentGroup, hasMoreCartItems, loadMoreCartItems } = this.props;
 
     if (fulfillmentGroup && Array.isArray(fulfillmentGroup.items.nodes)) {
       return (
-        <Grid item xs={12}>
-          <CartItems
-            isMiniCart
-            isReadOnly
-            hasMoreCartItems={hasMoreCartItems}
-            onLoadMoreCartItems={loadMoreCartItems}
-            items={fulfillmentGroup.items.nodes}
-            onChangeCartItemQuantity={this.handleItemQuantityChange}
-            onRemoveItemFromCart={this.handleRemoveItem}
-          />
-        </Grid>
+        <div className={classes.fulfillmentDetails}>
+          <Grid item xs={12}>
+            <CartItems
+              isMiniCart
+              isReadOnly
+              hasMoreCartItems={hasMoreCartItems}
+              onLoadMoreCartItems={loadMoreCartItems}
+              items={fulfillmentGroup.items.nodes}
+              onChangeCartItemQuantity={this.handleItemQuantityChange}
+              onRemoveItemFromCart={this.handleRemoveItem}
+            />
+          </Grid>
+        </div>
       );
     }
 
