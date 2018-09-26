@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser";
 import express from "express";
 import session from "express-session";
 import nextApp from "next";
+import request from "request";
 import { useStaticRendering } from "mobx-react";
 import logger from "lib/logger";
 import passport from "passport";
@@ -68,9 +69,13 @@ app
       res.redirect(req.session.redirectTo || "/");
     });
 
-    server.get("/logout", (req, res) => {
-      req.logout();
-      res.redirect(req.get("Referer") || "/");
+    server.get("/logout/:userId", (req, res) => {
+      request.delete(`${process.env.HYDRA_ADMIN_URL}/oauth2/auth/sessions/login/${req.params.userId}`, (error) => {
+        if (!error) {
+          req.logout();
+          res.redirect(req.get("Referer") || "/");
+        }
+      });
     });
 
     // Setup next routes
