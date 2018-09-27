@@ -75,18 +75,7 @@ class AuthStore {
   // See https://github.com/reactioncommerce/reaction/issues/4646
   splitNames(account) {
     const { name } = account;
-    const firstName =
-      name &&
-      name
-        .split(" ")
-        .slice(0, -1)
-        .join(" ");
-    const lastName =
-      name &&
-      name
-        .split(" ")
-        .slice(-1)
-        .join(" ");
+    const [firstName, lastName] = name.split(" ");
 
     return {
       firstName,

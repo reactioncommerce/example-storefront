@@ -27,7 +27,7 @@ const styles = ({ palette, zIndex }) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: 320,
+    width: 360,
     height: 320,
     border: palette.borders.default
   },
@@ -90,11 +90,15 @@ export default class MiniCart extends Component {
   }
 
   handleClick = () => Router.pushRoute("/");
-  handleCheckoutButtonClick = () => Router.pushRoute("/cart/checkout");
+
+  handleCheckoutButtonClick = () => {
+    this.handleLeavePopper();
+    Router.pushRoute("/cart/checkout");
+  }
 
   handlePopperClose = () => {
     const { closeCart } = this.props.uiStore;
-    closeCart();
+    closeCart(0);
   }
 
   handleEnterPopper = () => {

@@ -1,76 +1,89 @@
 # Reaction Storefront Next.js Starter Kit
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit?ref=badge_shield)
 
-
 _**Note:** This project is a work in progress and should not be used in production at this time._
 
-Reference Storefront application for [Reaction Commerce](https://reactioncommerce.com/).
+Reference headless ecommerce storefront for [Reaction Commerce](https://reactioncommerce.com/) v 2.0.0.
+
+## Features
+
+- Headless ecommerce starter kit built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [MobX](https://mobx.js.org/getting-started.html), [GraphQL](https://graphql.org/), [Apollo Client](https://www.apollographql.com/docs/react/)
+- [Reaction GraphQL API](https://github.com/reactioncommerce/reaction/tree/master/imports/plugins/core/graphql) integration
+- Server-side rendering
+- Payments with [Stripe](https://stripe.com/)
+- Analytics with [Segment](https://segment.com/)
+- Reusable, customizable, themeable ecommerce React components from the new [Reaction Component Library](https://github.com/reactioncommerce/reaction-component-library/) with [Styled Components](https://www.styled-components.com/)
+- Fully-configured test suite: Jest snapshot testing, Mocha integration testing
+- Written in ES6, configured with ES6
+- Containerized with Docker
 
 ## Getting Started
-_Follow steps as necessary. If you already have Reaction installed, you may be able to skip some of these steps._
 
-0. Prerequesites
+1. Requirements:
+
 - Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/). Docker Compose is included when installing Docker on Mac and Windows, but will need to be installed separately on Linux.
+- Install [Node.js](https://nodejs.org/en/)
+- Install [Reaction Platform](https://github.com/reactioncommerce/reaction-platform)
+- Make sure you are not running any applications on ports `3000` and `4000`.
 
-1. Clone the main [Reaction repo](https://github.com/reactioncommerce/reaction) and checkout the `release-1.15.0` branch
-    ```sh
-    git clone git@github.com:reactioncommerce/reaction.git
-    cd reaction
-    git checkout release-1.15.0
+2. Follow the instructions at [Reaction Platform](https://github.com/reactioncommerce/reaction-platform) to run Reaction, Reaction Hydra and the starterkit with Reaction Platform.
 
-    # change directory to the parent of your reaction install
-    cd ..
-    ```
+After the initial bootstrapping, you can use `make start` to start all the necessary containers:
 
-2. Clone this repo
-    ```sh
-    git clone git@github.com:reactioncommerce/reaction-next-starterkit.git
-    ```
+```sh
+make start
+```
 
-3. Create a local docker network
+3. Once the `make` process finishes, the Reaction Platform services will be accessible at the following URLs:
 
-    You'll need to create a docker network for the GraphQL service and the Reaction Storefront to communicate
-    ```
-    docker network create api.reaction.localhost
-    ```
-    You can run `docker network ls` to verify the network has been created.
+| Application  | URL                     |
+| ------------ | ----------------------- |
+| `starterkit` | localhost:4000          |
+| GraphQL API  | localhost:3000/graphiql |
+| `reaction`   | localhost:3000          |
 
-4. Start Reaction's GraphQL server
-    From your `reaction` directory run
-    ```
-    docker-compose up -d --build
-    ```
-    You'll need to run the full app at least once in order for step 5 to work. After this initial run, if you don't want to start the Reaction Meteor app, you can just run `docker-compose up -d devserver`
+Visit the storefront at `localhost:4000` and the GraphQL API playground at `localhost:3000/graphiql`.
 
-5. Generate a Meteor login token
+4. To view the logs for the Starterkit, run: `docker-compose logs -f`
 
-    _This process will be eliminated once we've built out the GraphQL API for authentication_
-    - Visit the Reaction Meteor shop [localhost:3000](http://localhost:3000)
-    - Open devtools and copy the Meteor.loginToken from `localStorage`.
+## Configuration
 
-6. Setup the Storefront environment
+### Set up Stripe
 
-    Navigate to the `reaction-next-starterkit` directory and create a `.env` file.
-    ```sh
-    cp .env.example .env
-    ```
-7. Start the storefront application in development mode using Docker Compose
-    ```
-    docker-compose up -d --build
-    ```
+When running the storefront and Reaction for the first time, you will need to configure Stripe payment processing and shipping options to test a complete order checkout flow. After signing up for a Stripe API key, follow these steps:
 
-8. Visit the storefront on `localhost:4000`
+1. Add public Stripe API key (`STRIPE_PUBLIC_API_KEY`) to `.env`.
+2. Open the Reaction Classic app, at `http://localhost:3000`. Log in as an Admin user.
+3. Open **Payments**: Enable Stripe by checking the box. Add a Stripe secret key and public key.
+4. Open **Shipping**: Enable flat-rate shipping by checking the box. Enable at least one type of flat-rate shipping by clicking on the option in the table and checking the box.
 
+### Set up Analytics event tracking
+
+Read the docs for [setting up Segment or a custom analytics tracker](docs/tracking-events.md)
+
+## Documentation
+- [Starter Kit full documentation](./docs) 
+- [Reaction Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](https://stoic-hodgkin-c0179e.netlify.com/)
+- [Reaction Docs: Using GraphQL](https://docs.reactioncommerce.com/docs/graphql-using)
+- [Reaction Docs: Testing with Jest](https://docs.reactioncommerce.com/docs/testing-reaction)
+- [Reaction Docs: Develping with Docker](https://docs.reactioncommerce.com/docs/installation-docker-development
+)
 
 ## Development
 
-### Build and run in development mode with logs
+The Reaction Platform runs the Starterkit with Docker, so you will have to use Docker commands to view logs, run commands inside the container and more. To run commands specifically for the Starterkit, make sure to change directories into the `reaction-next-starterkit` directory within the `reaction-platform` repository:
+
+```sh
+cd reaction-next-starterkit
 ```
+
+### Build and run in development mode with logs
+```sh
 docker-compose up -d && docker-compose logs -f
 ```
 
 ### Running Commands inside the container
-```
+```sh
 docker-compose run --rm web [command]
 ```
 Run any command inside a Docker container and then remove the container. Use this to run any tooling operations. Remember your project directory will be mounted and things will usually just work.
@@ -140,56 +153,45 @@ Sometimes we need to test [`reaction-component-library`](https://github.com/reac
 
 ## Cleanup Containers
 Stop, and retain containers:
-```
+```sh
 docker-compose stop
 ```
 
 Stop, and remove containers:
-```
+```sh
 docker-compose down
 ```
 
 Stop, and remove containers, volumes and built images:
-```
+```sh
 docker-compose down -v --rmi local
 ```
 
-## Production
-Running the command below will build the starterkit for production.
+## Building and running the production app locally
 
-```
+Sometimes it is helpful during development to make a production build of the app and run that locally.
+
+Run this command to build a Docker image with the production build of the app in it:
+
+```sh
 docker build -t reaction-storefront --build-arg BUILD_ENV=production .
 ```
 
-To start the app in production mode execute:
+Then, to start the app on your machine, make sure the Reaction API container is already running and enter:
 
-```
+```sh
 docker run -d --name storefront -p ${port}:4000 --env-file .env --network api.reaction.localhost reaction-storefront
 ```
 
-To stop the docker container after starting it with the above command
-```
+_**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at._
+
+_**NOTE:** This is not the way to run the app in actual production deployment. This is only for running the production build locally for development, demo or trial purposes._
+
+To stop the Docker container after starting it with the above command, use:
+
+```sh
 docker stop storefront
 ```
-
-_**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at. I'm partial to 4040_
-_**NOTE:** The above command is assuming ether the `devserver` or `reaction` is also running._
-
-## Documentation
-See our [full documentation](./docs)
-
-## Features
- - [Docker](https://docs.docker.com)
- - [React](https://reactjs.org/)
- - [Apollo](https://www.apollographql.com/docs/react/)
- - [MobX](https://mobx.js.org/getting-started.html)
- - [nextjs](https://github.com/zeit/next.js/)
- - [Material UI](https://material-ui.com/)
-
- ## Reference links for development
- ### CSS in JS
- - [Responsive Breakpoints](https://material-ui.com/layout/css-in-js/#responsive-breakpoints)
-
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit?ref=badge_large)
