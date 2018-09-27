@@ -17,16 +17,18 @@
     "babel-plugin-styled-components",
     [ "module-resolver", { "root": [ "./src", "./config" ] } ],
     [ "@babel/plugin-proposal-decorators", { "legacy": true } ],
-    [ "@babel/plugin-proposal-class-properties", { "loose": true } ]
+    [ "@babel/plugin-proposal-class-properties", { "loose": true } ],
+    "@babel/plugin-proposal-optional-chaining"
   ],
   "env": {
     "jesttest": {
       "plugins": [
+        "dynamic-import-node",
         "babel-plugin-styled-components",
         [ "module-resolver", { "root": [ "./src", "./config" ] } ],
         [ "@babel/plugin-proposal-decorators", { "legacy": true } ],
         [ "@babel/plugin-proposal-class-properties", { "loose": true } ],
-        "dynamic-import-node"
+        "@babel/plugin-proposal-optional-chaining"
       ]
     }
   }
