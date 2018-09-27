@@ -84,8 +84,13 @@ class AuthStore {
   }
 
   @action setAccount(account) {
-    this.accountId = account._id || null;
-    this.account = { ...this.splitNames(account), ...account };
+    if (account) {
+      this.accountId = account._id || null;
+      this.account = { ...this.splitNames(account), ...account };
+    } else {
+      this.accountId = null;
+      this.account = {};
+    }
   }
 }
 

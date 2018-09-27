@@ -13,6 +13,12 @@ import router from "./routes";
 
 const app = nextApp({ dir: appPath, dev });
 const routeHandler = router.getRequestHandler(app);
+const decodeOpaqueId = (opaqueId) => {
+  if (opaqueId === undefined || opaqueId === null) return null;
+  const unencoded = Buffer.from(opaqueId, "base64").toString("utf8");
+  const [namespace, id] = unencoded.split(":");
+  return { namespace, id };
+};
 
 // This is needed to allow custom parameters (e.g loginActions) to be included
 // when requesting authorization. This is setup to allow only loginAction to pass through
@@ -70,7 +76,8 @@ app
     });
 
     server.get("/logout/:userId", (req, res) => {
-      request.delete(`${process.env.HYDRA_ADMIN_URL}/oauth2/auth/sessions/login/${req.params.userId}`, (error) => {
+      const { id } = decodeOpaqueId(req.params.userId);
+      request(`${process.env.OAUTH2_IDP_HOST_URL}logout?userId=${id}`, (error) => {
         if (!error) {
           req.logout();
           res.redirect(req.get("Referer") || "/");
