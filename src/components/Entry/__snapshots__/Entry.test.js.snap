@@ -21,7 +21,6 @@ exports[`basic snapshot 1`] = `
         onKeyPress={[Function]}
         role="button"
         tabIndex={0}
-        title={undefined}
       >
         <div>
           Login
@@ -73,7 +72,6 @@ exports[`basic snapshot 1`] = `
         onKeyPress={[Function]}
         role="button"
         tabIndex={0}
-        title={undefined}
       >
         <div>
           Create a new account
@@ -141,7 +139,6 @@ exports[`basic snapshot 1`] = `
         >
           <label
             className="Field__StyledLabel-gsQloH iDRsBJ"
-            htmlFor={undefined}
           >
             Email Address
           </label>
@@ -152,7 +149,6 @@ exports[`basic snapshot 1`] = `
             <input
               className="TextInput__StyledInput-loReSQ cKYvwP"
               id="email_GuestForm_1"
-              maxLength={undefined}
               name="email"
               onBlur={[Function]}
               onChange={[Function]}
@@ -179,7 +175,6 @@ exports[`basic snapshot 1`] = `
             onKeyPress={[Function]}
             role="button"
             tabIndex={0}
-            title={undefined}
           >
             <div>
               Continue as guest

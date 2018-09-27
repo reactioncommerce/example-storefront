@@ -7,7 +7,6 @@ exports[`basic snapshot 1`] = `
   onKeyPress={[Function]}
   role="button"
   tabIndex={0}
-  title={undefined}
 >
   <div>
     Checkout
