@@ -63,18 +63,7 @@ class Header extends Component {
   // See https://github.com/reactioncommerce/reaction/issues/4646
   get splitNames() {
     const { viewer: { name } } = this.props;
-    const firstName =
-      name &&
-      name
-        .split(" ")
-        .slice(0, -1)
-        .join(" ");
-    const lastName =
-      name &&
-      name
-        .split(" ")
-        .slice(-1)
-        .join(" ");
+    const [firstName, lastName] = name.split(" ");
 
     return {
       firstName,
