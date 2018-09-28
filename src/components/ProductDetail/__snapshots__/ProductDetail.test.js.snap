@@ -27,7 +27,6 @@ exports[`basic snapshot 1`] = `
       <svg
         aria-hidden="true"
         className="MuiSvgIcon-root-206 SkBreadcrumbs-breadcrumbIcon-240"
-        color={undefined}
         focusable="false"
         role="presentation"
         viewBox="0 0 24 24"
@@ -53,7 +52,6 @@ exports[`basic snapshot 1`] = `
       <svg
         aria-hidden="true"
         className="MuiSvgIcon-root-206 SkBreadcrumbs-breadcrumbIcon-240"
-        color={undefined}
         focusable="false"
         role="presentation"
         viewBox="0 0 24 24"
@@ -111,7 +109,6 @@ exports[`basic snapshot 1`] = `
             >
               <button
                 className="MuiButtonBase-root-110 SkMediaGalleryItem-root-109"
-                disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -145,7 +142,6 @@ exports[`basic snapshot 1`] = `
             >
               <button
                 className="MuiButtonBase-root-110 SkMediaGalleryItem-root-109"
-                disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -179,7 +175,6 @@ exports[`basic snapshot 1`] = `
             >
               <button
                 className="MuiButtonBase-root-110 SkMediaGalleryItem-root-109"
-                disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -213,7 +208,6 @@ exports[`basic snapshot 1`] = `
             >
               <button
                 className="MuiButtonBase-root-110 SkMediaGalleryItem-root-109"
-                disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -247,7 +241,6 @@ exports[`basic snapshot 1`] = `
             >
               <button
                 className="MuiButtonBase-root-110 SkMediaGalleryItem-root-109"
-                disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -281,7 +274,6 @@ exports[`basic snapshot 1`] = `
             >
               <button
                 className="MuiButtonBase-root-110 SkMediaGalleryItem-root-109"
-                disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -315,7 +307,6 @@ exports[`basic snapshot 1`] = `
             >
               <button
                 className="MuiButtonBase-root-110 SkMediaGalleryItem-root-109"
-                disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -349,7 +340,6 @@ exports[`basic snapshot 1`] = `
             >
               <button
                 className="MuiButtonBase-root-110 SkMediaGalleryItem-root-109"
-                disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -407,7 +397,6 @@ exports[`basic snapshot 1`] = `
             >
               <div
                 className="MuiChip-root-244 SkTagGrid-chip-243"
-                onClick={undefined}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
                 role="button"
@@ -434,7 +423,6 @@ exports[`basic snapshot 1`] = `
             >
               <div
                 className="MuiChip-root-244 SkTagGrid-chip-243"
-                onClick={undefined}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
                 role="button"
@@ -498,7 +486,6 @@ Details can be added below the image for more specific product information.
       >
         <button
           className="MuiButtonBase-root-110 SkVariantItem-variantButton-149 SkVariantItem-activeVariant-150"
-          disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -537,7 +524,6 @@ Details can be added below the image for more specific product information.
       >
         <button
           className="MuiButtonBase-root-110 SkVariantItem-variantButton-149"
-          disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -587,7 +573,6 @@ Details can be added below the image for more specific product information.
         >
           <button
             className="MuiButtonBase-root-110 SkProductDetailOption-optionButton-157"
-            disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -621,7 +606,6 @@ Details can be added below the image for more specific product information.
         >
           <button
             className="MuiButtonBase-root-110 SkProductDetailOption-optionButton-157"
-            disabled={undefined}
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -667,7 +651,6 @@ Details can be added below the image for more specific product information.
           Quantity
         </span>
         <div
-          aria-describedby={undefined}
           className="MuiFormControl-root-168"
         >
           <div
@@ -680,7 +663,6 @@ Details can be added below the image for more specific product information.
               <button
                 className="MuiButtonBase-root-110 SkProductDetailAddToCart-incrementButton-162"
                 color="default"
-                disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -699,7 +681,6 @@ Details can be added below the image for more specific product information.
                 <svg
                   aria-hidden="true"
                   className="MuiSvgIcon-root-206 SkProductDetailAddToCart-quantitySvg-166"
-                  color={undefined}
                   focusable="false"
                   role="presentation"
                   viewBox="0 0 24 24"
@@ -715,22 +696,13 @@ Details can be added below the image for more specific product information.
             </div>
             <input
               aria-invalid={false}
-              autoComplete={undefined}
-              autoFocus={undefined}
               className="MuiInputBase-input-195 MuiInput-input-180 SkProductDetailAddToCart-quantityInput-165 MuiInputBase-inputAdornedStart-200 MuiInputBase-inputAdornedEnd-201"
-              defaultValue={undefined}
               disabled={false}
               id="addToCartQuantityInput"
-              name={undefined}
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              onKeyDown={undefined}
-              onKeyUp={undefined}
-              placeholder={undefined}
-              readOnly={undefined}
               required={false}
-              rows={undefined}
               type="text"
               value={1}
             />
@@ -740,7 +712,6 @@ Details can be added below the image for more specific product information.
               <button
                 className="MuiButtonBase-root-110 SkProductDetailAddToCart-incrementButton-162"
                 color="default"
-                disabled={undefined}
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -759,7 +730,6 @@ Details can be added below the image for more specific product information.
                 <svg
                   aria-hidden="true"
                   className="MuiSvgIcon-root-206 SkProductDetailAddToCart-quantitySvg-166"
-                  color={undefined}
                   focusable="false"
                   role="presentation"
                   viewBox="0 0 24 24"
@@ -781,7 +751,6 @@ Details can be added below the image for more specific product information.
       >
         <button
           className="MuiButtonBase-root-110 SkProductDetailAddToCart-addToCartButton-160"
-          disabled={undefined}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -846,7 +815,6 @@ Details can be added below the image for more specific product information.
               onKeyPress={[Function]}
               role="button"
               tabIndex={0}
-              title={undefined}
             >
               <div>
                 Checkout

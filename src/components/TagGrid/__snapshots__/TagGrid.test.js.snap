@@ -23,7 +23,6 @@ exports[`basic snapshot 1`] = `
       >
         <div
           className="MuiChip-root-127 SkTagGrid-chip-2"
-          onClick={undefined}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           role="button"
@@ -50,7 +49,6 @@ exports[`basic snapshot 1`] = `
       >
         <div
           className="MuiChip-root-127 SkTagGrid-chip-2"
-          onClick={undefined}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           role="button"
