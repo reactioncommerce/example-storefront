@@ -28,13 +28,16 @@ const styles = (theme) => ({
 class NavigationItemMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    isTopLevel: PropTypes.bool,
     navItem: PropTypes.object,
+    onClick: PropTypes.func,
     routingStore: PropTypes.object
   };
 
   static defaultProps = {
     classes: {},
     navItem: {},
+    onClick() {},
     routingStore: {}
   };
 
@@ -53,9 +56,11 @@ class NavigationItemMobile extends Component {
   }
 
   onClick = () => {
-    const { navItem } = this.props;
+    const { navItem, isTopLevel } = this.props;
 
-    if (this.hasSubNavItems) {
+    if (isTopLevel && this.hasSubNavItems) {
+      this.props.onClick(navItem);
+    } else if (this.hasSubNavItems) {
       this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
     } else {
       const path = this.linkPath;
