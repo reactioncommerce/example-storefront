@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:10-alpine
 
 ARG NAME=reaction-next-starterkit
 ARG DESCRIPTION=""
