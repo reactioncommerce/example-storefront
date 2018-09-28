@@ -4,6 +4,7 @@ import { inject } from "mobx-react";
 import { Router } from "routes";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
 import Collapse from "@material-ui/core/Collapse";
 import MenuList from "@material-ui/core/MenuList";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -110,6 +111,7 @@ class NavigationItemMobile extends Component {
           )}
         </MenuItem>
         {this.hasSubNavItems && this.renderCollapse()}
+        <Divider />
       </Fragment>
     );
   }
