@@ -23,22 +23,14 @@ exports[`basic snapshot 1`] = `
       Newest
     </div>
     <input
-      autoComplete={undefined}
-      autoFocus={undefined}
-      defaultValue={undefined}
       id="sort-by"
       name="sortBy"
-      onKeyDown={undefined}
-      onKeyUp={undefined}
-      placeholder={undefined}
-      rows={undefined}
       type="hidden"
       value="updatedAt-desc"
     />
     <svg
       aria-hidden="true"
       className="MuiSvgIcon-root-43 MuiSelect-icon-12"
-      color={undefined}
       focusable="false"
       role="presentation"
       viewBox="0 0 24 24"

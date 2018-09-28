@@ -24,7 +24,6 @@ exports[`basic snapshot 1`] = `
     <svg
       aria-hidden="true"
       className="MuiSvgIcon-root-12"
-      color={undefined}
       focusable="false"
       role="presentation"
       viewBox="0 0 24 24"

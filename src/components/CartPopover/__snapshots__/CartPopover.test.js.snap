@@ -40,7 +40,6 @@ exports[`do not show cartpopover 1`] = `
           onKeyPress={[Function]}
           role="button"
           tabIndex={0}
-          title={undefined}
         >
           <div>
             Checkout
@@ -102,7 +101,6 @@ exports[`show cartpopover 1`] = `
           onKeyPress={[Function]}
           role="button"
           tabIndex={0}
-          title={undefined}
         >
           <div>
             Checkout

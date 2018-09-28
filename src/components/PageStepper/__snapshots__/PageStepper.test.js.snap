@@ -13,7 +13,6 @@ exports[`hides next button, shows previous button 1`] = `
       onKeyPress={[Function]}
       role="button"
       tabIndex={0}
-      title={undefined}
     >
       <div>
         Previous
@@ -49,7 +48,6 @@ exports[`shows both next and previous buttons 1`] = `
       onKeyPress={[Function]}
       role="button"
       tabIndex={0}
-      title={undefined}
     >
       <div>
         Previous
@@ -75,7 +73,6 @@ exports[`shows both next and previous buttons 1`] = `
       onKeyPress={[Function]}
       role="button"
       tabIndex={0}
-      title={undefined}
     >
       <div>
         Next
@@ -111,7 +108,6 @@ exports[`shows next button, hides previous button 1`] = `
       onKeyPress={[Function]}
       role="button"
       tabIndex={0}
-      title={undefined}
     >
       <div>
         Next
