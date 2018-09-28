@@ -72,31 +72,15 @@ class NavigationItemMobile extends Component {
     this.setState({ isSubNavOpen: false });
   };
 
-  renderSubNav(navItemGroup) {
-    const { classes } = this.props;
-    return (
-      <div className={classes.subNav}>
-        {navItemGroup.subTags.edges.map(({ node: navItemGroupItem }, index) => (
-          <MenuItem className={classes.nested} dense inset key={index}>
-            <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroupItem.name} />
-          </MenuItem>
-        ))}
-      </div>
-    );
-  }
-
-  renderCollapse() {
+  renderSubNav() {
     const { classes, navItem: { subTags } } = this.props;
     return (
       <Collapse in={this.state.isSubNavOpen} timeout="auto" unmountOnExit>
-        <MenuList component="div" disablePadding>
+        <MenuList component="div" disablePadding dense>
           {subTags.edges.map(({ node: navItemGroup }, index) => (
-            <MenuList disablePadding key={index}>
-              <MenuItem inset className={classes.nested}>
-                <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroup.name} />
-              </MenuItem>
-              {Array.isArray(navItemGroup.subTags.edges) && this.renderSubNav(navItemGroup)}
-            </MenuList>
+            <MenuItem className={classes.nested} key={index}>
+              <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroup.name} />
+            </MenuItem>
           ))}
         </MenuList>
       </Collapse>
@@ -115,7 +99,7 @@ class NavigationItemMobile extends Component {
             </ListItemIcon>
           )}
         </MenuItem>
-        {this.hasSubNavItems && this.renderCollapse()}
+        {this.hasSubNavItems && this.renderSubNav()}
         <Divider />
       </Fragment>
     );
