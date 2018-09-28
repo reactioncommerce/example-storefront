@@ -4,12 +4,22 @@ import { inject, observer } from "mobx-react";
 import { withStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import MenuList from "@material-ui/core/MenuList";
+import Slide from "@material-ui/core/Slide";
 import { NavigationItemMobile } from "components/NavigationMobile";
+import NavigationSubMenuMobile from "./NavigationSubMenuMobile";
 import withNavigationTags from "../../containers/tags/withNavigationTags";
 
-const styles = () => ({
+const styles = (theme) => ({
   nav: {
     width: 320
+  },
+  subNav: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: 320,
+    height: "100vh",
+    backgroundColor: theme.palette.background.default
   }
 });
 
@@ -31,8 +41,29 @@ class NavigationMobile extends Component {
     navItems: []
   };
 
-  renderNavItem(navItem, index) {
-    return <NavigationItemMobile key={index} navItem={navItem.node} />;
+  state = {
+    navItem: null
+  }
+
+  handleNavItemClick = (navItem) => {
+    this.setState({
+      navItem
+    })
+  }
+
+  handleCloseSubMenu = () => {
+    this.setState({ navItem: null });
+  }
+
+  renderNavItem = (navItem, index) => {
+    return (
+      <NavigationItemMobile
+        key={index}
+        isTopLevel
+        navItem={navItem.node}
+        onClick={this.handleNavItemClick}
+      />
+    )
   }
 
   handleClose = () => {
@@ -47,6 +78,14 @@ class NavigationMobile extends Component {
         <nav className={classes.nav}>
           <MenuList>{navItems.edges && navItems.edges.map(this.renderNavItem)}</MenuList>
         </nav>
+        <Slide direction="left" in={!!this.state.navItem}>
+          <nav className={classes.subNav}>
+            <NavigationSubMenuMobile
+              navItem={this.state.navItem}
+              onBackButtonClick={this.handleCloseSubMenu}
+            />
+          </nav>
+        </Slide>
       </Drawer>
     );
   }
