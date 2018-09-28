@@ -53,10 +53,10 @@ export default class Entry extends Component {
 
   static defaultProps = {
     onLoginButtonClick() {
-      Router.pushRoute("/auth2");
+      Router.pushRoute("/signin");
     },
     onRegisterButtonClick() {
-      Router.pushRoute("/auth2");
+      Router.pushRoute("/signup");
     },
     setEmailOnAnonymousCart() {}
   };

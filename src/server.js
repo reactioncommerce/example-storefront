@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser";
 import express from "express";
 import session from "express-session";
 import nextApp from "next";
+import request from "request";
 import { useStaticRendering } from "mobx-react";
 import logger from "lib/logger";
 import passport from "passport";
@@ -12,6 +13,18 @@ import router from "./routes";
 
 const app = nextApp({ dir: appPath, dev });
 const routeHandler = router.getRequestHandler(app);
+const decodeOpaqueId = (opaqueId) => {
+  if (opaqueId === undefined || opaqueId === null) return null;
+  const unencoded = Buffer.from(opaqueId, "base64").toString("utf8");
+  const [namespace, id] = unencoded.split(":");
+  return { namespace, id };
+};
+
+// This is needed to allow custom parameters (e.g loginActions) to be included
+// when requesting authorization. This is setup to allow only loginAction to pass through
+OAuth2Strategy.prototype.authorizationParams = function (options = {}) {
+  return { loginAction: options.loginAction };
+};
 
 useStaticRendering(true);
 
@@ -46,21 +59,30 @@ app
     server.use(passport.session());
     server.use(cookieParser());
 
-    // This endpoint initializes the OAuth2 request
-    server.get("/auth2", (req, res, next) => {
-      if (!req.user) req.session.redirectTo = req.get("Referer");
+    server.get("/signin", (req, res, next) => {
+      req.session.redirectTo = req.get("Referer");
       next(); // eslint-disable-line promise/no-callback-in-promise
-    }, passport.authenticate("oauth2"));
+    }, passport.authenticate("oauth2", { loginAction: "signin" }));
+
+    server.get("/signup", (req, res, next) => {
+      req.session.redirectTo = req.get("Referer");
+      next(); // eslint-disable-line promise/no-callback-in-promise
+    }, passport.authenticate("oauth2", { loginAction: "signup" }));
 
     // This endpoint handles OAuth2 requests (exchanges code for token)
     server.get("/callback", passport.authenticate("oauth2"), (req, res) => {
       // After success, redirect to the page we came from originally
-      res.redirect(req.session.redirectTo);
+      res.redirect(req.session.redirectTo || "/");
     });
 
-    server.get("/logout", (req, res) => {
-      req.logout();
-      res.redirect(req.get("Referer"));
+    server.get("/logout/:userId", (req, res) => {
+      const { id } = decodeOpaqueId(req.params.userId);
+      request(`${process.env.OAUTH2_IDP_HOST_URL}logout?userId=${id}`, (error) => {
+        if (!error) {
+          req.logout();
+          res.redirect(req.get("Referer") || "/");
+        }
+      });
     });
 
     // Setup next routes
