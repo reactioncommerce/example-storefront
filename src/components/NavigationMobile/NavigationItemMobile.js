@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { inject } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import { Router } from "routes";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -19,15 +19,19 @@ const styles = (theme) => ({
   }
 });
 
-@inject("routingStore")
 @withStyles(styles, { name: "SkNavigationItemMobile" })
+@inject("routingStore", "uiStore")
+@observer
 class NavigationItemMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
     isTopLevel: PropTypes.bool,
     navItem: PropTypes.object,
     onClick: PropTypes.func,
-    routingStore: PropTypes.object
+    routingStore: PropTypes.object,
+    uiStore: PropTypes.shape({
+      closeMenuDrawer: PropTypes.func.isRequired
+    })
   };
 
   static defaultProps = {
@@ -52,7 +56,7 @@ class NavigationItemMobile extends Component {
   }
 
   onClick = () => {
-    const { navItem, isTopLevel } = this.props;
+    const { navItem, uiStore, isTopLevel } = this.props;
 
     if (isTopLevel && this.hasSubNavItems) {
       this.props.onClick(navItem);
@@ -61,6 +65,7 @@ class NavigationItemMobile extends Component {
     } else {
       const path = this.linkPath;
       Router.pushRoute(path, { slug: navItem.slug });
+      uiStore.closeMenuDrawer();
     }
   };
 
@@ -69,16 +74,19 @@ class NavigationItemMobile extends Component {
   };
 
   renderSubNav() {
-    const { classes, isTopLevel, navItem: { subTags } } = this.props;
+    const { isTopLevel, navItem: { subTags }, uiStore, routingStore } = this.props;
 
     if (this.hasSubNavItems && !isTopLevel) {
       return (
         <Collapse in={this.state.isSubNavOpen} timeout="auto" unmountOnExit>
           <MenuList component="div" disablePadding>
             {subTags.edges.map(({ node: navItemGroup }, index) => (
-              <MenuItem className={classes.nested} dense key={index}>
-                <ListItemText primary={navItemGroup.name} />
-              </MenuItem>
+              <NavigationItemMobile
+                key={index}
+                navItem={navItemGroup}
+                routingStore={routingStore}
+                uiStore={uiStore}
+              />
             ))}
           </MenuList>
         </Collapse>
