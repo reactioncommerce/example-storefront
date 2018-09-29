@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { inject } from "mobx-react";
 import AppBar from "@material-ui/core/AppBar";
+import Divider from "@material-ui/core/Divider";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
@@ -11,7 +12,17 @@ import { withStyles } from "@material-ui/core/styles";
 import NavigationItemMobile from "./NavigationItemMobile";
 
 const styles = () => ({
-  root: {} // Blank, but still allows for
+  root: {
+    display: "flex",
+    flexDirection: "column"
+  },
+  header: {
+    flex: "0 0 auto"
+  },
+  menu: {
+    flex: "1 1 auto",
+    overflowY: "auto"
+  }
 });
 
 @inject("routingStore")
@@ -47,21 +58,24 @@ class NavigationSubMenuMobile extends Component {
 
     return (
       <div className={classes.root}>
-        <AppBar>
+        <div className={classes.header}>
           <Toolbar disableGutters>
             <IconButton onClick={this.props.onBackButtonClick}>
               <ChevronLeftIcon />
             </IconButton>
             <Typography variant="subheading">{navItem.name}</Typography>
           </Toolbar>
-        </AppBar>
-        {this.hasSubNavItems &&
-          <MenuList component="div" disablePadding>
-            {navItem.subTags.edges.map(({ node: navItemGroup }, index) => (
-              <NavigationItemMobile key={index} navItem={navItemGroup} />
-            ))}
-          </MenuList>
-        }
+          <Divider />
+        </div>
+        <div className={classes.menu}>
+          {this.hasSubNavItems &&
+            <MenuList component="div" disablePadding>
+              {navItem.subTags.edges.map(({ node: navItemGroup }, index) => (
+                <NavigationItemMobile key={index} navItem={navItemGroup} />
+              ))}
+            </MenuList>
+          }
+        </div>
       </div>
     );
   }
