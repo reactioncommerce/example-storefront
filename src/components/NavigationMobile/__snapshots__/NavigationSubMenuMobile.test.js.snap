@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="SkNavigationItemMobile-root-1"
+>
+  <div
+    className="SkNavigationItemMobile-header-2"
+  >
+    <div
+      className="MuiToolbar-root-4 MuiToolbar-regular-6"
+    >
+      <button
+        className="MuiButtonBase-root-14 MuiIconButton-root-8"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-13"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-17"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"
+            />
+          </svg>
+        </span>
+        <span
+          className="MuiTouchRipple-root-26"
+        />
+      </button>
+      <h3
+        className="MuiTypography-root-33 MuiTypography-subheading-40"
+      >
+        Tag Name
+      </h3>
+    </div>
+    <hr
+      className="MuiDivider-root-59"
+    />
+  </div>
+  <div
+    className="SkNavigationItemMobile-menu-3"
+  >
+    <div
+      className="MuiList-root-63"
+      onBlur={[Function]}
+      onKeyDown={[Function]}
+      role="menu"
+    >
+      <li
+        className="MuiButtonBase-root-14 MuiListItem-root-70 MuiListItem-default-73 MuiListItem-gutters-77 MuiListItem-button-78 MuiMenuItem-root-68"
+        color="inherit"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="menuitem"
+        tabIndex={-1}
+      >
+        <div
+          className="MuiListItemText-root-81"
+        >
+          <span
+            className="MuiTypography-root-33 MuiTypography-subheading-40 MuiListItemText-primary-84"
+          >
+            Sub Tag Name
+          </span>
+        </div>
+        <span
+          className="MuiTouchRipple-root-26"
+        />
+      </li>
+      <hr
+        className="MuiDivider-root-59"
+      />
+      <li
+        className="MuiButtonBase-root-14 MuiListItem-root-70 MuiListItem-default-73 MuiListItem-gutters-77 MuiListItem-button-78 MuiMenuItem-root-68"
+        color="inherit"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="menuitem"
+        tabIndex={-1}
+      >
+        <div
+          className="MuiListItemText-root-81"
+        >
+          <span
+            className="MuiTypography-root-33 MuiTypography-subheading-40 MuiListItemText-primary-84"
+          >
+            Sub Tag name
+          </span>
+        </div>
+        <span
+          className="MuiTouchRipple-root-26"
+        />
+      </li>
+      <hr
+        className="MuiDivider-root-59"
+      />
+    </div>
+  </div>
+</div>
+`;
