@@ -8,6 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import Collapse from "@material-ui/core/Collapse";
 import MenuList from "@material-ui/core/MenuList";
 import MenuItem from "@material-ui/core/MenuItem";
+import ChevronRightIcon from "mdi-material-ui/ChevronRight";
 import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 import { withStyles } from "@material-ui/core/styles";
@@ -15,11 +16,6 @@ import { withStyles } from "@material-ui/core/styles";
 const styles = (theme) => ({
   subNav: {
     marginBottom: theme.spacing.unit * 2
-  },
-  listItemTextInset: {
-    "&:first-child": {
-      paddingLeft: theme.spacing.unit * 3
-    }
   }
 });
 
@@ -73,18 +69,39 @@ class NavigationItemMobile extends Component {
   };
 
   renderSubNav() {
-    const { classes, navItem: { subTags } } = this.props;
-    return (
-      <Collapse in={this.state.isSubNavOpen} timeout="auto" unmountOnExit>
-        <MenuList component="div" disablePadding dense>
-          {subTags.edges.map(({ node: navItemGroup }, index) => (
-            <MenuItem className={classes.nested} key={index}>
-              <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroup.name} />
-            </MenuItem>
-          ))}
-        </MenuList>
-      </Collapse>
-    );
+    const { classes, isTopLevel, navItem: { subTags } } = this.props;
+
+    if (this.hasSubNavItems && !isTopLevel) {
+      return (
+        <Collapse in={this.state.isSubNavOpen} timeout="auto" unmountOnExit>
+          <MenuList component="div" disablePadding>
+            {subTags.edges.map(({ node: navItemGroup }, index) => (
+              <MenuItem className={classes.nested} dense key={index}>
+                <ListItemText primary={navItemGroup.name} />
+              </MenuItem>
+            ))}
+          </MenuList>
+        </Collapse>
+      );
+    }
+
+    return null;
+  }
+
+  renderIcon() {
+    const { isTopLevel } = this.props;
+    const { isSubNavOpen } = this.state;
+
+    if (this.hasSubNavItems) {
+      if (isTopLevel) {
+        return <ChevronRightIcon />;
+      } else if (isSubNavOpen) {
+        return <ChevronUpIcon />;
+      }
+      return <ChevronDownIcon />;
+    }
+
+    return null;
   }
 
   render() {
@@ -93,13 +110,9 @@ class NavigationItemMobile extends Component {
       <Fragment>
         <MenuItem color="inherit" onClick={this.onClick}>
           <ListItemText classes={{ primary: classes.primary }} primary={navItem.name} />
-          {this.hasSubNavItems && (
-            <ListItemIcon className={classes.icon}>
-              {this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
-            </ListItemIcon>
-          )}
+          <ListItemIcon className={classes.icon}>{this.renderIcon()}</ListItemIcon>
         </MenuItem>
-        {this.hasSubNavItems && this.renderSubNav()}
+        {this.renderSubNav()}
         <Divider />
       </Fragment>
     );
