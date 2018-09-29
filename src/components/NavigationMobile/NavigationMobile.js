@@ -48,7 +48,7 @@ class NavigationMobile extends Component {
   handleNavItemClick = (navItem) => {
     this.setState({
       navItem
-    })
+    });
   }
 
   handleCloseSubMenu = () => {
