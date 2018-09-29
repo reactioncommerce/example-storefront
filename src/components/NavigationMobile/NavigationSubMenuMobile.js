@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject } from "mobx-react";
-import AppBar from "@material-ui/core/AppBar";
 import Divider from "@material-ui/core/Divider";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -25,7 +23,6 @@ const styles = () => ({
   }
 });
 
-@inject("routingStore")
 @withStyles(styles, { name: "SkNavigationItemMobile" })
 class NavigationSubMenuMobile extends Component {
   static propTypes = {
