@@ -55,16 +55,14 @@ class NavigationMobile extends Component {
     this.setState({ navItem: null });
   }
 
-  renderNavItem = (navItem, index) => {
-    return (
-      <NavigationItemMobile
-        key={index}
-        isTopLevel
-        navItem={navItem.node}
-        onClick={this.handleNavItemClick}
-      />
-    )
-  }
+  renderNavItem = (navItem, index) => (
+    <NavigationItemMobile
+      key={index}
+      isTopLevel
+      navItem={navItem.node}
+      onClick={this.handleNavItemClick}
+    />
+  );
 
   handleClose = () => {
     this.props.uiStore.closeMenuDrawer();
