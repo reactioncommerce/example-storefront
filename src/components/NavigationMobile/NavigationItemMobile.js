@@ -89,16 +89,22 @@ class NavigationItemMobile extends Component {
   }
 
   renderIcon() {
-    const { isTopLevel } = this.props;
+    const { classes, isTopLevel } = this.props;
     const { isSubNavOpen } = this.state;
+    let icon = null;
 
     if (this.hasSubNavItems) {
       if (isTopLevel) {
-        return <ChevronRightIcon />;
+        icon = <ChevronRightIcon />;
       } else if (isSubNavOpen) {
-        return <ChevronUpIcon />;
+        icon = <ChevronUpIcon />;
+      } else {
+        icon = <ChevronDownIcon />;
       }
-      return <ChevronDownIcon />;
+    }
+
+    if (icon) {
+      return <ListItemIcon className={classes.icon}>{icon}</ListItemIcon>;
     }
 
     return null;
@@ -110,7 +116,7 @@ class NavigationItemMobile extends Component {
       <Fragment>
         <MenuItem color="inherit" onClick={this.onClick}>
           <ListItemText classes={{ primary: classes.primary }} primary={navItem.name} />
-          <ListItemIcon className={classes.icon}>{this.renderIcon()}</ListItemIcon>
+          {this.renderIcon()}
         </MenuItem>
         {this.renderSubNav()}
         <Divider />
