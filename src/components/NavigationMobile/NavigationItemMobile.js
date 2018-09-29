@@ -29,7 +29,7 @@ class NavigationItemMobile extends Component {
     navItem: PropTypes.object,
     onClick: PropTypes.func,
     routingStore: PropTypes.object,
-    showDivider: PropTypes.bool,
+    shouldShowDivider: PropTypes.bool,
     uiStore: PropTypes.shape({
       closeMenuDrawer: PropTypes.func.isRequired
     })
@@ -40,7 +40,7 @@ class NavigationItemMobile extends Component {
     navItem: {},
     onClick() {},
     routingStore: {},
-    showDivider: true
+    shouldShowDivider: true
   };
 
   state = { isSubNavOpen: false };
@@ -87,7 +87,7 @@ class NavigationItemMobile extends Component {
                 key={index}
                 navItem={navItemGroup}
                 routingStore={routingStore}
-                showDivider={false}
+                shouldShowDivider={false}
                 uiStore={uiStore}
               />
             ))}
@@ -122,7 +122,7 @@ class NavigationItemMobile extends Component {
   }
 
   render() {
-    const { classes, navItem, showDivider } = this.props;
+    const { classes, navItem, shouldShowDivider } = this.props;
     return (
       <Fragment>
         <MenuItem color="inherit" onClick={this.onClick}>
@@ -130,7 +130,7 @@ class NavigationItemMobile extends Component {
           {this.renderIcon()}
         </MenuItem>
         {this.renderSubNav()}
-        {showDivider && <Divider />}
+        {shouldShowDivider && <Divider />}
       </Fragment>
     );
   }
