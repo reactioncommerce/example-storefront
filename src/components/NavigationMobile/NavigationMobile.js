@@ -5,9 +5,9 @@ import { withStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import MenuList from "@material-ui/core/MenuList";
 import Slide from "@material-ui/core/Slide";
-import { NavigationItemMobile } from "components/NavigationMobile";
-import NavigationSubMenuMobile from "./NavigationSubMenuMobile";
 import withNavigationTags from "../../containers/tags/withNavigationTags";
+import NavigationItemMobile from "./NavigationItemMobile";
+import NavigationSubMenuMobile from "./NavigationSubMenuMobile";
 
 const styles = (theme) => ({
   nav: {
