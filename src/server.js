@@ -1,6 +1,6 @@
 import cookieParser from "cookie-parser";
 import express from "express";
-import session from "express-session";
+import cookieSession from "cookie-session";
 import nextApp from "next";
 import request from "request";
 import { useStaticRendering } from "mobx-react";
@@ -54,7 +54,14 @@ app
   .prepare()
   .then(() => {
     const server = express();
-    server.use(session({ secret: process.env.PASSPORT_SESSION_SECRET, resave: false, saveUninitialized: true }));
+    const { APP_NAME, COOKIE_SESSION_KEY_1, COOKIE_SESSION_KEY_2 } = process.env;
+    server.use(cookieSession({
+      name: APP_NAME || "starterkit",
+      keys: [COOKIE_SESSION_KEY_1, COOKIE_SESSION_KEY_2],
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      httpOnly: true
+    }));
+
     server.use(passport.initialize());
     server.use(passport.session());
     server.use(cookieParser());
