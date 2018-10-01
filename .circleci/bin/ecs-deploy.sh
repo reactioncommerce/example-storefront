@@ -59,7 +59,7 @@ for SERVICE in $SERVICES; do
 
 	RELEASE_DESCRIPTION="CircleCI build URL: ${CIRCLE_BUILD_URL}"
         echo storefront_CIRCLE_SHA1=$storefront_CIRCLE_SHA1
-        propel release create --deploy --descr "${RELEASE_DESCRIPTION}" -f ${PROPEL_CONFIG_FILE} --debug
+        propel release create --deploy --descr "${RELEASE_DESCRIPTION}" -f ${PROPEL_CONFIG_FILE}
 	
 	echo "END PROCESSING SERVICE ${SERVICE}"
 	
