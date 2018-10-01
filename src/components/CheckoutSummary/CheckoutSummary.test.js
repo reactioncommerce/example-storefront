@@ -1,5 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import theme from "lib/theme/reactionTheme";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
 import components from "../../lib/theme/components";
 import CheckoutSummary from "./CheckoutSummary";
@@ -66,9 +68,11 @@ const testCart = {
 test("basic snapshot", () => {
   const component = renderer.create((
     <ComponentsProvider value={components}>
-      <CheckoutSummary
-        cart={testCart}
-      />
+      <MuiThemeProvider theme={theme}>
+        <CheckoutSummary
+          cart={testCart}
+        />
+      </MuiThemeProvider>
     </ComponentsProvider>
   ));
 

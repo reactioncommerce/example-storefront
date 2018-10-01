@@ -31,7 +31,7 @@ class CartStore {
   @observable accountCartId = null;
 
   /**
-   * Is the cart currently in the process of being reconcoled
+   * Is the cart currently in the process of being reconciled
    *
    * @type Boolean
    */

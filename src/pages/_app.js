@@ -67,7 +67,7 @@ export default class App extends NextApp {
   }
 
   render() {
-    const { Component, pageProps, shop, ...rest } = this.props;
+    const { Component, pageProps, shop, viewer, ...rest } = this.props;
     const { route } = this.props.router;
     const { stripe } = this.state;
 
@@ -79,22 +79,17 @@ export default class App extends NextApp {
             generateClassName={this.pageContext.generateClassName}
           >
             <RuiThemeProvider theme={componentTheme}>
-              <MuiThemeProvider
-                theme={this.pageContext.theme}
-                sheetsManager={this.pageContext.sheetsManager}
-              >
+              <MuiThemeProvider theme={this.pageContext.theme} sheetsManager={this.pageContext.sheetsManager}>
                 <CssBaseline />
-                {
-                  (route === "/checkout" || route === "/login") ? (
-                    <StripeProvider stripe={stripe}>
-                      <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
-                    </StripeProvider>
-                  ) : (
-                    <Layout shop={shop}>
-                      <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
-                    </Layout>
-                  )
-                }
+                {route === "/checkout" || route === "/login" ? (
+                  <StripeProvider stripe={stripe}>
+                    <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
+                  </StripeProvider>
+                ) : (
+                  <Layout shop={shop} viewer={viewer}>
+                    <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
+                  </Layout>
+                )}
               </MuiThemeProvider>
             </RuiThemeProvider>
           </JssProvider>

@@ -46,7 +46,8 @@ class Header extends Component {
     }).isRequired,
     uiStore: PropTypes.shape({
       toggleMenuDrawerOpen: PropTypes.func.isRequired
-    }).isRequired
+    }).isRequired,
+    viewer: PropTypes.object
   };
 
   static defaultProps = {

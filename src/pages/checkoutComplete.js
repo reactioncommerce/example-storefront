@@ -70,20 +70,21 @@ const styles = (theme) => ({
   }
 });
 
-@withOrder
 @withCart
+@withOrder
 @observer
 @withStyles(styles, { withTheme: true })
 class CheckoutComplete extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    clearAuthenticatedUsersCart: PropTypes.func.isRequired,
+    client: PropTypes.object.isRequired,
     hasMoreCartItems: PropTypes.bool,
     isLoading: PropTypes.bool,
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
     order: PropTypes.object,
-    refetchCart: PropTypes.func.isRequired,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -91,38 +92,34 @@ class CheckoutComplete extends Component {
     theme: PropTypes.object.isRequired
   };
 
-  state = {}
+  state = {};
 
   componentDidMount() {
-    const { refetchCart } = this.props;
+    const { clearAuthenticatedUsersCart } = this.props;
 
-    refetchCart();
+    clearAuthenticatedUsersCart();
   }
 
-  handleCartEmptyClick = () => Router.pushRoute("/")
+  handleCartEmptyClick = () => {
+    Router.pushRoute("/");
+  }
 
   renderFulfillmentGroups() {
-    const {
-      classes,
-      order,
-      isLoading
-    } = this.props;
+    const { classes, order, isLoading } = this.props;
 
     if (isLoading) return null;
 
     return (
       <div className={classes.flexContainer}>
         <div className={classes.fulfillmentGroups}>
-          <OrderFulfillmentGroups
-            order={order}
-          />
+          <OrderFulfillmentGroups order={order} />
         </div>
       </div>
     );
   }
 
   render() {
-    const { classes, shop, order } = this.props;
+    const { classes, order, shop } = this.props;
 
     return (
       <Fragment>
@@ -134,13 +131,17 @@ class CheckoutComplete extends Component {
           <div className={classes.orderDetails}>
             <section className={classes.section}>
               <header className={classes.sectionHeader}>
-                <Typography className={classes.title} variant="title">{"Thank you for your order"}</Typography>
-                <Typography variant="body1">{"Your order ID is"} <strong>{order && order._id}</strong></Typography>
-                <Typography variant="body1">{"We've send a confirmation email to"} <strong>{order && order.email}</strong></Typography>
+                <Typography className={classes.title} variant="title">
+                  {"Thank you for your order"}
+                </Typography>
+                <Typography variant="body1">
+                  {"Your order ID is"} <strong>{order && order._id}</strong>
+                </Typography>
+                <Typography variant="body1">
+                  {"We've sent a confirmation email to"} <strong>{order && order.email}</strong>
+                </Typography>
               </header>
-              <div className={classes.checkoutContent}>
-                {this.renderFulfillmentGroups()}
-              </div>
+              <div className={classes.checkoutContent}>{this.renderFulfillmentGroups()}</div>
             </section>
           </div>
         </div>
