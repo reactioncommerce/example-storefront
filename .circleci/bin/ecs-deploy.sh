@@ -12,7 +12,7 @@ fi
 
 ENVIRONMENT=staging
 SERVICE_DIR_NAME=.reaction/devops/aws/services
-storefront_CIRCLE_SHA1=$CIRCLE_SHA1
+export storefront_CIRCLE_SHA1=$CIRCLE_SHA1
 
 SERVICES=$(ls ${SERVICE_DIR_NAME})
 
@@ -58,7 +58,8 @@ for SERVICE in $SERVICES; do
 	sudo chmod +x /usr/local/bin/propel
 
 	RELEASE_DESCRIPTION="CircleCI build URL: ${CIRCLE_BUILD_URL}"
-        propel release create --deploy --descr "${RELEASE_DESCRIPTION}" -f ${PROPEL_CONFIG_FILE}
+        echo storefront_CIRCLE_SHA1=$storefront_CIRCLE_SHA1
+        propel release create --deploy --descr "${RELEASE_DESCRIPTION}" -f ${PROPEL_CONFIG_FILE} --debug
 	
 	echo "END PROCESSING SERVICE ${SERVICE}"
 	
