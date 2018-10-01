@@ -26,8 +26,8 @@ const styles = (theme) => ({
 class AccountDropdown extends Component {
   static propTypes = {
     authStore: PropTypes.object.isRequired,
-    viewer: PropTypes.object,
-    classes: PropTypes.object
+    classes: PropTypes.object,
+    viewer: PropTypes.object
   };
 
   static defaultProps = {
