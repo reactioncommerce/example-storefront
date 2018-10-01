@@ -12,6 +12,8 @@ fi
 
 ENVIRONMENT=staging
 SERVICE_DIR_NAME=.reaction/devops/aws/services
+storefront_CIRCLE_SHA1=$CIRCLE_SHA1
+
 SERVICES=$(ls ${SERVICE_DIR_NAME})
 
 for SERVICE in $SERVICES; do
