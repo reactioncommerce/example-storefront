@@ -1,6 +1,6 @@
 const cookieParser = require("cookie-parser");
+const cookieSession = require("cookie-session");
 const express = require("express");
-const session = require("express-session");
 const nextApp = require("next");
 const request = require("request");
 const { useStaticRendering } = require("mobx-react");
