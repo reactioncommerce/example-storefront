@@ -1,6 +1,6 @@
 const cookieParser = require("cookie-parser");
+const cookieSession = require("cookie-session");
 const express = require("express");
-const session = require("express-session");
 const nextApp = require("next");
 const request = require("request");
 const { useStaticRendering } = require("mobx-react");
@@ -42,10 +42,14 @@ passport.use("oauth2", new OAuth2Strategy({
 
 passport.use("refresh", refresh);
 
+// The value passed to `done` here is stored on the session.
+// We save the full user object in the session.
 passport.serializeUser((user, done) => {
   done(null, JSON.stringify(user));
 });
 
+// The value returned from `serializeUser` is passed in from the session here,
+// to get the user. We save the full user object in the session.
 passport.deserializeUser((user, done) => {
   done(null, JSON.parse(user));
 });
@@ -54,7 +58,21 @@ app
   .prepare()
   .then(() => {
     const server = express();
-    server.use(session({ secret: process.env.PASSPORT_SESSION_SECRET, resave: false, saveUninitialized: true }));
+
+    const { SESSION_SECRET, SESSION_MAX_AGE_MS } = process.env;
+    const maxAge = SESSION_MAX_AGE_MS ? Number(SESSION_MAX_AGE_MS) : 24 * 60 * 60 * 1000; // 24 hours
+
+    // We use a client-side cookie session instead of a server session so that there are no
+    // issues when load balancing without sticky sessions.
+    // https://www.npmjs.com/package/cookie-session
+    server.use(cookieSession({
+      // https://www.npmjs.com/package/cookie-session#options
+      keys: [SESSION_SECRET],
+      maxAge,
+      name: "storefront-session"
+    }));
+
+    // http://www.passportjs.org/docs/configure/
     server.use(passport.initialize());
     server.use(passport.session());
     server.use(cookieParser());
