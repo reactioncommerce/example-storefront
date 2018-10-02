@@ -1,15 +1,15 @@
-import cookieParser from "cookie-parser";
-import express from "express";
-import cookieSession from "cookie-session";
-import nextApp from "next";
-import request from "request";
-import { useStaticRendering } from "mobx-react";
-import logger from "lib/logger";
-import passport from "passport";
-import OAuth2Strategy from "passport-oauth2";
-import refresh from "passport-oauth2-refresh";
-import { appPath, dev } from "./config";
-import router from "./routes";
+const cookieParser = require("cookie-parser");
+const cookieSession = require("cookie-session");
+const express = require("express");
+const nextApp = require("next");
+const request = require("request");
+const { useStaticRendering } = require("mobx-react");
+const logger = require("lib/logger");
+const passport = require("passport");
+const OAuth2Strategy = require("passport-oauth2");
+const refresh = require("passport-oauth2-refresh");
+const { appPath, dev } = require("./config");
+const router = require("./routes");
 
 const app = nextApp({ dir: appPath, dev });
 const routeHandler = router.getRequestHandler(app);
@@ -116,4 +116,4 @@ app
     process.exit(1);
   });
 
-export default app;
+module.exports = app;
