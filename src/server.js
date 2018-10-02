@@ -42,10 +42,14 @@ passport.use("oauth2", new OAuth2Strategy({
 
 passport.use("refresh", refresh);
 
+// The value passed to `done` here is stored on the session.
+// We save the full user object in the session.
 passport.serializeUser((user, done) => {
   done(null, JSON.stringify(user));
 });
 
+// The value returned from `serializeUser` is passed in from the session here,
+// to get the user. We save the full user object in the session.
 passport.deserializeUser((user, done) => {
   done(null, JSON.parse(user));
 });
@@ -54,12 +58,18 @@ app
   .prepare()
   .then(() => {
     const server = express();
-    const { APP_NAME, COOKIE_SESSION_KEY_1, COOKIE_SESSION_KEY_2 } = process.env;
+
+    const { SESSION_SECRET, SESSION_MAX_AGE_MS } = process.env;
+    const maxAge = SESSION_MAX_AGE_MS ? Number(SESSION_MAX_AGE_MS) : 24 * 60 * 60 * 1000; // 24 hours
+
+    // We use a client-side cookie session instead of a server session so that there are no
+    // issues when load balancing without sticky sessions.
+    // https://www.npmjs.com/package/cookie-session
     server.use(cookieSession({
-      name: APP_NAME || "starterkit",
-      keys: [COOKIE_SESSION_KEY_1, COOKIE_SESSION_KEY_2],
-      maxAge: 24 * 60 * 60 * 1000, // 24 hours
-      httpOnly: true
+      // https://www.npmjs.com/package/cookie-session#options
+      keys: [SESSION_SECRET],
+      maxAge,
+      name: "storefront-session"
     }));
 
     server.use(passport.initialize());
