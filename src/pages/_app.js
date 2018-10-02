@@ -49,7 +49,6 @@ export default class App extends NextApp {
 
   componentDidMount() {
     // Fetch and update auth token in auth store
-    rootMobXStores.authStore.setTokenFromLocalStorage();
     rootMobXStores.cartStore.setAnonymousCartCredentialsFromLocalStorage();
     rootMobXStores.keycloakAuthStore.setTokenFromLocalStorage();
 
