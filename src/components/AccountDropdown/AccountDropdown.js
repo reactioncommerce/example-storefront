@@ -8,7 +8,6 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import AccountIcon from "mdi-material-ui/Account";
 import Popover from "@material-ui/core/Popover";
 import ViewerInfo from "@reactioncommerce/components/ViewerInfo/v1";
-import { login } from "lib/auth";
 
 const styles = (theme) => ({
   accountDropdown: {

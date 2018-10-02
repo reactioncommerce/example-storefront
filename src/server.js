@@ -72,6 +72,7 @@ app
       name: "storefront-session"
     }));
 
+    // http://www.passportjs.org/docs/configure/
     server.use(passport.initialize());
     server.use(passport.session());
     server.use(cookieParser());
