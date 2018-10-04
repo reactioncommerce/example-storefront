@@ -241,12 +241,12 @@ class ProductDetailPage extends Component {
   selectVariant(variant, optionId) {
     // Do something with selected variant / option
 
-    this.trackAction(variant, optionId, "Product Viewed");
+    this.trackAction({ variant, optionId, action: "Product Viewed" });
   }
 
-  // expects the prop `product`, and `variant`, `optionId`, and `action` as function params
+  // Expects the prop `product`, and an object with the following keys `variant`, `optionId`, and `action` as a function arg. The `product` prop is provided by the `ProductDetailPage` component.
   @trackProduct()
-  trackAction(variant, optionId, action) {}
+  trackAction(functionArgs) {}
 
   render() {
     return (
