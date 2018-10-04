@@ -90,7 +90,7 @@ class ProductDetail extends Component {
   }
 
   @trackProduct()
-  trackAction(variant, optionId, action) {} // eslint-disable no-unused-vars
+  trackAction(variant, optionId, action) {} // eslint-disable-line no-unused-vars
 
   /**
    * @name handleSelectVariant
