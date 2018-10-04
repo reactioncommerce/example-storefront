@@ -211,9 +211,9 @@ class ProductListPage extends Component {
 
 ```
 
-## Track a Product Viewed event
+## Track a Product Viewed or Product Added event
 
-Tracking the `Product Viewed` Segment event provided HOC `trackProductViewed`.
+Tracking for the `Product Viewed` and `Product Added` Segment events is provided by the `trackProduct` HOC.
 
 See `src/components/ProductDetail/ProductDetail.js` for the full example.
 
@@ -222,7 +222,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import track from "lib/tracking/track";
-import trackProductViewed from "lib/tracking/trackProductViewed";
+import trackProduct from "lib/tracking/trackProduct";
 
 @withCatalogItemProduct // Product for page with route of `/product/:slugOrId/:variantId?`
 @track()
@@ -238,11 +238,15 @@ class ProductDetailPage extends Component {
     this.selectVariant(product.variants[0]);
   }
 
-  // expects the prop `product`, with `variant` and `optionId` as function params
-  @trackProductViewed()
   selectVariant(variant, optionId) {
     // Do something with selected variant / option
+
+    this.trackAction(variant, optionId, "Product Viewed");
   }
+
+  // expects the prop `product`, and `variant`, `optionId`, and `action` as function params
+  @trackProduct()
+  trackAction(variant, optionId, action) {}
 
   render() {
     return (
