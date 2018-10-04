@@ -55,10 +55,17 @@ export default function getVariantTrackingData({ product, variant, optionId }) {
     }
   }
 
+  // If a cart_id is provided, then added it to tracking object
+  let cart = {};
+  if (data.cart_id) {
+    cart = { cart_id: data.cart_id }; // eslint-disable-line camelcase
+  }
+
   return {
+    ...cart,
     variant: data._id,
     price,
-    quantity: 1,
+    quantity: data.quantity || 1,
     position: data.index,
     value: price,
     image_url: imageURL, // eslint-disable-line camelcase

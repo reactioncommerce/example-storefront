@@ -7,7 +7,7 @@ import Hidden from "@material-ui/core/Hidden";
 import { inject, observer } from "mobx-react";
 import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
-import trackProductViewed from "lib/tracking/trackProductViewed";
+import trackProduct from "lib/tracking/trackProduct";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
@@ -69,7 +69,6 @@ class ProductDetail extends Component {
     this.selectVariant(product.variants[0]);
   }
 
-  @trackProductViewed()
   selectVariant(variant, optionId) {
     const { product, uiStore } = this.props;
 
@@ -80,6 +79,8 @@ class ProductDetail extends Component {
       selectOptionId = variant.options[0]._id;
     }
 
+    this.trackAction(variant, optionId, "Product Viewed");
+
     uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
 
     Router.pushRoute("product", {
@@ -87,6 +88,9 @@ class ProductDetail extends Component {
       variantId: selectOptionId || variantId
     });
   }
+
+  @trackProduct()
+  trackAction(variant, optionId, action) {} // eslint-disable no-unused-vars
 
   /**
    * @name handleSelectVariant
@@ -105,7 +109,7 @@ class ProductDetail extends Component {
    * @summary Called when the add to cart button is clicked
    * @private
    * @ignore
-   * @param {Number} quantity A positive integer from 0 to infinity, representing the quantity to add to cart
+   * @param {Number} quantity - A positive integer from 0 to infinity, representing the quantity to add to cart
    * @returns {undefined} No return
    */
   handleAddToCartClick = async (quantity) => {
@@ -127,7 +131,7 @@ class ProductDetail extends Component {
       const price = priceByCurrencyCode(currencyCode, selectedVariantOrOption.pricing);
 
       // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
-      await addItemsToCart([
+      const { data } = await addItemsToCart([
         {
           price: {
             amount: price.price,
@@ -140,6 +144,23 @@ class ProductDetail extends Component {
           quantity
         }
       ]);
+
+      // If no errors occurred, track action
+      if (data) {
+        // The response data will be in either `createCart` or `addCartItems` prop
+        // depending on the type of user, either authenticated or anonymous.
+        const { cart } = data.createCart || data.addCartItems;
+
+        this.trackAction(
+          {
+            ...selectedVariant,
+            cart_id: cart._id, // eslint-disable-line camelcase
+            quantity
+          },
+          selectedOption ? selectedOption._id : null,
+          "Product Added"
+        );
+      }
     }
 
     if (isWidthUp("md", width)) {
