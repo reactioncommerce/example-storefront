@@ -11,13 +11,7 @@ import getVariantTrackingData from "./utils/getVariantTrackingData";
 export default (options) => (
   track(({ product, router }, state, functionArgs) => {
     let data = {};
-    let variant = null;
-    let optionId = null;
-    let action = "Product Viewed";
-
-    if (functionArgs) {
-      [variant, optionId, action] = functionArgs;
-    }
+    const { variant, optionId, action } = functionArgs[0];
 
     // If product data is provided as a prop, then process the data for tracking
     if (product) {

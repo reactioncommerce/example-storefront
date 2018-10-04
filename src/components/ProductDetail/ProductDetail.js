@@ -79,7 +79,7 @@ class ProductDetail extends Component {
       selectOptionId = variant.options[0]._id;
     }
 
-    this.trackAction(variant, optionId, "Product Viewed");
+    this.trackAction({ variant, optionId, action: "Product Viewed" });
 
     uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
 
@@ -90,7 +90,7 @@ class ProductDetail extends Component {
   }
 
   @trackProduct()
-  trackAction(variant, optionId, action) {} // eslint-disable-line no-unused-vars
+  trackAction(functionArgs) {} // eslint-disable-line no-unused-vars
 
   /**
    * @name handleSelectVariant
@@ -151,15 +151,15 @@ class ProductDetail extends Component {
         // depending on the type of user, either authenticated or anonymous.
         const { cart } = data.createCart || data.addCartItems;
 
-        this.trackAction(
-          {
+        this.trackAction({
+          variant: {
             ...selectedVariant,
             cart_id: cart._id, // eslint-disable-line camelcase
             quantity
           },
-          selectedOption ? selectedOption._id : null,
-          "Product Added"
-        );
+          optionId: selectedOption ? selectedOption._id : null,
+          action: "Product Added"
+        });
       }
     }
 
