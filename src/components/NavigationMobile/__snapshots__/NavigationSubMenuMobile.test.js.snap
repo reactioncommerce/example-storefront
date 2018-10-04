@@ -65,8 +65,8 @@ exports[`basic snapshot 1`] = `
       onKeyDown={[Function]}
       role="menu"
     >
-      <li
-        className="MuiButtonBase-root-14 MuiListItem-root-70 MuiListItem-default-73 MuiListItem-gutters-77 MuiListItem-button-78 MuiMenuItem-root-68"
+      <div
+        className="MuiButtonBase-root-14 MuiListItem-root-71 SkNavigationItemMobile-listItemRoot-68 MuiListItem-default-74 MuiListItem-gutters-78 MuiListItem-button-79"
         color="inherit"
         onBlur={[Function]}
         onClick={[Function]}
@@ -79,14 +79,14 @@ exports[`basic snapshot 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        role="menuitem"
-        tabIndex={-1}
+        role="button"
+        tabIndex="0"
       >
         <div
-          className="MuiListItemText-root-81"
+          className="MuiListItemText-root-82"
         >
           <span
-            className="MuiTypography-root-33 MuiTypography-subheading-40 MuiListItemText-primary-84"
+            className="MuiTypography-root-33 MuiTypography-subheading-40 MuiListItemText-primary-85"
           >
             Sub Tag Name
           </span>
@@ -94,12 +94,12 @@ exports[`basic snapshot 1`] = `
         <span
           className="MuiTouchRipple-root-26"
         />
-      </li>
+      </div>
       <hr
         className="MuiDivider-root-59"
       />
-      <li
-        className="MuiButtonBase-root-14 MuiListItem-root-70 MuiListItem-default-73 MuiListItem-gutters-77 MuiListItem-button-78 MuiMenuItem-root-68"
+      <div
+        className="MuiButtonBase-root-14 MuiListItem-root-71 SkNavigationItemMobile-listItemRoot-68 MuiListItem-default-74 MuiListItem-gutters-78 MuiListItem-button-79"
         color="inherit"
         onBlur={[Function]}
         onClick={[Function]}
@@ -112,14 +112,14 @@ exports[`basic snapshot 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        role="menuitem"
-        tabIndex={-1}
+        role="button"
+        tabIndex="0"
       >
         <div
-          className="MuiListItemText-root-81"
+          className="MuiListItemText-root-82"
         >
           <span
-            className="MuiTypography-root-33 MuiTypography-subheading-40 MuiListItemText-primary-84"
+            className="MuiTypography-root-33 MuiTypography-subheading-40 MuiListItemText-primary-85"
           >
             Sub Tag name
           </span>
@@ -127,7 +127,7 @@ exports[`basic snapshot 1`] = `
         <span
           className="MuiTouchRipple-root-26"
         />
-      </li>
+      </div>
       <hr
         className="MuiDivider-root-59"
       />

@@ -4,8 +4,8 @@ exports[`renders with 1 level of tags 1`] = `null`;
 
 exports[`renders with 2 levels of tags 1`] = `
 Array [
-  <li
-    className="MuiButtonBase-root-15 MuiListItem-root-4 MuiListItem-default-7 MuiListItem-gutters-11 MuiListItem-button-12 MuiMenuItem-root-2"
+  <div
+    className="MuiButtonBase-root-16 MuiListItem-root-5 SkNavigationItemMobile-listItemRoot-2 MuiListItem-default-8 MuiListItem-gutters-12 MuiListItem-button-13"
     color="inherit"
     onBlur={[Function]}
     onClick={[Function]}
@@ -18,21 +18,21 @@ Array [
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
-    role="menuitem"
-    tabIndex={-1}
+    role="button"
+    tabIndex="0"
   >
     <div
-      className="MuiListItemText-root-18"
+      className="MuiListItemText-root-19"
     >
       <span
-        className="MuiTypography-root-24 MuiTypography-subheading-31 MuiListItemText-primary-21"
+        className="MuiTypography-root-25 MuiTypography-subheading-32 MuiListItemText-primary-22"
       >
         Tag Name
       </span>
     </div>
     <svg
       aria-hidden="true"
-      className="MuiSvgIcon-root-51 MuiListItemIcon-root-50"
+      className="MuiSvgIcon-root-52 MuiListItemIcon-root-51"
       focusable="false"
       role="presentation"
       viewBox="0 0 24 24"
@@ -42,19 +42,19 @@ Array [
       />
     </svg>
     <span
-      className="MuiTouchRipple-root-60"
+      className="MuiTouchRipple-root-61"
     />
-  </li>,
+  </div>,
   <hr
-    className="MuiDivider-root-71"
+    className="MuiDivider-root-72"
   />,
 ]
 `;
 
 exports[`renders with 3 levels of tags 1`] = `
 Array [
-  <li
-    className="MuiButtonBase-root-15 MuiListItem-root-4 MuiListItem-default-7 MuiListItem-gutters-11 MuiListItem-button-12 MuiMenuItem-root-2"
+  <div
+    className="MuiButtonBase-root-16 MuiListItem-root-5 SkNavigationItemMobile-listItemRoot-2 MuiListItem-default-8 MuiListItem-gutters-12 MuiListItem-button-13"
     color="inherit"
     onBlur={[Function]}
     onClick={[Function]}
@@ -67,21 +67,21 @@ Array [
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
-    role="menuitem"
-    tabIndex={-1}
+    role="button"
+    tabIndex="0"
   >
     <div
-      className="MuiListItemText-root-18"
+      className="MuiListItemText-root-19"
     >
       <span
-        className="MuiTypography-root-24 MuiTypography-subheading-31 MuiListItemText-primary-21"
+        className="MuiTypography-root-25 MuiTypography-subheading-32 MuiListItemText-primary-22"
       >
         Tag Name
       </span>
     </div>
     <svg
       aria-hidden="true"
-      className="MuiSvgIcon-root-51 MuiListItemIcon-root-50"
+      className="MuiSvgIcon-root-52 MuiListItemIcon-root-51"
       focusable="false"
       role="presentation"
       viewBox="0 0 24 24"
@@ -91,11 +91,11 @@ Array [
       />
     </svg>
     <span
-      className="MuiTouchRipple-root-60"
+      className="MuiTouchRipple-root-61"
     />
-  </li>,
+  </div>,
   <hr
-    className="MuiDivider-root-71"
+    className="MuiDivider-root-72"
   />,
 ]
 `;
