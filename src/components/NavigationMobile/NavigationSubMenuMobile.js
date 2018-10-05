@@ -12,7 +12,8 @@ import NavigationItemMobile from "./NavigationItemMobile";
 const styles = () => ({
   root: {
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    height: "100vh"
   },
   header: {
     flex: "0 0 auto"
