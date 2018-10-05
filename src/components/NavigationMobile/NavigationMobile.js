@@ -96,6 +96,7 @@ class NavigationMobile extends Component {
   );
 
   handleClose = () => {
+    this.handleCloseSubMenu();
     this.props.uiStore.closeMenuDrawer();
   };
 
