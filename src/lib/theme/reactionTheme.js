@@ -155,9 +155,9 @@ const theme = createMuiTheme({
       color: "#595959"
     },
     subheading: {
-      fontSize: 14,
+      fontSize: 16,
       fontWeight: 600,
-      color: "#737373"
+      color: "#3c3c3c"
     }
   }
 });
