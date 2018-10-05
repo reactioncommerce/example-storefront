@@ -7,12 +7,15 @@ import routes from "routes";
  * @param {Object} data.product Parent product of the selected variant
  * @param {Object} data.variant Object of the selected variant
  * @param {Object} [data.optionId] Id of the selected option
- * @returns {Object} Data sutable for trackign a variant
+ * @returns {Object} Data suitable for tracking a variant
  */
 export default function getVariantTrackingData({ product, variant, optionId }) {
-  let data = variant;
+  let data = { ...variant };
+  // If a cart_id is provided, then added it to tracking object
+  const cartId = data.cart_id ? { cart_id: data.cart_id } : {}; // eslint-disable-line camelcase
   let imageURL;
   let price;
+  const quantity = data.quantity || 1;
   let url;
 
   // If an option id is provided, use the option instead of the top level variant
@@ -55,17 +58,11 @@ export default function getVariantTrackingData({ product, variant, optionId }) {
     }
   }
 
-  // If a cart_id is provided, then added it to tracking object
-  let cart = {};
-  if (data.cart_id) {
-    cart = { cart_id: data.cart_id }; // eslint-disable-line camelcase
-  }
-
   return {
-    ...cart,
+    ...cartId,
     variant: data._id,
     price,
-    quantity: data.quantity || 1,
+    quantity,
     position: data.index,
     value: price,
     image_url: imageURL, // eslint-disable-line camelcase
