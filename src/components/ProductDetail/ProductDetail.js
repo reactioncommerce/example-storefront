@@ -8,6 +8,7 @@ import { inject, observer } from "mobx-react";
 import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
 import trackProduct from "lib/tracking/trackProduct";
+import TRACKING from "lib/tracking/constants";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
@@ -79,7 +80,7 @@ class ProductDetail extends Component {
       selectOptionId = variant.options[0]._id;
     }
 
-    this.trackAction({ variant, optionId, action: "Product Viewed" });
+    this.trackAction({ variant, optionId, action: TRACKING.PRODUCT_VIEWED });
 
     uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
 
@@ -90,7 +91,7 @@ class ProductDetail extends Component {
   }
 
   @trackProduct()
-  trackAction(functionArgs) {} // eslint-disable-line no-unused-vars
+  trackAction() {}
 
   /**
    * @name handleSelectVariant
@@ -158,7 +159,7 @@ class ProductDetail extends Component {
             quantity
           },
           optionId: selectedOption ? selectedOption._id : null,
-          action: "Product Added"
+          action: TRACKING.PRODUCT_ADDED
         });
       }
     }
