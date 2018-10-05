@@ -28,6 +28,9 @@ const styles = (theme) => ({
   listItemTextDense: {
     fontWeight: 400
   },
+  listItemGutters: {
+    paddingRight: 0
+  },
   subMenuList: {
     paddingBottom: theme.spacing.unit * 2
   }
@@ -146,7 +149,8 @@ class NavigationItemMobile extends Component {
           button
           classes={{
             root: classes.listItemRoot,
-            dense: classes.listItemDense
+            dense: classes.listItemDense,
+            gutters: classes.listItemGutters
           }}
           color="inherit"
           dense={!shouldShowDivider}
