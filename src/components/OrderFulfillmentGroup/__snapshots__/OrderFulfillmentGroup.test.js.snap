@@ -9,22 +9,22 @@ Array [
       className="SkOrderFulfillmentGroup-header-3"
     >
       <div
-        className="MuiGrid-container-6 MuiGrid-spacing-xs-24-30"
+        className="MuiGrid-container-7 MuiGrid-spacing-xs-24-31"
       >
         <div
-          className="MuiGrid-item-7 MuiGrid-grid-xs-6-40"
+          className="MuiGrid-item-8 MuiGrid-grid-xs-6-41"
         >
           <h3
-            className="MuiTypography-root-103 MuiTypography-subheading-110"
+            className="MuiTypography-root-104 MuiTypography-subheading-111 SkOrderFulfillmentGroup-subtitle2-6"
           >
             Free Shipping
           </h3>
         </div>
         <div
-          className="MuiGrid-item-7 MuiGrid-grid-xs-6-40 SkOrderFulfillmentGroup-headerRightColumn-4"
+          className="MuiGrid-item-8 MuiGrid-grid-xs-6-41 SkOrderFulfillmentGroup-headerRightColumn-4"
         >
           <aside
-            className="MuiTypography-root-103 MuiTypography-body2-111"
+            className="MuiTypography-root-104 MuiTypography-body2-112"
           >
             Ground
           </aside>
@@ -35,7 +35,7 @@ Array [
       className="SkOrderFulfillmentGroup-fulfillmentDetails-2"
     >
       <div
-        className="MuiGrid-item-7 MuiGrid-grid-xs-12-46"
+        className="MuiGrid-item-8 MuiGrid-grid-xs-12-47"
       >
         <div
           className="CartItems__Items-gEXRwN gdnVAG"
@@ -252,28 +252,28 @@ Array [
     className="SkOrderFulfillmentGroup-summary-5"
   >
     <div
-      className="SkOrderSummary-summary-131"
+      className="SkOrderSummary-summary-132"
     >
       <div
-        className="SkOrderSummary-header-132"
+        className="SkOrderSummary-header-133"
       >
         <div
-          className="MuiGrid-container-6 MuiGrid-spacing-xs-24-30"
+          className="MuiGrid-container-7 MuiGrid-spacing-xs-24-31"
         >
           <div
-            className="MuiGrid-item-7 MuiGrid-grid-xs-3-37"
+            className="MuiGrid-item-8 MuiGrid-grid-xs-3-38"
           >
             <h3
-              className="MuiTypography-root-103 MuiTypography-subheading-110"
+              className="MuiTypography-root-104 MuiTypography-subheading-111 SkOrderSummary-subtitle2-136"
             >
               Payment Method
             </h3>
           </div>
           <div
-            className="MuiGrid-item-7 MuiGrid-grid-xs-3-37"
+            className="MuiGrid-item-8 MuiGrid-grid-xs-3-38"
           >
             <aside
-              className="MuiTypography-root-103 MuiTypography-body2-111"
+              className="MuiTypography-root-104 MuiTypography-body2-112"
             >
               Example Payment
             </aside>
@@ -281,7 +281,7 @@ Array [
         </div>
       </div>
       <hr
-        className="MuiDivider-root-135"
+        className="MuiDivider-root-137"
       />
       <div
         className="OrderSummary__OrderSummaryContainer-sc-1cvbk1h-0 hsLQId"

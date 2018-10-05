@@ -8,10 +8,15 @@ exports[`basic snapshot 1`] = `
     className="SkNavigationItemMobile-header-2"
   >
     <div
-      className="MuiToolbar-root-4 MuiToolbar-regular-6"
+      className="MuiToolbar-root-5 MuiToolbar-regular-7"
     >
+      <h3
+        className="MuiTypography-root-9 MuiTypography-subheading-16 SkNavigationItemMobile-toolbarTitle-3"
+      >
+        Tag Name
+      </h3>
       <button
-        className="MuiButtonBase-root-14 MuiIconButton-root-8"
+        className="MuiButtonBase-root-41 MuiIconButton-root-35"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -28,11 +33,11 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiIconButton-label-13"
+          className="MuiIconButton-label-40"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-17"
+            className="MuiSvgIcon-root-44"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -43,30 +48,25 @@ exports[`basic snapshot 1`] = `
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-26"
+          className="MuiTouchRipple-root-53"
         />
       </button>
-      <h3
-        className="MuiTypography-root-33 MuiTypography-subheading-40"
-      >
-        Tag Name
-      </h3>
     </div>
     <hr
-      className="MuiDivider-root-59"
+      className="MuiDivider-root-60"
     />
   </div>
   <div
-    className="SkNavigationItemMobile-menu-3"
+    className="SkNavigationItemMobile-menu-4"
   >
     <div
-      className="MuiList-root-63"
+      className="MuiList-root-64"
       onBlur={[Function]}
       onKeyDown={[Function]}
       role="menu"
     >
       <div
-        className="MuiButtonBase-root-14 MuiListItem-root-71 SkNavigationItemMobile-listItemRoot-68 MuiListItem-default-74 MuiListItem-gutters-78 MuiListItem-button-79"
+        className="MuiButtonBase-root-41 MuiListItem-root-74 SkNavigationItemMobile-listItemRoot-69 MuiListItem-default-77 MuiListItem-gutters-81 SkNavigationItemMobile-listItemGutters-72 MuiListItem-button-82"
         color="inherit"
         onBlur={[Function]}
         onClick={[Function]}
@@ -83,23 +83,23 @@ exports[`basic snapshot 1`] = `
         tabIndex="0"
       >
         <div
-          className="MuiListItemText-root-82"
+          className="MuiListItemText-root-85"
         >
           <span
-            className="MuiTypography-root-33 MuiTypography-subheading-40 MuiListItemText-primary-85"
+            className="MuiTypography-root-9 MuiTypography-subheading-16 MuiListItemText-primary-88"
           >
             Sub Tag Name
           </span>
         </div>
         <span
-          className="MuiTouchRipple-root-26"
+          className="MuiTouchRipple-root-53"
         />
       </div>
       <hr
-        className="MuiDivider-root-59"
+        className="MuiDivider-root-60"
       />
       <div
-        className="MuiButtonBase-root-14 MuiListItem-root-71 SkNavigationItemMobile-listItemRoot-68 MuiListItem-default-74 MuiListItem-gutters-78 MuiListItem-button-79"
+        className="MuiButtonBase-root-41 MuiListItem-root-74 SkNavigationItemMobile-listItemRoot-69 MuiListItem-default-77 MuiListItem-gutters-81 SkNavigationItemMobile-listItemGutters-72 MuiListItem-button-82"
         color="inherit"
         onBlur={[Function]}
         onClick={[Function]}
@@ -116,20 +116,20 @@ exports[`basic snapshot 1`] = `
         tabIndex="0"
       >
         <div
-          className="MuiListItemText-root-82"
+          className="MuiListItemText-root-85"
         >
           <span
-            className="MuiTypography-root-33 MuiTypography-subheading-40 MuiListItemText-primary-85"
+            className="MuiTypography-root-9 MuiTypography-subheading-16 MuiListItemText-primary-88"
           >
             Sub Tag name
           </span>
         </div>
         <span
-          className="MuiTouchRipple-root-26"
+          className="MuiTouchRipple-root-53"
         />
       </div>
       <hr
-        className="MuiDivider-root-59"
+        className="MuiDivider-root-60"
       />
     </div>
   </div>
