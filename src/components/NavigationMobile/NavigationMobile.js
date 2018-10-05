@@ -1,16 +1,43 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
+import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import { withStyles } from "@material-ui/core/styles";
+import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
+import IconButton from "@material-ui/core/IconButton";
 import MenuList from "@material-ui/core/MenuList";
 import Slide from "@material-ui/core/Slide";
-import withNavigationTags from "../../containers/tags/withNavigationTags";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import CloseIcon from "mdi-material-ui/Close";
+import Link from "components/Link";
+import withShop from "containers/shop/withShop";
+import withNavigationTags from "containers/tags/withNavigationTags";
 import NavigationItemMobile from "./NavigationItemMobile";
 import NavigationSubMenuMobile from "./NavigationSubMenuMobile";
 
 const styles = (theme) => ({
-  nav: {
+  root: {
+    display: "flex",
+    flexDirection: "column"
+  },
+  header: {
+    flex: "0 0 auto"
+  },
+  toolbarTitle: {
+    position: "absolute",
+    width: "100%",
+    textAlign: "center"
+  },
+  title: {
+    display: "inline-block",
+    color: theme.palette.reaction.reactionBlue,
+    borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
+  },
+  menu: {
+    flex: "1 1 auto",
+    overflowY: "auto",
     width: 320
   },
   subNav: {
@@ -25,12 +52,16 @@ const styles = (theme) => ({
 
 @withStyles(styles, { name: "SkNavigationMobile" })
 @withNavigationTags
+@withShop
 @inject("uiStore")
 @observer
 class NavigationMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
     navItems: PropTypes.object,
+    shop: PropTypes.shape({
+      name: PropTypes.string
+    }),
     uiStore: PropTypes.shape({
       closeMenuDrawer: PropTypes.func
     }).isRequired
@@ -69,12 +100,27 @@ class NavigationMobile extends Component {
   };
 
   render() {
-    const { classes, navItems, uiStore } = this.props;
+    const { classes, navItems, uiStore, shop } = this.props;
 
     return (
       <Drawer open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
-        <nav className={classes.nav}>
-          <MenuList>{navItems.edges && navItems.edges.map(this.renderNavItem)}</MenuList>
+        <div className={classes.header}>
+          <Toolbar disableGutters>
+            <div className={classes.toolbarTitle}>
+              <Typography className={classes.title} color="inherit" variant="title">
+                <Link route="/" onClick={this.handleClose}>
+                  <ShopLogo shopName={shop && shop.name} />
+                </Link>
+              </Typography>
+            </div>
+            <IconButton onClick={this.handleClose}>
+              <CloseIcon />
+            </IconButton>
+          </Toolbar>
+          <Divider />
+        </div>
+        <nav className={classes.menu}>
+          <MenuList disablePadding>{navItems.edges && navItems.edges.map(this.renderNavItem)}</MenuList>
         </nav>
         <Slide direction="left" in={!!this.state.navItem}>
           <nav className={classes.subNav}>
