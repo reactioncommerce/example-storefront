@@ -17,6 +17,11 @@ const styles = () => ({
   header: {
     flex: "0 0 auto"
   },
+  toolbarTitle: {
+    position: "absolute",
+    width: "100%",
+    textAlign: "center"
+  },
   menu: {
     flex: "1 1 auto",
     overflowY: "auto"
@@ -57,10 +62,10 @@ class NavigationSubMenuMobile extends Component {
       <div className={classes.root}>
         <div className={classes.header}>
           <Toolbar disableGutters>
+            <Typography className={classes.toolbarTitle} variant="subheading">{navItem.name}</Typography>
             <IconButton onClick={this.props.onBackButtonClick}>
               <ChevronLeftIcon />
             </IconButton>
-            <Typography variant="subheading">{navItem.name}</Typography>
           </Toolbar>
           <Divider />
         </div>
