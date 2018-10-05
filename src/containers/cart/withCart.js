@@ -430,7 +430,7 @@ export default function withCart(Component) {
                 {(mutationFunction) => (
                   <Component
                     {...this.props}
-                    addItemsToCart={async (items) => (
+                    addItemsToCart={(items) => (
                       this.handleAddItemsToCart(mutationFunction, { items }, !cart)
                     )}
                     cart={processedCartData}
