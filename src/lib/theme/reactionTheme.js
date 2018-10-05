@@ -141,9 +141,9 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: "Source Sans Pro, Helvetica Neue, Helvetica, sans-serif",
     fontSize: 16,
-    fontWeightLight: 200,
+    fontWeightLight: 400,
     fontWeightRegular: 400,
-    fontWeightMedium: 700,
+    fontWeightMedium: 600,
     fontWeightBold: 700,
     body2: {
       fontSize: 14,
