@@ -223,6 +223,7 @@ import PropTypes from "prop-types";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import track from "lib/tracking/track";
 import trackProduct from "lib/tracking/trackProduct";
+import TRACKING from "lib/tracking/constants";
 
 @withCatalogItemProduct // Product for page with route of `/product/:slugOrId/:variantId?`
 @track()
@@ -241,7 +242,7 @@ class ProductDetailPage extends Component {
   selectVariant(variant, optionId) {
     // Do something with selected variant / option
 
-    this.trackAction({ variant, optionId, action: "Product Viewed" });
+    this.trackAction({ variant, optionId, action: TRACKING.PRODUCT_VIEWED });
   }
 
   // Expects the prop `product`, and an object with the following keys: 
