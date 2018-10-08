@@ -9,23 +9,28 @@ import getCartItemTrackingData from "./utils/getCartItemTrackingData";
  */
 export default (options) => (
   track(({ router }, state, functionArgs) => {
-    const { cartItems, action } = (functionArgs && functionArgs[0]) || [];
+    const { cartItems, cartId, action } = (functionArgs && functionArgs[0]) || [];
     let data = {};
 
-    if (cartItems) {
-      if (Array.isArray(cartItems)) {
-        const products = [];
-        cartItems.forEach((item) => {
-          products.push(getCartItemTrackingData(item));
-        });
-        data = {
-          products
-        };
-      } else {
-        data = {
-          ...getCartItemTrackingData(cartItems)
-        };
+    if (Array.isArray(cartItems)) {
+      const products = [];
+      cartItems.forEach((item) => {
+        products.push(getCartItemTrackingData(item));
+      });
+
+      data = {
+        cart_id: cartId, // eslint-disable-line camelcase
+        products
+      };
+
+      // If the router is provided as a prop, set the url of the product to the current path
+      if (router) {
+        data.url = router.asPath;
       }
+    } else {
+      data = {
+        ...getCartItemTrackingData(cartItems)
+      };
     }
 
     return {

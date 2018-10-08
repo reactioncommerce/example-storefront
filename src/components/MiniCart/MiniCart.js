@@ -83,9 +83,17 @@ export default class MiniCart extends Component {
   }
 
   state = {
-    open: false,
     anchorElement: null
   };
+
+  componentDidUpdate() {
+    const { cart, uiStore: { isCartOpen } } = this.props;
+
+    // Track a cart view event
+    if ((cart && Array.isArray(cart.items) && cart.items.length) && isCartOpen) {
+      this.trackAction({ cartItems: cart.items, cartId: cart._id, action: TRACKING.CART_VIEWED });
+    }
+  }
 
   anchorElement = null
 

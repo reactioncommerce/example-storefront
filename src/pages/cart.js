@@ -12,6 +12,7 @@ import CartItems from "components/CartItems";
 import CheckoutButtons from "components/CheckoutButtons";
 import Link from "components/Link";
 import { Router } from "routes";
+import PageLoading from "components/PageLoading";
 import track from "lib/tracking/track";
 import variantById from "lib/utils/variantById";
 import trackCartItems from "lib/tracking/trackCartItems";
@@ -74,6 +75,15 @@ class CartPage extends Component {
       description: PropTypes.string
     })
   };
+
+  componentDidMount() {
+    const { cart } = this.props;
+
+    // Track a cart view event
+    if (cart && Array.isArray(cart.items) && cart.items.length) {
+      this.trackAction({ cartItems: cart.items, cartId: cart._id, action: TRACKING.CART_VIEWED });
+    }
+  }
 
   handleClick = () => Router.pushRoute("/");
 
@@ -151,7 +161,9 @@ class CartPage extends Component {
   }
 
   render() {
-    const { classes, shop } = this.props;
+    const { cart, classes, shop } = this.props;
+
+    if (!cart) return <PageLoading />;
 
     return (
       <Fragment>
