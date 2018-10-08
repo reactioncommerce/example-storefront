@@ -192,7 +192,10 @@ export default class CheckoutActions extends Component {
 
     const actions = [
       {
-        label: "Shipping Information",
+        id: "1",
+        activeLabel: "Enter a shipping address",
+        completeLabel: "Shipping address",
+        incompleteLabel: "Shipping address",
         status: shippingAddressSet ? "complete" : "incomplete",
         component: ShippingAddressCheckoutAction,
         onSubmit: this.setShippingAddress,
@@ -201,7 +204,10 @@ export default class CheckoutActions extends Component {
         }
       },
       {
-        label: "Choose a shipping method",
+        id: "2",
+        activeLabel: "Choose a shipping method",
+        completeLabel: "Shipping method",
+        incompleteLabel: "Shipping method",
         status: fulfillmentGroup.selectedFulfillmentOption ? "complete" : "incomplete",
         component: FulfillmentOptionsCheckoutAction,
         onSubmit: this.setShippingMethod,
@@ -210,7 +216,10 @@ export default class CheckoutActions extends Component {
         }
       },
       {
-        label: "Payment Information",
+        id: "3",
+        activeLabel: "Enter payment information",
+        completeLabel: "Payment information",
+        incompleteLabel: "Payment information",
         status: stripeToken ? "complete" : "incomplete",
         component: StripePaymentCheckoutAction,
         onSubmit: this.setPaymentMethod,
@@ -219,7 +228,10 @@ export default class CheckoutActions extends Component {
         }
       },
       {
-        label: "Review and place order",
+        id: "4",
+        activeLabel: "Review and place order",
+        completeLabel: "Review and place order",
+        incompleteLabel: "Review and place order",
         status: "incomplete",
         component: FinalReviewCheckoutAction,
         onSubmit: this.buildOrder,

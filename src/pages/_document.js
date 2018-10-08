@@ -5,7 +5,6 @@ import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
 import analyticsProviders from "analytics";
 import { ServerStyleSheet } from "styled-components";
-// import getConfig from "next/config";
 import favicons from "../lib/utils/favicons";
 
 /**
@@ -58,8 +57,6 @@ class HTMLDocument extends Document {
   render() {
     const { helmet, pageContext, styledComponentsStyleTags } = this.props;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
-    // const { publicRuntimeConfig } = getConfig();
-    // const { keycloakConfig } = publicRuntimeConfig;
     const links = [
       { rel: "canonical", href: process.env.CANONICAL_URL },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" },
@@ -85,10 +82,6 @@ class HTMLDocument extends Document {
         type: "text/javascript",
         innerHTML: provider.renderScript()
       })),
-      // {
-      //   type: "text/javascript",
-      //   src: `${keycloakConfig.url}/js/keycloak.js`
-      // },
       {
         type: "text/javascript",
         src: "https://js.stripe.com/v3/"

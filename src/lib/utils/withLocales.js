@@ -38,12 +38,11 @@ export default function withLocales(ComponentWithLocales) {
       let locales;
       try {
         locales = await import("./locales.json");
-        delete locales.__webpackChunkName;
       } catch (error) {
         // eslint-disable-next-line
         console.error(error);
       }
-      return locales;
+      return locales.default;
     }
 
     render() {

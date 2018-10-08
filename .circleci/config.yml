@@ -278,4 +278,4 @@ workflows:
             - docker-push
           filters:
             branches:
-              only: /^master$/
+              only: /^develop$/
