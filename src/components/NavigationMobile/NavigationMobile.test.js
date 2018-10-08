@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import renderer from "react-test-renderer";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "lib/theme/reactionTheme";
