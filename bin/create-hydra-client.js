@@ -3,6 +3,19 @@
 /* eslint-disable no-console */
 const http = require("http");
 
+const missing = [
+  "OAUTH2_ADMIN_PORT",
+  "OAUTH2_CLIENT_ID",
+  "OAUTH2_CLIENT_SECRET",
+  "OAUTH2_HOST",
+  "OAUTH2_REDIRECT_URL"
+].filter((key) => !process.env[key]);
+
+if (missing.length) {
+  console.error(`ERROR: Missing required environment variables ${missing.join(" ")}`);
+  process.exit(12);
+}
+
 /* eslint-disable camelcase */
 const bodyEncoded = JSON.stringify({
   client_id: process.env.OAUTH2_CLIENT_ID,
