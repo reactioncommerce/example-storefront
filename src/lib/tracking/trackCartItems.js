@@ -8,7 +8,7 @@ import getCartItemTrackingData from "./utils/getCartItemTrackingData";
  * @returns {React.Component} - component
  */
 export default (options) => (
-  track((state, functionArgs) => {
+  track(({ router }, state, functionArgs) => {
     const { cartItems, action } = (functionArgs && functionArgs[0]) || [];
     let data = {};
 

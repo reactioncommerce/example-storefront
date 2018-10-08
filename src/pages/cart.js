@@ -12,8 +12,8 @@ import CartItems from "components/CartItems";
 import CheckoutButtons from "components/CheckoutButtons";
 import Link from "components/Link";
 import { Router } from "routes";
-import variantById from "lib/utils/variantById";
 import track from "lib/tracking/track";
+import variantById from "lib/utils/variantById";
 import trackCartItems from "lib/tracking/trackCartItems";
 import TRACKING from "lib/tracking/constants";
 
@@ -83,6 +83,9 @@ class CartPage extends Component {
     onChangeCartItemsQuantity({ quantity, cartItemId });
   };
 
+  @trackCartItems()
+  trackAction() {}
+
   handleRemoveItem = async (itemId) => {
     const { cart: { items }, onRemoveCartItems } = this.props;
 
@@ -96,9 +99,6 @@ class CartPage extends Component {
       this.trackAction({ cartItems: removedItem, action: TRACKING.PRODUCT_REMOVED });
     }
   };
-
-  @trackCartItems()
-  trackAction() {}
 
   renderCartItems() {
     const { cart, classes, hasMoreCartItems, loadMoreCartItems } = this.props;

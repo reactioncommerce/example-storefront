@@ -13,6 +13,10 @@ import Popper from "@material-ui/core/Popper";
 import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
 import withShop from "containers/shop/withShop";
+import trackCartItems from "lib/tracking/trackCartItems";
+import track from "lib/tracking/track";
+import TRACKING from "lib/tracking/constants";
+import variantById from "lib/utils/variantById";
 
 const styles = ({ palette, zIndex }) => ({
   popper: {
@@ -43,6 +47,7 @@ const styles = ({ palette, zIndex }) => ({
 @withShop
 @withCart
 @inject("uiStore")
+@track()
 @observer
 export default class MiniCart extends Component {
   static propTypes = {
@@ -123,8 +128,24 @@ export default class MiniCart extends Component {
     onChangeCartItemsQuantity({ quantity, cartItemId });
   }
 
+  @trackCartItems()
+  trackAction() {}
+
+  handleRemoveItem = async (itemId) => {
+    const { cart: { items }, onRemoveCartItems } = this.props;
+    const { data, error } = await onRemoveCartItems(itemId);
+
+    if (data && !error) {
+      const { cart: { _id } } = data.removeCartItems;
+      const removedItem = { cart_id: _id, ...variantById(items, itemId) }; // eslint-disable-line camelcase
+
+      // Track removed item
+      this.trackAction({ cartItems: removedItem, action: TRACKING.PRODUCT_REMOVED });
+    }
+  };
+
   renderMiniCart() {
-    const { cart, classes, hasMoreCartItems, loadMoreCartItems, onRemoveCartItems } = this.props;
+    const { cart, classes, hasMoreCartItems, loadMoreCartItems } = this.props;
 
     if (cart && Array.isArray(cart.items) && cart.items.length) {
       return (
@@ -137,7 +158,7 @@ export default class MiniCart extends Component {
               <CartItems
                 {...cartItemProps}
                 hasMoreCartItems={hasMoreCartItems}
-                onRemoveItemFromCart={onRemoveCartItems}
+                onRemoveItemFromCart={this.handleRemoveItem}
                 onChangeCartItemQuantity={this.handleItemQuantityChange}
                 onLoadMoreCartItems={loadMoreCartItems}
               />

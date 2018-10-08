@@ -1,5 +1,3 @@
-import { decodeOpaqueId } from "lib/utils/decoding";
-
 const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 const express = require("express");
@@ -10,6 +8,7 @@ const logger = require("lib/logger");
 const passport = require("passport");
 const OAuth2Strategy = require("passport-oauth2");
 const refresh = require("passport-oauth2-refresh");
+const { decodeOpaqueId } = require("lib/utils/decoding");
 const { appPath, dev } = require("./config");
 const router = require("./routes");
 
