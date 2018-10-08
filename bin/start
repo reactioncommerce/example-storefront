@@ -5,7 +5,6 @@ set -o pipefail # don't ignore exit codes when piping output
 # set -x          # enable debugging
 
 IFS="$(printf "\n\t")"
-# ---- End unofficial bash strict mode boilerplate
 
 cd "$(dirname "$0")/.."
 yarn install
