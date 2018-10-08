@@ -175,7 +175,7 @@ export default function withCart(Component) {
       // Run the mutation function provided as a param.
       // It may take the form of `createCart` or `addCartItems` depending on the
       // availability of a cart for either an anonymous or logged-in account.
-      await mutation({
+      return mutation({
         variables: {
           input
         }
@@ -430,9 +430,9 @@ export default function withCart(Component) {
                 {(mutationFunction) => (
                   <Component
                     {...this.props}
-                    addItemsToCart={async (items) => {
-                      await this.handleAddItemsToCart(mutationFunction, { items }, !cart);
-                    }}
+                    addItemsToCart={(items) => (
+                      this.handleAddItemsToCart(mutationFunction, { items }, !cart)
+                    )}
                     cart={processedCartData}
                     checkoutMutations={{
                       onSetFulfillmentOption: this.handleSetFulfillmentOption,
