@@ -11,7 +11,6 @@ import routes from "routes";
  */
 export default function getVariantTrackingData({ product, variant, optionId }) {
   let data = { ...variant };
-  // If a cart_id is provided, then added it to tracking object
   const cartId = data.cart_id ? { cart_id: data.cart_id } : {}; // eslint-disable-line camelcase
   let imageURL;
   let price;
@@ -60,7 +59,7 @@ export default function getVariantTrackingData({ product, variant, optionId }) {
 
   return {
     ...cartId,
-    variant: data._id,
+    variant: data.title,
     price,
     quantity,
     position: data.index,
