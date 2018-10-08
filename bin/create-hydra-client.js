@@ -5,8 +5,8 @@ const http = require("http");
 
 /* eslint-disable camelcase */
 const bodyEncoded = JSON.stringify({
-  client_id: process.env.OAUTH2_CLIENT_ID || "reaction-next-starterkit",
-  client_secret: process.env.OAUTH2_CLIENT_SECRET || "CHANGEME",
+  client_id: process.env.OAUTH2_CLIENT_ID,
+  client_secret: process.env.OAUTH2_CLIENT_SECRET,
   grant_types: [
     "authorization_code",
     "refresh_token",
@@ -14,9 +14,7 @@ const bodyEncoded = JSON.stringify({
     "implicit"
   ],
   jwks: {},
-  redirect_uris: [
-    process.env.OAUTH2_REDIRECT_URL || "http://localhost:4000/callback"
-  ],
+  redirect_uris: [process.env.OAUTH2_REDIRECT_URL],
   response_types: ["token", "code", "id_token"],
   scope: "openid offline",
   subject_type: "public",
@@ -25,8 +23,8 @@ const bodyEncoded = JSON.stringify({
 /* eslint-enable camelcase */
 
 const options = {
-  hostname: process.env.OAUTH2_HOST || "hydra.auth.reaction.localhost",
-  port: process.env.OAUTH2_ADMIN_PORT || 4445,
+  hostname: process.env.OAUTH2_HOST,
+  port: process.env.OAUTH2_ADMIN_PORT,
   path: "/clients",
   method: "POST",
   headers: {
