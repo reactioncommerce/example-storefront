@@ -25,7 +25,7 @@ export default function getCartItemTrackingData(cartItem) {
     category: (variant.productTags.nodes.length && variant.productTags.nodes[0].name) || undefined,
     name: variant.title,
     brand: variant.productVendor,
-    variant: variant.title,
+    variant: variant.variantTitle,
     price: variant.price.amount,
     quantity: variant.quantity,
     image_url: variant.imageURLs.original, // eslint-disable-line camelcase
