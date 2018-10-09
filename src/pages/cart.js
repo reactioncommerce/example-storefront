@@ -163,7 +163,7 @@ class CartPage extends Component {
   render() {
     const { cart, classes, shop } = this.props;
 
-    if (!cart) return <PageLoading />;
+    if (!cart) return <PageLoading delay={0} />;
 
     return (
       <Fragment>
