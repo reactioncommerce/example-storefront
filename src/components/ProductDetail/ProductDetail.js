@@ -253,10 +253,8 @@ class ProductDetail extends Component {
         <Fragment>
           <div className={classes.section}>
             <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
-            <ProductDetailInfo
-              priceRange={productPrice.displayPrice}
-              vendor={product.vendor}
-            />
+            <ProductDetailInfo vendor={product.vendor} />
+            <ProductDetailInfo priceRange={productPrice.displayPrice} />
           </div>
 
           <div className={classes.section}>
