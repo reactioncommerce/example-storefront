@@ -10,6 +10,14 @@ query catalogItemProductQuery($slugOrId: String!) {
       isLowQuantity
       isSoldOut
       isBackorder
+      metafields {
+        description
+        key
+        namespace
+        scope
+        value
+        valueType
+      }
       pricing {
         currency {
           code
@@ -98,6 +106,14 @@ query catalogItemProductQuery($slugOrId: String!) {
               original
             }
           }
+          metafields {
+            description
+            key
+            namespace
+            scope
+            value
+            valueType
+          }
           primaryImage {
             URLs {
               large
@@ -124,6 +140,14 @@ query catalogItemProductQuery($slugOrId: String!) {
             large
             original
           }
+        }
+        metafields {
+          description
+          key
+          namespace
+          scope
+          value
+          valueType
         }
         primaryImage {
           URLs {
