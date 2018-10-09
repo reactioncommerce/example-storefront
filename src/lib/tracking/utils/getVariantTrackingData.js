@@ -59,7 +59,7 @@ export default function getVariantTrackingData({ product, variant, optionId }) {
 
   return {
     ...cartId,
-    variant: data.title,
+    variant: data._id,
     price,
     quantity,
     position: data.index,
