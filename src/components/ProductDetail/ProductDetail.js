@@ -2,8 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
-import Hidden from "@material-ui/core/Hidden";
+import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
 import { inject, observer } from "mobx-react";
 import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
@@ -217,7 +216,8 @@ class ProductDetail extends Component {
       routingStore: { tag },
       tags,
       theme,
-      uiStore: { pdpSelectedOptionId, pdpSelectedVariantId }
+      uiStore: { pdpSelectedOptionId, pdpSelectedVariantId },
+      width
     } = this.props;
 
     // Set the default media as the top-level product's media
@@ -247,37 +247,59 @@ class ProductDetail extends Component {
 
     const productPrice = this.determineProductPrice();
 
+    // Phone size
+    if (isWidthDown("sm", width)) {
+      return (
+        <Fragment>
+          <div className={classes.section}>
+            <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
+            <ProductDetailInfo vendor={product.vendor} />
+            <ProductDetailInfo priceRange={productPrice.displayPrice} />
+          </div>
+
+          <div className={classes.section}>
+            <MediaGallery mediaItems={pdpMediaItems} />
+          </div>
+
+          <div className={classes.section}>
+            <VariantList
+              onSelectOption={this.handleSelectOption}
+              onSelectVariant={this.handleSelectVariant}
+              product={product}
+              selectedOptionId={pdpSelectedOptionId}
+              selectedVariantId={pdpSelectedVariantId}
+              currencyCode={currencyCode}
+              variants={product.variants}
+            />
+            <ProductDetailAddToCart onClick={this.handleAddToCartClick} />
+          </div>
+
+          <div className={classes.section}>
+            <ProductDetailInfo
+              description={product.description}
+            />
+          </div>
+        </Fragment>
+      );
+    }
+
     return (
       <Fragment>
         <Grid container spacing={theme.spacing.unit * 5}>
-          <Hidden smUp>
-            <ProductDetailTitle
-              pageTitle={product.pageTitle}
-              title={product.title}
-              classes={classes.title}
-              variant="display1"
-            />
-          </Hidden>
-          <Hidden xsDown>
-            <Grid item className={classes.breadcrumbGrid} xs={12}>
-              <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
-            </Grid>
-          </Hidden>
+          <Grid item className={classes.breadcrumbGrid} xs={12}>
+            <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
+          </Grid>
           <Grid item xs={12} sm={6}>
             <div className={classes.section}>
               <MediaGallery mediaItems={pdpMediaItems} />
             </div>
-            <Hidden xsDown>
-              <div className={classes.section}>
-                <TagGrid tags={product.tags.nodes} />
-              </div>
-            </Hidden>
+            <div className={classes.section}>
+              <TagGrid tags={product.tags.nodes} />
+            </div>
           </Grid>
 
           <Grid item xs={12} sm={6}>
-            <Hidden xsDown>
-              <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
-            </Hidden>
+            <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
             <ProductDetailInfo
               priceRange={productPrice.displayPrice}
               description={product.description}
