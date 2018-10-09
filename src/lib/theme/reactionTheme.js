@@ -141,19 +141,23 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: "Source Sans Pro, Helvetica Neue, Helvetica, sans-serif",
     fontSize: 16,
-    fontWeightLight: 200,
+    fontWeightLight: 400,
     fontWeightRegular: 400,
-    fontWeightMedium: 700,
+    fontWeightMedium: 600,
     fontWeightBold: 700,
+    subtitle2: {
+      fontSize: 14,
+      color: "#737373"
+    },
     body2: {
       fontSize: 14,
       fontWeight: 400,
       color: "#595959"
     },
     subheading: {
-      fontSize: 14,
+      fontSize: 16,
       fontWeight: 600,
-      color: "#737373"
+      color: "#3c3c3c"
     }
   }
 });

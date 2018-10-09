@@ -59,7 +59,7 @@ class HTMLDocument extends Document {
     const htmlAttrs = helmet.htmlAttributes.toComponent();
     const links = [
       { rel: "canonical", href: process.env.CANONICAL_URL },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" },
       ...favicons
     ];
     const meta = [
