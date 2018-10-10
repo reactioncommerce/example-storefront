@@ -300,8 +300,8 @@ class ProductDetail extends Component {
 
           <Grid item xs={12} sm={6}>
             <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
-            <ProductDetailPrice compareAtPrice={productPrice.compareAtPrice} price={productPrice.displayPrice} />
             <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
+            <ProductDetailPrice compareAtPrice={productPrice.compareAtPrice} price={productPrice.displayPrice} />
             <ProductDetailDescription>{product.description}</ProductDetailDescription>
             <VariantList
               onSelectOption={this.handleSelectOption}
