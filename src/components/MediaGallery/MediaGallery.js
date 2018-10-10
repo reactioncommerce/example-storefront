@@ -64,8 +64,8 @@ class MediaGallery extends Component {
     const placeholderURL = "/static/images/placeholder.gif";
     return (
       <Img
-      presrc={placeholderURL}
-      src={placeholderURL}
+        presrc={placeholderURL}
+        src={placeholderURL}
       />
     );
   }
