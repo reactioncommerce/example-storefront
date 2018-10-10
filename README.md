@@ -19,32 +19,16 @@ Reference headless ecommerce storefront for [Reaction Commerce](https://reaction
 
 ## Getting Started
 
-1. Requirements:
+Follow the [Reaction Platform docs](https://docs.reactioncommerce.com/docs/installation-reaction-platform) to install and run all the services started to run the Starter Kit:
 
-- Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/). Docker Compose is included when installing Docker on Mac and Windows, but will need to be installed separately on Linux.
-- Install [Node.js](https://nodejs.org/en/)
-- Install [Reaction Platform](https://github.com/reactioncommerce/reaction-platform)
-- Make sure you are not running any applications on ports `3000` and `4000`.
-
-1. Follow the instructions at [Reaction Platform](https://github.com/reactioncommerce/reaction-platform) to run Reaction, Reaction Hydra and the starterkit with Reaction Platform.
-
-After the initial bootstrapping, you can use `make start` to start all the necessary containers:
-
-```sh
-make start
-```
-
-1. Once the `make` process finishes, the Reaction Platform services will be accessible at the following URLs:
-
-| Application  | URL                     |
-| ------------ | ----------------------- |
-| `starterkit` | localhost:4000          |
-| GraphQL API  | localhost:3000/graphiql |
-| `reaction`   | localhost:3000          |
-
-Visit the storefront at `localhost:4000` and the GraphQL API playground at `localhost:3000/graphiql`.
-
-1. To view the logs for the Starterkit, run: `docker-compose logs -f`
+| Directory: Service                                                                         | URL                                                           |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
+| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API                    | [localhost:3000/graphpql-alpha](localhost:3000/graphql-alpha) |
+| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API playground         | [localhost:3000/graphiql](localhost:3000/graphiql)            |
+| [`reaction`](https://github.com/reactioncommerce/reaction): Classic UI                     | [localhost:3000](localhost:3000)                              |
+| [`reaction`](https://github.com/reactioncommerce/reaction): MongoDB                        | [localhost:27017](localhost:27017)                            |
+| [`reaction-hydra`](https://github.com/reactioncommerce/reaction-hydra): oryd/hydra         | [localhost:4444](localhost:4444)                              |
+| [`reaction-next-starterkit`](https://github.com/reactioncommerce/reaction-next-starterkit) | [localhost:4000](localhost:4000)                              |
 
 ## Configuration
 
