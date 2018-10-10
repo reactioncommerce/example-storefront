@@ -11,7 +11,9 @@ import TRACKING from "lib/tracking/constants";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
-import ProductDetailInfo from "components/ProductDetailInfo";
+import ProductDetailVendor from "components/ProductDetailVendor";
+import ProductDetailDescription from "components/ProductDetailDescription";
+import ProductDetailPrice from "components/ProductDetailPrice";
 import MediaGallery from "components/MediaGallery";
 import TagGrid from "components/TagGrid";
 import { Router } from "routes";
@@ -253,8 +255,8 @@ class ProductDetail extends Component {
         <Fragment>
           <div className={classes.section}>
             <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
-            <ProductDetailInfo vendor={product.vendor} />
-            <ProductDetailInfo priceRange={productPrice.displayPrice} />
+            <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
+            <ProductDetailPrice compareAtPrice={productPrice.compareAtPrice} isCompact price={productPrice.displayPrice} />
           </div>
 
           <div className={classes.section}>
@@ -275,9 +277,7 @@ class ProductDetail extends Component {
           </div>
 
           <div className={classes.section}>
-            <ProductDetailInfo
-              description={product.description}
-            />
+            <ProductDetailDescription>{product.description}</ProductDetailDescription>
           </div>
         </Fragment>
       );
@@ -300,11 +300,9 @@ class ProductDetail extends Component {
 
           <Grid item xs={12} sm={6}>
             <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
-            <ProductDetailInfo
-              priceRange={productPrice.displayPrice}
-              description={product.description}
-              vendor={product.vendor}
-            />
+            <ProductDetailPrice compareAtPrice={productPrice.compareAtPrice} price={productPrice.displayPrice} />
+            <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
+            <ProductDetailDescription>{product.description}</ProductDetailDescription>
             <VariantList
               onSelectOption={this.handleSelectOption}
               onSelectVariant={this.handleSelectVariant}
