@@ -2,7 +2,7 @@
 
 exports[`basic snapshot 1`] = `
 <div
-  className="Button__ButtonDiv-bnfrK hSdcaS"
+  className="Button__ButtonDiv-bnfrK hnpaAB"
   onClick={[Function]}
   onKeyPress={[Function]}
   role="button"
