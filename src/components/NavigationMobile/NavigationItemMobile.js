@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { inject } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import { Router } from "routes";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
 import Collapse from "@material-ui/core/Collapse";
 import MenuList from "@material-ui/core/MenuList";
-import MenuItem from "@material-ui/core/MenuItem";
+import ListItem from "@material-ui/core/ListItem";
+import ChevronRightIcon from "mdi-material-ui/ChevronRight";
 import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 import { withStyles } from "@material-ui/core/styles";
@@ -15,26 +17,48 @@ const styles = (theme) => ({
   subNav: {
     marginBottom: theme.spacing.unit * 2
   },
-  listItemTextInset: {
-    "&:first-child": {
-      paddingLeft: theme.spacing.unit * 3
-    }
+  listItemRoot: {
+    paddingTop: 16,
+    paddingBottom: 16
+  },
+  listItemDense: {
+    paddingTop: 4,
+    paddingBottom: 4
+  },
+  listItemTextDense: {
+    fontWeight: 400
+  },
+  listItemGutters: {
+    paddingRight: 0
+  },
+  subMenuList: {
+    paddingBottom: theme.spacing.unit * 2
   }
 });
 
-@inject("routingStore")
 @withStyles(styles, { name: "SkNavigationItemMobile" })
+@inject("routingStore", "uiStore")
+@observer
 class NavigationItemMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    isTopLevel: PropTypes.bool,
     navItem: PropTypes.object,
-    routingStore: PropTypes.object
+    onClick: PropTypes.func,
+    routingStore: PropTypes.object,
+    shouldShowDivider: PropTypes.bool,
+    uiStore: PropTypes.shape({
+      closeMenuDrawer: PropTypes.func.isRequired
+    })
   };
 
   static defaultProps = {
     classes: {},
+    isTopLevel: false,
     navItem: {},
-    routingStore: {}
+    onClick() {},
+    routingStore: {},
+    shouldShowDivider: true
   };
 
   state = { isSubNavOpen: false };
@@ -52,13 +76,16 @@ class NavigationItemMobile extends Component {
   }
 
   onClick = () => {
-    const { navItem } = this.props;
+    const { navItem, uiStore, isTopLevel } = this.props;
 
-    if (this.hasSubNavItems) {
+    if (isTopLevel && this.hasSubNavItems) {
+      this.props.onClick(navItem);
+    } else if (this.hasSubNavItems) {
       this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
     } else {
       const path = this.linkPath;
       Router.pushRoute(path, { slug: navItem.slug });
+      uiStore.closeMenuDrawer();
     }
   };
 
@@ -66,50 +93,79 @@ class NavigationItemMobile extends Component {
     this.setState({ isSubNavOpen: false });
   };
 
-  renderSubNav(navItemGroup) {
-    const { classes } = this.props;
-    return (
-      <div className={classes.subNav}>
-        {navItemGroup.subTags.edges.map(({ node: navItemGroupItem }, index) => (
-          <MenuItem className={classes.nested} dense inset key={index}>
-            <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroupItem.name} />
-          </MenuItem>
-        ))}
-      </div>
-    );
+  renderSubNav() {
+    const { classes, isTopLevel, navItem: { subTags }, uiStore, routingStore } = this.props;
+
+    if (this.hasSubNavItems && !isTopLevel) {
+      return (
+        <Collapse in={this.state.isSubNavOpen} timeout="auto" unmountOnExit>
+          <MenuList className={classes.subMenuList} component="div" disablePadding>
+            {subTags.edges.map(({ node: navItemGroup }, index) => (
+              <NavigationItemMobile
+                key={index}
+                classes={classes}
+                navItem={navItemGroup}
+                routingStore={routingStore}
+                shouldShowDivider={false}
+                uiStore={uiStore}
+              />
+            ))}
+          </MenuList>
+        </Collapse>
+      );
+    }
+
+    return null;
   }
 
-  renderCollapse() {
-    const { classes, navItem: { subTags } } = this.props;
-    return (
-      <Collapse in={this.state.isSubNavOpen} timeout="auto" unmountOnExit>
-        <MenuList component="div" disablePadding>
-          {subTags.edges.map(({ node: navItemGroup }, index) => (
-            <MenuList disablePadding key={index}>
-              <MenuItem inset className={classes.nested}>
-                <ListItemText classes={{ inset: classes.listItemTextInset }} inset primary={navItemGroup.name} />
-              </MenuItem>
-              {Array.isArray(navItemGroup.subTags.edges) && this.renderSubNav(navItemGroup)}
-            </MenuList>
-          ))}
-        </MenuList>
-      </Collapse>
-    );
+  renderIcon() {
+    const { classes, isTopLevel } = this.props;
+    const { isSubNavOpen } = this.state;
+    let icon = null;
+
+    if (this.hasSubNavItems) {
+      if (isTopLevel) {
+        icon = <ChevronRightIcon />;
+      } else if (isSubNavOpen) {
+        icon = <ChevronUpIcon />;
+      } else {
+        icon = <ChevronDownIcon />;
+      }
+    }
+
+    if (icon) {
+      return <ListItemIcon className={classes.icon}>{icon}</ListItemIcon>;
+    }
+
+    return null;
   }
 
   render() {
-    const { classes, navItem } = this.props;
+    const { classes, navItem, shouldShowDivider } = this.props;
+
     return (
       <Fragment>
-        <MenuItem color="inherit" onClick={this.onClick}>
-          <ListItemText classes={{ primary: classes.primary }} primary={navItem.name} />
-          {this.hasSubNavItems && (
-            <ListItemIcon className={classes.icon}>
-              {this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
-            </ListItemIcon>
-          )}
-        </MenuItem>
-        {this.hasSubNavItems && this.renderCollapse()}
+        <ListItem
+          button
+          classes={{
+            root: classes.listItemRoot,
+            dense: classes.listItemDense,
+            gutters: classes.listItemGutters
+          }}
+          color="inherit"
+          dense={!shouldShowDivider}
+          onClick={this.onClick}
+        >
+          <ListItemText
+            classes={{
+              textDense: classes.listItemTextDense
+            }}
+            primary={navItem.name}
+          />
+          {this.renderIcon()}
+        </ListItem>
+        {this.renderSubNav()}
+        {shouldShowDivider && <Divider />}
       </Fragment>
     );
   }
