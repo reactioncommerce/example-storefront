@@ -2,12 +2,12 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
-import Hidden from "@material-ui/core/Hidden";
+import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
 import { inject, observer } from "mobx-react";
 import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
-import trackProductViewed from "lib/tracking/trackProductViewed";
+import trackProduct from "lib/tracking/trackProduct";
+import TRACKING from "lib/tracking/constants";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
@@ -69,7 +69,6 @@ class ProductDetail extends Component {
     this.selectVariant(product.variants[0]);
   }
 
-  @trackProductViewed()
   selectVariant(variant, optionId) {
     const { product, uiStore } = this.props;
 
@@ -80,6 +79,8 @@ class ProductDetail extends Component {
       selectOptionId = variant.options[0]._id;
     }
 
+    this.trackAction({ variant, optionId, action: TRACKING.PRODUCT_VIEWED });
+
     uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
 
     Router.pushRoute("product", {
@@ -87,6 +88,9 @@ class ProductDetail extends Component {
       variantId: selectOptionId || variantId
     });
   }
+
+  @trackProduct()
+  trackAction() {}
 
   /**
    * @name handleSelectVariant
@@ -105,7 +109,7 @@ class ProductDetail extends Component {
    * @summary Called when the add to cart button is clicked
    * @private
    * @ignore
-   * @param {Number} quantity A positive integer from 0 to infinity, representing the quantity to add to cart
+   * @param {Number} quantity - A positive integer from 0 to infinity, representing the quantity to add to cart
    * @returns {undefined} No return
    */
   handleAddToCartClick = async (quantity) => {
@@ -127,7 +131,7 @@ class ProductDetail extends Component {
       const price = priceByCurrencyCode(currencyCode, selectedVariantOrOption.pricing);
 
       // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
-      await addItemsToCart([
+      const { data } = await addItemsToCart([
         {
           price: {
             amount: price.price,
@@ -140,6 +144,23 @@ class ProductDetail extends Component {
           quantity
         }
       ]);
+
+      // If no errors occurred, track action
+      if (data) {
+        // The response data will be in either `createCart` or `addCartItems` prop
+        // depending on the type of user, either authenticated or anonymous.
+        const { cart } = data.createCart || data.addCartItems;
+
+        this.trackAction({
+          variant: {
+            ...selectedVariant,
+            cart_id: cart._id, // eslint-disable-line camelcase
+            quantity
+          },
+          optionId: selectedOption ? selectedOption._id : null,
+          action: TRACKING.PRODUCT_ADDED
+        });
+      }
     }
 
     if (isWidthUp("md", width)) {
@@ -195,7 +216,8 @@ class ProductDetail extends Component {
       routingStore: { tag },
       tags,
       theme,
-      uiStore: { pdpSelectedOptionId, pdpSelectedVariantId }
+      uiStore: { pdpSelectedOptionId, pdpSelectedVariantId },
+      width
     } = this.props;
 
     // Set the default media as the top-level product's media
@@ -225,37 +247,59 @@ class ProductDetail extends Component {
 
     const productPrice = this.determineProductPrice();
 
+    // Phone size
+    if (isWidthDown("sm", width)) {
+      return (
+        <Fragment>
+          <div className={classes.section}>
+            <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
+            <ProductDetailInfo vendor={product.vendor} />
+            <ProductDetailInfo priceRange={productPrice.displayPrice} />
+          </div>
+
+          <div className={classes.section}>
+            <MediaGallery mediaItems={pdpMediaItems} />
+          </div>
+
+          <div className={classes.section}>
+            <VariantList
+              onSelectOption={this.handleSelectOption}
+              onSelectVariant={this.handleSelectVariant}
+              product={product}
+              selectedOptionId={pdpSelectedOptionId}
+              selectedVariantId={pdpSelectedVariantId}
+              currencyCode={currencyCode}
+              variants={product.variants}
+            />
+            <ProductDetailAddToCart onClick={this.handleAddToCartClick} />
+          </div>
+
+          <div className={classes.section}>
+            <ProductDetailInfo
+              description={product.description}
+            />
+          </div>
+        </Fragment>
+      );
+    }
+
     return (
       <Fragment>
         <Grid container spacing={theme.spacing.unit * 5}>
-          <Hidden smUp>
-            <ProductDetailTitle
-              pageTitle={product.pageTitle}
-              title={product.title}
-              classes={classes.title}
-              variant="display1"
-            />
-          </Hidden>
-          <Hidden xsDown>
-            <Grid item className={classes.breadcrumbGrid} xs={12}>
-              <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
-            </Grid>
-          </Hidden>
+          <Grid item className={classes.breadcrumbGrid} xs={12}>
+            <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
+          </Grid>
           <Grid item xs={12} sm={6}>
             <div className={classes.section}>
               <MediaGallery mediaItems={pdpMediaItems} />
             </div>
-            <Hidden xsDown>
-              <div className={classes.section}>
-                <TagGrid tags={product.tags.nodes} />
-              </div>
-            </Hidden>
+            <div className={classes.section}>
+              <TagGrid tags={product.tags.nodes} />
+            </div>
           </Grid>
 
           <Grid item xs={12} sm={6}>
-            <Hidden xsDown>
-              <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
-            </Hidden>
+            <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
             <ProductDetailInfo
               priceRange={productPrice.displayPrice}
               description={product.description}

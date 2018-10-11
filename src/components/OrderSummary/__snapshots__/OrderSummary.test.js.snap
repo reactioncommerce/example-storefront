@@ -8,22 +8,22 @@ exports[`basic snapshot 1`] = `
     className="SkOrderSummary-header-2"
   >
     <div
-      className="MuiGrid-container-5 MuiGrid-spacing-xs-24-29"
+      className="MuiGrid-container-6 MuiGrid-spacing-xs-24-30"
     >
       <div
-        className="MuiGrid-item-6 MuiGrid-grid-xs-3-36"
+        className="MuiGrid-item-7 MuiGrid-grid-xs-3-37"
       >
         <h3
-          className="MuiTypography-root-102 MuiTypography-subheading-109"
+          className="MuiTypography-root-103 MuiTypography-subheading-110 SkOrderSummary-subtitle2-5"
         >
           Payment Method
         </h3>
       </div>
       <div
-        className="MuiGrid-item-6 MuiGrid-grid-xs-3-36"
+        className="MuiGrid-item-7 MuiGrid-grid-xs-3-37"
       >
         <aside
-          className="MuiTypography-root-102 MuiTypography-body2-110"
+          className="MuiTypography-root-103 MuiTypography-body2-111"
         >
           Example Payment
         </aside>
@@ -31,7 +31,7 @@ exports[`basic snapshot 1`] = `
     </div>
   </div>
   <hr
-    className="MuiDivider-root-128"
+    className="MuiDivider-root-129"
   />
   <div
     className="OrderSummary__OrderSummaryContainer-sc-1cvbk1h-0 hsLQId"

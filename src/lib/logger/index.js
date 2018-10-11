@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import chalk from "chalk";
+const chalk = require("chalk");
 
 /**
  * Logger middleware
@@ -15,10 +15,10 @@ const logger = {
     console.log(`Server started ! ${chalk.green("✓")}`);
 
     console.log(`
-${chalk.magenta(`http://${host}:${port}`)}
-${chalk.blue(`Press ${chalk.italic("CTRL-C")} to stop`)}
+      ${chalk.magenta(`http://${host}:${port}`)}
+      ${chalk.blue(`Press ${chalk.italic("CTRL-C")} to stop`)}
     `);
   }
 };
 
-export default logger;
+module.exports = logger;

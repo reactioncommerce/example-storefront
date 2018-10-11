@@ -21,6 +21,14 @@ query catalogItemsQuery($shopId: ID!, $tagIds: [ID] $first: ConnectionLimitInt, 
             isLowQuantity
             isSoldOut
             isBackorder
+            metafields {
+              description
+              key
+              namespace
+              scope
+              value
+              valueType
+            }
             shop {
               currency {
                 code
