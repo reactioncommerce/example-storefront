@@ -15,7 +15,7 @@ export default (options) => (
     if (Array.isArray(cartItems)) {
       const products = [];
       cartItems.forEach((item) => {
-        products.push(getCartItemTrackingData(item));
+        products.push(getCartItemTrackingData(item.node || item));
       });
 
       data = {

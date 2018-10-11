@@ -15,8 +15,10 @@ import withCart from "containers/cart/withCart";
 import withShop from "containers/shop/withShop";
 import trackCartItems from "lib/tracking/trackCartItems";
 import track from "lib/tracking/track";
-import TRACKING from "lib/tracking/constants";
 import variantById from "lib/utils/variantById";
+import TRACKING from "lib/tracking/constants";
+
+const { CART_VIEWED, PRODUCT_REMOVED } = TRACKING;
 
 const styles = ({ palette, zIndex }) => ({
   popper: {
@@ -86,20 +88,16 @@ export default class MiniCart extends Component {
     anchorElement: null
   };
 
-  componentDidUpdate() {
-    const { cart, uiStore: { isCartOpen } } = this.props;
-
-    // Track a cart view event
-    if ((cart && Array.isArray(cart.items) && cart.items.length) && isCartOpen) {
-      this.trackAction({ cartItems: cart.items, cartId: cart._id, action: TRACKING.CART_VIEWED });
-    }
-  }
-
   anchorElement = null
 
   handlePopperOpen = () => {
-    const { openCart } = this.props.uiStore;
+    const { cart, uiStore: { openCart } } = this.props;
     openCart();
+
+    // Track a cart view event, only if the cart contains items
+    if (cart && Array.isArray(cart.items) && cart.items.length) {
+      this.trackAction({ cartItems: cart.items, cartId: cart._id, action: CART_VIEWED });
+    }
   }
 
   handleClick = () => Router.pushRoute("/");
@@ -148,7 +146,7 @@ export default class MiniCart extends Component {
       const removedItem = { cart_id: _id, ...variantById(items, itemId) }; // eslint-disable-line camelcase
 
       // Track removed item
-      this.trackAction({ cartItems: removedItem, action: TRACKING.PRODUCT_REMOVED });
+      this.trackAction({ cartItems: removedItem, action: PRODUCT_REMOVED });
     }
   };
 

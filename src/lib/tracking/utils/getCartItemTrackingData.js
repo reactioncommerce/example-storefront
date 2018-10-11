@@ -18,8 +18,13 @@ export default function getCartItemTrackingData(cartItem) {
     url = route.urls.as;
   }
 
+  let cartId = {};
+  if (variant.cart_id) {
+    cartId = { cart_id: variant.cart_id }; // eslint-disable-line camelcase
+  }
+
   return {
-    cart_id: variant.cart_id, // eslint-disable-line camelcase
+    ...cartId,
     product_id: variant.productConfiguration.productVariantId, // eslint-disable-line camelcase
     sku: variant.sku,
     category: (variant.productTags.nodes.length && variant.productTags.nodes[0].name) || undefined,
