@@ -34,7 +34,7 @@ export default class ProductGridHero extends Component {
       <section className={classes.heroGridContainer}>
         <Grid container spacing={24}>
           <Grid item xs={12}>
-            <img src={heroMediaUrl} className={classes.heroImg} />
+            <img src={heroMediaUrl} alt="Product category image" className={classes.heroImg} />
           </Grid>
         </Grid>
       </section>
