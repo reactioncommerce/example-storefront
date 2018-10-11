@@ -159,6 +159,12 @@ fragment CartItemConnectionFragment on CartItemConnection {
         _id
       }
       title
+      productTags {
+        nodes {
+          name
+        }
+      }
+      productVendor
       variantTitle
       optionTitle
       updatedAt

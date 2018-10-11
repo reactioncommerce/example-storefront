@@ -12,7 +12,7 @@ exports[`basic snapshot 1`] = `
         className="CartItems__Items-gEXRwN gdnVAG"
       >
         <div
-          className="CartItem__Item-ghDCXl cOMnbm"
+          className="CartItem__Item-ghDCXl eLtdJ"
         >
           <a
             href="/product-slug"
@@ -31,7 +31,7 @@ exports[`basic snapshot 1`] = `
             </picture>
           </a>
           <div
-            className="CartItem__ItemContent-fAfWVu iOkAew"
+            className="CartItem__ItemContent-fAfWVu jHThUb"
           >
             <div
               className="CartItem__ItemContentDetail-huMIJe gVwWKq"
@@ -43,10 +43,10 @@ exports[`basic snapshot 1`] = `
                   className="CartItem__ItemContentDetailInfo-kmZYEG epAHLA"
                 >
                   <div
-                    className="CartItemDetail__Detail-xugoC bPXJMk"
+                    className="CartItemDetail__Detail-xugoC eIVIgm"
                   >
                     <h3
-                      className="CartItemDetail__Title-iDNyNA ckBsQI"
+                      className="CartItemDetail__Title-iDNyNA jPRxvh"
                     >
                       <a
                         href="/product-slug"
@@ -55,35 +55,20 @@ exports[`basic snapshot 1`] = `
                       </a>
                     </h3>
                     <div
-                      className="CartItemDetail__Attributes-Jfttp dEgfNx"
+                      className="CartItemDetail__Attributes-Jfttp hUUYFd"
                     >
                       <p
-                        className="CartItemDetail__Text-iQjjVf jxAYVa"
+                        className="CartItemDetail__Text-iQjjVf gWrGJn"
                       >
                         Patagonia
                       </p>
                       <p
-                        className="CartItemDetail__Attr-cEjNLZ gFtQDZ"
+                        className="CartItemDetail__Attr-cEjNLZ dOgSko"
                       >
-                        <span>
-                          Color
-                          :
-                        </span>
-                         
-                        Red
+                        Red, Medium
                       </p>
                       <p
-                        className="CartItemDetail__Attr-cEjNLZ gFtQDZ"
-                      >
-                        <span>
-                          Size
-                          :
-                        </span>
-                         
-                        Medium
-                      </p>
-                      <p
-                        className="CartItemDetail__Text-iQjjVf jxAYVa"
+                        className="CartItemDetail__Text-iQjjVf gWrGJn"
                       >
                         Quantity: 
                         2
@@ -91,7 +76,7 @@ exports[`basic snapshot 1`] = `
                     </div>
                   </div>
                   <div
-                    className="StockWarning__Span-niCBr hrChZc"
+                    className="StockWarning__Span-niCBr iBoETt"
                   >
                     Only 
                     3
@@ -106,21 +91,21 @@ exports[`basic snapshot 1`] = `
               <div>
                 
                 <del
-                  className="Price__Del-bTXnTw juwrQs"
+                  className="Price__Del-bTXnTw eohoLr"
                 >
                   $45.00
                 </del>
-                <span
-                  className="Price__Span-cHkFMo eGYnOf"
+                <div
+                  className="Price__PriceDiv-isQcjX grwfvo"
                 >
                   $20.00
-                </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="CartItem__Item-ghDCXl cOMnbm"
+          className="CartItem__Item-ghDCXl eLtdJ"
         >
           <a
             href="/product-slug"
@@ -139,7 +124,7 @@ exports[`basic snapshot 1`] = `
             </picture>
           </a>
           <div
-            className="CartItem__ItemContent-fAfWVu iOkAew"
+            className="CartItem__ItemContent-fAfWVu jHThUb"
           >
             <div
               className="CartItem__ItemContentDetail-huMIJe gVwWKq"
@@ -151,10 +136,10 @@ exports[`basic snapshot 1`] = `
                   className="CartItem__ItemContentDetailInfo-kmZYEG epAHLA"
                 >
                   <div
-                    className="CartItemDetail__Detail-xugoC bPXJMk"
+                    className="CartItemDetail__Detail-xugoC eIVIgm"
                   >
                     <h3
-                      className="CartItemDetail__Title-iDNyNA ckBsQI"
+                      className="CartItemDetail__Title-iDNyNA jPRxvh"
                     >
                       <a
                         href="/product-slug"
@@ -163,35 +148,20 @@ exports[`basic snapshot 1`] = `
                       </a>
                     </h3>
                     <div
-                      className="CartItemDetail__Attributes-Jfttp dEgfNx"
+                      className="CartItemDetail__Attributes-Jfttp hUUYFd"
                     >
                       <p
-                        className="CartItemDetail__Text-iQjjVf jxAYVa"
+                        className="CartItemDetail__Text-iQjjVf gWrGJn"
                       >
                         Nike
                       </p>
                       <p
-                        className="CartItemDetail__Attr-cEjNLZ gFtQDZ"
+                        className="CartItemDetail__Attr-cEjNLZ dOgSko"
                       >
-                        <span>
-                          Color
-                          :
-                        </span>
-                         
-                        Black
+                        Black, 10
                       </p>
                       <p
-                        className="CartItemDetail__Attr-cEjNLZ gFtQDZ"
-                      >
-                        <span>
-                          Size
-                          :
-                        </span>
-                         
-                        10
-                      </p>
-                      <p
-                        className="CartItemDetail__Text-iQjjVf jxAYVa"
+                        className="CartItemDetail__Text-iQjjVf gWrGJn"
                       >
                         Quantity: 
                         1
@@ -206,11 +176,11 @@ exports[`basic snapshot 1`] = `
             >
               <div>
                 
-                <span
-                  className="Price__Span-cHkFMo eGYnOf"
+                <div
+                  className="Price__PriceDiv-isQcjX grwfvo"
                 >
                   $78.00
-                </span>
+                </div>
               </div>
             </div>
           </div>
@@ -221,54 +191,54 @@ exports[`basic snapshot 1`] = `
       className="MuiGrid-item-3 MuiGrid-grid-xs-12-42 SkCheckoutSummary-summary-1"
     >
       <table
-        className="CartSummary__Table-cWcArh gWGRvE"
+        className="CartSummary__Table-cWcArh fwcTAZ"
       >
         <tbody>
           <tr>
             <td
-              className="CartSummary__Td-jXBgKC jKaJQb"
+              className="CartSummary__Td-jXBgKC cQDyIG"
             >
               Item total
             </td>
             <td
-              className="CartSummary__Td-boDvWU kKknSH"
+              className="CartSummary__Td-boDvWU iWLpfS"
             >
               $118
             </td>
           </tr>
           <tr>
             <td
-              className="CartSummary__Td-jXBgKC jKaJQb"
+              className="CartSummary__Td-jXBgKC cQDyIG"
             >
               Shipping
             </td>
             <td
-              className="CartSummary__Td-boDvWU kKknSH"
+              className="CartSummary__Td-boDvWU iWLpfS"
             />
           </tr>
           <tr>
             <td
-              className="CartSummary__Td-jXBgKC jKaJQb"
+              className="CartSummary__Td-jXBgKC cQDyIG"
             >
               Tax
             </td>
             <td
-              className="CartSummary__Td-boDvWU kKknSH"
+              className="CartSummary__Td-boDvWU iWLpfS"
             >
               -
             </td>
           </tr>
           <tr>
             <td
-              className="CartSummary__Td-jXBgKC grsCCy"
+              className="CartSummary__Td-jXBgKC fZowP"
             >
               Order total
             </td>
             <td
-              className="CartSummary__Td-boDvWU xcYQR"
+              className="CartSummary__Td-boDvWU icmwHp"
             >
               <span
-                className="CartSummary__Total-BZUQP bdUKHv"
+                className="CartSummary__Total-BZUQP gdTqMz"
               >
                 $118
               </span>

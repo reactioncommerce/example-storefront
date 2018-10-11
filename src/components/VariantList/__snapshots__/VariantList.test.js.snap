@@ -9,7 +9,6 @@ exports[`basic snapshot 1`] = `
   >
     <button
       className="MuiButtonBase-root-6 SkVariantItem-variantButton-4 SkVariantItem-activeVariant-5"
-      disabled={undefined}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -48,7 +47,6 @@ exports[`basic snapshot 1`] = `
   >
     <button
       className="MuiButtonBase-root-6 SkVariantItem-variantButton-4"
-      disabled={undefined}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -98,7 +96,6 @@ exports[`basic snapshot 1`] = `
     >
       <button
         className="MuiButtonBase-root-6 SkProductDetailOption-optionButton-138 SkProductDetailOption-isSelected-140"
-        disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -132,7 +129,6 @@ exports[`basic snapshot 1`] = `
     >
       <button
         className="MuiButtonBase-root-6 SkProductDetailOption-optionButton-138"
-        disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}

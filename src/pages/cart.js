@@ -5,7 +5,6 @@ import { inject, observer } from "mobx-react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
-import trackProductViewed from "lib/tracking/trackProductViewed";
 import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
 import CartSummary from "@reactioncommerce/components/CartSummary/v1";
 import withCart from "containers/cart/withCart";
@@ -13,6 +12,11 @@ import CartItems from "components/CartItems";
 import CheckoutButtons from "components/CheckoutButtons";
 import Link from "components/Link";
 import { Router } from "routes";
+import PageLoading from "components/PageLoading";
+import track from "lib/tracking/track";
+import variantById from "lib/utils/variantById";
+import trackCartItems from "lib/tracking/trackCartItems";
+import TRACKING from "lib/tracking/constants";
 
 const styles = (theme) => ({
   cartEmptyMessageContainer: {
@@ -39,10 +43,10 @@ const styles = (theme) => ({
   }
 });
 
-@trackProductViewed()
 @withStyles(styles)
 @withCart
 @inject("uiStore")
+@track()
 @observer
 class CartPage extends Component {
   static propTypes = {
@@ -72,9 +76,14 @@ class CartPage extends Component {
     })
   };
 
-  handleCheckOut = () => {
-    // TODO: handle checkout flow.
-  };
+  componentDidMount() {
+    const { cart } = this.props;
+
+    // Track a cart view event
+    if (cart && Array.isArray(cart.items) && cart.items.length) {
+      this.trackAction({ cartItems: cart.items, cartId: cart._id, action: TRACKING.CART_VIEWED });
+    }
+  }
 
   handleClick = () => Router.pushRoute("/");
 
@@ -84,10 +93,21 @@ class CartPage extends Component {
     onChangeCartItemsQuantity({ quantity, cartItemId });
   };
 
-  handleRemoveItem = (_id) => {
-    const { onRemoveCartItems } = this.props;
+  @trackCartItems()
+  trackAction() {}
 
-    onRemoveCartItems(_id);
+  handleRemoveItem = async (itemId) => {
+    const { cart: { items }, onRemoveCartItems } = this.props;
+
+    const { data, error } = await onRemoveCartItems(itemId);
+
+    if (data && !error) {
+      const { cart: { _id } } = data.removeCartItems;
+      const removedItem = { cart_id: _id, ...variantById(items, itemId) }; // eslint-disable-line camelcase
+
+      // Track removed item
+      this.trackAction({ cartItems: removedItem, action: TRACKING.PRODUCT_REMOVED });
+    }
   };
 
   renderCartItems() {
@@ -141,7 +161,9 @@ class CartPage extends Component {
   }
 
   render() {
-    const { classes, shop } = this.props;
+    const { cart, classes, shop } = this.props;
+
+    if (!cart) return <PageLoading delay={0} />;
 
     return (
       <Fragment>

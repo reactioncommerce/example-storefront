@@ -24,7 +24,6 @@ Array [
         Quantity
       </span>
       <div
-        aria-describedby={undefined}
         className="MuiFormControl-root-135"
       >
         <div
@@ -37,7 +36,6 @@ Array [
             <button
               className="MuiButtonBase-root-173 SkProductDetailAddToCart-incrementButton-3"
               color="default"
-              disabled={undefined}
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -56,7 +54,6 @@ Array [
               <svg
                 aria-hidden="true"
                 className="MuiSvgIcon-root-176 SkProductDetailAddToCart-quantitySvg-7"
-                color={undefined}
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -72,22 +69,13 @@ Array [
           </div>
           <input
             aria-invalid={false}
-            autoComplete={undefined}
-            autoFocus={undefined}
             className="MuiInputBase-input-162 MuiInput-input-147 SkProductDetailAddToCart-quantityInput-6 MuiInputBase-inputAdornedStart-167 MuiInputBase-inputAdornedEnd-168"
-            defaultValue={undefined}
             disabled={false}
             id="addToCartQuantityInput"
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            onKeyDown={undefined}
-            onKeyUp={undefined}
-            placeholder={undefined}
-            readOnly={undefined}
             required={false}
-            rows={undefined}
             type="text"
             value={1}
           />
@@ -97,7 +85,6 @@ Array [
             <button
               className="MuiButtonBase-root-173 SkProductDetailAddToCart-incrementButton-3"
               color="default"
-              disabled={undefined}
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -116,7 +103,6 @@ Array [
               <svg
                 aria-hidden="true"
                 className="MuiSvgIcon-root-176 SkProductDetailAddToCart-quantitySvg-7"
-                color={undefined}
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -138,7 +124,6 @@ Array [
     >
       <button
         className="MuiButtonBase-root-173 SkProductDetailAddToCart-addToCartButton-1"
-        disabled={undefined}
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -198,12 +183,11 @@ Array [
           className="MuiGrid-item-10 MuiGrid-grid-xs-12-49"
         >
           <div
-            className="Button__ButtonDiv-bnfrK eloVkm"
+            className="Button__ButtonDiv-bnfrK hnpaAB"
             onClick={[Function]}
             onKeyPress={[Function]}
             role="button"
             tabIndex={0}
-            title={undefined}
           >
             <div>
               Checkout

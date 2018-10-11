@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
-import { observer } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import Actions from "@reactioncommerce/components/CheckoutActions/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
 import FulfillmentOptionsCheckoutAction from "@reactioncommerce/components/FulfillmentOptionsCheckoutAction/v1";
@@ -8,6 +8,9 @@ import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaym
 import FinalReviewCheckoutAction from "@reactioncommerce/components/FinalReviewCheckoutAction/v1";
 import withCart from "containers/cart/withCart";
 import withPlaceStripeOrder from "containers/order/withPlaceStripeOrder";
+import Dialog from "@material-ui/core/Dialog";
+import PageLoading from "components/PageLoading";
+import { Router } from "routes";
 import {
   adaptAddressToFormFields,
   isShippingAddressSet
@@ -15,6 +18,7 @@ import {
 
 @withCart
 @withPlaceStripeOrder
+@inject("authStore")
 @observer
 export default class CheckoutActions extends Component {
   static propTypes = {
@@ -34,6 +38,10 @@ export default class CheckoutActions extends Component {
     }),
     placeOrderWithStripeCard: PropTypes.func.isRequired
   };
+
+  state = {
+    isPlacingOrder: false
+  }
 
   setShippingAddress = (address) => {
     const { checkoutMutations: { onSetShippingAddress } } = this.props;
@@ -65,8 +73,8 @@ export default class CheckoutActions extends Component {
     cartStore.setStripeToken(stripeToken);
   }
 
-  placeOrder = () => {
-    const { cart, cartStore, placeOrderWithStripeCard } = this.props;
+  buildOrder = async () => {
+    const { cart, cartStore } = this.props;
     const cartId = cartStore.hasAccountCart ? cartStore.accountCartId : cartStore.anonymousCartId;
     const { checkout, email, shop } = cart;
     const fulfillmentGroups = checkout.fulfillmentGroups.map((group) => {
@@ -98,7 +106,45 @@ export default class CheckoutActions extends Component {
       shopId: shop._id
     };
 
-    return placeOrderWithStripeCard(order);
+    return this.setState({ isPlacingOrder: true }, () => this.placeOrder(order));
+  }
+
+  placeOrder = async (order) => {
+    const { authStore, cartStore, placeOrderWithStripeCard } = this.props;
+    const { data, error } = await placeOrderWithStripeCard(order);
+
+    // If success
+    if (data && !error) {
+      const { placeOrderWithStripeCardPayment: { orders, token } } = data;
+
+      // Clear anonymous cart
+      if (!authStore.isAuthenticated) {
+        cartStore.clearAnonymousCartCredentials();
+      }
+
+      // Send user to order confirmation page
+      Router.pushRoute("checkoutComplete", { orderId: orders[0]._id, token });
+    }
+
+    // TODO: if an error occurred, notify user
+  }
+
+  handleClose = () => {
+    // TODO: if an error occurs, then close dialog
+  }
+
+  renderPlacingOrderOverlay = () => {
+    const { isPlacingOrder } = this.state;
+
+    return (
+      <Dialog
+        fullScreen
+        open={isPlacingOrder}
+        onClose={this.handleClose}
+      >
+        <PageLoading delay={0} message="Placing your order..."/>
+      </Dialog>
+    );
   }
 
   render() {
@@ -146,7 +192,10 @@ export default class CheckoutActions extends Component {
 
     const actions = [
       {
-        label: "Shipping Information",
+        id: "1",
+        activeLabel: "Enter a shipping address",
+        completeLabel: "Shipping address",
+        incompleteLabel: "Shipping address",
         status: shippingAddressSet ? "complete" : "incomplete",
         component: ShippingAddressCheckoutAction,
         onSubmit: this.setShippingAddress,
@@ -155,7 +204,10 @@ export default class CheckoutActions extends Component {
         }
       },
       {
-        label: "Choose a shipping method",
+        id: "2",
+        activeLabel: "Choose a shipping method",
+        completeLabel: "Shipping method",
+        incompleteLabel: "Shipping method",
         status: fulfillmentGroup.selectedFulfillmentOption ? "complete" : "incomplete",
         component: FulfillmentOptionsCheckoutAction,
         onSubmit: this.setShippingMethod,
@@ -164,7 +216,10 @@ export default class CheckoutActions extends Component {
         }
       },
       {
-        label: "Payment Information",
+        id: "3",
+        activeLabel: "Enter payment information",
+        completeLabel: "Payment information",
+        incompleteLabel: "Payment information",
         status: stripeToken ? "complete" : "incomplete",
         component: StripePaymentCheckoutAction,
         onSubmit: this.setPaymentMethod,
@@ -173,17 +228,23 @@ export default class CheckoutActions extends Component {
         }
       },
       {
-        label: "Review and place order",
+        id: "4",
+        activeLabel: "Review and place order",
+        completeLabel: "Review and place order",
+        incompleteLabel: "Review and place order",
         status: "incomplete",
         component: FinalReviewCheckoutAction,
-        onSubmit: this.placeOrder,
+        onSubmit: this.buildOrder,
         props: {
           checkoutSummary
         }
       }
     ];
     return (
-      <Actions actions={actions} />
+      <Fragment>
+        {this.renderPlacingOrderOverlay()}
+        <Actions actions={actions} />
+      </Fragment>
     );
   }
 }

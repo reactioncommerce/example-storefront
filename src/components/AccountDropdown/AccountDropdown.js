@@ -4,10 +4,10 @@ import { inject, observer } from "mobx-react";
 import { withStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
+import ButtonBase from "@material-ui/core/ButtonBase";
 import AccountIcon from "mdi-material-ui/Account";
 import Popover from "@material-ui/core/Popover";
 import ViewerInfo from "@reactioncommerce/components/ViewerInfo/v1";
-import { login } from "lib/auth";
 
 const styles = (theme) => ({
   accountDropdown: {
@@ -32,21 +32,6 @@ class AccountDropdown extends Component {
     classes: {}
   };
 
-  static getDerivedStateFromProps(props, state) {
-    // Sometimes state comes through null. This might be a NextJS bug or react
-    // hot loader bug. For now, this workaround works.
-    if (state === null) return null;
-
-    const nextPropsToken = (props.authStore && props.authStore.token) || "";
-    if (nextPropsToken !== state.prevToken) {
-      // prevToken is changed only here and stored for next comparison, whereas
-      // token is changed as the user types
-      return { prevToken: nextPropsToken, token: nextPropsToken };
-    }
-
-    return null;
-  }
-
   state = {
     anchorElement: null
   };
@@ -59,36 +44,22 @@ class AccountDropdown extends Component {
     this.setState({ anchorElement: null });
   }
 
-  onTokenChange = (event) => {
-    this.setState({ token: event.target.value || "" });
-  }
-
-  onTokenSave = () => {
-    const { authStore } = this.props;
-
-    authStore.setToken(this.state.token);
-
-    // Reload so the auth changes can be reflected on server and in browser
-    window.location.reload();
-  }
-
-  onLogin = () => {
-    login();
-  }
-
-  onLogout = () => {
-    window.location.reload();
-  }
-
   render() {
     const { classes, authStore } = this.props;
     const { anchorElement } = this.state;
+    const { account } = authStore;
 
     return (
       <Fragment>
-        <IconButton color="inherit" onClick={this.toggleOpen}>
-          <AccountIcon />
-        </IconButton>
+        { authStore.isAuthenticated ?
+          <ButtonBase onClick={this.toggleOpen}>
+            <ViewerInfo viewer={account} />
+          </ButtonBase>
+          :
+          <IconButton color="inherit" onClick={this.toggleOpen}>
+            <AccountIcon />
+          </IconButton>
+        }
 
         <Popover
           anchorEl={anchorElement}
@@ -102,26 +73,18 @@ class AccountDropdown extends Component {
           <div className={classes.accountDropdown}>
             {authStore.isAuthenticated ?
               <Fragment>
-                <div className={classes.authContent}>
-                  <ViewerInfo
-                    viewer={{
-                      firstName: authStore.account.name,
-                      lastName: " "
-                    }}
-                  />
-                </div>
-                <Button color="primary" fullWidth href="/logout" variant="raised">
+                <Button color="primary" fullWidth href={`/logout/${account._id}`} variant="raised">
                   Sign Out
                 </Button>
               </Fragment>
               :
               <Fragment>
                 <div className={classes.authContent}>
-                  <Button color="primary" fullWidth href="/auth2" variant="raised">
+                  <Button color="primary" fullWidth href="/signin" variant="raised">
                     Sign In
                   </Button>
                 </div>
-                <Button color="primary" fullWidth href="/auth2">
+                <Button color="primary" fullWidth href="/signup">
                   Create Account
                 </Button>
               </Fragment>

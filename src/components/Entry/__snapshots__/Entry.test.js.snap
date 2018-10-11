@@ -16,12 +16,11 @@ exports[`basic snapshot 1`] = `
         Returning Customer
       </h2>
       <div
-        className="SkEntry-loginButton-2 Button__ButtonDiv-bnfrK eloVkm"
+        className="SkEntry-loginButton-2 Button__ButtonDiv-bnfrK hnpaAB"
         onClick={[Function]}
         onKeyPress={[Function]}
         role="button"
         tabIndex={0}
-        title={undefined}
       >
         <div>
           Login
@@ -68,12 +67,11 @@ exports[`basic snapshot 1`] = `
         </div>
       </div>
       <div
-        className="SkEntry-loginButton-2 Button__ButtonDiv-bnfrK jNrbdB"
+        className="SkEntry-loginButton-2 Button__ButtonDiv-bnfrK iBiUMT"
         onClick={[Function]}
         onKeyPress={[Function]}
         role="button"
         tabIndex={0}
-        title={undefined}
       >
         <div>
           Create a new account
@@ -137,22 +135,20 @@ exports[`basic snapshot 1`] = `
         style={Object {}}
       >
         <div
-          className="required Field__StyledField-kQcQjL lnhSLv"
+          className="required Field__StyledField-kQcQjL ehrYlT"
         >
           <label
-            className="Field__StyledLabel-gsQloH iDRsBJ"
-            htmlFor={undefined}
+            className="Field__StyledLabel-gsQloH iABDMN"
           >
             Email Address
           </label>
           <div
-            className="TextInput__InputWrapper-dGJJJl bGPXhB"
+            className="TextInput__InputWrapper-dGJJJl bKAmhu"
             value=""
           >
             <input
               className="TextInput__StyledInput-loReSQ cKYvwP"
               id="email_GuestForm_1"
-              maxLength={undefined}
               name="email"
               onBlur={[Function]}
               onChange={[Function]}
@@ -165,21 +161,20 @@ exports[`basic snapshot 1`] = `
             />
           </div>
           <span
-            className="Field__StyledHelpText-iiSdPK dTOPZc"
+            className="Field__StyledHelpText-iiSdPK lgdmIQ"
           >
             You will have the option to create an account and save your details after checkout.
           </span>
         </div>
         <div
-          className="GuestForm__FormAction-fhrWsN gMhMif"
+          className="GuestForm__FormAction-fhrWsN iShDAB"
         >
           <div
-            className="Button__ButtonDiv-bnfrK hRmBpg"
+            className="Button__ButtonDiv-bnfrK hvNndH"
             onClick={[Function]}
             onKeyPress={[Function]}
             role="button"
             tabIndex={0}
-            title={undefined}
           >
             <div>
               Continue as guest

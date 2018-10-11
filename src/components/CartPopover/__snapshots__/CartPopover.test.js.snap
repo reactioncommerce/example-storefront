@@ -35,12 +35,11 @@ exports[`do not show cartpopover 1`] = `
         className="MuiGrid-item-25 MuiGrid-grid-xs-12-64"
       >
         <div
-          className="Button__ButtonDiv-bnfrK eloVkm"
+          className="Button__ButtonDiv-bnfrK hnpaAB"
           onClick={[Function]}
           onKeyPress={[Function]}
           role="button"
           tabIndex={0}
-          title={undefined}
         >
           <div>
             Checkout
@@ -97,12 +96,11 @@ exports[`show cartpopover 1`] = `
         className="MuiGrid-item-25 MuiGrid-grid-xs-12-64"
       >
         <div
-          className="Button__ButtonDiv-bnfrK eloVkm"
+          className="Button__ButtonDiv-bnfrK hnpaAB"
           onClick={[Function]}
           onKeyPress={[Function]}
           role="button"
           tabIndex={0}
-          title={undefined}
         >
           <div>
             Checkout

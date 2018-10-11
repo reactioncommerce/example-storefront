@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import withStyles from "@material-ui/core/styles/withStyles";
-import Img from "components/Img";
+import ProgressiveImage from "@reactioncommerce/components/ProgressiveImage/v1";
 
 const styles = () => ({
   root: {
@@ -60,7 +60,7 @@ class MediaGalleryItem extends Component {
 
     return (
       <ButtonBase className={classes.root} onClick={this.handleClick}>
-        <Img presrc={media.URLs.thumbnail} src={media.URLs.thumbnail} />
+        <ProgressiveImage presrc={media.URLs.thumbnail} src={media.URLs.thumbnail} />
       </ButtonBase>
     );
   }
