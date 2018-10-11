@@ -12,8 +12,9 @@ exports[`snapshot of tagWithMedia 1`] = `
     <div
       className="MuiGrid-item-4 MuiGrid-grid-xs-12-43"
     >
-      <div
-        className="SkProductGridHero-heroContainer-1 ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
+      <img
+        className="SkProductGridHero-heroImg-1"
+        src="https://www.reactioncommerce.com/assets/careers-images-2.jpg"
       />
     </div>
   </div>
