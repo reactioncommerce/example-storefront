@@ -9,17 +9,18 @@ import track from "./track";
 export default (options) =>
   // eslint-disable-next-line no-unused-vars
   track(({ router }, state, functionArgs) => {
-    const { 
-      step, 
-      shipping_method, 
-      payment_method, 
-      action 
+    const {
+      action,
+      payment_method, // eslint-disable-line camelcase
+      shipping_method, // eslint-disable-line camelcase
+      step
     } = (functionArgs && functionArgs[0]) || [];
 
     return {
       action,
-      step,
-      shipping_method,
-      payment_method
+      payment_method, // eslint-disable-line camelcase
+      shipping_method, // eslint-disable-line camelcase
+      step
+
     };
   }, options);

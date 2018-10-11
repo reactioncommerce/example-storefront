@@ -20,7 +20,7 @@ import {
   isShippingAddressSet
 } from "lib/utils/cartUtils";
 
-const { 
+const {
   CHECKOUT_STARTED,
   CHECKOUT_STEP_COMPLETED,
   CHECKOUT_STEP_VIEWED,
@@ -59,7 +59,7 @@ export default class CheckoutActions extends Component {
     const { cart } = this.props;
     // Track start of checkout process
     this.trackCheckoutStarted({ cart, action: CHECKOUT_STARTED });
-    
+
     const { checkout: { fulfillmentGroups } } = this.props.cart;
     const hasShippingAddress = isShippingAddressSet(fulfillmentGroups);
     // Track the first step, "Enter a shipping address" when the page renders,
@@ -77,22 +77,26 @@ export default class CheckoutActions extends Component {
   trackAction() {}
 
   buildData = (data) => {
-    const { step, shipping_method = null, payment_method = null, action } = data;
+    const { step, shipping_method = null, payment_method = null, action } = data; // eslint-disable-line camelcase
 
     return {
       action,
-      payment_method,
-      shipping_method,
+      payment_method, // eslint-disable-line camelcase
+      shipping_method, // eslint-disable-line camelcase
       step
-    }
+    };
   }
 
-  getShippingMethod = () => {
+  get shippingMethod() {
     const { checkout: { fulfillmentGroups } } = this.props.cart;
     const shippingMethod = fulfillmentGroups[0].selectedFulfillmentOption.fulfillmentMethod.displayName;
 
     return shippingMethod;
+  }
 
+  get paymentMethod() {
+    const { stripeToken: { token: { card } } } = this.props.cartStore;
+    return card.brand;
   }
 
   setShippingAddress = async (address) => {
@@ -113,7 +117,6 @@ export default class CheckoutActions extends Component {
 
       // The next step will automatically be expanded, so lets track that
       this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 2 }));
-
     }
   }
 
@@ -130,25 +133,23 @@ export default class CheckoutActions extends Component {
       // track successfully setting a shipping method
       this.trackAction({
         step: 2,
-        shipping_method: this.getShippingMethod(),
-        payment_method: null,
+        shipping_method: this.shippingMethod, // eslint-disable-line camelcase
+        payment_method: null, // eslint-disable-line camelcase
         action: CHECKOUT_STEP_COMPLETED
       });
 
       // The next step will automatically be expanded, so lets track that
       this.trackAction({
         step: 3,
-        shipping_method: this.getShippingMethod(),
-        payment_method: null,
+        shipping_method: this.shippingMethod, // eslint-disable-line camelcase
+        payment_method: null, // eslint-disable-line camelcase
         action: CHECKOUT_STEP_VIEWED
       });
     }
-    
   }
 
   setPaymentMethod = (stripeToken) => {
     const { cartStore } = this.props;
-    const { brand } = stripeToken.token.card;
 
     // Store stripe token in MobX store
     cartStore.setStripeToken(stripeToken);
@@ -156,19 +157,18 @@ export default class CheckoutActions extends Component {
     // Track successfully setting a payment method
     this.trackAction({
       step: 3,
-      shipping_method: this.getShippingMethod(),
-      payment_method: brand,
+      shipping_method: this.shippingMethod, // eslint-disable-line camelcase
+      payment_method: this.paymentMethod, // eslint-disable-line camelcase
       action: PAYMENT_INFO_ENTERED
     });
 
     // The next step will automatically be expanded, so lets track that
     this.trackAction({
       step: 4,
-      shipping_method: this.getShippingMethod(),
-      payment_method: brand,
+      shipping_method: this.shippingMethod, // eslint-disable-line camelcase
+      payment_method: this.paymentMethod, // eslint-disable-line camelcase
       action: CHECKOUT_STEP_VIEWED
     });
-    
   }
 
   buildOrder = async () => {
@@ -214,6 +214,13 @@ export default class CheckoutActions extends Component {
     // If success
     if (data && !error) {
       const { placeOrderWithStripeCardPayment: { orders, token } } = data;
+
+      this.trackAction({
+        step: 4,
+        shipping_method: this.shippingMethod, // eslint-disable-line camelcase
+        payment_method: this.paymentMethod, // eslint-disable-line camelcase
+        action: CHECKOUT_STEP_COMPLETED
+      });
 
       // Clear anonymous cart
       if (!authStore.isAuthenticated) {
