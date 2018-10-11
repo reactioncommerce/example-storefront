@@ -27,6 +27,9 @@ const styles = (theme) => ({
   breadcrumbGrid: {
     marginBottom: theme.spacing.unit * 2,
     marginTop: theme.spacing.unit * 2
+  },
+  info: {
+    marginBottom: theme.spacing.unit
   }
 });
 
@@ -255,8 +258,12 @@ class ProductDetail extends Component {
         <Fragment>
           <div className={classes.section}>
             <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
-            <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
-            <ProductDetailPrice compareAtPrice={productPrice.compareAtPrice} isCompact price={productPrice.displayPrice} />
+            <div className={classes.info}>
+              <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
+            </div>
+            <div className={classes.info}>
+              <ProductDetailPrice compareAtPrice={productPrice.compareAtPrice} isCompact price={productPrice.displayPrice} />
+            </div>
           </div>
 
           <div className={classes.section}>
@@ -300,9 +307,15 @@ class ProductDetail extends Component {
 
           <Grid item xs={12} sm={6}>
             <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
-            <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
-            <ProductDetailPrice compareAtPrice={productPrice.compareAtPrice} price={productPrice.displayPrice} />
-            <ProductDetailDescription>{product.description}</ProductDetailDescription>
+            <div className={classes.info}>
+              <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
+            </div>
+            <div className={classes.info}>
+              <ProductDetailPrice className={classes.bottomMargin} compareAtPrice={productPrice.compareAtPrice} price={productPrice.displayPrice} />
+            </div>
+            <div className={classes.info}>
+              <ProductDetailDescription>{product.description}</ProductDetailDescription>
+            </div>
             <VariantList
               onSelectOption={this.handleSelectOption}
               onSelectVariant={this.handleSelectVariant}
