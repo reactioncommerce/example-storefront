@@ -32,6 +32,11 @@ const styles = (theme) => ({
 class ProductDetailPrice extends Component {
   static propTypes = {
     /**
+     * CSS class name applied to the root element
+     */
+    className: PropTypes.string,
+
+    /**
      * CSS classes
      */
     classes: PropTypes.object,
@@ -58,14 +63,14 @@ class ProductDetailPrice extends Component {
   }
 
   render() {
-    const { classes, compareAtPrice, price, isCompact } = this.props;
+    const { classes, className, compareAtPrice, price, isCompact } = this.props;
 
     // If all props are undefined then skip rendering component
     if (!price) return null;
 
     if (isCompact) {
       return (
-        <Grid className={classnames(classes.root, classes.compact)} item sm={12}>
+        <Grid className={classnames(classes.root, classes.compact, className)} item sm={12}>
           <Typography className={classes.priceInline} component="span" variant="body1">{price}</Typography>
           <Typography className={classnames(classes.strike, classes.inline, classes.compareAtPriceInline)} variant="caption">{compareAtPrice}</Typography>
         </Grid>
@@ -73,7 +78,7 @@ class ProductDetailPrice extends Component {
     }
 
     return (
-      <Grid className={classes.root} item sm={12}>
+      <Grid className={classnames(classes.root, className)} item sm={12}>
         <Typography className={classes.strike} variant="caption">{compareAtPrice}</Typography>
         <Typography component="div" variant="title">{price}</Typography>
       </Grid>
