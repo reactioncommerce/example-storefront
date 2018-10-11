@@ -18,16 +18,16 @@ exports[`basic snapshot 1`] = `
   type="button"
 >
   <div
-    className="SkImg-imgWrapper-5 "
+    className="ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
   >
     <img
       alt=""
-      className="SkImg-img-7 SkImg-imgLoading-9 "
+      className="ProgressiveImage__Img-fumfP VAwLM"
       src="/resources/placeholder.gif"
     />
   </div>
   <span
-    className="MuiTouchRipple-root-11"
+    className="MuiTouchRipple-root-5"
   />
 </button>
 `;
