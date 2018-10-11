@@ -117,20 +117,25 @@ const mockRoutingStore = {
   queryString: ""
 };
 
+const uiStore = {
+  toggleMenuDrawerOpen() { },
+  closeMenuDrawer() { }
+};
+
 test("renders with 1 level of tags", () => {
-  const component = renderer.create(shallow(<NavigationItemMobile navItem={mockTag} routingStore={mockRoutingStore} />).get(3));
+  const component = renderer.create(shallow(<NavigationItemMobile navItem={mockTag} routingStore={mockRoutingStore} uiStore={uiStore} />).get(3));
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test("renders with 2 levels of tags", () => {
-  const component = renderer.create(<NavigationItemMobile navItem={mockTagWithSubTags} routingStore={mockRoutingStore} />);
+  const component = renderer.create(<NavigationItemMobile navItem={mockTagWithSubTags} routingStore={mockRoutingStore} uiStore={uiStore} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test("renders with 3 levels of tags", () => {
-  const component = renderer.create(<NavigationItemMobile navItem={mockTagsWithMoreSubTags} routingStore={mockRoutingStore} />);
+  const component = renderer.create(<NavigationItemMobile navItem={mockTagsWithMoreSubTags} routingStore={mockRoutingStore} uiStore={uiStore} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
