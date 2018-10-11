@@ -6,10 +6,10 @@ exports[`no price, compareAtPrice 1`] = `null`;
 
 exports[`price 1`] = `
 <div
-  className="MuiGrid-item-7 MuiGrid-grid-sm-12-60 ProductDetailPrice-root-1"
+  className="MuiGrid-item-7 MuiGrid-grid-sm-12-60 SKProductDetailPrice-root-1"
 >
   <span
-    className="MuiTypography-root-103 MuiTypography-caption-113 ProductDetailPrice-strike-5"
+    className="MuiTypography-root-103 MuiTypography-caption-113 SKProductDetailPrice-strike-5"
   />
   <div
     className="MuiTypography-root-103 MuiTypography-title-109"
@@ -21,10 +21,10 @@ exports[`price 1`] = `
 
 exports[`price and compareAtPrice 1`] = `
 <div
-  className="MuiGrid-item-7 MuiGrid-grid-sm-12-60 ProductDetailPrice-root-1"
+  className="MuiGrid-item-7 MuiGrid-grid-sm-12-60 SKProductDetailPrice-root-1"
 >
   <span
-    className="MuiTypography-root-103 MuiTypography-caption-113 ProductDetailPrice-strike-5"
+    className="MuiTypography-root-103 MuiTypography-caption-113 SKProductDetailPrice-strike-5"
   >
     $29.99
   </span>

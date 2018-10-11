@@ -465,10 +465,10 @@ exports[`basic snapshot 1`] = `
       className="SkProductDetail-info-3"
     >
       <div
-        className="MuiGrid-item-5 MuiGrid-grid-sm-12-58 ProductDetailPrice-root-181"
+        className="MuiGrid-item-5 MuiGrid-grid-sm-12-58 SKProductDetailPrice-root-181"
       >
         <span
-          className="MuiTypography-root-130 MuiTypography-caption-140 ProductDetailPrice-strike-185"
+          className="MuiTypography-root-130 MuiTypography-caption-140 SKProductDetailPrice-strike-185"
         />
         <div
           className="MuiTypography-root-130 MuiTypography-title-136"
