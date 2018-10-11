@@ -228,7 +228,7 @@ export default function withCart(Component) {
     handleRemoveCartItems = (itemIds) => {
       const { cartStore, client: apolloClient } = this.props;
 
-      apolloClient.mutate({
+      return apolloClient.mutate({
         mutation: removeCartItemsMutation,
         variables: {
           input: {
