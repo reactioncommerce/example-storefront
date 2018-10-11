@@ -28,7 +28,7 @@ const styles = (theme) => ({
  * Product detail basic info fields
  * @class ProductDetailTitle
  */
-@withStyles(styles)
+@withStyles(styles, { name: "SKProductDetailPrice" })
 class ProductDetailPrice extends Component {
   static propTypes = {
     /**
