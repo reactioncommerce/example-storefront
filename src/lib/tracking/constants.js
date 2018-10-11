@@ -5,8 +5,8 @@ export default {
   CHECKOUT_STEP_COMPLETED: "Checkout Step Completed",
   ORDER_COMPLETED: "Order Completed",
   ORDER_UPDATED: "Order Updated",
-  PAYMENT_ENTERED: "Payment Entered",
-  PRODUCT_VIEWED: "Product Viewed",
+  PAYMENT_INFO_ENTERED: "Payment Info Entered",
   PRODUCT_ADDED: "Product Added",
-  PRODUCT_REMOVED: "Product Removed"
+  PRODUCT_REMOVED: "Product Removed",
+  PRODUCT_VIEWED: "Product Viewed"
 };

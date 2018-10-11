@@ -18,9 +18,7 @@ import LockIcon from "mdi-material-ui/Lock";
 import withCart from "containers/cart/withCart";
 import Link from "components/Link";
 import CheckoutSummary from "components/CheckoutSummary";
-import trackCheckout from "lib/tracking/trackCheckout";
 import PageLoading from "components/PageLoading";
-import TRACKING from "lib/tracking/constants";
 
 const styles = (theme) => ({
   checkoutActions: {
@@ -167,9 +165,6 @@ class Checkout extends Component {
     this.handleRouteChange();
   }
 
-  @trackCheckout()
-  trackAction() {}
-
   /**
    *
    * @name handleRouteChange
@@ -315,8 +310,6 @@ class Checkout extends Component {
     const hasAccount = !!cart.account;
     const displayEmail = (hasAccount && Array.isArray(cart.account.emailRecords) && cart.account.emailRecords[0].address) || cart.email;
 
-    // Track start of checkout process
-    this.trackAction({ cart, action: TRACKING.CHECKOUT_STARTED });
 
     return (
       <div className={classes.checkoutContentContainer}>

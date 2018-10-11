@@ -11,14 +11,26 @@ import withPlaceStripeOrder from "containers/order/withPlaceStripeOrder";
 import Dialog from "@material-ui/core/Dialog";
 import PageLoading from "components/PageLoading";
 import { Router } from "routes";
+import track from "lib/tracking/track";
+import TRACKING from "lib/tracking/constants";
+import trackCheckout from "lib/tracking/trackCheckout";
+import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
 import {
   adaptAddressToFormFields,
   isShippingAddressSet
 } from "lib/utils/cartUtils";
 
+const { 
+  CHECKOUT_STARTED,
+  CHECKOUT_STEP_COMPLETED,
+  CHECKOUT_STEP_VIEWED,
+  PAYMENT_INFO_ENTERED
+} = TRACKING;
+
 @withCart
 @withPlaceStripeOrder
 @inject("authStore")
+@track()
 @observer
 export default class CheckoutActions extends Component {
   static propTypes = {
@@ -43,19 +55,69 @@ export default class CheckoutActions extends Component {
     isPlacingOrder: false
   }
 
-  setShippingAddress = (address) => {
+  componentDidMount() {
+    const { cart } = this.props;
+    // Track start of checkout process
+    this.trackCheckoutStarted({ cart, action: CHECKOUT_STARTED });
+    
+    const { checkout: { fulfillmentGroups } } = this.props.cart;
+    const hasShippingAddress = isShippingAddressSet(fulfillmentGroups);
+    // Track the first step, "Enter a shipping address" when the page renders,
+    // as it will be expanded by default, only record this event when the
+    // shipping address has not yet been set.
+    if (!hasShippingAddress) {
+      this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 1 }));
+    }
+  }
+
+  @trackCheckout()
+  trackCheckoutStarted() {}
+
+  @trackCheckoutStep()
+  trackAction() {}
+
+  buildData = (data) => {
+    const { step, shipping_method = null, payment_method = null, action } = data;
+
+    return {
+      action,
+      payment_method,
+      shipping_method,
+      step
+    }
+  }
+
+  getShippingMethod = () => {
+    const { checkout: { fulfillmentGroups } } = this.props.cart;
+    const shippingMethod = fulfillmentGroups[0].selectedFulfillmentOption.fulfillmentMethod.displayName;
+
+    return shippingMethod;
+
+  }
+
+  setShippingAddress = async (address) => {
     const { checkoutMutations: { onSetShippingAddress } } = this.props;
 
     // Omit firstName, lastName props as they are not in AddressInput type
     // The address form and GraphQL endpoint need to be made consistent
     const { firstName, lastName, ...rest } = address;
-    return onSetShippingAddress({
+    const { data, error } = await onSetShippingAddress({
       fullName: `${address.firstName} ${address.lastName}`,
       ...rest
     });
+
+
+    if (data && !error) {
+      // track successfully setting a shipping address
+      this.trackAction(this.buildData({ action: CHECKOUT_STEP_COMPLETED, step: 1 }));
+
+      // The next step will automatically be expanded, so lets track that
+      this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 2 }));
+
+    }
   }
 
-  setShippingMethod = (shippingMethod) => {
+  setShippingMethod = async (shippingMethod) => {
     const { checkoutMutations: { onSetFulfillmentOption } } = this.props;
     const { checkout: { fulfillmentGroups } } = this.props.cart;
     const fulfillmentOption = {
@@ -63,14 +125,50 @@ export default class CheckoutActions extends Component {
       fulfillmentMethodId: shippingMethod.selectedFulfillmentOption.fulfillmentMethod._id
     };
 
-    return onSetFulfillmentOption(fulfillmentOption);
+    const { data, error } = await onSetFulfillmentOption(fulfillmentOption);
+    if (data && !error) {
+      // track successfully setting a shipping method
+      this.trackAction({
+        step: 2,
+        shipping_method: this.getShippingMethod(),
+        payment_method: null,
+        action: CHECKOUT_STEP_COMPLETED
+      });
+
+      // The next step will automatically be expanded, so lets track that
+      this.trackAction({
+        step: 3,
+        shipping_method: this.getShippingMethod(),
+        payment_method: null,
+        action: CHECKOUT_STEP_VIEWED
+      });
+    }
+    
   }
 
   setPaymentMethod = (stripeToken) => {
     const { cartStore } = this.props;
+    const { brand } = stripeToken.token.card;
 
     // Store stripe token in MobX store
     cartStore.setStripeToken(stripeToken);
+
+    // Track successfully setting a payment method
+    this.trackAction({
+      step: 3,
+      shipping_method: this.getShippingMethod(),
+      payment_method: brand,
+      action: PAYMENT_INFO_ENTERED
+    });
+
+    // The next step will automatically be expanded, so lets track that
+    this.trackAction({
+      step: 4,
+      shipping_method: this.getShippingMethod(),
+      payment_method: brand,
+      action: CHECKOUT_STEP_VIEWED
+    });
+    
   }
 
   buildOrder = async () => {
