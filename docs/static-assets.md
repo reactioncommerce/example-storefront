@@ -2,7 +2,7 @@
 Your storefront will probably need to include static assets such as, logo images, timezone/internationalization data, favicons, etc..
 
 ## Handling static assets
-The starterkit follows the approach outlined in the [Next.JS documentation](https://github.com/zeit/next.js/#static-file-serving-eg-images) keeping all static assets live in the `.src/static/` folder.
+The starterkit follows the approach outlined in the [Next.JS documentation](https://github.com/zeit/next.js/#static-file-serving-eg-images) keeping all static assets in the `/src/static/` folder.
 
 **Images**
 Logos, placeholders and similar images are placed in the `/static/images/` directory.
@@ -18,4 +18,4 @@ Out of the box the starterkit leverages [fonts.google.com](https://fonts.google.
 
 **Icons**
 We feel icons are best handled as SVGs within React components and not as a static asset. 
-See [MDI](https://github.com/TeamWertarbyte/mdi-material-ui) and [Reaction Design System's svg directory](https://github.com/reactioncommerce/reaction-next-starterkit/blob/3980c71b528221b3b196d446ea24bb4bc474c74d/src/lib/apollo/initApollo.js#L66) for more info.
+See [MDI](https://github.com/TeamWertarbyte/mdi-material-ui) and [Reaction Design System's svg directory](https://github.com/reactioncommerce/reaction-component-library/tree/master/package/src/svg) for more info.
