@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
 import ProgressiveImage from "@reactioncommerce/components/ProgressiveImage/v1";
 import MediaGalleryItem from "components/MediaGalleryItem";
-import getConfig from "next/config";
 
 const styles = (theme) => ({
   root: {
@@ -62,13 +61,11 @@ class MediaGallery extends Component {
   };
 
   renderPlaceHolderImg = () => {
-    const { publicRuntimeConfig } = getConfig();
-    const { placeholderImageUrls } = publicRuntimeConfig;
-
+    const placeholderURL = "/static/images/placeholder.gif";
     return (
       <ProgressiveImage
-        presrc={placeholderImageUrls.galleryFeatured}
-        src={placeholderImageUrls.galleryFeatured}
+        presrc={placeholderURL}
+        src={placeholderURL}
       />
     );
   }
