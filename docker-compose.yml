@@ -14,7 +14,7 @@ services:
       context: .
       args:
         BUILD_ENV: "development"
-    command: sh -c "yarn install && yarn dev"
+    command: "/usr/local/src/reaction-app/bin/start"
     env_file:
       - ./.env
     environment:

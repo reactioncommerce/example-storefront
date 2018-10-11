@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
+import ProgressiveImage from "@reactioncommerce/components/ProgressiveImage/v1";
 import MediaGalleryItem from "components/MediaGalleryItem";
-import Img from "components/Img";
 
 const styles = (theme) => ({
   root: {
@@ -63,7 +63,7 @@ class MediaGallery extends Component {
   renderPlaceHolderImg = () => {
     const placeholderURL = "/static/images/placeholder.gif";
     return (
-      <Img
+      <ProgressiveImage
         presrc={placeholderURL}
         src={placeholderURL}
       />
@@ -83,7 +83,7 @@ class MediaGallery extends Component {
 
     // TODO: figure out the correct usage of alt text here
     // LINK TO GH ISSUE
-    return <Img presrc={mediaUrls && mediaUrls.thumbnail} src={mediaUrls && mediaUrls.large} />;
+    return <ProgressiveImage presrc={mediaUrls && mediaUrls.thumbnail} src={mediaUrls && mediaUrls.large} />;
   }
 
   render() {
