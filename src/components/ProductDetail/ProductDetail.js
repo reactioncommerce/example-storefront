@@ -6,8 +6,6 @@ import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
 import { inject, observer } from "mobx-react";
 import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
-import trackProduct from "lib/tracking/trackProduct";
-import TRACKING from "lib/tracking/constants";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
@@ -19,6 +17,11 @@ import TagGrid from "components/TagGrid";
 import { Router } from "routes";
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import variantById from "lib/utils/variantById";
+import trackProduct from "lib/tracking/trackProduct";
+import TRACKING from "lib/tracking/constants";
+import trackCartItems from "lib/tracking/trackCartItems";
+
+const { CART_VIEWED, PRODUCT_ADDED, PRODUCT_VIEWED } = TRACKING;
 
 const styles = (theme) => ({
   section: {
@@ -84,7 +87,7 @@ class ProductDetail extends Component {
       selectOptionId = variant.options[0]._id;
     }
 
-    this.trackAction({ variant, optionId, action: TRACKING.PRODUCT_VIEWED });
+    this.trackAction({ variant, optionId, action: PRODUCT_VIEWED });
 
     uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
 
@@ -96,6 +99,9 @@ class ProductDetail extends Component {
 
   @trackProduct()
   trackAction() {}
+
+  @trackCartItems()
+  trackCartItems() {}
 
   /**
    * @name handleSelectVariant
@@ -155,6 +161,7 @@ class ProductDetail extends Component {
         // The response data will be in either `createCart` or `addCartItems` prop
         // depending on the type of user, either authenticated or anonymous.
         const { cart } = data.createCart || data.addCartItems;
+        const { edges: items } = cart.items;
 
         this.trackAction({
           variant: {
@@ -163,11 +170,15 @@ class ProductDetail extends Component {
             quantity
           },
           optionId: selectedOption ? selectedOption._id : null,
-          action: TRACKING.PRODUCT_ADDED
+          action: PRODUCT_ADDED
         });
+
+        // The mini cart popper will open automatically after adding an item to the cart,
+        // therefore, a CART_VIEWED event is published.
+        // debugger // eslint-disable-line
+        this.trackCartItems({ cartItems: items, cartId: cart._id, action: CART_VIEWED }); // eslint-disable-line camelcase
       }
     }
-
     if (isWidthUp("md", width)) {
       // Open the cart, and close after a 3 second delay
       openCartWithTimeout(3000);

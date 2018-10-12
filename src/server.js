@@ -8,17 +8,12 @@ const logger = require("lib/logger");
 const passport = require("passport");
 const OAuth2Strategy = require("passport-oauth2");
 const refresh = require("passport-oauth2-refresh");
+const { decodeOpaqueId } = require("lib/utils/decoding");
 const { appPath, dev } = require("./config");
 const router = require("./routes");
 
 const app = nextApp({ dir: appPath, dev });
 const routeHandler = router.getRequestHandler(app);
-const decodeOpaqueId = (opaqueId) => {
-  if (opaqueId === undefined || opaqueId === null) return null;
-  const unencoded = Buffer.from(opaqueId, "base64").toString("utf8");
-  const [namespace, id] = unencoded.split(":");
-  return { namespace, id };
-};
 
 // This is needed to allow custom parameters (e.g loginActions) to be included
 // when requesting authorization. This is setup to allow only loginAction to pass through
