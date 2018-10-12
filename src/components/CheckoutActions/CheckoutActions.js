@@ -14,6 +14,7 @@ import { Router } from "routes";
 import track from "lib/tracking/track";
 import TRACKING from "lib/tracking/constants";
 import trackCheckout from "lib/tracking/trackCheckout";
+import trackOrder from "lib/tracking/trackOrder";
 import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
 import {
   adaptAddressToFormFields,
@@ -24,6 +25,7 @@ const {
   CHECKOUT_STARTED,
   CHECKOUT_STEP_COMPLETED,
   CHECKOUT_STEP_VIEWED,
+  ORDER_COMPLETED,
   PAYMENT_INFO_ENTERED
 } = TRACKING;
 
@@ -70,11 +72,14 @@ export default class CheckoutActions extends Component {
     }
   }
 
+  @trackCheckoutStep()
+  trackAction() {}
+
   @trackCheckout()
   trackCheckoutStarted() {}
 
-  @trackCheckoutStep()
-  trackAction() {}
+  @trackOrder()
+  trackOrder() {}
 
   buildData = (data) => {
     const { step, shipping_method = null, payment_method = null, action } = data; // eslint-disable-line camelcase
@@ -226,6 +231,8 @@ export default class CheckoutActions extends Component {
       if (!authStore.isAuthenticated) {
         cartStore.clearAnonymousCartCredentials();
       }
+
+      this.trackOrder({ action: ORDER_COMPLETED, orders });
 
       // Send user to order confirmation page
       Router.pushRoute("checkoutComplete", { orderId: orders[0]._id, token });

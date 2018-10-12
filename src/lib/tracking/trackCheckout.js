@@ -20,7 +20,6 @@ export default (options) =>
 
     return {
       action,
-      value: summary.itemTotal.amount,
       revenue: summary.itemTotal.amount,
       shipping: summary.fulfillmentTotal,
       tax: summary.taxTotal,
