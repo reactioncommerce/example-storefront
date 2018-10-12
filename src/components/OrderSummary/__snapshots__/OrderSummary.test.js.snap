@@ -37,54 +37,54 @@ exports[`basic snapshot 1`] = `
     className="OrderSummary__OrderSummaryContainer-sc-1cvbk1h-0 hsLQId"
   >
     <table
-      className="CartSummary__Table-cWcArh gWGRvE"
+      className="CartSummary__Table-cWcArh fwcTAZ"
     >
       <tbody>
         <tr>
           <td
-            className="CartSummary__Td-jXBgKC jKaJQb"
+            className="CartSummary__Td-jXBgKC cQDyIG"
           >
             Item total
           </td>
           <td
-            className="CartSummary__Td-boDvWU kKknSH"
+            className="CartSummary__Td-boDvWU iWLpfS"
           >
             $118
           </td>
         </tr>
         <tr>
           <td
-            className="CartSummary__Td-jXBgKC jKaJQb"
+            className="CartSummary__Td-jXBgKC cQDyIG"
           >
             Shipping
           </td>
           <td
-            className="CartSummary__Td-boDvWU kKknSH"
+            className="CartSummary__Td-boDvWU iWLpfS"
           />
         </tr>
         <tr>
           <td
-            className="CartSummary__Td-jXBgKC jKaJQb"
+            className="CartSummary__Td-jXBgKC cQDyIG"
           >
             Tax
           </td>
           <td
-            className="CartSummary__Td-boDvWU kKknSH"
+            className="CartSummary__Td-boDvWU iWLpfS"
           >
             -
           </td>
         </tr>
         <tr>
           <td
-            className="CartSummary__Td-jXBgKC grsCCy"
+            className="CartSummary__Td-jXBgKC fZowP"
           >
             Order total
           </td>
           <td
-            className="CartSummary__Td-boDvWU xcYQR"
+            className="CartSummary__Td-boDvWU icmwHp"
           >
             <span
-              className="CartSummary__Total-BZUQP bdUKHv"
+              className="CartSummary__Total-BZUQP gdTqMz"
             >
               $118
             </span>
