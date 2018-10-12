@@ -262,6 +262,7 @@ class ProductDetail extends Component {
     }
 
     const productPrice = this.determineProductPrice();
+    const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
 
     // Phone size
     if (isWidthDown("sm", width)) {
@@ -273,7 +274,7 @@ class ProductDetail extends Component {
               <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
             </div>
             <div className={classes.info}>
-              <ProductDetailPrice compareAtPrice={productPrice.compareAtPrice} isCompact price={productPrice.displayPrice} />
+              <ProductDetailPrice compareAtPrice={compareAtDisplayPrice} isCompact price={productPrice.displayPrice} />
             </div>
           </div>
 
@@ -322,7 +323,7 @@ class ProductDetail extends Component {
               <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
             </div>
             <div className={classes.info}>
-              <ProductDetailPrice className={classes.bottomMargin} compareAtPrice={productPrice.compareAtPrice} price={productPrice.displayPrice} />
+              <ProductDetailPrice className={classes.bottomMargin} compareAtPrice={compareAtDisplayPrice} price={productPrice.displayPrice} />
             </div>
             <div className={classes.info}>
               <ProductDetailDescription>{product.description}</ProductDetailDescription>
