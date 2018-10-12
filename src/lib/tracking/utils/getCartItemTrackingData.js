@@ -33,7 +33,7 @@ export default function getCartItemTrackingData(cartItem) {
     variant: variant.variantTitle,
     price: variant.price.amount,
     quantity: variant.quantity,
-    image_url: variant.imageURLs.original, // eslint-disable-line camelcase
+    image_url: variant.imageURLs && variant.imageURLs.original, // eslint-disable-line camelcase
     url
   };
 }
