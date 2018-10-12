@@ -46,13 +46,7 @@ export default class CheckoutActions extends Component {
   setShippingAddress = (address) => {
     const { checkoutMutations: { onSetShippingAddress } } = this.props;
 
-    // Omit firstName, lastName props as they are not in AddressInput type
-    // The address form and GraphQL endpoint need to be made consistent
-    const { firstName, lastName, ...rest } = address;
-    return onSetShippingAddress({
-      fullName: `${address.firstName} ${address.lastName}`,
-      ...rest
-    });
+    return onSetShippingAddress(address);
   }
 
   setShippingMethod = (shippingMethod) => {
