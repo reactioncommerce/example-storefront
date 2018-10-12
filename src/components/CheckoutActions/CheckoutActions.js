@@ -46,9 +46,7 @@ export default class CheckoutActions extends Component {
   setShippingAddress = (address) => {
     const { checkoutMutations: { onSetShippingAddress } } = this.props;
 
-    return onSetShippingAddress({
-      address
-    });
+    return onSetShippingAddress(address);
   }
 
   setShippingMethod = (shippingMethod) => {
