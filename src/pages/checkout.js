@@ -18,6 +18,7 @@ import LockIcon from "mdi-material-ui/Lock";
 import withCart from "containers/cart/withCart";
 import Link from "components/Link";
 import CheckoutSummary from "components/CheckoutSummary";
+import PageLoading from "components/PageLoading";
 
 const styles = (theme) => ({
   checkoutActions: {
@@ -171,17 +172,21 @@ class Checkout extends Component {
    * @return {undefined}
    */
   handleRouteChange = () => {
-    const { cart, router: { asPath } } = this.props;
+    const { cart } = this.props;
     // Skipping if the `cart` is not available
     if (!cart) return;
-    if (hasIdentityCheck(cart) && asPath === "/cart/login") {
+    if (hasIdentityCheck(cart) && this.pagePath === "/cart/login") {
       Router.replaceRoute("/cart/checkout", {}, { shallow: true });
-    } else if (!hasIdentityCheck(cart) && asPath === "/cart/checkout") {
+    } else if (!hasIdentityCheck(cart) && this.asPath === "/cart/checkout") {
       Router.replaceRoute("/cart/login", {}, { shallow: true });
     }
   };
 
   handleCartEmptyClick = () => Router.pushRoute("/");
+
+  get pagePath() {
+    return this.props.router.asPath;
+  }
 
   /**
    *
@@ -305,6 +310,7 @@ class Checkout extends Component {
     const hasAccount = !!cart.account;
     const displayEmail = (hasAccount && Array.isArray(cart.account.emailRecords) && cart.account.emailRecords[0].address) || cart.email;
 
+
     return (
       <div className={classes.checkoutContentContainer}>
         <div className={classes.checkoutContent}>
@@ -339,6 +345,9 @@ class Checkout extends Component {
   }
 
   render() {
+    const { isLoading, cart } = this.props;
+    if (isLoading || !cart) return <PageLoading delay={0} />;
+
     return (
       <Fragment>
         {this.renderCheckoutHead()}
