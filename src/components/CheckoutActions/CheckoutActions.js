@@ -123,6 +123,7 @@ export default class CheckoutActions extends Component {
       // The next step will automatically be expanded, so lets track that
       this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 2 }));
     }
+    
   }
 
   setShippingMethod = async (shippingMethod) => {
