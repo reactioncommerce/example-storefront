@@ -4,6 +4,6 @@ version: v1.12.0
 ignore:
   'npm:chownr:20180731':
     - '*':
-        reason: Waiting on next-routes(https://github.com/fridays/next-routes) to fix this vulnerability
+        reason: This vulnerability only affects packages used in development, such as webpack, more details at https://github.com/isaacs/chownr/issues/14#issuecomment-421662375
         expires: 2018-12-30T00:00:00.000Z
 patch: {}

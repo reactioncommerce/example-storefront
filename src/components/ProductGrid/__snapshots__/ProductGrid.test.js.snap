@@ -218,15 +218,15 @@ Array [
     className="MuiGrid-container-2 MuiGrid-spacing-xs-24-26"
   >
     <div
-      className="CatalogGrid__GridContainer-iLBjFm bXBNVP"
+      className="CatalogGrid__GridContainer-iLBjFm jWEVLF"
     >
       <div
-        className="CatalogGrid__GridItem-eahVxr kvUYzf"
+        className="CatalogGrid__GridItem-eahVxr hEXmqA"
       >
         <CatalogGridItem
           currencyCode="USD"
           onClick={[Function]}
-          placeholderImageURL="/static/placeholder.gif"
+          placeholderImageURL="/static/images/placeholder.gif"
           product={
             Object {
               "_id": "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6am5hOTVrYTlhTmtNeXRteGg=",
@@ -263,12 +263,12 @@ Array [
         />
       </div>
       <div
-        className="CatalogGrid__GridItem-eahVxr kvUYzf"
+        className="CatalogGrid__GridItem-eahVxr hEXmqA"
       >
         <CatalogGridItem
           currencyCode="USD"
           onClick={[Function]}
-          placeholderImageURL="/static/placeholder.gif"
+          placeholderImageURL="/static/images/placeholder.gif"
           product={
             Object {
               "_id": "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
@@ -320,7 +320,7 @@ Details can be added below the image for more specific product information.
       className="MuiGrid-item-3"
     >
       <div
-        className="Button__ButtonDiv-bnfrK cnBjlR"
+        className="Button__ButtonDiv-bnfrK eplvXk"
         onClick={[Function]}
         onKeyPress={[Function]}
         role="button"
