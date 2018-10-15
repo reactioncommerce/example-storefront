@@ -90,24 +90,11 @@ class ProfileAddressBook extends Component {
       <section>
         <Grid container spacing={24}>
           <Grid item xs={12} md={3}>
-            <AccountProfileInfo viewer={viewer} />
-            <p>This is the menu placeholder</p>
-            <p>This is the menu placeholder</p>
-            <p>This is the menu placeholder</p>
-            <p>This is the menu placeholder</p>
-            <p>This is the menu placeholder</p>
+            <AccountProfileInfo viewer={account} />
+            <InPageMenu menuItems={menuItems} />
           </Grid>
           <Grid item xs={12} md={9}>
-            <p>This is the address book placeholder </p>
-            <p>This is the address book placeholder </p>
-            <p>This is the address book placeholder </p>
-            <p>This is the address book placeholder </p>
-            <p>This is the address book placeholder </p>
-            <p>This is the address book placeholder </p>
-            <p>This is the address book placeholder </p>
-            <p>This is the address book placeholder </p>
-            <p>This is the address book placeholder </p>
-            <p>This is the address book placeholder </p>
+            <AddressBook account={accountAddressBook} />
           </Grid>
         </Grid>
       </section>
