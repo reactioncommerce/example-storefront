@@ -1,6 +1,24 @@
 query viewer {
   viewer {
     _id
+    addressBook {
+      edges {
+        node {
+          address1
+          address2
+          city
+          company
+          country
+          fullName
+          isBillingDefault
+          isCommercial
+          isShippingDefault
+          phone
+          postal
+          region
+        }
+      }
+    }
     emailRecords {
       address
     }
