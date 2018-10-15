@@ -30,7 +30,7 @@ passport.use("oauth2", new OAuth2Strategy({
   clientSecret: process.env.OAUTH2_CLIENT_SECRET,
   callbackURL: process.env.OAUTH2_REDIRECT_URL,
   state: true,
-  scope: ["offline", "openid"]
+  scope: ["offline"]
 }, (accessToken, refreshToken, profile, cb) => {
   cb(null, { accessToken, profile });
 }));
