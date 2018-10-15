@@ -34,6 +34,7 @@ import Link from "components/Link";
 import MiniCartSummary from "@reactioncommerce/components/MiniCartSummary/v1";
 import PhoneNumberInput from "@reactioncommerce/components/PhoneNumberInput/v1";
 import Price from "@reactioncommerce/components/Price/v1";
+import ProfileImage from "@reactioncommerce/components/ProfileImage/v1";
 import ProgressiveImage from "@reactioncommerce/components/ProgressiveImage/v1";
 import QuantityInput from "@reactioncommerce/components/QuantityInput/v1";
 import Select from "@reactioncommerce/components/Select/v1";
@@ -74,6 +75,7 @@ export default {
   MiniCartSummary,
   PhoneNumberInput,
   Price,
+  ProfileImage,
   ProgressiveImage,
   QuantityInput,
   Select,
