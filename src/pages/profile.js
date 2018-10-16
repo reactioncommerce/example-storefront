@@ -9,38 +9,13 @@ import InPageMenu from "@reactioncommerce/components/InPageMenuItem/v1";
 import relayConnectionToArray from "lib/utils/relayConnectionToArray";
 import ErrorPage from "./_error";
 
-// const styles = (theme) => ({
-//   cartEmptyMessageContainer: {
-//     margin: "80px 0"
-//   },
-//   checkoutButtonsContainer: {
-//     backgroundColor: theme.palette.reaction.black02,
-//     padding: theme.spacing.unit * 2
-//   },
-//   customerSupportCopy: {
-//     paddingLeft: `${theme.spacing.unit * 4}px !important`
-//   },
-//   phoneNumber: {
-//     fontWeight: theme.typography.fontWeightBold
-//   },
-//   shop: PropTypes.shape({
-//     name: PropTypes.string.isRequired,
-//     currency: PropTypes.shape({
-//       code: PropTypes.string.isRequired
-//     })
-//   }),
-//   title: {
-//     fontWeight: theme.typography.fontWeightRegular,
-//     marginTop: "1.6rem",
-//     marginBottom: "3.1rem"
-//   },
-//   itemWrapper: {
-//     borderTop: theme.palette.borders.default,
-//     borderBottom: theme.palette.borders.default
-//   }
-// });
+const styles = (theme) => ({
+  accountProfileInfoContainer: {
+    marginBottom: theme.spacing.unit * 4
+  }
+});
 
-// @withStyles(styles)
+@withStyles(styles)
 @inject("authStore")
 @inject("uiStore")
 @observer
