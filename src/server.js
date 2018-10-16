@@ -7,7 +7,6 @@ const { useStaticRendering } = require("mobx-react");
 const logger = require("lib/logger");
 const passport = require("passport");
 const OAuth2Strategy = require("passport-oauth2");
-const refresh = require("passport-oauth2-refresh");
 const { decodeOpaqueId } = require("lib/utils/decoding");
 const { appPath, dev } = require("./config");
 const router = require("./routes");
@@ -32,10 +31,8 @@ passport.use("oauth2", new OAuth2Strategy({
   state: true,
   scope: ["offline"]
 }, (accessToken, refreshToken, profile, cb) => {
-  cb(null, { accessToken, profile });
+  cb(null, { accessToken, refreshToken });
 }));
-
-passport.use("refresh", refresh);
 
 // The value passed to `done` here is stored on the session.
 // We save the full user object in the session.
@@ -46,6 +43,7 @@ passport.serializeUser((user, done) => {
 // The value returned from `serializeUser` is passed in from the session here,
 // to get the user. We save the full user object in the session.
 passport.deserializeUser((user, done) => {
+  if (typeof user === "object") return done(null, user);
   done(null, JSON.parse(user));
 });
 
@@ -54,17 +52,20 @@ app
   .then(() => {
     const server = express();
 
-    const { SESSION_SECRET, SESSION_MAX_AGE_MS } = process.env;
+    const { SESSION_MAX_AGE_MS } = process.env;
     const maxAge = SESSION_MAX_AGE_MS ? Number(SESSION_MAX_AGE_MS) : 24 * 60 * 60 * 1000; // 24 hours
 
     // We use a client-side cookie session instead of a server session so that there are no
     // issues when load balancing without sticky sessions.
     // https://www.npmjs.com/package/cookie-session
+    // The cookie is not `signed` because it's value is to be changed when access_token is
+    // refreshed in the browser.
     server.use(cookieSession({
       // https://www.npmjs.com/package/cookie-session#options
-      keys: [SESSION_SECRET],
       maxAge,
-      name: "storefront-session"
+      name: "storefront-session",
+      httpOnly: false,
+      signed: false
     }));
 
     // http://www.passportjs.org/docs/configure/

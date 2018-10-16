@@ -41,6 +41,11 @@ const initExport = {
       url: process.env.KEYCLOAK_URL,
       redirectUri: process.env.KEYCLOAK_REDIRECT_URI
     },
+    oauthClientConfig: {
+      clientId: process.env.OAUTH2_CLIENT_ID,
+      clientSecret: process.env.OAUTH2_CLIENT_SECRET,
+      refreshTokenUrl: process.env.OAUTH2_IDP_REFRESH_TOKEN_URL
+    },
     stripePublicApiKey: process.env.STRIPE_PUBLIC_API_KEY
   },
   webpack: (config) => {

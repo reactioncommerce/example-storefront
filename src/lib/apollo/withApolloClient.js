@@ -34,7 +34,14 @@ export default function withApolloClient(WrappedComponent) {
       // Provide the `url` prop data in case a GraphQL query uses it
       rootMobxStores.routingStore.updateRoute({ query, pathname });
 
-      const user = req && req.session && req.session.passport && req.session.passport.user && JSON.parse(req.session.passport.user);
+      const userData = req && req.session && req.session.passport && req.session.passport.user;
+      let user;
+      if (typeof userData === "object") {
+        user = userData;
+      } else {
+        user = userData && JSON.parse(userData);
+      }
+
       const apollo = initApollo({ cookies: req && req.cookies }, { accessToken: user && user.accessToken });
 
       ctx.ctx.apolloClient = apollo;
