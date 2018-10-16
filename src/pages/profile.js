@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
+import Helmet from "react-helmet";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import AddressBook from "@reactioncommerce/components/AddressBook/v1";
@@ -106,6 +107,10 @@ class ProfileAddressBook extends Component {
           </Grid>
           <Grid item xs={12} md={9}>
             {this.renderMainContent()}
+        <Helmet
+          title={`Account Profile | ${shop && shop.name}`}
+          meta={[{ name: "description", content: shop && shop.description }]}
+        />
           </Grid>
         </Grid>
       </section>
