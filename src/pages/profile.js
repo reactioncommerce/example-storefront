@@ -36,14 +36,12 @@ class ProfileAddressBook extends Component {
     const { authStore: { account } } = this.props;
 
     // Use relayConnectionToArray to remove edges / nodes levels from addressBook object
-    const addresses = account.addressBook && account.addressBook.length ? relayConnectionToArray(account.addressBook) : [];
-    console.log("addresses after relayConnectionToArray()", addresses);
+    const addresses = account.addressBook && account.addressBook.edges && account.addressBook.edges.length ? relayConnectionToArray(account.addressBook) : [];
 
     // Create data object to pass to AddressBook component
     const accountAddressBook = {
       addressBook: addresses
     };
-    console.log("accountAddressBook", accountAddressBook);
 
     return (
       <AddressBook account={accountAddressBook} />
@@ -68,7 +66,6 @@ class ProfileAddressBook extends Component {
       return "Orders placeholder";
     }
 
-    return "Hello";
   }
 
   renderNavigation() {
