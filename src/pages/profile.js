@@ -52,11 +52,12 @@ class ProfileAddressBook extends Component {
     return "This is where the orders screen will go";
   }
 
-
-
+  renderPaymentMethods() {
+    return "This is where the orders screen will go";
+  }
 
   renderMainContent() {
-    const { router: { asPath } } = this.props;
+    const { router: { asPath }, shop } = this.props;
 
     if (asPath === "/profile/address") {
       return this.renderAddressBook();
@@ -66,51 +67,78 @@ class ProfileAddressBook extends Component {
       return "Orders placeholder";
     }
 
+    if (asPath === "/profile/payments") {
+      return "Payment Methods placeholder";
+    }
+
+    return <ErrorPage shop={shop} subtitle="Not Found" />;
+  }
+
+  renderAccountProfileInfo() {
+    const { authStore: { account }, classes } = this.props;
+
+    return (
+      <div className={classes.accountProfileInfoContainer}>
+        <AccountProfileInfo viewer={account} />
+      </div>
+    );
   }
 
   renderNavigation() {
-    const { router: { asPath } } = this.props;
+    const { classes, router: { asPath } } = this.props;
 
     const menuItems = [
       {
         href: "/profile/address",
+        route: "/profile/address",
         label: "Address Book",
         isSelected: asPath === "/profile/address"
       },
       {
         href: "/profile/orders",
+        route: "/profile/orders",
         label: "Orders",
         isSelected: asPath === "/profile/orders"
+      },
+      {
+        href: "/profile/payments",
+        route: "/profile/payments",
+        label: "Payment Methods",
+        isSelected: asPath === "/profile/payments"
       }
     ];
 
     return (
-      <InPageMenu menuItems={menuItems} />
+      <div className={classes.inPageMenuItemLink}>
+        <InPageMenu menuItems={menuItems} />
+      </div>
     );
   }
 
   render() {
-    const { authStore: { account }, shop } = this.props;
+    const { authStore: { account }, classes, shop } = this.props;
 
     // If there is no logged in user, return Not Found page
     if (account && !account._id) return <ErrorPage shop={shop} subtitle="Not Found" />;
 
     return (
-      <section>
-        <Grid container spacing={24}>
-          <Grid item xs={12} md={3}>
-            <AccountProfileInfo viewer={account} />
-            {this.renderNavigation()}
-          </Grid>
-          <Grid item xs={12} md={9}>
-            {this.renderMainContent()}
+      <Fragment>
         <Helmet
           title={`Account Profile | ${shop && shop.name}`}
           meta={[{ name: "description", content: shop && shop.description }]}
         />
+        <section>
+          <Grid container spacing={24}>
+            <Grid item xs={12} md={3}>
+              {this.renderAccountProfileInfo()}
+              {this.renderNavigation()}
+            </Grid>
+            <Grid item xs={12} md={9}>
+              {this.renderMainContent()}
+            </Grid>
           </Grid>
-        </Grid>
-      </section>
+        </section>
+      </Fragment>
     );
   }
 }
