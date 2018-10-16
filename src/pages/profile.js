@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import AddressBook from "@reactioncommerce/components/AddressBook/v1";
 import AccountProfileInfo from "@reactioncommerce/components/AccountProfileInfo/v1";
-import InPageMenu from "@reactioncommerce/components/InPageMenuItem/v1";
+import InPageMenu from "@reactioncommerce/components/InPageMenu/v1";
 import relayConnectionToArray from "lib/utils/relayConnectionToArray";
 import ErrorPage from "./_error";
 
