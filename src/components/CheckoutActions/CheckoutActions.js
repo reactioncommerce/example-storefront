@@ -16,6 +16,7 @@ import TRACKING from "lib/tracking/constants";
 import trackCheckout from "lib/tracking/trackCheckout";
 import trackOrder from "lib/tracking/trackOrder";
 import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
+import { decodeOpaqueId } from "lib/utils/decoding";
 import {
   adaptAddressToFormFields,
   isShippingAddressSet
@@ -235,7 +236,8 @@ export default class CheckoutActions extends Component {
       this.trackOrder({ action: ORDER_COMPLETED, orders });
 
       // Send user to order confirmation page
-      Router.pushRoute("checkoutComplete", { orderId: orders[0]._id, token });
+      const { id } = decodeOpaqueId(orders[0]._id);
+      Router.pushRoute("checkoutComplete", { orderId: id, token });
     }
 
     // TODO: if an error occurred, notify user
