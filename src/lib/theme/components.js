@@ -9,6 +9,8 @@
 
 import iconClear from "@reactioncommerce/components/svg/iconClear";
 import iconError from "@reactioncommerce/components/svg/iconError";
+import iconExpand from "@reactioncommerce/components/svg/iconExpand";
+import iconPlus from "@reactioncommerce/components/svg/iconPlus";
 import iconValid from "@reactioncommerce/components/svg/iconValid";
 import iconAmericanExpress from "@reactioncommerce/components/svg/iconAmericanExpress";
 import iconDiscover from "@reactioncommerce/components/svg/iconDiscover";
@@ -76,7 +78,9 @@ export default {
   iconClear,
   iconDiscover,
   iconError,
+  iconExpand,
   iconMastercard,
+  iconPlus,
   iconValid,
   iconVisa,
   InPageMenuItem,
