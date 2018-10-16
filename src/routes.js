@@ -11,6 +11,7 @@ routes
   .add("product", "/product/:slugOrId/:variantId?", "product")
   .add("profileAddressBook", "/profile/address", "profile")
   .add("profileOrders", "/profile/orders", "profile")
+  .add("profilePaymentMethods", "/profile/payments", "profile")
   .add("shop", "/shop/:shopId/:tag", "productGrid")
   .add("tag", "/tag/:slug", "tag");
 
