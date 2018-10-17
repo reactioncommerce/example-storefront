@@ -88,33 +88,26 @@ class HTMLDocument extends Document {
       }
     ];
 
-    return (
-      <html lang="en" {...htmlAttrs}>
-        <Head>
-          <Helmet htmlAttributes={{ lang: "en", dir: "ltr" }} />
-          {meta.map((tag, index) => <meta key={index} {...tag} />)}
-          {links.map((link, index) => <link key={index} {...link} />)}
-          {scripts.map((script, index) =>
-            (script.innerHTML ? (
-            /* eslint-disable-next-line */
-              <script key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} />
-            ) : (
-              <script key={index} {...script} />
-            )))}
-          {helmet.base.toComponent()}
-          {helmet.meta.toComponent()}
-          {helmet.link.toComponent()}
-          {helmet.style.toComponent()}
-          {helmet.script.toComponent()}
-          {helmet.noscript.toComponent()}
-          {styledComponentsStyleTags}
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    );
+    return <html lang="en" {...htmlAttrs}>
+      <Head>
+        <Helmet htmlAttributes={{ lang: "en", dir: "ltr" }} />
+        {meta.map((tag, index) => <meta key={index} {...tag} />)}
+        {links.map((link, index) => <link key={index} {...link} />)}
+        {helmet.base.toComponent()}
+        {helmet.meta.toComponent()}
+        {helmet.link.toComponent()}
+        {helmet.style.toComponent()}
+        {helmet.script.toComponent()}
+        {helmet.noscript.toComponent()}
+        {styledComponentsStyleTags}
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+        {scripts.map((script, index) => (script.innerHTML ? /* eslint-disable-next-line */
+          <script async key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} /> : <script async key={index} {...script} />))}
+      </body>
+    </html>;
   }
 }
 
