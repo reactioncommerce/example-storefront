@@ -101,7 +101,6 @@ class HTMLDocument extends Document {
               <script key={index} {...script} />
             )))}
           {helmet.base.toComponent()}
-          {helmet.title.toComponent()}
           {helmet.meta.toComponent()}
           {helmet.link.toComponent()}
           {helmet.style.toComponent()}
