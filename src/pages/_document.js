@@ -76,8 +76,8 @@ class HTMLDocument extends Document {
       meta.push({ name: "theme-color", content: pageContext.theme.palette.primary.main });
     }
 
+    // Analytics & Stripe Elements scripts
     const scripts = [
-      // Render analytics  scripts
       ...analyticsProviders.map((provider) => ({
         type: "text/javascript",
         innerHTML: provider.renderScript()
@@ -87,6 +87,7 @@ class HTMLDocument extends Document {
         src: "https://js.stripe.com/v3/"
       }
     ];
+
     return (
       <html lang="en" {...htmlAttrs}>
         <Head>
