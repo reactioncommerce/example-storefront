@@ -8,7 +8,7 @@ if [ -z "${AWS_REGION}" ]; then
 fi
 
 ENVIRONMENT=staging
-CUSTER=core
+CLUSTER=core
 export storefront_CIRCLE_SHA1=$CIRCLE_SHA1
 
 PROPEL_CONFIG_FILE="propel.yaml"
