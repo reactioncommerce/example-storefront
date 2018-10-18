@@ -5,7 +5,6 @@ import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
 import analyticsProviders from "analytics";
 import { ServerStyleSheet } from "styled-components";
-// import getConfig from "next/config";
 import favicons from "../lib/utils/favicons";
 
 /**
@@ -58,11 +57,9 @@ class HTMLDocument extends Document {
   render() {
     const { helmet, pageContext, styledComponentsStyleTags } = this.props;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
-    // const { publicRuntimeConfig } = getConfig();
-    // const { keycloakConfig } = publicRuntimeConfig;
     const links = [
       { rel: "canonical", href: process.env.CANONICAL_URL },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" },
       ...favicons
     ];
     const meta = [
@@ -79,49 +76,39 @@ class HTMLDocument extends Document {
       meta.push({ name: "theme-color", content: pageContext.theme.palette.primary.main });
     }
 
+    // Analytics & Stripe Elements scripts
     const scripts = [
-      // Render analytics  scripts
       ...analyticsProviders.map((provider) => ({
         type: "text/javascript",
         innerHTML: provider.renderScript()
       })),
-      // {
-      //   type: "text/javascript",
-      //   src: `${keycloakConfig.url}/js/keycloak.js`
-      // },
       {
         type: "text/javascript",
         src: "https://js.stripe.com/v3/"
       }
     ];
-    return (
-      <html lang="en" {...htmlAttrs}>
-        <Head>
-          <Helmet htmlAttributes={{ lang: "en", dir: "ltr" }} />
-          {meta.map((tag, index) => <meta key={index} {...tag} />)}
-          {links.map((link, index) => <link key={index} {...link} />)}
-          {scripts.map((script, index) =>
-            (script.innerHTML ? (
-            /* eslint-disable-next-line */
-              <script key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} />
-            ) : (
-              <script key={index} {...script} />
-            )))}
-          {helmet.base.toComponent()}
-          {helmet.title.toComponent()}
-          {helmet.meta.toComponent()}
-          {helmet.link.toComponent()}
-          {helmet.style.toComponent()}
-          {helmet.script.toComponent()}
-          {helmet.noscript.toComponent()}
-          {styledComponentsStyleTags}
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    );
+
+    return <html lang="en" {...htmlAttrs}>
+      <Head>
+        <Helmet htmlAttributes={{ lang: "en", dir: "ltr" }} />
+        {meta.map((tag, index) => <meta key={index} {...tag} />)}
+        {links.map((link, index) => <link key={index} {...link} />)}
+        {helmet.base.toComponent()}
+        {helmet.title.toComponent()}
+        {helmet.meta.toComponent()}
+        {helmet.link.toComponent()}
+        {helmet.style.toComponent()}
+        {helmet.script.toComponent()}
+        {helmet.noscript.toComponent()}
+        {styledComponentsStyleTags}
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+        {scripts.map((script, index) => (script.innerHTML ? /* eslint-disable-next-line */
+                <script async key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} /> : <script async key={index} {...script} />))}
+      </body>
+    </html>;
   }
 }
 

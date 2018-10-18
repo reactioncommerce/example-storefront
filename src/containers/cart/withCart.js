@@ -175,7 +175,7 @@ export default function withCart(Component) {
       // Run the mutation function provided as a param.
       // It may take the form of `createCart` or `addCartItems` depending on the
       // availability of a cart for either an anonymous or logged-in account.
-      await mutation({
+      return mutation({
         variables: {
           input
         }
@@ -228,7 +228,7 @@ export default function withCart(Component) {
     handleRemoveCartItems = (itemIds) => {
       const { cartStore, client: apolloClient } = this.props;
 
-      apolloClient.mutate({
+      return apolloClient.mutate({
         mutation: removeCartItemsMutation,
         variables: {
           input: {
@@ -320,10 +320,10 @@ export default function withCart(Component) {
      * @param {Function} mutation An Apollo mutation function
      * @return {undefined} No return
      */
-    handleSetFulfillmentOption = async ({ fulfillmentGroupId, fulfillmentMethodId }) => {
+    handleSetFulfillmentOption = ({ fulfillmentGroupId, fulfillmentMethodId }) => {
       const { client: apolloClient } = this.props;
 
-      await apolloClient.mutate({
+      return apolloClient.mutate({
         mutation: setFulfillmentOptionCartMutation,
         variables: {
           input: {
@@ -345,7 +345,7 @@ export default function withCart(Component) {
     handleSetShippingAddress = async (address) => {
       const { client: apolloClient } = this.props;
 
-      const result = await apolloClient.mutate({
+      const response = await apolloClient.mutate({
         mutation: setShippingAddressCartMutation,
         variables: {
           input: {
@@ -356,8 +356,10 @@ export default function withCart(Component) {
       });
 
       // Update fulfillment options for current cart
-      const { data: { setShippingAddressOnCart: { cart } } } = result;
-      await this.handleUpdateFulfillmentOptionsForGroup(cart.checkout.fulfillmentGroups[0]._id);
+      const { data: { setShippingAddressOnCart: { cart } } } = response;
+      this.handleUpdateFulfillmentOptionsForGroup(cart.checkout.fulfillmentGroups[0]._id);
+
+      return response;
     }
 
     render() {
@@ -430,9 +432,9 @@ export default function withCart(Component) {
                 {(mutationFunction) => (
                   <Component
                     {...this.props}
-                    addItemsToCart={async (items) => {
-                      await this.handleAddItemsToCart(mutationFunction, { items }, !cart);
-                    }}
+                    addItemsToCart={(items) => (
+                      this.handleAddItemsToCart(mutationFunction, { items }, !cart)
+                    )}
                     cart={processedCartData}
                     checkoutMutations={{
                       onSetFulfillmentOption: this.handleSetFulfillmentOption,

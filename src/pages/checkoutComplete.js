@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import withOrder from "containers/order/withOrder";
 import OrderFulfillmentGroups from "components/OrderFulfillmentGroups";
 import withCart from "containers/cart/withCart";
+import { decodeOpaqueId } from "lib/utils/decoding";
 
 const styles = (theme) => ({
   sectionHeader: {
@@ -120,6 +121,7 @@ class CheckoutComplete extends Component {
 
   render() {
     const { classes, order, shop } = this.props;
+    const { id } = (order && decodeOpaqueId(order._id)) || {};
 
     return (
       <Fragment>
@@ -135,10 +137,10 @@ class CheckoutComplete extends Component {
                   {"Thank you for your order"}
                 </Typography>
                 <Typography variant="body1">
-                  {"Your order ID is"} <strong>{order && order._id}</strong>
+                  {"Your order ID is:"} <strong>{id}</strong>
                 </Typography>
                 <Typography variant="body1">
-                  {"We've sent a confirmation email to"} <strong>{order && order.email}</strong>
+                  {"We've sent a confirmation email to:"} <strong>{order && order.email}</strong>
                 </Typography>
               </header>
               <div className={classes.checkoutContent}>{this.renderFulfillmentGroups()}</div>

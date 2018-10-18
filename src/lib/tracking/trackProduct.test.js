@@ -1,14 +1,14 @@
 import dispatch from "./dispatch";
-import trackProductViewed from "./trackProductViewed";
+import trackProduct from "./trackProduct";
 
 jest.mock("./dispatch", () => jest.fn());
 
-test("component decorated with trackProductViewed should dispatch tracking events", () => {
+test("component decorated with trackProduct should dispatch tracking events", () => {
   const props = { props: 1 };
   const context = { context: 1 };
   const trackingContext = { dispatch };
 
-  @trackProductViewed(trackingContext)
+  @trackProduct(trackingContext)
   class TestComponent {
     static displayName = "TestComponent"
   }

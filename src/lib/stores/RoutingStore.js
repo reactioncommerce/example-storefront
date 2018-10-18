@@ -86,7 +86,11 @@ export default class RoutingStore {
       path = `${this.pathname}?${this.queryString}`;
     }
 
-    Router.pushRoute(path, path, { shallow: true });
+    // Router is only available for the client (browser)
+    if (process.browser) {
+      Router.pushRoute(path, path, { shallow: true });
+    }
+
     return path;
   }
 }

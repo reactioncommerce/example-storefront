@@ -57,7 +57,7 @@ const product = {
   ]
 };
 
-test("getVariantTrackingData should return varaint tracking data with supplied variant", () => {
+test("getVariantTrackingData should return variant tracking data with supplied variant", () => {
   const data = getVariantTrackingData({ variant });
 
   const result = {
@@ -73,7 +73,7 @@ test("getVariantTrackingData should return varaint tracking data with supplied v
   expect(data).toEqual(result);
 });
 
-test("getVariantTrackingData should return varaint tracking data with supplied variant and product", () => {
+test("getVariantTrackingData should return variant tracking data with supplied variant and product", () => {
   const data = getVariantTrackingData({ variant, product });
 
   const result = {
@@ -89,7 +89,7 @@ test("getVariantTrackingData should return varaint tracking data with supplied v
   expect(data).toEqual(result);
 });
 
-test("getVariantTrackingData should return varaint tracking data with supplied variant, optionId and product", () => {
+test("getVariantTrackingData should return variant tracking data with supplied variant, optionId and product", () => {
   const data = getVariantTrackingData({ variant, optionId: "reaction/catalogProductItem:1003", product });
 
   const result = {

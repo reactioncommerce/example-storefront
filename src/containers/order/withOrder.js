@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
 import hoistNonReactStatic from "hoist-non-react-statics";
+import { base64EncodeId } from "lib/utils/encoding";
 import { orderById } from "./queries.gql";
 
 /**
@@ -41,9 +42,10 @@ export default function withOrder(Component) {
 
     render() {
       const { primaryShopId, routingStore } = this.props;
+      const opaqueId = base64EncodeId(routingStore.query.orderId, "reaction/order");
 
       const variables = {
-        id: routingStore.query.orderId,
+        id: opaqueId,
         shopId: primaryShopId,
         token: routingStore.query.token || null
       };

@@ -69,9 +69,11 @@ fragment CartCommon on Cart {
         displayAmount
       }
       itemTotal {
+        amount
         displayAmount
       }
       taxTotal {
+        amount
         displayAmount
       }
       total {
@@ -159,6 +161,12 @@ fragment CartItemConnectionFragment on CartItemConnection {
         _id
       }
       title
+      productTags {
+        nodes {
+          name
+        }
+      }
+      productVendor
       variantTitle
       optionTitle
       updatedAt
