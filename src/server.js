@@ -1,6 +1,7 @@
 const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 const express = require("express");
+const compression = require("compression");
 const nextApp = require("next");
 const request = require("request");
 const { useStaticRendering } = require("mobx-react");
@@ -30,7 +31,7 @@ passport.use("oauth2", new OAuth2Strategy({
   clientSecret: process.env.OAUTH2_CLIENT_SECRET,
   callbackURL: process.env.OAUTH2_REDIRECT_URL,
   state: true,
-  scope: ["offline", "openid"]
+  scope: ["offline"]
 }, (accessToken, refreshToken, profile, cb) => {
   cb(null, { accessToken, profile });
 }));
@@ -53,6 +54,8 @@ app
   .prepare()
   .then(() => {
     const server = express();
+
+    server.use(compression());
 
     const { SESSION_SECRET, SESSION_MAX_AGE_MS } = process.env;
     const maxAge = SESSION_MAX_AGE_MS ? Number(SESSION_MAX_AGE_MS) : 24 * 60 * 60 * 1000; // 24 hours

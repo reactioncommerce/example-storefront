@@ -22,14 +22,12 @@ const bodyEncoded = JSON.stringify({
   client_secret: process.env.OAUTH2_CLIENT_SECRET,
   grant_types: [
     "authorization_code",
-    "refresh_token",
-    "client_credentials",
-    "implicit"
+    "refresh_token"
   ],
   jwks: {},
   redirect_uris: [process.env.OAUTH2_REDIRECT_URL],
-  response_types: ["token", "code", "id_token"],
-  scope: "openid offline",
+  response_types: ["token", "code"],
+  scope: "offline",
   subject_type: "public",
   token_endpoint_auth_method: "client_secret_post"
 });

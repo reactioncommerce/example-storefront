@@ -64,6 +64,11 @@ fragment OrderCommon on Order {
         productSlug
         productType
         productVendor
+        productTags {
+          nodes {
+            name
+          }
+        }
         quantity
         shop {
           _id
@@ -144,15 +149,19 @@ fragment OrderCommon on Order {
     }
     summary {
       fulfillmentTotal {
+        amount
         displayAmount
       }
       itemTotal {
+        amount
         displayAmount
       }
       taxTotal {
+        amount
         displayAmount
       }
       total {
+        amount
         displayAmount
       }
     }
@@ -160,6 +169,9 @@ fragment OrderCommon on Order {
   }
   shop {
     _id
+    currency {
+      code
+    }
   }
   totalItemQuantity
   updatedAt
