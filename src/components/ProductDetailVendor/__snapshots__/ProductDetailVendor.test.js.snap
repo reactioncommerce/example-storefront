@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="MuiTypography-root-1 MuiTypography-body1-10"
+>
+  Vendor
+</div>
+`;
+
+exports[`no vendor 1`] = `null`;
