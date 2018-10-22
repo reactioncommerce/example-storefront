@@ -8,12 +8,13 @@ const request = require("request");
 const url = "http://localhost:4000";
 
 describe("NextJS Loading", () => {
-  it("SSR Loads with an HTML Body", () => {
+  it("SSR Loads with an HTML Body", (done) => {
     request(url, (err, resp, body) => {
       if (!err && resp.statusCode === 200) {
         const cheer = cheerio.load(body);
         chai.expect(cheer("#__next").find("div")).to.not.be.empty;
       }
+      done();
     });
   });
 });
