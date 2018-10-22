@@ -61,7 +61,6 @@
     "next-routes": "^1.4.2",
     "passport": "^0.4.0",
     "passport-oauth2": "^1.4.0",
-    "passport-oauth2-refresh": "^1.1.0",
     "prop-types": "^15.6.2",
     "react": "16.4.2",
     "react-apollo": "^2.1.3",
