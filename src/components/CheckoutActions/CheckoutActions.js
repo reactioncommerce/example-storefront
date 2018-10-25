@@ -238,14 +238,19 @@ export default class CheckoutActions extends Component {
       const { id } = decodeOpaqueId(orders[0]._id);
       Router.pushRoute("checkoutComplete", { orderId: id, token });
     } catch (error) {
-      const errorMessage = error;
-      window.alert(errorMessage);
+      window.alert(error);
+      const alert = {
+        alertType: "error",
+        title: "Payment method failed",
+        message: error
+      }
       this.setState({ isPlacingOrder: false });
     }
   }
 
-  handleClose = () => {
-    // TODO: if an error occurs, then close dialog
+  handleClose = (event) => {
+    console.log("handle close", event)
+    // TODO: Open CheckoutAction to Step 3
   }
 
   renderPlacingOrderOverlay = () => {
@@ -254,6 +259,8 @@ export default class CheckoutActions extends Component {
     return (
       <Dialog
         fullScreen
+        disableBackdropClick={true}
+        disableEscapeKeyDown={true}
         open={isPlacingOrder}
         onClose={this.handleClose}
       >
