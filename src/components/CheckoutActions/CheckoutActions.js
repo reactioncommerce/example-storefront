@@ -215,10 +215,9 @@ export default class CheckoutActions extends Component {
 
   placeOrder = async (order) => {
     const { authStore, cartStore, placeOrderWithStripeCard } = this.props;
-    const { data, error } = await placeOrderWithStripeCard(order);
 
-    // If success
-    if (data && !error) {
+    try {
+      const { data } = await placeOrderWithStripeCard(order);
       const { placeOrderWithStripeCardPayment: { orders, token } } = data;
 
       this.trackAction({
@@ -238,9 +237,11 @@ export default class CheckoutActions extends Component {
       // Send user to order confirmation page
       const { id } = decodeOpaqueId(orders[0]._id);
       Router.pushRoute("checkoutComplete", { orderId: id, token });
+    } catch (error) {
+      const errorMessage = error;
+      window.alert(errorMessage);
+      this.setState({ isPlacingOrder: false });
     }
-
-    // TODO: if an error occurred, notify user
   }
 
   handleClose = () => {
