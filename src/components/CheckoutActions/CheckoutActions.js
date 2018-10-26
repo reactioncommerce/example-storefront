@@ -238,18 +238,17 @@ export default class CheckoutActions extends Component {
       const { id } = decodeOpaqueId(orders[0]._id);
       Router.pushRoute("checkoutComplete", { orderId: id, token });
     } catch (error) {
-      window.alert(error);
       const alert = {
         alertType: "error",
         title: "Payment method failed",
         message: error
-      }
+      };
+      window.alert(alert);
       this.setState({ isPlacingOrder: false });
     }
   }
 
-  handleClose = (event) => {
-    console.log("handle close", event)
+  handleClose = () => {
     // TODO: Open CheckoutAction to Step 3
   }
 
