@@ -42,7 +42,7 @@ const styles = (theme) => ({
  * @param {Object} props Component props
  * @returns {React.Component} React component node that represents a product detail view
  */
-@withWidth()
+@withWidth({ initialWidth: "md" })
 @withStyles(styles, { withTheme: true, name: "SkProductDetail" })
 @inject("routingStore", "uiStore")
 @track()
