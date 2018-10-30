@@ -117,7 +117,7 @@ docker-compose up -d --build
 
 ### Testing `reaction-component-library` components in the starterkit
 
-Sometimes we need to test [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) components in the context of the starterkit. Unfortunetly, there isn't an easy wasy to do this within our Docker containers, so we need to run the `starterkit` outside of docker.
+Sometimes we need to test [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) components in the context of the starterkit. Unfortunately, there isn't an easy wasy to do this within our Docker containers, so we need to run the `starterkit` outside of docker.
 
 1. `cd` to your local [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) repo.
 1. Git checkout the proper branch that you want to link
