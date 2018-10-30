@@ -40,7 +40,8 @@ class CartItems extends Component {
     })).isRequired,
     onChangeCartItemQuantity: PropTypes.func.isRequired,
     onLoadMoreCartItems: PropTypes.func,
-    onRemoveItemFromCart: PropTypes.func.isRequired
+    onRemoveItemFromCart: PropTypes.func.isRequired,
+    productURLPath: PropTypes.string.isRequired
   }
 
   handleItemQuantityChange = (quantity, _id) => {
@@ -73,6 +74,7 @@ class CartItems extends Component {
           items={items}
           onChangeCartItemQuantity={this.handleItemQuantityChange}
           onRemoveItemFromCart={this.handleRemoveItem}
+          productURLPath="/product/"
         />
         {hasMoreCartItems &&
           <div className={classes.loadMore}>
