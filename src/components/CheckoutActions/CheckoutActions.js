@@ -74,13 +74,13 @@ export default class CheckoutActions extends Component {
   }
 
   @trackCheckoutStep()
-  trackAction() {}
+  trackAction() { }
 
   @trackCheckout()
-  trackCheckoutStarted() {}
+  trackCheckoutStarted() { }
 
   @trackOrder()
-  trackOrder() {}
+  trackOrder() { }
 
   buildData = (data) => {
     const { step, shipping_method = null, payment_method = null, action } = data; // eslint-disable-line camelcase
@@ -256,7 +256,7 @@ export default class CheckoutActions extends Component {
         open={isPlacingOrder}
         onClose={this.handleClose}
       >
-        <PageLoading delay={0} message="Placing your order..."/>
+        <PageLoading delay={0} message="Placing your order..." />
       </Dialog>
     );
   }
@@ -350,7 +350,8 @@ export default class CheckoutActions extends Component {
         component: FinalReviewCheckoutAction,
         onSubmit: this.buildOrder,
         props: {
-          checkoutSummary
+          checkoutSummary,
+          productURLPath: "/product/"
         }
       }
     ];
