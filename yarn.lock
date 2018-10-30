@@ -1022,9 +1022,10 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@reactioncommerce/components-context/-/components-context-1.0.0.tgz#587764cf0d1b0312c786b8e4657379de02e13845"
 
-"@reactioncommerce/components@0.45.2":
-  version "0.45.2"
-  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.45.2.tgz#b9295eb2e549b0cf8c840f0b16899edb805d8411"
+"@reactioncommerce/components@0.50.0":
+  version "0.50.0"
+  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.50.0.tgz#987868be75205945f18ce4a17da1d8a193212395"
+  integrity sha512-HU5L2T0Pt716HqWqJcvaxNIPnB0ellc5SYOfElJOFIKKI9hh44ruzCswcdVrkKg/yh7ZKi+QD2atKOCGrm8KXQ==
   dependencies:
     "@material-ui/core" "^3.1.0"
     lodash.debounce "^4.0.8"
