@@ -44,7 +44,7 @@ Array [
             className="CartItem__Item-ghDCXl eLtdJ"
           >
             <a
-              href="product-slug"
+              href="/product/product-slug"
             >
               <picture>
                 
@@ -137,7 +137,7 @@ Array [
             className="CartItem__Item-ghDCXl eLtdJ"
           >
             <a
-              href="product-slug"
+              href="/product/product-slug"
             >
               <picture>
                 
