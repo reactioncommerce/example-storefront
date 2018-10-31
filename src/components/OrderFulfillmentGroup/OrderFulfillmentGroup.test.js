@@ -32,7 +32,7 @@ const testFulfillmentGroup = {
         price: {
           displayAmount: "$20.00"
         },
-        productSlug: "/product-slug",
+        productSlug: "product-slug",
         productVendor: "Patagonia",
         title: "A Great Product",
         quantity: 2
@@ -50,7 +50,7 @@ const testFulfillmentGroup = {
           displayAmount: "$78.00"
         },
         productVendor: "Nike",
-        productSlug: "/product-slug",
+        productSlug: "product-slug",
         title: "Another Great Product",
         quantity: 1
       }
