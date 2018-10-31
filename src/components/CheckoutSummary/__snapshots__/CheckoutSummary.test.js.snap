@@ -15,7 +15,7 @@ exports[`basic snapshot 1`] = `
           className="CartItem__Item-ghDCXl eLtdJ"
         >
           <a
-            href="/product/product-slug"
+            href="product/product-slug"
           >
             <picture>
               
@@ -49,7 +49,7 @@ exports[`basic snapshot 1`] = `
                       className="CartItemDetail__Title-iDNyNA jPRxvh"
                     >
                       <a
-                        href="/product/product-slug"
+                        href="product/product-slug"
                       >
                         A Great Product
                       </a>
@@ -108,7 +108,7 @@ exports[`basic snapshot 1`] = `
           className="CartItem__Item-ghDCXl eLtdJ"
         >
           <a
-            href="/product/product-slug"
+            href="product/product-slug"
           >
             <picture>
               
@@ -142,7 +142,7 @@ exports[`basic snapshot 1`] = `
                       className="CartItemDetail__Title-iDNyNA jPRxvh"
                     >
                       <a
-                        href="/product/product-slug"
+                        href="product/product-slug"
                       >
                         Another Great Product
                       </a>
