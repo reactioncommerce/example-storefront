@@ -351,7 +351,7 @@ export default class CheckoutActions extends Component {
         onSubmit: this.buildOrder,
         props: {
           checkoutSummary,
-          productURLPath: "product/"
+          productURLPath: "/product/"
         }
       }
     ];
