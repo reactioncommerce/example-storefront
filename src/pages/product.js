@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import withCart from "containers/cart/withCart";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
+import withGoogleSiteVerificationToken from "containers/googleSiteVerificationToken/withGoogleSiteVerificationToken";
 import ProductDetail from "components/ProductDetail";
 import PageLoading from "components/PageLoading";
 import ErrorPage from "./_error";
 
+@withGoogleSiteVerificationToken
 @withCart
 @withCatalogItemProduct
 class ProductDetailPage extends Component {
@@ -29,6 +31,7 @@ class ProductDetailPage extends Component {
         code: PropTypes.string.isRequired
       })
     }),
+    siteVerificationToken: PropTypes.string,
     tags: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object).isRequired
     })
@@ -104,13 +107,17 @@ class ProductDetailPage extends Component {
   }
 
   render() {
-    const { product, shop } = this.props;
+    const { product, shop, siteVerificationToken } = this.props;
+    const metaTags = [{ name: "description", content: product && product.description }];
+    if (siteVerificationToken) {
+      metaTags.push({ name: "google-site-verification", content: siteVerificationToken });
+    }
 
     return (
       <Fragment>
         <Helmet
           title={`${product && product.title} | ${shop && shop.name}`}
-          meta={[{ name: "description", content: product && product.description }]}
+          meta={metaTags}
           script={[{ type: "application/ld+json", innerHTML: this.buildJSONLd() }]}
         />
         {this.renderMainArea()}
