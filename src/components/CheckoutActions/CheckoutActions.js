@@ -167,6 +167,13 @@ export default class CheckoutActions extends Component {
     // Store stripe token in MobX store
     cartStore.setStripeToken(stripeToken);
 
+    this.setState({
+      hasPaymentError: false,
+      actionAlerts: {
+        3: { }
+      }
+    });
+
     // Track successfully setting a payment method
     this.trackAction({
       step: 3,
@@ -244,7 +251,6 @@ export default class CheckoutActions extends Component {
       const { id } = decodeOpaqueId(orders[0]._id);
       Router.pushRoute("checkoutComplete", { orderId: id, token });
     } catch (error) {
-      console.log(error);
       this.setState({
         hasPaymentError: true,
         isPlacingOrder: false,
