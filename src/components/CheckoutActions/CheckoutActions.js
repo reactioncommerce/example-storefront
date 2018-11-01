@@ -61,6 +61,7 @@ export default class CheckoutActions extends Component {
       3: null,
       4: null
     },
+    hasPaymentError: false,
     isPlacingOrder: false
   }
 
@@ -243,17 +244,17 @@ export default class CheckoutActions extends Component {
       const { id } = decodeOpaqueId(orders[0]._id);
       Router.pushRoute("checkoutComplete", { orderId: id, token });
     } catch (error) {
+      console.log(error);
       this.setState({
+        hasPaymentError: true,
         isPlacingOrder: false,
         actionAlerts: {
           3: {
             alertType: "error",
             title: "Payment method failed",
-            message: error.message
+            message: error.toString()
           }
         }
-        // get the Payment step to open
-        // set CurrentActions[2].isActive == true
       });
     }
   }
@@ -280,7 +281,7 @@ export default class CheckoutActions extends Component {
 
     const { cartStore: { stripeToken } } = this.props;
     const { checkout: { fulfillmentGroups, summary }, items } = this.props.cart;
-    const { actionAlerts } = this.state;
+    const { actionAlerts, hasPaymentError } = this.state;
     const shippingAddressSet = isShippingAddressSet(fulfillmentGroups);
     const fulfillmentGroup = fulfillmentGroups[0];
 
@@ -349,7 +350,7 @@ export default class CheckoutActions extends Component {
         activeLabel: "Enter payment information",
         completeLabel: "Payment information",
         incompleteLabel: "Payment information",
-        status: stripeToken ? "complete" : "incomplete",
+        status: stripeToken && !hasPaymentError ? "complete" : "incomplete",
         component: StripePaymentCheckoutAction,
         onSubmit: this.setPaymentMethod,
         props: {
