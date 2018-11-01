@@ -55,6 +55,12 @@ export default class CheckoutActions extends Component {
   };
 
   state = {
+    actionAlerts: {
+      1: null,
+      2: null,
+      3: null,
+      4: null
+    },
     isPlacingOrder: false
   }
 
@@ -233,23 +239,23 @@ export default class CheckoutActions extends Component {
       }
 
       this.trackOrder({ action: ORDER_COMPLETED, orders });
-
       // Send user to order confirmation page
       const { id } = decodeOpaqueId(orders[0]._id);
       Router.pushRoute("checkoutComplete", { orderId: id, token });
     } catch (error) {
-      const alert = {
-        alertType: "error",
-        title: "Payment method failed",
-        message: error
-      };
-      window.alert(alert);
-      this.setState({ isPlacingOrder: false });
+      this.setState({
+        isPlacingOrder: false,
+        actionAlerts: {
+          3: {
+            alertType: "error",
+            title: "Payment method failed",
+            message: error.message
+          }
+        }
+        // get the Payment step to open
+        // set CurrentActions[2].isActive == true
+      });
     }
-  }
-
-  handleClose = () => {
-    // TODO: Open CheckoutAction to Step 3
   }
 
   renderPlacingOrderOverlay = () => {
@@ -261,7 +267,6 @@ export default class CheckoutActions extends Component {
         disableBackdropClick={true}
         disableEscapeKeyDown={true}
         open={isPlacingOrder}
-        onClose={this.handleClose}
       >
         <PageLoading delay={0} message="Placing your order..." />
       </Dialog>
@@ -275,6 +280,7 @@ export default class CheckoutActions extends Component {
 
     const { cartStore: { stripeToken } } = this.props;
     const { checkout: { fulfillmentGroups, summary }, items } = this.props.cart;
+    const { actionAlerts } = this.state;
     const shippingAddressSet = isShippingAddressSet(fulfillmentGroups);
     const fulfillmentGroup = fulfillmentGroups[0];
 
@@ -321,6 +327,7 @@ export default class CheckoutActions extends Component {
         component: ShippingAddressCheckoutAction,
         onSubmit: this.setShippingAddress,
         props: {
+          alert: actionAlerts["1"],
           fulfillmentGroup: shippingAddress
         }
       },
@@ -333,6 +340,7 @@ export default class CheckoutActions extends Component {
         component: FulfillmentOptionsCheckoutAction,
         onSubmit: this.setShippingMethod,
         props: {
+          alert: actionAlerts["2"],
           fulfillmentGroup
         }
       },
@@ -345,6 +353,7 @@ export default class CheckoutActions extends Component {
         component: StripePaymentCheckoutAction,
         onSubmit: this.setPaymentMethod,
         props: {
+          alert: actionAlerts["3"],
           payment: paymentData
         }
       },
@@ -357,6 +366,7 @@ export default class CheckoutActions extends Component {
         component: FinalReviewCheckoutAction,
         onSubmit: this.buildOrder,
         props: {
+          alert: actionAlerts["4"],
           checkoutSummary,
           productURLPath: "/product/"
         }

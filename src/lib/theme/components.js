@@ -30,6 +30,7 @@ import CheckoutActionComplete from "@reactioncommerce/components/CheckoutActionC
 import CheckoutActionIncomplete from "@reactioncommerce/components/CheckoutActionIncomplete/v1";
 import ErrorsBlock from "@reactioncommerce/components/ErrorsBlock/v1";
 import Field from "@reactioncommerce/components/Field/v1";
+import InlineAlert from "@reactioncommerce/components/InlineAlert/v1";
 import Link from "components/Link";
 import MiniCartSummary from "@reactioncommerce/components/MiniCartSummary/v1";
 import PhoneNumberInput from "@reactioncommerce/components/PhoneNumberInput/v1";
@@ -64,6 +65,7 @@ export default {
   CheckoutActionIncomplete,
   ErrorsBlock,
   Field,
+  InlineAlert,
   Link,
   iconAmericanExpress,
   iconClear,
