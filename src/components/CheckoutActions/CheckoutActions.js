@@ -55,6 +55,13 @@ export default class CheckoutActions extends Component {
   };
 
   state = {
+    actionAlerts: {
+      1: null,
+      2: null,
+      3: null,
+      4: null
+    },
+    hasPaymentError: false,
     isPlacingOrder: false
   }
 
@@ -160,6 +167,13 @@ export default class CheckoutActions extends Component {
     // Store stripe token in MobX store
     cartStore.setStripeToken(stripeToken);
 
+    this.setState({
+      hasPaymentError: false,
+      actionAlerts: {
+        3: { }
+      }
+    });
+
     // Track successfully setting a payment method
     this.trackAction({
       step: 3,
@@ -215,10 +229,9 @@ export default class CheckoutActions extends Component {
 
   placeOrder = async (order) => {
     const { authStore, cartStore, placeOrderWithStripeCard } = this.props;
-    const { data, error } = await placeOrderWithStripeCard(order);
 
-    // If success
-    if (data && !error) {
+    try {
+      const { data } = await placeOrderWithStripeCard(order);
       const { placeOrderWithStripeCardPayment: { orders, token } } = data;
 
       this.trackAction({
@@ -234,17 +247,22 @@ export default class CheckoutActions extends Component {
       }
 
       this.trackOrder({ action: ORDER_COMPLETED, orders });
-
       // Send user to order confirmation page
       const { id } = decodeOpaqueId(orders[0]._id);
       Router.pushRoute("checkoutComplete", { orderId: id, token });
+    } catch (error) {
+      this.setState({
+        hasPaymentError: true,
+        isPlacingOrder: false,
+        actionAlerts: {
+          3: {
+            alertType: "error",
+            title: "Payment method failed",
+            message: error.toString().replace("Error: GraphQL error:", "")
+          }
+        }
+      });
     }
-
-    // TODO: if an error occurred, notify user
-  }
-
-  handleClose = () => {
-    // TODO: if an error occurs, then close dialog
   }
 
   renderPlacingOrderOverlay = () => {
@@ -253,8 +271,9 @@ export default class CheckoutActions extends Component {
     return (
       <Dialog
         fullScreen
+        disableBackdropClick={true}
+        disableEscapeKeyDown={true}
         open={isPlacingOrder}
-        onClose={this.handleClose}
       >
         <PageLoading delay={0} message="Placing your order..." />
       </Dialog>
@@ -268,6 +287,7 @@ export default class CheckoutActions extends Component {
 
     const { cartStore: { stripeToken } } = this.props;
     const { checkout: { fulfillmentGroups, summary }, items } = this.props.cart;
+    const { actionAlerts, hasPaymentError } = this.state;
     const shippingAddressSet = isShippingAddressSet(fulfillmentGroups);
     const fulfillmentGroup = fulfillmentGroups[0];
 
@@ -314,6 +334,7 @@ export default class CheckoutActions extends Component {
         component: ShippingAddressCheckoutAction,
         onSubmit: this.setShippingAddress,
         props: {
+          alert: actionAlerts["1"],
           fulfillmentGroup: shippingAddress
         }
       },
@@ -326,6 +347,7 @@ export default class CheckoutActions extends Component {
         component: FulfillmentOptionsCheckoutAction,
         onSubmit: this.setShippingMethod,
         props: {
+          alert: actionAlerts["2"],
           fulfillmentGroup
         }
       },
@@ -334,10 +356,11 @@ export default class CheckoutActions extends Component {
         activeLabel: "Enter payment information",
         completeLabel: "Payment information",
         incompleteLabel: "Payment information",
-        status: stripeToken ? "complete" : "incomplete",
+        status: stripeToken && !hasPaymentError ? "complete" : "incomplete",
         component: StripePaymentCheckoutAction,
         onSubmit: this.setPaymentMethod,
         props: {
+          alert: actionAlerts["3"],
           payment: paymentData
         }
       },
@@ -350,6 +373,7 @@ export default class CheckoutActions extends Component {
         component: FinalReviewCheckoutAction,
         onSubmit: this.buildOrder,
         props: {
+          alert: actionAlerts["4"],
           checkoutSummary,
           productURLPath: "/product/"
         }
