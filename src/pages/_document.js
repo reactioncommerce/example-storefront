@@ -106,7 +106,7 @@ class HTMLDocument extends Document {
         <Main />
         <NextScript />
         {scripts.map((script, index) => (script.innerHTML ? /* eslint-disable-next-line */
-                <script async key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} /> : <script async key={index} {...script} />))}
+          <script async key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} /> : <script async key={index} {...script} />))}
       </body>
     </html>;
   }
