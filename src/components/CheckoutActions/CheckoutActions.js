@@ -258,7 +258,7 @@ export default class CheckoutActions extends Component {
           3: {
             alertType: "error",
             title: "Payment method failed",
-            message: error.toString()
+            message: error.toString().replace("Error: GraphQL error:", "")
           }
         }
       });
