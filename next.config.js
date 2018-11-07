@@ -42,7 +42,8 @@ const initExport = {
       url: process.env.KEYCLOAK_URL,
       redirectUri: process.env.KEYCLOAK_REDIRECT_URI
     },
-    stripePublicApiKey: process.env.STRIPE_PUBLIC_API_KEY
+    stripePublicApiKey: process.env.STRIPE_PUBLIC_API_KEY,
+    enableSPARouting: process.env.ENABLE_SPA_ROUTING === "true"
   },
   webpack: (config) => {
     config.module.rules.push({
