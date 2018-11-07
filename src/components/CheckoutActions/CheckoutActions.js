@@ -17,10 +17,7 @@ import trackCheckout from "lib/tracking/trackCheckout";
 import trackOrder from "lib/tracking/trackOrder";
 import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
 import { decodeOpaqueId } from "lib/utils/decoding";
-import {
-  adaptAddressToFormFields,
-  isShippingAddressSet
-} from "lib/utils/cartUtils";
+import { isShippingAddressSet } from "lib/utils/cartUtils";
 
 const {
   CHECKOUT_STARTED,
@@ -114,15 +111,7 @@ export default class CheckoutActions extends Component {
 
   setShippingAddress = async (address) => {
     const { checkoutMutations: { onSetShippingAddress } } = this.props;
-
-    // Omit firstName, lastName props as they are not in AddressInput type
-    // The address form and GraphQL endpoint need to be made consistent
-    const { firstName, lastName, ...rest } = address;
-    const { data, error } = await onSetShippingAddress({
-      fullName: `${address.firstName} ${address.lastName}`,
-      ...rest
-    });
-
+    const { data, error } = await onSetShippingAddress({ address });
 
     if (data && !error) {
       // track successfully setting a shipping address
@@ -292,12 +281,11 @@ export default class CheckoutActions extends Component {
     const fulfillmentGroup = fulfillmentGroups[0];
 
     let shippingAddress = { data: { shippingAddress: null } };
-    // Adapt shipping address to match fields in the AddressForm component.
-    // fullName is split into firstName and lastName
+
     if (shippingAddressSet) {
       shippingAddress = {
         data: {
-          shippingAddress: adaptAddressToFormFields(fulfillmentGroup.data.shippingAddress)
+          shippingAddress: fulfillmentGroup.data.shippingAddress
         }
       };
     }
