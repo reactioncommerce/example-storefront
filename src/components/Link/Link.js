@@ -1,10 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Link as NextLink } from "routes";
+import routes, { Link as NextLink } from "routes";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import track from "lib/tracking/track";
+import getConfig from "next/config";
+
+const { publicRuntimeConfig: { enableSPARouting } } = getConfig();
 
 const styles = () => ({
   anchor: {
@@ -24,11 +27,15 @@ class Link extends Component {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
     classes: PropTypes.object,
-    onClick: PropTypes.func
+    href: PropTypes.string,
+    onClick: PropTypes.func,
+    params: PropTypes.object,
+    route: PropTypes.route,
+    to: PropTypes.string
   }
 
   static defaultProps = {
-    onClick: () => {}
+    onClick: () => { }
   }
 
   @track(() => ({
@@ -52,13 +59,32 @@ class Link extends Component {
       children,
       classes,
       className,
-      tracking, // eslint-disable-line
+      href,
       onClick,
+      params,
+      route,
+      tracking, // eslint-disable-line
+      to,
       ...props
     } = this.props;
 
+    if (!enableSPARouting) {
+      const { urls: { as } } = routes.findAndGetUrls(route || to || href, params);
+
+      return (
+        <a
+          href={as}
+          className={classNames(classes.anchor, className)}
+          onClick={this.handleClick}
+          onKeyDown={this.handleKeyDown}
+        >
+          {children}
+        </a>
+      );
+    }
+
     return (
-      <NextLink route={props.route || props.href} {...props} passHref>
+      <NextLink route={route || to || href} params={params} {...props} passHref>
         <a
           className={classNames(classes.anchor, className)}
           onClick={this.handleClick}
