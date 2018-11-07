@@ -111,7 +111,7 @@ export default class CheckoutActions extends Component {
 
   setShippingAddress = async (address) => {
     const { checkoutMutations: { onSetShippingAddress } } = this.props;
-    const { data, error } = await onSetShippingAddress({ address });
+    const { data, error } = await onSetShippingAddress(address);
 
     if (data && !error) {
       // track successfully setting a shipping address
