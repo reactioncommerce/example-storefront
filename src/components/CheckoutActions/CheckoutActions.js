@@ -8,6 +8,7 @@ import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaym
 import FinalReviewCheckoutAction from "@reactioncommerce/components/FinalReviewCheckoutAction/v1";
 import withCart from "containers/cart/withCart";
 import withPlaceStripeOrder from "containers/order/withPlaceStripeOrder";
+import withAddressValidation from "containers/address/withAddressValidation";
 import Dialog from "@material-ui/core/Dialog";
 import PageLoading from "components/PageLoading";
 import { Router } from "routes";
@@ -17,10 +18,7 @@ import trackCheckout from "lib/tracking/trackCheckout";
 import trackOrder from "lib/tracking/trackOrder";
 import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
 import { decodeOpaqueId } from "lib/utils/decoding";
-import {
-  adaptAddressToFormFields,
-  isShippingAddressSet
-} from "lib/utils/cartUtils";
+import { isShippingAddressSet } from "lib/utils/cartUtils";
 
 const {
   CHECKOUT_STARTED,
@@ -30,6 +28,7 @@ const {
   PAYMENT_INFO_ENTERED
 } = TRACKING;
 
+@withAddressValidation
 @withCart
 @withPlaceStripeOrder
 @inject("authStore")
@@ -37,6 +36,7 @@ const {
 @observer
 export default class CheckoutActions extends Component {
   static propTypes = {
+    addressValidation: PropTypes.func.isRequired,
     cart: PropTypes.shape({
       account: PropTypes.object,
       checkout: PropTypes.object,
@@ -63,7 +63,7 @@ export default class CheckoutActions extends Component {
     },
     hasPaymentError: false,
     isPlacingOrder: false
-  }
+  };
 
   componentDidMount() {
     const { cart } = this.props;
@@ -81,13 +81,13 @@ export default class CheckoutActions extends Component {
   }
 
   @trackCheckoutStep()
-  trackAction() { }
+  trackAction() {}
 
   @trackCheckout()
-  trackCheckoutStarted() { }
+  trackCheckoutStarted() {}
 
   @trackOrder()
-  trackOrder() { }
+  trackOrder() {}
 
   buildData = (data) => {
     const { step, shipping_method = null, payment_method = null, action } = data; // eslint-disable-line camelcase
@@ -98,7 +98,7 @@ export default class CheckoutActions extends Component {
       shipping_method, // eslint-disable-line camelcase
       step
     };
-  }
+  };
 
   get shippingMethod() {
     const { checkout: { fulfillmentGroups } } = this.props.cart;
@@ -114,15 +114,7 @@ export default class CheckoutActions extends Component {
 
   setShippingAddress = async (address) => {
     const { checkoutMutations: { onSetShippingAddress } } = this.props;
-
-    // Omit firstName, lastName props as they are not in AddressInput type
-    // The address form and GraphQL endpoint need to be made consistent
-    const { firstName, lastName, ...rest } = address;
-    const { data, error } = await onSetShippingAddress({
-      fullName: `${address.firstName} ${address.lastName}`,
-      ...rest
-    });
-
+    const { data, error } = await onSetShippingAddress(address);
 
     if (data && !error) {
       // track successfully setting a shipping address
@@ -131,7 +123,7 @@ export default class CheckoutActions extends Component {
       // The next step will automatically be expanded, so lets track that
       this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 2 }));
     }
-  }
+  };
 
   setShippingMethod = async (shippingMethod) => {
     const { checkoutMutations: { onSetFulfillmentOption } } = this.props;
@@ -159,7 +151,7 @@ export default class CheckoutActions extends Component {
         action: CHECKOUT_STEP_VIEWED
       });
     }
-  }
+  };
 
   setPaymentMethod = (stripeToken) => {
     const { cartStore } = this.props;
@@ -170,7 +162,7 @@ export default class CheckoutActions extends Component {
     this.setState({
       hasPaymentError: false,
       actionAlerts: {
-        3: { }
+        3: {}
       }
     });
 
@@ -189,7 +181,7 @@ export default class CheckoutActions extends Component {
       payment_method: this.paymentMethod, // eslint-disable-line camelcase
       action: CHECKOUT_STEP_VIEWED
     });
-  }
+  };
 
   buildOrder = async () => {
     const { cart, cartStore } = this.props;
@@ -225,7 +217,7 @@ export default class CheckoutActions extends Component {
     };
 
     return this.setState({ isPlacingOrder: true }, () => this.placeOrder(order));
-  }
+  };
 
   placeOrder = async (order) => {
     const { authStore, cartStore, placeOrderWithStripeCard } = this.props;
@@ -263,29 +255,24 @@ export default class CheckoutActions extends Component {
         }
       });
     }
-  }
+  };
 
   renderPlacingOrderOverlay = () => {
     const { isPlacingOrder } = this.state;
 
     return (
-      <Dialog
-        fullScreen
-        disableBackdropClick={true}
-        disableEscapeKeyDown={true}
-        open={isPlacingOrder}
-      >
+      <Dialog fullScreen disableBackdropClick={true} disableEscapeKeyDown={true} open={isPlacingOrder}>
         <PageLoading delay={0} message="Placing your order..." />
       </Dialog>
     );
-  }
+  };
 
   render() {
     if (!this.props.cart) {
       return null;
     }
 
-    const { cartStore: { stripeToken } } = this.props;
+    const { addressValidation, cartStore: { stripeToken } } = this.props;
     const { checkout: { fulfillmentGroups, summary }, items } = this.props.cart;
     const { actionAlerts, hasPaymentError } = this.state;
     const shippingAddressSet = isShippingAddressSet(fulfillmentGroups);
@@ -297,7 +284,7 @@ export default class CheckoutActions extends Component {
     if (shippingAddressSet) {
       shippingAddress = {
         data: {
-          shippingAddress: adaptAddressToFormFields(fulfillmentGroup.data.shippingAddress)
+          shippingAddress: fulfillmentGroup.data.shippingAddress
         }
       };
     }
@@ -327,6 +314,10 @@ export default class CheckoutActions extends Component {
     const actions = [
       {
         id: "1",
+        addressValidatiionResults: {
+          suggestedAddresses: [],
+          validationErrors: []
+        },
         activeLabel: "Enter a shipping address",
         completeLabel: "Shipping address",
         incompleteLabel: "Shipping address",
@@ -335,7 +326,8 @@ export default class CheckoutActions extends Component {
         onSubmit: this.setShippingAddress,
         props: {
           alert: actionAlerts["1"],
-          fulfillmentGroup: shippingAddress
+          fulfillmentGroup: shippingAddress,
+          validation: addressValidation
         }
       },
       {
