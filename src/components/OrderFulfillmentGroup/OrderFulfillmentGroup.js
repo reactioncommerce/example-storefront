@@ -97,9 +97,9 @@ class OrderFulfillmentGroup extends Component {
       const { data: { shippingAddress } } = fulfillmentGroup;
       const address = (
         <Typography variant="body2">
-          {(shippingAddress.firstName || shippingAddress.lastName) && (
+          {(shippingAddress.fullName) && (
             <span>
-              {shippingAddress.firstName} {shippingAddress.lastName}
+              {shippingAddress.fullName}
               <br />
             </span>
           )}
