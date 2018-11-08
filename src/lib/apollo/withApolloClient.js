@@ -68,7 +68,12 @@ export default function withApolloClient(WrappedComponent) {
           // Handle them in components via the data.error prop:
           // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
           if (error.networkError) {
-            logger.error(`Unable to access the GraphQL API. Is it running and accessible at ${serverRuntimeConfig.graphqlUrl} from the Storefront UI server?`);
+            if (error.networkError.response && error.networkError.response.status === 401) {
+              logger.error("Error: Unable to access the GraphQL API due to invalid or expired authentication credentials.");
+              logger.error("Background token refresh is currently work-in-progress. To resolve this error, clear the browser cookies or manually go to the sign in page");
+            } else {
+              logger.error(`Unable to access the GraphQL API. Is it running and accessible at ${serverRuntimeConfig.graphqlUrl} from the Storefront UI server?`);
+            }
           } else {
             logger.error("Error while running `getDataFromTree`:", error);
           }
