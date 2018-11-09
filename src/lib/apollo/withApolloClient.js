@@ -68,6 +68,13 @@ export default function withApolloClient(WrappedComponent) {
           // Handle them in components via the data.error prop:
           // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
           if (error.networkError) {
+            // In server, if a 401 Unauthorized error occurred, redirect to /signin.
+            // This will re-authenticate without showing a login page and a new token is issued.
+            if (error.networkError.response.status === 401 && res) {
+              res.writeHead(302, { Location: "/signin" });
+              res.end();
+              return {};
+            }
             logger.error(`Unable to access the GraphQL API. Is it running and accessible at ${serverRuntimeConfig.graphqlUrl} from the Storefront UI server?`);
           } else {
             logger.error("Error while running `getDataFromTree`:", error);

@@ -22,7 +22,7 @@ export default function withCatalogItemProduct(Component) {
       return (
         <Query query={catalogItemProductQuery} variables={{ slugOrId: query.slugOrId }}>
           {({ data, loading }) => {
-            const { catalogItemProduct } = data;
+            const { catalogItemProduct } = data || {};
             const { product } = catalogItemProduct || {};
 
             return (
