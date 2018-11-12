@@ -68,7 +68,7 @@ class Link extends Component {
       ...props
     } = this.props;
 
-    if (!enableSPARouting) {
+    if (enableSPARouting === false) {
       const { urls: { as } } = routes.findAndGetUrls(route || to || href, params);
 
       return (
