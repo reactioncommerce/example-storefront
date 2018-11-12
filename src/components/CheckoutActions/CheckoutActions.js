@@ -272,7 +272,7 @@ export default class CheckoutActions extends Component {
       return null;
     }
 
-    const { addressValidation, cartStore: { stripeToken } } = this.props;
+    const { addressValidation, addressValidationResults, cartStore: { stripeToken } } = this.props;
     const { checkout: { fulfillmentGroups, summary }, items } = this.props.cart;
     const { actionAlerts, hasPaymentError } = this.state;
     const shippingAddressSet = isShippingAddressSet(fulfillmentGroups);
@@ -314,10 +314,6 @@ export default class CheckoutActions extends Component {
     const actions = [
       {
         id: "1",
-        addressValidatiionResults: {
-          suggestedAddresses: [],
-          validationErrors: []
-        },
         activeLabel: "Enter a shipping address",
         completeLabel: "Shipping address",
         incompleteLabel: "Shipping address",
@@ -325,6 +321,7 @@ export default class CheckoutActions extends Component {
         component: ShippingAddressCheckoutAction,
         onSubmit: this.setShippingAddress,
         props: {
+          addressValidationResults,
           alert: actionAlerts["1"],
           fulfillmentGroup: shippingAddress,
           validation: addressValidation
