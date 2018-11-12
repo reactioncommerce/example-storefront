@@ -84,6 +84,7 @@ class CheckoutSummary extends Component {
       const {
         fulfillmentTotal,
         itemTotal,
+        taxTotal,
         total
       } = cart.checkout.summary;
 
@@ -93,6 +94,7 @@ class CheckoutSummary extends Component {
             isDense
             displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
             displaySubtotal={itemTotal && itemTotal.displayAmount}
+            displayTax={taxTotal && taxTotal.displayAmount}
             displayTotal={total && total.displayAmount}
             itemsQuantity={cart.totalItemQuantity}
           />
