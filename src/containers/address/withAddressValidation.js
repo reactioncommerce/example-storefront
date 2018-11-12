@@ -20,22 +20,42 @@ export default function withAddressValidation(Comp) {
       primaryShopId: PropTypes.string.isRequired
     };
 
+    state = {
+      submittedAddress: null,
+      suggestedAddresses: [],
+      validationErrors: []
+    };
+
+    set addressValidationResults({ submittedAddress, validationResults }) {
+      console.log("setting withAdressValidation state", validationResults, submittedAddress);
+      this.setState({ submittedAddress, ...validationResults });
+    }
+
     handleAddressValidation = async (address) => {
       const { client: apolloClient, primaryShopId: shopId } = this.props;
-      const addressValidationResults = await apolloClient.query({
+      const { data: results } = await apolloClient.query({
         query: validateAddress,
         variables: {
           address,
           shopId
         }
       });
-      console.log("validating addreses!", address, shopId, addressValidationResults);
+      console.log("address validation results form GQL", results);
+      this.addressValidationResults = {
+        submittedAddress: address,
+        validationResults: results.addressValidation
+      };
     };
 
     render() {
+      console.log("is this working?");
       return (
         <Fragment>
-          <Comp {...this.props} addressValidation={this.handleAddressValidation} />
+          <Comp
+            {...this.props}
+            addressValidation={this.handleAddressValidation}
+            addressValidationResults={{ ...this.state }}
+          />
         </Fragment>
       );
     }
