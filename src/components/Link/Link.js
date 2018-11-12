@@ -30,7 +30,7 @@ class Link extends Component {
     href: PropTypes.string,
     onClick: PropTypes.func,
     params: PropTypes.object,
-    route: PropTypes.route,
+    route: PropTypes.string,
     to: PropTypes.string
   }
 
