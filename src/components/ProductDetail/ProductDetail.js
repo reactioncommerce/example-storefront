@@ -94,7 +94,7 @@ class ProductDetail extends Component {
     Router.pushRoute("product", {
       slugOrId: product.slug,
       variantId: selectOptionId || variantId
-    });
+    }, { replace: true });
   }
 
   @trackProduct()
