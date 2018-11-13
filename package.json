@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.1.0",
-    "@reactioncommerce/components": "0.51.2",
+    "@reactioncommerce/components": "0.54.4",
     "@reactioncommerce/components-context": "^1.0.0",
     "@segment/snippet": "^4.3.1",
     "apollo-cache-inmemory": "^1.1.11",
@@ -61,7 +61,6 @@
     "next-routes": "^1.4.2",
     "passport": "^0.4.0",
     "passport-oauth2": "^1.4.0",
-    "passport-oauth2-refresh": "^1.1.0",
     "prop-types": "^15.6.2",
     "react": "16.4.2",
     "react-apollo": "^2.1.3",

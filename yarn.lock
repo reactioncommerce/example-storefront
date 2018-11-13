@@ -1022,10 +1022,10 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@reactioncommerce/components-context/-/components-context-1.0.0.tgz#587764cf0d1b0312c786b8e4657379de02e13845"
 
-"@reactioncommerce/components@0.51.2":
-  version "0.51.2"
-  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.51.2.tgz#74df7ee026e6f1f0f25383779d453f330db73a98"
-  integrity sha512-/CaJGcCGVNM6CPJ4YxSxN0+9Qp3B3LTuxfC29xpLRInH1fQf4J3KZw8EKEUT7Pz9pjIedTIoQKTV1NsdKmEMhw==
+"@reactioncommerce/components@0.54.4":
+  version "0.54.4"
+  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.54.4.tgz#271620f0653dee0230f183153b113eb237512dc6"
+  integrity sha512-8bsMd9whxhz+U/8s36wgSvjf32O1a7qdfabuyxAQU5gc6qm2y4fDciHJ3L/PzZ6opF9mYM/RT+DdWVN9NAy6QA==
   dependencies:
     "@material-ui/core" "^3.1.0"
     lodash.debounce "^4.0.8"
@@ -6614,10 +6614,6 @@ parseurl@~1.3.2:
 pascalcase@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
-
-passport-oauth2-refresh@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/passport-oauth2-refresh/-/passport-oauth2-refresh-1.1.0.tgz#4e77702bd64f1ec39ddc4142edec85a4f5086f43"
 
 passport-oauth2@^1.4.0:
   version "1.4.0"
