@@ -43,7 +43,7 @@ const initExport = {
       redirectUri: process.env.KEYCLOAK_REDIRECT_URI
     },
     stripePublicApiKey: process.env.STRIPE_PUBLIC_API_KEY,
-    enableSPARouting: !(process.env.ENABLE_SPA_ROUTING === "false")
+    enableSPARouting: process.env.ENABLE_SPA_ROUTING !== "false" // Disable SPA routing if explicitly string "false"
   },
   webpack: (config) => {
     config.module.rules.push({
