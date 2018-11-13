@@ -1,5 +1,6 @@
 import { ApolloClient } from "apollo-client";
 import { ApolloLink } from "apollo-link";
+import { Router } from "routes";
 import { HttpLink } from "apollo-link-http";
 import { setContext } from "apollo-link-context";
 import { onError } from "apollo-link-error";
@@ -39,6 +40,13 @@ const create = (initialState, options) => {
     }
 
     if (networkError) {
+      const errorCode = networkError.response && networkError.response.status;
+      // In browser, if a 401 Unauthorized error occurred, redirect to /signin.
+      // This will re-authenticate the user without showing a login page and a new token is issued.
+      if (errorCode === 401) {
+        if (process && process.browser) Router.pushRoute("/signin");
+      }
+
       // eslint-disable-next-line no-console
       console.error(`[Network error]: ${networkError}`);
     }
