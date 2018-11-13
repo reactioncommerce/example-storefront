@@ -91,6 +91,9 @@ app
     server.get("/logout/:userId", (req, res) => {
       const { id } = decodeOpaqueId(req.params.userId);
       request(`${process.env.OAUTH2_IDP_HOST_URL}logout?userId=${id}`, (error) => {
+        if (error) {
+          logger.error(`Error from OAUTH2_IDP_HOST_URL logout endpoint: ${error}. Check the HOST server settings`);
+        }
         if (!error) {
           req.logout();
           res.redirect(req.get("Referer") || "/");
