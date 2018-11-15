@@ -279,8 +279,7 @@ export default class CheckoutActions extends Component {
     const fulfillmentGroup = fulfillmentGroups[0];
 
     let shippingAddress = { data: { shippingAddress: null } };
-    // Adapt shipping address to match fields in the AddressForm component.
-    // fullName is split into firstName and lastName
+
     if (shippingAddressSet) {
       shippingAddress = {
         data: {

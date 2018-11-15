@@ -26,6 +26,7 @@ const initExport = {
    * const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
    */
   publicRuntimeConfig: {
+    canonicalUrl: process.env.CANONICAL_URL,
     graphqlUrl: process.env.EXTERNAL_GRAPHQL_URL,
     segmentAnalytics: {
       skipMinimize: process.env.SEGMENT_ANALYTICS_SKIP_MINIMIZE === "true", // Convert to a Boolean
