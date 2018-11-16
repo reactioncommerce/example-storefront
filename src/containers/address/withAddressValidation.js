@@ -26,10 +26,18 @@ export default function withAddressValidation(Comp) {
       validationErrors: []
     };
 
-    set addressValidationResults({ submittedAddress, validationResults }) {
-      console.log("setting withAdressValidation state", validationResults, submittedAddress);
-      this.setState({ submittedAddress, ...validationResults });
+    set addressValidationResults({ submittedAddress, validationResults: { suggestedAddresses, validationErrors } }) {
+      this.setState({
+        suggestedAddresses: suggestedAddresses.map(this.xformValidSuggestions),
+        submittedAddress,
+        validationErrors
+      });
     }
+
+    xformValidSuggestions = (address) => ({
+      ...address,
+      isValid: true
+    });
 
     handleAddressValidation = async (address) => {
       const { client: apolloClient, primaryShopId: shopId } = this.props;
@@ -40,7 +48,6 @@ export default function withAddressValidation(Comp) {
           shopId
         }
       });
-      console.log("address validation results form GQL", results);
       this.addressValidationResults = {
         submittedAddress: address,
         validationResults: results.addressValidation
@@ -48,7 +55,6 @@ export default function withAddressValidation(Comp) {
     };
 
     render() {
-      console.log("is this working?");
       return (
         <Fragment>
           <Comp

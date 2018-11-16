@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
+import isEqual from "lodash.isequal";
 import Actions from "@reactioncommerce/components/CheckoutActions/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
 import FulfillmentOptionsCheckoutAction from "@reactioncommerce/components/FulfillmentOptionsCheckoutAction/v1";
@@ -37,6 +38,7 @@ const {
 export default class CheckoutActions extends Component {
   static propTypes = {
     addressValidation: PropTypes.func.isRequired,
+    addressValidationResults: PropTypes.object,
     cart: PropTypes.shape({
       account: PropTypes.object,
       checkout: PropTypes.object,
@@ -80,6 +82,17 @@ export default class CheckoutActions extends Component {
     }
   }
 
+  componentDidUpdate({ addressValidationResults: prevAddressValidationResults }) {
+    const { addressValidationResults } = this.props;
+    if (
+      addressValidationResults &&
+      prevAddressValidationResults &&
+      !isEqual(addressValidationResults, prevAddressValidationResults)
+    ) {
+      this.handleValidationErrors();
+    }
+  }
+
   @trackCheckoutStep()
   trackAction() {}
 
@@ -114,6 +127,7 @@ export default class CheckoutActions extends Component {
 
   setShippingAddress = async (address) => {
     const { checkoutMutations: { onSetShippingAddress } } = this.props;
+    delete address.isValid;
     const { data, error } = await onSetShippingAddress(address);
 
     if (data && !error) {
@@ -122,8 +136,28 @@ export default class CheckoutActions extends Component {
 
       // The next step will automatically be expanded, so lets track that
       this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 2 }));
+
+      this.setState({
+        actionAlerts: {
+          1: {}
+        }
+      });
     }
   };
+
+  handleValidationErrors() {
+    const { addressValidationResults } = this.props;
+    const { validationErrors } = addressValidationResults || [];
+    const shippingAlert =
+      validationErrors && validationErrors.length
+        ? {
+          actionType: validationErrors[0].type,
+          title: validationErrors[0].summary,
+          message: validationErrors[0].details
+        }
+        : null;
+    this.setState({ actionAlerts: { 1: shippingAlert } });
+  }
 
   setShippingMethod = async (shippingMethod) => {
     const { checkoutMutations: { onSetFulfillmentOption } } = this.props;
@@ -323,7 +357,7 @@ export default class CheckoutActions extends Component {
           addressValidationResults,
           alert: actionAlerts["1"],
           fulfillmentGroup: shippingAddress,
-          validation: addressValidation
+          onAddressValidation: addressValidation
         }
       },
       {
@@ -367,6 +401,7 @@ export default class CheckoutActions extends Component {
         }
       }
     ];
+
     return (
       <Fragment>
         {this.renderPlacingOrderOverlay()}
