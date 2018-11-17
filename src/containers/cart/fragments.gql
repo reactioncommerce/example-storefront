@@ -76,6 +76,10 @@ fragment CartCommon on Cart {
         amount
         displayAmount
       }
+      surchargeTotal {
+        amount
+        displayAmount
+      }
       total {
         amount
         displayAmount
