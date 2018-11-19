@@ -14,9 +14,6 @@ export default function withAddressValidation(Comp) {
       client: PropTypes.shape({
         query: PropTypes.func.isRequired
       }),
-      /**
-       * ShopId used to obtain tags for
-       */
       primaryShopId: PropTypes.string.isRequired
     };
 
