@@ -151,10 +151,10 @@ export default class CheckoutActions extends Component {
     const shippingAlert =
       validationErrors && validationErrors.length
         ? {
-            alertType: validationErrors[0].type,
-            title: validationErrors[0].summary,
-            message: validationErrors[0].details
-          }
+          alertType: validationErrors[0].type,
+          title: validationErrors[0].summary,
+          message: validationErrors[0].details
+        }
         : null;
     this.setState({ actionAlerts: { 1: shippingAlert } });
   }
