@@ -15,6 +15,8 @@ import iconDiscover from "@reactioncommerce/components/svg/iconDiscover";
 import iconMastercard from "@reactioncommerce/components/svg/iconMastercard";
 import iconVisa from "@reactioncommerce/components/svg/iconVisa";
 import spinner from "@reactioncommerce/components/svg/spinner";
+import Address from "@reactioncommerce/components/Address/v1";
+import AddressCapture from "@reactioncommerce/components/AddressCapture/v1";
 import AddressForm from "@reactioncommerce/components/AddressForm/v1";
 import AddressReview from "@reactioncommerce/components/AddressReview/v1";
 import BadgeOverlay from "@reactioncommerce/components/BadgeOverlay/v1";
@@ -52,6 +54,8 @@ import withLocales from "../utils/withLocales";
 const AddressFormWithLocales = withLocales(AddressForm);
 
 export default {
+  Address,
+  AddressCapture,
   AddressForm: AddressFormWithLocales,
   AddressReview,
   BadgeOverlay,
