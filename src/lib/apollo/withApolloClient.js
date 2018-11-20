@@ -34,7 +34,15 @@ export default function withApolloClient(WrappedComponent) {
       // Provide the `url` prop data in case a GraphQL query uses it
       rootMobxStores.routingStore.updateRoute({ query, pathname });
 
-      const user = req && req.session && req.session.passport && req.session.passport.user && JSON.parse(req.session.passport.user);
+      let user;
+      try {
+        const userString = req && req.session && req.session.passport && req.session.passport.user;
+        user = JSON.parse(userString);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log("Error parsing user object. Check passport session configuration", error);
+      }
+
       const apollo = initApollo({ cookies: req && req.cookies }, { accessToken: user && user.accessToken });
 
       ctx.ctx.apolloClient = apollo;
