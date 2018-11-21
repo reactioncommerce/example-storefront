@@ -37,7 +37,7 @@ export default function withApolloClient(WrappedComponent) {
       let user;
       try {
         const userString = req && req.session && req.session.passport && req.session.passport.user;
-        user = JSON.parse(userString);
+        user = userString && JSON.parse(userString);
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log("Error parsing user object. Check passport session configuration", error);
