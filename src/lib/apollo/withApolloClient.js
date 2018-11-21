@@ -34,7 +34,15 @@ export default function withApolloClient(WrappedComponent) {
       // Provide the `url` prop data in case a GraphQL query uses it
       rootMobxStores.routingStore.updateRoute({ query, pathname });
 
-      const user = req && req.session && req.session.passport && req.session.passport.user && JSON.parse(req.session.passport.user);
+      let user;
+      try {
+        const userString = req && req.session && req.session.passport && req.session.passport.user;
+        user = JSON.parse(userString);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log("Error parsing user object. Check passport session configuration", error);
+      }
+
       const apollo = initApollo({ cookies: req && req.cookies }, { accessToken: user && user.accessToken });
 
       ctx.ctx.apolloClient = apollo;
@@ -71,7 +79,8 @@ export default function withApolloClient(WrappedComponent) {
             // In server, if a 401 Unauthorized error occurred, redirect to /signin.
             // This will re-authenticate without showing a login page and a new token is issued.
             if (error.networkError.response.status === 401 && res) {
-              logger.debug("Received 401 error from the GraphQL API due to invalid or expired authentication credentials. Triggering token refresh via redirect flow");
+              // eslint-disable-next-line no-console
+              console.log("Received 401 error from the GraphQL API due to invalid or expired authentication credentials. Triggering token refresh via redirect flow");
               res.writeHead(302, { Location: "/signin" });
               res.end();
               return {};
