@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.1.0",
-    "@reactioncommerce/components": "0.54.4",
+    "@reactioncommerce/components": "0.55.0",
     "@reactioncommerce/components-context": "^1.0.0",
     "@segment/snippet": "^4.3.1",
     "apollo-cache-inmemory": "^1.1.11",
@@ -54,6 +54,7 @@
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.0",
     "keymirror": "^0.1.1",
+    "lodash.isequal": "^4.5.0",
     "mdi-material-ui": "^5.4.0",
     "mobx": "^4.1.1",
     "mobx-react": "^5.0.0",
