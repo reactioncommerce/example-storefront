@@ -167,6 +167,7 @@ fragment OrderCommon on Order {
     }
     type
   }
+  referenceId
   shop {
     _id
     currency {

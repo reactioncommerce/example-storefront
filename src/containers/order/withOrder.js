@@ -58,7 +58,7 @@ export default function withOrder(Component) {
             return (
               <Component
                 {...this.props}
-                isLoading={isLoading}
+                isLoadingOrder={isLoading}
                 order={order}
               />
             );

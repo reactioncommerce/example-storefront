@@ -5,10 +5,10 @@ import { observer } from "mobx-react";
 import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import withOrder from "containers/order/withOrder";
 import OrderFulfillmentGroups from "components/OrderFulfillmentGroups";
+import PageLoading from "components/PageLoading";
 import withCart from "containers/cart/withCart";
-import { decodeOpaqueId } from "lib/utils/decoding";
+import withOrder from "containers/order/withOrder";
 
 const styles = (theme) => ({
   sectionHeader: {
@@ -81,7 +81,7 @@ class CheckoutComplete extends Component {
     clearAuthenticatedUsersCart: PropTypes.func.isRequired,
     client: PropTypes.object.isRequired,
     hasMoreCartItems: PropTypes.bool,
-    isLoading: PropTypes.bool,
+    isLoadingOrder: PropTypes.bool,
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
@@ -106,9 +106,7 @@ class CheckoutComplete extends Component {
   }
 
   renderFulfillmentGroups() {
-    const { classes, order, isLoading } = this.props;
-
-    if (isLoading) return null;
+    const { classes, order } = this.props;
 
     return (
       <div className={classes.flexContainer}>
@@ -120,8 +118,21 @@ class CheckoutComplete extends Component {
   }
 
   render() {
-    const { classes, order, shop } = this.props;
-    const { id } = (order && decodeOpaqueId(order._id)) || {};
+    const { classes, isLoadingOrder, order, shop } = this.props;
+
+    if (isLoadingOrder) return <PageLoading message="Loading order details..." />;
+
+    if (!order) {
+      return (
+        <div className={classes.checkoutContentContainer}>
+          <div className={classes.orderDetails}>
+            <section className={classes.section}>
+              <Typography className={classes.title} variant="title">Order not found</Typography>
+            </section>
+          </div>
+        </div>
+      );
+    }
 
     return (
       <Fragment>
@@ -137,7 +148,7 @@ class CheckoutComplete extends Component {
                   {"Thank you for your order"}
                 </Typography>
                 <Typography variant="body1">
-                  {"Your order ID is:"} <strong>{id}</strong>
+                  {"Your order ID is:"} <strong>{order && order.referenceId}</strong>
                 </Typography>
                 <Typography variant="body1">
                   {"We've sent a confirmation email to:"} <strong>{order && order.email}</strong>
