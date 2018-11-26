@@ -142,7 +142,7 @@ class Checkout extends Component {
     }),
     classes: PropTypes.object,
     hasMoreCartItems: PropTypes.bool,
-    isLoading: PropTypes.bool,
+    isLoadingCart: PropTypes.bool,
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
@@ -287,13 +287,13 @@ class Checkout extends Component {
       classes,
       cart,
       hasMoreCartItems,
-      isLoading,
+      isLoadingCart,
       loadMoreCartItems,
       onRemoveCartItems,
       onChangeCartItemsQuantity
     } = this.props;
 
-    if (isLoading) return null;
+    if (isLoadingCart) return null;
 
     if (!cart || (cart && Array.isArray(cart.items) && cart.items.length === 0)) {
       return (
@@ -345,8 +345,8 @@ class Checkout extends Component {
   }
 
   render() {
-    const { isLoading, cart } = this.props;
-    if (isLoading || !cart) return <PageLoading delay={0} />;
+    const { isLoadingCart, cart } = this.props;
+    if (isLoadingCart || !cart) return <PageLoading delay={0} />;
 
     return (
       <Fragment>
