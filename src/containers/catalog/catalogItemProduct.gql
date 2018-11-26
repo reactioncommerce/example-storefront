@@ -71,6 +71,9 @@ query catalogItemProductQuery($slugOrId: String!) {
         optionTitle
         index
         pricing {
+          compareAtPrice {
+            displayAmount
+          }
           price
           currency {
             code
@@ -83,6 +86,9 @@ query catalogItemProductQuery($slugOrId: String!) {
           title
           index
           pricing {
+            compareAtPrice {
+              displayAmount
+            }
             price
             currency {
               code

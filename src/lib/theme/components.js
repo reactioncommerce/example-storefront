@@ -19,6 +19,8 @@ import iconVisa from "@reactioncommerce/components/svg/iconVisa";
 import spinner from "@reactioncommerce/components/svg/spinner";
 import Accordion from "@reactioncommerce/components/Accordion/v1";
 import AddressBook from "@reactioncommerce/components/AddressBook/v1";
+import Address from "@reactioncommerce/components/Address/v1";
+import AddressCapture from "@reactioncommerce/components/AddressCapture/v1";
 import AddressForm from "@reactioncommerce/components/AddressForm/v1";
 import AddressReview from "@reactioncommerce/components/AddressReview/v1";
 import BadgeOverlay from "@reactioncommerce/components/BadgeOverlay/v1";
@@ -36,6 +38,7 @@ import CheckoutActionIncomplete from "@reactioncommerce/components/CheckoutActio
 import ErrorsBlock from "@reactioncommerce/components/ErrorsBlock/v1";
 import Field from "@reactioncommerce/components/Field/v1";
 import InPageMenuItem from "@reactioncommerce/components/InPageMenuItem/v1";
+import InlineAlert from "@reactioncommerce/components/InlineAlert/v1";
 import Link from "components/Link";
 import MiniCartSummary from "@reactioncommerce/components/MiniCartSummary/v1";
 import PhoneNumberInput from "@reactioncommerce/components/PhoneNumberInput/v1";
@@ -43,6 +46,7 @@ import Price from "@reactioncommerce/components/Price/v1";
 import ProfileImage from "@reactioncommerce/components/ProfileImage/v1";
 import ProgressiveImage from "@reactioncommerce/components/ProgressiveImage/v1";
 import QuantityInput from "@reactioncommerce/components/QuantityInput/v1";
+import RegionInput from "@reactioncommerce/components/RegionInput/v1";
 import Select from "@reactioncommerce/components/Select/v1";
 import SelectableItem from "@reactioncommerce/components/SelectableItem/v1";
 import SelectableList from "@reactioncommerce/components/SelectableList/v1";
@@ -57,6 +61,8 @@ const AddressFormWithLocales = withLocales(AddressForm);
 export default {
   Accordion,
   AddressBook,
+  Address,
+  AddressCapture,
   AddressForm: AddressFormWithLocales,
   AddressReview,
   BadgeOverlay,
@@ -73,6 +79,7 @@ export default {
   CheckoutActionIncomplete,
   ErrorsBlock,
   Field,
+  InlineAlert,
   Link,
   iconAmericanExpress,
   iconClear,
@@ -90,6 +97,7 @@ export default {
   ProfileImage,
   ProgressiveImage,
   QuantityInput,
+  RegionInput,
   Select,
   spinner,
   SelectableItem,
