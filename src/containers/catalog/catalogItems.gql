@@ -35,6 +35,9 @@ query catalogItemsQuery($shopId: ID!, $tagIds: [ID] $first: ConnectionLimitInt, 
               }
             }
             pricing {
+              compareAtPrice {
+                displayAmount
+              }
               currency {
                 code
               }

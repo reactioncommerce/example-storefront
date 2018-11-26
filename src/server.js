@@ -1,13 +1,13 @@
 const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 const express = require("express");
+const compression = require("compression");
 const nextApp = require("next");
 const request = require("request");
 const { useStaticRendering } = require("mobx-react");
 const logger = require("lib/logger");
 const passport = require("passport");
 const OAuth2Strategy = require("passport-oauth2");
-const refresh = require("passport-oauth2-refresh");
 const { decodeOpaqueId } = require("lib/utils/decoding");
 const { appPath, dev } = require("./config");
 const router = require("./routes");
@@ -30,12 +30,10 @@ passport.use("oauth2", new OAuth2Strategy({
   clientSecret: process.env.OAUTH2_CLIENT_SECRET,
   callbackURL: process.env.OAUTH2_REDIRECT_URL,
   state: true,
-  scope: ["offline", "openid"]
+  scope: ["offline"]
 }, (accessToken, refreshToken, profile, cb) => {
-  cb(null, { accessToken, profile });
+  cb(null, { accessToken });
 }));
-
-passport.use("refresh", refresh);
 
 // The value passed to `done` here is stored on the session.
 // We save the full user object in the session.
@@ -53,6 +51,8 @@ app
   .prepare()
   .then(() => {
     const server = express();
+
+    server.use(compression());
 
     const { SESSION_SECRET, SESSION_MAX_AGE_MS } = process.env;
     const maxAge = SESSION_MAX_AGE_MS ? Number(SESSION_MAX_AGE_MS) : 24 * 60 * 60 * 1000; // 24 hours
@@ -91,6 +91,9 @@ app
     server.get("/logout/:userId", (req, res) => {
       const { id } = decodeOpaqueId(req.params.userId);
       request(`${process.env.OAUTH2_IDP_HOST_URL}logout?userId=${id}`, (error) => {
+        if (error) {
+          logger.error(`Error from OAUTH2_IDP_HOST_URL logout endpoint: ${error}. Check the HOST server settings`);
+        }
         if (!error) {
           req.logout();
           res.redirect(req.get("Referer") || "/");

@@ -9,7 +9,9 @@ import Breadcrumbs from "components/Breadcrumbs";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
-import ProductDetailInfo from "components/ProductDetailInfo";
+import ProductDetailVendor from "components/ProductDetailVendor";
+import ProductDetailDescription from "components/ProductDetailDescription";
+import ProductDetailPrice from "components/ProductDetailPrice";
 import MediaGallery from "components/MediaGallery";
 import TagGrid from "components/TagGrid";
 import { Router } from "routes";
@@ -28,6 +30,9 @@ const styles = (theme) => ({
   breadcrumbGrid: {
     marginBottom: theme.spacing.unit * 2,
     marginTop: theme.spacing.unit * 2
+  },
+  info: {
+    marginBottom: theme.spacing.unit
   }
 });
 
@@ -37,7 +42,7 @@ const styles = (theme) => ({
  * @param {Object} props Component props
  * @returns {React.Component} React component node that represents a product detail view
  */
-@withWidth()
+@withWidth({ initialWidth: "md" })
 @withStyles(styles, { withTheme: true, name: "SkProductDetail" })
 @inject("routingStore", "uiStore")
 @track()
@@ -89,7 +94,7 @@ class ProductDetail extends Component {
     Router.pushRoute("product", {
       slugOrId: product.slug,
       variantId: selectOptionId || variantId
-    });
+    }, { replace: true });
   }
 
   @trackProduct()
@@ -257,6 +262,7 @@ class ProductDetail extends Component {
     }
 
     const productPrice = this.determineProductPrice();
+    const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
 
     // Phone size
     if (isWidthDown("sm", width)) {
@@ -264,8 +270,12 @@ class ProductDetail extends Component {
         <Fragment>
           <div className={classes.section}>
             <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
-            <ProductDetailInfo vendor={product.vendor} />
-            <ProductDetailInfo priceRange={productPrice.displayPrice} />
+            <div className={classes.info}>
+              <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
+            </div>
+            <div className={classes.info}>
+              <ProductDetailPrice compareAtPrice={compareAtDisplayPrice} isCompact price={productPrice.displayPrice} />
+            </div>
           </div>
 
           <div className={classes.section}>
@@ -286,9 +296,7 @@ class ProductDetail extends Component {
           </div>
 
           <div className={classes.section}>
-            <ProductDetailInfo
-              description={product.description}
-            />
+            <ProductDetailDescription>{product.description}</ProductDetailDescription>
           </div>
         </Fragment>
       );
@@ -311,11 +319,15 @@ class ProductDetail extends Component {
 
           <Grid item xs={12} sm={6}>
             <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
-            <ProductDetailInfo
-              priceRange={productPrice.displayPrice}
-              description={product.description}
-              vendor={product.vendor}
-            />
+            <div className={classes.info}>
+              <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
+            </div>
+            <div className={classes.info}>
+              <ProductDetailPrice className={classes.bottomMargin} compareAtPrice={compareAtDisplayPrice} price={productPrice.displayPrice} />
+            </div>
+            <div className={classes.info}>
+              <ProductDetailDescription>{product.description}</ProductDetailDescription>
+            </div>
             <VariantList
               onSelectOption={this.handleSelectOption}
               onSelectVariant={this.handleSelectVariant}
