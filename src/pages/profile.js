@@ -44,8 +44,11 @@ class ProfileAddressBook extends Component {
     };
 
     return (
-      <AddressBook account={accountAddressBook} />
+      <Fragment>This is a placeholder, remove this and return AddressBook component below when ready.</Fragment>
     );
+    // return (
+    //   <AddressBook account={accountAddressBook} />
+    // );
   }
 
   renderOrders() {
