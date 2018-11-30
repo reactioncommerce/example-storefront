@@ -4,7 +4,7 @@ const getConfig = require("next/config").default;
 if (process.browser) {
   const { publicRuntimeConfig } = getConfig();
 
-  const wrap = (method) => (route, params, options) => {
+  const wrap = (method) => (route, params, options = {}) => {
     const { byName, urls: { as, href } } = routes.findAndGetUrls(route, params);
 
     // Force full page loads
