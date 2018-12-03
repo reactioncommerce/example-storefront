@@ -1,4 +1,3 @@
-import { decodeOpaqueId } from "lib/utils/decoding";
 import getCartItemTrackingData from "./utils/getCartItemTrackingData";
 import track from "./track";
 
@@ -16,8 +15,7 @@ export default (options) =>
       orders
     } = (functionArgs && functionArgs[0]) || [];
 
-    const { fulfillmentGroups, _id, shop } = orders[0];
-    const { id } = decodeOpaqueId(_id);
+    const { fulfillmentGroups, referenceId, shop } = orders[0];
     // currently only supporting one fulfillment group
     const { items: { nodes: items }, summary } = fulfillmentGroups[0];
     const products = [];
@@ -29,7 +27,7 @@ export default (options) =>
     const data = {
       action,
       currency: shop.currency.code,
-      order_id: id, // eslint-disable-line camelcase
+      order_id: referenceId, // eslint-disable-line camelcase
       revenue: summary.itemTotal.amount,
       shipping: summary.fulfillmentTotal.amount,
       tax: summary.taxTotal.amount,
