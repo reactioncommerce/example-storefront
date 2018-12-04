@@ -13,7 +13,6 @@ import ProductDetailVendor from "components/ProductDetailVendor";
 import ProductDetailDescription from "components/ProductDetailDescription";
 import ProductDetailPrice from "components/ProductDetailPrice";
 import MediaGallery from "components/MediaGallery";
-import TagGrid from "components/TagGrid";
 import { Router } from "routes";
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import variantById from "lib/utils/variantById";
@@ -311,9 +310,6 @@ class ProductDetail extends Component {
           <Grid item xs={12} sm={6}>
             <div className={classes.section}>
               <MediaGallery mediaItems={pdpMediaItems} />
-            </div>
-            <div className={classes.section}>
-              <TagGrid tags={product.tags.nodes} />
             </div>
           </Grid>
 
