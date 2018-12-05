@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshop of tagWithoutTitle 1`] = `null`;
+
+exports[`snapshot of tagWithTitle 1`] = `
+<section>
+  <div
+    className="MuiGrid-item-3 MuiGrid-grid-xs-12-42"
+  >
+    <h1
+      className="MuiTypography-root-99 MuiTypography-title-105 SkProductGridTitle-gridTitle-1"
+    >
+      Test Title
+    </h1>
+  </div>
+</section>
+`;
