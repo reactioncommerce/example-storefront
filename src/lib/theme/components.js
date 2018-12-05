@@ -5,6 +5,10 @@
  * without worrying about it pulling in new component versions everywhere automatically. Instead,
  * you can switch from the `v1` import path to the `v2` import path, e.g., for a single component
  * when you're ready.
+ *
+ * To avoid having too many conflicts when you pull in new versions of this file, you can import
+ * your custom and override components in src/custom/componentsContext.js, which this file
+ * imports.
  */
 
 import iconClear from "@reactioncommerce/components/svg/iconClear";
@@ -49,6 +53,7 @@ import StockWarning from "@reactioncommerce/components/StockWarning/v1";
 import StripeForm from "@reactioncommerce/components/StripeForm/v1";
 import TextInput from "@reactioncommerce/components/TextInput/v1";
 import withLocales from "../utils/withLocales";
+import customComponents from "../../custom/componentsContext";
 
 // Providing locales data
 const AddressFormWithLocales = withLocales(AddressForm);
@@ -94,5 +99,6 @@ export default {
   SelectableList,
   StockWarning,
   StripeForm,
-  TextInput
+  TextInput,
+  ...customComponents
 };
