@@ -18,7 +18,7 @@ import withMobX from "lib/stores/withMobX";
 import rootMobXStores from "lib/stores";
 import components from "../lib/theme/components";
 import getPageContext from "../lib/theme/getPageContext";
-import componentTheme from "../lib/theme/componentTheme";
+import componentTheme from "../custom/componentTheme";
 
 const { publicRuntimeConfig } = getConfig();
 
