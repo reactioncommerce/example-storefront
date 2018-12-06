@@ -129,7 +129,7 @@
     "roots": [
       "./src"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/tests/setupTests.js",
     "transform": {
       "\\.(gql|graphql)$": "jest-transform-graphql",
       ".*": "babel-jest"
