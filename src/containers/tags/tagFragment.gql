@@ -6,4 +6,5 @@ fragment TagInfo on Tag {
   isTopLevel
   subTagIds
   heroMediaUrl
+  displayTitle
 }

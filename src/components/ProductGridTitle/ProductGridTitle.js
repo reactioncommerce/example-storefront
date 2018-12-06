@@ -22,9 +22,7 @@ export default class ProductGridTitle extends Component {
 
   static defaultProps = {
     classes: {},
-    tag: {
-      displayTitle: "Test Title"
-    }
+    tag: {}
   };
 
   render() {
