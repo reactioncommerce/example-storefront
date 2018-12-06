@@ -5,12 +5,13 @@ import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
 import analyticsProviders from "analytics";
 import { ServerStyleSheet } from "styled-components";
-import favicons from "../lib/utils/favicons";
+import favicons from "../custom/favicons";
 
 /**
  * For details about the styled-components SSR code in this file, see https://www.styled-components.com/docs/advanced#nextjs
+ * _document is only rendered on the server side and not on the client side.
+ * Event handlers like onClick can't be added to this file.
  */
-
 class HTMLDocument extends Document {
   static getInitialProps = (ctx) => {
     // Render app and page and get the context of the page with collected side effects.
