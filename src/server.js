@@ -5,17 +5,17 @@ const compression = require("compression");
 const nextApp = require("next");
 const request = require("request");
 const { useStaticRendering } = require("mobx-react");
-const logger = require("lib/logger");
 const passport = require("passport");
 const OAuth2Strategy = require("passport-oauth2");
-const { decodeOpaqueId } = require("lib/utils/decoding");
-const { appPath, dev } = require("./config");
+const { appPath, dev, serverPort } = require("./config");
+const { decodeOpaqueId } = require("./lib/utils/decoding");
+const logger = require("./lib/logger");
 const router = require("./routes");
 
+// First create the NextJS app
 const app = nextApp({ dir: appPath, dev });
-const routeHandler = router.getRequestHandler(app);
 
-// This is needed to allow custom parameters (e.g loginActions) to be included
+// This is needed to allow custom parameters (e.g. loginActions) to be included
 // when requesting authorization. This is setup to allow only loginAction to pass through
 OAuth2Strategy.prototype.authorizationParams = function (options = {}) {
   return { loginAction: options.loginAction };
@@ -102,11 +102,12 @@ app
     });
 
     // Setup next routes
+    const routeHandler = router.getRequestHandler(app);
     server.use(routeHandler);
 
-    return server.listen(4000, (err) => {
+    return server.listen(serverPort, (err) => {
       if (err) throw err;
-      logger.appStarted("localhost", 4000);
+      logger.appStarted("localhost", serverPort);
     });
   })
   .catch((ex) => {

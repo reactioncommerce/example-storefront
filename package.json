@@ -11,7 +11,7 @@
   },
   "license": "GPL-3.0",
   "scripts": {
-    "dev": "NODE_ENV=development babel-node ./src/server.js",
+    "dev": "NODE_ENV=development node ./src/server.js",
     "build": "yarn run build-clean && yarn run build-transpile && yarn run build-sync && next build src && cp -R src/.next build/app",
     "build-transpile": "NODE_ENV=production babel src -d build/app --ignore '**/*.test.js','**/*__mocks__','**/*__snapshots__'",
     "build-sync": "cp -R src/static build/app/static && rsync -av --prune-empty-dirs --include='*/' --include='*.gql' --exclude='*' src/* build/app",

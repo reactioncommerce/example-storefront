@@ -1,5 +1,6 @@
 module.exports = {
+  appPath: process.env.NODE_ENV === "production" ? "./build/app" : "./src",
   dev: process.env.NODE_ENV !== "production",
-  appPath: process.env.NODE_ENV === "production" ? "./build/app" : "./src"
+  serverPort: process.env.PORT
 };
 
