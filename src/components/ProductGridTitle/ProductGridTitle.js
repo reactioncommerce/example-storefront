@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 
 const styles = (theme) => ({
   gridTitle: {
@@ -17,7 +16,7 @@ const styles = (theme) => ({
 export default class ProductGridTitle extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    tag: PropTypes.object
+    displayTitle: PropTypes.string
   };
 
   static defaultProps = {
