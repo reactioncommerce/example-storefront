@@ -16,8 +16,8 @@ import withTags from "containers/tags/withTags";
 import Layout from "components/Layout";
 import withMobX from "lib/stores/withMobX";
 import rootMobXStores from "lib/stores";
-import components from "../lib/theme/components";
 import getPageContext from "../lib/theme/getPageContext";
+import components from "../custom/componentsContext";
 import componentTheme from "../custom/componentTheme";
 
 const { publicRuntimeConfig } = getConfig();
