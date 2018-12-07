@@ -1,5 +1,4 @@
 import { observable, action } from "mobx";
-import getConfig from "next/config";
 import { PAGE_SIZES, inPageSizes } from "lib/utils/pageSizes";
 
 /**
@@ -8,13 +7,6 @@ import { PAGE_SIZES, inPageSizes } from "lib/utils/pageSizes";
  */
 
 class UIStore {
-  /**
-   * App config data
-   *
-   * @type Object
-   */
-  @observable appConfig = getConfig();
-
   /**
    * Is the cart drawer open or closed
    *

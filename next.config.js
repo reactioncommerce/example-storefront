@@ -9,18 +9,10 @@ const initExport = {
     graphqlUrl: process.env.INTERNAL_GRAPHQL_URL
   },
   /**
-   * Browser and server config will be available as publicRuntimeConfig and serverRuntimeConfig
-   * @example
-   * @inject("uiStore")
-   * class MyComponent extends React.Component {
-   *   render() {
-   *     console.log(this.props.uiStore.appConfig.publicRuntimeConfig);
-   *     return <span>Hello</span>;
-   *   }
-   * }
+   * `publicRuntimeConfig` is available in browser code, even when run on the server
    * @example
    * import getConfig from "next/config";
-   * const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
+   * const { publicRuntimeConfig } = getConfig();
    */
   publicRuntimeConfig: {
     canonicalUrl: process.env.CANONICAL_URL,
