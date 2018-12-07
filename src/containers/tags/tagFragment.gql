@@ -6,4 +6,10 @@ fragment TagInfo on Tag {
   isTopLevel
   subTagIds
   heroMediaUrl
+  metafields {
+    key
+    scope
+    value
+    valueType
+  }
 }
