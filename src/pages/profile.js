@@ -7,6 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import AddressBook from "@reactioncommerce/components/AddressBook/v1";
 import AccountProfileInfo from "@reactioncommerce/components/AccountProfileInfo/v1";
 import InPageMenu from "@reactioncommerce/components/InPageMenu/v1";
+import withAddressBook from "containers/address/withAddressBook";
 import relayConnectionToArray from "lib/utils/relayConnectionToArray";
 import ErrorPage from "./_error";
 
@@ -17,6 +18,7 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles)
+@withAddressBook
 @inject("authStore")
 @inject("uiStore")
 @observer
@@ -26,6 +28,8 @@ class ProfileAddressBook extends Component {
       account: PropTypes.object.isRequired
     }),
     classes: PropTypes.object,
+    onAddressAdded: PropTypes.func.isRequired,
+    onAddressDeleted: PropTypes.func.isRequired,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -33,22 +37,25 @@ class ProfileAddressBook extends Component {
   };
 
   renderAddressBook() {
-    const { authStore: { account } } = this.props;
+    const { authStore: { account }, onAddressAdded, onAddressDeleted } = this.props;
 
     // Use relayConnectionToArray to remove edges / nodes levels from addressBook object
-    const addresses = account.addressBook && account.addressBook.edges && account.addressBook.edges.length ? relayConnectionToArray(account.addressBook) : [];
+    const addresses =
+      account.addressBook && account.addressBook.edges && account.addressBook.edges.length
+        ? relayConnectionToArray(account.addressBook)
+        : [];
 
     // Create data object to pass to AddressBook component
     const accountAddressBook = {
       addressBook: addresses
     };
 
+    console.log("address book data", accountAddressBook, account);
+
+    //return <Fragment>This is a placeholder, remove this and return AddressBook component below when ready.</Fragment>;
     return (
-      <Fragment>This is a placeholder, remove this and return AddressBook component below when ready.</Fragment>
+      <AddressBook account={accountAddressBook} onAddressAdded={onAddressAdded} onAddressDeleted={onAddressDeleted} />
     );
-    // return (
-    //   <AddressBook account={accountAddressBook} />
-    // );
   }
 
   renderOrders() {
