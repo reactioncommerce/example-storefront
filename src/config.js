@@ -36,10 +36,10 @@ module.exports = envalid.cleanEnv(process.env, {
   OAUTH2_TOKEN_URL: url(),
   PORT: port({ default: 4000 }),
   SEGMENT_ANALYTICS_SKIP_MINIMIZE: bool({ default: false }),
-  SEGMENT_ANALYTICS_WRITE_KEY: str({ default: null }),
+  SEGMENT_ANALYTICS_WRITE_KEY: str({ default: "" }),
   SESSION_MAX_AGE_MS: num({ default: 86400000 }), // 24 hours
   SESSION_SECRET: str(),
-  STRIPE_PUBLIC_API_KEY: str({ default: null })
+  STRIPE_PUBLIC_API_KEY: str({ default: "" })
 }, {
   // disable dotenv processing
   dotEnvPath: null,

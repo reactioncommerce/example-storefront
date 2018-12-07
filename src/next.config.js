@@ -1,6 +1,6 @@
-const appConfig = require("./src/config");
+const appConfig = require("./config");
 
-const initExport = {
+module.exports = {
   /**
    * `serverRuntimeConfig` is available in browser code, ONLY when run on the server
    * @example
@@ -37,6 +37,3 @@ const initExport = {
     return webpackConfig;
   }
 };
-
-/* eslint-enable global-require */
-module.exports = initExport;
