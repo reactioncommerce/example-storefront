@@ -9,40 +9,46 @@
  */
 const envalid = require("envalid");
 
-const { bool, num, port, str, url } = envalid;
+// Config is loaded for the `next build` command, too, and we don't want to complain
+// about missing environment variables in that phase.
+if (process.env.IS_BUILDING_NEXTJS) {
+  module.exports = {};
+} else {
+  const { bool, num, port, str, url } = envalid;
 
-/**
- * See https://www.npmjs.com/package/envalid
- *
- * Envalid parses NODE_ENV automatically, and provides the following
- * shortcut (boolean) properties for checking its value:
- *   env.isProduction    // true if NODE_ENV === 'production'
- *   env.isTest          // true if NODE_ENV === 'test'
- *   env.isDevelopment   // true if NODE_ENV === 'development'
- *
- * Be sure to add `{ default: null }` if it should be optional.
- */
-module.exports = envalid.cleanEnv(process.env, {
-  CANONICAL_URL: url(),
-  ENABLE_SPA_ROUTING: bool({ default: true }), // must explicitly set to false to disable
-  EXTERNAL_GRAPHQL_URL: url(),
-  INTERNAL_GRAPHQL_URL: url(),
-  NODE_ENV: str({ choices: ["development", "test", "jesttest", "production"], default: "production" }),
-  OAUTH2_AUTH_URL: url(),
-  OAUTH2_CLIENT_ID: str(),
-  OAUTH2_CLIENT_SECRET: str(),
-  OAUTH2_IDP_HOST_URL: url(),
-  OAUTH2_REDIRECT_URL: url(),
-  OAUTH2_TOKEN_URL: url(),
-  PORT: port({ default: 4000 }),
-  SEGMENT_ANALYTICS_SKIP_MINIMIZE: bool({ default: false }),
-  SEGMENT_ANALYTICS_WRITE_KEY: str({ default: "" }),
-  SESSION_MAX_AGE_MS: num({ default: 86400000 }), // 24 hours
-  SESSION_SECRET: str(),
-  STRIPE_PUBLIC_API_KEY: str({ default: "" })
-}, {
-  // disable dotenv processing
-  dotEnvPath: null,
-  // https://www.npmjs.com/package/envalid#strict-mode
-  strict: true
-});
+  /**
+   * See https://www.npmjs.com/package/envalid
+   *
+   * Envalid parses NODE_ENV automatically, and provides the following
+   * shortcut (boolean) properties for checking its value:
+   *   env.isProduction    // true if NODE_ENV === 'production'
+   *   env.isTest          // true if NODE_ENV === 'test'
+   *   env.isDevelopment   // true if NODE_ENV === 'development'
+   *
+   * Be sure to add `{ default: null }` if it should be optional.
+   */
+  module.exports = envalid.cleanEnv(process.env, {
+    CANONICAL_URL: url(),
+    ENABLE_SPA_ROUTING: bool({ default: true }), // must explicitly set to false to disable
+    EXTERNAL_GRAPHQL_URL: url(),
+    INTERNAL_GRAPHQL_URL: url(),
+    NODE_ENV: str({ choices: ["development", "test", "jesttest", "production"], default: "production" }),
+    OAUTH2_AUTH_URL: url(),
+    OAUTH2_CLIENT_ID: str(),
+    OAUTH2_CLIENT_SECRET: str(),
+    OAUTH2_IDP_HOST_URL: url(),
+    OAUTH2_REDIRECT_URL: url(),
+    OAUTH2_TOKEN_URL: url(),
+    PORT: port({ default: 4000 }),
+    SEGMENT_ANALYTICS_SKIP_MINIMIZE: bool({ default: false }),
+    SEGMENT_ANALYTICS_WRITE_KEY: str({ default: "" }),
+    SESSION_MAX_AGE_MS: num({ default: 86400000 }), // 24 hours
+    SESSION_SECRET: str(),
+    STRIPE_PUBLIC_API_KEY: str({ default: "" })
+  }, {
+    // disable dotenv processing
+    dotEnvPath: null,
+    // https://www.npmjs.com/package/envalid#strict-mode
+    strict: true
+  });
+}

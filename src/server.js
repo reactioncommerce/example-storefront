@@ -17,7 +17,7 @@ const router = require("./routes");
 // return anything until after the NextJS app is initialized.
 const app = nextApp({
   dev: config.isDev,
-  dir: config.isProduction ? "./build/app" : "./src"
+  dir: "./src"
 });
 
 // This is needed to allow custom parameters (e.g. loginActions) to be included

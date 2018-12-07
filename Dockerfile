@@ -65,9 +65,6 @@ RUN mkdir -p "/usr/local/src/reaction-app/node_modules" && chown node "/usr/loca
 RUN mkdir -p "/home/node/.cache/yarn" && chown node "/home/node/.cache/yarn"
 RUN mkdir -p "/home/node/.cache/yarn-offline-mirror" && chown node "/home/node/.cache/yarn-offline-mirror"
 
-# Needed in build npm command.
-RUN apk add --no-cache rsync
-
 WORKDIR $APP_SOURCE_DIR/..
 COPY --chown=node package.json yarn.lock $APP_SOURCE_DIR/../
 
