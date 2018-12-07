@@ -15,47 +15,20 @@ const uiStore = {
   }
 };
 
-const tagWithTitle = {
-  name: "TagWithTitle",
-  _id: "rubhpcpSzrgZuBCEM",
-  slug: "tag-with-Title",
-  isTopLevel: true,
-  updatedAt: "2018-05-25 17:48:29.745Z",
-  createdAt: "2018-05-25 17:48:29.745Z",
-  isDeleted: false,
-  isVisible: true,
-  groups: [],
-  shopId: "J8Bhq3uTtdgwZx3rz",
-  displayTitle: "Test Title"
-};
-
-const tagWithoutTitle = {
-  name: "TagWithoutTitle",
-  _id: "rubhpcpSzrgZuBCEM",
-  slug: "tag-withpoiut-Title",
-  isTopLevel: true,
-  updatedAt: "2018-05-25 17:48:29.745Z",
-  createdAt: "2018-05-25 17:48:29.745Z",
-  isDeleted: false,
-  isVisible: true,
-  groups: [],
-  shopId: "J8Bhq3uTtdgwZx3rz"
-};
-
-test("snapshot of tagWithTitle", () => {
+test("snapshot of a tag with a displayTitle", () => {
   const component = renderer.create(<MuiThemeProvider theme={theme}>
     <Provider uiStore={uiStore}>
-      <ProductGridTitle tag={tagWithTitle} />
+      <ProductGridTitle displayTitle={"Test Title"} />
     </Provider>
   </MuiThemeProvider>);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
-test("snapshop of tagWithoutTitle", () => {
+test("snapshop of tag without a displayTitle", () => {
   const component = renderer.create(<MuiThemeProvider theme={theme}>
     <Provider uiStore={uiStore}>
-      <ProductGridTitle tag={tagWithoutTitle} />
+      <ProductGridTitle displayTitle={} />
     </Provider>
   </MuiThemeProvider>);
   const tree = component.toJSON();

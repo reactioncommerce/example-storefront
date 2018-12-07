@@ -22,20 +22,16 @@ export default class ProductGridTitle extends Component {
 
   static defaultProps = {
     classes: {},
-    tag: {}
+    displayTitle: ""
   };
 
   render() {
-    const { classes, tag: { displayTitle } } = this.props;
+    const { classes, displayTitle } = this.props;
 
     if (!displayTitle) return null;
 
     return (
-      <section className={classes.titleContainer}>
-        <Grid item xs={12}>
-          <Typography className={classes.gridTitle} component="h1" variant="title">{displayTitle}</Typography>
-        </Grid>
-      </section>
+      <Typography className={classes.gridTitle} component="h1" variant="title">{displayTitle}</Typography>
     );
   }
 }
