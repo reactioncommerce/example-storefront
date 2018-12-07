@@ -75,13 +75,13 @@ export default class TagGridPage extends Component {
   };
 
   renderHeaderMetadata = (metafields) => {
-    let metadata = []
-    metafields.forEach(field => {
-      if ( field.valueType && field.valueType == "header" ) {
-        let metadatum = {}
-        let scope = field.scope;
+    const metadata = [];
+    metafields.forEach((field) => {
+      if (field.valueType && field.valueType === "header") {
+        const metadatum = {};
+        const { scope } = field;
         metadatum[scope] = field.key;
-        metadatum["content"] = field.value;
+        metadatum.content = field.value;
         metadata.push(metadatum);
       }
     });
@@ -107,9 +107,9 @@ export default class TagGridPage extends Component {
         <Helmet
           title={`${tag && tag.name} | ${shop && shop.name}`}
           meta={
-            tag.metafields && tag.metafields.length > 0 ? 
+            tag.metafields && tag.metafields.length > 0 ?
               this.renderHeaderMetadata(tag.metafields)
-            : 
+              :
               [{ name: "description", content: shop && shop.description }]
           }
         />
