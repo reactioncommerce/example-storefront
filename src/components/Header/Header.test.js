@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { shallow } from "enzyme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import theme from "lib/theme/reactionTheme";
+import theme from "custom/reactionTheme";
 import Header from "./Header";
 
 test("basic snapshot", () => {

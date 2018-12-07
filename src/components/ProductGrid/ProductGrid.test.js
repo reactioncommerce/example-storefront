@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { Provider } from "mobx-react";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import theme from "lib/theme/reactionTheme";
+import theme from "custom/reactionTheme";
 import ProductGrid from "./ProductGrid";
 import products from "./__mocks__/products.mock";
 
