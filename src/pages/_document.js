@@ -4,8 +4,11 @@ import Document, { Head, Main, NextScript } from "next/document";
 import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
 import { ServerStyleSheet } from "styled-components";
+import getConfig from "next/config";
 import analyticsProviders from "../custom/analytics";
 import favicons from "../custom/favicons";
+
+const { publicRuntimeConfig } = getConfig();
 
 /**
  * For details about the styled-components SSR code in this file, see https://www.styled-components.com/docs/advanced#nextjs
@@ -59,7 +62,7 @@ class HTMLDocument extends Document {
     const { helmet, pageContext, styledComponentsStyleTags } = this.props;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
     const links = [
-      { rel: "canonical", href: process.env.CANONICAL_URL },
+      { rel: "canonical", href: publicRuntimeConfig.canonicalUrl },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" },
       ...favicons
     ];

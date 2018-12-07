@@ -82,7 +82,8 @@ export default function withApolloClient(WrappedComponent) {
             // In server, if a 401 Unauthorized error occurred, redirect to /signin.
             // This will re-authenticate without showing a login page and a new token is issued.
             if (networkError.response && networkError.response.status === STATUS_UNAUTHORIZED && res) {
-              logger.warn("Received 401 error from the GraphQL API due to invalid or expired authentication credentials. Triggering token refresh via redirect flow");
+              logger.warn("Received 401 error from the GraphQL API due to invalid or expired authentication credentials. " +
+                "Triggering token refresh via redirect flow");
               res.writeHead(STATUS_FOUND, { Location: "/signin" });
               res.end();
               return {};

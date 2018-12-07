@@ -1,12 +1,14 @@
+const appConfig = require("./src/config");
+
 const initExport = {
   /**
-   * Server config will be available as serverRuntimeConfig
+   * `serverRuntimeConfig` is available in browser code, ONLY when run on the server
    * @example
    * import getConfig from "next/config";
    * const { serverRuntimeConfig } = getConfig();
    */
   serverRuntimeConfig: {
-    graphqlUrl: process.env.INTERNAL_GRAPHQL_URL
+    graphqlUrl: appConfig.INTERNAL_GRAPHQL_URL
   },
   /**
    * `publicRuntimeConfig` is available in browser code, even when run on the server
@@ -15,34 +17,24 @@ const initExport = {
    * const { publicRuntimeConfig } = getConfig();
    */
   publicRuntimeConfig: {
-    canonicalUrl: process.env.CANONICAL_URL,
-    graphqlUrl: process.env.EXTERNAL_GRAPHQL_URL,
+    canonicalUrl: appConfig.CANONICAL_URL,
+    graphqlUrl: appConfig.EXTERNAL_GRAPHQL_URL,
     segmentAnalytics: {
-      skipMinimize: process.env.SEGMENT_ANALYTICS_SKIP_MINIMIZE === "true", // Convert to a Boolean
-      writeKey: process.env.SEGMENT_ANALYTICS_WRITE_KEY
+      skipMinimize: appConfig.SEGMENT_ANALYTICS_SKIP_MINIMIZE,
+      writeKey: appConfig.SEGMENT_ANALYTICS_WRITE_KEY
     },
-    placeholderImageUrls: {
-      galleryFeatured: process.env.PLACEHOLDER_IMAGE_URL_GALLERY,
-      productGrid: process.env.PLACEHOLDER_IMAGE_URL_GRID
-    },
-    keycloakConfig: {
-      realm: process.env.KEYCLOAK_REALM,
-      clientId: process.env.KEYCLOAK_CLIENT_ID,
-      url: process.env.KEYCLOAK_URL,
-      redirectUri: process.env.KEYCLOAK_REDIRECT_URI
-    },
-    stripePublicApiKey: process.env.STRIPE_PUBLIC_API_KEY,
-    enableSPARouting: process.env.ENABLE_SPA_ROUTING !== "false" // Disable SPA routing if explicitly string "false"
+    stripePublicApiKey: appConfig.STRIPE_PUBLIC_API_KEY,
+    enableSPARouting: appConfig.ENABLE_SPA_ROUTING
   },
-  webpack: (config) => {
-    config.module.rules.push({
+  webpack: (webpackConfig) => {
+    webpackConfig.module.rules.push({
       test: /\.(gql|graphql)$/,
       loader: "graphql-tag/loader",
       exclude: ["/node_modules/", "/.next/"],
       enforce: "pre"
     });
 
-    return config;
+    return webpackConfig;
   }
 };
 

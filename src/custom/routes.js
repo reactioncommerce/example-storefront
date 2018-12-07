@@ -1,6 +1,7 @@
 /**
  * @see https://www.npmjs.com/package/next-routes
  * @param {Object} routes The next-routes `routes` object.
+ * @returns {undefined}
  */
 function defineRoutes(routes) {
   routes
