@@ -74,6 +74,20 @@ export default class TagGridPage extends Component {
     this.props.uiStore.setSortBy(sortBy);
   };
 
+  renderHeaderMetadata = (metafields) => {
+    let metadata = []
+    metafields.forEach(field => {
+      if ( field.valueType && field.valueType == "header" ) {
+        let metadatum = {}
+        let scope = field.scope;
+        metadatum[scope] = field.key;
+        metadatum["content"] = field.value;
+        metadata.push(metadatum);
+      }
+    });
+    return metadata;
+  };
+
   render() {
     const {
       catalogItems,
@@ -92,7 +106,7 @@ export default class TagGridPage extends Component {
       <Fragment>
         <Helmet
           title={`${tag && tag.name} | ${shop && shop.name}`}
-          meta={[{ name: "description", content: shop && shop.description }]}
+          meta={this.renderHeaderMetadata(tag.metafields)}
         />
         <Breadcrumbs isTagGrid={true} tag={tag} tags={tags} />
         <ProductGridHero tag={tag} />
