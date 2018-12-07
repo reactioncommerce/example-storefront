@@ -8,6 +8,9 @@ import rootMobxStores from "lib/stores";
 import logger from "../logger";
 import initApollo from "./initApollo";
 
+const STATUS_FOUND = 302;
+const STATUS_UNAUTHORIZED = 401;
+
 const { serverRuntimeConfig } = getConfig();
 
 /**
@@ -71,15 +74,16 @@ export default function withApolloClient(WrappedComponent) {
             </ApolloProvider>
           ); // eslint-disable-line
         } catch (error) {
+          const { networkError } = error;
           // Prevent Apollo Client GraphQL errors from crashing SSR.
           // Handle them in components via the data.error prop:
           // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
-          if (error.networkError) {
+          if (networkError) {
             // In server, if a 401 Unauthorized error occurred, redirect to /signin.
             // This will re-authenticate without showing a login page and a new token is issued.
-            if (error.networkError.response.status === 401 && res) {
+            if (networkError.response && networkError.response.status === STATUS_UNAUTHORIZED && res) {
               logger.warn("Received 401 error from the GraphQL API due to invalid or expired authentication credentials. Triggering token refresh via redirect flow");
-              res.writeHead(302, { Location: "/signin" });
+              res.writeHead(STATUS_FOUND, { Location: "/signin" });
               res.end();
               return {};
             }
