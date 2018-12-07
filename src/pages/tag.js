@@ -106,7 +106,12 @@ export default class TagGridPage extends Component {
       <Fragment>
         <Helmet
           title={`${tag && tag.name} | ${shop && shop.name}`}
-          meta={this.renderHeaderMetadata(tag.metafields)}
+          meta={
+            tag.metafields && tag.metafields.length > 0 ? 
+              this.renderHeaderMetadata(tag.metafields)
+            : 
+              [{ name: "description", content: shop && shop.description }]
+          }
         />
         <Breadcrumbs isTagGrid={true} tag={tag} tags={tags} />
         <ProductGridHero tag={tag} />
