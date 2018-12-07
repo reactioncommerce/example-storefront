@@ -441,7 +441,7 @@ export default function withCart(Component) {
                       onSetShippingAddress: this.handleSetShippingAddress
                     }}
                     hasMoreCartItems={(pageInfo && pageInfo.hasNextPage) || false}
-                    isLoading={skipQuery ? false : isLoading}
+                    isLoadingCart={skipQuery ? false : isLoading}
                     loadMoreCartItems={() => {
                       fetchMore({
                         variables: {
