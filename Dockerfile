@@ -60,6 +60,11 @@ LABEL maintainer="Reaction Commerce <engineering@reactioncommerce.com>" \
 RUN mkdir -p "/usr/local/src/node_modules" && chown node "/usr/local/src" && chown node "/usr/local/src/node_modules"
 RUN mkdir -p "/usr/local/src/reaction-app/node_modules" && chown node "/usr/local/src/reaction-app" && chown node "/usr/local/src/reaction-app/node_modules"
 
+# Same for Yarn cache folder. Without this Yarn will warn that it's going to use
+# a fallback cache dir instead because the one in config is not writable.
+RUN mkdir -p "/home/node/.cache/yarn" && chown node "/home/node/.cache/yarn"
+RUN mkdir -p "/home/node/.cache/yarn-offline-mirror" && chown node "/home/node/.cache/yarn-offline-mirror"
+
 # Needed in build npm command.
 RUN apk add --no-cache rsync
 
