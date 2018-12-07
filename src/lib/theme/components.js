@@ -18,6 +18,7 @@ import iconMastercard from "@reactioncommerce/components/svg/iconMastercard";
 import iconVisa from "@reactioncommerce/components/svg/iconVisa";
 import spinner from "@reactioncommerce/components/svg/spinner";
 import Accordion from "@reactioncommerce/components/Accordion/v1";
+import AccordionFormList from "@reactioncommerce/components/AccordionFormList/v1";
 import AddressBook from "@reactioncommerce/components/AddressBook/v1";
 import Address from "@reactioncommerce/components/Address/v1";
 import AddressCapture from "@reactioncommerce/components/AddressCapture/v1";
@@ -60,6 +61,7 @@ const AddressFormWithLocales = withLocales(AddressForm);
 
 export default {
   Accordion,
+  AccordionFormList,
   AddressBook,
   Address,
   AddressCapture,
@@ -79,7 +81,6 @@ export default {
   CheckoutActionIncomplete,
   ErrorsBlock,
   Field,
-  InlineAlert,
   Link,
   iconAmericanExpress,
   iconClear,
@@ -90,6 +91,7 @@ export default {
   iconPlus,
   iconValid,
   iconVisa,
+  InlineAlert,
   InPageMenuItem,
   MiniCartSummary,
   PhoneNumberInput,
