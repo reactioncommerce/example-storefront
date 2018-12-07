@@ -14,7 +14,7 @@
   ],
   "plugins": [
     "babel-plugin-styled-components",
-    [ "module-resolver", { "root": [ "./src", "./config" ] } ],
+    [ "module-resolver", { "root": [ "./src" ] } ],
     [ "@babel/plugin-proposal-decorators", { "legacy": true } ],
     [ "@babel/plugin-proposal-class-properties", { "loose": true } ]
   ],
@@ -22,7 +22,7 @@
     "jesttest": {
       "plugins": [
         "babel-plugin-styled-components",
-        [ "module-resolver", { "root": [ "./src", "./config" ] } ],
+        [ "module-resolver", { "root": [ "./src" ] } ],
         [ "@babel/plugin-proposal-decorators", { "legacy": true } ],
         [ "@babel/plugin-proposal-class-properties", { "loose": true } ],
         "dynamic-import-node"

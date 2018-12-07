@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import Document, { Head, Main, NextScript } from "next/document";
 import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
-import analyticsProviders from "analytics";
 import { ServerStyleSheet } from "styled-components";
+import analyticsProviders from "../custom/analytics";
 import favicons from "../custom/favicons";
 
 /**
@@ -13,7 +13,7 @@ import favicons from "../custom/favicons";
  * Event handlers like onClick can't be added to this file.
  */
 class HTMLDocument extends Document {
-  static getInitialProps = (ctx) => {
+  static getInitialProps(ctx) {
     // Render app and page and get the context of the page with collected side effects.
     let pageContext;
 
@@ -53,7 +53,7 @@ class HTMLDocument extends Document {
       ),
       styledComponentsStyleTags
     };
-  };
+  }
 
   render() {
     const { helmet, pageContext, styledComponentsStyleTags } = this.props;

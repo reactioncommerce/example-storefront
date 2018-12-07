@@ -1,7 +1,7 @@
-import analyticsProviders from "analytics";
+import analyticsProviders from "../../custom/analytics";
 import dispatch from "./dispatch";
 
-jest.mock("analytics", () => ([
+jest.mock("../../custom/analytics", () => ([
   { dispatch: jest.fn(), renderScript: jest.fn() },
   { dispatch: jest.fn(), renderScript: jest.fn() }
 ]));
