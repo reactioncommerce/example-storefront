@@ -1,6 +1,5 @@
 const OAuth2Strategy = require("passport-oauth2");
 const passport = require("passport");
-const request = require("request");
 const config = require("./config");
 const { decodeOpaqueId } = require("./lib/utils/decoding");
 const logger = require("./lib/logger");
@@ -62,16 +61,26 @@ function configureAuthForServer(server) {
   });
 
   server.get("/logout/:userId", (req, res) => {
+    const { userId } = req.params;
+    if (!userId) return;
+
     const { id } = decodeOpaqueId(req.params.userId);
-    request(`${config.OAUTH2_IDP_HOST_URL}logout?userId=${id}`, (error) => {
-      if (error) {
-        logger.error(`Error from OAUTH2_IDP_HOST_URL logout endpoint: ${error}. Check the HOST server settings`);
-      }
-      if (!error) {
-        req.logout();
-        res.redirect(req.get("Referer") || "/");
-      }
-    });
+
+    // Ask IDP to log us out
+    fetch(`${config.OAUTH2_IDP_HOST_URL}logout?userId=${id}`)
+      .then((logoutResponse) => {
+        if (logoutResponse.status >= 400) {
+          logger.error(`Error from OAUTH2_IDP_HOST_URL logout endpoint: ${logoutResponse.status}. Check the HOST server settings`);
+        } else {
+          // If IDP confirmed logout, clear login info on this side
+          req.logout();
+          res.redirect(req.get("Referer") || "/");
+        }
+        return null;
+      })
+      .catch((error) => {
+        logger.error(`Error while logging out: ${error}`);
+      });
   });
 }
 

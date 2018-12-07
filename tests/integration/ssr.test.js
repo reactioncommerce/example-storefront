@@ -3,18 +3,20 @@
  */
 const cheerio = require("cheerio");
 const chai = require("chai");
-const request = require("request");
+require("isomorphic-fetch");
 
 const url = "http://localhost:4000";
 
 describe("NextJS Loading", () => {
-  it("SSR Loads with an HTML Body", (done) => {
-    request(url, (err, resp, body) => {
-      if (!err && resp.statusCode === 200) {
-        const cheer = cheerio.load(body);
-        chai.expect(cheer("#__next").find("div")).to.not.be.empty;
-      }
-      done();
-    });
-  });
+  it("SSR Loads with an HTML Body", () => fetch(url)
+    .then((response) => {
+      chai.expect(response.status).to.equal(200);
+
+      return response.text();
+    })
+    .then((body) => {
+      const cheer = cheerio.load(body);
+      chai.expect(cheer("#__next").find("div")).to.not.be.empty;
+      return null;
+    }));
 });
