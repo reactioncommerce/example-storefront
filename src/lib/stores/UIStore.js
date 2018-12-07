@@ -3,7 +3,7 @@ import { PAGE_SIZES, inPageSizes } from "lib/utils/pageSizes";
 
 /**
  * A mobx store for UI data
- * @class AuthStore
+ * @class UIStore
  */
 
 class UIStore {

@@ -17,7 +17,7 @@ export default function withViewer(Component) {
   class WithViewer extends React.Component {
     static propTypes = {
       authStore: PropTypes.shape({
-        setAccountId: PropTypes.func
+        setAccount: PropTypes.func
       })
     }
 
