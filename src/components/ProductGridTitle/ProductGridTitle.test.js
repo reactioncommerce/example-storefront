@@ -28,7 +28,7 @@ test("snapshot of a tag with a displayTitle", () => {
 test("snapshop of tag without a displayTitle", () => {
   const component = renderer.create(<MuiThemeProvider theme={theme}>
     <Provider uiStore={uiStore}>
-      <ProductGridTitle displayTitle={} />
+      <ProductGridTitle displayTitle={""} />
     </Provider>
   </MuiThemeProvider>);
   const tree = component.toJSON();

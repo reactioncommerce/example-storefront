@@ -96,7 +96,12 @@ export default class TagGridPage extends Component {
           meta={[{ name: "description", content: shop && shop.description }]}
         />
         <Breadcrumbs isTagGrid={true} tag={tag} tags={tags} />
-        <ProductGridTitle displayTitle={tag.displayTitle} />
+        {
+          tag && tag.displayTitle ? (
+            <ProductGridTitle displayTitle={tag.displayTitle} />)
+            :
+            null
+        }
         <ProductGridHero tag={tag} />
         <ProductGrid
           catalogItems={catalogItems}
