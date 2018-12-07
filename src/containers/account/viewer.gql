@@ -4,6 +4,7 @@ query viewer {
     addressBook {
       edges {
         node {
+          _id
           address1
           address2
           city
