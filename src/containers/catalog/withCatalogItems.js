@@ -21,7 +21,9 @@ export default function withCatalogItems(Component) {
     static propTypes = {
       primaryShopId: PropTypes.string.isRequired,
       routingStore: PropTypes.object.isRequired,
-      tag: PropTypes.string,
+      tag: PropTypes.shape({
+        _id: PropTypes.string.isRequired
+      }),
       uiStore: PropTypes.object.isRequired
     };
 
