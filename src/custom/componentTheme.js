@@ -1,5 +1,7 @@
 /**
- * This is the theme file used by the Reaction Design System components.
+ * There are two theme files. This is the theme file used by the Reaction Design System components.
+ * The other theme file is `reactionTheme.js`
+ *
  * Any variables you define here will override the default value for that
  * variable, but will not impact any other default variables (i.e., you are
  * extending the default theme object, and not overwriting it).

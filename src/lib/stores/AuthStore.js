@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 import { observable, action } from "mobx";
 
 /**
@@ -25,50 +24,8 @@ class AuthStore {
    */
   @observable account = {};
 
-  /**
-   * The login token of the current user
-   *
-   * @type String
-   */
-  @observable token = "";
-
-  @action setToken(token) {
-    this.token = token || "";
-    this.saveTokenToLocalStorage();
-    this.saveTokenToCookie();
-  }
-
-  @action unsetToken() {
-    this.setToken("");
-  }
-
-  saveTokenToLocalStorage() {
-    if (typeof this.token === "string" && this.token.length) {
-      localStorage.setItem(this.tokenName, this.token);
-    } else {
-      localStorage.removeItem(this.tokenName);
-    }
-  }
-
-  setTokenFromLocalStorage() {
-    const token = localStorage.getItem(this.tokenName);
-    this.setToken(token);
-  }
-
-  saveTokenToCookie() {
-    if (typeof this.token === "string" && this.token.length) {
-      Cookies.set(this.tokenName, this.token);
-    } else {
-      Cookies.remove(this.tokenName);
-    }
-  }
-
   get isAuthenticated() {
-    if (this.accountId) {
-      return true;
-    }
-
-    return false;
+    return !!this.accountId;
   }
 
   // TODO: Temporary workaround until name fields get added from GQL

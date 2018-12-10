@@ -1,5 +1,6 @@
 const routes = require("next-routes")();
 const getConfig = require("next/config").default;
+const defineRoutes = require("./custom/routes");
 
 if (process.browser) {
   const { publicRuntimeConfig } = getConfig();
@@ -23,16 +24,6 @@ if (process.browser) {
   routes.Router.prefetchRoute = wrap("prefetch");
 }
 
-routes
-  .add("home", "/", "productGrid")
-  .add("cart", "/cart", "cart")
-  .add("checkout", "/cart/checkout", "checkout")
-  .add("checkoutLogin", "/cart/login", "checkout")
-  .add("checkoutComplete", "/checkout/order/:orderId", "checkoutComplete")
-  .add("login", "/login", "login")
-  .add("shopProduct", "/shop/:shopSlug/product/:slugOrId", "product")
-  .add("product", "/product/:slugOrId/:variantId?", "product")
-  .add("shop", "/shop/:shopId/:tag", "productGrid")
-  .add("tag", "/tag/:slug", "tag");
+defineRoutes(routes);
 
 module.exports = routes;

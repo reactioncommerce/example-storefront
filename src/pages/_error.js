@@ -25,7 +25,7 @@ export default class Error extends Component {
   static propTypes = {
     classes: PropTypes.object,
     shop: PropTypes.object,
-    statusCode: PropTypes.object,
+    statusCode: PropTypes.number,
     subtitle: PropTypes.string
   };
 
@@ -51,7 +51,7 @@ export default class Error extends Component {
       <div className={classes.root}>
         <Helmet title={`${subtitle} | ${shop && shop.name}`} />
         {statusCode ? (
-          <Typography> `An error ${statusCode} occurred on server`</Typography>
+          <Typography variant="headline">{statusCode}</Typography>
         ) : (
           <Fragment>
             <Typography className={classes.errorMessage} paragraph>
