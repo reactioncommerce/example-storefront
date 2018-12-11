@@ -97,10 +97,7 @@ export default class TagGridPage extends Component {
         />
         <Breadcrumbs isTagGrid={true} tag={tag} tags={tags} />
         {
-          tag && tag.displayTitle ? (
-            <ProductGridTitle displayTitle={tag.displayTitle} />)
-            :
-            null
+          tag && tag.displayTitle && <ProductGridTitle displayTitle={tag.displayTitle} />
         }
         <ProductGridHero tag={tag} />
         <ProductGrid
