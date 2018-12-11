@@ -8,8 +8,8 @@ fragment TagInfo on Tag {
   heroMediaUrl
   metafields {
     key
+    namespace
     scope
     value
-    valueType
   }
 }

@@ -84,18 +84,20 @@ export default class TagGridPage extends Component {
     this.props.uiStore.setSortBy(sortBy);
   };
 
-  renderHeaderMetadata = (metafields) => {
-    const metadata = [];
+  renderHeaderMetatags = (metafields) => {
+    const metatags = [];
+    console.log(metafields);
     metafields.forEach((field) => {
-      if (field.valueType && field.valueType === "header") {
-        const metadatum = {};
-        const { scope } = field;
-        metadatum[scope] = field.key;
-        metadatum.content = field.value;
-        metadata.push(metadatum);
+      if (field.namespace && field.namespace === "head") {
+        const metatag = {
+          content: field.value
+        };
+        metatag[field.scope] = field.key;
+        metatags.push(metatag);
       }
     });
-    return metadata;
+    console.log(metatags);
+    return metatags;
   };
 
   render() {
@@ -119,7 +121,7 @@ export default class TagGridPage extends Component {
           title={`${tag && tag.name} | ${shop && shop.name}`}
           meta={
             tag.metafields && tag.metafields.length > 0 ?
-              this.renderHeaderMetadata(tag.metafields)
+              this.renderHeaderMetatags(tag.metafields)
               :
               [{ name: "description", content: shop && shop.description }]
           }
