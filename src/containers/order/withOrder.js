@@ -17,11 +17,6 @@ export default function withOrder(Component) {
   @observer
   class WithOrder extends React.Component {
     static propTypes = {
-      authStore: PropTypes.shape({
-        accountId: PropTypes.string,
-        token: PropTypes.string,
-        isAuthenticated: PropTypes.bool
-      }),
       cartStore: PropTypes.shape({
         anonymousCartId: PropTypes.string,
         anonymousCartToken: PropTypes.string,

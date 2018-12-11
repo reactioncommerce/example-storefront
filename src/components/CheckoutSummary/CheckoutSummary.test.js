@@ -1,9 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import theme from "lib/theme/reactionTheme";
+import theme from "custom/reactionTheme";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
-import components from "../../lib/theme/components";
+import components from "custom/componentsContext";
 import CheckoutSummary from "./CheckoutSummary";
 
 const testCart = {

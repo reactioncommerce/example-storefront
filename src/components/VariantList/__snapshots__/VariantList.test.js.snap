@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic snapshot 1`] = `
+.c0 {
+  position: relative;
+  opacity: 0.5;
+}
+
+.c1 {
+  position: relative;
+}
+
 <div
   className="SkVariantList-variantsContainer-1"
 >
@@ -38,7 +47,7 @@ exports[`basic snapshot 1`] = `
       className="SkVariantList-alert-3"
     >
       <div
-        className="BadgeOverlay__Overlay-gvAWwt cDasYZ"
+        className="c0"
       />
     </div>
   </div>
@@ -120,7 +129,7 @@ exports[`basic snapshot 1`] = `
         className="SkOptionsList-alert-39"
       >
         <div
-          className="BadgeOverlay__Overlay-gvAWwt gJVwBl"
+          className="c1"
         />
       </div>
     </div>

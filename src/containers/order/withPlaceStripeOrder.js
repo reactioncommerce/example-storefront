@@ -17,9 +17,11 @@ export default (Component) => (
   class WithPlaceStripeOrder extends React.Component {
     static propTypes = {
       authStore: PropTypes.shape({
-        accountId: PropTypes.string,
-        token: PropTypes.string,
-        isAuthenticated: PropTypes.bool
+        account: PropTypes.shape({
+          emailRecords: PropTypes.arrayOf(PropTypes.shape({
+            address: PropTypes.string
+          }))
+        })
       }),
       cartStore: PropTypes.shape({
         stripeToken: PropTypes.object

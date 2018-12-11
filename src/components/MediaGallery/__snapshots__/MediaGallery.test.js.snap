@@ -1,6 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic snapshot 1`] = `
+.c0 {
+  background-color: #ffffff;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  padding-top: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.c1 {
+  width: 100%;
+  height: auto;
+  left: 50%;
+  opacity: 1;
+  position: absolute;
+  -webkit-transition: opacity 300ms cubic-bezier(0.4,0,0.2,1);
+  transition: opacity 300ms cubic-bezier(0.4,0,0.2,1);
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-filter: blur(8px);
+  filter: blur(8px);
+  z-index: 1100;
+}
+
 <div
   className="MuiGrid-container-4 SkMediaGallery-root-1"
 >
@@ -11,11 +38,11 @@ exports[`basic snapshot 1`] = `
       className="SkMediaGallery-featured-2"
     >
       <div
-        className="ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
+        className="c0"
       >
         <img
           alt=""
-          className="ProgressiveImage__Img-fumfP VAwLM"
+          className="c1"
           src="/resources/placeholder.gif"
         />
       </div>
@@ -43,11 +70,11 @@ exports[`basic snapshot 1`] = `
           type="button"
         >
           <div
-            className="ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
+            className="c0"
           >
             <img
               alt=""
-              className="ProgressiveImage__Img-fumfP VAwLM"
+              className="c1"
               src="/resources/placeholder.gif"
             />
           </div>
@@ -76,11 +103,11 @@ exports[`basic snapshot 1`] = `
           type="button"
         >
           <div
-            className="ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
+            className="c0"
           >
             <img
               alt=""
-              className="ProgressiveImage__Img-fumfP VAwLM"
+              className="c1"
               src="/resources/placeholder.gif"
             />
           </div>

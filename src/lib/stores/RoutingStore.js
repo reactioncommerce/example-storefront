@@ -4,7 +4,7 @@ import { inPageSizes, PAGE_SIZES } from "lib/utils/pageSizes";
 
 /**
  * A mobx store for routing data
- * @class AuthStore
+ * @class RoutingStore
  */
 
 export default class RoutingStore {

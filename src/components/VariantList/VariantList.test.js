@@ -4,7 +4,7 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import { Provider } from "mobx-react";
 
 import catalogProduct from "components/ProductDetail/__mocks__/productData.mock";
-import theme from "lib/theme/reactionTheme";
+import theme from "custom/reactionTheme";
 import VariantList from "./VariantList";
 
 const uiStore = {

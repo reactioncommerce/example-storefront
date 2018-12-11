@@ -1,6 +1,6 @@
 import { SheetsRegistry } from "jss";
 import { createGenerateClassName } from "@material-ui/core/styles";
-import theme from "./reactionTheme";
+import theme from "../../custom/reactionTheme";
 
 /**
  * @summary Creates and returns a page context object

@@ -2,19 +2,26 @@
 const chalk = require("chalk");
 
 /**
- * Logger middleware
+ * Logger. Customize the way you log errors and messages here.
  */
 const logger = {
-  // Called whenever there's an error on the server we want to print
-  error: (err) => {
-    console.error(chalk.red(err));
+  error(message) {
+    console.error(chalk.red(message));
+  },
+
+  info(message) {
+    console.info(chalk.cyan(message));
+  },
+
+  warn(message) {
+    console.warn(chalk.yellow(message));
   },
 
   // Called when express.js app starts on given port w/o errors
   appStarted: (host, port) => {
-    console.log(`Server started ! ${chalk.green("✓")}`);
+    console.info(`Server started ! ${chalk.green("✓")}`);
 
-    console.log(`
+    console.info(`
       ${chalk.magenta(`http://${host}:${port}`)}
       ${chalk.blue(`Press ${chalk.italic("CTRL-C")} to stop`)}
     `);

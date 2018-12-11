@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import { Query } from "react-apollo";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import { pagination, paginationVariablesFromUrlParams } from "lib/helpers/pagination";
+import { pagination, paginationVariablesFromUrlParams } from "lib/utils/pagination";
 import withTag from "containers/tags/withTag";
 import catalogItemsQuery from "./catalogItems.gql";
 
@@ -21,7 +21,9 @@ export default function withCatalogItems(Component) {
     static propTypes = {
       primaryShopId: PropTypes.string.isRequired,
       routingStore: PropTypes.object.isRequired,
-      tag: PropTypes.object,
+      tag: PropTypes.shape({
+        _id: PropTypes.string.isRequired
+      }),
       uiStore: PropTypes.object.isRequired
     };
 
