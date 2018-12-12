@@ -1,6 +1,109 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic snapshot 1`] = `
+.c4 {
+  -webkit-font-smoothing: antialiased;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #1999dd;
+  border-color: #1999dd;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,sans-serif;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0;
+  min-width: 100px;
+  outline: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
+}
+
+.c4:hover {
+  background-color: #25b0f9;
+  border-color: #25b0f9;
+  color: #ffffff;
+}
+
+.c4:active {
+  background-color: #057dbe;
+  border-color: #057dbe;
+  color: #ffffff;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  padding-left: 20px;
+  -webkit-transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
+  transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
+}
+
+.c5 svg path,
+.c5 svg rect {
+  fill: #ffffff;
+}
+
+.c2 {
+  position: relative;
+  opacity: 0.5;
+}
+
+.c3 {
+  position: relative;
+}
+
+.c0 {
+  background-color: #ffffff;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  padding-top: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.c1 {
+  width: 100%;
+  height: auto;
+  left: 50%;
+  opacity: 1;
+  position: absolute;
+  -webkit-transition: opacity 300ms cubic-bezier(0.4,0,0.2,1);
+  transition: opacity 300ms cubic-bezier(0.4,0,0.2,1);
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-filter: blur(8px);
+  filter: blur(8px);
+  z-index: 1100;
+}
+
 <div
   className="MuiGrid-container-4 MuiGrid-spacing-xs-40-30"
 >
@@ -92,11 +195,11 @@ exports[`basic snapshot 1`] = `
             className="SkMediaGallery-featured-115"
           >
             <div
-              className="ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
+              className="c0"
             >
               <img
                 alt=""
-                className="ProgressiveImage__Img-fumfP VAwLM"
+                className="c1"
                 src="/resources/placeholder.gif"
               />
             </div>
@@ -124,11 +227,11 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
+                  className="c0"
                 >
                   <img
                     alt=""
-                    className="ProgressiveImage__Img-fumfP VAwLM"
+                    className="c1"
                     src="/resources/placeholder.gif"
                   />
                 </div>
@@ -157,11 +260,11 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
+                  className="c0"
                 >
                   <img
                     alt=""
-                    className="ProgressiveImage__Img-fumfP VAwLM"
+                    className="c1"
                     src="/resources/placeholder.gif"
                   />
                 </div>
@@ -190,11 +293,11 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
+                  className="c0"
                 >
                   <img
                     alt=""
-                    className="ProgressiveImage__Img-fumfP VAwLM"
+                    className="c1"
                     src="/resources/placeholder.gif"
                   />
                 </div>
@@ -223,11 +326,11 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
+                  className="c0"
                 >
                   <img
                     alt=""
-                    className="ProgressiveImage__Img-fumfP VAwLM"
+                    className="c1"
                     src="/resources/placeholder.gif"
                   />
                 </div>
@@ -256,11 +359,11 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
+                  className="c0"
                 >
                   <img
                     alt=""
-                    className="ProgressiveImage__Img-fumfP VAwLM"
+                    className="c1"
                     src="/resources/placeholder.gif"
                   />
                 </div>
@@ -289,11 +392,11 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
+                  className="c0"
                 >
                   <img
                     alt=""
-                    className="ProgressiveImage__Img-fumfP VAwLM"
+                    className="c1"
                     src="/resources/placeholder.gif"
                   />
                 </div>
@@ -322,11 +425,11 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
+                  className="c0"
                 >
                   <img
                     alt=""
-                    className="ProgressiveImage__Img-fumfP VAwLM"
+                    className="c1"
                     src="/resources/placeholder.gif"
                   />
                 </div>
@@ -355,11 +458,11 @@ exports[`basic snapshot 1`] = `
                 type="button"
               >
                 <div
-                  className="ProgressiveImage__ImageWrapper-hRrhvn eBlNlM"
+                  className="c0"
                 >
                   <img
                     alt=""
-                    className="ProgressiveImage__Img-fumfP VAwLM"
+                    className="c1"
                     src="/resources/placeholder.gif"
                   />
                 </div>
@@ -463,7 +566,7 @@ Details can be added below the image for more specific product information.
           className="SkVariantList-alert-161"
         >
           <div
-            className="BadgeOverlay__Overlay-gvAWwt cDasYZ"
+            className="c2"
           />
         </div>
       </div>
@@ -545,7 +648,7 @@ Details can be added below the image for more specific product information.
             className="SkOptionsList-alert-168"
           >
             <div
-              className="BadgeOverlay__Overlay-gvAWwt gJVwBl"
+              className="c3"
             />
           </div>
         </div>
@@ -758,7 +861,7 @@ Details can be added below the image for more specific product information.
             className="MuiGrid-item-5 MuiGrid-grid-xs-12-44"
           >
             <div
-              className="Button__ButtonDiv-bnfrK hnpaAB"
+              className="c4"
               onClick={[Function]}
               onKeyPress={[Function]}
               role="button"
@@ -768,7 +871,7 @@ Details can be added below the image for more specific product information.
                 Checkout
               </div>
               <div
-                className="Button__SpinnerWrap-bgOcuM cCKgPo"
+                className="c5"
                 style={
                   Object {
                     "opacity": 0,

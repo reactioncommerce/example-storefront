@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import theme from "lib/theme/reactionTheme";
+import theme from "custom/reactionTheme";
 import { MockedProvider } from "react-apollo/test-utils";
 import { Provider } from "mobx-react";
 import shopQuery from "containers/shop/shop.gql";

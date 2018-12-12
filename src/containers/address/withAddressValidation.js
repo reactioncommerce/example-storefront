@@ -5,6 +5,11 @@ import { withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
 import { validateAddress } from "./query.gql";
 
+/**
+ * @summary HOC for adding address validation
+ * @param {React.Component} Comp React component to wrap
+ * @returns {React.Component} Higher order component
+ */
 export default function withAddressValidation(Comp) {
   @withApollo
   @inject("primaryShopId")

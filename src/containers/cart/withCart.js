@@ -36,7 +36,6 @@ export default function withCart(Component) {
     static propTypes = {
       authStore: PropTypes.shape({
         accountId: PropTypes.string,
-        token: PropTypes.string,
         isAuthenticated: PropTypes.bool
       }),
       cartStore: PropTypes.shape({

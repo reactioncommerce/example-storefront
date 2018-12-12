@@ -16,9 +16,9 @@ import withTags from "containers/tags/withTags";
 import Layout from "components/Layout";
 import withMobX from "lib/stores/withMobX";
 import rootMobXStores from "lib/stores";
-import components from "../lib/theme/components";
 import getPageContext from "../lib/theme/getPageContext";
-import componentTheme from "../lib/theme/componentTheme";
+import components from "../custom/componentsContext";
+import componentTheme from "../custom/componentTheme";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -50,7 +50,6 @@ export default class App extends NextApp {
   componentDidMount() {
     // Fetch and update auth token in auth store
     rootMobXStores.cartStore.setAnonymousCartCredentialsFromLocalStorage();
-    rootMobXStores.keycloakAuthStore.setTokenFromLocalStorage();
 
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
