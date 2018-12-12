@@ -86,9 +86,8 @@ export default class TagGridPage extends Component {
 
   renderHeaderMetatags = (metafields) => {
     const metatags = [];
-    console.log(metafields);
     metafields.forEach((field) => {
-      if (field.namespace && field.namespace === "head") {
+      if (field.namespace && field.namespace === "metatag") {
         const metatag = {
           content: field.value
         };
@@ -96,7 +95,6 @@ export default class TagGridPage extends Component {
         metatags.push(metatag);
       }
     });
-    console.log(metatags);
     return metatags;
   };
 
