@@ -112,6 +112,7 @@ export default class TagGridPage extends Component {
     } = this.props;
     const pageSize = query && query.limit ? parseInt(query.limit, 10) : uiStore.pageSize;
     const sortBy = query && query.sortby ? query.sortby : uiStore.sortBy;
+    const description = [{ name: "description", content: shop && shop.description }]
 
     return (
       <Fragment>
@@ -119,9 +120,9 @@ export default class TagGridPage extends Component {
           title={`${tag && tag.name} | ${shop && shop.name}`}
           meta={
             tag.metafields && tag.metafields.length > 0 ?
-              this.renderHeaderMetatags(tag.metafields)
+              this.renderHeaderMetatags(tag.metafields).concat(description)
               :
-              [{ name: "description", content: shop && shop.description }]
+              description
           }
         />
         <Breadcrumbs isTagGrid={true} tag={tag} tags={tags} />
