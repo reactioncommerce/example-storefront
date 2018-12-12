@@ -7,6 +7,7 @@ import withTag from "containers/tags/withTag";
 import Breadcrumbs from "components/Breadcrumbs";
 import ProductGrid from "components/ProductGrid";
 import ProductGridHero from "components/ProductGridHero";
+import ProductGridTitle from "components/ProductGridTitle";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
 @withTag
@@ -132,6 +133,9 @@ export default class TagGridPage extends Component {
           }
         />
         <Breadcrumbs isTagGrid={true} tag={tag} tags={tags} />
+        {
+          tag && tag.displayTitle && <ProductGridTitle displayTitle={tag.displayTitle} />
+        }
         <ProductGridHero tag={tag} />
         <ProductGrid
           catalogItems={catalogItems}

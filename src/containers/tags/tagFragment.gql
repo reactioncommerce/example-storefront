@@ -12,4 +12,5 @@ fragment TagInfo on Tag {
     scope
     value
   }
+  displayTitle
 }

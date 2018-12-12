@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshop of tag without a displayTitle 1`] = `null`;
+
+exports[`snapshot of a tag with a displayTitle 1`] = `
+<h1
+  className="MuiTypography-root-2 MuiTypography-title-8 SkProductGridTitle-gridTitle-1"
+>
+  Test Title
+</h1>
+`;
