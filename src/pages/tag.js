@@ -86,6 +86,7 @@ export default class TagGridPage extends Component {
 
   renderHeaderMetatags = (metafields) => {
     const metatags = [];
+    let hasDescription = false;
     metafields.forEach((field) => {
       if (field.namespace && field.namespace === "metatag") {
         const metatag = {
@@ -93,8 +94,14 @@ export default class TagGridPage extends Component {
         };
         metatag[field.scope] = field.key;
         metatags.push(metatag);
+        if (field.key === "description") {
+          hasDescription = true;
+        }
       }
     });
+    if (hasDescription === false) {
+      metatags.push({ name: "description", content: this.props.shop && this.props.shop.description });
+    }
     return metatags;
   };
 
@@ -112,7 +119,6 @@ export default class TagGridPage extends Component {
     } = this.props;
     const pageSize = query && query.limit ? parseInt(query.limit, 10) : uiStore.pageSize;
     const sortBy = query && query.sortby ? query.sortby : uiStore.sortBy;
-    const description = [{ name: "description", content: shop && shop.description }];
 
     return (
       <Fragment>
@@ -120,9 +126,9 @@ export default class TagGridPage extends Component {
           title={`${tag && tag.name} | ${shop && shop.name}`}
           meta={
             tag.metafields && tag.metafields.length > 0 ?
-              this.renderHeaderMetatags(tag.metafields).concat(description)
+              this.renderHeaderMetatags(tag.metafields)
               :
-              description
+              [{ name: "description", content: shop && shop.description }]
           }
         />
         <Breadcrumbs isTagGrid={true} tag={tag} tags={tags} />
