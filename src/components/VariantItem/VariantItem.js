@@ -32,7 +32,7 @@ const styles = (theme) => ({
     borderColor: theme.palette.reaction.activeElementBorderColor
   },
   soldOutVariant: {
-    opacity: 0.5
+    opacity: 0.2
   }
 });
 

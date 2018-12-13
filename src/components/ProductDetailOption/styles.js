@@ -22,6 +22,6 @@ export default (theme) => ({
     borderColor: theme.palette.reaction.activeElementBorderColor
   },
   soldOutOption: {
-    opacity: 0.5
+    opacity: 0.2
   }
 });
