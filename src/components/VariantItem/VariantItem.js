@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Typography from "@material-ui/core/Typography";
-import classNames from "classnames";
+import { inventoryStatus, STATUS_LABELS } from "@reactioncommerce/components/InventoryStatus/v1/utils";
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 
 const styles = (theme) => ({
@@ -29,6 +30,9 @@ const styles = (theme) => ({
   activeVariant: {
     border: "1px solid",
     borderColor: theme.palette.reaction.activeElementBorderColor
+  },
+  soldOutVariant: {
+    opacity: 0.5
   }
 });
 
@@ -48,18 +52,21 @@ class VariantItem extends Component {
 
   render() {
     const {
-      classes: { variantButton, activeVariant },
+      classes: { variantButton, activeVariant, soldOutVariant },
       currencyCode,
-      variant: { title, pricing },
+      variant,
       isActive
     } = this.props;
+    const { pricing, title } = variant;
+
+    const variantInventoryStatus = inventoryStatus(variant, STATUS_LABELS);
 
     const variantPrice = priceByCurrencyCode(currencyCode, pricing);
 
     return (
       <ButtonBase
         disableRipple
-        className={classNames(variantButton, { [activeVariant]: isActive })}
+        className={classNames(variantButton, { [activeVariant]: isActive }, { [soldOutVariant]: variantInventoryStatus.type === "SOLD_OUT" })}
         onClick={this.onClick}
       >
         <Typography component="span" variant="body1">
