@@ -85,6 +85,27 @@ export default class TagGridPage extends Component {
     this.props.uiStore.setSortBy(sortBy);
   };
 
+  renderHeaderMetatags = (metafields) => {
+    const metatags = [];
+    let hasDescription = false;
+    metafields.forEach((field) => {
+      if (field.namespace && field.namespace === "metatag") {
+        const metatag = {
+          content: field.value
+        };
+        metatag[field.scope] = field.key;
+        metatags.push(metatag);
+        if (field.key === "description") {
+          hasDescription = true;
+        }
+      }
+    });
+    if (hasDescription === false) {
+      metatags.push({ name: "description", content: this.props.shop && this.props.shop.description });
+    }
+    return metatags;
+  };
+
   render() {
     const {
       catalogItems,
@@ -104,7 +125,12 @@ export default class TagGridPage extends Component {
       <Fragment>
         <Helmet
           title={`${tag && tag.name} | ${shop && shop.name}`}
-          meta={[{ name: "description", content: shop && shop.description }]}
+          meta={
+            tag.metafields && tag.metafields.length > 0 ?
+              this.renderHeaderMetatags(tag.metafields)
+              :
+              [{ name: "description", content: shop && shop.description }]
+          }
         />
         <Breadcrumbs isTagGrid={true} tag={tag} tags={tags} />
         {
