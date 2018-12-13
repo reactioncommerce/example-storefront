@@ -36,7 +36,7 @@ export default class ProductDetailOption extends Component {
         className={classNames(
           optionButton,
           { [isSelected]: isActive || false },
-          { [soldOutOption]: optionInventoryStatus.type === "SOLD_OUT" }
+          { [soldOutOption]: optionInventoryStatus && optionInventoryStatus.type === "SOLD_OUT" }
         )
         }
       >

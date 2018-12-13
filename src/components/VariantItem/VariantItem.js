@@ -66,7 +66,7 @@ class VariantItem extends Component {
     return (
       <ButtonBase
         disableRipple
-        className={classNames(variantButton, { [activeVariant]: isActive }, { [soldOutVariant]: variantInventoryStatus.type === "SOLD_OUT" })}
+        className={classNames(variantButton, { [activeVariant]: isActive }, { [soldOutVariant]: variantInventoryStatus && variantInventoryStatus.type === "SOLD_OUT" })}
         onClick={this.onClick}
       >
         <Typography component="span" variant="body1">
