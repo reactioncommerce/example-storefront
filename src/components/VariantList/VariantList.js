@@ -53,12 +53,12 @@ export default class VariantList extends Component {
           isActive={active}
           variant={variant}
         />
-        {this.renderInventoryStatus(variant)}
+        {this.renderBadges(variant)}
       </div>
     );
   }
 
-  renderInventoryStatus(variant) {
+  renderBadges(variant) {
     const { classes } = this.props;
     const status = badgeStatus(variant, BADGE_LABELS);
 
@@ -71,8 +71,8 @@ export default class VariantList extends Component {
     );
   }
 
-  renderInventoryStatusText(variant) {
-    const { product, selectedOptionId, selectedVariantId, variants } = this.props;
+  renderInventoryStatusText() {
+    const { selectedOptionId, selectedVariantId, variants } = this.props;
     const selectedVariant = variants.find((variant) => variant._id === selectedVariantId);
 
     if (selectedOptionId) {
