@@ -1025,9 +1025,10 @@
   dependencies:
     hoist-non-react-statics "^3.2.0"
 
-"@reactioncommerce/components@0.57.0":
-  version "0.57.0"
-  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.57.0.tgz#d44b6f8e9855d1d95d6d58c368e430991fc37083"
+"@reactioncommerce/components@0.60.0":
+  version "0.60.0"
+  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.60.0.tgz#37f77b5be2a212a66dbf6fbc5532a5a94b3cfcb4"
+  integrity sha512-CwuIiO5DSFnuVRE2WOZRcn3qmYu3Lr0fB67MYu5d/N/VZHjIjgClGMwp3xSbB0yzIWURbHi1XsUps4v9aDYAvw==
   dependencies:
     "@material-ui/core" "^3.1.0"
     lodash.debounce "^4.0.8"
