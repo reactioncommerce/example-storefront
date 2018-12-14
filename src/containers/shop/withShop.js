@@ -29,10 +29,10 @@ export default function withShop(Component) {
                   return (
                     <Provider primaryShopId={primaryShopId} shop={shop}>
                       <Component
-                        {...this.props}
                         isLoading={loadingPrimaryShopId || loadingShopData}
                         primaryShopId={primaryShopId}
                         shop={shop}
+                        {...this.props}
                       />
                     </Provider>
                   );

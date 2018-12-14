@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { inject } from "mobx-react";
 
 import { NavigationItemDesktop } from "components/NavigationDesktop";
-import withNavigationTags from "../../containers/tags/withNavigationTags";
 
+@inject("navItems")
 export class NavigationDesktop extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    navItems: PropTypes.object
+    navItems: PropTypes.array
   };
 
   static defaultProps = {
@@ -21,8 +22,8 @@ export class NavigationDesktop extends Component {
 
   render() {
     const { navItems } = this.props;
-    return <nav>{navItems && navItems.edges && navItems.edges.map(this.renderNavItem)}</nav>;
+    return <nav>{navItems.map(this.renderNavItem)}</nav>;
   }
 }
 
-export default withNavigationTags(NavigationDesktop);
+export default NavigationDesktop;

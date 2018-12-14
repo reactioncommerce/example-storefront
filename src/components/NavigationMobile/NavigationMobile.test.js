@@ -52,42 +52,32 @@ const uiStore = {
   isMenuDrawerOpen: false
 };
 
-const tags = {
-  edges: [{
-    node: {
-      _id: "cmVhY3Rpb24vdGFnOjVXZE5LYXprejZ5TWdrcGY5",
-      position: null,
-      slug: "tag-slug",
-      name: "Tag Name",
-      subTags: {
-        edges: [
-          {
-            node: {
-              _id: "cmVhY3Rpb24vdGFnOlRFdjdSV1pDTHl1d1dmOWs2",
-              position: null,
-              slug: "sub-tag-slug",
-              name: "Sub Tag Name",
-              subTags: {
-                edges: []
-              }
-            }
-          },
-          {
-            node: {
-              _id: "cmVhY3Rpb24vdGFnOmJ2MmVEbzV3V3lvNUdNMlN3",
-              position: null,
-              slug: "sub-tag-slug",
-              name: "Sub Tag name",
-              subTags: {
-                edges: []
-              }
-            }
-          }
-        ]
+const tags = [{
+  _id: "cmVhY3Rpb24vdGFnOjVXZE5LYXprejZ5TWdrcGY5",
+  position: null,
+  slug: "tag-slug",
+  name: "Tag Name",
+  subTags: [
+    {
+      node: {
+        _id: "cmVhY3Rpb24vdGFnOlRFdjdSV1pDTHl1d1dmOWs2",
+        position: null,
+        slug: "sub-tag-slug",
+        name: "Sub Tag Name",
+        subTags: []
+      }
+    },
+    {
+      node: {
+        _id: "cmVhY3Rpb24vdGFnOmJ2MmVEbzV3V3lvNUdNMlN3",
+        position: null,
+        slug: "sub-tag-slug",
+        name: "Sub Tag name",
+        subTags: []
       }
     }
-  }]
-};
+  ]
+}];
 
 test("basic snapshot", () => {
   const component = renderer.create((
@@ -96,7 +86,7 @@ test("basic snapshot", () => {
         <Provider
           primaryShopId={shop._id}
           authStore={authStore}
-          shop={shop}
+          navItems={[]}
           tags={tags}
           uiStore={uiStore}
         >
