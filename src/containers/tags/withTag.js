@@ -24,12 +24,12 @@ export default function withTag(Component) {
 
     render() {
       const { router: { query: { slug: slugFromQueryParam } } } = this.props;
-      const { tag } = this.props.routingStore;
+      const { tagId } = this.props.routingStore;
 
-      const slug = slugFromQueryParam || tag._id;
+      const slugOrId = slugFromQueryParam || tagId;
 
       return (
-        <Query query={tagQuery} variables={{ slugOrId: slug }}>
+        <Query query={tagQuery} variables={{ slugOrId }}>
           {({ error, data }) => {
             if (error) {
               console.error("WithTag query error:", error); // eslint-disable-line no-console
