@@ -6,6 +6,7 @@ import withCatalogItems from "containers/catalog/withCatalogItems";
 import withTag from "containers/tags/withTag";
 import Breadcrumbs from "components/Breadcrumbs";
 import ProductGrid from "components/ProductGrid";
+import ProductGridEmptyMessage from "components/ProductGrid/ProductGridEmptyMessage";
 import ProductGridHero from "components/ProductGridHero";
 import ProductGridTitle from "components/ProductGridTitle";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
@@ -45,13 +46,14 @@ export default class TagGridPage extends Component {
 
   static getDerivedStateFromProps(props) {
     const { routingStore, tag } = props;
-    if (routingStore.tag._id !== tag._id) {
+    if (tag && routingStore.tag && routingStore.tag._id !== tag._id) {
       routingStore.setTag(tag);
       routingStore.setSearch({
         before: null,
         after: null
       });
     }
+
     return null;
   }
 
@@ -120,6 +122,15 @@ export default class TagGridPage extends Component {
     } = this.props;
     const pageSize = query && query.limit ? parseInt(query.limit, 10) : uiStore.pageSize;
     const sortBy = query && query.sortby ? query.sortby : uiStore.sortBy;
+
+    if (!tag) {
+      return (
+        <ProductGridEmptyMessage
+          actionMessage="Go Home"
+          resetLink="/"
+        />
+      );
+    }
 
     return (
       <Fragment>
