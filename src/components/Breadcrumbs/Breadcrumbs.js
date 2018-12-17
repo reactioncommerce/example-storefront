@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { inject } from "mobx-react";
 import { withStyles } from "@material-ui/core/styles";
 import ChevronRight from "mdi-material-ui/ChevronRight";
 import Link from "components/Link";
-
+import SharedPropTypes from "lib/utils/SharedPropTypes";
 
 const styles = (theme) => ({
   container: {
@@ -29,6 +30,7 @@ const styles = (theme) => ({
   }
 });
 
+@inject("tags")
 @withStyles(styles, { name: "SkBreadcrumbs" })
 class Breadcrumbs extends Component {
   static propTypes = {
@@ -36,101 +38,45 @@ class Breadcrumbs extends Component {
     isPDP: PropTypes.bool,
     isTagGrid: PropTypes.bool,
     product: PropTypes.object,
-    tag: PropTypes.object,
-    tags: PropTypes.shape({
-      edges: PropTypes.arrayOf(PropTypes.object).isRequired
-    })
+    tagId: PropTypes.string,
+    tags: PropTypes.arrayOf(SharedPropTypes.tag).isRequired
   }
 
-  get isPDP() {
-    const { isPDP } = this.props;
-    return isPDP || false;
-  }
+  renderTagBreadcrumbPiece(tag) {
+    const { classes: { breadcrumbIcon, breadcrumbLink }, tags } = this.props;
 
-  get isTagGrid() {
-    const { isTagGrid } = this.props;
-    return isTagGrid || false;
-  }
-
-  get isTopLevel() {
-    const { tag } = this.props;
-
-    return tag && tag.isTopLevel;
-  }
-
-  renderTopLevelTagBreadcrumb = (tag) => {
-    const { classes: { breadcrumbIcon, breadcrumbLink }, tag: propTag } = this.props;
-
-    const currentTag = tag || propTag;
+    // Find first tag that is a parent of this tag, if any are
+    const parentTag = tags.find((node) => node.subTagIds.includes(tag._id));
 
     return (
       <Fragment>
+        {!!parentTag && this.renderTagBreadcrumbPiece(parentTag)}
         <ChevronRight className={breadcrumbIcon} />
-        <Link route={`/tag/${currentTag.slug}`}><span className={breadcrumbLink}>{currentTag.name}</span></Link>
+        <Link route={`/tag/${tag.slug}`}><span className={breadcrumbLink}>{tag.name}</span></Link>
       </Fragment>
     );
   }
 
-  renderSecondLevelTagBreadcrumb = (tag) => {
-    const { classes: { breadcrumbIcon, breadcrumbLink }, tag: propTag, tags } = this.props;
-    const currentTag = tag || propTag;
+  renderTagBreadcrumbs() {
+    const { tagId, tags } = this.props;
 
-    // Find tag that is a parent of this tag
-    const nodes = tags.edges.map((edge) => edge.node);
-    const parentTag = nodes.find((node) => node.subTagIds.includes(currentTag._id));
+    if (!tagId || !Array.isArray(tags) || tags.length === 0) return null; // still loading
 
-    return (
-      <Fragment>
-        {this.renderTopLevelTagBreadcrumb(parentTag)}
-        <ChevronRight className={breadcrumbIcon} />
-        <Link route={`/tag/${currentTag.slug}`}><span className={breadcrumbLink}>{currentTag.name}</span></Link>
-      </Fragment>
-    );
-  }
-
-  renderThirdLevelTagBreadcrumb = (tag) => {
-    const { classes: { breadcrumbIcon, breadcrumbLink }, tag: propTag, tags } = this.props;
-    const currentTag = tag || propTag;
-
-    // Find tag that is a parent of this tag
-    const nodes = tags.edges.map((edge) => edge.node);
-    const parentTag = nodes.find((node) => node.subTagIds.includes(currentTag._id));
-
-    return (
-      <Fragment>
-        {this.renderSecondLevelTagBreadcrumb(parentTag)}
-        <ChevronRight className={breadcrumbIcon} />
-        <Link route={`/tag/${currentTag.slug}`}><span className={breadcrumbLink}>{currentTag.name}</span></Link>
-      </Fragment>
-    );
-  }
-
-  renderTagBreadcrumbs = (tag) => {
-    const { tag: propTag } = this.props;
-    const currentTag = tag || propTag;
-
-    // If this is a top level tag, return a single breadcrumb
-    if (this.isTopLevel || (currentTag && currentTag.isTopLevel)) {
-      return this.renderTopLevelTagBreadcrumb(currentTag);
+    const currentTag = tags.find((tag) => tag._id === tagId);
+    if (!currentTag) {
+      throw new Error(`Unable to find current tag with ID ${tagId}`);
     }
 
-    // If this is not a top level tag, check to see if this is
-    // a third level tag
-    if (!this.isTopLevel && (currentTag && currentTag.subTagIds && !currentTag.subTagIds.length)) {
-      return this.renderThirdLevelTagBreadcrumb(currentTag);
-    }
-
-    // Return a second level tag if it's not a third level tag
-    return this.renderSecondLevelTagBreadcrumb(currentTag);
+    return this.renderTagBreadcrumbPiece(currentTag);
   }
 
   renderProductNameBreadcrumb = () => {
-    const { classes: { breadcrumbIcon, breadcrumbLink }, product, tag } = this.props;
+    const { classes: { breadcrumbIcon, breadcrumbLink }, product, tagId } = this.props;
 
-    if (tag && tag._id) {
+    if (tagId) {
       return (
         <Fragment>
-          {this.renderTagBreadcrumbs(tag)}
+          {this.renderTagBreadcrumbs()}
           <ChevronRight className={breadcrumbIcon} />
           <Link route={`/product/${product.slug}`}><span className={breadcrumbLink}>{product.title}</span></Link>
         </Fragment>
@@ -145,12 +91,14 @@ class Breadcrumbs extends Component {
     );
   }
 
-  renderBreadcrumbs = () => {
-    if (this.isTagGrid) {
+  renderBreadcrumbs() {
+    const { isPDP, isTagGrid } = this.props;
+
+    if (isTagGrid) {
       return this.renderTagBreadcrumbs();
     }
 
-    if (this.isPDP) {
+    if (isPDP) {
       return this.renderProductNameBreadcrumb();
     }
 

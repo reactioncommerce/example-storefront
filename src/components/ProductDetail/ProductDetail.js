@@ -61,9 +61,6 @@ class ProductDetail extends Component {
     product: PropTypes.object,
     routingStore: PropTypes.object.isRequired,
     shop: PropTypes.object.isRequired,
-    tags: PropTypes.shape({
-      edges: PropTypes.arrayOf(PropTypes.object).isRequired
-    }),
     theme: PropTypes.object,
     uiStore: PropTypes.object.isRequired,
     width: PropTypes.string.isRequired
@@ -228,8 +225,7 @@ class ProductDetail extends Component {
       classes,
       currencyCode,
       product,
-      routingStore: { tag },
-      tags,
+      routingStore,
       theme,
       uiStore: { pdpSelectedOptionId, pdpSelectedVariantId },
       width
@@ -305,7 +301,7 @@ class ProductDetail extends Component {
       <Fragment>
         <Grid container spacing={theme.spacing.unit * 5}>
           <Grid item className={classes.breadcrumbGrid} xs={12}>
-            <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
+            <Breadcrumbs isPDP tagId={routingStore.tagId} product={product} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <div className={classes.section}>

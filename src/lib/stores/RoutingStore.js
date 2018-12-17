@@ -44,14 +44,14 @@ export default class RoutingStore {
   @observable queryString = "";
 
   /**
-   * The tag for the current page.
-   * @type Object
+   * The tag ID for the current page.
+   * @type String
    */
-  @observable tag = {};
+  @observable tagId = null;
 
   @action
-  setTag = (tag) => {
-    this.tag = tag;
+  setTagId = (tagId) => {
+    this.tagId = tagId;
   };
 
   @action

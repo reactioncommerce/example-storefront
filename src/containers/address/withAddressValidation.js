@@ -28,12 +28,22 @@ export default function withAddressValidation(Comp) {
       validationErrors: []
     };
 
+    componentDidMount() {
+      this._isMounted = true;
+    }
+
+    componentWillUnmount() {
+      this._isMounted = false;
+    }
+
     set addressValidationResults({ submittedAddress, validationResults: { suggestedAddresses, validationErrors } }) {
-      this.setState({
-        suggestedAddresses: suggestedAddresses.map(this.xformValidSuggestions),
-        submittedAddress,
-        validationErrors
-      });
+      if (this._isMounted) {
+        this.setState({
+          suggestedAddresses: suggestedAddresses.map(this.xformValidSuggestions),
+          submittedAddress,
+          validationErrors
+        });
+      }
     }
 
     xformValidSuggestions = (address) => ({
