@@ -1,5 +1,5 @@
 import { action, toJS, observable } from "mobx";
-import { Router } from "routes";
+import routes, { Router } from "routes";
 import { inPageSizes, PAGE_SIZES } from "lib/utils/pageSizes";
 
 /**
@@ -14,6 +14,20 @@ export default class RoutingStore {
    * @type String
    */
   @observable pathname = "";
+
+  /**
+   * The path from the response header "Request-Path".
+   *
+   * @type string
+   */
+  @observable requestPath = null;
+
+  /**
+   * The route, which corresponds to the page template
+   *
+   * @type string
+   */
+  @observable route = null;
 
   /**
    * The query params for the current page (i.e. `{shop: `1234', first: 24}`)
@@ -41,9 +55,44 @@ export default class RoutingStore {
   };
 
   @action
-  updateRoute({ pathname, query }) {
+  updateRoute({ pathname, query, route }) {
     this.pathname = pathname;
     this.query = query;
+    this.route = route;
+  }
+
+  /**
+   * Set the request path
+   * @name setRequestPath
+   * @param {String} path Request pathname
+   * @returns {undefined} No return value
+   */
+  @action setRequestPath(path) {
+    this.requestPath = path;
+  }
+
+  /**
+   * Set a new rewrite route for the browser app that resolves to an internal route.
+   * This is used to handle rewrite urls from an HTTP proxy by adding a new
+   * route so the browser-side app can properly resolve that path to a page.
+   * @name setRewriteRoute
+   * @param {String} from Path to add a dynamic route for.
+   * @param {String} to Internal page route, usually in the form of "/"" for home, "/product", "/tag", etc
+   * @returns {undefined} No return value
+   */
+  setRewriteRoute(from, to) {
+    this.setRequestPath(from);
+
+    if (process.browser) {
+      // Remove all generated rewrite routes
+      const routesWithoutRewrites = routes.routes.filter(({ name }) => (
+        name.startsWith("rewrite-") === false
+      ));
+      routes.routes = routesWithoutRewrites;
+
+      // Add new generated route
+      routes.add(`rewrite-${from}`, from, to);
+    }
   }
 
   /**
@@ -80,7 +129,9 @@ export default class RoutingStore {
     this.queryString = urlQueryString;
 
     let path;
-    if (_slug) {
+    if (this.requestPath) {
+      path = `${this.requestPath}?${this.queryString}`;
+    } else if (_slug) {
       path = `${this.pathname}/${_slug}?${this.queryString}`;
     } else {
       path = `${this.pathname}?${this.queryString}`;
