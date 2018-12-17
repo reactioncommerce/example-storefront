@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
+import { inject, observer } from "mobx-react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import tagQuery from "./tag.gql";
 
@@ -11,6 +12,8 @@ import tagQuery from "./tag.gql";
  * @returns {React.Component} - Component with `tag` prop
  */
 export default function withTag(Component) {
+  @inject("routingStore")
+  @observer
   class WithTag extends React.Component {
     static propTypes = {
       /**
@@ -20,10 +23,13 @@ export default function withTag(Component) {
     }
 
     render() {
-      const { router: { query: { slug: tag } } } = this.props;
+      const { router: { query: { slug: slugFromQueryParam } } } = this.props;
+      const { tag } = this.props.routingStore;
+
+      const slug = slugFromQueryParam || tag._id;
 
       return (
-        <Query query={tagQuery} variables={{ slugOrId: tag }}>
+        <Query query={tagQuery} variables={{ slugOrId: slug }}>
           {({ error, data }) => {
             if (error) return null;
             const tagData = data || {};
