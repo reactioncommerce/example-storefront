@@ -49,7 +49,7 @@ class NavigationSubMenuMobile extends Component {
 
   get hasSubNavItems() {
     const { navItem: { subTags } } = this.props;
-    return Array.isArray(subTags.edges) && subTags.edges.length > 0;
+    return Array.isArray(subTags) && subTags.length > 0;
   }
 
   render() {
@@ -73,7 +73,7 @@ class NavigationSubMenuMobile extends Component {
         <div className={classes.menu}>
           {this.hasSubNavItems &&
             <MenuList component="div" disablePadding>
-              {navItem.subTags.edges.map(({ node: navItemGroup }, index) => (
+              {navItem.subTags.map(({ node: navItemGroup }, index) => (
                 <NavigationItemMobile key={index} navItem={navItemGroup} />
               ))}
             </MenuList>

@@ -70,7 +70,7 @@ class NavigationItemDesktop extends Component {
 
   get hasSubNavItems() {
     const { navItem: { subTags } } = this.props;
-    return subTags && Array.isArray(subTags.edges) && subTags.edges.length > 0;
+    return Array.isArray(subTags) && subTags.length > 0;
   }
 
   onClick = (event) => {
@@ -90,7 +90,7 @@ class NavigationItemDesktop extends Component {
   };
 
   renderSubNav(navItemGroup) {
-    const menuItems = navItemGroup.subTags.edges.map(({ node: navItem }, index) => (
+    const menuItems = navItemGroup.subTags.map(({ node: navItem }, index) => (
       <MenuItem dense key={index}>
         <Link onClick={this.onClose} route={`${this.linkPath(navItem)}`}>
           <ListItemText primary={navItem.name} />
@@ -117,7 +117,7 @@ class NavigationItemDesktop extends Component {
           open={this.state.isSubNavOpen}
         >
           <Grid container className={classes.grid} spacing={16}>
-            {subTags.edges.map(({ node: navItemGroup }, index) => (
+            {subTags.map(({ node: navItemGroup }, index) => (
               <Grid item key={index}>
                 <MenuList disablePadding>
                   <MenuItem>
@@ -125,7 +125,7 @@ class NavigationItemDesktop extends Component {
                       <ListItemText primary={navItemGroup.name} />
                     </Link>
                   </MenuItem>
-                  {navItemGroup.subTags && Array.isArray(navItemGroup.subTags.edges) && this.renderSubNav(navItemGroup)}
+                  {Array.isArray(navItemGroup.subTags) && this.renderSubNav(navItemGroup)}
                 </MenuList>
               </Grid>
             ))}

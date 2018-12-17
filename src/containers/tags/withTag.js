@@ -25,7 +25,9 @@ export default function withTag(Component) {
       return (
         <Query query={tagQuery} variables={{ slugOrId: tag }}>
           {({ error, data }) => {
-            if (error) return null;
+            if (error) {
+              console.error("WithTag query error:", error); // eslint-disable-line no-console
+            }
             const tagData = data || {};
 
             return (
