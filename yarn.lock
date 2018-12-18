@@ -1021,13 +1021,12 @@
 "@reactioncommerce/components-context@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@reactioncommerce/components-context/-/components-context-1.1.0.tgz#d50ab030423f5c2802f7342c30589493b1d9ed73"
-  integrity sha512-WhMplFH1z6FMC6zVsPTMIpGGdkNnQ2mFO+TZZee+zhwdiPtLVHAtuhEwBCCuaIA3OjCS4qThf8r6Eg2an8AjsQ==
   dependencies:
     hoist-non-react-statics "^3.2.0"
 
-"@reactioncommerce/components@0.57.0":
-  version "0.57.0"
-  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.57.0.tgz#d44b6f8e9855d1d95d6d58c368e430991fc37083"
+"@reactioncommerce/components@0.60.1":
+  version "0.60.1"
+  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.60.1.tgz#e8ae8517453b455c6d90ddab52e7f82aa5f28540"
   dependencies:
     "@material-ui/core" "^3.1.0"
     lodash.debounce "^4.0.8"
@@ -2313,7 +2312,6 @@ chai@^4.1.2:
 chalk@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.1.0.tgz#ac5becf14fa21b99c6c92ca7a7d7cfd5b17e743e"
-  integrity sha512-LUHGS/dge4ujbXMJrnihYMcL4AoOweGnw9Tp3kQuqy1Kx5c1qKjqvMJZ6nVJPMWJtKCTN72ZogH3oeSO9g9rXQ==
   dependencies:
     ansi-styles "^3.1.0"
     escape-string-regexp "^1.0.5"
@@ -2841,7 +2839,6 @@ css-what@2.1:
 css@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/css/-/css-2.2.4.tgz#c646755c73971f2bba6a601e2cf2fd71b1298929"
-  integrity sha512-oUnjmWpy0niI3x/mPL8dVEI1l7MnG3+HHyRPHf+YFSbK+svOhXpmSOcDURUh2aOCgl2grzrOPt1nHLuCVFULLw==
   dependencies:
     inherits "^2.0.3"
     source-map "^0.6.1"
@@ -3147,7 +3144,6 @@ dot-prop@^4.1.0:
 dotenv@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
-  integrity sha1-hk7xN5rO1Vzm+V3r7NzhefegzR0=
 
 duplexer@~0.1.1:
   version "0.1.1"
@@ -3248,7 +3244,6 @@ entities@^1.1.1, entities@~1.1.1:
 envalid@^4.1.4:
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/envalid/-/envalid-4.1.4.tgz#b8ad8b04aba56eb6b9b087a81062038239723752"
-  integrity sha512-Xz1fNmcAFLQsUcYgoN2YmXkl9hGfLFXpvTHJKEBW/Nsqj+/4WoFnGf6wbdxJXIx5aKpdapf8XJCGrCRfrk2OZg==
   dependencies:
     chalk "2.1.0"
     dotenv "4.0.0"
@@ -4201,7 +4196,6 @@ has-flag@^1.0.0:
 has-flag@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-2.0.0.tgz#e8207af1cc7b30d446cc70b734b5e8be18f88d51"
-  integrity sha1-6CB68cx7MNRGzHC3NLXovhj4jVE=
 
 has-flag@^3.0.0:
   version "3.0.0"
@@ -4316,7 +4310,6 @@ hoist-non-react-statics@^3.0.1:
 hoist-non-react-statics@^3.2.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.2.1.tgz#c09c0555c84b38a7ede6912b61efddafd6e75e1e"
-  integrity sha512-TFsu3TV3YLY+zFTZDrN8L2DTFanObwmBLpWvJs1qfUuEQ5bTAdFcwfx2T/bsCXfM9QHSLvjfP+nihEl0yvozxw==
   dependencies:
     react-is "^16.3.2"
 
@@ -5203,7 +5196,6 @@ jest-snapshot@^23.6.0:
 jest-styled-components@^6.3.1:
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/jest-styled-components/-/jest-styled-components-6.3.1.tgz#fa21a89bfe8c20081c7c083cbaed2200854b60e3"
-  integrity sha512-zie3ajvJbwlbHCAq8/Bv5jdbcYCz0ZMRNNX6adL7wSRpkCVPQtiJigv1140JN1ZOJIODPn8VKrjeFCN+jlPa7w==
   dependencies:
     css "^2.2.4"
 
@@ -5753,7 +5745,6 @@ mdi-material-ui@^5.4.0:
 meant@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/meant/-/meant-1.0.0.tgz#cb6286e3b7af9315f16118fdc224726ed38074bb"
-  integrity sha1-y2KG47evkxXxYRj9wiRybtOAdLs=
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -8353,7 +8344,6 @@ supports-color@^3.1.2, supports-color@^3.2.3:
 supports-color@^4.0.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-4.5.0.tgz#be7a0de484dec5c5cddf8b3d59125044912f635b"
-  integrity sha1-vnoN5ITexcXN34s9WRJQRJEvY1s=
   dependencies:
     has-flag "^2.0.0"
 
@@ -8861,7 +8851,6 @@ validate-npm-package-license@^3.0.1:
 validator@9.4.1:
   version "9.4.1"
   resolved "https://registry.yarnpkg.com/validator/-/validator-9.4.1.tgz#abf466d398b561cd243050112c6ff1de6cc12663"
-  integrity sha512-YV5KjzvRmSyJ1ee/Dm5UED0G+1L4GZnLN3w6/T+zZm8scVua4sOhYKWTUrKa0H/tMiJyO9QLHMPN+9mB/aMunA==
 
 vary@~1.1.2:
   version "1.1.2"
