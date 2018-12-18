@@ -106,9 +106,12 @@ export default class ProductDetailAddToCart extends Component {
   static propTypes = {
     classes: PropTypes.object,
     onClick: PropTypes.func,
+    selectedOptionId: PropTypes.string,
+    selectedVariantId: PropTypes.string,
     uiStore: PropTypes.shape({
       openCartWithTimeout: PropTypes.func
-    }).isRequired
+    }).isRequired,
+    variants: PropTypes.array
   };
 
   static defaultProps = {
@@ -152,8 +155,11 @@ export default class ProductDetailAddToCart extends Component {
 
   handleIncrementButton = () => {
     const value = this.state.addToCartQuantity + 1;
+    const quantityAvailableToSell = this.getAvailableToSellQuantity();
 
-    this.setState({ addToCartQuantity: value });
+    if (quantityAvailableToSell && quantityAvailableToSell >= value) {
+      this.setState({ addToCartQuantity: value });
+    }
   }
 
   handleDecrementButton = () => {
@@ -162,6 +168,30 @@ export default class ProductDetailAddToCart extends Component {
     if (value >= 1) {
       this.setState({ addToCartQuantity: value });
     }
+  }
+
+
+  getAvailableToSellQuantity = () => {
+    const { selectedOptionId, selectedVariantId, variants } = this.props;
+    const selectedVariant = variants.find((variant) => variant._id === selectedVariantId);
+
+    if (selectedOptionId) {
+      // Check to make sure the selected option is from this current page, and not left over from a previous page
+      const options = (selectedVariant && Array.isArray(selectedVariant.options) && selectedVariant.options.length) ? selectedVariant.options : null;
+
+      if (options) {
+        const selectedOption = options.find((option) => option._id === selectedOptionId);
+        return selectedOption.inventoryAvailableToSell;
+      }
+    }
+
+    // If we don't have an option, use the variant for inventory status information
+    if (selectedVariantId) {
+      return selectedVariant.inventoryAvailableToSell;
+    }
+
+    // We should always have a selected option or variant, so we should never get this far
+    return null;
   }
 
   render() {
