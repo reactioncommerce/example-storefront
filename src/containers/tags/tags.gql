@@ -1,7 +1,7 @@
 #import "./tagFragment.gql"
 
 query tagsQuery($shopId: ID!, $cursor: ConnectionCursor) {
-  tags(shopId: $shopId, first: 200, after: $cursor) {
+  tags(shopId: $shopId, first: 200, after: $cursor, sortBy: createdAt) {
     pageInfo {
       endCursor
       startCursor
