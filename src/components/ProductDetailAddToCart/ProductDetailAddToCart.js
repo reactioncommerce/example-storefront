@@ -135,7 +135,10 @@ export default class ProductDetailAddToCart extends Component {
     }
 
     // Reset cart quantity to 1 after items are added to cart
-    this.setState({ addToCartQuantity: 1 });
+    this.setState({
+      addToCartError: null,
+      addToCartQuantity: 1
+    });
 
     // Open cart popper on addToCart
     uiStore.openCartWithTimeout();
@@ -143,35 +146,66 @@ export default class ProductDetailAddToCart extends Component {
 
   handleQuantityInputChange = (event) => {
     const { value } = event.target;
-
     const numericValue = Math.floor(Number(value));
+    const variant = this.getVariantToCheckAvailableToSellQuantity();
+    const { canBackorder, inventoryAvailableToSell } = variant;
 
     if (Number.isNaN(numericValue)) {
       return null;
     }
 
-    return this.setState({ addToCartQuantity: numericValue });
+    if (canBackorder === true) {
+      return this.setState({
+        addToCartError: null,
+        addToCartQuantity: numericValue
+      });
+    }
+
+    if (inventoryAvailableToSell && inventoryAvailableToSell >= value) {
+      return this.setState({
+        addToCartError: null,
+        addToCartQuantity: numericValue
+      });
+    }
+
+    return this.setState({ addToCartError: "Sorry, you are trying to add too many items to your cart." });
   }
 
   handleIncrementButton = () => {
     const value = this.state.addToCartQuantity + 1;
-    const quantityAvailableToSell = this.getAvailableToSellQuantity();
+    const variant = this.getVariantToCheckAvailableToSellQuantity();
+    const { canBackorder, inventoryAvailableToSell } = variant;
 
-    if (quantityAvailableToSell && quantityAvailableToSell >= value) {
-      this.setState({ addToCartQuantity: value });
+    if (canBackorder === true) {
+      return this.setState({
+        addToCartError: null,
+        addToCartQuantity: value
+      });
     }
+
+    if (inventoryAvailableToSell && inventoryAvailableToSell >= value) {
+      return this.setState({
+        addToCartError: null,
+        addToCartQuantity: value
+      });
+    }
+
+    return this.setState({ addToCartError: "Sorry, you are trying to add too many items to your cart." });
   }
 
   handleDecrementButton = () => {
     const value = this.state.addToCartQuantity - 1;
 
     if (value >= 1) {
-      this.setState({ addToCartQuantity: value });
+      this.setState({
+        addToCartError: null,
+        addToCartQuantity: value
+      });
     }
   }
 
 
-  getAvailableToSellQuantity = () => {
+  getVariantToCheckAvailableToSellQuantity = () => {
     const { selectedOptionId, selectedVariantId, variants } = this.props;
     const selectedVariant = variants.find((variant) => variant._id === selectedVariantId);
 
@@ -180,14 +214,13 @@ export default class ProductDetailAddToCart extends Component {
       const options = (selectedVariant && Array.isArray(selectedVariant.options) && selectedVariant.options.length) ? selectedVariant.options : null;
 
       if (options) {
-        const selectedOption = options.find((option) => option._id === selectedOptionId);
-        return selectedOption.inventoryAvailableToSell;
+        return options.find((option) => option._id === selectedOptionId);
       }
     }
 
     // If we don't have an option, use the variant for inventory status information
     if (selectedVariantId) {
-      return selectedVariant.inventoryAvailableToSell;
+      return selectedVariant;
     }
 
     // We should always have a selected option or variant, so we should never get this far
@@ -252,6 +285,9 @@ export default class ProductDetailAddToCart extends Component {
                 }
               }}
             />
+            <Typography variant="body1">
+              {this.state.addToCartError}
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <ButtonBase
