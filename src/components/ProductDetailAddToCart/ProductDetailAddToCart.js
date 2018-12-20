@@ -62,6 +62,11 @@ const styles = (theme) => ({
     color: theme.palette.primary.contrastText,
     fontWeight: 600
   },
+  addToCartErrorText: {
+    color: theme.palette.primary.coolGray500,
+    fontWeight: 600,
+    marginTop: "20px"
+  },
   incrementButton: {
     backgroundColor: theme.palette.reaction.black02,
     color: theme.palette.reaction.coolGray500,
@@ -232,6 +237,7 @@ export default class ProductDetailAddToCart extends Component {
       classes: {
         addToCartButton,
         addToCartText,
+        addToCartErrorText,
         incrementButton,
         quantityContainer,
         quantityGrid,
@@ -285,7 +291,7 @@ export default class ProductDetailAddToCart extends Component {
                 }
               }}
             />
-            <Typography variant="body1">
+            <Typography className={addToCartErrorText} component="span" variant="body1">
               {this.state.addToCartError}
             </Typography>
           </Grid>
