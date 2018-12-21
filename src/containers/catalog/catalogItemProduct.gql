@@ -7,7 +7,6 @@ query catalogItemProductQuery($slugOrId: String!) {
       slug
       description
       vendor
-      canBackorder
       inventoryAvailableToSell
       inventoryInStock
       isLowQuantity
