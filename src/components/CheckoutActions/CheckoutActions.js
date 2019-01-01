@@ -251,16 +251,10 @@ export default class CheckoutActions extends Component {
   };
 
   placeOrder = async (order) => {
-    console.log("----------------------- order", order);
-
     const { authStore, cartStore, placeOrderWithStripeCard } = this.props;
 
     try {
       const { data } = await placeOrderWithStripeCard(order);
-
-      console.log(" -------------------- placeOrder { data }", data);
-      console.log("------------------------------------------------------------");
-
       const { placeOrderWithStripeCardPayment: { orders, token } } = data;
 
       this.trackAction({
