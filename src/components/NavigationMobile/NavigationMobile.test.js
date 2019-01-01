@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import theme from "lib/theme/reactionTheme";
+import theme from "custom/reactionTheme";
 import { MockedProvider } from "react-apollo/test-utils";
 import { Provider } from "mobx-react";
 import primaryShopIdQuery from "containers/common-gql/primaryShopId.gql";
@@ -52,42 +52,32 @@ const uiStore = {
   isMenuDrawerOpen: false
 };
 
-const tags = {
-  edges: [{
-    node: {
-      _id: "cmVhY3Rpb24vdGFnOjVXZE5LYXprejZ5TWdrcGY5",
-      position: null,
-      slug: "tag-slug",
-      name: "Tag Name",
-      subTags: {
-        edges: [
-          {
-            node: {
-              _id: "cmVhY3Rpb24vdGFnOlRFdjdSV1pDTHl1d1dmOWs2",
-              position: null,
-              slug: "sub-tag-slug",
-              name: "Sub Tag Name",
-              subTags: {
-                edges: []
-              }
-            }
-          },
-          {
-            node: {
-              _id: "cmVhY3Rpb24vdGFnOmJ2MmVEbzV3V3lvNUdNMlN3",
-              position: null,
-              slug: "sub-tag-slug",
-              name: "Sub Tag name",
-              subTags: {
-                edges: []
-              }
-            }
-          }
-        ]
+const tags = [{
+  _id: "cmVhY3Rpb24vdGFnOjVXZE5LYXprejZ5TWdrcGY5",
+  position: null,
+  slug: "tag-slug",
+  name: "Tag Name",
+  subTags: [
+    {
+      node: {
+        _id: "cmVhY3Rpb24vdGFnOlRFdjdSV1pDTHl1d1dmOWs2",
+        position: null,
+        slug: "sub-tag-slug",
+        name: "Sub Tag Name",
+        subTags: []
+      }
+    },
+    {
+      node: {
+        _id: "cmVhY3Rpb24vdGFnOmJ2MmVEbzV3V3lvNUdNMlN3",
+        position: null,
+        slug: "sub-tag-slug",
+        name: "Sub Tag name",
+        subTags: []
       }
     }
-  }]
-};
+  ]
+}];
 
 test("basic snapshot", () => {
   const component = renderer.create((
@@ -96,7 +86,7 @@ test("basic snapshot", () => {
         <Provider
           primaryShopId={shop._id}
           authStore={authStore}
-          shop={shop}
+          navItems={[]}
           tags={tags}
           uiStore={uiStore}
         >

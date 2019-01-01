@@ -5,6 +5,11 @@
  * without worrying about it pulling in new component versions everywhere automatically. Instead,
  * you can switch from the `v1` import path to the `v2` import path, e.g., for a single component
  * when you're ready.
+ *
+ * You may also import your custom React components here and add them to the exported object.
+ * They will then be available in the `components` property of all Reaction Design
+ * System components, as well as any of your own components that you've wrapped
+ * with the `withComponents` higher-order component.
  */
 
 import iconClear from "@reactioncommerce/components/svg/iconClear";
@@ -48,7 +53,7 @@ import SelectableList from "@reactioncommerce/components/SelectableList/v1";
 import StockWarning from "@reactioncommerce/components/StockWarning/v1";
 import StripeForm from "@reactioncommerce/components/StripeForm/v1";
 import TextInput from "@reactioncommerce/components/TextInput/v1";
-import withLocales from "../utils/withLocales";
+import withLocales from "../lib/utils/withLocales";
 
 // Providing locales data
 const AddressFormWithLocales = withLocales(AddressForm);

@@ -1,6 +1,328 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic snapshot 1`] = `
+.c2 {
+  width: 1.125em;
+  height: 1.125em;
+}
+
+.c0 {
+  -webkit-font-smoothing: antialiased;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #1999dd;
+  border-color: #1999dd;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,sans-serif;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0;
+  min-width: 100px;
+  outline: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
+}
+
+.c0:hover {
+  background-color: #25b0f9;
+  border-color: #25b0f9;
+  color: #ffffff;
+}
+
+.c0:active {
+  background-color: #057dbe;
+  border-color: #057dbe;
+  color: #ffffff;
+}
+
+.c3 {
+  -webkit-font-smoothing: antialiased;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: transparent;
+  border-color: #5e7480;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #3c3c3c;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,sans-serif;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0;
+  min-width: 100px;
+  outline: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
+}
+
+.c3:hover {
+  background-color: #eaeff3;
+  border-color: #5e7480;
+  color: #3c3c3c;
+}
+
+.c3:active {
+  background-color: #c9d9e1;
+  border-color: #5e7480;
+  color: #3c3c3c;
+}
+
+.c11 {
+  -webkit-font-smoothing: antialiased;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: transparent;
+  border-color: #5e7480;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #3c3c3c;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,sans-serif;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0;
+  min-width: 100px;
+  outline: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c11:hover {
+  background-color: #eaeff3;
+  border-color: #5e7480;
+  color: #3c3c3c;
+}
+
+.c11:active {
+  background-color: #c9d9e1;
+  border-color: #5e7480;
+  color: #3c3c3c;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  padding-left: 20px;
+  -webkit-transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
+  transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
+}
+
+.c1 svg path,
+.c1 svg rect {
+  fill: #ffffff;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  padding-left: 20px;
+  -webkit-transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
+  transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
+}
+
+.c4 svg path,
+.c4 svg rect {
+  fill: #3c3c3c;
+}
+
+.c5 {
+  margin-bottom: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 15px;
+}
+
+.c6 {
+  -webkit-font-smoothing: antialiased;
+  color: #505558;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1.25;
+  color: #737373;
+  display: block;
+  margin-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+}
+
+.c9 {
+  -webkit-font-smoothing: antialiased;
+  color: #505558;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1.25;
+  display: block;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 10px;
+}
+
+.c7 {
+  -webkit-font-smoothing: antialiased;
+  background-color: #fafafa;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #3c3c3c;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  outline: none;
+  padding: 8px 10px;
+  position: relative;
+}
+
+.c8 {
+  background-color: inherit;
+  border: none;
+  box-sizing: border-box;
+  color: inherit;
+  -webkit-box-flex: 2;
+  -webkit-flex-grow: 2;
+  -ms-flex-positive: 2;
+  flex-grow: 2;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.c8::-webkit-input-placeholder {
+  color: #cccccc;
+}
+
+.c8::-moz-placeholder {
+  color: #cccccc;
+}
+
+.c8:-ms-input-placeholder {
+  color: #cccccc;
+}
+
+.c8::placeholder {
+  color: #cccccc;
+}
+
+.c8:-moz-read-only {
+  color: #bfbfbf;
+}
+
+.c8:read-only {
+  color: #bfbfbf;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1rem 0 0 0;
+}
+
+.c10 > * {
+  width: 100%;
+}
+
+@media (min-width:600px) {
+  .c10 > * {
+    width: auto;
+  }
+}
+
 <div
   className="MuiGrid-container-4"
 >
@@ -16,7 +338,7 @@ exports[`basic snapshot 1`] = `
         Returning Customer
       </h2>
       <div
-        className="SkEntry-loginButton-2 Button__ButtonDiv-bnfrK hnpaAB"
+        className="SkEntry-loginButton-2 c0"
         onClick={[Function]}
         onKeyPress={[Function]}
         role="button"
@@ -26,7 +348,7 @@ exports[`basic snapshot 1`] = `
           Login
         </div>
         <div
-          className="Button__SpinnerWrap-bgOcuM cCKgPo"
+          className="c1"
           style={
             Object {
               "opacity": 0,
@@ -36,7 +358,7 @@ exports[`basic snapshot 1`] = `
           }
         >
           <svg
-            className="spinner__SpinnerSvg-iBTUvT bunzNs"
+            className="c2"
             height="40px"
             style={
               Object {
@@ -67,7 +389,7 @@ exports[`basic snapshot 1`] = `
         </div>
       </div>
       <div
-        className="SkEntry-loginButton-2 Button__ButtonDiv-bnfrK iBiUMT"
+        className="SkEntry-loginButton-2 c3"
         onClick={[Function]}
         onKeyPress={[Function]}
         role="button"
@@ -77,7 +399,7 @@ exports[`basic snapshot 1`] = `
           Create a new account
         </div>
         <div
-          className="Button__SpinnerWrap-bgOcuM fcVXSk"
+          className="c4"
           style={
             Object {
               "opacity": 0,
@@ -87,7 +409,7 @@ exports[`basic snapshot 1`] = `
           }
         >
           <svg
-            className="spinner__SpinnerSvg-iBTUvT bunzNs"
+            className="c2"
             height="40px"
             style={
               Object {
@@ -135,19 +457,19 @@ exports[`basic snapshot 1`] = `
         style={Object {}}
       >
         <div
-          className="required Field__StyledField-kQcQjL ehrYlT"
+          className="required c5"
         >
           <label
-            className="Field__StyledLabel-gsQloH iABDMN"
+            className="c6"
           >
             Email Address
           </label>
           <div
-            className="TextInput__InputWrapper-dGJJJl bKAmhu"
+            className="c7"
             value=""
           >
             <input
-              className="TextInput__StyledInput-loReSQ cKYvwP"
+              className="c8"
               id="email_GuestForm_1"
               name="email"
               onBlur={[Function]}
@@ -161,16 +483,16 @@ exports[`basic snapshot 1`] = `
             />
           </div>
           <span
-            className="Field__StyledHelpText-iiSdPK lgdmIQ"
+            className="c9"
           >
             You will have the option to create an account and save your details after checkout.
           </span>
         </div>
         <div
-          className="GuestForm__FormAction-fhrWsN iShDAB"
+          className="c10"
         >
           <div
-            className="Button__ButtonDiv-bnfrK hvNndH"
+            className="c11"
             onClick={[Function]}
             onKeyPress={[Function]}
             role="button"
@@ -180,7 +502,7 @@ exports[`basic snapshot 1`] = `
               Continue as guest
             </div>
             <div
-              className="Button__SpinnerWrap-bgOcuM fcVXSk"
+              className="c4"
               style={
                 Object {
                   "opacity": 0,
@@ -190,7 +512,7 @@ exports[`basic snapshot 1`] = `
               }
             >
               <svg
-                className="spinner__SpinnerSvg-iBTUvT bunzNs"
+                className="c2"
                 height="40px"
                 style={
                   Object {

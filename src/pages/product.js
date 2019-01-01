@@ -28,9 +28,6 @@ class ProductDetailPage extends Component {
       currency: PropTypes.shape({
         code: PropTypes.string.isRequired
       })
-    }),
-    tags: PropTypes.shape({
-      edges: PropTypes.arrayOf(PropTypes.object).isRequired
     })
   };
 
@@ -85,7 +82,7 @@ class ProductDetailPage extends Component {
   }
 
   renderMainArea() {
-    const { addItemsToCart, isLoadingProduct, product, shop, tags } = this.props;
+    const { addItemsToCart, isLoadingProduct, product, shop } = this.props;
     const currencyCode = (shop && shop.currency.code) || "USD";
 
     if (isLoadingProduct) return <PageLoading />;
@@ -98,7 +95,6 @@ class ProductDetailPage extends Component {
         currencyCode={currencyCode}
         product={product}
         shop={shop}
-        tags={tags}
       />
     );
   }

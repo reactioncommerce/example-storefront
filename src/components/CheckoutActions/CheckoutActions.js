@@ -67,6 +67,7 @@ export default class CheckoutActions extends Component {
   };
 
   componentDidMount() {
+    this._isMounted = true;
     const { cart } = this.props;
     // Track start of checkout process
     this.trackCheckoutStarted({ cart, action: CHECKOUT_STARTED });
@@ -90,6 +91,10 @@ export default class CheckoutActions extends Component {
     ) {
       this.handleValidationErrors();
     }
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   @trackCheckoutStep()
@@ -136,11 +141,13 @@ export default class CheckoutActions extends Component {
       // The next step will automatically be expanded, so lets track that
       this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 2 }));
 
-      this.setState({
-        actionAlerts: {
-          1: {}
-        }
-      });
+      if (this._isMounted) {
+        this.setState({
+          actionAlerts: {
+            1: {}
+          }
+        });
+      }
     }
   };
 
@@ -273,17 +280,19 @@ export default class CheckoutActions extends Component {
       // Send user to order confirmation page
       Router.pushRoute("checkoutComplete", { orderId: orders[0].referenceId, token });
     } catch (error) {
-      this.setState({
-        hasPaymentError: true,
-        isPlacingOrder: false,
-        actionAlerts: {
-          3: {
-            alertType: "error",
-            title: "Payment method failed",
-            message: error.toString().replace("Error: GraphQL error:", "")
+      if (this._isMounted) {
+        this.setState({
+          hasPaymentError: true,
+          isPlacingOrder: false,
+          actionAlerts: {
+            3: {
+              alertType: "error",
+              title: "Payment method failed",
+              message: error.toString().replace("Error: GraphQL error:", "")
+            }
           }
-        }
-      });
+        });
+      }
     }
   };
 

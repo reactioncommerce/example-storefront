@@ -72,7 +72,7 @@ class NavigationItemMobile extends Component {
 
   get hasSubNavItems() {
     const { navItem: { subTags } } = this.props;
-    return Array.isArray(subTags.edges) && subTags.edges.length > 0;
+    return Array.isArray(subTags) && subTags.length > 0;
   }
 
   onClick = () => {
@@ -100,7 +100,7 @@ class NavigationItemMobile extends Component {
       return (
         <Collapse in={this.state.isSubNavOpen} timeout="auto" unmountOnExit>
           <MenuList className={classes.subMenuList} component="div" disablePadding>
-            {subTags.edges.map(({ node: navItemGroup }, index) => (
+            {subTags.map(({ node: navItemGroup }, index) => (
               <NavigationItemMobile
                 key={index}
                 classes={classes}

@@ -5,6 +5,11 @@ import { withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
 import { validateAddress } from "./query.gql";
 
+/**
+ * @summary HOC for adding address validation
+ * @param {React.Component} Comp React component to wrap
+ * @returns {React.Component} Higher order component
+ */
 export default function withAddressValidation(Comp) {
   @withApollo
   @inject("primaryShopId")
@@ -23,12 +28,22 @@ export default function withAddressValidation(Comp) {
       validationErrors: []
     };
 
+    componentDidMount() {
+      this._isMounted = true;
+    }
+
+    componentWillUnmount() {
+      this._isMounted = false;
+    }
+
     set addressValidationResults({ submittedAddress, validationResults: { suggestedAddresses, validationErrors } }) {
-      this.setState({
-        suggestedAddresses: suggestedAddresses.map(this.xformValidSuggestions),
-        submittedAddress,
-        validationErrors
-      });
+      if (this._isMounted) {
+        this.setState({
+          suggestedAddresses: suggestedAddresses.map(this.xformValidSuggestions),
+          submittedAddress,
+          validationErrors
+        });
+      }
     }
 
     xformValidSuggestions = (address) => ({

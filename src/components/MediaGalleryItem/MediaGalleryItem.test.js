@@ -1,17 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { Provider } from "mobx-react";
 import MediaGalleryItem from "./MediaGalleryItem";
-
-const uiStore = {
-  appConfig: {
-    publicRuntimeConfig: {
-      placeholderImageUrls: {
-        productGrid: ""
-      }
-    }
-  }
-};
 
 const media = {
   toGrid: 1,
@@ -28,9 +17,7 @@ const media = {
 };
 
 test("basic snapshot", () => {
-  const component = renderer.create(<Provider uiStore={uiStore}>
-    <MediaGalleryItem media={media} />
-  </Provider>);
+  const component = renderer.create(<MediaGalleryItem media={media} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
