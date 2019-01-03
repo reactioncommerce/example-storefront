@@ -62,6 +62,11 @@ const styles = (theme) => ({
     color: theme.palette.primary.contrastText,
     fontWeight: 600
   },
+  addToCartErrorText: {
+    color: theme.palette.primary.coolGray500,
+    fontWeight: 600,
+    marginTop: "20px"
+  },
   incrementButton: {
     backgroundColor: theme.palette.reaction.black02,
     color: theme.palette.reaction.coolGray500,
@@ -106,9 +111,12 @@ export default class ProductDetailAddToCart extends Component {
   static propTypes = {
     classes: PropTypes.object,
     onClick: PropTypes.func,
+    selectedOptionId: PropTypes.string,
+    selectedVariantId: PropTypes.string,
     uiStore: PropTypes.shape({
       openCartWithTimeout: PropTypes.func
-    }).isRequired
+    }).isRequired,
+    variants: PropTypes.array
   };
 
   static defaultProps = {
@@ -132,7 +140,10 @@ export default class ProductDetailAddToCart extends Component {
     }
 
     // Reset cart quantity to 1 after items are added to cart
-    this.setState({ addToCartQuantity: 1 });
+    this.setState({
+      addToCartError: null,
+      addToCartQuantity: 1
+    });
 
     // Open cart popper on addToCart
     uiStore.openCartWithTimeout();
@@ -140,28 +151,85 @@ export default class ProductDetailAddToCart extends Component {
 
   handleQuantityInputChange = (event) => {
     const { value } = event.target;
-
     const numericValue = Math.floor(Number(value));
+    const variant = this.getVariantToCheckAvailableToSellQuantity();
+    const { canBackorder, inventoryAvailableToSell } = variant;
 
     if (Number.isNaN(numericValue)) {
       return null;
     }
 
-    return this.setState({ addToCartQuantity: numericValue });
+    if (canBackorder === true) {
+      return this.setState({
+        addToCartError: null,
+        addToCartQuantity: numericValue
+      });
+    }
+
+    if (inventoryAvailableToSell && inventoryAvailableToSell >= value) {
+      return this.setState({
+        addToCartError: null,
+        addToCartQuantity: numericValue
+      });
+    }
+
+    return this.setState({ addToCartError: "Sorry, you are trying to add too many items to your cart." });
   }
 
   handleIncrementButton = () => {
     const value = this.state.addToCartQuantity + 1;
+    const variant = this.getVariantToCheckAvailableToSellQuantity();
+    const { canBackorder, inventoryAvailableToSell } = variant;
 
-    this.setState({ addToCartQuantity: value });
+    if (canBackorder === true) {
+      return this.setState({
+        addToCartError: null,
+        addToCartQuantity: value
+      });
+    }
+
+    if (inventoryAvailableToSell && inventoryAvailableToSell >= value) {
+      return this.setState({
+        addToCartError: null,
+        addToCartQuantity: value
+      });
+    }
+
+    return this.setState({ addToCartError: "Sorry, you are trying to add too many items to your cart." });
   }
 
   handleDecrementButton = () => {
     const value = this.state.addToCartQuantity - 1;
 
     if (value >= 1) {
-      this.setState({ addToCartQuantity: value });
+      this.setState({
+        addToCartError: null,
+        addToCartQuantity: value
+      });
     }
+  }
+
+
+  getVariantToCheckAvailableToSellQuantity = () => {
+    const { selectedOptionId, selectedVariantId, variants } = this.props;
+    const selectedVariant = variants.find((variant) => variant._id === selectedVariantId);
+
+    if (selectedOptionId) {
+      // Check to make sure the selected option is from this current page, and not left over from a previous page
+      const options = (selectedVariant && Array.isArray(selectedVariant.options) && selectedVariant.options.length) ? selectedVariant.options : null;
+
+      if (options) {
+        return options.find((option) => option._id === selectedOptionId);
+      }
+    }
+
+    // If we don't have an option, use the variant for inventory status information
+    if (selectedVariantId) {
+      return selectedVariant;
+    }
+
+    // We should always have a selected option or variant, so we should never get this far
+    return null;
   }
 
   render() {
@@ -169,6 +237,7 @@ export default class ProductDetailAddToCart extends Component {
       classes: {
         addToCartButton,
         addToCartText,
+        addToCartErrorText,
         incrementButton,
         quantityContainer,
         quantityGrid,
@@ -222,6 +291,9 @@ export default class ProductDetailAddToCart extends Component {
                 }
               }}
             />
+            <Typography className={addToCartErrorText} component="span" variant="body1">
+              {this.state.addToCartError}
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <ButtonBase

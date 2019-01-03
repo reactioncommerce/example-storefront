@@ -287,7 +287,12 @@ class ProductDetail extends Component {
               currencyCode={currencyCode}
               variants={product.variants}
             />
-            <ProductDetailAddToCart onClick={this.handleAddToCartClick} />
+            <ProductDetailAddToCart
+              onClick={this.handleAddToCartClick}
+              selectedOptionId={pdpSelectedOptionId}
+              selectedVariantId={pdpSelectedVariantId}
+              variants={product.variants}
+            />
           </div>
 
           <div className={classes.section}>
@@ -329,7 +334,12 @@ class ProductDetail extends Component {
               currencyCode={currencyCode}
               variants={product.variants}
             />
-            <ProductDetailAddToCart onClick={this.handleAddToCartClick} />
+            <ProductDetailAddToCart
+              onClick={this.handleAddToCartClick}
+              selectedOptionId={pdpSelectedOptionId}
+              selectedVariantId={pdpSelectedVariantId}
+              variants={product.variants}
+            />
           </Grid>
         </Grid>
       </Fragment>

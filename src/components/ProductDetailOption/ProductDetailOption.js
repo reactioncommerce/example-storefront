@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Typography from "@material-ui/core/Typography";
-import classNames from "classnames";
+import { inventoryStatus, STATUS_LABELS } from "@reactioncommerce/components/InventoryStatus/v1/utils";
 import styles from "./styles";
 
 @withStyles(styles, { name: "SkProductDetailOption" })
@@ -21,10 +22,12 @@ export default class ProductDetailOption extends Component {
 
   render() {
     const {
-      classes: { optionButton, optionText, isSelected },
+      classes: { isSelected, optionButton, optionText, soldOutOption },
       isActive,
       option
     } = this.props;
+
+    const optionInventoryStatus = inventoryStatus(option, STATUS_LABELS);
 
     return (
       <ButtonBase
@@ -32,7 +35,8 @@ export default class ProductDetailOption extends Component {
         onClick={this.handleOnClick}
         className={classNames(
           optionButton,
-          { [isSelected]: isActive || false }
+          { [isSelected]: isActive || false },
+          { [soldOutOption]: optionInventoryStatus && optionInventoryStatus.type === "SOLD_OUT" }
         )
         }
       >
