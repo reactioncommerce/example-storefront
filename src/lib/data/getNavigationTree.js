@@ -23,12 +23,8 @@ export default async function getNavigationTree(client) {
   }
 
   // Get defaultNavigationTree
-  const navigationTreeByIdVariables = { id: defaultNavigationTreeId };
-  const { data: { navigationTreeById } } = await client.query({ query: navigationQuery, navigationTreeByIdVariables });
-
-  if (!navigationTreeById) {
-    throw new Error("navigationTreeById query result was null");
-  }
+  const variables = { id: defaultNavigationTreeId };
+  const { data: { navigationTreeById } } = await client.query({ query: navigationQuery, variables });
 
   return navigationTreeById;
 }
