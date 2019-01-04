@@ -201,11 +201,11 @@ jobs:
           name: Integration Test
           command: |
             docker run \ 
-            -e URL=${STAGING_URL} \
-            --env-file docker-cache/.env \
-            --name reaction_app_next_starterkit \
-            "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-            yarn run test:integration
+              -e URL=${STAGING_URL} \
+              --env-file docker-cache/.env \
+              --name reaction_app_next_starterkit \
+              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
+              yarn run test:integration
       - run:
           name: Copy test artifacts from Remote Docker
           command: |
