@@ -230,16 +230,6 @@ jobs:
           name: Broken Link Test
           command: |
             ./node_modules/.bin/blc ${STAGING_URL} -ro -filter=3 -e
-      - run:
-          name: Copy test artifacts from Remote Docker
-          command: |
-            docker cp \
-              reactionapp_next_starterkit:/usr/local/src/reaction-app/reports \
-              reports
-      - store_test_results:
-          path: reports/junit
-      - store_artifacts:
-          path: reports
 
   snyk-security:
     <<: *defaults
@@ -298,5 +288,5 @@ workflows:
               only: /^develop$/
       - e2e-test:
           requires: 
-            - docker-build
+            - deploy-to-ecs
             
