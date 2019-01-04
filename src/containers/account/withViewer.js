@@ -25,7 +25,7 @@ export default function withViewer(Component) {
       const { authStore } = this.props;
 
       return (
-        <Query query={viewerQuery}>
+        <Query errorPolicy="all" query={viewerQuery}>
           {({ data }) => {
             if (data) {
               authStore.setAccount(data.viewer);
