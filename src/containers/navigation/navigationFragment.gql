@@ -1,0 +1,10 @@
+fragment NavigationItemFields on NavigationItemData {
+  content {
+    language
+    value
+  }
+  classNames
+  url
+  isUrlRelative
+  shouldOpenInNewWindow
+}
