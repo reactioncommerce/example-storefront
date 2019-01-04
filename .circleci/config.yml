@@ -204,7 +204,8 @@ jobs:
               --env-file docker-cache/.env \
               --name reactionapp_next_starterkit_int \
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-              URL=${STAGING_URL} yarn run test:integration
+              -e URL=${STAGING_URL} \ 
+              yarn run test:integration
       # - run:
       #     name: Install Broken Link Checker
       #     command: |
