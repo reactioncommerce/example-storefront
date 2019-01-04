@@ -201,10 +201,40 @@ jobs:
           name: Integration Test
           command: |
             docker run \
+              -e URL=${STAGING_URL} \
               --env-file docker-cache/.env \
               --name reactionapp_next_starterkit_int \
-              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-              -e URL=${STAGING_URL} \ 
+              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \ 
+              yarn run test:integration
+      - run:
+          name: Copy test artifacts from Remote Docker
+          command: |
+            docker cp \
+              reactionapp_next_starterkit:/usr/local/src/reaction-app/reports \
+              reports
+      - store_test_results:
+          path: reports/junit
+      - store_artifacts:
+          path: reports
+
+  e2e-test:
+    <<: *defaults
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: docker-cache
+      - run:
+          name: Load Docker Image
+          command: |
+            docker load < docker-cache/docker-image.tar
+      - run:
+          name: Integration Test
+          command: |
+            docker run -t \
+              -e URL=${STAGING_URL} \
+              --env-file docker-cache/.env \
+              --name reactionapp_next_starterkit_int \
+              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \ 
               yarn run test:integration
       # - run:
       #     name: Install Broken Link Checker
@@ -280,3 +310,7 @@ workflows:
           filters:
             branches:
               only: /^develop$/
+      # - e2e-test:
+      #     requires: 
+      #       - deploy-to-ecs
+            
