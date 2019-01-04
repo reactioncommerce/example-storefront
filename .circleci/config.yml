@@ -198,15 +198,6 @@ jobs:
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
               yarn run test:ci
       - run:
-          name: Integration Test
-          command: |
-            docker run \ 
-              -e URL=${STAGING_URL} \
-              --env-file docker-cache/.env \
-              --name reaction_app_next_starterkit \
-              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-              yarn run test:integration
-      - run:
           name: Copy test artifacts from Remote Docker
           command: |
             docker cp \
@@ -230,20 +221,15 @@ jobs:
       - run:
           name: Integration Test
           command: |
-            docker run \ 
-            -e URL=${STAGING_URL} \
-            --env-file docker-cache/.env \
-            --name reaction_app_next_starterkit \
-            "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-            yarn run test:integration
-      # - run:
-      #     name: Install Broken Link Checker
-      #     command: |
-      #       yarn add broken-link-checker
-      # - run:
-      #     name: Broken Link Test
-      #     command: |
-      #       ./node_modules/.bin/blc ${STAGING_URL} -ro -filter=3 -e
+            docker run -e URL=${STAGING_URL} --env-file docker-cache/.env --name reaction_app_next_starterkit "$DOCKER_REPOSITORY:$CIRCLE_SHA1" yarn run test:integration
+      - run:
+          name: Install Broken Link Checker
+          command: |
+            yarn add broken-link-checker
+      - run:
+          name: Broken Link Test
+          command: |
+            ./node_modules/.bin/blc ${STAGING_URL} -ro -filter=3 -e
       - run:
           name: Copy test artifacts from Remote Docker
           command: |
@@ -310,7 +296,7 @@ workflows:
           filters:
             branches:
               only: /^develop$/
-      # - e2e-test:
-      #     requires: 
-      #       - deploy-to-ecs
+      - e2e-test:
+          requires: 
+            - docker-build
             
