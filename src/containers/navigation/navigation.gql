@@ -2,30 +2,29 @@
 
 query navigationQuery($id: ID!) {
   navigationTreeById(id: $id, language: "en") {
-
-        _id
-        shopId
-        name
+    _id
+    shopId
+    name
+    items {
+      navigationItem {
+        data {
+          ...NavigationItemFields
+        }
+      }
+      items {
+        navigationItem {
+          data {
+            ...NavigationItemFields
+          }
+        }
         items {
           navigationItem {
             data {
               ...NavigationItemFields
             }
           }
-          items {
-            navigationItem {
-              data {
-                ...NavigationItemFields
-              }
-            }
-            items {
-              navigationItem {
-                data {
-                  ...NavigationItemFields
-                }
-              }
-            }
-          }
         }
+      }
+    }
   }
 }
