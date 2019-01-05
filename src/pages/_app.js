@@ -19,8 +19,8 @@ import rootMobXStores from "lib/stores";
 import getPageContext from "../lib/theme/getPageContext";
 import components from "../custom/componentsContext";
 import componentTheme from "../custom/componentTheme";
-import buildNavFromTags from "../lib/data/buildNavFromTags";
 import getAllTags from "../lib/data/getAllTags";
+import getNavigationTree from "../lib/data/getNavigationTree";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -38,7 +38,7 @@ export default class App extends NextApp {
     }
 
     const tags = await getAllTags(ctx.apolloClient);
-    const navItems = buildNavFromTags(tags);
+    const navItems = await getNavigationTree(ctx.apolloClient);
 
     return { navItems, pageProps, tags };
   }

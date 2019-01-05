@@ -61,16 +61,16 @@ class NavigationItemDesktop extends Component {
   linkPath = (providedNavItem) => {
     const { navItem, routingStore } = this.props;
 
-    const currentNavItem = providedNavItem || navItem;
+    const currentNavItem = (providedNavItem && providedNavItem.navigationItem) || navItem.navigationItem;
 
     return routingStore.queryString !== ""
-      ? `/tag/${currentNavItem.slug}?${routingStore.queryString}`
-      : `/tag/${currentNavItem.slug}`;
+      ? `${currentNavItem.data.url}?${routingStore.queryString}`
+      : `${currentNavItem.data.url}`;
   }
 
   get hasSubNavItems() {
-    const { navItem: { subTags } } = this.props;
-    return Array.isArray(subTags) && subTags.length > 0;
+    const { navItem: { items } } = this.props;
+    return Array.isArray(items) && items.length > 0;
   }
 
   onClick = (event) => {
@@ -81,7 +81,7 @@ class NavigationItemDesktop extends Component {
       this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
     } else {
       const path = this.linkPath();
-      Router.pushRoute(path, { slug: navItem.slug });
+      Router.pushRoute(path, { slug: navItem.navigationItem.data.url });
     }
   };
 
@@ -90,10 +90,10 @@ class NavigationItemDesktop extends Component {
   };
 
   renderSubNav(navItemGroup) {
-    const menuItems = navItemGroup.subTags.map(({ node: navItem }, index) => (
+    const menuItems = navItemGroup.items.map((item, index) => (
       <MenuItem dense key={index}>
-        <Link onClick={this.onClose} route={`${this.linkPath(navItem)}`}>
-          <ListItemText primary={navItem.name} />
+        <Link onClick={this.onClose} route={`${this.linkPath(item)}`}>
+          <ListItemText primary={item.navigationItem.data.content[0].value} />
         </Link>
       </MenuItem>
     ));
@@ -104,9 +104,9 @@ class NavigationItemDesktop extends Component {
   }
 
   renderPopover() {
-    const { classes, navItem, navItem: { subTags } } = this.props;
+    const { classes, navItem: { items, navigationItem } } = this.props;
 
-    if (subTags) {
+    if (items) {
       return (
         <Popover
           classes={{ paper: classes.popover }}
@@ -117,21 +117,21 @@ class NavigationItemDesktop extends Component {
           open={this.state.isSubNavOpen}
         >
           <Grid container className={classes.grid} spacing={16}>
-            {subTags.map(({ node: navItemGroup }, index) => (
+            {items.map((item, index) => (
               <Grid item key={index}>
                 <MenuList disablePadding>
                   <MenuItem>
-                    <Link onClick={this.onClose} route={`${this.linkPath(navItemGroup)}`}>
-                      <ListItemText primary={navItemGroup.name} />
+                    <Link onClick={this.onClose} route={`${this.linkPath(item)}`}>
+                      <ListItemText primary={navigationItem.data.content[0].value} />
                     </Link>
                   </MenuItem>
-                  {Array.isArray(navItemGroup.subTags) && this.renderSubNav(navItemGroup)}
+                  {Array.isArray(item.items) && this.renderSubNav(item)}
                 </MenuList>
               </Grid>
             ))}
           </Grid>
           <Link className={classes.navigationShopAllLink} onClick={this.onClose} route={`${this.linkPath()}`}>
-            <span>Shop all {navItem.name} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
+            <span>Shop all {navigationItem.data.content[0].value} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
           </Link>
         </Popover>
       );
@@ -141,12 +141,12 @@ class NavigationItemDesktop extends Component {
   }
 
   render() {
-    const { classes: { primaryNavItem }, navItem } = this.props;
+    const { classes: { primaryNavItem }, navItem, navItem: { navigationItem } } = this.props;
 
     return (
       <Fragment>
         <Button className={primaryNavItem} color="inherit" onClick={this.onClick} href={this.linkPath(navItem)}>
-          {navItem.name}
+          {navigationItem.data.content[0].value}
           {this.hasSubNavItems && <Fragment>{this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
         </Button>
         {this.hasSubNavItems && this.renderPopover()}

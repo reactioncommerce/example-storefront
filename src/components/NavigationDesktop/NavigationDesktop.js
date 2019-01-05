@@ -8,21 +8,21 @@ import { NavigationItemDesktop } from "components/NavigationDesktop";
 export class NavigationDesktop extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    navItems: PropTypes.array
+    navItems: PropTypes.object
   };
 
   static defaultProps = {
     classes: {},
-    navItems: []
+    navItems: {}
   };
 
   renderNavItem(navItem, index) {
-    return <NavigationItemDesktop key={index} navItem={navItem.node} />;
+    return <NavigationItemDesktop key={index} navItem={navItem} />;
   }
 
   render() {
     const { navItems } = this.props;
-    return <nav>{navItems.map(this.renderNavItem)}</nav>;
+    return <nav>{navItems.items.map(this.renderNavItem)}</nav>;
   }
 }
 
