@@ -1,7 +1,7 @@
 #import "./navigationFragment.gql"
 
-query navigationQuery($id: ID!) {
-  navigationTreeById(id: $id, language: "en") {
+query navigationQuery($id: ID!, $language: String!) {
+  navigationTreeById(id: $id, language: $language) {
     _id
     shopId
     name
