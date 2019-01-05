@@ -66,13 +66,13 @@ class NavigationItemMobile extends Component {
   get linkPath() {
     const { navItem, routingStore } = this.props;
     return routingStore.queryString !== ""
-      ? `/tag/${navItem.slug}?${routingStore.queryString}`
-      : `/tag/${navItem.slug}`;
+      ? `${navItem.navigationItem.data.url}?${routingStore.queryString}`
+      : `${navItem.navigationItem.data.url}`;
   }
 
   get hasSubNavItems() {
-    const { navItem: { subTags } } = this.props;
-    return Array.isArray(subTags) && subTags.length > 0;
+    const { navItem: { items } } = this.props;
+    return Array.isArray(items) && items.length > 0;
   }
 
   onClick = () => {
@@ -94,17 +94,17 @@ class NavigationItemMobile extends Component {
   };
 
   renderSubNav() {
-    const { classes, isTopLevel, navItem: { subTags }, uiStore, routingStore } = this.props;
+    const { classes, isTopLevel, navItem: { items }, uiStore, routingStore } = this.props;
 
     if (this.hasSubNavItems && !isTopLevel) {
       return (
         <Collapse in={this.state.isSubNavOpen} timeout="auto" unmountOnExit>
           <MenuList className={classes.subMenuList} component="div" disablePadding>
-            {subTags.map(({ node: navItemGroup }, index) => (
+            {items.map((item, index) => (
               <NavigationItemMobile
                 key={index}
                 classes={classes}
-                navItem={navItemGroup}
+                navItem={item}
                 routingStore={routingStore}
                 shouldShowDivider={false}
                 uiStore={uiStore}
@@ -160,7 +160,7 @@ class NavigationItemMobile extends Component {
             classes={{
               textDense: classes.listItemTextDense
             }}
-            primary={navItem.name}
+            primary={navItem.navigationItem.data.content[0].value}
           />
           {this.renderIcon()}
         </ListItem>

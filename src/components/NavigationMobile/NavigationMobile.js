@@ -89,7 +89,7 @@ class NavigationMobile extends Component {
     <NavigationItemMobile
       key={index}
       isTopLevel
-      navItem={navItem.node}
+      navItem={navItem}
       onClick={this.handleNavItemClick}
     />
   );
@@ -120,7 +120,7 @@ class NavigationMobile extends Component {
           <Divider />
         </div>
         <nav className={classes.menu}>
-          <MenuList disablePadding>{navItems.map(this.renderNavItem)}</MenuList>
+          <MenuList disablePadding>{navItems.items.map(this.renderNavItem)}</MenuList>
         </nav>
         <Slide direction="left" in={!!this.state.navItem}>
           <nav className={classes.subNav}>
