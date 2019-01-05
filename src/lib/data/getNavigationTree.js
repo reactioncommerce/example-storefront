@@ -23,7 +23,7 @@ export default async function getNavigationTree(client) {
   }
 
   // Get defaultNavigationTree
-  const variables = { id: defaultNavigationTreeId, language: "en" }; // TODO: dynamically get language from shop / other data
+  const variables = { id: defaultNavigationTreeId, language: "en" }; // Change language here to see navigation translations
   const { data: { navigationTreeById } } = await client.query({ query: navigationQuery, variables });
 
   return navigationTreeById;
