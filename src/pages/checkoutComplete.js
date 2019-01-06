@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import OrderFulfillmentGroups from "components/OrderFulfillmentGroups";
+import OrderFulfillmentGroup from "components/OrderFulfillmentGroup";
 import PageLoading from "components/PageLoading";
 import withCart from "containers/cart/withCart";
 import withOrder from "containers/order/withOrder";
@@ -85,7 +85,12 @@ class CheckoutComplete extends Component {
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
-    order: PropTypes.object,
+    order: PropTypes.shape({
+      email: PropTypes.string.isRequired,
+      fulfillmentGroups: PropTypes.arrayOf(PropTypes.object).isRequired,
+      payments: PropTypes.arrayOf(PropTypes.object),
+      referenceId: PropTypes.string.isRequired
+    }),
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -111,7 +116,9 @@ class CheckoutComplete extends Component {
     return (
       <div className={classes.flexContainer}>
         <div className={classes.fulfillmentGroups}>
-          <OrderFulfillmentGroups order={order} />
+          {order.fulfillmentGroups.map((fulfillmentGroup, index) => (
+            <OrderFulfillmentGroup key={`${index}`} fulfillmentGroup={fulfillmentGroup} payments={order.payments} />
+          ))}
         </div>
       </div>
     );
@@ -144,14 +151,12 @@ class CheckoutComplete extends Component {
           <div className={classes.orderDetails}>
             <section className={classes.section}>
               <header className={classes.sectionHeader}>
-                <Typography className={classes.title} variant="title">
-                  {"Thank you for your order"}
+                <Typography className={classes.title} variant="title">Thank you for your order</Typography>
+                <Typography variant="body1">
+                  {"Your order ID is:"} <strong>{order.referenceId}</strong>
                 </Typography>
                 <Typography variant="body1">
-                  {"Your order ID is:"} <strong>{order && order.referenceId}</strong>
-                </Typography>
-                <Typography variant="body1">
-                  {"We've sent a confirmation email to:"} <strong>{order && order.email}</strong>
+                  {"We've sent a confirmation email to:"} <strong>{order.email}</strong>
                 </Typography>
               </header>
               <div className={classes.checkoutContent}>{this.renderFulfillmentGroups()}</div>

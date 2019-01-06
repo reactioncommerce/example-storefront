@@ -56,9 +56,6 @@ const testFulfillmentGroup = {
       }
     ]
   },
-  payment: {
-    displayName: "Example Payment"
-  },
   selectedFulfillmentOption: {
     fulfillmentMethod: {
       displayName: "Free Shipping",
@@ -67,12 +64,17 @@ const testFulfillmentGroup = {
   }
 };
 
+const testPayments = [{
+  displayName: "Example Payment"
+}];
+
 test("basic snapshot", () => {
   const component = renderer.create((
     <ComponentsProvider value={components}>
       <MuiThemeProvider theme={theme}>
         <OrderFulfillmentGroup
           fulfillmentGroup={testFulfillmentGroup}
+          payments={testPayments}
         />
       </MuiThemeProvider>
     </ComponentsProvider>

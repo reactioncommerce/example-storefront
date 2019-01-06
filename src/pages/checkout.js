@@ -308,8 +308,7 @@ class Checkout extends Component {
     }
 
     const hasAccount = !!cart.account;
-    const displayEmail = (hasAccount && Array.isArray(cart.account.emailRecords) && cart.account.emailRecords[0].address) || cart.email;
-
+    const orderEmailAddress = (hasAccount && Array.isArray(cart.account.emailRecords) && cart.account.emailRecords[0].address) || cart.email;
 
     return (
       <div className={classes.checkoutContentContainer}>
@@ -318,10 +317,10 @@ class Checkout extends Component {
             <Grid item xs={12} md={7}>
               <div className={classes.flexContainer}>
                 <div className={classes.checkoutActions}>
-                  {displayEmail ? (
-                    <CheckoutEmailAddress emailAddress={displayEmail} isAccountEmail={hasAccount} />
+                  {orderEmailAddress ? (
+                    <CheckoutEmailAddress emailAddress={orderEmailAddress} isAccountEmail={hasAccount} />
                   ) : null}
-                  <CheckoutActions />
+                  <CheckoutActions orderEmailAddress={orderEmailAddress} />
                 </div>
               </div>
             </Grid>
