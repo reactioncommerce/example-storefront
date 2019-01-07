@@ -15,12 +15,12 @@ export default function withShop(Component) {
   class Shop extends React.Component {
     render() {
       return (
-        <Query query={primaryShopIdQuery}>
+        <Query errorPolicy="all" query={primaryShopIdQuery}>
           {({ loading: loadingPrimaryShopId, data }) => {
             const { primaryShopId } = data || {};
 
             return (
-              <Query query={shopQuery} variables={{ shopId: primaryShopId }} skip={loadingPrimaryShopId}>
+              <Query errorPolicy="all" query={shopQuery} variables={{ shopId: primaryShopId }} skip={loadingPrimaryShopId}>
                 {({ loading: loadingShopData, data: shopData }) => {
                   const { shop } = shopData || {};
 

@@ -3,15 +3,9 @@ import PropTypes from "prop-types";
 import { ApolloProvider, getDataFromTree } from "react-apollo";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import Head from "next/head";
-import getConfig from "next/config";
 import rootMobxStores from "lib/stores";
 import logger from "../logger";
 import initApollo from "./initApollo";
-
-const STATUS_FOUND = 302;
-const STATUS_UNAUTHORIZED = 401;
-
-const { serverRuntimeConfig } = getConfig();
 
 /**
  * Get the display name of a component
@@ -45,7 +39,7 @@ export default function withApolloClient(WrappedComponent) {
         logger.error(`Error parsing user object. Check passport session configuration. ${error}`);
       }
 
-      const apollo = initApollo({ cookies: req && req.cookies }, { accessToken: user && user.accessToken });
+      const apollo = initApollo({ cookies: req && req.cookies }, { accessToken: user && user.accessToken, req, res });
 
       ctx.ctx.apolloClient = apollo;
 
@@ -63,36 +57,12 @@ export default function withApolloClient(WrappedComponent) {
       const apolloState = {};
 
       if (!process.browser) {
-        // Run all graphql queries in the component tree
-        // and extract the resulting data
-        try {
-          // Run all GraphQL queries
-          // eslint-disable-next-line
-          await getDataFromTree(
-            <ApolloProvider client={apollo}>
-              <WrappedComponent {...wrappedComponentProps} Component={Component} router={router} />
-            </ApolloProvider>
-          ); // eslint-disable-line
-        } catch (error) {
-          const { networkError } = error;
-          // Prevent Apollo Client GraphQL errors from crashing SSR.
-          // Handle them in components via the data.error prop:
-          // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
-          if (networkError) {
-            // In server, if a 401 Unauthorized error occurred, redirect to /signin.
-            // This will re-authenticate without showing a login page and a new token is issued.
-            if (networkError.response && networkError.response.status === STATUS_UNAUTHORIZED && res) {
-              logger.warn("Received 401 error from the GraphQL API due to invalid or expired authentication credentials. " +
-                "Triggering token refresh via redirect flow");
-              res.writeHead(STATUS_FOUND, { Location: "/signin" });
-              res.end();
-              return {};
-            }
-            logger.error(`Unable to access the GraphQL API. Is it running and accessible at ${serverRuntimeConfig.graphqlUrl} from the Storefront UI server?`);
-          } else {
-            logger.error(`Error while running getDataFromTree: ${error}`);
-          }
-        }
+        // Run all GraphQL queries
+        await getDataFromTree((
+          <ApolloProvider client={apollo}>
+            <WrappedComponent {...wrappedComponentProps} Component={Component} router={router} />
+          </ApolloProvider>
+        ));
 
         // getDataFromTree does not call componentWillUnmount
         // head side effect therefore need to be cleared manually

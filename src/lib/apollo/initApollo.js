@@ -7,7 +7,12 @@ import { onError } from "apollo-link-error";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import fetch from "isomorphic-fetch";
 import getConfig from "next/config";
+import logger from "../logger";
 import { omitTypenameLink } from "./omitVariableTypenameLink";
+
+const SIGN_IN_PATH = "/signin";
+const STATUS_FOUND = 302;
+const STATUS_UNAUTHORIZED = 401;
 
 // Config
 let graphqlUrl;
@@ -41,14 +46,26 @@ const create = (initialState, options) => {
 
     if (networkError) {
       const errorCode = networkError.response && networkError.response.status;
-      // In browser, if a 401 Unauthorized error occurred, redirect to /signin.
-      // This will re-authenticate the user without showing a login page and a new token is issued.
-      if (errorCode === 401) {
-        if (process && process.browser) Router.pushRoute("/signin");
-      }
+      if (errorCode === STATUS_UNAUTHORIZED) {
+        // If a 401 Unauthorized error occurred, redirect to /signin.
+        // This will re-authenticate the user without showing a login page and a new token is issued.
+        logger.info("Attempting silent re-auth");
+        if (process && process.browser) {
+          Router.pushRoute(SIGN_IN_PATH);
+        } else {
+          // In server, if a 401 Unauthorized error occurred, redirect to /signin.
+          // This will re-authenticate without showing a login page and a new token is issued.
+          // Log out cookies so that the app will load unauthenticated if the re-auth doesn't work
+          if (options.req) options.req.logout();
+          if (options.res) {
+            options.res.writeHead(STATUS_FOUND, { Location: SIGN_IN_PATH });
+            options.res.end();
+          }
+        }
 
-      // eslint-disable-next-line no-console
-      console.error(`[Network error]: ${networkError}`);
+        return;
+      }
+      logger.error(`Unable to access the GraphQL API. Is it running and accessible at ${graphqlUrl} from the Storefront UI server?`);
     }
   });
 
@@ -66,10 +83,9 @@ const create = (initialState, options) => {
     }
   }));
 
-  const httpLink = new HttpLink({ uri: `${graphqlUrl}`, credentials: "same-origin" });
+  const httpLink = new HttpLink({ uri: graphqlUrl, credentials: "same-origin" });
 
   return new ApolloClient({
-    connectToDevTools: process.browser,
     ssrMode: !process.browser,
     link: ApolloLink.from([omitTypenameLink, authLink, errorLink, httpLink]),
     cache: new InMemoryCache().restore(initialState || {})

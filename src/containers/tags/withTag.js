@@ -23,11 +23,8 @@ export default function withTag(Component) {
       const { router: { query: { slug: tag } } } = this.props;
 
       return (
-        <Query query={tagQuery} variables={{ slugOrId: tag }}>
-          {({ error, data }) => {
-            if (error) {
-              console.error("WithTag query error:", error); // eslint-disable-line no-console
-            }
+        <Query errorPolicy="all" query={tagQuery} variables={{ slugOrId: tag }}>
+          {({ data }) => {
             const tagData = data || {};
 
             return (
