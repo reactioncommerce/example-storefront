@@ -7,6 +7,8 @@ query catalogItemProductQuery($slugOrId: String!) {
       slug
       description
       vendor
+      inventoryAvailableToSell
+      inventoryInStock
       isLowQuantity
       isSoldOut
       isBackorder
@@ -80,6 +82,12 @@ query catalogItemProductQuery($slugOrId: String!) {
           }
           displayPrice
         }
+        canBackorder
+        inventoryAvailableToSell
+        inventoryInStock
+        isBackorder
+        isSoldOut
+        isLowQuantity
         options {
           _id
           variantId
@@ -96,6 +104,10 @@ query catalogItemProductQuery($slugOrId: String!) {
             displayPrice
           }
           optionTitle
+          canBackorder
+          inventoryAvailableToSell
+          inventoryInStock
+          isBackorder
           isSoldOut
           isLowQuantity
           media {
