@@ -17,8 +17,8 @@ import TRACKING from "lib/tracking/constants";
 import trackCheckout from "lib/tracking/trackCheckout";
 import trackOrder from "lib/tracking/trackOrder";
 import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
-import StripePaymentInput from "../StripePaymentInput";
 import { placeOrder } from "../../containers/order/mutations.gql";
+import paymentMethods from "../../custom/paymentMethods";
 
 const {
   CHECKOUT_STARTED,
@@ -363,19 +363,7 @@ export default class CheckoutActions extends Component {
           alert: actionAlerts["3"],
           onReset: this.handlePaymentsReset,
           payments,
-          paymentMethods: [
-            {
-              displayName: "Credit Card",
-              InputComponent: StripePaymentInput,
-              name: "stripe_card",
-              shouldCollectBillingAddress: true
-            },
-            {
-              displayName: "IOU",
-              name: "iou_example",
-              shouldCollectBillingAddress: true
-            }
-          ]
+          paymentMethods
         }
       },
       {

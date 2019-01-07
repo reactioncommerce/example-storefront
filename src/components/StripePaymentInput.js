@@ -19,14 +19,6 @@ const Span = styled.span`
 `;
 
 class StripePaymentInput extends Component {
-  static renderComplete({ displayName } = {}) {
-    return (
-      <div>
-        {displayName}
-      </div>
-    );
-  }
-
   static propTypes = {
     /**
      * You can provide a `className` prop that will be applied to the outermost DOM element
@@ -64,9 +56,8 @@ class StripePaymentInput extends Component {
     onReadyForSaveChange: PropTypes.func,
     /**
      * Called with an object value when this component's `submit`
-     * method is called. The object has `payment` and `displayName`
-     * properties, where `payment` is the Payment that should be
-     * passed to the `placeOrder` mutation.
+     * method is called. The object may have `data`, `displayName`,
+     * and `amount` properties.
      */
     onSubmit: PropTypes.func
   };
