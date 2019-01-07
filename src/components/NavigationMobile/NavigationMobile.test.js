@@ -79,6 +79,97 @@ const tags = [{
   ]
 }];
 
+const mockNavItem = {
+  items: [],
+  navigationItem: {
+    data: {
+      classNames: null,
+      content: [{
+        language: "en",
+        value: "NavItem"
+      }],
+      isUrlRelative: true,
+      shouldOpenInNewWindow: false,
+      url: "/nav-item"
+    }
+  }
+};
+
+const mockNavItemWithSubItem = {
+  items: [{
+    items: [],
+    navigationItem: {
+      data: {
+        classNames: null,
+        content: [{
+          language: "en",
+          value: "NavSubItem"
+        }],
+        isUrlRelative: true,
+        shouldOpenInNewWindow: false,
+        url: "/nav-sub-item"
+      }
+    }
+  }],
+  navigationItem: {
+    data: {
+      classNames: null,
+      content: [{
+        language: "en",
+        value: "NavItem"
+      }],
+      isUrlRelative: true,
+      shouldOpenInNewWindow: false,
+      url: "/nav-item"
+    }
+  }
+};
+
+const mockNavItemWithSubItems = {
+  items: [{
+    items: [{
+      items: [],
+      navigationItem: {
+        data: {
+          classNames: null,
+          content: [{
+            language: "en",
+            value: "NavSubSubItem"
+          }],
+          isUrlRelative: true,
+          shouldOpenInNewWindow: false,
+          url: "/nav-sub-sub-item"
+        }
+      }
+    }],
+    navigationItem: {
+      data: {
+        classNames: null,
+        content: [{
+          language: "en",
+          value: "NavSubItem"
+        }],
+        isUrlRelative: true,
+        shouldOpenInNewWindow: false,
+        url: "/nav-sub-item"
+      }
+    }
+  }],
+  navigationItem: {
+    data: {
+      classNames: null,
+      content: [{
+        language: "en",
+        value: "NavItem"
+      }],
+      isUrlRelative: true,
+      shouldOpenInNewWindow: false,
+      url: "/nav-item"
+    }
+  }
+};
+
+
 test("basic snapshot", () => {
   const component = renderer.create((
     <MockedProvider mocks={mocks} addTypename={false}>
@@ -86,7 +177,7 @@ test("basic snapshot", () => {
         <Provider
           primaryShopId={shop._id}
           authStore={authStore}
-          navItems={[]}
+          navItems={mockNavItem}
           tags={tags}
           uiStore={uiStore}
         >

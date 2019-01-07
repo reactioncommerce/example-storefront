@@ -27,7 +27,7 @@ Array [
       <span
         className="MuiTypography-root-27 MuiTypography-subheading-34 MuiListItemText-primary-24"
       >
-        Tag Name
+        NavItem
       </span>
     </div>
     <svg
@@ -76,7 +76,7 @@ Array [
       <span
         className="MuiTypography-root-27 MuiTypography-subheading-34 MuiListItemText-primary-24"
       >
-        Tag Name
+        NavItem
       </span>
     </div>
     <svg

@@ -34,6 +34,97 @@ const mockTagWithSubTags = {
   ]
 };
 
+const mockNavItem = {
+  items: [],
+  navigationItem: {
+    data: {
+      classNames: null,
+      content: [{
+        language: "en",
+        value: "NavItem"
+      }],
+      isUrlRelative: true,
+      shouldOpenInNewWindow: false,
+      url: "/nav-item"
+    }
+  }
+};
+
+const mockNavItemWithSubItem = {
+  items: [{
+    items: [],
+    navigationItem: {
+      data: {
+        classNames: null,
+        content: [{
+          language: "en",
+          value: "NavSubItem"
+        }],
+        isUrlRelative: true,
+        shouldOpenInNewWindow: false,
+        url: "/nav-sub-item"
+      }
+    }
+  }],
+  navigationItem: {
+    data: {
+      classNames: null,
+      content: [{
+        language: "en",
+        value: "NavItem"
+      }],
+      isUrlRelative: true,
+      shouldOpenInNewWindow: false,
+      url: "/nav-item"
+    }
+  }
+};
+
+const mockNavItemWithSubItems = {
+  items: [{
+    items: [{
+      items: [],
+      navigationItem: {
+        data: {
+          classNames: null,
+          content: [{
+            language: "en",
+            value: "NavSubSubItem"
+          }],
+          isUrlRelative: true,
+          shouldOpenInNewWindow: false,
+          url: "/nav-sub-sub-item"
+        }
+      }
+    }],
+    navigationItem: {
+      data: {
+        classNames: null,
+        content: [{
+          language: "en",
+          value: "NavSubItem"
+        }],
+        isUrlRelative: true,
+        shouldOpenInNewWindow: false,
+        url: "/nav-sub-item"
+      }
+    }
+  }],
+  navigationItem: {
+    data: {
+      classNames: null,
+      content: [{
+        language: "en",
+        value: "NavItem"
+      }],
+      isUrlRelative: true,
+      shouldOpenInNewWindow: false,
+      url: "/nav-item"
+    }
+  }
+};
+
+
 const uiStore = {
   closeMenuDrawer() {},
   toggleMenuDrawerOpen() {}
@@ -46,7 +137,7 @@ const routingStore = {
 test("basic snapshot", () => {
   const component = renderer.create((
     <Provider primaryShopId={"J8Bhq3uTtdgwZx3rz"} routingStore={routingStore} uiStore={uiStore}>
-      <NavigationSubMenuMobile navItem={mockTagWithSubTags} />
+      <NavigationSubMenuMobile navItem={mockNavItemWithSubItems} />
     </Provider>
   ));
   const tree = component.toJSON();
