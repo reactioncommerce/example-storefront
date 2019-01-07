@@ -14,9 +14,14 @@ const ActionCompleteDiv = styled.div`
 
 class PaymentsCheckoutAction extends Component {
   static renderComplete({ payments }) {
-    const text = payments.map(({ displayName }) => displayName).join(", ");
+    if (!Array.isArray(payments) || payments.length === 0) return null;
+
+    const paymentLines = payments.map(({ displayName, payment }, index) => (
+      <div key={`${index}`}>{displayName} {payment.amount ? `- ${payment.amount}` : null}</div>
+    ));
+
     return (
-      <ActionCompleteDiv>{text}</ActionCompleteDiv>
+      <ActionCompleteDiv>{paymentLines}</ActionCompleteDiv>
     );
   }
 
@@ -97,6 +102,11 @@ class PaymentsCheckoutAction extends Component {
      */
     payments: PropTypes.arrayOf(PropTypes.object),
     /**
+     * If provided, this component will ensure that no new
+     * payment is added with an `amount` greater than this.
+     */
+    remainingAmountDue: PropTypes.number,
+    /**
      * Checkout process step number
      */
     stepNumber: PropTypes.number.isRequired
@@ -144,15 +154,20 @@ class PaymentsCheckoutAction extends Component {
   }
 
   handleInputComponentSubmit = async ({ amount = null, data, displayName } = {}) => {
-    const { onSubmit, paymentMethods } = this.props;
+    const { onSubmit, paymentMethods, remainingAmountDue } = this.props;
     const { billingAddress, selectedPaymentMethodName } = this.state;
 
     const selectedPaymentMethod = paymentMethods.find((method) => method.name === selectedPaymentMethodName);
 
+    let cappedPaymentAmount = amount;
+    if (cappedPaymentAmount && typeof remainingAmountDue === "number") {
+      cappedPaymentAmount = Math.min(cappedPaymentAmount, remainingAmountDue);
+    }
+
     await onSubmit({
       displayName: displayName || selectedPaymentMethod.displayName,
       payment: {
-        amount,
+        amount: cappedPaymentAmount,
         billingAddress,
         data,
         method: selectedPaymentMethodName
@@ -199,6 +214,18 @@ class PaymentsCheckoutAction extends Component {
         <Title>Billing Address</Title>
         <AddressChoice addresses={addresses} isReadOnly={isSaving} onChange={this.handleAddressChange} />
       </Fragment>
+    );
+  }
+
+  renderPartialPayments() {
+    const { components: { InlineAlert }, payments } = this.props;
+
+    if (!Array.isArray(payments) || payments.length === 0) return null;
+
+    const message = payments.map(({ displayName, payment }) => `${displayName} - ${payment.amount}`).join(", ");
+
+    return (
+      <InlineAlert alertType="success" message={message} title="Partial Payments"/>
     );
   }
 
@@ -249,6 +276,7 @@ class PaymentsCheckoutAction extends Component {
           {stepNumber}. {label}
         </Title>
         {alert ? <InlineAlert {...alert} /> : ""}
+        {this.renderPartialPayments()}
         {this.renderPaymentMethodList()}
         {!!selectedPaymentMethod && !!selectedPaymentMethod.InputComponent &&
           <selectedPaymentMethod.InputComponent

@@ -235,11 +235,12 @@ export default class CheckoutActions extends Component {
     const { cartStore, client: apolloClient } = this.props;
 
     // Payments can have `null` amount to mean "remaining".
-    const orderTotal = order.fulfillmentGroups.reduce((sum, group) => sum + group.totalPrice, 0);
-    const payments = cartStore.checkoutPayments.map(({ payment }) => ({
-      ...payment,
-      amount: payment.amount || orderTotal
-    }));
+    let remainingAmountDue = order.fulfillmentGroups.reduce((sum, group) => sum + group.totalPrice, 0);
+    const payments = cartStore.checkoutPayments.map(({ payment }) => {
+      const amount = payment.amount ? Math.min(payment.amount, remainingAmountDue) : remainingAmountDue;
+      remainingAmountDue -= amount;
+      return { ...payment, amount };
+    });
 
     try {
       const { data } = await apolloClient.mutate({
@@ -319,7 +320,7 @@ export default class CheckoutActions extends Component {
     }, []);
 
     const payments = cartStore.checkoutPayments.slice();
-    const remainingDue = payments.reduce((val, { payment }) => val - (payment.amount || val), total.amount);
+    const remainingAmountDue = payments.reduce((val, { payment }) => val - (payment.amount || val), total.amount);
 
     const actions = [
       {
@@ -355,7 +356,7 @@ export default class CheckoutActions extends Component {
         activeLabel: "Enter payment information",
         completeLabel: "Payment information",
         incompleteLabel: "Payment information",
-        status: remainingDue === 0 && !hasPaymentError ? "complete" : "incomplete",
+        status: remainingAmountDue === 0 && !hasPaymentError ? "complete" : "incomplete",
         component: PaymentsCheckoutAction,
         onSubmit: this.handlePaymentSubmit,
         props: {
@@ -363,7 +364,8 @@ export default class CheckoutActions extends Component {
           alert: actionAlerts["3"],
           onReset: this.handlePaymentsReset,
           payments,
-          paymentMethods
+          paymentMethods,
+          remainingAmountDue
         }
       },
       {
