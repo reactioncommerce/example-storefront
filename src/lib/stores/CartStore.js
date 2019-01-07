@@ -40,9 +40,9 @@ class CartStore {
   /**
    * Payment data from the payment action during checkout
    *
-   * @type Object
+   * @type Object[]
    */
-  @observable checkoutPaymentInputData = null;
+  @observable checkoutPayments = [];
 
   /**
    * @name setAnonymousCartCredentials
@@ -124,8 +124,12 @@ class CartStore {
     this.accountCartId = value;
   }
 
-  @action setCheckoutPaymentInputData(value) {
-    this.checkoutPaymentInputData = value;
+  @action addCheckoutPayment(value) {
+    this.checkoutPayments.push(value);
+  }
+
+  @action resetCheckoutPayments() {
+    this.checkoutPayments = [];
   }
 }
 

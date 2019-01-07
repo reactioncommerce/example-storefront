@@ -5,7 +5,7 @@ import isEqual from "lodash.isequal";
 import Actions from "@reactioncommerce/components/CheckoutActions/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
 import FulfillmentOptionsCheckoutAction from "@reactioncommerce/components/FulfillmentOptionsCheckoutAction/v1";
-import StripePaymentCheckoutAction from "components/StripePaymentCheckoutAction";
+import PaymentsCheckoutAction from "components/PaymentsCheckoutAction";
 import FinalReviewCheckoutAction from "@reactioncommerce/components/FinalReviewCheckoutAction/v1";
 import withCart from "containers/cart/withCart";
 import withAddressValidation from "containers/address/withAddressValidation";
@@ -17,7 +17,7 @@ import TRACKING from "lib/tracking/constants";
 import trackCheckout from "lib/tracking/trackCheckout";
 import trackOrder from "lib/tracking/trackOrder";
 import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
-import { isShippingAddressSet } from "lib/utils/cartUtils";
+import StripePaymentInput from "../StripePaymentInput";
 import { placeOrder } from "../../containers/order/mutations.gql";
 
 const {
@@ -42,10 +42,7 @@ export default class CheckoutActions extends Component {
       email: PropTypes.string,
       items: PropTypes.array
     }),
-    cartStore: PropTypes.shape({
-      checkoutPaymentInputData: PropTypes.object,
-      setCheckoutPaymentInputData: PropTypes.func
-    }),
+    cartStore: PropTypes.object,
     checkoutMutations: PropTypes.shape({
       onSetFulfillmentOption: PropTypes.func.isRequired,
       onSetShippingAddress: PropTypes.func.isRequired
@@ -67,15 +64,17 @@ export default class CheckoutActions extends Component {
   componentDidMount() {
     this._isMounted = true;
     const { cart } = this.props;
+
     // Track start of checkout process
     this.trackCheckoutStarted({ cart, action: CHECKOUT_STARTED });
 
-    const { checkout: { fulfillmentGroups } } = this.props.cart;
-    const hasShippingAddress = isShippingAddressSet(fulfillmentGroups);
+    const { checkout: { fulfillmentGroups } } = cart;
+    const [fulfillmentGroup] = fulfillmentGroups;
+
     // Track the first step, "Enter a shipping address" when the page renders,
     // as it will be expanded by default, only record this event when the
     // shipping address has not yet been set.
-    if (!hasShippingAddress) {
+    if (!fulfillmentGroup.shippingAddress) {
       this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 1 }));
     }
   }
@@ -118,8 +117,8 @@ export default class CheckoutActions extends Component {
   }
 
   get paymentMethod() {
-    const { checkoutPaymentInputData } = this.props.cartStore;
-    return checkoutPaymentInputData ? checkoutPaymentInputData.payment.method : null;
+    const [firstPayment] = this.props.cartStore.checkoutPayments;
+    return firstPayment ? firstPayment.payment.method : null;
   }
 
   setShippingAddress = async (address) => {
@@ -174,8 +173,8 @@ export default class CheckoutActions extends Component {
     }
   };
 
-  setPaymentMethod = (paymentInputData) => {
-    this.props.cartStore.setCheckoutPaymentInputData(paymentInputData);
+  handlePaymentSubmit = (paymentInput) => {
+    this.props.cartStore.addCheckoutPayment(paymentInput);
 
     this.setState({
       hasPaymentError: false,
@@ -190,6 +189,10 @@ export default class CheckoutActions extends Component {
     // The next step will automatically be expanded, so lets track that
     this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 4 }));
   };
+
+  handlePaymentsReset = () => {
+    this.props.cartStore.resetCheckoutPayments();
+  }
 
   buildOrder = async () => {
     const { cart, cartStore, orderEmailAddress } = this.props;
@@ -219,7 +222,7 @@ export default class CheckoutActions extends Component {
 
     const order = {
       cartId,
-      currencyCode: cart.currencyCode,
+      currencyCode: checkout.summary.total.currency.code,
       email: orderEmailAddress,
       fulfillmentGroups,
       shopId: cart.shop._id
@@ -230,16 +233,21 @@ export default class CheckoutActions extends Component {
 
   placeOrder = async (order) => {
     const { cartStore, client: apolloClient } = this.props;
-    const { payment } = cartStore.checkoutPaymentInputData || {};
+
+    // Payments can have `null` amount to mean "remaining".
+    const orderTotal = order.fulfillmentGroups.reduce((sum, group) => sum + group.totalPrice, 0);
+    const payments = cartStore.checkoutPayments.map(({ payment }) => ({
+      ...payment,
+      amount: payment.amount || orderTotal
+    }));
 
     try {
-      const amount = order.fulfillmentGroups.reduce((sum, group) => sum + group.totalPrice, 0);
       const { data } = await apolloClient.mutate({
         mutation: placeOrder,
         variables: {
           input: {
             order,
-            payments: [{ ...payment, amount }]
+            payments
           }
         }
       });
@@ -250,7 +258,7 @@ export default class CheckoutActions extends Component {
       cartStore.clearAnonymousCartCredentials();
 
       // Also destroy the collected and cached payment input
-      cartStore.setCheckoutPaymentInputData(null);
+      cartStore.resetCheckoutPayments();
 
       const { placeOrder: { orders, token } } = data;
 
@@ -293,20 +301,7 @@ export default class CheckoutActions extends Component {
 
     const { checkout: { fulfillmentGroups, summary }, items } = cart;
     const { actionAlerts, hasPaymentError } = this.state;
-    const shippingAddressSet = isShippingAddressSet(fulfillmentGroups);
-    const fulfillmentGroup = fulfillmentGroups[0];
-
-    let shippingAddress = { data: { shippingAddress: null } };
-
-    if (shippingAddressSet) {
-      shippingAddress = {
-        data: {
-          shippingAddress: fulfillmentGroup.data.shippingAddress
-        }
-      };
-    }
-
-    const paymentData = cartStore.checkoutPaymentInputData;
+    const [fulfillmentGroup] = fulfillmentGroups;
 
     // Order summary
     const { fulfillmentTotal, itemTotal, taxTotal, total } = summary;
@@ -318,19 +313,27 @@ export default class CheckoutActions extends Component {
       items
     };
 
+    const addresses = fulfillmentGroups.reduce((list, group) => {
+      if (group.shippingAddress) list.push(group.shippingAddress);
+      return list;
+    }, []);
+
+    const payments = cartStore.checkoutPayments.slice();
+    const remainingDue = payments.reduce((val, { payment }) => val - (payment.amount || val), total.amount);
+
     const actions = [
       {
         id: "1",
         activeLabel: "Enter a shipping address",
         completeLabel: "Shipping address",
         incompleteLabel: "Shipping address",
-        status: shippingAddressSet ? "complete" : "incomplete",
+        status: fulfillmentGroup.type !== "shipping" || fulfillmentGroup.shippingAddress ? "complete" : "incomplete",
         component: ShippingAddressCheckoutAction,
         onSubmit: this.setShippingAddress,
         props: {
           addressValidationResults,
           alert: actionAlerts["1"],
-          fulfillmentGroup: shippingAddress,
+          fulfillmentGroup,
           onAddressValidation: addressValidation
         }
       },
@@ -352,12 +355,27 @@ export default class CheckoutActions extends Component {
         activeLabel: "Enter payment information",
         completeLabel: "Payment information",
         incompleteLabel: "Payment information",
-        status: paymentData && !hasPaymentError ? "complete" : "incomplete",
-        component: StripePaymentCheckoutAction,
-        onSubmit: this.setPaymentMethod,
+        status: remainingDue === 0 && !hasPaymentError ? "complete" : "incomplete",
+        component: PaymentsCheckoutAction,
+        onSubmit: this.handlePaymentSubmit,
         props: {
+          addresses,
           alert: actionAlerts["3"],
-          paymentData
+          onReset: this.handlePaymentsReset,
+          payments,
+          paymentMethods: [
+            {
+              displayName: "Credit Card",
+              InputComponent: StripePaymentInput,
+              name: "stripe_card",
+              shouldCollectBillingAddress: true
+            },
+            {
+              displayName: "IOU",
+              name: "iou_example",
+              shouldCollectBillingAddress: true
+            }
+          ]
         }
       },
       {

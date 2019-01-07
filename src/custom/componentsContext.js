@@ -12,16 +12,18 @@
  * with the `withComponents` higher-order component.
  */
 
-import iconClear from "@reactioncommerce/components/svg/iconClear";
-import iconError from "@reactioncommerce/components/svg/iconError";
-import iconValid from "@reactioncommerce/components/svg/iconValid";
 import iconAmericanExpress from "@reactioncommerce/components/svg/iconAmericanExpress";
+import iconClear from "@reactioncommerce/components/svg/iconClear";
 import iconDiscover from "@reactioncommerce/components/svg/iconDiscover";
+import iconError from "@reactioncommerce/components/svg/iconError";
+import iconLock from "@reactioncommerce/components/svg/iconLock";
 import iconMastercard from "@reactioncommerce/components/svg/iconMastercard";
+import iconValid from "@reactioncommerce/components/svg/iconValid";
 import iconVisa from "@reactioncommerce/components/svg/iconVisa";
 import spinner from "@reactioncommerce/components/svg/spinner";
 import Address from "@reactioncommerce/components/Address/v1";
 import AddressCapture from "@reactioncommerce/components/AddressCapture/v1";
+import AddressChoice from "components/AddressChoice";
 import AddressForm from "@reactioncommerce/components/AddressForm/v1";
 import AddressReview from "@reactioncommerce/components/AddressReview/v1";
 import BadgeOverlay from "@reactioncommerce/components/BadgeOverlay/v1";
@@ -62,6 +64,7 @@ const AddressFormWithLocales = withLocales(AddressForm);
 export default {
   Address,
   AddressCapture,
+  AddressChoice,
   AddressForm: AddressFormWithLocales,
   AddressReview,
   BadgeOverlay,
@@ -85,6 +88,7 @@ export default {
   iconClear,
   iconDiscover,
   iconError,
+  iconLock,
   iconMastercard,
   iconValid,
   iconVisa,
