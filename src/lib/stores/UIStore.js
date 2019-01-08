@@ -24,6 +24,14 @@ class UIStore {
   @observable isMenuDrawerOpen = false;
 
   /**
+   * Default display language for shop text, when translations are available.
+   *
+   * @type String
+   * @default "en"
+   */
+  @observable language = "en";
+
+  /**
    * Shop locales info loaded via a json file if needed.
    *
    * @type Object
