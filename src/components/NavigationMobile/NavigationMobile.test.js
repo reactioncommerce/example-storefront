@@ -5,7 +5,6 @@ import theme from "custom/reactionTheme";
 import { MockedProvider } from "react-apollo/test-utils";
 import { Provider } from "mobx-react";
 import primaryShopQuery from "containers/common-gql/primaryShop.gql";
-import shopQuery from "containers/shop/shop.gql";
 import NavigationMobile from "./NavigationMobile";
 
 const shop = {
@@ -14,33 +13,40 @@ const shop = {
   name: "Reaction",
   currency: {
     code: "USD"
+  },
+  defaultNavigationTree: {
+    items: [{
+      items: [],
+      navigationItem: {
+        data: {
+          classNames: null,
+          content: [{
+            language: "en",
+            value: "NavItem"
+          }],
+          isUrlRelative: true,
+          shouldOpenInNewWindow: false,
+          url: "/nav-item"
+        }
+      }
+    }]
   }
 };
 
 const mocks = [
   {
     request: {
-      query: primaryShopQuery
+      query: primaryShopQuery,
+      variables: {
+        language: "en"
+      }
     },
     result: {
       data: {
-        primaryShopId: shop._id
+        primaryShop: shop
       }
     }
   },
-  {
-    request: {
-      query: shopQuery,
-      variables: {
-        shopId: shop._id
-      }
-    },
-    result: {
-      data: {
-        shop
-      }
-    }
-  }
 ];
 
 const authStore = {
@@ -79,22 +85,6 @@ const tags = [{
   ]
 }];
 
-const mockNavItem = {
-  items: [],
-  navigationItem: {
-    data: {
-      classNames: null,
-      content: [{
-        language: "en",
-        value: "NavItem"
-      }],
-      isUrlRelative: true,
-      shouldOpenInNewWindow: false,
-      url: "/nav-item"
-    }
-  }
-};
-
 test("basic snapshot", () => {
   const component = renderer.create((
     <MockedProvider mocks={mocks} addTypename={false}>
@@ -102,7 +92,7 @@ test("basic snapshot", () => {
         <Provider
           primaryShopId={shop._id}
           authStore={authStore}
-          navItems={mockNavItem}
+          navItems={shop.defaultNavigationTree.items[0]}
           tags={tags}
           uiStore={uiStore}
         >
