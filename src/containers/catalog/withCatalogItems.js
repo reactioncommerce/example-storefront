@@ -41,7 +41,7 @@ export default function withCatalogItems(Component) {
       };
 
       return (
-        <Query query={catalogItemsQuery} variables={variables}>
+        <Query errorPolicy="all" query={catalogItemsQuery} variables={variables}>
           {({ data, fetchMore, loading }) => {
             const { catalogItems } = data || {};
 
