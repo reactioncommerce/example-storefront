@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Query } from "react-apollo";
-import { Provider } from "mobx-react";
+import { inject, Provider } from "mobx-react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import primaryShopQuery from "../common-gql/primaryShop.gql";
 
@@ -11,10 +12,18 @@ import primaryShopQuery from "../common-gql/primaryShop.gql";
  * @returns {React.Component} - component decorated with primaryShopId and shop as props
  */
 export default function withShop(Component) {
+  @inject("uiStore")
   class Shop extends React.Component {
+    static propTypes = {
+      uiStore: PropTypes.object.isRequired
+    };
+
     render() {
+      const { uiStore } = this.props;
+      const { language } = uiStore;
+
       return (
-        <Query errorPolicy="all" query={primaryShopQuery} variables={{ language: "en" }}>
+        <Query errorPolicy="all" query={primaryShopQuery} variables={{ language }}>
           {({ loading, data: shopData }) => {
             const { primaryShop: shop } = shopData || {};
 
