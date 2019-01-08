@@ -20,7 +20,6 @@ import getPageContext from "../lib/theme/getPageContext";
 import components from "../custom/componentsContext";
 import componentTheme from "../custom/componentTheme";
 import getAllTags from "../lib/data/getAllTags";
-import getNavigationTree from "../lib/data/getNavigationTree";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -38,9 +37,8 @@ export default class App extends NextApp {
     }
 
     const tags = await getAllTags(ctx.apolloClient);
-    const navItems = await getNavigationTree(ctx.apolloClient);
 
-    return { navItems, pageProps, tags };
+    return { pageProps, tags };
   }
 
   constructor(props) {
@@ -69,7 +67,7 @@ export default class App extends NextApp {
   }
 
   render() {
-    const { Component, navItems, pageProps, shop, tags, viewer, ...rest } = this.props;
+    const { Component, pageProps, shop, shop: { defaultNavigationTree: navItems }, tags, viewer, ...rest } = this.props;
     const { route } = this.props.router;
     const { stripe } = this.state;
 
