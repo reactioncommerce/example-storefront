@@ -57,7 +57,7 @@ const styles = (theme) => ({
 class NavigationMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    navItems: PropTypes.array,
+    navItems: PropTypes.object,
     shop: PropTypes.shape({
       name: PropTypes.string
     }),
