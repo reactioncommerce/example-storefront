@@ -6,7 +6,7 @@ import { MockedProvider } from "react-apollo/test-utils";
 import { Provider } from "mobx-react";
 import shopQuery from "containers/shop/shop.gql";
 import anonymousCartByCartIdQuery from "containers/cart/queries.gql";
-import primaryShopIdQuery from "containers/common-gql/primaryShopId.gql";
+import primaryShopQuery from "containers/common-gql/primaryShop.gql";
 import MiniCart from "./MiniCart";
 
 const shop = {
@@ -21,7 +21,7 @@ const shop = {
 const mocks = [
   {
     request: {
-      query: primaryShopIdQuery
+      query: primaryShopQuery
     },
     result: {
       data: {

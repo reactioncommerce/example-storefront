@@ -1,4 +1,4 @@
-import primaryShopIdQuery from "containers/common-gql/primaryShopId.gql";
+import primaryShopQuery from "containers/common-gql/primaryShop.gql";
 import tagsQuery from "containers/tags/tags.gql";
 
 /**
@@ -24,14 +24,15 @@ async function getTags(client, variables) {
 /**
  * @summary Gets all tags for the current shop from GraphQL and returns an array of them
  * @param {Object} client ApolloClient instance
+ * @param {Object} variables The query variables for this page
  * @returns {Object[]} Array of all tags
  */
-export default async function getAllTags(client) {
-  const { data: { primaryShopId } } = await client.query({ query: primaryShopIdQuery });
+export default async function getAllTags(client, variables) {
+  const { data: { primaryShop: shop } } = await client.query({ query: primaryShopQuery, variables });
 
-  if (!primaryShopId) {
+  if (!shop._id) {
     throw new Error("primaryShopId query result was null");
   }
 
-  return getTags(client, { shopId: primaryShopId });
+  return getTags(client, { shopId: shop._id });
 }

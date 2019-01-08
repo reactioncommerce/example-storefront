@@ -4,7 +4,7 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "custom/reactionTheme";
 import { MockedProvider } from "react-apollo/test-utils";
 import { Provider } from "mobx-react";
-import primaryShopIdQuery from "containers/common-gql/primaryShopId.gql";
+import primaryShopQuery from "containers/common-gql/primaryShop.gql";
 import shopQuery from "containers/shop/shop.gql";
 import NavigationMobile from "./NavigationMobile";
 
@@ -20,7 +20,7 @@ const shop = {
 const mocks = [
   {
     request: {
-      query: primaryShopIdQuery
+      query: primaryShopQuery
     },
     result: {
       data: {
