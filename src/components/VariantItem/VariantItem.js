@@ -63,10 +63,16 @@ class VariantItem extends Component {
 
     const variantPrice = priceByCurrencyCode(currencyCode, pricing);
 
+    const className = classNames(variantButton, {
+      [activeVariant]: isActive
+    }, {
+      [soldOutVariant]: variantInventoryStatus && variantInventoryStatus.type === "SOLD_OUT"
+    });
+
     return (
       <ButtonBase
         disableRipple
-        className={classNames(variantButton, { [activeVariant]: isActive }, { [soldOutVariant]: variantInventoryStatus && variantInventoryStatus.type === "SOLD_OUT" })}
+        className={className}
         onClick={this.onClick}
       >
         <Typography component="span" variant="body1">

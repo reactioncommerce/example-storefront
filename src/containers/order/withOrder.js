@@ -44,7 +44,7 @@ export default function withOrder(Component) {
       };
 
       return (
-        <Query query={orderByReferenceId} variables={variables}>
+        <Query errorPolicy="all" query={orderByReferenceId} variables={variables}>
           {({ loading: isLoading, data: orderData }) => {
             const { order } = orderData || {};
 
