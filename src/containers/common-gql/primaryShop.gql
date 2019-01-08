@@ -1,6 +1,6 @@
 #import "../navigation/navigationTreeFragment.gql"
 
-query primaryShop($language: String!) {
+query primaryShop($language: String! = "en") {
   primaryShop {
     _id
     currency {
