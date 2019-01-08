@@ -122,7 +122,7 @@ class NavigationItemDesktop extends Component {
                 <MenuList disablePadding>
                   <MenuItem>
                     <Link onClick={this.onClose} route={`${this.linkPath(item)}`}>
-                      <ListItemText primary={navigationItem.data.content[0].value} />
+                      <ListItemText primary={item.navigationItem.data.content[0].value} />
                     </Link>
                   </MenuItem>
                   {Array.isArray(item.items) && this.renderSubNav(item)}
