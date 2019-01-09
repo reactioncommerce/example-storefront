@@ -46,7 +46,7 @@ const mocks = [
         primaryShop: shop
       }
     }
-  },
+  }
 ];
 
 const authStore = {
