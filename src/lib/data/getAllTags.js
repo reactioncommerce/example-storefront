@@ -24,11 +24,10 @@ async function getTags(client, variables) {
 /**
  * @summary Gets all tags for the current shop from GraphQL and returns an array of them
  * @param {Object} client ApolloClient instance
- * @param {Object} variables The query variables for this page
  * @returns {Object[]} Array of all tags
  */
-export default async function getAllTags(client, variables) {
-  const { data: { primaryShop: shop } } = await client.query({ query: primaryShopQuery, variables });
+export default async function getAllTags(client) {
+  const { data: { primaryShop: shop } } = await client.query({ query: primaryShopQuery });
 
   if (!shop._id) {
     throw new Error("primaryShopId query result was null");
