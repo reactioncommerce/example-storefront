@@ -30,7 +30,7 @@ export default function withShop(Component) {
             // Use mobx-provider to pass shop data through context
             // as well as passing into the component directly
             return (
-              <Provider primaryShopId={shop._id} shop={shop}>
+              <Provider primaryShopId={shop && shop._id} shop={shop}>
                 <Component
                   isLoadingShop={loading}
                   shop={shop}
