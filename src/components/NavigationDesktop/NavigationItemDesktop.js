@@ -91,7 +91,7 @@ class NavigationItemDesktop extends Component {
   renderSubNav(navItemGroup) {
     const menuItems = navItemGroup.items.map((item, index) => (
       <MenuItem dense key={index}>
-        <Link onClick={this.onClose} route={`${this.linkPath(item)}`}>
+        <Link onClick={this.onClose} route={this.linkPath(item)}>
           <ListItemText primary={item.navigationItem.data.content[0].value} />
         </Link>
       </MenuItem>
