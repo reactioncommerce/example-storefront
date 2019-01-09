@@ -76,12 +76,11 @@ class NavigationItemDesktop extends Component {
   onClick = (event) => {
     event.preventDefault();
 
-    const { navItem } = this.props;
     if (this.hasSubNavItems) {
       this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
     } else {
       const path = this.linkPath();
-      Router.pushRoute(path, { slug: navItem.navigationItem.data.url });
+      Router.pushRoute(path);
     }
   };
 
