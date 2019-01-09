@@ -5,6 +5,23 @@ import { uniqueId } from "lodash";
 import { withComponents } from "@reactioncommerce/components-context";
 import { CustomPropTypes } from "@reactioncommerce/components/utils";
 
+/**
+ * Convert the form document to the object structure
+ * expected by `PaymentsCheckoutAction`
+ * @param {Object} Form object
+ * @returns {Object} Transformed object
+ */
+function buildResult({ amount, fullName }) {
+  let floatAmount = amount ? parseFloat(amount) : null;
+  if (isNaN(floatAmount)) floatAmount = null;
+
+  return {
+    amount: floatAmount,
+    data: { fullName },
+    displayName: fullName ? `IOU from ${fullName}` : null
+  };
+}
+
 class ExampleIOUPaymentForm extends Component {
   static propTypes = {
     /**
@@ -42,6 +59,10 @@ class ExampleIOUPaymentForm extends Component {
      */
     isSaving: PropTypes.bool,
     /**
+     * Called as the form fields are changed
+     */
+    onChange: PropTypes.func,
+    /**
      * When this action's input data switches between being
      * ready for saving and not ready for saving, this will
      * be called with `true` (ready) or `false`
@@ -56,13 +77,10 @@ class ExampleIOUPaymentForm extends Component {
   }
 
   static defaultProps = {
-    onReadyForSaveChange() { }
+    onChange() {},
+    onReadyForSaveChange() {},
+    onSubmit() {}
   };
-
-  componentDidMount() {
-    const { onReadyForSaveChange } = this.props;
-    onReadyForSaveChange(false);
-  }
 
   uniqueInstanceIdentifier = uniqueId("ExampleIOUPaymentForm");
 
@@ -70,19 +88,26 @@ class ExampleIOUPaymentForm extends Component {
     if (this.form) this.form.submit();
   }
 
-  handleChange = ({ fullName }) => {
-    const { onReadyForSaveChange } = this.props;
-    onReadyForSaveChange(!!fullName);
+  handleChange = (doc) => {
+    const { onChange, onReadyForSaveChange } = this.props;
+
+    const resultDoc = buildResult(doc);
+    const stringDoc = JSON.stringify(resultDoc);
+    if (stringDoc !== this.lastDoc) {
+      onChange(resultDoc);
+    }
+    this.lastDoc = stringDoc;
+
+    const isReady = !!doc.fullName;
+    if (isReady !== this.lastIsReady) {
+      onReadyForSaveChange(isReady);
+    }
+    this.lastIsReady = isReady;
   }
 
-  handleSubmit = ({ amount, fullName }) => {
+  handleSubmit = (doc) => {
     const { onSubmit } = this.props;
-
-    return onSubmit({
-      amount: amount ? parseFloat(amount) : null,
-      data: { fullName },
-      displayName: `IOU from ${fullName}`
-    });
+    return onSubmit(buildResult(doc));
   }
 
   render() {

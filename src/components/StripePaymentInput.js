@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { addTypographyStyles, CustomPropTypes } from "@reactioncommerce/components/utils";
 
 const SecureCaption = styled.div`
-  ${addTypographyStyles("StripePaymentInput", "captionText")}
+  ${addTypographyStyles("StripePaymentInputCaption", "captionText")}
 `;
 
 const IconLockSpan = styled.span`
@@ -63,7 +63,8 @@ class StripePaymentInput extends Component {
   };
 
   static defaultProps = {
-    onReadyForSaveChange() { }
+    onReadyForSaveChange() {},
+    onSubmit() {}
   };
 
   componentDidMount() {
@@ -71,7 +72,7 @@ class StripePaymentInput extends Component {
     onReadyForSaveChange(false);
   }
 
-  submit = async () => {
+  async submit() {
     const { onSubmit } = this.props;
     const { token } = await this._stripe.createToken();
 
@@ -83,17 +84,22 @@ class StripePaymentInput extends Component {
     });
   }
 
+  handleChangeReadyState = (isReady) => {
+    const { onReadyForSaveChange } = this.props;
+
+    if (isReady !== this.lastIsReady) {
+      onReadyForSaveChange(isReady);
+    }
+    this.lastIsReady = isReady;
+  }
+
   render() {
-    const {
-      className,
-      components: { iconLock, StripeForm },
-      onReadyForSaveChange
-    } = this.props;
+    const { className, components: { iconLock, StripeForm } } = this.props;
 
     return (
       <div className={className}>
         <StripeForm
-          isComplete={onReadyForSaveChange}
+          isComplete={this.handleChangeReadyState}
           stripeRef={(stripe) => { this._stripe = stripe; }}
         />
         <SecureCaption>

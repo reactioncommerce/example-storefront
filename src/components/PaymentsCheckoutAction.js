@@ -4,8 +4,10 @@ import { withComponents } from "@reactioncommerce/components-context";
 import styled from "styled-components";
 import { addTypographyStyles, CustomPropTypes } from "@reactioncommerce/components/utils";
 
+const formatMoney = (value) => (value ? `$${value.toFixed(2)}` : "$0.00");
+
 const Title = styled.h3`
-  ${addTypographyStyles("PaymentsCheckoutAction", "subheadingTextBold")}
+  ${addTypographyStyles("PaymentsCheckoutActionTitle", "subheadingTextBold")}
 `;
 
 const ActionCompleteDiv = styled.div`
@@ -17,7 +19,7 @@ class PaymentsCheckoutAction extends Component {
     if (!Array.isArray(payments) || payments.length === 0) return null;
 
     const paymentLines = payments.map(({ displayName, payment }, index) => (
-      <div key={`${index}`}>{displayName} {payment.amount ? `- ${payment.amount}` : null}</div>
+      <div key={`${index}`}>{displayName}{payment.amount ? ` (${formatMoney(payment.amount)})` : null}</div>
     ));
 
     return (
@@ -26,9 +28,12 @@ class PaymentsCheckoutAction extends Component {
   }
 
   static propTypes = {
-    addresses: PropTypes.arrayOf(PropTypes.shape({
-      address1: PropTypes.string.isRequired
-    })),
+    /**
+     * Provide the shipping address and any other known addresses.
+     * The user will be able to choose from these rather than entering
+     * the billing address, if the billing address is one of them.
+     */
+    addresses: CustomPropTypes.addressBook,
     /**
      * Alert object provides alert into to InlineAlert.
      */
@@ -78,7 +83,7 @@ class PaymentsCheckoutAction extends Component {
     onReadyForSaveChange: PropTypes.func,
     /**
      * When called, the parent should clear all previously submitted
-     * payments from state
+     * payments from state. Currently this is called only on mount.
      */
     onReset: PropTypes.func,
     /**
@@ -96,7 +101,7 @@ class PaymentsCheckoutAction extends Component {
       InputComponent: CustomPropTypes.component,
       name: PropTypes.string.isRequired,
       shouldCollectBillingAddress: PropTypes.bool.isRequired
-    })),
+    })).isRequired,
     /**
      * Pass in payment objects previously passed to onSubmit
      */
@@ -222,7 +227,7 @@ class PaymentsCheckoutAction extends Component {
 
     if (!Array.isArray(payments) || payments.length === 0) return null;
 
-    const message = payments.map(({ displayName, payment }) => `${displayName} - ${payment.amount}`).join(", ");
+    const message = payments.map(({ displayName, payment }) => `${displayName} - ${formatMoney(payment.amount)}`).join(", ");
 
     return (
       <InlineAlert alertType="success" message={message} title="Partial Payments"/>

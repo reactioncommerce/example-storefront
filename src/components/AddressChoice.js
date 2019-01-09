@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withComponents } from "@reactioncommerce/components-context";
-import { CustomPropTypes } from "@reactioncommerce/components/utils";
+import { addressToString, CustomPropTypes } from "@reactioncommerce/components/utils";
 
 class AddressChoice extends Component {
   static propTypes = {
-    addresses: PropTypes.arrayOf(PropTypes.shape({
-      address1: PropTypes.string.isRequired
-    })),
+    /**
+     * A list of addresses to show for selection
+     */
+    addresses: CustomPropTypes.addressBook,
     /**
      * You can provide a `className` prop that will be applied to the outermost DOM element
      * rendered by this component. We do not recommend using this for styling purposes, but
@@ -43,12 +44,18 @@ class AddressChoice extends Component {
      * entering one, it will be whatever they have entered so far
      * and may be partial.
      */
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    /**
+     * The label for the "Use a different address" selection item, if it
+     * is shown.
+     */
+    otherAddressLabel: PropTypes.string
   };
 
   static defaultProps = {
     isReadOnly: false,
-    onChange() {}
+    onChange() {},
+    otherAddressLabel: "Use a different address"
   };
 
   constructor(props) {
@@ -80,7 +87,8 @@ class AddressChoice extends Component {
     const {
       addresses,
       components: { SelectableList },
-      isReadOnly
+      isReadOnly,
+      otherAddressLabel
     } = this.props;
     const { selectedOption } = this.state;
 
@@ -88,13 +96,13 @@ class AddressChoice extends Component {
 
     const listOptions = addresses.map((address, index) => ({
       id: String(index),
-      label: address.address1,
+      label: addressToString(address, { includeFullName: true }),
       value: String(index)
     }));
 
     listOptions.push({
       id: "OTHER",
-      label: "Use a different billing address",
+      label: otherAddressLabel,
       value: "OTHER"
     });
 
