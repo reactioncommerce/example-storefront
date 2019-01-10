@@ -120,7 +120,7 @@ class NavigationItemDesktop extends Component {
               <Grid item key={index}>
                 <MenuList disablePadding>
                   <MenuItem>
-                    <Link onClick={this.onClose} href={`${this.linkPath(item)}`} linkItem={item}>
+                    <Link onClick={this.onClose} href={this.linkPath(item)} linkItem={item}>
                       <ListItemText primary={item.navigationItem.data.content[0].value} />
                     </Link>
                   </MenuItem>
