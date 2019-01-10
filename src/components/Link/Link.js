@@ -39,7 +39,8 @@ class Link extends Component {
 
   static defaultProps = {
     isUrlRelative: true,
-    onClick: () => { }
+    onClick: () => { },
+    shouldOpenInNewWindow: false
   }
 
   @track(() => ({
