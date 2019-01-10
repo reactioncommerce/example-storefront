@@ -28,6 +28,7 @@ class Link extends Component {
     className: PropTypes.string,
     classes: PropTypes.object,
     href: PropTypes.string,
+    linkItem: PropTypes.object,
     onClick: PropTypes.func,
     params: PropTypes.object,
     route: PropTypes.string,
@@ -60,6 +61,7 @@ class Link extends Component {
       classes,
       className,
       href,
+      linkItem,
       onClick,
       params,
       route,
@@ -68,6 +70,28 @@ class Link extends Component {
       ...props
     } = this.props;
 
+    // If link is not a relative link, or if link should open in new window,
+    // then directly us an `a` tag, insted of the `NextLink` component
+    if (linkItem) {
+      const { navigationItem: { data } } = linkItem;
+      if ((data && !data.isUrlRelative) || (data && data.shouldOpenInNewWindow)) {
+        return (
+          <a
+            className={classNames(classes.anchor, className)}
+            href={data.url}
+            onClick={this.handleClick}
+            onKeyDown={this.handleKeyDown}
+            tabIndex={0}
+            target={data.shouldOpenInNewWindow ? "_blank" : ""}
+          >
+            {children}
+          </a>
+        );
+      }
+    }
+
+    // If link relative and should open in the same window,
+    // use `NextLink` component
     if (enableSPARouting === false) {
       const { urls: { as } } = routes.findAndGetUrls(route || to || href, params);
 
