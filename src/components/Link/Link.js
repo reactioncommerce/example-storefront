@@ -75,7 +75,7 @@ class Link extends Component {
       ...props
     } = this.props;
 
-    // If link is not a relative link, or if link should open in new window,
+    // If link is an absolute link, or if link should open in new window,
     // then directly us an `a` tag, insted of the `NextLink` component
     if (isUrlAbsolute || shouldOpenInNewWindow) {
       return (
@@ -92,7 +92,7 @@ class Link extends Component {
       );
     }
 
-    // If link relative and should open in the same window,
+    // If link is a relative and should open in the same window,
     // use `NextLink` component
     if (enableSPARouting === false) {
       const { urls: { as } } = routes.findAndGetUrls(route || to || href, params);
