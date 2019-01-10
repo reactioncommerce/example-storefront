@@ -142,9 +142,6 @@ class NavigationItemDesktop extends Component {
   render() {
     const { classes: { primaryNavItem }, navItem, navItem: { navigationItem } } = this.props;
 
-    console.log("navItem", navItem);
-
-
     return (
       <Fragment>
         <Button className={classNames(primaryNavItem, navigationItem.data.classNames)} color="inherit" onClick={this.onClick} href={this.linkPath(navItem)}>
