@@ -152,7 +152,7 @@ class NavigationItemDesktop extends Component {
           <Link
             className={classes.navigationShopAllLink}
             onClick={this.onClose}
-            route={`${this.linkPath()}`}
+            route={this.linkPath(navItem)}
             href={this.linkPath(navItem)}
             isUrlRelative={navigationItem.data.isUrlRelative}
             shouldOpenInNewWindow={navigationItem.data.shouldOpenInNewWindow}
