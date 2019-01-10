@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import { inject, observer } from "mobx-react";
 import { Router } from "routes";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -100,16 +101,24 @@ class NavigationItemMobile extends Component {
       return (
         <Collapse in={this.state.isSubNavOpen} timeout="auto" unmountOnExit>
           <MenuList className={classes.subMenuList} component="div" disablePadding>
-            {items.map((item, index) => (
-              <NavigationItemMobile
-                key={index}
-                classes={classes}
-                navItem={item}
-                routingStore={routingStore}
-                shouldShowDivider={false}
-                uiStore={uiStore}
-              />
-            ))}
+            {items.map((item, index) => {
+              const { navigationItem: { data } } = item;
+              const navigationItemMobileClasses = classNames(
+                data.classNames,
+                classes
+              );
+
+              return (
+                <NavigationItemMobile
+                  key={index}
+                  classes={navigationItemMobileClasses}
+                  navItem={item}
+                  routingStore={routingStore}
+                  shouldShowDivider={false}
+                  uiStore={uiStore}
+                />
+              );
+            })}
           </MenuList>
         </Collapse>
       );
@@ -141,17 +150,22 @@ class NavigationItemMobile extends Component {
   }
 
   render() {
-    const { classes, navItem, shouldShowDivider } = this.props;
+    const { classes, navItem: { navigationItem: { data } }, shouldShowDivider } = this.props;
+
+    const listItemClasses = classNames(
+      data.classNames,
+      {
+        root: classes.listItemRoot,
+        dense: classes.listItemDense,
+        gutters: classes.listItemGutters
+      }
+    );
 
     return (
       <Fragment>
         <ListItem
           button
-          classes={{
-            root: classes.listItemRoot,
-            dense: classes.listItemDense,
-            gutters: classes.listItemGutters
-          }}
+          classes={listItemClasses}
           color="inherit"
           dense={!shouldShowDivider}
           onClick={this.onClick}
@@ -160,7 +174,7 @@ class NavigationItemMobile extends Component {
             classes={{
               textDense: classes.listItemTextDense
             }}
-            primary={navItem.navigationItem.data.content[0].value}
+            primary={data.content[0].value}
           />
           {this.renderIcon()}
         </ListItem>
