@@ -109,7 +109,7 @@ class NavigationItemMobile extends Component {
                 <Link
                   className={navigationItemClassNames}
                   href={this.linkPath}
-                  isUrlRelative={isUrlRelative}
+                  isUrlAbsolute={!isUrlRelative}
                   onClick={this.onClick}
                   shouldOpenInNewWindow={shouldOpenInNewWindow}
                 >

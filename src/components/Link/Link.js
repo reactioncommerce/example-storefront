@@ -28,7 +28,7 @@ class Link extends Component {
     className: PropTypes.string,
     classes: PropTypes.object,
     href: PropTypes.string,
-    isUrlRelative: PropTypes.bool,
+    isUrlAbsolute: PropTypes.bool,
     linkItem: PropTypes.object,
     onClick: PropTypes.func,
     params: PropTypes.object,
@@ -38,7 +38,7 @@ class Link extends Component {
   }
 
   static defaultProps = {
-    isUrlRelative: true,
+    isUrlAbsolute: false,
     onClick: () => { },
     shouldOpenInNewWindow: false
   }
@@ -65,7 +65,7 @@ class Link extends Component {
       classes,
       className,
       href,
-      isUrlRelative,
+      isUrlAbsolute,
       onClick,
       params,
       route,
@@ -77,7 +77,7 @@ class Link extends Component {
 
     // If link is not a relative link, or if link should open in new window,
     // then directly us an `a` tag, insted of the `NextLink` component
-    if (!isUrlRelative || shouldOpenInNewWindow) {
+    if (isUrlAbsolute || shouldOpenInNewWindow) {
       return (
         <a
           className={classNames(classes.anchor, className)}

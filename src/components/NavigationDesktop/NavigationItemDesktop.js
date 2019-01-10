@@ -99,7 +99,7 @@ class NavigationItemDesktop extends Component {
             onClick={this.onClose}
             route={this.linkPath(item)}
             href={this.linkPath(item)}
-            isUrlRelative={isUrlRelative}
+            isUrlAbsolute={!isUrlRelative}
             shouldOpenInNewWindow={shouldOpenInNewWindow}
           >
             <ListItemText primary={contentForLanguage} />
@@ -136,7 +136,7 @@ class NavigationItemDesktop extends Component {
                       <Link
                         className={navigationItemClassNames}
                         href={this.linkPath(item)}
-                        isUrlRelative={isUrlRelative}
+                        isUrlAbsolute={!isUrlRelative}
                         onClick={this.onClose}
                         shouldOpenInNewWindow={shouldOpenInNewWindow}
                       >
@@ -154,7 +154,7 @@ class NavigationItemDesktop extends Component {
             onClick={this.onClose}
             route={this.linkPath(navItem)}
             href={this.linkPath(navItem)}
-            isUrlRelative={navigationItem.data.isUrlRelative}
+            isUrlAbsolute={!navigationItem.data.isUrlRelative}
             shouldOpenInNewWindow={navigationItem.data.shouldOpenInNewWindow}
           >
             <span>Shop all {navigationItem.data.contentForLanguage} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
