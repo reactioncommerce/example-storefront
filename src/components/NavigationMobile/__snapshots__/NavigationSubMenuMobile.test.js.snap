@@ -12,9 +12,7 @@ exports[`basic snapshot 1`] = `
     >
       <h3
         className="MuiTypography-root-9 MuiTypography-subheading-16 SkNavigationItemMobile-toolbarTitle-3"
-      >
-        NavItem
-      </h3>
+      />
       <button
         className="MuiButtonBase-root-41 MuiIconButton-root-35"
         disabled={false}
@@ -66,7 +64,7 @@ exports[`basic snapshot 1`] = `
       role="menu"
     >
       <div
-        className="MuiButtonBase-root-41 MuiListItem-root-74 SkNavigationItemMobile-listItemRoot-69 MuiListItem-default-77 MuiListItem-gutters-81 SkNavigationItemMobile-listItemGutters-72 MuiListItem-button-82"
+        className="MuiButtonBase-root-41 MuiListItem-root-74 MuiListItem-default-77 MuiListItem-gutters-81 MuiListItem-button-82"
         color="inherit"
         onBlur={[Function]}
         onClick={[Function]}
@@ -84,13 +82,7 @@ exports[`basic snapshot 1`] = `
       >
         <div
           className="MuiListItemText-root-85"
-        >
-          <span
-            className="MuiTypography-root-9 MuiTypography-subheading-16 MuiListItemText-primary-88"
-          >
-            NavSubItem
-          </span>
-        </div>
+        />
         <svg
           aria-hidden="true"
           className="MuiSvgIcon-root-44 MuiListItemIcon-root-91"
