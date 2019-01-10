@@ -70,14 +70,18 @@ class Link extends Component {
       ...props
     } = this.props;
 
+    let linkItemClassNames;
+
     // If link is not a relative link, or if link should open in new window,
     // then directly us an `a` tag, insted of the `NextLink` component
     if (linkItem) {
       const { navigationItem: { data } } = linkItem;
+      linkItemClassNames = data.classNames;
+
       if ((data && !data.isUrlRelative) || (data && data.shouldOpenInNewWindow)) {
         return (
           <a
-            className={classNames(classes.anchor, className)}
+            className={classNames(classes.anchor, linkItemClassNames, className)}
             href={data.url}
             onClick={this.handleClick}
             onKeyDown={this.handleKeyDown}
@@ -98,7 +102,7 @@ class Link extends Component {
       return (
         <a
           href={as}
-          className={classNames(classes.anchor, className)}
+          className={classNames(classes.anchor, linkItemClassNames, className)}
           onClick={this.handleClick}
           onKeyDown={this.handleKeyDown}
         >
@@ -110,7 +114,7 @@ class Link extends Component {
     return (
       <NextLink route={route || to || href} params={params} {...props} passHref>
         <a
-          className={classNames(classes.anchor, className)}
+          className={classNames(classes.anchor, linkItemClassNames, className)}
           onClick={this.handleClick}
           onKeyDown={this.handleKeyDown}
           role="link"

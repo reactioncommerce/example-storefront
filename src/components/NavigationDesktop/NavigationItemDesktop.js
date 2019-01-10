@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { inject } from "mobx-react";
+import classNames from "classnames";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
@@ -89,13 +90,12 @@ class NavigationItemDesktop extends Component {
   };
 
   renderSubNav(navItemGroup) {
-    const menuItems = navItemGroup.items.map((item, index) => (
+    const menuItems = navItemGroup.items.map((item, index) =>
       <MenuItem dense key={index}>
-        <Link onClick={this.onClose} route={this.linkPath(item)}>
+        <Link onClick={this.onClose} route={this.linkPath(item)} linkItem={item}>
           <ListItemText primary={item.navigationItem.data.content[0].value} />
         </Link>
-      </MenuItem>
-    ));
+      </MenuItem>);
 
     menuItems.unshift(<Divider key="divider" />);
 
@@ -103,7 +103,7 @@ class NavigationItemDesktop extends Component {
   }
 
   renderPopover() {
-    const { classes, navItem: { items, navigationItem } } = this.props;
+    const { classes, navItem, navItem: { items, navigationItem } } = this.props;
 
     if (items) {
       return (
@@ -120,7 +120,7 @@ class NavigationItemDesktop extends Component {
               <Grid item key={index}>
                 <MenuList disablePadding>
                   <MenuItem>
-                    <Link onClick={this.onClose} route={`${this.linkPath(item)}`}>
+                    <Link onClick={this.onClose} href={`${this.linkPath(item)}`} linkItem={item}>
                       <ListItemText primary={item.navigationItem.data.content[0].value} />
                     </Link>
                   </MenuItem>
@@ -129,7 +129,7 @@ class NavigationItemDesktop extends Component {
               </Grid>
             ))}
           </Grid>
-          <Link className={classes.navigationShopAllLink} onClick={this.onClose} route={`${this.linkPath()}`}>
+          <Link className={classes.navigationShopAllLink} onClick={this.onClose} route={`${this.linkPath()}`} linkItem={navItem}>
             <span>Shop all {navigationItem.data.content[0].value} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
           </Link>
         </Popover>
@@ -144,7 +144,7 @@ class NavigationItemDesktop extends Component {
 
     return (
       <Fragment>
-        <Button className={primaryNavItem} color="inherit" onClick={this.onClick} href={this.linkPath(navItem)}>
+        <Button className={classNames(primaryNavItem, navigationItem.data.classNames)} color="inherit" onClick={this.onClick} href={this.linkPath(navItem)}>
           {navigationItem.data.content[0].value}
           {this.hasSubNavItems && <Fragment>{this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
         </Button>
