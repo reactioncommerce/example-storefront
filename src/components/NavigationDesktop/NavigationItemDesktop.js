@@ -93,7 +93,7 @@ class NavigationItemDesktop extends Component {
     const menuItems = navItemGroup.items.map((item, index) =>
       <MenuItem dense key={index}>
         <Link onClick={this.onClose} route={this.linkPath(item)} linkItem={item}>
-          <ListItemText primary={item.navigationItem.data.content[0].value} />
+          <ListItemText primary={item.navigationItem.data.contentForLanguage} />
         </Link>
       </MenuItem>);
 
@@ -121,7 +121,7 @@ class NavigationItemDesktop extends Component {
                 <MenuList disablePadding>
                   <MenuItem>
                     <Link onClick={this.onClose} href={this.linkPath(item)} linkItem={item}>
-                      <ListItemText primary={item.navigationItem.data.content[0].value} />
+                      <ListItemText primary={item.navigationItem.data.contentForLanguage} />
                     </Link>
                   </MenuItem>
                   {Array.isArray(item.items) && this.renderSubNav(item)}
@@ -130,7 +130,7 @@ class NavigationItemDesktop extends Component {
             ))}
           </Grid>
           <Link className={classes.navigationShopAllLink} onClick={this.onClose} route={`${this.linkPath()}`} linkItem={navItem}>
-            <span>Shop all {navigationItem.data.content[0].value} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
+            <span>Shop all {navigationItem.data.contentForLanguage} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
           </Link>
         </Popover>
       );
@@ -142,10 +142,13 @@ class NavigationItemDesktop extends Component {
   render() {
     const { classes: { primaryNavItem }, navItem, navItem: { navigationItem } } = this.props;
 
+    console.log("navItem", navItem);
+
+
     return (
       <Fragment>
         <Button className={classNames(primaryNavItem, navigationItem.data.classNames)} color="inherit" onClick={this.onClick} href={this.linkPath(navItem)}>
-          {navigationItem.data.content[0].value}
+          {navigationItem.data.contentForLanguage}
           {this.hasSubNavItems && <Fragment>{this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
         </Button>
         {this.hasSubNavItems && this.renderPopover()}

@@ -177,7 +177,7 @@ class NavigationItemMobile extends Component {
             classes={{
               textDense: classes.listItemTextDense
             }}
-            primary={data.content[0].value}
+            primary={data.contentForLanguage}
           />
           {this.renderIcon()}
         </ListItem>
