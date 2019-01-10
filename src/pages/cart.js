@@ -164,8 +164,9 @@ class CartPage extends Component {
 
   render() {
     const { cart, classes, shop } = this.props;
-
-    if (!cart) return <PageLoading delay={0} />;
+    // when a user has no item in cart in a new session, this.props.cart is null
+    // when the app is still loading, this.props.cart is undefined
+    if (typeof cart === "undefined") return <PageLoading delay={0} />;
 
     return (
       <Fragment>

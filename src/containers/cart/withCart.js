@@ -388,7 +388,7 @@ export default function withCart(Component) {
       }
 
       return (
-        <Query query={query} variables={variables} skip={skipQuery}>
+        <Query errorPolicy="all" query={query} variables={variables} skip={skipQuery}>
           {({ loading: isLoading, data: cartData, fetchMore, refetch: refetchCart }) => {
             const { cart } = cartData || {};
             const { pageInfo } = (cart && cart.items) || {};
