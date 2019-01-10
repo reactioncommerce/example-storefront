@@ -38,6 +38,7 @@ class Link extends Component {
   }
 
   static defaultProps = {
+    isUrlRelative: true,
     onClick: () => { }
   }
 
@@ -75,7 +76,7 @@ class Link extends Component {
 
     // If link is not a relative link, or if link should open in new window,
     // then directly us an `a` tag, insted of the `NextLink` component
-    if (isUrlRelative || shouldOpenInNewWindow) {
+    if (!isUrlRelative || shouldOpenInNewWindow) {
       return (
         <a
           className={classNames(classes.anchor, className)}
