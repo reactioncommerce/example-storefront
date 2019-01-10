@@ -13,6 +13,7 @@ import ChevronRightIcon from "mdi-material-ui/ChevronRight";
 import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 import { withStyles } from "@material-ui/core/styles";
+import Link from "components/Link";
 
 const styles = (theme) => ({
   subNav: {
@@ -109,14 +110,16 @@ class NavigationItemMobile extends Component {
               );
 
               return (
-                <NavigationItemMobile
-                  key={index}
-                  classes={navigationItemMobileClasses}
-                  navItem={item}
-                  routingStore={routingStore}
-                  shouldShowDivider={false}
-                  uiStore={uiStore}
-                />
+                <Link onClick={this.onClick} href={this.linkPath} linkItem={item}>
+                  <NavigationItemMobile
+                    key={index}
+                    classes={navigationItemMobileClasses}
+                    navItem={item}
+                    routingStore={routingStore}
+                    shouldShowDivider={false}
+                    uiStore={uiStore}
+                  />
+                </Link>
               );
             })}
           </MenuList>
