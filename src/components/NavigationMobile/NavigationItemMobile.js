@@ -103,17 +103,19 @@ class NavigationItemMobile extends Component {
         <Collapse in={this.state.isSubNavOpen} timeout="auto" unmountOnExit>
           <MenuList className={classes.subMenuList} component="div" disablePadding>
             {items.map((item, index) => {
-              const { navigationItem: { data } } = item;
-              const navigationItemMobileClasses = classNames(
-                data.classNames,
-                classes
-              );
+              const { navigationItem: { data: { classNames: navigationItemClassNames, isUrlRelative, shouldOpenInNewWindow } } } = item;
 
               return (
-                <Link onClick={this.onClick} href={this.linkPath} linkItem={item}>
+                <Link
+                  className={navigationItemClassNames}
+                  href={this.linkPath}
+                  isUrlRelative={isUrlRelative}
+                  onClick={this.onClick}
+                  shouldOpenInNewWindow={shouldOpenInNewWindow}
+                >
                   <NavigationItemMobile
                     key={index}
-                    classes={navigationItemMobileClasses}
+                    classes={classes}
                     navItem={item}
                     routingStore={routingStore}
                     shouldShowDivider={false}

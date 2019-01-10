@@ -90,12 +90,23 @@ class NavigationItemDesktop extends Component {
   };
 
   renderSubNav(navItemGroup) {
-    const menuItems = navItemGroup.items.map((item, index) =>
-      <MenuItem dense key={index}>
-        <Link onClick={this.onClose} route={this.linkPath(item)} linkItem={item}>
-          <ListItemText primary={item.navigationItem.data.contentForLanguage} />
-        </Link>
-      </MenuItem>);
+    const menuItems = navItemGroup.items.map((item, index) => {
+      const { navigationItem: { data: { contentForLanguage, classNames: navigationItemClassNames, isUrlRelative, shouldOpenInNewWindow } } } = item;
+      return (
+        <MenuItem dense key={index}>
+          <Link
+            className={navigationItemClassNames}
+            onClick={this.onClose}
+            route={this.linkPath(item)}
+            href={this.linkPath(item)}
+            isUrlRelative={isUrlRelative}
+            shouldOpenInNewWindow={shouldOpenInNewWindow}
+          >
+            <ListItemText primary={contentForLanguage} />
+          </Link>
+        </MenuItem>
+      );
+    });
 
     menuItems.unshift(<Divider key="divider" />);
 
@@ -116,20 +127,36 @@ class NavigationItemDesktop extends Component {
           open={this.state.isSubNavOpen}
         >
           <Grid container className={classes.grid} spacing={16}>
-            {items.map((item, index) => (
-              <Grid item key={index}>
-                <MenuList disablePadding>
-                  <MenuItem>
-                    <Link onClick={this.onClose} href={this.linkPath(item)} linkItem={item}>
-                      <ListItemText primary={item.navigationItem.data.contentForLanguage} />
-                    </Link>
-                  </MenuItem>
-                  {Array.isArray(item.items) && this.renderSubNav(item)}
-                </MenuList>
-              </Grid>
-            ))}
+            {items.map((item, index) => {
+              const { navigationItem: { data: { contentForLanguage, classNames: navigationItemClassNames, isUrlRelative, shouldOpenInNewWindow } } } = item;
+              return (
+                <Grid item key={index}>
+                  <MenuList disablePadding>
+                    <MenuItem>
+                      <Link
+                        className={navigationItemClassNames}
+                        href={this.linkPath(item)}
+                        isUrlRelative={isUrlRelative}
+                        onClick={this.onClose}
+                        shouldOpenInNewWindow={shouldOpenInNewWindow}
+                      >
+                        <ListItemText primary={contentForLanguage} />
+                      </Link>
+                    </MenuItem>
+                    {Array.isArray(item.items) && this.renderSubNav(item)}
+                  </MenuList>
+                </Grid>
+              );
+            })}
           </Grid>
-          <Link className={classes.navigationShopAllLink} onClick={this.onClose} route={`${this.linkPath()}`} linkItem={navItem}>
+          <Link
+            className={classes.navigationShopAllLink}
+            onClick={this.onClose}
+            route={`${this.linkPath()}`}
+            href={this.linkPath(navItem)}
+            isUrlRelative={navigationItem.data.isUrlRelative}
+            shouldOpenInNewWindow={navigationItem.data.shouldOpenInNewWindow}
+          >
             <span>Shop all {navigationItem.data.contentForLanguage} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
           </Link>
         </Popover>

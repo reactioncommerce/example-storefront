@@ -28,10 +28,12 @@ class Link extends Component {
     className: PropTypes.string,
     classes: PropTypes.object,
     href: PropTypes.string,
+    isUrlRelative: PropTypes.bool,
     linkItem: PropTypes.object,
     onClick: PropTypes.func,
     params: PropTypes.object,
     route: PropTypes.string,
+    shouldOpenInNewWindow: PropTypes.bool,
     to: PropTypes.string
   }
 
@@ -61,37 +63,31 @@ class Link extends Component {
       classes,
       className,
       href,
-      linkItem,
+      isUrlRelative,
       onClick,
       params,
       route,
+      shouldOpenInNewWindow,
       tracking, // eslint-disable-line
       to,
       ...props
     } = this.props;
 
-    let linkItemClassNames;
-
     // If link is not a relative link, or if link should open in new window,
     // then directly us an `a` tag, insted of the `NextLink` component
-    if (linkItem) {
-      const { navigationItem: { data } } = linkItem;
-      linkItemClassNames = data.classNames;
-
-      if ((data && !data.isUrlRelative) || (data && data.shouldOpenInNewWindow)) {
-        return (
-          <a
-            className={classNames(classes.anchor, linkItemClassNames, className)}
-            href={data.url}
-            onClick={this.handleClick}
-            onKeyDown={this.handleKeyDown}
-            tabIndex={0}
-            target={data.shouldOpenInNewWindow ? "_blank" : ""}
-          >
-            {children}
-          </a>
-        );
-      }
+    if (isUrlRelative || shouldOpenInNewWindow) {
+      return (
+        <a
+          className={classNames(classes.anchor, className)}
+          href={href}
+          onClick={this.handleClick}
+          onKeyDown={this.handleKeyDown}
+          tabIndex={0}
+          target={shouldOpenInNewWindow ? "_blank" : ""}
+        >
+          {children}
+        </a>
+      );
     }
 
     // If link relative and should open in the same window,
@@ -102,7 +98,7 @@ class Link extends Component {
       return (
         <a
           href={as}
-          className={classNames(classes.anchor, linkItemClassNames, className)}
+          className={classNames(classes.anchor, className)}
           onClick={this.handleClick}
           onKeyDown={this.handleKeyDown}
         >
@@ -114,7 +110,7 @@ class Link extends Component {
     return (
       <NextLink route={route || to || href} params={params} {...props} passHref>
         <a
-          className={classNames(classes.anchor, linkItemClassNames, className)}
+          className={classNames(classes.anchor, className)}
           onClick={this.handleClick}
           onKeyDown={this.handleKeyDown}
           role="link"
