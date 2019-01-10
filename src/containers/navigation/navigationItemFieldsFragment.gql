@@ -1,8 +1,4 @@
 fragment NavigationItemFields on NavigationItemData {
-  content {
-    language
-    value
-  }
   contentForLanguage
   classNames
   url
