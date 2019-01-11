@@ -27,9 +27,14 @@ export default function withApolloClient(WrappedComponent) {
   class WithApolloClient extends React.Component {
     static async getInitialProps(ctx) {
       const { Component, router, ctx: { req, res, query, pathname } } = ctx;
+      const requestPath = req && req.get("request-path");
 
       // Provide the `url` prop data in case a GraphQL query uses it
-      rootMobxStores.routingStore.updateRoute({ query, pathname });
+      rootMobxStores.routingStore.updateRoute({ query, pathname, route: router.route });
+
+      // If getInitialProps was called without a request object,
+      // then this was most likely a due to a `pushState` rather than a full page request.
+      const hasRequestObject = !!req;
 
       let user;
       try {
@@ -77,7 +82,9 @@ export default function withApolloClient(WrappedComponent) {
       return {
         ...wrappedComponentProps,
         apolloState,
-        accessToken: user && user.accessToken
+        accessToken: user && user.accessToken,
+        requestPath,
+        hasRequestObject
       };
     }
 
@@ -90,10 +97,16 @@ export default function withApolloClient(WrappedComponent) {
     };
 
     static getDerivedStateFromProps(nextProps) {
-      const { pathname, query } = nextProps.router;
+      const { pathname, query, route } = nextProps.router;
+      const { requestPath, hasRequestObject } = nextProps;
 
       // Update routing store with pathname and query after route change
-      rootMobxStores.routingStore.updateRoute({ pathname, query });
+      rootMobxStores.routingStore.updateRoute({ pathname, query, route });
+
+      // Set the rewrite path if this was a full page request
+      if (hasRequestObject) {
+        rootMobxStores.routingStore.setRewriteRoute(requestPath, route);
+      }
 
       return null;
     }

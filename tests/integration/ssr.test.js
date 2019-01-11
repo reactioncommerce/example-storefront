@@ -5,11 +5,12 @@ const cheerio = require("cheerio");
 const chai = require("chai");
 require("isomorphic-fetch");
 
-const url = "http://localhost:4000";
+// Checks if ENV Url is set within CI, if not use localhost. Configured for both local development and CI.
+const url = process.env.URL ? process.env.URL : "http://localhost:4000";
 
 describe("NextJS Loading", () => {
   // Skipping this test because it works locally but not on CI. Created issue to solve this soon.
-  it.skip("SSR Loads with an HTML Body", () => fetch(url)
+  it("SSR Loads with an HTML Body", () => fetch(url)
     .then((response) => {
       chai.expect(response.status).to.equal(200);
 
