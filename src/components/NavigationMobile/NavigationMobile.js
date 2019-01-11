@@ -102,36 +102,41 @@ class NavigationMobile extends Component {
   render() {
     const { classes, navItems, uiStore, shop } = this.props;
 
-    return (
-      <Drawer open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
-        <div className={classes.header}>
-          <Toolbar disableGutters>
-            <div className={classes.toolbarTitle}>
-              <Typography className={classes.title} color="inherit" variant="title">
-                <Link route="/" onClick={this.handleClose}>
-                  <ShopLogo shopName={shop && shop.name} />
-                </Link>
-              </Typography>
-            </div>
-            <IconButton onClick={this.handleClose}>
-              <CloseIcon />
-            </IconButton>
-          </Toolbar>
-          <Divider />
-        </div>
-        <nav className={classes.menu}>
-          <MenuList disablePadding>{navItems.items.map(this.renderNavItem)}</MenuList>
-        </nav>
-        <Slide direction="left" in={!!this.state.navItem}>
-          <nav className={classes.subNav}>
-            <NavigationSubMenuMobile
-              navItem={this.state.navItem}
-              onBackButtonClick={this.handleCloseSubMenu}
-            />
+    if (navItems && navItems.items) {
+      return (
+        <Drawer open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
+          <div className={classes.header}>
+            <Toolbar disableGutters>
+              <div className={classes.toolbarTitle}>
+                <Typography className={classes.title} color="inherit" variant="title">
+                  <Link route="/" onClick={this.handleClose}>
+                    <ShopLogo shopName={shop && shop.name} />
+                  </Link>
+                </Typography>
+              </div>
+              <IconButton onClick={this.handleClose}>
+                <CloseIcon />
+              </IconButton>
+            </Toolbar>
+            <Divider />
+          </div>
+          <nav className={classes.menu}>
+            <MenuList disablePadding>{navItems.items.map(this.renderNavItem)}</MenuList>
           </nav>
-        </Slide>
-      </Drawer>
-    );
+          <Slide direction="left" in={!!this.state.navItem}>
+            <nav className={classes.subNav}>
+              <NavigationSubMenuMobile
+                navItem={this.state.navItem}
+                onBackButtonClick={this.handleCloseSubMenu}
+              />
+            </nav>
+          </Slide>
+        </Drawer>
+      );
+    }
+
+    // If navItems.items aren't available, skip rendering of navigation
+    return null;
   }
 }
 

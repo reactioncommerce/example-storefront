@@ -22,7 +22,13 @@ export class NavigationDesktop extends Component {
 
   render() {
     const { navItems } = this.props;
-    return <nav>{navItems.items.map(this.renderNavItem)}</nav>;
+
+    if (navItems && navItems.items) {
+      return <nav>{navItems.items.map(this.renderNavItem)}</nav>;
+    }
+
+    // If navItems.items aren't available, skip rendering of navigation
+    return null;
   }
 }
 
