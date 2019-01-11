@@ -1,5 +1,5 @@
-import ExampleIOUPaymentForm from "../components/ExampleIOUPaymentForm";
-import StripePaymentInput from "../components/StripePaymentInput";
+import ExampleIOUPaymentForm from "@reactioncommerce/components/ExampleIOUPaymentForm/v1";
+import StripePaymentInput from "@reactioncommerce/components/StripePaymentInput/v1";
 
 const paymentMethods = [
   {
