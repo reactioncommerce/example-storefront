@@ -29,6 +29,8 @@ if (process.env.IS_BUILDING_NEXTJS) {
    */
   module.exports = envalid.cleanEnv(process.env, {
     CANONICAL_URL: url(),
+    DEBUG_REQUEST_HEADERS: bool({ default: false }),
+    DEBUG_RESPONSE_HEADERS: bool({ default: false }),
     ENABLE_SPA_ROUTING: bool({ default: true }), // must explicitly set to false to disable
     EXTERNAL_GRAPHQL_URL: url(),
     INTERNAL_GRAPHQL_URL: url(),

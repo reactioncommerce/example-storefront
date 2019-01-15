@@ -8,7 +8,9 @@ module.exports = {
    * const { serverRuntimeConfig } = getConfig();
    */
   serverRuntimeConfig: {
-    graphqlUrl: appConfig.INTERNAL_GRAPHQL_URL
+    graphqlUrl: appConfig.INTERNAL_GRAPHQL_URL,
+    debugRequestHeaders: appConfig.DEBUG_REQUEST_HEADERS,
+    debugResponseHeaders: appConfig.DEBUG_RESPONSE_HEADERS
   },
   /**
    * `publicRuntimeConfig` is available in browser code, even when run on the server
