@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { ApolloProvider, getDataFromTree } from "react-apollo";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import Head from "next/head";
+import getConfig from "next/config";
 import rootMobxStores from "lib/stores";
 import logger from "../logger";
 import initApollo from "./initApollo";
-import getConfig from "next/config";
 
 const { serverRuntimeConfig } = getConfig();
 
