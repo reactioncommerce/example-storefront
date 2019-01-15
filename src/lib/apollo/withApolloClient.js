@@ -6,6 +6,9 @@ import Head from "next/head";
 import rootMobxStores from "lib/stores";
 import logger from "../logger";
 import initApollo from "./initApollo";
+import getConfig from "next/config";
+
+const { serverRuntimeConfig } = getConfig();
 
 /**
  * Get the display name of a component
@@ -28,6 +31,16 @@ export default function withApolloClient(WrappedComponent) {
     static async getInitialProps(ctx) {
       const { Component, router, ctx: { req, res, query, pathname } } = ctx;
       const requestPath = req && req.get("request-path");
+
+      if (!process.browser && serverRuntimeConfig.debugRequestHeaders) {
+        logger.info("Request header:");
+        req && logger.dir(req.headers);
+      }
+
+      if (!process.browser && serverRuntimeConfig.debugResponseHeaders) {
+        logger.info("Response header:");
+        res && logger.dir(res.headers);
+      }
 
       // Provide the `url` prop data in case a GraphQL query uses it
       rootMobxStores.routingStore.updateRoute({ query, pathname, route: router.route });
