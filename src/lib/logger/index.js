@@ -13,6 +13,10 @@ const logger = {
     console.info(chalk.cyan(message));
   },
 
+  dir(object) {
+    console.dir(object, { depth: null });
+  },
+
   warn(message) {
     console.warn(chalk.yellow(message));
   },
