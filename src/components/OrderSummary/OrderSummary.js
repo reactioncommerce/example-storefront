@@ -92,7 +92,7 @@ class OrderSummary extends Component {
             <Grid item xs={3}>
               <Typography className={classes.subtitle2} variant="subheading">{"Payment Method"}</Typography>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item>
               {(payments || []).map((payment) => (
                 <Typography key={payment._id} variant="body2">{payment.displayName} ({payment.amount.displayAmount})</Typography>
               ))}
