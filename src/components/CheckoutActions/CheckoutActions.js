@@ -17,6 +17,7 @@ import TRACKING from "lib/tracking/constants";
 import trackCheckout from "lib/tracking/trackCheckout";
 import trackOrder from "lib/tracking/trackOrder";
 import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
+import calculateRemainderDue from "lib/utils/calculateRemainderDue";
 import { placeOrder } from "../../containers/order/mutations.gql";
 import paymentMethods from "../../custom/paymentMethods";
 
@@ -320,7 +321,7 @@ export default class CheckoutActions extends Component {
     }, []);
 
     const payments = cartStore.checkoutPayments.slice();
-    const remainingAmountDue = payments.reduce((val, { payment }) => val - (payment.amount || val), total.amount);
+    const remainingAmountDue = calculateRemainderDue(payments, total.amount);
 
     const actions = [
       {
