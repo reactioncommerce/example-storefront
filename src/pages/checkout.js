@@ -15,10 +15,13 @@ import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import CartIcon from "mdi-material-ui/Cart";
 import ChevronLeftIcon from "mdi-material-ui/ChevronLeft";
 import LockIcon from "mdi-material-ui/Lock";
-import withCart from "containers/cart/withCart";
 import Link from "components/Link";
 import CheckoutSummary from "components/CheckoutSummary";
 import PageLoading from "components/PageLoading";
+import withCart from "containers/cart/withCart";
+import withAvailablePaymentMethods from "containers/payment/withAvailablePaymentMethods";
+import logger from "lib/logger";
+import definedPaymentMethods from "../custom/paymentMethods";
 
 const styles = (theme) => ({
   checkoutActions: {
@@ -130,18 +133,26 @@ const styles = (theme) => ({
 const hasIdentityCheck = (cart) => !!((cart && cart.account !== null) || (cart && cart.email));
 
 @withCart
+@withAvailablePaymentMethods
 @observer
 @withStyles(styles, { withTheme: true })
 class Checkout extends Component {
   static propTypes = {
+    availablePaymentMethods: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired
+    })),
     cart: PropTypes.shape({
       account: PropTypes.object,
       checkout: PropTypes.object,
       email: PropTypes.string,
       items: PropTypes.array
     }),
+    cartStore: PropTypes.object,
+    checkoutMutations: PropTypes.object,
     classes: PropTypes.object,
+    clearAuthenticatedUsersCart: PropTypes.func,
     hasMoreCartItems: PropTypes.bool,
+    isLoadingAvailablePaymentMethods: PropTypes.bool,
     isLoadingCart: PropTypes.bool,
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
@@ -284,16 +295,17 @@ class Checkout extends Component {
 
   renderCheckoutActions() {
     const {
+      availablePaymentMethods,
       classes,
       cart,
+      cartStore,
+      checkoutMutations,
+      clearAuthenticatedUsersCart,
       hasMoreCartItems,
-      isLoadingCart,
       loadMoreCartItems,
       onRemoveCartItems,
       onChangeCartItemsQuantity
     } = this.props;
-
-    if (isLoadingCart) return null;
 
     if (!cart || (cart && Array.isArray(cart.items) && cart.items.length === 0)) {
       return (
@@ -310,6 +322,11 @@ class Checkout extends Component {
     const hasAccount = !!cart.account;
     const orderEmailAddress = (hasAccount && Array.isArray(cart.account.emailRecords) && cart.account.emailRecords[0].address) || cart.email;
 
+    // Filter the hard-coded definedPaymentMethods list from the client to remove any
+    // payment methods that were not returned from the API as currently available.
+    const paymentMethods = definedPaymentMethods.filter((method) =>
+      !!availablePaymentMethods.find((availableMethod) => availableMethod.name === method.name));
+
     return (
       <div className={classes.checkoutContentContainer}>
         <div className={classes.checkoutContent}>
@@ -320,7 +337,14 @@ class Checkout extends Component {
                   {orderEmailAddress ? (
                     <CheckoutEmailAddress emailAddress={orderEmailAddress} isAccountEmail={hasAccount} />
                   ) : null}
-                  <CheckoutActions orderEmailAddress={orderEmailAddress} />
+                  <CheckoutActions
+                    cart={cart}
+                    cartStore={cartStore}
+                    checkoutMutations={checkoutMutations}
+                    clearAuthenticatedUsersCart={clearAuthenticatedUsersCart}
+                    orderEmailAddress={orderEmailAddress}
+                    paymentMethods={paymentMethods}
+                  />
                 </div>
               </div>
             </Grid>
@@ -344,8 +368,20 @@ class Checkout extends Component {
   }
 
   render() {
-    const { isLoadingCart, cart } = this.props;
-    if (isLoadingCart || !cart) return <PageLoading delay={0} />;
+    const {
+      availablePaymentMethods,
+      cart,
+      isLoadingCart,
+      isLoadingAvailablePaymentMethods
+    } = this.props;
+    if (isLoadingCart || isLoadingAvailablePaymentMethods) {
+      return <PageLoading delay={0} />;
+    }
+
+    if (cart && (!Array.isArray(availablePaymentMethods) || availablePaymentMethods.length === 0)) {
+      logger.error("API returned no available payment methods");
+      return null;
+    }
 
     return (
       <Fragment>

@@ -7,7 +7,6 @@ import ShippingAddressCheckoutAction from "@reactioncommerce/components/Shipping
 import FulfillmentOptionsCheckoutAction from "@reactioncommerce/components/FulfillmentOptionsCheckoutAction/v1";
 import PaymentsCheckoutAction from "@reactioncommerce/components/PaymentsCheckoutAction/v1";
 import FinalReviewCheckoutAction from "@reactioncommerce/components/FinalReviewCheckoutAction/v1";
-import withCart from "containers/cart/withCart";
 import withAddressValidation from "containers/address/withAddressValidation";
 import Dialog from "@material-ui/core/Dialog";
 import PageLoading from "components/PageLoading";
@@ -19,7 +18,6 @@ import trackOrder from "lib/tracking/trackOrder";
 import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
 import calculateRemainderDue from "lib/utils/calculateRemainderDue";
 import { placeOrder } from "../../containers/order/mutations.gql";
-import paymentMethods from "../../custom/paymentMethods";
 
 const {
   CHECKOUT_STARTED,
@@ -30,7 +28,6 @@ const {
 } = TRACKING;
 
 @withAddressValidation
-@withCart
 @track()
 @observer
 export default class CheckoutActions extends Component {
@@ -42,13 +39,15 @@ export default class CheckoutActions extends Component {
       checkout: PropTypes.object,
       email: PropTypes.string,
       items: PropTypes.array
-    }),
+    }).isRequired,
     cartStore: PropTypes.object,
     checkoutMutations: PropTypes.shape({
       onSetFulfillmentOption: PropTypes.func.isRequired,
       onSetShippingAddress: PropTypes.func.isRequired
     }),
-    orderEmailAddress: PropTypes.string.isRequired
+    clearAuthenticatedUsersCart: PropTypes.func.isRequired,
+    orderEmailAddress: PropTypes.string.isRequired,
+    paymentMethods: PropTypes.array
   };
 
   state = {
@@ -233,7 +232,7 @@ export default class CheckoutActions extends Component {
   };
 
   placeOrder = async (order) => {
-    const { cartStore, client: apolloClient } = this.props;
+    const { cartStore, clearAuthenticatedUsersCart, client: apolloClient } = this.props;
 
     // Payments can have `null` amount to mean "remaining".
     let remainingAmountDue = order.fulfillmentGroups.reduce((sum, group) => sum + group.totalPrice, 0);
@@ -258,6 +257,7 @@ export default class CheckoutActions extends Component {
       // anonymous cart credentials from cookie since it will be
       // deleted on the server.
       cartStore.clearAnonymousCartCredentials();
+      clearAuthenticatedUsersCart();
 
       // Also destroy the collected and cached payment input
       cartStore.resetCheckoutPayments();
@@ -298,8 +298,13 @@ export default class CheckoutActions extends Component {
   };
 
   render() {
-    const { addressValidation, addressValidationResults, cart, cartStore } = this.props;
-    if (!cart) return null;
+    const {
+      addressValidation,
+      addressValidationResults,
+      cart,
+      cartStore,
+      paymentMethods
+    } = this.props;
 
     const { checkout: { fulfillmentGroups, summary }, items } = cart;
     const { actionAlerts, hasPaymentError } = this.state;
