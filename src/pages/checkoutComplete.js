@@ -1,13 +1,10 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { Router } from "routes";
-import { observer } from "mobx-react";
 import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import OrderFulfillmentGroup from "components/OrderFulfillmentGroup";
 import PageLoading from "components/PageLoading";
-import withCart from "containers/cart/withCart";
 import withOrder from "containers/order/withOrder";
 
 const styles = (theme) => ({
@@ -30,61 +27,18 @@ const styles = (theme) => ({
     display: "flex",
     justifyContent: "center"
   },
-  checkoutTitleContainer: {
-    alignSelf: "flex-end",
-    width: "8rem",
-    [theme.breakpoints.up("md")]: {
-      width: "10rem"
-    }
-  },
-  checkoutTitle: {
-    fontSize: "1.125rem",
-    color: theme.palette.reaction.black35,
-    display: "inline",
-    marginLeft: "0.3rem"
-  },
   flexContainer: {
     display: "flex",
     flexDirection: "column"
-  },
-  headerContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: "2rem"
-  },
-  emptyCartContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  emptyCart: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: 320,
-    height: 320
-  },
-  logo: {
-    color: theme.palette.reaction.reactionBlue,
-    marginRight: theme.spacing.unit,
-    borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
   }
 });
 
-@withCart
 @withOrder
-@observer
 @withStyles(styles, { withTheme: true })
 class CheckoutComplete extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    clearAuthenticatedUsersCart: PropTypes.func.isRequired,
-    client: PropTypes.object.isRequired,
-    hasMoreCartItems: PropTypes.bool,
     isLoadingOrder: PropTypes.bool,
-    loadMoreCartItems: PropTypes.func,
-    onChangeCartItemsQuantity: PropTypes.func,
-    onRemoveCartItems: PropTypes.func,
     order: PropTypes.shape({
       email: PropTypes.string.isRequired,
       fulfillmentGroups: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -97,18 +51,6 @@ class CheckoutComplete extends Component {
     }),
     theme: PropTypes.object.isRequired
   };
-
-  state = {};
-
-  componentDidMount() {
-    const { clearAuthenticatedUsersCart } = this.props;
-
-    clearAuthenticatedUsersCart();
-  }
-
-  handleCartEmptyClick = () => {
-    Router.pushRoute("/");
-  }
 
   renderFulfillmentGroups() {
     const { classes, order } = this.props;
