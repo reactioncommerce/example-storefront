@@ -65,6 +65,10 @@ const testFulfillmentGroup = {
 };
 
 const testPayments = [{
+  _id: "TEST",
+  amount: {
+    displayAmount: "$10.00"
+  },
   displayName: "Example Payment"
 }];
 
