@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp */
 import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import { observer } from "mobx-react";
