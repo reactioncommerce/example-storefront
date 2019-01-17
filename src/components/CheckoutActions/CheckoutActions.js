@@ -1,12 +1,14 @@
 import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import { observer } from "mobx-react";
+import styled from "styled-components";
 import isEqual from "lodash.isequal";
 import Actions from "@reactioncommerce/components/CheckoutActions/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
 import FulfillmentOptionsCheckoutAction from "@reactioncommerce/components/FulfillmentOptionsCheckoutAction/v1";
 import PaymentsCheckoutAction from "@reactioncommerce/components/PaymentsCheckoutAction/v1";
 import FinalReviewCheckoutAction from "@reactioncommerce/components/FinalReviewCheckoutAction/v1";
+import { addTypographyStyles } from "@reactioncommerce/components/utils";
 import withAddressValidation from "containers/address/withAddressValidation";
 import Dialog from "@material-ui/core/Dialog";
 import PageLoading from "components/PageLoading";
@@ -26,6 +28,12 @@ const {
   ORDER_COMPLETED,
   PAYMENT_INFO_ENTERED
 } = TRACKING;
+
+const MessageDiv = styled.div`
+  ${addTypographyStyles("NoPaymentMethodsMessage", "bodyText")}
+`;
+
+const NoPaymentMethodsMessage = () => <MessageDiv>No payment methods available</MessageDiv>;
 
 @withAddressValidation
 @track()
@@ -328,6 +336,11 @@ export default class CheckoutActions extends Component {
     const payments = cartStore.checkoutPayments.slice();
     const remainingAmountDue = calculateRemainderDue(payments, total.amount);
 
+    let PaymentComponent = PaymentsCheckoutAction;
+    if (!Array.isArray(paymentMethods) || paymentMethods.length === 0) {
+      PaymentComponent = NoPaymentMethodsMessage;
+    }
+
     const actions = [
       {
         id: "1",
@@ -363,7 +376,7 @@ export default class CheckoutActions extends Component {
         completeLabel: "Payment information",
         incompleteLabel: "Payment information",
         status: remainingAmountDue === 0 && !hasPaymentError ? "complete" : "incomplete",
-        component: PaymentsCheckoutAction,
+        component: PaymentComponent,
         onSubmit: this.handlePaymentSubmit,
         props: {
           addresses,

@@ -20,7 +20,6 @@ import CheckoutSummary from "components/CheckoutSummary";
 import PageLoading from "components/PageLoading";
 import withCart from "containers/cart/withCart";
 import withAvailablePaymentMethods from "containers/payment/withAvailablePaymentMethods";
-import logger from "lib/logger";
 import definedPaymentMethods from "../custom/paymentMethods";
 
 const styles = (theme) => ({
@@ -369,18 +368,12 @@ class Checkout extends Component {
 
   render() {
     const {
-      availablePaymentMethods,
-      cart,
       isLoadingCart,
       isLoadingAvailablePaymentMethods
     } = this.props;
+
     if (isLoadingCart || isLoadingAvailablePaymentMethods) {
       return <PageLoading delay={0} />;
-    }
-
-    if (cart && (!Array.isArray(availablePaymentMethods) || availablePaymentMethods.length === 0)) {
-      logger.error("API returned no available payment methods");
-      return null;
     }
 
     return (
