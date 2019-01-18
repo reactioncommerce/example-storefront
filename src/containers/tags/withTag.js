@@ -19,12 +19,17 @@ export default function withTag(Component) {
       /**
        * slug used to obtain tag info
        */
-      router: PropTypes.object.isRequired
+      router: PropTypes.object.isRequired,
+      routingStore: PropTypes.shape({
+        tagId: PropTypes.string
+      }).isRequired
     }
 
     render() {
-      const { router: { query: { slug: slugFromQueryParam } } } = this.props;
-      const { tagId } = this.props.routingStore;
+      const {
+        router: { query: { slug: slugFromQueryParam } },
+        routingStore: { tagId }
+      } = this.props;
 
       const slugOrId = slugFromQueryParam || tagId;
 

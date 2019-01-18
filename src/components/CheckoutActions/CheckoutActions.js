@@ -1,14 +1,15 @@
+/* eslint-disable react/no-multi-comp */
 import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import { observer } from "mobx-react";
+import styled from "styled-components";
 import isEqual from "lodash.isequal";
 import Actions from "@reactioncommerce/components/CheckoutActions/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
 import FulfillmentOptionsCheckoutAction from "@reactioncommerce/components/FulfillmentOptionsCheckoutAction/v1";
-import StripePaymentCheckoutAction from "@reactioncommerce/components/StripePaymentCheckoutAction/v1";
+import PaymentsCheckoutAction from "@reactioncommerce/components/PaymentsCheckoutAction/v1";
 import FinalReviewCheckoutAction from "@reactioncommerce/components/FinalReviewCheckoutAction/v1";
-import withCart from "containers/cart/withCart";
-import withPlaceStripeOrder from "containers/order/withPlaceStripeOrder";
+import { addTypographyStyles } from "@reactioncommerce/components/utils";
 import withAddressValidation from "containers/address/withAddressValidation";
 import Dialog from "@material-ui/core/Dialog";
 import PageLoading from "components/PageLoading";
@@ -18,7 +19,8 @@ import TRACKING from "lib/tracking/constants";
 import trackCheckout from "lib/tracking/trackCheckout";
 import trackOrder from "lib/tracking/trackOrder";
 import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
-import { isShippingAddressSet } from "lib/utils/cartUtils";
+import calculateRemainderDue from "lib/utils/calculateRemainderDue";
+import { placeOrder } from "../../containers/order/mutations.gql";
 
 const {
   CHECKOUT_STARTED,
@@ -28,10 +30,13 @@ const {
   PAYMENT_INFO_ENTERED
 } = TRACKING;
 
+const MessageDiv = styled.div`
+  ${addTypographyStyles("NoPaymentMethodsMessage", "bodyText")}
+`;
+
+const NoPaymentMethodsMessage = () => <MessageDiv>No payment methods available</MessageDiv>;
+
 @withAddressValidation
-@withCart
-@withPlaceStripeOrder
-@inject("authStore")
 @track()
 @observer
 export default class CheckoutActions extends Component {
@@ -43,16 +48,15 @@ export default class CheckoutActions extends Component {
       checkout: PropTypes.object,
       email: PropTypes.string,
       items: PropTypes.array
-    }),
-    cartStore: PropTypes.shape({
-      stripeToken: PropTypes.object
-    }),
+    }).isRequired,
+    cartStore: PropTypes.object,
     checkoutMutations: PropTypes.shape({
-      // onUpdateFulfillmentOptionsForGroup: PropTypes.func.isRequired,
       onSetFulfillmentOption: PropTypes.func.isRequired,
       onSetShippingAddress: PropTypes.func.isRequired
     }),
-    placeOrderWithStripeCard: PropTypes.func.isRequired
+    clearAuthenticatedUsersCart: PropTypes.func.isRequired,
+    orderEmailAddress: PropTypes.string.isRequired,
+    paymentMethods: PropTypes.array
   };
 
   state = {
@@ -69,15 +73,17 @@ export default class CheckoutActions extends Component {
   componentDidMount() {
     this._isMounted = true;
     const { cart } = this.props;
+
     // Track start of checkout process
     this.trackCheckoutStarted({ cart, action: CHECKOUT_STARTED });
 
-    const { checkout: { fulfillmentGroups } } = this.props.cart;
-    const hasShippingAddress = isShippingAddressSet(fulfillmentGroups);
+    const { checkout: { fulfillmentGroups } } = cart;
+    const [fulfillmentGroup] = fulfillmentGroups;
+
     // Track the first step, "Enter a shipping address" when the page renders,
     // as it will be expanded by default, only record this event when the
     // shipping address has not yet been set.
-    if (!hasShippingAddress) {
+    if (!fulfillmentGroup.shippingAddress) {
       this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 1 }));
     }
   }
@@ -106,27 +112,22 @@ export default class CheckoutActions extends Component {
   @trackOrder()
   trackOrder() {}
 
-  buildData = (data) => {
-    const { step, shipping_method = null, payment_method = null, action } = data; // eslint-disable-line camelcase
-
-    return {
-      action,
-      payment_method, // eslint-disable-line camelcase
-      shipping_method, // eslint-disable-line camelcase
-      step
-    };
-  };
+  buildData = ({ step, action }) => ({
+    action,
+    payment_method: this.paymentMethod, // eslint-disable-line camelcase
+    shipping_method: this.shippingMethod, // eslint-disable-line camelcase
+    step
+  });
 
   get shippingMethod() {
     const { checkout: { fulfillmentGroups } } = this.props.cart;
-    const shippingMethod = fulfillmentGroups[0].selectedFulfillmentOption.fulfillmentMethod.displayName;
-
-    return shippingMethod;
+    const { selectedFulfillmentOption } = fulfillmentGroups[0];
+    return selectedFulfillmentOption ? selectedFulfillmentOption.fulfillmentMethod.displayName : null;
   }
 
   get paymentMethod() {
-    const { stripeToken: { token: { card } } } = this.props.cartStore;
-    return card.brand;
+    const [firstPayment] = this.props.cartStore.checkoutPayments;
+    return firstPayment ? firstPayment.payment.method : null;
   }
 
   setShippingAddress = async (address) => {
@@ -174,28 +175,15 @@ export default class CheckoutActions extends Component {
     const { data, error } = await onSetFulfillmentOption(fulfillmentOption);
     if (data && !error) {
       // track successfully setting a shipping method
-      this.trackAction({
-        step: 2,
-        shipping_method: this.shippingMethod, // eslint-disable-line camelcase
-        payment_method: null, // eslint-disable-line camelcase
-        action: CHECKOUT_STEP_COMPLETED
-      });
+      this.trackAction(this.buildData({ action: CHECKOUT_STEP_COMPLETED, step: 2 }));
 
       // The next step will automatically be expanded, so lets track that
-      this.trackAction({
-        step: 3,
-        shipping_method: this.shippingMethod, // eslint-disable-line camelcase
-        payment_method: null, // eslint-disable-line camelcase
-        action: CHECKOUT_STEP_VIEWED
-      });
+      this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 3 }));
     }
   };
 
-  setPaymentMethod = (stripeToken) => {
-    const { cartStore } = this.props;
-
-    // Store stripe token in MobX store
-    cartStore.setStripeToken(stripeToken);
+  handlePaymentSubmit = (paymentInput) => {
+    this.props.cartStore.addCheckoutPayment(paymentInput);
 
     this.setState({
       hasPaymentError: false,
@@ -205,26 +193,21 @@ export default class CheckoutActions extends Component {
     });
 
     // Track successfully setting a payment method
-    this.trackAction({
-      step: 3,
-      shipping_method: this.shippingMethod, // eslint-disable-line camelcase
-      payment_method: this.paymentMethod, // eslint-disable-line camelcase
-      action: PAYMENT_INFO_ENTERED
-    });
+    this.trackAction(this.buildData({ action: PAYMENT_INFO_ENTERED, step: 3 }));
 
     // The next step will automatically be expanded, so lets track that
-    this.trackAction({
-      step: 4,
-      shipping_method: this.shippingMethod, // eslint-disable-line camelcase
-      payment_method: this.paymentMethod, // eslint-disable-line camelcase
-      action: CHECKOUT_STEP_VIEWED
-    });
+    this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 4 }));
   };
 
+  handlePaymentsReset = () => {
+    this.props.cartStore.resetCheckoutPayments();
+  }
+
   buildOrder = async () => {
-    const { cart, cartStore } = this.props;
+    const { cart, cartStore, orderEmailAddress } = this.props;
     const cartId = cartStore.hasAccountCart ? cartStore.accountCartId : cartStore.anonymousCartId;
-    const { checkout, email, shop } = cart;
+    const { checkout } = cart;
+
     const fulfillmentGroups = checkout.fulfillmentGroups.map((group) => {
       const { data } = group;
       const { selectedFulfillmentOption } = group;
@@ -240,7 +223,7 @@ export default class CheckoutActions extends Component {
         data,
         items,
         selectedFulfillmentMethodId: selectedFulfillmentOption.fulfillmentMethod._id,
-        shopId: shop._id,
+        shopId: group.shop._id,
         totalPrice: checkout.summary.total.amount,
         type: group.type
       };
@@ -248,35 +231,52 @@ export default class CheckoutActions extends Component {
 
     const order = {
       cartId,
-      currencyCode: shop.currency.code,
-      email,
+      currencyCode: checkout.summary.total.currency.code,
+      email: orderEmailAddress,
       fulfillmentGroups,
-      shopId: shop._id
+      shopId: cart.shop._id
     };
 
     return this.setState({ isPlacingOrder: true }, () => this.placeOrder(order));
   };
 
   placeOrder = async (order) => {
-    const { authStore, cartStore, placeOrderWithStripeCard } = this.props;
+    const { cartStore, clearAuthenticatedUsersCart, client: apolloClient } = this.props;
+
+    // Payments can have `null` amount to mean "remaining".
+    let remainingAmountDue = order.fulfillmentGroups.reduce((sum, group) => sum + group.totalPrice, 0);
+    const payments = cartStore.checkoutPayments.map(({ payment }) => {
+      const amount = payment.amount ? Math.min(payment.amount, remainingAmountDue) : remainingAmountDue;
+      remainingAmountDue -= amount;
+      return { ...payment, amount };
+    });
 
     try {
-      const { data } = await placeOrderWithStripeCard(order);
-      const { placeOrderWithStripeCardPayment: { orders, token } } = data;
-
-      this.trackAction({
-        step: 4,
-        shipping_method: this.shippingMethod, // eslint-disable-line camelcase
-        payment_method: this.paymentMethod, // eslint-disable-line camelcase
-        action: CHECKOUT_STEP_COMPLETED
+      const { data } = await apolloClient.mutate({
+        mutation: placeOrder,
+        variables: {
+          input: {
+            order,
+            payments
+          }
+        }
       });
 
-      // Clear anonymous cart
-      if (!authStore.isAuthenticated) {
-        cartStore.clearAnonymousCartCredentials();
-      }
+      // Placing the order was successful, so we should clear the
+      // anonymous cart credentials from cookie since it will be
+      // deleted on the server.
+      cartStore.clearAnonymousCartCredentials();
+      clearAuthenticatedUsersCart();
+
+      // Also destroy the collected and cached payment input
+      cartStore.resetCheckoutPayments();
+
+      const { placeOrder: { orders, token } } = data;
+
+      this.trackAction(this.buildData({ action: CHECKOUT_STEP_COMPLETED, step: 4 }));
 
       this.trackOrder({ action: ORDER_COMPLETED, orders });
+
       // Send user to order confirmation page
       Router.pushRoute("checkoutComplete", { orderId: orders[0].referenceId, token });
     } catch (error) {
@@ -307,37 +307,17 @@ export default class CheckoutActions extends Component {
   };
 
   render() {
-    if (!this.props.cart) {
-      return null;
-    }
+    const {
+      addressValidation,
+      addressValidationResults,
+      cart,
+      cartStore,
+      paymentMethods
+    } = this.props;
 
-    const { addressValidation, addressValidationResults, cartStore: { stripeToken } } = this.props;
-    const { checkout: { fulfillmentGroups, summary }, items } = this.props.cart;
+    const { checkout: { fulfillmentGroups, summary }, items } = cart;
     const { actionAlerts, hasPaymentError } = this.state;
-    const shippingAddressSet = isShippingAddressSet(fulfillmentGroups);
-    const fulfillmentGroup = fulfillmentGroups[0];
-
-    let shippingAddress = { data: { shippingAddress: null } };
-
-    if (shippingAddressSet) {
-      shippingAddress = {
-        data: {
-          shippingAddress: fulfillmentGroup.data.shippingAddress
-        }
-      };
-    }
-
-    let paymentData = null;
-    if (stripeToken) {
-      const { billingAddress, token: { card } } = stripeToken;
-      const displayName = `${card.brand} ending in ${card.last4}`;
-      paymentData = {
-        data: {
-          billingAddress,
-          displayName
-        }
-      };
-    }
+    const [fulfillmentGroup] = fulfillmentGroups;
 
     // Order summary
     const { fulfillmentTotal, itemTotal, surchargeTotal, taxTotal, total } = summary;
@@ -350,19 +330,32 @@ export default class CheckoutActions extends Component {
       items
     };
 
+    const addresses = fulfillmentGroups.reduce((list, group) => {
+      if (group.shippingAddress) list.push(group.shippingAddress);
+      return list;
+    }, []);
+
+    const payments = cartStore.checkoutPayments.slice();
+    const remainingAmountDue = calculateRemainderDue(payments, total.amount);
+
+    let PaymentComponent = PaymentsCheckoutAction;
+    if (!Array.isArray(paymentMethods) || paymentMethods.length === 0) {
+      PaymentComponent = NoPaymentMethodsMessage;
+    }
+
     const actions = [
       {
         id: "1",
         activeLabel: "Enter a shipping address",
         completeLabel: "Shipping address",
         incompleteLabel: "Shipping address",
-        status: shippingAddressSet ? "complete" : "incomplete",
+        status: fulfillmentGroup.type !== "shipping" || fulfillmentGroup.shippingAddress ? "complete" : "incomplete",
         component: ShippingAddressCheckoutAction,
         onSubmit: this.setShippingAddress,
         props: {
           addressValidationResults,
           alert: actionAlerts["1"],
-          fulfillmentGroup: shippingAddress,
+          fulfillmentGroup,
           onAddressValidation: addressValidation
         }
       },
@@ -384,12 +377,16 @@ export default class CheckoutActions extends Component {
         activeLabel: "Enter payment information",
         completeLabel: "Payment information",
         incompleteLabel: "Payment information",
-        status: stripeToken && !hasPaymentError ? "complete" : "incomplete",
-        component: StripePaymentCheckoutAction,
-        onSubmit: this.setPaymentMethod,
+        status: remainingAmountDue === 0 && !hasPaymentError ? "complete" : "incomplete",
+        component: PaymentComponent,
+        onSubmit: this.handlePaymentSubmit,
         props: {
+          addresses,
           alert: actionAlerts["3"],
-          payment: paymentData
+          onReset: this.handlePaymentsReset,
+          payments,
+          paymentMethods,
+          remainingAmountDue
         }
       },
       {
