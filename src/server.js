@@ -8,6 +8,7 @@ const config = require("./config");
 const logger = require("./lib/logger");
 const router = require("./routes");
 const { configureAuthForServer } = require("./serverAuth");
+const { sitemapRoutesHandler } = require("./sitemapRoutesHandler");
 
 // First create the NextJS app.
 // Note that only `config` can be used here because the NextJS `getConfig()` does not
@@ -39,6 +40,7 @@ app
 
     configureAuthForServer(server);
 
+    server.use(sitemapRoutesHandler);
     // Setup next routes
     const routeHandler = router.getRequestHandler(app);
     server.use(routeHandler);
