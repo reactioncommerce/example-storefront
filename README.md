@@ -98,6 +98,13 @@ To run eslint
 docker-compose run --rm web eslint src
 ```
 
+### Debugging the server with chrome devtools
+
+You can use the chrome devtools to debug the code running in the node.js application server while it's running inside docker.
+
+- run `docker-compose run --rm --publish 9229:9229 --publish 4000:4000 -e NODE_ENV=development web babel-node --inspect=0.0.0.0:9229 ./src/server.js`
+- Open chrome and browse to `chrome://inspect`. Find the process under **Remote Target** and click **inspect**.
+
 ### Yarn Commands
 
 Yarn & NPM should run inside the Docker container. We've taken steps to ensure that the node_modules are placed into a cacheable location. If you run Yarn locally, the node_modules are written directly to the project directory and take precedence over those from the Docker build.
