@@ -2,21 +2,25 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
-import Hidden from "@material-ui/core/Hidden";
+import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
 import { inject, observer } from "mobx-react";
 import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
-import trackProductViewed from "lib/tracking/trackProductViewed";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
 import ProductDetailTitle from "components/ProductDetailTitle";
 import VariantList from "components/VariantList";
-import ProductDetailInfo from "components/ProductDetailInfo";
+import ProductDetailVendor from "components/ProductDetailVendor";
+import ProductDetailDescription from "components/ProductDetailDescription";
+import ProductDetailPrice from "components/ProductDetailPrice";
 import MediaGallery from "components/MediaGallery";
-import TagGrid from "components/TagGrid";
 import { Router } from "routes";
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import variantById from "lib/utils/variantById";
+import trackProduct from "lib/tracking/trackProduct";
+import TRACKING from "lib/tracking/constants";
+import trackCartItems from "lib/tracking/trackCartItems";
+
+const { CART_VIEWED, PRODUCT_ADDED, PRODUCT_VIEWED } = TRACKING;
 
 const styles = (theme) => ({
   section: {
@@ -25,6 +29,9 @@ const styles = (theme) => ({
   breadcrumbGrid: {
     marginBottom: theme.spacing.unit * 2,
     marginTop: theme.spacing.unit * 2
+  },
+  info: {
+    marginBottom: theme.spacing.unit
   }
 });
 
@@ -34,7 +41,7 @@ const styles = (theme) => ({
  * @param {Object} props Component props
  * @returns {React.Component} React component node that represents a product detail view
  */
-@withWidth()
+@withWidth({ initialWidth: "md" })
 @withStyles(styles, { withTheme: true, name: "SkProductDetail" })
 @inject("routingStore", "uiStore")
 @track()
@@ -54,9 +61,6 @@ class ProductDetail extends Component {
     product: PropTypes.object,
     routingStore: PropTypes.object.isRequired,
     shop: PropTypes.object.isRequired,
-    tags: PropTypes.shape({
-      edges: PropTypes.arrayOf(PropTypes.object).isRequired
-    }),
     theme: PropTypes.object,
     uiStore: PropTypes.object.isRequired,
     width: PropTypes.string.isRequired
@@ -69,7 +73,6 @@ class ProductDetail extends Component {
     this.selectVariant(product.variants[0]);
   }
 
-  @trackProductViewed()
   selectVariant(variant, optionId) {
     const { product, uiStore } = this.props;
 
@@ -80,13 +83,21 @@ class ProductDetail extends Component {
       selectOptionId = variant.options[0]._id;
     }
 
+    this.trackAction({ variant, optionId, action: PRODUCT_VIEWED });
+
     uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
 
     Router.pushRoute("product", {
       slugOrId: product.slug,
       variantId: selectOptionId || variantId
-    });
+    }, { replace: true });
   }
+
+  @trackProduct()
+  trackAction() {}
+
+  @trackCartItems()
+  trackCartItems() {}
 
   /**
    * @name handleSelectVariant
@@ -105,7 +116,7 @@ class ProductDetail extends Component {
    * @summary Called when the add to cart button is clicked
    * @private
    * @ignore
-   * @param {Number} quantity A positive integer from 0 to infinity, representing the quantity to add to cart
+   * @param {Number} quantity - A positive integer from 0 to infinity, representing the quantity to add to cart
    * @returns {undefined} No return
    */
   handleAddToCartClick = async (quantity) => {
@@ -127,7 +138,7 @@ class ProductDetail extends Component {
       const price = priceByCurrencyCode(currencyCode, selectedVariantOrOption.pricing);
 
       // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
-      await addItemsToCart([
+      const { data } = await addItemsToCart([
         {
           price: {
             amount: price.price,
@@ -140,8 +151,30 @@ class ProductDetail extends Component {
           quantity
         }
       ]);
-    }
 
+      // If no errors occurred, track action
+      if (data) {
+        // The response data will be in either `createCart` or `addCartItems` prop
+        // depending on the type of user, either authenticated or anonymous.
+        const { cart } = data.createCart || data.addCartItems;
+        const { edges: items } = cart.items;
+
+        this.trackAction({
+          variant: {
+            ...selectedVariant,
+            cart_id: cart._id, // eslint-disable-line camelcase
+            quantity
+          },
+          optionId: selectedOption ? selectedOption._id : null,
+          action: PRODUCT_ADDED
+        });
+
+        // The mini cart popper will open automatically after adding an item to the cart,
+        // therefore, a CART_VIEWED event is published.
+        // debugger // eslint-disable-line
+        this.trackCartItems({ cartItems: items, cartId: cart._id, action: CART_VIEWED }); // eslint-disable-line camelcase
+      }
+    }
     if (isWidthUp("md", width)) {
       // Open the cart, and close after a 3 second delay
       openCartWithTimeout(3000);
@@ -192,10 +225,10 @@ class ProductDetail extends Component {
       classes,
       currencyCode,
       product,
-      routingStore: { tag },
-      tags,
+      routingStore,
       theme,
-      uiStore: { pdpSelectedOptionId, pdpSelectedVariantId }
+      uiStore: { pdpSelectedOptionId, pdpSelectedVariantId },
+      width
     } = this.props;
 
     // Set the default media as the top-level product's media
@@ -224,43 +257,27 @@ class ProductDetail extends Component {
     }
 
     const productPrice = this.determineProductPrice();
+    const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
 
-    return (
-      <Fragment>
-        <Grid container spacing={theme.spacing.unit * 5}>
-          <Hidden smUp>
-            <ProductDetailTitle
-              pageTitle={product.pageTitle}
-              title={product.title}
-              classes={classes.title}
-              variant="display1"
-            />
-          </Hidden>
-          <Hidden xsDown>
-            <Grid item className={classes.breadcrumbGrid} xs={12}>
-              <Breadcrumbs isPDP={true} tag={tag} tags={tags} product={product} />
-            </Grid>
-          </Hidden>
-          <Grid item xs={12} sm={6}>
-            <div className={classes.section}>
-              <MediaGallery mediaItems={pdpMediaItems} />
+    // Phone size
+    if (isWidthDown("sm", width)) {
+      return (
+        <Fragment>
+          <div className={classes.section}>
+            <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
+            <div className={classes.info}>
+              <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
             </div>
-            <Hidden xsDown>
-              <div className={classes.section}>
-                <TagGrid tags={product.tags.nodes} />
-              </div>
-            </Hidden>
-          </Grid>
+            <div className={classes.info}>
+              <ProductDetailPrice compareAtPrice={compareAtDisplayPrice} isCompact price={productPrice.displayPrice} />
+            </div>
+          </div>
 
-          <Grid item xs={12} sm={6}>
-            <Hidden xsDown>
-              <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
-            </Hidden>
-            <ProductDetailInfo
-              priceRange={productPrice.displayPrice}
-              description={product.description}
-              vendor={product.vendor}
-            />
+          <div className={classes.section}>
+            <MediaGallery mediaItems={pdpMediaItems} />
+          </div>
+
+          <div className={classes.section}>
             <VariantList
               onSelectOption={this.handleSelectOption}
               onSelectVariant={this.handleSelectVariant}
@@ -270,7 +287,59 @@ class ProductDetail extends Component {
               currencyCode={currencyCode}
               variants={product.variants}
             />
-            <ProductDetailAddToCart onClick={this.handleAddToCartClick} />
+            <ProductDetailAddToCart
+              onClick={this.handleAddToCartClick}
+              selectedOptionId={pdpSelectedOptionId}
+              selectedVariantId={pdpSelectedVariantId}
+              variants={product.variants}
+            />
+          </div>
+
+          <div className={classes.section}>
+            <ProductDetailDescription>{product.description}</ProductDetailDescription>
+          </div>
+        </Fragment>
+      );
+    }
+
+    return (
+      <Fragment>
+        <Grid container spacing={theme.spacing.unit * 5}>
+          <Grid item className={classes.breadcrumbGrid} xs={12}>
+            <Breadcrumbs isPDP tagId={routingStore.tagId} product={product} />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <div className={classes.section}>
+              <MediaGallery mediaItems={pdpMediaItems} />
+            </div>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
+            <div className={classes.info}>
+              <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
+            </div>
+            <div className={classes.info}>
+              <ProductDetailPrice className={classes.bottomMargin} compareAtPrice={compareAtDisplayPrice} price={productPrice.displayPrice} />
+            </div>
+            <div className={classes.info}>
+              <ProductDetailDescription>{product.description}</ProductDetailDescription>
+            </div>
+            <VariantList
+              onSelectOption={this.handleSelectOption}
+              onSelectVariant={this.handleSelectVariant}
+              product={product}
+              selectedOptionId={pdpSelectedOptionId}
+              selectedVariantId={pdpSelectedVariantId}
+              currencyCode={currencyCode}
+              variants={product.variants}
+            />
+            <ProductDetailAddToCart
+              onClick={this.handleAddToCartClick}
+              selectedOptionId={pdpSelectedOptionId}
+              selectedVariantId={pdpSelectedVariantId}
+              variants={product.variants}
+            />
           </Grid>
         </Grid>
       </Fragment>

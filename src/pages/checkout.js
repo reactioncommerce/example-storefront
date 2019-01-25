@@ -18,6 +18,7 @@ import LockIcon from "mdi-material-ui/Lock";
 import withCart from "containers/cart/withCart";
 import Link from "components/Link";
 import CheckoutSummary from "components/CheckoutSummary";
+import PageLoading from "components/PageLoading";
 
 const styles = (theme) => ({
   checkoutActions: {
@@ -141,7 +142,7 @@ class Checkout extends Component {
     }),
     classes: PropTypes.object,
     hasMoreCartItems: PropTypes.bool,
-    isLoading: PropTypes.bool,
+    isLoadingCart: PropTypes.bool,
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
@@ -171,17 +172,21 @@ class Checkout extends Component {
    * @return {undefined}
    */
   handleRouteChange = () => {
-    const { cart, router: { asPath } } = this.props;
+    const { cart } = this.props;
     // Skipping if the `cart` is not available
     if (!cart) return;
-    if (hasIdentityCheck(cart) && asPath === "/cart/login") {
+    if (hasIdentityCheck(cart) && this.pagePath === "/cart/login") {
       Router.replaceRoute("/cart/checkout", {}, { shallow: true });
-    } else if (!hasIdentityCheck(cart) && asPath === "/cart/checkout") {
+    } else if (!hasIdentityCheck(cart) && this.asPath === "/cart/checkout") {
       Router.replaceRoute("/cart/login", {}, { shallow: true });
     }
   };
 
   handleCartEmptyClick = () => Router.pushRoute("/");
+
+  get pagePath() {
+    return this.props.router.asPath;
+  }
 
   /**
    *
@@ -282,13 +287,13 @@ class Checkout extends Component {
       classes,
       cart,
       hasMoreCartItems,
-      isLoading,
+      isLoadingCart,
       loadMoreCartItems,
       onRemoveCartItems,
       onChangeCartItemsQuantity
     } = this.props;
 
-    if (isLoading) return null;
+    if (isLoadingCart) return null;
 
     if (!cart || (cart && Array.isArray(cart.items) && cart.items.length === 0)) {
       return (
@@ -304,6 +309,7 @@ class Checkout extends Component {
 
     const hasAccount = !!cart.account;
     const displayEmail = (hasAccount && Array.isArray(cart.account.emailRecords) && cart.account.emailRecords[0].address) || cart.email;
+
 
     return (
       <div className={classes.checkoutContentContainer}>
@@ -339,6 +345,9 @@ class Checkout extends Component {
   }
 
   render() {
+    const { isLoadingCart, cart } = this.props;
+    if (isLoadingCart || !cart) return <PageLoading delay={0} />;
+
     return (
       <Fragment>
         {this.renderCheckoutHead()}

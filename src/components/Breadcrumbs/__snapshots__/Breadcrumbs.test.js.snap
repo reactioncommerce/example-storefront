@@ -21,7 +21,6 @@ exports[`tagGrid secondlevel tag 1`] = `
   <svg
     aria-hidden="true"
     className="MuiSvgIcon-root-5 SkBreadcrumbs-breadcrumbIcon-3"
-    color={undefined}
     focusable="false"
     role="presentation"
     viewBox="0 0 24 24"
@@ -47,7 +46,6 @@ exports[`tagGrid secondlevel tag 1`] = `
   <svg
     aria-hidden="true"
     className="MuiSvgIcon-root-5 SkBreadcrumbs-breadcrumbIcon-3"
-    color={undefined}
     focusable="false"
     role="presentation"
     viewBox="0 0 24 24"
@@ -94,7 +92,6 @@ exports[`tagGrid top level tag 1`] = `
   <svg
     aria-hidden="true"
     className="MuiSvgIcon-root-5 SkBreadcrumbs-breadcrumbIcon-3"
-    color={undefined}
     focusable="false"
     role="presentation"
     viewBox="0 0 24 24"

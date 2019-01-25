@@ -21,7 +21,8 @@ const styles = (theme) => ({
   },
   summary: {
     paddingTop: theme.spacing.unit * 2
-  }
+  },
+  subtitle2: theme.typography.subtitle2
 });
 
 @withStyles(styles, { name: "SkOrderFulfillmentGroup" })
@@ -66,21 +67,23 @@ class OrderFulfillmentGroup extends Component {
   }
 
   renderItems() {
-    const { fulfillmentGroup, hasMoreCartItems, loadMoreCartItems } = this.props;
+    const { classes, fulfillmentGroup, hasMoreCartItems, loadMoreCartItems } = this.props;
 
     if (fulfillmentGroup && Array.isArray(fulfillmentGroup.items.nodes)) {
       return (
-        <Grid item xs={12}>
-          <CartItems
-            isMiniCart
-            isReadOnly
-            hasMoreCartItems={hasMoreCartItems}
-            onLoadMoreCartItems={loadMoreCartItems}
-            items={fulfillmentGroup.items.nodes}
-            onChangeCartItemQuantity={this.handleItemQuantityChange}
-            onRemoveItemFromCart={this.handleRemoveItem}
-          />
-        </Grid>
+        <div className={classes.fulfillmentDetails}>
+          <Grid item xs={12}>
+            <CartItems
+              isMiniCart
+              isReadOnly
+              hasMoreCartItems={hasMoreCartItems}
+              onLoadMoreCartItems={loadMoreCartItems}
+              items={fulfillmentGroup.items.nodes}
+              onChangeCartItemQuantity={this.handleItemQuantityChange}
+              onRemoveItemFromCart={this.handleRemoveItem}
+            />
+          </Grid>
+        </div>
       );
     }
 
@@ -94,9 +97,9 @@ class OrderFulfillmentGroup extends Component {
       const { data: { shippingAddress } } = fulfillmentGroup;
       const address = (
         <Typography variant="body2">
-          {(shippingAddress.firstName || shippingAddress.lastName) && (
+          {(shippingAddress.fullName) && (
             <span>
-              {shippingAddress.firstName} {shippingAddress.lastName}
+              {shippingAddress.fullName}
               <br />
             </span>
           )}
@@ -116,7 +119,7 @@ class OrderFulfillmentGroup extends Component {
         <div className={classes.fulfillmentDetails}>
           <Grid container spacing={24}>
             <Grid item xs={3}>
-              <Typography variant="subheading">{"Shipping Address"}</Typography>
+              <Typography className={classes.subtitle2} variant="subheading">{"Shipping Address"}</Typography>
             </Grid>
             <Grid item xs={9}>
               {address}
@@ -138,7 +141,7 @@ class OrderFulfillmentGroup extends Component {
           <header className={classes.header}>
             <Grid container spacing={24}>
               <Grid item xs={6}>
-                <Typography variant="subheading">{fulfillmentMethod.displayName}</Typography>
+                <Typography className={classes.subtitle2} variant="subheading">{fulfillmentMethod.displayName}</Typography>
               </Grid>
               <Grid item xs={6} className={classes.headerRightColumn}>
                 <Typography variant="body2">{fulfillmentMethod.group}</Typography>

@@ -2,8 +2,7 @@
 
 exports[`basic snapshot 1`] = `
 <button
-  className="MuiButtonBase-root-3 SkVariantItem-variantButton-1 SkVariantItem-activeVariant-2"
-  disabled={undefined}
+  className="MuiButtonBase-root-4 SkVariantItem-variantButton-1 SkVariantItem-activeVariant-2"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -19,12 +18,12 @@ exports[`basic snapshot 1`] = `
   type="button"
 >
   <span
-    className="MuiTypography-root-6 MuiTypography-body1-15"
+    className="MuiTypography-root-7 MuiTypography-body1-16"
   >
     Sample Variant
   </span>
   <span
-    className="MuiTypography-root-6 MuiTypography-body1-15"
+    className="MuiTypography-root-7 MuiTypography-body1-16"
   >
     $12.99 - $19.99
   </span>

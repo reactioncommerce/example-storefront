@@ -17,7 +17,7 @@ export default function withViewer(Component) {
   class WithViewer extends React.Component {
     static propTypes = {
       authStore: PropTypes.shape({
-        setAccountId: PropTypes.func
+        setAccount: PropTypes.func
       })
     }
 
@@ -25,9 +25,9 @@ export default function withViewer(Component) {
       const { authStore } = this.props;
 
       return (
-        <Query query={viewerQuery}>
+        <Query errorPolicy="all" query={viewerQuery}>
           {({ data }) => {
-            if (data && data.viewer) {
+            if (data) {
               authStore.setAccount(data.viewer);
             }
 

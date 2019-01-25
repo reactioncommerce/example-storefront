@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import { Query } from "react-apollo";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import { pagination, paginationVariablesFromUrlParams } from "lib/helpers/pagination";
+import { pagination, paginationVariablesFromUrlParams } from "lib/utils/pagination";
+import withTag from "containers/tags/withTag";
 import catalogItemsQuery from "./catalogItems.gql";
 
 /**
@@ -13,21 +14,23 @@ import catalogItemsQuery from "./catalogItems.gql";
  * @returns {React.Component} - component decorated with primaryShopId and catalog as props
  */
 export default function withCatalogItems(Component) {
-  @inject("primaryShopId")
-  @inject("routingStore")
-  @inject("uiStore")
+  @withTag
+  @inject("primaryShopId", "routingStore", "uiStore")
   @observer
   class CatalogItems extends React.Component {
     static propTypes = {
       primaryShopId: PropTypes.string.isRequired,
       routingStore: PropTypes.object.isRequired,
+      tag: PropTypes.shape({
+        _id: PropTypes.string.isRequired
+      }),
       uiStore: PropTypes.object.isRequired
     };
 
     render() {
-      const { primaryShopId, routingStore, uiStore } = this.props;
+      const { primaryShopId, routingStore, uiStore, tag } = this.props;
       const [sortBy, sortOrder] = uiStore.sortBy.split("-");
-      const tagIds = routingStore.tag._id ? [routingStore.tag._id] : undefined;
+      const tagIds = tag && [tag._id];
       const variables = {
         shopId: primaryShopId,
         ...paginationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: uiStore.pageSize }),
@@ -38,7 +41,7 @@ export default function withCatalogItems(Component) {
       };
 
       return (
-        <Query query={catalogItemsQuery} variables={variables}>
+        <Query errorPolicy="all" query={catalogItemsQuery} variables={variables}>
           {({ data, fetchMore, loading }) => {
             const { catalogItems } = data || {};
 

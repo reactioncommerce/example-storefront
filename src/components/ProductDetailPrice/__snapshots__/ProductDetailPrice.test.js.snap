@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`no price 1`] = `null`;
+
+exports[`no price, compareAtPrice 1`] = `null`;
+
+exports[`price 1`] = `
+<div
+  className="MuiGrid-item-7 MuiGrid-grid-sm-12-60 SKProductDetailPrice-root-1"
+>
+  <span
+    className="MuiTypography-root-103 MuiTypography-caption-113 SKProductDetailPrice-strike-5"
+  />
+  <div
+    className="MuiTypography-root-103 MuiTypography-title-109"
+  >
+    $19.99
+  </div>
+</div>
+`;
+
+exports[`price and compareAtPrice 1`] = `
+<div
+  className="MuiGrid-item-7 MuiGrid-grid-sm-12-60 SKProductDetailPrice-root-1"
+>
+  <span
+    className="MuiTypography-root-103 MuiTypography-caption-113 SKProductDetailPrice-strike-5"
+  >
+    $29.99
+  </span>
+  <div
+    className="MuiTypography-root-103 MuiTypography-title-109"
+  >
+    $19.99
+  </div>
+</div>
+`;

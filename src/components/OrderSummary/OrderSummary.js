@@ -29,7 +29,8 @@ const styles = (theme) => ({
   },
   paymentMethod: {
     flex: "2 0 auto"
-  }
+  },
+  subtitle2: theme.typography.subtitle2
 });
 
 @withStyles(styles, { name: "SkOrderSummary" })
@@ -59,6 +60,7 @@ class OrderSummary extends Component {
       const {
         fulfillmentTotal,
         itemTotal,
+        taxTotal,
         total
       } = fulfillmentGroup.summary;
 
@@ -68,6 +70,7 @@ class OrderSummary extends Component {
             isDense
             displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
             displaySubtotal={itemTotal && itemTotal.displayAmount}
+            displayTax={taxTotal && taxTotal.displayAmount}
             displayTotal={total && total.displayAmount}
           />
         </OrderSummaryContainer>
@@ -85,7 +88,7 @@ class OrderSummary extends Component {
         <div className={classes.header}>
           <Grid container spacing={24}>
             <Grid item xs={3}>
-              <Typography variant="subheading">{"Payment Method"}</Typography>
+              <Typography className={classes.subtitle2} variant="subheading">{"Payment Method"}</Typography>
             </Grid>
             <Grid item xs={3}>
               <Typography variant="body2">{fulfillmentGroup.payment && fulfillmentGroup.payment.displayName}</Typography>

@@ -7,9 +7,19 @@ query catalogItemProductQuery($slugOrId: String!) {
       slug
       description
       vendor
+      inventoryAvailableToSell
+      inventoryInStock
       isLowQuantity
       isSoldOut
       isBackorder
+      metafields {
+        description
+        key
+        namespace
+        scope
+        value
+        valueType
+      }
       pricing {
         currency {
           code
@@ -63,18 +73,30 @@ query catalogItemProductQuery($slugOrId: String!) {
         optionTitle
         index
         pricing {
+          compareAtPrice {
+            displayAmount
+          }
           price
           currency {
             code
           }
           displayPrice
         }
+        canBackorder
+        inventoryAvailableToSell
+        inventoryInStock
+        isBackorder
+        isSoldOut
+        isLowQuantity
         options {
           _id
           variantId
           title
           index
           pricing {
+            compareAtPrice {
+              displayAmount
+            }
             price
             currency {
               code
@@ -82,6 +104,10 @@ query catalogItemProductQuery($slugOrId: String!) {
             displayPrice
           }
           optionTitle
+          canBackorder
+          inventoryAvailableToSell
+          inventoryInStock
+          isBackorder
           isSoldOut
           isLowQuantity
           media {
@@ -96,6 +122,14 @@ query catalogItemProductQuery($slugOrId: String!) {
               large
               original
             }
+          }
+          metafields {
+            description
+            key
+            namespace
+            scope
+            value
+            valueType
           }
           primaryImage {
             URLs {
@@ -123,6 +157,14 @@ query catalogItemProductQuery($slugOrId: String!) {
             large
             original
           }
+        }
+        metafields {
+          description
+          key
+          namespace
+          scope
+          value
+          valueType
         }
         primaryImage {
           URLs {

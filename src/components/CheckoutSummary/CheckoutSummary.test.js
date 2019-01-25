@@ -1,9 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import theme from "lib/theme/reactionTheme";
+import theme from "custom/reactionTheme";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
-import components from "../../lib/theme/components";
+import components from "custom/componentsContext";
 import CheckoutSummary from "./CheckoutSummary";
 
 const testCart = {
@@ -37,7 +37,7 @@ const testCart = {
       price: {
         displayAmount: "$20.00"
       },
-      productSlug: "/product-slug",
+      productSlug: "product-slug",
       productVendor: "Patagonia",
       title: "A Great Product",
       quantity: 2
@@ -58,7 +58,7 @@ const testCart = {
         displayAmount: "$78.00"
       },
       productVendor: "Nike",
-      productSlug: "/product-slug",
+      productSlug: "product-slug",
       title: "Another Great Product",
       quantity: 1
     }

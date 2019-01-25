@@ -1,15 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic snapshot 1`] = `
+.c0 {
+  position: relative;
+  opacity: 0.5;
+}
+
+.c1 {
+  position: relative;
+}
+
+.c2 {
+  -webkit-font-smoothing: antialiased;
+  color: #505558;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1.25;
+}
+
 <div
-  className="SkVariantList-variantsContainer-1"
+  className="SkVariantList-variantsContainer-3"
 >
   <div
-    className="SkVariantList-variantItem-2"
+    className="SkVariantList-variantItem-4"
   >
     <button
-      className="MuiButtonBase-root-6 SkVariantItem-variantButton-4 SkVariantItem-activeVariant-5"
-      disabled={undefined}
+      className="MuiButtonBase-root-8 SkVariantItem-variantButton-5 SkVariantItem-activeVariant-6 SkVariantItem-soldOutVariant-7"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -25,30 +48,29 @@ exports[`basic snapshot 1`] = `
       type="button"
     >
       <span
-        className="MuiTypography-root-9 MuiTypography-body1-18"
+        className="MuiTypography-root-11 MuiTypography-body1-20"
       >
         Sample Variant
       </span>
       <span
-        className="MuiTypography-root-9 MuiTypography-body1-18"
+        className="MuiTypography-root-11 MuiTypography-body1-20"
       >
         $12.99 - $19.99
       </span>
     </button>
     <div
-      className="SkVariantList-alert-3"
+      className="SkVariantList-alert-1"
     >
       <div
-        className="BadgeOverlay__Overlay-gvAWwt cDasYZ"
+        className="c0"
       />
     </div>
   </div>
   <div
-    className="SkVariantList-variantItem-2"
+    className="SkVariantList-variantItem-4"
   >
     <button
-      className="MuiButtonBase-root-6 SkVariantItem-variantButton-4"
-      disabled={undefined}
+      className="MuiButtonBase-root-8 SkVariantItem-variantButton-5"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -64,41 +86,40 @@ exports[`basic snapshot 1`] = `
       type="button"
     >
       <span
-        className="MuiTypography-root-9 MuiTypography-body1-18"
+        className="MuiTypography-root-11 MuiTypography-body1-20"
       >
         Sample Variant 2
       </span>
       <span
-        className="MuiTypography-root-9 MuiTypography-body1-18"
+        className="MuiTypography-root-11 MuiTypography-body1-20"
       >
         $12.99 - $19.99
       </span>
     </button>
   </div>
   <div
-    className="SkDivider-container-35"
+    className="SkDivider-container-37"
   >
     <hr
-      className="SkDivider-item-37"
+      className="SkDivider-item-39"
     />
     <span
-      className="MuiTypography-root-9 MuiTypography-body1-18 SkDivider-label-36"
+      className="MuiTypography-root-11 MuiTypography-body1-20 SkDivider-label-38"
     >
       Available Options
     </span>
     <hr
-      className="SkDivider-item-37"
+      className="SkDivider-item-39"
     />
   </div>
   <div
-    className="MuiGrid-container-41 MuiGrid-spacing-xs-8-63 SkOptionsList-root-38"
+    className="MuiGrid-container-43 MuiGrid-spacing-xs-8-65 SkOptionsList-root-40"
   >
     <div
-      className="MuiGrid-item-42"
+      className="MuiGrid-item-44"
     >
       <button
-        className="MuiButtonBase-root-6 SkProductDetailOption-optionButton-138 SkProductDetailOption-isSelected-140"
-        disabled={undefined}
+        className="MuiButtonBase-root-8 SkProductDetailOption-optionButton-140 SkProductDetailOption-isSelected-142"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -114,25 +135,24 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiTypography-root-9 MuiTypography-body1-18 SkProductDetailOption-optionText-139"
+          className="MuiTypography-root-11 MuiTypography-body1-20 SkProductDetailOption-optionText-141"
         >
           Red
         </span>
       </button>
       <div
-        className="SkOptionsList-alert-39"
+        className="SkOptionsList-alert-41"
       >
         <div
-          className="BadgeOverlay__Overlay-gvAWwt gJVwBl"
+          className="c1"
         />
       </div>
     </div>
     <div
-      className="MuiGrid-item-42"
+      className="MuiGrid-item-44"
     >
       <button
-        className="MuiButtonBase-root-6 SkProductDetailOption-optionButton-138"
-        disabled={undefined}
+        className="MuiButtonBase-root-8 SkProductDetailOption-optionButton-140"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -148,11 +168,20 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiTypography-root-9 MuiTypography-body1-18 SkProductDetailOption-optionText-139"
+          className="MuiTypography-root-11 MuiTypography-body1-20 SkProductDetailOption-optionText-141"
         >
           Green
         </span>
       </button>
+    </div>
+  </div>
+  <div
+    className="SkVariantList-inventoryStatus-2"
+  >
+    <div
+      className="c2"
+    >
+      Backordered - ships when available
     </div>
   </div>
 </div>

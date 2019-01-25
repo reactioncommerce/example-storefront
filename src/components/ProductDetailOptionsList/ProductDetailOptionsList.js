@@ -37,7 +37,7 @@ export default class OptionsList extends Component {
     theme: PropTypes.object
   }
 
-  renderInventoryStatus(option) {
+  renderBadges(option) {
     const { classes } = this.props;
     const status = badgeStatus(option, BADGE_LABELS);
 
@@ -70,7 +70,7 @@ export default class OptionsList extends Component {
               onClick={onSelectOption}
               option={option}
             />
-            {this.renderInventoryStatus(option)}
+            {this.renderBadges(option)}
           </Grid>
         ))
         }

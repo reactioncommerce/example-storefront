@@ -10,7 +10,6 @@ import { NavigationDesktop } from "components/NavigationDesktop";
 import { NavigationMobile, NavigationToggleMobile } from "components/NavigationMobile";
 import AccountDropdown from "components/AccountDropdown";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
-import ViewerInfo from "@reactioncommerce/components/ViewerInfo/v1";
 import Link from "components/Link";
 import MiniCart from "components/MiniCart";
 
@@ -59,31 +58,8 @@ class Header extends Component {
     this.props.uiStore.toggleMenuDrawerOpen();
   };
 
-  // TODO: quick fix until we figure out the viewer name stuff.
-  // See https://github.com/reactioncommerce/reaction/issues/4646
-  get splitNames() {
-    const { viewer: { name } } = this.props;
-    const firstName =
-      name &&
-      name
-        .split(" ")
-        .slice(0, -1)
-        .join(" ");
-    const lastName =
-      name &&
-      name
-        .split(" ")
-        .slice(-1)
-        .join(" ");
-
-    return {
-      firstName,
-      lastName
-    };
-  }
-
   render() {
-    const { classes: { appBar, controls, toolbar, title }, shop, viewer } = this.props;
+    const { classes: { appBar, controls, toolbar, title }, shop } = this.props;
 
     return (
       <AppBar position="static" elevation={0} className={appBar}>
@@ -104,7 +80,7 @@ class Header extends Component {
             </Hidden>
           </div>
 
-          {viewer ? <ViewerInfo viewer={{ ...this.splitNames, ...viewer }} /> : <AccountDropdown />}
+          <AccountDropdown />
           <MiniCart />
         </Toolbar>
         <NavigationMobile />

@@ -1,20 +1,12 @@
 import { observable, action } from "mobx";
-import getConfig from "next/config";
 import { PAGE_SIZES, inPageSizes } from "lib/utils/pageSizes";
 
 /**
  * A mobx store for UI data
- * @class AuthStore
+ * @class UIStore
  */
 
 class UIStore {
-  /**
-   * App config data
-   *
-   * @type Object
-   */
-  @observable appConfig = getConfig();
-
   /**
    * Is the cart drawer open or closed
    *
@@ -22,14 +14,6 @@ class UIStore {
    * @default false
    */
   @observable isCartOpen = false;
-
-  /**
-   * Is the cart popover open or closed
-   *
-   * @type Boolean
-   * @default false
-   */
-  @observable isCartPopoverOpen = false;
 
   /**
    * Is the menu drawer open or closed
@@ -146,14 +130,6 @@ class UIStore {
 
   @action toggleCartOpen() {
     this.isCartOpen = !this.isCartOpen;
-  }
-
-  @action openCartPopover() {
-    this.isCartPopoverOpen = true;
-  }
-
-  @action closeCartPopover() {
-    this.isCartPopoverOpen = false;
   }
 
   @action closeMenuDrawer() {

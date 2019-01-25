@@ -3,17 +3,20 @@ import PropTypes from "prop-types";
 import Document, { Head, Main, NextScript } from "next/document";
 import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
-import analyticsProviders from "analytics";
 import { ServerStyleSheet } from "styled-components";
-// import getConfig from "next/config";
-import favicons from "../lib/utils/favicons";
+import getConfig from "next/config";
+import analyticsProviders from "../custom/analytics";
+import favicons from "../custom/favicons";
+
+const { publicRuntimeConfig } = getConfig();
 
 /**
  * For details about the styled-components SSR code in this file, see https://www.styled-components.com/docs/advanced#nextjs
+ * _document is only rendered on the server side and not on the client side.
+ * Event handlers like onClick can't be added to this file.
  */
-
 class HTMLDocument extends Document {
-  static getInitialProps = (ctx) => {
+  static getInitialProps(ctx) {
     // Render app and page and get the context of the page with collected side effects.
     let pageContext;
 
@@ -53,16 +56,14 @@ class HTMLDocument extends Document {
       ),
       styledComponentsStyleTags
     };
-  };
+  }
 
   render() {
     const { helmet, pageContext, styledComponentsStyleTags } = this.props;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
-    // const { publicRuntimeConfig } = getConfig();
-    // const { keycloakConfig } = publicRuntimeConfig;
     const links = [
-      { rel: "canonical", href: process.env.CANONICAL_URL },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700" },
+      { rel: "canonical", href: publicRuntimeConfig.canonicalUrl },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" },
       ...favicons
     ];
     const meta = [
@@ -79,49 +80,39 @@ class HTMLDocument extends Document {
       meta.push({ name: "theme-color", content: pageContext.theme.palette.primary.main });
     }
 
+    // Analytics & Stripe Elements scripts
     const scripts = [
-      // Render analytics  scripts
       ...analyticsProviders.map((provider) => ({
         type: "text/javascript",
         innerHTML: provider.renderScript()
       })),
-      // {
-      //   type: "text/javascript",
-      //   src: `${keycloakConfig.url}/js/keycloak.js`
-      // },
       {
         type: "text/javascript",
         src: "https://js.stripe.com/v3/"
       }
     ];
-    return (
-      <html lang="en" {...htmlAttrs}>
-        <Head>
-          <Helmet htmlAttributes={{ lang: "en", dir: "ltr" }} />
-          {meta.map((tag, index) => <meta key={index} {...tag} />)}
-          {links.map((link, index) => <link key={index} {...link} />)}
-          {scripts.map((script, index) =>
-            (script.innerHTML ? (
-            /* eslint-disable-next-line */
-              <script key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} />
-            ) : (
-              <script key={index} {...script} />
-            )))}
-          {helmet.base.toComponent()}
-          {helmet.title.toComponent()}
-          {helmet.meta.toComponent()}
-          {helmet.link.toComponent()}
-          {helmet.style.toComponent()}
-          {helmet.script.toComponent()}
-          {helmet.noscript.toComponent()}
-          {styledComponentsStyleTags}
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    );
+
+    return <html lang="en" {...htmlAttrs}>
+      <Head>
+        <Helmet htmlAttributes={{ lang: "en", dir: "ltr" }} />
+        {meta.map((tag, index) => <meta key={index} {...tag} />)}
+        {links.map((link, index) => <link key={index} {...link} />)}
+        {helmet.base.toComponent()}
+        {helmet.title.toComponent()}
+        {helmet.meta.toComponent()}
+        {helmet.link.toComponent()}
+        {helmet.style.toComponent()}
+        {helmet.script.toComponent()}
+        {helmet.noscript.toComponent()}
+        {styledComponentsStyleTags}
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+        {scripts.map((script, index) => (script.innerHTML ? /* eslint-disable-next-line */
+          <script async key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} /> : <script async key={index} {...script} />))}
+      </body>
+    </html>;
   }
 }
 

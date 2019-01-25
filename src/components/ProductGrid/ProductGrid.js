@@ -74,7 +74,7 @@ export default class ProductGrid extends Component {
             initialSize={initialSize}
             onItemClick={this.onItemClick}
             products={products}
-            placeholderImageURL="/static/placeholder.gif"
+            placeholderImageURL="/static/images/placeholder.gif"
             {...this.props}
           />
         </Grid>

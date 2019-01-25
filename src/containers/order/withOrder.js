@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import { orderById } from "./queries.gql";
+import { orderByReferenceId } from "./queries.gql";
 
 /**
  * withOrder higher order query component for fetching an order
@@ -17,11 +17,6 @@ export default function withOrder(Component) {
   @observer
   class WithOrder extends React.Component {
     static propTypes = {
-      authStore: PropTypes.shape({
-        accountId: PropTypes.string,
-        token: PropTypes.string,
-        isAuthenticated: PropTypes.bool
-      }),
       cartStore: PropTypes.shape({
         anonymousCartId: PropTypes.string,
         anonymousCartToken: PropTypes.string,
@@ -49,14 +44,14 @@ export default function withOrder(Component) {
       };
 
       return (
-        <Query query={orderById} variables={variables}>
+        <Query errorPolicy="all" query={orderByReferenceId} variables={variables}>
           {({ loading: isLoading, data: orderData }) => {
             const { order } = orderData || {};
 
             return (
               <Component
                 {...this.props}
-                isLoading={isLoading}
+                isLoadingOrder={isLoading}
                 order={order}
               />
             );

@@ -1,6 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`do not show cartpopover 1`] = `
+.c0 {
+  -webkit-font-smoothing: antialiased;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #1999dd;
+  border-color: #1999dd;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,sans-serif;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0;
+  min-width: 100px;
+  outline: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
+}
+
+.c0:hover {
+  background-color: #25b0f9;
+  border-color: #25b0f9;
+  color: #ffffff;
+}
+
+.c0:active {
+  background-color: #057dbe;
+  border-color: #057dbe;
+  color: #ffffff;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  padding-left: 20px;
+  -webkit-transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
+  transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
+}
+
+.c1 svg path,
+.c1 svg rect {
+  fill: #ffffff;
+}
+
 <div
   className="HiddenCss-mdUp-16"
 >
@@ -35,18 +102,17 @@ exports[`do not show cartpopover 1`] = `
         className="MuiGrid-item-25 MuiGrid-grid-xs-12-64"
       >
         <div
-          className="Button__ButtonDiv-bnfrK eloVkm"
+          className="c0"
           onClick={[Function]}
           onKeyPress={[Function]}
           role="button"
           tabIndex={0}
-          title={undefined}
         >
           <div>
             Checkout
           </div>
           <div
-            className="Button__SpinnerWrap-bgOcuM cCKgPo"
+            className="c1"
             style={
               Object {
                 "opacity": 0,
@@ -63,6 +129,73 @@ exports[`do not show cartpopover 1`] = `
 `;
 
 exports[`show cartpopover 1`] = `
+.c0 {
+  -webkit-font-smoothing: antialiased;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #1999dd;
+  border-color: #1999dd;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,sans-serif;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0;
+  min-width: 100px;
+  outline: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
+}
+
+.c0:hover {
+  background-color: #25b0f9;
+  border-color: #25b0f9;
+  color: #ffffff;
+}
+
+.c0:active {
+  background-color: #057dbe;
+  border-color: #057dbe;
+  color: #ffffff;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  padding-left: 20px;
+  -webkit-transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
+  transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
+}
+
+.c1 svg path,
+.c1 svg rect {
+  fill: #ffffff;
+}
+
 <div
   className="HiddenCss-mdUp-16"
 >
@@ -97,18 +230,17 @@ exports[`show cartpopover 1`] = `
         className="MuiGrid-item-25 MuiGrid-grid-xs-12-64"
       >
         <div
-          className="Button__ButtonDiv-bnfrK eloVkm"
+          className="c0"
           onClick={[Function]}
           onKeyPress={[Function]}
           role="button"
           tabIndex={0}
-          title={undefined}
         >
           <div>
             Checkout
           </div>
           <div
-            className="Button__SpinnerWrap-bgOcuM cCKgPo"
+            className="c1"
             style={
               Object {
                 "opacity": 0,

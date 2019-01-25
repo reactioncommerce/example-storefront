@@ -1,6 +1,6 @@
 # Tracking Events
 
-`reaction-next-starterkit` uses [Segment](https://segment.com/) and [NYTimes React Tracking](https://github.com/NYTimes/react-tracking) to track analytics events throughout the app.
+`reaction-next-starterkit` uses [NYTimes React Tracking](https://github.com/NYTimes/react-tracking) to track analytics events throughout the app. By default, all events are sent to [Segment](https://segment.com/). To enable tracking you can either configure Segment tracking to send to your account, or you can swap in a different analytics provider that you prefer.
 
 You can see the source under `/lib/tracking`
 
@@ -82,7 +82,6 @@ export function renderScript() {
 
 You should now be able to send tracking data to the provider of your choice.
 
-
 ## Track a page view event
 
 ```js
@@ -99,7 +98,6 @@ class Page extends Component {
     return <div>{"Page"}</div>;
   }
 }
-
 ```
 
 ## Track events inside a component
@@ -132,7 +130,6 @@ class Page extends Component {
     );
   }
 }
-
 ```
 
 ## Track events on page load and inside a component
@@ -165,13 +162,12 @@ class Page extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleClick}>{"Track Event 1"}</button>
-        <button onClick={this.handleOtherClick}>{"Track Event 2"}</button>
+        <button onClick={this.handleClick}>Track Event 1</button>
+        <button onClick={this.handleOtherClick}>Track Event 2</button>
       </div>
     );
   }
 }
-
 ```
 
 ## Track a Product List Viewed event
@@ -208,12 +204,11 @@ class ProductListPage extends Component {
     );
   }
 }
-
 ```
 
-## Track a Product Viewed event
+## Track a Product Viewed or Product Added event
 
-Tracking the `Product Viewed` Segment event provided HOC `trackProductViewed`.
+Tracking for the `Product Viewed` and `Product Added` Segment events is provided by the `trackProduct` HOC.
 
 See `src/components/ProductDetail/ProductDetail.js` for the full example.
 
@@ -222,7 +217,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import track from "lib/tracking/track";
-import trackProductViewed from "lib/tracking/trackProductViewed";
+import trackProduct from "lib/tracking/trackProduct";
+import TRACKING from "lib/tracking/constants";
 
 @withCatalogItemProduct // Product for page with route of `/product/:slugOrId/:variantId?`
 @track()
@@ -238,11 +234,17 @@ class ProductDetailPage extends Component {
     this.selectVariant(product.variants[0]);
   }
 
-  // expects the prop `product`, with `variant` and `optionId` as function params
-  @trackProductViewed()
   selectVariant(variant, optionId) {
     // Do something with selected variant / option
+
+    this.trackAction({ variant, optionId, action: TRACKING.PRODUCT_VIEWED });
   }
+
+  // Expects the prop `product`, and an object with the following keys:
+  // `variant`, `optionId`, and `action` as a function arg.
+  // The `product` prop is provided by the `ProductDetailPage` component.
+  @trackProduct()
+  trackAction() {}
 
   render() {
     return (
@@ -446,7 +448,7 @@ Data for the Segment e-commerce event [Product Clicked](https://segment.com/docs
   // Not used. Products in the catalog currently don't have a concrete position
   position: undefined,
 
-  // Value based off of the proeduct min price multiplied by quantity (variant.price * quantity)
+  // Value based off of the product min price multiplied by quantity (variant.price * quantity)
   // In this case, use `product.pricing.price` as there is only 1 for the quantity
   // Where index 0, should be the index of the pricing object related to the currency for this product or shop
   value: product.pricing[0].minPrice,

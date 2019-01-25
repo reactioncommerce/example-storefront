@@ -11,7 +11,7 @@ Reference headless ecommerce storefront for [Reaction Commerce](https://reaction
 - [Reaction GraphQL API](https://github.com/reactioncommerce/reaction/tree/master/imports/plugins/core/graphql) integration
 - Server-side rendering
 - Payments with [Stripe](https://stripe.com/)
-- Analytics with [Segment](https://segment.com/)
+- Analytics with [Segment](https://segment.com/) or any other provider
 - Reusable, customizable, themeable ecommerce React components from the new [Reaction Component Library](https://github.com/reactioncommerce/reaction-component-library/) with [Styled Components](https://www.styled-components.com/)
 - Fully-configured test suite: Jest snapshot testing, Mocha integration testing
 - Written in ES6, configured with ES6
@@ -19,32 +19,16 @@ Reference headless ecommerce storefront for [Reaction Commerce](https://reaction
 
 ## Getting Started
 
-1. Requirements:
+Follow the [Reaction Platform docs](https://docs.reactioncommerce.com/docs/installation-reaction-platform) to install and run all the services necessary to run the Starter Kit:
 
-- Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/). Docker Compose is included when installing Docker on Mac and Windows, but will need to be installed separately on Linux.
-- Install [Node.js](https://nodejs.org/en/)
-- Install [Reaction Platform](https://github.com/reactioncommerce/reaction-platform)
-- Make sure you are not running any applications on ports `3000` and `4000`.
-
-1. Follow the instructions at [Reaction Platform](https://github.com/reactioncommerce/reaction-platform) to run Reaction, Reaction Hydra and the starterkit with Reaction Platform.
-
-After the initial bootstrapping, you can use `make start` to start all the necessary containers:
-
-```sh
-make start
-```
-
-1. Once the `make` process finishes, the Reaction Platform services will be accessible at the following URLs:
-
-| Application  | URL                     |
-| ------------ | ----------------------- |
-| `starterkit` | localhost:4000          |
-| GraphQL API  | localhost:3000/graphiql |
-| `reaction`   | localhost:3000          |
-
-Visit the storefront at `localhost:4000` and the GraphQL API playground at `localhost:3000/graphiql`.
-
-1. To view the logs for the Starterkit, run: `docker-compose logs -f`
+| Directory: Service                                                                         | URL                                                          |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API                    | [localhost:3000/graphql-alpha](localhost:3000/graphql-alpha) |
+| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API playground         | [localhost:3000/graphiql](localhost:3000/graphiql)           |
+| [`reaction`](https://github.com/reactioncommerce/reaction): Classic UI                     | [localhost:3000](localhost:3000)                             |
+| [`reaction`](https://github.com/reactioncommerce/reaction): MongoDB                        | [localhost:27017](localhost:27017)                           |
+| [`reaction-hydra`](https://github.com/reactioncommerce/reaction-hydra): oryd/hydra         | [localhost:4444](localhost:4444)                             |
+| [`reaction-next-starterkit`](https://github.com/reactioncommerce/reaction-next-starterkit) | [localhost:4000](localhost:4000)                             |
 
 ## Configuration
 
@@ -62,8 +46,8 @@ When running the storefront and Reaction for the first time, you will need to co
 Read the docs for [setting up Segment or a custom analytics tracker](docs/tracking-events.md)
 
 ## Documentation
-- [Starter Kit full documentation](./docs) 
-- [Reaction Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](https://stoic-hodgkin-c0179e.netlify.com/)
+- [Starter Kit full documentation](./docs)
+- [Reaction Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](http://designsystem.reactioncommerce.com/)
 - [Reaction Docs: Using GraphQL](https://docs.reactioncommerce.com/docs/graphql-using)
 - [Reaction Docs: Testing with Jest](https://docs.reactioncommerce.com/docs/testing-reaction)
 - [Reaction Docs: Develping with Docker](https://docs.reactioncommerce.com/docs/installation-docker-development
@@ -133,7 +117,7 @@ docker-compose up -d --build
 
 ### Testing `reaction-component-library` components in the starterkit
 
-Sometimes we need to test [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) components in the context of the starterkit. Unfortunetly, there isn't an easy wasy to do this within our Docker containers, so we need to run the `starterkit` outside of docker.
+Sometimes we need to test [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) components in the context of the starterkit. Unfortunately, there isn't an easy wasy to do this within our Docker containers, so we need to run the `starterkit` outside of docker.
 
 1. `cd` to your local [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) repo.
 1. Git checkout the proper branch that you want to link
@@ -180,10 +164,10 @@ docker build -t reaction-storefront --build-arg BUILD_ENV=production .
 Then, to start the app on your machine, make sure the Reaction API container is already running and enter:
 
 ```sh
-docker run -d --name storefront -p ${port}:4000 --env-file .env --network api.reaction.localhost reaction-storefront
+docker run -d --name storefront -p 4000:4000 --env-file .env --network api.reaction.localhost reaction-storefront
 ```
 
-_**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at._
+_**NOTE:** You can replace the number before the colon in `4000:4000` with a different localhost port you'd like the application to run at._
 
 _**NOTE:** This is not the way to run the app in actual production deployment. This is only for running the production build locally for development, demo or trial purposes._
 
@@ -194,4 +178,18 @@ docker stop storefront
 ```
 
 ## License
+   Copyright 2018 Reaction Commerce
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit?ref=badge_large)

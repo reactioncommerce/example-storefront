@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
-import { Router } from "routes";
 import { placeOrderWithStripeCardPayment } from "./mutations.gql";
 
 /**
@@ -18,9 +17,11 @@ export default (Component) => (
   class WithPlaceStripeOrder extends React.Component {
     static propTypes = {
       authStore: PropTypes.shape({
-        accountId: PropTypes.string,
-        token: PropTypes.string,
-        isAuthenticated: PropTypes.bool
+        account: PropTypes.shape({
+          emailRecords: PropTypes.arrayOf(PropTypes.shape({
+            address: PropTypes.string
+          }))
+        })
       }),
       cartStore: PropTypes.shape({
         stripeToken: PropTypes.object
@@ -50,7 +51,7 @@ export default (Component) => (
         stripeTokenId: cartStore.stripeToken.token.id
       };
 
-      const { data, error } = await apolloClient.mutate({
+      return apolloClient.mutate({
         mutation: placeOrderWithStripeCardPayment,
         variables: {
           input: {
@@ -59,21 +60,6 @@ export default (Component) => (
           }
         }
       });
-
-      // If success
-      if (data && !error) {
-        const { placeOrderWithStripeCardPayment: { orders, token } } = data;
-
-        // Clear anonymous cart
-        if (!authStore.isAuthenticated) {
-          cartStore.clearAnonymousCartCredentials();
-        }
-
-        // Send user to order confirmation page
-        Router.pushRoute("checkoutComplete", { orderId: orders[0]._id, token });
-      }
-
-      // TODO: if an error occurred, notify user
     }
 
     render() {

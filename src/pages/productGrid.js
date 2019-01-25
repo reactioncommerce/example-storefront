@@ -43,7 +43,7 @@ class ProductGridPage extends Component {
   @trackProductListViewed()
   componentDidMount() {
     const { routingStore } = this.props;
-    routingStore.setTag({});
+    routingStore.setTagId(null);
   }
 
   componentDidUpdate(prevProps) {

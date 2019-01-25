@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 
-import theme from "lib/theme/reactionTheme";
+import theme from "custom/reactionTheme";
 import variant from "./__mocks__/variant.mock";
 import VariantItem from "./VariantItem";
 
