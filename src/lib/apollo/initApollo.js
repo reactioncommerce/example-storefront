@@ -96,7 +96,7 @@ const create = (initialState, options) => {
       options: {
         reconnect: true, // auto-reconnect
         connectionParams: {
-          // authToken: localStorage.getItem("Meteor.loginToken")
+          authToken: options.accessToken
         }
       }
     });
