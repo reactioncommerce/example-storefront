@@ -86,11 +86,11 @@ const create = (initialState, options) => {
     }
   }));
 
-  let httpLink = new HttpLink({ uri: graphqlUrl, credentials: "same-origin" });
+  const httpLink = new HttpLink({ uri: graphqlUrl, credentials: "same-origin" });
   let link = httpLink;
 
   if (process.browser) {
-    //If we are in the browser, try to split the request between wsLink and httpLink.
+    // If we are in the browser, try to split the request between wsLink and httpLink.
     const wsLink = new WebSocketLink({
       uri: wsGraphqlUrl,
       options: {
