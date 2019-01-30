@@ -2,9 +2,11 @@ import { ApolloClient } from "apollo-client";
 import { ApolloLink } from "apollo-link";
 import { Router } from "routes";
 import { HttpLink } from "apollo-link-http";
+import { WebSocketLink } from "apollo-link-ws";
 import { setContext } from "apollo-link-context";
 import { onError } from "apollo-link-error";
 import { InMemoryCache } from "apollo-cache-inmemory";
+import { getOperationAST } from "graphql";
 import fetch from "isomorphic-fetch";
 import getConfig from "next/config";
 import logger from "../logger";
@@ -27,6 +29,7 @@ if (process.browser) {
 }
 /* eslint-enable prefer-destructuring */
 
+const wsGraphqlUrl = graphqlUrl.replace("http", "ws");
 
 let apolloClient = null;
 
@@ -84,10 +87,33 @@ const create = (initialState, options) => {
   }));
 
   const httpLink = new HttpLink({ uri: graphqlUrl, credentials: "same-origin" });
+  let link = httpLink;
+
+  if (process.browser) {
+    // If we are in the browser, try to split the request between wsLink and httpLink.
+    const wsLink = new WebSocketLink({
+      uri: wsGraphqlUrl,
+      options: {
+        reconnect: true, // auto-reconnect
+        connectionParams: {
+          authToken: options.accessToken
+        }
+      }
+    });
+
+    link = ApolloLink.split(
+      (operation) => {
+        const operationAST = getOperationAST(operation.query, operation.operationName);
+        return !!operationAST && operationAST.operation === "subscription";
+      },
+      wsLink,
+      httpLink
+    );
+  }
 
   return new ApolloClient({
     ssrMode: !process.browser,
-    link: ApolloLink.from([omitTypenameLink, authLink, errorLink, httpLink]),
+    link: ApolloLink.from([omitTypenameLink, authLink, errorLink, link]),
     cache: new InMemoryCache().restore(initialState || {})
   });
 };
