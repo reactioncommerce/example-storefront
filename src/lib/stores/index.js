@@ -9,7 +9,6 @@ configure({ enforceActions: true });
 
 const authStore = new AuthStore("meteorToken");
 const cartStore = new CartStore();
-const keycloakAuthStore = new AuthStore("keycloakToken");
 const routingStore = new RoutingStore();
 const uiStore = new UIStore();
 
@@ -30,7 +29,6 @@ autorun(() => {
 export default {
   authStore,
   cartStore,
-  keycloakAuthStore,
   routingStore,
   uiStore
 };

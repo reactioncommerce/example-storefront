@@ -5,16 +5,22 @@
  * without worrying about it pulling in new component versions everywhere automatically. Instead,
  * you can switch from the `v1` import path to the `v2` import path, e.g., for a single component
  * when you're ready.
+ *
+ * You may also import your custom React components here and add them to the exported object.
+ * They will then be available in the `components` property of all Reaction Design
+ * System components, as well as any of your own components that you've wrapped
+ * with the `withComponents` higher-order component.
  */
 
+import iconAmericanExpress from "@reactioncommerce/components/svg/iconAmericanExpress";
 import iconClear from "@reactioncommerce/components/svg/iconClear";
+import iconDiscover from "@reactioncommerce/components/svg/iconDiscover";
 import iconError from "@reactioncommerce/components/svg/iconError";
 import iconExpand from "@reactioncommerce/components/svg/iconExpand";
+import iconLock from "@reactioncommerce/components/svg/iconLock";
 import iconPlus from "@reactioncommerce/components/svg/iconPlus";
-import iconValid from "@reactioncommerce/components/svg/iconValid";
-import iconAmericanExpress from "@reactioncommerce/components/svg/iconAmericanExpress";
-import iconDiscover from "@reactioncommerce/components/svg/iconDiscover";
 import iconMastercard from "@reactioncommerce/components/svg/iconMastercard";
+import iconValid from "@reactioncommerce/components/svg/iconValid";
 import iconVisa from "@reactioncommerce/components/svg/iconVisa";
 import spinner from "@reactioncommerce/components/svg/spinner";
 import Accordion from "@reactioncommerce/components/Accordion/v1";
@@ -22,6 +28,7 @@ import AccordionFormList from "@reactioncommerce/components/AccordionFormList/v1
 import AddressBook from "@reactioncommerce/components/AddressBook/v1";
 import Address from "@reactioncommerce/components/Address/v1";
 import AddressCapture from "@reactioncommerce/components/AddressCapture/v1";
+import AddressChoice from "@reactioncommerce/components/AddressChoice/v1";
 import AddressForm from "@reactioncommerce/components/AddressForm/v1";
 import AddressReview from "@reactioncommerce/components/AddressReview/v1";
 import BadgeOverlay from "@reactioncommerce/components/BadgeOverlay/v1";
@@ -40,6 +47,7 @@ import ErrorsBlock from "@reactioncommerce/components/ErrorsBlock/v1";
 import Field from "@reactioncommerce/components/Field/v1";
 import InPageMenuItem from "@reactioncommerce/components/InPageMenuItem/v1";
 import InlineAlert from "@reactioncommerce/components/InlineAlert/v1";
+import InventoryStatus from "@reactioncommerce/components/InventoryStatus/v1";
 import Link from "components/Link";
 import MiniCartSummary from "@reactioncommerce/components/MiniCartSummary/v1";
 import PhoneNumberInput from "@reactioncommerce/components/PhoneNumberInput/v1";
@@ -54,7 +62,7 @@ import SelectableList from "@reactioncommerce/components/SelectableList/v1";
 import StockWarning from "@reactioncommerce/components/StockWarning/v1";
 import StripeForm from "@reactioncommerce/components/StripeForm/v1";
 import TextInput from "@reactioncommerce/components/TextInput/v1";
-import withLocales from "../utils/withLocales";
+import withLocales from "../lib/utils/withLocales";
 
 // Providing locales data
 const AddressFormWithLocales = withLocales(AddressForm);
@@ -65,6 +73,7 @@ export default {
   AddressBook,
   Address,
   AddressCapture,
+  AddressChoice,
   AddressForm: AddressFormWithLocales,
   AddressReview,
   BadgeOverlay,
@@ -81,12 +90,15 @@ export default {
   CheckoutActionIncomplete,
   ErrorsBlock,
   Field,
+  InlineAlert,
+  InventoryStatus,
   Link,
   iconAmericanExpress,
   iconClear,
   iconDiscover,
   iconError,
   iconExpand,
+  iconLock,
   iconMastercard,
   iconPlus,
   iconValid,

@@ -13,7 +13,6 @@ import Typography from "@material-ui/core/Typography";
 import CloseIcon from "mdi-material-ui/Close";
 import Link from "components/Link";
 import withShop from "containers/shop/withShop";
-import withNavigationTags from "containers/tags/withNavigationTags";
 import NavigationItemMobile from "./NavigationItemMobile";
 import NavigationSubMenuMobile from "./NavigationSubMenuMobile";
 
@@ -51,14 +50,14 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles, { name: "SkNavigationMobile" })
-@withNavigationTags
 @withShop
+@inject("navItems")
 @inject("uiStore")
 @observer
 class NavigationMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    navItems: PropTypes.object,
+    navItems: PropTypes.array,
     shop: PropTypes.shape({
       name: PropTypes.string
     }),
@@ -121,7 +120,7 @@ class NavigationMobile extends Component {
           <Divider />
         </div>
         <nav className={classes.menu}>
-          <MenuList disablePadding>{navItems.edges && navItems.edges.map(this.renderNavItem)}</MenuList>
+          <MenuList disablePadding>{navItems.map(this.renderNavItem)}</MenuList>
         </nav>
         <Slide direction="left" in={!!this.state.navItem}>
           <nav className={classes.subNav}>

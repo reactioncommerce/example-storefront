@@ -3,23 +3,27 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import BadgeOverlay from "@reactioncommerce/components/BadgeOverlay/v1";
 import { badgeStatus, BADGE_LABELS } from "@reactioncommerce/components/BadgeOverlay/v1/utils";
+import InventoryStatus from "@reactioncommerce/components/InventoryStatus/v1";
 import VariantItem from "components/VariantItem";
 import ProductDetailOptionsList from "components/ProductDetailOptionsList";
 import Divider from "components/Divider";
 
 const styles = (theme) => ({
+  alert: {
+    display: "flex",
+    position: "absolute",
+    top: -theme.spacing.unit * 2,
+    right: theme.spacing.unit * 11
+  },
+  inventoryStatus: {
+    paddingTop: theme.spacing.unit
+  },
   variantsContainer: {
   },
   variantItem: {
     position: "relative",
     marginTop: theme.spacing.unit * 1.25,
     marginBottom: theme.spacing.unit * 1.25
-  },
-  alert: {
-    display: "flex",
-    position: "absolute",
-    top: -theme.spacing.unit * 2,
-    right: theme.spacing.unit * 11
   }
 });
 
@@ -49,12 +53,12 @@ export default class VariantList extends Component {
           isActive={active}
           variant={variant}
         />
-        {this.renderInventoryStatus(variant)}
+        {this.renderBadges(variant)}
       </div>
     );
   }
 
-  renderInventoryStatus(variant) {
+  renderBadges(variant) {
     const { classes } = this.props;
     const status = badgeStatus(variant, BADGE_LABELS);
 
@@ -65,6 +69,29 @@ export default class VariantList extends Component {
         <BadgeOverlay product={variant} filterOnly={"MERCHANDISING"} shouldShowPrimaryOnly={true} label={status.label} />
       </div>
     );
+  }
+
+  renderInventoryStatusText() {
+    const { selectedOptionId, selectedVariantId, variants } = this.props;
+    const selectedVariant = variants.find((variant) => variant._id === selectedVariantId);
+
+    if (selectedOptionId) {
+      // Check to make sure the selected option is from this current page, and not left over from a previous page
+      const options = (selectedVariant && Array.isArray(selectedVariant.options) && selectedVariant.options.length) ? selectedVariant.options : null;
+
+      if (options) {
+        const selectedOption = options.find((option) => option._id === selectedOptionId);
+        return <InventoryStatus product={selectedOption} />;
+      }
+    }
+
+    // If we don't have an option, use the variant for inventory status information
+    if (selectedVariantId) {
+      return <InventoryStatus product={selectedVariant} />;
+    }
+
+    // We should always have a selected option or variant, so we should never get this far
+    return null;
   }
 
   renderOptionsList() {
@@ -90,11 +117,14 @@ export default class VariantList extends Component {
   }
 
   render() {
-    const { classes: { variantsContainer }, variants } = this.props;
+    const { classes: { inventoryStatus, variantsContainer }, variants } = this.props;
     return (
       <div className={variantsContainer}>
         {variants.map(this.renderVariant)}
         {this.renderOptionsList()}
+        <div className={inventoryStatus}>
+          {this.renderInventoryStatusText()}
+        </div>
       </div>
     );
   }

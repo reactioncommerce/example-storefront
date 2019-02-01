@@ -86,40 +86,6 @@ fragment OrderCommon on Order {
         variantTitle
       }
     }
-    payment {
-      _id
-      amount {
-        amount
-        currency {
-          code
-        }
-        displayAmount
-      }
-      createdAt
-      data {
-        ... on StripeCardPaymentData {
-          chargeId
-          billingAddress {
-            _id
-            address1
-            address2
-            city
-            company
-            country
-            fullName
-            isCommercial
-            isShippingDefault
-            phone
-            postal
-            region
-          }
-        }
-      }
-      displayName
-      method {
-        name
-      }
-    }
     selectedFulfillmentOption {
       fulfillmentMethod {
         _id
@@ -166,6 +132,28 @@ fragment OrderCommon on Order {
       }
     }
     type
+  }
+  payments {
+    _id
+    amount {
+      displayAmount
+    }
+    billingAddress {
+      address1
+      address2
+      city
+      company
+      country
+      fullName
+      isCommercial
+      phone
+      postal
+      region
+    }
+    displayName
+    method {
+      name
+    }
   }
   referenceId
   shop {

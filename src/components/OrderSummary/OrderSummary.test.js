@@ -1,9 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import theme from "lib/theme/reactionTheme";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
-import components from "lib/theme/components";
+import theme from "custom/reactionTheme";
+import components from "custom/componentsContext";
 import OrderSummary from "./OrderSummary";
 
 const testFulfillmentGroup = {
@@ -56,9 +56,6 @@ const testFulfillmentGroup = {
       }
     ]
   },
-  payment: {
-    displayName: "Example Payment"
-  },
   selectedFulfillmentOption: {
     fulfillmentMethod: {
       displayName: "Free Shipping",
@@ -67,12 +64,21 @@ const testFulfillmentGroup = {
   }
 };
 
+const testPayments = [{
+  _id: "TEST",
+  amount: {
+    displayAmount: "$10.00"
+  },
+  displayName: "Example Payment"
+}];
+
 test("basic snapshot", () => {
   const component = renderer.create((
     <ComponentsProvider value={components}>
       <MuiThemeProvider theme={theme}>
         <OrderSummary
           fulfillmentGroup={testFulfillmentGroup}
+          payments={testPayments}
         />
       </MuiThemeProvider>
     </ComponentsProvider>

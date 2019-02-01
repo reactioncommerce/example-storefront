@@ -3,12 +3,9 @@ import PropTypes from "prop-types";
 import { ApolloProvider, getDataFromTree } from "react-apollo";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import Head from "next/head";
-import getConfig from "next/config";
 import rootMobxStores from "lib/stores";
 import logger from "../logger";
 import initApollo from "./initApollo";
-
-const { serverRuntimeConfig } = getConfig();
 
 /**
  * Get the display name of a component
@@ -30,20 +27,24 @@ export default function withApolloClient(WrappedComponent) {
   class WithApolloClient extends React.Component {
     static async getInitialProps(ctx) {
       const { Component, router, ctx: { req, res, query, pathname } } = ctx;
+      const requestPath = req && req.get("request-path");
 
       // Provide the `url` prop data in case a GraphQL query uses it
-      rootMobxStores.routingStore.updateRoute({ query, pathname });
+      rootMobxStores.routingStore.updateRoute({ query, pathname, route: router.route });
+
+      // If getInitialProps was called without a request object,
+      // then this was most likely a due to a `pushState` rather than a full page request.
+      const hasRequestObject = !!req;
 
       let user;
       try {
         const userString = req && req.session && req.session.passport && req.session.passport.user;
         user = userString && JSON.parse(userString);
       } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log("Error parsing user object. Check passport session configuration", error);
+        logger.error(`Error parsing user object. Check passport session configuration. ${error}`);
       }
 
-      const apollo = initApollo({ cookies: req && req.cookies }, { accessToken: user && user.accessToken });
+      const apollo = initApollo({ cookies: req && req.cookies }, { accessToken: user && user.accessToken, req, res });
 
       ctx.ctx.apolloClient = apollo;
 
@@ -61,35 +62,12 @@ export default function withApolloClient(WrappedComponent) {
       const apolloState = {};
 
       if (!process.browser) {
-        // Run all graphql queries in the component tree
-        // and extract the resulting data
-        try {
-          // Run all GraphQL queries
-          // eslint-disable-next-line
-          await getDataFromTree(
-            <ApolloProvider client={apollo}>
-              <WrappedComponent {...wrappedComponentProps} Component={Component} router={router} />
-            </ApolloProvider>
-          ); // eslint-disable-line
-        } catch (error) {
-          // Prevent Apollo Client GraphQL errors from crashing SSR.
-          // Handle them in components via the data.error prop:
-          // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
-          if (error.networkError) {
-            // In server, if a 401 Unauthorized error occurred, redirect to /signin.
-            // This will re-authenticate without showing a login page and a new token is issued.
-            if (error.networkError.response.status === 401 && res) {
-              // eslint-disable-next-line no-console
-              console.log("Received 401 error from the GraphQL API due to invalid or expired authentication credentials. Triggering token refresh via redirect flow");
-              res.writeHead(302, { Location: "/signin" });
-              res.end();
-              return {};
-            }
-            logger.error(`Unable to access the GraphQL API. Is it running and accessible at ${serverRuntimeConfig.graphqlUrl} from the Storefront UI server?`);
-          } else {
-            logger.error("Error while running `getDataFromTree`:", error);
-          }
-        }
+        // Run all GraphQL queries
+        await getDataFromTree((
+          <ApolloProvider client={apollo}>
+            <WrappedComponent {...wrappedComponentProps} Component={Component} router={router} />
+          </ApolloProvider>
+        ));
 
         // getDataFromTree does not call componentWillUnmount
         // head side effect therefore need to be cleared manually
@@ -104,7 +82,9 @@ export default function withApolloClient(WrappedComponent) {
       return {
         ...wrappedComponentProps,
         apolloState,
-        accessToken: user && user.accessToken
+        accessToken: user && user.accessToken,
+        requestPath,
+        hasRequestObject
       };
     }
 
@@ -117,10 +97,16 @@ export default function withApolloClient(WrappedComponent) {
     };
 
     static getDerivedStateFromProps(nextProps) {
-      const { pathname, query } = nextProps.router;
+      const { pathname, query, route } = nextProps.router;
+      const { requestPath, hasRequestObject } = nextProps;
 
       // Update routing store with pathname and query after route change
-      rootMobxStores.routingStore.updateRoute({ pathname, query });
+      rootMobxStores.routingStore.updateRoute({ pathname, query, route });
+
+      // Set the rewrite path if this was a full page request
+      if (hasRequestObject) {
+        rootMobxStores.routingStore.setRewriteRoute(requestPath, route);
+      }
 
       return null;
     }

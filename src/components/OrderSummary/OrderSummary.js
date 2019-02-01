@@ -47,10 +47,12 @@ class OrderSummary extends Component {
         })
       })
     }),
-    shop: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string
-    })
+    payments: PropTypes.arrayOf(PropTypes.shape({
+      amount: PropTypes.shape({
+        displayAmount: PropTypes.string.isRequired
+      }),
+      displayName: PropTypes.string.isRequired
+    }))
   }
 
   renderSummary() {
@@ -81,7 +83,7 @@ class OrderSummary extends Component {
   }
 
   render() {
-    const { classes, fulfillmentGroup } = this.props;
+    const { classes, payments } = this.props;
 
     return (
       <div className={classes.summary}>
@@ -90,8 +92,10 @@ class OrderSummary extends Component {
             <Grid item xs={3}>
               <Typography className={classes.subtitle2} variant="subheading">{"Payment Method"}</Typography>
             </Grid>
-            <Grid item xs={3}>
-              <Typography variant="body2">{fulfillmentGroup.payment && fulfillmentGroup.payment.displayName}</Typography>
+            <Grid item>
+              {(payments || []).map((payment) => (
+                <Typography key={payment._id} variant="body2">{payment.displayName} ({payment.amount.displayAmount})</Typography>
+              ))}
             </Grid>
           </Grid>
         </div>

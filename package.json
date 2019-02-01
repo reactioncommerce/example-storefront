@@ -1,6 +1,6 @@
 {
   "name": "reaction-next-starterkit",
-  "version": "1.0.0",
+  "version": "2.0.0-rc.9",
   "description": "",
   "main": "index.js",
   "keywords": [],
@@ -11,20 +11,18 @@
   },
   "license": "GPL-3.0",
   "scripts": {
-    "dev": "NODE_ENV=development babel-node ./src/server.js",
-    "build": "yarn run build-clean && yarn run build-transpile && yarn run build-sync && next build src && cp -R src/.next build/app",
-    "build-transpile": "NODE_ENV=production babel src -d build/app --ignore '**/*.test.js','**/*__mocks__','**/*__snapshots__'",
-    "build-sync": "cp -R src/static build/app/static && rsync -av --prune-empty-dirs --include='*/' --include='*.gql' --exclude='*' src/* build/app",
+    "dev": "NODE_ENV=development node ./src/server.js",
+    "build": "yarn run build-clean && NODE_ENV=production IS_BUILDING_NEXTJS=1 next build src",
     "build-clean": "rimraf build/app",
-    "build-next": "yarn install --save-dev && next build src",
     "lint": "eslint .",
-    "start": "NODE_ENV=production node build/app/server.js",
+    "start": "NODE_ENV=production node ./src/server.js",
     "test": "yarn run test:unit",
     "test:ci": "yarn run test:unit --ci --runInBand --colors",
     "test:unit": "NODE_ENV=jesttest jest",
     "test:unit:watch": "NODE_ENV=jesttest jest --watchAll",
     "test:integration": "mocha tests/integration",
-    "test:link": "blc http://web.api.reaction.localhost:4000 -ro -filter=3 -e"
+    "test:link": "blc http://web.api.reaction.localhost:4000 -ro -filter=3 -e",
+    "test:file": "NODE_ENV=jesttest jest --watch --no-coverage"
   },
   "eslintConfig": {
     "extends": [
@@ -33,8 +31,8 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.1.0",
-    "@reactioncommerce/components": "0.57.0",
-    "@reactioncommerce/components-context": "^1.0.0",
+    "@reactioncommerce/components": "^0.61.0",
+    "@reactioncommerce/components-context": "^1.1.0",
     "@segment/snippet": "^4.3.1",
     "apollo-cache-inmemory": "^1.1.11",
     "apollo-client": "^2.2.7",
@@ -42,15 +40,17 @@
     "apollo-link-context": "^1.0.8",
     "apollo-link-error": "^1.0.9",
     "apollo-link-http": "^1.5.4",
+    "apollo-link-ws": "^1.0.12",
     "body-parser": "^1.18.2",
     "chalk": "^2.3.2",
     "classnames": "^2.2.5",
     "compression": "^1.7.3",
     "cookie-parser": "^1.4.3",
     "cookie-session": "^2.0.0-beta.3",
+    "envalid": "^4.1.4",
     "express": "^4.16.4",
-    "graphql": "^0.13.2",
-    "graphql-tag": "^2.8.0",
+    "graphql": "14.0.2",
+    "graphql-tag": "2.9.2",
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.0",
     "keymirror": "^0.1.1",
@@ -71,8 +71,8 @@
     "react-stripe-elements": "^2.0.1",
     "react-tracking": "^5.4.1",
     "reacto-form": "^0.0.2",
-    "request": "^2.88.0",
-    "styled-components": "^3.4.9"
+    "styled-components": "^3.4.9",
+    "subscriptions-transport-ws": "^0.9.15"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -109,6 +109,7 @@
     "eslint-plugin-react": "^7.7.0",
     "jest": "^23.6.0",
     "jest-junit": "^3.6.0",
+    "jest-styled-components": "^6.3.1",
     "jest-transform-graphql": "2.1.0",
     "mocha": "^5.2.0",
     "react-test-renderer": "^16.3.1",
@@ -129,7 +130,7 @@
     "roots": [
       "./src"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/tests/setupTests.js",
     "transform": {
       "\\.(gql|graphql)$": "jest-transform-graphql",
       ".*": "babel-jest"

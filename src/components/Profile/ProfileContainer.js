@@ -5,7 +5,7 @@ import Profile from "./Profile";
 
 // eslint-disable-next-line react/display-name
 export default () => (
-  <Query query={viewerQuery}>
+  <Query errorPolicy="all" query={viewerQuery}>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error</p>;

@@ -1,4 +1,4 @@
-import analyticsProviders from "analytics";
+import analyticsProviders from "../../custom/analytics";
 
 /**
  * Dispatch tracking data to providers

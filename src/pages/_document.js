@@ -3,16 +3,20 @@ import PropTypes from "prop-types";
 import Document, { Head, Main, NextScript } from "next/document";
 import flush from "styled-jsx/server";
 import Helmet from "react-helmet";
-import analyticsProviders from "analytics";
 import { ServerStyleSheet } from "styled-components";
-import favicons from "../lib/utils/favicons";
+import getConfig from "next/config";
+import analyticsProviders from "../custom/analytics";
+import favicons from "../custom/favicons";
+
+const { publicRuntimeConfig } = getConfig();
 
 /**
  * For details about the styled-components SSR code in this file, see https://www.styled-components.com/docs/advanced#nextjs
+ * _document is only rendered on the server side and not on the client side.
+ * Event handlers like onClick can't be added to this file.
  */
-
 class HTMLDocument extends Document {
-  static getInitialProps = (ctx) => {
+  static getInitialProps(ctx) {
     // Render app and page and get the context of the page with collected side effects.
     let pageContext;
 
@@ -52,13 +56,13 @@ class HTMLDocument extends Document {
       ),
       styledComponentsStyleTags
     };
-  };
+  }
 
   render() {
     const { helmet, pageContext, styledComponentsStyleTags } = this.props;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
     const links = [
-      { rel: "canonical", href: process.env.CANONICAL_URL },
+      { rel: "canonical", href: publicRuntimeConfig.canonicalUrl },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" },
       ...favicons
     ];

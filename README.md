@@ -11,7 +11,7 @@ Reference headless ecommerce storefront for [Reaction Commerce](https://reaction
 - [Reaction GraphQL API](https://github.com/reactioncommerce/reaction/tree/master/imports/plugins/core/graphql) integration
 - Server-side rendering
 - Payments with [Stripe](https://stripe.com/)
-- Analytics with [Segment](https://segment.com/)
+- Analytics with [Segment](https://segment.com/) or any other provider
 - Reusable, customizable, themeable ecommerce React components from the new [Reaction Component Library](https://github.com/reactioncommerce/reaction-component-library/) with [Styled Components](https://www.styled-components.com/)
 - Fully-configured test suite: Jest snapshot testing, Mocha integration testing
 - Written in ES6, configured with ES6
@@ -98,6 +98,13 @@ To run eslint
 docker-compose run --rm web eslint src
 ```
 
+### Debugging the server with chrome devtools
+
+You can use the chrome devtools to debug the code running in the node.js application server while it's running inside docker.
+
+- run `docker-compose run --rm --publish 9229:9229 --publish 4000:4000 -e NODE_ENV=development web babel-node --inspect=0.0.0.0:9229 ./src/server.js`
+- Open chrome and browse to `chrome://inspect`. Find the process under **Remote Target** and click **inspect**.
+
 ### Yarn Commands
 
 Yarn & NPM should run inside the Docker container. We've taken steps to ensure that the node_modules are placed into a cacheable location. If you run Yarn locally, the node_modules are written directly to the project directory and take precedence over those from the Docker build.
@@ -164,10 +171,10 @@ docker build -t reaction-storefront --build-arg BUILD_ENV=production .
 Then, to start the app on your machine, make sure the Reaction API container is already running and enter:
 
 ```sh
-docker run -d --name storefront -p ${port}:4000 --env-file .env --network api.reaction.localhost reaction-storefront
+docker run -d --name storefront -p 4000:4000 --env-file .env --network api.reaction.localhost reaction-storefront
 ```
 
-_**NOTE:** Replace the `${port}` with the localhost port you'd like the application to run at._
+_**NOTE:** You can replace the number before the colon in `4000:4000` with a different localhost port you'd like the application to run at._
 
 _**NOTE:** This is not the way to run the app in actual production deployment. This is only for running the production build locally for development, demo or trial purposes._
 

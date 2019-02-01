@@ -17,11 +17,6 @@ export default function withOrder(Component) {
   @observer
   class WithOrder extends React.Component {
     static propTypes = {
-      authStore: PropTypes.shape({
-        accountId: PropTypes.string,
-        token: PropTypes.string,
-        isAuthenticated: PropTypes.bool
-      }),
       cartStore: PropTypes.shape({
         anonymousCartId: PropTypes.string,
         anonymousCartToken: PropTypes.string,
@@ -49,7 +44,7 @@ export default function withOrder(Component) {
       };
 
       return (
-        <Query query={orderByReferenceId} variables={variables}>
+        <Query errorPolicy="all" query={orderByReferenceId} variables={variables}>
           {({ loading: isLoading, data: orderData }) => {
             const { order } = orderData || {};
 
