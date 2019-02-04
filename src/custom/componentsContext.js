@@ -103,7 +103,6 @@ export default {
   iconPlus,
   iconValid,
   iconVisa,
-  InlineAlert,
   InPageMenuItem,
   MiniCartSummary,
   PhoneNumberInput,
