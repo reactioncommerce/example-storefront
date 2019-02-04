@@ -4,8 +4,12 @@ import hoistNonReactStatic from "hoist-non-react-statics";
 import { withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
 import relayConnectionToArray from "lib/utils/relayConnectionToArray";
-import { addAccountAddressBookEntry, removeAccountAddressBookEntry } from "./mutations.gql";
 import viewerQuery from "../account/viewer.gql";
+import {
+  addAccountAddressBookEntry,
+  updateAccountAddressBookEntry,
+  removeAccountAddressBookEntry
+} from "./mutations.gql";
 
 export default function withAddressBook(Comp) {
   @withApollo
@@ -23,43 +27,27 @@ export default function withAddressBook(Comp) {
 
     state = {};
 
-    /**
-     *
-     * @method
-     * @summary
-     * @param
-     * @since
-     * @return
-     */
     get accountId() {
       const { authStore } = this.props;
       return authStore && authStore.account && authStore.account._id;
     }
 
     get accountAddressBook() {
-      const { authStore } = this.props;
-      return (
-        authStore &&
-        authStore.account &&
-        authStore.account.addressBook &&
-        relayConnectionToArray(authStore.account.addressBook)
-      );
+      const { authStore: { account: { addressBook } } } = this.props;
+      return (addressBook && relayConnectionToArray(addressBook)) || [];
     }
 
     /**
-     *
-     * @method
-     * @summary
-     * @param
-     * @since
-     * @return
+     * @name handleAddAccountAddressBookEntry
+     * @summary Adds an address to current user's address book
+     * @param {Object} address Address to add
+     * @return {Undefined} undefined
      */
     handleAddAccountAddressBookEntry = (address) => {
       const { client: apolloClient } = this.props;
 
       // TEMP delete `addressName` prop until API supports it.
       delete address.addressName;
-      console.log("adding a new addres?", address);
 
       apolloClient.mutate({
         mutation: addAccountAddressBookEntry,
@@ -72,13 +60,19 @@ export default function withAddressBook(Comp) {
         update: (cache, { data: mutationData }) => {
           if (mutationData && mutationData.addAccountAddressBookEntry) {
             const { address: newAddressEntry } = mutationData.addAccountAddressBookEntry;
-            const stuff = cache.readQuery(viewerQuery);
-            console.log("whats in the mutation cache?", stuff);
             if (newAddressEntry) {
+              const cacheData = cache.readQuery({ query: viewerQuery });
+              if (!cacheData.viewer.addressBook) {
+                cacheData.viewer.addressBook = { edges: [] };
+              }
+              cacheData.viewer.addressBook.edges.push({
+                __typename: "AddressEdge",
+                node: newAddressEntry
+              });
               // Update Apollo cache
               cache.writeQuery({
                 query: viewerQuery,
-                data: { account: { addressBook: [newAddressEntry] } }
+                data: cacheData
               });
             }
           }
@@ -87,17 +81,38 @@ export default function withAddressBook(Comp) {
     };
 
     /**
-     *
-     * @method
-     * @summary
-     * @param
-     * @since
-     * @return
+     * @name handleEditAccountAddressBookEntry
+     * @summary Updates an address in current user's address book
+     * @param {String} addressId _id of address to update
+     * @param {Object} updates Field updates
+     * @return {Undefined} undefined
+     */
+    handleEditAccountAddressBookEntry = (addressId, updates) => {
+      const { client: apolloClient } = this.props;
+      apolloClient.mutate({
+        mutation: updateAccountAddressBookEntry,
+        variables: {
+          input: {
+            addressId,
+            accountId: this.accountId,
+            updates
+          }
+        }
+      });
+    };
+
+    /**
+     * @name handleRemoveAccountAddressBookEntry
+     * @summary Asks user to confirm, then deletes address from current user's address book
+     * @param {String} addressId _id of address to delete
+     * @return {Undefined} undefined
      */
     handleRemoveAccountAddressBookEntry = (addressId) => {
       const { client: apolloClient } = this.props;
 
-      console.log("delete address", addressId);
+      if (!confirm("Delete this address?")) {
+        return;
+      }
 
       apolloClient.mutate({
         mutation: removeAccountAddressBookEntry,
@@ -110,12 +125,14 @@ export default function withAddressBook(Comp) {
         update: (cache, { data: mutationData }) => {
           if (mutationData && mutationData.removeAccountAddressBookEntry) {
             const { address: removedAddressEntry } = mutationData.removeAccountAddressBookEntry;
-            console.log("whats in the mutation cache?", removedAddressEntry, this.accountAddressBook);
             if (removedAddressEntry) {
+              const cacheData = cache.readQuery({ query: viewerQuery });
+              const removedIndex = cacheData.viewer.addressBook.edges.findIndex((edge) => edge.node._id === addressId);
+              cacheData.viewer.addressBook.edges.splice(removedIndex, 1);
               // Update Apollo cache
               cache.writeQuery({
                 query: viewerQuery,
-                data: { account: { addressBook: [removedAddressEntry] } }
+                data: cacheData
               });
             }
           }
@@ -129,6 +146,7 @@ export default function withAddressBook(Comp) {
           <Comp
             {...this.props}
             onAddressAdded={this.handleAddAccountAddressBookEntry}
+            onAddressEdited={this.handleEditAccountAddressBookEntry}
             onAddressDeleted={this.handleRemoveAccountAddressBookEntry}
           />
         </Fragment>

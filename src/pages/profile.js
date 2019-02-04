@@ -30,6 +30,7 @@ class ProfileAddressBook extends Component {
     classes: PropTypes.object,
     onAddressAdded: PropTypes.func.isRequired,
     onAddressDeleted: PropTypes.func.isRequired,
+    onAddressEdited: PropTypes.func.isRequired,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -37,24 +38,27 @@ class ProfileAddressBook extends Component {
   };
 
   renderAddressBook() {
-    const { authStore: { account }, onAddressAdded, onAddressDeleted } = this.props;
-
+    const {
+      authStore: { account: { addressBook } },
+      onAddressAdded,
+      onAddressEdited,
+      onAddressDeleted
+    } = this.props;
     // Use relayConnectionToArray to remove edges / nodes levels from addressBook object
-    const addresses =
-      account.addressBook && account.addressBook.edges && account.addressBook.edges.length
-        ? relayConnectionToArray(account.addressBook)
-        : [];
+    const addresses = (addressBook && relayConnectionToArray(addressBook)) || [];
 
     // Create data object to pass to AddressBook component
     const accountAddressBook = {
       addressBook: addresses
     };
 
-    console.log("address book data", accountAddressBook, account);
-
-    //return <Fragment>This is a placeholder, remove this and return AddressBook component below when ready.</Fragment>;
     return (
-      <AddressBook account={accountAddressBook} onAddressAdded={onAddressAdded} onAddressDeleted={onAddressDeleted} />
+      <AddressBook
+        account={accountAddressBook}
+        onAddressAdded={onAddressAdded}
+        onAddressEdited={onAddressEdited}
+        onAddressDeleted={onAddressDeleted}
+      />
     );
   }
 
@@ -103,8 +107,8 @@ class ProfileAddressBook extends Component {
         route: "/profile/address",
         label: "Address Book",
         isSelected: asPath === "/profile/address"
-      },
-      {
+      }
+      /* {
         href: "/profile/orders",
         route: "/profile/orders",
         label: "Orders",
@@ -115,7 +119,7 @@ class ProfileAddressBook extends Component {
         route: "/profile/payments",
         label: "Payment Methods",
         isSelected: asPath === "/profile/payments"
-      }
+      } */
     ];
 
     return (
@@ -126,7 +130,7 @@ class ProfileAddressBook extends Component {
   }
 
   render() {
-    const { authStore: { account }, classes, shop } = this.props;
+    const { authStore: { account }, shop } = this.props;
 
     // If there is no logged in user, return Not Found page
     if (account && !account._id) return <ErrorPage shop={shop} subtitle="Not Found" />;
