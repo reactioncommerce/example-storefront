@@ -41,10 +41,7 @@ class OrderFulfillmentGroup extends Component {
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
-    shop: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string
-    })
+    payments: PropTypes.arrayOf(PropTypes.object)
   }
 
   static defaultProps = {
@@ -133,8 +130,9 @@ class OrderFulfillmentGroup extends Component {
   }
 
   render() {
-    const { classes, fulfillmentGroup } = this.props;
+    const { classes, fulfillmentGroup, payments } = this.props;
     const { fulfillmentMethod } = fulfillmentGroup.selectedFulfillmentOption;
+
     return (
       <Fragment>
         <section className={classes.fulfillmentGroup}>
@@ -152,7 +150,7 @@ class OrderFulfillmentGroup extends Component {
           {this.renderFulfillmentInfo()}
         </section>
         <section className={classes.summary}>
-          <OrderSummary fulfillmentGroup={fulfillmentGroup} />
+          <OrderSummary fulfillmentGroup={fulfillmentGroup} payments={payments} />
         </section>
       </Fragment>
     );

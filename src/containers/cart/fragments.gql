@@ -63,6 +63,23 @@ fragment CartCommon on Cart {
           displayAmount
         }
       }
+      shop {
+        _id
+      }
+      shippingAddress {
+        address1
+        address2
+        city
+        company
+        country
+        fullName
+        isBillingDefault
+        isCommercial
+        isShippingDefault
+        phone
+        postal
+        region
+      }
     }
     summary {
       fulfillmentTotal {
@@ -78,6 +95,9 @@ fragment CartCommon on Cart {
       }
       total {
         amount
+        currency {
+          code
+        }
         displayAmount
       }
     }

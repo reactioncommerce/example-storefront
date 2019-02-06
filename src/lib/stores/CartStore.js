@@ -38,11 +38,11 @@ class CartStore {
   @observable isReconcilingCarts = false;
 
   /**
-   * The Stripe token that stores encrypted user payment data
+   * Payment data from the payment action during checkout
    *
-   * @type Object
+   * @type Object[]
    */
-  @observable stripeToken = null;
+  @observable checkoutPayments = [];
 
   /**
    * @name setAnonymousCartCredentials
@@ -71,9 +71,6 @@ class CartStore {
       // Remove cookies
       Cookies.remove(this.ANONYMOUS_CART_ID_KEY_NAME);
       Cookies.remove(this.ANONYMOUS_CART_TOKEN_KEY_NAME);
-
-      // Clear stripe token
-      this.stripeToken = null;
     }
   }
 
@@ -127,12 +124,12 @@ class CartStore {
     this.accountCartId = value;
   }
 
-  get stripeToken() {
-    return this.stripeToken;
+  @action addCheckoutPayment(value) {
+    this.checkoutPayments.push(value);
   }
 
-  @action setStripeToken(value) {
-    this.stripeToken = value;
+  @action resetCheckoutPayments() {
+    this.checkoutPayments = [];
   }
 }
 
