@@ -156,7 +156,21 @@ exports[`basic snapshot 1`] = `
           </td>
           <td
             className="c3 c2"
-          />
+          >
+            -
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="c2"
+          >
+            Surcharge
+          </td>
+          <td
+            className="c3 c2"
+          >
+            -
+          </td>
         </tr>
         <tr>
           <td

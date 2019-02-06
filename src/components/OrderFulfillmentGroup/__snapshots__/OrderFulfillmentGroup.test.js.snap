@@ -676,7 +676,21 @@ Array [
               </td>
               <td
                 className="c3 c2"
-              />
+              >
+                -
+              </td>
+            </tr>
+            <tr>
+              <td
+                className="c2"
+              >
+                Surcharge
+              </td>
+              <td
+                className="c3 c2"
+              >
+                -
+              </td>
             </tr>
             <tr>
               <td
