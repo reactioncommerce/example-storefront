@@ -54,7 +54,7 @@
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.0",
     "keymirror": "^0.1.1",
-    "lodash.isequal": "^4.5.0",
+    "lodash": "^4.17.11",
     "mdi-material-ui": "^5.9.0",
     "mobx": "^4.9.2",
     "mobx-react": "^5.4.3",
@@ -68,6 +68,7 @@
     "react-container-query": "^0.11.0",
     "react-dom": "16.7.0",
     "react-helmet": "^5.2.0",
+    "react-jss": "^8.6.1",
     "react-stripe-elements": "^2.0.3",
     "react-tracking": "^5.6.0",
     "reacto-form": "^0.0.2",
@@ -114,7 +115,7 @@
     "mocha": "^5.2.0",
     "react-test-renderer": "^16.7.0",
     "rimraf": "^2.6.3",
-    "snyk": "^1.124.1"
+    "snyk": "^1.126.0"
   },
   "jest": {
     "collectCoverage": true,
