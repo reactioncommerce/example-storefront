@@ -6,6 +6,7 @@ exports[`basic snapshot 1`] = `
   disabled={false}
   onBlur={[Function]}
   onClick={[Function]}
+  onContextMenu={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -34,7 +35,7 @@ exports[`basic snapshot 1`] = `
     </svg>
   </span>
   <span
-    className="MuiTouchRipple-root-21"
+    className="MuiTouchRipple-root-24"
   />
 </button>
 `;

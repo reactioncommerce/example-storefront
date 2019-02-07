@@ -5,6 +5,7 @@ exports[`basic snapshot 1`] = `
   className="MuiButtonBase-root-4 SkVariantItem-variantButton-1 SkVariantItem-activeVariant-2"
   onBlur={[Function]}
   onClick={[Function]}
+  onContextMenu={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
