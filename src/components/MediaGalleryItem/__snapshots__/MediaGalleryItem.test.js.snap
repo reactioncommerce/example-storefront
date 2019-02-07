@@ -32,6 +32,7 @@ exports[`basic snapshot 1`] = `
   className="MuiButtonBase-root-2 SkMediaGalleryItem-root-1"
   onBlur={[Function]}
   onClick={[Function]}
+  onContextMenu={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}

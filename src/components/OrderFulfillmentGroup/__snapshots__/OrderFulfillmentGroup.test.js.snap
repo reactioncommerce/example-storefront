@@ -309,11 +309,11 @@ Array [
         <div
           className="MuiGrid-item-8 MuiGrid-grid-xs-6-41 SkOrderFulfillmentGroup-headerRightColumn-4"
         >
-          <aside
+          <p
             className="MuiTypography-root-104 MuiTypography-body2-112"
           >
             Ground
-          </aside>
+          </p>
         </div>
       </div>
     </header>
@@ -615,10 +615,10 @@ Array [
     className="SkOrderFulfillmentGroup-summary-5"
   >
     <div
-      className="SkOrderSummary-summary-132"
+      className="SkOrderSummary-summary-142"
     >
       <div
-        className="SkOrderSummary-header-133"
+        className="SkOrderSummary-header-143"
       >
         <div
           className="MuiGrid-container-7 MuiGrid-spacing-xs-24-31"
@@ -627,7 +627,7 @@ Array [
             className="MuiGrid-item-8 MuiGrid-grid-xs-3-38"
           >
             <h3
-              className="MuiTypography-root-104 MuiTypography-subheading-111 SkOrderSummary-subtitle2-136"
+              className="MuiTypography-root-104 MuiTypography-subheading-111 SkOrderSummary-subtitle2-146"
             >
               Payment Method
             </h3>
@@ -635,19 +635,19 @@ Array [
           <div
             className="MuiGrid-item-8"
           >
-            <aside
+            <p
               className="MuiTypography-root-104 MuiTypography-body2-112"
             >
               Example Payment
                (
               $10.00
               )
-            </aside>
+            </p>
           </div>
         </div>
       </div>
       <hr
-        className="MuiDivider-root-137"
+        className="MuiDivider-root-147"
       />
       <div
         className="c0"
@@ -676,7 +676,21 @@ Array [
               </td>
               <td
                 className="c3 c2"
-              />
+              >
+                -
+              </td>
+            </tr>
+            <tr>
+              <td
+                className="c2"
+              >
+                Surcharge
+              </td>
+              <td
+                className="c3 c2"
+              >
+                -
+              </td>
             </tr>
             <tr>
               <td
