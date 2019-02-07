@@ -127,11 +127,15 @@
       "!**/vendor/**"
     ],
     "coverageDirectory": "reports/coverage",
-    "testResultsProcessor": "jest-junit",
+    "reporters": [
+      "jest-junit"
+    ],
     "roots": [
       "./src"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/tests/setupTests.js",
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/setupTests.js"
+    ],
     "transform": {
       "\\.(gql|graphql)$": "jest-transform-graphql",
       ".*": "babel-jest"
