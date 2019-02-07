@@ -69,7 +69,7 @@ exports[`do not show cartpopover 1`] = `
 }
 
 <div
-  className="HiddenCss-mdUp-16"
+  className="MuiPrivateHiddenCss-mdUp-16"
 >
   <div
     className="SkCartPopover-container-1 SkCartPopover-isContainerHidden-3"
@@ -197,7 +197,7 @@ exports[`show cartpopover 1`] = `
 }
 
 <div
-  className="HiddenCss-mdUp-16"
+  className="MuiPrivateHiddenCss-mdUp-16"
 >
   <div
     className="SkCartPopover-container-1 SkCartPopover-isContainerVisible-4"

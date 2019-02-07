@@ -5,10 +5,11 @@ exports[`renders with 1 level of tags 1`] = `null`;
 exports[`renders with 2 levels of tags 1`] = `
 Array [
   <div
-    className="MuiButtonBase-root-18 MuiListItem-root-7 MuiListItem-default-10 MuiListItem-gutters-14 MuiListItem-button-15"
+    className="MuiButtonBase-root-19 MuiListItem-root-7 SkNavigationItemMobile-listItemRoot-2 MuiListItem-default-10 MuiListItem-gutters-15 SkNavigationItemMobile-listItemGutters-5 MuiListItem-button-16"
     color="inherit"
     onBlur={[Function]}
     onClick={[Function]}
+    onContextMenu={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
@@ -22,25 +23,35 @@ Array [
     tabIndex="0"
   >
     <div
-      className="MuiListItemText-root-21"
-    />
-    <svg
-      aria-hidden="true"
-      className="MuiSvgIcon-root-28 MuiListItemIcon-root-27"
-      focusable="false"
-      role="presentation"
-      viewBox="0 0 24 24"
+      className="MuiListItemText-root-22"
     >
-      <path
-        d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-      />
-    </svg>
+      <span
+        className="MuiTypography-root-28 MuiTypography-subheading-35 MuiListItemText-primary-25"
+      >
+        Tag Name
+      </span>
+    </div>
+    <div
+      className="MuiListItemIcon-root-64"
+    >
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-65"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+        />
+      </svg>
+    </div>
     <span
-      className="MuiTouchRipple-root-37"
+      className="MuiTouchRipple-root-83"
     />
   </div>,
   <hr
-    className="MuiDivider-root-48"
+    className="MuiDivider-root-78"
   />,
 ]
 `;
@@ -48,10 +59,11 @@ Array [
 exports[`renders with 3 levels of tags 1`] = `
 Array [
   <div
-    className="MuiButtonBase-root-18 MuiListItem-root-7 MuiListItem-default-10 MuiListItem-gutters-14 MuiListItem-button-15"
+    className="MuiButtonBase-root-19 MuiListItem-root-7 SkNavigationItemMobile-listItemRoot-2 MuiListItem-default-10 MuiListItem-gutters-15 SkNavigationItemMobile-listItemGutters-5 MuiListItem-button-16"
     color="inherit"
     onBlur={[Function]}
     onClick={[Function]}
+    onContextMenu={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
@@ -65,25 +77,35 @@ Array [
     tabIndex="0"
   >
     <div
-      className="MuiListItemText-root-21"
-    />
-    <svg
-      aria-hidden="true"
-      className="MuiSvgIcon-root-28 MuiListItemIcon-root-27"
-      focusable="false"
-      role="presentation"
-      viewBox="0 0 24 24"
+      className="MuiListItemText-root-22"
     >
-      <path
-        d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-      />
-    </svg>
+      <span
+        className="MuiTypography-root-28 MuiTypography-subheading-35 MuiListItemText-primary-25"
+      >
+        Tag Name
+      </span>
+    </div>
+    <div
+      className="MuiListItemIcon-root-64"
+    >
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-65"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+        />
+      </svg>
+    </div>
     <span
-      className="MuiTouchRipple-root-37"
+      className="MuiTouchRipple-root-83"
     />
   </div>,
   <hr
-    className="MuiDivider-root-48"
+    className="MuiDivider-root-78"
   />,
 ]
 `;
