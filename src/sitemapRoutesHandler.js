@@ -40,7 +40,7 @@ async function sitemapRoutesHandler(req, res, next) {
   res.statusCode = 200;
   res.set({
     "Content-Type": "text/xml",
-    "Cache-Control": `public, max-age=${config.SITEMAP_TTL}`
+    "Cache-Control": `public, max-age=${config.SITEMAP_MAX_AGE}`
   });
   return res.end(json.data.sitemap.xml);
 }
