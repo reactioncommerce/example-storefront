@@ -4,11 +4,10 @@ import { inject, observer } from "mobx-react";
 import Helmet from "react-helmet";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
-import AddressBook from "@reactioncommerce/components/AddressBook/v1";
 import AccountProfileInfo from "@reactioncommerce/components/AccountProfileInfo/v1";
 import InPageMenu from "@reactioncommerce/components/InPageMenu/v1";
+import ProfileAddressBook from "components/ProfileAddressBook";
 import withAddressBook from "containers/address/withAddressBook";
-import relayConnectionToArray from "lib/utils/relayConnectionToArray";
 import ErrorPage from "./_error";
 
 const styles = (theme) => ({
@@ -22,7 +21,7 @@ const styles = (theme) => ({
 @inject("authStore")
 @inject("uiStore")
 @observer
-class ProfileAddressBook extends Component {
+class Profile extends Component {
   static propTypes = {
     authStore: PropTypes.shape({
       account: PropTypes.object.isRequired
@@ -37,44 +36,11 @@ class ProfileAddressBook extends Component {
     })
   };
 
-  renderAddressBook() {
-    const {
-      authStore: { account: { addressBook } },
-      onAddressAdded,
-      onAddressEdited,
-      onAddressDeleted
-    } = this.props;
-    // Use relayConnectionToArray to remove edges / nodes levels from addressBook object
-    const addresses = (addressBook && relayConnectionToArray(addressBook)) || [];
-
-    // Create data object to pass to AddressBook component
-    const accountAddressBook = {
-      addressBook: addresses
-    };
-
-    return (
-      <AddressBook
-        account={accountAddressBook}
-        onAddressAdded={onAddressAdded}
-        onAddressEdited={onAddressEdited}
-        onAddressDeleted={onAddressDeleted}
-      />
-    );
-  }
-
-  renderOrders() {
-    return "This is where the orders screen will go";
-  }
-
-  renderPaymentMethods() {
-    return "This is where the orders screen will go";
-  }
-
   renderMainContent() {
     const { router: { asPath }, shop } = this.props;
 
     if (asPath === "/profile/address") {
-      return this.renderAddressBook();
+      return <ProfileAddressBook />;
     }
 
     if (asPath === "/profile/orders") {
@@ -108,18 +74,18 @@ class ProfileAddressBook extends Component {
         label: "Address Book",
         isSelected: asPath === "/profile/address"
       }
-      /* {
-        href: "/profile/orders",
-        route: "/profile/orders",
-        label: "Orders",
-        isSelected: asPath === "/profile/orders"
-      },
-      {
-        href: "/profile/payments",
-        route: "/profile/payments",
-        label: "Payment Methods",
-        isSelected: asPath === "/profile/payments"
-      } */
+      // {
+      //   href: "/profile/orders",
+      //   route: "/profile/orders",
+      //   label: "Orders",
+      //   isSelected: asPath === "/profile/orders"
+      // },
+      // {
+      //   href: "/profile/payments",
+      //   route: "/profile/payments",
+      //   label: "Payment Methods",
+      //   isSelected: asPath === "/profile/payments"
+      // }
     ];
 
     return (
@@ -143,13 +109,15 @@ class ProfileAddressBook extends Component {
         />
         <section>
           <Grid container spacing={24}>
+            <Grid item xs={0} md={1} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
             <Grid item xs={12} md={3}>
               {this.renderAccountProfileInfo()}
               {this.renderNavigation()}
             </Grid>
-            <Grid item xs={12} md={9}>
+            <Grid item xs={12} md={7}>
               {this.renderMainContent()}
             </Grid>
+            <Grid item xs={0} md={1} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
           </Grid>
         </section>
       </Fragment>
@@ -157,4 +125,4 @@ class ProfileAddressBook extends Component {
   }
 }
 
-export default ProfileAddressBook;
+export default Profile;
