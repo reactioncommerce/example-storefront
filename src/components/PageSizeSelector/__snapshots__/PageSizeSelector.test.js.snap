@@ -10,9 +10,9 @@ exports[`basic snapshot 1`] = `
   >
     <div
       aria-haspopup="true"
-      aria-owns={null}
       aria-pressed="false"
       className="MuiSelect-select-7 MuiSelect-selectMenu-10 SkSelect-selectMenu-3 MuiInputBase-input-36 MuiInput-input-21"
+      id="select-pageSize"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}

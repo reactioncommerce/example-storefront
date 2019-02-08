@@ -115,19 +115,19 @@ exports[`basic snapshot 1`] = `
       <div
         className="MuiGrid-item-7"
       >
-        <aside
+        <p
           className="MuiTypography-root-103 MuiTypography-body2-111"
         >
           Example Payment
            (
           $10.00
           )
-        </aside>
+        </p>
       </div>
     </div>
   </div>
   <hr
-    className="MuiDivider-root-129"
+    className="MuiDivider-root-139"
   />
   <div
     className="c0"
