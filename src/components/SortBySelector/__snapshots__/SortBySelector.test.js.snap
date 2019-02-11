@@ -1,5 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`basic snapshot - with featured sorting 1`] = `
+<div
+  className="MuiInputBase-root-26 MuiInput-root-13 SkSelect-input-5"
+  onClick={[Function]}
+>
+  <div
+    className="MuiSelect-root-6"
+  >
+    <div
+      aria-haspopup="true"
+      aria-pressed="false"
+      className="MuiSelect-select-7 MuiSelect-selectMenu-10 SkSelect-selectMenu-3 MuiInputBase-input-36 MuiInput-input-21"
+      id="select-sortBy"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      Featured
+    </div>
+    <input
+      id="sort-by"
+      name="sortBy"
+      type="hidden"
+      value="featured-desc"
+    />
+    <svg
+      aria-hidden="true"
+      className="MuiSvgIcon-root-43 MuiSelect-icon-12"
+      focusable="false"
+      role="presentation"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M7 10l5 5 5-5z"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`basic snapshot 1`] = `
 <div
   className="MuiInputBase-root-26 MuiInput-root-13 SkSelect-input-5"

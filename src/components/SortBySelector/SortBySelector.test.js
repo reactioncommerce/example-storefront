@@ -16,3 +16,17 @@ test("basic snapshot", () => {
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+test("basic snapshot - with featured sorting", () => {
+  const component = renderer.create((
+    <MuiThemeProvider theme={theme}>
+      <SortBySelector
+        sortBy={"featured-desc"}
+        onChange={() => true}
+      />
+    </MuiThemeProvider>
+  ));
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
