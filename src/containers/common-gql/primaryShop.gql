@@ -1,0 +1,15 @@
+#import "../navigation/navigationTreeFragment.gql"
+
+query primaryShop($language: String! = "en") {
+  primaryShop {
+    _id
+    currency {
+      code
+    }
+    defaultNavigationTree(language: $language) {
+      ...NavigationTreeFragment
+    }
+    description
+    name
+  }
+}

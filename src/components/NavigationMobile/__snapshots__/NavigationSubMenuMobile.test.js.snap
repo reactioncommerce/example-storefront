@@ -12,9 +12,7 @@ exports[`basic snapshot 1`] = `
     >
       <h3
         className="MuiTypography-root-9 MuiTypography-subheading-16 SkNavigationItemMobile-toolbarTitle-3"
-      >
-        Tag Name
-      </h3>
+      />
       <button
         className="MuiButtonBase-root-51 MuiIconButton-root-45"
         disabled={false}
@@ -49,7 +47,7 @@ exports[`basic snapshot 1`] = `
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-96"
+          className="MuiTouchRipple-root-101"
         />
       </button>
     </div>
@@ -67,7 +65,7 @@ exports[`basic snapshot 1`] = `
       role="menu"
     >
       <div
-        className="MuiButtonBase-root-51 MuiListItem-root-78 SkNavigationItemMobile-listItemRoot-73 MuiListItem-default-81 MuiListItem-gutters-86 SkNavigationItemMobile-listItemGutters-76 MuiListItem-button-87"
+        className="MuiButtonBase-root-51 MuiListItem-root-78 MuiListItem-default-81 MuiListItem-gutters-86 MuiListItem-button-87"
         color="inherit"
         onBlur={[Function]}
         onClick={[Function]}
@@ -86,49 +84,24 @@ exports[`basic snapshot 1`] = `
       >
         <div
           className="MuiListItemText-root-90"
-        >
-          <span
-            className="MuiTypography-root-9 MuiTypography-subheading-16 MuiListItemText-primary-93"
-          >
-            Sub Tag Name
-          </span>
-        </div>
-        <span
-          className="MuiTouchRipple-root-96"
         />
-      </div>
-      <hr
-        className="MuiDivider-root-63"
-      />
-      <div
-        className="MuiButtonBase-root-51 MuiListItem-root-78 SkNavigationItemMobile-listItemRoot-73 MuiListItem-default-81 MuiListItem-gutters-86 SkNavigationItemMobile-listItemGutters-76 MuiListItem-button-87"
-        color="inherit"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        role="button"
-        tabIndex="0"
-      >
         <div
-          className="MuiListItemText-root-90"
+          className="MuiListItemIcon-root-96"
         >
-          <span
-            className="MuiTypography-root-9 MuiTypography-subheading-16 MuiListItemText-primary-93"
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-54"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
           >
-            Sub Tag name
-          </span>
+            <path
+              d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+            />
+          </svg>
         </div>
         <span
-          className="MuiTouchRipple-root-96"
+          className="MuiTouchRipple-root-101"
         />
       </div>
       <hr

@@ -40,7 +40,9 @@ app
 
     configureAuthForServer(server);
 
-    server.use(sitemapRoutesHandler);
+    // apply to routes starting with "/sitemap" and ending with ".xml"
+    server.use(/^\/sitemap.*\.xml$/, sitemapRoutesHandler);
+
     // Setup next routes
     const routeHandler = router.getRequestHandler(app);
     server.use(routeHandler);

@@ -3,36 +3,50 @@ import renderer from "react-test-renderer";
 import { Provider } from "mobx-react";
 import NavigationSubMenuMobile from "./NavigationSubMenuMobile";
 
-const mockTagWithSubTags = {
-  _id: "cmVhY3Rpb24vdGFnOjVXZE5LYXprejZ5TWdrcGY5",
-  position: null,
-  slug: "tag-slug",
-  name: "Tag Name",
-  subTags: [
-    {
-      node: {
-        _id: "cmVhY3Rpb24vdGFnOlRFdjdSV1pDTHl1d1dmOWs2",
-        position: null,
-        slug: "sub-tag-slug",
-        name: "Sub Tag Name",
-        subTags: {
-          edges: []
+const mockNavItemWithSubItems = {
+  items: [{
+    items: [{
+      items: [],
+      navigationItem: {
+        data: {
+          classNames: null,
+          content: [{
+            language: "en",
+            value: "NavSubSubItem"
+          }],
+          isUrlRelative: true,
+          shouldOpenInNewWindow: false,
+          url: "/nav-sub-sub-item"
         }
       }
-    },
-    {
-      node: {
-        _id: "cmVhY3Rpb24vdGFnOmJ2MmVEbzV3V3lvNUdNMlN3",
-        position: null,
-        slug: "sub-tag-slug",
-        name: "Sub Tag name",
-        subTags: {
-          edges: []
-        }
+    }],
+    navigationItem: {
+      data: {
+        classNames: null,
+        content: [{
+          language: "en",
+          value: "NavSubItem"
+        }],
+        isUrlRelative: true,
+        shouldOpenInNewWindow: false,
+        url: "/nav-sub-item"
       }
     }
-  ]
+  }],
+  navigationItem: {
+    data: {
+      classNames: null,
+      content: [{
+        language: "en",
+        value: "NavItem"
+      }],
+      isUrlRelative: true,
+      shouldOpenInNewWindow: false,
+      url: "/nav-item"
+    }
+  }
 };
+
 
 const uiStore = {
   closeMenuDrawer() {},
@@ -46,7 +60,7 @@ const routingStore = {
 test("basic snapshot", () => {
   const component = renderer.create((
     <Provider primaryShopId={"J8Bhq3uTtdgwZx3rz"} routingStore={routingStore} uiStore={uiStore}>
-      <NavigationSubMenuMobile navItem={mockTagWithSubTags} />
+      <NavigationSubMenuMobile navItem={mockNavItemWithSubItems} />
     </Provider>
   ));
   const tree = component.toJSON();
