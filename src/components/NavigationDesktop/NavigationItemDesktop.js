@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { inject } from "mobx-react";
+import classNames from "classnames";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
@@ -61,27 +62,26 @@ class NavigationItemDesktop extends Component {
   linkPath = (providedNavItem) => {
     const { navItem, routingStore } = this.props;
 
-    const currentNavItem = providedNavItem || navItem;
+    const currentNavItem = (providedNavItem && providedNavItem.navigationItem) || navItem.navigationItem;
 
     return routingStore.queryString !== ""
-      ? `/tag/${currentNavItem.slug}?${routingStore.queryString}`
-      : `/tag/${currentNavItem.slug}`;
+      ? `${currentNavItem.data.url}?${routingStore.queryString}`
+      : `${currentNavItem.data.url}`;
   }
 
   get hasSubNavItems() {
-    const { navItem: { subTags } } = this.props;
-    return Array.isArray(subTags) && subTags.length > 0;
+    const { navItem: { items } } = this.props;
+    return Array.isArray(items) && items.length > 0;
   }
 
   onClick = (event) => {
     event.preventDefault();
 
-    const { navItem } = this.props;
     if (this.hasSubNavItems) {
       this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
     } else {
       const path = this.linkPath();
-      Router.pushRoute(path, { slug: navItem.slug });
+      Router.pushRoute(path);
     }
   };
 
@@ -90,13 +90,23 @@ class NavigationItemDesktop extends Component {
   };
 
   renderSubNav(navItemGroup) {
-    const menuItems = navItemGroup.subTags.map(({ node: navItem }, index) => (
-      <MenuItem dense key={index}>
-        <Link onClick={this.onClose} route={`${this.linkPath(navItem)}`}>
-          <ListItemText primary={navItem.name} />
-        </Link>
-      </MenuItem>
-    ));
+    const menuItems = navItemGroup.items.map((item, index) => {
+      const { navigationItem: { data: { contentForLanguage, classNames: navigationItemClassNames, isUrlRelative, shouldOpenInNewWindow } } } = item;
+      return (
+        <MenuItem dense key={index}>
+          <Link
+            className={navigationItemClassNames}
+            onClick={this.onClose}
+            route={this.linkPath(item)}
+            href={this.linkPath(item)}
+            isUrlAbsolute={!isUrlRelative}
+            shouldOpenInNewWindow={shouldOpenInNewWindow}
+          >
+            <ListItemText primary={contentForLanguage} />
+          </Link>
+        </MenuItem>
+      );
+    });
 
     menuItems.unshift(<Divider key="divider" />);
 
@@ -104,9 +114,9 @@ class NavigationItemDesktop extends Component {
   }
 
   renderPopover() {
-    const { classes, navItem, navItem: { subTags } } = this.props;
+    const { classes, navItem, navItem: { items, navigationItem } } = this.props;
 
-    if (subTags) {
+    if (items) {
       return (
         <Popover
           classes={{ paper: classes.popover }}
@@ -117,21 +127,37 @@ class NavigationItemDesktop extends Component {
           open={this.state.isSubNavOpen}
         >
           <Grid container className={classes.grid} spacing={16}>
-            {subTags.map(({ node: navItemGroup }, index) => (
-              <Grid item key={index}>
-                <MenuList disablePadding>
-                  <MenuItem>
-                    <Link onClick={this.onClose} route={`${this.linkPath(navItemGroup)}`}>
-                      <ListItemText primary={navItemGroup.name} />
-                    </Link>
-                  </MenuItem>
-                  {Array.isArray(navItemGroup.subTags) && this.renderSubNav(navItemGroup)}
-                </MenuList>
-              </Grid>
-            ))}
+            {items.map((item, index) => {
+              const { navigationItem: { data: { contentForLanguage, classNames: navigationItemClassNames, isUrlRelative, shouldOpenInNewWindow } } } = item;
+              return (
+                <Grid item key={index}>
+                  <MenuList disablePadding>
+                    <MenuItem>
+                      <Link
+                        className={navigationItemClassNames}
+                        href={this.linkPath(item)}
+                        isUrlAbsolute={!isUrlRelative}
+                        onClick={this.onClose}
+                        shouldOpenInNewWindow={shouldOpenInNewWindow}
+                      >
+                        <ListItemText primary={contentForLanguage} />
+                      </Link>
+                    </MenuItem>
+                    {Array.isArray(item.items) && this.renderSubNav(item)}
+                  </MenuList>
+                </Grid>
+              );
+            })}
           </Grid>
-          <Link className={classes.navigationShopAllLink} onClick={this.onClose} route={`${this.linkPath()}`}>
-            <span>Shop all {navItem.name} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
+          <Link
+            className={classes.navigationShopAllLink}
+            onClick={this.onClose}
+            route={this.linkPath(navItem)}
+            href={this.linkPath(navItem)}
+            isUrlAbsolute={!navigationItem.data.isUrlRelative}
+            shouldOpenInNewWindow={navigationItem.data.shouldOpenInNewWindow}
+          >
+            <span>Shop all {navigationItem.data.contentForLanguage} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
           </Link>
         </Popover>
       );
@@ -141,12 +167,12 @@ class NavigationItemDesktop extends Component {
   }
 
   render() {
-    const { classes: { primaryNavItem }, navItem } = this.props;
+    const { classes: { primaryNavItem }, navItem, navItem: { navigationItem } } = this.props;
 
     return (
       <Fragment>
-        <Button className={primaryNavItem} color="inherit" onClick={this.onClick} href={this.linkPath(navItem)}>
-          {navItem.name}
+        <Button className={classNames(primaryNavItem, navigationItem.data.classNames)} color="inherit" onClick={this.onClick} href={this.linkPath(navItem)}>
+          {navigationItem.data.contentForLanguage}
           {this.hasSubNavItems && <Fragment>{this.state.isSubNavOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</Fragment>}
         </Button>
         {this.hasSubNavItems && this.renderPopover()}

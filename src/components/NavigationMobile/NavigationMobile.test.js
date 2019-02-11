@@ -4,8 +4,7 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "custom/reactionTheme";
 import { MockedProvider } from "react-apollo/test-utils";
 import { Provider } from "mobx-react";
-import primaryShopIdQuery from "containers/common-gql/primaryShopId.gql";
-import shopQuery from "containers/shop/shop.gql";
+import primaryShopQuery from "containers/common-gql/primaryShop.gql";
 import NavigationMobile from "./NavigationMobile";
 
 const shop = {
@@ -14,30 +13,37 @@ const shop = {
   name: "Reaction",
   currency: {
     code: "USD"
+  },
+  defaultNavigationTree: {
+    items: [{
+      items: [],
+      navigationItem: {
+        data: {
+          classNames: null,
+          content: [{
+            language: "en",
+            value: "NavItem"
+          }],
+          isUrlRelative: true,
+          shouldOpenInNewWindow: false,
+          url: "/nav-item"
+        }
+      }
+    }]
   }
 };
 
 const mocks = [
   {
     request: {
-      query: primaryShopIdQuery
-    },
-    result: {
-      data: {
-        primaryShopId: shop._id
-      }
-    }
-  },
-  {
-    request: {
-      query: shopQuery,
+      query: primaryShopQuery,
       variables: {
-        shopId: shop._id
+        language: "en"
       }
     },
     result: {
       data: {
-        shop
+        primaryShop: shop
       }
     }
   }
@@ -86,7 +92,7 @@ test("basic snapshot", () => {
         <Provider
           primaryShopId={shop._id}
           authStore={authStore}
-          navItems={[]}
+          navItems={shop.defaultNavigationTree.items[0]}
           tags={tags}
           uiStore={uiStore}
         >
