@@ -6,3 +6,10 @@ query orderByReferenceId($id: ID!, $shopId: ID!, $token: String) {
     ...OrderQueryFragment
   }
 }
+
+# Get orders by accountId
+query ordersByAccountId($accountId: ID!, $shopIds: [ID]) {
+  orders: ordersByAccountId(accountId: $accountId, shopIds: $shopIds) {
+    ...OrderQueryFragment
+  }
+}
