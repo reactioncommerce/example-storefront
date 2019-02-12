@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import Grid from "@material-ui/core/Grid";
+import { Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import AddressBook from "@reactioncommerce/components/AddressBook/v1";
 import withAddressBook from "containers/address/withAddressBook";
@@ -66,6 +67,7 @@ class ProfileAddressBook extends Component {
 
     return (
       <Grid item xs={12} md={12}>
+        <Typography variant="title">Address Book</Typography>
         {this.renderAddressBook()}
       </Grid>
     );
