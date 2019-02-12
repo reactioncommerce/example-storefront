@@ -7,6 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import AccountProfileInfo from "@reactioncommerce/components/AccountProfileInfo/v1";
 import InPageMenu from "@reactioncommerce/components/InPageMenu/v1";
 import ProfileAddressBook from "components/ProfileAddressBook";
+import ProfileOrders from "components/ProfileOrders";
 import withAddressBook from "containers/address/withAddressBook";
 import ErrorPage from "./_error";
 
@@ -44,7 +45,7 @@ class Profile extends Component {
     }
 
     if (asPath === "/profile/orders") {
-      return "Orders placeholder";
+      return <ProfileOrders />;
     }
 
     if (asPath === "/profile/payments") {
@@ -73,13 +74,13 @@ class Profile extends Component {
         route: "/profile/address",
         label: "Address Book",
         isSelected: asPath === "/profile/address"
-      }
-      // {
-      //   href: "/profile/orders",
-      //   route: "/profile/orders",
-      //   label: "Orders",
-      //   isSelected: asPath === "/profile/orders"
-      // },
+      },
+      {
+        href: "/profile/orders",
+        route: "/profile/orders",
+        label: "Orders",
+        isSelected: asPath === "/profile/orders"
+      },
       // {
       //   href: "/profile/payments",
       //   route: "/profile/payments",
