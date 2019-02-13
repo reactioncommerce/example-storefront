@@ -78,14 +78,14 @@ class AccountDropdown extends Component {
                     Profile
                   </Button>
                 </div>
-                <Button color="primary" fullWidth href={`/logout/${account._id}`} variant="raised">
+                <Button color="primary" fullWidth href={`/logout/${account._id}`} variant="contained">
                   Sign Out
                 </Button>
               </Fragment>
               :
               <Fragment>
-                <div className={classes.marginBottom}>
-                  <Button color="primary" fullWidth href="/signin" variant="raised">
+                <div className={classes.authContent}>
+                  <Button color="primary" fullWidth href="/signin" variant="contained">
                     Sign In
                   </Button>
                 </div>
