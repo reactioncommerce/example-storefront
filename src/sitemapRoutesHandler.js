@@ -1,6 +1,5 @@
 const fetch = require("isomorphic-fetch");
 const config = require("./config");
-const logger = require("./lib/logger");
 
 /**
  * @summary processes requests for sitemaps
@@ -9,13 +8,7 @@ const logger = require("./lib/logger");
  * @param {Object} next - the next middleware function
  * @returns {undefined}
  */
-function sitemapRoutesHandler(req, res, next) {
-  if (req.originalUrl.startsWith("/sitemap") === false) {
-    return next();
-  }
-
-  res.setHeader("Content-Type", "text/xml");
-
+async function sitemapRoutesHandler(req, res, next) {
   const shopUrl = `${req.protocol}://${req.get("host")}`;
   const handle = req.originalUrl.replace("/", "");
 
@@ -26,26 +19,30 @@ function sitemapRoutesHandler(req, res, next) {
     } }
   `;
 
-  return fetch(config.INTERNAL_GRAPHQL_URL, {
+  const response = await fetch(config.INTERNAL_GRAPHQL_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query })
-  })
-    .then((response) => response.json())
-    .then((response) => {
-      if (response.data.sitemap && response.data.sitemap.xml) {
-        res.statusCode = 200;
-        return res.end(response.data.sitemap.xml);
-      }
+  });
 
-      res.statusCode = 404;
-      return res.end();
-    })
-    .catch((error) => {
-      logger.error(`GraphQL query error in 'sitemapRoutesHandler': ${error}`);
-      res.statusCode = 500;
-      return res.end();
-    });
+  if (response.status < 200 || response.status > 302) {
+    res.statusCode = response.status;
+    return next(new Error(`GraphQL query error in 'sitemapRoutesHandler': ${response.statusText}`));
+  }
+
+  const json = await response.json();
+
+  if (!json.data || !json.data.sitemap || !json.data.sitemap.xml) {
+    res.statusCode = 404;
+    return next(new Error("Sitemap not found"));
+  }
+
+  res.statusCode = 200;
+  res.set({
+    "Content-Type": "text/xml",
+    "Cache-Control": `public, max-age=${config.SITEMAP_MAX_AGE}`
+  });
+  return res.end(json.data.sitemap.xml);
 }
 
 module.exports = { sitemapRoutesHandler };

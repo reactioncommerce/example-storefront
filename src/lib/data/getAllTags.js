@@ -1,4 +1,4 @@
-import primaryShopIdQuery from "containers/common-gql/primaryShopId.gql";
+import primaryShopQuery from "containers/common-gql/primaryShop.gql";
 import tagsQuery from "containers/tags/tags.gql";
 
 /**
@@ -27,11 +27,11 @@ async function getTags(client, variables) {
  * @returns {Object[]} Array of all tags
  */
 export default async function getAllTags(client) {
-  const { data: { primaryShopId } } = await client.query({ query: primaryShopIdQuery });
+  const { data: { primaryShop: shop } } = await client.query({ query: primaryShopQuery });
 
-  if (!primaryShopId) {
+  if (!shop._id) {
     throw new Error("primaryShopId query result was null");
   }
 
-  return getTags(client, { shopId: primaryShopId });
+  return getTags(client, { shopId: shop._id });
 }

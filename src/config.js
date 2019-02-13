@@ -44,7 +44,8 @@ if (process.env.IS_BUILDING_NEXTJS) {
     SEGMENT_ANALYTICS_WRITE_KEY: str({ default: "" }),
     SESSION_MAX_AGE_MS: num({ default: 86400000 }), // 24 hours
     SESSION_SECRET: str(),
-    STRIPE_PUBLIC_API_KEY: str({ default: "" })
+    STRIPE_PUBLIC_API_KEY: str({ default: "" }),
+    SITEMAP_MAX_AGE: num({ default: 43200 }) // 12 hours
   }, {
     // disable dotenv processing
     dotEnvPath: null,

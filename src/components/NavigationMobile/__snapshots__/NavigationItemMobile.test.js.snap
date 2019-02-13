@@ -5,7 +5,7 @@ exports[`renders with 1 level of tags 1`] = `null`;
 exports[`renders with 2 levels of tags 1`] = `
 Array [
   <div
-    className="MuiButtonBase-root-19 MuiListItem-root-7 SkNavigationItemMobile-listItemRoot-2 MuiListItem-default-10 MuiListItem-gutters-15 SkNavigationItemMobile-listItemGutters-5 MuiListItem-button-16"
+    className="MuiButtonBase-root-19 MuiListItem-root-7 MuiListItem-default-10 MuiListItem-gutters-15 MuiListItem-button-16"
     color="inherit"
     onBlur={[Function]}
     onClick={[Function]}
@@ -24,19 +24,13 @@ Array [
   >
     <div
       className="MuiListItemText-root-22"
-    >
-      <span
-        className="MuiTypography-root-28 MuiTypography-subheading-35 MuiListItemText-primary-25"
-      >
-        Tag Name
-      </span>
-    </div>
+    />
     <div
-      className="MuiListItemIcon-root-64"
+      className="MuiListItemIcon-root-28"
     >
       <svg
         aria-hidden="true"
-        className="MuiSvgIcon-root-65"
+        className="MuiSvgIcon-root-29"
         focusable="false"
         role="presentation"
         viewBox="0 0 24 24"
@@ -47,11 +41,11 @@ Array [
       </svg>
     </div>
     <span
-      className="MuiTouchRipple-root-83"
+      className="MuiTouchRipple-root-47"
     />
   </div>,
   <hr
-    className="MuiDivider-root-78"
+    className="MuiDivider-root-42"
   />,
 ]
 `;
@@ -59,7 +53,7 @@ Array [
 exports[`renders with 3 levels of tags 1`] = `
 Array [
   <div
-    className="MuiButtonBase-root-19 MuiListItem-root-7 SkNavigationItemMobile-listItemRoot-2 MuiListItem-default-10 MuiListItem-gutters-15 SkNavigationItemMobile-listItemGutters-5 MuiListItem-button-16"
+    className="MuiButtonBase-root-19 MuiListItem-root-7 MuiListItem-default-10 MuiListItem-gutters-15 MuiListItem-button-16"
     color="inherit"
     onBlur={[Function]}
     onClick={[Function]}
@@ -78,19 +72,13 @@ Array [
   >
     <div
       className="MuiListItemText-root-22"
-    >
-      <span
-        className="MuiTypography-root-28 MuiTypography-subheading-35 MuiListItemText-primary-25"
-      >
-        Tag Name
-      </span>
-    </div>
+    />
     <div
-      className="MuiListItemIcon-root-64"
+      className="MuiListItemIcon-root-28"
     >
       <svg
         aria-hidden="true"
-        className="MuiSvgIcon-root-65"
+        className="MuiSvgIcon-root-29"
         focusable="false"
         role="presentation"
         viewBox="0 0 24 24"
@@ -101,11 +89,11 @@ Array [
       </svg>
     </div>
     <span
-      className="MuiTouchRipple-root-83"
+      className="MuiTouchRipple-root-47"
     />
   </div>,
   <hr
-    className="MuiDivider-root-78"
+    className="MuiDivider-root-42"
   />,
 ]
 `;
