@@ -122,6 +122,10 @@ fragment OrderCommon on Order {
         amount
         displayAmount
       }
+      surchargeTotal {
+        amount
+        displayAmount
+      }
       taxTotal {
         amount
         displayAmount

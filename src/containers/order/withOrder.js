@@ -13,7 +13,7 @@ import { orderByReferenceId } from "./queries.gql";
  */
 export default function withOrder(Component) {
   @withApollo
-  @inject("cartStore", "routingStore")
+  @inject("cartStore", "primaryShopId", "routingStore")
   @observer
   class WithOrder extends React.Component {
     static propTypes = {

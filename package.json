@@ -10,6 +10,7 @@
     "url": "https://reactioncommerce.com"
   },
   "license": "GPL-3.0",
+  "sideEffects": false,
   "scripts": {
     "dev": "NODE_ENV=development node ./src/server.js",
     "build": "yarn run build-clean && NODE_ENV=production IS_BUILDING_NEXTJS=1 next build src",
@@ -31,7 +32,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@reactioncommerce/components": "^0.62.1",
+    "@reactioncommerce/components": "^0.63.0",
     "@reactioncommerce/components-context": "^1.2.0",
     "@segment/snippet": "^4.4.0",
     "apollo-cache-inmemory": "^1.4.2",
