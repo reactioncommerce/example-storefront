@@ -3,9 +3,10 @@
 exports[`renders with 1 level of tags 1`] = `
 <a
   className="MuiButtonBase-root-32 MuiButton-root-6 MuiButton-text-8 MuiButton-flat-11 MuiButton-colorInherit-27 SkNavigationItemDesktop-primaryNavItem-5"
-  href="/tag/undefined"
+  href="/nav-item"
   onBlur={[Function]}
   onClick={[Function]}
+  onContextMenu={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -30,9 +31,10 @@ exports[`renders with 1 level of tags 1`] = `
 exports[`renders with 2 levels of tags 1`] = `
 <a
   className="MuiButtonBase-root-32 MuiButton-root-6 MuiButton-text-8 MuiButton-flat-11 MuiButton-colorInherit-27 SkNavigationItemDesktop-primaryNavItem-5"
-  href="/tag/undefined"
+  href="/nav-item"
   onBlur={[Function]}
   onClick={[Function]}
+  onContextMenu={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -47,7 +49,19 @@ exports[`renders with 2 levels of tags 1`] = `
 >
   <span
     className="MuiButton-label-7"
-  />
+  >
+    <svg
+      aria-hidden="true"
+      className="MuiSvgIcon-root-42"
+      focusable="false"
+      role="presentation"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+      />
+    </svg>
+  </span>
   <span
     className="MuiTouchRipple-root-35"
   />
@@ -57,9 +71,10 @@ exports[`renders with 2 levels of tags 1`] = `
 exports[`renders with 3 levels of tags 1`] = `
 <a
   className="MuiButtonBase-root-32 MuiButton-root-6 MuiButton-text-8 MuiButton-flat-11 MuiButton-colorInherit-27 SkNavigationItemDesktop-primaryNavItem-5"
-  href="/tag/undefined"
+  href="/nav-item"
   onBlur={[Function]}
   onClick={[Function]}
+  onContextMenu={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -74,7 +89,19 @@ exports[`renders with 3 levels of tags 1`] = `
 >
   <span
     className="MuiButton-label-7"
-  />
+  >
+    <svg
+      aria-hidden="true"
+      className="MuiSvgIcon-root-42"
+      focusable="false"
+      role="presentation"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+      />
+    </svg>
+  </span>
   <span
     className="MuiTouchRipple-root-35"
   />

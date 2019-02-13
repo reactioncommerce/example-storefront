@@ -1,0 +1,29 @@
+#import "./navigationItemFieldsFragment.gql"
+
+fragment NavigationTreeFragment on NavigationTree {
+  _id
+  shopId
+  name
+  items {
+    navigationItem {
+      data {
+        ...NavigationItemFields
+      }
+    }
+    items {
+      navigationItem {
+        data {
+          ...NavigationItemFields
+        }
+      }
+      items {
+        navigationItem {
+          data {
+            ...NavigationItemFields
+          }
+        }
+      }
+    }
+  }
+}
+
