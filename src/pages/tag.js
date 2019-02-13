@@ -160,7 +160,7 @@ export default class TagGridPage extends Component {
           pageSize={pageSize}
           setPageSize={this.setPageSize}
           setSortBy={this.setSortBy}
-          sortBy={sortBy}
+          sortBy={"featured-desc"}
         />
       </Fragment>
     );

@@ -70,7 +70,7 @@ class UIStore {
    *
    * @type string
    */
-  @observable sortBy = "featured-desc";
+  @observable sortBy = "updatedAt-desc";
 
   /**
    * The sort by currency code
