@@ -124,7 +124,7 @@ export default class TagGridPage extends Component {
       uiStore
     } = this.props;
     const pageSize = routingStore.query && routingStore.query.limit ? parseInt(routingStore.query.limit, 10) : uiStore.pageSize;
-    const sortBy = routingStore.query && routingStore.query.sortby ? routingStore.query.sortby : uiStore.sortBy;
+    const sortBy = routingStore.query && routingStore.query.sortby ? routingStore.query.sortby : "featured-desc";
 
     if (!tag) {
       return (
@@ -160,7 +160,7 @@ export default class TagGridPage extends Component {
           pageSize={pageSize}
           setPageSize={this.setPageSize}
           setSortBy={this.setSortBy}
-          sortBy={"featured-desc"}
+          sortBy={sortBy}
         />
       </Fragment>
     );
