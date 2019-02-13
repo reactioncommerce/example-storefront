@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { shallow } from "enzyme";
+// import { shallow } from "enzyme";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import mockComponents from "../../../tests/mockComponents";
-import realComponents from "../../../tests/realComponents";
-import theme from "custom/reactionTheme";
+// import realComponents from "../../../tests/realComponents";
+// import theme from "custom/reactionTheme";
 import ProfileAddressBook from "./ProfileAddressBook";
 
 
