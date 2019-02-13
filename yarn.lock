@@ -951,7 +951,7 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.1":
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.3.1.tgz#574b03e8e8a9898eaf4a872a92ea20b7846f6f2a"
   integrity sha512-7jGW8ppV0ant637pIqAcFfQDDH1orEPGJb8aXfUozuCU3QqX7rX4DA8iwrbPrR1hcH0FTTHz47yQnk+bl5xHQA==
@@ -1160,11 +1160,12 @@
   dependencies:
     hoist-non-react-statics "^3.2.0"
 
-"@reactioncommerce/components@^0.62.1":
-  version "0.62.1"
-  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.62.1.tgz#48148c3ff9e2cabfe032cde6f159840722a3644e"
-  integrity sha512-0A5jPvuN5syOr+BRi8SKJIr5pFLdQgno1fK6xn0uArMGi2z5Sffbpv6Xp2HyYcUVSNvjb+xF89FvWIOi0eLZYw==
+"@reactioncommerce/components@^0.63.0":
+  version "0.63.0"
+  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.63.0.tgz#ae900ef9105363c7fd40c7cb04f9af112d5cd61e"
+  integrity sha512-eNvyjYA+uRJQwGOTuujMoGWGHJ2enZhnacInDCUM732ZcDFuwpRHpx8PTbrMxgBk7Ig4o86qRmqauoz3g30xTw==
   dependencies:
+    "@babel/runtime" "^7.3.1"
     "@material-ui/core" "^3.1.0"
     accounting-js "^1.1.1"
     lodash.debounce "^4.0.8"

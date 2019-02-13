@@ -320,10 +320,11 @@ export default class CheckoutActions extends Component {
     const [fulfillmentGroup] = fulfillmentGroups;
 
     // Order summary
-    const { fulfillmentTotal, itemTotal, taxTotal, total } = summary;
+    const { fulfillmentTotal, itemTotal, surchargeTotal, taxTotal, total } = summary;
     const checkoutSummary = {
       displayShipping: fulfillmentTotal && fulfillmentTotal.displayAmount,
       displaySubtotal: itemTotal.displayAmount,
+      displaySurcharge: surchargeTotal.displayAmount,
       displayTotal: total.displayAmount,
       displayTax: taxTotal && taxTotal.displayAmount,
       items

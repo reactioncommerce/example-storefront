@@ -62,6 +62,7 @@ class OrderSummary extends Component {
       const {
         fulfillmentTotal,
         itemTotal,
+        surchargeTotal,
         taxTotal,
         total
       } = fulfillmentGroup.summary;
@@ -72,6 +73,7 @@ class OrderSummary extends Component {
             isDense
             displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
             displaySubtotal={itemTotal && itemTotal.displayAmount}
+            displaySurcharge={surchargeTotal && surchargeTotal.displayAmount}
             displayTax={taxTotal && taxTotal.displayAmount}
             displayTotal={total && total.displayAmount}
           />

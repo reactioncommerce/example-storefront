@@ -36,6 +36,11 @@ module.exports = {
       enforce: "pre"
     });
 
+    webpackConfig.module.rules.push({
+      test: /\.mjs$/,
+      type: "javascript/auto"
+    });
+
     return webpackConfig;
   }
 };
