@@ -129,6 +129,7 @@
     ],
     "coverageDirectory": "reports/coverage",
     "reporters": [
+      "default",
       "jest-junit"
     ],
     "roots": [
