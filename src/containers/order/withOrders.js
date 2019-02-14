@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import withShop from "containers/shop/withShop";
 import { ordersByAccountId } from "./queries.gql";
 
 /**
@@ -14,8 +13,7 @@ import { ordersByAccountId } from "./queries.gql";
  */
 export default function withOrders(Component) {
   @withApollo
-  @withShop
-  @inject("authStore", "cartStore", "routingStore")
+  @inject("authStore", "cartStore", "primaryShopId", "routingStore")
   @observer
   class WithOrders extends React.Component {
     static propTypes = {
@@ -25,18 +23,15 @@ export default function withOrders(Component) {
       client: PropTypes.shape({
         mutate: PropTypes.func.isRequired
       }),
-      primaryShopId: PropTypes.string.isRequired,
-      shop: PropTypes.shape({
-        _id: PropTypes.string
-      }).isRequired
+      primaryShopId: PropTypes.string.isRequired
     }
 
     render() {
-      const { authStore, shop: { _id: shopId } } = this.props;
+      const { authStore, primaryShopId } = this.props;
 
       const variables = {
         accountId: authStore.accountId,
-        shopIds: [shopId]
+        shopIds: [primaryShopId]
       };
 
       return (
@@ -47,7 +42,7 @@ export default function withOrders(Component) {
             return (
               <Component
                 {...this.props}
-                isLoadingOrder={isLoading}
+                isLoadingOrders={isLoading}
                 orders={orders}
               />
             );
