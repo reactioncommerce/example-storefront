@@ -166,6 +166,10 @@ fragment OrderCommon on Order {
       code
     }
   }
+  status {
+    label
+    type
+  }
   totalItemQuantity
   updatedAt
 }
