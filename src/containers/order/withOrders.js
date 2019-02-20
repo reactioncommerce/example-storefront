@@ -25,7 +25,7 @@ export default function withOrders(Component) {
       }),
       primaryShopId: PropTypes.string.isRequired,
       uiStore: PropTypes.shape({
-        languange: PropTypes.string.isRequired
+        language: PropTypes.string.isRequired
       })
     }
 

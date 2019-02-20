@@ -33,7 +33,7 @@ export default function withOrder(Component) {
         })
       }),
       uiStore: PropTypes.shape({
-        languange: PropTypes.string.isRequired
+        language: PropTypes.string.isRequired
       })
     }
 
