@@ -1,14 +1,14 @@
 #import "./fragments.gql"
 
 # Get an order
-query orderByReferenceId($id: ID!, $shopId: ID!, $token: String) {
+query orderByReferenceId($id: ID!, $language: String!, $shopId: ID!, $token: String) {
   order: orderByReferenceId(id: $id, shopId: $shopId, token: $token) {
     ...OrderQueryFragment
   }
 }
 
 # Get orders by accountId
-query ordersByAccountId($accountId: ID!, $shopIds: [ID]) {
+query ordersByAccountId($accountId: ID!, $language: String!, $shopIds: [ID]) {
   orders: ordersByAccountId(accountId: $accountId, shopIds: $shopIds) {
     totalCount
     pageInfo {

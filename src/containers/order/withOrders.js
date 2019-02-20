@@ -13,7 +13,7 @@ import { ordersByAccountId } from "./queries.gql";
  */
 export default function withOrders(Component) {
   @withApollo
-  @inject("authStore", "cartStore", "primaryShopId", "routingStore")
+  @inject("authStore", "cartStore", "primaryShopId", "routingStore", "uiStore")
   @observer
   class WithOrders extends React.Component {
     static propTypes = {
@@ -23,14 +23,18 @@ export default function withOrders(Component) {
       client: PropTypes.shape({
         mutate: PropTypes.func.isRequired
       }),
-      primaryShopId: PropTypes.string.isRequired
+      primaryShopId: PropTypes.string.isRequired,
+      uiStore: PropTypes.shape({
+        languange: PropTypes.string.isRequired
+      })
     }
 
     render() {
-      const { authStore, primaryShopId } = this.props;
+      const { authStore, primaryShopId, uiStore } = this.props;
 
       const variables = {
         accountId: authStore.accountId,
+        language: uiStore.language,
         shopIds: [primaryShopId]
       };
 
