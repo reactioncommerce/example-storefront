@@ -31,6 +31,7 @@ class Profile extends Component {
     onAddressAdded: PropTypes.func.isRequired,
     onAddressDeleted: PropTypes.func.isRequired,
     onAddressEdited: PropTypes.func.isRequired,
+    router: PropTypes.object.isRequired,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -80,7 +81,7 @@ class Profile extends Component {
         route: "/profile/orders",
         label: "Orders",
         isSelected: asPath === "/profile/orders"
-      },
+      }
       // {
       //   href: "/profile/payments",
       //   route: "/profile/payments",
@@ -110,7 +111,7 @@ class Profile extends Component {
         />
         <section>
           <Grid container spacing={24}>
-            <Grid item xs={0} md={1} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
+            <Grid item xs={false} md={1} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
             <Grid item xs={12} md={3}>
               {this.renderAccountProfileInfo()}
               {this.renderNavigation()}
@@ -118,7 +119,7 @@ class Profile extends Component {
             <Grid item xs={12} md={7}>
               {this.renderMainContent()}
             </Grid>
-            <Grid item xs={0} md={1} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
+            <Grid item xs={false} md={1} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
           </Grid>
         </section>
       </Fragment>
