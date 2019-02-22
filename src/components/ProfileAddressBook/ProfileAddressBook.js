@@ -10,7 +10,7 @@ import relayConnectionToArray from "lib/utils/relayConnectionToArray";
 import ErrorPage from "../../pages/_error";
 
 const styles = (theme) => ({
-  accountProfileInfoContainer: {
+  profileAddressBookTitle: {
     marginBottom: theme.spacing.unit * 4
   }
 });
@@ -61,13 +61,15 @@ class ProfileAddressBook extends Component {
   }
 
   render() {
-    const { authStore: { account }, shop } = this.props;
+    const { authStore: { account }, classes, shop } = this.props;
 
     if (account && !account._id) return <ErrorPage shop={shop} subtitle="Not Found" />;
 
     return (
-      <Grid item xs={12} md={12}>
-        <Typography variant="title">Address Book</Typography>
+      <Grid className={classes.profileAddressBookContainer} container>
+        <Grid className={classes.profileAddressBookTitle} item xs={12} md={12}>
+          <Typography variant="title">Address Book</Typography>
+        </Grid>
         {this.renderAddressBook()}
       </Grid>
     );
