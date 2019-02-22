@@ -85,7 +85,7 @@ class OrderCardFulfillmentGroup extends Component {
   }
 
   onTrackShipmentButtonClick() {
-    console.log('"Track Shipment" button has been clicked.'); // TODO: EK - How are we going to track orders if we have info?
+    // TODO: What do we do to track a shipment? Link to a specific provider website?
   }
 
   render() {

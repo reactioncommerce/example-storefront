@@ -55,6 +55,9 @@ export default class CheckoutActions extends Component {
       onSetShippingAddress: PropTypes.func.isRequired
     }),
     clearAuthenticatedUsersCart: PropTypes.func.isRequired,
+    client: PropTypes.shape({
+      mutate: PropTypes.func.isRequired
+    }),
     orderEmailAddress: PropTypes.string.isRequired,
     paymentMethods: PropTypes.array
   };

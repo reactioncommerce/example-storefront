@@ -43,7 +43,12 @@ class OrderCard extends Component {
     return (
       <Fragment>
         {fulfillmentGroups.map((fulfillmentGroup, index) => (
-          <OrderCardFulfillmentGroup key={`${index}`} fulfillmentGroup={fulfillmentGroup} currentGroupCount={index + 1} totalGroupsCount={fulfillmentGroups.length} />
+          <OrderCardFulfillmentGroup
+            key={`${index}`}
+            fulfillmentGroup={fulfillmentGroup}
+            currentGroupCount={index + 1}
+            totalGroupsCount={fulfillmentGroups.length}
+          />
         ))}
       </Fragment>
     );
@@ -56,10 +61,8 @@ class OrderCard extends Component {
   }
 
   renderSummary() {
-    const { order } = this.props;
-    const orderSummary = order.fulfillmentGroups[0].summary;
-
-    return <OrderCardSummary summary={orderSummary} />;
+    const { order: { summary } } = this.props;
+    return <OrderCardSummary summary={summary} />;
   }
 
   render() {

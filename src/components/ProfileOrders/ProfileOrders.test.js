@@ -10,7 +10,6 @@ import components from "custom/componentsContext";
 import ProfileOrders from "./ProfileOrders";
 
 
-
 const orders = [
   {
     account: {
@@ -58,7 +57,13 @@ test("basic snapshot", () => {
   const component = renderer.create((
     <MockedProvider mocks={mocks} addTypename={false}>
       <ComponentsProvider value={components}>
-        <Provider authStore={authStore} cartStore={cartStore} primaryShopId={"123"} routingStore={routingStore} uiStore={uiStore}>
+        <Provider
+          authStore={authStore}
+          cartStore={cartStore}
+          primaryShopId={"123"}
+          routingStore={routingStore}
+          uiStore={uiStore}
+        >
           <MuiThemeProvider theme={theme}>
             <ProfileOrders
               orders={orders}

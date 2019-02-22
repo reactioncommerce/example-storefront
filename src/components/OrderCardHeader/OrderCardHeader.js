@@ -193,17 +193,32 @@ class OrderCardHeader extends Component {
             <Grid container>
               <Grid xs={12} md={6}>
                 <Grid className={classes.orderCardInfoSection} xs={12} md={12}>
-                  <Typography variant="caption" className={classnames(classes.orderCardInfoTextBold, classes.orderCardInfoHeader)}>Payment Method{payments.length !== 1 ? "s" : null}:</Typography>
+                  <Typography
+                    variant="caption"
+                    className={classnames(classes.orderCardInfoTextBold, classes.orderCardInfoHeader)}
+                  >
+                    Payment Method{payments.length !== 1 ? "s" : null}:
+                  </Typography>
                   {this.renderOrderPayments()}
                 </Grid>
                 <Grid className={classes.orderCardInfoSection} xs={12} md={12}>
-                  <Typography variant="caption" className={classnames(classes.orderCardInfoTextBold, classes.orderCardInfoHeader)}>Shipping Method{fulfillmentGroups.length !== 1 ? "s" : null}:</Typography>
+                  <Typography
+                    variant="caption"
+                    className={classnames(classes.orderCardInfoTextBold, classes.orderCardInfoHeader)}
+                  >
+                    Shipping Method{fulfillmentGroups.length !== 1 ? "s" : null}:
+                  </Typography>
                   {this.renderOrderShipments()}
                 </Grid>
               </Grid>
               <Grid xs={12} md={6}>
                 <Grid xs={12} md={12}>
-                  <Typography variant="caption" className={classnames(classes.orderCardInfoTextBold, classes.orderCardInfoHeader)}>Shipping Address:</Typography>
+                  <Typography
+                    variant="caption"
+                    className={classnames(classes.orderCardInfoTextBold, classes.orderCardInfoHeader)}
+                  >
+                    Shipping Address:
+                  </Typography>
                   <Address address={shippingAddress} className={classes.orderAddressText} />
                 </Grid>
               </Grid>
