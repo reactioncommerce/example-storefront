@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+<div
+  className="Error-root-5"
+>
+  <p
+    className="MuiTypography-root-8 MuiTypography-body1-17 MuiTypography-paragraph-36 Error-errorMessage-6"
+  >
+    Sorry! We couldn't find what you're looking for.
+  </p>
+  <p
+    className="MuiTypography-root-8 MuiTypography-body1-17 Error-errorLink-7"
+  >
+    <a
+      className="SkLink-anchor-44"
+      href="/"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="link"
+      tabIndex={0}
+    >
+      Home
+    </a>
+  </p>
+</div>
+`;
