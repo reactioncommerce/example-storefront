@@ -8,8 +8,8 @@ query orderByReferenceId($id: ID!, $language: String!, $shopId: ID!, $token: Str
 }
 
 # Get orders by accountId
-query ordersByAccountId($accountId: ID!, $language: String!, $shopIds: [ID]) {
-  orders: ordersByAccountId(accountId: $accountId, shopIds: $shopIds) {
+query ordersByAccountId($accountId: ID!, $language: String!, $orderStatus: String! = "all", $shopIds: [ID]) {
+  orders: ordersByAccountId(accountId: $accountId, orderStatus: $orderStatus, shopIds: $shopIds) {
     totalCount
     pageInfo {
       endCursor

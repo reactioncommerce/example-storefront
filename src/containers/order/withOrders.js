@@ -25,7 +25,10 @@ export default function withOrders(Component) {
       }),
       primaryShopId: PropTypes.string.isRequired,
       uiStore: PropTypes.shape({
-        language: PropTypes.string.isRequired
+        language: PropTypes.string.isRequired,
+        accountProfileOptions: PropTypes.shape({
+          orderStatusQuery: PropTypes.string.isRequired
+        })
       })
     }
 
@@ -35,6 +38,7 @@ export default function withOrders(Component) {
       const variables = {
         accountId: authStore.accountId,
         language: uiStore.language,
+        orderStatus: uiStore.accountProfileOptions.orderStatusQuery,
         shopIds: [primaryShopId]
       };
 

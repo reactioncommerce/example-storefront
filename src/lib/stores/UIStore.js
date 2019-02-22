@@ -7,6 +7,11 @@ import { PAGE_SIZES, inPageSizes } from "lib/utils/pageSizes";
  */
 
 class UIStore {
+  @observable accountProfileOptions = {
+    // The workflow status of order to query (`all`, `open`, `completed`)
+    orderStatusQuery: "all"
+  };
+
   /**
    * Is the cart drawer open or closed
    *
@@ -155,6 +160,10 @@ class UIStore {
 
   @action setSortBy = (sortBy) => {
     this.sortBy = sortBy;
+  }
+
+  @action setAccountProfileOrderStatusQueryVariable(orderType) {
+    this.accountProfileOptions.orderStatusQuery = orderType;
   }
 }
 
