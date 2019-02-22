@@ -1,37 +1,33 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import CartItems from "components/CartItems";
 
-import Button from "@material-ui/core/Button";
-
 const styles = (theme) => ({
-  trackShipmentButton: {
-    textTransform: "none"
-  },
-
-
   fulfillmentGroup: {
-    // border: theme.palette.borders.default
   },
-  fulfillmentDetails: {
+  fulfillmentGroupDetails: {
     padding: theme.spacing.unit * 2
   },
-  header: {
+  fulfillmentGroupCount: theme.typography.subtitle2,
+  fulfillmentGroupHeader: {
     borderBottom: theme.palette.borders.default,
     borderTop: theme.palette.borders.default,
     padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
   },
-  headerRightColumn: {
+  fulfillmentGroupHeaderRightColumn: {
     textAlign: "right"
   },
-  subtitle2: theme.typography.subtitle2
+  trackShipmentButton: {
+    textTransform: "none"
+  }
 });
 
-@withStyles(styles, { name: "SkOrderFulfillmentGroup" })
-class OrderFulfillmentGroup extends Component {
+@withStyles(styles)
+class OrderCardFulfillmentGroup extends Component {
   static propTypes = {
     classes: PropTypes.object,
     currentGroupCount: PropTypes.number,
@@ -71,23 +67,17 @@ class OrderFulfillmentGroup extends Component {
   }
 
   renderItems() {
-    const { classes, fulfillmentGroup, hasMoreCartItems, loadMoreCartItems } = this.props;
+    const { classes, fulfillmentGroup } = this.props;
 
     if (fulfillmentGroup && Array.isArray(fulfillmentGroup.items.nodes)) {
       return (
-        <div className={classes.fulfillmentDetails}>
-          <Grid item xs={12}>
-            <CartItems
-              isMiniCart
-              isReadOnly
-              hasMoreCartItems={hasMoreCartItems}
-              onLoadMoreCartItems={loadMoreCartItems}
-              items={fulfillmentGroup.items.nodes}
-              onChangeCartItemQuantity={this.handleItemQuantityChange}
-              onRemoveItemFromCart={this.handleRemoveItem}
-            />
-          </Grid>
-        </div>
+        <Grid className={classes.fulfillmentGroupDetails} item xs={12} md={12}>
+          <CartItems
+            isMiniCart
+            isReadOnly
+            items={fulfillmentGroup.items.nodes}
+          />
+        </Grid>
       );
     }
 
@@ -95,7 +85,7 @@ class OrderFulfillmentGroup extends Component {
   }
 
   onTrackShipmentButtonClick() {
-    console.log("Track this shipment somehow.");
+    console.log('"Track Shipment" button has been clicked.'); // TODO: EK - How are we going to track orders if we have info?
   }
 
   render() {
@@ -104,7 +94,7 @@ class OrderFulfillmentGroup extends Component {
     return (
       <Fragment>
         <section className={classes.fulfillmentGroup}>
-          <header className={classes.header}>
+          <header className={classes.fulfillmentGroupHeader}>
             <Grid
               container
               direction="row"
@@ -113,9 +103,9 @@ class OrderFulfillmentGroup extends Component {
               spacing={24}
             >
               <Grid item xs={6}>
-                <Typography className={classes.subtitle2} variant="subheading">Shipment {currentGroupCount} of {totalGroupsCount}</Typography>
+                <Typography className={classes.fulfillmentGroupCount} variant="subheading">Shipment {currentGroupCount} of {totalGroupsCount}</Typography>
               </Grid>
-              <Grid item xs={6} className={classes.headerRightColumn}>
+              <Grid item xs={6} className={classes.fulfillmentGroupHeaderRightColumn}>
                 {fulfillmentGroup.tracking ?
                   <Button
                     className={classes.trackShipmentButton}
@@ -145,4 +135,4 @@ class OrderFulfillmentGroup extends Component {
   }
 }
 
-export default OrderFulfillmentGroup;
+export default OrderCardFulfillmentGroup;

@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 import { format } from "date-fns";
 import { withStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
@@ -12,6 +13,9 @@ import Address from "@reactioncommerce/components/Address/v1";
 
 const styles = (theme) => ({
   orderCardHeader: {},
+  orderCardInfoSection: {
+    marginBottom: theme.spacing.unit * 3
+  },
   orderCardFulfillmentGroups: {
     marginBottom: theme.spacing.unit * 3
   },
@@ -22,10 +26,6 @@ const styles = (theme) => ({
     paddingRight: "16px",
     paddingTop: theme.spacing.unit
   },
-
-
-
-
 
   fulfillmentGroups: {},
   flexContainer: {
@@ -52,23 +52,20 @@ const styles = (theme) => ({
     color: theme.palette.reaction.black65,
     fontSize: "14px"
   },
-  orderInfoText: {
+  orderCardInfoText: {
     color: theme.palette.reaction.coolGrey500
   },
-  orderInfoTextDetails: {
+  orderCardInfoTextDetails: {
     color: theme.palette.reaction.coolGrey500,
     textAlign: "right"
   },
-  orderInfoTextBold: {
+  orderCardInfoTextBold: {
     color: theme.palette.reaction.coolGrey500,
     fontWeight: theme.typography.fontWeightBold
   },
-
-
-
-
-
-
+  orderCardInfoHeader: {
+    marginBottom: theme.spacing.unit * 1.5
+  },
 
 
   // Order status buttons
@@ -78,7 +75,7 @@ const styles = (theme) => ({
     fontWeight: "800"
   },
   orderStatusCanceled: {
-    backgroundColor: `${theme.palette.reaction.red}`,
+    backgroundColor: `${theme.palette.reaction.red300}`,
     color: "white",
     fontWeight: "800"
   },
@@ -115,9 +112,6 @@ class OrderCardHeader extends Component {
     this.setState({ isHeaderOpen: !this.state.isHeaderOpen });
   }
 
-
-
-
   renderOrderPayments() {
     const { order: { payments } } = this.props;
 
@@ -144,7 +138,7 @@ class OrderCardHeader extends Component {
     const { classes, order: { status } } = this.props;
     let classess;
 
-    if (status.type === "canceled") {
+    if (status.status === "coreOrderWorkflow/canceled") {
       classess = classes.orderStatusCanceled;
     }
 
@@ -152,21 +146,16 @@ class OrderCardHeader extends Component {
       classess = classes.orderStatusNew;
     }
 
-    if (status.type === "processing") {
+    if (status.status === "coreOrderWorkflow/processing") {
       classess = classes.orderStatusProcessing;
     }
 
-    if (status.type === "shipped") {
+    if (status.status === "coreOrderWorkflow/completed") {
       classess = classes.orderStatusShipped;
     }
 
     return <Chip label={status.label} className={classess} />;
   }
-
-
-
-
-
 
   render() {
     const { classes, order: { createdAt, fulfillmentGroups, payments, referenceId } } = this.props;
@@ -183,18 +172,18 @@ class OrderCardHeader extends Component {
             {this.renderOrderStatus()}
           </Grid>
           <Grid xs={12} md={3}>
-            <Typography variant="caption" className={classes.orderInfoText}>Date:</Typography>
-            <Typography variant="caption" className={classes.orderInfoTextBold}>{orderDate}</Typography>
+            <Typography variant="caption" className={classes.orderCardInfoText}>Date:</Typography>
+            <Typography variant="caption" className={classes.orderCardInfoTextBold}>{orderDate}</Typography>
           </Grid>
           <Grid xs={12} md={3}>
-            <Typography variant="caption" className={classes.orderInfoText}>Order ID:</Typography>
-            <Typography variant="caption" className={classes.orderInfoTextBold}>{referenceId}</Typography>
+            <Typography variant="caption" className={classes.orderCardInfoText}>Order ID:</Typography>
+            <Typography variant="caption" className={classes.orderCardInfoTextBold}>{referenceId}</Typography>
           </Grid>
           <Grid xs={12} md={3}>
-            <Typography variant="caption" className={classes.orderInfoTextDetails}>
+            <Typography variant="caption" className={classes.orderCardInfoTextDetails}>
               Order details
               <IconButton color="inherit" onClick={this.toggleHeader}>
-                {this.state.isHeaderOpen ? <ChevronDownIcon /> : <ChevronUpIcon />}
+                {this.state.isHeaderOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
               </IconButton>
             </Typography>
           </Grid>
@@ -203,14 +192,20 @@ class OrderCardHeader extends Component {
           <section className={classes.expandedProfileOrderHeader}>
             <Grid container>
               <Grid xs={12} md={6}>
-                <Typography variant="caption" className={classes.orderInfoTextBold}>Payment Method{payments.length !== 1 ? "s" : null}:</Typography>
-                {this.renderOrderPayments()}
-                <Typography variant="caption" className={classes.orderInfoTextBold}>Shipping Method{fulfillmentGroups.length !== 1 ? "s" : null}:</Typography>
-                {this.renderOrderShipments()}
+                <Grid className={classes.orderCardInfoSection} xs={12} md={12}>
+                  <Typography variant="caption" className={classnames(classes.orderCardInfoTextBold, classes.orderCardInfoHeader)}>Payment Method{payments.length !== 1 ? "s" : null}:</Typography>
+                  {this.renderOrderPayments()}
+                </Grid>
+                <Grid className={classes.orderCardInfoSection} xs={12} md={12}>
+                  <Typography variant="caption" className={classnames(classes.orderCardInfoTextBold, classes.orderCardInfoHeader)}>Shipping Method{fulfillmentGroups.length !== 1 ? "s" : null}:</Typography>
+                  {this.renderOrderShipments()}
+                </Grid>
               </Grid>
               <Grid xs={12} md={6}>
-                <Typography variant="caption" className={classes.orderInfoTextBold}>Shipping Address:</Typography>
-                <Address address={shippingAddress} className={classes.orderAddressText} />
+                <Grid xs={12} md={12}>
+                  <Typography variant="caption" className={classnames(classes.orderCardInfoTextBold, classes.orderCardInfoHeader)}>Shipping Address:</Typography>
+                  <Address address={shippingAddress} className={classes.orderAddressText} />
+                </Grid>
               </Grid>
             </Grid>
           </section>

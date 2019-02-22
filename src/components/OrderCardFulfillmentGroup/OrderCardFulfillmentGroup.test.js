@@ -4,7 +4,7 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "custom/reactionTheme";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
 import components from "custom/componentsContext";
-import OrderFulfillmentGroup from "./OrderFulfillmentGroup";
+import OrderCardFulfillmentGroup from "./OrderCardFulfillmentGroup";
 
 const testFulfillmentGroup = {
   summary: {
@@ -76,7 +76,7 @@ test("basic snapshot", () => {
   const component = renderer.create((
     <ComponentsProvider value={components}>
       <MuiThemeProvider theme={theme}>
-        <OrderFulfillmentGroup
+        <OrderCardFulfillmentGroup
           fulfillmentGroup={testFulfillmentGroup}
           payments={testPayments}
         />
