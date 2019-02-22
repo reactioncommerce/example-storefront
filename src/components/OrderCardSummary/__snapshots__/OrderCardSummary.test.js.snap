@@ -1,7 +1,161 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`basic snapshot 1`] = `
-<div
-  className="SkOrderCardSummary-summary-1"
-/>
+exports[`basic snapshot of an order summary 1`] = `
+.c0 {
+  width: 100%;
+  border-spacing: 0;
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.c1 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .03em;
+  -moz-letter-spacing: .03em;
+  -ms-letter-spacing: .03em;
+  letter-spacing: .03em;
+  line-height: 1;
+  border-top-color: #e6e6e6;
+  border-top-style: solid;
+  border-top-width: 0;
+  padding-bottom: 8px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 8px;
+  text-align: left;
+}
+
+.c3 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .03em;
+  -moz-letter-spacing: .03em;
+  -ms-letter-spacing: .03em;
+  letter-spacing: .03em;
+  line-height: 1;
+  border-top-color: #e6e6e6;
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding-bottom: 8px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 8px;
+  text-align: left;
+}
+
+.c2 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .03em;
+  -moz-letter-spacing: .03em;
+  -ms-letter-spacing: .03em;
+  letter-spacing: .03em;
+  line-height: 1;
+  text-align: right;
+}
+
+.c4 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 700;
+  -webkit-letter-spacing: .03em;
+  -moz-letter-spacing: .03em;
+  -ms-letter-spacing: .03em;
+  letter-spacing: .03em;
+  line-height: 1;
+}
+
+<table
+  className="c0"
+>
+  <tbody>
+    <tr>
+      <td
+        className="c1"
+      >
+        Item total
+      </td>
+      <td
+        className="c2 c1"
+      >
+        $6,000.00
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="c1"
+      >
+        Shipping
+      </td>
+      <td
+        className="c2 c1"
+      >
+        $2.99
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="c1"
+      >
+        Surcharge
+      </td>
+      <td
+        className="c2 c1"
+      >
+        $0.00
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="c1"
+      >
+        Tax
+      </td>
+      <td
+        className="c2 c1"
+      >
+        $0.00
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="c3"
+      >
+        Order total
+      </td>
+      <td
+        className="c2 c3"
+      >
+        <span
+          className="c4"
+        >
+          $6,002.99
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
 `;
