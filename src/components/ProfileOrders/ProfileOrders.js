@@ -47,9 +47,8 @@ class ProfileOrders extends Component {
   };
 
   handleOrderStatusTypeChange = (event) => {
-    this.props.uiStore.setAccountProfileOrderStatusQueryVariable(event.target.value);
-
-    this.setState({ [event.target.name]: event.target.value });
+    const { uiStore } = this.props;
+    uiStore.setAccountProfileOrderStatusQueryVariable(event.target.value);
   };
 
   renderOrderTypeSelect() {
