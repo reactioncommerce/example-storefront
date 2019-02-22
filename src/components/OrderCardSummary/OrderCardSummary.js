@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
-import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import CartSummary from "@reactioncommerce/components/CartSummary/v1";
 import styled from "styled-components";
 
 // Use styled components to adjust the styling of the
 // cart summary component to fit inside a bordered box
+// TODO: EK - Get padding on order total
 export const OrderCardSummaryContainer = styled.div`
   table td {
     font-size: 14px;
@@ -20,44 +18,34 @@ export const OrderCardSummaryContainer = styled.div`
 
 
 const styles = (theme) => ({
-  summary: {
-  },
-  header: {
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
-  },
-  title: {
-    flex: "1 0 auto"
-  },
-  paymentMethod: {
-    flex: "2 0 auto"
-  },
-  subtitle2: theme.typography.subtitle2
+  orderCardSummary: {}
 });
 
-@withStyles(styles, { name: "SkOrderCardSummary" })
+@withStyles(styles)
 class OrderCardSummary extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    fulfillmentGroup: PropTypes.shape({
-      summary: PropTypes.shape({
-        itemTotal: PropTypes.shape({
-          displayAmount: PropTypes.string
-        }),
-        taxTotal: PropTypes.shape({
-          displayAmount: PropTypes.string
-        })
-      })
-    }),
-    payments: PropTypes.arrayOf(PropTypes.shape({
-      amount: PropTypes.shape({
-        displayAmount: PropTypes.string.isRequired
+    summary: PropTypes.shape({
+      fulfillmentTotal: PropTypes.shape({
+        displayAmount: PropTypes.string
       }),
-      displayName: PropTypes.string.isRequired
-    }))
+      itemTotal: PropTypes.shape({
+        displayAmount: PropTypes.string
+      }),
+      surchargeTotal: PropTypes.shape({
+        displayAmount: PropTypes.string
+      }),
+      taxTotal: PropTypes.shape({
+        displayAmount: PropTypes.string
+      }),
+      total: PropTypes.shape({
+        displayAmount: PropTypes.string
+      })
+    })
   }
 
-  renderSummary() {
-    const { summary } = this.props;
+  render() {
+    const { classes, summary } = this.props;
 
     if (summary) {
       const {
@@ -69,7 +57,7 @@ class OrderCardSummary extends Component {
       } = summary;
 
       return (
-        <OrderCardSummaryContainer>
+        <OrderCardSummaryContainer className={classes.orderCardSummary}>
           <CartSummary
             isDense
             displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
@@ -83,16 +71,6 @@ class OrderCardSummary extends Component {
     }
 
     return null;
-  }
-
-  render() {
-    const { classes } = this.props;
-
-    return (
-      <div className={classes.summary}>
-        {this.renderSummary()}
-      </div>
-    );
   }
 }
 
