@@ -14,24 +14,14 @@ const styles = (theme) => ({
     marginBottom: theme.spacing.unit * 2.5
   },
   orderCardHeader: {},
-  orderCardFulfillmentGroups: {
-    marginBottom: theme.spacing.unit * 3
-  },
+  orderCardFulfillmentGroups: {},
   orderCardSummary: {
     borderTop: theme.palette.borders.default,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: "16px",
-    paddingRight: "16px",
-    paddingTop: theme.spacing.unit
-  },
-
-
-
-  flexContainer: {
-    display: "flex",
-    flexDirection: "column"
-  },
-
+    paddingBottom: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 2
+  }
 });
 
 @withStyles(styles, { withTheme: true })
@@ -48,16 +38,14 @@ class OrderCard extends Component {
   };
 
   renderFulfillmentGroups() {
-    const { classes, order: { fulfillmentGroups } } = this.props;
-
-    fulfillmentGroups.push(fulfillmentGroups[0]);
+    const { order: { fulfillmentGroups } } = this.props;
 
     return (
-      <div className={classes.flexContainer}>
+      <Fragment>
         {fulfillmentGroups.map((fulfillmentGroup, index) => (
           <OrderCardFulfillmentGroup key={`${index}`} fulfillmentGroup={fulfillmentGroup} currentGroupCount={index + 1} totalGroupsCount={fulfillmentGroups.length} />
         ))}
-      </div>
+      </Fragment>
     );
   }
 
@@ -75,9 +63,7 @@ class OrderCard extends Component {
   }
 
   render() {
-    const { classes, isLoadingOrders, order } = this.props;
-
-    console.log(" ---------- order", order.referenceId, " ---------- ", order);
+    const { classes, isLoadingOrders } = this.props;
 
     if (isLoadingOrders) return <PageLoading message="Loading order details..." />;
 
