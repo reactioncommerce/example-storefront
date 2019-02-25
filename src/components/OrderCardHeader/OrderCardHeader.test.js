@@ -4,81 +4,111 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "custom/reactionTheme";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
 import components from "custom/componentsContext";
-import OrderCard from "./OrderCard";
+import OrderCardHeader from "./OrderCardHeader";
 
-const testFulfillmentGroup = {
-  summary: {
-    itemTotal: {
-      displayAmount: "$118"
-    },
-    total: {
-      displayAmount: "$118"
-    }
-  },
-  items: {
-    nodes: [
-      {
-        _id: "123",
-        attributes: [{ label: "Color", value: "Red" }, { label: "Size", value: "Medium" }],
-        compareAtPrice: {
-          displayAmount: "$45.00"
-        },
-        currentQuantity: 3,
-        imageURLs: {
-          small: "//placehold.it/150",
-          thumbnail: "//placehold.it/100"
-        },
-        isLowQuantity: true,
-        price: {
-          displayAmount: "$20.00"
-        },
-        productSlug: "product-slug",
-        productVendor: "Patagonia",
-        title: "A Great Product",
-        quantity: 2
+const order = {
+  createdAt: "2018-03-21T21:36:36.307Z",
+  fulfillmentGroups: [
+    {
+      data: {
+        shippingAddress: {
+          address1: "2110 Main Street",
+          address2: null,
+          city: "Santa Monica",
+          company: null,
+          country: "US",
+          fullName: "Reaction Commerce",
+          isCommercial: false,
+          isShippingDefault: false,
+          phone: "3105556789",
+          postal: "90405",
+          region: "CA"
+        }
       },
-      {
-        _id: "456",
-        attributes: [{ label: "Color", value: "Black" }, { label: "Size", value: "10" }],
-        currentQuantity: 500,
-        imageURLs: {
-          small: "//placehold.it/150",
-          thumbnail: "//placehold.it/100"
-        },
-        isLowQuantity: false,
-        price: {
-          displayAmount: "$78.00"
-        },
-        productVendor: "Nike",
-        productSlug: "product-slug",
-        title: "Another Great Product",
-        quantity: 1
+      selectedFulfillmentOption: {
+        fulfillmentMethod: {
+          carrier: "Carier Name",
+          displayname: "Display Name"
+        }
       }
-    ]
-  },
-  selectedFulfillmentOption: {
-    fulfillmentMethod: {
-      displayName: "Free Shipping",
-      group: "Ground"
     }
-  }
+  ],
+  payments: [
+    {
+      amount: { displayAmount: "$6,002.99" },
+      billingAddress: null,
+      displayName: "Visa 1111",
+      method: { name: "stripe_card" }
+    }
+  ],
+  referenceId: "abcdef",
+  status: "new"
 };
 
-const testPayments = [{
-  _id: "TEST",
-  amount: {
-    displayAmount: "$10.00"
-  },
-  displayName: "Example Payment"
-}];
+// const testFulfillmentGroup = {
+//   summary: {
+//     itemTotal: {
+//       displayAmount: "$118"
+//     },
+//     total: {
+//       displayAmount: "$118"
+//     }
+//   },
+//   items: {
+//     nodes: [
+//       {
+//         _id: "123",
+//         attributes: [{ label: "Color", value: "Red" }, { label: "Size", value: "Medium" }],
+//         compareAtPrice: {
+//           displayAmount: "$45.00"
+//         },
+//         currentQuantity: 3,
+//         imageURLs: {
+//           small: "//placehold.it/150",
+//           thumbnail: "//placehold.it/100"
+//         },
+//         isLowQuantity: true,
+//         price: {
+//           displayAmount: "$20.00"
+//         },
+//         productSlug: "product-slug",
+//         productVendor: "Patagonia",
+//         title: "A Great Product",
+//         quantity: 2
+//       },
+//       {
+//         _id: "456",
+//         attributes: [{ label: "Color", value: "Black" }, { label: "Size", value: "10" }],
+//         currentQuantity: 500,
+//         imageURLs: {
+//           small: "//placehold.it/150",
+//           thumbnail: "//placehold.it/100"
+//         },
+//         isLowQuantity: false,
+//         price: {
+//           displayAmount: "$78.00"
+//         },
+//         productVendor: "Nike",
+//         productSlug: "product-slug",
+//         title: "Another Great Product",
+//         quantity: 1
+//       }
+//     ]
+//   },
+//   selectedFulfillmentOption: {
+//     fulfillmentMethod: {
+//       displayName: "Free Shipping",
+//       group: "Ground"
+//     }
+//   }
+// };
 
 test("basic snapshot", () => {
   const component = renderer.create((
     <ComponentsProvider value={components}>
       <MuiThemeProvider theme={theme}>
-        <OrderCard
-          fulfillmentGroup={testFulfillmentGroup}
-          payments={testPayments}
+        <OrderCardHeader
+          order={order}
         />
       </MuiThemeProvider>
     </ComponentsProvider>

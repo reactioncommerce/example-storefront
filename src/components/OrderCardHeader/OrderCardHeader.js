@@ -12,62 +12,44 @@ import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 import Address from "@reactioncommerce/components/Address/v1";
 
 const styles = (theme) => ({
-  orderCardHeader: {},
-  orderCardInfoSection: {
-    marginBottom: theme.spacing.unit * 3
-  },
-  orderCardFulfillmentGroups: {
-    marginBottom: theme.spacing.unit * 3
-  },
-  orderCardSummary: {
-    borderTop: theme.palette.borders.default,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: "16px",
-    paddingRight: "16px",
-    paddingTop: theme.spacing.unit
-  },
-
-  fulfillmentGroups: {},
-  flexContainer: {
-    display: "flex",
-    flexDirection: "column"
-  },
-  orderCard: {
-    border: `solid 1px ${theme.palette.reaction.black10}`,
-    borderRadius: "2px",
-    marginBottom: theme.spacing.unit * 2.5
-  },
-  profileOrderHeader: {
+  orderCardHeader: {
     background: theme.palette.reaction.black02,
-    padding: theme.spacing.unit * 2.5
-  },
-
-  expandedProfileOrderHeader: {
-    borderTop: `solid 1px ${theme.palette.reaction.black10}`,
-    marginTop: theme.spacing.unit * 2.5,
-    paddingTop: theme.spacing.unit * 2.5
-  },
-
-  orderAddressText: {
-    color: theme.palette.reaction.black65,
-    fontSize: "14px"
+    padding: theme.spacing.unit * 2
   },
   orderCardInfoText: {
     color: theme.palette.reaction.coolGrey500
   },
-  orderCardInfoTextDetails: {
-    color: theme.palette.reaction.coolGrey500,
-    textAlign: "right"
+  orderCardInfoHeaderText: {
+    marginBottom: theme.spacing.unit * 0.5
   },
   orderCardInfoTextBold: {
     color: theme.palette.reaction.coolGrey500,
     fontWeight: theme.typography.fontWeightBold
   },
-  orderCardInfoHeader: {
-    marginBottom: theme.spacing.unit * 1.5
+  orderCardInfoTextDetails: {
+    color: theme.palette.reaction.coolGrey500,
+    textAlign: "right"
+  },
+  orderCardInfoExpandIcon: {
+    marginLeft: theme.spacing.unit,
+    padding: 0
   },
 
-
+  orderCardExpandedHeader: {
+    borderTop: `solid 1px ${theme.palette.reaction.black10}`,
+    marginTop: theme.spacing.unit * 2.5,
+    paddingTop: theme.spacing.unit * 2.5
+  },
+  orderCardExpandedInfoSection: {
+    marginBottom: theme.spacing.unit * 3
+  },
+  orderCardExpandedInfoHeaderText: {
+    marginBottom: theme.spacing.unit * 1.5
+  },
+  orderAddressText: {
+    color: theme.palette.reaction.black65,
+    fontSize: "14px"
+  },
   // Order status buttons
   orderStatusNew: {
     backgroundColor: `${theme.palette.reaction.darkBlue300}`,
@@ -97,15 +79,16 @@ class OrderCardHeader extends Component {
     classes: PropTypes.object,
     isLoadingOrders: PropTypes.bool,
     order: PropTypes.shape({
-      email: PropTypes.string.isRequired,
+      createdAt: PropTypes.string.isRequired,
       fulfillmentGroups: PropTypes.arrayOf(PropTypes.object).isRequired,
       payments: PropTypes.arrayOf(PropTypes.object),
-      referenceId: PropTypes.string.isRequired
+      referenceId: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired
     })
   };
 
   state = {
-    isHeaderOpen: true // TODO: EK - change this to false when done with dev
+    isHeaderOpen: false
   }
 
   toggleHeader = () => {
@@ -165,46 +148,49 @@ class OrderCardHeader extends Component {
       "MM/DD/YYYY"
     );
 
+    console.log("fulfillmentGroups", fulfillmentGroups);
+
+
     return (
-      <div className={classes.profileOrderHeader}>
-        <Grid container>
+      <div className={classes.orderCardHeader}>
+        <Grid container alignItems="center">
           <Grid xs={12} md={3}>
             {this.renderOrderStatus()}
           </Grid>
           <Grid xs={12} md={3}>
-            <Typography variant="caption" className={classes.orderCardInfoText}>Date:</Typography>
+            <Typography variant="caption" className={classnames(classes.orderCardInfoText, classes.orderCardInfoHeaderText)}>Date:</Typography>
             <Typography variant="caption" className={classes.orderCardInfoTextBold}>{orderDate}</Typography>
           </Grid>
           <Grid xs={12} md={3}>
-            <Typography variant="caption" className={classes.orderCardInfoText}>Order ID:</Typography>
+            <Typography variant="caption" className={classnames(classes.orderCardInfoText, classes.orderCardInfoHeaderText)}>Order ID:</Typography>
             <Typography variant="caption" className={classes.orderCardInfoTextBold}>{referenceId}</Typography>
           </Grid>
           <Grid xs={12} md={3}>
             <Typography variant="caption" className={classes.orderCardInfoTextDetails}>
               Order details
-              <IconButton color="inherit" onClick={this.toggleHeader}>
+              <IconButton className={classes.orderCardInfoExpandIcon} color="inherit" onClick={this.toggleHeader}>
                 {this.state.isHeaderOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
               </IconButton>
             </Typography>
           </Grid>
         </Grid>
         {this.state.isHeaderOpen ?
-          <section className={classes.expandedProfileOrderHeader}>
+          <section className={classes.orderCardExpandedHeader}>
             <Grid container>
               <Grid xs={12} md={6}>
-                <Grid className={classes.orderCardInfoSection} xs={12} md={12}>
+                <Grid className={classes.orderCardExpandedInfoSection} xs={12} md={12}>
                   <Typography
                     variant="caption"
-                    className={classnames(classes.orderCardInfoTextBold, classes.orderCardInfoHeader)}
+                    className={classnames(classes.orderCardInfoTextBold, classes.orderCardExpandedInfoHeaderText)}
                   >
                     Payment Method{payments.length !== 1 ? "s" : null}:
                   </Typography>
                   {this.renderOrderPayments()}
                 </Grid>
-                <Grid className={classes.orderCardInfoSection} xs={12} md={12}>
+                <Grid className={classes.orderCardExpandedInfoSection} xs={12} md={12}>
                   <Typography
                     variant="caption"
-                    className={classnames(classes.orderCardInfoTextBold, classes.orderCardInfoHeader)}
+                    className={classnames(classes.orderCardInfoTextBold, classes.orderCardExpandedInfoHeaderText)}
                   >
                     Shipping Method{fulfillmentGroups.length !== 1 ? "s" : null}:
                   </Typography>
