@@ -7,10 +7,42 @@ import components from "custom/componentsContext";
 import OrderCard from "./OrderCard";
 
 const order = {
-  account: {
-    _id: "cmVhY3Rpb24vYWNjb3VudDpQQ1hmYmNuUDlIaFphSjRZRw==",
-    fulfillmentGroups: {}
-  }
+  createdAt: "2018-03-21T21:36:36.307Z",
+  fulfillmentGroups: [
+    {
+      data: {
+        shippingAddress: {
+          address1: "2110 Main Street",
+          address2: null,
+          city: "Santa Monica",
+          company: null,
+          country: "US",
+          fullName: "Reaction Commerce",
+          isCommercial: false,
+          isShippingDefault: false,
+          phone: "3105556789",
+          postal: "90405",
+          region: "CA"
+        }
+      },
+      selectedFulfillmentOption: {
+        fulfillmentMethod: {
+          carrier: "Carier Name",
+          displayname: "Display Name"
+        }
+      }
+    }
+  ],
+  payments: [
+    {
+      amount: { displayAmount: "$6,002.99" },
+      billingAddress: null,
+      displayName: "Visa 1111",
+      method: { name: "stripe_card" }
+    }
+  ],
+  referenceId: "abcdef",
+  status: "new"
 };
 
 test("basic snapshot", () => {

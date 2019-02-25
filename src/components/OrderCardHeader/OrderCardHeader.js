@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 import Address from "@reactioncommerce/components/Address/v1";
+import OrderCardStatusBadge from "components/OrderCardStatusBadge";
 
 const styles = (theme) => ({
   orderCardHeader: {
@@ -34,7 +35,6 @@ const styles = (theme) => ({
     marginLeft: theme.spacing.unit,
     padding: 0
   },
-
   orderCardExpandedHeader: {
     borderTop: `solid 1px ${theme.palette.reaction.black10}`,
     marginTop: theme.spacing.unit * 2.5,
@@ -49,27 +49,6 @@ const styles = (theme) => ({
   orderAddressText: {
     color: theme.palette.reaction.black65,
     fontSize: "14px"
-  },
-  // Order status buttons
-  orderStatusNew: {
-    backgroundColor: `${theme.palette.reaction.darkBlue300}`,
-    color: "white",
-    fontWeight: "800"
-  },
-  orderStatusCanceled: {
-    backgroundColor: `${theme.palette.reaction.red300}`,
-    color: "white",
-    fontWeight: "800"
-  },
-  orderStatusProcessing: {
-    backgroundColor: `${theme.palette.reaction.darkBlue300}`,
-    color: "white",
-    fontWeight: "800"
-  },
-  orderStatusShipped: {
-    backgroundColor: `${theme.palette.reaction.reactionBlue}`,
-    color: "white",
-    fontWeight: "800"
   }
 });
 
@@ -117,45 +96,19 @@ class OrderCardHeader extends Component {
     return null;
   }
 
-  renderOrderStatus() {
-    const { classes, order: { status } } = this.props;
-    let classess;
-
-    if (status.status === "coreOrderWorkflow/canceled") {
-      classess = classes.orderStatusCanceled;
-    }
-
-    if (status.status === "new") {
-      classess = classes.orderStatusNew;
-    }
-
-    if (status.status === "coreOrderWorkflow/processing") {
-      classess = classes.orderStatusProcessing;
-    }
-
-    if (status.status === "coreOrderWorkflow/completed") {
-      classess = classes.orderStatusShipped;
-    }
-
-    return <Chip label={status.label} className={classess} />;
-  }
-
   render() {
-    const { classes, order: { createdAt, fulfillmentGroups, payments, referenceId } } = this.props;
+    const { classes, order: { createdAt, fulfillmentGroups, payments, referenceId, status } } = this.props;
     const { shippingAddress } = fulfillmentGroups[0].data;
     const orderDate = format(
       createdAt,
       "MM/DD/YYYY"
     );
 
-    console.log("fulfillmentGroups", fulfillmentGroups);
-
-
     return (
       <div className={classes.orderCardHeader}>
         <Grid container alignItems="center">
           <Grid xs={12} md={3}>
-            {this.renderOrderStatus()}
+            <OrderCardStatusBadge status={status} />
           </Grid>
           <Grid xs={12} md={3}>
             <Typography variant="caption" className={classnames(classes.orderCardInfoText, classes.orderCardInfoHeaderText)}>Date:</Typography>
