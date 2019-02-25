@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`basic snapshot 1`] = `
+exports[`basic snapshot of order card header 1`] = `
 <div
   className="OrderCardHeader-orderCardHeader-1"
 >
