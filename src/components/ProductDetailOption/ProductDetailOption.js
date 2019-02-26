@@ -41,7 +41,7 @@ export default class ProductDetailOption extends Component {
         }
       >
         <Typography className={optionText} component="span" variant="body1">
-          {option.optionTitle}
+          {option.optionTitle}ddddd
         </Typography>
       </ButtonBase>
     );

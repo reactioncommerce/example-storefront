@@ -116,7 +116,7 @@ exports[`basic snapshot 1`] = `
         className="MuiGrid-item-7"
       >
         <p
-          className="MuiTypography-root-103 MuiTypography-body1-112"
+          className="MuiTypography-root-103 MuiTypography-body2-111"
         >
           Example Payment
            (

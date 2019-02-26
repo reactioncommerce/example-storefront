@@ -93,10 +93,10 @@ class OrderFulfillmentGroup extends Component {
     if (fulfillmentGroup.data && fulfillmentGroup.data.shippingAddress) {
       const { data: { shippingAddress } } = fulfillmentGroup;
       const address = (
-        <Typography variant="body1">
+        <Typography variant="body2">
           {(shippingAddress.fullName) && (
             <span>
-              {shippingAddress.fullName}
+              {shippingAddress.fullName}ZZZZZZZZZZZZZZZZZZZZZZZZZZZ
               <br />
             </span>
           )}
@@ -142,7 +142,7 @@ class OrderFulfillmentGroup extends Component {
                 <Typography className={classes.subtitle2} variant="subtitle1">{fulfillmentMethod.displayName}</Typography>
               </Grid>
               <Grid item xs={6} className={classes.headerRightColumn}>
-                <Typography variant="body1">{fulfillmentMethod.group}</Typography>
+                <Typography variant="body2">{fulfillmentMethod.group}</Typography>
               </Grid>
             </Grid>
           </header>

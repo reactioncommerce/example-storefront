@@ -506,7 +506,7 @@ exports[`basic snapshot 1`] = `
       className="MuiGrid-item-5 MuiGrid-grid-sm-12-58"
     >
       <h3
-        className="MuiTypography-root-121 MuiTypography-h3-135 MuiTypography-gutterBottom-148"
+        className="MuiTypography-root-121 MuiTypography-h3-135 MuiTypography-colorTextSecondary-154 MuiTypography-gutterBottom-148"
       >
         Reaction Sample Product
       </h3>
