@@ -2,9 +2,17 @@
 
 ## Tag Listing Page (TLP)
 
-A Tag Listing Page (TLP) lists all the products with a specific tag in a grid layout.
+A Tag Listing Page (TLP) lists products with a specific tag in a grid layout.
 
-A TLP can have its own display title, metadata in the page's `<head>`, slug and URL.
+A TLP can be visible to the public, when `isVisible` is true, or hidden, when `isVisible` is false. When `isVisible` is false, the TLP will not render in a browser and will not be part of the Site Map.
+
+Each TLP can have its own:
+- name (required)
+- slug (required)
+- display title
+- hero image
+- metadata fields in the page's `<head>`
+- list of featured products, by product ID
 
 ### How to store custom metadata for the TLP
 
