@@ -96,7 +96,7 @@ class OrderFulfillmentGroup extends Component {
         <Typography variant="body2">
           {(shippingAddress.fullName) && (
             <span>
-              {shippingAddress.fullName}ZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+              {shippingAddress.fullName}
               <br />
             </span>
           )}
