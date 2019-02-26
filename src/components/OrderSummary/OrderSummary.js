@@ -96,7 +96,7 @@ class OrderSummary extends Component {
             </Grid>
             <Grid item>
               {(payments || []).map((payment) => (
-                <Typography key={payment._id} variant="body1">{payment.displayName} ({payment.amount.displayAmount})</Typography>
+                <Typography key={payment._id} variant="body2">{payment.displayName} ({payment.amount.displayAmount})</Typography>
               ))}
             </Grid>
           </Grid>

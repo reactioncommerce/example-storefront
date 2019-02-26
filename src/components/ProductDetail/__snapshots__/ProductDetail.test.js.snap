@@ -505,17 +505,17 @@ exports[`basic snapshot 1`] = `
     <div
       className="MuiGrid-item-5 MuiGrid-grid-sm-12-58"
     >
-      <h1
-        className="MuiTypography-root-121 MuiTypography-display2-124 MuiTypography-gutterBottom-148"
+      <h3
+        className="MuiTypography-root-121 MuiTypography-h3-135 MuiTypography-gutterBottom-148"
       >
         Reaction Sample Product
-      </h1>
+      </h3>
     </div>
     <div
       className="SkProductDetail-info-3"
     >
       <div
-        className="MuiTypography-root-121 MuiTypography-body1-130"
+        className="MuiTypography-root-121 MuiTypography-body2-129"
       >
         Example Manufacturer
       </div>
@@ -530,7 +530,7 @@ exports[`basic snapshot 1`] = `
           className="MuiTypography-root-121 MuiTypography-caption-131 SKProductDetailPrice-strike-161"
         />
         <div
-          className="MuiTypography-root-121 MuiTypography-title-127"
+          className="MuiTypography-root-121 MuiTypography-h6-138"
         >
           $12.99 - $19.99
         </div>
@@ -540,7 +540,7 @@ exports[`basic snapshot 1`] = `
       className="SkProductDetail-info-3"
     >
       <div
-        className="MuiTypography-root-121 MuiTypography-body1-130"
+        className="MuiTypography-root-121 MuiTypography-body2-129"
       >
         Sign in as administrator to edit.
 You can clone this product from the product grid.
@@ -633,7 +633,7 @@ Details can be added below the image for more specific product information.
           className="SkDivider-item-171"
         />
         <span
-          className="MuiTypography-root-121 MuiTypography-body1-130 SkDivider-label-170"
+          className="MuiTypography-root-121 MuiTypography-body2-129 SkDivider-label-170"
         >
           Available Options
         </span>
@@ -733,7 +733,7 @@ Details can be added below the image for more specific product information.
           />
         </div>
         <span
-          className="MuiTypography-root-121 MuiTypography-body1-130 SkProductDetailAddToCart-quantityTypography-187"
+          className="MuiTypography-root-121 MuiTypography-body2-129 SkProductDetailAddToCart-quantityTypography-187"
         >
           Quantity
         </span>
@@ -887,7 +887,7 @@ Details can be added below the image for more specific product information.
               src="//placehold.it/100"
             />
             <span
-              className="MuiTypography-root-121 MuiTypography-body1-130 SkCartPopover-addedToCartText-234"
+              className="MuiTypography-root-121 MuiTypography-body2-129 SkCartPopover-addedToCartText-234"
             >
               10
                "
