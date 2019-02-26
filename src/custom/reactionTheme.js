@@ -154,12 +154,12 @@ const theme = createMuiTheme({
       fontSize: 14,
       color: "#737373"
     },
-    body2: {
+    body1: {
       fontSize: 14,
       fontWeight: 400,
       color: "#595959"
     },
-    subheading: {
+    subtitle1: {
       fontSize: 16,
       fontWeight: 600,
       color: "#3c3c3c"
