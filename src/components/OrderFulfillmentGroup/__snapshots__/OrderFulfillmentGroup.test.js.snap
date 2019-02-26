@@ -310,7 +310,7 @@ Array [
           className="MuiGrid-item-8 MuiGrid-grid-xs-6-41 SkOrderFulfillmentGroup-headerRightColumn-4"
         >
           <p
-            className="MuiTypography-root-104 MuiTypography-body1-113"
+            className="MuiTypography-root-104 MuiTypography-body2-112"
           >
             Ground
           </p>
