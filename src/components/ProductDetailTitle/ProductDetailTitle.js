@@ -32,7 +32,7 @@ class ProductDetailTitle extends Component {
 
     return (
       <Grid item sm={12}>
-        {title && <Typography gutterBottom={true} variant={variant}>{title}</Typography>}
+        {title && <Typography color="textSecondary" gutterBottom={true} variant={variant}>{title}</Typography>}
         {pageTitle && <Typography color="primary" component="h2" variant="h6">{pageTitle}</Typography>}
       </Grid>
     );
