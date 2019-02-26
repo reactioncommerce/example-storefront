@@ -80,7 +80,7 @@ class ProductDetailPrice extends Component {
     return (
       <Grid className={classnames(classes.root, className)} item sm={12}>
         <Typography className={classes.strike} variant="caption">{compareAtPrice}</Typography>
-        <Typography component="div" variant="title">{price}</Typography>
+        <Typography component="div" variant="h6">{price}</Typography>
       </Grid>
     );
   }

@@ -92,11 +92,11 @@ class OrderSummary extends Component {
         <div className={classes.header}>
           <Grid container spacing={24}>
             <Grid item xs={3}>
-              <Typography className={classes.subtitle2} variant="subheading">{"Payment Method"}</Typography>
+              <Typography className={classes.subtitle2} variant="subtitle1">{"Payment Method"}</Typography>
             </Grid>
             <Grid item>
               {(payments || []).map((payment) => (
-                <Typography key={payment._id} variant="body2">{payment.displayName} ({payment.amount.displayAmount})</Typography>
+                <Typography key={payment._id} variant="body1">{payment.displayName} ({payment.amount.displayAmount})</Typography>
               ))}
             </Grid>
           </Grid>
