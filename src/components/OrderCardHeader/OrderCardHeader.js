@@ -58,6 +58,7 @@ class OrderCardHeader extends Component {
     isLoadingOrders: PropTypes.bool,
     order: PropTypes.shape({
       createdAt: PropTypes.string.isRequired,
+      displayStatus: PropTypes.string.isRequired,
       fulfillmentGroups: PropTypes.arrayOf(PropTypes.object).isRequired,
       payments: PropTypes.arrayOf(PropTypes.object),
       referenceId: PropTypes.string.isRequired,
@@ -96,7 +97,7 @@ class OrderCardHeader extends Component {
   }
 
   render() {
-    const { classes, order: { createdAt, fulfillmentGroups, payments, referenceId, status } } = this.props;
+    const { classes, order: { createdAt, displayStatus, fulfillmentGroups, payments, referenceId, status } } = this.props;
     const { shippingAddress } = fulfillmentGroups[0].data;
     const orderDate = format(
       createdAt,
@@ -106,18 +107,18 @@ class OrderCardHeader extends Component {
     return (
       <div className={classes.orderCardHeader}>
         <Grid container alignItems="center">
-          <Grid xs={12} md={3}>
-            <OrderCardStatusBadge status={status} />
+          <Grid item xs={12} md={3}>
+            <OrderCardStatusBadge displayStatus={displayStatus} status={status} />
           </Grid>
-          <Grid xs={12} md={3}>
+          <Grid item xs={12} md={3}>
             <Typography variant="caption" className={classnames(classes.orderCardInfoText, classes.orderCardInfoHeaderText)}>Date:</Typography>
             <Typography variant="caption" className={classes.orderCardInfoTextBold}>{orderDate}</Typography>
           </Grid>
-          <Grid xs={12} md={3}>
+          <Grid item xs={12} md={3}>
             <Typography variant="caption" className={classnames(classes.orderCardInfoText, classes.orderCardInfoHeaderText)}>Order ID:</Typography>
             <Typography variant="caption" className={classes.orderCardInfoTextBold}>{referenceId}</Typography>
           </Grid>
-          <Grid xs={12} md={3}>
+          <Grid item xs={12} md={3}>
             <Typography variant="caption" className={classes.orderCardInfoTextDetails}>
               Order details
               <IconButton className={classes.orderCardInfoExpandIcon} color="inherit" onClick={this.toggleHeader}>
@@ -129,8 +130,8 @@ class OrderCardHeader extends Component {
         {this.state.isHeaderOpen ?
           <section className={classes.orderCardExpandedHeader}>
             <Grid container>
-              <Grid xs={12} md={6}>
-                <Grid className={classes.orderCardExpandedInfoSection} xs={12} md={12}>
+              <Grid item xs={12} md={6}>
+                <Grid item className={classes.orderCardExpandedInfoSection} xs={12} md={12}>
                   <Typography
                     variant="caption"
                     className={classnames(classes.orderCardInfoTextBold, classes.orderCardExpandedInfoHeaderText)}
@@ -139,7 +140,7 @@ class OrderCardHeader extends Component {
                   </Typography>
                   {this.renderOrderPayments()}
                 </Grid>
-                <Grid className={classes.orderCardExpandedInfoSection} xs={12} md={12}>
+                <Grid item className={classes.orderCardExpandedInfoSection} xs={12} md={12}>
                   <Typography
                     variant="caption"
                     className={classnames(classes.orderCardInfoTextBold, classes.orderCardExpandedInfoHeaderText)}
@@ -149,8 +150,8 @@ class OrderCardHeader extends Component {
                   {this.renderOrderShipments()}
                 </Grid>
               </Grid>
-              <Grid xs={12} md={6}>
-                <Grid xs={12} md={12}>
+              <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={12}>
                   <Typography
                     variant="caption"
                     className={classnames(classes.orderCardInfoTextBold, classes.orderCardInfoHeader)}

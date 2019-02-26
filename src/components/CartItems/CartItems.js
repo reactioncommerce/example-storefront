@@ -44,6 +44,11 @@ class CartItems extends Component {
     productURLPath: PropTypes.string
   }
 
+  static defaultProps = {
+    onChangeCartItemQuantity() { },
+    onRemoveItemFromCart() { }
+  };
+
   handleItemQuantityChange = (quantity, _id) => {
     const { onChangeCartItemQuantity } = this.props;
 
