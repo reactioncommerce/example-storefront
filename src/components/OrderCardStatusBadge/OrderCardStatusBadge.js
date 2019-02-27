@@ -30,33 +30,31 @@ const styles = (theme) => ({
 class OrderCardStatusBadge extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    status: PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      status: PropTypes.string.isRequired
-    })
+    displayStatus: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired
   };
 
   render() {
-    const { classes, status } = this.props;
+    const { classes, displayStatus, status } = this.props;
     let classess;
 
-    if (status.status === "coreOrderWorkflow/canceled") {
+    if (status === "coreOrderWorkflow/canceled") {
       classess = classes.orderStatusCanceled;
     }
 
-    if (status.status === "new") {
+    if (status === "new") {
       classess = classes.orderStatusNew;
     }
 
-    if (status.status === "coreOrderWorkflow/processing") {
+    if (status === "coreOrderWorkflow/processing") {
       classess = classes.orderStatusProcessing;
     }
 
-    if (status.status === "coreOrderWorkflow/completed") {
+    if (status === "coreOrderWorkflow/completed") {
       classess = classes.orderStatusShipped;
     }
 
-    return <Chip label={status.label} className={classess} />;
+    return <Chip label={displayStatus} className={classess} />;
   }
 }
 
