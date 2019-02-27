@@ -28,21 +28,21 @@ const styles = (theme) => ({
 class ProfileOrders extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    orders: PropTypes.arrayOf(PropTypes.shape({
-      email: PropTypes.string.isRequired,
-      fulfillmentGroups: PropTypes.arrayOf(PropTypes.object).isRequired,
-      payments: PropTypes.arrayOf(PropTypes.object),
-      referenceId: PropTypes.string.isRequired
-    })),
+    orders: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.shape({
+        cursor: PropTypes.String,
+        node: PropTypes.object
+      })),
+      pageInfo: PropTypes.object,
+      totalCount: PropTypes.number
+    }),
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
     }),
     uiStore: PropTypes.shape({
-      accountProfileOptions: PropTypes.shape({
-        orderStatusQuery: PropTypes.string
-      }),
-      setAccountProfileOrderStatusQueryVariable: PropTypes.func
+      orderStatusQuery: PropTypes.array,
+      setOrderStatusSelectValue: PropTypes.func
     }).isRequired
   };
 
