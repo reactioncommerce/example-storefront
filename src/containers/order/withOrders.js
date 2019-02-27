@@ -30,7 +30,7 @@ export default function withOrders(Component) {
       uiStore: PropTypes.shape({
         language: PropTypes.string.isRequired,
         orderQueryLimit: PropTypes.number,
-        orderStatusQuery: PropTypes.array
+        orderStatusQuery: PropTypes.object
       })
     }
 
