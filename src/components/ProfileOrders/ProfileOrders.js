@@ -87,18 +87,19 @@ class ProfileOrders extends Component {
   }
 
   renderOrders() {
-    const { orders } = this.props;
+    const { orders, shop } = this.props;
+
+    if (!orders) return <ErrorPage shop={shop} subtitle="No orders found" />;
 
     // Use relayConnectionToArray to remove edges / nodes levels from orders object
     const ordersToArray = (orders && relayConnectionToArray(orders)) || [];
 
-    return ordersToArray.map((order) => <OrderCard order={order} />);
+    return ordersToArray.map((order, index) => <OrderCard key={index} order={order} />);
   }
 
   render() {
-    const { classes, orders, shop } = this.props;
+    const { classes, ordersPageInfo: pageInfo } = this.props;
 
-    if (!orders) return <ErrorPage shop={shop} subtitle="No orders found" />;
 
     return (
       <Grid className={classes.profileOrdersContainer} container>
