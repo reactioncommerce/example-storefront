@@ -10,6 +10,7 @@ import PageStepper from "components/PageStepper";
 import Select from "components/Select";
 import withOrders from "containers/order/withOrders";
 import ErrorPage from "../../pages/_error";
+import RoutingStore from "../../lib/stores/RoutingStore";
 
 const styles = (theme) => ({
   profileOrdersContainer: {},
@@ -24,7 +25,7 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles, { withTheme: true })
-@inject("uiStore")
+@inject("routingStore", "uiStore")
 @withOrders
 @observer
 class ProfileOrders extends Component {
@@ -39,6 +40,7 @@ class ProfileOrders extends Component {
       totalCount: PropTypes.number
     }),
     ordersPageInfo: PropTypes.object,
+    routingStore: PropTypes.object,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -54,7 +56,7 @@ class ProfileOrders extends Component {
   }
 
   handleOrderStatusSelectChange = (event) => {
-    const { uiStore } = this.props;
+    const { routingStore, uiStore } = this.props;
 
     this.setState({
       orderStatusSelectValue: event.target.value
@@ -75,6 +77,10 @@ class ProfileOrders extends Component {
       queryFilter.push("coreOrderWorkflow/canceled");
     }
 
+    routingStore.setSearch({
+      before: null,
+      after: null
+    });
     uiStore.setOrderStatusSelectValue(queryFilter);
   };
 
