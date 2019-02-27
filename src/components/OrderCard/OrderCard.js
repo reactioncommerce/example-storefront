@@ -28,6 +28,7 @@ const styles = (theme) => ({
 class OrderCard extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    isHeaderOpen: PropTypes.bool,
     isLoadingOrders: PropTypes.bool,
     order: PropTypes.shape({
       email: PropTypes.string.isRequired,
@@ -55,9 +56,9 @@ class OrderCard extends Component {
   }
 
   renderHeader() {
-    const { order } = this.props;
+    const { isHeaderOpen, order } = this.props;
 
-    return <OrderCardHeader order={order} />;
+    return <OrderCardHeader isHeaderOpen={isHeaderOpen} order={order} />;
   }
 
   renderSummary() {
@@ -71,23 +72,21 @@ class OrderCard extends Component {
     if (isLoadingOrders) return <PageLoading message="Loading order details..." />;
 
     return (
-      <Fragment>
-        <Grid container>
-          <Grid item xs={12} md={12}>
-            <div className={classes.orderCard}>
-              <header className={classes.orderCardHeader}>
-                {this.renderHeader()}
-              </header>
-              <section className={classes.orderCardFulfillmentGroups}>
-                {this.renderFulfillmentGroups()}
-              </section>
-              <section className={classes.orderCardSummary}>
-                {this.renderSummary()}
-              </section>
-            </div>
-          </Grid>
+      <Grid container>
+        <Grid item xs={12} md={12}>
+          <div className={classes.orderCard}>
+            <header className={classes.orderCardHeader}>
+              {this.renderHeader()}
+            </header>
+            <section className={classes.orderCardFulfillmentGroups}>
+              {this.renderFulfillmentGroups()}
+            </section>
+            <section className={classes.orderCardSummary}>
+              {this.renderSummary()}
+            </section>
+          </div>
         </Grid>
-      </Fragment>
+      </Grid>
     );
   }
 }

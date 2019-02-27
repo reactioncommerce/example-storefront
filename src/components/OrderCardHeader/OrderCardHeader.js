@@ -55,6 +55,7 @@ const styles = (theme) => ({
 class OrderCardHeader extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    isHeaderOpen: PropTypes.bool,
     order: PropTypes.shape({
       createdAt: PropTypes.string.isRequired,
       displayStatus: PropTypes.string.isRequired,
@@ -65,8 +66,12 @@ class OrderCardHeader extends Component {
     })
   };
 
-  state = {
+  static defaultProps = {
     isHeaderOpen: false
+  }
+
+  state = {
+    isHeaderOpen: this.props.isHeaderOpen
   }
 
   toggleHeader = () => {
