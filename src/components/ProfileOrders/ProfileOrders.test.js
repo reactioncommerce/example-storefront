@@ -20,9 +20,7 @@ const orders = [
 ];
 
 const uiStore = {
-  accountProfileOptions: {
-    orderStatusQuery: "all"
-  },
+  orderStatusQuery: [],
   language: "en"
 };
 const cartStore = {
