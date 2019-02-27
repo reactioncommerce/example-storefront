@@ -4,9 +4,7 @@ import { inject, observer } from "mobx-react";
 import Helmet from "react-helmet";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
-import AccountProfileInfo from "@reactioncommerce/components/AccountProfileInfo/v1";
-import InPageMenu from "@reactioncommerce/components/InPageMenu/v1";
-import ProfileAddressBook from "components/ProfileAddressBook";
+import ProfileMenu from "components/ProfileMenu";
 import ProfileOrders from "components/ProfileOrders";
 import withAddressBook from "containers/address/withAddressBook";
 import ErrorPage from "./_error";
@@ -22,7 +20,7 @@ const styles = (theme) => ({
 @inject("authStore")
 @inject("uiStore")
 @observer
-class Profile extends Component {
+class ProfileOrdersPage extends Component {
   static propTypes = {
     authStore: PropTypes.shape({
       account: PropTypes.object.isRequired
@@ -39,66 +37,11 @@ class Profile extends Component {
   };
 
   renderMainContent() {
-    const { router: { asPath }, shop } = this.props;
-
-    if (asPath === "/profile/address") {
-      return <ProfileAddressBook />;
-    }
-
-    if (asPath === "/profile/orders") {
-      return <ProfileOrders />;
-    }
-
-    if (asPath === "/profile/payments") {
-      return "Payment Methods placeholder";
-    }
-
-    return <ErrorPage shop={shop} subtitle="Not Found" />;
-  }
-
-  renderAccountProfileInfo() {
-    const { authStore: { account }, classes } = this.props;
-
-    return (
-      <div className={classes.accountProfileInfoContainer}>
-        <AccountProfileInfo viewer={account} />
-      </div>
-    );
-  }
-
-  renderNavigation() {
-    const { classes, router: { asPath } } = this.props;
-
-    const menuItems = [
-      {
-        href: "/profile/address",
-        route: "/profile/address",
-        label: "Address Book",
-        isSelected: asPath === "/profile/address"
-      },
-      {
-        href: "/profile/orders",
-        route: "/profile/orders",
-        label: "Orders",
-        isSelected: asPath === "/profile/orders"
-      }
-      // {
-      //   href: "/profile/payments",
-      //   route: "/profile/payments",
-      //   label: "Payment Methods",
-      //   isSelected: asPath === "/profile/payments"
-      // }
-    ];
-
-    return (
-      <div className={classes.inPageMenuItemLink}>
-        <InPageMenu menuItems={menuItems} />
-      </div>
-    );
+    return <ProfileOrders />;
   }
 
   render() {
-    const { authStore: { account }, shop } = this.props;
+    const { authStore: { account }, router, shop } = this.props;
 
     // If there is no logged in user, return Not Found page
     if (account && !account._id) return <ErrorPage shop={shop} subtitle="Not Found" />;
@@ -106,15 +49,14 @@ class Profile extends Component {
     return (
       <Fragment>
         <Helmet
-          title={`Account Profile | ${shop && shop.name}`}
+          title={`My Orders | ${shop && shop.name}`}
           meta={[{ name: "description", content: shop && shop.description }]}
         />
         <section>
           <Grid container spacing={24}>
             <Grid item xs={false} md={1} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
             <Grid item xs={12} md={3}>
-              {this.renderAccountProfileInfo()}
-              {this.renderNavigation()}
+              <ProfileMenu router={router} />
             </Grid>
             <Grid item xs={12} md={7}>
               {this.renderMainContent()}
@@ -127,4 +69,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default ProfileOrdersPage;
