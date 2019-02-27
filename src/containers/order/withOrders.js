@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Query, withApollo } from "react-apollo";
+import { toJS } from "mobx";
 import { inject, observer } from "mobx-react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import { pagination, paginationVariablesFromUrlParams } from "lib/utils/pagination";
@@ -39,7 +40,7 @@ export default function withOrders(Component) {
       const variables = {
         accountId: authStore.accountId,
         language: uiStore.language,
-        orderStatus: uiStore.orderStatusQuery,
+        orderStatus: toJS(uiStore.orderStatusQuery),
         shopIds: [primaryShopId],
         ...paginationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: uiStore.orderQueryLimit })
       };
