@@ -67,7 +67,7 @@ export default class Entry extends Component {
       <Grid container>
         <Grid item xs={12} md={7}>
           <div className={classes.loginWrapper}>
-            <Typography variant="title" gutterBottom>
+            <Typography variant="h6" gutterBottom>
               Returning Customer
             </Typography>
             <Button onClick={onLoginButtonClick} actionType="important" isFullWidth className={classes.loginButton}>
@@ -80,7 +80,7 @@ export default class Entry extends Component {
         </Grid>
         <Grid item xs={12} md={5}>
           <div className={classes.guestWrapper}>
-            <Typography variant="title" gutterBottom>
+            <Typography variant="h6" gutterBottom>
               Guest Checkout
             </Typography>
             <GuestForm onSubmit={setEmailOnAnonymousCart} />

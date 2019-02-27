@@ -30,7 +30,7 @@ export default class ProductGridTitle extends Component {
     if (!displayTitle) return null;
 
     return (
-      <Typography className={classes.gridTitle} component="h1" variant="title">{displayTitle}</Typography>
+      <Typography className={classes.gridTitle} component="h1" variant="h6">{displayTitle}</Typography>
     );
   }
 }

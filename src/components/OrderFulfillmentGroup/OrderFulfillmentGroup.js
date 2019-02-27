@@ -116,7 +116,7 @@ class OrderFulfillmentGroup extends Component {
         <div className={classes.fulfillmentDetails}>
           <Grid container spacing={24}>
             <Grid item xs={3}>
-              <Typography className={classes.subtitle2} variant="subheading">{"Shipping Address"}</Typography>
+              <Typography className={classes.subtitle2} variant="subtitle1">{"Shipping Address"}</Typography>
             </Grid>
             <Grid item xs={9}>
               {address}
@@ -139,7 +139,7 @@ class OrderFulfillmentGroup extends Component {
           <header className={classes.header}>
             <Grid container spacing={24}>
               <Grid item xs={6}>
-                <Typography className={classes.subtitle2} variant="subheading">{fulfillmentMethod.displayName}</Typography>
+                <Typography className={classes.subtitle2} variant="subtitle1">{fulfillmentMethod.displayName}</Typography>
               </Grid>
               <Grid item xs={6} className={classes.headerRightColumn}>
                 <Typography variant="body2">{fulfillmentMethod.group}</Typography>

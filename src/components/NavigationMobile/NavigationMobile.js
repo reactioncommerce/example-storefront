@@ -108,7 +108,7 @@ class NavigationMobile extends Component {
           <div className={classes.header}>
             <Toolbar disableGutters>
               <div className={classes.toolbarTitle}>
-                <Typography className={classes.title} color="inherit" variant="title">
+                <Typography className={classes.title} color="inherit" variant="h6">
                   <Link route="/" onClick={this.handleClose}>
                     <ShopLogo shopName={shop && shop.name} />
                   </Link>

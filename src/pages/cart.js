@@ -175,7 +175,7 @@ class CartPage extends Component {
           meta={[{ name: "description", content: shop && shop.description }]}
         />
         <section>
-          <Typography className={classes.title} variant="title" align="center">
+          <Typography className={classes.title} variant="h6" align="center">
             Shopping Cart
           </Typography>
           <Grid container spacing={24}>

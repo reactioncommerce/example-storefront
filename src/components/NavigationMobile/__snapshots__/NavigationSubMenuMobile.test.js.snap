@@ -10,8 +10,8 @@ exports[`basic snapshot 1`] = `
     <div
       className="MuiToolbar-root-5 MuiToolbar-regular-7"
     >
-      <h3
-        className="MuiTypography-root-9 MuiTypography-subheading-16 SkNavigationItemMobile-toolbarTitle-3"
+      <h6
+        className="MuiTypography-root-9 MuiTypography-subtitle1-27 SkNavigationItemMobile-toolbarTitle-3"
       />
       <button
         className="MuiButtonBase-root-51 MuiIconButton-root-45"

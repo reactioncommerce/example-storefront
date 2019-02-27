@@ -46,7 +46,7 @@ class CheckoutComplete extends Component {
         <div className={classes.checkoutContentContainer}>
           <div className={classes.orderDetails}>
             <section className={classes.section}>
-              <Typography className={classes.title} variant="title">Order not found</Typography>
+              <Typography className={classes.title} variant="h6">Order not found</Typography>
             </section>
           </div>
         </div>
