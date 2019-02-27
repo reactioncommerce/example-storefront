@@ -59,7 +59,7 @@ export default function withOrders(Component) {
                   fetchMore,
                   routingStore,
                   data,
-                  queryName: "ordersByAccountId",
+                  queryName: "orders",
                   limit: uiStore.orderQueryLimit
                 })}
               />
