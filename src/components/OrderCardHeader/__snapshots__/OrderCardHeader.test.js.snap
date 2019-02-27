@@ -8,10 +8,10 @@ exports[`basic snapshot of order card header 1`] = `
     className="MuiGrid-container-11 MuiGrid-align-items-xs-center-19"
   >
     <div
-      className="MuiGrid-grid-xs-12-51 MuiGrid-grid-md-3-70"
+      className="MuiGrid-item-12 MuiGrid-grid-xs-12-51 MuiGrid-grid-md-3-70"
     >
       <div
-        className="MuiChip-root-112"
+        className="MuiChip-root-112 OrderCardStatusBadge-orderStatusNew-108"
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         role="button"
@@ -23,7 +23,7 @@ exports[`basic snapshot of order card header 1`] = `
       </div>
     </div>
     <div
-      className="MuiGrid-grid-xs-12-51 MuiGrid-grid-md-3-70"
+      className="MuiGrid-item-12 MuiGrid-grid-xs-12-51 MuiGrid-grid-md-3-70"
     >
       <span
         className="MuiTypography-root-137 MuiTypography-caption-147 OrderCardHeader-orderCardInfoText-2 OrderCardHeader-orderCardInfoHeaderText-3"
@@ -37,7 +37,7 @@ exports[`basic snapshot of order card header 1`] = `
       </span>
     </div>
     <div
-      className="MuiGrid-grid-xs-12-51 MuiGrid-grid-md-3-70"
+      className="MuiGrid-item-12 MuiGrid-grid-xs-12-51 MuiGrid-grid-md-3-70"
     >
       <span
         className="MuiTypography-root-137 MuiTypography-caption-147 OrderCardHeader-orderCardInfoText-2 OrderCardHeader-orderCardInfoHeaderText-3"
@@ -51,7 +51,7 @@ exports[`basic snapshot of order card header 1`] = `
       </span>
     </div>
     <div
-      className="MuiGrid-grid-xs-12-51 MuiGrid-grid-md-3-70"
+      className="MuiGrid-item-12 MuiGrid-grid-xs-12-51 MuiGrid-grid-md-3-70"
     >
       <span
         className="MuiTypography-root-137 MuiTypography-caption-147 OrderCardHeader-orderCardInfoTextDetails-5"
