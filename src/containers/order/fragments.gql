@@ -6,6 +6,7 @@ fragment OrderCommon on Order {
   }
   cartId
   createdAt
+  displayStatus(language: $language)
   email
   fulfillmentGroups {
     _id
@@ -167,10 +168,7 @@ fragment OrderCommon on Order {
       code
     }
   }
-  status(language: $language) {
-    label
-    status
-  }
+  status
   summary {
     fulfillmentTotal {
       amount
