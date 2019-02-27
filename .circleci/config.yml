@@ -231,6 +231,34 @@ jobs:
           command: |
             ./node_modules/.bin/blc ${STAGING_URL} -ro -filter=3 -e
 
+  test-metrics:
+    <<: *defaults
+    steps:
+      - run:
+          name: Install Calibre CLI
+          command: |
+            sudo npm install calibre
+      - run:
+          name: California
+          command: |
+            ./node_modules/calibre/bin/linux/calibre test create ${STAGING_URL} --location=California --connection=cable
+            ./node_modules/calibre/bin/linux/calibre site create-snapshot --site reaction-starterkit-california
+      - run:
+          name: North Virginia
+          command: |
+            ./node_modules/calibre/bin/linux/calibre test create ${STAGING_URL} --location=NorthVirginia --connection=cable
+            # ./node_modules/calibre/bin/linux/calibre site create-snapshot --site reaction-starterkit-northvirginia
+      - run:
+          name: London
+          command: |
+            ./node_modules/calibre/bin/linux/calibre test create ${STAGING_URL} --location=London --connection=cable
+            # ./node_modules/calibre/bin/linux/calibre site create-snapshot --site reaction-starterkit-london
+      - run:
+          name: Frankfurt
+          command: |
+            ./node_modules/calibre/bin/linux/calibre test create ${STAGING_URL} --location=Frankfurt --connection=cable
+            # ./node_modules/calibre/bin/linux/calibre site create-snapshot --site reaction-starterkit-frankfurt
+
   snyk-security:
     <<: *defaults
     steps:
@@ -276,6 +304,7 @@ workflows:
           context: reaction-validation
           requires:
             - docker-build
+      - test-metrics
       - snyk-security:
           context: reaction-validation
           requires:
