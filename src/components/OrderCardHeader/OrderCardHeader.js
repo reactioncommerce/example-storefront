@@ -55,7 +55,7 @@ const styles = (theme) => ({
 class OrderCardHeader extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    isHeaderOpen: PropTypes.bool,
+    isExpanded: PropTypes.bool,
     order: PropTypes.shape({
       createdAt: PropTypes.string.isRequired,
       displayStatus: PropTypes.string.isRequired,
@@ -67,15 +67,15 @@ class OrderCardHeader extends Component {
   };
 
   static defaultProps = {
-    isHeaderOpen: false
+    isExpanded: false
   }
 
   state = {
-    isHeaderOpen: this.props.isHeaderOpen
+    isExpanded: this.props.isExpanded
   }
 
   toggleHeader = () => {
-    this.setState({ isHeaderOpen: !this.state.isHeaderOpen });
+    this.setState({ isExpanded: !this.state.isExpanded });
   }
 
   renderOrderPayments() {
@@ -126,12 +126,12 @@ class OrderCardHeader extends Component {
             <Typography variant="caption" className={classes.orderCardInfoTextDetails}>
               Order details
               <IconButton className={classes.orderCardInfoExpandIcon} color="inherit" onClick={this.toggleHeader}>
-                {this.state.isHeaderOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
+                {this.state.isExpanded ? <ChevronUpIcon /> : <ChevronDownIcon />}
               </IconButton>
             </Typography>
           </Grid>
         </Grid>
-        {this.state.isHeaderOpen ?
+        {this.state.isExpanded ?
           <section className={classes.orderCardExpandedHeader}>
             <Grid container>
               <Grid item xs={12} md={6}>

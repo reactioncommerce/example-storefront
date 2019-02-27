@@ -72,7 +72,7 @@ class CheckoutComplete extends Component {
               </Typography>
             </Grid>
             <Grid item xs={12} md={12}>
-              <OrderCard isHeaderOpen={true} order={order} />
+              <OrderCard isExpanded={true} order={order} />
             </Grid>
           </Grid>
           <Grid item xs={false} md={3} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}

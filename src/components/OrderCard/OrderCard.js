@@ -28,7 +28,7 @@ const styles = (theme) => ({
 class OrderCard extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    isHeaderOpen: PropTypes.bool,
+    isExpanded: PropTypes.bool,
     isLoadingOrders: PropTypes.bool,
     order: PropTypes.shape({
       email: PropTypes.string.isRequired,
@@ -56,9 +56,9 @@ class OrderCard extends Component {
   }
 
   renderHeader() {
-    const { isHeaderOpen, order } = this.props;
+    const { isExpanded, order } = this.props;
 
-    return <OrderCardHeader isHeaderOpen={isHeaderOpen} order={order} />;
+    return <OrderCardHeader isExpanded={isExpanded} order={order} />;
   }
 
   renderSummary() {
