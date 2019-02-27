@@ -10,7 +10,6 @@ import PageStepper from "components/PageStepper";
 import Select from "components/Select";
 import withOrders from "containers/order/withOrders";
 import ErrorPage from "../../pages/_error";
-import RoutingStore from "../../lib/stores/RoutingStore";
 
 const styles = (theme) => ({
   profileOrdersContainer: {},
@@ -77,6 +76,7 @@ class ProfileOrders extends Component {
       queryFilter.push("coreOrderWorkflow/canceled");
     }
 
+    // Reset before and after cursors when switching order type
     routingStore.setSearch({
       before: null,
       after: null

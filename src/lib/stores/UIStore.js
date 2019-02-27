@@ -164,9 +164,10 @@ class UIStore {
     this.isMenuDrawerOpen = !this.isMenuDrawerOpen;
   }
 
-    /**
+  /**
    * @name setOrderStatusSelectValue
    * @summary Sets the order statuses to search for
+   * @param {Array} orderStatus Order statuses to filter by
    * @returns {undefined} No return
    */
   @action setOrderStatusSelectValue(orderStatus) {

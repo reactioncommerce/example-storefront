@@ -55,7 +55,6 @@ const styles = (theme) => ({
 class OrderCardHeader extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    isLoadingOrders: PropTypes.bool,
     order: PropTypes.shape({
       createdAt: PropTypes.string.isRequired,
       displayStatus: PropTypes.string.isRequired,

@@ -16,7 +16,7 @@ function defineRoutes(routes) {
     .add("shop", "/shop/:shopId/:tag", "productGrid")
     .add("tag", "/tag/:slug", "tag")
     .add("profileAddressBook", "/profile/address", "profileAddressBook")
-    .add("profileOrders", "/profile/orders", "profileOrders")
+    .add("profileOrders", "/profile/orders", "profileOrders");
 }
 
 module.exports = defineRoutes;

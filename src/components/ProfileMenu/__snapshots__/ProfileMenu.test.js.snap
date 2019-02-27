@@ -1,0 +1,280 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot of profile menu 1`] = `
+.c10 path {
+  fill: inherit;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  margin-bottom: 4px;
+}
+
+.c8 {
+  -webkit-font-smoothing: antialiased;
+  color: #505558;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 700;
+  -webkit-letter-spacing: .03em;
+  -moz-letter-spacing: .03em;
+  -ms-letter-spacing: .03em;
+  letter-spacing: .03em;
+  line-height: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  height: 24px;
+  margin: 0;
+  width: 24px;
+}
+
+.c9 svg {
+  height: 24px;
+  -webkit-transform: rotateZ(270deg);
+  -ms-transform: rotateZ(270deg);
+  transform: rotateZ(270deg);
+  width: 24px;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #8ce0c9;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.c2 {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-left: 16px;
+  position: relative;
+}
+
+.c5 {
+  -webkit-font-smoothing: antialiased;
+  color: #505558;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1.25;
+  -webkit-align-self: left;
+  -ms-flex-item-align: left;
+  align-self: left;
+  margin-bottom: 4px;
+}
+
+.c4 {
+  -webkit-font-smoothing: antialiased;
+  color: #505558;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 700;
+  -webkit-letter-spacing: .03em;
+  -moz-letter-spacing: .03em;
+  -ms-letter-spacing: .03em;
+  letter-spacing: .03em;
+  line-height: 1.25;
+  -webkit-align-self: left;
+  -ms-flex-item-align: left;
+  align-self: left;
+  margin-bottom: 4px;
+}
+
+.c6 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+<section>
+  <div
+    className="withApollo-inject-WithAddressBook-with-authStore--accountProfileInfoContainer-1"
+  >
+    <div
+      className="c0"
+    >
+      <div
+        className="c1"
+        style={
+          Object {
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      >
+        <img
+          alt="Reaction"
+          className="c2"
+          src="img.jpg"
+        />
+      </div>
+      <div
+        className="c3"
+      >
+        <span
+          className="c4"
+        >
+          Reaction
+        </span>
+        <span
+          className="c5"
+        >
+          test@reactioncommerce.com
+        </span>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="c6"
+    >
+      <a
+        className="SkLink-anchor-2"
+        href="/profile/address"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="link"
+        tabIndex={0}
+      >
+        <div
+          className="c7"
+        >
+          <div
+            className="c8"
+          >
+            Address Book
+          </div>
+          <span
+            className="c9"
+          >
+            <svg
+              className="c10"
+              viewBox="0 0 14 14"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.68 5.004l0.82 0.82-3.5 3.5-3.5-3.5 0.82-0.82 2.68 2.68z"
+              />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a
+        className="SkLink-anchor-2"
+        href="/profile/orders"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="link"
+        tabIndex={0}
+      >
+        <div
+          className="c7"
+        >
+          <div
+            className="c8"
+          >
+            Orders
+          </div>
+          <span
+            className="c9"
+          >
+            <svg
+              className="c10"
+              viewBox="0 0 14 14"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.68 5.004l0.82 0.82-3.5 3.5-3.5-3.5 0.82-0.82 2.68 2.68z"
+              />
+            </svg>
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+`;

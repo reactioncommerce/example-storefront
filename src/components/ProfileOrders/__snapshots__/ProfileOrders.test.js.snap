@@ -2,10 +2,10 @@
 
 exports[`basic snapshot of profile orders 1`] = `
 <div
-  className="MuiGrid-container-6 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-uiStore-profileOrdersContainer-1"
+  className="MuiGrid-container-6 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-routingStore-uiStore-profileOrdersContainer-1"
 >
   <div
-    className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-uiStore-profileOrdersTitle-5"
+    className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-routingStore-uiStore-profileOrdersTitle-5"
   >
     <h2
       className="MuiTypography-root-103 MuiTypography-title-109"
@@ -14,7 +14,7 @@ exports[`basic snapshot of profile orders 1`] = `
     </h2>
   </div>
   <div
-    className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-uiStore-profileOrdersSelect-4"
+    className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-routingStore-uiStore-profileOrdersSelect-4"
   >
     <div
       className="MuiInputBase-root-164 MuiInput-root-151 SkSelect-input-143"
@@ -58,7 +58,7 @@ exports[`basic snapshot of profile orders 1`] = `
     </div>
   </div>
   <div
-    className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-uiStore-profileOrdersList-2"
+    className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-routingStore-uiStore-profileOrdersList-2"
   >
     <div
       className="Error-root-194"
@@ -85,7 +85,7 @@ exports[`basic snapshot of profile orders 1`] = `
     </div>
   </div>
   <div
-    className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-uiStore-profileOrdersPagination-3"
+    className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-routingStore-uiStore-profileOrdersPagination-3"
   >
     <div
       className="MuiGrid-container-6 MuiGrid-justify-xs-space-between-25 SkPageStepper-root-198"
