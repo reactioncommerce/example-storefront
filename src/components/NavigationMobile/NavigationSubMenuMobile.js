@@ -63,7 +63,7 @@ class NavigationSubMenuMobile extends Component {
       <div className={classes.root}>
         <div className={classes.header}>
           <Toolbar disableGutters>
-            <Typography className={classes.toolbarTitle} variant="subheading">{navItem.navigationItem.data.contentForLanguage}</Typography>
+            <Typography className={classes.toolbarTitle} variant="subtitle1">{navItem.navigationItem.data.contentForLanguage}</Typography>
             <IconButton onClick={this.props.onBackButtonClick}>
               <ChevronLeftIcon />
             </IconButton>

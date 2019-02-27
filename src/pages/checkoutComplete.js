@@ -76,7 +76,7 @@ class CheckoutComplete extends Component {
         <div className={classes.checkoutContentContainer}>
           <div className={classes.orderDetails}>
             <section className={classes.section}>
-              <Typography className={classes.title} variant="title">Order not found</Typography>
+              <Typography className={classes.title} variant="h6">Order not found</Typography>
             </section>
           </div>
         </div>
@@ -93,7 +93,7 @@ class CheckoutComplete extends Component {
           <div className={classes.orderDetails}>
             <section className={classes.section}>
               <header className={classes.sectionHeader}>
-                <Typography className={classes.title} variant="title">Thank you for your order</Typography>
+                <Typography className={classes.title} variant="h6">Thank you for your order</Typography>
                 <Typography variant="body1">
                   {"Your order ID is:"} <strong>{order.referenceId}</strong>
                 </Typography>

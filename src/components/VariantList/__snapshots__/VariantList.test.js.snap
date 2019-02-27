@@ -106,7 +106,7 @@ exports[`basic snapshot 1`] = `
       className="SkDivider-item-49"
     />
     <span
-      className="MuiTypography-root-11 MuiTypography-body1-20 SkDivider-label-48"
+      className="MuiTypography-root-11 MuiTypography-body2-19 SkDivider-label-48"
     >
       Available Options
     </span>

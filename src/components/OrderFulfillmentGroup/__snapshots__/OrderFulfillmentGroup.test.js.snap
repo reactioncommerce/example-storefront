@@ -300,11 +300,11 @@ Array [
         <div
           className="MuiGrid-item-8 MuiGrid-grid-xs-6-41"
         >
-          <h3
-            className="MuiTypography-root-104 MuiTypography-subheading-111 SkOrderFulfillmentGroup-subtitle2-6"
+          <h6
+            className="MuiTypography-root-104 MuiTypography-subtitle1-122 SkOrderFulfillmentGroup-subtitle2-6"
           >
             Free Shipping
-          </h3>
+          </h6>
         </div>
         <div
           className="MuiGrid-item-8 MuiGrid-grid-xs-6-41 SkOrderFulfillmentGroup-headerRightColumn-4"
@@ -626,11 +626,11 @@ Array [
           <div
             className="MuiGrid-item-8 MuiGrid-grid-xs-3-38"
           >
-            <h3
-              className="MuiTypography-root-104 MuiTypography-subheading-111 SkOrderSummary-subtitle2-146"
+            <h6
+              className="MuiTypography-root-104 MuiTypography-subtitle1-122 SkOrderSummary-subtitle2-146"
             >
               Payment Method
-            </h3>
+            </h6>
           </div>
           <div
             className="MuiGrid-item-8"

@@ -12,7 +12,7 @@ exports[`price 1`] = `
     className="MuiTypography-root-103 MuiTypography-caption-113 SKProductDetailPrice-strike-5"
   />
   <div
-    className="MuiTypography-root-103 MuiTypography-title-109"
+    className="MuiTypography-root-103 MuiTypography-h6-120"
   >
     $19.99
   </div>
@@ -29,7 +29,7 @@ exports[`price and compareAtPrice 1`] = `
     $29.99
   </span>
   <div
-    className="MuiTypography-root-103 MuiTypography-title-109"
+    className="MuiTypography-root-103 MuiTypography-h6-120"
   >
     $19.99
   </div>

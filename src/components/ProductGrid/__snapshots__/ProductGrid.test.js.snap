@@ -98,12 +98,12 @@ Array [
     className="inject-ProductGridEmptyMessage-with-routingStore-root-155"
   >
     <p
-      className="MuiTypography-root-158 MuiTypography-body1-167 MuiTypography-paragraph-186 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-157"
+      className="MuiTypography-root-158 MuiTypography-body2-166 MuiTypography-paragraph-186 inject-ProductGridEmptyMessage-with-routingStore-notFoundMessage-157"
     >
       Sorry! We couldn't find what you're looking for.
     </p>
     <p
-      className="MuiTypography-root-158 MuiTypography-body1-167 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-156"
+      className="MuiTypography-root-158 MuiTypography-body2-166 inject-ProductGridEmptyMessage-with-routingStore-actionMessage-156"
     >
       <a
         className="SkLink-anchor-194"
