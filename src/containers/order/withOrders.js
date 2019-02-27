@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { Query, withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import { ordersByAccountId } from "./queries.gql";
+import { pagination, paginationVariablesFromUrlParams } from "lib/utils/pagination";
+import { ordersByAccountIdQuery } from "./queries.gql";
 
 /**
  * withOrders higher order query component for fetching multple orders by accountId
@@ -24,34 +25,42 @@ export default function withOrders(Component) {
         mutate: PropTypes.func.isRequired
       }),
       primaryShopId: PropTypes.string.isRequired,
+      routingStore: PropTypes.object.isRequired,
       uiStore: PropTypes.shape({
         language: PropTypes.string.isRequired,
-        accountProfileOptions: PropTypes.shape({
-          orderStatusQuery: PropTypes.string.isRequired
-        })
+        orderQueryLimit: PropTypes.number,
+        orderStatusQuery: PropTypes.array
       })
     }
 
     render() {
-      const { authStore, primaryShopId, uiStore } = this.props;
+      const { authStore, primaryShopId, routingStore, uiStore } = this.props;
 
       const variables = {
         accountId: authStore.accountId,
         language: uiStore.language,
-        orderStatus: uiStore.accountProfileOptions.orderStatusQuery,
-        shopIds: [primaryShopId]
+        orderStatus: uiStore.orderStatusQuery,
+        shopIds: [primaryShopId],
+        ...paginationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: uiStore.orderQueryLimit })
       };
 
       return (
-        <Query errorPolicy="all" query={ordersByAccountId} variables={variables}>
-          {({ loading: isLoading, data: orderData }) => {
-            const { orders } = orderData || {};
+        <Query errorPolicy="all" query={ordersByAccountIdQuery} variables={variables}>
+          {({ data, fetchMore, loading: isLoading }) => {
+            const { orders } = data || {};
 
             return (
               <Component
                 {...this.props}
                 isLoadingOrders={isLoading}
                 orders={orders}
+                ordersPageInfo={pagination({
+                  fetchMore,
+                  routingStore,
+                  data,
+                  queryName: "ordersByAccountId",
+                  limit: uiStore.orderQueryLimit
+                })}
               />
             );
           }}
