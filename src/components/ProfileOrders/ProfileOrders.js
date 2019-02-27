@@ -6,6 +6,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import relayConnectionToArray from "lib/utils/relayConnectionToArray";
 import OrderCard from "components/OrderCard";
+import PageStepper from "components/PageStepper";
 import Select from "components/Select";
 import withOrders from "containers/order/withOrders";
 import ErrorPage from "../../pages/_error";
@@ -13,6 +14,7 @@ import ErrorPage from "../../pages/_error";
 const styles = (theme) => ({
   profileOrdersContainer: {},
   profileOrdersList: {},
+  profileOrdersPagination: {},
   profileOrdersSelect: {
     marginBottom: theme.spacing.unit * 4
   },
@@ -36,6 +38,7 @@ class ProfileOrders extends Component {
       pageInfo: PropTypes.object,
       totalCount: PropTypes.number
     }),
+    ordersPageInfo: PropTypes.object,
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -52,13 +55,12 @@ class ProfileOrders extends Component {
 
   handleOrderStatusSelectChange = (event) => {
     const { uiStore } = this.props;
-    console.log("event.target.value", event.target.value);
 
     this.setState({
       orderStatusSelectValue: event.target.value
     });
 
-    let queryFilter = [];
+    const queryFilter = [];
 
     if (event.target.value === "open") {
       queryFilter.push("new");
@@ -77,7 +79,6 @@ class ProfileOrders extends Component {
   };
 
   renderOrderTypeSelect() {
-    const { uiStore: { orderStatusQuery } } = this.props;
     const { orderStatusSelectValue } = this.state;
 
     const orderStatusSelectOptions = [
@@ -126,7 +127,6 @@ class ProfileOrders extends Component {
   render() {
     const { classes, ordersPageInfo: pageInfo } = this.props;
 
-
     return (
       <Grid className={classes.profileOrdersContainer} container>
         <Grid className={classes.profileOrdersTitle} item xs={12} md={12}>
@@ -137,6 +137,9 @@ class ProfileOrders extends Component {
         </Grid>
         <Grid className={classes.profileOrdersList} item xs={12} md={12}>
           {this.renderOrders()}
+        </Grid>
+        <Grid className={classes.profileOrdersPagination} item xs={12} md={12}>
+          {pageInfo && <PageStepper pageInfo={pageInfo} />}
         </Grid>
       </Grid>
     );
