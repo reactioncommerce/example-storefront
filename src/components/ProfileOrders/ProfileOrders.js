@@ -46,15 +46,41 @@ class ProfileOrders extends Component {
     }).isRequired
   };
 
-  handleOrderStatusTypeChange = (event) => {
+  state = {
+    orderStatusSelectValue: "all"
+  }
+
+  handleOrderStatusSelectChange = (event) => {
     const { uiStore } = this.props;
-    uiStore.setAccountProfileOrderStatusQueryVariable(event.target.value);
+    console.log("event.target.value", event.target.value);
+
+    this.setState({
+      orderStatusSelectValue: event.target.value
+    });
+
+    let queryFilter = [];
+
+    if (event.target.value === "open") {
+      queryFilter.push("new");
+      queryFilter.push("coreOrderWorkflow/processing");
+    }
+
+    if (event.target.value === "completed") {
+      queryFilter.push("coreOrderWorkflow/completed");
+    }
+
+    if (event.target.value === "canceled") {
+      queryFilter.push("coreOrderWorkflow/canceled");
+    }
+
+    uiStore.setOrderStatusSelectValue(queryFilter);
   };
 
   renderOrderTypeSelect() {
-    const { uiStore: { accountProfileOptions: { orderStatusQuery } } } = this.props;
+    const { uiStore: { orderStatusQuery } } = this.props;
+    const { orderStatusSelectValue } = this.state;
 
-    const orderStatusOptions = [
+    const orderStatusSelectOptions = [
       {
         name: "All",
         value: "all"
@@ -75,13 +101,13 @@ class ProfileOrders extends Component {
 
     return (
       <Select
-        value={orderStatusQuery}
-        options={orderStatusOptions}
+        value={orderStatusSelectValue}
+        options={orderStatusSelectOptions}
         inputProps={{
-          name: "orderStatus",
-          id: "order-status"
+          name: "orderTypeSelect",
+          id: "order-type-select"
         }}
-        onChange={this.handleOrderStatusTypeChange}
+        onChange={this.handleOrderStatusSelectChange}
       />
     );
   }
