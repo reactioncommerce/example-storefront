@@ -69,7 +69,7 @@ class Header extends Component {
           </Hidden>
 
           <div className={controls}>
-            <Typography className={title} color="inherit" variant="title">
+            <Typography className={title} color="inherit" variant="h6">
               <Link route="/">
                 <ShopLogo shopName={shop.name} />
               </Link>

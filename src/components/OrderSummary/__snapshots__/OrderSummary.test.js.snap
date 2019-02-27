@@ -175,11 +175,11 @@ exports[`basic snapshot 1`] = `
       <div
         className="MuiGrid-item-7 MuiGrid-grid-xs-3-37"
       >
-        <h3
-          className="MuiTypography-root-103 MuiTypography-subheading-110 SkOrderSummary-subtitle2-5"
+        <h6
+          className="MuiTypography-root-103 MuiTypography-subtitle1-121 SkOrderSummary-subtitle2-5"
         >
           Payment Method
-        </h3>
+        </h6>
       </div>
       <div
         className="MuiGrid-item-7"

@@ -15,7 +15,7 @@ export default class Profile extends Component {
     const { viewer } = this.props;
 
     if (viewer) {
-      return <Typography variant="subheading">Hello {viewer.name}</Typography>;
+      return <Typography variant="subtitle1">Hello {viewer.name}</Typography>;
     }
 
     return null;

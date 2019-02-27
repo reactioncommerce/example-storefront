@@ -19,7 +19,7 @@ Array [
         />
       </div>
       <span
-        className="MuiTypography-root-110 MuiTypography-body1-119 SkProductDetailAddToCart-quantityTypography-9"
+        className="MuiTypography-root-110 MuiTypography-body2-118 SkProductDetailAddToCart-quantityTypography-9"
       >
         Quantity
       </span>
@@ -240,7 +240,7 @@ Array [
             src="//placehold.it/100"
           />
           <span
-            className="MuiTypography-root-110 MuiTypography-body1-119 SkCartPopover-addedToCartText-204"
+            className="MuiTypography-root-110 MuiTypography-body2-118 SkCartPopover-addedToCartText-204"
           >
             10
              "
