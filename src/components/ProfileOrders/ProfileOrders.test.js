@@ -51,7 +51,7 @@ const mocks = [
   }
 ];
 
-test("basic snapshot", () => {
+test("basic snapshot of profile orders", () => {
   const component = renderer.create((
     <MockedProvider mocks={mocks} addTypename={false}>
       <ComponentsProvider value={components}>
