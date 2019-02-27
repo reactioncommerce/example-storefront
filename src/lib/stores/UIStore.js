@@ -7,11 +7,6 @@ import { PAGE_SIZES, inPageSizes } from "lib/utils/pageSizes";
  */
 
 class UIStore {
-  @observable accountProfileOptions = {
-    // The workflow status of order to query (`all`, `open`, `completed`)
-    orderStatusQuery: "all"
-  };
-
   /**
    * Is the cart drawer open or closed
    *
@@ -43,6 +38,22 @@ class UIStore {
    * @default {}
    */
   @observable locales = {};
+
+  /**
+   * Return orders with these order status values
+   *
+   * @type Array
+   * @default []
+   */
+  @observable orderStatusQuery = [];
+
+  /**
+   * Limit for results of queries for multiple orders
+   *
+   * @type Number
+   * @default 5
+   */
+  @observable orderQueryLimit = 5;
 
   /**
    * The number of items per page to display on the product grid.
@@ -153,6 +164,15 @@ class UIStore {
     this.isMenuDrawerOpen = !this.isMenuDrawerOpen;
   }
 
+    /**
+   * @name setOrderStatusSelectValue
+   * @summary Sets the order statuses to search for
+   * @returns {undefined} No return
+   */
+  @action setOrderStatusSelectValue(orderStatus) {
+    this.orderStatusQuery = orderStatus;
+  }
+
   @action setPageSize = (size) => {
     // Validate page size
     this.pageSize = inPageSizes(size) ? size : PAGE_SIZES._20;
@@ -160,10 +180,6 @@ class UIStore {
 
   @action setSortBy = (sortBy) => {
     this.sortBy = sortBy;
-  }
-
-  @action setAccountProfileOrderStatusQueryVariable(orderType) {
-    this.accountProfileOptions.orderStatusQuery = orderType;
   }
 }
 
