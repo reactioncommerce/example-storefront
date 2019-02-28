@@ -302,7 +302,9 @@ workflows:
           context: reaction-validation
           requires:
             - docker-build
-      - test-metrics
+      - test-metrics:
+          requires: 
+            - deploy-to-ecs
       - snyk-security:
           context: reaction-validation
           requires:
