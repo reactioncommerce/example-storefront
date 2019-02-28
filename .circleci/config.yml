@@ -234,30 +234,28 @@ jobs:
   test-metrics:
     <<: *defaults
     steps:
+      - checkout
       - run:
           name: Install Calibre CLI
           command: |
+            cd ~
             sudo npm install calibre
       - run:
           name: California
           command: |
-            ./node_modules/calibre/bin/linux/calibre test create ${STAGING_URL} --location=California --connection=cable
-            ./node_modules/calibre/bin/linux/calibre site create-snapshot --site reaction-starterkit-california
+            .circleci/bin/calibre-deploy.sh ${STAGING_URL} California
       - run:
           name: North Virginia
           command: |
-            ./node_modules/calibre/bin/linux/calibre test create ${STAGING_URL} --location=NorthVirginia --connection=cable
-            # ./node_modules/calibre/bin/linux/calibre site create-snapshot --site reaction-starterkit-northvirginia
+            .circleci/bin/calibre-deploy.sh ${STAGING_URL} NorthVirginia
       - run:
           name: London
           command: |
-            ./node_modules/calibre/bin/linux/calibre test create ${STAGING_URL} --location=London --connection=cable
-            # ./node_modules/calibre/bin/linux/calibre site create-snapshot --site reaction-starterkit-london
+            .circleci/bin/calibre-deploy.sh ${STAGING_URL} London
       - run:
           name: Frankfurt
           command: |
-            ./node_modules/calibre/bin/linux/calibre test create ${STAGING_URL} --location=Frankfurt --connection=cable
-            # ./node_modules/calibre/bin/linux/calibre site create-snapshot --site reaction-starterkit-frankfurt
+            .circleci/bin/calibre-deploy.sh ${STAGING_URL} Frankfurt
 
   snyk-security:
     <<: *defaults
@@ -304,9 +302,7 @@ workflows:
           context: reaction-validation
           requires:
             - docker-build
-      - test-metrics:
-          requires:
-            - deploy-to-ecs
+      - test-metrics
       - snyk-security:
           context: reaction-validation
           requires:
