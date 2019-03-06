@@ -54,6 +54,10 @@ LABEL maintainer="Reaction Commerce <engineering@reactioncommerce.com>" \
       com.reactioncommerce.docker.git.sha1=$GIT_SHA1 \
       com.reactioncommerce.docker.license=$LICENSE
 
+# apk list bash curl less vim | cut -d " " -f 1 | sed 's/-/=/' | xargs
+RUN apk --no-cache add bash curl less vim
+SHELL ["/bin/bash", "-o", "pipefail", "-o", "errexit", "-u", "-c"]
+
 # Because Docker Compose uses a volume for node_modules and volumes are owned
 # by root by default, we have to initially create node_modules here with correct owner.
 # Without this Yarn cannot write packages into node_modules later, when running in a container.
