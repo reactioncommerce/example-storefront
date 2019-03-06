@@ -45,7 +45,7 @@ class OrderCard extends Component {
       <Fragment>
         {fulfillmentGroups.map((fulfillmentGroup, index) => (
           <OrderCardFulfillmentGroup
-            key={`${index}`}
+            key={`${fulfillmentGroup._id}`}
             fulfillmentGroup={fulfillmentGroup}
             currentGroupCount={index + 1}
             totalGroupsCount={fulfillmentGroups.length}
