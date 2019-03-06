@@ -56,7 +56,7 @@ LABEL maintainer="Reaction Commerce <engineering@reactioncommerce.com>" \
 
 # Get versions to pin with this command:
 # apk list bash curl less vim | cut -d " " -f 1 | sed 's/-/=/' | xargs
-RUN apk --no-cache add bash=4.4.19-r1 curl=7.61.1-r1 less=530-r0 vim=8.1.0115-r0
+RUN apk --no-cache add bash curl less vim
 SHELL ["/bin/bash", "-o", "pipefail", "-o", "errexit", "-u", "-c"]
 
 # Because Docker Compose uses a volume for node_modules and volumes are owned
