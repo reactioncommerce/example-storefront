@@ -7,11 +7,11 @@ exports[`basic snapshot of profile orders 1`] = `
   <div
     className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-routingStore-uiStore-profileOrdersTitle-5"
   >
-    <h2
-      className="MuiTypography-root-103 MuiTypography-title-109"
+    <h6
+      className="MuiTypography-root-103 MuiTypography-h6-120"
     >
       Orders
-    </h2>
+    </h6>
   </div>
   <div
     className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-routingStore-uiStore-profileOrdersSelect-4"
@@ -64,12 +64,12 @@ exports[`basic snapshot of profile orders 1`] = `
       className="Error-root-194"
     >
       <p
-        className="MuiTypography-root-103 MuiTypography-body1-112 MuiTypography-paragraph-131 Error-errorMessage-195"
+        className="MuiTypography-root-103 MuiTypography-body2-111 MuiTypography-paragraph-131 Error-errorMessage-195"
       >
         Sorry! We couldn't find what you're looking for.
       </p>
       <p
-        className="MuiTypography-root-103 MuiTypography-body1-112 Error-errorLink-196"
+        className="MuiTypography-root-103 MuiTypography-body2-111 Error-errorLink-196"
       >
         <a
           className="SkLink-anchor-197"

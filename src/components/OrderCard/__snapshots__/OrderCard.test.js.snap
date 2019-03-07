@@ -568,14 +568,14 @@ exports[`basic snapshot of full order card 1`] = `
               <div
                 className="MuiGrid-item-6 MuiGrid-grid-xs-6-39"
               >
-                <h3
-                  className="MuiTypography-root-141 MuiTypography-subheading-148 OrderCardFulfillmentGroup-fulfillmentGroupCount-197"
+                <h6
+                  className="MuiTypography-root-141 MuiTypography-subtitle1-159 OrderCardFulfillmentGroup-fulfillmentGroupCount-197"
                 >
                   Shipment 
                   1
                    of 
                   1
-                </h3>
+                </h6>
               </div>
               <div
                 className="MuiGrid-item-6 MuiGrid-grid-xs-6-39 OrderCardFulfillmentGroup-fulfillmentGroupHeaderRightColumn-199"

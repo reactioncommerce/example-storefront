@@ -299,12 +299,12 @@ exports[`basic snapshot 1`] = `
       <div
         className="MuiGrid-item-8 MuiGrid-grid-xs-6-41"
       >
-        <h3
-          className="MuiTypography-root-104 MuiTypography-subheading-111 OrderCardFulfillmentGroup-fulfillmentGroupCount-3"
+        <h6
+          className="MuiTypography-root-104 MuiTypography-subtitle1-122 OrderCardFulfillmentGroup-fulfillmentGroupCount-3"
         >
           Shipment 
            of 
-        </h3>
+        </h6>
       </div>
       <div
         className="MuiGrid-item-8 MuiGrid-grid-xs-6-41 OrderCardFulfillmentGroup-fulfillmentGroupHeaderRightColumn-5"
