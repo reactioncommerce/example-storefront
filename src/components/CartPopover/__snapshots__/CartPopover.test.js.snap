@@ -69,7 +69,7 @@ exports[`do not show cartpopover 1`] = `
 }
 
 <div
-  className="HiddenCss-mdUp-16"
+  className="MuiPrivateHiddenCss-mdUp-16"
 >
   <div
     className="SkCartPopover-container-1 SkCartPopover-isContainerHidden-3"
@@ -86,7 +86,7 @@ exports[`do not show cartpopover 1`] = `
           src="//placehold.it/100"
         />
         <span
-          className="MuiTypography-root-121 MuiTypography-body1-130 SkCartPopover-addedToCartText-8"
+          className="MuiTypography-root-121 MuiTypography-body2-129 SkCartPopover-addedToCartText-8"
         >
           10
            "
@@ -197,7 +197,7 @@ exports[`show cartpopover 1`] = `
 }
 
 <div
-  className="HiddenCss-mdUp-16"
+  className="MuiPrivateHiddenCss-mdUp-16"
 >
   <div
     className="SkCartPopover-container-1 SkCartPopover-isContainerVisible-4"
@@ -214,7 +214,7 @@ exports[`show cartpopover 1`] = `
           src="//placehold.it/100"
         />
         <span
-          className="MuiTypography-root-121 MuiTypography-body1-130 SkCartPopover-addedToCartText-8"
+          className="MuiTypography-root-121 MuiTypography-body2-129 SkCartPopover-addedToCartText-8"
         >
           10
            "

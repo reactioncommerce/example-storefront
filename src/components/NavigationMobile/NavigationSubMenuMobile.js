@@ -48,8 +48,8 @@ class NavigationSubMenuMobile extends Component {
   state = { isSubNavOpen: false };
 
   get hasSubNavItems() {
-    const { navItem: { subTags } } = this.props;
-    return Array.isArray(subTags) && subTags.length > 0;
+    const { navItem: { items } } = this.props;
+    return Array.isArray(items) && items.length > 0;
   }
 
   render() {
@@ -63,7 +63,7 @@ class NavigationSubMenuMobile extends Component {
       <div className={classes.root}>
         <div className={classes.header}>
           <Toolbar disableGutters>
-            <Typography className={classes.toolbarTitle} variant="subheading">{navItem.name}</Typography>
+            <Typography className={classes.toolbarTitle} variant="subtitle1">{navItem.navigationItem.data.contentForLanguage}</Typography>
             <IconButton onClick={this.props.onBackButtonClick}>
               <ChevronLeftIcon />
             </IconButton>
@@ -73,8 +73,8 @@ class NavigationSubMenuMobile extends Component {
         <div className={classes.menu}>
           {this.hasSubNavItems &&
             <MenuList component="div" disablePadding>
-              {navItem.subTags.map(({ node: navItemGroup }, index) => (
-                <NavigationItemMobile key={index} navItem={navItemGroup} />
+              {navItem.items.map((item, index) => (
+                <NavigationItemMobile key={index} navItem={item} />
               ))}
             </MenuList>
           }

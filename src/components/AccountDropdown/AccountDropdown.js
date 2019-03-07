@@ -14,7 +14,7 @@ const styles = (theme) => ({
     width: 320,
     padding: theme.spacing.unit * 2
   },
-  authContent: {
+  marginBottom: {
     marginBottom: theme.spacing.unit * 2
   }
 });
@@ -73,14 +73,19 @@ class AccountDropdown extends Component {
           <div className={classes.accountDropdown}>
             {authStore.isAuthenticated ?
               <Fragment>
-                <Button color="primary" fullWidth href={`/logout/${account._id}`} variant="raised">
+                <div className={classes.marginBottom}>
+                  <Button color="primary" fullWidth href="/profile/address">
+                    Profile
+                  </Button>
+                </div>
+                <Button color="primary" fullWidth href={`/logout/${account._id}`} variant="contained">
                   Sign Out
                 </Button>
               </Fragment>
               :
               <Fragment>
                 <div className={classes.authContent}>
-                  <Button color="primary" fullWidth href="/signin" variant="raised">
+                  <Button color="primary" fullWidth href="/signin" variant="contained">
                     Sign In
                   </Button>
                 </div>

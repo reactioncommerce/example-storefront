@@ -332,11 +332,11 @@ exports[`basic snapshot 1`] = `
     <div
       className="SkEntry-loginWrapper-1"
     >
-      <h2
-        className="MuiTypography-root-101 MuiTypography-title-107 MuiTypography-gutterBottom-119"
+      <h6
+        className="MuiTypography-root-101 MuiTypography-h6-118 MuiTypography-gutterBottom-128"
       >
         Returning Customer
-      </h2>
+      </h6>
       <div
         className="SkEntry-loginButton-2 c0"
         onClick={[Function]}
@@ -447,11 +447,11 @@ exports[`basic snapshot 1`] = `
     <div
       className="SkEntry-guestWrapper-3"
     >
-      <h2
-        className="MuiTypography-root-101 MuiTypography-title-107 MuiTypography-gutterBottom-119"
+      <h6
+        className="MuiTypography-root-101 MuiTypography-h6-118 MuiTypography-gutterBottom-128"
       >
         Guest Checkout
-      </h2>
+      </h6>
       <div
         className={null}
         style={Object {}}

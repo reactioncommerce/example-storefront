@@ -51,7 +51,7 @@ export default class Error extends Component {
       <div className={classes.root}>
         <Helmet title={`${subtitle} | ${shop && shop.name}`} />
         {statusCode ? (
-          <Typography variant="headline">{statusCode}</Typography>
+          <Typography variant="h5">{statusCode}</Typography>
         ) : (
           <Fragment>
             <Typography className={classes.errorMessage} paragraph>

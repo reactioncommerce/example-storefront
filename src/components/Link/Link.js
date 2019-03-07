@@ -28,14 +28,19 @@ class Link extends Component {
     className: PropTypes.string,
     classes: PropTypes.object,
     href: PropTypes.string,
+    isUrlAbsolute: PropTypes.bool,
+    linkItem: PropTypes.object,
     onClick: PropTypes.func,
     params: PropTypes.object,
     route: PropTypes.string,
+    shouldOpenInNewWindow: PropTypes.bool,
     to: PropTypes.string
   }
 
   static defaultProps = {
-    onClick: () => { }
+    isUrlAbsolute: false,
+    onClick: () => { },
+    shouldOpenInNewWindow: false
   }
 
   @track(() => ({
@@ -60,14 +65,35 @@ class Link extends Component {
       classes,
       className,
       href,
+      isUrlAbsolute,
       onClick,
       params,
       route,
+      shouldOpenInNewWindow,
       tracking, // eslint-disable-line
       to,
       ...props
     } = this.props;
 
+    // If link is an absolute link, or if link should open in new window,
+    // then directly us an `a` tag, insted of the `NextLink` component
+    if (isUrlAbsolute || shouldOpenInNewWindow) {
+      return (
+        <a
+          className={classNames(classes.anchor, className)}
+          href={href}
+          onClick={this.handleClick}
+          onKeyDown={this.handleKeyDown}
+          tabIndex={0}
+          target={shouldOpenInNewWindow ? "_blank" : ""}
+        >
+          {children}
+        </a>
+      );
+    }
+
+    // If link is a relative and should open in the same window,
+    // use `NextLink` component
     if (enableSPARouting === false) {
       const { urls: { as } } = routes.findAndGetUrls(route || to || href, params);
 

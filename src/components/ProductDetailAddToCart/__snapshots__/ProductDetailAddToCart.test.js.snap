@@ -19,25 +19,26 @@ Array [
         />
       </div>
       <span
-        className="MuiTypography-root-110 MuiTypography-body1-119 SkProductDetailAddToCart-quantityTypography-9"
+        className="MuiTypography-root-110 MuiTypography-body2-118 SkProductDetailAddToCart-quantityTypography-9"
       >
         Quantity
       </span>
       <div
-        className="MuiFormControl-root-136"
+        className="MuiFormControl-root-146"
       >
         <div
-          className="MuiInputBase-root-153 MuiInput-root-140 SkProductDetailAddToCart-quantityContainer-5 MuiInputBase-formControl-154 MuiInput-formControl-141 MuiInputBase-adornedStart-157 MuiInputBase-adornedEnd-158"
+          className="MuiInputBase-root-163 MuiInput-root-150 SkProductDetailAddToCart-quantityContainer-5 MuiInputBase-formControl-164 MuiInput-formControl-151 MuiInputBase-adornedStart-167 MuiInputBase-adornedEnd-168"
           onClick={[Function]}
         >
           <div
-            className="MuiInputAdornment-root-170"
+            className="MuiInputAdornment-root-180"
           >
             <button
-              className="MuiButtonBase-root-174 SkProductDetailAddToCart-incrementButton-4"
+              className="MuiButtonBase-root-185 SkProductDetailAddToCart-incrementButton-4"
               color="default"
               onBlur={[Function]}
               onClick={[Function]}
+              onContextMenu={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onKeyUp={[Function]}
@@ -53,7 +54,7 @@ Array [
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-177 SkProductDetailAddToCart-quantitySvg-8"
+                className="MuiSvgIcon-root-188 SkProductDetailAddToCart-quantitySvg-8"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -63,13 +64,13 @@ Array [
                 />
               </svg>
               <span
-                className="MuiTouchRipple-root-186"
+                className="MuiTouchRipple-root-220"
               />
             </button>
           </div>
           <input
             aria-invalid={false}
-            className="MuiInputBase-input-163 MuiInput-input-148 SkProductDetailAddToCart-quantityInput-7 MuiInputBase-inputAdornedStart-168 MuiInputBase-inputAdornedEnd-169"
+            className="MuiInputBase-input-173 MuiInput-input-158 SkProductDetailAddToCart-quantityInput-7 MuiInputBase-inputAdornedStart-178 MuiInputBase-inputAdornedEnd-179"
             disabled={false}
             id="addToCartQuantityInput"
             onBlur={[Function]}
@@ -80,13 +81,14 @@ Array [
             value={1}
           />
           <div
-            className="MuiInputAdornment-root-170"
+            className="MuiInputAdornment-root-180"
           >
             <button
-              className="MuiButtonBase-root-174 SkProductDetailAddToCart-incrementButton-4"
+              className="MuiButtonBase-root-185 SkProductDetailAddToCart-incrementButton-4"
               color="default"
               onBlur={[Function]}
               onClick={[Function]}
+              onContextMenu={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onKeyUp={[Function]}
@@ -102,7 +104,7 @@ Array [
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-177 SkProductDetailAddToCart-quantitySvg-8"
+                className="MuiSvgIcon-root-188 SkProductDetailAddToCart-quantitySvg-8"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -112,7 +114,7 @@ Array [
                 />
               </svg>
               <span
-                className="MuiTouchRipple-root-186"
+                className="MuiTouchRipple-root-220"
               />
             </button>
           </div>
@@ -126,9 +128,10 @@ Array [
       className="MuiGrid-item-11 MuiGrid-grid-xs-12-50"
     >
       <button
-        className="MuiButtonBase-root-174 SkProductDetailAddToCart-addToCartButton-1"
+        className="MuiButtonBase-root-185 SkProductDetailAddToCart-addToCartButton-1"
         onBlur={[Function]}
         onClick={[Function]}
+        onContextMenu={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -147,7 +150,7 @@ Array [
           Add to cart
         </span>
         <span
-          className="MuiTouchRipple-root-186"
+          className="MuiTouchRipple-root-220"
         />
       </button>
     </div>
@@ -220,29 +223,29 @@ Array [
 }
 
 <div
-    className="HiddenCss-mdUp-208"
+    className="MuiPrivateHiddenCss-mdUp-212"
   >
     <div
-      className="SkCartPopover-container-193 SkCartPopover-isContainerHidden-195"
+      className="SkCartPopover-container-197 SkCartPopover-isContainerHidden-199"
     >
       <div
-        className="MuiGrid-container-10 MuiGrid-spacing-xs-24-34 SkCartPopover-gridContainer-194"
+        className="MuiGrid-container-10 MuiGrid-spacing-xs-24-34 SkCartPopover-gridContainer-198"
       >
         <div
-          className="MuiGrid-item-11 MuiGrid-grid-xs-12-50 SkCartPopover-containerItem-197"
+          className="MuiGrid-item-11 MuiGrid-grid-xs-12-50 SkCartPopover-containerItem-201"
         >
           <img
             alt="Item Title"
-            className="SkCartPopover-addedToCartImg-198"
+            className="SkCartPopover-addedToCartImg-202"
             src="//placehold.it/100"
           />
           <span
-            className="MuiTypography-root-110 MuiTypography-body1-119 SkCartPopover-addedToCartText-200"
+            className="MuiTypography-root-110 MuiTypography-body2-118 SkCartPopover-addedToCartText-204"
           >
             10
              "
             <span
-              className="SkCartPopover-addedToCartItemName-199"
+              className="SkCartPopover-addedToCartItemName-203"
             >
               Item Title
             </span>

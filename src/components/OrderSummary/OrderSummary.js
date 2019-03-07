@@ -47,10 +47,12 @@ class OrderSummary extends Component {
         })
       })
     }),
-    shop: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string
-    })
+    payments: PropTypes.arrayOf(PropTypes.shape({
+      amount: PropTypes.shape({
+        displayAmount: PropTypes.string.isRequired
+      }),
+      displayName: PropTypes.string.isRequired
+    }))
   }
 
   renderSummary() {
@@ -60,6 +62,7 @@ class OrderSummary extends Component {
       const {
         fulfillmentTotal,
         itemTotal,
+        surchargeTotal,
         taxTotal,
         total
       } = fulfillmentGroup.summary;
@@ -70,6 +73,7 @@ class OrderSummary extends Component {
             isDense
             displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
             displaySubtotal={itemTotal && itemTotal.displayAmount}
+            displaySurcharge={surchargeTotal && surchargeTotal.displayAmount}
             displayTax={taxTotal && taxTotal.displayAmount}
             displayTotal={total && total.displayAmount}
           />
@@ -81,17 +85,19 @@ class OrderSummary extends Component {
   }
 
   render() {
-    const { classes, fulfillmentGroup } = this.props;
+    const { classes, payments } = this.props;
 
     return (
       <div className={classes.summary}>
         <div className={classes.header}>
           <Grid container spacing={24}>
             <Grid item xs={3}>
-              <Typography className={classes.subtitle2} variant="subheading">{"Payment Method"}</Typography>
+              <Typography className={classes.subtitle2} variant="subtitle1">{"Payment Method"}</Typography>
             </Grid>
-            <Grid item xs={3}>
-              <Typography variant="body2">{fulfillmentGroup.payment && fulfillmentGroup.payment.displayName}</Typography>
+            <Grid item>
+              {(payments || []).map((payment) => (
+                <Typography key={payment._id} variant="body2">{payment.displayName} ({payment.amount.displayAmount})</Typography>
+              ))}
             </Grid>
           </Grid>
         </div>

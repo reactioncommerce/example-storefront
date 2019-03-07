@@ -140,13 +140,14 @@ class CartPage extends Component {
     const { cart, classes } = this.props;
 
     if (cart && cart.checkout && cart.checkout.summary && Array.isArray(cart.items) && cart.items.length) {
-      const { fulfillmentTotal, itemTotal, taxTotal, total } = cart.checkout.summary;
+      const { fulfillmentTotal, itemTotal, surchargeTotal, taxTotal, total } = cart.checkout.summary;
 
       return (
         <Grid item xs={12} md={3}>
           <CartSummary
             displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
             displaySubtotal={itemTotal && itemTotal.displayAmount}
+            displaySurcharge={surchargeTotal && surchargeTotal.displayAmount}
             displayTax={taxTotal && taxTotal.displayAmount}
             displayTotal={total && total.displayAmount}
             itemsQuantity={cart.totalItemQuantity}
@@ -174,7 +175,7 @@ class CartPage extends Component {
           meta={[{ name: "description", content: shop && shop.description }]}
         />
         <section>
-          <Typography className={classes.title} variant="title" align="center">
+          <Typography className={classes.title} variant="h6" align="center">
             Shopping Cart
           </Typography>
           <Grid container spacing={24}>

@@ -41,10 +41,7 @@ class OrderFulfillmentGroup extends Component {
     loadMoreCartItems: PropTypes.func,
     onChangeCartItemsQuantity: PropTypes.func,
     onRemoveCartItems: PropTypes.func,
-    shop: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string
-    })
+    payments: PropTypes.arrayOf(PropTypes.object)
   }
 
   static defaultProps = {
@@ -119,7 +116,7 @@ class OrderFulfillmentGroup extends Component {
         <div className={classes.fulfillmentDetails}>
           <Grid container spacing={24}>
             <Grid item xs={3}>
-              <Typography className={classes.subtitle2} variant="subheading">{"Shipping Address"}</Typography>
+              <Typography className={classes.subtitle2} variant="subtitle1">{"Shipping Address"}</Typography>
             </Grid>
             <Grid item xs={9}>
               {address}
@@ -133,15 +130,16 @@ class OrderFulfillmentGroup extends Component {
   }
 
   render() {
-    const { classes, fulfillmentGroup } = this.props;
+    const { classes, fulfillmentGroup, payments } = this.props;
     const { fulfillmentMethod } = fulfillmentGroup.selectedFulfillmentOption;
+
     return (
       <Fragment>
         <section className={classes.fulfillmentGroup}>
           <header className={classes.header}>
             <Grid container spacing={24}>
               <Grid item xs={6}>
-                <Typography className={classes.subtitle2} variant="subheading">{fulfillmentMethod.displayName}</Typography>
+                <Typography className={classes.subtitle2} variant="subtitle1">{fulfillmentMethod.displayName}</Typography>
               </Grid>
               <Grid item xs={6} className={classes.headerRightColumn}>
                 <Typography variant="body2">{fulfillmentMethod.group}</Typography>
@@ -152,7 +150,7 @@ class OrderFulfillmentGroup extends Component {
           {this.renderFulfillmentInfo()}
         </section>
         <section className={classes.summary}>
-          <OrderSummary fulfillmentGroup={fulfillmentGroup} />
+          <OrderSummary fulfillmentGroup={fulfillmentGroup} payments={payments} />
         </section>
       </Fragment>
     );

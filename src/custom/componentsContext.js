@@ -12,16 +12,23 @@
  * with the `withComponents` higher-order component.
  */
 
-import iconClear from "@reactioncommerce/components/svg/iconClear";
-import iconError from "@reactioncommerce/components/svg/iconError";
-import iconValid from "@reactioncommerce/components/svg/iconValid";
 import iconAmericanExpress from "@reactioncommerce/components/svg/iconAmericanExpress";
+import iconClear from "@reactioncommerce/components/svg/iconClear";
 import iconDiscover from "@reactioncommerce/components/svg/iconDiscover";
+import iconError from "@reactioncommerce/components/svg/iconError";
+import iconExpand from "@reactioncommerce/components/svg/iconExpand";
+import iconLock from "@reactioncommerce/components/svg/iconLock";
+import iconPlus from "@reactioncommerce/components/svg/iconPlus";
 import iconMastercard from "@reactioncommerce/components/svg/iconMastercard";
+import iconValid from "@reactioncommerce/components/svg/iconValid";
 import iconVisa from "@reactioncommerce/components/svg/iconVisa";
 import spinner from "@reactioncommerce/components/svg/spinner";
+import Accordion from "@reactioncommerce/components/Accordion/v1";
+import AccordionFormList from "@reactioncommerce/components/AccordionFormList/v1";
+import AddressBook from "@reactioncommerce/components/AddressBook/v1";
 import Address from "@reactioncommerce/components/Address/v1";
 import AddressCapture from "@reactioncommerce/components/AddressCapture/v1";
+import AddressChoice from "@reactioncommerce/components/AddressChoice/v1";
 import AddressForm from "@reactioncommerce/components/AddressForm/v1";
 import AddressReview from "@reactioncommerce/components/AddressReview/v1";
 import BadgeOverlay from "@reactioncommerce/components/BadgeOverlay/v1";
@@ -38,6 +45,7 @@ import CheckoutActionComplete from "@reactioncommerce/components/CheckoutActionC
 import CheckoutActionIncomplete from "@reactioncommerce/components/CheckoutActionIncomplete/v1";
 import ErrorsBlock from "@reactioncommerce/components/ErrorsBlock/v1";
 import Field from "@reactioncommerce/components/Field/v1";
+import InPageMenuItem from "@reactioncommerce/components/InPageMenuItem/v1";
 import InlineAlert from "@reactioncommerce/components/InlineAlert/v1";
 import InventoryStatus from "@reactioncommerce/components/InventoryStatus/v1";
 import Link from "components/Link";
@@ -60,8 +68,12 @@ import withLocales from "../lib/utils/withLocales";
 const AddressFormWithLocales = withLocales(AddressForm);
 
 export default {
+  Accordion,
+  AccordionFormList,
+  AddressBook,
   Address,
   AddressCapture,
+  AddressChoice,
   AddressForm: AddressFormWithLocales,
   AddressReview,
   BadgeOverlay,
@@ -85,9 +97,13 @@ export default {
   iconClear,
   iconDiscover,
   iconError,
+  iconExpand,
+  iconLock,
   iconMastercard,
+  iconPlus,
   iconValid,
   iconVisa,
+  InPageMenuItem,
   MiniCartSummary,
   PhoneNumberInput,
   Price,

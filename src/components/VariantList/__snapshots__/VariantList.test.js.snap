@@ -35,6 +35,7 @@ exports[`basic snapshot 1`] = `
       className="MuiButtonBase-root-8 SkVariantItem-variantButton-5 SkVariantItem-activeVariant-6 SkVariantItem-soldOutVariant-7"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -73,6 +74,7 @@ exports[`basic snapshot 1`] = `
       className="MuiButtonBase-root-8 SkVariantItem-variantButton-5"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -98,30 +100,31 @@ exports[`basic snapshot 1`] = `
     </button>
   </div>
   <div
-    className="SkDivider-container-37"
+    className="SkDivider-container-47"
   >
     <hr
-      className="SkDivider-item-39"
+      className="SkDivider-item-49"
     />
     <span
-      className="MuiTypography-root-11 MuiTypography-body1-20 SkDivider-label-38"
+      className="MuiTypography-root-11 MuiTypography-body2-19 SkDivider-label-48"
     >
       Available Options
     </span>
     <hr
-      className="SkDivider-item-39"
+      className="SkDivider-item-49"
     />
   </div>
   <div
-    className="MuiGrid-container-43 MuiGrid-spacing-xs-8-65 SkOptionsList-root-40"
+    className="MuiGrid-container-53 MuiGrid-spacing-xs-8-75 SkOptionsList-root-50"
   >
     <div
-      className="MuiGrid-item-44"
+      className="MuiGrid-item-54"
     >
       <button
-        className="MuiButtonBase-root-8 SkProductDetailOption-optionButton-140 SkProductDetailOption-isSelected-142"
+        className="MuiButtonBase-root-8 SkProductDetailOption-optionButton-150 SkProductDetailOption-isSelected-152"
         onBlur={[Function]}
         onClick={[Function]}
+        onContextMenu={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -135,13 +138,13 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiTypography-root-11 MuiTypography-body1-20 SkProductDetailOption-optionText-141"
+          className="MuiTypography-root-11 MuiTypography-body1-20 SkProductDetailOption-optionText-151"
         >
           Red
         </span>
       </button>
       <div
-        className="SkOptionsList-alert-41"
+        className="SkOptionsList-alert-51"
       >
         <div
           className="c1"
@@ -149,12 +152,13 @@ exports[`basic snapshot 1`] = `
       </div>
     </div>
     <div
-      className="MuiGrid-item-44"
+      className="MuiGrid-item-54"
     >
       <button
-        className="MuiButtonBase-root-8 SkProductDetailOption-optionButton-140"
+        className="MuiButtonBase-root-8 SkProductDetailOption-optionButton-150"
         onBlur={[Function]}
         onClick={[Function]}
+        onContextMenu={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -168,7 +172,7 @@ exports[`basic snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiTypography-root-11 MuiTypography-body1-20 SkProductDetailOption-optionText-141"
+          className="MuiTypography-root-11 MuiTypography-body1-20 SkProductDetailOption-optionText-151"
         >
           Green
         </span>

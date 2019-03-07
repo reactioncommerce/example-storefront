@@ -1,3 +1,57 @@
+# v2.0.0-rc.10
+
+This is our second release candidate for this project. This project should be considered `pre-release` until we've released the final 2.0.0 version.
+
+This version should be used with `v2.0.0-rc.10` of https://github.com/reactioncommerce/reaction
+
+# Improvements
+
+### Dev Utilities
+
+- We have made it easier to debug and troubleshoot issues in our Docker image:
+  (#504)
+
+### General
+
+- We added a new new profile address book page (#499)
+- We added support for GraphQL Subscriptions (#492)
+- We added the ability to get sitemap data from GQL API and make it available on sitemap\*.xml routes (#488)
+- We added the ability to have surcharges attached to an order (#499)
+
+# Breaking Changes
+
+### Multiple Payment Support
+
+- All of the individual `placeOrder*` GraphQL mutations provided by the built-in payment plugins are removed and replaced with a single `placeOrder` mutation which supports multiple payments. Any custom payment method plugins will break due to the removal of `createOrder` internal mutation. Look at all changes. (https://github.com/reactioncommerce/reaction/pull/4908)
+
+## Feature
+
+- feat: performance metrics integration with calibre (#508)
+- feat: add dev utilities to the docker image (#504)
+- feat: new Profile Address page (#499)
+- feat: add graphql subscription support (#492)
+- feat: setup sitemap routes to get data from GQL server (#488)
+- feat: display order surcharges in UI (#449)
+
+## Fixes
+
+- fix: add enhancements to sitemap route handling (#497)
+- fix: updated dependencies and snyk policies (#496)
+
+## Refactor
+
+- refactor: update checkout to support multiple payments (#477)
+- refactor: navigation data comes from new NavigationTree (#472)
+
+## Chore
+
+- chore: update typography variants based on MUI warning (#506)
+- chore: updated config for modules and tree shaking (#495)
+
+## Docs
+
+- docs(tags): update tag docs to include sitemap, isVisible (#505)
+
 # v2.0.0-rc.9
 This is our first release candidate for this project - we're going to be synchronizing releases across the differents parts of the Reaction Commerce ecosystem, so that's why we're starting with rc.8. This project should be considered `pre-release` until we've released the final 2.0.0 version.
 

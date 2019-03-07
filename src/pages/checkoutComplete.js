@@ -1,13 +1,10 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { Router } from "routes";
-import { observer } from "mobx-react";
 import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import OrderFulfillmentGroups from "components/OrderFulfillmentGroups";
+import OrderFulfillmentGroup from "components/OrderFulfillmentGroup";
 import PageLoading from "components/PageLoading";
-import withCart from "containers/cart/withCart";
 import withOrder from "containers/order/withOrder";
 
 const styles = (theme) => ({
@@ -30,62 +27,24 @@ const styles = (theme) => ({
     display: "flex",
     justifyContent: "center"
   },
-  checkoutTitleContainer: {
-    alignSelf: "flex-end",
-    width: "8rem",
-    [theme.breakpoints.up("md")]: {
-      width: "10rem"
-    }
-  },
-  checkoutTitle: {
-    fontSize: "1.125rem",
-    color: theme.palette.reaction.black35,
-    display: "inline",
-    marginLeft: "0.3rem"
-  },
   flexContainer: {
     display: "flex",
     flexDirection: "column"
-  },
-  headerContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: "2rem"
-  },
-  emptyCartContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  emptyCart: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: 320,
-    height: 320
-  },
-  logo: {
-    color: theme.palette.reaction.reactionBlue,
-    marginRight: theme.spacing.unit,
-    borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
   }
 });
 
-@withCart
 @withOrder
-@observer
 @withStyles(styles, { withTheme: true })
 class CheckoutComplete extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    clearAuthenticatedUsersCart: PropTypes.func.isRequired,
-    client: PropTypes.object.isRequired,
-    hasMoreCartItems: PropTypes.bool,
     isLoadingOrder: PropTypes.bool,
-    loadMoreCartItems: PropTypes.func,
-    onChangeCartItemsQuantity: PropTypes.func,
-    onRemoveCartItems: PropTypes.func,
-    order: PropTypes.object,
+    order: PropTypes.shape({
+      email: PropTypes.string.isRequired,
+      fulfillmentGroups: PropTypes.arrayOf(PropTypes.object).isRequired,
+      payments: PropTypes.arrayOf(PropTypes.object),
+      referenceId: PropTypes.string.isRequired
+    }),
     shop: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string
@@ -93,25 +52,15 @@ class CheckoutComplete extends Component {
     theme: PropTypes.object.isRequired
   };
 
-  state = {};
-
-  componentDidMount() {
-    const { clearAuthenticatedUsersCart } = this.props;
-
-    clearAuthenticatedUsersCart();
-  }
-
-  handleCartEmptyClick = () => {
-    Router.pushRoute("/");
-  }
-
   renderFulfillmentGroups() {
     const { classes, order } = this.props;
 
     return (
       <div className={classes.flexContainer}>
         <div className={classes.fulfillmentGroups}>
-          <OrderFulfillmentGroups order={order} />
+          {order.fulfillmentGroups.map((fulfillmentGroup, index) => (
+            <OrderFulfillmentGroup key={`${index}`} fulfillmentGroup={fulfillmentGroup} payments={order.payments} />
+          ))}
         </div>
       </div>
     );
@@ -127,7 +76,7 @@ class CheckoutComplete extends Component {
         <div className={classes.checkoutContentContainer}>
           <div className={classes.orderDetails}>
             <section className={classes.section}>
-              <Typography className={classes.title} variant="title">Order not found</Typography>
+              <Typography className={classes.title} variant="h6">Order not found</Typography>
             </section>
           </div>
         </div>
@@ -144,14 +93,12 @@ class CheckoutComplete extends Component {
           <div className={classes.orderDetails}>
             <section className={classes.section}>
               <header className={classes.sectionHeader}>
-                <Typography className={classes.title} variant="title">
-                  {"Thank you for your order"}
+                <Typography className={classes.title} variant="h6">Thank you for your order</Typography>
+                <Typography variant="body1">
+                  {"Your order ID is:"} <strong>{order.referenceId}</strong>
                 </Typography>
                 <Typography variant="body1">
-                  {"Your order ID is:"} <strong>{order && order.referenceId}</strong>
-                </Typography>
-                <Typography variant="body1">
-                  {"We've sent a confirmation email to:"} <strong>{order && order.email}</strong>
+                  {"We've sent a confirmation email to:"} <strong>{order.email}</strong>
                 </Typography>
               </header>
               <div className={classes.checkoutContent}>{this.renderFulfillmentGroups()}</div>

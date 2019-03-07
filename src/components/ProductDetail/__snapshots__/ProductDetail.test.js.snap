@@ -229,6 +229,7 @@ exports[`basic snapshot 1`] = `
                 className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -251,7 +252,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-121"
+                  className="MuiTouchRipple-root-250"
                 />
               </button>
             </div>
@@ -262,6 +263,7 @@ exports[`basic snapshot 1`] = `
                 className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -284,7 +286,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-121"
+                  className="MuiTouchRipple-root-250"
                 />
               </button>
             </div>
@@ -295,6 +297,7 @@ exports[`basic snapshot 1`] = `
                 className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -317,7 +320,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-121"
+                  className="MuiTouchRipple-root-250"
                 />
               </button>
             </div>
@@ -328,6 +331,7 @@ exports[`basic snapshot 1`] = `
                 className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -350,7 +354,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-121"
+                  className="MuiTouchRipple-root-250"
                 />
               </button>
             </div>
@@ -361,6 +365,7 @@ exports[`basic snapshot 1`] = `
                 className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -383,7 +388,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-121"
+                  className="MuiTouchRipple-root-250"
                 />
               </button>
             </div>
@@ -394,6 +399,7 @@ exports[`basic snapshot 1`] = `
                 className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -416,7 +422,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-121"
+                  className="MuiTouchRipple-root-250"
                 />
               </button>
             </div>
@@ -427,6 +433,7 @@ exports[`basic snapshot 1`] = `
                 className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -449,7 +456,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-121"
+                  className="MuiTouchRipple-root-250"
                 />
               </button>
             </div>
@@ -460,6 +467,7 @@ exports[`basic snapshot 1`] = `
                 className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -482,7 +490,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-121"
+                  className="MuiTouchRipple-root-250"
                 />
               </button>
             </div>
@@ -497,17 +505,17 @@ exports[`basic snapshot 1`] = `
     <div
       className="MuiGrid-item-5 MuiGrid-grid-sm-12-58"
     >
-      <h1
-        className="MuiTypography-root-128 MuiTypography-display2-131 MuiTypography-gutterBottom-146"
+      <h3
+        className="MuiTypography-root-121 MuiTypography-h3-135 MuiTypography-colorTextSecondary-154 MuiTypography-gutterBottom-148"
       >
         Reaction Sample Product
-      </h1>
+      </h3>
     </div>
     <div
       className="SkProductDetail-info-3"
     >
       <div
-        className="MuiTypography-root-128 MuiTypography-body1-137"
+        className="MuiTypography-root-121 MuiTypography-body2-129"
       >
         Example Manufacturer
       </div>
@@ -516,13 +524,13 @@ exports[`basic snapshot 1`] = `
       className="SkProductDetail-info-3"
     >
       <div
-        className="MuiGrid-item-5 MuiGrid-grid-sm-12-58 SKProductDetailPrice-root-154"
+        className="MuiGrid-item-5 MuiGrid-grid-sm-12-58 SKProductDetailPrice-root-157"
       >
         <span
-          className="MuiTypography-root-128 MuiTypography-caption-138 SKProductDetailPrice-strike-158"
+          className="MuiTypography-root-121 MuiTypography-caption-131 SKProductDetailPrice-strike-161"
         />
         <div
-          className="MuiTypography-root-128 MuiTypography-title-134"
+          className="MuiTypography-root-121 MuiTypography-h6-138"
         >
           $12.99 - $19.99
         </div>
@@ -532,7 +540,7 @@ exports[`basic snapshot 1`] = `
       className="SkProductDetail-info-3"
     >
       <div
-        className="MuiTypography-root-128 MuiTypography-body1-137"
+        className="MuiTypography-root-121 MuiTypography-body2-129"
       >
         Sign in as administrator to edit.
 You can clone this product from the product grid.
@@ -545,15 +553,16 @@ Details can be added below the image for more specific product information.
       </div>
     </div>
     <div
-      className="SkVariantList-variantsContainer-161"
+      className="SkVariantList-variantsContainer-164"
     >
       <div
-        className="SkVariantList-variantItem-162"
+        className="SkVariantList-variantItem-165"
       >
         <button
-          className="MuiButtonBase-root-118 SkVariantItem-variantButton-163 SkVariantItem-activeVariant-164 SkVariantItem-soldOutVariant-165"
+          className="MuiButtonBase-root-118 SkVariantItem-variantButton-166 SkVariantItem-activeVariant-167 SkVariantItem-soldOutVariant-168"
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
@@ -567,18 +576,18 @@ Details can be added below the image for more specific product information.
           type="button"
         >
           <span
-            className="MuiTypography-root-128 MuiTypography-body1-137"
+            className="MuiTypography-root-121 MuiTypography-body1-130"
           >
             Sample Variant
           </span>
           <span
-            className="MuiTypography-root-128 MuiTypography-body1-137"
+            className="MuiTypography-root-121 MuiTypography-body1-130"
           >
             $12.99 - $19.99
           </span>
         </button>
         <div
-          className="SkVariantList-alert-159"
+          className="SkVariantList-alert-162"
         >
           <div
             className="c2"
@@ -586,12 +595,13 @@ Details can be added below the image for more specific product information.
         </div>
       </div>
       <div
-        className="SkVariantList-variantItem-162"
+        className="SkVariantList-variantItem-165"
       >
         <button
-          className="MuiButtonBase-root-118 SkVariantItem-variantButton-163"
+          className="MuiButtonBase-root-118 SkVariantItem-variantButton-166"
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
@@ -605,42 +615,43 @@ Details can be added below the image for more specific product information.
           type="button"
         >
           <span
-            className="MuiTypography-root-128 MuiTypography-body1-137"
+            className="MuiTypography-root-121 MuiTypography-body1-130"
           >
             Sample Variant 2
           </span>
           <span
-            className="MuiTypography-root-128 MuiTypography-body1-137"
+            className="MuiTypography-root-121 MuiTypography-body1-130"
           >
             $12.99 - $19.99
           </span>
         </button>
       </div>
       <div
-        className="SkDivider-container-166"
+        className="SkDivider-container-169"
       >
         <hr
-          className="SkDivider-item-168"
+          className="SkDivider-item-171"
         />
         <span
-          className="MuiTypography-root-128 MuiTypography-body1-137 SkDivider-label-167"
+          className="MuiTypography-root-121 MuiTypography-body2-129 SkDivider-label-170"
         >
           Available Options
         </span>
         <hr
-          className="SkDivider-item-168"
+          className="SkDivider-item-171"
         />
       </div>
       <div
-        className="MuiGrid-container-4 MuiGrid-spacing-xs-8-26 SkOptionsList-root-169"
+        className="MuiGrid-container-4 MuiGrid-spacing-xs-8-26 SkOptionsList-root-172"
       >
         <div
           className="MuiGrid-item-5"
         >
           <button
-            className="MuiButtonBase-root-118 SkProductDetailOption-optionButton-172"
+            className="MuiButtonBase-root-118 SkProductDetailOption-optionButton-175"
             onBlur={[Function]}
             onClick={[Function]}
+            onContextMenu={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
@@ -654,13 +665,13 @@ Details can be added below the image for more specific product information.
             type="button"
           >
             <span
-              className="MuiTypography-root-128 MuiTypography-body1-137 SkProductDetailOption-optionText-173"
+              className="MuiTypography-root-121 MuiTypography-body1-130 SkProductDetailOption-optionText-176"
             >
               Red
             </span>
           </button>
           <div
-            className="SkOptionsList-alert-170"
+            className="SkOptionsList-alert-173"
           >
             <div
               className="c3"
@@ -671,9 +682,10 @@ Details can be added below the image for more specific product information.
           className="MuiGrid-item-5"
         >
           <button
-            className="MuiButtonBase-root-118 SkProductDetailOption-optionButton-172"
+            className="MuiButtonBase-root-118 SkProductDetailOption-optionButton-175"
             onBlur={[Function]}
             onClick={[Function]}
+            onContextMenu={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
@@ -687,7 +699,7 @@ Details can be added below the image for more specific product information.
             type="button"
           >
             <span
-              className="MuiTypography-root-128 MuiTypography-body1-137 SkProductDetailOption-optionText-173"
+              className="MuiTypography-root-121 MuiTypography-body1-130 SkProductDetailOption-optionText-176"
             >
               Green
             </span>
@@ -695,7 +707,7 @@ Details can be added below the image for more specific product information.
         </div>
       </div>
       <div
-        className="SkVariantList-inventoryStatus-160"
+        className="SkVariantList-inventoryStatus-163"
       >
         <div
           className="c4"
@@ -708,38 +720,39 @@ Details can be added below the image for more specific product information.
       className="MuiGrid-container-4"
     >
       <div
-        className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 SkProductDetailAddToCart-quantityGrid-181"
+        className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 SkProductDetailAddToCart-quantityGrid-184"
       >
         <div
-          className="SkDivider-container-166"
+          className="SkDivider-container-169"
         >
           <hr
-            className="SkDivider-item-168"
+            className="SkDivider-item-171"
           />
           <hr
-            className="SkDivider-item-168"
+            className="SkDivider-item-171"
           />
         </div>
         <span
-          className="MuiTypography-root-128 MuiTypography-body1-137 SkProductDetailAddToCart-quantityTypography-184"
+          className="MuiTypography-root-121 MuiTypography-body2-129 SkProductDetailAddToCart-quantityTypography-187"
         >
           Quantity
         </span>
         <div
-          className="MuiFormControl-root-185"
+          className="MuiFormControl-root-188"
         >
           <div
-            className="MuiInputBase-root-202 MuiInput-root-189 SkProductDetailAddToCart-quantityContainer-180 MuiInputBase-formControl-203 MuiInput-formControl-190 MuiInputBase-adornedStart-206 MuiInputBase-adornedEnd-207"
+            className="MuiInputBase-root-205 MuiInput-root-192 SkProductDetailAddToCart-quantityContainer-183 MuiInputBase-formControl-206 MuiInput-formControl-193 MuiInputBase-adornedStart-209 MuiInputBase-adornedEnd-210"
             onClick={[Function]}
           >
             <div
-              className="MuiInputAdornment-root-219"
+              className="MuiInputAdornment-root-222"
             >
               <button
-                className="MuiButtonBase-root-118 SkProductDetailAddToCart-incrementButton-179"
+                className="MuiButtonBase-root-118 SkProductDetailAddToCart-incrementButton-182"
                 color="default"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -755,7 +768,7 @@ Details can be added below the image for more specific product information.
               >
                 <svg
                   aria-hidden="true"
-                  className="MuiSvgIcon-root-105 SkProductDetailAddToCart-quantitySvg-183"
+                  className="MuiSvgIcon-root-105 SkProductDetailAddToCart-quantitySvg-186"
                   focusable="false"
                   role="presentation"
                   viewBox="0 0 24 24"
@@ -765,13 +778,13 @@ Details can be added below the image for more specific product information.
                   />
                 </svg>
                 <span
-                  className="MuiTouchRipple-root-121"
+                  className="MuiTouchRipple-root-250"
                 />
               </button>
             </div>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-212 MuiInput-input-197 SkProductDetailAddToCart-quantityInput-182 MuiInputBase-inputAdornedStart-217 MuiInputBase-inputAdornedEnd-218"
+              className="MuiInputBase-input-215 MuiInput-input-200 SkProductDetailAddToCart-quantityInput-185 MuiInputBase-inputAdornedStart-220 MuiInputBase-inputAdornedEnd-221"
               disabled={false}
               id="addToCartQuantityInput"
               onBlur={[Function]}
@@ -782,13 +795,14 @@ Details can be added below the image for more specific product information.
               value={1}
             />
             <div
-              className="MuiInputAdornment-root-219"
+              className="MuiInputAdornment-root-222"
             >
               <button
-                className="MuiButtonBase-root-118 SkProductDetailAddToCart-incrementButton-179"
+                className="MuiButtonBase-root-118 SkProductDetailAddToCart-incrementButton-182"
                 color="default"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -804,7 +818,7 @@ Details can be added below the image for more specific product information.
               >
                 <svg
                   aria-hidden="true"
-                  className="MuiSvgIcon-root-105 SkProductDetailAddToCart-quantitySvg-183"
+                  className="MuiSvgIcon-root-105 SkProductDetailAddToCart-quantitySvg-186"
                   focusable="false"
                   role="presentation"
                   viewBox="0 0 24 24"
@@ -814,23 +828,24 @@ Details can be added below the image for more specific product information.
                   />
                 </svg>
                 <span
-                  className="MuiTouchRipple-root-121"
+                  className="MuiTouchRipple-root-250"
                 />
               </button>
             </div>
           </div>
         </div>
         <span
-          className="MuiTypography-root-128 MuiTypography-body1-137 SkProductDetailAddToCart-addToCartErrorText-178"
+          className="MuiTypography-root-121 MuiTypography-body1-130 SkProductDetailAddToCart-addToCartErrorText-181"
         />
       </div>
       <div
         className="MuiGrid-item-5 MuiGrid-grid-xs-12-44"
       >
         <button
-          className="MuiButtonBase-root-118 SkProductDetailAddToCart-addToCartButton-176"
+          className="MuiButtonBase-root-118 SkProductDetailAddToCart-addToCartButton-179"
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
@@ -844,40 +859,40 @@ Details can be added below the image for more specific product information.
           type="button"
         >
           <span
-            className="MuiTypography-root-128 MuiTypography-body1-137 SkProductDetailAddToCart-addToCartText-177"
+            className="MuiTypography-root-121 MuiTypography-body1-130 SkProductDetailAddToCart-addToCartText-180"
           >
             Add to cart
           </span>
           <span
-            className="MuiTouchRipple-root-121"
+            className="MuiTouchRipple-root-250"
           />
         </button>
       </div>
     </div>
     <div
-      className="HiddenCss-mdUp-238"
+      className="MuiPrivateHiddenCss-mdUp-242"
     >
       <div
-        className="SkCartPopover-container-223 SkCartPopover-isContainerHidden-225"
+        className="SkCartPopover-container-227 SkCartPopover-isContainerHidden-229"
       >
         <div
-          className="MuiGrid-container-4 MuiGrid-spacing-xs-24-28 SkCartPopover-gridContainer-224"
+          className="MuiGrid-container-4 MuiGrid-spacing-xs-24-28 SkCartPopover-gridContainer-228"
         >
           <div
-            className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 SkCartPopover-containerItem-227"
+            className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 SkCartPopover-containerItem-231"
           >
             <img
               alt="Item Title"
-              className="SkCartPopover-addedToCartImg-228"
+              className="SkCartPopover-addedToCartImg-232"
               src="//placehold.it/100"
             />
             <span
-              className="MuiTypography-root-128 MuiTypography-body1-137 SkCartPopover-addedToCartText-230"
+              className="MuiTypography-root-121 MuiTypography-body2-129 SkCartPopover-addedToCartText-234"
             >
               10
                "
               <span
-                className="SkCartPopover-addedToCartItemName-229"
+                className="SkCartPopover-addedToCartItemName-233"
               >
                 Item Title
               </span>

@@ -4,9 +4,8 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "custom/reactionTheme";
 import { MockedProvider } from "react-apollo/test-utils";
 import { Provider } from "mobx-react";
-import shopQuery from "containers/shop/shop.gql";
 import anonymousCartByCartIdQuery from "containers/cart/queries.gql";
-import primaryShopIdQuery from "containers/common-gql/primaryShopId.gql";
+import primaryShopQuery from "containers/common-gql/primaryShop.gql";
 import MiniCart from "./MiniCart";
 
 const shop = {
@@ -21,24 +20,14 @@ const shop = {
 const mocks = [
   {
     request: {
-      query: primaryShopIdQuery
-    },
-    result: {
-      data: {
-        primaryShopId: shop._id
-      }
-    }
-  },
-  {
-    request: {
-      query: shopQuery,
+      query: primaryShopQuery,
       variables: {
-        shopId: shop._id
+        language: "en"
       }
     },
     result: {
       data: {
-        shop
+        primaryShop: shop
       }
     }
   },

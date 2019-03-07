@@ -1,0 +1,20 @@
+fragment AddressCommon on Address {
+  address1
+  address2
+  city
+  postal
+  country
+  region
+}
+
+fragment FullAddressCommon on Address {
+  ...AddressCommon
+  _id
+  fullName
+  company
+  isBillingDefault
+  isCommercial
+  isShippingDefault
+  metafields
+  phone
+}

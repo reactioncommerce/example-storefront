@@ -54,16 +54,21 @@ LABEL maintainer="Reaction Commerce <engineering@reactioncommerce.com>" \
       com.reactioncommerce.docker.git.sha1=$GIT_SHA1 \
       com.reactioncommerce.docker.license=$LICENSE
 
+# Get versions to pin with this command:
+# apk list bash curl less vim | cut -d " " -f 1 | sed 's/-/=/' | xargs
+RUN apk --no-cache add bash curl less vim
+SHELL ["/bin/bash", "-o", "pipefail", "-o", "errexit", "-u", "-c"]
+
 # Because Docker Compose uses a volume for node_modules and volumes are owned
 # by root by default, we have to initially create node_modules here with correct owner.
 # Without this Yarn cannot write packages into node_modules later, when running in a container.
-RUN mkdir -p "/usr/local/src/node_modules" && chown node "/usr/local/src" && chown node "/usr/local/src/node_modules"
-RUN mkdir -p "/usr/local/src/reaction-app/node_modules" && chown node "/usr/local/src/reaction-app" && chown node "/usr/local/src/reaction-app/node_modules"
+RUN mkdir -p "/usr/local/src/node_modules"; chown node "/usr/local/src"; chown node "/usr/local/src/node_modules"
+RUN mkdir -p "/usr/local/src/reaction-app/node_modules"; chown node "/usr/local/src/reaction-app"; chown node "/usr/local/src/reaction-app/node_modules"
 
 # Same for Yarn cache folder. Without this Yarn will warn that it's going to use
 # a fallback cache dir instead because the one in config is not writable.
-RUN mkdir -p "/home/node/.cache/yarn" && chown node "/home/node/.cache/yarn"
-RUN mkdir -p "/home/node/.cache/yarn-offline-mirror" && chown node "/home/node/.cache/yarn-offline-mirror"
+RUN mkdir -p "/home/node/.cache/yarn"; chown node "/home/node/.cache/yarn"
+RUN mkdir -p "/home/node/.cache/yarn-offline-mirror"; chown node "/home/node/.cache/yarn-offline-mirror"
 
 WORKDIR $APP_SOURCE_DIR/..
 COPY --chown=node package.json yarn.lock $APP_SOURCE_DIR/../
@@ -74,8 +79,7 @@ COPY --chown=node package.json yarn.lock $APP_SOURCE_DIR/../
 # The project directory will be mounted during development. Therefore, we'll
 # install dependencies into an external directory (one level up.) This works
 # because Node traverses up the fs to find node_modules.
-RUN set -ex; \
-  if [ "$BUILD_ENV" = "production" ]; then \
+RUN if [ "$BUILD_ENV" = "production" ]; then \
     yarn install \
       --frozen-lockfile \
       --ignore-scripts \
@@ -107,8 +111,7 @@ COPY --chown=node . $APP_SOURCE_DIR
 # our tools use "/home/node" as the HOME dir.
 USER node
 
-RUN set -ex; \
-  if [ "$BUILD_ENV" = "production" ]; then \
+RUN if [ "$BUILD_ENV" = "production" ]; then \
     yarn build; \
   fi;
 

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import { inject, observer } from "mobx-react";
 import { Router } from "routes";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -12,6 +13,7 @@ import ChevronRightIcon from "mdi-material-ui/ChevronRight";
 import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 import { withStyles } from "@material-ui/core/styles";
+import Link from "components/Link";
 
 const styles = (theme) => ({
   subNav: {
@@ -66,13 +68,13 @@ class NavigationItemMobile extends Component {
   get linkPath() {
     const { navItem, routingStore } = this.props;
     return routingStore.queryString !== ""
-      ? `/tag/${navItem.slug}?${routingStore.queryString}`
-      : `/tag/${navItem.slug}`;
+      ? `${navItem.navigationItem.data.url}?${routingStore.queryString}`
+      : `${navItem.navigationItem.data.url}`;
   }
 
   get hasSubNavItems() {
-    const { navItem: { subTags } } = this.props;
-    return Array.isArray(subTags) && subTags.length > 0;
+    const { navItem: { items } } = this.props;
+    return Array.isArray(items) && items.length > 0;
   }
 
   onClick = () => {
@@ -94,22 +96,34 @@ class NavigationItemMobile extends Component {
   };
 
   renderSubNav() {
-    const { classes, isTopLevel, navItem: { subTags }, uiStore, routingStore } = this.props;
+    const { classes, isTopLevel, navItem: { items }, uiStore, routingStore } = this.props;
 
     if (this.hasSubNavItems && !isTopLevel) {
       return (
         <Collapse in={this.state.isSubNavOpen} timeout="auto" unmountOnExit>
           <MenuList className={classes.subMenuList} component="div" disablePadding>
-            {subTags.map(({ node: navItemGroup }, index) => (
-              <NavigationItemMobile
-                key={index}
-                classes={classes}
-                navItem={navItemGroup}
-                routingStore={routingStore}
-                shouldShowDivider={false}
-                uiStore={uiStore}
-              />
-            ))}
+            {items.map((item, index) => {
+              const { navigationItem: { data: { classNames: navigationItemClassNames, isUrlRelative, shouldOpenInNewWindow } } } = item;
+
+              return (
+                <Link
+                  className={navigationItemClassNames}
+                  href={this.linkPath}
+                  isUrlAbsolute={!isUrlRelative}
+                  onClick={this.onClick}
+                  shouldOpenInNewWindow={shouldOpenInNewWindow}
+                >
+                  <NavigationItemMobile
+                    key={index}
+                    classes={classes}
+                    navItem={item}
+                    routingStore={routingStore}
+                    shouldShowDivider={false}
+                    uiStore={uiStore}
+                  />
+                </Link>
+              );
+            })}
           </MenuList>
         </Collapse>
       );
@@ -141,17 +155,22 @@ class NavigationItemMobile extends Component {
   }
 
   render() {
-    const { classes, navItem, shouldShowDivider } = this.props;
+    const { classes, navItem: { navigationItem: { data } }, shouldShowDivider } = this.props;
+
+    const listItemClasses = classNames(
+      data.classNames,
+      {
+        root: classes.listItemRoot,
+        dense: classes.listItemDense,
+        gutters: classes.listItemGutters
+      }
+    );
 
     return (
       <Fragment>
         <ListItem
           button
-          classes={{
-            root: classes.listItemRoot,
-            dense: classes.listItemDense,
-            gutters: classes.listItemGutters
-          }}
+          classes={listItemClasses}
           color="inherit"
           dense={!shouldShowDivider}
           onClick={this.onClick}
@@ -160,7 +179,7 @@ class NavigationItemMobile extends Component {
             classes={{
               textDense: classes.listItemTextDense
             }}
-            primary={navItem.name}
+            primary={data.contentForLanguage}
           />
           {this.renderIcon()}
         </ListItem>
