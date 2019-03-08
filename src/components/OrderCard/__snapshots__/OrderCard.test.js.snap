@@ -1,0 +1,884 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot of full order card 1`] = `
+.c0 {
+  position: relative;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  border-bottom-color: #f5f5f5;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: #f5f5f5;
+  border-left-style: solid;
+  border-left-width: 0;
+  border-right-color: #f5f5f5;
+  border-right-style: solid;
+  border-right-width: 0;
+  border-top-color: #f5f5f5;
+  border-top-style: solid;
+  border-top-width: 0;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 16px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 16px;
+  width: 100%;
+}
+
+.c0:first-of-type {
+  border-top: none;
+}
+
+.c0:last-of-type {
+  border-bottom: none;
+}
+
+.c0 > * {
+  box-sizing: border-box;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 16px;
+  position: relative;
+  width: 100%;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c4 {
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+}
+
+.c11 {
+  position: initial;
+  bottom: 16px;
+  right: 0;
+  text-align: right;
+}
+
+.c14 {
+  position: absolute;
+  margin-top: 10px;
+  bottom: 16px;
+  right: 0;
+  text-align: right;
+}
+
+.c15 {
+  -webkit-font-smoothing: antialiased;
+  color: #505558;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1.25;
+  white-space: pre;
+}
+
+.c16 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 600;
+  -webkit-letter-spacing: .03em;
+  -moz-letter-spacing: .03em;
+  -ms-letter-spacing: .03em;
+  letter-spacing: .03em;
+  line-height: 1.5;
+}
+
+.c5 {
+  -webkit-flex: 0 0 fit;
+  -ms-flex: 0 0 fit;
+  flex: 0 0 fit;
+}
+
+.c6 {
+  -webkit-font-smoothing: antialiased;
+  color: #505558;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 700;
+  -webkit-letter-spacing: .03em;
+  -moz-letter-spacing: .03em;
+  -ms-letter-spacing: .03em;
+  letter-spacing: .03em;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.c6 a {
+  -webkit-font-smoothing: antialiased;
+  color: #505558;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 700;
+  -webkit-letter-spacing: .03em;
+  -moz-letter-spacing: .03em;
+  -ms-letter-spacing: .03em;
+  letter-spacing: .03em;
+  line-height: 1;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c6 a:focus,
+.c6 a:hover {
+  color: #5d8ea9;
+}
+
+.c8 {
+  -webkit-font-smoothing: antialiased;
+  color: #595959;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.c7 {
+  margin-bottom: 0.5rem;
+}
+
+.c9 {
+  -webkit-font-smoothing: antialiased;
+  color: #595959;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.c17 {
+  width: 100%;
+  border-spacing: 0;
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.c18 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1;
+  border-top-color: #e6e6e6;
+  border-top-style: solid;
+  border-top-width: 0;
+  padding-bottom: 8px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 8px;
+  text-align: left;
+}
+
+.c24 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1;
+  border-top-color: #e6e6e6;
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding-bottom: 8px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 8px;
+  text-align: left;
+}
+
+.c19 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1;
+  text-align: right;
+}
+
+.c20 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1;
+  border-top-color: #e6e6e6;
+  border-top-style: solid;
+  border-top-width: 0;
+  padding-bottom: 16px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 8px;
+  text-align: left;
+}
+
+.c21 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1;
+  padding-bottom: 16px;
+  text-align: right;
+}
+
+.c22 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1;
+  border-top-color: #e6e6e6;
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding-bottom: 16px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 16px;
+  text-align: left;
+}
+
+.c23 {
+  text-align: right;
+  padding-bottom: 16px;
+  padding-top: 16px;
+}
+
+.c25 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 700;
+  -webkit-letter-spacing: .03em;
+  -moz-letter-spacing: .03em;
+  -ms-letter-spacing: .03em;
+  letter-spacing: .03em;
+  line-height: 1;
+}
+
+.c13 {
+  -webkit-font-smoothing: antialiased;
+  color: #505558;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1.25;
+}
+
+.c12 {
+  -webkit-font-smoothing: antialiased;
+  color: #bfbfbf;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1.25;
+  display: block;
+}
+
+.c10 {
+  -webkit-font-smoothing: antialiased;
+  color: #cd3f4c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1.25;
+}
+
+@media (min-width:992px) {
+  .c4 {
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width:768px) {
+  .c11 {
+    position: absolute;
+  }
+}
+
+@media (min-width:768px) {
+  .c11 {
+    margin-left: 1.5rem;
+  }
+}
+
+@media (max-width:768px) {
+  .c14 {
+    position: initial;
+    margin-top: 10px;
+  }
+}
+
+<div
+  className="MuiGrid-container-5"
+>
+  <div
+    className="MuiGrid-item-6 MuiGrid-grid-xs-12-45 MuiGrid-grid-md-12-73"
+  >
+    <div
+      className="OrderCard-orderCard-1"
+    >
+      <header
+        className="OrderCard-orderCardHeader-2"
+      >
+        <div
+          className="OrderCardHeader-orderCardHeader-102"
+        >
+          <div
+            className="MuiGrid-container-5 MuiGrid-align-items-xs-center-13"
+          >
+            <div
+              className="MuiGrid-item-6 MuiGrid-grid-xs-12-45 MuiGrid-grid-md-3-64"
+            >
+              <div
+                className="MuiChip-root-116 OrderCardStatusBadge-orderStatusNew-112"
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                role="button"
+                tabIndex={-1}
+              >
+                <span
+                  className="MuiChip-label-135"
+                />
+              </div>
+            </div>
+            <div
+              className="MuiGrid-item-6 MuiGrid-grid-xs-12-45 MuiGrid-grid-md-3-64"
+            >
+              <span
+                className="MuiTypography-root-141 MuiTypography-caption-151 OrderCardHeader-orderCardInfoText-103 OrderCardHeader-orderCardInfoHeaderText-104"
+              >
+                Date:
+              </span>
+              <span
+                className="MuiTypography-root-141 MuiTypography-caption-151 OrderCardHeader-orderCardInfoTextBold-105"
+              >
+                03/21/2018
+              </span>
+            </div>
+            <div
+              className="MuiGrid-item-6 MuiGrid-grid-xs-12-45 MuiGrid-grid-md-3-64"
+            >
+              <span
+                className="MuiTypography-root-141 MuiTypography-caption-151 OrderCardHeader-orderCardInfoText-103 OrderCardHeader-orderCardInfoHeaderText-104"
+              >
+                Order ID:
+              </span>
+              <span
+                className="MuiTypography-root-141 MuiTypography-caption-151 OrderCardHeader-orderCardInfoTextBold-105"
+              >
+                abcdef
+              </span>
+            </div>
+            <div
+              className="MuiGrid-item-6 MuiGrid-grid-xs-12-45 MuiGrid-grid-md-3-64"
+            >
+              <span
+                className="MuiTypography-root-141 MuiTypography-caption-151 OrderCardHeader-orderCardInfoTextDetails-106"
+              >
+                Order details
+                <button
+                  className="MuiButtonBase-root-183 MuiIconButton-root-177 MuiIconButton-colorInherit-178 OrderCardHeader-orderCardInfoExpandIcon-107"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onContextMenu={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex="0"
+                  type="button"
+                >
+                  <span
+                    className="MuiIconButton-label-182"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root-186"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-229"
+                  />
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section
+        className="OrderCard-orderCardFulfillmentGroups-3"
+      >
+        <section
+          className="OrderCardFulfillmentGroup-fulfillmentGroup-195"
+        >
+          <header
+            className="OrderCardFulfillmentGroup-fulfillmentGroupHeader-198"
+          >
+            <div
+              className="MuiGrid-container-5 MuiGrid-spacing-xs-24-29 MuiGrid-align-items-xs-center-13 MuiGrid-justify-xs-center-22"
+            >
+              <div
+                className="MuiGrid-item-6 MuiGrid-grid-xs-6-39"
+              >
+                <h6
+                  className="MuiTypography-root-141 MuiTypography-subtitle1-159 OrderCardFulfillmentGroup-fulfillmentGroupCount-197"
+                >
+                  Shipment 
+                  1
+                   of 
+                  1
+                </h6>
+              </div>
+              <div
+                className="MuiGrid-item-6 MuiGrid-grid-xs-6-39 OrderCardFulfillmentGroup-fulfillmentGroupHeaderRightColumn-199"
+              >
+                <button
+                  className="MuiButtonBase-root-183 MuiButtonBase-disabled-184 MuiButton-root-201 MuiButton-outlined-209 MuiButton-sizeSmall-224 MuiButton-disabled-221 OrderCardFulfillmentGroup-trackShipmentButton-200"
+                  disabled={true}
+                  onBlur={[Function]}
+                  onContextMenu={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex="-1"
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-202"
+                  >
+                    No tracking available
+                  </span>
+                </button>
+              </div>
+            </div>
+          </header>
+          <div
+            className="MuiGrid-item-6 MuiGrid-grid-xs-12-45 MuiGrid-grid-md-12-73 OrderCardFulfillmentGroup-fulfillmentGroupDetails-196"
+          >
+            <div
+              className=""
+            >
+              <div
+                className="c0"
+              >
+                <a
+                  href="/product/product-slug"
+                >
+                  <picture>
+                    
+                    <img
+                      alt=""
+                      src="//placehold.it/100"
+                      style={
+                        Object {
+                          "display": "block",
+                        }
+                      }
+                    />
+                  </picture>
+                </a>
+                <div
+                  className="c1"
+                >
+                  <div
+                    className="c2"
+                  >
+                    <div
+                      className="c3"
+                    >
+                      <div
+                        className="c4"
+                      >
+                        <div
+                          className="c5"
+                        >
+                          <h3
+                            className="c6"
+                          >
+                            <a
+                              href="/product/product-slug"
+                            >
+                              A Great Product
+                            </a>
+                          </h3>
+                          <div
+                            className="c7"
+                          >
+                            <p
+                              className="c8"
+                            >
+                              Patagonia
+                            </p>
+                            <p
+                              className="c9"
+                            >
+                              Red, Medium
+                            </p>
+                            <p
+                              className="c8"
+                            >
+                              Quantity: 
+                              2
+                            </p>
+                          </div>
+                        </div>
+                        <div
+                          className="c10"
+                        >
+                          Only 
+                          3
+                           in stock
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="c11"
+                >
+                  <div>
+                    
+                    <del
+                      className="c12"
+                    >
+                      $45.00
+                    </del>
+                    <div
+                      className="c13"
+                    >
+                      $20.00
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                  >
+                    <div
+                      className="c15"
+                    >
+                      Total (
+                      2
+                      ):
+                    </div>
+                    <div
+                      className="c16"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                className="c0"
+              >
+                <a
+                  href="/product/product-slug"
+                >
+                  <picture>
+                    
+                    <img
+                      alt=""
+                      src="//placehold.it/100"
+                      style={
+                        Object {
+                          "display": "block",
+                        }
+                      }
+                    />
+                  </picture>
+                </a>
+                <div
+                  className="c1"
+                >
+                  <div
+                    className="c2"
+                  >
+                    <div
+                      className="c3"
+                    >
+                      <div
+                        className="c4"
+                      >
+                        <div
+                          className="c5"
+                        >
+                          <h3
+                            className="c6"
+                          >
+                            <a
+                              href="/product/product-slug"
+                            >
+                              Another Great Product
+                            </a>
+                          </h3>
+                          <div
+                            className="c7"
+                          >
+                            <p
+                              className="c8"
+                            >
+                              Nike
+                            </p>
+                            <p
+                              className="c9"
+                            >
+                              Black, 10
+                            </p>
+                            <p
+                              className="c8"
+                            >
+                              Quantity: 
+                              1
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="c11"
+                >
+                  <div>
+                    
+                    <div
+                      className="c13"
+                    >
+                      $78.00
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+      <section
+        className="OrderCard-orderCardSummary-4"
+      >
+        <table
+          className="c17"
+        >
+          <tbody>
+            <tr>
+              <td
+                className="c18"
+              >
+                Items:
+              </td>
+              <td
+                className="c19 c18"
+              >
+                $138.00
+              </td>
+            </tr>
+            <tr>
+              <td
+                className="c18"
+              >
+                Shipping:
+              </td>
+              <td
+                className="c19 c18"
+              >
+                $2.99
+              </td>
+            </tr>
+            <tr>
+              <td
+                className="c18"
+              >
+                Surcharges:
+              </td>
+              <td
+                className="c19 c18"
+              >
+                $0.00
+              </td>
+            </tr>
+            <tr>
+              <td
+                className="c20"
+              >
+                Tax:
+              </td>
+              <td
+                className="c21 c18"
+              >
+                $0.00
+              </td>
+            </tr>
+            <tr>
+              <td
+                className="c22"
+              >
+                Order total:
+              </td>
+              <td
+                className="c23 c24"
+              >
+                <span
+                  className="c25"
+                >
+                  $140.99
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</div>
+`;

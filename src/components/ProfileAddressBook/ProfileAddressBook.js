@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import Grid from "@material-ui/core/Grid";
+import { Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import AddressBook from "@reactioncommerce/components/AddressBook/v1";
 import withAddressBook from "containers/address/withAddressBook";
@@ -9,7 +10,7 @@ import relayConnectionToArray from "lib/utils/relayConnectionToArray";
 import ErrorPage from "../../pages/_error";
 
 const styles = (theme) => ({
-  accountProfileInfoContainer: {
+  profileAddressBookTitle: {
     marginBottom: theme.spacing.unit * 4
   }
 });
@@ -60,12 +61,15 @@ class ProfileAddressBook extends Component {
   }
 
   render() {
-    const { authStore: { account }, shop } = this.props;
+    const { authStore: { account }, classes, shop } = this.props;
 
     if (account && !account._id) return <ErrorPage shop={shop} subtitle="Not Found" />;
 
     return (
-      <Grid item xs={12} md={12}>
+      <Grid className={classes.profileAddressBookContainer} container>
+        <Grid className={classes.profileAddressBookTitle} item xs={12} md={12}>
+          <Typography variant="title">Address Book</Typography>
+        </Grid>
         {this.renderAddressBook()}
       </Grid>
     );

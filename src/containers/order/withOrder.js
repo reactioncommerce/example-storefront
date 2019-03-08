@@ -13,7 +13,7 @@ import { orderByReferenceId } from "./queries.gql";
  */
 export default function withOrder(Component) {
   @withApollo
-  @inject("cartStore", "primaryShopId", "routingStore")
+  @inject("cartStore", "primaryShopId", "routingStore", "uiStore")
   @observer
   class WithOrder extends React.Component {
     static propTypes = {
@@ -31,14 +31,18 @@ export default function withOrder(Component) {
           orderId: PropTypes.string.isRequired,
           token: PropTypes.string
         })
+      }),
+      uiStore: PropTypes.shape({
+        language: PropTypes.string.isRequired
       })
     }
 
     render() {
-      const { primaryShopId, routingStore } = this.props;
+      const { primaryShopId, routingStore, uiStore } = this.props;
 
       const variables = {
         id: routingStore.query.orderId,
+        language: uiStore.language,
         shopId: primaryShopId,
         token: routingStore.query.token || null
       };

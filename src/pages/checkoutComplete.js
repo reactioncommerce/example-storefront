@@ -1,35 +1,21 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
+import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import OrderFulfillmentGroup from "components/OrderFulfillmentGroup";
 import PageLoading from "components/PageLoading";
 import withOrder from "containers/order/withOrder";
 
+import OrderCard from "components/OrderCard";
+
+
 const styles = (theme) => ({
-  sectionHeader: {
+  orderThankYou: {
     marginBottom: theme.spacing.unit * 3
   },
   title: {
     marginBottom: theme.spacing.unit * 3
-  },
-  orderDetails: {
-    width: "100%",
-    maxWidth: 600
-  },
-  fulfillmentGroups: {},
-  checkoutContent: {
-    flex: "1",
-    maxWidth: theme.layout.mainContentMaxWidth
-  },
-  checkoutContentContainer: {
-    display: "flex",
-    justifyContent: "center"
-  },
-  flexContainer: {
-    display: "flex",
-    flexDirection: "column"
   }
 });
 
@@ -41,8 +27,6 @@ class CheckoutComplete extends Component {
     isLoadingOrder: PropTypes.bool,
     order: PropTypes.shape({
       email: PropTypes.string.isRequired,
-      fulfillmentGroups: PropTypes.arrayOf(PropTypes.object).isRequired,
-      payments: PropTypes.arrayOf(PropTypes.object),
       referenceId: PropTypes.string.isRequired
     }),
     shop: PropTypes.shape({
@@ -51,20 +35,6 @@ class CheckoutComplete extends Component {
     }),
     theme: PropTypes.object.isRequired
   };
-
-  renderFulfillmentGroups() {
-    const { classes, order } = this.props;
-
-    return (
-      <div className={classes.flexContainer}>
-        <div className={classes.fulfillmentGroups}>
-          {order.fulfillmentGroups.map((fulfillmentGroup, index) => (
-            <OrderFulfillmentGroup key={`${index}`} fulfillmentGroup={fulfillmentGroup} payments={order.payments} />
-          ))}
-        </div>
-      </div>
-    );
-  }
 
   render() {
     const { classes, isLoadingOrder, order, shop } = this.props;
@@ -89,22 +59,24 @@ class CheckoutComplete extends Component {
           <title>{shop && shop.name} | Checkout</title>
           <meta name="description" content={shop && shop.description} />
         </Helmet>
-        <div className={classes.checkoutContentContainer}>
-          <div className={classes.orderDetails}>
-            <section className={classes.section}>
-              <header className={classes.sectionHeader}>
-                <Typography className={classes.title} variant="h6">Thank you for your order</Typography>
-                <Typography variant="body1">
-                  {"Your order ID is:"} <strong>{order.referenceId}</strong>
-                </Typography>
-                <Typography variant="body1">
-                  {"We've sent a confirmation email to:"} <strong>{order.email}</strong>
-                </Typography>
-              </header>
-              <div className={classes.checkoutContent}>{this.renderFulfillmentGroups()}</div>
-            </section>
-          </div>
-        </div>
+        <Grid container>
+          <Grid item xs={false} md={3} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
+          <Grid item xs={12} md={6}>
+            <Grid item className={classes.orderThankYou} xs={12} md={12}>
+              <Typography className={classes.title} variant="title">Thank you for your order</Typography>
+              <Typography variant="body1">
+                {"Your order ID is:"} <strong>{order.referenceId}</strong>
+              </Typography>
+              <Typography variant="body1">
+                {"We've sent a confirmation email to:"} <strong>{order.email}</strong>
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={12}>
+              <OrderCard isExpanded={true} order={order} />
+            </Grid>
+          </Grid>
+          <Grid item xs={false} md={3} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
+        </Grid>
       </Fragment>
     );
   }

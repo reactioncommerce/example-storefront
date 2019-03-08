@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@reactioncommerce/components": "^0.63.0",
+    "@reactioncommerce/components": "^0.64.0",
     "@reactioncommerce/components-context": "^1.2.0",
     "@segment/snippet": "^4.4.0",
     "apollo-cache-inmemory": "^1.4.2",
@@ -48,6 +48,7 @@
     "compression": "^1.7.3",
     "cookie-parser": "^1.4.3",
     "cookie-session": "^2.0.0-beta.3",
+    "date-fns": "^1.30.1",
     "envalid": "^4.2.0",
     "express": "^4.16.4",
     "graphql": "14.1.1",
