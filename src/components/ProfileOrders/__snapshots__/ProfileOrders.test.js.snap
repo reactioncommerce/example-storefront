@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot of profile orders 1`] = `
+<div
+  className="MuiGrid-container-6 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-routingStore-uiStore-profileOrdersContainer-1"
+>
+  <div
+    className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-routingStore-uiStore-profileOrdersTitle-5"
+  >
+    <h6
+      className="MuiTypography-root-103 MuiTypography-h6-120"
+    >
+      Orders
+    </h6>
+  </div>
+  <div
+    className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-routingStore-uiStore-profileOrdersSelect-4"
+  >
+    <div
+      className="MuiInputBase-root-164 MuiInput-root-151 SkSelect-input-143"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiSelect-root-144"
+      >
+        <div
+          aria-haspopup="true"
+          aria-pressed="false"
+          className="MuiSelect-select-145 MuiSelect-selectMenu-148 SkSelect-selectMenu-141 MuiInputBase-input-174 MuiInput-input-159"
+          id="select-orderTypeSelect"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+          tabIndex={0}
+        >
+          All
+        </div>
+        <input
+          id="order-type-select"
+          name="orderTypeSelect"
+          type="hidden"
+          value="all"
+        />
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-181 MuiSelect-icon-150"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-routingStore-uiStore-profileOrdersList-2"
+  >
+    <div
+      className="Error-root-194"
+    >
+      <p
+        className="MuiTypography-root-103 MuiTypography-body2-111 MuiTypography-paragraph-131 Error-errorMessage-195"
+      >
+        Sorry! We couldn't find what you're looking for.
+      </p>
+      <p
+        className="MuiTypography-root-103 MuiTypography-body2-111 Error-errorLink-196"
+      >
+        <a
+          className="SkLink-anchor-197"
+          href="/"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="link"
+          tabIndex={0}
+        >
+          Home
+        </a>
+      </p>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-item-7 MuiGrid-grid-xs-12-46 MuiGrid-grid-md-12-74 inject-withApollo-inject-WithOrders-with-authStore-cartStore-primaryShopId-routingStore-uiStore--with-routingStore-uiStore-profileOrdersPagination-3"
+  >
+    <div
+      className="MuiGrid-container-6 MuiGrid-justify-xs-space-between-25 SkPageStepper-root-198"
+    >
+      <div
+        className="MuiGrid-item-7"
+      />
+      <div
+        className="MuiGrid-item-7"
+      />
+    </div>
+  </div>
+</div>
+`;

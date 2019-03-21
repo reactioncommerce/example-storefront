@@ -133,6 +133,9 @@ export default class RoutingStore {
       path = `${this.requestPath}?${this.queryString}`;
     } else if (_slug) {
       path = `${this.pathname}/${_slug}?${this.queryString}`;
+    } else if (process.browser) {
+      // allow for path instead of component name in URL
+      path = `${window.location.pathname}?${this.queryString}`;
     } else {
       path = `${this.pathname}?${this.queryString}`;
     }

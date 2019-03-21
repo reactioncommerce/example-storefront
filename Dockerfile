@@ -54,7 +54,6 @@ LABEL maintainer="Reaction Commerce <engineering@reactioncommerce.com>" \
       com.reactioncommerce.docker.git.sha1=$GIT_SHA1 \
       com.reactioncommerce.docker.license=$LICENSE
 
-# Get versions to pin with this command:
 # apk list bash curl less vim | cut -d " " -f 1 | sed 's/-/=/' | xargs
 RUN apk --no-cache add bash curl less vim
 SHELL ["/bin/bash", "-o", "pipefail", "-o", "errexit", "-u", "-c"]

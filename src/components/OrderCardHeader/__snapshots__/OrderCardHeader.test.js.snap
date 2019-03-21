@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot of order card header 1`] = `
+<div
+  className="OrderCardHeader-orderCardHeader-1"
+>
+  <div
+    className="MuiGrid-container-11 MuiGrid-align-items-xs-center-19"
+  >
+    <div
+      className="MuiGrid-item-12 MuiGrid-grid-xs-12-51 MuiGrid-grid-md-3-70"
+    >
+      <div
+        className="MuiChip-root-112 OrderCardStatusBadge-orderStatusNew-108"
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        role="button"
+        tabIndex={-1}
+      >
+        <span
+          className="MuiChip-label-131"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiGrid-item-12 MuiGrid-grid-xs-12-51 MuiGrid-grid-md-3-70"
+    >
+      <span
+        className="MuiTypography-root-137 MuiTypography-caption-147 OrderCardHeader-orderCardInfoText-2 OrderCardHeader-orderCardInfoHeaderText-3"
+      >
+        Date:
+      </span>
+      <span
+        className="MuiTypography-root-137 MuiTypography-caption-147 OrderCardHeader-orderCardInfoTextBold-4"
+      >
+        03/21/2018
+      </span>
+    </div>
+    <div
+      className="MuiGrid-item-12 MuiGrid-grid-xs-12-51 MuiGrid-grid-md-3-70"
+    >
+      <span
+        className="MuiTypography-root-137 MuiTypography-caption-147 OrderCardHeader-orderCardInfoText-2 OrderCardHeader-orderCardInfoHeaderText-3"
+      >
+        Order ID:
+      </span>
+      <span
+        className="MuiTypography-root-137 MuiTypography-caption-147 OrderCardHeader-orderCardInfoTextBold-4"
+      >
+        abcdef
+      </span>
+    </div>
+    <div
+      className="MuiGrid-item-12 MuiGrid-grid-xs-12-51 MuiGrid-grid-md-3-70"
+    >
+      <span
+        className="MuiTypography-root-137 MuiTypography-caption-147 OrderCardHeader-orderCardInfoTextDetails-5"
+      >
+        Order details
+        <button
+          className="MuiButtonBase-root-179 MuiIconButton-root-173 MuiIconButton-colorInherit-174 OrderCardHeader-orderCardInfoExpandIcon-6"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-178"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-182"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+              />
+            </svg>
+          </span>
+          <span
+            className="MuiTouchRipple-root-191"
+          />
+        </button>
+      </span>
+    </div>
+  </div>
+</div>
+`;

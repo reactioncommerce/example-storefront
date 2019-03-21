@@ -40,6 +40,22 @@ class UIStore {
   @observable locales = {};
 
   /**
+   * Return orders with these order status values
+   *
+   * @type Array
+   * @default []
+   */
+  @observable orderStatusQuery = [];
+
+  /**
+   * Limit for results of queries for multiple orders
+   *
+   * @type Number
+   * @default 5
+   */
+  @observable orderQueryLimit = 5;
+
+  /**
    * The number of items per page to display on the product grid.
    *
    * @type Number
@@ -146,6 +162,16 @@ class UIStore {
 
   @action toggleMenuDrawerOpen() {
     this.isMenuDrawerOpen = !this.isMenuDrawerOpen;
+  }
+
+  /**
+   * @name setOrderStatusSelectValue
+   * @summary Sets the order statuses to search for
+   * @param {Array} orderStatus Order statuses to filter by
+   * @returns {undefined} No return
+   */
+  @action setOrderStatusSelectValue(orderStatus) {
+    this.orderStatusQuery = orderStatus;
   }
 
   @action setPageSize = (size) => {

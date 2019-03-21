@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`basic snapshot 1`] = `
-.c1 {
+exports[`basic snapshot of an order summary 1`] = `
+.c0 {
   width: 100%;
   border-spacing: 0;
   background-color: transparent;
@@ -9,6 +9,52 @@ exports[`basic snapshot 1`] = `
   padding-right: 0;
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.c1 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1;
+  border-top-color: #e6e6e6;
+  border-top-style: solid;
+  border-top-width: 0;
+  padding-bottom: 8px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 8px;
+  text-align: left;
+}
+
+.c7 {
+  -webkit-font-smoothing: antialiased;
+  color: #3c3c3c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1;
+  border-top-color: #e6e6e6;
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding-bottom: 8px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 8px;
+  text-align: left;
 }
 
 .c2 {
@@ -24,37 +70,7 @@ exports[`basic snapshot 1`] = `
   -ms-letter-spacing: .02em;
   letter-spacing: .02em;
   line-height: 1;
-  border-top-color: #e6e6e6;
-  border-top-style: solid;
-  border-top-width: 0;
-  padding-bottom: 8px;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 8px;
-  text-align: left;
-}
-
-.c8 {
-  -webkit-font-smoothing: antialiased;
-  color: #3c3c3c;
-  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-stretch: normal;
-  font-weight: 400;
-  -webkit-letter-spacing: .02em;
-  -moz-letter-spacing: .02em;
-  -ms-letter-spacing: .02em;
-  letter-spacing: .02em;
-  line-height: 1;
-  border-top-color: #e6e6e6;
-  border-top-style: solid;
-  border-top-width: 1px;
-  padding-bottom: 8px;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 8px;
-  text-align: left;
+  text-align: right;
 }
 
 .c3 {
@@ -70,7 +86,14 @@ exports[`basic snapshot 1`] = `
   -ms-letter-spacing: .02em;
   letter-spacing: .02em;
   line-height: 1;
-  text-align: right;
+  border-top-color: #e6e6e6;
+  border-top-style: solid;
+  border-top-width: 0;
+  padding-bottom: 16px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 8px;
+  text-align: left;
 }
 
 .c4 {
@@ -86,34 +109,11 @@ exports[`basic snapshot 1`] = `
   -ms-letter-spacing: .02em;
   letter-spacing: .02em;
   line-height: 1;
-  border-top-color: #e6e6e6;
-  border-top-style: solid;
-  border-top-width: 0;
-  padding-bottom: 16px;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 8px;
-  text-align: left;
-}
-
-.c5 {
-  -webkit-font-smoothing: antialiased;
-  color: #3c3c3c;
-  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-stretch: normal;
-  font-weight: 400;
-  -webkit-letter-spacing: .02em;
-  -moz-letter-spacing: .02em;
-  -ms-letter-spacing: .02em;
-  letter-spacing: .02em;
-  line-height: 1;
   padding-bottom: 16px;
   text-align: right;
 }
 
-.c6 {
+.c5 {
   -webkit-font-smoothing: antialiased;
   color: #3c3c3c;
   font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
@@ -136,13 +136,13 @@ exports[`basic snapshot 1`] = `
   text-align: left;
 }
 
-.c7 {
+.c6 {
   text-align: right;
   padding-bottom: 16px;
   padding-top: 16px;
 }
 
-.c9 {
+.c8 {
   -webkit-font-smoothing: antialiased;
   color: #3c3c3c;
   font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
@@ -157,120 +157,74 @@ exports[`basic snapshot 1`] = `
   line-height: 1;
 }
 
-.c0 table td {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-bottom: none;
-}
-
-<div
-  className="SkOrderSummary-summary-1"
+<table
+  className="c0"
 >
-  <div
-    className="SkOrderSummary-header-2"
-  >
-    <div
-      className="MuiGrid-container-6 MuiGrid-spacing-xs-24-30"
-    >
-      <div
-        className="MuiGrid-item-7 MuiGrid-grid-xs-3-37"
+  <tbody>
+    <tr>
+      <td
+        className="c1"
       >
-        <h6
-          className="MuiTypography-root-103 MuiTypography-subtitle1-121 SkOrderSummary-subtitle2-5"
-        >
-          Payment Method
-        </h6>
-      </div>
-      <div
-        className="MuiGrid-item-7"
+        Items:
+      </td>
+      <td
+        className="c2 c1"
       >
-        <p
-          className="MuiTypography-root-103 MuiTypography-body2-111"
+        $6,000.00
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="c1"
+      >
+        Shipping:
+      </td>
+      <td
+        className="c2 c1"
+      >
+        $2.99
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="c1"
+      >
+        Surcharges:
+      </td>
+      <td
+        className="c2 c1"
+      >
+        $0.00
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="c3"
+      >
+        Tax:
+      </td>
+      <td
+        className="c4 c1"
+      >
+        $0.00
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="c5"
+      >
+        Order total:
+      </td>
+      <td
+        className="c6 c7"
+      >
+        <span
+          className="c8"
         >
-          Example Payment
-           (
-          $10.00
-          )
-        </p>
-      </div>
-    </div>
-  </div>
-  <hr
-    className="MuiDivider-root-139"
-  />
-  <div
-    className="c0"
-  >
-    <table
-      className="c1"
-    >
-      <tbody>
-        <tr>
-          <td
-            className="c2"
-          >
-            Items:
-          </td>
-          <td
-            className="c3 c2"
-          >
-            $118
-          </td>
-        </tr>
-        <tr>
-          <td
-            className="c2"
-          >
-            Shipping:
-          </td>
-          <td
-            className="c3 c2"
-          >
-            -
-          </td>
-        </tr>
-        <tr>
-          <td
-            className="c2"
-          >
-            Surcharges:
-          </td>
-          <td
-            className="c3 c2"
-          >
-            -
-          </td>
-        </tr>
-        <tr>
-          <td
-            className="c4"
-          >
-            Tax:
-          </td>
-          <td
-            className="c5 c2"
-          >
-            -
-          </td>
-        </tr>
-        <tr>
-          <td
-            className="c6"
-          >
-            Order total:
-          </td>
-          <td
-            className="c7 c8"
-          >
-            <span
-              className="c9"
-            >
-              $118
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+          $6,002.99
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
 `;

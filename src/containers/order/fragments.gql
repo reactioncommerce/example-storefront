@@ -6,6 +6,7 @@ fragment OrderCommon on Order {
   }
   cartId
   createdAt
+  displayStatus(language: $language)
   email
   fulfillmentGroups {
     _id
@@ -135,6 +136,7 @@ fragment OrderCommon on Order {
         displayAmount
       }
     }
+    tracking
     type
   }
   payments {
@@ -164,6 +166,29 @@ fragment OrderCommon on Order {
     _id
     currency {
       code
+    }
+  }
+  status
+  summary {
+    fulfillmentTotal {
+      amount
+      displayAmount
+    }
+    itemTotal {
+      amount
+      displayAmount
+    }
+    surchargeTotal {
+      amount
+      displayAmount
+    }
+    taxTotal {
+      amount
+      displayAmount
+    }
+    total {
+      amount
+      displayAmount
     }
   }
   totalItemQuantity

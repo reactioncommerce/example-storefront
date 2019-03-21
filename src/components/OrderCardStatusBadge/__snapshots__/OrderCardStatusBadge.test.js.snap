@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot of canceled status 1`] = `
+<div
+  className="MuiChip-root-5"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="button"
+  tabIndex={-1}
+>
+  <span
+    className="MuiChip-label-24"
+  />
+</div>
+`;
+
+exports[`basic snapshot of completed status 1`] = `
+<div
+  className="MuiChip-root-5"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="button"
+  tabIndex={-1}
+>
+  <span
+    className="MuiChip-label-24"
+  />
+</div>
+`;
+
+exports[`basic snapshot of new status 1`] = `
+<div
+  className="MuiChip-root-5"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="button"
+  tabIndex={-1}
+>
+  <span
+    className="MuiChip-label-24"
+  />
+</div>
+`;
+
+exports[`basic snapshot of processing status 1`] = `
+<div
+  className="MuiChip-root-5"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="button"
+  tabIndex={-1}
+>
+  <span
+    className="MuiChip-label-24"
+  />
+</div>
+`;

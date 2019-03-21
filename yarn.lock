@@ -1160,10 +1160,10 @@
   dependencies:
     hoist-non-react-statics "^3.2.0"
 
-"@reactioncommerce/components@^0.63.0":
-  version "0.63.0"
-  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.63.0.tgz#ae900ef9105363c7fd40c7cb04f9af112d5cd61e"
-  integrity sha512-eNvyjYA+uRJQwGOTuujMoGWGHJ2enZhnacInDCUM732ZcDFuwpRHpx8PTbrMxgBk7Ig4o86qRmqauoz3g30xTw==
+"@reactioncommerce/components@^0.64.0":
+  version "0.64.0"
+  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.64.0.tgz#d8f0dd0fd0585bb73b8c92c187b1c88ef0ebd3a4"
+  integrity sha512-8FjVHJDgVQq/OlcSANk7nWiXyxEBnyhfZbRwy3W2HL4LH90tI199MTyMN6j4pXiepgHPhFQ7oTcFC7XxsIWk3w==
   dependencies:
     "@babel/runtime" "^7.3.1"
     "@material-ui/core" "^3.1.0"
@@ -3241,6 +3241,11 @@ data-urls@^1.0.0:
     abab "^2.0.0"
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
+
+date-fns@^1.30.1:
+  version "1.30.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
+  integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
 
 date-now@^0.1.4:
   version "0.1.4"
