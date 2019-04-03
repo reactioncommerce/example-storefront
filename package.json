@@ -129,6 +129,9 @@
       "!**/vendor/**"
     ],
     "coverageDirectory": "reports/coverage",
+    "prettier": {
+      "arrowParens": "always"
+    },
     "reporters": [
       "default",
       "jest-junit"
