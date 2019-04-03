@@ -87,14 +87,14 @@ Array [
 }
 
 .c11 {
-  position: initial;
+  position: absolute;
   bottom: 16px;
   right: 0;
   text-align: right;
 }
 
 .c14 {
-  position: absolute;
+  position: initial;
   margin-top: 10px;
   bottom: 16px;
   right: 0;
@@ -532,14 +532,14 @@ Array [
   -webkit-font-smoothing: antialiased;
   color: #3c3c3c;
   font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-stretch: normal;
   font-weight: 400;
-  -webkit-letter-spacing: .02em;
-  -moz-letter-spacing: .02em;
-  -ms-letter-spacing: .02em;
-  letter-spacing: .02em;
+  -webkit-letter-spacing: .03em;
+  -moz-letter-spacing: .03em;
+  -ms-letter-spacing: .03em;
+  letter-spacing: .03em;
   line-height: 1;
   border-top-color: #e6e6e6;
   border-top-style: solid;
@@ -551,18 +551,18 @@ Array [
   text-align: left;
 }
 
-.c8 {
+.c4 {
   -webkit-font-smoothing: antialiased;
   color: #3c3c3c;
   font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-stretch: normal;
   font-weight: 400;
-  -webkit-letter-spacing: .02em;
-  -moz-letter-spacing: .02em;
-  -ms-letter-spacing: .02em;
-  letter-spacing: .02em;
+  -webkit-letter-spacing: .03em;
+  -moz-letter-spacing: .03em;
+  -ms-letter-spacing: .03em;
+  letter-spacing: .03em;
   line-height: 1;
   border-top-color: #e6e6e6;
   border-top-style: solid;
@@ -578,92 +578,23 @@ Array [
   -webkit-font-smoothing: antialiased;
   color: #3c3c3c;
   font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-stretch: normal;
   font-weight: 400;
-  -webkit-letter-spacing: .02em;
-  -moz-letter-spacing: .02em;
-  -ms-letter-spacing: .02em;
-  letter-spacing: .02em;
+  -webkit-letter-spacing: .03em;
+  -moz-letter-spacing: .03em;
+  -ms-letter-spacing: .03em;
+  letter-spacing: .03em;
   line-height: 1;
   text-align: right;
-}
-
-.c4 {
-  -webkit-font-smoothing: antialiased;
-  color: #3c3c3c;
-  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-stretch: normal;
-  font-weight: 400;
-  -webkit-letter-spacing: .02em;
-  -moz-letter-spacing: .02em;
-  -ms-letter-spacing: .02em;
-  letter-spacing: .02em;
-  line-height: 1;
-  border-top-color: #e6e6e6;
-  border-top-style: solid;
-  border-top-width: 0;
-  padding-bottom: 16px;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 8px;
-  text-align: left;
 }
 
 .c5 {
   -webkit-font-smoothing: antialiased;
   color: #3c3c3c;
   font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-stretch: normal;
-  font-weight: 400;
-  -webkit-letter-spacing: .02em;
-  -moz-letter-spacing: .02em;
-  -ms-letter-spacing: .02em;
-  letter-spacing: .02em;
-  line-height: 1;
-  padding-bottom: 16px;
-  text-align: right;
-}
-
-.c6 {
-  -webkit-font-smoothing: antialiased;
-  color: #3c3c3c;
-  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-stretch: normal;
-  font-weight: 400;
-  -webkit-letter-spacing: .02em;
-  -moz-letter-spacing: .02em;
-  -ms-letter-spacing: .02em;
-  letter-spacing: .02em;
-  line-height: 1;
-  border-top-color: #e6e6e6;
-  border-top-style: solid;
-  border-top-width: 1px;
-  padding-bottom: 16px;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 16px;
-  text-align: left;
-}
-
-.c7 {
-  text-align: right;
-  padding-bottom: 16px;
-  padding-top: 16px;
-}
-
-.c9 {
-  -webkit-font-smoothing: antialiased;
-  color: #3c3c3c;
-  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-stretch: normal;
   font-weight: 700;
@@ -729,7 +660,7 @@ Array [
               <td
                 className="c2"
               >
-                Items:
+                Item total
               </td>
               <td
                 className="c3 c2"
@@ -741,7 +672,7 @@ Array [
               <td
                 className="c2"
               >
-                Shipping:
+                Shipping
               </td>
               <td
                 className="c3 c2"
@@ -753,7 +684,19 @@ Array [
               <td
                 className="c2"
               >
-                Surcharges:
+                Surcharge
+              </td>
+              <td
+                className="c3 c2"
+              >
+                -
+              </td>
+            </tr>
+            <tr>
+              <td
+                className="c2"
+              >
+                Tax
               </td>
               <td
                 className="c3 c2"
@@ -765,25 +708,13 @@ Array [
               <td
                 className="c4"
               >
-                Tax:
+                Order total
               </td>
               <td
-                className="c5 c2"
-              >
-                -
-              </td>
-            </tr>
-            <tr>
-              <td
-                className="c6"
-              >
-                Order total:
-              </td>
-              <td
-                className="c7 c8"
+                className="c3 c4"
               >
                 <span
-                  className="c9"
+                  className="c5"
                 >
                   $118
                 </span>

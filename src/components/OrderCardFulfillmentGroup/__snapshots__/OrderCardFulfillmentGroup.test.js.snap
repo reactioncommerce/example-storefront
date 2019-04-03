@@ -86,14 +86,14 @@ exports[`basic snapshot 1`] = `
 }
 
 .c11 {
-  position: initial;
+  position: absolute;
   bottom: 16px;
   right: 0;
   text-align: right;
 }
 
 .c14 {
-  position: absolute;
+  position: initial;
   margin-top: 10px;
   bottom: 16px;
   right: 0;
