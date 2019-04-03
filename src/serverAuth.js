@@ -74,26 +74,32 @@ function configureAuthForServer(server) {
     res.redirect(req.session.redirectTo || "/");
   });
 
-  server.get("/logout/:userId", (req, res) => {
+  server.get("/logout/:userId", (req, res, next) => {
     const { userId } = req.params;
-    if (!userId) return;
-
+    if (!userId) {
+      next();
+      return;
+    }
     const { id } = decodeOpaqueId(req.params.userId);
 
     // Ask IDP to log us out
     fetch(`${config.OAUTH2_IDP_HOST_URL}logout?userId=${id}`)
       .then((logoutResponse) => {
         if (logoutResponse.status >= 400) {
-          logger.error(`Error from OAUTH2_IDP_HOST_URL logout endpoint: ${logoutResponse.status}. Check the HOST server settings`);
-        } else {
-          // If IDP confirmed logout, clear login info on this side
-          req.logout();
-          res.redirect(req.get("Referer") || "/");
+          const message = `Error from OAUTH2_IDP_HOST_URL logout endpoint: ${logoutResponse.status}. Check the HOST server settings`;
+
+          logger.error(message);
+          res.status(logoutResponse.status).send(message);
+          return;
         }
-        return null;
+        // If IDP confirmed logout, clear login info on this side
+        req.logout();
+        res.redirect(req.get("Referer") || "/");
+        return; // appease eslint consistent-return
       })
       .catch((error) => {
         logger.error(`Error while logging out: ${error}`);
+        res.status(500).send(`Error while logging out: ${error.message}`);
       });
   });
 }
