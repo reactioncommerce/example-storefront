@@ -10,17 +10,23 @@ OAuth2Strategy.prototype.authorizationParams = function (options = {}) {
   return { loginAction: options.loginAction };
 };
 
-passport.use("oauth2", new OAuth2Strategy({
-  authorizationURL: config.OAUTH2_AUTH_URL,
-  tokenURL: config.OAUTH2_TOKEN_URL,
-  clientID: config.OAUTH2_CLIENT_ID,
-  clientSecret: config.OAUTH2_CLIENT_SECRET,
-  callbackURL: config.OAUTH2_REDIRECT_URL,
-  state: true,
-  scope: ["offline"]
-}, (accessToken, refreshToken, profile, cb) => {
-  cb(null, { accessToken });
-}));
+passport.use(
+  "oauth2",
+  new OAuth2Strategy(
+    {
+      authorizationURL: config.OAUTH2_AUTH_URL,
+      tokenURL: config.OAUTH2_TOKEN_URL,
+      clientID: config.OAUTH2_CLIENT_ID,
+      clientSecret: config.OAUTH2_CLIENT_SECRET,
+      callbackURL: config.OAUTH2_REDIRECT_URL,
+      state: true,
+      scope: ["offline"]
+    },
+    (accessToken, refreshToken, profile, cb) => {
+      cb(null, { accessToken });
+    }
+  )
+);
 
 // The value passed to `done` here is stored on the session.
 // We save the full user object in the session.
@@ -44,15 +50,23 @@ function configureAuthForServer(server) {
   server.use(passport.initialize());
   server.use(passport.session());
 
-  server.get("/signin", (req, res, next) => {
-    req.session.redirectTo = req.get("Referer");
-    next(); // eslint-disable-line promise/no-callback-in-promise
-  }, passport.authenticate("oauth2", { loginAction: "signin" }));
+  server.get(
+    "/signin",
+    (req, res, next) => {
+      req.session.redirectTo = req.get("Referer");
+      next(); // eslint-disable-line promise/no-callback-in-promise
+    },
+    passport.authenticate("oauth2", { loginAction: "signin" })
+  );
 
-  server.get("/signup", (req, res, next) => {
-    req.session.redirectTo = req.get("Referer");
-    next(); // eslint-disable-line promise/no-callback-in-promise
-  }, passport.authenticate("oauth2", { loginAction: "signup" }));
+  server.get(
+    "/signup",
+    (req, res, next) => {
+      req.session.redirectTo = req.get("Referer");
+      next(); // eslint-disable-line promise/no-callback-in-promise
+    },
+    passport.authenticate("oauth2", { loginAction: "signup" })
+  );
 
   // This endpoint handles OAuth2 requests (exchanges code for token)
   server.get("/callback", passport.authenticate("oauth2"), (req, res) => {
