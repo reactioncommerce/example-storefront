@@ -36,7 +36,7 @@
     "@reactioncommerce/components-context": "^1.2.0",
     "@segment/snippet": "^4.4.0",
     "apollo-cache-inmemory": "^1.4.2",
-    "apollo-client": "^2.4.12",
+    "apollo-client": "2.4.12",
     "apollo-link": "^1.2.8",
     "apollo-link-context": "^1.0.14",
     "apollo-link-error": "^1.1.7",
