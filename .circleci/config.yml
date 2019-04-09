@@ -14,6 +14,7 @@ defaults: &defaults
 #    - DOCKER_REPOSITORY: "202687395681.dkr.ecr.us-west-2.amazonaws.com/reactioncommerce/reaction-next-starterkit"
     - DOCKER_NAMESPACE: "reactioncommerce"
     - DOCKER_NAME: "reaction-next-starterkit"
+    - GLOBAL_CACHE_VERSION: “v3”
 
   docker:
     - image: circleci/node:8-stretch
