@@ -50,7 +50,7 @@ Read the docs for [setting up Segment or a custom analytics tracker](docs/tracki
 - [Reaction Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](http://designsystem.reactioncommerce.com/)
 - [Reaction Docs: Using GraphQL](https://docs.reactioncommerce.com/docs/graphql-using)
 - [Reaction Docs: Testing with Jest](https://docs.reactioncommerce.com/docs/testing-reaction)
-- [Reaction Docs: Develping with Docker](https://docs.reactioncommerce.com/docs/installation-docker-development
+- [Reaction Docs: Developing with Docker](https://docs.reactioncommerce.com/docs/installation-docker-development
 )
 
 ## Development
