@@ -129,9 +129,6 @@
       "!**/vendor/**"
     ],
     "coverageDirectory": "reports/coverage",
-    "prettier": {
-      "arrowParens": "always"
-    },
     "reporters": [
       "default",
       "jest-junit"
@@ -150,5 +147,8 @@
   "jest-junit": {
     "output": "reports/junit/junit.xml",
     "suiteName": "jest-tests"
+  },
+  "prettier": {
+    "arrowParens": "always"
   }
 }
