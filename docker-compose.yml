@@ -26,6 +26,7 @@ services:
       auth.reaction.localhost:
     ports:
       - 4000:4000
+    user: ${REACTION_USER:-1000:1000}
     volumes:
       - $HOME/.cache/yarn-offline-mirror:/home/node/.cache/yarn-offline-mirror
       - web-yarn:/home/node/.cache/yarn
