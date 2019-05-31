@@ -1,13 +1,3 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
 version: v1.13.4
 patch: {}
-# ignores vulnerabilities until expiry date; change duration by modifying expiry date
-ignore:
-  SNYK-JS-JSYAML-174129:
-    - '@reactioncommerce/components > react-select > emotion > babel-plugin-emotion > babel-plugin-macros > cosmiconfig > js-yaml':
-        reason: No easy update path near term
-        expires: '2019-05-09T16:47:09.529Z'
-  SNYK-JS-JSYAML-173999:
-    - '*':
-        reason: Updating deps breaks snapshot tests
-        expires: 2019-05-09T00:00:00.000Z
