@@ -62,17 +62,28 @@ cd reaction-next-starterkit
 ```
 
 ### Build and run in development mode with logs
+
 ```sh
 docker-compose up -d && docker-compose logs -f
 ```
 
-### Running Commands inside the container
+### Run in development against a production API
+
+Change the `INTERNAL_GRAPHQL_URL` in `.env` to the production API URL. The URL should end in `/graphql-alpha`, like: `https://my-website.com/graphql-alpha`. Save the `.env` file and restart the application with:
+
+```sh
+docker-compose run --rm --service-ports web yarn start:local
+```
+
+### Run commands in container
+
 ```sh
 docker-compose run --rm web [command]
 ```
-Run any command inside a Docker container and then remove the container. Use this to run any tooling operations. Remember your project directory will be mounted and things will usually just work.
+Run any command inside a Docker container and then remove the container. Use this to run any tooling operations. Remember your project directory will be mounted and things will usually just work. See Yarn section below for more examples.
 
-### Running Tests in Container
+### Run tests in container
+
 Run tests locally
 ```sh
 docker-compose run --rm web yarn test
@@ -88,19 +99,19 @@ To update a failing snapshot (if you've made changes to a component)
 docker-compose run --rm web yarn test -u
 ```
 
-To run snyk security tests (this will run tests in the same way as CI)
+To run Snyk security tests (this will run tests in the same way as CI)
 ```sh
 docker-compose run --rm web sh -c "cp package.json ../ && cp .snyk ../ && cd .. && snyk auth && snyk test"
 ```
 
-To run eslint
+To run ESLint
 ```sh
 docker-compose run --rm web eslint src
 ```
 
-### Debugging the server with chrome devtools
+### Debugging the server with Chrome DevTools
 
-You can use the chrome devtools to debug the code running in the node.js application server while it's running inside docker.
+You can use the Google Chrome DevTools to debug the code running in the node.js application server while it's running inside docker.
 
 - run `docker-compose run --rm --publish 9229:9229 --publish 4000:4000 -e NODE_ENV=development web babel-node --inspect=0.0.0.0:9229 ./src/server.js`
 - Open chrome and browse to `chrome://inspect`. Find the process under **Remote Target** and click **inspect**.
@@ -142,7 +153,7 @@ Sometimes we need to test [`reaction-component-library`](https://github.com/reac
 1. Undo the renaming of your `.yarnrc` file
 1. Undo the URL change inside your `.env` file
 
-## Cleanup Containers
+## Clean up containers
 Stop, and retain containers:
 ```sh
 docker-compose stop
@@ -158,7 +169,7 @@ Stop, and remove containers, volumes and built images:
 docker-compose down -v --rmi local
 ```
 
-## Building and running the production app locally
+## Build and run the production app locally
 
 Sometimes it is helpful during development to make a production build of the app and run that locally.
 
