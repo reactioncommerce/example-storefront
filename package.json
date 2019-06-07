@@ -9,7 +9,7 @@
     "email": "engineering@reactioncommerce.com",
     "url": "https://reactioncommerce.com"
   },
-  "license": "GPL-3.0",
+  "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
     "dev": "NODE_ENV=development node ./src/server.js",
