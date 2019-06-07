@@ -72,7 +72,7 @@ docker-compose up -d && docker-compose logs -f
 Change the `INTERNAL_GRAPHQL_URL` in `.env` to the production API URL. The URL should end in `/graphql-alpha`, like: `https://my-website.com/graphql-alpha`. Save the `.env` file and restart the application with:
 
 ```sh
-docker-compose run --rm --service-ports web yarn start:local
+docker-compose run --rm --service-ports web yarn start
 ```
 
 ### Run commands in container
