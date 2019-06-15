@@ -111,10 +111,10 @@ docker-compose run --rm web eslint src
 
 ### Debugging the server with Chrome DevTools
 
-You can use the Google Chrome DevTools to debug the code running in the node.js application server while it's running inside docker.
+You can use the Google Chrome DevTools to debug the code running in the Node.js application server while it's running inside Docker.
 
-- run `docker-compose run --rm --publish 9229:9229 --publish 4000:4000 -e NODE_ENV=development web babel-node --inspect=0.0.0.0:9229 ./src/server.js`
-- Open chrome and browse to `chrome://inspect`. Find the process under **Remote Target** and click **inspect**.
+- run `docker-compose run --rm --publish 9229:9229 --publish 4000:4000 -e NODE_ENV=development web node --inspect=0.0.0.0:9229 ./src/server.js`
+- Open Chrome and browse to `chrome://inspect`. Find the process under **Remote Target** and click **inspect**.
 
 ### Yarn Commands
 
