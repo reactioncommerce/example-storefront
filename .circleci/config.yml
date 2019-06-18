@@ -272,17 +272,22 @@ jobs:
             # sibling to node_modules, then run snyk test.
             docker run \
               --env-file docker-cache/.env \
-              -e "SNYK_TOKEN=$SNYK_TOKEN" \
+              -e "CIRCLE_BRANCH" \
+              -e "CIRCLE_PR_NUMBER" \
+              -e "CIRCLE_PULL_REQUEST" \
+              -e "CIRCLE_WORKING_DIRECTORY" \
+              -e "DOCKER_REPOSITORY" \
+              -e "SNYK_TOKEN" \
               --name reactionapp_next_starterkit \
               -w /usr/local/src \
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-              sh -c "cp reaction-app/package.json ./ && cp reaction-app/.snyk ./ && snyk test"
+              sh -c "cp reaction-app/package.json ./ && cp reaction-app/.snyk ./ && ./reaction-app/.circleci/bin/snyk-test.sh"
 workflows:
   version: 2
   build_and_test:
     jobs:
       - docker-build-nonprod-and-lint:
-          context: reaction-build-read      
+          context: reaction-build-read
       - docker-build:
           context: reaction-build-read
       - docker-push:
@@ -299,7 +304,7 @@ workflows:
           requires:
             - docker-build
       - test-metrics:
-          requires: 
+          requires:
             - deploy-to-ecs
       - snyk-security:
           context: reaction-validation
@@ -312,6 +317,5 @@ workflows:
             branches:
               only: /^develop$/
       - e2e-test:
-          requires: 
+          requires:
             - deploy-to-ecs
-            
