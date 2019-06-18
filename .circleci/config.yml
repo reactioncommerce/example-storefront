@@ -256,6 +256,7 @@ jobs:
   snyk-security:
     <<: *defaults
     steps:
+      - checkout
       - setup_remote_docker
       - attach_workspace:
           at: docker-cache
@@ -264,25 +265,30 @@ jobs:
           command: |
             docker load < docker-cache/docker-image.tar
       - run:
-          name: Snyk
+          name: Snyk Security
+          # Snyk doesn't look up the directory tree for node_modules as
+          # NodeJS does so we have to take some extra measures to test in the
+          # Docker image. Copy package.json up a directory so that it is a
+          # sibling to node_modules, then run snyk test.
           command: |
-            # Snyk doesn't look up the directory tree for node_modules as
-            # NodeJS does so we have to take some extra measures to test in the
-            # Docker image. Copy package.json up a directory so that it is a
-            # sibling to node_modules, then run snyk test.
-            docker run \
-              --env-file docker-cache/.env \
-              -e "SNYK_TOKEN=$SNYK_TOKEN" \
-              --name reactionapp_next_starterkit \
-              -w /usr/local/src \
-              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-              sh -c "cp reaction-app/package.json ./ && cp reaction-app/.snyk ./ && snyk test"
+            answer=$(./.circleci/bin/should-run-snyk.sh)
+            if [[ "${answer}" =~ "^YES" ]] ; then
+              docker run \
+                --env-file docker-cache/.env \
+                --env "SNYK_TOKEN" \
+                --name reactionapp_next_starterkit \
+                --workdir /usr/local/src \
+                "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
+                sh -c "cp reaction-app/package.json ./ && cp reaction-app/.snyk ./ && snyk test"
+            else
+              echo "Skipping snyk: ${answer}"
+            fi
 workflows:
   version: 2
   build_and_test:
     jobs:
       - docker-build-nonprod-and-lint:
-          context: reaction-build-read      
+          context: reaction-build-read
       - docker-build:
           context: reaction-build-read
       - docker-push:
@@ -299,7 +305,7 @@ workflows:
           requires:
             - docker-build
       - test-metrics:
-          requires: 
+          requires:
             - deploy-to-ecs
       - snyk-security:
           context: reaction-validation
@@ -312,6 +318,5 @@ workflows:
             branches:
               only: /^develop$/
       - e2e-test:
-          requires: 
+          requires:
             - deploy-to-ecs
-            
