@@ -1,8 +1,6 @@
 # Reaction Storefront Next.js Starter Kit
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Freactioncommerce%2Freaction-next-starterkit?ref=badge_shield)
 
-_**Note:** This project is a work in progress and should not be used in production at this time._
-
 Reference headless ecommerce storefront for [Reaction Commerce](https://reactioncommerce.com/) v 2.0.0.
 
 ## Features
