@@ -1,10 +1,10 @@
 FROM node:10-alpine
 
-ARG NAME=reaction-next-starterkit
+ARG NAME=example-storefront
 ARG DESCRIPTION=""
-ARG URL=https://github.com/reactioncommerce/reaction-next-starterkit
-ARG DOC_URL=https://github.com/reactioncommerce/reaction-next-starterkit
-ARG VCS_URL=https://github.com/reactioncommerce/reaction-next-starterkit
+ARG URL=https://github.com/reactioncommerce/example-storefront
+ARG DOC_URL=https://github.com/reactioncommerce/example-storefront
+ARG VCS_URL=https://github.com/reactioncommerce/example-storefront
 ARG VCS_REF
 ARG VENDOR
 ARG BUILD_DATE

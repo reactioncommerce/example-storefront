@@ -1,4 +1,4 @@
-# Reaction NextJS Starter Kit Documentation
+# Example Storefront Documentation
 
 ## Architectural Decisions Records
 

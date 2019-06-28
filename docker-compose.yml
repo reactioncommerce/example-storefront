@@ -10,6 +10,7 @@ networks:
 
 services:
   web:
+    user: root
     build:
       context: .
       args:
@@ -18,7 +19,7 @@ services:
     env_file:
       - ./.env
     environment:
-      REACTION_APP_NAME: "reaction-next-starterkit.web"
+      REACTION_APP_NAME: "storefront.web"
     networks:
       api:
         aliases:
