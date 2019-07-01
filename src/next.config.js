@@ -41,6 +41,11 @@ module.exports = {
       type: "javascript/auto"
     });
 
+    // Duplicate versions of the styled-components package were being loaded, this config removes the duplication.
+    // It creates an alias to import the es modules version of the styled-components package.
+    // This is a workaround until the root issue is resolved: https://github.com/webpack/webpack/issues/9329
+    webpackConfig.resolve.alias["styled-components"] = "styled-components/dist/styled-components.browser.esm.js";
+
     return webpackConfig;
   }
 };
