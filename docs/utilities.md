@@ -9,8 +9,8 @@
 1. Click the button labeled `Edit HTTP Headers`
 1. Click `+ Add Header`
 1. For `Header name` enter `meteor-login-token`
-1. For `Header value` you'll need your `Meteor.loginToken` from the [Getting Started](https://github.com/reactioncommerce/reaction-next-starterkit#getting-started) guide.
-1. Make your first query by setting GraphQL Endpoint to http://localhost:3030/graphql-alpha and querying for the viewer's name:
+1. For `Header value` you'll need your `Meteor.loginToken` from the [Getting Started](https://github.com/reactioncommerce/example-storefront#getting-started) guide.
+1. Make your first query by setting GraphQL Endpoint to http://localhost:3030/graphql-beta and querying for the viewer's name:
 ```graphql
 {
   viewer {
