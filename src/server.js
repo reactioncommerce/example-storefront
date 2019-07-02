@@ -41,8 +41,8 @@ app
     configureAuthForServer(server);
 
     // add graphiql redirects to EXTERNAL_GRAPHQL_URL
-    server.get( ['/graphiql', '/graphql-beta', '/graphql-alpha', '/graphql' ], (req,res) => {
-      res.redirect( config.EXTERNAL_GRAPHQL_URL );
+    server.get(["/graphiql", "/graphql-beta", "/graphql-alpha", "/graphql"], (req, res) => {
+      res.redirect(config.EXTERNAL_GRAPHQL_URL);
     });
 
     // apply to routes starting with "/sitemap" and ending with ".xml"
