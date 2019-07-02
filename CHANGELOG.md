@@ -1,6 +1,7 @@
 # v2.0.0-rc.12
+We have [renamed](https://github.com/reactioncommerce/example-storefront/pull/544) this project from `reaction-next-starterkit` to `example-storefront` to better convey the intent behind our creating it.  We’re also [updating our docs](https://github.com/reactioncommerce/reaction-docs/pull/829) to clarify this change.
 
-This is our fourth release candidate for this project. This project should be considered `pre-release` until we've released the final 2.0.0 version.
+This is our fourth release candidate for this project. While this project is technically still `pre-release` until we've released the final 2.0.0 version, it's the most stable version of Reaction Commerce, and we recommend starting new projects with it at this point. See https://github.com/reactioncommerce/example-storefront/issues/487#issuecomment-507468894 for more detail on this.
 
 This version should be used with `v2.0.0-rc.12` of https://github.com/reactioncommerce/reaction
 
