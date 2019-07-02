@@ -1,12 +1,12 @@
 # Tracking Events
 
-`reaction-next-starterkit` uses [NYTimes React Tracking](https://github.com/NYTimes/react-tracking) to track analytics events throughout the app. By default, all events are sent to [Segment](https://segment.com/). To enable tracking you can either configure Segment tracking to send to your account, or you can swap in a different analytics provider that you prefer.
+Our Example Storefront uses [NYTimes React Tracking](https://github.com/NYTimes/react-tracking) to track analytics events throughout the app. By default, all events are sent to [Segment](https://segment.com/). To enable tracking you can either configure Segment tracking to send to your account, or you can swap in a different analytics provider that you prefer.
 
 You can see the source under `/lib/tracking`
 
 ## Set up Segment
 
-By default, this Reaction Starter Kit uses Segment analytics tracking.
+By default, this example storefront uses Segment analytics tracking.
 
 ### Step 1. Obtain your API key from the Segment dashboard
 
