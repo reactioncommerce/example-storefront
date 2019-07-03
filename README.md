@@ -20,12 +20,17 @@ Follow the [Reaction Platform docs](https://docs.reactioncommerce.com/docs/insta
 
 | Directory: Service                                                                         | URL                                                          |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
-| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API                    | [localhost:3000/graphql-beta](localhost:3000/graphql-beta) |
-| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API playground         | [localhost:3000/graphiql](localhost:3000/graphiql)           |
-| [`reaction`](https://github.com/reactioncommerce/reaction): Operator UI                     | [localhost:3000](localhost:3000)                             |
+| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API                    | [localhost:3000/graphql-beta](localhost:3000/graphql-beta)   |
+| [`reaction`](https://github.com/reactioncommerce/reaction): GraphiQL developer tool        | [localhost:3000/graphql-beta](localhost:3000/graphql-beta)   |
+| [`reaction`](https://github.com/reactioncommerce/reaction): Operator UI                    | [localhost:3000](localhost:3000)                             |
 | [`reaction`](https://github.com/reactioncommerce/reaction): MongoDB                        | [localhost:27017](localhost:27017)                           |
-| [`reaction-hydra`](https://github.com/reactioncommerce/reaction-hydra): Authentication    | [localhost:4444](localhost:4444)                             |
+| [`reaction-hydra`](https://github.com/reactioncommerce/reaction-hydra): Authentication     | [localhost:4444](localhost:4444)                             |
 | [`example-storefront`](https://github.com/reactioncommerce/example-storefront): Storefront | [localhost:4000](localhost:4000)                             |
+
+**Note**: The storefront has redirects so if you open any of the following URLs, you'll be redirected to the GraphiQL developer tool:
+- [localhost:4000/graphql]()
+- [localhost:4000/graphql-beta]()
+- [localhost:4000/graphiql]()
 
 ## Configuration
 
