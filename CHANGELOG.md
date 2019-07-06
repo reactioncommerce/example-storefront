@@ -2,9 +2,9 @@
 
 Reaction v2.0.0—an API-first, real-time commerce engine built using Node.js, React, and GraphQL. It’s the second major release of our open source commerce software.
 
-This release is coordinated with [Reaction Platform](https://github.com/reactioncommerce/reaction-platform) and is designed to work with the [Reaction](https://github.com/reactioncommerce/reaction) and `[reaction-hydra](https://github.com/reactioncommerce/reaction-hydra)`.
+This release is coordinated with [Reaction Platform](https://github.com/reactioncommerce/reaction-platform) and is designed to work with the [Reaction](https://github.com/reactioncommerce/reaction) and [reaction-hydra](https://github.com/reactioncommerce/reaction-hydra).
 
-Reaction v2.0.0 is built as a truly headless commerce platform that decouples the Reaction backend services from the frontend. We’ve decoupled the storefront application from the API. Reaction platform now consists of this [Example Storefront](https://github.com/reactioncommerce/example-storefront), which connects with the Reaction application via GraphQL to provide a customer-facing storefront. The API is provided by the [Reaction](https://github.com/reactioncommerce/reaction) project, which is now primarily our GraphQL API. The legacy integrated Meteor storefront is no longer part of the Reaction project.
+Reaction v2.0.0 is built as a truly headless commerce platform that decouples the Reaction backend services from the frontend. We’ve decoupled the storefront application from the API. Reaction platform now consists of this [Example Storefront](https://github.com/reactioncommerce/example-storefront), which integrates with the Reaction application via GraphQL to provide a customer-facing storefront. The API is provided by the [Reaction](https://github.com/reactioncommerce/reaction) project, which is now primarily our GraphQL API. The legacy integrated Meteor storefront is no longer part of the Reaction project.
 
 ### Notable changes
 This Example Storefront is brand new for the 2.0 version of Reaction. Check out [previous release notes](https://github.com/reactioncommerce/example-storefront/releases) from this project for details and associated issues and PRs.
