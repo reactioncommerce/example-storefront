@@ -5,6 +5,7 @@ import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import CartSummary from "@reactioncommerce/components/CartSummary/v1";
+import Button from "@reactioncommerce/components/Button/v1"
 import styled from "styled-components";
 
 // Use styled components to adjust the styling of the
@@ -86,7 +87,7 @@ class OrderSummary extends Component {
 
   render() {
     const { classes, payments } = this.props;
-
+    console.log(payments);
     return (
       <div className={classes.summary}>
         <div className={classes.header}>
@@ -96,7 +97,12 @@ class OrderSummary extends Component {
             </Grid>
             <Grid item>
               {(payments || []).map((payment) => (
-                <Typography key={payment._id} variant="body2">{payment.displayName} ({payment.amount.displayAmount})</Typography>
+                <>
+                  <Typography key={payment._id} variant="body2">{payment.displayName} ({payment.amount.displayAmount})</Typography>
+                  {payment.data && payment.data.redirectUrl && (
+                    <Button onClick={() => null}><a href={payment.data.redirectUrl} target="_blank">Pay now!</a></Button>
+                  )}
+                </>
               ))}
             </Grid>
           </Grid>

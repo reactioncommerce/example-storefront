@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styled from 'styled-components';
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { format } from "date-fns";
@@ -10,6 +11,26 @@ import ChevronDownIcon from "mdi-material-ui/ChevronDown";
 import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 import Address from "@reactioncommerce/components/Address/v1";
 import OrderCardStatusBadge from "components/OrderCardStatusBadge";
+import Button from "@reactioncommerce/components/Button/v1"
+
+const Link = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  width: 120px;
+  background-color: rgb(25, 153, 221);
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+  line-height: 1.5;
+
+  :hover {
+    background-color: rgb(37, 176, 249);
+    color: rgb(255, 255, 255);
+    border-color: rgb(37, 176, 249);
+  }
+`;
 
 const styles = (theme) => ({
   orderCardHeader: {
@@ -143,6 +164,11 @@ class OrderCardHeader extends Component {
                     Payment Method{payments.length !== 1 ? "s" : null}:
                   </Typography>
                   {this.renderOrderPayments()}
+                  <Grid item xs={12}>
+                    <Link href={payments[0].data.redirectUrl} target="_blank">
+                      Pay now!
+                    </Link>
+                  </Grid>
                 </Grid>
                 <Grid item className={classes.orderCardExpandedInfoSection} xs={12} md={12}>
                   <Typography

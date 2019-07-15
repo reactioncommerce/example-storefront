@@ -264,7 +264,6 @@ export default class CheckoutActions extends Component {
           }
         }
       });
-
       // Placing the order was successful, so we should clear the
       // anonymous cart credentials from cookie since it will be
       // deleted on the server.

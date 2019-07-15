@@ -157,6 +157,11 @@ fragment OrderCommon on Order {
       region
     }
     displayName
+    data {
+      ... on UnboxPayflowPaymentData {
+        redirectUrl
+      }
+    }
     method {
       name
     }
