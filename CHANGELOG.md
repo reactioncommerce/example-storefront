@@ -1,3 +1,46 @@
+# v2.0.0-rc.12
+This is our fourth release candidate for this project. While this project is technically still `pre-release` until we've released the final 2.0.0 version, it's the most stable version of Reaction Commerce, and we recommend starting new projects with it at this point. See https://github.com/reactioncommerce/example-storefront/issues/487#issuecomment-507468894 for more detail on this.
+
+This version should be used with `v2.0.0-rc.12` of https://github.com/reactioncommerce/reaction
+
+## Highlights
+We have [renamed](https://github.com/reactioncommerce/example-storefront/pull/544) this project from `reaction-next-starterkit` to `example-storefront` to better convey the intent behind our creating it.  We’re also [updating our docs](https://github.com/reactioncommerce/reaction-docs/pull/829) to clarify this change.
+
+The GraphQL API in [reaction v2.0.0-rc.12](https://github.com/reactioncommerce/reaction/pull/5259) has been changed from `/graphql-alpha` to `graphql-beta` to indicate the increased stability of the API. We think there are still some breaking changes to come in the next 3-6 months to the GraphQL API which is why we're keeping the `-beta` suffix for now. As you find bugs with that API, please file issues in the [reaction](https://github.com/reactioncommerce/reaction/issues) repo.
+
+# Improvements
+
+## Feature
+
+- feat: always send a response to logout requests (#520)
+- feat: add Orders to Account Profile (#507)
+
+## Fix
+
+- fix: de-duplicate styled-components package (#542)
+- fix: only run snyk when package.json changes (#541)
+- fix: change calibre ci step to use npx (#535)
+- fix: prettier config was in the wrong place (#532)
+- feat: remove unused fields from GQL query (#527)
+- fix: Update component theming example remove blocking code to allow starterkit to start (#514)
+
+## Chore
+
+- chore: removes fossa status from readme (#545)
+- chore: rename project to example-storefront (#544)
+- chore: fix debugger command in README (#539)
+- chore: change pinned deps to ~ ranges (#538)
+- chore: match license from LICENSE.md and README (#536)
+- chore: Switch to semver ~1.2.3 style ranges (#534)
+- chore: update yarn.lock to resolve snyk js-yaml vuln (#531)
+- chore: ignore snyk js-yaml vuln for 30 days (#523)
+
+## Docs
+
+- docs: remove production warning (#543)
+- docs: add instructions on how to run starterkit w/ prod API (#537)
+- docs: Fix minor typo on [README.md](http://readme.md) (#525)
+
 # v2.0.0-rc.11
 
 This is our third release candidate for this project. This project should be considered `pre-release` until we've released the final 2.0.0 version.

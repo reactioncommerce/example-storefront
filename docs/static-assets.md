@@ -2,7 +2,7 @@
 Your storefront will probably need to include static assets such as, logo images, timezone/internationalization data, favicons, etc..
 
 ## Handling static assets
-The starterkit follows the approach outlined in the [Next.JS documentation](https://github.com/zeit/next.js/#static-file-serving-eg-images) keeping all static assets in the `/src/static/` folder.
+The example storefront follows the approach outlined in the [Next.JS documentation](https://github.com/zeit/next.js/#static-file-serving-eg-images) keeping all static assets in the `/src/static/` folder.
 
 **Images**
 Logos, placeholders and similar images are placed in the `/static/images/` directory.

@@ -2,13 +2,13 @@
 
 ## Styling StarterKit and Material UI components
 
-Most of the components in the starter kit are based on the [Material UI](https://material-ui.com) components. As such, they can usually be customized using the same methods as the base Material UI components.
+Most of the components in the example storefront are based on the [Material UI](https://material-ui.com) components. As such, they can usually be customized using the same methods as the base Material UI components.
 
 ### Changing theme variables
 
 Variables for customizing the theme are located in the `[src/lib/theme/reactionTheme.js](https://github.com/reactioncommerce/reaction-next-starterkit/blob/master/src/lib/theme/reactionTheme.js)  file. The [Material UI theme guide](https://material-ui.com/customization/themes/) has additional details on how to customize the theme.
 
-For example, you can change the various colors used for the primary color, fonts used, layout dimensions and more. All of the [default theme variables from Material UI](https://material-ui.com/customization/default-theme/) are available to override as well as any additional variables added for the Starter Kit itself.
+For example, you can change the various colors used for the primary color, fonts used, layout dimensions and more. All of the [default theme variables from Material UI](https://material-ui.com/customization/default-theme/) are available to override as well as any additional variables added for the example storefront itself.
 
 ```js
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -30,7 +30,7 @@ const theme = createMuiTheme({
 
 ### Applying global overrides
 
-Styles for components can be overridden globally from the [src/lib/theme/reactionTheme.js](https://github.com/reactioncommerce/reaction-next-starterkit/blob/master/src/lib/theme/reactionTheme.js) file. **Before applying an override, consider updating the theme variables as it may provide you with better results.**
+Styles for components can be overridden globally from the [src/lib/theme/reactionTheme.js](https://github.com/reactioncommerce/example-storefront/blob/master/src/lib/theme/reactionTheme.js) file. **Before applying an override, consider updating the theme variables as it may provide you with better results.**
 
 When using overrides you cannot add additional class names that aren't already present in the original component. You can add override existing CSS properties or add new CSS properties that may not exist in the original component's style.
 
@@ -43,7 +43,7 @@ For more information on how to override styles please consult the [Material UI g
 
 To add custom overrides, simply add an `overrides` object to the theme. The `overrides` object contains a key which matches the component name with a prefix, and the value being an object with your overrides to apply to that component.
 
-- Starter Kit components are prefixed with `Sk` in the theme. e.g. `SkHeader`.
+- Example Storefront components are prefixed with `Sk` in the theme. e.g. `SkHeader`.
 - Material UI components are prefixed with `Mui` in the theme. e.g. `MuiAppBar`.
 
 **src/lib/theme/reactionTheme.js**

@@ -1,10 +1,10 @@
 FROM node:10-alpine
 
-ARG NAME=reaction-next-starterkit
+ARG NAME=example-storefront
 ARG DESCRIPTION=""
-ARG URL=https://github.com/reactioncommerce/reaction-next-starterkit
-ARG DOC_URL=https://github.com/reactioncommerce/reaction-next-starterkit
-ARG VCS_URL=https://github.com/reactioncommerce/reaction-next-starterkit
+ARG URL=https://github.com/reactioncommerce/example-storefront
+ARG DOC_URL=https://github.com/reactioncommerce/example-storefront
+ARG VCS_URL=https://github.com/reactioncommerce/example-storefront
 ARG VCS_REF
 ARG VENDOR
 ARG BUILD_DATE
@@ -54,7 +54,6 @@ LABEL maintainer="Reaction Commerce <engineering@reactioncommerce.com>" \
       com.reactioncommerce.docker.git.sha1=$GIT_SHA1 \
       com.reactioncommerce.docker.license=$LICENSE
 
-# apk list bash curl less vim | cut -d " " -f 1 | sed 's/-/=/' | xargs
 RUN apk --no-cache add bash curl less vim
 SHELL ["/bin/bash", "-o", "pipefail", "-o", "errexit", "-u", "-c"]
 
