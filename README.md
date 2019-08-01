@@ -9,7 +9,7 @@
 - Server-side rendering
 - Payments with [Stripe](https://stripe.com/)
 - Analytics with [Segment](https://segment.com/) or any other provider
-- Reusable, customizable, themeable ecommerce React components from the new [Reaction Component Library](https://github.com/reactioncommerce/reaction-component-library/) with [Styled Components](https://www.styled-components.com/)
+- Reusable, customizable, themeable ecommerce React components from the [Example Storefront Component Library](https://github.com/reactioncommerce/reaction-component-library/) with [Styled Components](https://www.styled-components.com/)
 - Fully-configured test suite: Jest snapshot testing, Mocha integration testing
 - Written in ES6, configured with ES6
 - Containerized with Docker
@@ -49,7 +49,7 @@ Read the docs for [setting up Segment or a custom analytics tracker](docs/tracki
 
 ## Documentation
 - [Example Storefront full documentation](./docs)
-- [Reaction Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](http://designsystem.reactioncommerce.com/)
+- [Example Storefront Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](http://designsystem.reactioncommerce.com/)
 - [Reaction Docs: Using GraphQL](https://docs.reactioncommerce.com/docs/graphql-using)
 - [Reaction Docs: Testing with Jest](https://docs.reactioncommerce.com/docs/testing-reaction)
 - [Reaction Docs: Developing with Docker](https://docs.reactioncommerce.com/docs/installation-docker-development
@@ -135,9 +135,9 @@ docker-compose down --rmi local
 docker-compose up -d --build
 ```
 
-### Testing `reaction-component-library` components in the storefront
+### Testing component library in the storefront
 
-Sometimes we need to test [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) components in the context of the storefront. Unfortunately, there isn't an easy wasy to do this within our Docker containers, so we need to run the `storefront` outside of docker.
+Sometimes we need to test the [Example Storefront Component Library](https://github.com/reactioncommerce/reaction-component-library) components in the context of the storefront. Unfortunately, there isn't an easy wasy to do this within our Docker containers, so we need to run the `storefront` outside of docker.
 
 1. `cd` to your local [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) repo.
 1. Git checkout the proper branch that you want to link
@@ -198,7 +198,7 @@ docker stop reaction-storefront
 ```
 
 ## License
-   Copyright 2018 Reaction Commerce
+   Copyright 2019 Reaction Commerce
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
