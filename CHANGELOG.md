@@ -4,13 +4,13 @@ Example Storefront v2.1.0 is a minor update to keep this project in sync with [R
 
 ## Docs
 
-docs(readme): component library naming
-docs: Adjust graphiql URLs links and docs
+docs(readme): component library naming [#555](https://github.com/reactioncommerce/example-storefront/pull/555)
+docs: Adjust graphiql URLs links and docs [#551](https://github.com/reactioncommerce/example-storefront/pull/551)
 
 ## Chores
 
-chore: Add 302 redirects to env.EXTERNAL_GRAPHQL_URL
-chore: update changelog + version match
+chore: Add 302 redirects to env.EXTERNAL_GRAPHQL_URL [#550](https://github.com/reactioncommerce/example-storefront/pull/550)
+chore: update changelog + version match [#548](https://github.com/reactioncommerce/example-storefront/pull/548)
 
 ## Breaking Changes
 
