@@ -1,6 +1,20 @@
 # v2.1.0
 
-[Work in progress]
+Example Storefront v2.1.0 is a minor update to keep this project in sync with [Reaction v2.1.0](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.1.0](https://github.com/reactioncommerce/reaction-hydra)
+
+## Docs
+
+docs(readme): component library naming
+docs: Adjust graphiql URLs links and docs
+
+## Chores
+
+chore: Add 302 redirects to env.EXTERNAL_GRAPHQL_URL
+chore: update changelog + version match
+
+## Breaking Changes
+
+None
 
 # v2.0.0
 
