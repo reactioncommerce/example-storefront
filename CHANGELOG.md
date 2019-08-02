@@ -1,3 +1,7 @@
+# v2.1.0
+
+[Work in progress]
+
 # v2.0.0
 
 Reaction v2.0.0—an API-first, real-time commerce engine built using Node.js, React, and GraphQL. It’s the second major release of our open source commerce software.
