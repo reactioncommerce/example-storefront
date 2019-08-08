@@ -11,9 +11,15 @@ Check out the full list of Reaction [features](https://www.reactioncommerce.com/
 
 This example storefront is built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [MobX](https://mobx.js.org/getting-started.html), [GraphQL](https://graphql.org/), and [Apollo Client](https://www.apollographql.com/docs/react/)
 
-We've integrated payments with [Stripe](https://stripe.com/) and analytics with [Segment](https://segment.com/)
-
-This project is written in ES6, containerized with Docker, and there's a fully-configured test suite using Jest snapshot testing and Mocha integration testing
+- Headless ecommerce example storefront built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [MobX](https://mobx.js.org/getting-started.html), [GraphQL](https://graphql.org/), [Apollo Client](https://www.apollographql.com/docs/react/)
+- [Reaction GraphQL API](https://github.com/reactioncommerce/reaction/tree/master/imports/plugins/core/graphql) integration
+- Server-side rendering
+- Payments with [Stripe](https://stripe.com/)
+- Analytics with [Segment](https://segment.com/) or any other provider
+- Reusable, customizable, themeable ecommerce React components from the [Example Storefront Component Library](https://github.com/reactioncommerce/reaction-component-library/) with [Styled Components](https://www.styled-components.com/)
+- Fully-configured test suite: Jest snapshot testing, Mocha integration testing
+- Written in ES6, configured with ES6
+- Containerized with Docker
 
 ## Getting Started
 
@@ -21,12 +27,17 @@ Follow the [Reaction Platform docs](https://docs.reactioncommerce.com/docs/insta
 
 | Directory: Service                                                                         | URL                                                          |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
-| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API                    | [localhost:3000/graphql-beta](localhost:3000/graphql-beta) |
-| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API playground         | [localhost:3000/graphiql](localhost:3000/graphiql)           |
-| [`reaction`](https://github.com/reactioncommerce/reaction): Operator UI                     | [localhost:3000](localhost:3000)                             |
+| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API                    | [localhost:3000/graphql-beta](localhost:3000/graphql-beta)   |
+| [`reaction`](https://github.com/reactioncommerce/reaction): GraphiQL developer tool        | [localhost:3000/graphql-beta](localhost:3000/graphql-beta)   |
+| [`reaction`](https://github.com/reactioncommerce/reaction): Operator UI                    | [localhost:3000](localhost:3000)                             |
 | [`reaction`](https://github.com/reactioncommerce/reaction): MongoDB                        | [localhost:27017](localhost:27017)                           |
-| [`reaction-hydra`](https://github.com/reactioncommerce/reaction-hydra): Authentication    | [localhost:4444](localhost:4444)                             |
+| [`reaction-hydra`](https://github.com/reactioncommerce/reaction-hydra): Authentication     | [localhost:4444](localhost:4444)                             |
 | [`example-storefront`](https://github.com/reactioncommerce/example-storefront): Storefront | [localhost:4000](localhost:4000)                             |
+
+**Note**: The storefront has redirects so if you open any of the following URLs, you'll be redirected to the GraphiQL developer tool:
+- [localhost:4000/graphql]()
+- [localhost:4000/graphql-beta]()
+- [localhost:4000/graphiql]()
 
 ## Configuration
 
@@ -45,7 +56,7 @@ Read the docs for [setting up Segment or a custom analytics tracker](docs/tracki
 
 ## Documentation
 - [Example Storefront full documentation](./docs)
-- [Reaction Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](http://designsystem.reactioncommerce.com/)
+- [Example Storefront Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](http://designsystem.reactioncommerce.com/)
 - [Reaction Docs: Using GraphQL](https://docs.reactioncommerce.com/docs/graphql-using)
 - [Reaction Docs: Testing with Jest](https://docs.reactioncommerce.com/docs/testing-reaction)
 - [Reaction Docs: Developing with Docker](https://docs.reactioncommerce.com/docs/installation-docker-development
@@ -131,9 +142,9 @@ docker-compose down --rmi local
 docker-compose up -d --build
 ```
 
-### Testing `reaction-component-library` components in the storefront
+### Testing component library in the storefront
 
-Sometimes we need to test [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) components in the context of the storefront. Unfortunately, there isn't an easy wasy to do this within our Docker containers, so we need to run the `storefront` outside of docker.
+Sometimes we need to test the [Example Storefront Component Library](https://github.com/reactioncommerce/reaction-component-library) components in the context of the storefront. Unfortunately, there isn't an easy wasy to do this within our Docker containers, so we need to run the `storefront` outside of docker.
 
 1. `cd` to your local [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) repo.
 1. Git checkout the proper branch that you want to link
@@ -248,7 +259,7 @@ If you forget to sign your commits, the DCO bot will remind you and give you det
 
 
 ## License
-   Copyright 2018 Reaction Commerce
+   Copyright 2019 Reaction Commerce
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
