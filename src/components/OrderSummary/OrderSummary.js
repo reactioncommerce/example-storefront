@@ -87,7 +87,6 @@ class OrderSummary extends Component {
 
   render() {
     const { classes, payments } = this.props;
-    console.log(payments);
     return (
       <div className={classes.summary}>
         <div className={classes.header}>

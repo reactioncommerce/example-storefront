@@ -161,6 +161,9 @@ fragment OrderCommon on Order {
       ... on UnboxPayflowPaymentData {
         redirectUrl
       }
+      ... on UnboxPayPaymentData {
+        redirectUrl
+      }
     }
     method {
       name
