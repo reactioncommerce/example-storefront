@@ -43,6 +43,7 @@ class UnboxPayCredit extends React.Component {
     const { cart } = this.props;
 
     let installments = [];
+
     // $20,00
     const minInstallmentValue = 2000;
 
@@ -50,7 +51,7 @@ class UnboxPayCredit extends React.Component {
     let currentAmount = totalAmount;
     let index = 1;
 
-    while (currentAmount > minInstallmentValue && index < 13) {
+    while (currentAmount/index > minInstallmentValue && index < 13) {
       currentAmount = (totalAmount/index).toString();
       installments.push({
         label: `${index}x - R$${currentAmount.slice(0, 2)},${currentAmount.slice(2, 4)}`,
@@ -58,7 +59,12 @@ class UnboxPayCredit extends React.Component {
       });
       index += 1;
     }
-
+    if (installments.length === 0) {
+      installments.push({
+        label: `1x - ${cart.displayTotal}`,
+        value: cart.displayTotal,
+      });
+    }
     return installments;
   }
 
