@@ -26,13 +26,13 @@ const paymentMethods = [
   {
     displayName: "Unboxpay - Boleto",
     InputComponent: UnboxPayBoleto,
-    name: "unboxpay_boleto",
+    name: "unboxPay_payments",
     shouldCollectBillingAddress: true,
   },
   {
     displayName: "Unboxpay - Credit Card",
     InputComponent: UnboxPayCredit,
-    name: "unboxpay_credit",
+    name: "unboxPay_payments",
     shouldCollectBillingAddress: true,
   },
 ];
