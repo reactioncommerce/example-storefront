@@ -10,7 +10,11 @@ import Button from "@reactioncommerce/components/Button/v1"
   render() {
     return (
       <div>
-        <Button isDisabled={!this.state.isReady} onClick={() => { this.props.onSubmit(); }}>Submit</Button>
+        <Button isDisabled={!this.state.isReady} onClick={() => { this.props.onSubmit({
+          data: {
+            paymentType: 'boleto',
+          },
+        }); }}>Submit</Button>
       </div>
     );
   }
