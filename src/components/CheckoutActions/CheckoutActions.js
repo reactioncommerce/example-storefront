@@ -1,5 +1,5 @@
 /* eslint-disable react/no-multi-comp */
-import React, { Fragment, Component } from "react";
+import React, { Fragment, Component, createContext } from "react";
 import PropTypes from "prop-types";
 import { isEqual } from "lodash";
 import { observer } from "mobx-react";
@@ -35,6 +35,8 @@ const MessageDiv = styled.div`
 `;
 
 const NoPaymentMethodsMessage = () => <MessageDiv>No payment methods available</MessageDiv>;
+
+export const CartContext = createContext();
 
 @withAddressValidation
 @track()
@@ -410,7 +412,9 @@ export default class CheckoutActions extends Component {
     return (
       <Fragment>
         {this.renderPlacingOrderOverlay()}
-        <Actions actions={actions} />
+        <CartContext.Provider value={checkoutSummary}>
+          <Actions actions={actions} />
+        </CartContext.Provider>
       </Fragment>
     );
   }
