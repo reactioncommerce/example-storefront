@@ -31,7 +31,12 @@ class UnboxPayCredit extends React.Component {
 
   handleSubmit = (e) => {
     console.log(this.state.cardInfo);
-    return this.props.onSubmit({ data: this.state.cardInfo });
+    return this.props.onSubmit({
+      data: {
+        ...this.state.cardInfo,
+        paymentType: 'credit',
+      },
+    });
   }
 
   getInstallmentOptions = () => {
