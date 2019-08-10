@@ -49,7 +49,7 @@ class UnboxPayCredit extends React.Component {
     while (currentAmount > minInstallmentValue && index < 13) {
       currentAmount = (totalAmount/index).toString();
       installments.push({
-        label: `R$${currentAmount.slice(0, 2)},${currentAmount.slice(2, 4)}`,
+        label: `${index}x - R$${currentAmount.slice(0, 2)},${currentAmount.slice(2, 4)}`,
         value: `R$${currentAmount.slice(0, 1)},${currentAmount.slice(2, 4)}`,
       });
       index += 1;
