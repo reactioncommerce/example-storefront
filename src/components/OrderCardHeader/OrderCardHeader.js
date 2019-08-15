@@ -128,7 +128,6 @@ class OrderCardHeader extends Component {
       createdAt,
       "MM/DD/YYYY"
     );
-
     return (
       <div className={classes.orderCardHeader}>
         <Grid container alignItems="center">
@@ -165,9 +164,11 @@ class OrderCardHeader extends Component {
                   </Typography>
                   {this.renderOrderPayments()}
                   <Grid item xs={12}>
+                  {payments[0].data && payments[0].data.redirectUrl && (
                     <Link href={payments[0].data.redirectUrl} target="_blank">
                       Pay now!
                     </Link>
+                  )}
                   </Grid>
                 </Grid>
                 <Grid item className={classes.orderCardExpandedInfoSection} xs={12} md={12}>
