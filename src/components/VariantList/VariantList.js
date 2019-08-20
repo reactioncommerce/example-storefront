@@ -86,7 +86,7 @@ export default class VariantList extends Component {
     }
 
     // If we don't have an option, use the variant for inventory status information
-    if (selectedVariantId) {
+    if (selectedVariant && selectedVariantId) {
       return <InventoryStatus product={selectedVariant} />;
     }
 
