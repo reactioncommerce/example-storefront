@@ -1,3 +1,7 @@
+# v2.2.0
+
+Example Storefront v2.2.0 is a minor update to keep this project in sync with [Reaction v2.2.0](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.2.0](https://github.com/reactioncommerce/reaction-hydra)
+
 # v2.1.0
 
 Example Storefront v2.1.0 is a minor update to keep this project in sync with [Reaction v2.1.0](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.1.0](https://github.com/reactioncommerce/reaction-hydra)
