@@ -10,12 +10,10 @@ networks:
 
 services:
   web:
-    user: root
     build:
       context: .
       args:
         BUILD_ENV: "development"
-    command: "/usr/local/src/reaction-app/bin/start"
     env_file:
       - ./.env
     environment:

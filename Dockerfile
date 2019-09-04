@@ -54,7 +54,9 @@ LABEL maintainer="Reaction Commerce <engineering@reactioncommerce.com>" \
       com.reactioncommerce.docker.git.sha1=$GIT_SHA1 \
       com.reactioncommerce.docker.license=$LICENSE
 
-RUN apk --no-cache add bash curl less vim
+# shadow and su-exec are used by bin/start-root (shadow provides usermod)
+# hadolint ignore=DL3018
+RUN apk --no-cache add bash curl less shadow su-exec vim
 SHELL ["/bin/bash", "-o", "pipefail", "-o", "errexit", "-u", "-c"]
 
 # Because Docker Compose uses a volume for node_modules and volumes are owned
@@ -113,4 +115,6 @@ RUN if [ "$BUILD_ENV" = "production" ]; then \
     yarn build; \
   fi;
 
-CMD ["yarn", "start"]
+# hadolint ignore=DL3002
+USER root
+ENTRYPOINT ["./.reaction/entrypoint.sh"]

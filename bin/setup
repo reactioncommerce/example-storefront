@@ -4,27 +4,47 @@ __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 env_file=${__dir}/../.env
 env_example_file=${__dir}/../.env.example
 
-function main {
+function main() {
   set -e
 
   add_new_env_vars
+  add_reaction_user
 }
 
-function add_new_env_vars {
+function add_new_env_vars() {
   # create .env and set perms if it does not exist
-  [ ! -f "${env_file}" ] && { touch "${env_file}" ; chmod 0600 "${env_file}" ; }
+  if [[ ! -f "${env_file}" ]]; then
+    touch "${env_file}"
+    chmod 0600 "${env_file}"
+  fi
 
-  export IFS=$'\n'
-  for var in $(cat "${env_example_file}"); do
-    key="${var%%=*}"     # get var key
+  while IFS=$'\n' read -r var; do
+    key="${var%%=*}"        # get var key
     var=$(eval echo "$var") # generate dynamic values
 
     # If .env doesn't contain this env key, add it
-    if ! $(grep -qLE "^$key=" "${env_file}"); then
+    if ! grep -qLE "^$key=" "${env_file}"; then
       echo "Adding $key to .env"
-      echo "$var" >> "${env_file}"
+      echo "$var" >>"${env_file}"
     fi
-  done
+  done <"${env_example_file}"
+}
+
+function add_reaction_user() {
+  if grep -qLE "^REACTION_USER" "${env_file}"; then
+    # line is already present, leave unchanged
+    return
+  fi
+  # line is not present
+  if [[ -n "${REACTION_USER}" ]]; then
+    # if set in environment, just add the name but no = and no value
+    line="REACTION_USER"
+  else
+    # if unset in environment, default to the current user's uid:gid
+    line="REACTION_USER=$(id -u):$(id -g)"
+  fi
+  echo "Adding ${line} to .env"
+  echo "${line}" >>"${env_file}"
 }
 
 main

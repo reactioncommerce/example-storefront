@@ -7,6 +7,8 @@ set -o pipefail # don't ignore exit codes when piping output
 IFS="$(printf "\n\t")"
 
 cd "$(dirname "$0")/.."
+export PATH=/usr/local/bin:/usr/bin:/bin
+export HOME=/home/node
 yarn install
 printf "Creating hydra client…"
 ./bin/wait-for.sh "${OAUTH2_HOST}:${OAUTH2_ADMIN_PORT}"
