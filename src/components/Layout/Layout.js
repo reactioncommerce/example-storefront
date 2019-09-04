@@ -6,6 +6,7 @@ import Footer from "components/Footer";
 
 const styles = (theme) => ({
   root: {
+    position: "relative",
     minHeight: "100vh"
   },
   main: {
