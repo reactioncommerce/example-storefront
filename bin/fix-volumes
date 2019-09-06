@@ -13,7 +13,6 @@ set -o posix    # more strict failures in subshells
 IFS=$'\n\t'
 # ---- End unofficial bash strict mode boilerplate
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
-docker-compose down
 # Important to ensure REACTION_USER is set properly, so run setup
 ./bin/setup
 docker-compose run --user=root --entrypoint=./.reaction/fix-volumes.sh web
