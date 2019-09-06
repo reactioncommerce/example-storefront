@@ -15,4 +15,4 @@ IFS=$'\n\t'
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 # Important to ensure REACTION_USER is set properly, so run setup
 ./bin/setup
-docker-compose run --user=root --entrypoint=./.reaction/fix-volumes.sh web
+docker-compose run --entrypoint=./.reaction/fix-volumes.sh web
