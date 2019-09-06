@@ -1,0 +1,10 @@
+FROM node:10-alpine
+# hadolint ignore=DL3018
+RUN apk --no-cache add bash curl less shadow su-exec tini vim
+SHELL ["/bin/bash", "-o", "pipefail", "-o", "errexit", "-u", "-c"]
+WORKDIR /usr/local/src/reaction-app
+ENV PATH=$PATH:/usr/local/src/reaction-app/node_modules/.bin \
+    BUILD_ENV=development NODE_ENV=development
+# hadolint ignore=DL3002
+USER root
+ENTRYPOINT ["tini", "--", "./.reaction/entrypoint.sh"]

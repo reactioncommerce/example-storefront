@@ -17,40 +17,9 @@ defaults: &defaults
     - GLOBAL_CACHE_VERSION: “v3”
 
   docker:
-    - image: circleci/node:8-stretch
+    - image: circleci/node:10-stretch
 
 jobs:
-  docker-build-nonprod-and-lint:
-    <<: *defaults
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: Docker build non-prod and run lint
-          command: |
-            docker build \
-              --build-arg "BUILD_COMPARE_URL=$CIRCLE_COMPARE_URL" \
-              --build-arg "BUILD_DATE=$(date -u '+%Y-%m-%dT%H:%M:%SZ')" \
-              --build-arg "BUILD_ENV=test" \
-              --build-arg "BUILD_NUMBER=$CIRCLE_BUILD_NUM" \
-              --build-arg "BUILD_PLATFORM=circleci" \
-              --build-arg "BUILD_PLATFORM_PROJECT_REPONAME=$CIRCLE_PROJECT_REPONAME" \
-              --build-arg "BUILD_PLATFORM_PROJECT_USERNAME=$CIRCLE_PROJECT_USERNAME" \
-              --build-arg "BUILD_PULL_REQUESTS=$CI_PULL_REQUESTS" \
-              --build-arg "BUILD_TRIGGERED_BY_TAG=$CIRCLE_TAG" \
-              --build-arg "BUILD_URL=$CIRCLE_BUILD_URL" \
-              --build-arg "CIRCLE_WORKFLOW_ID=$CIRCLE_WORKFLOW_ID" \
-              --build-arg "CIRCLE_WORKFLOW_JOB_ID=$CIRCLE_WORKFLOW_JOB_ID" \
-              --build-arg "CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS=$CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS" \
-              --build-arg "CIRCLE_WORKSPACE_ID=$CIRCLE_WORKSPACE_ID" \
-              --build-arg "GIT_REPOSITORY_URL=$CIRCLE_REPOSITORY_URL" \
-              --build-arg "GIT_SHA1=$CIRCLE_SHA1" \
-              --build-arg "LICENSE=GPL-3.0-only" \
-              --build-arg "VCS_REF=$CIRCLE_SHA1" \
-              --build-arg "VENDOR=Reaction Commerce" \
-              -t "$DOCKER_REPOSITORY:non-prod" .
-            docker run --rm $DOCKER_REPOSITORY:non-prod yarn run lint
-
   docker-build:
     <<: *defaults
     steps:
@@ -59,49 +28,25 @@ jobs:
       - run:
           name: Discover Docker Tags
           command: |
+            (cd /tmp && npm install --no-progress @reactioncommerce/ci-scripts@1.4.0 >/dev/null)
             mkdir -p docker-cache
-            .circleci/bin/docker-tags "$CIRCLE_SHA1" "$CIRCLE_BRANCH" \
-              > docker-cache/docker-tags.txt
-            cat docker-cache/docker-tags.txt
+            /tmp/node_modules/.bin/docker-tags "$CIRCLE_SHA1" "$CIRCLE_BRANCH" \
+              | tee docker-cache/docker-tags.txt
       - run:
           name: Docker Build
           command: |
-            docker build \
-              --build-arg "BUILD_COMPARE_URL=$CIRCLE_COMPARE_URL" \
-              --build-arg "BUILD_DATE=$(date -u '+%Y-%m-%dT%H:%M:%SZ')" \
-              --build-arg "BUILD_ENV=test" \
-              --build-arg "BUILD_NUMBER=$CIRCLE_BUILD_NUM" \
-              --build-arg "BUILD_PLATFORM=circleci" \
-              --build-arg "BUILD_PLATFORM_PROJECT_REPONAME=$CIRCLE_PROJECT_REPONAME" \
-              --build-arg "BUILD_PLATFORM_PROJECT_USERNAME=$CIRCLE_PROJECT_USERNAME" \
-              --build-arg "BUILD_PULL_REQUESTS=$CI_PULL_REQUESTS" \
-              --build-arg "BUILD_TRIGGERED_BY_TAG=$CIRCLE_TAG" \
-              --build-arg "BUILD_URL=$CIRCLE_BUILD_URL" \
-              --build-arg "CIRCLE_WORKFLOW_ID=$CIRCLE_WORKFLOW_ID" \
-              --build-arg "CIRCLE_WORKFLOW_JOB_ID=$CIRCLE_WORKFLOW_JOB_ID" \
-              --build-arg "CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS=$CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS" \
-              --build-arg "CIRCLE_WORKSPACE_ID=$CIRCLE_WORKSPACE_ID" \
-              --build-arg "GIT_REPOSITORY_URL=$CIRCLE_REPOSITORY_URL" \
-              --build-arg "GIT_SHA1=$CIRCLE_SHA1" \
-              --build-arg "LICENSE=GPL-3.0-only" \
-              --build-arg "VCS_REF=$CIRCLE_SHA1" \
-              --build-arg "VENDOR=Reaction Commerce" \
-              --build-arg BUILD_ENV=production \
-              -t "$DOCKER_REPOSITORY:$CIRCLE_SHA1" .
+            (cd /tmp && npm install --no-progress @reactioncommerce/ci-scripts@1.4.0 >/dev/null)
+            /tmp/node_modules/.bin/docker-labels >> Dockerfile
+            docker build --tag "$DOCKER_REPOSITORY:$CIRCLE_SHA1" .
             mkdir -p docker-cache
             docker save \
               -o docker-cache/docker-image.tar \
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1"
-      - run:
-          name: Save Test .env for Workspace Jobs
-          command: cp .env.example docker-cache/.env
       - persist_to_workspace:
           root: docker-cache
           paths:
             - docker-image.tar
             - docker-tags.txt
-            - .env
-
   docker-push:
     <<: *defaults
     steps:
@@ -109,12 +54,9 @@ jobs:
       - attach_workspace:
           at: docker-cache
       - run:
-          name: Load Docker Image
+          name: Load and Tag Docker Image
           command: |
             docker load < docker-cache/docker-image.tar
-      - run:
-          name: Tag Docker Image
-          command: |
             cat docker-cache/docker-tags.txt \
               | xargs -t -I % \
                 docker tag \
@@ -161,43 +103,41 @@ jobs:
           command: |
             .circleci/bin/ecs-deploy.sh
 
-  lint:
+  lint-javascript:
     <<: *defaults
     steps:
-      - setup_remote_docker
-      - attach_workspace:
-          at: docker-cache
+      - checkout
       - run:
-          name: Load Docker Image
+          name: Lint JavaScript
           command: |
-            docker load < docker-cache/docker-image.tar
-      - run:
-          name: Lint
-          command: |
-            docker run \
-              --env-file docker-cache/.env \
-              --name reactionapp_next_starterkit \
-              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-              yarn run lint
+            yarn install
+            yarn lint
 
   test:
     <<: *defaults
     steps:
+      - checkout
       - setup_remote_docker
       - attach_workspace:
           at: docker-cache
       - run:
-          name: Load Docker Image
+          name: Load and Tag Docker Image
           command: |
             docker load < docker-cache/docker-image.tar
+            cat docker-cache/docker-tags.txt \
+              | xargs -t -I % \
+                docker tag \
+                  "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
+                  "$DOCKER_REPOSITORY:%"
       - run:
           name: Test
           command: |
             docker run \
-              --env-file docker-cache/.env \
+              --env-file .env.example \
+              --env NODE_ENV=test \
               --name reactionapp_next_starterkit \
               "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-              yarn run test:ci
+              yarn test:ci
       - run:
           name: Copy test artifacts from Remote Docker
           command: |
@@ -222,7 +162,7 @@ jobs:
       - run:
           name: Integration Test
           command: |
-            docker run -e URL=${STAGING_URL} --env-file docker-cache/.env --name reaction_app_next_starterkit "$DOCKER_REPOSITORY:$CIRCLE_SHA1" yarn run test:integration
+            docker run -e URL=${STAGING_URL} --env-file .env.example --name reaction_app_next_starterkit "$DOCKER_REPOSITORY:$CIRCLE_SHA1" yarn run test:integration
       - run:
           name: Install Broken Link Checker
           command: |
@@ -274,7 +214,7 @@ jobs:
             answer=$(./.circleci/bin/should-run-snyk.sh)
             if [[ "${answer}" =~ "^YES" ]] ; then
               docker run \
-                --env-file docker-cache/.env \
+                --env-file .env.example \
                 --env "SNYK_TOKEN" \
                 --name reactionapp_next_starterkit \
                 --workdir /usr/local/src \
@@ -287,19 +227,16 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - docker-build-nonprod-and-lint:
+      - lint-javascript:
           context: reaction-build-read
       - docker-build:
           context: reaction-build-read
+          requires:
+            - lint-javascript
       - docker-push:
           context: reaction-publish-docker
           requires:
             - docker-build
-            - docker-build-nonprod-and-lint
-#      - lint:
-#          context: reaction-validation
-#          requires:
-#            - docker-build
       - test:
           context: reaction-validation
           requires:
