@@ -1,6 +1,6 @@
 # v2.3.0
 
-Example Storefront v2.3.0 is a patch update to keep this project in sync with [Reaction v2.3.0](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.3.0](https://github.com/reactioncommerce/reaction-hydra)
+Example Storefront v2.3.0 is a minor version update to keep this project in sync with [Reaction v2.3.0](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.3.0](https://github.com/reactioncommerce/reaction-hydra)
 
 # v2.2.1
 
