@@ -87,6 +87,7 @@ class HTMLDocument extends Document {
         innerHTML: provider.renderScript()
       })),
       {
+        id: "stripe-js",
         type: "text/javascript",
         src: "https://js.stripe.com/v3/"
       }

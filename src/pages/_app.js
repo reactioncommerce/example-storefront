@@ -67,9 +67,16 @@ export default class App extends NextApp {
     }
 
     const { stripePublicApiKey } = publicRuntimeConfig;
-    if (stripePublicApiKey && window.Stripe) {
-      // eslint-disable-next-line react/no-did-mount-set-state
-      this.setState({ stripe: window.Stripe(stripePublicApiKey) });
+    if (stripePublicApiKey) {
+      if (window.Stripe) {
+        // eslint-disable-next-line react/no-did-mount-set-state
+        this.setState({ stripe: window.Stripe(stripePublicApiKey) });
+      } else {
+        document.querySelector("#stripe-js").addEventListener("load", () =>
+          // Create Stripe instance once Stripe.js loads
+          // eslint-disable-next-line react/no-did-mount-set-state
+          this.setState({ stripe: window.Stripe(stripePublicApiKey) }));
+      }
     }
   }
 
