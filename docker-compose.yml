@@ -10,16 +10,11 @@ networks:
 
 services:
   web:
-    user: root
     build:
       context: .
-      args:
-        BUILD_ENV: "development"
-    command: "/usr/local/src/reaction-app/bin/start"
+      dockerfile: 'Dockerfile.dev'
     env_file:
       - ./.env
-    environment:
-      REACTION_APP_NAME: "storefront.web"
     networks:
       api:
         aliases:
@@ -31,10 +26,8 @@ services:
       - $HOME/.cache/yarn-offline-mirror:/home/node/.cache/yarn-offline-mirror
       - web-yarn:/home/node/.cache/yarn
       - .:/usr/local/src/reaction-app
-      - empty_node_modules:/usr/local/src/reaction-app/node_modules # do not link node_modules in, and persist it between dc up runs
       - node_modules:/usr/local/src/node_modules
 
 volumes:
   web-yarn:
-  empty_node_modules:
   node_modules:
