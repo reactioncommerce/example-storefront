@@ -152,6 +152,7 @@ jobs:
   e2e-test:
     <<: *defaults
     steps:
+      - checkout
       - setup_remote_docker
       - attach_workspace:
           at: docker-cache
