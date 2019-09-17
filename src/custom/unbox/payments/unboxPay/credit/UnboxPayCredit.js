@@ -27,17 +27,17 @@ class UnboxPayCredit extends React.Component {
     const { cardInfo } = this.state;
     cardInfo[name] = value;
     this.setState({ cardInfo });
-  }
+  };
 
   handleSubmit = (e) => {
     console.log(this.state.cardInfo);
     return this.props.onSubmit({
       data: {
         ...this.state.cardInfo,
-        paymentType: 'credit',
-      },
+        paymentType: "credit"
+      }
     });
-  }
+  };
 
   getInstallmentOptions = () => {
     const { cart } = this.props;
@@ -47,26 +47,26 @@ class UnboxPayCredit extends React.Component {
     // $20,00
     const minInstallmentValue = 2000;
 
-    let totalAmount = cart.displayTotal.replace('R$', '').replace(',', '');
+    let totalAmount = cart.displayTotal.replace("R$", "").replace(",", "");
     let currentAmount = totalAmount;
     let index = 1;
 
-    while (currentAmount/index > minInstallmentValue && index < 13) {
-      currentAmount = (totalAmount/index).toString();
+    while (currentAmount / index > minInstallmentValue && index < 13) {
+      currentAmount = (totalAmount / index).toString();
       installments.push({
         label: `${index}x - R$${currentAmount.slice(0, 2)},${currentAmount.slice(2, 4)}`,
-        value: `R$${currentAmount.slice(0, 2)},${currentAmount.slice(2, 4)}`,
+        value: `R$${currentAmount.slice(0, 2)},${currentAmount.slice(2, 4)}`
       });
       index += 1;
     }
     if (installments.length === 0) {
       installments.push({
         label: `1x - ${cart.displayTotal}`,
-        value: cart.displayTotal,
+        value: index
       });
     }
     return installments;
-  }
+  };
 
   render() {
     return (
@@ -78,7 +78,7 @@ class UnboxPayCredit extends React.Component {
             id="cardHolderInput"
             name="cardHolderInput"
             placeholder="Name of the card holder"
-            onChange={(e) => this.handleStateChange(e, 'cardHolder')}
+            onChange={(e) => this.handleStateChange(e, "cardHolder")}
           />
         </Field>
         <Field name="cardNumberLabel" label="Card Number" labelFor="cardNumberInput">
@@ -87,7 +87,7 @@ class UnboxPayCredit extends React.Component {
             id="cardNumberInput"
             name="cardNumberInput"
             placeholder="The card number"
-            onChange={(e) => this.handleStateChange(e, 'cardNumber')}
+            onChange={(e) => this.handleStateChange(e, "cardNumber")}
           />
         </Field>
         <Field name="cardExpirationMonthLabel" label="Expiration Month" labelFor="cardExpirationMonthInput">
@@ -96,7 +96,7 @@ class UnboxPayCredit extends React.Component {
             id="cardExpirationMonthInput"
             name="cardExpirationMonthInput"
             placeholder="MM"
-            onChange={(e) => this.handleStateChange(e, 'expirationMonth')}
+            onChange={(e) => this.handleStateChange(e, "expirationMonth")}
           />
         </Field>
         <Field name="cardExpirationYearLabel" label="Expiration Year" labelFor="cardExpirationYearInput">
@@ -105,7 +105,7 @@ class UnboxPayCredit extends React.Component {
             id="cardExpirationYearInput"
             name="cardExpirationYearInput"
             placeholder="YY"
-            onChange={e => this.handleStateChange(e, 'expirationYear')}
+            onChange={(e) => this.handleStateChange(e, "expirationYear")}
           />
         </Field>
         <Field name="securityCode" label="CVV" labelFor="securityCodeInput">
@@ -114,7 +114,7 @@ class UnboxPayCredit extends React.Component {
             id="securityCodeInput"
             name="securityCodeInput"
             placeholder="CVV"
-            onChange={(e) => this.handleStateChange(e, 'securityCode')}
+            onChange={(e) => this.handleStateChange(e, "securityCode")}
           />
         </Field>
         <Field name="installmentsLabel" label="installments" labelFor="installmentsSelect">
@@ -124,7 +124,7 @@ class UnboxPayCredit extends React.Component {
             id="installmentsSelect"
             name="installmentsSelect"
             placeholder="Select The number of installments"
-            onChange={(e) => this.handleStateChange(e, 'installments')}
+            onChange={(e) => this.handleStateChange(e, "installments")}
           />
         </Field>
         <Button
@@ -146,15 +146,8 @@ UnboxPayCredit.propTypes = {
 
 class UnboxPayCreditContainer extends React.Component {
   render() {
-    return (
-      <CartContext.Consumer>
-        {cart => (
-          <UnboxPayCredit {...this.props} cart={cart} />
-        )
-        }
-      </CartContext.Consumer>
-    );
+    return <CartContext.Consumer>{(cart) => <UnboxPayCredit {...this.props} cart={cart} />}</CartContext.Consumer>;
   }
-} 
+}
 
 export default UnboxPayCreditContainer;

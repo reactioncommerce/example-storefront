@@ -158,9 +158,6 @@ fragment OrderCommon on Order {
     }
     displayName
     data {
-      ... on UnboxPayflowPaymentData {
-        redirectUrl
-      }
       ... on UnboxPayPaymentData {
         redirectUrl
       }
@@ -202,7 +199,6 @@ fragment OrderCommon on Order {
   totalItemQuantity
   updatedAt
 }
-
 
 # Fragment for order query
 fragment OrderQueryFragment on Order {
