@@ -3,11 +3,11 @@
 Example Storefront v2.4.0 is a minor update to keep this project in sync with [Reaction v2.4.0](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.4.0](https://github.com/reactioncommerce/reaction-hydra)
 
 ## Features
-feat: Use host uid:gid and use in docker to avoid file permissions problems [#576](https://github.com/reactioncommerce/example-storefront/pull/576)
+feat: Use host uid:gid and use in docker to avoid file permissions problems ([#576](https://github.com/reactioncommerce/example-storefront/pull/576))
 
 ## Fixes
 
-fix: Resolve broken e2e tests by adding a checkout step in CircleCI [#580](https://github.com/reactioncommerce/example-storefront/pull/580)
+fix: Resolve broken e2e tests by adding a checkout step in CircleCI ([#580](https://github.com/reactioncommerce/example-storefront/pull/580))
 
 ## Breaking Changes
 
