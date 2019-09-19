@@ -18,7 +18,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 usermod --uid "$(stat -c "%u" .)" --non-unique node |& grep -v "no changes" || true
 ./.reaction/fix-volumes.sh
 export NODE_ENV="${NODE_ENV:-production}"
-command=(node .)
+command=(./bin/start)
 if [[ $# -gt 0 ]]; then
   command=($@)
 fi
