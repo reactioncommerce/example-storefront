@@ -49,9 +49,9 @@ class OrderCardFulfillmentGroup extends Component {
 
   static defaultProps = {
     hasMoreCartItems: false,
-    loadMoreCartItems() {},
-    onChangeCartItemsQuantity() {},
-    onRemoveCartItems() {}
+    loadMoreCartItems() { },
+    onChangeCartItemsQuantity() { },
+    onRemoveCartItems() { }
   }
 
   handleItemQuantityChange = (quantity, cartItemId) => {
@@ -103,7 +103,7 @@ class OrderCardFulfillmentGroup extends Component {
               spacing={24}
             >
               <Grid item xs={6}>
-                <Typography className={classes.fulfillmentGroupCount} variant="subheading">Shipment {currentGroupCount} of {totalGroupsCount}</Typography>
+                <Typography className={classes.fulfillmentGroupCount} variant="subtitle1">Shipment {currentGroupCount} of {totalGroupsCount}</Typography>
               </Grid>
               <Grid item xs={6} className={classes.fulfillmentGroupHeaderRightColumn}>
                 {fulfillmentGroup.tracking ?

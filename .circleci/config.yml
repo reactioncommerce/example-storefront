@@ -94,15 +94,6 @@ jobs:
                 | xargs -t -I % \
                 docker push "$DOCKER_REPOSITORY:%"
 
-  deploy-to-ecs:
-    <<: *defaults
-    steps:
-      - checkout
-      - run:
-          name: Deploy new task definition and update service in ECS
-          command: |
-            .circleci/bin/ecs-deploy.sh
-
   lint-javascript:
     <<: *defaults
     steps:
@@ -148,51 +139,6 @@ jobs:
           path: reports/junit
       - store_artifacts:
           path: reports
-
-  e2e-test:
-    <<: *defaults
-    steps:
-      - checkout
-      - setup_remote_docker
-      - attach_workspace:
-          at: docker-cache
-      - run:
-          name: Load Docker Image
-          command: |
-            docker load < docker-cache/docker-image.tar
-      - run:
-          name: Integration Test
-          command: |
-            docker run -e URL=${STAGING_URL} --env-file .env.example --name reaction_app_next_starterkit "$DOCKER_REPOSITORY:$CIRCLE_SHA1" yarn run test:integration
-      - run:
-          name: Install Broken Link Checker
-          command: |
-            yarn add broken-link-checker
-      - run:
-          name: Broken Link Test
-          command: |
-            ./node_modules/.bin/blc ${STAGING_URL} -ro -filter=3 -e
-
-  test-metrics:
-    <<: *defaults
-    steps:
-      - checkout
-      - run:
-          name: California
-          command: |
-            .circleci/bin/calibre-deploy.sh ${STAGING_URL} California
-      - run:
-          name: North Virginia
-          command: |
-            .circleci/bin/calibre-deploy.sh ${STAGING_URL} NorthVirginia
-      - run:
-          name: London
-          command: |
-            .circleci/bin/calibre-deploy.sh ${STAGING_URL} London
-      - run:
-          name: Frankfurt
-          command: |
-            .circleci/bin/calibre-deploy.sh ${STAGING_URL} Frankfurt
 
   snyk-security:
     <<: *defaults
@@ -242,19 +188,7 @@ workflows:
           context: reaction-validation
           requires:
             - docker-build
-      - test-metrics:
-          requires:
-            - deploy-to-ecs
       - snyk-security:
           context: reaction-validation
           requires:
             - docker-build
-      - deploy-to-ecs:
-          requires:
-            - docker-push
-          filters:
-            branches:
-              only: /^develop$/
-      - e2e-test:
-          requires:
-            - deploy-to-ecs
