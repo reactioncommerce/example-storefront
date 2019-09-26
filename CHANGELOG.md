@@ -5,6 +5,7 @@ Example Storefront v2.5.0 is a minor update to keep this project in sync with [R
 ## Fixes
 
 fix: Make sure development entry-point runs bin/start by default
+fix: Cannot edit checkout address ([#494](https://github.com/reactioncommerce/example-storefront/issues/494))
 
 ## Chores
 
