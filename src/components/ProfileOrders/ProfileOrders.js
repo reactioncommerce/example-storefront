@@ -136,7 +136,7 @@ class ProfileOrders extends Component {
     return (
       <Grid className={classes.profileOrdersContainer} container>
         <Grid className={classes.profileOrdersTitle} item xs={12} md={12}>
-          <Typography variant="title">Orders</Typography>
+          <Typography variant="h6">Orders</Typography>
         </Grid>
         <Grid className={classes.profileOrdersSelect} item xs={12} md={12}>
           {this.renderOrderTypeSelect()}
