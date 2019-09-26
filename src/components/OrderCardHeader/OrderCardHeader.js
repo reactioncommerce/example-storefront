@@ -83,18 +83,18 @@ class OrderCardHeader extends Component {
 
     // If more than one payment method, display amount for each
     if (Array.isArray(payments) && payments.length > 1) {
-      return payments.map((payment) => <Typography variant="caption">{payment.displayName} {payment.amount.displayAmount}</Typography>);
+      return payments.map((payment, index) => <Typography key={index} variant="caption">{payment.displayName} {payment.amount.displayAmount}</Typography>);
     }
 
     // If only one payment method, do not display amount
-    return payments.map((payment) => <Typography variant="caption">{payment.displayName}</Typography>);
+    return payments.map((payment, index) => <Typography key={index} variant="caption">{payment.displayName}</Typography>);
   }
 
   renderOrderShipments() {
     const { order: { fulfillmentGroups } } = this.props;
 
     if (Array.isArray(fulfillmentGroups) && fulfillmentGroups.length) {
-      return fulfillmentGroups.map((fulfillmentGroup) => <Typography variant="caption">{fulfillmentGroup.selectedFulfillmentOption.fulfillmentMethod.carrier} - {fulfillmentGroup.selectedFulfillmentOption.fulfillmentMethod.displayName}</Typography>); // eslint-disable-line
+      return fulfillmentGroups.map((fulfillmentGroup, index) => <Typography key={index} variant="caption">{fulfillmentGroup.selectedFulfillmentOption.fulfillmentMethod.carrier} - {fulfillmentGroup.selectedFulfillmentOption.fulfillmentMethod.displayName}</Typography>); // eslint-disable-line
     }
 
     return null;
@@ -167,7 +167,7 @@ class OrderCardHeader extends Component {
               </Grid>
             </Grid>
           </section>
-          : null }
+          : null}
       </div>
     );
   }
