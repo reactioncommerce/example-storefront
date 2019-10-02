@@ -1,15 +1,22 @@
 # Example Storefront
 
-[Reaction Commerce](https://reactioncommerce.com/) is building a headless event-driven e-commerce ecosystem that empowers businesses to create a variety of dynamic shopping experiences. This Example Storefront is to serve as a reference on how to implement a web based storefront using the Reaction Commerce GraphQL API. You can fork this project as a jumping off point or create your own custom experience using your prefered client-side technology. While we feel our example storefront is full featured enough to use in production, it may be missing features your shop requires at this time.
+[Reaction Commerce](http://reactioncommerce.com) is an API-first, headless commerce platform built using Node.js, React, and GraphQL. It plays nicely with npm, Docker and Kubernetes.
+
+This Example Storefront is to serve as a reference on how to implement a web based storefront using the Reaction Commerce GraphQL API. You can fork this project as a jumping off point or create your own custom experience using your prefered client-side technology. While we feel our example storefront is full featured enough to use in production, it may be missing features your shop requires at this time.
 
 ## Features
+Reaction comes with a robust set of core commerce capabilities right out of the box. And since anything in our codebase can be extended, overwritten, or installed as a package, you may also customize anything on our platform.
+
+Check out the full list of Reaction [features](https://www.reactioncommerce.com/features) and [release history](https://reactioncommerce.com/roadmap) for more info.
+
+This example storefront is built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [MobX](https://mobx.js.org/getting-started.html), [GraphQL](https://graphql.org/), and [Apollo Client](https://www.apollographql.com/docs/react/)
 
 - Headless ecommerce example storefront built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [MobX](https://mobx.js.org/getting-started.html), [GraphQL](https://graphql.org/), [Apollo Client](https://www.apollographql.com/docs/react/)
 - [Reaction GraphQL API](https://github.com/reactioncommerce/reaction/tree/master/imports/plugins/core/graphql) integration
 - Server-side rendering
 - Payments with [Stripe](https://stripe.com/)
 - Analytics with [Segment](https://segment.com/) or any other provider
-- Reusable, customizable, themeable ecommerce React components from the new [Reaction Component Library](https://github.com/reactioncommerce/reaction-component-library/) with [Styled Components](https://www.styled-components.com/)
+- Reusable, customizable, themeable ecommerce React components from the [Example Storefront Component Library](https://github.com/reactioncommerce/reaction-component-library/) with [Styled Components](https://www.styled-components.com/)
 - Fully-configured test suite: Jest snapshot testing, Mocha integration testing
 - Written in ES6, configured with ES6
 - Containerized with Docker
@@ -49,7 +56,7 @@ Read the docs for [setting up Segment or a custom analytics tracker](docs/tracki
 
 ## Documentation
 - [Example Storefront full documentation](./docs)
-- [Reaction Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](http://designsystem.reactioncommerce.com/)
+- [Example Storefront Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](http://designsystem.reactioncommerce.com/)
 - [Reaction Docs: Using GraphQL](https://docs.reactioncommerce.com/docs/graphql-using)
 - [Reaction Docs: Testing with Jest](https://docs.reactioncommerce.com/docs/testing-reaction)
 - [Reaction Docs: Developing with Docker](https://docs.reactioncommerce.com/docs/installation-docker-development
@@ -135,9 +142,9 @@ docker-compose down --rmi local
 docker-compose up -d --build
 ```
 
-### Testing `reaction-component-library` components in the storefront
+### Testing component library in the storefront
 
-Sometimes we need to test [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) components in the context of the storefront. Unfortunately, there isn't an easy wasy to do this within our Docker containers, so we need to run the `storefront` outside of docker.
+Sometimes we need to test the [Example Storefront Component Library](https://github.com/reactioncommerce/reaction-component-library) components in the context of the storefront. Unfortunately, there isn't an easy wasy to do this within our Docker containers, so we need to run the `storefront` outside of docker.
 
 1. `cd` to your local [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) repo.
 1. Git checkout the proper branch that you want to link
@@ -197,8 +204,62 @@ To stop the Docker container after starting it with the above command, use:
 docker stop reaction-storefront
 ```
 
+## Contribute
+
+Find a bug, a typo, or something that’s not documented well? We’d love for you to [open an issue](https://github.com/reactioncommerce/example-storefront/issues) telling us what we can improve!
+
+Want to request a feature? Use our [Reaction Feature Requests repository](https://github.com/reactioncommerce/reaction-feature-requests) to file a request.
+
+We love your pull requests! Check our our [`Good First Issue`](https://github.com/reactioncommerce/example-storefront/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) and [`Help Wanted`](https://github.com/reactioncommerce/example-storefront/issues?q=label%3A%22help+wanted%22) tags for good issues to tackle.
+
+### Pull Request guidelines
+Pull requests should pass all automated tests, style, and security checks.
+
+#### Automated Tests
+Your code should pass all [acceptance tests and unit tests](https://docs.reactioncommerce.com/reaction-docs/master/testing-reaction). Run
+```sh
+docker-compose run --rm web yarn test
+```
+to run the test suites locally. If you're adding functionality to Reaction, you should add tests for the added functionality. You can run the tests locally without cache if necessary by passing the `--no-cache` flag. This can be helpful if changes aren't showing up.
+```sh
+docker-compose run --rm web yarn test --no-cache
+```
+
+To update a failing snapshot (if you've made changes to a component)
+```sh
+docker-compose run --rm web yarn test -u
+```
+
+#### Eslint
+We require that all code contributed to Reaction follows [Reaction's ESLint rules](https://github.com/reactioncommerce/reaction-eslint-config). You can run
+```
+docker-compose run --rm web eslint src
+```
+to run ESLint against your code locally.
+
+Please follow the [Reaction Code Style Guide](https://docs.reactioncommerce.com/docs/styleguide). Check out our guides to [JSDoc](https://docs.reactioncommerce.com/docs/jsdoc-style-guide), [Git](https://docs.reactioncommerce.com/docs/git-style-guide), [error handling](https://docs.reactioncommerce.com/docs/error-handling-guide), [logging](https://docs.reactioncommerce.com/docs/logging), and [React](https://docs.reactioncommerce.com/docs/react-best-practices).
+
+We also request that you follow the our [pull request template](https://docs.reactioncommerce.com/docs/contributing-to-reaction#fill-out-the-pull-request-template)
+
+Get more details in our [Contributing Guide](https://docs.reactioncommerce.com/docs/contributing-to-reaction).
+
+### Developer Certificate of Origin
+We use the [Developer Certificate of Origin (DCO)](https://developercertificate.org/) in lieu of a Contributor License Agreement for all contributions to Reaction Commerce open source projects. We request that contributors agree to the terms of the DCO and indicate that agreement by signing all commits made to Reaction Commerce projects by adding a line with your name and email address to every Git commit message contributed:
+```
+Signed-off-by: Jane Doe <jane.doe@example.com>
+```
+
+You can sign your commit automatically with Git by using `git commit -s` if you have your `user.name` and `user.email` set as part of your Git configuration.
+
+We ask that you use your real name (please no anonymous contributions or pseudonyms). By signing your commit you are certifying that you have the right have the right to submit it under the open source license used by that particular Reaction Commerce project. You must use your real name (no pseudonyms or anonymous contributions are allowed.)
+
+We use the [Probot DCO GitHub app](https://github.com/apps/dco) to check for DCO signoffs of every commit.
+
+If you forget to sign your commits, the DCO bot will remind you and give you detailed instructions for how to amend your commits to add a signature.
+
+
 ## License
-   Copyright 2018 Reaction Commerce
+   Copyright 2019 Reaction Commerce
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
