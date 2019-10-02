@@ -26,8 +26,13 @@ services:
       - $HOME/.cache/yarn-offline-mirror:/home/node/.cache/yarn-offline-mirror
       - web-yarn:/home/node/.cache/yarn
       - .:/usr/local/src/reaction-app
+      # Do not link in node_modules from the host
+      # This allows IDEs to run lint etc with native add-ons for host OS
+      # Without interfering with native add-ons in container
+      - empty_node_modules:/usr/local/src/reaction-app/node_modules
       - node_modules:/usr/local/src/node_modules
 
 volumes:
   web-yarn:
   node_modules:
+  empty_node_modules:
