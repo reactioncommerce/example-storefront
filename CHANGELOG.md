@@ -1,3 +1,11 @@
+# v2.6.0
+
+Example Storefront v2.6.0 is a minor update to keep this project in sync with [Reaction v2.6.0](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.6.0](https://github.com/reactioncommerce/reaction-hydra)
+
+## Fixes
+
+fix: restore empty_node_modules volume [#591](https://github.com/reactioncommerce/example-storefront/pull/591)
+
 # v2.5.0
 
 Example Storefront v2.5.0 is a minor update to keep this project in sync with [Reaction v2.5.0](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.5.0](https://github.com/reactioncommerce/reaction-hydra)
