@@ -228,9 +228,9 @@ workflows:
           context: reaction-validation
           requires:
             - docker-build
-#      - create-gitops-pull-request:
-#          requires:
-#            - docker-push
-#          filters:
-#            branches:
-#              only: - /staging-gitops.*/
+      - create-gitops-pull-request:
+          requires:
+            - docker-push
+          filters:
+            branches:
+              only: /staging-gitops.*/
