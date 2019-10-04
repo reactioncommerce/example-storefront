@@ -233,4 +233,4 @@ workflows:
             - docker-push
           filters:
             branches:
-              only: staging-gitops*
+              only: - /staging-gitops.*/
