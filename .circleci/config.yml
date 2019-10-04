@@ -122,14 +122,14 @@ jobs:
             /usr/local/bin/hub config user.email "${GH_EMAIL}"
             cd kustomize/reaction-storefront/overlays/staging
             # Create new branch
-            /usr/local/bin/hub checkout -b update-image-reaction-storefront-staging-gitops-${CIRCLE_SHA1:0:7}
+            /usr/local/bin/hub checkout -b update-image-reaction-storefront-${CIRCLE_SHA1}
             # Modify image tag in kustomization.yaml by calling 'kustomize edit set image'
-            /usr/local/bin/kustomize edit set image docker.io/${DOCKER_REPOSITORY}:staging-gitops-${CIRCLE_SHA1:0:7}
+            /usr/local/bin/kustomize edit set image docker.io/${DOCKER_REPOSITORY}:${CIRCLE_SHA1}
             /usr/local/bin/hub add kustomization.yaml
             # Commit with sign-off
-            /usr/local/bin/hub commit -s -m "changed reaction-storefront image tag to staging-gitops-${CIRCLE_SHA1:0:7}"
+            /usr/local/bin/hub commit -s -m "changed reaction-storefront image tag to ${CIRCLE_SHA1}"
             # Push branch to origin
-            /usr/local/bin/hub push --set-upstream origin update-image-reaction-storefront-staging-gitops-${CIRCLE_SHA1:0:7}
+            /usr/local/bin/hub push --set-upstream origin update-image-reaction-storefront-${CIRCLE_SHA1}
             # Create PR
             /usr/local/bin/hub pull-request --no-edit -r ${REACTION_GITOPS_REVIEWERS}
 
