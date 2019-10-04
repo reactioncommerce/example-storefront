@@ -11,10 +11,14 @@ version: 2
 defaults: &defaults
   environment:
     - DOCKER_REPOSITORY: "reactioncommerce/reaction-next-starterkit"
-#    - DOCKER_REPOSITORY: "202687395681.dkr.ecr.us-west-2.amazonaws.com/reactioncommerce/reaction-next-starterkit"
     - DOCKER_NAMESPACE: "reactioncommerce"
     - DOCKER_NAME: "reaction-next-starterkit"
     - GLOBAL_CACHE_VERSION: “v3”
+    - KUSTOMIZE_VERSION: "3.2.1"
+    - HUB_VERSION: "2.12.8"
+    - GH_USERNAME: "rc-circleci"
+    - GH_EMAIL: "circleci@reactioncommerce.com"
+    - REACTION_GITOPS_REVIEWERS: "griggheo"
 
   docker:
     - image: circleci/node:10-stretch
@@ -93,6 +97,38 @@ jobs:
             cat docker-cache/docker-tags.txt \
                 | xargs -t -I % \
                 docker push "$DOCKER_REPOSITORY:%"
+
+  create-gitops-pull-request:
+    <<: *defaults
+    steps:
+      - run:
+          name: Download kustomize
+          command: |
+            cd /tmp
+            wget https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE_VERSION}/kustomize_kustomize.v${KUSTOMIZE_VERSION}_linux_amd64
+            sudo mv kustomize_kustomize.v${KUSTOMIZE_VERSION}_linux_amd64 /usr/local/bin/kustomize
+            sudo chmod +x /usr/local/bin/kustomize
+          name: Download hub
+          command: |
+            cd /tmp
+            wget https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz
+            tar xfz hub-linux-amd64-${HUB_VERSION}.tgz
+            sudo mv hub-linux-amd64-${HUB_VERSION}/bin/hub /usr/local/bin/hub
+            sudo chmod +x /usr/local/bin/hub
+          name: Clone reaction-gitops repo and create PR
+          command: |
+            cd /tmp
+            export GITHUB_TOKEN="${REACTION_GITOPS_GH_TOKEN}"
+            hub clone https://${GITHUB_TOKEN}@github.com/reactioncommerce/reaction-gitops.git
+            hub config user.name "${GH_USERNAME}"
+            hub config user.email "${GH_EMAIL}"
+            cd reaction-gitops/kustomize/reaction-storefront/overlays/staging
+            hub checkout -b update-image-reaction-storefront-staging-gitops-${CIRCLE_SHA1:0:7}
+            kustomize edit set image docker.io/${DOCKER_REPOSITORY}:staging-gitops-${CIRCLE_SHA1:0:7}
+            hub add kustomization.yaml
+            hub commit -s -m "changed reaction-storefront image tag to staging-gitops-${CIRCLE_SHA1:0:7}"
+            hub push --set-upstream origin update-image-reaction-storefront-staging-gitops-${CIRCLE_SHA1:0:7}
+            hub pull-request --no-edit -r ${REACTION_GITOPS_REVIEWERS}
 
   lint-javascript:
     <<: *defaults
@@ -192,3 +228,9 @@ workflows:
           context: reaction-validation
           requires:
             - docker-build
+      - create-gitops-pull-request:
+          requires:
+            - docker-push
+          filters:
+            branches:
+              only: staging-gitops*
