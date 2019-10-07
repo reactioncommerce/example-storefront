@@ -1,3 +1,28 @@
+# v2.6.0
+
+Example Storefront v2.6.0 is a minor update to keep this project in sync with [Reaction v2.6.0](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.6.0](https://github.com/reactioncommerce/reaction-hydra)
+
+## Fixes
+
+fix: restore empty_node_modules volume [#591](https://github.com/reactioncommerce/example-storefront/pull/591)
+
+# v2.5.0
+
+Example Storefront v2.5.0 is a minor update to keep this project in sync with [Reaction v2.5.0](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.5.0](https://github.com/reactioncommerce/reaction-hydra)
+
+## Fixes
+
+fix: Make sure development entry-point runs bin/start by default
+fix: Cannot edit checkout address ([#494](https://github.com/reactioncommerce/example-storefront/issues/494))
+
+## Chores
+
+chore: Remove inactive end-to-end propel/calibre tests
+
+## Breaking Changes
+
+None
+
 # v2.4.0
 
 Example Storefront v2.4.0 is a minor update to keep this project in sync with [Reaction v2.4.0](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.4.0](https://github.com/reactioncommerce/reaction-hydra)

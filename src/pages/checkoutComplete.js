@@ -63,7 +63,7 @@ class CheckoutComplete extends Component {
           <Grid item xs={false} md={3} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
           <Grid item xs={12} md={6}>
             <Grid item className={classes.orderThankYou} xs={12} md={12}>
-              <Typography className={classes.title} variant="title">Thank you for your order</Typography>
+              <Typography className={classes.title} variant="h6">Thank you for your order</Typography>
               <Typography variant="body1">
                 {"Your order ID is:"} <strong>{order.referenceId}</strong>
               </Typography>
