@@ -23,7 +23,6 @@ const testFulfillmentGroup = {
         compareAtPrice: {
           displayAmount: "$45.00"
         },
-        currentQuantity: 3,
         imageURLs: {
           small: "//placehold.it/150",
           thumbnail: "//placehold.it/100"
@@ -40,7 +39,6 @@ const testFulfillmentGroup = {
       {
         _id: "456",
         attributes: [{ label: "Color", value: "Black" }, { label: "Size", value: "10" }],
-        currentQuantity: 500,
         imageURLs: {
           small: "//placehold.it/150",
           thumbnail: "//placehold.it/100"
