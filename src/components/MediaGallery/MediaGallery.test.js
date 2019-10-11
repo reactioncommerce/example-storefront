@@ -4,7 +4,6 @@ import MediaGallery from "./MediaGallery";
 
 const mediaItems = [
   {
-    toGrid: 1,
     priority: 0,
     productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
     variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
@@ -17,7 +16,6 @@ const mediaItems = [
     }
   },
   {
-    toGrid: 1,
     priority: 0,
     productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
     variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
