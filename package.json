@@ -12,11 +12,12 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
-    "dev": "NODE_ENV=development node ./src/server.js",
+    "dev": "echo 'Note: dev script has been renamed to start:dev' && yarn run start:dev",
     "build": "yarn run build-clean && NODE_ENV=production IS_BUILDING_NEXTJS=1 next build src",
     "build-clean": "rimraf build/app",
     "lint": "eslint .",
     "start": "NODE_ENV=production node ./src/server.js",
+    "start:dev": "NODE_ENV=development node ./src/server.js",
     "test": "yarn run test:unit",
     "test:ci": "yarn run test:unit --ci --runInBand --colors",
     "test:unit": "NODE_ENV=jesttest jest",
