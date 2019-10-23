@@ -10,6 +10,10 @@ const router = require("./routes");
 const { configureAuthForServer } = require("./serverAuth");
 const { sitemapRoutesHandler } = require("./sitemapRoutesHandler");
 
+if (config.isDev) {
+  logger.info("Running NextJS server in development mode...");
+}
+
 // First create the NextJS app.
 // Note that only `config` can be used here because the NextJS `getConfig()` does not
 // return anything until after the NextJS app is initialized.
