@@ -83,7 +83,7 @@ function configureAuthForServer(server) {
     const { id } = decodeOpaqueId(req.params.userId);
 
     // Ask IDP to log us out
-    fetch(`${config.OAUTH2_IDP_HOST_URL}logout?userId=${id}`)
+    fetch(`${config.OAUTH2_IDP_HOST_URL}logout-user?userId=${id}`)
       .then((logoutResponse) => {
         if (logoutResponse.status >= 400) {
           const message = `Error from OAUTH2_IDP_HOST_URL logout endpoint: ${logoutResponse.status}. Check the HOST server settings`;
