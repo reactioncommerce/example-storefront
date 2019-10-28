@@ -197,7 +197,7 @@ fragment CartItemConnectionFragment on CartItemConnection {
       variantTitle
       optionTitle
       updatedAt
-      currentQuantity
+      inventoryAvailableToSell
     }
   }
 }

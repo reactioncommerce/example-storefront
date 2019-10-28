@@ -4,7 +4,6 @@ const items = {
   edges: [
     {
       node: {
-        currentQuantity: null,
         optionTitle: "Red",
         productSlug: "basic-reaction-product",
         productType: "product-simple",
@@ -14,7 +13,6 @@ const items = {
     },
     {
       node: {
-        currentQuantity: null,
         optionTitle: "Green",
         productSlug: "basic-reaction-product",
         productType: "product-simple",
@@ -30,7 +28,6 @@ test("relayConnectionToArray should convert a relay cursor connection to an arra
 
   const expected = [
     {
-      currentQuantity: null,
       optionTitle: "Red",
       productSlug: "basic-reaction-product",
       productType: "product-simple",
@@ -38,7 +35,6 @@ test("relayConnectionToArray should convert a relay cursor connection to an arra
       variantTitle: "Option 1 - Red Dwarf"
     },
     {
-      currentQuantity: null,
       optionTitle: "Green",
       productSlug: "basic-reaction-product",
       productType: "product-simple",
