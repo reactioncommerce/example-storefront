@@ -1,73 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic snapshot 1`] = `
-.c5 {
-  -webkit-font-smoothing: antialiased;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #1999dd;
-  border-color: #1999dd;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 2px;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,sans-serif;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  margin: 0;
-  min-width: 100px;
-  outline: none;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  position: relative;
-  text-align: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 100%;
-}
-
-.c5:hover {
-  background-color: #25b0f9;
-  border-color: #25b0f9;
-  color: #ffffff;
-}
-
-.c5:active {
-  background-color: #057dbe;
-  border-color: #057dbe;
-  color: #ffffff;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  padding-left: 20px;
-  -webkit-transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
-  transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
-}
-
-.c6 svg path,
-.c6 svg rect {
-  fill: #ffffff;
-}
-
 .c2 {
   position: relative;
   opacity: 0.5;
@@ -252,7 +185,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-250"
+                  className="MuiTouchRipple-root-235"
                 />
               </button>
             </div>
@@ -286,7 +219,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-250"
+                  className="MuiTouchRipple-root-235"
                 />
               </button>
             </div>
@@ -320,7 +253,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-250"
+                  className="MuiTouchRipple-root-235"
                 />
               </button>
             </div>
@@ -354,7 +287,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-250"
+                  className="MuiTouchRipple-root-235"
                 />
               </button>
             </div>
@@ -388,7 +321,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-250"
+                  className="MuiTouchRipple-root-235"
                 />
               </button>
             </div>
@@ -422,7 +355,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-250"
+                  className="MuiTouchRipple-root-235"
                 />
               </button>
             </div>
@@ -456,7 +389,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-250"
+                  className="MuiTouchRipple-root-235"
                 />
               </button>
             </div>
@@ -490,7 +423,7 @@ exports[`basic snapshot 1`] = `
                   />
                 </div>
                 <span
-                  className="MuiTouchRipple-root-250"
+                  className="MuiTouchRipple-root-235"
                 />
               </button>
             </div>
@@ -778,7 +711,7 @@ Details can be added below the image for more specific product information.
                   />
                 </svg>
                 <span
-                  className="MuiTouchRipple-root-250"
+                  className="MuiTouchRipple-root-235"
                 />
               </button>
             </div>
@@ -828,7 +761,7 @@ Details can be added below the image for more specific product information.
                   />
                 </svg>
                 <span
-                  className="MuiTouchRipple-root-250"
+                  className="MuiTouchRipple-root-235"
                 />
               </button>
             </div>
@@ -864,67 +797,9 @@ Details can be added below the image for more specific product information.
             Add to cart
           </span>
           <span
-            className="MuiTouchRipple-root-250"
+            className="MuiTouchRipple-root-235"
           />
         </button>
-      </div>
-    </div>
-    <div
-      className="MuiPrivateHiddenCss-mdUp-242"
-    >
-      <div
-        className="SkCartPopover-container-227 SkCartPopover-isContainerHidden-229"
-      >
-        <div
-          className="MuiGrid-container-4 MuiGrid-spacing-xs-24-28 SkCartPopover-gridContainer-228"
-        >
-          <div
-            className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 SkCartPopover-containerItem-231"
-          >
-            <img
-              alt="Item Title"
-              className="SkCartPopover-addedToCartImg-232"
-              src="//placehold.it/100"
-            />
-            <span
-              className="MuiTypography-root-121 MuiTypography-body2-129 SkCartPopover-addedToCartText-234"
-            >
-              10
-               "
-              <span
-                className="SkCartPopover-addedToCartItemName-233"
-              >
-                Item Title
-              </span>
-              " added to cart
-            </span>
-          </div>
-          <div
-            className="MuiGrid-item-5 MuiGrid-grid-xs-12-44"
-          >
-            <div
-              className="c5"
-              onClick={[Function]}
-              onKeyPress={[Function]}
-              role="button"
-              tabIndex={0}
-            >
-              <div>
-                Checkout
-              </div>
-              <div
-                className="c6"
-                style={
-                  Object {
-                    "opacity": 0,
-                    "paddingLeft": 0,
-                    "width": 0,
-                  }
-                }
-              />
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

@@ -37,6 +37,7 @@ const order = {
               small: "//placehold.it/150",
               thumbnail: "//placehold.it/100"
             },
+            inventoryAvailableToSell: 3,
             isLowQuantity: true,
             price: {
               displayAmount: "$20.00"
@@ -53,6 +54,7 @@ const order = {
               small: "//placehold.it/150",
               thumbnail: "//placehold.it/100"
             },
+            inventoryAvailableToSell: 30,
             isLowQuantity: false,
             price: {
               displayAmount: "$78.00"

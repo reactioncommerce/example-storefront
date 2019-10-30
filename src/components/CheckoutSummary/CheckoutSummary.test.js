@@ -32,6 +32,7 @@ const testCart = {
         small: "//placehold.it/150",
         thumbnail: "//placehold.it/100"
       },
+      currentQuantity: 3,
       isLowQuantity: true,
       price: {
         displayAmount: "$20.00"
@@ -51,6 +52,7 @@ const testCart = {
         small: "//placehold.it/150",
         thumbnail: "//placehold.it/100"
       },
+      currentQuantity: 30,
       isLowQuantity: false,
       price: {
         displayAmount: "$78.00"
