@@ -185,13 +185,13 @@ Sometimes it is helpful during development to make a production build of the app
 Run this command to build a Docker image with the production build of the app in it:
 
 ```sh
-docker build -t reaction-storefront --build-arg BUILD_ENV=production .
+docker build -t reaction-storefront .
 ```
 
 Then, to start the app on your machine, make sure the Reaction API container is already running and enter:
 
 ```sh
-docker run -d --name storefront -p 4000:4000 --env-file .env --network api.reaction.localhost reaction-storefront
+docker run -it --name storefront -p 4000:4000 --env-file .env --network api.reaction.localhost reaction-storefront
 ```
 
 _**NOTE:** You can replace the number before the colon in `4000:4000` with a different localhost port you'd like the application to run at._

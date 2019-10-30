@@ -10,93 +10,83 @@ version: 2
 # typing. See http://yaml.org/type/merge.html for details.
 defaults: &defaults
   environment:
-    - DOCKER_REPOSITORY: "reactioncommerce/reaction-next-starterkit"
-    - DOCKER_NAMESPACE: "reactioncommerce"
-    - DOCKER_NAME: "reaction-next-starterkit"
-    - GLOBAL_CACHE_VERSION: “v3”
-    - KUSTOMIZE_VERSION: "3.2.1"
-    - HUB_VERSION: "2.12.8"
-    - GH_USERNAME: "rc-circleci"
-    - GH_EMAIL: "circleci@reactioncommerce.com"
-    - REACTION_GITOPS_REVIEWERS: "griggheo"
-
+    CI_SCRIPTS: 'npx --quiet --package @reactioncommerce/ci-scripts@1.6.2'
+    DOCKER_REPOSITORY: "reactioncommerce/example-storefront"
+    DOCKER_NAMESPACE: "reactioncommerce"
+    DOCKER_NAME: "example-storefront"
+    GLOBAL_CACHE_VERSION: "v3"
+    KUSTOMIZE_VERSION: "3.2.1"
+    HUB_VERSION: "2.12.8"
+    GH_USERNAME: "rc-circleci"
+    GH_EMAIL: "circleci@reactioncommerce.com"
+    REACTION_GITOPS_REVIEWERS: "griggheo"
   docker:
-    - image: circleci/node:10-stretch
+    - image: circleci/node:12.11.1-stretch
 
 jobs:
-  docker-build:
+  install-dependencies:
     <<: *defaults
     steps:
       - checkout
-      - setup_remote_docker
+      - restore_cache:
+          keys:
+            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+            - reaction-v3-node-modules-{{ .Branch }}
       - run:
-          name: Discover Docker Tags
-          command: |
-            (cd /tmp && npm install --no-progress @reactioncommerce/ci-scripts@1.4.0 >/dev/null)
-            mkdir -p docker-cache
-            /tmp/node_modules/.bin/docker-tags "$CIRCLE_SHA1" "$CIRCLE_BRANCH" \
-              | tee docker-cache/docker-tags.txt
-      - run:
-          name: Docker Build
-          command: |
-            (cd /tmp && npm install --no-progress @reactioncommerce/ci-scripts@1.4.0 >/dev/null)
-            /tmp/node_modules/.bin/docker-labels >> Dockerfile
-            docker build --tag "$DOCKER_REPOSITORY:$CIRCLE_SHA1" .
-            mkdir -p docker-cache
-            docker save \
-              -o docker-cache/docker-image.tar \
-              "$DOCKER_REPOSITORY:$CIRCLE_SHA1"
-      - persist_to_workspace:
-          root: docker-cache
+          name: Install NPM dependencies
+          command: yarn install --production=false --frozen-lockfile --non-interactive
+      - save_cache:
+          key: reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
           paths:
-            - docker-image.tar
-            - docker-tags.txt
-  docker-push:
+            - node_modules
+      - save_cache:
+          key: reaction-v3-node-modules-{{ .Branch }}
+          paths:
+            - node_modules
+
+  dockerfile-lint:
     <<: *defaults
     steps:
-      - setup_remote_docker
-      - attach_workspace:
-          at: docker-cache
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
-          name: Load and Tag Docker Image
-          command: |
-            docker load < docker-cache/docker-image.tar
-            cat docker-cache/docker-tags.txt \
-              | xargs -t -I % \
-                docker tag \
-                  "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-                  "$DOCKER_REPOSITORY:%"
+          name: Lint Dockerfiles
+          command: ${CI_SCRIPTS} lint-dockerfiles
+
+  eslint:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+            - reaction-v3-node-modules-{{ .Branch }}
       - run:
-          # Creates a new Docker repository. This is not strictly required if
-          # the Docker Hub defaults are set appropriately.
-          name: Create Private Docker Hub Repository
-          command: |
-            # Fetch a login token from environment credentials.
-            TOKEN=$(curl \
-              -H "Content-Type: application/json" \
-              -X POST  \
-              -d "{\"username\":\"$DOCKER_USER\",\"password\":\"$DOCKER_PASS\"}" \
-              -s \
-              https://hub.docker.com/v2/users/login/ \
-                | jq -r .token)
-            # Try to create the private repo. It exits with success on fail.
-            curl \
-             -H "Authorization: JWT $TOKEN" \
-             -H "Content-Type: application/json" \
-             -d "{\"namespace\":\"$DOCKER_NAMESPACE\",
-                  \"name\":\"$DOCKER_NAME\",
-                  \"description\":\"$DESCRIPTION\",
-                  \"full_description\":\"\",
-                  \"is_private\":true}" \
-            https://hub.docker.com/v2/repositories/
+          name: Lint JavaScript
+          command: yarn run lint
+
+  test-unit:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+            - reaction-v3-node-modules-{{ .Branch }}
       - run:
-          name: Docker Push
-          command: |
-            docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
-            docker push "$DOCKER_REPOSITORY:$CIRCLE_SHA1"
-            cat docker-cache/docker-tags.txt \
-                | xargs -t -I % \
-                docker push "$DOCKER_REPOSITORY:%"
+          name: Run Unit Tests
+          command: yarn run test:ci
+
+  docker-build-push:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Build and push production Docker image
+          command: ${CI_SCRIPTS} docker-build-tag-push . ${DOCKER_REPOSITORY}
 
   create-gitops-pull-request:
     <<: *defaults
@@ -133,107 +123,29 @@ jobs:
             # Create PR
             /usr/local/bin/hub pull-request --no-edit -r ${REACTION_GITOPS_REVIEWERS}
 
-  lint-javascript:
-    <<: *defaults
-    steps:
-      - checkout
-      - run:
-          name: Lint JavaScript
-          command: |
-            yarn install
-            yarn lint
-
-  test:
-    <<: *defaults
-    steps:
-      - checkout
-      - setup_remote_docker
-      - attach_workspace:
-          at: docker-cache
-      - run:
-          name: Load and Tag Docker Image
-          command: |
-            docker load < docker-cache/docker-image.tar
-            cat docker-cache/docker-tags.txt \
-              | xargs -t -I % \
-                docker tag \
-                  "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-                  "$DOCKER_REPOSITORY:%"
-      - run:
-          name: Test
-          command: |
-            docker run \
-              --env-file .env.example \
-              --env NODE_ENV=test \
-              --name reactionapp_next_starterkit \
-              "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-              yarn test:ci
-      - run:
-          name: Copy test artifacts from Remote Docker
-          command: |
-            docker cp \
-              reactionapp_next_starterkit:/usr/local/src/reaction-app/reports \
-              reports
-      - store_test_results:
-          path: reports/junit
-      - store_artifacts:
-          path: reports
-
-  snyk-security:
-    <<: *defaults
-    steps:
-      - checkout
-      - setup_remote_docker
-      - attach_workspace:
-          at: docker-cache
-      - run:
-          name: Load Docker Image
-          command: |
-            docker load < docker-cache/docker-image.tar
-      - run:
-          name: Snyk Security
-          # Snyk doesn't look up the directory tree for node_modules as
-          # NodeJS does so we have to take some extra measures to test in the
-          # Docker image. Copy package.json up a directory so that it is a
-          # sibling to node_modules, then run snyk test.
-          command: |
-            answer=$(./.circleci/bin/should-run-snyk.sh)
-            if [[ "${answer}" =~ "^YES" ]] ; then
-              docker run \
-                --env-file .env.example \
-                --env "SNYK_TOKEN" \
-                --name reactionapp_next_starterkit \
-                --workdir /usr/local/src \
-                "$DOCKER_REPOSITORY:$CIRCLE_SHA1" \
-                sh -c "cp reaction-app/package.json ./ && cp reaction-app/.snyk ./ && snyk test"
-            else
-              echo "Skipping snyk: ${answer}"
-            fi
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - lint-javascript:
-          context: reaction-build-read
-      - docker-build:
-          context: reaction-build-read
+      - install-dependencies
+      - dockerfile-lint:
           requires:
-            - lint-javascript
-      - docker-push:
+            - install-dependencies
+      - eslint:
+          requires:
+            - install-dependencies
+      - test-unit:
+          requires:
+            - install-dependencies
+      - docker-build-push:
           context: reaction-publish-docker
           requires:
-            - docker-build
-      - test:
-          context: reaction-validation
-          requires:
-            - docker-build
-      - snyk-security:
-          context: reaction-validation
-          requires:
-            - docker-build
+            - dockerfile-lint
+            - eslint
+            - test-unit
       - create-gitops-pull-request:
           requires:
-            - docker-push
+            - docker-build-push
           filters:
             branches:
-              only: master
+              only: /^master$/
