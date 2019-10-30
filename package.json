@@ -27,9 +27,12 @@
     "test:file": "NODE_ENV=jesttest jest --watch --no-coverage"
   },
   "eslintConfig": {
-    "extends": [
-      "@reactioncommerce"
-    ]
+    "extends": "@reactioncommerce",
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
   },
   "dependencies": {
     "@material-ui/core": "~3.9.2",
