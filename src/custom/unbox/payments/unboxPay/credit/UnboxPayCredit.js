@@ -47,17 +47,22 @@ class UnboxPayCredit extends React.Component {
     // $20,00
     const minInstallmentValue = 2000;
 
-    let totalAmount = cart.displayTotal.replace("R$", "").replace(",", "");
-    let currentAmount = totalAmount;
+    let totalAmount = cart.displayTotal.replace("R$", "").replace(",", "").replace(".", "");
     let index = 1;
+    let countInteger = totalAmount.length;
+    countInteger = countInteger - 2;
+    const newAmount = totalAmount.slice(0, countInteger);
 
-    while (currentAmount / index > minInstallmentValue && index < 13) {
-      currentAmount = (totalAmount / index).toString();
+    while (newAmount / index < minInstallmentValue && index < 13) {
+      const parcela = newAmount / index;
+      const valorParcelaEmReal = parcela.toLocaleString('pt-br', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
       installments.push({
-        label: `${index}x - R$${currentAmount.slice(0, 2)},${currentAmount.slice(2, 4)}`,
-        value: `R$${currentAmount.slice(0, 2)},${currentAmount.slice(2, 4)}`
+        label: `${index}x - R$${valorParcelaEmReal}`,
+        value: `R$${valorParcelaEmReal}`
       });
-      index += 1;
+
+      index++;
     }
     if (installments.length === 0) {
       installments.push({
