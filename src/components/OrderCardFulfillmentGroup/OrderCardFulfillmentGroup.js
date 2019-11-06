@@ -70,12 +70,19 @@ class OrderCardFulfillmentGroup extends Component {
     const { classes, fulfillmentGroup } = this.props;
 
     if (fulfillmentGroup && Array.isArray(fulfillmentGroup.items.nodes)) {
+      const items = fulfillmentGroup.items.nodes.map((item) => ({
+        ...item,
+        // Backwards compatibility until all component library components are updated
+        // to accept `inventoryAvailableToSell`.
+        currentQuantity: item.currentQuantity || item.inventoryAvailableToSell
+      }));
+
       return (
         <Grid className={classes.fulfillmentGroupDetails} item xs={12} md={12}>
           <CartItems
             isMiniCart
             isReadOnly
-            items={fulfillmentGroup.items.nodes}
+            items={items}
           />
         </Grid>
       );

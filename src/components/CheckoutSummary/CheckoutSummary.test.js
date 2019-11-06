@@ -28,11 +28,11 @@ const testCart = {
       compareAtPrice: {
         displayAmount: "$45.00"
       },
-      currentQuantity: 3,
       imageURLs: {
         small: "//placehold.it/150",
         thumbnail: "//placehold.it/100"
       },
+      currentQuantity: 3,
       isLowQuantity: true,
       price: {
         displayAmount: "$20.00"
@@ -48,11 +48,11 @@ const testCart = {
         { label: "Color", value: "Black" },
         { label: "Size", value: "10" }
       ],
-      currentQuantity: 500,
       imageURLs: {
         small: "//placehold.it/150",
         thumbnail: "//placehold.it/100"
       },
+      currentQuantity: 30,
       isLowQuantity: false,
       price: {
         displayAmount: "$78.00"

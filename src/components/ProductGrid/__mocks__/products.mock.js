@@ -13,7 +13,6 @@ export default [
         isSoldOut: true,
         isBackorder: false,
         primaryImage: {
-          toGrid: 1,
           priority: 0,
           productId: "cmVhY3Rpb24vcHJvZHVjdDpqbmE5NWthOWFOa015dG14aA==",
           URLs: {
@@ -57,7 +56,6 @@ export default [
         isSoldOut: false,
         isBackorder: false,
         primaryImage: {
-          toGrid: 1,
           priority: 0,
           productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
           URLs: {
