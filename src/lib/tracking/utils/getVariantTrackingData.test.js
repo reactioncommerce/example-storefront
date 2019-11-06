@@ -37,7 +37,6 @@ const product = {
   },
   media: [
     {
-      toGrid: 1,
       priority: 0,
       productId: "1001",
       variantId: "1002",
@@ -46,7 +45,6 @@ const product = {
       }
     },
     {
-      toGrid: 1,
       priority: 0,
       productId: "1001",
       variantId: "1003",
