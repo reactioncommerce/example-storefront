@@ -18,6 +18,10 @@ export default function cartItemsConnectionToArray(cartItemsConnection) {
     // Make a copy to be able to mutate
     const item = { ...node };
 
+    // Backwards compatibility until all component library components are updated
+    // to accept `inventoryAvailableToSell`.
+    item.currentQuantity = item.currentQuantity || item.inventoryAvailableToSell;
+
     return item;
   });
 }
