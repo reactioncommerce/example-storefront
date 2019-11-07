@@ -42,7 +42,7 @@ class UnboxPayCredit extends React.Component {
   getInstallmentOptions = () => {
     const { cart } = this.props;
 
-    let installments = [];
+    const installments = [];
 
     // $20,00
     const minInstallmentValue = 2000;
