@@ -25,12 +25,14 @@ class UnboxPayCredit extends React.Component {
 
   handleStateChange = (value, name = "") => {
     const { cardInfo } = this.state;
+    console.log(this.state.cardInfo);
     cardInfo[name] = value;
     this.setState({ cardInfo });
   };
 
   handleSubmit = (e) => {
     console.log(this.state.cardInfo);
+    // e.preventdefault();
     return this.props.onSubmit({
       data: {
         ...this.state.cardInfo,
@@ -59,7 +61,7 @@ class UnboxPayCredit extends React.Component {
 
       installments.push({
         label: `${index}x - R$${valorParcelaEmReal}`,
-        value: `R$${valorParcelaEmReal}`
+        value: index
       });
 
       index++;
@@ -70,6 +72,7 @@ class UnboxPayCredit extends React.Component {
         value: index
       });
     }
+
     return installments;
   };
 
