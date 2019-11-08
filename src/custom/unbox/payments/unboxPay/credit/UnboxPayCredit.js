@@ -25,12 +25,14 @@ class UnboxPayCredit extends React.Component {
 
   handleStateChange = (value, name = "") => {
     const { cardInfo } = this.state;
+    console.log(this.state.cardInfo);
     cardInfo[name] = value;
     this.setState({ cardInfo });
   };
 
   handleSubmit = (e) => {
     console.log(this.state.cardInfo);
+    // e.preventdefault();
     return this.props.onSubmit({
       data: {
         ...this.state.cardInfo,
@@ -42,22 +44,27 @@ class UnboxPayCredit extends React.Component {
   getInstallmentOptions = () => {
     const { cart } = this.props;
 
-    let installments = [];
+    const installments = [];
 
     // $20,00
     const minInstallmentValue = 2000;
 
-    let totalAmount = cart.displayTotal.replace("R$", "").replace(",", "");
-    let currentAmount = totalAmount;
+    let totalAmount = cart.displayTotal.replace("R$", "").replace(",", "").replace(".", "");
     let index = 1;
+    let countInteger = totalAmount.length;
+    countInteger = countInteger - 2;
+    const newAmount = totalAmount.slice(0, countInteger);
 
-    while (currentAmount / index > minInstallmentValue && index < 13) {
-      currentAmount = (totalAmount / index).toString();
+    while (newAmount / index < minInstallmentValue && index < 13) {
+      const parcela = newAmount / index;
+      const valorParcelaEmReal = parcela.toLocaleString('pt-br', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
       installments.push({
-        label: `${index}x - R$${currentAmount.slice(0, 2)},${currentAmount.slice(2, 4)}`,
-        value: `R$${currentAmount.slice(0, 2)},${currentAmount.slice(2, 4)}`
+        label: `${index}x - R$${valorParcelaEmReal}`,
+        value: index
       });
-      index += 1;
+
+      index++;
     }
     if (installments.length === 0) {
       installments.push({
@@ -65,6 +72,7 @@ class UnboxPayCredit extends React.Component {
         value: index
       });
     }
+
     return installments;
   };
 
