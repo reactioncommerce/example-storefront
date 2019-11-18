@@ -12,35 +12,37 @@ import AccountDropdown from "components/AccountDropdown";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import Link from "components/Link";
 import MiniCart from "components/MiniCart";
+import * as styles from "./style";
+import HamburgerIcon from "../Icons/HamburgerMenu";
+import CartIcon from "../Icons/Cart";
 
-const styles = (theme) => ({
-  appBar: {
-    backgroundColor: theme.palette.reaction.white,
-    borderBottom: `solid 1px ${theme.palette.reaction.black05}`,
-    color: theme.palette.reaction.coolGrey500
-  },
-  controls: {
-    alignItems: "inherit",
-    display: "inherit",
-    flex: 1
-  },
-  title: {
-    color: theme.palette.reaction.reactionBlue,
-    marginRight: theme.spacing.unit,
-    borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
-  },
-  toolbar: {
-    alignItems: "center",
-    display: "flex",
-    justifyContent: "space-between"
-  }
-});
+// const styles = (theme) => ({
+//   appBar: {
+//     backgroundColor: theme.palette.reaction.white,
+//     borderBottom: `solid 1px ${theme.palette.reaction.black05}`,
+//     color: theme.palette.reaction.coolGrey500
+//   },
+//   controls: {
+//     alignItems: "inherit",
+//     display: "inherit",
+//     flex: 1
+//   },
+//   title: {
+//     color: theme.palette.reaction.reactionBlue,
+//     marginRight: theme.spacing.unit,
+//     borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
+//   },
+//   toolbar: {
+//     alignItems: "center",
+//     display: "flex",
+//     justifyContent: "space-between"
+//   }
+// });
 
 @withStyles(styles, { name: "SkHeader" })
 @inject("uiStore")
 class Header extends Component {
   static propTypes = {
-    classes: PropTypes.object,
     shop: PropTypes.shape({
       name: PropTypes.string
     }).isRequired,
@@ -59,32 +61,47 @@ class Header extends Component {
   };
 
   render() {
-    const { classes: { appBar, controls, toolbar, title }, shop } = this.props;
+    const {
+      classes: { appBar, controls, toolbar, title },
+      shop
+    } = this.props;
 
     return (
-      <AppBar position="static" elevation={0} className={appBar}>
-        <Toolbar className={toolbar}>
-          <Hidden mdUp>
-            <NavigationToggleMobile onClick={this.handleNavigationToggleClick} />
-          </Hidden>
+      <styles.Container>
+        <Hidden mdUp>
+          <styles.ToggleButton onClick={this.handleNavigationToggleClick}>
+            <HamburgerIcon />
+          </styles.ToggleButton>
+        </Hidden>
 
-          <div className={controls}>
-            <Typography className={title} color="inherit" variant="h6">
-              <Link route="/">
-                <ShopLogo shopName={shop.name} />
-              </Link>
-            </Typography>
-
-            <Hidden smDown initialWidth={"md"}>
-              <NavigationDesktop />
-            </Hidden>
-          </div>
-
-          <AccountDropdown />
-          <MiniCart />
-        </Toolbar>
+        <styles.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
+        {/* <CartIcon /> */}
+        <MiniCart />
         <NavigationMobile />
-      </AppBar>
+      </styles.Container>
+      // <AppBar position="static" elevation={0} className={appBar}>
+      //   <Toolbar className={toolbar}>
+      //     <Hidden mdUp>
+      //       <NavigationToggleMobile onClick={this.handleNavigationToggleClick} />
+      //     </Hidden>
+
+      //     <div className={controls}>
+      //       <Typography className={title} color="inherit" variant="h6">
+      //         <Link route="/">
+      //           <ShopLogo shopName={shop.name} />
+      //         </Link>
+      //       </Typography>
+
+      //       <Hidden smDown initialWidth={"md"}>
+      //         <NavigationDesktop />
+      //       </Hidden>
+      //     </div>
+
+      //     <AccountDropdown />
+      //     <MiniCart />
+      //   </Toolbar>
+      //   <NavigationMobile />
+      // </AppBar>
     );
   }
 }

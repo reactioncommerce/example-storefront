@@ -6,7 +6,7 @@ import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
 import CartItems from "components/CartItems";
 import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
 import IconButton from "@material-ui/core/IconButton";
-import CartIcon from "mdi-material-ui/Cart";
+import CartIcon from "../Icons/Cart/index";
 import { Router } from "routes";
 import Badge from "@material-ui/core/Badge";
 import Popper from "@material-ui/core/Popper";
@@ -74,7 +74,7 @@ export default class MiniCart extends Component {
       openCart: PropTypes.func.isRequired,
       closeCart: PropTypes.func.isRequired
     })
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -88,61 +88,69 @@ export default class MiniCart extends Component {
     anchorElement: null
   };
 
-  anchorElement = null
+  anchorElement = null;
 
   handlePopperOpen = () => {
-    const { cart, uiStore: { openCart } } = this.props;
+    const {
+      cart,
+      uiStore: { openCart }
+    } = this.props;
     openCart();
 
     // Track a cart view event, only if the cart contains items
     if (cart && Array.isArray(cart.items) && cart.items.length) {
       this.trackAction({ cartItems: cart.items, cartId: cart._id, action: CART_VIEWED });
     }
-  }
+  };
 
   handleClick = () => Router.pushRoute("/");
 
   handleCheckoutButtonClick = () => {
     this.handleLeavePopper();
     Router.pushRoute("/cart/checkout");
-  }
+  };
 
   handlePopperClose = () => {
     const { closeCart } = this.props.uiStore;
     closeCart(0);
-  }
+  };
 
   handleEnterPopper = () => {
     const { openCart } = this.props.uiStore;
     openCart();
-  }
+  };
 
   handleLeavePopper = () => {
     const { closeCart } = this.props.uiStore;
     closeCart();
-  }
+  };
 
   handleOnClick = () => {
     const { closeCart } = this.props.uiStore;
     closeCart();
     Router.pushRoute("cart");
-  }
+  };
 
   handleItemQuantityChange = (quantity, cartItemId) => {
     const { onChangeCartItemsQuantity } = this.props;
 
     onChangeCartItemsQuantity({ quantity, cartItemId });
-  }
+  };
 
   @trackCartItems()
   trackAction() {}
 
   handleRemoveItem = async (itemId) => {
-    const { cart: { items }, onRemoveCartItems } = this.props;
+    const {
+      cart: { items },
+      onRemoveCartItems
+    } = this.props;
     const { data, error } = await onRemoveCartItems(itemId);
 
     if (data && !error) {
-      const { cart: { _id } } = data.removeCartItems;
+      const {
+        cart: { _id }
+      } = data.removeCartItems;
       const removedItem = { cart_id: _id, ...variantById(items, itemId) }; // eslint-disable-line camelcase
 
       // Track removed item
@@ -186,28 +194,24 @@ export default class MiniCart extends Component {
   render() {
     const { cart, classes, uiStore } = this.props;
     const { isCartOpen } = uiStore;
-    const id = (isCartOpen) ? "simple-popper" : null;
+    const id = isCartOpen ? "simple-popper" : null;
 
     return (
       <Fragment>
         <div ref={this.setPopoverAnchorEl}>
-          <IconButton color="inherit"
+          <IconButton
+            color="inherit"
             onMouseEnter={this.handlePopperOpen}
             onMouseLeave={this.handlePopperClose}
             onClick={this.handleOnClick}
           >
-            {(cart && cart.totalItemQuantity > 0)
-              ? (
-                <Badge
-                  badgeContent={cart.totalItemQuantity}
-                  color="primary"
-                  classes={{ badge: classes.badge }}
-                >
-                  <CartIcon />
-                </Badge>
-              )
-              : <CartIcon />
-            }
+            {cart && cart.totalItemQuantity > 0 ? (
+              <Badge badgeContent={cart.totalItemQuantity} color="primary" classes={{ badge: classes.badge }}>
+                <CartIcon />
+              </Badge>
+            ) : (
+              <CartIcon />
+            )}
           </IconButton>
         </div>
 
@@ -222,9 +226,7 @@ export default class MiniCart extends Component {
         >
           {({ TransitionProps }) => (
             <Fade {...TransitionProps}>
-              <div className={classes.cart}>
-                {this.renderMiniCart()}
-              </div>
+              <div className={classes.cart}>{this.renderMiniCart()}</div>
             </Fade>
           )}
         </Popper>
