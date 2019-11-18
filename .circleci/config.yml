@@ -10,18 +10,14 @@ version: 2
 # typing. See http://yaml.org/type/merge.html for details.
 defaults: &defaults
   environment:
-    CI_SCRIPTS: 'npx --quiet --package @reactioncommerce/ci-scripts@1.6.2'
-    DOCKER_REPOSITORY: "reactioncommerce/example-storefront"
-    DOCKER_NAMESPACE: "reactioncommerce"
-    DOCKER_NAME: "example-storefront"
-    GLOBAL_CACHE_VERSION: "v3"
-    KUSTOMIZE_VERSION: "3.2.1"
-    HUB_VERSION: "2.12.8"
-    GH_USERNAME: "rc-circleci"
-    GH_EMAIL: "circleci@reactioncommerce.com"
-    REACTION_GITOPS_REVIEWERS: "griggheo"
+    - CI_SCRIPTS: "npx --quiet --package @reactioncommerce/ci-scripts@1.9.1"
+    - DOCKER_REPOSITORY: "reactioncommerce/example-storefront"
+    - DOCKER_NAME: "example-storefront"
+    - GLOBAL_CACHE_VERSION: “v3”
+    - SERVICE: "reaction-storefront"
+    - REACTION_GITOPS_REVIEWERS: "wistonk,griggheo"
   docker:
-    - image: circleci/node:12.11.1-stretch
+    - image: circleci/node:12-stretch
 
 jobs:
   install-dependencies:
@@ -94,6 +90,7 @@ jobs:
       - run:
           name: Clone reaction-gitops repo and create PR
           command: |
+<<<<<<< HEAD
             # Download kustomize
             cd /tmp
             wget https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE_VERSION}/kustomize_kustomize.v${KUSTOMIZE_VERSION}_linux_amd64
@@ -123,6 +120,9 @@ jobs:
             # Create PR
             /usr/local/bin/hub pull-request --no-edit -r ${REACTION_GITOPS_REVIEWERS}
 
+=======
+            ${CI_SCRIPTS} automate-gitops-pull-request
+>>>>>>> develop
 workflows:
   version: 2
   build_and_test:
@@ -144,6 +144,10 @@ workflows:
             - eslint
             - test-unit
       - create-gitops-pull-request:
+<<<<<<< HEAD
+=======
+          context: reaction-gitops
+>>>>>>> develop
           requires:
             - docker-build-push
           filters:

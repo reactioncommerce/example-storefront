@@ -168,7 +168,6 @@ export default {
   ],
   media: [
     {
-      toGrid: 1,
       priority: 0,
       productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
       variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
@@ -181,7 +180,6 @@ export default {
       }
     },
     {
-      toGrid: 1,
       priority: 0,
       productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
       variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
@@ -194,7 +192,6 @@ export default {
       }
     },
     {
-      toGrid: 1,
       priority: 0,
       productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
       variantId: "cmVhY3Rpb24vcHJvZHVjdDpTTXI0cmhERm5ZdkZNdERUWA==",
@@ -207,7 +204,6 @@ export default {
       }
     },
     {
-      toGrid: 1,
       priority: 0,
       productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
       variantId: "cmVhY3Rpb24vcHJvZHVjdDpDSm9SQm05dlJyb3JjOW14Wg==",
@@ -220,7 +216,6 @@ export default {
       }
     },
     {
-      toGrid: 1,
       priority: 2,
       productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
       variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
@@ -233,7 +228,6 @@ export default {
       }
     },
     {
-      toGrid: 1,
       priority: 3,
       productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
       variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
@@ -246,7 +240,6 @@ export default {
       }
     },
     {
-      toGrid: 1,
       priority: 4,
       productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
       variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",
@@ -259,7 +252,6 @@ export default {
       }
     },
     {
-      toGrid: 1,
       priority: 5,
       productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
       variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",

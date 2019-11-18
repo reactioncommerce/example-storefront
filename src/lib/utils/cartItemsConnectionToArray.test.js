@@ -13,7 +13,6 @@ const cart = {
             small: "https://my.cdn.com/assets/files/Media/2oDhWDyk4qFsCZiAW/small/belle-HERO.png",
             thumbnail: "https://my.cdn.com/assets/files/Media/2oDhWDyk4qFsCZiAW/thumbnail/belle-HERO.png"
           },
-          currentQuantity: null,
           optionTitle: "Red",
           productSlug: "basic-reaction-product",
           productType: "product-simple",
@@ -30,7 +29,6 @@ const cart = {
             small: "https://my.cdn.com/assets/files/Media/mBSj5Fe8QgCKMCN4K/small/belle-HERO.png",
             thumbnail: "https://my.cdn.com/assets/files/Media/mBSj5Fe8QgCKMCN4K/thumbnail/belle-HERO.png"
           },
-          currentQuantity: null,
           optionTitle: "Green",
           productSlug: "basic-reaction-product",
           productType: "product-simple",
@@ -54,7 +52,6 @@ test("cartItemsConnectionToArray should convert a Relay style connection into a 
         small: "https://my.cdn.com/assets/files/Media/2oDhWDyk4qFsCZiAW/small/belle-HERO.png",
         thumbnail: "https://my.cdn.com/assets/files/Media/2oDhWDyk4qFsCZiAW/thumbnail/belle-HERO.png"
       },
-      currentQuantity: null,
       optionTitle: "Red",
       productSlug: "basic-reaction-product",
       productType: "product-simple",
@@ -69,7 +66,6 @@ test("cartItemsConnectionToArray should convert a Relay style connection into a 
         small: "https://my.cdn.com/assets/files/Media/mBSj5Fe8QgCKMCN4K/small/belle-HERO.png",
         thumbnail: "https://my.cdn.com/assets/files/Media/mBSj5Fe8QgCKMCN4K/thumbnail/belle-HERO.png"
       },
-      currentQuantity: null,
       optionTitle: "Green",
       productSlug: "basic-reaction-product",
       productType: "product-simple",

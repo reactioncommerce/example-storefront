@@ -91,10 +91,6 @@ class CartPopover extends Component {
         value: PropTypes.string
       })),
       /**
-       * Current stock quantity of item
-       */
-      currentQuantity: PropTypes.number,
-      /**
        * Image url of chosen item
        */
       imageUrl: PropTypes.string,

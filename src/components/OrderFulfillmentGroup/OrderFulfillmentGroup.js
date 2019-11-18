@@ -67,6 +67,13 @@ class OrderFulfillmentGroup extends Component {
     const { classes, fulfillmentGroup, hasMoreCartItems, loadMoreCartItems } = this.props;
 
     if (fulfillmentGroup && Array.isArray(fulfillmentGroup.items.nodes)) {
+      const items = fulfillmentGroup.items.nodes.map((item) => ({
+        ...item,
+        // Backwards compatibility until all component library components are updated
+        // to accept `inventoryAvailableToSell`.
+        currentQuantity: item.currentQuantity || item.inventoryAvailableToSell
+      }));
+
       return (
         <div className={classes.fulfillmentDetails}>
           <Grid item xs={12}>
@@ -75,7 +82,7 @@ class OrderFulfillmentGroup extends Component {
               isReadOnly
               hasMoreCartItems={hasMoreCartItems}
               onLoadMoreCartItems={loadMoreCartItems}
-              items={fulfillmentGroup.items.nodes}
+              items={items}
               onChangeCartItemQuantity={this.handleItemQuantityChange}
               onRemoveItemFromCart={this.handleRemoveItem}
             />
