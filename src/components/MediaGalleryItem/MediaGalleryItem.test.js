@@ -3,7 +3,6 @@ import renderer from "react-test-renderer";
 import MediaGalleryItem from "./MediaGalleryItem";
 
 const media = {
-  toGrid: 1,
   priority: 0,
   productId: "cmVhY3Rpb24vcHJvZHVjdDpCQ1RNWjZIVHhGU3BwSkVTaw==",
   variantId: "cmVhY3Rpb24vcHJvZHVjdDo2cWlxUHdCa2VKZHRkUWM0Rw==",

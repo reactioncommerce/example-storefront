@@ -27,7 +27,6 @@ const cartItem = {
       value: "Summer"
     }
   ],
-  currentQuantity: 10,
   imageUrl: "//placehold.it/100",
   isLowInventoryQuantity: false,
   price: {

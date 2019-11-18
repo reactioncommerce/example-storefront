@@ -33,11 +33,11 @@ const order = {
             compareAtPrice: {
               displayAmount: "$45.00"
             },
-            currentQuantity: 3,
             imageURLs: {
               small: "//placehold.it/150",
               thumbnail: "//placehold.it/100"
             },
+            inventoryAvailableToSell: 3,
             isLowQuantity: true,
             price: {
               displayAmount: "$20.00"
@@ -50,11 +50,11 @@ const order = {
           {
             _id: "456",
             attributes: [{ label: "Color", value: "Black" }, { label: "Size", value: "10" }],
-            currentQuantity: 500,
             imageURLs: {
               small: "//placehold.it/150",
               thumbnail: "//placehold.it/100"
             },
+            inventoryAvailableToSell: 30,
             isLowQuantity: false,
             price: {
               displayAmount: "$78.00"
