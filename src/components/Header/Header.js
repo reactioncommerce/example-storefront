@@ -14,7 +14,7 @@ import Link from "components/Link";
 import MiniCart from "components/MiniCart";
 import * as styles from "./style";
 import HamburgerIcon from "../Icons/HamburgerMenu";
-import CartIcon from "../Icons/Cart";
+import MenuItemsDesktop from "../MenuItemsDesktop/MenuItemsDesktop";
 
 // const styles = (theme) => ({
 //   appBar: {
@@ -73,9 +73,12 @@ class Header extends Component {
             <HamburgerIcon />
           </styles.ToggleButton>
         </Hidden>
-
         <styles.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
-        {/* <CartIcon /> */}
+
+        <Hidden smDown initialWidth={"md"}>
+          <MenuItemsDesktop />
+        </Hidden>
+
         <MiniCart />
         <NavigationMobile />
       </styles.Container>
