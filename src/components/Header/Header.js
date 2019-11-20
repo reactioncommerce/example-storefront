@@ -68,19 +68,24 @@ class Header extends Component {
 
     return (
       <styles.Container>
-        <Hidden mdUp>
-          <styles.ToggleButton onClick={this.handleNavigationToggleClick}>
-            <HamburgerIcon />
-          </styles.ToggleButton>
-        </Hidden>
-        <styles.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
+        <styles.TemplateName>
+          <styles.Title>TEMPLATE UNBOX</styles.Title>
+        </styles.TemplateName>
+        <styles.Content>
+          <Hidden mdUp>
+            <styles.ToggleButton onClick={this.handleNavigationToggleClick}>
+              <HamburgerIcon />
+            </styles.ToggleButton>
+          </Hidden>
+          <styles.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
 
-        <Hidden smDown initialWidth={"md"}>
-          <MenuItemsDesktop />
-        </Hidden>
+          <Hidden smDown initialWidth={"md"}>
+            <MenuItemsDesktop />
+          </Hidden>
 
-        <MiniCart />
-        <NavigationMobile />
+          <MiniCart />
+          <NavigationMobile />
+        </styles.Content>
       </styles.Container>
       // <AppBar position="static" elevation={0} className={appBar}>
       //   <Toolbar className={toolbar}>

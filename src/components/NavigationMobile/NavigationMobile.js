@@ -73,25 +73,20 @@ class NavigationMobile extends Component {
 
   state = {
     navItem: null
-  }
+  };
 
   handleNavItemClick = (navItem) => {
     this.setState({
       navItem
     });
-  }
+  };
 
   handleCloseSubMenu = () => {
     this.setState({ navItem: null });
-  }
+  };
 
   renderNavItem = (navItem, index) => (
-    <NavigationItemMobile
-      key={index}
-      isTopLevel
-      navItem={navItem}
-      onClick={this.handleNavItemClick}
-    />
+    <NavigationItemMobile key={index} isTopLevel navItem={navItem} onClick={this.handleNavItemClick} />
   );
 
   handleClose = () => {
@@ -99,44 +94,76 @@ class NavigationMobile extends Component {
     this.props.uiStore.closeMenuDrawer();
   };
 
+  // render() {
+  //   const { classes, navItems, uiStore, shop } = this.props;
+
+  //   if (navItems && navItems.items) {
+  //     return (
+  //       <Drawer open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
+  //         <div className={classes.header}>
+  //           <Toolbar disableGutters>
+  //             <div className={classes.toolbarTitle}>
+  //               <Typography className={classes.title} color="inherit" variant="h6">
+  //                 <Link route="/" onClick={this.handleClose}>
+  //                   <ShopLogo shopName={shop && shop.name} />
+  //                 </Link>
+  //               </Typography>
+  //             </div>
+  //             <IconButton onClick={this.handleClose}>
+  //               <CloseIcon />
+  //             </IconButton>
+  //           </Toolbar>
+  //           <Divider />
+  //         </div>
+  //         <nav className={classes.menu}>
+  //           <MenuList disablePadding>{navItems.items.map(this.renderNavItem)}</MenuList>
+  //         </nav>
+  //         <Slide direction="left" in={!!this.state.navItem}>
+  //           <nav className={classes.subNav}>
+  //             <NavigationSubMenuMobile
+  //               navItem={this.state.navItem}
+  //               onBackButtonClick={this.handleCloseSubMenu}
+  //             />
+  //           </nav>
+  //         </Slide>
+  //       </Drawer>
+  //     );
+  //   }
+
+  //   // If navItems.items aren't available, skip rendering of navigation
+  //   return null;
+  // }
+
   render() {
     const { classes, navItems, uiStore, shop } = this.props;
 
-    if (navItems && navItems.items) {
-      return (
-        <Drawer open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
-          <div className={classes.header}>
-            <Toolbar disableGutters>
-              <div className={classes.toolbarTitle}>
-                <Typography className={classes.title} color="inherit" variant="h6">
-                  <Link route="/" onClick={this.handleClose}>
-                    <ShopLogo shopName={shop && shop.name} />
-                  </Link>
-                </Typography>
-              </div>
-              <IconButton onClick={this.handleClose}>
-                <CloseIcon />
-              </IconButton>
-            </Toolbar>
-            <Divider />
-          </div>
-          <nav className={classes.menu}>
-            <MenuList disablePadding>{navItems.items.map(this.renderNavItem)}</MenuList>
+    return (
+      <Drawer open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
+        <div className={classes.header}>
+          <Toolbar disableGutters>
+            {/* <div className={classes.toolbarTitle}>
+              <Typography className={classes.title} color="inherit" variant="h6">
+                <Link route="/" onClick={this.handleClose}>
+                  <ShopLogo shopName={shop && shop.name} />
+                </Link>
+              </Typography>
+            </div>
+            <IconButton onClick={this.handleClose}>
+              <CloseIcon />
+            </IconButton> */}
+          </Toolbar>
+          <Divider />
+        </div>
+        <nav className={classes.menu}>
+          <MenuList disablePadding>{navItems.items.map(this.renderNavItem)}</MenuList>
+        </nav>
+        <Slide direction="left" in={!!this.state.navItem}>
+          <nav className={classes.subNav}>
+            <NavigationSubMenuMobile navItem={this.state.navItem} onBackButtonClick={this.handleCloseSubMenu} />
           </nav>
-          <Slide direction="left" in={!!this.state.navItem}>
-            <nav className={classes.subNav}>
-              <NavigationSubMenuMobile
-                navItem={this.state.navItem}
-                onBackButtonClick={this.handleCloseSubMenu}
-              />
-            </nav>
-          </Slide>
-        </Drawer>
-      );
-    }
-
-    // If navItems.items aren't available, skip rendering of navigation
-    return null;
+        </Slide>
+      </Drawer>
+    );
   }
 }
 
