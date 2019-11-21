@@ -1,29 +1,45 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import Accordion from "./Accordion/Accordion";
+import * as styles from "./style";
 
-const date = new Date();
+const Footer = () => {
+  const aboutAccordion = {
+    title: "Sobre",
+    links: [
+      { title: "A Marca", href: "/" },
+      { title: "Nosso Time", href: "/" },
+      { title: "Nossa Cultura", href: "/" }
+    ]
+  };
 
-const styles = (theme) => ({
-  footer: {
-    alignItems: "center",
-    display: "flex",
-    justifyContent: "center",
-    marginBottom: theme.spacing.unit * 2
-  }
-});
+  const helpAccordion = {
+    title: "Ajuda",
+    links: [
+      { title: "Fale Conosco", href: "/" },
+      { title: "Termos e Condições", href: "/" },
+      { title: "Políticas de Devolução", href: "/" },
+      { title: "Políticas de Reembolso", href: "/" }
+    ]
+  };
 
-const Footer = ({ ...props }) => (
-  <footer className={props.classes.footer}>
-    <Typography variant="caption">
-      &copy; {date.getFullYear()} Reaction Commerce
-    </Typography>
-  </footer>
-);
+  const accountAccordion = {
+    title: "Conta",
+    links: [
+      { title: "Minha conta", href: "/" },
+      { title: "Meus pedidos", href: "/" }
+    ]
+  };
 
-Footer.propTypes = {
-  classes: PropTypes.object
+  const accordions = [aboutAccordion, helpAccordion, accountAccordion];
+
+  return (
+    <styles.Container>
+      <styles.UpsideContent>
+        {accordions && accordions.map((item) => <Accordion title={item.title} links={item.links} />)}
+      </styles.UpsideContent>
+    </styles.Container>
+  );
 };
 
-export default withStyles(styles, { name: "SkFooter" })(Footer);
+export default Footer;
