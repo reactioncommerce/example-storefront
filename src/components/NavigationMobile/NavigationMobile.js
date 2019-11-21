@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
-import { withStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import SearchField from "components/SearchField";
@@ -9,12 +8,8 @@ import NavItemsMenuMobile from "components/NavItemsMenuMobile";
 import UserIcon from "../Icons/User";
 import InfoIcon from "../Icons/Info";
 import Link from "components/Link";
-import withShop from "containers/shop/withShop";
 import * as styles from "./style";
 
-@withStyles(styles, { name: "SkNavigationMobile" })
-@withShop
-@inject("navItems")
 @inject("uiStore")
 @observer
 class NavigationMobile extends Component {
