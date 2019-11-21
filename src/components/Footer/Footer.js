@@ -1,5 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
+import InstagramIcon from "mdi-material-ui/Instagram";
+import FacebookIcon from "mdi-material-ui/Facebook";
+import YoutubeIcon from "mdi-material-ui/Youtube";
+import PinterestIcon from "mdi-material-ui/Pinterest";
+import TwiiterIcon from "mdi-material-ui/Twitter";
+import LinkedinIcon from "mdi-material-ui/LinkedinBox";
 import Accordion from "./Accordion/Accordion";
 import * as styles from "./style";
 
@@ -37,6 +42,15 @@ const Footer = () => {
     <styles.Container>
       <styles.UpsideContent>
         {accordions && accordions.map((item) => <Accordion title={item.title} links={item.links} />)}
+        <styles.FollowOnChannels>Acompanhe nos canais</styles.FollowOnChannels>
+        <styles.SocialIcons>
+          <InstagramIcon />
+          <FacebookIcon />
+          <YoutubeIcon className="youtube-icon" />
+          <PinterestIcon />
+          <TwiiterIcon />
+          <LinkedinIcon />
+        </styles.SocialIcons>
       </styles.UpsideContent>
     </styles.Container>
   );

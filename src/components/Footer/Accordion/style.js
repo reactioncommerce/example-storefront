@@ -6,6 +6,9 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px;
+  transition: padding-bottom 500ms;
+  padding-bottom: ${({ isOpen }) => (isOpen ? "0px" : "20px")};
+
   width: 100%;
 `;
 

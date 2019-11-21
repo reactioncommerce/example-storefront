@@ -7,7 +7,7 @@ const Accordion = ({ title, links }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <styles.Container onClick={() => setIsOpen(!isOpen)}>
+    <styles.Container isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
       <styles.InlineContent>
         <styles.Title>{title}</styles.Title>
         <Arrow direction={isOpen ? "up" : "down"} />
