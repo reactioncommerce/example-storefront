@@ -1,26 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import unboxTheme from "../../custom/unboxTheme";
-import { MockedProvider } from "react-apollo/test-utils";
+import { ThemeProvider } from "styled-components";
 import { Provider } from "mobx-react";
-import primaryShopQuery from "containers/common-gql/primaryShop.gql";
+import unboxTheme from "../../custom/unboxTheme";
 import NavigationMobile from "./NavigationMobile";
-
-const mocks = [
-  {
-    request: {
-      query: primaryShopQuery,
-      variables: {
-        language: "en"
-      }
-    },
-    result: {
-      data: {
-        primaryShop: shop
-      }
-    }
-  }
-];
 
 const uiStore = {
   isMenuDrawerOpen: false
@@ -28,14 +11,13 @@ const uiStore = {
 
 test("basic snapshot", () => {
   const component = renderer.create(
-    <MockedProvider mocks={mocks} addTypename={false}>
-      <SCThemeProvider theme={unboxTheme}>
-        <Provider uiStore={uiStore}>
-          <NavigationMobile />
-        </Provider>
-      </SCThemeProvider>
-    </MockedProvider>
+    <ThemeProvider theme={unboxTheme}>
+      <Provider uiStore={uiStore}>
+        <NavigationMobile />
+      </Provider>
+    </ThemeProvider>
   );
+
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
