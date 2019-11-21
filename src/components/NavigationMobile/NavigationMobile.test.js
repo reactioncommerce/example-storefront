@@ -9,15 +9,17 @@ const uiStore = {
   isMenuDrawerOpen: false
 };
 
-test("basic snapshot", () => {
-  const component = renderer.create(
-    <ThemeProvider theme={unboxTheme}>
-      <Provider uiStore={uiStore}>
-        <NavigationMobile />
-      </Provider>
-    </ThemeProvider>
-  );
+describe("NavigationMobile", () => {
+  it("Should match the snapshot", () => {
+    const component = renderer.create(
+      <ThemeProvider theme={unboxTheme}>
+        <Provider uiStore={uiStore}>
+          <NavigationMobile />
+        </Provider>
+      </ThemeProvider>
+    );
 
-  const tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
