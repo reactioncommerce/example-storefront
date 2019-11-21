@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import MenuRightIcon from "mdi-material-ui/MenuRight";
 import MenuLeftIcon from "mdi-material-ui/MenuLeft";
 import Link from "components/Link";
@@ -15,7 +16,7 @@ const NavItemsMenuMobile = ({ handleClose }) => {
 
   return (
     <styles.Navigation>
-      <styles.BackButton onClick={handleClose}>
+      <styles.BackButton id="close-menu" onClick={handleClose}>
         <MenuLeftIcon />
         <styles.BackButtonText>VOLTAR</styles.BackButtonText>
       </styles.BackButton>
@@ -23,7 +24,7 @@ const NavItemsMenuMobile = ({ handleClose }) => {
       {navItems &&
         navItems.map((el, idx) => (
           <styles.LinkContainer key={idx}>
-            <Link route="/" onClick={handleClose}>
+            <Link id={`page-link-${idx}`} route="/" onClick={handleClose}>
               Link
               <MenuRightIcon />
             </Link>
@@ -31,6 +32,10 @@ const NavItemsMenuMobile = ({ handleClose }) => {
         ))}
     </styles.Navigation>
   );
+};
+
+NavItemsMenuMobile.propTypes = {
+  handleClose: PropTypes.func
 };
 
 export default NavItemsMenuMobile;
