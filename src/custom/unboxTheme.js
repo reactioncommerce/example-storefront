@@ -4,12 +4,6 @@ const theme = {
     colors: {
       primary: "#FFF",
       secondary: "#4f4d4d"
-    }
-  },
-  layout: {
-    colors: {
-      primary: "#FFF",
-      secondary: "#00c3cb"
     },
     sizes: {
       title: {
@@ -22,13 +16,21 @@ const theme = {
         SIZE_1: "18px",
         SIZE_2: "16px",
         SIZE_3: "14px",
-        SIZE_4: "12px"
+        SIZE_4: "12px",
+        SIZE_5: "10px"
       }
     },
     weights: {
       NORMAL: 400,
       SEMI: 600,
       BOLD: 700
+    }
+  },
+  layout: {
+    colors: {
+      primary: "#FFF",
+      secondary: "#00c3cb",
+      tertiary: "#d8f5f7"
     }
   }
 };

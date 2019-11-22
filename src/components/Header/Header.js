@@ -5,9 +5,9 @@ import Hidden from "@material-ui/core/Hidden";
 import { withStyles } from "@material-ui/core/styles";
 import { NavigationMobile } from "components/NavigationMobile";
 import MiniCart from "components/MiniCart";
-import * as styles from "./style";
 import HamburgerIcon from "../Icons/HamburgerMenu";
 import MenuItemsDesktop from "../MenuItemsDesktop/MenuItemsDesktop";
+import * as styles from "./style";
 
 @withStyles(styles, { name: "SkHeader" })
 @inject("uiStore")

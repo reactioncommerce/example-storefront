@@ -5,37 +5,17 @@ import YoutubeIcon from "mdi-material-ui/Youtube";
 import PinterestIcon from "mdi-material-ui/Pinterest";
 import TwiiterIcon from "mdi-material-ui/Twitter";
 import LinkedinIcon from "mdi-material-ui/LinkedinBox";
+import {
+  paymentsAccepted,
+  certificates,
+  aboutAccordion,
+  helpAccordion,
+  accountAccordion
+} from "../../helpers/constants";
 import Accordion from "./Accordion/Accordion";
 import * as styles from "./style";
 
 const Footer = () => {
-  const aboutAccordion = {
-    title: "Sobre",
-    links: [
-      { title: "A Marca", href: "/" },
-      { title: "Nosso Time", href: "/" },
-      { title: "Nossa Cultura", href: "/" }
-    ]
-  };
-
-  const helpAccordion = {
-    title: "Ajuda",
-    links: [
-      { title: "Fale Conosco", href: "/" },
-      { title: "Termos e Condições", href: "/" },
-      { title: "Políticas de Devolução", href: "/" },
-      { title: "Políticas de Reembolso", href: "/" }
-    ]
-  };
-
-  const accountAccordion = {
-    title: "Conta",
-    links: [
-      { title: "Minha conta", href: "/" },
-      { title: "Meus pedidos", href: "/" }
-    ]
-  };
-
   const accordions = [aboutAccordion, helpAccordion, accountAccordion];
 
   return (
@@ -52,6 +32,37 @@ const Footer = () => {
           <LinkedinIcon />
         </styles.SocialIcons>
       </styles.UpsideContent>
+
+      <styles.MiddleContent>
+        <styles.ContentBlock>
+          <styles.Title>Aceitamos</styles.Title>
+          <styles.InnerImages>
+            {paymentsAccepted && paymentsAccepted.map((item) => <styles.BrandIcon alt={item.alt} src={item.src} />)}
+          </styles.InnerImages>
+        </styles.ContentBlock>
+        <styles.ContentBlock>
+          <styles.Title>Certificados</styles.Title>
+          <styles.InnerImages>
+            {certificates && certificates.map((item) => <styles.BrandIcon alt={item.alt} src={item.src} />)}
+          </styles.InnerImages>
+        </styles.ContentBlock>
+        <styles.ContentBlock>
+          <styles.Title>Empowered By</styles.Title>
+          <styles.InnerImages>
+            <styles.UnboxLogo alt={"Unbox Logo"} src={"../../static/images/unbox-logo.png"} />
+          </styles.InnerImages>
+        </styles.ContentBlock>
+      </styles.MiddleContent>
+
+      <styles.BottomContent>
+        <styles.BrandLogo alt={"Brand Logo"} src={"../../static/images/logo.png"} />
+        <styles.InnerInfo>
+          Companhia © 2019 | Todos os direitos reservados | companhia.com.br | contato@contato.com.br | atividades de
+          internet | Ltda <br />
+          CNPJ: xxxxxxxxxx/xxxx-xx | Av. Isaltino Victor de Moraes, 437, Vila Bonfim, Embu das Artes, SP, 06806-400 -
+          (11) 3197-4883
+        </styles.InnerInfo>
+      </styles.BottomContent>
     </styles.Container>
   );
 };

@@ -21,8 +21,8 @@ export const InlineContent = styled.div`
 export const Title = styled.span`
   text-align: center;
   width: 220px;
-  font-size: ${({ theme }) => theme.layout.sizes.text.SIZE_1};
-  font-weight: ${({ theme }) => theme.layout.weights.BOLD};
+  font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_1};
+  font-weight: ${({ theme }) => theme.typography.weights.BOLD};
 `;
 
 export const HiddenContent = styled.div`
@@ -45,5 +45,5 @@ export const ListOfLinks = styled.ul`
 export const LinkItem = styled.li`
   padding: 5px;
   margin-bottom: 10px;
-  font-size: ${({ theme }) => theme.layout.sizes.text.SIZE_3};
+  font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_3};
 `;
