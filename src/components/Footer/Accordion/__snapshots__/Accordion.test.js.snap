@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Accordion /> Should render the correct snapshot 1`] = `
+.c3 {
+  -webkit-transition: -webkit-transform 300ms;
+  -webkit-transition: transform 300ms;
+  transition: transform 300ms;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 20px 20px 0px 20px;
+  width: 100%;
+}
+
+.c0:not(:first-of-type) {
+  margin-top: 10px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  text-align: center;
+  width: 220px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.c4 {
+  overflow: hidden;
+  -webkit-transition: max-height 500ms;
+  transition: max-height 500ms;
+  max-height: 0px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px;
+  height: 100%;
+  list-style: none;
+  margin: 20px 0px 0px -5px;
+}
+
+.c6 {
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+<div
+  className="c0"
+  id="accordion-item-0"
+  onClick={[Function]}
+>
+  <div
+    className="c1"
+  >
+    <span
+      className="accordion-title c2"
+    >
+      Teste
+    </span>
+    <svg
+      className="c3"
+      direction="down"
+      height="10"
+      viewBox="0 0 16.216 10"
+      width="16.216"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        className="cls-1"
+        d="M0 1.892L1.892 0 10 8.108l-8.108 8.108L0 14.324l6.216-6.216z"
+        id="Shape"
+        transform="rotate(90 8.108 8.108)"
+      />
+    </svg>
+  </div>
+  <div
+    className="c4"
+  >
+    <ul
+      className="c5"
+    >
+      <li
+        className="c6"
+      >
+        Sobre
+      </li>
+      <li
+        className="c6"
+      >
+        Onde
+      </li>
+    </ul>
+  </div>
+</div>
+`;

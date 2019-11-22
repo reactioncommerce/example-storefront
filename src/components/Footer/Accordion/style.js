@@ -41,7 +41,6 @@ export const ListOfLinks = styled.ul`
   padding: 0px;
   height: 100%;
   list-style: none;
-  /* margin-left: -5px; */
   margin: 20px 0px 0px -5px;
 `;
 

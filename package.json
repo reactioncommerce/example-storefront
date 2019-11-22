@@ -105,7 +105,7 @@
     "chai-cheerio": "~1.0.0",
     "cheerio": ">=1.0.0-rc.2 < 1.1.0",
     "enzyme": "~3.8.0",
-    "enzyme-adapter-react-16": "~1.8.0",
+    "enzyme-adapter-react-16": "1.9.1",
     "eslint": "~4.19.1",
     "eslint-plugin-import": "~2.16.0",
     "eslint-plugin-jest": "~21.27.2",
@@ -117,7 +117,7 @@
     "jest-styled-components": "~6.3.1",
     "jest-transform-graphql": "~2.1.0",
     "mocha": "~5.2.0",
-    "react-test-renderer": "~16.7.0",
+    "react-test-renderer": "~16.8.1",
     "rimraf": "~2.6.3",
     "snyk": "~1.126.0"
   },

@@ -21,7 +21,7 @@ const Footer = () => {
   return (
     <styles.Container>
       <styles.UpsideContent>
-        {accordions && accordions.map((item) => <Accordion title={item.title} links={item.links} />)}
+        {accordions && accordions.map((item, idx) => <Accordion id={idx} title={item.title} links={item.links} />)}
         <styles.FollowOnChannels>Acompanhe nos canais</styles.FollowOnChannels>
         <styles.SocialIcons>
           <InstagramIcon />
