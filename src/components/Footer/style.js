@@ -16,7 +16,7 @@ export const UpsideContent = styled.div`
 export const FollowOnChannels = styled.span`
   font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_1};
   font-weight: ${({ theme }) => theme.typography.weights.BOLD};
-  margin: 20px 0px;
+  margin: 40px 0px 20px 0px;
 `;
 
 export const SocialIcons = styled.div`

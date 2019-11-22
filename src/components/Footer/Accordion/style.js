@@ -5,9 +5,11 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  transition: padding-bottom 500ms;
-  padding-bottom: ${({ isOpen }) => (isOpen ? "0px" : "20px")};
+  padding: 20px 20px 0px 20px;
+
+  :not(:first-of-type){
+    margin-top: 10px;
+  }
 
   width: 100%;
 `;
@@ -39,7 +41,8 @@ export const ListOfLinks = styled.ul`
   padding: 0px;
   height: 100%;
   list-style: none;
-  margin-left: -5px;
+  /* margin-left: -5px; */
+  margin: 20px 0px 0px -5px;
 `;
 
 export const LinkItem = styled.li`

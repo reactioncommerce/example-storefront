@@ -5,6 +5,7 @@ import Hidden from "@material-ui/core/Hidden";
 import { withStyles } from "@material-ui/core/styles";
 import { NavigationMobile } from "components/NavigationMobile";
 import MiniCart from "components/MiniCart";
+import Link from "components/Link";
 import HamburgerIcon from "../Icons/HamburgerMenu";
 import MenuItemsDesktop from "../MenuItemsDesktop/MenuItemsDesktop";
 import * as styles from "./style";
@@ -31,7 +32,9 @@ class Header extends Component {
               <HamburgerIcon />
             </styles.ToggleButton>
           </Hidden>
-          <styles.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
+          <Link route={"/"}>
+            <styles.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
+          </Link>
 
           <Hidden smDown initialWidth={"md"}>
             <MenuItemsDesktop />
