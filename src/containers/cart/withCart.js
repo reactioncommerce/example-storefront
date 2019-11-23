@@ -130,7 +130,7 @@ export default function withCart(Component) {
           variables: {
             input: {
               anonymousCartId: cartStore.anonymousCartId,
-              anonymousCartToken: cartStore.anonymousCartToken,
+              cartToken: cartStore.anonymousCartToken,
               shopId: shop._id
             }
           }
@@ -197,7 +197,7 @@ export default function withCart(Component) {
           input: {
             cartId: cartStore.anonymousCartId || cartStore.accountCartId,
             items: (Array.isArray(cartItems) && cartItems) || [cartItems],
-            token: cartStore.anonymousCartToken || null
+            cartToken: cartStore.anonymousCartToken || null
           }
         },
         update: (cache, { data: mutationData }) => {
@@ -233,7 +233,7 @@ export default function withCart(Component) {
           input: {
             cartId: cartStore.anonymousCartId || cartStore.accountCartId,
             cartItemIds: (Array.isArray(itemIds) && itemIds) || [itemIds],
-            token: cartStore.anonymousCartToken || null
+            cartToken: cartStore.anonymousCartToken || null
           }
         },
         update: (cache, { data: mutationData }) => {
@@ -260,16 +260,13 @@ export default function withCart(Component) {
      * @return {undefined} No return
      */
     handleSetEmailOnAnonymousCart = async ({ email }) => {
-      const { cartStore: { anonymousCartToken }, client: apolloClient } = this.props;
-      // Omit cartToken, as for this particular input type the
-      // the param is named token
-      const { cartToken, ...rest } = this.cartIdAndCartToken;
+      const { client: apolloClient } = this.props;
 
       await apolloClient.mutate({
         mutation: setEmailOnAnonymousCartMutation,
         variables: {
           input: {
-            ...{ ...{ token: anonymousCartToken }, ...rest },
+            ...this.cartIdAndCartToken,
             email
           }
         }
@@ -373,7 +370,7 @@ export default function withCart(Component) {
         query = anonymousCartByCartIdQuery;
         variables = {
           cartId: cartStore.anonymousCartId,
-          token: cartStore.anonymousCartToken
+          cartToken: cartStore.anonymousCartToken
         };
       } else if (authStore.isAuthenticated) {
         // With an authenticated user, update the cart query to find an authenticated cart
