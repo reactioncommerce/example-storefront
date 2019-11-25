@@ -1,30 +1,21 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
-import { observer, inject } from "mobx-react";
+import { inject } from "mobx-react";
+import { observer } from "mobx-react-lite";
 import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 
-@withCatalogItems
-@inject("routingStore", "uiStore")
-@observer
-class HomePage extends Component {
-  static propTypes = {
-    routingStore: PropTypes.object,
-    shop: PropTypes.shape({
-      currency: PropTypes.shape({
-        code: PropTypes.string.isRequired
-      })
-    })
-  };
-
-  componentDidMount() {
-    const { routingStore } = this.props;
-    routingStore.setTagId(null);
-  }
-
-  render() {
-    const { shop } = this.props;
+const HomePage = inject(
+  "routingStore",
+  "uiStore"
+)(
+  observer(({ routingStore, shop }) => {
+    // const { shop } = this.props;
     const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : shop.name;
+
+    useEffect(() => {
+      routingStore.setTagId(null);
+    }, []);
 
     return (
       <Fragment>
@@ -32,7 +23,16 @@ class HomePage extends Component {
         <span>home page</span>
       </Fragment>
     );
-  }
-}
+  })
+);
 
-export default HomePage;
+HomePage.propTypes = {
+  routingStore: PropTypes.object,
+  shop: PropTypes.shape({
+    currency: PropTypes.shape({
+      code: PropTypes.string.isRequired
+    })
+  })
+};
+
+export default withCatalogItems(HomePage);
