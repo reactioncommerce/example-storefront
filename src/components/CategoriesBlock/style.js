@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
-  border: 1px solid red;
   height: 584px;
   padding: 48px 28px;
   display: flex;
