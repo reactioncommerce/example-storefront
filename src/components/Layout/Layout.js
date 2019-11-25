@@ -55,7 +55,7 @@ class Layout extends Component {
           </div>
           <Header shop={shop} viewer={viewer} />
           <main className={classes.main}>
-            <article className={classes.article}>{children}</article>
+            <article>{children}</article>
           </main>
           <Footer />
         </styles.PageRoot>
