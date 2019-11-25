@@ -5,7 +5,7 @@
  */
 function defineRoutes(routes) {
   routes
-    .add("home", "/", "productGrid")
+    .add("home", "/", "home")
     .add("cart", "/cart", "cart")
     .add("checkout", "/cart/checkout", "checkout")
     .add("checkoutLogin", "/cart/login", "checkout")

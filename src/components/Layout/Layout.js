@@ -1,12 +1,22 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import * as styles from "./style";
 import Header from "components/Header";
 import Footer from "components/Footer";
 
-const styles = (theme) => ({
-  root: {
-    minHeight: "100vh"
+const muiStyles = (theme) => ({
+  templateName: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#9c27b1",
+    width: "100%",
+    height: "23px"
+  },
+  title: {
+    fontSize: "11px",
+    color: "white"
   },
   main: {
     flex: "1 1 auto",
@@ -19,7 +29,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { name: "SkLayout" })
+@withStyles(muiStyles, { name: "SkLayout" })
 class Layout extends Component {
   static propTypes = {
     children: PropTypes.node,
@@ -39,13 +49,16 @@ class Layout extends Component {
 
     return (
       <React.Fragment>
-        <div className={classes.root}>
+        <styles.PageRoot>
+          <div className={classes.templateName}>
+            <span className={classes.title}>TEMPLATE UNBOX</span>
+          </div>
           <Header shop={shop} viewer={viewer} />
           <main className={classes.main}>
             <article className={classes.article}>{children}</article>
           </main>
           <Footer />
-        </div>
+        </styles.PageRoot>
       </React.Fragment>
     );
   }

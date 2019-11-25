@@ -1,8 +1,8 @@
 import NextApp, { Container } from "next/app";
 import React from "react";
-import { ThemeProvider as RuiThemeProvider } from "styled-components";
+import { ThemeProvider as SCThemeProvider } from "styled-components";
 import { StripeProvider } from "react-stripe-elements";
-import { MuiThemeProvider } from "@material-ui/core/styles";
+import { MuiThemeProvider } from "@material-ui/core/styles"
 import CssBaseline from "@material-ui/core/CssBaseline";
 import JssProvider from "react-jss/lib/JssProvider";
 import { Provider as MobxProvider } from "mobx-react";
@@ -18,7 +18,7 @@ import withMobX from "lib/stores/withMobX";
 import rootMobXStores from "lib/stores";
 import getPageContext from "../lib/theme/getPageContext";
 import components from "../custom/componentsContext";
-import componentTheme from "../custom/componentTheme";
+import unboxTheme from "../custom/unboxTheme";
 import getAllTags from "../lib/data/getAllTags";
 
 const { publicRuntimeConfig } = getConfig();
@@ -86,7 +86,7 @@ export default class App extends NextApp {
               registry={this.pageContext.sheetsRegistry}
               generateClassName={this.pageContext.generateClassName}
             >
-              <RuiThemeProvider theme={componentTheme}>
+              <SCThemeProvider theme={unboxTheme}>
                 <MuiThemeProvider theme={this.pageContext.theme} sheetsManager={this.pageContext.sheetsManager}>
                   <CssBaseline />
                   {route === "/checkout" || route === "/login" ? (
@@ -99,7 +99,7 @@ export default class App extends NextApp {
                     </Layout>
                   )}
                 </MuiThemeProvider>
-              </RuiThemeProvider>
+              </SCThemeProvider>
             </JssProvider>
           </MobxProvider>
         </ComponentsProvider>
