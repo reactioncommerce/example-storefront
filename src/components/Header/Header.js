@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { inject } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import Hidden from "@material-ui/core/Hidden";
-import { withStyles } from "@material-ui/core/styles";
 import { NavigationMobile } from "components/NavigationMobile";
 import MiniCart from "components/MiniCart";
 import Link from "components/Link";
@@ -10,25 +9,17 @@ import HamburgerIcon from "../Icons/HamburgerMenu";
 import MenuItemsDesktop from "../MenuItemsDesktop/MenuItemsDesktop";
 import * as styles from "./style";
 
-@withStyles(styles, { name: "SkHeader" })
-@inject("uiStore")
-class Header extends Component {
-  static propTypes = {
-    uiStore: PropTypes.shape({
-      toggleMenuDrawerOpen: PropTypes.func.isRequired
-    }).isRequired
-  };
+const Header = inject("uiStore")(
+  observer(({ uiStore }) => {
+    const handleNavigationToggleClick = () => {
+      uiStore.toggleMenuDrawerOpen();
+    };
 
-  handleNavigationToggleClick = () => {
-    this.props.uiStore.toggleMenuDrawerOpen();
-  };
-
-  render() {
     return (
-      <styles.Container>
+      <div>
         <styles.Content>
           <Hidden mdUp>
-            <styles.ToggleButton onClick={this.handleNavigationToggleClick}>
+            <styles.ToggleButton onClick={handleNavigationToggleClick}>
               <HamburgerIcon />
             </styles.ToggleButton>
           </Hidden>
@@ -43,9 +34,15 @@ class Header extends Component {
           <MiniCart />
           <NavigationMobile />
         </styles.Content>
-      </styles.Container>
+      </div>
     );
-  }
-}
+  })
+);
+
+Header.propTypes = {
+  uiStore: PropTypes.shape({
+    toggleMenuDrawerOpen: PropTypes.func.isRequired
+  }).isRequired
+};
 
 export default Header;
