@@ -1,5 +1,6 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
+import Button from "../Button";
 import * as styles from "./style";
 
 const SpecificProduct = () => {
@@ -16,6 +17,7 @@ const SpecificProduct = () => {
         {/* <Button color="primary" href="/profile/address">
           Profile
         </Button> */}
+        <Button>Comprar</Button>
       </styles.InnerContent>
     </styles.Section>
   );
