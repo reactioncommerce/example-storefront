@@ -9,7 +9,6 @@ export const Section = styled.section`
 `;
 
 export const MainImage = styled.img`
-  border: 1px solid red;
   max-height: 240px;
   width: 100%;
   max-width: 360px;
@@ -32,4 +31,5 @@ export const Text = styled.span`
   text-align: left;
   line-height: 20px;
   font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_4};
+  min-width: 240px;
 `;

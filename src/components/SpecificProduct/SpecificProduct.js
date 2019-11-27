@@ -1,5 +1,4 @@
 import React from "react";
-// import Button from "@material-ui/core/Button";
 import Button from "../Button";
 import * as styles from "./style";
 
@@ -14,10 +13,9 @@ const SpecificProduct = () => {
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
           aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
         </styles.Text>
-        {/* <Button color="primary" href="/profile/address">
-          Profile
-        </Button> */}
-        <Button>Comprar</Button>
+        <Button href="/" primary customStyles={{ marginTop: "20px" }}>
+          Comprar
+        </Button>
       </styles.InnerContent>
     </styles.Section>
   );
