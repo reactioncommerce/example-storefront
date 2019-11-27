@@ -5,7 +5,7 @@ import * as styles from "./style";
 const SpecificProduct = () => {
   return (
     <styles.Section>
-      <styles.MainImage />
+      <styles.MainImage alt={"Highlight"} src={"../../static/images/home/destaque.png"} />
 
       <styles.InnerContent>
         <styles.Title>Lorem Ipsum</styles.Title>
