@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import * as styles from "./style";
 import Header from "components/Header";
 import Footer from "components/Footer";
+import * as styles from "./style";
 
 const muiStyles = (theme) => ({
   templateName: {
