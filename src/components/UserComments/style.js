@@ -50,6 +50,8 @@ export const Comments = styled.div`
 
 export const CommentCard = styled.div`
   min-width: 100%;
+  height: 250px;
+  margin-top: 20px;
   transition: transform 500ms;
   transform: ${({ position }) => (position ? `translateX(${position})` : "")};
 `;
