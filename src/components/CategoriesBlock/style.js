@@ -6,6 +6,7 @@ export const Section = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-color: ${({ theme }) => theme.layout.backgrounds.secondary};
 `;
 
@@ -20,11 +21,17 @@ export const Title = styled.span`
 export const TwoImagesLine = styled.div`
   display: flex;
   justify-content: space-between;
+  max-width: 360px;
+  min-width: 300px;
+  width: 100%;
 `;
 
 export const OneImageLine = styled.div`
   display: flex;
   margin: 10px 0px;
+  max-width: 360px;
+  min-width: 300px;
+  width: 100%;
 `;
 
 export const Image = styled.div`
@@ -33,9 +40,8 @@ export const Image = styled.div`
   align-items: center;
   height: ${({ oneLine }) => (oneLine ? "124px" : "141px")};
   width: ${({ oneLine }) => (oneLine ? "100%" : "50%")};
-  border: 1px solid green;
   border-radius: 10px;
-  background-color: black;
+  background-color: #eee;
 
   :not(:first-of-type) {
     margin-left: 10px;
