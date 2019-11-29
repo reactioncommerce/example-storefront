@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-import Button from "../../components/Button";
+import Button from "../Button";
 import * as s from "./style";
 
 const settings = {
@@ -25,28 +25,28 @@ const products = [
   {
     name: "Produto Teste",
     subName: "subteste",
-    image: "../../static/images/home/prod1.png",
+    image: "../../static/images/home/prod2.png",
     price: 100,
     description: "Lorem ipsum"
   },
   {
     name: "Produto Teste",
     subName: "subteste",
-    image: "../../static/images/home/prod1.png",
+    image: "../../static/images/home/prod3.jpg",
     price: 100,
     description: "Lorem ipsum"
   },
   {
     name: "Produto Teste",
     subName: "subteste",
-    image: "../../static/images/home/prod1.png",
+    image: "../../static/images/home/prod4.jpg",
     price: 100,
     description: "Lorem ipsum"
   },
   {
     name: "Produto Teste",
     subName: "subteste",
-    image: "../../static/images/home/prod1.png",
+    image: "../../static/images/home/prod5.jpg",
     price: 100,
     description: "Lorem ipsum"
   }
@@ -70,9 +70,8 @@ const ProductList = () => {
             products.map((prod, idx) => {
               return (
                 <div>
-                  <s.Product key={idx}>
-                    <s.ImageContainer>
-                      <s.Image src={prod.image} />
+                  <s.Product className="product-item" key={idx}>
+                    <s.ImageContainer src={prod.image}>
                       <s.ButtonContainer>
                         <Button primary>Comprar</Button>
                       </s.ButtonContainer>

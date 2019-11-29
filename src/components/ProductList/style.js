@@ -7,7 +7,13 @@ export const Section = styled.section`
     display: flex;
   }
   .slick-slide {
-    padding: 0 10px;
+    padding: 0 8px;
+
+    :first-of-type {
+      .product-item {
+        margin-left: 20px;
+      }
+    }
   }
 `;
 
@@ -33,7 +39,6 @@ export const SectionDescription = styled.span`
 `;
 
 export const Product = styled.div`
-  border-radius: 3px;
   min-height: 250px;
   height: auto;
   width: 157px;
@@ -43,15 +48,15 @@ export const ImageContainer = styled.div`
   width: 156px;
   height: 214px;
   position: relative;
-`;
-
-export const Image = styled.img`
-  width: 100%;
+  background: ${({ src }) => (src ? `url(${src})` : "")};
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
 `;
 
 export const ButtonContainer = styled.div`
   position: absolute;
-  bottom: 7px;
+  bottom: 20px;
   left: 0;
   right: 0;
   display: flex;
@@ -61,7 +66,7 @@ export const ButtonContainer = styled.div`
 export const Description = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 35px;
+  margin-top: 25px;
   font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_5};
 `;
 
