@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import Button from "../Button";
-import * as s from "./style";
 import ArrowShape from "../Icons/ArrowShape";
+import * as s from "./style";
 
 const comments = [
   {
@@ -72,9 +71,9 @@ const UserComments = () => {
         <s.Comments>
           {comments &&
             comments.length &&
-            comments.map((c) => {
+            comments.map((c, idx) => {
               return (
-                <s.CommentCard innerRef={ref} className="comment-card" position={`${sliderPosition}px`}>
+                <s.CommentCard key={idx} innerRef={ref} className="comment-card" position={`${sliderPosition}px`}>
                   <s.ImageBorder>
                     <s.UserImage src={c.image} />
                   </s.ImageBorder>
