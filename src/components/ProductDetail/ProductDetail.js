@@ -270,6 +270,7 @@ class ProductDetail extends Component {
             </div>
             <div className={classes.info}>
               <ProductDetailPrice compareAtPrice={compareAtDisplayPrice} isCompact price={productPrice.displayPrice} />
+              
             </div>
           </div>
 
@@ -287,6 +288,7 @@ class ProductDetail extends Component {
               currencyCode={currencyCode}
               variants={product.variants}
             />
+
             <ProductDetailAddToCart
               onClick={this.handleAddToCartClick}
               selectedOptionId={pdpSelectedOptionId}

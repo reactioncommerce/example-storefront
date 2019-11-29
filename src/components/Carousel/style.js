@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Carousel = styled.section`
-    overflow: hidden;
+    padding: 0 0 60px;
 `;
 
 
@@ -37,10 +37,11 @@ export const Controls = styled.ul`
     justify-content: space-around;
 `;
 
-export const ControlItem = styled.li`
+export const ControlItem = styled.div`
     width: 10px;
     height:10px;
     border-radius:100%;
-    background: ${({ theme, active }) => (active ? theme.colors.gray.COLOR_2 : theme.colors.gray.COLOR_4)}
+    background: ${({ theme, active }) => (active ? theme.colors.gray.COLOR_2 : theme.colors.gray.COLOR_4)};
+
 `;
 

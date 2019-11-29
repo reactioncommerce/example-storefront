@@ -3,10 +3,10 @@ import renderer from "react-test-renderer";
 import { shallow } from "enzyme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "custom/reactionTheme";
-import FaqContent from "./FaqContent";
+import Accordion from "./Accordion";
 
 test("basic snapshot", () => {
-  const component = renderer.create(shallow(<MuiThemeProvider theme={theme}><FaqContent /></MuiThemeProvider>).get(3));
+  const component = renderer.create(shallow(<MuiThemeProvider theme={theme}><Accordion /></MuiThemeProvider>).get(3));
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });

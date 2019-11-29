@@ -4,7 +4,7 @@ import PageHeader from "components/PageHeader";
 import Accordion from "components/Accordion";
 import ContactForm from "components/ContactForm";
 
-const BrandPage = (shop) => {
+const Terms = (shop) => {
   const mock = {
     page: {
       title: "Frequently Asked Questions",
@@ -47,10 +47,11 @@ const BrandPage = (shop) => {
     <div>
       <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
       <PageHeader page={mock.page} />
+
       <Accordion faq={mock.page.faq}/>
       <ContactForm contact={mock.page.contact}/>
     </div>
   );
 };
 
-export default BrandPage;
+export default Terms;

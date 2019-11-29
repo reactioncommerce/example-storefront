@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import * as s from "./style";
 
 
-
-const FaqContent = (props) => {
+const Accordion = (props) => {
   const { title, items } = props.faq;
   const [currentFaq, setCurrentFaq] = useState(0);
 
@@ -36,8 +35,8 @@ const FaqContent = (props) => {
   );
 };
 
-FaqContent.propTypes = {
+Accordion.propTypes = {
   faq: PropTypes.object
 };
 
-export default FaqContent;
+export default Accordion;

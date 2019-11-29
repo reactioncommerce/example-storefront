@@ -10,6 +10,7 @@ const PageHeader = (props) => {
       <BannerTop banner={banner}/>
       <s.Title>{title}</s.Title>
       <s.Description>{description}</s.Description>
+
     </s.PageHeaderSection>
   );
 };
