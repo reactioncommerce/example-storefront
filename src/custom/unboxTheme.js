@@ -3,8 +3,9 @@ const theme = {
     fontFamily: "Raleway"
   },
   colors: {
-    primary: "#FFF",
-    secondary: "#000",
+    primary: "#9C27B1",
+    secondary: "#00C3CB",
+    special: "#00c3cb12",
     highlight: "#d63041",
     success: "#019d4f",
     warning: "#bd9826",

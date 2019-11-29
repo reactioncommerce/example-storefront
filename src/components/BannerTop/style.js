@@ -4,10 +4,11 @@ export const Banner = styled.div`
   width: 100vw;
   position: relative;
   margin: 0 -24px;
-  height: auto;
+  max-height: 300px;
+  height: 300px;
 `;
-  
-  export const Image = styled.img`
+
+export const Image = styled.img`
   z-index: 0;
   left: 0;
   position: absolute;

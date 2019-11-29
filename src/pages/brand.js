@@ -1,41 +1,71 @@
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
-import { observer, inject } from "mobx-react";
+import React from "react";
 import Helmet from "react-helmet";
-import withCatalogItems from "containers/catalog/withCatalogItems";
 import BannerTop from "components/BannerTop";
 import About from "components/About";
+import Team from "components/Team";
+import BrandTabs from "components/BrandTabs";
+import Newsletter from "components/Newsletter";
 
-@withCatalogItems
-@inject("routingStore", "uiStore")
-@observer
-class BrandPage extends Component {
-  static propTypes = {
-    routingStore: PropTypes.object,
-    shop: PropTypes.shape({
-      currency: PropTypes.shape({
-        code: PropTypes.string.isRequired
-      })
-    })
+const BrandPage = (shop) => {
+  const mock = {
+    page: {
+      title: "About us !",
+      description: `In sit amet quam nec lacus sodales facilisis ac quis sapien. Morbi gravida pellentesque nunc, sed 
+      imperdiet urna dictum nec. Nam et fringilla ante. Donec placerat tellus nunc, nec aliquam ipsum tempor at. 
+      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. P`,
+      banner: "static/images/banner.png",
+      tabs: {
+        mission: {
+          name: "missão",
+          text: "In sit amet quam nec lacus sodales facilisis ac quis sapien.",
+          photo: "static/images/banner.png"
+        },
+        vision: {
+          name: "visão",
+          text: "Pellentesque habitant morbi tristique senectus et netus et",
+          photo: "static/images/banner.png"
+        },
+        values: {
+          name: "valores",
+          text: "Nam et fringilla ante. Donec placerat tellus nunc",
+          photo: "static/images/banner.png"
+        }
+      },
+      slider: [{
+        title: "slide 01",
+        description: "In sit amet quam nec lacus sodales facilisis ac quis sapien. ",
+        photo: "static/images/brand-image.png"
+      }],
+      newsletter: {
+        title: "Subscribe our newsletter",
+        description: "Pellentesque habitant morbi tristique senectus et netus et",
+        callToAction: "Subscribe"
+      },
+      team: {
+        title: "Our team",
+        description: " tristique senectus et netus et malesuada fames ac turpis egestas.",
+        members: [
+          { name: "Mathias", position: "Front-end developer", photo: "static/images/brand-image.png" },
+          { name: "Denis", position: "Front-end developer", photo: "static/images/brand-image.png" },
+          { name: "Gabi", position: "CPO", photo: "static/images/brand-image.png" },
+          { name: "Bruno", position: "CEO", photo: "static/images/brand-image.png" }
+        ]
+      }
+    }
   };
 
-  componentDidMount() {
-    const { routingStore } = this.props;
-    routingStore.setTagId(null);
-  }
+  const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : shop.name;
 
-  render() {
-    const { shop } = this.props;
-    const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : shop.name;
-
-    return (
-      <Fragment>
-        <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
-        <BannerTop/>
-        <About/>
-      </Fragment>
-    );
-  }
-}
+  return (
+    <div>
+      <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
+      <BannerTop banner={mock.page.banner} />
+      <About page={mock.page}/>
+      <Team team={mock.page.team}/>
+      <BrandTabs tabs={mock.page.tabs}/>
+      <Newsletter newsletter={mock.page.newsletter}/>
+    </div>
+  );
+};
 
 export default BrandPage;
