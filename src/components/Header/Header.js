@@ -4,6 +4,7 @@ import { inject, observer } from "mobx-react";
 import Hidden from "@material-ui/core/Hidden";
 import { NavigationMobile } from "components/NavigationMobile";
 import MiniCart from "components/MiniCart";
+import Link from "components/Link";
 import HamburgerIcon from "../Icons/HamburgerMenu";
 import MenuItemsDesktop from "../MenuItemsDesktop/MenuItemsDesktop";
 import * as s from "./style";
@@ -22,7 +23,9 @@ const Header = inject("uiStore")(
               <HamburgerIcon />
             </s.ToggleButton>
           </Hidden>
-          <s.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
+          <Link route={"/"}>
+            <s.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
+          </Link>
 
           <Hidden smDown initialWidth={"md"}>
             <MenuItemsDesktop />
