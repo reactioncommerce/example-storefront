@@ -1,16 +1,16 @@
 import styled from "styled-components";
-import { Input, FormControl, InputLabel } from "@material-ui/core";
+import { Input, FormControl, InputLabel, Select } from "@material-ui/core";
 
 export const ContactSection = styled.section`
   background: ${({ theme }) => theme.colors.special};
   margin: 0 -24px;
   padding: 24px;
-  text-align:center;
 `;
 
 export const ContactForm = styled.form`
     display: flex;
     flex-direction: column;
+    overflow:hidden;
     align-items: center;
     justify-content: center;
 `;
@@ -22,6 +22,10 @@ export const FormRow = styled.div`
 `;
 
 export const ContactInput = styled(Input)`
+  width:100%;
+  padding-left: 15px;
+`;
+export const ContactSelect = styled(Select)`
   width:100%;
   padding-left: 15px;
 `;
@@ -37,6 +41,7 @@ export const ContactFormControl = styled(FormControl)`
 `;
 
 export const Title = styled.h2`
+  text-align:center;
 
 `;
 export const ContactButton = styled.button`
@@ -51,5 +56,6 @@ export const ContactButton = styled.button`
 `;
 
 export const Description = styled.p`
+  text-align:center;
 
 `;
