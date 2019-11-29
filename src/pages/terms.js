@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import Helmet from "react-helmet";
-import PageHeader from "components/PageHeader";
 import Accordion from "components/Accordion";
 import ContactForm from "components/ContactForm";
 import TermsButtons from "../components/TermsButtons";
@@ -12,9 +11,24 @@ const Terms = (shop) => {
       description: `In sit amet quam nec lacus sodales facilisis ac quis sapien. Morbi gravida pellentesque nunc, sed 
       imperdiet urna dictum nec. Nam et fringilla ante. Donec placerat tellus nunc, nec aliquam ipsum tempor at. 
       Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. P`,
-      banner: "static/images/banner-faq.png",
-      faq: {
-        title: "See bellow:",
+      devolution: {
+        title: "Devolution:",
+        items: [{
+          title: "Malesuada fames ac",
+          text: "Donec placerat tellus nec aliquam ipsum tempor at." 
+        }, {
+          title: "Morbi tristique senectus",
+          text: "In sit amet quam nec  ac turpis egestas habitant morbi tristique ." 
+        }, {
+          title: "Morbi tristique senectus",
+          text: "In sit amet quam nec  ac turpis egestas habitant morbi tristique ."
+        }, {
+          title: "Malesuada fames ac", 
+          text: "Donec placerat tellus nec aliquam ipsum tempor at."
+        }]
+      },
+      terms: {
+        title: "Terms:",
         items: [{
           title: "Morbi tristique senectus",
           text: "In sit amet quam nec  ac turpis egestas habitant morbi tristique ." 
@@ -22,6 +36,13 @@ const Terms = (shop) => {
           title: "Malesuada fames ac",
           text: "Donec placerat tellus nec aliquam ipsum tempor at." 
         }, {
+          title: "Morbi tristique senectus",
+          text: "In sit amet quam nec  ac turpis egestas habitant morbi tristique ." 
+        }]
+      },
+      refund: {
+        title: "Refund:",
+        items: [{
           title: "Morbi tristique senectus",
           text: "In sit amet quam nec  ac turpis egestas habitant morbi tristique ." 
         }, {
@@ -43,14 +64,15 @@ const Terms = (shop) => {
   };
 
   const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : "FAQ";
-
+  const [ currentTab, setCurrentTab] = useState(1);
   return (
     <div>
       <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
       <div>
-        <TermsButtons/>
-
-        <Accordion faq={mock.page.faq}/>
+        <TermsButtons currentTab={currentTab} setCurrentTab={setCurrentTab}/>
+        {currentTab === 1 ? <Accordion array={mock.page.terms}/> : null}
+        {currentTab === 2 ? <Accordion array={mock.page.devolution}/> : null}
+        {currentTab === 3 ? <Accordion array={mock.page.refund}/> : null}
       </div>
       <ContactForm contact={mock.page.contact}/>
     </div>

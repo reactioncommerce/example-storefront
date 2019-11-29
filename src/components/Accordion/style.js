@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FaqSection = styled.section`
+export const AccordionSection = styled.section`
 
 `;
 
@@ -8,7 +8,7 @@ export const Title = styled.h2`
 
 `;
 
-export const FaqItems = styled.ul`
+export const AccordionItems = styled.ul`
   padding: 0;
   list-style: none;
 `;

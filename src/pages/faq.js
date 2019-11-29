@@ -47,7 +47,7 @@ const BrandPage = (shop) => {
     <div>
       <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
       <PageHeader page={mock.page} />
-      <Accordion faq={mock.page.faq}/>
+      <Accordion array={mock.page.faq}/>
       <ContactForm contact={mock.page.contact}/>
     </div>
   );

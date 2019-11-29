@@ -4,7 +4,7 @@ import * as s from "./style";
 
 
 const TermsButtons = (props) => {
-  const [currentTab, setCurrentTab] = useState(1);
+  const {currentTab, setCurrentTab} = props;
 
   return (
     <s.Buttons>
