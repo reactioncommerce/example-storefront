@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 
-import * as styles from "./style";
+import * as s from "./style";
 
 const BannerTop = (props) => {
   return (
-    <styles.Banner>
-      <styles.Image src={props.banner}/>
-    </styles.Banner>
+    <s.Banner>
+      <s.Image src={props.banner}/>
+    </s.Banner>
   );
 };
 

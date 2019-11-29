@@ -4,13 +4,13 @@ import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControl from "@material-ui/core/FormControl";
 import SearchIcon from "../Icons/Search";
-import * as styles from "./style";
+import * as s from "./style";
 
 const SearchField = () => {
   const [searchText, setSearchText] = useState("");
 
   return (
-    <styles.SearchField stayOpened={searchText.length}>
+    <s.SearchField stayOpened={searchText.length}>
       <FormControl>
         <InputLabel htmlFor="input-with-icon-adornment">O que você está procurando?</InputLabel>
         <Input
@@ -24,7 +24,7 @@ const SearchField = () => {
           }
         />
       </FormControl>
-    </styles.SearchField>
+    </s.SearchField>
   );
 };
 

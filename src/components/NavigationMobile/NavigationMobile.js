@@ -8,7 +8,7 @@ import NavItemsMenuMobile from "components/NavItemsMenuMobile";
 import Link from "components/Link";
 import UserIcon from "../Icons/User";
 import InfoIcon from "../Icons/Info";
-import * as styles from "./style";
+import * as s from "./style";
 
 @inject("uiStore")
 @observer
@@ -28,30 +28,30 @@ class NavigationMobile extends Component {
 
     return (
       <Drawer open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
-        <styles.Container>
-          <styles.Header>
+        <s.Container>
+          <s.Header>
             <SearchField />
-          </styles.Header>
+          </s.Header>
           <Divider style={{ backgroundColor: "#9c27b1" }} />
           <NavItemsMenuMobile handleClose={this.handleClose} />
           <Divider style={{ marginTop: "30px" }} />
 
-          <styles.Footer>
-            <styles.LinkContainer>
+          <s.Footer>
+            <s.LinkContainer>
               <Link route="/" onClick={this.handleClose}>
                 <UserIcon />
                 Minha conta
               </Link>
-            </styles.LinkContainer>
+            </s.LinkContainer>
 
-            <styles.LinkContainer>
+            <s.LinkContainer>
               <Link route="/" onClick={this.handleClose}>
                 <InfoIcon />
                 Ajuda
               </Link>
-            </styles.LinkContainer>
-          </styles.Footer>
-        </styles.Container>
+            </s.LinkContainer>
+          </s.Footer>
+        </s.Container>
       </Drawer>
     );
   }

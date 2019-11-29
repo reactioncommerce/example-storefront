@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Link from "components/Link";
-import * as styles from "./style";
+import * as s from "./style";
 
 const MenuItemsDesktop = () => {
   useEffect(() => {
@@ -9,12 +9,12 @@ const MenuItemsDesktop = () => {
   }, []);
 
   return (
-    <styles.Items>
+    <s.Items>
       <Link route="/">Link</Link>
       <Link route="/">Link</Link>
       <Link route="/">Link</Link>
       <Link route="/">Link</Link>
-    </styles.Items>
+    </s.Items>
   );
 };
 

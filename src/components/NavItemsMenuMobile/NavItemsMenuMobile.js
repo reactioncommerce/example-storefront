@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import MenuRightIcon from "mdi-material-ui/MenuRight";
 import MenuLeftIcon from "mdi-material-ui/MenuLeft";
 import Link from "components/Link";
-import * as styles from "./style";
+import * as s from "./style";
 
 const NavItemsMenuMobile = ({ handleClose }) => {
   const navItems = [
@@ -15,22 +15,22 @@ const NavItemsMenuMobile = ({ handleClose }) => {
   ];
 
   return (
-    <styles.Navigation>
-      <styles.BackButton id="close-menu" onClick={handleClose}>
+    <s.Navigation>
+      <s.BackButton id="close-menu" onClick={handleClose}>
         <MenuLeftIcon />
-        <styles.BackButtonText>VOLTAR</styles.BackButtonText>
-      </styles.BackButton>
+        <s.BackButtonText>VOLTAR</s.BackButtonText>
+      </s.BackButton>
 
       {navItems &&
         navItems.map((el, idx) => (
-          <styles.LinkContainer key={idx}>
+          <s.LinkContainer key={idx}>
             <Link id={`page-link-${idx}`} route="/" onClick={handleClose}>
               Link
               <MenuRightIcon />
             </Link>
-          </styles.LinkContainer>
+          </s.LinkContainer>
         ))}
-    </styles.Navigation>
+    </s.Navigation>
   );
 };
 

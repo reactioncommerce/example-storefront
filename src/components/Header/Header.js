@@ -6,7 +6,7 @@ import { NavigationMobile } from "components/NavigationMobile";
 import MiniCart from "components/MiniCart";
 import HamburgerIcon from "../Icons/HamburgerMenu";
 import MenuItemsDesktop from "../MenuItemsDesktop/MenuItemsDesktop";
-import * as styles from "./style";
+import * as s from "./style";
 
 const Header = inject("uiStore")(
   observer(({ uiStore }) => {
@@ -16,13 +16,13 @@ const Header = inject("uiStore")(
 
     return (
       <div>
-        <styles.Content>
+        <s.Content>
           <Hidden mdUp>
-            <styles.ToggleButton onClick={handleNavigationToggleClick}>
+            <s.ToggleButton onClick={handleNavigationToggleClick}>
               <HamburgerIcon />
-            </styles.ToggleButton>
+            </s.ToggleButton>
           </Hidden>
-          <styles.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
+          <s.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
 
           <Hidden smDown initialWidth={"md"}>
             <MenuItemsDesktop />
@@ -30,7 +30,7 @@ const Header = inject("uiStore")(
 
           <MiniCart />
           <NavigationMobile />
-        </styles.Content>
+        </s.Content>
       </div>
     );
   })
