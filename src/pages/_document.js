@@ -65,6 +65,8 @@ class HTMLDocument extends Document {
       { rel: "canonical", href: publicRuntimeConfig.canonicalUrl },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Raleway:400,600,700" },
+      { rel: "stylesheet", type:"text/css", charset:"UTF-8", href:"https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" },
+      { rel: "stylesheet", type:"text/css", charset:"UTF-8", href:"https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" },
       ...favicons
     ];
     const meta = [
