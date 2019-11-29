@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import PageHeader from "components/PageHeader";
 import Accordion from "components/Accordion";
 import ContactForm from "components/ContactForm";
+import TermsButtons from "../components/TermsButtons";
 
 const Terms = (shop) => {
   const mock = {
@@ -46,9 +47,11 @@ const Terms = (shop) => {
   return (
     <div>
       <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
-      <PageHeader page={mock.page} />
+      <div>
+        <TermsButtons/>
 
-      <Accordion faq={mock.page.faq}/>
+        <Accordion faq={mock.page.faq}/>
+      </div>
       <ContactForm contact={mock.page.contact}/>
     </div>
   );
