@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import Slider from "react-slick";
 import * as s from "./style";
 
 /**
@@ -8,8 +8,8 @@ import * as s from "./style";
 * @param {array} slider Array with slides.
 * @returns {component} the slider mounted.
 */
-const mountSlider = (slider) => slider.map((slide) => (
-  <s.Slide>
+const mountSlider = (slider) => slider.map((slide, index) => (
+  <s.Slide key={index}>
     <s.Image src={slide.photo} alt=""/>
     <s.SlideTitle>{slide.title}</s.SlideTitle>
     <s.SlideDescription>{slide.description}</s.SlideDescription>
@@ -17,15 +17,25 @@ const mountSlider = (slider) => slider.map((slide) => (
 ));
 
 const Carousel = (props) => {
+
   const { slider } = props;
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
+
   return (
     <s.Carousel>
-      <s.Slider>
+      {/* <Slider {...settings}>
         {mountSlider(slider)}
-        <s.Controls>
-          <s.ControlItem/>
-        </s.Controls>
-      </s.Slider>
+      </Slider> */}
+      <s.Carousel >
+        {mountSlider(slider)}
+      </s.Carousel>
+      
     </s.Carousel>
   );
 };

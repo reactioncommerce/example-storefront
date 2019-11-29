@@ -1,16 +1,13 @@
 import styled from "styled-components";
 
 export const Carousel = styled.section`
-
-`;
-export const Slider = styled.ol`
-    padding:0;
-    list-style:none;
+    overflow: hidden;
 `;
 
-export const Slide = styled.li`
-    width: 100%;
+
+export const Slide = styled.div`
     text-align:left;
+    width: 100%;
 `;
 
 export const SlideTitle = styled.h3`

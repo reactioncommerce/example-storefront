@@ -35,6 +35,10 @@ const BrandPage = (shop) => {
         title: "slide 01",
         description: "In sit amet quam nec lacus sodales facilisis ac quis sapien. ",
         photo: "static/images/brand-image.png"
+      }, {
+        title: "slide 02",
+        description: "In sit amet quam nec lacus sodales facilisis ac quis sapien. ",
+        photo: "static/images/brand-image.png"
       }],
       newsletter: {
         title: "Subscribe our newsletter",
