@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Button from "../Button";
 import * as s from "./style";
+import ArrowShape from "../Icons/ArrowShape";
 
 const comments = [
   {
@@ -28,9 +29,9 @@ const comments = [
 
 const UserComments = () => {
   const [sliderPosition, setSliderPosition] = useState(0);
+  const [widthToMove, setWidthToMove] = useState(0);
   const ref = useRef(null);
   const positionRef = useRef(0);
-  const [widthToMove, setWidthToMove] = useState(0);
 
   const onResize = () => {
     if (positionRef) {
@@ -39,6 +40,7 @@ const UserComments = () => {
     const width = ref.current ? ref.current.offsetWidth : 0;
     setWidthToMove(width);
   };
+
   useEffect(() => {
     onResize();
     window.addEventListener("resize", onResize);
@@ -64,7 +66,9 @@ const UserComments = () => {
       <s.Title>Lorem Ipsum</s.Title>
 
       <s.Slider>
-        <s.ArrowLeft onClick={() => changeSliderPosition(true)}>{"<"}</s.ArrowLeft>
+        <s.ArrowBlock onClick={() => changeSliderPosition(true)}>
+          <ArrowShape />
+        </s.ArrowBlock>
         <s.Comments>
           {comments &&
             comments.length &&
@@ -85,7 +89,9 @@ const UserComments = () => {
               );
             })}
         </s.Comments>
-        <s.ArrowRight onClick={() => changeSliderPosition(false)}> > </s.ArrowRight>
+        <s.ArrowBlock onClick={() => changeSliderPosition(false)}>
+          <ArrowShape direction="right" />
+        </s.ArrowBlock>
       </s.Slider>
     </s.Section>
   );

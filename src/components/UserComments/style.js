@@ -1,15 +1,9 @@
 import styled, { css } from "styled-components";
 
-const ArrowStyle = css`
-  width: 15%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 export const Section = styled.section`
-  height: 377px;
+  height: auto;
   padding-top: 40px;
+  padding-bottom: 40px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -31,27 +25,28 @@ export const Slider = styled.div`
   justify-content: space-between;
 `;
 
-export const ArrowLeft = styled.div`
-  ${ArrowStyle}
-`;
-
-export const ArrowRight = styled.div`
-  ${ArrowStyle}
+export const ArrowBlock = styled.div`
+  width: 15%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 `;
 
 export const Comments = styled.div`
   display: flex;
   flex-direction: row;
-  height: 220px;
+  height: auto;
   width: 70%;
-  box-shadow: 0 17px 21px 0 rgba(67, 147, 150, 0.22);
+  box-shadow: 0 44px 49px 0 rgba(67, 147, 150, 0.22);
   overflow-x: hidden;
 `;
 
 export const CommentCard = styled.div`
   min-width: 100%;
-  height: 250px;
-  margin-top: 20px;
+  height: auto;
+  margin-top: 25px;
   transition: transform 500ms;
   transform: ${({ position }) => (position ? `translateX(${position})` : "")};
 `;
@@ -74,9 +69,12 @@ export const ImageBorder = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -20px;
+  margin-top: -25px;
   position: absolute;
-  left: 42%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 `;
 
 export const UserImage = styled.img`
