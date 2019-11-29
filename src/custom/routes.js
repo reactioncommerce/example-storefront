@@ -7,6 +7,7 @@ function defineRoutes(routes) {
   routes
     .add("home", "/", "home")
     .add("brand", "/", "brand")
+    .add("faq", "/faq", "faq")
     .add("cart", "/cart", "cart")
     .add("checkout", "/cart/checkout", "checkout")
     .add("checkoutLogin", "/cart/login", "checkout")

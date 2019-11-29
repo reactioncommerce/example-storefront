@@ -1,6 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
-import BannerTop from "components/BannerTop";
+import PageHeader from "components/PageHeader";
 import About from "components/About";
 import Team from "components/Team";
 import BrandTabs from "components/BrandTabs";
@@ -59,7 +59,7 @@ const BrandPage = (shop) => {
   return (
     <div>
       <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
-      <BannerTop banner={mock.page.banner} />
+      <PageHeader page={mock.page}/>
       <About page={mock.page}/>
       <Team team={mock.page.team}/>
       <BrandTabs tabs={mock.page.tabs}/>

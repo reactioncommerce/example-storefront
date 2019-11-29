@@ -8,8 +8,6 @@ const About = (props) => {
 
   return (
     <s.AboutSection>
-      <s.Title>{page.title}</s.Title>
-      <s.Description>{page.description}</s.Description>
       <Carousel slider={page.slider}/>
     </s.AboutSection>
   );
