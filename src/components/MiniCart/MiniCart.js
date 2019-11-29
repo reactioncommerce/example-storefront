@@ -116,8 +116,8 @@ export default class MiniCart extends Component {
   };
 
   handleEnterPopper = () => {
-    const { openCart } = this.props.uiStore;
-    openCart();
+    // const { openCart } = this.props.uiStore;
+    // openCart();
   };
 
   handleLeavePopper = () => {
@@ -126,9 +126,9 @@ export default class MiniCart extends Component {
   };
 
   handleOnClick = () => {
-    const { closeCart } = this.props.uiStore;
-    closeCart();
-    Router.pushRoute("cart");
+    // const { closeCart } = this.props.uiStore;
+    // closeCart();
+    // Router.pushRoute("cart");
   };
 
   handleItemQuantityChange = (quantity, cartItemId) => {

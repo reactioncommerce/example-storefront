@@ -14,6 +14,11 @@ export const Content = styled.div`
   height: 63px;
   padding: 0px 25px;
   width: 100%;
+
+  a {
+    outline: none;
+    user-select: none;
+  }
 `;
 
 export const Logo = styled.img`
