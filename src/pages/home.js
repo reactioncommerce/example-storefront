@@ -6,6 +6,7 @@ import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import CategoriesBlock from "../components/CategoriesBlock";
 import SpecificProduct from "../components/SpecificProduct";
+import UserComments from "../components/UserComments";
 
 const HomePage = inject(
   "routingStore",
@@ -25,6 +26,7 @@ const HomePage = inject(
         <span>home page</span>
         <CategoriesBlock />
         <SpecificProduct />
+        <UserComments />
       </Fragment>
     );
   })
