@@ -5,6 +5,7 @@ import { observer } from "mobx-react-lite";
 import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import CategoriesBlock from "../components/CategoriesBlock";
+import SpecificProduct from "../components/SpecificProduct";
 
 const HomePage = inject(
   "routingStore",
@@ -23,6 +24,7 @@ const HomePage = inject(
         <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
         <span>home page</span>
         <CategoriesBlock />
+        <SpecificProduct />
       </Fragment>
     );
   })
