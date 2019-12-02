@@ -17,6 +17,12 @@ export const Content = styled.div`
     outline: none;
     user-select: none;
   }
+
+  .cart-icon {
+    span {
+      background-color: ${({ theme }) => theme.typography.colors.tertiary};
+    }
+  }
 `;
 
 export const Logo = styled.img`
@@ -29,4 +35,27 @@ export const ToggleButton = styled.button`
   background: transparent;
   padding: 0px;
   outline: none;
+`;
+
+export const DesktopHeader = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const DesktopIcons = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 45%;
+  margin-left: 45px;
+
+  a {
+    margin-top: 5px;
+  }
+
+  button {
+    padding: 0px;
+  }
 `;

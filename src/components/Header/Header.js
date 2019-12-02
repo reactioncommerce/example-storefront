@@ -7,7 +7,10 @@ import MiniCart from "components/MiniCart";
 import Link from "components/Link";
 import HamburgerIcon from "../Icons/HamburgerMenu";
 import MenuItemsDesktop from "../MenuItemsDesktop/MenuItemsDesktop";
-import * as styles from "./style";
+import SearchField from "../SearchField/SearchField";
+import UserIcon from "../Icons/User";
+import FavoriteIcon from "../Icons/Favorite";
+import * as s from "./style";
 
 const Header = inject("uiStore")(
   observer(({ uiStore }) => {
@@ -17,23 +20,37 @@ const Header = inject("uiStore")(
 
     return (
       <div>
-        <styles.Content>
+        <s.Content>
           <Hidden mdUp>
-            <styles.ToggleButton onClick={handleNavigationToggleClick}>
+            <s.ToggleButton onClick={handleNavigationToggleClick}>
               <HamburgerIcon />
-            </styles.ToggleButton>
-          </Hidden>
-          <Link route={"/"}>
-            <styles.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
-          </Link>
-
-          <Hidden smDown initialWidth={"md"}>
-            <MenuItemsDesktop />
+            </s.ToggleButton>
+            <Link route={"/"}>
+              <s.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
+            </Link>
+            <MiniCart />
           </Hidden>
 
-          <MiniCart />
+          <Hidden smDown>
+            <s.DesktopHeader>
+              <Link route={"/"}>
+                <s.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
+              </Link>
+              <MenuItemsDesktop />
+              <SearchField desktopMode />
+              <s.DesktopIcons>
+                <Link route="/">
+                  <FavoriteIcon />
+                </Link>
+                <Link route="/">
+                  <UserIcon />
+                </Link>
+                <MiniCart />
+              </s.DesktopIcons>
+            </s.DesktopHeader>
+          </Hidden>
           <NavigationMobile />
-        </styles.Content>
+        </s.Content>
       </div>
     );
   })

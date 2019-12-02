@@ -41,7 +41,7 @@ const styles = ({ palette, zIndex }) => ({
     width: 20,
     height: 20,
     top: 10,
-    left: 20
+    left: 5
   }
 });
 
@@ -206,7 +206,7 @@ export default class MiniCart extends Component {
             onClick={this.handleOnClick}
           >
             {cart && cart.totalItemQuantity > 0 ? (
-              <Badge badgeContent={cart.totalItemQuantity} color="primary" classes={{ badge: classes.badge }}>
+              <Badge badgeContent={cart.totalItemQuantity} color="primary" className="cart-icon" classes={{ badge: classes.badge }}>
                 <CartIcon />
               </Badge>
             ) : (
