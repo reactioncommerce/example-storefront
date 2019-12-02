@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-// import Button from "../Button";
+import PropTypes from "prop-types";
 import * as s from "./style";
 
 const settings = {
@@ -8,10 +8,7 @@ const settings = {
   infinite: true,
   speed: 500,
   slidesToShow: 1,
-  slidesToScroll: 1,
-  afterChange: (index) => {
-    console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`);
-  }
+  slidesToScroll: 1
 };
 
 const products = [
@@ -52,17 +49,9 @@ const products = [
   }
 ];
 
-const MainCarousel = () => {
+const MainCarousel = ({ fullPage }) => {
   return (
     <s.Section>
-      {/* <s.Header>
-        <s.Title>Lorem Ipsum</s.Title>
-        <s.SectionDescription>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-          aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-        </s.SectionDescription>
-      </s.Header> */}
-
       <div>
         <Slider {...settings}>
           {products &&
@@ -71,7 +60,14 @@ const MainCarousel = () => {
               return (
                 <div>
                   <s.Product className="carousel-image-item" key={idx}>
-                    <s.ImageContainer src={prod.image} />
+                    <s.ImageContainer fullPage={fullPage} src={prod.image} />
+                    <s.TextBlock>
+                      <s.InnerTitle> Finibus Bonorum et Malorum</s.InnerTitle>
+                      <s.InnerDescription>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                        laudantium, totam rem aperiam.
+                      </s.InnerDescription>
+                    </s.TextBlock>
                   </s.Product>
                 </div>
               );
@@ -80,6 +76,14 @@ const MainCarousel = () => {
       </div>
     </s.Section>
   );
+};
+
+MainCarousel.propTypes = {
+  fullPage: PropTypes.bool
+};
+
+MainCarousel.defaultProps = {
+  fullPage: false
 };
 
 export default MainCarousel;

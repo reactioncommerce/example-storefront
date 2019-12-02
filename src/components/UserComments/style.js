@@ -75,6 +75,7 @@ export const ImageBorder = styled.div`
   margin-right: auto;
   left: 0;
   right: 0;
+  z-index: 99;
 `;
 
 export const UserImage = styled.img`

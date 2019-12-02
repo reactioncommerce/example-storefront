@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  z-index: 99;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.21);
+`;
 
 export const Content = styled.div`
   display: flex;
