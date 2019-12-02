@@ -4,6 +4,8 @@ import { inject } from "mobx-react";
 import { observer } from "mobx-react-lite";
 import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
+import ProductList from "../components/ProductList";
+import SelectedProducts from "../components/SelectedProducts";
 import CategoriesBlock from "../components/CategoriesBlock";
 import SpecificProduct from "../components/SpecificProduct";
 import UserComments from "../components/UserComments";
@@ -23,7 +25,8 @@ const HomePage = inject(
     return (
       <Fragment>
         <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
-        <span>home page</span>
+        <ProductList />
+        <SelectedProducts />
         <CategoriesBlock />
         <SpecificProduct />
         <UserComments />

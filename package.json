@@ -74,6 +74,7 @@
     "react-dom": "~16.8.6",
     "react-helmet": "~5.2.0",
     "react-jss": "~8.6.1",
+    "react-slick": "^0.25.2",
     "react-stripe-elements": "~2.0.3",
     "react-tracking": "~5.6.0",
     "reacto-form": "~1.4.0",
