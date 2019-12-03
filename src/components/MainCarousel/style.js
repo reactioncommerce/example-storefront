@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { breakpoints } from "../../helpers/constants";
 
 const dotStyle = css`
   background: white;
@@ -58,6 +59,11 @@ export const TextBlock = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+
+  @media (min-width: ${breakpoints.md}) {
+    top: 0px;
+    bottom: 0px;
+  }
 `;
 
 export const InnerTitle = styled.span`
@@ -65,6 +71,10 @@ export const InnerTitle = styled.span`
   color: ${({ theme }) => theme.typography.colors.primary};
   font-weight: ${({ theme }) => theme.typography.weights.BOLD};
   margin-top: 100px;
+
+  @media (min-width: ${breakpoints.md}) {
+    font-size: 48px;
+  }
 `;
 
 export const InnerDescription = styled.span`
@@ -74,4 +84,10 @@ export const InnerDescription = styled.span`
   width: 290px;
   margin-top: 15px;
   line-height: 1.5;
+
+  @media (min-width: ${breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.title.SIZE_4};
+    font-weight: ${({ theme }) => theme.typography.weights.NORMAL};
+    width: 80%;
+  }
 `;
