@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import Button from "../Button";
 import * as s from "./style";
+import { Hidden } from "@material-ui/core";
 
 const settings = {
   infinite: false,
@@ -49,12 +50,35 @@ const products = [
     image: "../../static/images/home/prod5.jpg",
     price: 100,
     description: "Lorem ipsum"
+  },
+  {
+    name: "Produto Teste",
+    subName: "subteste",
+    image: "../../static/images/home/prod1.png",
+    price: 100,
+    description: "Lorem ipsum"
+  },
+  {
+    name: "Produto Teste",
+    subName: "subteste",
+    image: "../../static/images/home/prod2.png",
+    price: 100,
+    description: "Lorem ipsum"
+  },
+  {
+    name: "Produto Teste",
+    subName: "subteste",
+    image: "../../static/images/home/prod3.jpg",
+    price: 100,
+    description: "Lorem ipsum"
   }
 ];
 
+const productsInLine = 4;
+
 const ProductList = () => {
   return (
-    <s.Section>
+    <s.Section desktopMode>
       <s.Header>
         <s.Title>Lorem Ipsum</s.Title>
         <s.SectionDescription>
@@ -63,30 +87,61 @@ const ProductList = () => {
         </s.SectionDescription>
       </s.Header>
 
-      <div>
-        <Slider {...settings}>
+      <Hidden mdUp>
+        <div>
+          <Slider {...settings}>
+            {products &&
+              products.length &&
+              products.map((prod, idx) => {
+                return (
+                  <div>
+                    <s.Product className="product-item" key={idx}>
+                      <s.ImageContainer src={prod.image}>
+                        <s.ButtonContainer>
+                          <Button primary>Comprar</Button>
+                        </s.ButtonContainer>
+                      </s.ImageContainer>
+                      <s.Description>
+                        <s.ProductName>{prod.name}</s.ProductName>
+                        <s.ProductPrice>{`$ ${prod.price}`}</s.ProductPrice>
+                        <s.ProductInnerDescription>{prod.description}</s.ProductInnerDescription>
+                      </s.Description>
+                    </s.Product>
+                  </div>
+                );
+              })}
+          </Slider>
+        </div>
+      </Hidden>
+
+      <Hidden smDown>
+        <s.DesktopContainerList>
           {products &&
             products.length &&
             products.map((prod, idx) => {
+              const breakline = idx % productsInLine === 0;
               return (
                 <div>
-                  <s.Product className="product-item" key={idx}>
-                    <s.ImageContainer src={prod.image}>
+                  {breakline && <s.BreakLine />}
+                  <s.DesktopProduct>
+                    <s.ImageContainer src={prod.image} desktopMode>
                       <s.ButtonContainer>
-                        <Button primary>Comprar</Button>
+                        <Button primary customStyles={{ height: "41px", width: "101px", fontSize: "16px" }}>
+                          Comprar
+                        </Button>
                       </s.ButtonContainer>
                     </s.ImageContainer>
-                    <s.Description>
+                    <s.Description desktopMode>
                       <s.ProductName>{prod.name}</s.ProductName>
                       <s.ProductPrice>{`$ ${prod.price}`}</s.ProductPrice>
-                      <s.ProductInnerDescription>{prod.description}</s.ProductInnerDescription>
+                      <s.ProductInnerDescription desktopMode>{prod.description}</s.ProductInnerDescription>
                     </s.Description>
-                  </s.Product>
+                  </s.DesktopProduct>
                 </div>
               );
             })}
-        </Slider>
-      </div>
+        </s.DesktopContainerList>
+      </Hidden>
     </s.Section>
   );
 };
