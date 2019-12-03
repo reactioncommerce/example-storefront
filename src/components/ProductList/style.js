@@ -1,15 +1,14 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { breakpoints } from "../../helpers/constants";
 
 export const Section = styled.section`
   background-color: ${({ theme }) => theme.layout.backgrounds.primary};
   padding: 30px 0px;
-  ${({ desktopMode }) =>
-    desktopMode &&
-    css`
-      padding-top: 70px;
-      padding-bottom: 0px;
-    `};
+
+  @media (min-width: ${breakpoints.md}) {
+    padding-top: 70px;
+    padding-bottom: 0px;
+  }
 
   .slick-track {
     display: flex;

@@ -78,7 +78,7 @@ const productsInLine = 4;
 
 const ProductList = () => {
   return (
-    <s.Section desktopMode>
+    <s.Section>
       <s.Header>
         <s.Title>Lorem Ipsum</s.Title>
         <s.SectionDescription>
