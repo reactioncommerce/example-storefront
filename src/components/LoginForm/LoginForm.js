@@ -1,0 +1,30 @@
+import React from "react";
+import { FormControl, Input, InputLabel } from "@material-ui/core";
+import * as s from "./style";
+
+const LoginForm = (props) => {
+  const { page } = props;
+
+  return (
+    <s.LoginSection>
+      <s.Logo src="static/images/logo.svg" />
+      <s.Title>Olá</s.Title>
+      <s.Title>Digite o seu e-mail e senha para começar</s.Title>
+      <FormControl>
+        <InputLabel htmlFor="email">e-mail</InputLabel>
+        <Input id="email" type="email"/>
+      </FormControl>
+      <FormControl>
+        <InputLabel htmlFor="password">senha</InputLabel>
+        <Input id="password" type="password"/>
+      </FormControl>
+      <s.Link>Esqueci minha senha</s.Link>
+      <s.Button>Continuar</s.Button>
+      <s.StyledLink>Criar Conta</s.StyledLink>
+
+    </s.LoginSection>
+  );
+};
+
+
+export default LoginForm;

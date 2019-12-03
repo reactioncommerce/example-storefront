@@ -64,7 +64,7 @@ const Terms = (shop) => {
   };
 
   const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : "FAQ";
-  const [ currentTab, setCurrentTab] = useState(1);
+  const [currentTab, setCurrentTab] = useState(1);
   return (
     <div>
       <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
