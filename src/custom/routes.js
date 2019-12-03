@@ -6,11 +6,13 @@
 function defineRoutes(routes) {
   routes
     .add("home", "/", "home")
-    .add("brand", "/", "brand")
+    .add("brand", "/brand", "brand")
     .add("faq", "/faq", "faq")
     .add("loginTest", "/loginTest", "loginTest")
     .add("terms", "/terms", "terms")
     .add("cart", "/cart", "cart")
+    .add("teste", "/forgotPassword", "forgotPassword")
+    .add("register", "/register", "register")
     .add("checkout", "/cart/checkout", "checkout")
     .add("checkoutLogin", "/cart/login", "checkout")
     .add("checkoutComplete", "/checkout/order/:orderId", "checkoutComplete")
