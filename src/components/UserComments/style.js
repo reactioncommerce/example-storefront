@@ -1,54 +1,48 @@
 import styled, { css } from "styled-components";
+import { breakpoints } from "../../helpers/constants";
 
 export const Section = styled.section`
   height: auto;
   padding-top: 40px;
-  padding-bottom: 40px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  /* padding-bottom: 40px; */
   background-color: #e6feff;
   color: ${({ theme }) => theme.typography.colors.secondary};
+`;
+
+export const Header = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 export const Title = styled.span`
   font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_1};
   font-weight: ${({ theme }) => theme.typography.weights.BOLD};
   margin-bottom: 40px;
+  @media (min-width: ${breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.title.SIZE_1};
+    margin-bottom: 20px;
+  }
 `;
 
-export const Slider = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  justify-content: space-between;
-`;
-
-export const ArrowBlock = styled.div`
-  width: 15%;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-`;
-
-export const Comments = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: auto;
+export const SubTitle = styled.span`
+  color: ${({ theme }) => theme.typography.colors.secondary};
+  font-size: ${({ theme }) => theme.typography.sizes.title.SIZE_4};
+  line-height: 1.36;
   width: 70%;
-  box-shadow: 0 44px 49px 0 rgba(67, 147, 150, 0.22);
-  overflow-x: hidden;
+  text-align: center;
+`;
+
+export const SliderContainer = styled.div`
+  text-align: center;
 `;
 
 export const CommentCard = styled.div`
-  min-width: 100%;
   height: auto;
-  margin-top: 25px;
-  transition: transform 500ms;
-  transform: ${({ position }) => (position ? `translateX(${position})` : "")};
+  width: 100%;
+  max-width: 263px;
+  position: relative;
+  box-shadow: 0 44px 49px 0 rgba(67, 147, 150, 0.22);
+  margin-bottom: 30px;
 `;
 
 export const CommentBody = styled.div`
@@ -59,23 +53,24 @@ export const CommentBody = styled.div`
   min-width: 100%;
   height: 100%;
   padding: 15px;
+  margin-top: 30px;
 `;
 
 export const ImageBorder = styled.div`
   border: 1px solid #00c3cb;
+  z-index: 99;
+  top: 0px;
+  position: absolute;
   width: 60px;
   height: 60px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -25px;
-  position: absolute;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
-  z-index: 99;
 `;
 
 export const UserImage = styled.img`
@@ -111,3 +106,54 @@ export const Info = styled.span`
   color: ${({ theme }) => theme.typography.colors.secondary};
   font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_4};
 `;
+
+// export const Comments = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   height: auto;
+//   width: 70%;
+//   box-shadow: 0 44px 49px 0 rgba(67, 147, 150, 0.22);
+//   overflow-x: hidden;
+// `;
+
+// export const DesktopSlider = styled.div`
+//   padding: 30px 0px;
+//   width: 80%;
+//   height: 360px;
+
+//   .slick-track {
+//     display: flex;
+//   }
+//   .slick-slide {
+//     padding: 0 8px;
+
+//     .product-item {
+//       margin-right: 10px;
+//     }
+//   }
+
+//   .slick-slider {
+//     .slick-prev::before,
+//     .slick-next::before {
+//       font-size: 30px;
+//       color: ${({ theme }) => theme.typography.colors.secondary};
+//       opacity: 1;
+//     }
+
+//     .slick-prev {
+//       left: -35px !important;
+//       z-index: 999;
+//     }
+
+//     .slick-next {
+//       right: -20px;
+//       z-index: 999;
+//     }
+//   }
+// `;
+
+// export const DesktopCommentCard = styled.div`
+//   border: 1px solid red;
+//   height: 80%;
+//   width: 355px !important;
+// `;
