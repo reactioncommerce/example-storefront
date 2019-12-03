@@ -42,12 +42,12 @@ export const DesktopSection = styled.section`
     }
 
     .slick-prev {
-      left: -25px !important;
+      left: -35px !important;
       z-index: 999;
     }
 
     .slick-next {
-      right: -10px;
+      right: -20px;
       z-index: 999;
     }
   }
