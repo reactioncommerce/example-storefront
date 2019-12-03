@@ -36,6 +36,8 @@ const MessageDiv = styled.div`
 
 const NoPaymentMethodsMessage = () => <MessageDiv>No payment methods available</MessageDiv>;
 
+NoPaymentMethodsMessage.renderComplete = () => "";
+
 @withAddressValidation
 @track()
 @observer
