@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoints } from "../../helpers/constants";
 
 export const Section = styled.section`
   height: 584px;
@@ -6,6 +7,26 @@ export const Section = styled.section`
   display: flex;
   flex-direction: column;
   color: ${({ theme }) => theme.typography.colors.secondary};
+
+  @media (min-width: ${breakpoints.md}) {
+    height: auto;
+    flex-direction: row;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 0px;
+    align-items: center;
+    padding-left: 25px;
+    max-width: 1440px;
+  }
+`;
+
+export const MainImageContainer = styled.div`
+  @media (min-width: ${breakpoints.md}) {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    width: 52%;
+  }
 `;
 
 export const MainImage = styled.img`
@@ -13,16 +34,26 @@ export const MainImage = styled.img`
   width: 100%;
   max-width: 360px;
   min-width: 250px;
+
+  @media (min-width: ${breakpoints.md}) {
+    max-width: 721px;
+    max-height: 544px;
+  }
 `;
 
 export const InnerContent = styled.div`
-  margin-top: 33px;
   display: flex;
   flex-direction: column;
+  margin-left: auto;
+  margin-right: 95px;
 `;
 
 export const Title = styled.span`
   font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_1};
+
+  @media (min-width: ${breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.title.SIZE_1};
+  }
 `;
 
 export const Text = styled.span`
@@ -32,4 +63,10 @@ export const Text = styled.span`
   line-height: 20px;
   font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_4};
   min-width: 240px;
+
+  @media (min-width: ${breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.title.SIZE_4};
+    line-height: 1.36;
+    min-width: 430px;
+  }
 `;

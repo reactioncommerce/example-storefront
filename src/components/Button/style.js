@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { breakpoints } from "../../helpers/constants";
 
 const primaryButtonStyle = css`
   background-color: ${({ theme }) => theme.typography.colors.tertiary};
@@ -31,6 +32,12 @@ export const Button = styled.div`
     font-weight: ${({ theme }) => theme.typography.weights.BOLD};
     width: 87px;
     height: 35px;
+
+    @media (min-width: ${breakpoints.md}) {
+      width: 101px;
+      height: 41px;
+      font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_3};
+    }
 
     ${({ primary }) => primary && primaryButtonStyle};
 

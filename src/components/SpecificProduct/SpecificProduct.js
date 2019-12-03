@@ -1,23 +1,25 @@
 import React from "react";
 import Button from "../Button";
-import * as styles from "./style";
+import * as s from "./style";
 
 const SpecificProduct = () => {
   return (
-    <styles.Section>
-      <styles.MainImage alt={"Highlight"} src={"../../static/images/home/destaque.png"} />
+    <s.Section>
+      <s.MainImageContainer>
+        <s.MainImage alt={"Highlight"} src={"../../static/images/home/destaque.png"} />
+      </s.MainImageContainer>
 
-      <styles.InnerContent>
-        <styles.Title>Lorem Ipsum</styles.Title>
-        <styles.Text>
+      <s.InnerContent>
+        <s.Title>Lorem Ipsum</s.Title>
+        <s.Text>
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
           aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-        </styles.Text>
+        </s.Text>
         <Button href="/" primary customStyles={{ marginTop: "20px" }}>
           Comprar
         </Button>
-      </styles.InnerContent>
-    </styles.Section>
+      </s.InnerContent>
+    </s.Section>
   );
 };
 
