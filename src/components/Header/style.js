@@ -40,16 +40,20 @@ export const ToggleButton = styled.button`
 export const DesktopHeader = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  padding: 0px 5%;
 `;
 
 export const DesktopIcons = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 45%;
-  margin-left: 45px;
+  min-width: 120px;
+  margin-left: 20px;
+  @media (min-width: 1066px) {
+    margin-left: 60px;
+  }
 
   a {
     margin-top: 5px;

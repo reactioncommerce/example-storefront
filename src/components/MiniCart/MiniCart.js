@@ -206,7 +206,12 @@ export default class MiniCart extends Component {
             onClick={this.handleOnClick}
           >
             {cart && cart.totalItemQuantity > 0 ? (
-              <Badge badgeContent={cart.totalItemQuantity} color="primary" className="cart-icon" classes={{ badge: classes.badge }}>
+              <Badge
+                badgeContent={cart.totalItemQuantity}
+                color="primary"
+                className="cart-icon"
+                classes={{ badge: classes.badge }}
+              >
                 <CartIcon />
               </Badge>
             ) : (
