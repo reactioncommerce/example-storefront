@@ -7,7 +7,7 @@ const CategoryHeader = (props) => {
   return (
     <div>
       <s.CategoryHeader>
-        <s.TotalVisible>Itens <s.Visible>{ page.order.visible }</s.Visible> de { totalPages} </s.TotalVisible>
+        <s.TotalVisible>Itens <s.Visible>{ page.pagination.visible }</s.Visible> de { totalPages} </s.TotalVisible>
         <s.Title>{ page.name } </s.Title>
       </s.CategoryHeader>
       <s.CategoryFilters>

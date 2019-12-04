@@ -26,7 +26,6 @@ export const Item = styled.li`
 export const ItemContent = styled.div`
   display: flex;
   flex-direction: column;
-
 `;
 
 export const ItemTitle = styled.h4`
@@ -38,6 +37,7 @@ export const ItemText = styled.p`
   padding: 0;
   margin: 5px 0 5px;
   display: none;
+
   &.active {
       display: block;
   }
@@ -56,6 +56,7 @@ export const ItemButton = styled.button`
   max-width: 25px;
   font-weight:900;
   padding:0;
+
   &.active {
     width: 40px;
   }

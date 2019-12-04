@@ -4,7 +4,7 @@ import * as s from "./style";
 
 
 const TermsButtons = (props) => {
-  const {currentTab, setCurrentTab} = props;
+  const { currentTab, setCurrentTab } = props;
 
   return (
     <s.Buttons>
@@ -27,7 +27,8 @@ const TermsButtons = (props) => {
 };
 
 TermsButtons.propTypes = {
-  faq: PropTypes.object
+  currentTab: PropTypes.object,
+  setCurrentTab: PropTypes.function
 };
 
 export default TermsButtons;

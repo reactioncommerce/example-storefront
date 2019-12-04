@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Slider from "react-slick";
 
 export const CategoryResults = styled.ul`
   text-align:left;
@@ -102,9 +103,33 @@ export const Span = styled.span`
   
 `;
 
-export const Pagination = styled.div`
-  margin: 0;
+export const Pagination = styled(Slider)`
+  margin: 0 auto;
+  padding: 0;
   font-size: ${({ theme }) => theme.sizes.text.SIZE_4};
   color: ${({ theme }) => theme.colors.secondary};
+  list-style: none;
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+`;
+
+export const PaginationItem = styled.li`
+  max-width: 30px;
+  max-height: 30px;
+  margin: 10px;
+  padding: 7px 12px;
+  border-radius: 5px;
+  font-weight: 900;
+  color: ${({ theme }) => theme.colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  font-size: ${({ theme }) => theme.sizes.text.SIZE_4};
+  &.active {
+    background: ${({ theme }) => theme.colors.primary};
+    color: #fff;
+  }
   
 `;
