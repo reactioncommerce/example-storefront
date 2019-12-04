@@ -5,6 +5,7 @@ import About from "components/About";
 import Team from "components/Team";
 import BrandTabs from "components/BrandTabs";
 import Newsletter from "components/Newsletter";
+import { Container, Row, Col } from "react-grid-system";
 
 const BrandPage = (shop) => {
   const mock = {
@@ -61,14 +62,14 @@ const BrandPage = (shop) => {
   const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : shop.name;
 
   return (
-    <div>
+    <Container fluid>
       <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
       <PageHeader page={mock.page}/>
       <About page={mock.page}/>
       <Team team={mock.page.team}/>
       <BrandTabs tabs={mock.page.tabs}/>
       <Newsletter newsletter={mock.page.newsletter}/>
-    </div>
+    </Container>
   );
 };
 
