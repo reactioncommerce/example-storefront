@@ -5,6 +5,7 @@
  */
 function defineRoutes(routes) {
   routes
+    .add("categories", "/categories", "categories")
     .add("home", "/", "home")
     .add("brand", "/brand", "brand")
     .add("faq", "/faq", "faq")

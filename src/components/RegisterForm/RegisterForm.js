@@ -1,5 +1,5 @@
 import React from "react";
-import { FormControl, Input, InputLabel, Checkbox, FormGroup, FormControlLabel } from "@material-ui/core";
+import { InputLabel, Checkbox, FormGroup } from "@material-ui/core";
 import * as s from "./style";
 
 const RegisterForm = (props) => {

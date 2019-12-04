@@ -19,7 +19,7 @@ const LoginForm = (props) => {
       </FormControl>
       <s.Link>Esqueci minha senha</s.Link>
       <s.Button>Continuar</s.Button>
-      <s.StyledLink href="/sign-up">Criar Conta</s.StyledLink>
+      <s.StyledLink route="/register">Criar Conta</s.StyledLink>
     </s.LoginSection>
   );
 };

@@ -63,5 +63,6 @@ export const ItemButton = styled.button`
 
 export const ItemIcon = styled.i`
   font-weight:900;
+  
 `;
 
