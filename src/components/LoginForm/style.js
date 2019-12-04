@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Col } from "react-grid-system";
 import { FormControl } from "@material-ui/core";
+import Link from "components/Link";
 
 
 export const LoginSection = styled(Col)`
@@ -46,12 +47,12 @@ export const Button = styled.button`
   border: none;
 `;
 
-export const Link = styled.a`
+export const SLink = styled(Link)`
   margin-top: 15px;
   font-size: .8rem;
 `;
 
-export const StyledLink = styled.a`
+export const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.colors.secondary};
   margin-top: 15px;
   font-weight: 900;

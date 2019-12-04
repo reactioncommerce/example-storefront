@@ -18,7 +18,7 @@ const LoginForm = (props) => {
           <InputLabel htmlFor="password">senha</InputLabel>
           <Input id="password" type="password"/>
         </s.StyledFormControl>
-        <s.Link>Esqueci minha senha</s.Link>
+        <s.SLink route="/forgotPassword">Esqueci minha senha</s.SLink>
         <s.Button>Continuar</s.Button>
       </s.Form>
       <s.StyledLink href="/sign-up">Criar Conta</s.StyledLink>

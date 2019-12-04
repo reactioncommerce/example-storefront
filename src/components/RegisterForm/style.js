@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { Input, FormControl, FormControlLabel } from "@material-ui/core";
+import { Col } from "react-grid-system";
+import Link from "components/Link";
 
-export const LoginSection = styled.section`
+export const LoginSection = styled(Col)`
   text-align:center;
   display: flex;
   flex-direction: column;
@@ -22,6 +24,14 @@ export const Title = styled.h2`
 export const StyledFormControl = styled(FormControl)`
   width: 100%;
 `;
+export const Form = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const StyledInput = styled(Input)`
   width: 100%;
 `;
@@ -33,26 +43,13 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
 `;
 
 export const Button = styled.button`
-  margin-top: 25px;
-  width: 80%;
   color: #fff;
-  background: ${({ theme }) => theme.colors.primary};
-  padding: 10px 30px;
-  border-radius: 10px;
-  border: none;
-`;
-
-export const Link = styled.a`
-  margin-top: 15px;
-  font-size: .8rem;
-`;
-
-export const StyledLink = styled.a`
-  color: ${({ theme }) => theme.colors.secondary};
-  margin-top: 15px;
   font-weight: 900;
-  font-size: .9rem;
-  text-transform: uppercase;
+  margin: 25px auto 0;
+  background: ${({ theme }) => theme.colors.primary};
+  padding: 15px 100px;
+  border-radius: 20px;
+  border: none;
 `;
 
 
