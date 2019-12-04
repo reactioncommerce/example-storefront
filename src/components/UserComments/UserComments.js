@@ -24,25 +24,33 @@ const comments = [
     image: "../../static/images/users/user.png",
     comment:
       "“Sed ut perspiciatis unde omnis iste natus inum orit  a error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "
+  },
+  {
+    name: "Usuário 3",
+    info: "Teste",
+    image: "../../static/images/users/user.png",
+    comment:
+      "“Sed ut perspiciatis unde omnis iste natus inum orit  a error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "
   }
 ];
 
 const mobileSettings = {
   className: "center",
   centerMode: true,
-  infinite: true,
-  centerPadding: "60px",
+  infinite: false,
+  centerPadding: "10px",
   slidesToShow: 1,
   speed: 500
 };
 
 const desktopSettings = {
-  dots: false,
+  className: "center",
+  centerMode: true,
   infinite: true,
-  speed: 500,
+  centerPadding: "10px",
   slidesToShow: 3,
-  slidesToScroll: 1,
-  variableWidth: true
+  slidesToScroll: 3,
+  speed: 500
 };
 
 const UserComments = () => {
@@ -84,15 +92,31 @@ const UserComments = () => {
             aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
           </s.SubTitle>
         </s.Header>
-        {/* <s.DesktopSlider>
+        
+        
+        <s.SliderContainer>
           <Slider {...desktopSettings}>
             {comments &&
               comments.length &&
               comments.map((comm, idx) => {
-                return <s.DesktopCommentCard>testexxxxx</s.DesktopCommentCard>;
+                return (
+                  <s.CommentCard className="comment-card-item" key={idx}>
+                    <s.ImageBorder>
+                      <s.UserImage src={comm.image} />
+                    </s.ImageBorder>
+                    <s.CommentBody>
+                      <s.Text>{comm.comment}</s.Text>
+                      <s.CardFooter>
+                        <s.Name>{comm.name}</s.Name>
+                        <s.Info>{comm.info}</s.Info>
+                      </s.CardFooter>
+                    </s.CommentBody>
+                  </s.CommentCard>
+                );
               })}
           </Slider>
-        </s.DesktopSlider> */}
+        </s.SliderContainer>
+
       </Hidden>
     </s.Section>
   );

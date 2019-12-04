@@ -1,12 +1,38 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { breakpoints } from "../../helpers/constants";
 
 export const Section = styled.section`
   height: auto;
   padding-top: 40px;
-  /* padding-bottom: 40px; */
   background-color: #e6feff;
   color: ${({ theme }) => theme.typography.colors.secondary};
+
+  .slick-slider {
+    .slick-prev::before,
+    .slick-next::before {
+      font-size: 30px;
+      color: #757575;
+      opacity: 1;
+    }
+
+    .slick-prev {
+      left: 15px !important;
+      z-index: 999;
+
+      @media (min-width: ${breakpoints.md}) {
+        left: -25px !important;
+      }
+    }
+
+    .slick-next {
+      right: 25px;
+      z-index: 999;
+
+      @media (min-width: ${breakpoints.md}) {
+        right: -15px;
+      }
+    }
+  }
 `;
 
 export const Header = styled.div`
@@ -34,6 +60,11 @@ export const SubTitle = styled.span`
 
 export const SliderContainer = styled.div`
   text-align: center;
+
+  @media (min-width: ${breakpoints.md}) {
+    margin-top: 30px;
+    padding: 0px 100px;
+  }
 `;
 
 export const CommentCard = styled.div`
@@ -43,6 +74,16 @@ export const CommentCard = styled.div`
   position: relative;
   box-shadow: 0 44px 49px 0 rgba(67, 147, 150, 0.22);
   margin-bottom: 30px;
+
+  @media (min-width: ${breakpoints.md}) {
+    max-width: 95%;
+    height: 321px;
+    max-height: 321px;
+    margin-bottom: 80px;
+    box-shadow: 0px 40px 24px -21px rgba(0, 0, 0, 0.25);
+    user-select: none;
+    outline: none;
+  }
 `;
 
 export const CommentBody = styled.div`
@@ -54,6 +95,11 @@ export const CommentBody = styled.div`
   height: 100%;
   padding: 15px;
   margin-top: 30px;
+  text-align: left;
+
+  @media (min-width: ${breakpoints.md}) {
+    padding: 10px 22px 22px;
+  }
 `;
 
 export const ImageBorder = styled.div`
@@ -85,6 +131,11 @@ export const Text = styled.span`
   color: #999999;
   line-height: 20px;
   margin-top: 40px;
+
+  @media (min-width: ${breakpoints.md}) {
+    line-height: 1.5;
+    font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_2};
+  }
 `;
 
 export const CardFooter = styled.div`
@@ -93,67 +144,28 @@ export const CardFooter = styled.div`
   justify-content: flex-start;
   width: 100%;
   margin-top: 15px;
+
+  @media (min-width: ${breakpoints.md}) {
+    margin-top: auto;
+  }
 `;
 
 export const Name = styled.span`
   color: ${({ theme }) => theme.layout.colors.secondary};
   font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_3};
   font-weight: ${({ theme }) => theme.typography.weights.BOLD};
+
+  @media (min-width: ${breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_2};
+  }
 `;
 
 export const Info = styled.span`
   margin-top: 5px;
   color: ${({ theme }) => theme.typography.colors.secondary};
   font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_4};
+
+  @media (min-width: ${breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_2};
+  }
 `;
-
-// export const Comments = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   height: auto;
-//   width: 70%;
-//   box-shadow: 0 44px 49px 0 rgba(67, 147, 150, 0.22);
-//   overflow-x: hidden;
-// `;
-
-// export const DesktopSlider = styled.div`
-//   padding: 30px 0px;
-//   width: 80%;
-//   height: 360px;
-
-//   .slick-track {
-//     display: flex;
-//   }
-//   .slick-slide {
-//     padding: 0 8px;
-
-//     .product-item {
-//       margin-right: 10px;
-//     }
-//   }
-
-//   .slick-slider {
-//     .slick-prev::before,
-//     .slick-next::before {
-//       font-size: 30px;
-//       color: ${({ theme }) => theme.typography.colors.secondary};
-//       opacity: 1;
-//     }
-
-//     .slick-prev {
-//       left: -35px !important;
-//       z-index: 999;
-//     }
-
-//     .slick-next {
-//       right: -20px;
-//       z-index: 999;
-//     }
-//   }
-// `;
-
-// export const DesktopCommentCard = styled.div`
-//   border: 1px solid red;
-//   height: 80%;
-//   width: 355px !important;
-// `;

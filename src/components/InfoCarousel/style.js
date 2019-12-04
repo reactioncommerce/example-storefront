@@ -12,6 +12,13 @@ export const Section = styled.section`
   background-color: ${({ theme }) => theme.layout.backgrounds.primary};
   height: 230px;
   padding: 40px 0px;
+
+  .slick-slider {
+    .slick-arrow {
+      display: none !important;
+    }
+  }
+
   .slick-dots {
     bottom: -35px;
     li {

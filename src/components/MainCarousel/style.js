@@ -14,10 +14,16 @@ const dotStyle = css`
 export const Section = styled.section`
   background-color: ${({ theme }) => theme.layout.backgrounds.primary};
 
+  .slick-slider {
+    .slick-arrow {
+      display: none !important;
+    }
+  }
+
   .slick-dots {
     bottom: 30px;
     left: 15px;
-    width: 100%;
+    width: 95%;
     height: auto;
 
     button {
