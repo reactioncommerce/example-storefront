@@ -62,6 +62,7 @@
     "mdi-material-ui": "~5.9.0",
     "mobx": "~4.9.2",
     "mobx-react": "~5.4.3",
+    "mobx-react-lite": "^1.5.1",
     "next": "~7.0.2",
     "next-routes": "~1.4.2",
     "passport": "~0.4.0",

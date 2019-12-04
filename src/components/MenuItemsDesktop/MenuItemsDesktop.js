@@ -4,28 +4,43 @@ import Link from "components/Link";
 import * as s from "./style";
 
 const MenuItemsDesktop = () => {
-  useEffect(() => {
-    console.log("mounted");
-  }, []);
+  useEffect(() => {}, []);
 
+  const links = [
+    {
+      url: "/",
+      title: "Link"
+    },
+    {
+      url: "/",
+      title: "Link"
+    },
+    {
+      url: "/",
+      title: "Link"
+    },
+    {
+      url: "/",
+      title: "Link"
+    },
+    {
+      url: "/",
+      title: "Link"
+    }
+  ];
   return (
     <s.Items>
-      <Link route="/">Link</Link>
-      <Link route="/">Link</Link>
-      <Link route="/">Link</Link>
-      <Link route="/">Link</Link>
+      {links &&
+        links.length &&
+        links.map((link, idx) => {
+          return (
+            <Link key={idx} route={link.url}>
+              {link.title}
+            </Link>
+          );
+        })}
     </s.Items>
   );
-};
-
-MenuItemsDesktop.propTypes = {
-  size: PropTypes.string,
-  color: PropTypes.string
-};
-
-MenuItemsDesktop.defaultProps = {
-  size: "30px",
-  color: "#333"
 };
 
 export default MenuItemsDesktop;
