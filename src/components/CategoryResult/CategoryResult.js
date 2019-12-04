@@ -5,12 +5,16 @@ import * as s from "./style";
 
 
 const setPagination = (total) => {
-  let array = []
-  for(let i = 0; i < total; i++) {
+  let array = [];
+  for (let i = 0; i < total; i++) {
     array.push(i + 1)
   }
   return array;
 };
+
+const showPageProducts = (order) => {
+
+}
 
 const CategoryResult = (props) => {
   const settings = {
@@ -22,8 +26,8 @@ const CategoryResult = (props) => {
   };
   const { page } = props;
   const totalPages = Math.round(page.products.length / page.pagination.limit);
-  console.log("prod", page.products.length)
-  const pageProducts = page.products.slice(0, page.limit);
+  
+  const pageProducts = page.products.slice(0, page.pagination.limit);
   return (
     <div>
       <CategoryHeader page={page} totalPages={totalPages} />
@@ -44,7 +48,7 @@ const CategoryResult = (props) => {
 
         <s.Pagination {...settings}>
           {setPagination(totalPages).map((pageIndex) => (
-            <s.PaginationItem>{pageIndex}</s.PaginationItem>
+            <s.PaginationItem className={(page.pagination.actual === pageIndex ? "active" : null)}>{pageIndex}</s.PaginationItem>
           ))}
         </s.Pagination>
       </s.CategoryResults>

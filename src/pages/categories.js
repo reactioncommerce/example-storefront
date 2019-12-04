@@ -21,8 +21,8 @@ const Categories = (shop) => {
       banner: "static/images/banner.png",
       pagination: {
         limit: 8,
-        actual: "1",
-        total: "22",
+        actual: 1,
+        total: 22,
         visible: "1-4"
       },
       products: [{

@@ -77,19 +77,20 @@ export const Price = styled.h4`
 
   &::after {
     content: "";
-    width: 40%;
-    border-bottom: 1px solid #333;
-    left: 35px;
+    width: 30%;
+    border-bottom: 1px solid #949494;
+    left: 33px;
     position: absolute;
     top: auto;
     bottom: auto;
+    margin-top: 2px;
   }
   
 `;
 
 export const SpecialPrice = styled.h4`
   margin: 0;
-  font-size: ${({ theme }) => theme.sizes.text.SIZE_4};
+  font-size: ${({ theme }) => theme.sizes.text.SIZE_2};
   font-weight: 900;
   color: ${({ theme }) => theme.colors.gray.COLOR_2};
 
@@ -98,8 +99,9 @@ export const SpecialPrice = styled.h4`
 
 export const Span = styled.span`
   margin: 0;
-  font-size: ${({ theme }) => theme.sizes.text.SIZE_4};
+  font-size: ${({ theme }) => theme.sizes.text.SIZE_2};
   color: ${({ theme }) => theme.colors.secondary};
+  letter-spacing: 2px;
   
 `;
 
