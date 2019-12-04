@@ -1,0 +1,359 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserComments /> Should match the snapshot 1`] = `
+.c4 {
+  -webkit-transition: -webkit-transform 300ms;
+  -webkit-transition: transform 300ms;
+  transition: transform 300ms;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.c14 {
+  -webkit-transition: -webkit-transform 300ms;
+  -webkit-transition: transform 300ms;
+  transition: transform 300ms;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c0 {
+  height: auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #e6feff;
+  color: #4f4d4d;
+}
+
+.c1 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c3 {
+  width: 15%;
+  height: 60px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: auto;
+  width: 70%;
+  box-shadow: 0 44px 49px 0 rgba(67,147,150,0.22);
+  overflow-x: hidden;
+}
+
+.c6 {
+  min-width: 100%;
+  height: auto;
+  margin-top: 25px;
+  -webkit-transition: -webkit-transform 500ms;
+  -webkit-transition: transform 500ms;
+  transition: transform 500ms;
+  -webkit-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  transform: translateX(0px);
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFF;
+  min-width: 100%;
+  height: 100%;
+  padding: 15px;
+}
+
+.c7 {
+  border: 1px solid #00c3cb;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: -25px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.c8 {
+  border: 1px solid #00c3cb;
+  height: 52px;
+  width: 52px;
+  border-radius: 50%;
+}
+
+.c10 {
+  font-size: 10px;
+  color: #999999;
+  line-height: 20px;
+  margin-top: 40px;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.c12 {
+  color: #00c3cb;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.c13 {
+  margin-top: 5px;
+  color: #4f4d4d;
+  font-size: 12px;
+}
+
+<section
+  className="c0"
+>
+  <span
+    className="c1"
+  >
+    Lorem Ipsum
+  </span>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+      onClick={[Function]}
+    >
+      <svg
+        className="c4"
+        direction="left"
+        height="16.216"
+        onClick={[Function]}
+        viewBox="0 0 10 16.216"
+        width="10"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          class="cls-1"
+          d="M10 1.892L8.108 0 0 8.108l8.108 8.108L10 14.324 3.784 8.108z"
+          fill="#757575"
+          id="Shape"
+        />
+      </svg>
+    </div>
+    <div
+      className="c5"
+    >
+      <div
+        className="comment-card c6"
+      >
+        <div
+          className="c7"
+        >
+          <img
+            className="c8"
+            src="../../static/images/users/user.png"
+          />
+        </div>
+        <div
+          className="c9"
+        >
+          <span
+            className="c10"
+          >
+            “Sed ut perspiciatis unde omnis iste natus inum orit  a error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+          </span>
+          <div
+            className="c11"
+          >
+            <span
+              className="c12"
+            >
+              Usuário 1
+            </span>
+            <span
+              className="c13"
+            >
+              Teste
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="comment-card c6"
+      >
+        <div
+          className="c7"
+        >
+          <img
+            className="c8"
+            src="../../static/images/users/user.png"
+          />
+        </div>
+        <div
+          className="c9"
+        >
+          <span
+            className="c10"
+          >
+            “Sed ut perspiciatis unde omnis iste natus inum orit  a error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+          </span>
+          <div
+            className="c11"
+          >
+            <span
+              className="c12"
+            >
+              Usuário 2
+            </span>
+            <span
+              className="c13"
+            >
+              Teste
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="comment-card c6"
+      >
+        <div
+          className="c7"
+        >
+          <img
+            className="c8"
+            src="../../static/images/users/user.png"
+          />
+        </div>
+        <div
+          className="c9"
+        >
+          <span
+            className="c10"
+          >
+            “Sed ut perspiciatis unde omnis iste natus inum orit  a error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+          </span>
+          <div
+            className="c11"
+          >
+            <span
+              className="c12"
+            >
+              Usuário 3
+            </span>
+            <span
+              className="c13"
+            >
+              Teste
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c3"
+      onClick={[Function]}
+    >
+      <svg
+        className="c14"
+        direction="right"
+        height="16.216"
+        onClick={[Function]}
+        viewBox="0 0 10 16.216"
+        width="10"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          class="cls-1"
+          d="M10 1.892L8.108 0 0 8.108l8.108 8.108L10 14.324 3.784 8.108z"
+          fill="#757575"
+          id="Shape"
+        />
+      </svg>
+    </div>
+  </div>
+</section>
+`;

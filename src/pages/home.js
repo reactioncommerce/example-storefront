@@ -1,37 +1,51 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
-import { observer, inject } from "mobx-react";
+import { inject } from "mobx-react";
+import { observer } from "mobx-react-lite";
 import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
+import MainCarousel from "../components/MainCarousel";
+import ProductList from "../components/ProductList";
+import SelectedProducts from "../components/SelectedProducts";
+import CategoriesBlock from "../components/CategoriesBlock";
+import SpecificProduct from "../components/SpecificProduct";
+import UserComments from "../components/UserComments";
+import InfoCarousel from "../components/InfoCarousel";
 
-@withCatalogItems
-@inject("routingStore", "uiStore")
-@observer
-class HomePage extends Component {
-  static propTypes = {
-    routingStore: PropTypes.object,
-    shop: PropTypes.shape({
-      currency: PropTypes.shape({
-        code: PropTypes.string.isRequired
-      })
-    })
-  };
-
-  componentDidMount() {
-    const { routingStore } = this.props;
-    routingStore.setTagId(null);
-  }
-
-  render() {
-    const { shop } = this.props;
+const HomePage = inject(
+  "routingStore",
+  "uiStore"
+)(
+  observer(({ routingStore, shop }) => {
+    // const { shop } = this.props;
     const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : shop.name;
+
+    useEffect(() => {
+      routingStore.setTagId(null);
+    }, []);
 
     return (
       <Fragment>
         <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
+        <MainCarousel />
+        <ProductList />
+        <SelectedProducts />
+        <CategoriesBlock />
+        <SpecificProduct />
+        <UserComments />
+        <InfoCarousel />
       </Fragment>
     );
-  }
-}
+  })
+);
 
-export default HomePage;
+HomePage.propTypes = {
+  routingStore: PropTypes.object,
+  shop: PropTypes.shape({
+    currency: PropTypes.shape({
+      code: PropTypes.string.isRequired
+    })
+  })
+};
+
+export default withCatalogItems(HomePage);

@@ -39,7 +39,9 @@ const theme = {
     fontFamily: "Raleway",
     colors: {
       primary: "#FFF",
-      secondary: "#4f4d4d"
+      secondary: "#4f4d4d",
+      tertiary: "#9c27b1",
+      price: "#00c3cb"
     },
     sizes: {
       title: {
@@ -63,6 +65,10 @@ const theme = {
     }
   },
   layout: {
+    backgrounds: {
+      primary: "#FFF",
+      secondary: "#f6f6f6"
+    },
     colors: {
       primary: "#FFF",
       secondary: "#00c3cb",

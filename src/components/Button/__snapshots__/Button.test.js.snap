@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> Should match the snapshot 1`] = `
+.c0 a,
+.c0 button {
+  border-radius: 20px;
+  text-transform: none;
+  font-size: 12px;
+  font-weight: 700;
+  width: 87px;
+  height: 35px;
+  background-color: #9c27b1;
+  color: #FFF;
+}
+
+.c0 a:hover,
+.c0 button:hover {
+  background-color: #661875;
+  border-color: #661875;
+  box-shadow: none;
+}
+
+<div
+  className="c0"
+>
+  <a
+    className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6"
+    href="/teste"
+    onBlur={[Function]}
+    onContextMenu={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <span
+      className="MuiButton-label-2"
+    >
+      Teste
+    </span>
+    <span
+      className="MuiTouchRipple-root-30"
+    />
+  </a>
+</div>
+`;

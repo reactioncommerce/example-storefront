@@ -1,17 +1,14 @@
 import React from "react";
 import Slider from "react-slick";
-// import Button from "../Button";
+import PropTypes from "prop-types";
 import * as s from "./style";
 
 const settings = {
-  infinite: false,
-  slidesToShow: 2.5,
-  arrows: false,
-  variableWidth: true,
-  swipeToSlide: true,
-  afterChange: (index) => {
-    console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`);
-  }
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1
 };
 
 const products = [
@@ -52,17 +49,9 @@ const products = [
   }
 ];
 
-const ProductList = () => {
+const MainCarousel = ({ fullPage }) => {
   return (
     <s.Section>
-      <s.Header>
-        <s.Title>Lorem Ipsum</s.Title>
-        <s.SectionDescription>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-          aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-        </s.SectionDescription>
-      </s.Header>
-
       <div>
         <Slider {...settings}>
           {products &&
@@ -70,8 +59,16 @@ const ProductList = () => {
             products.map((prod, idx) => {
               return (
                 <div>
-                  <s.Product className="product-item" key={idx}>
-                    <s.ImageContainer src={prod.image} />
+                  <s.Product className="carousel-image-item" key={idx}>
+                    <s.ImageContainer fullPage={fullPage} src={prod.image} />
+                    <s.TextBlock>
+                      <s.InnerTitle> Finibus Bonorum et Malorum</s.InnerTitle>
+                      <s.InnerDescription>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+                        beatae vitae dicta sunt explicabo.
+                      </s.InnerDescription>
+                    </s.TextBlock>
                   </s.Product>
                 </div>
               );
@@ -82,4 +79,12 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+MainCarousel.propTypes = {
+  fullPage: PropTypes.bool
+};
+
+MainCarousel.defaultProps = {
+  fullPage: false
+};
+
+export default MainCarousel;
