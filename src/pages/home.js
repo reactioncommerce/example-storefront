@@ -10,6 +10,7 @@ import SelectedProducts from "../components/SelectedProducts";
 import CategoriesBlock from "../components/CategoriesBlock";
 import SpecificProduct from "../components/SpecificProduct";
 import UserComments from "../components/UserComments";
+import InfoCarousel from "../components/InfoCarousel";
 
 const HomePage = inject(
   "routingStore",
@@ -32,6 +33,7 @@ const HomePage = inject(
         <CategoriesBlock />
         <SpecificProduct />
         <UserComments />
+        <InfoCarousel />
       </Fragment>
     );
   })
