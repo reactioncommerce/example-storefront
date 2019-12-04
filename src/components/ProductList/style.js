@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { breakpoints } from "../../helpers/constants";
 
 export const Section = styled.section`
@@ -59,16 +59,25 @@ export const Product = styled.div`
   min-height: 250px;
   height: auto;
   width: 157px;
+  cursor: pointer;
+  outline: none;
 `;
 
 export const ImageContainer = styled.div`
   height: ${({ desktopMode }) => (desktopMode ? "358px" : "214px")};
   width: ${({ desktopMode }) => (desktopMode ? "260px" : "156px")};
   position: relative;
-  background: ${({ src }) => (src ? `url(${src})` : "")};
-  background-size: cover;
-  background-position: center;
   border-radius: 5px;
+  ${({ hasImage }) =>
+    hasImage
+      ? css`
+          background: ${({ src }) => (src ? `url(${src})` : "")};
+          background-size: cover;
+          background-position: center;
+        `
+      : css`
+          background-color: ${({ theme }) => theme.layout.backgrounds.secondary};
+        `}
 `;
 
 export const ButtonContainer = styled.div`
@@ -98,11 +107,6 @@ export const ProductPrice = styled.span`
   margin-top: 5px;
 `;
 
-export const ProductInnerDescription = styled.span`
-  color: ${({ theme }) => theme.typography.colors.tertiary};
-  font-size: ${({ desktopMode, theme }) => desktopMode && theme.typography.sizes.text.SIZE_3};
-`;
-
 export const DesktopContainerList = styled.ul`
   margin: 0px;
   padding: 75px 125px;
@@ -117,6 +121,8 @@ export const DesktopProduct = styled.li`
   float: left;
   height: auto;
   width: 260px;
+  cursor: pointer;
+  outline: none;
 `;
 
 export const BreakLine = styled.div`
