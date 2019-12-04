@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Input, FormControl, FormControlLabel } from "@material-ui/core";
 import { Col } from "react-grid-system";
-import Link from "components/Link";
 
 export const LoginSection = styled(Col)`
   text-align:center;

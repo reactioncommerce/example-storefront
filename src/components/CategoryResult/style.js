@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import Slider from "react-slick";
+import { Col, Row } from "react-grid-system";
 
-export const CategoryResults = styled.ul`
+export const CategoryResults = styled(Row)`
   text-align:left;
   position: relative;
   list-style: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 24px;
-  margin: 0 -24px;
+
   border-width: 1px 0 1px 0;
   border-color: #c1c1c1;
   flex-wrap:wrap;
@@ -30,8 +30,7 @@ export const Button = styled.button`
   bottom: 15px;
 `;
 
-export const Product = styled.li`
-  width: 48%;
+export const Product = styled(Col)`
   position: relative;
   margin: 10px 0;
   display: flex;
@@ -53,12 +52,14 @@ export const ProductImage = styled.div`
   border-radius: 7px;
   overflow: hidden;
   display:flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
 `;
 
 export const Image = styled.img`
   max-width: 100%;
+  width: 100%;
 `;
 
 export const ProductTitle = styled.h3`

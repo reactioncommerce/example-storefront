@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CategoryHeader from "components/CategoryHeader";
+import { Container } from "react-grid-system";
+
 import * as s from "./style";
 
 
@@ -26,14 +28,13 @@ const CategoryResult = (props) => {
   };
   const { page } = props;
   const totalPages = Math.round(page.products.length / page.pagination.limit);
-  
   const pageProducts = page.products.slice(0, page.pagination.limit);
   return (
-    <div>
+    <Container>
       <CategoryHeader page={page} totalPages={totalPages} />
       <s.CategoryResults>
         { pageProducts.map((product) => (
-          <s.Product>
+          <s.Product component="li" xs={6} md={3}>
             <s.ProductImage>
               <s.Image src={product.photo}/>
               <s.Button>Comprar</s.Button>
@@ -52,7 +53,7 @@ const CategoryResult = (props) => {
           ))}
         </s.Pagination>
       </s.CategoryResults>
-    </div>
+    </Container>
   );
 };
 

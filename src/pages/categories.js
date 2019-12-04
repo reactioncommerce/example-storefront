@@ -2,6 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import Breadcrumb from "components/Breadcrumb";
 import CategoryResult from "components/CategoryResult";
+import { Row, Container } from "react-grid-system";
 
 const Categories = (shop) => {
   const mock = {
@@ -29,13 +30,13 @@ const Categories = (shop) => {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod1.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod1.png"
 
       }, {
         title: "Vestido",
@@ -318,12 +319,18 @@ const Categories = (shop) => {
   };
 
   return (
-    <div>
+    <Container fluid>
       <Helmet title={"Categories"} meta={[{ name: "description", content: shop && shop.description }]} />
-      <Breadcrumb pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/>
-      <CategoryResult page={mock.page}/>
+      <Container>
+        <Row align="flex-start" justify="flex-start">
+          <Breadcrumb pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/> 
+        </Row>
+      </Container>
+      <Row direction="column" align="center" justify="center">
+        <CategoryResult page={mock.page}/>
+      </Row>
 
-    </div>
+    </Container>
   );
 };
 
