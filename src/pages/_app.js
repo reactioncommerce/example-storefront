@@ -2,7 +2,7 @@ import NextApp, { Container } from "next/app";
 import React from "react";
 import { ThemeProvider as SCThemeProvider } from "styled-components";
 import { StripeProvider } from "react-stripe-elements";
-import { MuiThemeProvider } from "@material-ui/core/styles"
+import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import JssProvider from "react-jss/lib/JssProvider";
 import { Provider as MobxProvider } from "mobx-react";
@@ -74,7 +74,15 @@ export default class App extends NextApp {
   }
 
   render() {
-    const { Component, pageProps, shop, shop: { defaultNavigationTree: navItems }, tags, viewer, ...rest } = this.props;
+    const {
+      Component,
+      pageProps,
+      shop,
+      shop: { defaultNavigationTree: navItems },
+      tags,
+      viewer,
+      ...rest
+    } = this.props;
     const { route } = this.props.router;
     const { stripe } = this.state;
 
