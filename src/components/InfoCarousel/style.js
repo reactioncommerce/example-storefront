@@ -11,7 +11,7 @@ const dotStyle = css`
   border-radius: 1px;
 `;
 
-export const Section = styled(Container)`
+export const Section = styled(Row)`
   background-color: ${({ theme }) => theme.layout.backgrounds.primary};
   padding-top: 80px;
   padding-bottom: 80px;

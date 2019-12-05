@@ -32,7 +32,8 @@ const infos = [
 ];
 
 const InfoCarousel = () => (
-  <s.Section fluid>
+  <s.Section>
+    <Col>
     <Hidden md lg xl>
       <Slider {...settings}>
         {infos &&
@@ -75,6 +76,7 @@ const InfoCarousel = () => (
 
       </Row>
     </Hidden>
+    </Col>
   </s.Section>
 );
 
