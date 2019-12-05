@@ -13,10 +13,10 @@ const dotStyle = css`
 
 export const Section = styled(Row)`
   background-color: ${({ theme }) => theme.layout.backgrounds.primary};
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 20px;
+  padding-bottom: 50px;
 
-  /* .slick-slider {
+  .slick-slider {
     .slick-arrow {
       display: none !important;
     }
@@ -43,9 +43,13 @@ export const Section = styled(Row)`
         }
       }
     }
-  } */
+  }
   @media (min-width: ${breakpoints.md}) {
     background: #f1f1f1;
+    height: 350px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
   }
 `;
 
@@ -54,6 +58,7 @@ export const Info = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 `;
 
 export const ImageContainer = styled.div`

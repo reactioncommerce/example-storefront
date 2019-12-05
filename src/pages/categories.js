@@ -259,7 +259,7 @@ const Categories = (shop) => {
         <Row direction="column" align="center" justify="center">
           <CategoryResult page={mock.page}/>
         </Row>
-      <InfoCarousel/>
+        <InfoCarousel/>
       </Container>
     </div>
   );
