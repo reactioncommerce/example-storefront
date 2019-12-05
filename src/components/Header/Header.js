@@ -11,6 +11,7 @@ import SearchField from "../SearchField/SearchField";
 import UserIcon from "../Icons/User";
 import FavoriteIcon from "../Icons/Favorite";
 import * as s from "./style";
+import { CategoriesDrawer } from "../CategoriesDrawer";
 
 const Header = inject("uiStore")(
   observer(({ uiStore }) => {
@@ -19,39 +20,38 @@ const Header = inject("uiStore")(
     };
 
     return (
-      <div>
-        <s.Content>
-          <Hidden mdUp>
-            <s.ToggleButton onClick={handleNavigationToggleClick}>
-              <HamburgerIcon />
-            </s.ToggleButton>
+      <s.Content>
+        <Hidden mdUp>
+          <s.ToggleButton onClick={handleNavigationToggleClick}>
+            <HamburgerIcon />
+          </s.ToggleButton>
+          <Link route={"/"}>
+            <s.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
+          </Link>
+          <MiniCart />
+        </Hidden>
+
+        <Hidden smDown>
+          <s.DesktopHeader>
             <Link route={"/"}>
               <s.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
             </Link>
-            <MiniCart />
-          </Hidden>
-
-          <Hidden smDown>
-            <s.DesktopHeader>
-              <Link route={"/"}>
-                <s.Logo alt={"Logo"} src={"../../static/images/logo.png"} />
+            <MenuItemsDesktop />
+            <SearchField desktopMode />
+            <s.DesktopIcons>
+              <Link route="/">
+                <FavoriteIcon />
               </Link>
-              <MenuItemsDesktop />
-              <SearchField desktopMode />
-              <s.DesktopIcons>
-                <Link route="/">
-                  <FavoriteIcon />
-                </Link>
-                <Link route="/">
-                  <UserIcon />
-                </Link>
-                <MiniCart />
-              </s.DesktopIcons>
-            </s.DesktopHeader>
-          </Hidden>
-          <NavigationMobile />
-        </s.Content>
-      </div>
+              <Link route="/">
+                <UserIcon />
+              </Link>
+              <MiniCart />
+            </s.DesktopIcons>
+          </s.DesktopHeader>
+        </Hidden>
+        <CategoriesDrawer />
+        <NavigationMobile />
+      </s.Content>
     );
   })
 );

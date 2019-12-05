@@ -13,6 +13,8 @@ const muiStyles = (theme) => ({
     backgroundColor: "#9c27b1",
     width: "100%",
     height: "23px",
+    position: "relative",
+    zIndex: "2000",
     [theme.breakpoints.up("md")]: {
       height: "32px"
     }
