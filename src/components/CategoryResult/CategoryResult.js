@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CategoryHeader from "components/CategoryHeader";
-import { Container } from "react-grid-system";
+import { Container, Row } from "react-grid-system";
 
 import * as s from "./style";
 
@@ -32,18 +32,20 @@ const CategoryResult = (props) => {
   return (
     <Container>
       <CategoryHeader page={page} totalPages={totalPages} />
-      <s.CategoryResults>
+      <s.CategoryResults component="ul">
         { pageProducts.map((product) => (
           <s.Product component="li" xs={6} md={3}>
-            <s.ProductImage>
-              <s.Image src={product.photo}/>
-              <s.Button>Comprar</s.Button>
-            </s.ProductImage>
-            <s.Description>
-              <s.ProductTitle>{product.title}</s.ProductTitle>
-              <s.Price>de $ {product.price}</s.Price>
-              <s.SpecialPrice>por <s.Span>${product.cashPrice}</s.Span> á vista</s.SpecialPrice>
-            </s.Description>
+            <s.Content>
+              <s.ProductImage>
+                <s.Image src={product.photo}/>
+                <s.Button>Comprar</s.Button>
+              </s.ProductImage>
+              <s.Description>
+                <s.ProductTitle>{product.title}</s.ProductTitle>
+                <s.Price>de $ {product.price}</s.Price>
+                <s.SpecialPrice>por <s.Span>${product.cashPrice}</s.Span> á vista</s.SpecialPrice>
+              </s.Description>
+            </s.Content>
           </s.Product>
         )) }
 

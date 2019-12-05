@@ -1,4 +1,7 @@
 import styled, { css } from "styled-components";
+import { Col, Row, Container, Hidden } from "react-grid-system";
+import { breakpoints } from "../../helpers/constants";
+import Slider from "react-slick";
 
 const dotStyle = css`
   opacity: 1;
@@ -8,12 +11,12 @@ const dotStyle = css`
   border-radius: 1px;
 `;
 
-export const Section = styled.section`
+export const Section = styled(Container)`
   background-color: ${({ theme }) => theme.layout.backgrounds.primary};
-  height: 230px;
-  padding: 40px 0px;
+  padding-top: 80px;
+  padding-bottom: 80px;
 
-  .slick-slider {
+  /* .slick-slider {
     .slick-arrow {
       display: none !important;
     }
@@ -40,8 +43,12 @@ export const Section = styled.section`
         }
       }
     }
+  } */
+  @media (min-width: ${breakpoints.md}) {
+    background: #f1f1f1;
   }
 `;
+
 export const Info = styled.div`
   display: flex;
   flex-direction: column;
@@ -57,6 +64,7 @@ export const ImageContainer = styled.div`
   height: 42px;
   width: 50px;
 `;
+
 export const InnerTitle = styled.span`
   margin-top: 10px;
   font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_1};
@@ -72,4 +80,27 @@ export const InnerSubTitle = styled.span`
   margin-top: 5px;
   line-height: 1.33;
   text-align: center;
+`;
+
+export const StyledCol = styled(Col)`
+  text-align: center;
+  &:not(:last-child) {
+    border-right: 2px solid #c1c1c1;
+  }
+`;
+export const StyledSmCol = styled(Col)`
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+`;
+
+export const StyledHidden = styled(Hidden)`
+width: 100%;
+  &:not(:last-child) {
+    border-right: 2px solid #c1c1c1;
+  }
 `;

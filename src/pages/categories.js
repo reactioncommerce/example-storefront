@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import Breadcrumb from "components/Breadcrumb";
 import CategoryResult from "components/CategoryResult";
 import { Row, Container } from "react-grid-system";
+import InfoCarousel from "../components/InfoCarousel";
 
 const Categories = (shop) => {
   const mock = {
@@ -36,301 +37,231 @@ const Categories = (shop) => {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
+        photo: "static/images/home/prod2.png"
+
+      }, {
+        title: "Vestido",
+        price: "99.99",
+        cashPrice: "79.99",
+        photo: "static/images/home/prod3.jpg"
+
+      }, {
+        title: "Vestido",
+        price: "99.99",
+        cashPrice: "79.99",
+        photo: "static/images/home/prod4.jpg"
+
+      }, {
+        title: "Vestido",
+        price: "99.99",
+        cashPrice: "79.99",
         photo: "static/images/home/prod1.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod2.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod3.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod4.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod1.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod2.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod5.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod4.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod1.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod2.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod3.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod4.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod1.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod2.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod3.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod4.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod1.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod2.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod5.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod4.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod1.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod2.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod3.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod4.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod1.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod2.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod3.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod4.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod1.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod2.png"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod5.jpg"
 
       }, {
         title: "Vestido",
         price: "99.99",
         cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "static/images/vestido.png"
+        photo: "static/images/home/prod4.jpg"
 
       }]
     }
   };
 
   return (
-    <Container fluid>
-      <Helmet title={"Categories"} meta={[{ name: "description", content: shop && shop.description }]} />
-      <Container>
-        <Row align="flex-start" justify="flex-start">
-          <Breadcrumb pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/> 
+    <div>
+      <Container fluid>
+        <Helmet title={"Categories"} meta={[{ name: "description", content: shop && shop.description }]} />
+        <Container>
+          <Row align="flex-start" justify="flex-start">
+            <Breadcrumb pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/> 
+          </Row>
+        </Container>
+        <Row direction="column" align="center" justify="center">
+          <CategoryResult page={mock.page}/>
         </Row>
+      <InfoCarousel/>
       </Container>
-      <Row direction="column" align="center" justify="center">
-        <CategoryResult page={mock.page}/>
-      </Row>
-
-    </Container>
+    </div>
   );
 };
 

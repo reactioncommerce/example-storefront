@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Slider from "react-slick";
 import { Col, Row } from "react-grid-system";
+import { breakpoints } from "../../helpers/constants";
 
 export const CategoryResults = styled(Row)`
   text-align:left;
@@ -9,7 +10,7 @@ export const CategoryResults = styled(Row)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  padding: 30px 0 50px;
   border-width: 1px 0 1px 0;
   border-color: #c1c1c1;
   flex-wrap:wrap;
@@ -40,10 +41,20 @@ export const Product = styled(Col)`
   z-index: 3;
   height: auto;
 `;
+export const Content = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 export const Description = styled.div`
   padding: 10px 0;
   position: relative;
+  width: 159px;
+  @media (min-width: ${breakpoints.md}) {
+    width: 206px;
+    }
 
 `;
 
@@ -52,14 +63,22 @@ export const ProductImage = styled.div`
   border-radius: 7px;
   overflow: hidden;
   display:flex;
-  width: 100%;
+  width: 159px;
+  height:  217px;
+  max-height:  217px;
   align-items: center;
   justify-content: center;
+  @media (min-width: ${breakpoints.md}) {
+    width: 206px;
+    height:  260px;
+    max-height:  260px;
+    }
 `;
 
 export const Image = styled.img`
   max-width: 100%;
-  width: 100%;
+    height: auto;
+    width: 100%;
 `;
 
 export const ProductTitle = styled.h3`
@@ -78,13 +97,13 @@ export const Price = styled.h4`
 
   &::after {
     content: "";
-    width: 30%;
+    width: 50px;
     border-bottom: 1px solid #949494;
-    left: 33px;
+    left: 29px;
     position: absolute;
     top: auto;
     bottom: auto;
-    margin-top: 2px;
+    margin-top: 1px;
   }
   
 `;
@@ -94,7 +113,6 @@ export const SpecialPrice = styled.h4`
   font-size: ${({ theme }) => theme.sizes.text.SIZE_2};
   font-weight: 900;
   color: ${({ theme }) => theme.colors.gray.COLOR_2};
-
   
 `;
 
@@ -107,7 +125,7 @@ export const Span = styled.span`
 `;
 
 export const Pagination = styled(Slider)`
-  margin: 0 auto;
+  margin: 50px auto 0;
   padding: 0;
   font-size: ${({ theme }) => theme.sizes.text.SIZE_4};
   color: ${({ theme }) => theme.colors.secondary};
@@ -131,8 +149,7 @@ export const PaginationItem = styled.li`
   border: 1px solid ${({ theme }) => theme.colors.primary};
   font-size: ${({ theme }) => theme.sizes.text.SIZE_4};
   &.active {
-    background: ${({ theme }) => theme.colors.primary};
-    color: #fff;
+    background: ${({ theme }) => theme.colors.gray.COLOR_5};
   }
   
 `;
