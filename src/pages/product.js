@@ -49,7 +49,7 @@ const ProductDetailPage =  inject(
   };
 
   return (
-    <Container fluid>
+    <Container style={{ background: "#fafafa" }} fluid>
       <Row align="center" justify="start">
         <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
       </Row>
