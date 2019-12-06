@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   flex: 0 0 auto;
   font-family: ${({ theme }) => theme.typography.fontFamily};
+  flex: 1 1 auto;
+  overflow-y: auto;
+  width: 320px;
 
   button {
     display: flex;
