@@ -15,29 +15,34 @@ import InfoCarousel from "../components/InfoCarousel";
 const HomePage = inject(
   "routingStore",
   "uiStore"
-)(observer(({ routingStore, shop }) => {
-  // const { shop } = this.props;
-  const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : shop.name;
+)(
+  observer(({ routingStore, shop, catalogItems, isLoadingCatalogItems }) => {
+    // const { shop } = this.props;
+    const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : shop.name;
 
-  useEffect(() => {
-    routingStore.setTagId(null);
-  }, []);
+    useEffect(() => {
+      routingStore.setTagId(null);
+    }, []);
 
-  return (
-    <Fragment>
-      <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
-      <MainCarousel />
-      <ProductList />
-      <SelectedProducts />
-      <CategoriesBlock />
-      <SpecificProduct />
-      <UserComments />
-      <InfoCarousel />
-    </Fragment>
-  );
-}));
+    return (
+      <Fragment>
+        <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
+        <MainCarousel />
+        <ProductList catalogItems={catalogItems} isLoadingCatalogItems={isLoadingCatalogItems} />
+        <SelectedProducts />
+        <CategoriesBlock />
+        <SpecificProduct />
+        <UserComments />
+        <InfoCarousel />
+      </Fragment>
+    );
+  })
+);
 
 HomePage.propTypes = {
+  catalogItems: PropTypes.array,
+  catalogItemsPageInfo: PropTypes.object,
+  isLoadingCatalogItems: PropTypes.bool,
   routingStore: PropTypes.object,
   shop: PropTypes.shape({
     currency: PropTypes.shape({
