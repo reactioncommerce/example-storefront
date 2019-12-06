@@ -4,8 +4,11 @@ import Helmet from "react-helmet";
 import withCart from "containers/cart/withCart";
 import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import ProductDetail from "components/ProductDetail";
+import Breadcrumb from "components/Breadcrumb";
+import Grid from "@material-ui/core/Grid";
 import PageLoading from "components/PageLoading";
 import ErrorPage from "./_error";
+import product from "./PRODUCT_MOCK.json";
 
 @withCart
 @withCatalogItemProduct
@@ -40,11 +43,12 @@ class ProductDetailPage extends Component {
   buildJSONLd() {
     const { product, shop } = this.props;
 
+
     if (!product || !shop) return "";
 
     const currencyCode = shop.currency.code || "USD";
     const priceData = product.pricing[0];
-    const images = product.media.map((image) => image.URLs.original);
+    // const images = product.media.map((image) => image.URLs.original);
 
     let productAvailability = "http://schema.org/InStock";
     if (product.isLowQuantity) {
@@ -58,18 +62,37 @@ class ProductDetailPage extends Component {
     }
 
     // Recommended data from https://developers.google.com/search/docs/data-types/product
+    // const productJSON = {
+    //   "@context": "http://schema.org/",
+    //   "@type": "Product",
+    //   "brand": product.vendor,
+    //   "description": product.description,
+    //   "image": images,
+    //   "name": product.title,
+    //   "sku": product.sku,
+    //   "offers": {
+    //     "@type": "Offer",
+    //     "priceCurrency": currencyCode,
+    //     "price": priceData.minPrice,
+    //     "availability": productAvailability,
+    //     "seller": {
+    //       "@type": "Organization",
+    //       "name": shop.name
+    //     }
+    //   }
+    // };
     const productJSON = {
       "@context": "http://schema.org/",
       "@type": "Product",
-      "brand": product.vendor,
-      "description": product.description,
-      "image": images,
-      "name": product.title,
+      "brand": "Nike",
+      "description": "Vestido com pano leve para usar na praia.",
+      "image": ["static/images/home/prod1.png", "static/images/home/prod2.png", "static/images/home/prod3.jpg"],
+      "name": "Vestido de Verão",
       "sku": product.sku,
       "offers": {
         "@type": "Offer",
-        "priceCurrency": currencyCode,
-        "price": priceData.minPrice,
+        "priceCurrency": "R$",
+        "price": 19.99,
         "availability": productAvailability,
         "seller": {
           "@type": "Organization",
@@ -82,9 +105,8 @@ class ProductDetailPage extends Component {
   }
 
   renderMainArea() {
-    const { addItemsToCart, isLoadingProduct, product, shop } = this.props;
+    const { addItemsToCart, isLoadingProduct,  shop } = this.props;
     const currencyCode = (shop && shop.currency.code) || "USD";
-
     if (isLoadingProduct) return <PageLoading />;
 
     if (!product) return <ErrorPage shop={shop} subtitle="Not Found" />;
@@ -96,21 +118,50 @@ class ProductDetailPage extends Component {
         product={product}
         shop={shop}
       />
+
     );
   }
 
   render() {
-    const { product, shop } = this.props;
-
+    const { shop } = this.props;
+    const mock = {
+      page: {
+        name: product.slug,
+        breadcrumb: {
+          link: `/product/${product.slug}`,
+          root: {
+            name: "Produto",
+            link: "/product"
+          }
+        },
+        title: "About us !",
+        description: `In sit amet quam nec lacus sodales facilisis ac quis sapien. Morbi gravida pellentesque nunc, sed 
+        imperdiet urna dictum nec. Nam et fringilla ante. Donec placerat tellus nunc, nec aliquam ipsum tempor at. 
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. P`,
+        banner: "static/images/banner.png",
+        pagination: {
+          limit: 8,
+          actual: 1,
+          total: 22,
+          visible: "1-4"
+        },
+        product
+      }
+    };
     return (
-      <Fragment>
-        <Helmet
-          title={`${product && product.title} | ${shop && shop.name}`}
-          meta={[{ name: "description", content: product && product.description }]}
-          script={[{ type: "application/ld+json", innerHTML: this.buildJSONLd() }]}
-        />
-        {this.renderMainArea()}
-      </Fragment>
+      <Grid container direction="row" justify="center" alignItems="center" >
+        <Grid item xs={12}>
+          <Helmet
+            title={`${product && product.title} | ${shop && shop.name}`}
+            meta={[{ name: "description", content: product && product.description }]}
+            script={[{ type: "application/ld+json", innerHTML: this.buildJSONLd() }]}
+          />
+          <Grid container>
+            <Breadcrumb pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/>
+          </Grid>
+          {this.renderMainArea()}
+        </Grid>
+      </Grid>
     );
   }
 }

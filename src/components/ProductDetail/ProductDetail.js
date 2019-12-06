@@ -19,6 +19,8 @@ import variantById from "lib/utils/variantById";
 import trackProduct from "lib/tracking/trackProduct";
 import TRACKING from "lib/tracking/constants";
 import trackCartItems from "lib/tracking/trackCartItems";
+import Slider from "react-slick";
+import product from "pages/PRODUCT_MOCK.json";
 
 const { CART_VIEWED, PRODUCT_ADDED, PRODUCT_VIEWED } = TRACKING;
 
@@ -224,7 +226,7 @@ class ProductDetail extends Component {
     const {
       classes,
       currencyCode,
-      product,
+      // product,
       routingStore,
       theme,
       uiStore: { pdpSelectedOptionId, pdpSelectedVariantId },
@@ -258,12 +260,18 @@ class ProductDetail extends Component {
 
     const productPrice = this.determineProductPrice();
     const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
-
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
     // Phone size
     if (isWidthDown("sm", width)) {
       return (
         <Fragment>
-          <div className={classes.section}>
+          {/* <div className={classes.section}>
             <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
             <div className={classes.info}>
               <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
@@ -299,14 +307,29 @@ class ProductDetail extends Component {
 
           <div className={classes.section}>
             <ProductDetailDescription>{product.description}</ProductDetailDescription>
-          </div>
+          </div> */}
+          {/* <div className={classes.section}> */}
+          {/* <MediaGallery mediaItems={pdpMediaItems} /> */}
+          
+          <Slider {...settings}>
+            { product.media.map((photo) => (
+              <div>
+                <p>{photo}</p>
+              <s.Image src={photo} key={photo} alt=""/>
+              </div>
+            ))}
+          </Slider>
+          {/* </div> */}
+          <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
+
         </Fragment>
+
       );
     }
 
     return (
       <Fragment>
-        <Grid container spacing={theme.spacing.unit * 5}>
+        {/* <Grid container spacing={theme.spacing.unit * 5}>
           <Grid item className={classes.breadcrumbGrid} xs={12}>
             <Breadcrumbs isPDP tagId={routingStore.tagId} product={product} />
           </Grid>
@@ -343,7 +366,7 @@ class ProductDetail extends Component {
               variants={product.variants}
             />
           </Grid>
-        </Grid>
+        </Grid> */}
       </Fragment>
     );
   }

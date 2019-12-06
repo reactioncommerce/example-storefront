@@ -7,7 +7,8 @@ export const BreacrumbList = styled.ul`
   display: flex;
     align-items: center;
     justify-content: flex-start;
-  padding: 0;
+  padding: 0 20px;
+
 `;
 
 
