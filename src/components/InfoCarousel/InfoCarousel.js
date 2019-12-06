@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
-import { Row, Col, Hidden, Container } from "react-grid-system";
+import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
+import { Row, Col, Hidden } from "react-grid-system";
 
 import * as s from "./style";
 
@@ -11,7 +12,6 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1
 };
-
 
 const infos = [
   {
@@ -47,7 +47,7 @@ const InfoCarousel = () => (
                 </s.Info>
               </s.StyledSmCol>
             ))}
-        </Slider >
+        </Slider>
       </Hidden>
       <Hidden xs sm>
         <Row>
@@ -72,11 +72,10 @@ const InfoCarousel = () => (
               <s.InnerSubTitle>{infos[2].subtitle}</s.InnerSubTitle>
             </s.Info>
           </s.StyledCol>
-
         </Row>
       </Hidden>
     </Col>
   </s.Section>
 );
 
-export default InfoCarousel;
+export default withWidth()(InfoCarousel);

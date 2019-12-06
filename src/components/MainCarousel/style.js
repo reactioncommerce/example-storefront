@@ -5,8 +5,8 @@ const dotStyle = css`
   background: white;
   content: "";
   opacity: 1;
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   margin-left: 5px;
   border-radius: 1px;
 `;
