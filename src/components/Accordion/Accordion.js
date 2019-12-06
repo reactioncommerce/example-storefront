@@ -4,14 +4,14 @@ import * as s from "./style";
 
 
 const Accordion = (props) => {
-  const { title, items } = props.array;
+  const { title, array } = props;
   const [currentFaq, setCurrentFaq] = useState(0);
 
   return (
     <s.AccordionSection>
-      <s.Title>{title}</s.Title>
+      <s.Title>{title || null}</s.Title>
       <s.AccordionItems>
-        {items.map((item, index) => (
+        {array.map((item, index) => (
           <s.Item onClick={() => setCurrentFaq(index)}>
             <s.ItemContent>
               <s.ItemTitle>

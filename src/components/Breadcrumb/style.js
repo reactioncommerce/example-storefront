@@ -5,9 +5,10 @@ export const BreacrumbList = styled.ul`
   text-align:center;
   list-style: none;
   display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  padding: 0 20px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  width: 100%;
 
 `;
 
@@ -15,6 +16,7 @@ export const BreacrumbList = styled.ul`
 export const Item = styled.li`
   font-size: .8rem;
   color: ${({ theme }) => theme.colors.gray.COLOR_2};
+  
 `;
 
 export const Separator = styled.span`

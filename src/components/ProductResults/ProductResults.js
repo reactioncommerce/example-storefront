@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import ResultsHeader from "components/ResultsHeader";
 import { Container, Row } from "react-grid-system";
+import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
 
 import * as s from "./style";
 
@@ -64,4 +65,4 @@ ProductResults.propTypes = {
 };
 
 
-export default ProductResults;
+export default withWidth()(ProductResults);

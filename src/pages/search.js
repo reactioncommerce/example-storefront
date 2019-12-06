@@ -7,12 +7,14 @@ import { Row, Container } from "react-grid-system";
 import { inject } from "mobx-react";
 import { observer } from "mobx-react-lite";
 import InfoCarousel from "components/InfoCarousel";
+import PRODUCTS_MOCK from "pages/PRODUCTS_MOCK.json";
 
 
 const Search = inject("routingStore")(observer(({ routingStore }) => {
+  console.log(routingStore.query.slugOrId)
   const mock = {
     page: {
-      name: "slugOrId",
+      name: routingStore.query.slugOrId,
       breadcrumb: {
         link: "`/search/`",
         root: {
@@ -31,49 +33,7 @@ const Search = inject("routingStore")(observer(({ routingStore }) => {
         total: 22,
         visible: "1-4"
       },
-      products: [{
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "../static/images/home/prod1.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "../static/images/home/prod2.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "../static/images/home/prod3.jpg"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "../static/images/home/prod4.jpg"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "../static/images/home/prod1.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "../static/images/home/prod2.png"
-
-      }, {
-        title: "Vestido",
-        price: "99.99",
-        cashPrice: "79.99",
-        photo: "../static/images/home/prod3.jpg"
-
-      }]
+      products: PRODUCTS_MOCK
     }
   };
   return (

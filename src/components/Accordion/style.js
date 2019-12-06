@@ -9,8 +9,10 @@ export const Title = styled.h2`
 `;
 
 export const AccordionItems = styled.ul`
-  padding: 0;
+  padding: 0 20px;
   list-style: none;
+  text-align: center;
+
 `;
 
 export const Item = styled.li`
@@ -20,26 +22,37 @@ export const Item = styled.li`
   display: flex;
   flex-direction: row;
   align-items:center;
+  text-align: center;
   justify-content: space-between;
-
+  position: relative;
 `;
 export const ItemContent = styled.div`
   display: flex;
   flex-direction: column;
+  width:100%;
+
 `;
 
 export const ItemTitle = styled.h4`
   padding: 0;
+  text-align: center;
+  width:100%;
   margin: 0;
 `;
 
 export const ItemText = styled.p`
   padding: 0;
-  margin: 5px 0 5px;
-  display: none;
-
+  overflow: hidden;
+  height:0;
+  margin: 0px;
+  transition: all .3s;
   &.active {
-      display: block;
+      margin: 20px 0 5px;
+    transition: all .0s;
+    padding: 20px 0 5px;
+    min-height: 200px;
+    height: auto;
+
   }
 `;
 
@@ -56,7 +69,9 @@ export const ItemButton = styled.button`
   max-width: 25px;
   font-weight:900;
   padding:0;
-
+  position: absolute;
+  right: 25px;
+  top: 20px;
   &.active {
     width: 40px;
   }

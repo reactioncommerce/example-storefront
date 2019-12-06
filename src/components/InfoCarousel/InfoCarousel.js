@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
+import withWidth from "@material-ui/core/withWidth";
 import { Row, Col, Hidden } from "react-grid-system";
 
 import * as s from "./style";

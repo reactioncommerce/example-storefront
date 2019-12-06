@@ -43,7 +43,7 @@
     "__typename": "Shop"
   },
   "primaryImage": null,
-  "media": ["static/images/home/prod1.png", "static/images/home/prod2.png", "static/images/home/prod3.jpg"],
+  "media": ["../../static/images/home/prod1.png", "../../static/images/home/prod2.png", "../../static/images/home/prod3.jpg"],
   "tags": {
     "nodes": [{
       "name": "Example",
@@ -95,7 +95,7 @@
       "isBackorder": false,
       "isSoldOut": false,
       "isLowQuantity": false,
-      "media": ["static/images/home/prod1.png", "static/images/home/prod2.png", "static/images/home/prod3.jpg"],
+      "media": ["../../static/images/home/prod1.png", "../../static/images/home/prod2.png", "../../static/images/home/prod3.jpg"],
       "metafields": [{
         "description": null,
         "key": null,
