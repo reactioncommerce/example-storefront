@@ -15,7 +15,6 @@ export const Section = styled(Row)`
   background-color: ${({ theme }) => theme.layout.backgrounds.primary};
   padding-top: 20px;
   padding-bottom: 50px;
-
   .slick-slider {
     .slick-arrow {
       display: none !important;
@@ -46,10 +45,10 @@ export const Section = styled(Row)`
   }
   @media (min-width: ${breakpoints.md}) {
     background: #f1f1f1;
-    height: 350px;
     align-items: center;
     justify-content: center;
     display: flex;
+    padding: 80px 0;
   }
 `;
 

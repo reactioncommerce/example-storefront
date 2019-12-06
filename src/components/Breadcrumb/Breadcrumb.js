@@ -1,9 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import * as s from "./style";
 
 
 const Breadcrumb = (props) => {
-  const { pageName, breadcrumb } = props;
+  const { pageName, breadcrumb, routingStore } = props;
+
+  console.log({routingStore})
 
   return (
     <s.BreacrumbList >
@@ -16,5 +19,12 @@ const Breadcrumb = (props) => {
   );
 };
 
+Breadcrumb.proptype = {
+  pageName: PropTypes.string,
+  breadcrumb: PropTypes.object,
+  routingStore: PropTypes.shape({
+    slugOrId: PropTypes.string
+  })
+};
 
 export default Breadcrumb;

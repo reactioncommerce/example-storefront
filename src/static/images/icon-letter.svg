@@ -7,6 +7,6 @@
     </style>
   </defs>
   <g id="Grupo_17" data-name="Grupo 17" transform="translate(-472 -2460)">
-    <path id="Shape" class="cls-1" d="M27,24H3a3,3,0,0,1-3-3V3A3,3,0,0,1,3,0H27a3,3,0,0,1,3,3V21A3,3,0,0,1,27,24ZM3,6V21H27V6L15,13.5ZM3,3l12,7.5L27,3Z" transform="translate(472 2460)"/>
+    <path id="Shape" className="cls-1" d="M27,24H3a3,3,0,0,1-3-3V3A3,3,0,0,1,3,0H27a3,3,0,0,1,3,3V21A3,3,0,0,1,27,24ZM3,6V21H27V6L15,13.5ZM3,3l12,7.5L27,3Z" transform="translate(472 2460)"/>
   </g>
 </svg>

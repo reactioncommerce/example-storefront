@@ -10,7 +10,7 @@ const HamburgerMenu = ({ size, color }) => {
             <path
               id="Caminho_39"
               d="M29.049 96H.618a.618.618 0 1 0 0 1.236h28.431a.618.618 0 1 0 0-1.236z"
-              class="cls-1"
+              className="cls-1"
               fill="#4f4d4d"
               data-name="Caminho 39"
               transform="translate(0 -96)"
@@ -22,7 +22,7 @@ const HamburgerMenu = ({ size, color }) => {
             <path
               id="Caminho_40"
               d="M29.049 245.333H.618a.618.618 0 1 0 0 1.236h28.431a.618.618 0 1 0 0-1.236z"
-              class="cls-1"
+              className="cls-1"
               fill="#4f4d4d"
               data-name="Caminho 40"
               transform="translate(0 -245.333)"
@@ -34,7 +34,7 @@ const HamburgerMenu = ({ size, color }) => {
             <path
               id="Caminho_41"
               d="M29.049 394.667H.618a.618.618 0 1 0 0 1.236h28.431a.618.618 0 0 0 0-1.236z"
-              class="cls-1"
+              className="cls-1"
               fill="#4f4d4d"
               data-name="Caminho 41"
               transform="translate(0 -394.667)"

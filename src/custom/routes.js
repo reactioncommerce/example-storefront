@@ -5,16 +5,17 @@
  */
 function defineRoutes(routes) {
   routes
-    .add("categories", "/categories", "categories")
     .add("home", "/", "home")
     .add("brand", "/brand", "brand")
     .add("faq", "/faq", "faq")
     .add("login", "/login", "login")
     .add("terms", "/terms", "terms")
     .add("cart", "/cart", "cart")
+    .add("category", "/category/:slugOrId/:variantId?", "category")
     .add("teste", "/forgotPassword", "forgotPassword")
     .add("register", "/register", "register")
     .add("checkout", "/cart/checkout", "checkout")
+    .add("search", "/search/:slugOrId", "search")
     .add("checkoutLogin", "/cart/login", "checkout")
     .add("checkoutComplete", "/checkout/order/:orderId", "checkoutComplete")
     .add("shopProduct", "/shop/:shopSlug/product/:slugOrId", "product")

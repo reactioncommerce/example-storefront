@@ -92,10 +92,6 @@ class HTMLDocument extends Document {
       {
         type: "text/javascript",
         src: "https://js.stripe.com/v3/"
-      },
-      {
-        type: "text/javascript",
-        src: "https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
       }
     ];
 

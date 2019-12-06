@@ -34,48 +34,47 @@ const infos = [
 const InfoCarousel = () => (
   <s.Section>
     <Col>
-    <Hidden md lg xl>
-      <Slider {...settings}>
-        {infos &&
-          infos.length &&
-          infos.map((info, idx) => (
-            <s.StyledSmCol sm={12}>
-              <s.Info className="info-carousel-image-item" key={idx}>
-                <s.ImageContainer src={info.image} />
-                <s.InnerTitle> {info.title}</s.InnerTitle>
-                <s.InnerSubTitle>{info.subtitle}</s.InnerSubTitle>
-              </s.Info>
-            </s.StyledSmCol>
-          ))}
-      </Slider >
-    </Hidden>
-    <Hidden xs sm>
-      <Row>
-        <s.StyledCol md={4}>
-          <s.Info className="info-carousel-image-item">
-            <s.ImageContainer src={infos[0].image} />
-            <s.InnerTitle> {infos[0].title}</s.InnerTitle>
-            <s.InnerSubTitle>{infos[0].subtitle}</s.InnerSubTitle>
-          </s.Info>
-        </s.StyledCol>
-        <s.StyledCol md={4}>
+      <Hidden md lg xl>
+        <Slider {...settings}>
+          {infos &&
+            infos.length &&
+            infos.map((info, idx) => (
+              <s.StyledSmCol sm={12}>
+                <s.Info className="info-carousel-image-item" key={idx}>
+                  <s.ImageContainer src={info.image} />
+                  <s.InnerTitle> {info.title}</s.InnerTitle>
+                  <s.InnerSubTitle>{info.subtitle}</s.InnerSubTitle>
+                </s.Info>
+              </s.StyledSmCol>
+            ))}
+        </Slider >
+      </Hidden>
+      <Hidden xs sm>
+        <Row>
+          <s.StyledCol md={4}>
+            <s.Info className="info-carousel-image-item">
+              <s.ImageContainer src={infos[0].image} />
+              <s.InnerTitle> {infos[0].title}</s.InnerTitle>
+              <s.InnerSubTitle>{infos[0].subtitle}</s.InnerSubTitle>
+            </s.Info>
+          </s.StyledCol>
+          <s.StyledCol md={4}>
+            <s.Info className="info-carousel-image-item">
+              <s.ImageContainer src={infos[1].image} />
+              <s.InnerTitle> {infos[1].title}</s.InnerTitle>
+              <s.InnerSubTitle>{infos[1].subtitle}</s.InnerSubTitle>
+            </s.Info>
+          </s.StyledCol>
+          <s.StyledCol md={4}>
+            <s.Info className="info-carousel-image-item">
+              <s.ImageContainer src={infos[2].image} />
+              <s.InnerTitle> {infos[2].title}</s.InnerTitle>
+              <s.InnerSubTitle>{infos[2].subtitle}</s.InnerSubTitle>
+            </s.Info>
+          </s.StyledCol>
 
-          <s.Info className="info-carousel-image-item">
-            <s.ImageContainer src={infos[1].image} />
-            <s.InnerTitle> {infos[1].title}</s.InnerTitle>
-            <s.InnerSubTitle>{infos[1].subtitle}</s.InnerSubTitle>
-          </s.Info>
-        </s.StyledCol>
-        <s.StyledCol md={4}>
-          <s.Info className="info-carousel-image-item">
-            <s.ImageContainer src={infos[2].image} />
-            <s.InnerTitle> {infos[2].title}</s.InnerTitle>
-            <s.InnerSubTitle>{infos[2].subtitle}</s.InnerSubTitle>
-          </s.Info>
-        </s.StyledCol>
-
-      </Row>
-    </Hidden>
+        </Row>
+      </Hidden>
     </Col>
   </s.Section>
 );

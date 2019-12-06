@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { MenuItem } from "@material-ui/core";
 import * as s from "./style";
 
-const CategoryHeader = (props) => {
+const ResultsHeader = (props) => {
   const { page, totalPages } = props;
   return (
     <div>
@@ -36,8 +36,8 @@ const CategoryHeader = (props) => {
   );
 };
 
-CategoryHeader.propTypes = {
+ResultsHeader.propTypes = {
   page: PropTypes.object
 };
 
-export default CategoryHeader;
+export default ResultsHeader;
