@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import ResultsHeader from "components/ResultsHeader";
 import { Container, Row } from "react-grid-system";
@@ -46,7 +46,7 @@ const ProductResults = (props) => {
   return (
     <Container>
       <ResultsHeader page={page} totalPages={totalPages} />
-      <s.CategoryResults>
+      <s.ProductResults>
         { setProducts(pageProducts)}
 
         <s.Pagination {...settings}>
@@ -54,7 +54,7 @@ const ProductResults = (props) => {
             <s.PaginationItem key={pageIndex} className={(page.pagination.actual === pageIndex ? "active" : null)}>{pageIndex}</s.PaginationItem>
           ))}
         </s.Pagination>
-      </s.CategoryResults>
+      </s.ProductResults>
     </Container>
   );
 };

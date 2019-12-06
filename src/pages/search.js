@@ -82,11 +82,11 @@ const Search = inject("routingStore")(observer(({ routingStore }) => {
         {/* <Helmet title={"Search Results"} meta={[{ name: "description", content: shop && shop.description }]} /> */}
         <Container>
           <Row  align="start" justify="start">
-            <Breadcrumb routingStore={routingStore} pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/>
+            <Breadcrumb  pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/>
           </Row>
         </Container>
         <Row direction="column" align="center" justify="center">
-          <ProductsResult page={mock.page} routingStore={routingStore}/>
+          <ProductResults page={mock.page} />
         </Row>
         <InfoCarousel/>
       </Container>

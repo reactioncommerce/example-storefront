@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { Col, Row } from "react-grid-system";
 import { breakpoints } from "../../helpers/constants";
 
-export const CategoryResults = styled(Row)`
+export const ProductResults = styled(Row)`
   text-align:left;
   position: relative;
   list-style: none;

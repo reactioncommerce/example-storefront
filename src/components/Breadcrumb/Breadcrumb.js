@@ -4,9 +4,7 @@ import * as s from "./style";
 
 
 const Breadcrumb = (props) => {
-  const { pageName, breadcrumb, routingStore } = props;
-
-  console.log({routingStore})
+  const { pageName, breadcrumb } = props;
 
   return (
     <s.BreacrumbList >
