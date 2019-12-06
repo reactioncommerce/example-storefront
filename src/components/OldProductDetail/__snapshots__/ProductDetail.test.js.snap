@@ -1,0 +1,967 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot 1`] = `
+.c7 {
+  width: 1.125em;
+  height: 1.125em;
+}
+
+.c2 {
+  position: relative;
+  opacity: 0.5;
+}
+
+.c3 {
+  position: relative;
+}
+
+.c5 {
+  -webkit-font-smoothing: antialiased;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #1999dd;
+  border-color: #1999dd;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,sans-serif;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0;
+  min-width: 100px;
+  outline: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
+}
+
+.c5:hover {
+  background-color: #25b0f9;
+  border-color: #25b0f9;
+  color: #ffffff;
+}
+
+.c5:active {
+  background-color: #057dbe;
+  border-color: #057dbe;
+  color: #ffffff;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  padding-left: 20px;
+  -webkit-transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
+  transition: width 0.2s ease-out 0s,padding-left 0.2s ease-out 0s,opacity 0.2s ease-out 0.2s;
+}
+
+.c6 svg path,
+.c6 svg rect {
+  fill: #ffffff;
+}
+
+.c4 {
+  -webkit-font-smoothing: antialiased;
+  color: #cd3f4c;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  -webkit-letter-spacing: .02em;
+  -moz-letter-spacing: .02em;
+  -ms-letter-spacing: .02em;
+  letter-spacing: .02em;
+  line-height: 1.25;
+}
+
+.c0 {
+  background-color: #ffffff;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  padding-top: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.c1 {
+  width: 100%;
+  height: auto;
+  left: 50%;
+  opacity: 1;
+  position: absolute;
+  -webkit-transition: opacity 300ms cubic-bezier(0.4,0,0.2,1);
+  transition: opacity 300ms cubic-bezier(0.4,0,0.2,1);
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-filter: blur(8px);
+  filter: blur(8px);
+  z-index: 1100;
+}
+
+<div
+  className="MuiGrid-container-4 MuiGrid-spacing-xs-40-30"
+>
+  <div
+    className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 SkProductDetail-breadcrumbGrid-2"
+  >
+    <div
+      className="SkBreadcrumbs-container-101"
+    >
+      <a
+        className="SkLink-anchor-104"
+        href="/"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="link"
+        tabIndex={0}
+      >
+        <span
+          className="SkBreadcrumbs-breadcrumbLink-102"
+        >
+          Home
+        </span>
+      </a>
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-105 SkBreadcrumbs-breadcrumbIcon-103"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+        />
+      </svg>
+      <a
+        className="SkLink-anchor-104"
+        href="/tag/tag-a"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="link"
+        tabIndex={0}
+      >
+        <span
+          className="SkBreadcrumbs-breadcrumbLink-102"
+        >
+          Tag A
+        </span>
+      </a>
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-105 SkBreadcrumbs-breadcrumbIcon-103"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+        />
+      </svg>
+      <a
+        className="SkLink-anchor-104"
+        href="/product/example-product"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="link"
+        tabIndex={0}
+      >
+        <span
+          className="SkBreadcrumbs-breadcrumbLink-102"
+        >
+          Reaction Sample Product
+        </span>
+      </a>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 MuiGrid-grid-sm-6-52"
+  >
+    <div
+      className="SkProductDetail-section-1"
+    >
+      <div
+        className="MuiGrid-container-4 SkMediaGallery-root-114"
+      >
+        <div
+          className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 MuiGrid-grid-sm-12-58"
+        >
+          <div
+            className="SkMediaGallery-featured-115"
+          >
+            <div
+              className="c0"
+            >
+              <img
+                alt=""
+                className="c1"
+                src="/resources/placeholder.gif"
+              />
+            </div>
+          </div>
+          <div
+            className="MuiGrid-container-4 MuiGrid-spacing-xs-8-26"
+          >
+            <div
+              className="MuiGrid-item-5 MuiGrid-grid-xs-3-35 MuiGrid-grid-sm-2-48"
+            >
+              <button
+                className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="c0"
+                >
+                  <img
+                    alt=""
+                    className="c1"
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-250"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-5 MuiGrid-grid-xs-3-35 MuiGrid-grid-sm-2-48"
+            >
+              <button
+                className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="c0"
+                >
+                  <img
+                    alt=""
+                    className="c1"
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-250"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-5 MuiGrid-grid-xs-3-35 MuiGrid-grid-sm-2-48"
+            >
+              <button
+                className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="c0"
+                >
+                  <img
+                    alt=""
+                    className="c1"
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-250"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-5 MuiGrid-grid-xs-3-35 MuiGrid-grid-sm-2-48"
+            >
+              <button
+                className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="c0"
+                >
+                  <img
+                    alt=""
+                    className="c1"
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-250"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-5 MuiGrid-grid-xs-3-35 MuiGrid-grid-sm-2-48"
+            >
+              <button
+                className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="c0"
+                >
+                  <img
+                    alt=""
+                    className="c1"
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-250"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-5 MuiGrid-grid-xs-3-35 MuiGrid-grid-sm-2-48"
+            >
+              <button
+                className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="c0"
+                >
+                  <img
+                    alt=""
+                    className="c1"
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-250"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-5 MuiGrid-grid-xs-3-35 MuiGrid-grid-sm-2-48"
+            >
+              <button
+                className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="c0"
+                >
+                  <img
+                    alt=""
+                    className="c1"
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-250"
+                />
+              </button>
+            </div>
+            <div
+              className="MuiGrid-item-5 MuiGrid-grid-xs-3-35 MuiGrid-grid-sm-2-48"
+            >
+              <button
+                className="MuiButtonBase-root-118 SkMediaGalleryItem-root-117"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <div
+                  className="c0"
+                >
+                  <img
+                    alt=""
+                    className="c1"
+                    src="/resources/placeholder.gif"
+                  />
+                </div>
+                <span
+                  className="MuiTouchRipple-root-250"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 MuiGrid-grid-sm-6-52"
+  >
+    <div
+      className="MuiGrid-item-5 MuiGrid-grid-sm-12-58"
+    >
+      <h3
+        className="MuiTypography-root-121 MuiTypography-h3-135 MuiTypography-colorTextSecondary-154 MuiTypography-gutterBottom-148"
+      >
+        Reaction Sample Product
+      </h3>
+    </div>
+    <div
+      className="SkProductDetail-info-3"
+    >
+      <div
+        className="MuiTypography-root-121 MuiTypography-body2-129"
+      >
+        Example Manufacturer
+      </div>
+    </div>
+    <div
+      className="SkProductDetail-info-3"
+    >
+      <div
+        className="MuiGrid-item-5 MuiGrid-grid-sm-12-58 SKProductDetailPrice-root-157"
+      >
+        <span
+          className="MuiTypography-root-121 MuiTypography-caption-131 SKProductDetailPrice-strike-161"
+        />
+        <div
+          className="MuiTypography-root-121 MuiTypography-h6-138"
+        >
+          $12.99 - $19.99
+        </div>
+      </div>
+    </div>
+    <div
+      className="SkProductDetail-info-3"
+    >
+      <div
+        className="MuiTypography-root-121 MuiTypography-body2-129"
+      >
+        Sign in as administrator to edit.
+You can clone this product from the product grid.
+You can upload images click or drag in image box on the left here.
+Tag this product below, and then add tag in navigation.
+Click the bookmark in the tag to set product url.
+Option variants, price, quantity, and child variants are created by clicking on the variant below, clone the variant to add more options.
+Details can be added below the image for more specific product information.
+ Login next to the cart, and then click the dashboard icon for more tools.
+      </div>
+    </div>
+    <div
+      className="SkVariantList-variantsContainer-164"
+    >
+      <div
+        className="SkVariantList-variantItem-165"
+      >
+        <button
+          className="MuiButtonBase-root-118 SkVariantItem-variantButton-166 SkVariantItem-activeVariant-167 SkVariantItem-soldOutVariant-168"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiTypography-root-121 MuiTypography-body1-130"
+          >
+            Sample Variant
+          </span>
+          <span
+            className="MuiTypography-root-121 MuiTypography-body1-130"
+          >
+            $12.99 - $19.99
+          </span>
+        </button>
+        <div
+          className="SkVariantList-alert-162"
+        >
+          <div
+            className="c2"
+          />
+        </div>
+      </div>
+      <div
+        className="SkVariantList-variantItem-165"
+      >
+        <button
+          className="MuiButtonBase-root-118 SkVariantItem-variantButton-166"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiTypography-root-121 MuiTypography-body1-130"
+          >
+            Sample Variant 2
+          </span>
+          <span
+            className="MuiTypography-root-121 MuiTypography-body1-130"
+          >
+            $12.99 - $19.99
+          </span>
+        </button>
+      </div>
+      <div
+        className="SkDivider-container-169"
+      >
+        <hr
+          className="SkDivider-item-171"
+        />
+        <span
+          className="MuiTypography-root-121 MuiTypography-body2-129 SkDivider-label-170"
+        >
+          Available Options
+        </span>
+        <hr
+          className="SkDivider-item-171"
+        />
+      </div>
+      <div
+        className="MuiGrid-container-4 MuiGrid-spacing-xs-8-26 SkOptionsList-root-172"
+      >
+        <div
+          className="MuiGrid-item-5"
+        >
+          <button
+            className="MuiButtonBase-root-118 SkProductDetailOption-optionButton-175"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiTypography-root-121 MuiTypography-body1-130 SkProductDetailOption-optionText-176"
+            >
+              Red
+            </span>
+          </button>
+          <div
+            className="SkOptionsList-alert-173"
+          >
+            <div
+              className="c3"
+            />
+          </div>
+        </div>
+        <div
+          className="MuiGrid-item-5"
+        >
+          <button
+            className="MuiButtonBase-root-118 SkProductDetailOption-optionButton-175"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiTypography-root-121 MuiTypography-body1-130 SkProductDetailOption-optionText-176"
+            >
+              Green
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        className="SkVariantList-inventoryStatus-163"
+      >
+        <div
+          className="c4"
+        >
+          Out of stock
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-container-4"
+    >
+      <div
+        className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 SkProductDetailAddToCart-quantityGrid-184"
+      >
+        <div
+          className="SkDivider-container-169"
+        >
+          <hr
+            className="SkDivider-item-171"
+          />
+          <hr
+            className="SkDivider-item-171"
+          />
+        </div>
+        <span
+          className="MuiTypography-root-121 MuiTypography-body2-129 SkProductDetailAddToCart-quantityTypography-187"
+        >
+          Quantity
+        </span>
+        <div
+          className="MuiFormControl-root-188"
+        >
+          <div
+            className="MuiInputBase-root-205 MuiInput-root-192 SkProductDetailAddToCart-quantityContainer-183 MuiInputBase-formControl-206 MuiInput-formControl-193 MuiInputBase-adornedStart-209 MuiInputBase-adornedEnd-210"
+            onClick={[Function]}
+          >
+            <div
+              className="MuiInputAdornment-root-222"
+            >
+              <button
+                className="MuiButtonBase-root-118 SkProductDetailAddToCart-incrementButton-182"
+                color="default"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+                variant="outlined"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root-105 SkProductDetailAddToCart-quantitySvg-186"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19,13H5V11H19V13Z"
+                  />
+                </svg>
+                <span
+                  className="MuiTouchRipple-root-250"
+                />
+              </button>
+            </div>
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input-215 MuiInput-input-200 SkProductDetailAddToCart-quantityInput-185 MuiInputBase-inputAdornedStart-220 MuiInputBase-inputAdornedEnd-221"
+              disabled={false}
+              id="addToCartQuantityInput"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+              value={1}
+            />
+            <div
+              className="MuiInputAdornment-root-222"
+            >
+              <button
+                className="MuiButtonBase-root-118 SkProductDetailAddToCart-incrementButton-182"
+                color="default"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+                variant="outlined"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root-105 SkProductDetailAddToCart-quantitySvg-186"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                  />
+                </svg>
+                <span
+                  className="MuiTouchRipple-root-250"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+        <span
+          className="MuiTypography-root-121 MuiTypography-body1-130 SkProductDetailAddToCart-addToCartErrorText-181"
+        />
+      </div>
+      <div
+        className="MuiGrid-item-5 MuiGrid-grid-xs-12-44"
+      >
+        <button
+          className="MuiButtonBase-root-118 SkProductDetailAddToCart-addToCartButton-179"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiTypography-root-121 MuiTypography-body1-130 SkProductDetailAddToCart-addToCartText-180"
+          >
+            Add to cart
+          </span>
+          <span
+            className="MuiTouchRipple-root-250"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      className="MuiPrivateHiddenCss-mdUp-242"
+    >
+      <div
+        className="SkCartPopover-container-227 SkCartPopover-isContainerHidden-229"
+      >
+        <div
+          className="MuiGrid-container-4 MuiGrid-spacing-xs-24-28 SkCartPopover-gridContainer-228"
+        >
+          <div
+            className="MuiGrid-item-5 MuiGrid-grid-xs-12-44 SkCartPopover-containerItem-231"
+          >
+            <img
+              alt="Item Title"
+              className="SkCartPopover-addedToCartImg-232"
+              src="//placehold.it/100"
+            />
+            <span
+              className="MuiTypography-root-121 MuiTypography-body2-129 SkCartPopover-addedToCartText-234"
+            >
+              10
+               "
+              <span
+                className="SkCartPopover-addedToCartItemName-233"
+              >
+                Item Title
+              </span>
+              " added to cart
+            </span>
+          </div>
+          <div
+            className="MuiGrid-item-5 MuiGrid-grid-xs-12-44"
+          >
+            <div
+              className="c5"
+              onClick={[Function]}
+              onKeyPress={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              <div>
+                Checkout
+              </div>
+              <div
+                className="c6"
+                style={
+                  Object {
+                    "opacity": 0,
+                    "paddingLeft": 0,
+                    "width": 0,
+                  }
+                }
+              >
+                <svg
+                  className="c7"
+                  height="40px"
+                  style={
+                    Object {
+                      "enableBackground": "new 0 0 50 50",
+                    }
+                  }
+                  version="1.1"
+                  viewBox="0 0 50 50"
+                  width="40px"
+                  x="0px"
+                  y="0px"
+                >
+                  <path
+                    d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z"
+                    fill="#000"
+                  >
+                    <animateTransform
+                      attributeName="transform"
+                      attributeType="xml"
+                      dur="1s"
+                      from="0 25 25"
+                      repeatCount="indefinite"
+                      to="360 25 25"
+                      type="rotate"
+                    />
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

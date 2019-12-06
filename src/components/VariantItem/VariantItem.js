@@ -79,6 +79,7 @@ class VariantItem extends Component {
           {title}
         </Typography>
         <Typography component="span" variant="body1">
+          
           {variantPrice.displayPrice}
         </Typography>
       </ButtonBase>

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import * as styles from "./style";
 import Header from "components/Header";
 import Footer from "components/Footer";
+import * as s from "./style";
 
 const muiStyles = (theme) => ({
   templateName: {
@@ -57,7 +57,7 @@ class Layout extends Component {
 
     return (
       <React.Fragment>
-        <styles.PageRoot>
+        <s.PageRoot>
           <div className={classes.templateName}>
             <span className={classes.title}>TEMPLATE UNBOX</span>
           </div>
@@ -66,7 +66,7 @@ class Layout extends Component {
             <article>{children}</article>
           </main>
           <Footer />
-        </styles.PageRoot>
+        </s.PageRoot>
       </React.Fragment>
     );
   }

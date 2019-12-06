@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { inject } from "mobx-react";
 import { observer } from "mobx-react-lite";
-import PropTypes from "prop-types";
 import Link from "components/Link";
-import * as styles from "./style";
+import * as s from "./style";
 
 const MenuItemsDesktop = inject("uiStore")(
   observer(({ uiStore }) => {
@@ -45,7 +44,7 @@ const MenuItemsDesktop = inject("uiStore")(
     };
 
     return (
-      <styles.Items>
+      <s.Items>
         {links &&
           links.length &&
           links.map((link, idx) => {
@@ -55,19 +54,9 @@ const MenuItemsDesktop = inject("uiStore")(
               </Link>
             );
           })}
-      </styles.Items>
+      </s.Items>
     );
   })
 );
-
-MenuItemsDesktop.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.string
-};
-
-MenuItemsDesktop.defaultProps = {
-  color: "#333",
-  size: "30px"
-};
 
 export default MenuItemsDesktop;

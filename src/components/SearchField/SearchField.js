@@ -5,13 +5,13 @@ import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControl from "@material-ui/core/FormControl";
 import SearchIcon from "../Icons/Search";
-import * as styles from "./style";
+import * as s from "./style";
 
 const SearchField = ({ desktopMode }) => {
   const [searchText, setSearchText] = useState("");
 
   return (
-    <styles.SearchField desktopMode={desktopMode} stayOpened={searchText.length}>
+    <s.SearchField desktopMode={desktopMode} stayOpened={searchText.length}>
       <FormControl className="search-input">
         <InputLabel htmlFor="input-with-icon-adornment" style={{ fontSize: "16px" }}>
           O que você está procurando?
@@ -27,7 +27,7 @@ const SearchField = ({ desktopMode }) => {
           }
         />
       </FormControl>
-    </styles.SearchField>
+    </s.SearchField>
   );
 };
 

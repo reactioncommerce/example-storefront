@@ -99,7 +99,9 @@ export default class App extends NextApp {
                   <CssBaseline />
                   {route === "/checkout" || route === "/login" ? (
                     <StripeProvider stripe={stripe}>
-                      <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
+                      <Layout shop={shop} viewer={viewer}>
+                        <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
+                      </Layout>
                     </StripeProvider>
                   ) : (
                     <Layout shop={shop} viewer={viewer}>
