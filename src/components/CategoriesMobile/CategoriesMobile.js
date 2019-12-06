@@ -1,39 +1,53 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { Hidden } from "@material-ui/core";
 import { inject } from "mobx-react";
 import { observer } from "mobx-react-lite";
+import MenuLeftIcon from "mdi-material-ui/MenuLeft";
 import Link from "components/Link";
-import Drawer from "@material-ui/core/Drawer";
+import { categories } from "../../helpers/constants";
 import * as s from "./style";
 
-const CategoriesDrawer = inject(
-  "uiStore",
-  "tags"
-)(
-  observer(({ uiStore, tags, handleClose }) => {
-    const [currentImage, setCurrentImage] = useState("../../static/images/home/prod1.png");
-    const [currentLink, setCurrentLink] = useState("example-tag");
-
-    const categoryHover = (slug) => {
-      const path = "../../static/images/home/";
-      if (slug === "example-tag") {
-        setCurrentImage(`${path}prod1.png`);
-      } else if (slug === "example") {
-        setCurrentImage(`${path}prod2.png`);
-      }
-
-      setCurrentLink(slug);
+const CategoriesDrawer = inject("tags")(
+  observer(({ tags, handleCloseDrawer, handleCloseSlider }) => {
+    const getCategoryImage = (slug) => {
+      const category = categories.find((cat) => cat.slug === slug);
+      return category && category.image;
     };
 
-    return <s.Container onClick={handleClose}>Alright</s.Container>;
+    const getCategoryLink = (slug) => {
+      return `/tag/${slug}`;
+    };
+
+    return (
+      <s.Navigation>
+        <s.BackButton id="back-slider" onClick={handleCloseSlider}>
+          <MenuLeftIcon />
+          <s.BackButtonText>VOLTAR</s.BackButtonText>
+        </s.BackButton>
+        {tags && tags.length ? (
+          tags.map((tag) => {
+            return (
+              <Link onClick={handleCloseDrawer} route={getCategoryLink(tag.slug)}>
+                <s.CategoryBlock className="category-block">
+                  <s.CategoryName>{tag.name}</s.CategoryName>
+                  <s.CategoryImage src={getCategoryImage(tag.slug)}>
+                    <s.ShowAll>Ver todos ►</s.ShowAll>
+                  </s.CategoryImage>
+                </s.CategoryBlock>
+              </Link>
+            );
+          })
+        ) : (
+          <span>nenhuma categoria encontrada</span>
+        )}
+      </s.Navigation>
+    );
   })
 );
 
 CategoriesDrawer.propTypes = {
-  uiStore: PropTypes.shape({
-    closeCategoriesDrawer: PropTypes.func
-  }).isRequired
+  handleCloseDrawer: PropTypes.func,
+  handleCloseSlider: PropTypes.func
 };
 
 export default CategoriesDrawer;

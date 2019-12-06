@@ -50,3 +50,11 @@ export const breakpoints = {
   lg: "1280px",
   xl: "1920px"
 };
+
+export const categories = [
+  { slug: "example", image: "../../static/images/category/category1.png" },
+  { slug: "example-tag", image: "../../static/images/category/category2.png" },
+  { slug: "", image: "" },
+  { slug: "", image: "" },
+  { slug: "", image: "" }
+];
