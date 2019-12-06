@@ -27,7 +27,13 @@ class NavigationMobile extends Component {
     const { uiStore } = this.props;
 
     return (
-      <Drawer open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
+      <Drawer
+        open={uiStore.isMenuDrawerOpen}
+        onClose={this.handleClose}
+        BackdropProps={{ style: { position: "absolute" } }}
+        PaperProps={{ style: { top: "23px", position: "absolute" } }}
+        variant="temporary"
+      >
         <styles.Container>
           <styles.Header>
             <SearchField />

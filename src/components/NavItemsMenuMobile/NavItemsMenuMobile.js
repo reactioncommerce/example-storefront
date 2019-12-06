@@ -8,7 +8,7 @@ import * as styles from "./style";
 const NavItemsMenuMobile = ({ handleClose }) => {
   const navItems = [
     { title: "Link", href: "/" },
-    { title: "Link", href: "/" },
+    { title: "Categorias", href: "/" },
     { title: "Link", href: "/" },
     { title: "Link", href: "/" },
     { title: "Link", href: "/" }

@@ -10,8 +10,8 @@ import MenuItemsDesktop from "../MenuItemsDesktop/MenuItemsDesktop";
 import SearchField from "../SearchField/SearchField";
 import UserIcon from "../Icons/User";
 import FavoriteIcon from "../Icons/Favorite";
-import * as s from "./style";
 import { CategoriesDrawer } from "../CategoriesDrawer";
+import * as s from "./style";
 
 const Header = inject("uiStore")(
   observer(({ uiStore }) => {
