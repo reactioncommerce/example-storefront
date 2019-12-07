@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
+import { products } from "../../__mocks__/home/mainCarousel";
 import * as s from "./style";
 
 const settings = {
@@ -10,44 +11,6 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1
 };
-
-const products = [
-  {
-    name: "Produto Teste",
-    subName: "subteste",
-    image: "../../static/images/home/prod1.png",
-    price: 100,
-    description: "Lorem ipsum"
-  },
-  {
-    name: "Produto Teste",
-    subName: "subteste",
-    image: "../../static/images/home/prod2.png",
-    price: 100,
-    description: "Lorem ipsum"
-  },
-  {
-    name: "Produto Teste",
-    subName: "subteste",
-    image: "../../static/images/home/prod1.png",
-    price: 100,
-    description: "Lorem ipsum"
-  },
-  {
-    name: "Produto Teste",
-    subName: "subteste",
-    image: "../../static/images/home/prod1.png",
-    price: 100,
-    description: "Lorem ipsum"
-  },
-  {
-    name: "Produto Teste",
-    subName: "subteste",
-    image: "../../static/images/home/prod1.png",
-    price: 100,
-    description: "Lorem ipsum"
-  }
-];
 
 const MainCarousel = ({ fullPage }) => {
   return (

@@ -12,11 +12,17 @@ const muiStyles = (theme) => ({
     alignItems: "center",
     backgroundColor: "#9c27b1",
     width: "100%",
-    height: "23px"
+    height: "23px",
+    [theme.breakpoints.up("md")]: {
+      height: "32px"
+    }
   },
   title: {
     fontSize: "11px",
-    color: "white"
+    color: "white",
+    [theme.breakpoints.up("md")]: {
+      fontSize: "12px"
+    }
   },
   main: {
     flex: "1 1 auto",
