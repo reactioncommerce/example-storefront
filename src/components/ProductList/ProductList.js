@@ -1,8 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
+import { Hidden } from "@material-ui/core";
 import Button from "../Button";
 import * as s from "./style";
-import { Hidden } from "@material-ui/core";
 
 const settings = {
   infinite: false,
@@ -78,7 +78,7 @@ const productsInLine = 4;
 
 const ProductList = () => {
   return (
-    <s.Section desktopMode>
+    <s.Section>
       <s.Header>
         <s.Title>Lorem Ipsum</s.Title>
         <s.SectionDescription>
