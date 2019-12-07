@@ -1,35 +1,59 @@
 import React from "react";
-import * as styles from "./style";
+import { Hidden } from "@material-ui/core";
+import * as s from "./style";
 
 const CategoriesBlock = () => {
   return (
-    <styles.Section>
-      <styles.Title>Lorem Ipsum</styles.Title>
+    <s.Section>
+      <s.Title>Lorem Ipsum</s.Title>
+      <Hidden mdUp>
+        <s.TwoImagesLine>
+          <s.Image>
+            <s.CategoryName>Jewelry</s.CategoryName>
+          </s.Image>
+          <s.Image>
+            <s.CategoryName>Tops</s.CategoryName>
+          </s.Image>
+        </s.TwoImagesLine>
 
-      <styles.TwoImagesLine>
-        <styles.Image>
-          <styles.CategoryName>Jewelry</styles.CategoryName>
-        </styles.Image>
-        <styles.Image>
-          <styles.CategoryName>Tops</styles.CategoryName>
-        </styles.Image>
-      </styles.TwoImagesLine>
+        <s.OneImageLine>
+          <s.Image oneLine>
+            <s.CategoryName>Dress</s.CategoryName>
+          </s.Image>
+        </s.OneImageLine>
 
-      <styles.OneImageLine>
-        <styles.Image oneLine>
-          <styles.CategoryName>Dress</styles.CategoryName>
-        </styles.Image>
-      </styles.OneImageLine>
+        <s.TwoImagesLine>
+          <s.Image>
+            <s.CategoryName>Fitness</s.CategoryName>
+          </s.Image>
+          <s.Image>
+            <s.CategoryName>Handbags</s.CategoryName>
+          </s.Image>
+        </s.TwoImagesLine>
+      </Hidden>
 
-      <styles.TwoImagesLine>
-        <styles.Image>
-          <styles.CategoryName>Fitness</styles.CategoryName>
-        </styles.Image>
-        <styles.Image>
-          <styles.CategoryName>Handbags</styles.CategoryName>
-        </styles.Image>
-      </styles.TwoImagesLine>
-    </styles.Section>
+      <Hidden smDown>
+        <s.TwoImagesDesktop>
+          <s.Image twoImages>
+            <s.CategoryName>Dress</s.CategoryName>
+          </s.Image>
+          <s.Image twoImages>
+            <s.CategoryName>Handbags</s.CategoryName>
+          </s.Image>
+        </s.TwoImagesDesktop>
+        <s.ThreeImagesDesktop>
+          <s.Image>
+            <s.CategoryName>Jewelry</s.CategoryName>
+          </s.Image>
+          <s.Image>
+            <s.CategoryName>Tops</s.CategoryName>
+          </s.Image>
+          <s.Image>
+            <s.CategoryName>Fitness</s.CategoryName>
+          </s.Image>
+        </s.ThreeImagesDesktop>
+      </Hidden>
+    </s.Section>
   );
 };
 

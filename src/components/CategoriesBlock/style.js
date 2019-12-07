@@ -1,13 +1,19 @@
 import styled from "styled-components";
+import { breakpoints } from "../../helpers/constants";
 
 export const Section = styled.section`
-  height: 584px;
+  height: auto;
   padding: 41px 28px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   background-color: ${({ theme }) => theme.layout.backgrounds.secondary};
+
+  @media (min-width: ${breakpoints.md}) {
+    padding-bottom: 60px;
+  }
 `;
 
 export const Title = styled.span`
@@ -16,6 +22,11 @@ export const Title = styled.span`
   font-weight: ${({ theme }) => theme.typography.weights.BOLD};
   text-align: center;
   margin-bottom: 25px;
+
+  @media (min-width: ${breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.title.SIZE_1};
+    margin-bottom: 45px;
+  }
 `;
 
 export const TwoImagesLine = styled.div`
@@ -46,6 +57,15 @@ export const Image = styled.div`
   :not(:first-of-type) {
     margin-left: 10px;
   }
+
+  @media (min-width: ${breakpoints.md}) {
+    height: ${({ twoImages }) => (twoImages ? "326px" : "327px")};
+    width: ${({ twoImages }) => (twoImages ? "572px" : "365px")};
+
+    :not(:first-of-type) {
+      margin-left: 45px;
+    }
+  }
 `;
 
 export const CategoryName = styled.span`
@@ -60,4 +80,19 @@ export const CategoryName = styled.span`
   font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_3};
   font-weight: ${({ theme }) => theme.typography.weights.BOLD};
   background-color: rgba(255, 255, 255, 0.5);
+`;
+
+export const TwoImagesDesktop = styled.div`
+  display: flex;
+  justify-content: space-between;
+  max-width: 1100px;
+  width: 100%;
+`;
+
+export const ThreeImagesDesktop = styled.div`
+  display: flex;
+  justify-content: space-between;
+  max-width: 1100px;
+  width: 100%;
+  margin-top: 45px;
 `;
