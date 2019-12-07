@@ -16,7 +16,7 @@ const HomePage = inject(
   "routingStore",
   "uiStore"
 )(
-  observer(({ routingStore, shop }) => {
+  observer(({ routingStore, shop, catalogItems, isLoadingCatalogItems }) => {
     // const { shop } = this.props;
     const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : shop.name;
 
@@ -28,7 +28,7 @@ const HomePage = inject(
       <Fragment>
         <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
         <MainCarousel />
-        <ProductList />
+        <ProductList catalogItems={catalogItems} isLoadingCatalogItems={isLoadingCatalogItems} />
         <SelectedProducts />
         <CategoriesBlock />
         <SpecificProduct />
@@ -40,6 +40,9 @@ const HomePage = inject(
 );
 
 HomePage.propTypes = {
+  catalogItems: PropTypes.array,
+  catalogItemsPageInfo: PropTypes.object,
+  isLoadingCatalogItems: PropTypes.bool,
   routingStore: PropTypes.object,
   shop: PropTypes.shape({
     currency: PropTypes.shape({
