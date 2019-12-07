@@ -46,6 +46,10 @@ export const InnerContent = styled.div`
   flex-direction: column;
   margin-left: auto;
   margin-right: 95px;
+  @media (max-width: ${breakpoints.md}) {
+    margin-top: 30px;
+    margin-left: 60px;
+  }
 `;
 
 export const Title = styled.span`

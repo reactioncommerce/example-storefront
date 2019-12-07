@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
-import ArrowShape from "../Icons/ArrowShape";
+import React from "react";
+import Slider from "react-slick";
+import { Hidden } from "@material-ui/core";
 import * as s from "./style";
 
 const comments = [
@@ -23,75 +24,100 @@ const comments = [
     image: "../../static/images/users/user.png",
     comment:
       "“Sed ut perspiciatis unde omnis iste natus inum orit  a error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "
+  },
+  {
+    name: "Usuário 3",
+    info: "Teste",
+    image: "../../static/images/users/user.png",
+    comment:
+      "“Sed ut perspiciatis unde omnis iste natus inum orit  a error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "
   }
 ];
 
+const mobileSettings = {
+  className: "center",
+  centerMode: true,
+  infinite: false,
+  centerPadding: "10px",
+  slidesToShow: 1,
+  speed: 500
+};
+
+const desktopSettings = {
+  className: "center",
+  centerMode: true,
+  infinite: true,
+  centerPadding: "10px",
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  speed: 500
+};
+
 const UserComments = () => {
-  const [sliderPosition, setSliderPosition] = useState(0);
-  const [widthToMove, setWidthToMove] = useState(0);
-  const ref = useRef(null);
-  const positionRef = useRef(0);
-
-  const onResize = () => {
-    if (positionRef) {
-      setSliderPosition(0);
-    }
-    const width = ref.current ? ref.current.offsetWidth : 0;
-    setWidthToMove(width);
-  };
-
-  useEffect(() => {
-    onResize();
-    window.addEventListener("resize", onResize);
-  }, [ref.current]);
-
-  const changeSliderPosition = (left) => {
-    if (!sliderPosition && left) {
-      return;
-    }
-
-    if (sliderPosition === (comments.length - 1) * -widthToMove && !left) {
-      return;
-    }
-
-    const position = left ? sliderPosition + widthToMove : sliderPosition - widthToMove;
-
-    setSliderPosition(position);
-    positionRef.current = position;
-  };
-
   return (
     <s.Section>
-      <s.Title>Lorem Ipsum</s.Title>
+      <s.Header>
+        <s.Title>Lorem Ipsum</s.Title>
+      </s.Header>
 
-      <s.Slider>
-        <s.ArrowBlock onClick={() => changeSliderPosition(true)}>
-          <ArrowShape />
-        </s.ArrowBlock>
-        <s.Comments>
-          {comments &&
-            comments.length &&
-            comments.map((c, idx) => {
-              return (
-                <s.CommentCard key={idx} innerRef={ref} className="comment-card" position={`${sliderPosition}px`}>
-                  <s.ImageBorder>
-                    <s.UserImage src={c.image} />
-                  </s.ImageBorder>
-                  <s.CommentBody>
-                    <s.Text>{c.comment}</s.Text>
-                    <s.CardFooter>
-                      <s.Name>{c.name}</s.Name>
-                      <s.Info>{c.info}</s.Info>
-                    </s.CardFooter>
-                  </s.CommentBody>
-                </s.CommentCard>
-              );
-            })}
-        </s.Comments>
-        <s.ArrowBlock onClick={() => changeSliderPosition(false)}>
-          <ArrowShape direction="right" />
-        </s.ArrowBlock>
-      </s.Slider>
+      <Hidden mdUp>
+        <s.SliderContainer>
+          <Slider {...mobileSettings}>
+            {comments &&
+              comments.length &&
+              comments.map((comm, idx) => {
+                return (
+                  <s.CommentCard className="comment-card-item" key={idx}>
+                    <s.ImageBorder>
+                      <s.UserImage src={comm.image} />
+                    </s.ImageBorder>
+                    <s.CommentBody>
+                      <s.Text>{comm.comment}</s.Text>
+                      <s.CardFooter>
+                        <s.Name>{comm.name}</s.Name>
+                        <s.Info>{comm.info}</s.Info>
+                      </s.CardFooter>
+                    </s.CommentBody>
+                  </s.CommentCard>
+                );
+              })}
+          </Slider>
+        </s.SliderContainer>
+      </Hidden>
+
+      <Hidden smDown>
+        <s.Header>
+          <s.SubTitle>
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+            aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+          </s.SubTitle>
+        </s.Header>
+        
+        
+        <s.SliderContainer>
+          <Slider {...desktopSettings}>
+            {comments &&
+              comments.length &&
+              comments.map((comm, idx) => {
+                return (
+                  <s.CommentCard className="comment-card-item" key={idx}>
+                    <s.ImageBorder>
+                      <s.UserImage src={comm.image} />
+                    </s.ImageBorder>
+                    <s.CommentBody>
+                      <s.Text>{comm.comment}</s.Text>
+                      <s.CardFooter>
+                        <s.Name>{comm.name}</s.Name>
+                        <s.Info>{comm.info}</s.Info>
+                      </s.CardFooter>
+                    </s.CommentBody>
+                  </s.CommentCard>
+                );
+              })}
+          </Slider>
+        </s.SliderContainer>
+
+      </Hidden>
     </s.Section>
   );
 };
