@@ -52,7 +52,7 @@ class Breadcrumbs extends Component {
       <Fragment>
         {!!parentTag && this.renderTagBreadcrumbPiece(parentTag)}
         <ChevronRight className={breadcrumbIcon} />
-        <Link route={`/tag/${tag.slug}`}><span className={breadcrumbLink}>{tag.name}</span></Link>
+        <Link route={`/category/${tag.slug}`}><span className={breadcrumbLink}>{tag.name}</span></Link>
       </Fragment>
     );
   }
