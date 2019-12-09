@@ -7,11 +7,10 @@ import { Row, Container } from "react-grid-system";
 import { inject } from "mobx-react";
 import { observer } from "mobx-react-lite";
 import InfoCarousel from "components/InfoCarousel";
-import PRODUCTS_MOCK from "pages/PRODUCTS_MOCK.json";
+import PRODUCTS_MOCK from "helpers/PRODUCTS_MOCK.json";
 
 
 const Search = inject("routingStore")(observer(({ routingStore }) => {
-  console.log(routingStore.query.slugOrId)
   const mock = {
     page: {
       name: routingStore.query.slugOrId,
@@ -41,8 +40,8 @@ const Search = inject("routingStore")(observer(({ routingStore }) => {
       <Container fluid>
         {/* <Helmet title={"Search Results"} meta={[{ name: "description", content: shop && shop.description }]} /> */}
         <Container>
-          <Row  align="start" justify="start">
-            <Breadcrumb  pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/>
+          <Row align="start" justify="start">
+            <Breadcrumb pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/>
           </Row>
         </Container>
         <Row direction="column" align="center" justify="center">

@@ -16,7 +16,10 @@ export const BreacrumbList = styled.ul`
 export const Item = styled.li`
   font-size: .8rem;
   color: ${({ theme }) => theme.colors.gray.COLOR_2};
-  
+  &.active {
+    color: ${({ theme }) => theme.colors.secondary};
+    font-weight: 900;
+  }
 `;
 
 export const Separator = styled.span`

@@ -1,20 +1,24 @@
 import React from "react";
 import Helmet from "react-helmet";
+import PropTypes from "prop-types";
 import Breadcrumb from "components/Breadcrumb";
 import ProductResults from "components/ProductResults";
 import { Row, Container } from "react-grid-system";
-import PRODUCTS_MOCK from "helpers/PRODUCTS_MOCK.json";
-import InfoCarousel from "../components/InfoCarousel";
+import { inject } from "mobx-react";
+import { observer } from "mobx-react-lite";
+import InfoCarousel from "components/InfoCarousel";
+import PRODUCTS_MOCK from "pages/PRODUCTS_MOCK.json";
 
-const Categories = (shop) => {
+
+const MyAccount = inject("routingStore")(observer(({ routingStore }) => {
   const mock = {
     page: {
-      name: "Vestidos",
+      name: routingStore.query.slugOrId,
       breadcrumb: {
-        link: "/categories/vestidos",
+        link: "`/search/`",
         root: {
-          name: "Categorias",
-          link: "/categories"
+          name: "Busca",
+          link: "/search"
         }
       },
       title: "About us !",
@@ -31,23 +35,29 @@ const Categories = (shop) => {
       products: PRODUCTS_MOCK
     }
   };
-
   return (
     <div>
       <Container fluid>
-        <Helmet title={"Categories"} meta={[{ name: "description", content: shop && shop.description }]} />
+        {/* <Helmet title={"Search Results"} meta={[{ name: "description", content: shop && shop.description }]} /> */}
         <Container>
           <Row align="start" justify="start">
             <Breadcrumb pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/>
           </Row>
         </Container>
         <Row direction="column" align="center" justify="center">
-          <ProductResults page={mock.page}/>
+          <ProductResults page={mock.page} />
         </Row>
         <InfoCarousel/>
       </Container>
     </div>
   );
+}));
+
+MyAccount.propTypes = {
+  // router: PropTypes.object.isRequired,
+  routingStore: PropTypes.shape({
+    slugOrId: PropTypes.string
+  })
 };
 
-export default Categories;
+export default MyAccount;

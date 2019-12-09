@@ -5,7 +5,7 @@ import YoutubeIcon from "mdi-material-ui/Youtube";
 import PinterestIcon from "mdi-material-ui/Pinterest";
 import TwiiterIcon from "mdi-material-ui/Twitter";
 import LinkedinIcon from "mdi-material-ui/LinkedinBox";
-import { Hidden } from "react-grid-system";
+import { Visible } from "react-grid-system";
 import {
   paymentsAccepted,
   certificates,
@@ -20,7 +20,8 @@ const Footer = () => {
   const accordions = [aboutAccordion, helpAccordion, accountAccordion];
 
   return (
-    <Hidden md lg xl>
+    <div>
+      <Visible sm xs>
       <styles.Container>
         <styles.UpsideContent>
           {accordions && accordions.map((item, idx) => <Accordion key={idx} title={item.title} links={item.links} />)}
@@ -66,7 +67,12 @@ const Footer = () => {
           </styles.InnerInfo>
         </styles.BottomContent>
       </styles.Container>
-    </Hidden>
+    </Visible>
+    <Visible md lg xl >
+    <styles.Container>
+    </styles.Container>
+    </Visible>
+    </div>
   );
 };
 

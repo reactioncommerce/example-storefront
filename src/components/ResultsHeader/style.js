@@ -21,12 +21,13 @@ export const TotalVisible = styled.div`
 `;
 
 export const StyledFormControl = styled(FormControl)`
-
+    height: 70px;
+    margin-left: 14px!important;
 `;
 
 
 export const StyledSelect = styled(Select)`
-
+  width: 150px;
 `;
 
 export const StyledInputLabel = styled(InputLabel)`
@@ -41,7 +42,7 @@ export const Visible = styled.span`
 
 export const CategoryFilters = styled.ul`
   font-size: .8rem;
-  padding: 15px 0;
+  padding: 0 0;
   list-style: none;
   align-items: center;
   justify-content: space-around;
@@ -51,8 +52,8 @@ export const CategoryFilters = styled.ul`
 
 export const FilterItem = styled.li`
   align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
+  justify-content: center;
+  flex-direction: row;
   display: flex;
   position: relative;
   font-size: 1rem;
@@ -72,7 +73,6 @@ export const Dropdown = styled.ul`
   padding:0 5px;
   margin-top: 10px;
   display:flex;
-
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
@@ -106,7 +106,7 @@ export const Input = styled.input`
     height: 90px;
     padding: 5px;
     transition: all .3s;
- }
+  }
 `;
 
 
