@@ -103,7 +103,7 @@ const Categories = inject(
                 setPageSize={setPageSize}
                 setSortBy={setSortBy}
                 sortBy={sortBy}
-                pageName={tag.name}
+                pageName={tag && tag.name}
               />
             </Row>
             <InfoCarousel />
