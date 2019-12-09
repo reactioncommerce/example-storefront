@@ -22,14 +22,12 @@ const Categories = inject(
       shop,
       uiStore,
       tag,
-      tags,
       routingStore,
       catalogItems,
       isLoadingCatalogItems,
       catalogItemsPageInfo
     }) => {
       useEffect(() => {
-        // console.log(catalogItems);
         if (tag && routingStore.tagId !== tag._id) {
           routingStore.setTagId(tag._id);
           routingStore.setSearch({

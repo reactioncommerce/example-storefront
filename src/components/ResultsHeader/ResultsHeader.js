@@ -18,18 +18,11 @@ const ResultsHeader = ({ itemsOnScreen, totalItems, pageName }) => {
           <s.StyledFormControl>
             <s.StyledInputLabel htmlFor="reason">Selecionar</s.StyledInputLabel>
             <s.StyledSelect id="reason">
-              <MenuItem value="Produto">Maior</MenuItem>
-              <MenuItem value="Reclamação">Menor</MenuItem>
+              <MenuItem value="Maior">Maior</MenuItem>
+              <MenuItem value="Menor">Menor</MenuItem>
             </s.StyledSelect>
           </s.StyledFormControl>
-          {/* <s.Label htmlFor="dropdown">
-            Filtrar por preço:
-          </s.Label>
-          <s.Input id="dropdown" type="checkbox" hidden />
-          <s.Dropdown>
-            <s.DropdownItem>Menor preço</s.DropdownItem>
-            <s.DropdownItem>Maior preço</s.DropdownItem>
-          </s.Dropdown> */}
+
         </s.FilterItem>
       </s.CategoryFilters>
     </div>

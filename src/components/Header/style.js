@@ -5,11 +5,13 @@ export const Container = styled.div`
   position: relative;
   z-index: 9;
   background: #fff;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.21);
 `;
 
 export const Content = styled.div`
+  box-shadow: 0 0px 10px rgba(0, 0, 0, .1);
   display: flex;
+  position: relative;
+  z-index: 9;
   justify-content: space-between;
   align-items: center;
   height: 63px;

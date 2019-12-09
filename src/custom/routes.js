@@ -16,6 +16,7 @@ function defineRoutes(routes) {
     .add("register", "/register", "register")
     .add("checkout", "/cart/checkout", "checkout")
     .add("search", "/search/:slugOrId", "search")
+    .add("myAccount", "/my-account", "myAccount")
     .add("checkoutLogin", "/cart/login", "checkout")
     .add("checkoutComplete", "/checkout/order/:orderId", "checkoutComplete")
     .add("shopProduct", "/shop/:shopSlug/product/:slugOrId", "product")

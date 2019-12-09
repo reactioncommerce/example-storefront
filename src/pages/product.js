@@ -6,13 +6,15 @@ import Breadcrumb from "components/Breadcrumb";
 import InfoCarousel from "components/InfoCarousel";
 import Newsletter from "components/Newsletter";
 import { Container, Row } from "react-grid-system";
+import withCatalogItems from "containers/catalog/withCatalogItems";
+
 import { inject } from "mobx-react";
 import { observer } from "mobx-react-lite";
+import product from "helpers/PRODUCT_MOCK.json";
 import ProductList from "../components/ProductList";
-import product from "./PRODUCT_MOCK.json";
 
 
-const ProductDetailPage =  inject(
+const ProductDetailPage = inject(
   "routingStore",
   "uiStore"
 )(observer(({ routingStore, shop, catalogItems, isLoadingCatalogItems }) => {
@@ -49,7 +51,7 @@ const ProductDetailPage =  inject(
   };
 
   return (
-    <Container fluid>
+    <Container style={{ background: "#fafafa" }} fluid>
       <Row align="center" justify="start">
         <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
       </Row>
@@ -80,4 +82,4 @@ ProductDetailPage.propTypes = {
   })
 };
 
-export default ProductDetailPage;
+export default withCatalogItems(ProductDetailPage);

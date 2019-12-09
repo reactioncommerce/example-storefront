@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { Col, Row } from "react-grid-system";
+import { Col, Container, Row } from "react-grid-system";
 import Slider from "react-slick";
 import { breakpoints } from "../../helpers/constants";
 
@@ -15,9 +15,23 @@ export const ImageCol = styled.div`
 `;
 
 export const StyledRow = styled(Row)`
-    height: 438px;
+    height: 100%;
     list-style:none;
     padding: 0;
+`;
+
+export const StyledContainer = styled(Container)`
+    background: #fff;
+    padding: 0px;
+
+    @media (min-width: ${breakpoints.md}) {
+        padding: 40px;
+        max-width: 1200px;
+    }
+`;
+export const StyledCol = styled(Col)`
+    height: 100%;
+    border-left: 1px solid #c1c1c1;
 `;
 
 export const StyledSlider = styled(Slider)`
@@ -47,6 +61,15 @@ export const StyledSlider = styled(Slider)`
         z-index: 6;
         margin: 0 5px;
     }
+    .slick-slide {
+        max-width: 330px;
+        
+    }
+    @media (min-width: ${breakpoints.md}) {
+
+    }
+
+
 `;
 
 export const Title = styled.h2`
@@ -136,10 +159,7 @@ export const Button = styled(StyledButton)`
     font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_4};
     font-weight: ${({ theme }) => theme.typography.weights.BOLD};
 
-
     @media (min-width: ${breakpoints.md}) {
-      width: 101px;
-      height: 41px;
       font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_3};
     }
 
