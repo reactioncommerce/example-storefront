@@ -90,7 +90,6 @@ const Categories = inject(
               </Row>
             </Container>
             <Row direction="column" align="center" justify="center">
-              {/* <ProductResults page={mock.page} /> */}
               <ProductResults
                 catalogItems={catalogItems}
                 currencyCode={shop.currency.code}

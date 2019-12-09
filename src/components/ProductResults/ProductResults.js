@@ -65,7 +65,7 @@ const ProductResults = ({
 
   return (
     <Container>
-      <ResultsHeader itemsOnScreen={1} totalItems={122} pageName={pageName} />
+      <ResultsHeader itemsOnScreen={catalogItems.length} totalItems={catalogItems.length} pageName={pageName} />
 
       <s.ProductResults>
         {setProducts(pageProducts)}
