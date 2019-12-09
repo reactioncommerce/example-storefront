@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import ResultsHeader from "components/ResultsHeader";
 import { Container, Row } from "react-grid-system";
-import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
+import withWidth from "@material-ui/core/withWidth";
 import * as s from "./style";
 
 const ProductResults = ({
@@ -14,7 +14,8 @@ const ProductResults = ({
   pageSize,
   setPageSize,
   setSortBy,
-  sortBy
+  sortBy,
+  pageName
 }) => {
   const settings = {
     dots: false,
@@ -25,15 +26,15 @@ const ProductResults = ({
   };
 
   useEffect(() => {
-    console.log("huexxxx");
+    console.log(`Produtos: ${catalogItems.length}`);
+    console.log(`Total de itens que podem ser exibidos: ${pageSize}`);
+    console.log(`Total de páginas: ${catalogItems.length / pageSize}`);
+    console.log(`Informações da página (loadNextPage, prevPage): ${pageInfo}`);
   });
 
-  // const totalPages = Math.round(page.products.length / page.pagination.limit);
-  const totalPages = pageSize;
-  // const pageProducts = page.products.slice(0, page.pagination.limit);
+  const totalPages = Math.round(catalogItems.length / pageSize);
   const pageProducts = (catalogItems || []).map((item) => item.node.product);
-  console.log("render");
-  console.log(pageProducts);
+
   const setPagination = (total) => {
     const array = [];
     for (let index = 0; index < total; index += 1) {
@@ -43,7 +44,6 @@ const ProductResults = ({
   };
 
   const setProducts = (products) => {
-    console.log("x" + products);
     return products.map((product) => (
       <s.Product xs={6} md={3}>
         <s.Content>
@@ -65,17 +65,17 @@ const ProductResults = ({
 
   return (
     <Container>
-      {/* <ResultsHeader page={page} totalPages={totalPages} /> */}
-      {/* <ResultsHeader totalPages={totalPages} /> */}
+      <ResultsHeader itemsOnScreen={1} totalItems={122} pageName={pageName} />
+
       <s.ProductResults>
         {setProducts(pageProducts)}
 
         <s.Pagination {...settings}>
           {setPagination(totalPages).map((pageIndex) => (
-            <span>{pageIndex}</span>
             // <s.PaginationItem key={pageIndex} className={page.pagination.actual === pageIndex ? "active" : null}>
-            //   {pageIndex}
-            // </s.PaginationItem>
+            <s.PaginationItem key={pageIndex} className={null}>
+              {pageIndex}
+            </s.PaginationItem>
           ))}
         </s.Pagination>
       </s.ProductResults>
@@ -89,6 +89,7 @@ ProductResults.propTypes = {
   initialSize: PropTypes.object,
   isLoadingCatalogItems: PropTypes.bool,
   pageInfo: PropTypes.object,
+  pageName: PropTypes.string,
   pageSize: PropTypes.number,
   setPageSize: PropTypes.func,
   setSortBy: PropTypes.func,

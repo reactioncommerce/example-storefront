@@ -3,16 +3,16 @@ import PropTypes from "prop-types";
 import { MenuItem } from "@material-ui/core";
 import * as s from "./style";
 
-const ResultsHeader = (props) => {
-  const { page, totalPages } = props;
+const ResultsHeader = ({ itemsOnScreen, totalItems, pageName }) => {
   return (
     <div>
       <s.CategoryHeader>
-        <s.TotalVisible>Itens <s.Visible>{ page.pagination.visible }</s.Visible> de { totalPages} </s.TotalVisible>
-        <s.Title>{ page.name } </s.Title>
+        <s.TotalVisible>
+          Itens <s.Visible>{itemsOnScreen}</s.Visible> de {totalItems}{" "}
+        </s.TotalVisible>
+        <s.Title>{pageName} </s.Title>
       </s.CategoryHeader>
       <s.CategoryFilters>
-
         <s.FilterItem>
           Ordernar por preço:
           <s.StyledFormControl>
@@ -37,7 +37,9 @@ const ResultsHeader = (props) => {
 };
 
 ResultsHeader.propTypes = {
-  page: PropTypes.object
+  itemsOnScreen: PropTypes.number,
+  pageName: PropTypes.string,
+  totalItems: PropTypes.number
 };
 
 export default ResultsHeader;

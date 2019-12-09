@@ -28,256 +28,18 @@ const Categories = inject(
       isLoadingCatalogItems,
       catalogItemsPageInfo
     }) => {
-      // const Categories = (initialGridSize, shop) => {
-      const mock = {
-        page: {
-          name: "Vestidos",
-          breadcrumb: {
-            link: "/categories/vestidos",
-            root: {
-              name: "Categorias",
-              link: "/categories"
-            }
-          },
-          title: "About us !",
-          description: `In sit amet quam nec lacus sodales facilisis ac quis sapien. Morbi gravida pellentesque nunc, sed 
-      imperdiet urna dictum nec. Nam et fringilla ante. Donec placerat tellus nunc, nec aliquam ipsum tempor at. 
-      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. P`,
-          banner: "static/images/banner.png",
-          pagination: {
-            limit: 8,
-            actual: 1,
-            total: 22,
-            visible: "1-4"
-          },
-          products: [
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod1.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod2.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod3.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod4.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod1.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod2.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod3.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod4.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod1.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod2.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod5.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod4.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod1.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod2.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod3.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod4.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod1.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod2.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod3.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod4.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod1.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod2.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod5.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod4.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod1.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod2.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod3.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod4.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod1.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod2.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod3.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod4.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod1.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod2.png"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod5.jpg"
-            },
-            {
-              title: "Vestido",
-              price: "99.99",
-              cashPrice: "79.99",
-              photo: "../static/images/home/prod4.jpg"
-            }
-          ]
-        }
-      };
-
       useEffect(() => {
-        console.log(catalogItems);
-      });
+        // console.log(catalogItems);
+        if (tag && routingStore.tagId !== tag._id) {
+          routingStore.setTagId(tag._id);
+          routingStore.setSearch({
+            before: null,
+            after: null
+          });
+        }
+      }, [tag, routingStore]);
 
       const renderHeaderMetatags = (metafields) => {
-        // const { shop } = this.props;
-
         const metatags = [];
         let hasDescription = false;
         metafields.forEach((field) => {
@@ -324,7 +86,7 @@ const Categories = inject(
               }
             />
             <Container>
-              <Row align="start" justify="start">
+              <Row align="start" justify="start" style={{ marginTop: "25px" }}>
                 {/* <Breadcrumb pageName={mock.page.name} breadcrumb={mock.page.breadcrumb} /> */}
                 <Breadcrumbs isTagGrid tagId={routingStore.tagId} />
               </Row>
@@ -341,6 +103,7 @@ const Categories = inject(
                 setPageSize={setPageSize}
                 setSortBy={setSortBy}
                 sortBy={sortBy}
+                pageName={tag.name}
               />
             </Row>
             <InfoCarousel />
