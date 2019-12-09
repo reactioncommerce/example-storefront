@@ -138,9 +138,6 @@ ProductDetailPage.propTypes = {
   catalogItemsPageInfo: PropTypes.object,
   isLoadingCatalogItems: PropTypes.bool,
   isLoadingProduct: PropTypes.bool,
-  /**
-   * Catalog Product item
-   */
   product: PropTypes.object,
   routingStore: PropTypes.object,
   shop: PropTypes.shape({

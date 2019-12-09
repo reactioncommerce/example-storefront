@@ -23,7 +23,7 @@ const ProductGallery = inject()(
           <s.StyledSlider {...settings}>
             {images &&
               images.map((img) => (
-                <s.ImageCol>
+                <s.ImageCol key={img.productId}>
                   <s.Image src={img.URLs.medium} alt="" />
                 </s.ImageCol>
               ))}
@@ -40,7 +40,7 @@ const ProductGallery = inject()(
           >
             {images &&
               images.map((img) => (
-                <s.ImageCol>
+                <s.ImageCol key={img.productId}>
                   <s.Image src={img.URLs.medium} alt="" />
                 </s.ImageCol>
               ))}

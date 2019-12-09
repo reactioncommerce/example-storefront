@@ -17,7 +17,6 @@ const settings = {
 const productsInLine = 4;
 
 const ProductList = ({ catalogItems, isLoadingCatalogItems }) => {
-
   const onClickProduct = (slug) => {
     Router.pushRoute(`/product/${slug}`);
   };
@@ -71,7 +70,7 @@ const ProductList = ({ catalogItems, isLoadingCatalogItems }) => {
               const breakline = idx % productsInLine === 0;
               const image = prod.primaryImage && prod.primaryImage.URLs && prod.primaryImage.URLs.medium;
               return (
-                <div>
+                <div key={prod._id}>
                   {breakline && <s.BreakLine />}
                   <s.DesktopProduct onClick={() => onClickProduct(prod.slug)}>
                     <s.ImageContainer hasImage={!!image} src={image} desktopMode>
