@@ -1,18 +1,10 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import { inject, observer } from "mobx-react";
 import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
-import ProductDetailAddToCart from "components/ProductDetailAddToCart";
-import ProductDetailTitle from "components/ProductDetailTitle";
-import VariantList from "components/VariantList";
-import ProductDetailVendor from "components/ProductDetailVendor";
-import ProductDetailDescription from "components/ProductDetailDescription";
-import ProductDetailPrice from "components/ProductDetailPrice";
-import MediaGallery from "components/MediaGallery";
 import ProductGallery from "components/ProductGallery";
 import Accordion from "components/Accordion";
 import { Container, Col, Row, Visible } from "react-grid-system";
@@ -249,6 +241,21 @@ class ProductDetail extends Component {
     return productPrice;
   }
 
+  getProductDescription() {
+    const { product } = this.props;
+    const info = [];
+
+    if (product && product.description) {
+      info.push({ title: "Informações do Produto", text: product.description });
+    }
+
+    if (product && product.metafields) {
+      info.push({ title: "Ficha ténica", list: product.metafields });
+    }
+
+    return info;
+  }
+
   render() {
     const {
       classes,
@@ -308,7 +315,7 @@ class ProductDetail extends Component {
               <s.Button secondary onClick={this.handleOnAddProductToCartClick}>
                 ADICIONAR AO CARRINHO
               </s.Button>
-              <Accordion array={[]} />
+              <Accordion array={this.getProductDescription()} />
             </Row>
           </Visible>
           <Visible md lg xl>
@@ -333,7 +340,7 @@ class ProductDetail extends Component {
                   </s.StyledRow>
                 </s.StyledCol>
               </Row>
-              <Accordion array={[]} />
+              <Accordion array={this.getProductDescription()} />
             </Container>
           </Visible>
         </s.StyledContainer>
