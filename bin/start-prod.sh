@@ -7,6 +7,7 @@ set -o pipefail # don't ignore exit codes when piping output
 IFS="$(printf "\n\t")"
 
 cd "$(dirname "$0")/.."
-yarn install
-./bin/create-hydra-client.sh
-yarn start:dev
+printf "Creating hydra client…"
+./bin/wait-for.sh "${OAUTH2_HOST}:${OAUTH2_ADMIN_PORT}"
+./bin/create-hydra-client.js
+node .
