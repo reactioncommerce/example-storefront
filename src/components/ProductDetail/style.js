@@ -161,6 +161,7 @@ export const Button = styled(StyledButton)`
     text-transform: none;
     font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_4};
     font-weight: ${({ theme }) => theme.typography.weights.BOLD};
+    cursor: pointer;
 
     @media (min-width: ${breakpoints.md}) {
       font-size: ${({ theme }) => theme.typography.sizes.text.SIZE_3};

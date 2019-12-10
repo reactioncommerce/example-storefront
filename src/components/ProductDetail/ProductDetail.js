@@ -147,7 +147,6 @@ class ProductDetail extends Component {
       width
     } = this.props;
 
-    debugger;
     // Get selected variant or variant option
     const selectedVariant = variantById(product.variants, pdpSelectedVariantId);
     const selectedOption = variantById(selectedVariant.options, pdpSelectedOptionId);
@@ -202,8 +201,6 @@ class ProductDetail extends Component {
   };
 
   handleOnAddProductToCartClick = async () => {
-    const { uiStore } = this.props;
-
     // Pass chosen quantity to onClick callback
     await this.handleAddToCartClick(1);
 
@@ -211,15 +208,6 @@ class ProductDetail extends Component {
     if (typeof window !== "undefined" && typeof window.scrollTo === "function") {
       window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
     }
-
-    // Reset cart quantity to 1 after items are added to cart
-    // this.setState({
-    //   addToCartError: null,
-    //   addToCartQuantity: 1
-    // });
-
-    // Open cart popper on addToCart
-    uiStore.openCartWithTimeout();
   };
 
   /**
@@ -339,7 +327,7 @@ class ProductDetail extends Component {
                       por <s.Span>{product.pricing[0].minPrice}</s.Span> à vista
                     </s.SpecialPrice>
                     <s.Button primary>COMPRAR</s.Button>
-                    <s.Button secondary onClick={this.handleAddToCartClick}>
+                    <s.Button secondary onClick={this.handleOnAddProductToCartClick}>
                       ADICIONAR AO CARRINHO
                     </s.Button>
                   </s.StyledRow>
@@ -351,95 +339,6 @@ class ProductDetail extends Component {
         </s.StyledContainer>
       </Fragment>
     );
-    // Phone size
-    // if (isWidthDown("sm", width)) {
-    //   return (
-    //     <Fragment>
-    //       <div className={classes.section}>
-    //         <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
-    //         <div className={classes.info}>
-    //           <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
-    //         </div>
-    //         <div className={classes.info}>
-    //           <ProductDetailPrice compareAtPrice={compareAtDisplayPrice} isCompact price={productPrice.displayPrice} />
-    //         </div>
-    //       </div>
-
-    //       <div className={classes.section}>
-    //         <MediaGallery mediaItems={pdpMediaItems} />
-    //       </div>
-
-    //       <div className={classes.section}>
-    //         <VariantList
-    //           onSelectOption={this.handleSelectOption}
-    //           onSelectVariant={this.handleSelectVariant}
-    //           product={product}
-    //           selectedOptionId={pdpSelectedOptionId}
-    //           selectedVariantId={pdpSelectedVariantId}
-    //           currencyCode={currencyCode}
-    //           variants={product.variants}
-    //         />
-    //         <ProductDetailAddToCart
-    //           onClick={this.handleAddToCartClick}
-    //           selectedOptionId={pdpSelectedOptionId}
-    //           selectedVariantId={pdpSelectedVariantId}
-    //           variants={product.variants}
-    //         />
-    //       </div>
-
-    //       <div className={classes.section}>
-    //         <ProductDetailDescription>{product.description}</ProductDetailDescription>
-    //       </div>
-    //     </Fragment>
-    //   );
-    // }
-
-    // return (
-    //   <Fragment>
-    //     <Grid container spacing={theme.spacing.unit * 5}>
-    //       <Grid item className={classes.breadcrumbGrid} xs={12}>
-    //         <Breadcrumbs isPDP tagId={routingStore.tagId} product={product} />
-    //       </Grid>
-    //       <Grid item xs={12} sm={6}>
-    //         <div className={classes.section}>
-    //           <MediaGallery mediaItems={pdpMediaItems} />
-    //         </div>
-    //       </Grid>
-
-    //       <Grid item xs={12} sm={6}>
-    //         <ProductDetailTitle pageTitle={product.pageTitle} title={product.title} />
-    //         <div className={classes.info}>
-    //           <ProductDetailVendor>{product.vendor}</ProductDetailVendor>
-    //         </div>
-    //         <div className={classes.info}>
-    //           <ProductDetailPrice
-    //             className={classes.bottomMargin}
-    //             compareAtPrice={compareAtDisplayPrice}
-    //             price={productPrice.displayPrice}
-    //           />
-    //         </div>
-    //         <div className={classes.info}>
-    //           <ProductDetailDescription>{product.description}</ProductDetailDescription>
-    //         </div>
-    //         <VariantList
-    //           onSelectOption={this.handleSelectOption}
-    //           onSelectVariant={this.handleSelectVariant}
-    //           product={product}
-    //           selectedOptionId={pdpSelectedOptionId}
-    //           selectedVariantId={pdpSelectedVariantId}
-    //           currencyCode={currencyCode}
-    //           variants={product.variants}
-    //         />
-    //         <ProductDetailAddToCart
-    //           onClick={this.handleAddToCartClick}
-    //           selectedOptionId={pdpSelectedOptionId}
-    //           selectedVariantId={pdpSelectedVariantId}
-    //           variants={product.variants}
-    //         />
-    //       </Grid>
-    //     </Grid>
-    //   </Fragment>
-    // );
   }
 }
 
