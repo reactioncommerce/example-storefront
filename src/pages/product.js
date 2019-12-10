@@ -16,11 +16,10 @@ import { observer } from "mobx-react-lite";
 import ProductList from "../components/ProductList";
 import ErrorPage from "./_error";
 
-const ProductDetailPage = inject(
-  "routingStore",
-  "uiStore"
-)(
-  observer(({ routingStore, shop, catalogItems, isLoadingCatalogItems, addItemsToCart, isLoadingProduct, product }) => {
+const ProductDetailPage = inject()(
+  // "routingStore",
+  // "uiStore"
+  observer(({ shop, catalogItems, isLoadingCatalogItems, addItemsToCart, isLoadingProduct, product }) => {
     // const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : shop.name;
 
     // const mock = {
