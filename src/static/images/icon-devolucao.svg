@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25.942" height="16.223" viewBox="0 0 25.942 16.223">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #707070;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 0.5px;
+      }
+    </style>
+  </defs>
+  <path id="Path" class="cls-1" d="M19,0H7.917V1.538H19a4.689,4.689,0,0,1,4.75,4.614A4.689,4.689,0,0,1,19,10.767H3.958V7.691L0,11.536l3.958,3.845V12.3H19a6.252,6.252,0,0,0,6.333-6.152A6.252,6.252,0,0,0,19,0Z" transform="translate(0.359 0.251)"/>
+</svg>

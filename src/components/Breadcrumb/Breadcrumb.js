@@ -10,7 +10,7 @@ const Breadcrumb = (props) => {
     <s.BreacrumbList >
       <s.Item><s.StyledLink route={"/"}>Home</s.StyledLink></s.Item>
       <s.Separator>/</s.Separator>
-      { (breadcrumb.root
+      { (breadcrumb.root.link
         ? <div><s.Item><s.StyledLink route={breadcrumb.root.link}>{breadcrumb.root.name}</s.StyledLink></s.Item><s.Separator>/</s.Separator></div>
         : null)
       }
