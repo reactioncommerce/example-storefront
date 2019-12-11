@@ -129,7 +129,7 @@ export default class MiniCart extends Component {
   handleOnClick = () => {
     // const { closeCart } = this.props.uiStore;
     // closeCart();
-    Router.pushRoute("cart");
+    Router.pushRoute("/cart");
   };
 
   handleItemQuantityChange = (quantity, cartItemId) => {
