@@ -21,6 +21,7 @@ import TRACKING from "lib/tracking/constants";
 import CartShipment from "components/CartShipment";
 import ProductList from "../components/ProductList";
 import InfoCarousel from "../components/InfoCarousel";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 
 @withCart
 @withCatalogItems
@@ -152,16 +153,15 @@ class CartPage extends Component {
     return (
       <Container fluid>
         <Helmet
-          title={`Cart | ${shop && shop.name}`}
+          title={`Carrinho | ${shop && shop.name}`}
           meta={[{ name: "description", content: shop && shop.description }]}
         />
-        {/* <Breadcrumb pageName={page.name} breadcrumb={page.breadcrumb} /> */}
+        <Breadcrumbs isCart />
         <h3 variant="h6" align="center">
-          {/* {page.name} */}
-          Carrinho
+          Finalizar compra
         </h3>
         {this.renderCartItems()}
-        {this.renderCartSummary()}
+        {/* {this.renderCartSummary()} */}
         <CartShipment />
         <ProductList catalogItems={catalogItems} isLoadingCatalogItems={isLoadingCatalogItems} />
         <InfoCarousel />

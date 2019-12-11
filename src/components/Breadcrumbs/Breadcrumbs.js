@@ -19,7 +19,15 @@ const styles = (theme) => ({
   breadcrumbLink: {
     fontSize: "14px",
     fontFamily: theme.typography.fontFamily,
-    color: "#3c3c3c",
+    color: "#4f4d4d",
+    border: 0,
+    textDecoration: "none",
+    margin: "0 7px"
+  },
+  lastBreadcrumbLink: {
+    fontSize: "14px",
+    fontFamily: theme.typography.fontFamily,
+    color: "#00c3cb",
     border: 0,
     textDecoration: "none",
     margin: "0 7px"
@@ -28,7 +36,7 @@ const styles = (theme) => ({
     fontSize: "14px"
   },
   breadcrumbSeparator: {
-    margin: "0 5px"
+    margin: "0 2px"
   }
 });
 
@@ -37,6 +45,7 @@ const styles = (theme) => ({
 class Breadcrumbs extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    isCart: PropTypes.bool,
     isPDP: PropTypes.bool,
     isTagGrid: PropTypes.bool,
     product: PropTypes.object,
@@ -106,8 +115,23 @@ class Breadcrumbs extends Component {
     );
   };
 
+  renderCartBreadcrumbs = () => {
+    const {
+      classes: { breadcrumbSeparator, lastBreadcrumbLink }
+    } = this.props;
+
+    return (
+      <Fragment>
+        <span className={breadcrumbSeparator}>/</span>
+        <Link route={"/cart"}>
+          <span className={lastBreadcrumbLink}>Meu carrinho</span>
+        </Link>
+      </Fragment>
+    );
+  };
+
   renderBreadcrumbs() {
-    const { isPDP, isTagGrid } = this.props;
+    const { isPDP, isTagGrid, isCart } = this.props;
 
     if (isTagGrid) {
       return this.renderTagBreadcrumbs();
@@ -115,6 +139,10 @@ class Breadcrumbs extends Component {
 
     if (isPDP) {
       return this.renderProductNameBreadcrumb();
+    }
+
+    if (isCart) {
+      return this.renderCartBreadcrumbs();
     }
 
     return null;

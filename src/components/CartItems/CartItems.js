@@ -16,10 +16,6 @@ const CartItems = (props) => {
     onLoadMoreCartItems
   } = props;
 
-  useEffect(() => {
-    console.log(items);
-  }, []);
-
   const handleItemQuantityChange = (quantity, _id) => {
     onChangeCartItemQuantity(quantity, _id);
   };
