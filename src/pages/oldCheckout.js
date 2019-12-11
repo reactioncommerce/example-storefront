@@ -17,13 +17,10 @@ import ChevronLeftIcon from "mdi-material-ui/ChevronLeft";
 import LockIcon from "mdi-material-ui/Lock";
 import Link from "components/Link";
 import CheckoutSummary from "components/CheckoutSummary";
-import FormWizard from "components/FormWizard";
-import { Col, Row, Container, Hidden, Visible} from "react-grid-system";
 import PageLoading from "components/PageLoading";
 import withCart from "containers/cart/withCart";
 import withAvailablePaymentMethods from "containers/payment/withAvailablePaymentMethods";
 import definedPaymentMethods from "../custom/paymentMethods";
-
 
 const styles = (theme) => ({
   checkoutActions: {
@@ -132,8 +129,7 @@ const styles = (theme) => ({
   root: {}
 });
 
-const hasIdentityCheck = (cart) => true;
-// const hasIdentityCheck = (cart) => !!((cart && cart.account !== null) || (cart && cart.email));
+const hasIdentityCheck = (cart) => !!((cart && cart.account !== null) || (cart && cart.email));
 
 @withCart
 @withAvailablePaymentMethods
@@ -169,11 +165,10 @@ class Checkout extends Component {
     theme: PropTypes.object.isRequired
   };
 
+  state = {};
+
   componentDidMount() {
     this.handleRouteChange();
-    if (!hasIdentityCheck()) {
-      Router.pushRoute("/login");
-    }
   }
 
   componentDidUpdate() {
@@ -218,9 +213,7 @@ class Checkout extends Component {
   renderCheckoutHead() {
     const { shop } = this.props;
     const pageTitle = this.hasIdentity ? `Checkout | ${shop && shop.name}` : `Login | ${shop && shop.name}`;
-    return (
-      <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
-    );
+    return <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />;
   }
 
   // render page top bar
@@ -239,7 +232,6 @@ class Checkout extends Component {
     return (
       <div className={classes.header}>
         <div className={classes.headerFlex}>
-          <h1>Teste</h1>
           <Link route="/" className={classes.backLink}>
             <ChevronLeftIcon style={{ fontSize: 18, color: "inherit", verticalAlign: "sub", transition: "none" }} />
             <span className={classes.backLinkText}>Backss</span>
@@ -385,15 +377,12 @@ class Checkout extends Component {
     }
 
     return (
-      <Container fluid>
-        
-        <FormWizard />
-        {/* {this.renderCheckoutHead()}
+      <Fragment>
+        {this.renderCheckoutHead()}
         {this.renderCheckoutTopHat()}
         {this.renderCheckoutHeader()}
-        {this.renderCheckoutContent()} */}
-
-      </Container>
+        {this.renderCheckoutContent()}
+      </Fragment>
     );
   }
 }

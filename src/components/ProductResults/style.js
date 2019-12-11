@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Slider from "react-slick";
-import { Col, Row } from "react-grid-system";
+import { Col, Row, Container } from "react-grid-system";
 import { breakpoints } from "../../helpers/constants";
 
 export const ProductResults = styled(Row)`
@@ -15,6 +15,12 @@ export const ProductResults = styled(Row)`
   border-color: #c1c1c1;
   flex-wrap:wrap;
   border-style: solid;
+`;
+
+export const StyledContainer = styled(Container)`
+  @media (min-width: ${breakpoints.md}) {
+    width: 1296px;
+    }
 `;
 
 

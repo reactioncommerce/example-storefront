@@ -45,7 +45,7 @@ const ProductResults = (props) => {
   const totalPages = Math.round(page.products.length / page.pagination.limit);
   const pageProducts = page.products.slice(0, page.pagination.limit);
   return (
-    <Container>
+    <s.StyledContainer>
       <ResultsHeader page={page} totalPages={totalPages} />
       <s.ProductResults>
         { setProducts(pageProducts)}
@@ -56,7 +56,7 @@ const ProductResults = (props) => {
           ))}
         </s.Pagination>
       </s.ProductResults>
-    </Container>
+    </s.StyledContainer>
   );
 };
 

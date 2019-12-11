@@ -54,7 +54,6 @@ const MyAccount = inject("routingStore")(observer(({ routingStore }) => {
 }));
 
 MyAccount.propTypes = {
-  // router: PropTypes.object.isRequired,
   routingStore: PropTypes.shape({
     slugOrId: PropTypes.string
   })
