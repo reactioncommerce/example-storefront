@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22.3" height="22.336" viewBox="0 0 22.3 22.336">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4f4d4d;
+        stroke-miterlimit: 10;
+        stroke-width: 0.3px;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #4f4d4d;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Grupo_16" data-name="Grupo 16" transform="translate(-1192.85 -57)">
+    <g id="Group_43" data-name="Group 43" transform="translate(1193 58)">
+      <path id="Shape" class="cls-1" d="M19.963,11.408H2.037A2.039,2.039,0,0,1,0,9.371,9.381,9.381,0,0,1,9.371,0H12.63A9.381,9.381,0,0,1,22,9.371a2.039,2.039,0,0,1-2.037,2.037ZM9.371.815A8.566,8.566,0,0,0,.815,9.371a1.224,1.224,0,0,0,1.222,1.222H19.963a1.231,1.231,0,0,0,.864-.358,1.214,1.214,0,0,0,.358-.864A8.556,8.556,0,0,0,12.63.815Z" transform="translate(0 9.778)"/>
+    </g>
+    <g id="Elipse_1" data-name="Elipse 1" class="cls-2" transform="translate(1199 57)">
+      <circle class="cls-3" cx="5" cy="5" r="5"/>
+      <circle class="cls-4" cx="5" cy="5" r="4.5"/>
+    </g>
+  </g>
+</svg>

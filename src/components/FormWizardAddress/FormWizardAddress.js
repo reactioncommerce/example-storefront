@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Col, Row, Container } from "react-grid-system";
-import { Input, FormControl, InputLabel, Checkbox, FormGroup, FormControlLabel } from "@material-ui/core";
+import { Input, FormControl, Checkbox, FormGroup, FormControlLabel } from "@material-ui/core";
 import useForm from "react-hook-form";
 import * as s from "./style";
 
@@ -102,17 +102,6 @@ const FormWizardAddress = (props) => {
             <FormGroup>
               <FormControlLabel control={<Checkbox />} label="Este é um endereço comercial" />
             </FormGroup>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col xs={12}>
-            <s.Button primary type="submit">Continuar</s.Button>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12}>
-            <s.Button secondary>CANCELAR</s.Button>
           </Col>
         </Row>
       </Container>

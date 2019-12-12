@@ -10,18 +10,18 @@ import InfoCarousel from "components/InfoCarousel";
 import PRODUCTS_MOCK from "helpers/PRODUCTS_MOCK.json";
 
 
-const Orders = inject("routingStore")(observer(({ routingStore }) => {
+const Account = inject("routingStore")(observer(({ routingStore }) => {
   const mock = {
     page: {
-      name: "Pedidos",
+      name: "Minha Conta",
       breadcrumb: {
-        link: "`/orders/`",
+        link: "/account",
         root: {
           name: null,
           link: null
         }
       },
-      title: "About us !",
+      title: "Minha Conta",
       description: `In sit amet quam nec lacus sodales facilisis ac quis sapien. Morbi gravida pellentesque nunc, sed 
       imperdiet urna dictum nec. Nam et fringilla ante. Donec placerat tellus nunc, nec aliquam ipsum tempor at. 
       Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. P`,
@@ -39,16 +39,15 @@ const Orders = inject("routingStore")(observer(({ routingStore }) => {
     <Container fluid styles={{ background: "#f1f1f1;" }}>
       {/* <Helmet title={"Search Results"} meta={[{ name: "description", content: shop && shop.description }]} /> */}
       <Breadcrumb pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/>
-      <OrdersList />
     </Container>
   );
 }));
 
-Orders.propTypes = {
+Account.propTypes = {
   // router: PropTypes.object.isRequired,
   routingStore: PropTypes.shape({
     slugOrId: PropTypes.string
   })
 };
 
-export default Orders;
+export default Account;

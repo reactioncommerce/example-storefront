@@ -2,92 +2,43 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Col, Row, Container } from "react-grid-system";
 import { Input, FormControl, InputLabel, Checkbox, FormGroup, FormControlLabel } from "@material-ui/core";
+
 import * as s from "./style";
 
 const FormWizardFinish = (props) => {
-  const { isVisible, setStepWizard } = props;
+  const { isVisible, setStepWizard, products } = props;
 
-  return (
-    <Container fluid>
-      <Row>
-        <Col xs={12}>
-          <FormControl>
-            <InputLabel htmlFor="name">Nome Completo</InputLabel>
-            <Input id="name"/>
-          </FormControl>
+  return products.map((product) => (
+
+    <s.StyledContainer fluid>
+      <s.StyledRow align="center" justify="between" sm={12}>
+        <h3>Produto</h3>
+        <h3>Preço</h3>
+      </s.StyledRow>
+      <s.StyledRow component="li">
+        <Col xs={3}>
+          <s.ImageBox>
+            <s.Image src={product.metafields} alt=""/>
+          </s.ImageBox>
         </Col>
-      </Row>
-      <Row>
-        <Col xs={6}>
-          <FormControl>
-            <InputLabel htmlFor="birthday">Data de nascimento</InputLabel>
-            <Input id="birthday"/>
-          </FormControl>
-        </Col>
-        <Col xs={6}>
-          <FormControl>
-            <InputLabel htmlFor="CPF">CPF</InputLabel>
-            <Input id="CPF"/>
-          </FormControl>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
-          <FormControl>
-            <InputLabel htmlFor="CEP">CEP</InputLabel>
-            <Input id="CEP"/>
-          </FormControl>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
-          <FormControl>
-            <InputLabel htmlFor="address">Endereço</InputLabel>
-            <Input id="address"/>
-          </FormControl>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
-          <FormControl>
-            <InputLabel htmlFor="state">Estado</InputLabel>
-            <Input id="state"/>
-          </FormControl>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={6}>
-          <FormControl>
-            <InputLabel htmlFor="number">Número</InputLabel>
-            <Input id="number"/>
-          </FormControl>
-        </Col>
-        <Col xs={6}>
-          <FormControl>
-            <InputLabel htmlFor="addon">Complemento</InputLabel>
-            <Input id="addon"/>
-          </FormControl>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={6}>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox value="comercialAddress" />} label="Este é um endereço comercial" />
-          </FormGroup>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
-          <s.Button primary>CONTINUAR</s.Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
-          <s.Button secondary>CANCELAR</s.Button>
-        </Col>
-      </Row>
-    </Container>
-  );
+        <s.StyledCol xs={6}>
+          <s.Title>{product.title}</s.Title>
+          <s.Variant>{product.variantTitle}</s.Variant>
+          <s.QuantityCounter>
+            <s.CounterButton>-</s.CounterButton>
+            <s.Quantity>{product.quantity}</s.Quantity>
+            <s.CounterButton>+</s.CounterButton>
+          </s.QuantityCounter>
+        </s.StyledCol>
+        <s.StyledCol xs={3}>
+          <s.Controls>
+            <s.Button>X</s.Button>
+            <s.Price>${product.price}</s.Price>
+          </s.Controls>
+        </s.StyledCol>
+      </s.StyledRow>
+    </s.StyledContainer>
+  ));
 };
 
 FormWizardFinish.propTypes = {

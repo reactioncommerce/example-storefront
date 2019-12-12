@@ -5,6 +5,7 @@ import FormWizardAddress from "components/FormWizardAddress";
 import FormWizardShipment from "components/FormWizardShipment";
 import FormWizardPayment from "components/FormWizardPayment";
 import FormWizardFinish from "components/FormWizardFinish";
+import order from "helpers/ORDERS_MOCK.json"
 import * as s from "./style";
 
 const FormWizard = (props) => {
@@ -33,7 +34,7 @@ const FormWizard = (props) => {
       </s.StyledRow>
       <s.StyledRow>
         <s.FormTitle>4- Revise e finalize o pedido</s.FormTitle>
-        <FormWizardFinish setStepWizard={setStepWizard} isVisible={stepWizard}/>
+        <FormWizardFinish setStepWizard={setStepWizard} products={order} isVisible={stepWizard}/>
       </s.StyledRow>
     </Container>
   );

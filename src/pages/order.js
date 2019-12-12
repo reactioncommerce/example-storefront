@@ -2,22 +2,21 @@ import React from "react";
 import Helmet from "react-helmet";
 import PropTypes from "prop-types";
 import Breadcrumb from "components/Breadcrumb";
-import OrdersList from "components/OrdersList";
-import { Row, Container } from "react-grid-system";
+import OrderDetail from "components/OrderDetail";
+import { Container } from "react-grid-system";
 import { inject } from "mobx-react";
 import { observer } from "mobx-react-lite";
-import InfoCarousel from "components/InfoCarousel";
-import PRODUCTS_MOCK from "helpers/PRODUCTS_MOCK.json";
+import ORDERS_MOCK from "helpers/ORDERS_MOCK.json";
 
 
-const Orders = inject("routingStore")(observer(({ routingStore }) => {
+const Order = inject("routingStore")(observer(({ routingStore }) => {
   const mock = {
     page: {
-      name: "Pedidos",
+      name: "Detalhes do pedido",
       breadcrumb: {
-        link: "`/orders/`",
+        link: `/orders/${routingStore.query}`,
         root: {
-          name: null,
+          name: "Pedidos",
           link: null
         }
       },
@@ -32,23 +31,23 @@ const Orders = inject("routingStore")(observer(({ routingStore }) => {
         total: 22,
         visible: "1-4"
       },
-      products: PRODUCTS_MOCK
+      orders: ORDERS_MOCK
     }
   };
   return (
     <Container fluid styles={{ background: "#f1f1f1;" }}>
       {/* <Helmet title={"Search Results"} meta={[{ name: "description", content: shop && shop.description }]} /> */}
       <Breadcrumb pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/>
-      <OrdersList />
+      <OrderDetail/>
     </Container>
   );
 }));
 
-Orders.propTypes = {
+Order.propTypes = {
   // router: PropTypes.object.isRequired,
   routingStore: PropTypes.shape({
     slugOrId: PropTypes.string
   })
 };
 
-export default Orders;
+export default Order;

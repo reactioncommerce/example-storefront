@@ -27,16 +27,6 @@ const FormWizardPayment = (props) => {
             <FormControlLabel value="other" control={<Radio />} label="Usar outro endereço" />
           </RadioGroup>
         </s.StyledFormControl>
-        <Row>
-          <Col xs={12}>
-            <s.Button type="submit" primary>CONTINUAR</s.Button>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12}>
-            <s.Button secondary>CANCELAR</s.Button>
-          </Col>
-        </Row>
       </s.StyledContainer>
     );
   }

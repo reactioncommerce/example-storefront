@@ -5,6 +5,7 @@ import { breakpoints } from "../../helpers/constants";
 export const FormTitle = styled.h2`
   font-size: ${({ theme }) => theme.sizes.text.SIZE_3};
   color:  ${({ theme }) => theme.colors.gray.COLOR_4};
+  width: 100%;
 `;
 
 export const Form = styled.form`

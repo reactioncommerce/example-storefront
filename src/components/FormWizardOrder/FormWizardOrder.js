@@ -77,16 +77,6 @@ const FormWizardOrder = (props) => {
           </FormGroup>
         </Col>
       </Row>
-      <Row>
-        <Col xs={12}>
-          <s.Button primary>CONTINUAR</s.Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
-          <s.Button secondary>CANCELAR</s.Button>
-        </Col>
-      </Row>
     </Container>
   );
 };
