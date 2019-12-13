@@ -22,6 +22,16 @@ const secondaryButtonStyle = css`
     box-shadow: none;
   }
 `;
+const secondaryFullButtonStyle = css`
+  background-color: ${({ theme }) => theme.layout.colors.secondary};
+  color: ${({ theme }) => theme.typography.colors.primary};
+
+  :hover {
+    background-color: #00969c;
+    border-color: #00969c;
+    box-shadow: none;
+  }
+`;
 
 export const Button = styled.div`
   a,

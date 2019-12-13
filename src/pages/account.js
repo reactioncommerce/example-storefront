@@ -6,7 +6,7 @@ import OrdersList from "components/OrdersList";
 import { Row, Container } from "react-grid-system";
 import { inject } from "mobx-react";
 import { observer } from "mobx-react-lite";
-import InfoCarousel from "components/InfoCarousel";
+import MyAccount from "components/MyAccount";
 import PRODUCTS_MOCK from "helpers/PRODUCTS_MOCK.json";
 
 
@@ -32,6 +32,17 @@ const Account = inject("routingStore")(observer(({ routingStore }) => {
         total: 22,
         visible: "1-4"
       },
+      account: {
+        fullname: "Denis Manzetti",
+        birthday: "05/03/1994",
+        cpf: "543.476.234.98",
+        cep: "05440-000",
+        province: "São Paulo",
+        address: "Rua colonia da glória",
+        number: "206",
+        addon: "",
+        tel: "+5511940653412"
+      },
       products: PRODUCTS_MOCK
     }
   };
@@ -39,6 +50,8 @@ const Account = inject("routingStore")(observer(({ routingStore }) => {
     <Container fluid styles={{ background: "#f1f1f1;" }}>
       {/* <Helmet title={"Search Results"} meta={[{ name: "description", content: shop && shop.description }]} /> */}
       <Breadcrumb pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/>
+      <MyAccount title={mock.page.title} description={mock.page.description} account={mock.page.account}/>
+      
     </Container>
   );
 }));

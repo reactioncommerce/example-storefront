@@ -1,6 +1,10 @@
 import styled from "styled-components";
+import { Row } from "react-grid-system";
 
-export const Container = styled.footer``;
+export const Container = styled.footer`
+  background-color: ${({ theme }) => theme.layout.colors.secondary};
+
+`;
 
 export const UpsideContent = styled.div`
   background-color: ${({ theme }) => theme.layout.colors.secondary};
@@ -95,4 +99,62 @@ export const InnerInfo = styled.span`
   line-height: 20px;
   text-align: center;
   max-width: 335px;
+`;
+
+export const Footer = styled(Row)`
+  background: ${({ theme }) => theme.colors.secondary};
+  padding: 20px 0;
+  ul {
+    color: #fff;
+    list-style: none;
+
+    li {
+      margin: 5px 0;
+      &.title {
+      font-weight: 900;
+      
+      }
+    }  
+  }  
+`;
+
+export const EmpoweredContainer = styled(Container)`
+  background: #fff;
+  ul { 
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+
+    img { 
+      max-width: 100%;
+    }
+      li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      &.title {
+      font-size: .7rem;
+      
+      }
+    }  
+  }
+`;
+
+export const CopyrightContainer = styled(Container)`
+  background: ${({ theme }) => theme.colors.special};
+  ul { 
+    list-style: none;
+      li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      &.title {
+      font-size: .7rem;
+      
+      }
+    }  
+  }
+
 `;

@@ -87,7 +87,7 @@ const OrdersList = (props) => {
           <Row>
             <s.Menu md={3}>
               
-              <s.StyledLink route={"/"}>
+              <s.StyledLink route={"/account"}>
                 <s.MenuIcon src="static/images/icon-profile.svg"/>
                 Minha Conta
               </s.StyledLink>
