@@ -3,7 +3,10 @@
         "name": "Carrinho",
         "breadcrumb": {
             "link": "/Cart",
-            "root": null
+            "root": {
+                "name": null,
+                "link": null
+            }
         },
         "title": "Carrinho",
         "pagination": {

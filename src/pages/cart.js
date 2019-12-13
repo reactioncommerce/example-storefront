@@ -7,6 +7,7 @@ import withCart from "containers/cart/withCart";
 import CartItems from "components/CartItems";
 import Breadcrumb from "components/Breadcrumb";
 import CartShipment from "components/CartShipment";
+import OrderResume from "components/OrderResume";
 import Helmet from "react-helmet";
 import CheckoutButtons from "components/CheckoutButtons";
 import { Router } from "routes";
@@ -15,6 +16,7 @@ import { Container, Row, Col } from "react-grid-system";
 import PageLoading from "components/PageLoading";
 import trackCartItems from "lib/tracking/trackCartItems";
 import track from "lib/tracking/track";
+import ORDER_MOCK from "../helpers/ORDER_MOCK.json";
 import ProductList from "../components/ProductList";
 import InfoCarousel from "../components/InfoCarousel";
 import CART_MOCK from "../helpers/CART_MOCK.json";
@@ -35,6 +37,7 @@ const CartPage = inject(
 }) => {
   const cart = CART_MOCK;
   const { page } = CART_MOCK;
+  const order = ORDER_MOCK;
   // when a user has no item in cart in a new session, props.cart is null
   // when the app is still loading, props.cart is undefined
   trackCartItems();
@@ -71,7 +74,7 @@ const CartPage = inject(
         <CartItems
           hasMoreCartItems={hasMoreCartItems}
           onLoadMoreCartItems={loadMoreCartItems}
-          items={cart.items}
+          items={order.items}
           onChangeCartItemQuantity={handleItemQuantityChange}
           onRemoveItemFromCart={handleRemoveItem}
         />
@@ -95,6 +98,10 @@ const CartPage = inject(
       {renderCartItems()}
       {renderCartSummary()}
       <CartShipment/>
+      <Container>
+
+        <OrderResume order={order}/>
+      </Container>
       <ProductList catalogItems={catalogItems} isLoadingCatalogItems={isLoadingCatalogItems}/>
       <InfoCarousel />
     </Container>

@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Cards from "react-credit-cards";
@@ -6,15 +7,15 @@ import { Input, InputLabel,  Select, MenuItem, FormControlLabel, FormLabel, Radi
 import * as s from "./style";
 
 
-
 const FormWizardPaymentCard = (props) => {
-  const { isVisible } = props;
+  const { register, handleSubmit,  errors } = useForm();
+  const { isVisible, setStepWizard, setSecondStep, secondStep } = props;
   const [cvc, setCvc] = useState("");
   const [expiry, setExpiry] = useState("");
   const [focus, setFocus] = useState("");
   const [name, setName] = useState("");
-  const [number, setNumber] = useState("");  
-  
+  const [number, setNumber] = useState("");
+
   function handleInputChange(e) {
     const { name, value } = e.target;
     if (name === "cvc") setCvc(value);
@@ -26,9 +27,18 @@ const FormWizardPaymentCard = (props) => {
     setFocus({ focus: e.target.name });
   };
 
+  const onSubmit = () => {
+    setSecondStep({
+      cvc,
+      expiry,
+      number,
+      name
+    });
+  };
+
   if (isVisible === 1 || isVisible === "1") {
     return (
-      <s.StyledRow>
+      <s.StyledRow component="form" onSubmit>
         <Cards cvc={cvc} expiry={expiry}
           focused={focus}
           name={name}

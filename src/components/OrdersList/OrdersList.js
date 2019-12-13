@@ -6,7 +6,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import orders from "helpers/ORDERS_MOCK.json";
+import orders from "helpers/ORDER_MOCK.json";
 import * as s from "./style";
 
 const OrdersList = (props) => {
@@ -21,7 +21,7 @@ const OrdersList = (props) => {
           <s.PageTitle>Meus Pedidos</s.PageTitle>
         </Row>
         <Container component="ul">
-          {orders.map((order) => (
+          {orders.items.map((order) => (
             <s.StyledRow component="li">
               <Col xs={4}>
                 <s.ImageBox>
@@ -97,7 +97,7 @@ const OrdersList = (props) => {
               </s.StyledLink>
             </s.Menu>
             <Col md={8} component="ul">
-              {orders.map((order) => (
+              {orders.items.map((order) => (
                 <s.StyledRow component="li">
                   <Col xs={4} sm={4} md={3}>
                     <s.ImageBox>

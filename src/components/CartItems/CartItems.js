@@ -7,10 +7,6 @@ import * as s from "./style";
 const CartItems = (props) => {
   const {
     items
-    // isMiniCart,
-    // isReadOnly,
-    // hasMoreCartItems,
-    // onLoadMoreCartItems
   } = props;
 
   const onChangeCartItemQuantity = (quantity, _id) => {};
@@ -22,7 +18,7 @@ const CartItems = (props) => {
         <s.StyledRow component="li">
           <Col xs={3}>
             <s.ImageBox>
-              <s.Image src={product.metafields} alt=""/>
+              <s.Image src={product.photo} alt=""/>
             </s.ImageBox>
           </Col>
           <s.StyledCol xs={6}>
@@ -37,7 +33,7 @@ const CartItems = (props) => {
           <s.StyledCol xs={3}>
             <s.Controls>
               <s.Button>X</s.Button>
-              <s.Price>${product.price}</s.Price>
+              <s.Price>${product.total}</s.Price>
             </s.Controls>
           </s.StyledCol>
         </s.StyledRow>

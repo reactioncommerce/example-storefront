@@ -14,6 +14,9 @@ export const StyledRow = styled(Row)`
   border-top: 1px solid #c1c1c1;
   display: flex;
   flex-direction:row;
+  align-items: center;
+  justify-content:space-between;
+  padding: 10px 0;
 `;
 
 export const Form = styled.form`
@@ -27,9 +30,8 @@ export const StyledCol = styled(Col)`
 `;
 
 export const ImageBox = styled.div`
-  height: 65px;
+  height: 50px;
   border-radius: 7px;
-  width: 65px;
   overflow: hidden;
 `;
 
@@ -99,4 +101,11 @@ export const Controls = styled.div`
   align-items: flex-end;
   height: 100%;
   justify-content: space-between;
+`;
+
+export const Resume = styled(Col)`
+  
+`;
+
+export const ResumeItem = styled.div`
 `;

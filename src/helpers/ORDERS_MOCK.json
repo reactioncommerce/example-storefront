@@ -1,22 +1,69 @@
 [{
-  "number": "683404",
-  "date": "05/03/1994",
-  "total": "79.99",
-  "status": "entregue",
-  "statusCode": 3,
-  "photo": "../static/images/home/prod1.png"
+  "shipmentPrice": 18.99,
+  "totalItemsPrice": 239.87,
+  "items": [{
+    "title ": "Vestido branco",
+    "variantTitle": "Tamanho único",
+    "quantity": 1,
+    "number": "683404",
+    "date": "05/03/1994",
+    "total": 79.99,
+    "status": "entregue",
+    "statusCode": 3,
+    "photo": "../static/images/home/prod1.png"
+  },{
+    "title": "Vestido branco",
+    "variantTitle": "Tamanho único",
+    "quantity": 2,
+    "number": "683404",
+    "date": "05/03/1994",
+    "total": 79.99,
+    "status": "cancelado",
+    "statusCode": 5,
+    "photo": "../static/images/home/prod1.png"
+  },{
+    "title": "Vestido branco",
+    "variantTitle": "Tamanho único",
+    "quantity": 1,
+    "number": "683404",
+    "date": "05/03/1994",
+    "total": 79.99,
+    "status": "processado",
+    "statusCode": 1,
+    "photo": "../static/images/home/prod1.png"
+  }]
 },{
-  "number": "683404",
-  "date": "05/03/1994",
-  "total": "79.99",
-  "status": "cancelado",
-  "statusCode": 5,
-  "photo": "../static/images/home/prod1.png"
-},{
-  "number": "683404",
-  "date": "05/03/1994",
-  "total": "79.99",
-  "status": "processado",
-  "statusCode": 1,
-  "photo": "../static/images/home/prod1.png"
+  "shipmentPrice": 18.99,
+  "totalItemsPrice": 239.87,
+  "items": [{
+    "title ": "Vestido branco",
+    "variantTitle": "Tamanho único",
+    "quantity": 1,
+    "number": "683404",
+    "date": "05/03/1994",
+    "total": 79.99,
+    "status": "entregue",
+    "statusCode": 3,
+    "photo": "../static/images/home/prod1.png"
+  },{
+    "title": "Vestido branco",
+    "variantTitle": "Tamanho único",
+    "quantity": 2,
+    "number": "683404",
+    "date": "05/03/1994",
+    "total": 79.99,
+    "status": "cancelado",
+    "statusCode": 5,
+    "photo": "../static/images/home/prod1.png"
+  },{
+    "title": "Vestido branco",
+    "variantTitle": "Tamanho único",
+    "quantity": 1,
+    "number": "683404",
+    "date": "05/03/1994",
+    "total": 79.99,
+    "status": "processado",
+    "statusCode": 1,
+    "photo": "../static/images/home/prod1.png"
+  }]
 }]

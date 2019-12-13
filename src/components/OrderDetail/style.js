@@ -288,3 +288,43 @@ export const StyledLink = styled(Link)`
     background: #d2f5f6;
   }
 `;
+export const StyledList = styled.ul`
+  padding: 0;
+  border-left: 1px solid blue;
+  list-style:none;
+
+  li {
+      position: relative;
+      margin: 10px 0;
+      padding: 15px 25px;
+    &.active {
+      &::before {
+        transform: scale(1.3);
+      }
+      &::after {
+        content: "";
+      width: 25px;
+      height: 25px;
+      border-radius: 100%;
+      border: 1px solid blue;
+      display: block;
+      left: -13px;
+      top: 7px;
+      position: absolute;
+      z-index: -1;
+      }
+    }
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      background: blue;
+      display: block;
+      left: -6px;
+      top: auto;
+      bottom: auto;
+      position: absolute;
+    }
+  }
+`;

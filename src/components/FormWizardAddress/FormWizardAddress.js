@@ -6,19 +6,28 @@ import useForm from "react-hook-form";
 import * as s from "./style";
 
 const FormWizardAddress = (props) => {
-  const { register, handleSubmit, watch, errors } = useForm();
-  const { isVisible, setStepWizard, setFirstStep } = props;
-  const [name, setName] = useState("");
-  const [birthday, setBirthday] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [cep, setCep] = useState("");
-  const [address, setAddress] = useState("");
-  const [province, setProvince] = useState("");
-  const [number, setNumber] = useState("");
-  const [addon, setAddon] = useState("");
-  const onSubmit = data => {
+  const { register, handleSubmit,  errors } = useForm();
+  const { isVisible, setStepWizard, setFirstStep, firstStep } = props;
+  const [name, setName] = useState(firstStep.name);
+  const [birthday, setBirthday] = useState(firstStep.birthday);
+  const [cpf, setCpf] = useState(firstStep.cpf);
+  const [cep, setCep] = useState(firstStep.cep);
+  const [address, setAddress] = useState(firstStep.address);
+  const [province, setProvince] = useState(firstStep.province);
+  const [number, setNumber] = useState(firstStep.number);
+  const [addon, setAddon] = useState(firstStep.addon);
+  const onSubmit = () => {
     setStepWizard(1);
-    setFirstStep(data);
+    setFirstStep({
+      name,
+      birthday,
+      cpf,
+      cep,
+      address,
+      province,
+      number,
+      addon
+    });
   };
 
   function handleInputChange(e) {
@@ -35,7 +44,7 @@ const FormWizardAddress = (props) => {
 
   if (isVisible <= 0) {
     return (
-      <Container fluid component="form" onSubmit={handleSubmit(onSubmit)}>
+      <Container fluid component="form" onSubmit={onSubmit}>
         <Row>
           <Col xs={12}>
             <FormControl>
@@ -93,7 +102,7 @@ const FormWizardAddress = (props) => {
           <Col xs={6}>
             <FormControl>
               <s.StyledInputLabel htmlFor="addon">Complemento</s.StyledInputLabel>
-              <Input required onChange={handleInputChange} name="addon" ref={register({ required: true })}/>
+              <Input required onChange={handleInputChange} name="addon" ref={register}/>
             </FormControl>
           </Col>
         </Row>
@@ -104,6 +113,7 @@ const FormWizardAddress = (props) => {
             </FormGroup>
           </Col>
         </Row>
+        <s.Button primary type="submit">Prosseguir</s.Button>
       </Container>
     );
   }
