@@ -40,8 +40,8 @@ const OrdersList = (props) => {
                 </s.Variant>
                 {order.status === "entregue" && order.statusCode === 3 ? (
                   <s.Buttons>
-                    <s.IconButton><s.Icon src="static/images/icon-detalhes.svg"/> Detalhes</s.IconButton>
-                    <s.IconButton><s.Icon src="static/images/icon-devolucao.svg"/> Devolver</s.IconButton>
+                    <s.IconButton><s.Icon src="/static/images/icon-detalhes.svg"/> Detalhes</s.IconButton>
+                    <s.IconButton><s.Icon src="/static/images/icon-devolucao.svg"/> Devolver</s.IconButton>
                   </s.Buttons>
                 ) : null}
               </s.StyledCol>
@@ -88,11 +88,11 @@ const OrdersList = (props) => {
             <s.Menu md={3}>
               
               <s.StyledLink route={"/account"}>
-                <s.MenuIcon src="static/images/icon-profile.svg"/>
+                <s.MenuIcon src="/static/images/icon-profile.svg"/>
                 Minha Conta
               </s.StyledLink>
               <s.StyledLink className="active" route={"/"}>
-                <s.MenuIcon src="static/images/icon-orders.svg"/>
+                <s.MenuIcon src="/static/images/icon-orders.svg"/>
                 Meus Pedidos
               </s.StyledLink>
             </s.Menu>
@@ -117,8 +117,8 @@ const OrdersList = (props) => {
                     {order.status === "entregue" && order.statusCode === 3 ? (
                       <Visible xs sm>
                         <s.Buttons>
-                          <s.IconButton><s.Icon src="static/images/icon-detalhes.svg"/> Detalhes</s.IconButton>
-                          <s.IconButton><s.Icon src="static/images/icon-devolucao.svg"/> Devolver</s.IconButton>
+                          <s.IconButton><s.Icon src="/static/images/icon-detalhes.svg"/> Detalhes</s.IconButton>
+                          <s.IconButton><s.Icon src="/static/images/icon-devolucao.svg"/> Devolver</s.IconButton>
                         </s.Buttons>
                       </Visible>
                     ) : null }
@@ -126,8 +126,8 @@ const OrdersList = (props) => {
                   {order.status === "entregue" && order.statusCode === 3 ? (
                     <Visible md lg xl>
                       <s.StyledCol md={4}>
-                        <s.IconButton>Detalhes<s.Icon src="static/images/icon-detalhes.svg"/></s.IconButton>
-                        <s.IconButton><s.Icon src="static/images/icon-devolucao.svg"/> Devolver</s.IconButton>
+                        <s.IconButton>Detalhes<s.Icon src="/static/images/icon-detalhes.svg"/></s.IconButton>
+                        <s.IconButton><s.Icon src="/static/images/icon-devolucao.svg"/> Devolver</s.IconButton>
                         <s.Button primary>Comprar novamente</s.Button>
                       </s.StyledCol>
                     </Visible>

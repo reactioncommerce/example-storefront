@@ -112,7 +112,7 @@ const MyAccount = (props) => {
               </s.StyledFormControl>
             </Row>
             <Row align="center" justify="center">
-              <s.StyledButton secondary type="submit">Salvar</s.StyledButton>
+              <s.StyledButton secondary type="submit">Salvar dados</s.StyledButton>
             </Row>
           </Col>
         </s.MyAccountContainer>
@@ -198,7 +198,7 @@ const MyAccount = (props) => {
                 </Col>
               </Row>
               <Row align="center" justify="end">
-                <s.SaveButton type="submit">Salvar</s.SaveButton>
+                <s.SaveButton type="submit">Salvar dados</s.SaveButton>
               </Row>
             </Col>
           </Row>

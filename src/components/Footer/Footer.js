@@ -104,16 +104,16 @@ const Footer = () => {
             <Row align="center" justify="center">
               <Col component="ul" md={3}>
                 <li className="title">Empowered by</li>
-                <li><img src="static/images/unbox-logo.png"/></li>
+                <li><img src="/static/images/unbox-logo.png"/></li>
               </Col>
               <Col component="ul" md={4}>
                 <li className="title">Certificados</li>
-                <li><img src="static/images/certs.png"/></li>
+                <li><img src="/static/images/certs.png"/></li>
 
               </Col>
               <Col component="ul" md={5}>
                 <li className="title">Aceitamos</li>
-                <li><img src="static/images/payment.png"/></li>
+                <li><img src="/static/images/payment.png"/></li>
 
               </Col>
             </Row>
@@ -123,7 +123,7 @@ const Footer = () => {
           <Container>
             <Row>
               <Col component="ul" md={2}>
-                <li><img src="static/images/logo.png"/></li>
+                <li><img src="/static/images/logo.png"/></li>
               </Col>
               <Col component="ul" md={10}>
                 <p> Companhia © 2019 | Todos os direitos reservados | companhia.com.br | contato@contato.com.br | atividades de internet | Ltda

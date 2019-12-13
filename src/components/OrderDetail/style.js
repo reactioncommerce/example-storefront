@@ -25,6 +25,10 @@ export const Buttons = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    @media (min-width: ${breakpoints.md}) {
+      flex-direction: column;
+      justify-content: flex-end;
+    }
 `;
 
 export const IconButton = styled.button`
@@ -35,7 +39,6 @@ export const IconButton = styled.button`
     align-items: center;
     justify-content: space-between;
 `;
-
 
 export const Icon = styled.img`
   height: 20px;
@@ -109,16 +112,17 @@ export const Feedback = styled.div`
     display: none;
   }      
 `;
+
 export const StyledLabel = styled.label`
   margin: 0 !important;
 `;
+
 export const StyledRadioGroup = styled(RadioGroup)`
     height: 100%;
     align-items: flex-start;
     justify-content: space-between;
     display: flex;
     flex-direction:row!important;
-
 `;
 
 export const ImageBox = styled.div`
@@ -142,7 +146,6 @@ export const Title = styled.h4`
   font-size: ${({ theme }) => theme.sizes.text.SIZE_3};
   margin: 0 0 0px;
   font-weight: 300;
-
 `;
 
 export const PageTitle = styled.h4`
@@ -151,8 +154,8 @@ export const PageTitle = styled.h4`
   font-weight: 900;
   width: 100%;
   text-align: center;
-
 `;
+
 export const Variant = styled.p`
   font-size: ${({ theme }) => theme.sizes.text.SIZE_4};
   margin: 5px 0;
@@ -162,8 +165,8 @@ export const Price = styled.h3`
   margin: 20px 0 0;
   color: ${({ theme }) => theme.colors.secondary};
   font-weight:900;
-
 `;
+
 export const StyledButton = styled.button`
     border-radius: 30px;
     text-transform: none;
@@ -265,12 +268,14 @@ export const Menu = styled(Col)`
     padding: 0!important;
     display: flex;
 `;
+
 export const MenuItem = styled(Col)`
     border-radius: 20px;
     flex-direction:column;
     padding: 5px;
     display: flex;
 `;
+
 export const MenuIcon = styled.img`
   width: 22px;
   height: 22px;
@@ -288,6 +293,7 @@ export const StyledLink = styled(Link)`
     background: #d2f5f6;
   }
 `;
+
 export const StyledList = styled.ul`
   padding: 0;
   border-left: 1px solid blue;
