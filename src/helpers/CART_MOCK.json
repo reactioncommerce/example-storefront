@@ -1,6 +1,6 @@
 {
     "page": {
-        "name": "Carrinho",
+        "name": "Meu Carrinho",
         "breadcrumb": {
             "link": "/Cart",
             "root": {
@@ -8,7 +8,7 @@
                 "link": null
             }
         },
-        "title": "Carrinho",
+        "title": "Meu Carrinho",
         "pagination": {
             "limit": 8,
             "actual": 1,

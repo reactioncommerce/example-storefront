@@ -6,6 +6,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+import Link from "/components/Link";
 import orders from "helpers/ORDER_MOCK.json";
 import * as s from "./style";
 
@@ -77,7 +78,6 @@ const OrdersList = (props) => {
                   <s.Button secondary>Enviar</s.Button>
                 </s.StyledCol>
               ) : null }
-              
             </s.StyledRow>
           ))}
         </Container>
@@ -86,7 +86,6 @@ const OrdersList = (props) => {
         <Container>
           <Row>
             <s.Menu md={3}>
-              
               <s.StyledLink route={"/account"}>
                 <s.MenuIcon src="/static/images/icon-profile.svg"/>
                 Minha Conta
@@ -117,7 +116,7 @@ const OrdersList = (props) => {
                     {order.status === "entregue" && order.statusCode === 3 ? (
                       <Visible xs sm>
                         <s.Buttons>
-                          <s.IconButton><s.Icon src="/static/images/icon-detalhes.svg"/> Detalhes</s.IconButton>
+                          <Link route={`/orders/${order._id}`}><s.IconButton><s.Icon src="/static/images/icon-detalhes.svg"/> Detalhes</s.IconButton></Link>
                           <s.IconButton><s.Icon src="/static/images/icon-devolucao.svg"/> Devolver</s.IconButton>
                         </s.Buttons>
                       </Visible>
@@ -126,14 +125,13 @@ const OrdersList = (props) => {
                   {order.status === "entregue" && order.statusCode === 3 ? (
                     <Visible md lg xl>
                       <s.StyledCol md={4}>
-                        <s.IconButton>Detalhes<s.Icon src="/static/images/icon-detalhes.svg"/></s.IconButton>
-                        <s.IconButton><s.Icon src="/static/images/icon-devolucao.svg"/> Devolver</s.IconButton>
+                        <Link route={`orders/${order._id}`}><s.IconButton><s.Icon src="/static/images/icon-detalhes.svg"/>Detalhes</s.IconButton></Link>
+                        <s.IconButton><s.Icon src="/static/images/icon-devolucao.svg"/>Devolver</s.IconButton>
                         <s.Button primary>Comprar novamente</s.Button>
                       </s.StyledCol>
                     </Visible>
                   ) : null }
                   {order.status === "entregue" && order.statusCode === 3 ? (
-                    
                     <s.StyledCol xs={12}>
                       <Visible xs sm>
                         <s.Button primary>Comprar novamente</s.Button>

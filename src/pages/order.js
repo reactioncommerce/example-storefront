@@ -35,10 +35,10 @@ const Order = inject("routingStore")(observer(({ routingStore }) => {
     }
   };
   return (
-    <Container fluid styles={{ background: "#f1f1f1;" }}>
+    <Container style={{ background: "#f1f1f1" }} fluid>
       {/* <Helmet title={"Search Results"} meta={[{ name: "description", content: shop && shop.description }]} /> */}
       <Breadcrumb pageName={mock.page.name} breadcrumb={mock.page.breadcrumb}/>
-      <OrderDetail/>
+      <OrderDetail />
     </Container>
   );
 }));

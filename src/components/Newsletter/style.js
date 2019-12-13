@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const Newsletter = styled.section`
-    background: ${({ theme }) => theme.colors.gray.COLOR_5};
+    background: #fafafa;
     margin: 0 -24px;
     padding: 24px;
     text-align:center;

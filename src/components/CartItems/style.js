@@ -1,9 +1,14 @@
 import styled from "styled-components";
 import { Row, Col } from "react-grid-system";
+import { breakpoints } from "../../helpers/constants";
 
 export const StyledRow = styled(Row)`
-    border-bottom: 1px solid #c1c1c1;
+    border-bottom: 1px solid #f1f1f1;
     padding: 25px 0;
+    @media (min-width: ${breakpoints.md}) {
+      border: 1px solid #f1f1f1;
+
+    }
 `;
 
 export const StyledCol = styled(Col)`
@@ -17,6 +22,11 @@ export const ImageBox = styled.div`
   border-radius: 7px;
   width: 65px;
   overflow: hidden;
+`;
+
+export const PageTitle = styled.h2`
+  text-align:left;
+  width: 100%;
 `;
 
 export const Image = styled.img`

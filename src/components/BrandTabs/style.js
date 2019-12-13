@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Container, Row, Col, Visible } from "react-grid-system";
 
 export const Tabs = styled.section`
   padding: 20px 0;
@@ -70,6 +71,35 @@ export const TabImage = styled.img`
 `;
 
 export const TabText = styled.p`
+  
+`;
+
+export const Image = styled.img`
+  margin: auto;
+`;
+
+export const StyledCol = styled(Col)`
+  align-items: center;
+  justify-content: center;
+`;
+
+export const StyledContainer = styled(Container)`
+  padding-top: 40px;
+  padding-bottom: 40px;
+`;
+
+export const ItemTitle = styled.h2`
+  color: ${({ theme }) => theme.colors.secondary};
+  font-weight: 900;
+  font-size:${({ theme }) => theme.sizes.title.SIZE_2};
+  &.right{
+    text-align: right;
+  }
+`;
+export const ItemSubtitle = styled.p`
+  &.right{
+    text-align: right;
+  }
   
 `;
 

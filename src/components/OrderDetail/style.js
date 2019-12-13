@@ -1,13 +1,20 @@
 import styled, { css } from "styled-components";
-import { Row, Col } from "react-grid-system";
+import { Row, Col, Container } from "react-grid-system";
 import { breakpoints } from "helpers/constants";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import { FormControlLabel } from "@material-ui/core";
-import Link from "components/Link";
+import Link from "/components/Link";
 
+export const StyledContainer = styled(Container)`
+    background: #fff;
+    padding: 30px 50px!important;
+    &:last-child {
+      border: none;
+    }
+`;
 export const StyledRow = styled(Row)`
     border-bottom: 1px solid #c1c1c1;
-    padding: 25px 0;
+    padding: 20px 0;
 `;
 
 export const StyledCol = styled(Col)`
@@ -296,7 +303,7 @@ export const StyledLink = styled(Link)`
 
 export const StyledList = styled.ul`
   padding: 0;
-  border-left: 1px solid blue;
+  border-left: 1px solid ${({ theme }) => theme.colors.secondary};
   list-style:none;
 
   li {
@@ -312,7 +319,7 @@ export const StyledList = styled.ul`
       width: 25px;
       height: 25px;
       border-radius: 100%;
-      border: 1px solid blue;
+      border: 1px solid ${({ theme }) => theme.colors.secondary};
       display: block;
       left: -13px;
       top: 7px;
@@ -325,7 +332,7 @@ export const StyledList = styled.ul`
       width: 10px;
       height: 10px;
       border-radius: 100%;
-      background: blue;
+      background: ${({ theme }) => theme.colors.secondary};
       display: block;
       left: -6px;
       top: auto;
@@ -333,4 +340,48 @@ export const StyledList = styled.ul`
       position: absolute;
     }
   }
+
+  @media (min-width: ${breakpoints.md}) {
+   flex-direction: row;
+   border-left: none;
+   display: flex;
+   border-top: 1px solid ${({ theme }) => theme.colors.secondary};
+   li {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     
+     &.active {
+      &::before {
+        transform: scale(1.3);
+      }
+      &::after {
+        content: "";
+      width: 25px;
+      height: 25px;
+      border-radius: 100%;
+      border: 1px solid ${({ theme }) => theme.colors.secondary};
+      display: block;
+      left: auto;
+      right: auto;
+      top: -15px;
+      position: absolute;
+      z-index: -1;
+      }
+    }
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      background: ${({ theme }) => theme.colors.secondary};
+      display: block;
+      right: auto;
+      top: -15px;
+      left: auto;
+      position: absolute;
+    }
+   }
+  }
+
 `;

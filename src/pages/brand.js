@@ -5,7 +5,8 @@ import About from "components/About";
 import Team from "components/Team";
 import BrandTabs from "components/BrandTabs";
 import Newsletter from "components/Newsletter";
-import { Container, Row, Col } from "react-grid-system";
+import MainCarousel from "components/MainCarousel";
+import { Container, Row, Col, Visible } from "react-grid-system";
 
 const BrandPage = (shop) => {
   const mock = {
@@ -64,7 +65,12 @@ const BrandPage = (shop) => {
   return (
     <Container fluid>
       <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
-      <PageHeader page={mock.page}/>
+      <Visible xs sm>
+        <PageHeader page={mock.page}/>
+      </Visible>
+      <Visible md lg xl>
+        <MainCarousel />
+      </Visible>
       <About page={mock.page}/>
       <Team team={mock.page.team}/>
       <BrandTabs tabs={mock.page.tabs}/>

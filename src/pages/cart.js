@@ -92,16 +92,12 @@ const CartPage = inject(
     <Container fluid>
       <Helmet title={`Cart | ${shop && shop.name}`} meta={[{ name: "description", content: shop && shop.description }]} />
       <Breadcrumb pageName={page.name} breadcrumb={page.breadcrumb}/>
-      <h3 variant="h6" align="center">
-        {page.name}
-      </h3>
+
       {renderCartItems()}
       {renderCartSummary()}
       <CartShipment/>
-      <Container>
 
-        <OrderResume order={order}/>
-      </Container>
+      <OrderResume order={order}/>
       <ProductList catalogItems={catalogItems} isLoadingCatalogItems={isLoadingCatalogItems}/>
       <InfoCarousel />
     </Container>

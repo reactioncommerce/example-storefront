@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Col } from "react-grid-system";
+import { Container, Col, Visible, Row } from "react-grid-system";
 import * as s from "./style";
 
 
@@ -13,32 +13,82 @@ const CartItems = (props) => {
   const onRemoveItemFromCart = (_id) => {};
 
   return (
-    <Container component="ul">
-      {items.map((product) => (
-        <s.StyledRow component="li">
-          <Col xs={3}>
-            <s.ImageBox>
-              <s.Image src={product.photo} alt=""/>
-            </s.ImageBox>
-          </Col>
-          <s.StyledCol xs={6}>
-            <s.Title>{product.title}</s.Title>
-            <s.Variant>{product.variantTitle}</s.Variant>
-            <s.QuantityCounter>
-              <s.CounterButton>-</s.CounterButton>
-              <s.Quantity>{product.quantity}</s.Quantity>
-              <s.CounterButton>+</s.CounterButton>
-            </s.QuantityCounter>
-          </s.StyledCol>
-          <s.StyledCol xs={3}>
-            <s.Controls>
-              <s.Button>X</s.Button>
-              <s.Price>${product.total}</s.Price>
-            </s.Controls>
-          </s.StyledCol>
-        </s.StyledRow>
-      ))}
-    </Container>
+    <div>
+      <Visible xs sm>
+        <Container component="ul">
+          <Row>
+            <s.PageTitle>Finalizar compra</s.PageTitle>
+          </Row>
+          {items.map((product) => (
+            <s.StyledRow component="li">
+              <Col xs={3}>
+                <s.ImageBox>
+                  <s.Image src={product.photo} alt=""/>
+                </s.ImageBox>
+              </Col>
+              <s.StyledCol xs={6}>
+                <s.Title>{product.title}</s.Title>
+                <s.Variant>{product.variantTitle}</s.Variant>
+                <s.QuantityCounter>
+                  <s.CounterButton>-</s.CounterButton>
+                  <s.Quantity>{product.quantity}</s.Quantity>
+                  <s.CounterButton>+</s.CounterButton>
+                </s.QuantityCounter>
+              </s.StyledCol>
+              <s.StyledCol xs={3}>
+                <s.Controls>
+                  <s.Button>X</s.Button>
+                  <s.Price>${product.total}</s.Price>
+                </s.Controls>
+              </s.StyledCol>
+            </s.StyledRow>
+          ))}
+        </Container>
+      </Visible>
+      <Visible md lg xl>
+        <Container component="ul">
+          <Row>
+            <s.PageTitle>Finalizar compra</s.PageTitle>
+          </Row>
+          <s.StyledRow component="li">
+            <Col md={9}>
+              <s.Title><b>Produto</b></s.Title>
+            </Col>
+            <Col md={2}>
+              <s.Title><b>Quantidade</b></s.Title>
+            </Col>
+            <Col md={1}>
+              <s.Title><b>Preço</b></s.Title>
+            </Col>
+          </s.StyledRow>
+
+         {items.map((product) => (
+            <s.StyledRow component="li">
+              <Col md={9}>
+                <s.ImageBox>
+                  <s.Image src={product.photo} alt=""/>
+                </s.ImageBox>
+              </Col>
+              <s.StyledCol md={2}>
+                <s.Title>{product.title}</s.Title>
+                <s.Variant>{product.variantTitle}</s.Variant>
+                <s.QuantityCounter>
+                  <s.CounterButton>-</s.CounterButton>
+                  <s.Quantity>{product.quantity}</s.Quantity>
+                  <s.CounterButton>+</s.CounterButton>
+                </s.QuantityCounter>
+              </s.StyledCol>
+              <s.StyledCol md={1}>
+                <s.Controls>
+                  <s.Button>X</s.Button>
+                  <s.Price>${product.total}</s.Price>
+                </s.Controls>
+              </s.StyledCol>
+            </s.StyledRow>
+          ))}
+        </Container>
+      </Visible>
+    </div>
 
   );
 };

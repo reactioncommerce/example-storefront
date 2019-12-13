@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import Button from "/components/Button";
 import FormControl from "@material-ui/core/FormControl";
 import * as s from "./style";
 
@@ -29,7 +30,8 @@ const Newsletter = (props) => {
           </InputAdornment>
         }
         />
-        <s.Button>{callToAction}</s.Button>
+        <br/>
+        <Button secondary>{callToAction}</Button>
       </FormControl>
     </s.Newsletter>
   );

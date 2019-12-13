@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React from "react";
 import PropTypes from "prop-types";
+import { Container, Row, Col, Visible } from "react-grid-system";
 import * as s from "./style";
 
 /**
@@ -9,18 +10,22 @@ import * as s from "./style";
 * @returns {component} the team component mounted.
 */
 const setMembers = (members) => members.map((member) => (
-  <s.Member>
+  <Col xs={6} md={3}>
     <s.Image src={member.photo} alt=""/>
     <s.MemberName>{member.name}</s.MemberName>
     <s.MemberPosition>{member.position}</s.MemberPosition>
-  </s.Member>
+  </Col>
 ));
 
 const Team = (props) => (
   <s.TeamSection>
-    <s.Title>{ props.team.title }</s.Title>
-    <s.Description>{ props.team.description }</s.Description>
-    <s.Members>{ setMembers(props.team.members) }</s.Members>
+    <h2>Lorem Ipsum</h2>
+    <Container>
+
+      <s.Title>{ props.team.title }</s.Title>
+      <s.Description>{ props.team.description }</s.Description>
+      <Row>{ setMembers(props.team.members) }</Row>
+    </Container>
   </s.TeamSection>
 );
 
