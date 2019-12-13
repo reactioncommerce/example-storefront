@@ -14,6 +14,7 @@ import { omitTypenameLink } from "./omitVariableTypenameLink";
 
 const SIGN_IN_PATH = "/signin";
 const STATUS_FOUND = 302;
+const STATUS_BAD_REQUEST = 400;
 const STATUS_UNAUTHORIZED = 401;
 
 // Config
@@ -39,11 +40,16 @@ if (!process.browser) {
 
 const create = (initialState, options) => {
   // error handling for Apollo Link
-  const errorLink = onError(({ graphQLErrors, networkError }) => {
+  const errorLink = onError((apolloError) => {
+    const { graphQLErrors, networkError, operation } = apolloError;
+
     if (graphQLErrors) {
       graphQLErrors.forEach(({ message, locations, path }) => {
-        // eslint-disable-next-line no-console
-        console.error(`[GraphQL error]: Message: ${message}, Location: ${JSON.stringify(locations)}, Path: ${JSON.stringify(path)}`);
+        logger.error(`[GraphQL error]: ${message}`, {
+          locations,
+          operationName: operation && operation.operationName,
+          path
+        });
       });
     }
 
@@ -68,7 +74,9 @@ const create = (initialState, options) => {
 
         return;
       }
-      logger.error(`Unable to access the GraphQL API. Is it running and accessible at ${graphqlUrl} from the Storefront UI server?`);
+      if (errorCode !== STATUS_BAD_REQUEST) {
+        logger.error(`Unable to access the GraphQL API. Is it running and accessible at ${graphqlUrl} from the Storefront UI server?`);
+      }
     }
   });
 
