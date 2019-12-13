@@ -16,7 +16,7 @@ export default function withTag(Component) {
   @observer
   class WithTag extends React.Component {
     static propTypes = {
-      primaryShopId: PropTypes.string.isRequired,
+      primaryShopId: PropTypes.string,
       /**
        * slug used to obtain tag info
        */

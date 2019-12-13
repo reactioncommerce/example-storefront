@@ -364,6 +364,14 @@ export default function withCart(Component) {
       let variables;
       let skipQuery = false;
 
+      if (!shop) {
+        return (
+          <Component
+            {...this.props}
+          />
+        );
+      }
+
       // With an anonymous cart
       if (cartStore.hasAnonymousCartCredentials) {
         // Otherwise, set query and variables for fetching an anonymous cart

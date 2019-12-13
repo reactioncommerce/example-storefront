@@ -19,7 +19,7 @@ export default function withCatalogItems(Component) {
   @observer
   class CatalogItems extends React.Component {
     static propTypes = {
-      primaryShopId: PropTypes.string.isRequired,
+      primaryShopId: PropTypes.string,
       routingStore: PropTypes.object.isRequired,
       tag: PropTypes.shape({
         _id: PropTypes.string.isRequired
@@ -31,6 +31,15 @@ export default function withCatalogItems(Component) {
       const { primaryShopId, routingStore, uiStore, tag } = this.props;
       const [sortBy, sortOrder] = uiStore.sortBy.split("-");
       const tagIds = tag && [tag._id];
+
+      if (!primaryShopId) {
+        return (
+          <Component
+            {...this.props}
+          />
+        );
+      }
+
       const variables = {
         shopId: primaryShopId,
         ...paginationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: uiStore.pageSize }),

@@ -74,14 +74,14 @@ export default class App extends NextApp {
   }
 
   render() {
-    const { Component, pageProps, shop, shop: { defaultNavigationTree: navItems }, tags, viewer, ...rest } = this.props;
+    const { Component, pageProps, shop, tags, viewer, ...rest } = this.props;
     const { route } = this.props.router;
     const { stripe } = this.state;
 
     return (
       <Container>
         <ComponentsProvider value={components}>
-          <MobxProvider suppressChangedStoreWarning navItems={navItems} tags={tags}>
+          <MobxProvider suppressChangedStoreWarning navItems={shop && shop.defaultNavigationTree} tags={tags}>
             <JssProvider
               registry={this.pageContext.sheetsRegistry}
               generateClassName={this.pageContext.generateClassName}

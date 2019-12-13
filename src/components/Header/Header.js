@@ -42,8 +42,8 @@ class Header extends Component {
   static propTypes = {
     classes: PropTypes.object,
     shop: PropTypes.shape({
-      name: PropTypes.string
-    }).isRequired,
+      name: PropTypes.string.isRequired
+    }),
     uiStore: PropTypes.shape({
       toggleMenuDrawerOpen: PropTypes.func.isRequired
     }).isRequired,
@@ -71,7 +71,7 @@ class Header extends Component {
           <div className={controls}>
             <Typography className={title} color="inherit" variant="h6">
               <Link route="/">
-                <ShopLogo shopName={shop.name} />
+                {shop ? <ShopLogo shopName={shop.name} /> : "Example Storefront"}
               </Link>
             </Typography>
 
