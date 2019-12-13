@@ -7,7 +7,7 @@ const { useStaticRendering } = require("mobx-react");
 const config = require("./config");
 const logger = require("./lib/logger");
 const router = require("./routes");
-const { configureAuthForServer } = require("./serverAuth");
+const { configureAuthForServer, createHydraClientIfNecessary } = require("./serverAuth");
 const { sitemapRoutesHandler } = require("./sitemapRoutesHandler");
 
 if (config.isDev) {
@@ -26,6 +26,7 @@ useStaticRendering(true);
 
 app
   .prepare()
+  .then(createHydraClientIfNecessary)
   .then(() => {
     const server = express();
 

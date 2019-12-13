@@ -13,6 +13,7 @@ version: '3.4'
 services:
   web:
     image: reactioncommerce/node-dev:10.16.3-v2
+    command: "./bin/start"
     volumes:
       - .:/usr/local/src/app
       - web-yarn:/home/node/.cache/yarn

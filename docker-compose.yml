@@ -17,11 +17,6 @@ networks:
 services:
   web:
     image: reactioncommerce/example-storefront:release-v3.0.0
-    # The only reason we need to override the command is to auto-create
-    # the Hydra client if it doesn't exist. In the future, we plan to
-    # make this logic part of the codebase, at which point this can be
-    # removed.
-    command: "./bin/start-prod.sh"
     env_file:
       - ./.env
     networks:
@@ -29,7 +24,3 @@ services:
       auth:
     ports:
       - 4000:4000
-    volumes:
-      # This volume is needed only to run the `command` above.
-      # When the command is removed, this volume can also be removed.
-      - ./bin:/usr/local/src/app/bin
