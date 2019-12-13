@@ -1,6 +1,6 @@
 {
   "name": "example-storefront",
-  "version": "2.9.0",
+  "version": "3.0.0-alpha",
   "description": "The Example Storefront serves as a reference for implementing a web based storefront using the Reaction Commerce GraphQL API.",
   "main": "./src/server.js",
   "keywords": [],
@@ -27,9 +27,12 @@
     "test:file": "NODE_ENV=jesttest jest --watch --no-coverage"
   },
   "eslintConfig": {
-    "extends": [
-      "@reactioncommerce"
-    ]
+    "extends": "@reactioncommerce",
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
   },
   "dependencies": {
     "@material-ui/core": "~3.9.2",

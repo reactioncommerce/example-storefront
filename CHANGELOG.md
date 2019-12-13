@@ -1,3 +1,18 @@
+# v3.0.0-alpha
+
+This is a major update to keep this project in sync with
+[reaction v3.0.0-alpha](https://github.com/reactioncommerce/reaction),
+[example-storefront v3.0.0-alpha](https://github.com/reactioncommerce/example-storefront),
+and [reaction-platform v3.0.0-alpha](https://github.com/reactioncommerce/reaction-platform).
+
+## Fixes
+
+- Fix params for withTag API query [#621](https://github.com/reactioncommerce/example-storefront/pull/621)
+
+## Refactors
+
+- Update token name `cartToken` [#616](https://github.com/reactioncommerce/example-storefront/pull/616)
+
 # v2.9.0
 
 Example Storefront v2.9.0 is a minor update to keep this project in sync with [Reaction v2.9.0](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.9.0](https://github.com/reactioncommerce/reaction-hydra)

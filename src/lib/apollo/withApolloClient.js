@@ -98,7 +98,7 @@ export default function withApolloClient(WrappedComponent) {
 
     static getDerivedStateFromProps(nextProps) {
       const { pathname, query, route } = nextProps.router;
-      const { requestPath, hasRequestObject } = nextProps;
+      const { requestPath, hasRequestObject } = nextProps; // eslint-disable-line react/prop-types
 
       // Update routing store with pathname and query after route change
       rootMobxStores.routingStore.updateRoute({ pathname, query, route });
