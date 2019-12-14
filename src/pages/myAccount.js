@@ -7,10 +7,10 @@ import { Row, Container } from "react-grid-system";
 import { inject } from "mobx-react";
 import { observer } from "mobx-react-lite";
 import InfoCarousel from "components/InfoCarousel";
-import PRODUCTS_MOCK from "helpers/PRODUCTS_MOCK.json";
+import PRODUCTS_MOCK from "pages/PRODUCTS_MOCK.json";
 
 
-const Search = inject("routingStore")(observer(({ routingStore }) => {
+const MyAccount = inject("routingStore")(observer(({ routingStore }) => {
   const mock = {
     page: {
       name: routingStore.query.slugOrId,
@@ -53,11 +53,11 @@ const Search = inject("routingStore")(observer(({ routingStore }) => {
   );
 }));
 
-Search.propTypes = {
+MyAccount.propTypes = {
   // router: PropTypes.object.isRequired,
   routingStore: PropTypes.shape({
     slugOrId: PropTypes.string
   })
 };
 
-export default Search;
+export default MyAccount;

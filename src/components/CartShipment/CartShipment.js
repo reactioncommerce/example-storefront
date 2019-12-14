@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Col } from "react-grid-system";
+import { Container, Row, Col } from "react-grid-system";
+import { FormControl, Input, InputLabel } from "@material-ui/core";
 import * as s from "./style";
 
 
@@ -17,31 +18,22 @@ const CartItems = (props) => {
   const onRemoveItemFromCart = (_id) => {};
 
   return (
-    <Container component="ul">
-      {items.map((product) => (
-        <s.StyledRow component="li">
-          <Col xs={3}>
-            <s.ImageBox>
-              <s.Image src={product.metafields} alt=""/>
-            </s.ImageBox>
-          </Col>
-          <s.StyledCol xs={6}>
-            <s.Title>{product.title}</s.Title>
-            <s.Variant>{product.variantTitle}</s.Variant>
-            <s.QuantityCounter>
-              <s.CounterButton>-</s.CounterButton>
-              <s.Quantity>{product.quantity}</s.Quantity>
-              <s.CounterButton>+</s.CounterButton>
-            </s.QuantityCounter>
-          </s.StyledCol>
-          <s.StyledCol xs={3}>
-            <s.Controls>
-              <s.Button>X</s.Button>
-              <s.Price>${product.price}</s.Price>
-            </s.Controls>
-          </s.StyledCol>
-        </s.StyledRow>
-      ))}
+    <Container>
+      <Row component="li">
+        <s.StyledCol xs={3}>
+          <s.Span>Calcule o frete e o prazo</s.Span>
+        </s.StyledCol>
+        <Col xs={7}>
+          <FormControl>
+            <InputLabel htmlFor="cep">CEP</InputLabel>
+            <Input id="cep"/>
+          </FormControl>
+          <span>Não sei meu CEP</span>
+        </Col>
+        <s.StyledCol xs={2}>
+          <s.Button>OK</s.Button>
+        </s.StyledCol>
+      </Row>
     </Container>
 
   );

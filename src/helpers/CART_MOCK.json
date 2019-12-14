@@ -1,0 +1,112 @@
+{
+    "page": {
+        "name": "Carrinho",
+        "breadcrumb": {
+            "link": "/Cart",
+            "root": null
+        },
+        "title": "Carrinho",
+        "pagination": {
+            "limit": 8,
+            "actual": 1,
+            "total": 22,
+            "visible": "1-4"
+        }
+    },
+    "_id" :"",
+    "shopId" :"",
+    "accountId" :"",
+    "anonymousAccessToken" :"",
+    "email" :"",
+    "shipping" :"",
+    "billing" :"",
+    "sessionId" :"",
+    "discount" :"",
+    "surcharges" :"",
+    "workflow" :"",
+    "createdAt" :"",
+    "updatedAt" :"",
+    "items": [{
+        "id": "123",
+        "addedAt": "",
+        "attributes": "",
+        "createdAt": "",
+        "metafields": "static/images/home/prod2.png",
+        "optionTitle": "",
+        "parcel": "",
+        "price": 19.99,
+        "priceWhenAdded": 19.99,
+        "productId": "123",
+        "productSlug": "vestido-de-verao",
+        "productType": "Vestido",
+        "productVendor": "Nike",
+        "quantity": "01",
+        "shopId": "",
+        "title": "Vestido de Verão",
+        "transaction": "",
+        "updatedAt": "",
+        "variantId": "1",
+        "variantTitle": "Tamanho único"
+    },{
+        "id": "123",
+        "addedAt": "",
+        "attributes": "",
+        "createdAt": "",
+        "metafields": "static/images/home/prod1.png",
+        "optionTitle": "",
+        "parcel": "",
+        "price": 39.99,
+        "priceWhenAdded": 39.99,
+        "productId": "123",
+        "productSlug": "vestido-de-inverno",
+        "productType": "Vestido",
+        "productVendor": "Adidas",
+        "quantity": "02",
+        "shopId": "",
+        "title": "Vestido de Inverno",
+        "transaction": "",
+        "updatedAt": "",
+        "variantId": "1",
+        "variantTitle": "Tamanho único"
+    }],
+    "address": {
+        "_id":	"String",
+        "fullName": "String" ,
+        "firstName": "String" ,
+        "lastName": "String" ,
+        "address1": "String" ,
+        "address2": "String" ,
+        "city": "String" ,
+        "company": "String" ,
+        "phone": "String" ,
+        "region": "String" ,
+        "postal": "String" ,
+        "country": "String" ,
+        "isCommercial": "Boolean" ,
+        "isBillingDefault": "Boolean" ,
+        "isShippingDefault": "Boolean" ,
+        "failedValidation": "Boolean"
+    },
+    "invoice": {
+        "title": "",
+        "productVendor": "",
+        "variantTitle": "",
+        "optionTitle": "",
+        "discounts": "Number",	
+        "effectiveTaxRate":	"Number",	
+        "shipping":	"Number",	
+        "subtotal":	"Number",	
+        "surcharges":"Number",
+        "taxableAmount":"Number",
+        "taxes":"Number",
+        "total":"Number"
+    }
+}
+
+
+	
+
+
+
+
+

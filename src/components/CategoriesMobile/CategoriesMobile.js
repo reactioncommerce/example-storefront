@@ -15,7 +15,7 @@ const CategoriesDrawer = inject("tags")(
     };
 
     const getCategoryLink = (slug) => {
-      return `/tag/${slug}`;
+      return `/category/${slug}`;
     };
 
     return (

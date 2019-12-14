@@ -4,7 +4,7 @@ import ProductGallery from "components/ProductGallery";
 import Accordion from "components/Accordion";
 import { inject, observer } from "mobx-react";
 import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
-import { Container, Col, Row, Hidden } from "react-grid-system";
+import { Container, Col, Row, Visible } from "react-grid-system";
 import * as s from "./style";
 
 
@@ -19,22 +19,40 @@ const ProductDetail = inject()(observer((props) => {
       text: product.description
     }
   ];
-  if (isWidthDown("sm")) {
-    return (
-      <Row direction="column" align="center" justify="center">
-        <ProductGallery product={product} />
-        <s.Title>{product.title}</s.Title>
-        <s.Price>de R$ <span>{product.pricing[0].maxPrice}</span></s.Price>
-        <s.SpecialPrice>por <s.Span>{product.pricing[0].minPrice}</s.Span> à vista</s.SpecialPrice>
-        <s.Button primary>COMPRAR</s.Button>
-        <s.Button secondary>ADICIONAR AO CARRINHO</s.Button>
-        <Accordion array={productInfo}/>
-      </Row>
-    );
-  }
   return (
-    <Row direction="column" align="center" justify="center">
-    </Row>
+    <s.StyledContainer fluid>
+      <Visible sm xs>
+        <Row direction="column" align="center" justify="center">
+          <ProductGallery product={product} />
+          <s.Title>{product.title}</s.Title>
+          <s.Price>de R$ <span>{product.pricing[0].maxPrice}</span></s.Price>
+          <s.SpecialPrice>por <s.Span>{product.pricing[0].minPrice}</s.Span> à vista</s.SpecialPrice>
+          <s.Button primary>COMPRAR</s.Button>
+          <s.Button secondary>ADICIONAR AO CARRINHO</s.Button>
+          <Accordion array={productInfo}/>
+        </Row>
+      </Visible>
+      <Visible md lg xl>
+        <Container style={{ background: "#fff" }}>
+          <Row>
+            <Col md={6}>
+              <ProductGallery product={product} />
+            </Col >
+            <s.StyledCol>
+              <s.StyledRow direction="column" align="center" justify="center">
+                <s.Title>{product.title}</s.Title>
+                <s.Price>de R$ <span>{product.pricing[0].maxPrice}</span></s.Price>
+                <s.SpecialPrice>por <s.Span>{product.pricing[0].minPrice}</s.Span> à vista</s.SpecialPrice>
+                <s.Button primary>COMPRAR</s.Button>
+                <s.Button secondary>ADICIONAR AO CARRINHO</s.Button>
+              </s.StyledRow>
+            </s.StyledCol>
+          </Row>
+          <Accordion array={productInfo}/>
+        </Container>
+      </Visible>
+
+    </s.StyledContainer>
   );
 }));
 
