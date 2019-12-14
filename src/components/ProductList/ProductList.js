@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
 import { Router } from "routes";
@@ -17,9 +17,9 @@ const settings = {
 const productsInLine = 4;
 
 const ProductList = ({ catalogItems, isLoadingCatalogItems }) => {
-  const onClickProduct = (slug) => {
+  const onClickProduct = useCallback((slug) => {
     Router.pushRoute(`/product/${slug}`);
-  };
+  }, []);
 
   if (isLoadingCatalogItems) return <span>Carregando...</span>;
 
