@@ -58,8 +58,8 @@ const Header = inject("uiStore")(
 
 Header.propTypes = {
   uiStore: PropTypes.shape({
-    toggleMenuDrawerOpen: PropTypes.func.isRequired
-  }).isRequired
+    toggleMenuDrawerOpen: PropTypes.func
+  })
 };
 
 export default Header;

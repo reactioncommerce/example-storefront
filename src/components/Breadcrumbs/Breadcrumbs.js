@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { inject } from "mobx-react";
 import { withStyles } from "@material-ui/core/styles";
-import ChevronRight from "mdi-material-ui/ChevronRight";
 import Link from "components/Link";
 import SharedPropTypes from "lib/utils/SharedPropTypes";
 
@@ -57,7 +56,6 @@ class Breadcrumbs extends Component {
     return (
       <Fragment>
         {!!parentTag && this.renderTagBreadcrumbPiece(parentTag)}
-        {/* <ChevronRight className={breadcrumbIcon} /> */}
         <span className={breadcrumbSeparator}>/</span>
         <Link route={`/category/${tag.slug}`}>
           <span className={breadcrumbLink}>{tag.name}</span>
@@ -81,7 +79,7 @@ class Breadcrumbs extends Component {
 
   renderProductNameBreadcrumb = () => {
     const {
-      classes: { breadcrumbIcon, breadcrumbLink },
+      classes: { breadcrumbSeparator, breadcrumbLink },
       product,
       tagId
     } = this.props;
@@ -90,7 +88,7 @@ class Breadcrumbs extends Component {
       return (
         <Fragment>
           {this.renderTagBreadcrumbs()}
-          <ChevronRight className={breadcrumbIcon} />
+          <span className={breadcrumbSeparator}>/</span>
           <Link route={`/product/${product.slug}`}>
             <span className={breadcrumbLink}>{product.title}</span>
           </Link>
@@ -100,7 +98,7 @@ class Breadcrumbs extends Component {
 
     return (
       <Fragment>
-        <ChevronRight className={breadcrumbIcon} />
+        <span className={breadcrumbSeparator}>/</span>
         <Link route={`/product/${product.slug}`}>
           <span className={breadcrumbLink}>{product.title}</span>
         </Link>

@@ -24,7 +24,8 @@ const styles = ({ palette, zIndex }) => ({
   popper: {
     marginTop: "0.5rem",
     marginRight: "1rem",
-    zIndex: zIndex.modal
+    // zIndex: zIndex.modal
+    zIndex: "99999"
   },
   cart: {
     backgroundColor: palette.common.white
@@ -97,7 +98,7 @@ export default class MiniCart extends Component {
     } = this.props;
     openCart();
 
-    // Track a cart view event, only if the cart contains items
+    //  Track a cart view event, only if the cart contains items
     if (cart && Array.isArray(cart.items) && cart.items.length) {
       this.trackAction({ cartItems: cart.items, cartId: cart._id, action: CART_VIEWED });
     }
@@ -128,7 +129,7 @@ export default class MiniCart extends Component {
   handleOnClick = () => {
     // const { closeCart } = this.props.uiStore;
     // closeCart();
-    // Router.pushRoute("cart");
+    Router.pushRoute("cart");
   };
 
   handleItemQuantityChange = (quantity, cartItemId) => {
@@ -169,13 +170,14 @@ export default class MiniCart extends Component {
           components={{
             QuantityInput: "div",
             CartItems: (cartItemProps) => (
-              <CartItems
-                {...cartItemProps}
-                hasMoreCartItems={hasMoreCartItems}
-                onRemoveItemFromCart={this.handleRemoveItem}
-                onChangeCartItemQuantity={this.handleItemQuantityChange}
-                onLoadMoreCartItems={loadMoreCartItems}
-              />
+              // <CartItems
+              //   {...cartItemProps}
+              //   hasMoreCartItems={hasMoreCartItems}
+              //   onRemoveItemFromCart={this.handleRemoveItem}
+              //   onChangeCartItemQuantity={this.handleItemQuantityChange}
+              //   onLoadMoreCartItems={loadMoreCartItems}
+              // />
+              <span>todo mini cart component</span>
             )
           }}
         />
@@ -220,7 +222,7 @@ export default class MiniCart extends Component {
           </IconButton>
         </div>
 
-        <Popper
+        {/* <Popper
           className={classes.popper}
           id={id}
           open={isCartOpen}
@@ -234,7 +236,7 @@ export default class MiniCart extends Component {
               <div className={classes.cart}>{this.renderMiniCart()}</div>
             </Fade>
           )}
-        </Popper>
+        </Popper> */}
       </Fragment>
     );
   }

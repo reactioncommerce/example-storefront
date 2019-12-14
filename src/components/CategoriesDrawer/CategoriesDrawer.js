@@ -49,7 +49,7 @@ const CategoriesDrawer = inject(
                 {tags && tags.length ? (
                   <s.TagList>
                     {tags.map((tag) => (
-                      <s.Tag onClick={handleClose} onMouseEnter={() => categoryHover(tag.slug)}>
+                      <s.Tag key={tag._id} onClick={handleClose} onMouseEnter={() => categoryHover(tag.slug)}>
                         <Link route={`/category/${tag.slug}`}>{tag.name}</Link>
                       </s.Tag>
                     ))}

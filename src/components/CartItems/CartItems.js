@@ -1,20 +1,28 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Container, Col } from "react-grid-system";
+import Button from "@reactioncommerce/components/Button/v1";
+import CartItemsList from "@reactioncommerce/components/CartItems/v1";
 import * as s from "./style";
-
 
 const CartItems = (props) => {
   const {
-    items
-    // isMiniCart,
-    // isReadOnly,
-    // hasMoreCartItems,
-    // onLoadMoreCartItems
+    items,
+    onChangeCartItemQuantity,
+    onRemoveItemFromCart,
+    isMiniCart,
+    isReadOnly,
+    hasMoreCartItems,
+    onLoadMoreCartItems
   } = props;
 
-  const onChangeCartItemQuantity = (quantity, _id) => {};
-  const onRemoveItemFromCart = (_id) => {};
+  const handleItemQuantityChange = (quantity, _id) => {
+    onChangeCartItemQuantity(quantity, _id);
+  };
+
+  const handleRemoveItem = (_id) => {
+    onRemoveItemFromCart(_id);
+  };
 
   return (
     <Container component="ul">
@@ -22,7 +30,7 @@ const CartItems = (props) => {
         <s.StyledRow component="li">
           <Col xs={3}>
             <s.ImageBox>
-              <s.Image src={product.metafields} alt=""/>
+              <s.Image src={product.metafields} alt="" />
             </s.ImageBox>
           </Col>
           <s.StyledCol xs={6}>
@@ -43,7 +51,6 @@ const CartItems = (props) => {
         </s.StyledRow>
       ))}
     </Container>
-
   );
 };
 
@@ -52,24 +59,31 @@ CartItems.propTypes = {
   hasMoreCartItems: PropTypes.bool,
   isMiniCart: PropTypes.bool,
   isReadOnly: PropTypes.bool,
-  items: PropTypes.arrayOf(PropTypes.shape({
-    _id: PropTypes.string,
-    attributes: PropTypes.arrayOf(PropTypes.object),
-    currencyQuantity: PropTypes.number,
-    imageUrl: PropTypes.string,
-    isLowInventoryQuantity: PropTypes.bool,
-    price: PropTypes.shape({
-      displayPrice: PropTypes.string,
-      compareAtPrice: PropTypes.string
-    }),
-    productSlug: PropTypes.string,
-    title: PropTypes.string,
-    quantity: PropTypes.number
-  })).isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string,
+      attributes: PropTypes.arrayOf(PropTypes.object),
+      currencyQuantity: PropTypes.number,
+      imageUrl: PropTypes.string,
+      isLowInventoryQuantity: PropTypes.bool,
+      price: PropTypes.shape({
+        displayPrice: PropTypes.string,
+        compareAtPrice: PropTypes.string
+      }),
+      productSlug: PropTypes.string,
+      title: PropTypes.string,
+      quantity: PropTypes.number
+    })
+  ).isRequired,
   onChangeCartItemQuantity: PropTypes.func.isRequired,
   onLoadMoreCartItems: PropTypes.func,
   onRemoveItemFromCart: PropTypes.func.isRequired,
   productURLPath: PropTypes.string
+};
+
+CartItems.defaultProps = {
+  onChangeCartItemQuantity: () => {},
+  onRemoveItemFromCart: () => {}
 };
 
 export default CartItems;
