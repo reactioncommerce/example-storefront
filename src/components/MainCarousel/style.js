@@ -43,6 +43,7 @@ export const Section = styled.section`
     }
   }
 `;
+
 export const Product = styled.div`
   position: relative;
 `;

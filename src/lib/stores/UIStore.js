@@ -24,6 +24,14 @@ class UIStore {
   @observable isMenuDrawerOpen = false;
 
   /**
+   * Is the menu drawer open or closed
+   *
+   * @type Boolean
+   * @default false
+   */
+  @observable isCategoriesDrawerOpen = false;
+
+  /**
    * Default display language for shop text, when translations are available.
    *
    * @type String
@@ -119,7 +127,7 @@ class UIStore {
   @action openCart = () => {
     this.isCartOpen = true;
     this.clearOpenCartTimeout();
-  }
+  };
 
   /**
    * @name closeCart
@@ -128,20 +136,26 @@ class UIStore {
    * @returns {undefined} No return
    */
   @action closeCart = (delay = 500) => {
-    this.openCartTimeout = setTimeout(action(() => {
-      this.isCartOpen = false;
-      this.clearOpenCartTimeout();
-    }), delay);
-  }
+    this.openCartTimeout = setTimeout(
+      action(() => {
+        this.isCartOpen = false;
+        this.clearOpenCartTimeout();
+      }),
+      delay
+    );
+  };
 
   @action openCartWithTimeout = (delay = 3000) => {
     this.openCart();
 
-    this.openCartTimeout = setTimeout(action(() => {
-      this.isCartOpen = false;
-      clearTimeout(this.openCartTimeout);
-    }), delay);
-  }
+    this.openCartTimeout = setTimeout(
+      action(() => {
+        this.isCartOpen = false;
+        clearTimeout(this.openCartTimeout);
+      }),
+      delay
+    );
+  };
 
   /**
    * @name clearOpenCartTimeout
@@ -150,7 +164,7 @@ class UIStore {
    */
   clearOpenCartTimeout = () => {
     this.openCartTimeout && clearTimeout(this.openCartTimeout);
-  }
+  };
 
   @action toggleCartOpen() {
     this.isCartOpen = !this.isCartOpen;
@@ -162,6 +176,14 @@ class UIStore {
 
   @action toggleMenuDrawerOpen() {
     this.isMenuDrawerOpen = !this.isMenuDrawerOpen;
+  }
+
+  @action closeCategoriesDrawer() {
+    this.isCategoriesDrawerOpen = false;
+  }
+
+  @action toggleCategoriesDrawerOpen() {
+    this.isCategoriesDrawerOpen = !this.isCategoriesDrawerOpen;
   }
 
   /**
@@ -177,11 +199,11 @@ class UIStore {
   @action setPageSize = (size) => {
     // Validate page size
     this.pageSize = inPageSizes(size) ? size : PAGE_SIZES._20;
-  }
+  };
 
   @action setSortBy = (sortBy) => {
     this.sortBy = sortBy;
-  }
+  };
 }
 
 export default UIStore;

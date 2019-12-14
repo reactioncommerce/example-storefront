@@ -1,7 +1,10 @@
 import styled from "styled-components";
+import { breakpoints } from "../../helpers/constants";
 
 export const Container = styled.div`
-  z-index: 99;
+  position: relative;
+  z-index: 9;
+  background: #fff;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.21);
 `;
 
@@ -12,7 +15,15 @@ export const Content = styled.div`
   height: 63px;
   padding: 0px 25px;
   width: 100%;
+  position: relative;
+  background: white;
+  z-index: 1200;
 
+  @media (min-width: ${breakpoints.md}) {
+    z-index: 2000;
+  }
+
+  box-shadow: 0 3px 7px 0 rgba(79, 77, 77, 0.21);
   a {
     outline: none;
     user-select: none;

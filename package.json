@@ -72,6 +72,7 @@
     "react-apollo": "~2.4.1",
     "react-container-query": "~0.11.0",
     "react-dom": "~16.8.6",
+    "react-grid-system": "^6.0.6",
     "react-helmet": "~5.2.0",
     "react-jss": "~8.6.1",
     "react-slick": "^0.25.2",

@@ -47,12 +47,14 @@ export default class VariantList extends Component {
 
     return (
       <div className={classes.variantItem} key={variant._id}>
+
         <VariantItem
           currencyCode={currencyCode}
           handleClick={() => { onSelectVariant(variant); }}
           isActive={active}
           variant={variant}
         />
+        
         {this.renderBadges(variant)}
       </div>
     );

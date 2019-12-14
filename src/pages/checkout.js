@@ -234,7 +234,7 @@ class Checkout extends Component {
         <div className={classes.headerFlex}>
           <Link route="/" className={classes.backLink}>
             <ChevronLeftIcon style={{ fontSize: 18, color: "inherit", verticalAlign: "sub", transition: "none" }} />
-            <span className={classes.backLinkText}>Back</span>
+            <span className={classes.backLinkText}>Backss</span>
           </Link>
         </div>
 

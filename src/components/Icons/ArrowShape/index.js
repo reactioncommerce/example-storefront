@@ -23,7 +23,7 @@ const ArrowShape = ({ direction, onClick }) => {
       direction={direction}
       onClick={onClick}
     >
-      <path id="Shape" d="M10 1.892L8.108 0 0 8.108l8.108 8.108L10 14.324 3.784 8.108z" class="cls-1" fill="#757575" />
+      <path id="Shape" d="M10 1.892L8.108 0 0 8.108l8.108 8.108L10 14.324 3.784 8.108z" className="cls-1" fill="#757575" />
     </Svg>
   );
 };
