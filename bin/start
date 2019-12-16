@@ -8,5 +8,7 @@ IFS="$(printf "\n\t")"
 
 cd "$(dirname "$0")/.."
 yarn install
-./bin/create-hydra-client.sh
+printf "Waiting for Hydra service...  "
+./bin/wait-for.sh "${OAUTH2_HOST}:${OAUTH2_ADMIN_PORT}"
+printf "Hydra service found!\n"
 yarn start:dev
