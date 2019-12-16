@@ -33,6 +33,7 @@ if (process.env.IS_BUILDING_NEXTJS) {
     EXTERNAL_GRAPHQL_URL: url(),
     INTERNAL_GRAPHQL_URL: url(),
     NODE_ENV: str({ choices: ["development", "test", "jesttest", "production"], default: "production" }),
+    OAUTH2_ADMIN_URL: str(),
     OAUTH2_AUTH_URL: url(),
     OAUTH2_CLIENT_ID: str(),
     OAUTH2_CLIENT_SECRET: str(),

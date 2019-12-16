@@ -107,4 +107,56 @@ function configureAuthForServer(server) {
   });
 }
 
-module.exports = { configureAuthForServer };
+/**
+ * @summary Calls Hydra's endpoint to create an OAuth client for storefront
+ *   if one does not already exist. This works because the Hydra admin port
+ *   is exposed on the internal network. Ensure that it is not exposed to the
+ *   public Internet in production.
+ * @returns {Promise<undefined>} Nothing
+ */
+async function createHydraClientIfNecessary() {
+  /* eslint-disable camelcase */
+  const bodyEncoded = JSON.stringify({
+    client_id: config.OAUTH2_CLIENT_ID,
+    client_secret: config.OAUTH2_CLIENT_SECRET,
+    grant_types: [
+      "authorization_code",
+      "refresh_token"
+    ],
+    jwks: {},
+    redirect_uris: [config.OAUTH2_REDIRECT_URL],
+    response_types: ["token", "code"],
+    scope: "offline",
+    subject_type: "public",
+    token_endpoint_auth_method: "client_secret_post"
+  });
+  /* eslint-enable camelcase */
+
+  let adminUrl = config.OAUTH2_ADMIN_URL;
+  if (!adminUrl.endsWith("/")) adminUrl = `${adminUrl}/`;
+
+  logger.info("Creating Hydra client...");
+
+  const response = await fetch(`${adminUrl}clients`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: bodyEncoded
+  });
+
+  switch (response.status) {
+    case 200:
+    // intentional fallthrough!
+    // eslint-disable-line no-fallthrough
+    case 201:
+      logger.info("OK: Hydra client created");
+      break;
+    case 409:
+      logger.info("OK: Hydra client already exists");
+      break;
+    default:
+      logger.error(await response.text());
+      throw new Error(`Could not create Hydra client [${response.status}]`);
+  }
+}
+
+module.exports = { configureAuthForServer, createHydraClientIfNecessary };
