@@ -25,8 +25,8 @@ class Layout extends Component {
     children: PropTypes.node,
     classes: PropTypes.object,
     shop: PropTypes.shape({
-      name: PropTypes.string
-    }).isRequired,
+      name: PropTypes.string.isRequired
+    }),
     viewer: PropTypes.object
   };
 

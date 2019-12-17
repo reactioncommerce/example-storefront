@@ -95,7 +95,7 @@ export default class Login extends Component {
 
         <Link route="home">
           <div className={classes.logo}>
-            <ShopLogo shopName={shop.name} />
+            {shop ? <ShopLogo shopName={shop.name} /> : "Example Storefront"}
           </div>
         </Link>
 

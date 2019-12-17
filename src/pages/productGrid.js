@@ -77,7 +77,14 @@ class ProductGridPage extends Component {
     } = this.props;
     const pageSize = query && inPageSizes(query.limit) ? parseInt(query.limit, 10) : uiStore.pageSize;
     const sortBy = query && query.sortby ? query.sortby : uiStore.sortBy;
-    const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : shop.name;
+
+    let pageTitle;
+    if (shop) {
+      pageTitle = shop.name;
+      if (shop.description) pageTitle = `${pageTitle} | ${shop.description}`;
+    } else {
+      pageTitle = "Storefront";
+    }
 
     return (
       <Fragment>
@@ -87,7 +94,7 @@ class ProductGridPage extends Component {
         />
         <ProductGrid
           catalogItems={catalogItems}
-          currencyCode={shop.currency.code}
+          currencyCode={(shop && shop.currency && shop.currency.code) || "USD"}
           initialSize={initialGridSize}
           isLoadingCatalogItems={isLoadingCatalogItems}
           pageInfo={catalogItemsPageInfo}
