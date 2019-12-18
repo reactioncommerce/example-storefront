@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { Container, Col, Visible, Row } from "react-grid-system";
-import { Container, Col } from "react-grid-system";
 import Button from "@reactioncommerce/components/Button/v1";
 import CartItemsList from "@reactioncommerce/components/CartItems/v1";
 import * as s from "./style";

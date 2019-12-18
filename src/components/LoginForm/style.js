@@ -16,15 +16,27 @@ export const LoginSection = styled(Container)`
 
 export const Logo = styled.img`
   max-width:120px;
+  margin-top: 20px;
 `;
 
 export const Title = styled.h2`
   color: ${({ theme }) => theme.colors.gray.COLOR_3};
   margin: 40px 0;
+  font-size: ${({ theme }) => theme.sizes.title.SIZE_4};
+  max-width: 300px;
 `;
 
 export const StyledFormControl = styled(FormControl)`
   width: 100%;
+  &:last-child {
+    margin-bottom: 25px;
+  }
+  &.error-message {
+    label, input, span {
+      color: red!important;
+      border-color: red!important;
+    }
+  }
 `;
 export const Form = styled(Col)`
   width: 100%;
@@ -37,9 +49,18 @@ export const Input = styled.input`
   width: 100%;
 `;
 
-export const Button = styled.button`
+export const ErrorMessage = styled.span`
+    color: red;
+    margin: 10px 0;
+    width: 100%;
+    text-align: left;
+    font-size: .9rem;
+`;
+
+export const Button = styled.input`
   color: #fff;
   font-weight: 900;
+  text-transform: uppercase;
   margin: 25px auto 0;
   background: ${({ theme }) => theme.colors.primary};
   padding: 15px 100px;
@@ -47,13 +68,13 @@ export const Button = styled.button`
   border: none;
 `;
 
-export const SLink = styled(Link)`
-  margin-top: 15px;
+export const LostPasswordLink = styled(Link)`
+  margin-top: 45px;
   font-size: .8rem;
 `;
 
 export const StyledLink = styled(Link)`
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.secondary}!important;
   margin-top: 15px;
   font-weight: 900;
   font-size: .9rem;
