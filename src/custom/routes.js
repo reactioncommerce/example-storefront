@@ -11,7 +11,7 @@ function defineRoutes(routes) {
     .add("login", "/login", "login")
     .add("terms", "/terms", "terms")
     .add("cart", "/cart", "cart")
-    .add("category", "/category/:slugOrId/:variantId?", "category")
+    .add("category", "/category/:slug", "category")
     .add("teste", "/forgotPassword", "forgotPassword")
     .add("register", "/register", "register")
     .add("checkout", "/cart/checkout", "checkout")

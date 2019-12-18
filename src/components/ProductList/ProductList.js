@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
 import { Router } from "routes";
@@ -17,10 +17,9 @@ const settings = {
 const productsInLine = 4;
 
 const ProductList = ({ catalogItems, isLoadingCatalogItems }) => {
-
-  const onClickProduct = (slug) => {
+  const onClickProduct = useCallback((slug) => {
     Router.pushRoute(`/product/${slug}`);
-  };
+  }, []);
 
   if (isLoadingCatalogItems) return <span>Carregando...</span>;
 
@@ -71,7 +70,7 @@ const ProductList = ({ catalogItems, isLoadingCatalogItems }) => {
               const breakline = idx % productsInLine === 0;
               const image = prod.primaryImage && prod.primaryImage.URLs && prod.primaryImage.URLs.medium;
               return (
-                <div>
+                <div key={prod._id}>
                   {breakline && <s.BreakLine />}
                   <s.DesktopProduct onClick={() => onClickProduct(prod.slug)}>
                     <s.ImageContainer hasImage={!!image} src={image} desktopMode>

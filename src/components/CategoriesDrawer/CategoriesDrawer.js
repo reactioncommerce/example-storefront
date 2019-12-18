@@ -49,8 +49,8 @@ const CategoriesDrawer = inject(
                 {tags && tags.length ? (
                   <s.TagList>
                     {tags.map((tag) => (
-                      <s.Tag onClick={handleClose} onMouseEnter={() => categoryHover(tag.slug)}>
-                        <Link route={`/tag/${tag.slug}`}>{tag.name}</Link>
+                      <s.Tag key={tag._id} onClick={handleClose} onMouseEnter={() => categoryHover(tag.slug)}>
+                        <Link route={`/category/${tag.slug}`}>{tag.name}</Link>
                       </s.Tag>
                     ))}
                   </s.TagList>
@@ -60,7 +60,7 @@ const CategoriesDrawer = inject(
               </s.Left>
               <s.Right>
                 <s.CategoryImage src={currentImage}>
-                  <Link onClick={handleClose} route={`/tag/${currentLink}`}>
+                  <Link onClick={handleClose} route={`/category/${currentLink}`}>
                     Ver todos ►
                   </Link>
                 </s.CategoryImage>
