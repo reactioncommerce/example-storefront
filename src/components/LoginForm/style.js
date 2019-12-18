@@ -1,16 +1,17 @@
 import styled from "styled-components";
-import { Col } from "react-grid-system";
+import { Col, Container } from "react-grid-system";
 import { FormControl } from "@material-ui/core";
 import Link from "components/Link";
 
 
-export const LoginSection = styled(Col)`
+export const LoginSection = styled(Container)`
   text-align:center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px 0 100px;
+  width: 100%;
 `;
 
 export const Logo = styled.img`
@@ -25,9 +26,8 @@ export const Title = styled.h2`
 export const StyledFormControl = styled(FormControl)`
   width: 100%;
 `;
-export const Form = styled.form`
+export const Form = styled(Col)`
   width: 100%;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;

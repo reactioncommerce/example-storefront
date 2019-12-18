@@ -9,10 +9,8 @@ const Login = (shop) => {
   return (
     <Container fluid>
       <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
-      <Row align="center" justify="center">
-
-        <LoginForm/>
-      </Row>
+        
+      <LoginForm/>
     </Container>
   );
 };
