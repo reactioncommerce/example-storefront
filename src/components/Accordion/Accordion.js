@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import * as s from "./style";
 
-
-const Accordion = (props) => {
-  const { title, array } = props;
+const Accordion = ({ title, array }) => {
   const [currentFaq, setCurrentFaq] = useState(0);
 
   return (
@@ -14,17 +12,19 @@ const Accordion = (props) => {
         {array.map((item, index) => (
           <s.Item onClick={() => setCurrentFaq(index)}>
             <s.ItemContent>
-              <s.ItemTitle>
-                {item.title}
-              </s.ItemTitle>
-              <s.ItemText className={(currentFaq === index ? "active" : " ")}>
-                {item.text}
-              </s.ItemText>
+              <s.ItemTitle>{item.title}</s.ItemTitle>
+              {item.list ? (
+                <s.ItemText className={currentFaq === index ? "active" : " "}>
+                  {item.list.map((obj) => (
+                    <s.InlineText>{`${obj.key}: ${obj.value}`}</s.InlineText>
+                  ))}
+                </s.ItemText>
+              ) : (
+                <s.ItemText className={currentFaq === index ? "active" : " "}>{item.text}</s.ItemText>
+              )}
             </s.ItemContent>
-            <s.ItemButton className={(currentFaq === index ? "active" : " ")}>
-              <s.ItemIcon>
-                {(currentFaq === index ? "-" : "+")}
-              </s.ItemIcon>
+            <s.ItemButton className={currentFaq === index ? "active" : " "}>
+              <s.ItemIcon>{currentFaq === index ? "-" : "+"}</s.ItemIcon>
             </s.ItemButton>
           </s.Item>
         ))}
@@ -34,7 +34,8 @@ const Accordion = (props) => {
 };
 
 Accordion.propTypes = {
-  array: PropTypes.array
+  array: PropTypes.array,
+  title: PropTypes.string
 };
 
 export default Accordion;

@@ -39,7 +39,7 @@ const InfoCarousel = () => (
           {infos &&
             infos.length &&
             infos.map((info, idx) => (
-              <s.StyledSmCol sm={12}>
+              <s.StyledSmCol key={idx} sm={12}>
                 <s.Info className="info-carousel-image-item" key={idx}>
                   <s.ImageContainer src={info.image} />
                   <s.InnerTitle> {info.title}</s.InnerTitle>
