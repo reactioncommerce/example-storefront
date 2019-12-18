@@ -4,6 +4,8 @@ import { Input, FormControl, InputLabel,  Select, MenuItem} from "@material-ui/c
 import { breakpoints } from "../../helpers/constants";
 
 export const StyledRow = styled(Row)`
+width: 100%;
+margin: 0;
   .rccs {
     margin: 0 auto 30px;
     -webkit-perspective: 1000px;

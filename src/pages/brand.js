@@ -16,6 +16,7 @@ const BrandPage = (shop) => {
       imperdiet urna dictum nec. Nam et fringilla ante. Donec placerat tellus nunc, nec aliquam ipsum tempor at. 
       Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. P`,
       banner: "static/images/banner.png",
+      webBanner: "static/images/banner-faq-web.png",
       tabs: {
         mission: {
           name: "missão",

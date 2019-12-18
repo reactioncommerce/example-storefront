@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { Container, Row, Col, Visible } from "react-grid-system";
 import { TextField, Select, MenuItem } from "@material-ui/core";
 import * as s from "./style";
 
@@ -18,6 +19,8 @@ const ContactForm = (props) => {
 
   return (
     <s.ContactSection>
+      <Container>
+
       <s.Title>{title}</s.Title>
       <s.Description>{description}</s.Description>
       <s.ContactForm onSubmit={handleSubmit} >
@@ -76,6 +79,7 @@ const ContactForm = (props) => {
         </s.FormRow>
         <s.ContactButton>Enviar</s.ContactButton>
       </s.ContactForm>
+      </Container>
     </s.ContactSection>
   );
 };

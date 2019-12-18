@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoints } from "../../helpers/constants";
 
 export const AccordionSection = styled.section`
 
@@ -9,7 +10,7 @@ export const Title = styled.h2`
 `;
 
 export const AccordionItems = styled.ul`
-  padding: 0 20px;
+  padding: 0px;
   list-style: none;
   text-align: center;
 
@@ -26,6 +27,7 @@ export const Item = styled.li`
   justify-content: space-between;
   position: relative;
 `;
+
 export const ItemContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,6 +40,10 @@ export const ItemTitle = styled.h4`
   text-align: center;
   width:100%;
   margin: 0;
+    @media (min-width: ${breakpoints.md}) {
+    text-align: left;
+
+    }
 `;
 
 export const ItemText = styled.p`
@@ -46,11 +52,14 @@ export const ItemText = styled.p`
   height:0;
   margin: 0px;
   transition: all .3s;
+    @media (min-width: ${breakpoints.md}) {
+    text-align: left;
+
+    }
   &.active {
       margin: 20px 0 5px;
     transition: all .0s;
     padding: 20px 0 5px;
-    min-height: 200px;
     height: auto;
 
   }

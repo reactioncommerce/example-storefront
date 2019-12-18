@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import FormWizardPaymentCard from "components/FormWizardPaymentCard";
-import { Col, Row } from "react-grid-system";
+import { Col, Row , Container} from "react-grid-system";
 import { FormControlLabel, Radio, RadioGroup } from "@material-ui/core";
 import * as s from "./style";
 
@@ -19,7 +19,10 @@ const FormWizardPayment = (props) => {
             <FormControlLabel value={1} control={<Radio />} label="Cartão de crédito" />
           </RadioGroup>
         </s.StyledFormControl>
+        <Container>
+
         {isCreditCard ? (<FormWizardPaymentCard isVisible={isCreditCard} />) : null }
+        </Container>
         <s.FormTitle>3.1- Endereço de cobrança</s.FormTitle>
         <s.StyledFormControl component="fieldset">
           <RadioGroup aria-label="paymentAddress" name="paymentAddress">

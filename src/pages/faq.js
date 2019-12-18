@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Row, Col, Visible } from "react-grid-system";
 import Helmet from "react-helmet";
 import PageHeader from "components/PageHeader";
 import Accordion from "components/Accordion";
@@ -12,6 +13,7 @@ const BrandPage = (shop) => {
       imperdiet urna dictum nec. Nam et fringilla ante. Donec placerat tellus nunc, nec aliquam ipsum tempor at. 
       Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. P`,
       banner: "static/images/banner-faq.png",
+      webBanner: "static/images/banner-faq-web.png",
       faq: {
         title: "See bellow:",
         items: [{
@@ -44,12 +46,14 @@ const BrandPage = (shop) => {
   const pageTitle = shop && shop.description ? `${shop.name} | ${shop.description}` : "FAQ";
 
   return (
-    <div>
+    <Container fluid styles={{ background: "#f1f1f1" }}>
       <Helmet title={pageTitle} meta={[{ name: "description", content: shop && shop.description }]} />
       <PageHeader page={mock.page} />
-      <Accordion array={mock.page.faq}/>
+      <Container styles={{ background: "#fff" }}>
+        <Accordion array={mock.page.faq.items}/>
+      </Container>
       <ContactForm contact={mock.page.contact}/>
-    </div>
+    </Container>
   );
 };
 

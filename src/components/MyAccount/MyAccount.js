@@ -47,11 +47,10 @@ const MyAccount = (props) => {
       addon,
       tel
     };
-    console.log({ form });
   };
 
   return (
-    <div>
+    <Container fluid>
       <Visible xs sm>
         <s.MyAccountContainer component="section">
           <Col component="form" onSubmit={onSubmit}>
@@ -112,7 +111,7 @@ const MyAccount = (props) => {
               </s.StyledFormControl>
             </Row>
             <Row align="center" justify="center">
-              <s.StyledButton secondary type="submit">Salvar dados</s.StyledButton>
+              <s.SaveButton type="submit">Salvar dados</s.SaveButton>
             </Row>
           </Col>
         </s.MyAccountContainer>
@@ -204,7 +203,7 @@ const MyAccount = (props) => {
           </Row>
         </Container>
       </Visible>
-    </div>
+    </Container >
   );
 };
 

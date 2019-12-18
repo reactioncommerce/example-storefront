@@ -11,6 +11,9 @@ export const StyledContainer = styled(Container)`
   border-top: 1px solid #c1c1c1;
   padding: 10px 0;
 `;
+export const StyledFormControl = styled(FormControl)`
+  width: 100%;
+`;
 
 export const StyledInputLabel = styled(InputLabel)`
   font-size: .9rem;

@@ -4,10 +4,10 @@ import BannerTop from "components/BannerTop"
 import * as s from "./style";
 
 const PageHeader = (props) => {
-  const { title, description, banner } = props.page;
+  const { title, description, banner, webBanner } = props.page;
   return (
     <s.PageHeaderSection>
-      <BannerTop banner={banner}/>
+      <BannerTop banner={banner} webBanner={webBanner}/>
       <s.Title>{title}</s.Title>
       <s.Description>{description}</s.Description>
 

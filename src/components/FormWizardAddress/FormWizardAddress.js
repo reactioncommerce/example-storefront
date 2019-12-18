@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Col, Row, Container } from "react-grid-system";
+import { Col, Row, Container, Visible } from "react-grid-system";
 import { Input, FormControl, Checkbox, FormGroup, FormControlLabel } from "@material-ui/core";
 import useForm from "react-hook-form";
 import * as s from "./style";
@@ -44,77 +44,146 @@ const FormWizardAddress = (props) => {
 
   if (isVisible <= 0) {
     return (
-      <Container fluid component="form" onSubmit={onSubmit}>
-        <Row>
-          <Col xs={12}>
-            <FormControl>
-              <s.StyledInputLabel htmlFor="name">Nome Completo</s.StyledInputLabel>
-              <Input required onChange={handleInputChange} name="name" ref={register({ required: "Required" })} />
-              {errors.name && errors.name.message}
-            </FormControl>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={6}>
-            <FormControl>
-              <s.StyledInputLabel htmlFor="birthday">Data de nascimento</s.StyledInputLabel>
-              <Input required onChange={handleInputChange} name="birthday" ref={register({ required: true })}/>
-            </FormControl>
-          </Col>
-          <Col xs={6}>
-            <FormControl>
-              <s.StyledInputLabel htmlFor="cpf">CPF</s.StyledInputLabel>
-              <Input required onChange={handleInputChange} name="cpf" ref={register({ required: true })}/>
-            </FormControl>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12}>
-            <FormControl>
-              <s.StyledInputLabel htmlFor="cep">CEP</s.StyledInputLabel>
-              <Input required onChange={handleInputChange} name="cep" ref={register({ required: true })}/>
-            </FormControl>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12}>
-            <FormControl>
-              <s.StyledInputLabel htmlFor="address">Endereço</s.StyledInputLabel>
-              <Input required onChange={handleInputChange} name="address" ref={register({ required: true })}/>
-            </FormControl>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12}>
-            <FormControl>
-              <s.StyledInputLabel htmlFor="province">Estado</s.StyledInputLabel>
-              <Input required onChange={handleInputChange} name="province" ref={register({ required: true })}/>
-            </FormControl>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={6}>
-            <FormControl>
-              <s.StyledInputLabel htmlFor="number">Número</s.StyledInputLabel>
-              <Input required onChange={handleInputChange} name="number" ref={register({ required: true })}/>
-            </FormControl>
-          </Col>
-          <Col xs={6}>
-            <FormControl>
-              <s.StyledInputLabel htmlFor="addon">Complemento</s.StyledInputLabel>
-              <Input required onChange={handleInputChange} name="addon" ref={register}/>
-            </FormControl>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12}>
-            <FormGroup>
-              <FormControlLabel control={<Checkbox />} label="Este é um endereço comercial" />
-            </FormGroup>
-          </Col>
-        </Row>
-        <s.Button primary type="submit">Prosseguir</s.Button>
-      </Container>
+      <s.StyledContainer fluid component="form" onSubmit={onSubmit}>
+        <Visible xs sm>
+          <Row align="center" justify="start">
+            <Col xs={12}>
+              <FormControl>
+                <s.StyledInputLabel htmlFor="name">Nome Completo</s.StyledInputLabel>
+                <Input required onChange={handleInputChange} name="name" ref={register({ required: "Required" })} />
+                {errors.name && errors.name.message}
+              </FormControl>
+            </Col>
+
+            <Col xs={6}>
+              <FormControl>
+                <s.StyledInputLabel htmlFor="birthday">Data de nascimento</s.StyledInputLabel>
+                <Input required onChange={handleInputChange} name="birthday" ref={register({ required: true })}/>
+              </FormControl>
+            </Col>
+            <Col xs={6}>
+              <FormControl>
+                <s.StyledInputLabel htmlFor="cpf">CPF</s.StyledInputLabel>
+                <Input required onChange={handleInputChange} name="cpf" ref={register({ required: true })}/>
+              </FormControl>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <FormControl>
+                <s.StyledInputLabel htmlFor="cep">CEP</s.StyledInputLabel>
+                <Input required onChange={handleInputChange} name="cep" ref={register({ required: true })}/>
+              </FormControl>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <FormControl>
+                <s.StyledInputLabel htmlFor="address">Endereço</s.StyledInputLabel>
+                <Input required onChange={handleInputChange} name="address" ref={register({ required: true })}/>
+              </FormControl>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <FormControl>
+                <s.StyledInputLabel htmlFor="province">Estado</s.StyledInputLabel>
+                <Input required onChange={handleInputChange} name="province" ref={register({ required: true })}/>
+              </FormControl>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6}>
+              <FormControl>
+                <s.StyledInputLabel htmlFor="number">Número</s.StyledInputLabel>
+                <Input required onChange={handleInputChange} name="number" ref={register({ required: true })}/>
+              </FormControl>
+            </Col>
+            <Col xs={6}>
+              <FormControl>
+                <s.StyledInputLabel htmlFor="addon">Complemento</s.StyledInputLabel>
+                <Input required onChange={handleInputChange} name="addon" ref={register}/>
+              </FormControl>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <FormGroup>
+                <FormControlLabel control={<Checkbox />} label="Este é um endereço comercial" />
+              </FormGroup>
+            </Col>
+          </Row>
+        </Visible>
+
+        <Visible md lg xl>
+          <Container>
+            <Row align="center" justify="start">
+              <Col md={12}>
+                <s.StyledFormControl>
+                  <s.StyledInputLabel htmlFor="name">Nome Completo</s.StyledInputLabel>
+                  <Input required onChange={handleInputChange} name="name" ref={register({ required: "Required" })} />
+                  {errors.name && errors.name.message}
+                </s.StyledFormControl>
+              </Col>
+              <Col md={6}>
+                <s.StyledFormControl>
+                  <s.StyledInputLabel htmlFor="birthday">Data de nascimento</s.StyledInputLabel>
+                  <Input required onChange={handleInputChange} name="birthday" ref={register({ required: true })}/>
+                </s.StyledFormControl>
+              </Col>
+              <Col md={6}>
+                <s.StyledFormControl>
+                  <s.StyledInputLabel htmlFor="cpf">CPF</s.StyledInputLabel>
+                  <Input required onChange={handleInputChange} name="cpf" ref={register({ required: true })}/>
+                </s.StyledFormControl>
+              </Col>
+
+              <Col md={6}>
+                <s.StyledFormControl>
+                  <s.StyledInputLabel htmlFor="cep">CEP</s.StyledInputLabel>
+                  <Input required onChange={handleInputChange} name="cep" ref={register({ required: true })}/>
+                </s.StyledFormControl>
+              </Col>
+
+              <Col md={6}>
+                <s.StyledFormControl>
+                  <s.StyledInputLabel htmlFor="address">Endereço</s.StyledInputLabel>
+                  <Input required onChange={handleInputChange} name="address" ref={register({ required: true })}/>
+                </s.StyledFormControl>
+              </Col>
+
+              <Col md={12}>
+                <s.StyledFormControl>
+                  <s.StyledInputLabel htmlFor="province">Estado</s.StyledInputLabel>
+                  <Input required onChange={handleInputChange} name="province" ref={register({ required: true })}/>
+                </s.StyledFormControl>
+              </Col>
+
+              <Col md={6}>
+                <s.StyledFormControl>
+                  <s.StyledInputLabel htmlFor="number">Número</s.StyledInputLabel>
+                  <Input required onChange={handleInputChange} name="number" ref={register({ required: true })}/>
+                </s.StyledFormControl>
+              </Col>
+              <Col md={6}>
+                <s.StyledFormControl>
+                  <s.StyledInputLabel htmlFor="addon">Complemento</s.StyledInputLabel>
+                  <Input required onChange={handleInputChange} name="addon" ref={register}/>
+                </s.StyledFormControl>
+              </Col>
+
+              <Col md={12}>
+                <FormGroup>
+                  <FormControlLabel control={<Checkbox />} label="Este é um endereço comercial" />
+                </FormGroup>
+              </Col>
+              <Col md={4}>
+                <s.Button primary type="submit">Prosseguir</s.Button>
+              </Col>
+            </Row>
+          </Container>
+        </Visible>
+      </s.StyledContainer>
     );
   }
 

@@ -9,7 +9,7 @@ export const Banner = styled.div`
   overflow: hidden;
   height: 300px;
   @media (min-width: ${breakpoints.md}) {
-    max-height: 200px;
+    max-height: 360px;
     }
 `;
 
@@ -20,4 +20,8 @@ export const Image = styled.img`
   top: 0;
   height: auto;
   width: 100%;
+  @media (min-width: ${breakpoints.md}) {
+    height: 100%;
+    width: auto;
+    }
 `;

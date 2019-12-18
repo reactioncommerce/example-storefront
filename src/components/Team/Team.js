@@ -10,7 +10,7 @@ import * as s from "./style";
 * @returns {component} the team component mounted.
 */
 const setMembers = (members) => members.map((member) => (
-  <Col xs={6} md={3}>
+  <Col xs={6} sm={6} md={3}>
     <s.Image src={member.photo} alt=""/>
     <s.MemberName>{member.name}</s.MemberName>
     <s.MemberPosition>{member.position}</s.MemberPosition>
