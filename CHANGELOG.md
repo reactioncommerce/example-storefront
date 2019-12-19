@@ -1,4 +1,4 @@
-# v2.8.1
+# v2.9.1
 
 Example Storefront v2.9.1 is a patch update to keep this project in sync with [Reaction v2.9.1](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.9.1](https://github.com/reactioncommerce/reaction-hydra)
 
