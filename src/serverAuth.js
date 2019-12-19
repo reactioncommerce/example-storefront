@@ -94,7 +94,8 @@ function configureAuthForServer(server) {
         }
         // If IDP confirmed logout, clear login info on this side
         req.logout();
-        res.redirect(req.get("Referer") || "/");
+        const referer = req.get("Referer");
+        res.redirect(`${config.OAUTH2_LOGOUT_URL}?referer=${referer}` || "/");
         return; // appease eslint consistent-return
       })
       .catch((error) => {
