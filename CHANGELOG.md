@@ -1,3 +1,21 @@
+# v3.0.0-alpha.2
+
+Example Storefront v3.0.0-alpha.2 is the second alpha release of the Example Storefront that is designed to work with our new Reaction API.
+
+*Reaction releases will no longer be coordinated across all projects - we'll release each project, independently, as needed. This means version numbers will no longer be in sync. The newest versions of each project will work together.*
+
+## Features
+
+- feat: auto-create Hydra client on startup [#628](https://github.com/reactioncommerce/example-storefront/pull/628)
+
+## Chores
+
+- chore: use published image for docker-compose [#623](https://github.com/reactioncommerce/example-storefront/pull/623)
+
+## Fixes
+
+- fixes: handle OAUTH2_IDP_HOST_URL with no ending slash and missing shop [#627](https://github.com/reactioncommerce/example-storefront/pull/627)
+
 # v3.0.0-alpha
 
 This is a major update to keep this project in sync with
