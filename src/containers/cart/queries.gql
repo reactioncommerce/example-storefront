@@ -1,8 +1,8 @@
 #import "./fragments.gql"
 
 # Get an anonymous cart by the anonymous cartId and and an anonymous cart token
-query anonymousCartByCartIdQuery($cartId: ID!, $token: String!, $itemsAfterCursor: ConnectionCursor) {
-  cart: anonymousCartByCartId(cartId: $cartId, token: $token) {
+query anonymousCartByCartIdQuery($cartId: ID!, $cartToken: String!, $itemsAfterCursor: ConnectionCursor) {
+  cart: anonymousCartByCartId(cartId: $cartId, cartToken: $cartToken) {
     ...CartQueryFragment
   }
 }

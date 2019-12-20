@@ -161,7 +161,7 @@ export default function withCart(Component) {
         const { anonymousCartId, anonymousCartToken } = cartStore;
 
         // Add items to an existing anonymous cart
-        input.token = anonymousCartToken;
+        input.cartToken = anonymousCartToken;
         input.cartId = anonymousCartId;
       } else if (!isCreating && authStore.isAuthenticated && cartStore.hasAccountCart) {
         // With an account and an account cart, set the accountCartId on the input object
