@@ -83,7 +83,7 @@ class AccountDropdown extends Component {
                     Change Password
                   </Button>
                 </div>
-                <Button color="primary" fullWidth href={`/logout/${account._id}`} variant="contained">
+                <Button color="primary" fullWidth href="/logout" variant="contained">
                   Sign Out
                 </Button>
               </Fragment>

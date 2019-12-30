@@ -4,6 +4,29 @@ const config = require("./config");
 const { decodeOpaqueId } = require("./lib/utils/decoding");
 const logger = require("./lib/logger");
 
+let baseUrl = config.CANONICAL_URL;
+if (!baseUrl.endsWith("/")) baseUrl = `${baseUrl}/`;
+
+const oauthRedirectUrl = `${baseUrl}callback`;
+const oauthPostLogoutRedirectUrl = `${baseUrl}post-logout-callback`;
+
+/* eslint-disable camelcase */
+const storefrontHydraClient = {
+  client_id: config.OAUTH2_CLIENT_ID,
+  client_secret: config.OAUTH2_CLIENT_SECRET,
+  grant_types: [
+    "authorization_code",
+    "refresh_token"
+  ],
+  post_logout_redirect_uris: [oauthPostLogoutRedirectUrl],
+  redirect_uris: [oauthRedirectUrl],
+  response_types: ["code", "id_token", "token"],
+  scope: "offline openid",
+  subject_type: "public",
+  token_endpoint_auth_method: "client_secret_post"
+};
+/* eslint-enable camelcase */
+
 // This is needed to allow custom parameters (e.g. loginActions) to be included
 // when requesting authorization. This is setup to allow only loginAction to pass through
 OAuth2Strategy.prototype.authorizationParams = function (options = {}) {
@@ -18,12 +41,12 @@ passport.use(
       tokenURL: config.OAUTH2_TOKEN_URL,
       clientID: config.OAUTH2_CLIENT_ID,
       clientSecret: config.OAUTH2_CLIENT_SECRET,
-      callbackURL: config.OAUTH2_REDIRECT_URL,
+      callbackURL: oauthRedirectUrl,
       state: true,
-      scope: ["offline"]
+      scope: ["offline", "openid"]
     },
-    (accessToken, refreshToken, profile, cb) => {
-      cb(null, { accessToken });
+    (accessToken, refreshToken, params, profile, cb) => {
+      cb(null, { accessToken, idToken: params.id_token });
     }
   )
 );
@@ -89,36 +112,25 @@ function configureAuthForServer(server) {
     res.redirect(url);
   });
 
-  server.get("/logout/:userId", (req, res, next) => {
-    const { userId } = req.params;
-    if (!userId) {
-      next();
-      return;
+  server.get("/logout", (req, res, next) => {
+    req.session.redirectTo = req.get("Referer");
+
+    const { idToken } = req.user || {};
+
+    // Clear storefront session auth
+    req.logout();
+
+    if (idToken) {
+      // Request log out of OAuth2 session
+      res.redirect(`${config.OAUTH2_PUBLIC_LOGOUT_URL}?post_logout_redirect_uri=${oauthPostLogoutRedirectUrl}&id_token_hint=${idToken}`);
+    } else {
+      res.redirect(req.session.redirectTo || config.CANONICAL_URL);
     }
-    const { id } = decodeOpaqueId(req.params.userId);
+  });
 
-    let urlBase = config.OAUTH2_IDP_HOST_URL;
-    if (!urlBase.endsWith("/")) urlBase = `${urlBase}/`;
-
-    // Ask IDP to log us out
-    fetch(`${urlBase}logout-user?userId=${id}`)
-      .then((logoutResponse) => {
-        if (logoutResponse.status >= 400) {
-          const message = `Error from OAUTH2_IDP_HOST_URL logout endpoint: ${logoutResponse.status}. Check the HOST server settings`;
-
-          logger.error(message);
-          res.status(logoutResponse.status).send(message);
-          return;
-        }
-        // If IDP confirmed logout, clear login info on this side
-        req.logout();
-        res.redirect(req.get("Referer") || "/");
-        return; // appease eslint consistent-return
-      })
-      .catch((error) => {
-        logger.error(`Error while logging out: ${error}`);
-        res.status(500).send(`Error while logging out: ${error.message}`);
-      });
+  server.get("/post-logout-callback", (req, res) => {
+    // After success, redirect to the page we came from originally
+    res.redirect(req.session.redirectTo || "/");
   });
 }
 
@@ -130,47 +142,58 @@ function configureAuthForServer(server) {
  * @returns {Promise<undefined>} Nothing
  */
 async function createHydraClientIfNecessary() {
-  /* eslint-disable camelcase */
-  const bodyEncoded = JSON.stringify({
-    client_id: config.OAUTH2_CLIENT_ID,
-    client_secret: config.OAUTH2_CLIENT_SECRET,
-    grant_types: [
-      "authorization_code",
-      "refresh_token"
-    ],
-    jwks: {},
-    redirect_uris: [config.OAUTH2_REDIRECT_URL],
-    response_types: ["token", "code"],
-    scope: "offline",
-    subject_type: "public",
-    token_endpoint_auth_method: "client_secret_post"
-  });
-  /* eslint-enable camelcase */
-
   let adminUrl = config.OAUTH2_ADMIN_URL;
   if (!adminUrl.endsWith("/")) adminUrl = `${adminUrl}/`;
 
-  logger.info("Creating Hydra client...");
-
-  const response = await fetch(`${adminUrl}clients`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: bodyEncoded
+  const getClientResponse = await fetch(`${adminUrl}clients/${config.OAUTH2_CLIENT_ID}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" }
   });
 
-  switch (response.status) {
-    case 200:
-    // intentional fallthrough!
-    // eslint-disable-line no-fallthrough
-    case 201:
-      logger.info("OK: Hydra client created");
-      break;
-    case 409:
-      logger.info("OK: Hydra client already exists");
-      break;
-    default:
-      logger.error(await response.text());
-      throw new Error(`Could not create Hydra client [${response.status}]`);
+  if (![200, 404].includes(getClientResponse.status)) {
+    logger.error(await getClientResponse.text());
+    throw new Error(`Could not get Hydra client [${getClientResponse.status}]`);
+  }
+
+  if (getClientResponse.status === 200) {
+    // Update the client to be sure it has the latest config
+    logger.info("Updating Hydra client...");
+
+    const updateClientResponse = await fetch(`${adminUrl}clients/${config.OAUTH2_CLIENT_ID}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(storefrontHydraClient)
+    });
+
+    if (updateClientResponse.status === 200) {
+      logger.info("OK: Hydra client updated");
+    } else {
+      logger.error(await updateClientResponse.text());
+      throw new Error(`Could not update Hydra client [${updateClientResponse.status}]`);
+    }
+  } else {
+    logger.info("Creating Hydra client...");
+
+    const response = await fetch(`${adminUrl}clients`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(storefrontHydraClient)
+    });
+
+    switch (response.status) {
+      case 200:
+      // intentional fallthrough!
+      // eslint-disable-line no-fallthrough
+      case 201:
+        logger.info("OK: Hydra client created");
+        break;
+      case 409:
+        logger.info("OK: Hydra client already exists");
+        break;
+      default:
+        logger.error(await response.text());
+        throw new Error(`Could not create Hydra client [${response.status}]`);
+    }
   }
 }
 

@@ -39,7 +39,7 @@ if (process.env.IS_BUILDING_NEXTJS) {
     OAUTH2_CLIENT_SECRET: str(),
     OAUTH2_IDP_PUBLIC_CHANGE_PASSWORD_URL: url(),
     OAUTH2_IDP_HOST_URL: url(),
-    OAUTH2_REDIRECT_URL: url(),
+    OAUTH2_PUBLIC_LOGOUT_URL: url(),
     OAUTH2_TOKEN_URL: url(),
     PORT: port({ default: 4000 }),
     SEGMENT_ANALYTICS_SKIP_MINIMIZE: bool({ default: false }),
