@@ -1,7 +1,6 @@
 const OAuth2Strategy = require("passport-oauth2");
 const passport = require("passport");
 const config = require("./config");
-const { decodeOpaqueId } = require("./lib/utils/decoding");
 const logger = require("./lib/logger");
 
 let baseUrl = config.CANONICAL_URL;
@@ -112,7 +111,7 @@ function configureAuthForServer(server) {
     res.redirect(url);
   });
 
-  server.get("/logout", (req, res, next) => {
+  server.get("/logout", (req, res) => {
     req.session.redirectTo = req.get("Referer");
 
     const { idToken } = req.user || {};
