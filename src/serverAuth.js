@@ -74,6 +74,21 @@ function configureAuthForServer(server) {
     res.redirect(req.session.redirectTo || "/");
   });
 
+  server.get("/change-password", (req, res) => {
+    const { email } = req.query;
+
+    let from = req.get("Referer");
+    if (typeof from !== "string" || from.length === 0) {
+      from = config.CANONICAL_URL;
+    }
+
+    let url = config.OAUTH2_IDP_PUBLIC_CHANGE_PASSWORD_URL;
+    url = url.replace("EMAIL", encodeURIComponent(email || ""));
+    url = url.replace("FROM", encodeURIComponent(from));
+
+    res.redirect(url);
+  });
+
   server.get("/logout/:userId", (req, res, next) => {
     const { userId } = req.params;
     if (!userId) {

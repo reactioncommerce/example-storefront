@@ -37,6 +37,7 @@ if (process.env.IS_BUILDING_NEXTJS) {
     OAUTH2_AUTH_URL: url(),
     OAUTH2_CLIENT_ID: str(),
     OAUTH2_CLIENT_SECRET: str(),
+    OAUTH2_IDP_PUBLIC_CHANGE_PASSWORD_URL: url(),
     OAUTH2_IDP_HOST_URL: url(),
     OAUTH2_REDIRECT_URL: url(),
     OAUTH2_TOKEN_URL: url(),
