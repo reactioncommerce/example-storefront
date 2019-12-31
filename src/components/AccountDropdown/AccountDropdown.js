@@ -78,7 +78,12 @@ class AccountDropdown extends Component {
                     Profile
                   </Button>
                 </div>
-                <Button color="primary" fullWidth href={`/logout/${account._id}`} variant="contained">
+                <div className={classes.marginBottom}>
+                  <Button color="primary" fullWidth href={`/change-password?email=${encodeURIComponent(account.emailRecords[0].address)}`}>
+                    Change Password
+                  </Button>
+                </div>
+                <Button color="primary" fullWidth href="/logout" variant="contained">
                   Sign Out
                 </Button>
               </Fragment>
