@@ -17,7 +17,7 @@ function add_new_env_vars {
   export IFS=$'\n'
   for var in $(cat "${env_example_file}"); do
     key="${var%%=*}"     # get var key
-    var=$(eval echo "$var") # generate dynamic values
+    var=$(command echo "$var") # generate dynamic values
 
     # If .env doesn't contain this env key, add it
     if ! $(grep -qLE "^$key=" "${env_file}"); then
