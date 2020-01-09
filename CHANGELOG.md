@@ -1,3 +1,17 @@
+# v3.0.0-alpha.3
+
+This is the latest alpha release of the Example Storefront that is designed to work with our new Reaction API.
+
+*Reaction releases will no longer be coordinated across all projects - we'll release each project, independently, as needed. This means version numbers will no longer be in sync. The newest versions of each project will work together.*
+
+## Features
+
+- feat: implemented change password flow and standard OpenID logout flow [#637](https://github.com/reactioncommerce/example-storefront/pull/637)
+
+## Fixes
+
+- fixes: made `bin/setup` handle special characters in variables [#639](https://github.com/reactioncommerce/example-storefront/pull/639)
+
 # v3.0.0-alpha.2
 
 Example Storefront v3.0.0-alpha.2 is the second alpha release of the Example Storefront that is designed to work with our new Reaction API.
