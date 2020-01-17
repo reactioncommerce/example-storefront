@@ -1,3 +1,9 @@
+# v3.0.0-beta
+
+This is the beta release of our new Reaction project.
+
+*Reaction releases will no longer be coordinated across all projects - we'll release each project, independently, as needed. This means version numbers will no longer be in sync. The newest versions of each project will work together. This change has two exceptions: we will release all projects in coordination for a `beta` release, and all projects in coordination for the official `v3.0.0` release.*
+
 # v3.0.0-alpha.3
 
 This is the latest alpha release of the Example Storefront that is designed to work with our new Reaction API.
