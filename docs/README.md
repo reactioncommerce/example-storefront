@@ -20,8 +20,3 @@ docker-compose run --rm web adr new "Implement the Torpedos"
 
 - [Testing](testing.md)
 - [Patterns](testing.md#patterns)
-
-## Tools and Utilities
-
-- [Tools to help with development](utilities.md)
-- [GraphiQL App installation and setup](utilities.md#graphiql-app)
