@@ -46,9 +46,9 @@ main() {
     echo "NO: Not a PR. Skipping Snyk."
     exit
   fi
-  # If target branch does not exist or is master, run snyk tests
-  if [[ ${TARGET_BRANCH} == "master" ]] || [[ -z "${TARGET_BRANCH/[ ]*\n/}" ]]; then
-    echo "YES: always run when targeting master"
+  # If target branch does not exist or is trunk, run snyk tests
+  if [[ ${TARGET_BRANCH} == "trunk" ]] || [[ -z "${TARGET_BRANCH/[ ]*\n/}" ]]; then
+    echo "YES: always run when targeting trunk"
     exit
   fi
   # If package.json is different from the base branch, run snyk
