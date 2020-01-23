@@ -117,4 +117,4 @@ workflows:
             - docker-build-push
           filters:
             branches:
-              only: /^master$/
+              only: /^trunk$/
