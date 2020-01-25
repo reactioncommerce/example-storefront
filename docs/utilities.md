@@ -19,4 +19,4 @@
 }
 ```
 
-For more on your getting started with GraphQL and Reaction: https://docs.reactioncommerce.com/reaction-docs/master/graphql-intro
+For more on your getting started with GraphQL and Reaction: https://docs.reactioncommerce.com/reaction-docs/trunk/graphql-intro
