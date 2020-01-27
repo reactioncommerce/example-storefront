@@ -3,7 +3,10 @@
 # in all future steps.
 #
 #  Assumes that the Docker image is published to Docker Hub.
-version: 2
+version: 2.1
+
+orbs:
+  webhook: eddiewebb/webhook@volatile
 
 # The following stanza defines a map named defaults with a variable that may be
 # inserted using the YAML merge (<<: *) key later in the file to save some
@@ -13,9 +16,8 @@ defaults: &defaults
     - CI_SCRIPTS: "npx --quiet --package @reactioncommerce/ci-scripts@1.9.1"
     - DOCKER_REPOSITORY: "reactioncommerce/example-storefront"
     - DOCKER_NAME: "example-storefront"
+    - GITOPS_PR_WEBHOOK: "https://w603b5hwp1.execute-api.us-east-1.amazonaws.com/dev/pullrequests"
     - GLOBAL_CACHE_VERSION: “v3”
-    - SERVICE: "reaction-storefront"
-    - REACTION_GITOPS_REVIEWERS: "wistonk,griggheo"
   docker:
     - image: circleci/node:12-stretch
 
@@ -83,6 +85,8 @@ jobs:
       - run:
           name: Build and push production Docker image
           command: ${CI_SCRIPTS} docker-build-tag-push . ${DOCKER_REPOSITORY}
+      - webhook/notify:
+          endpoint: "${GITOPS_PR_WEBHOOK}"
 
   create-gitops-pull-request:
     <<: *defaults
