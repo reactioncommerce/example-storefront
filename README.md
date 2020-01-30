@@ -188,8 +188,7 @@ docker build -t reaction-storefront .
 Then, to start the app on your machine, make sure the Reaction API container is already running and enter:
 
 ```sh
-docker run -it --name storefront -p 4000:4000 --env-file .env --network api.reaction.localhost reaction-storefront
-docker network connect auth.reaction.localhost storefront
+docker run -it --name storefront -p 4000:4000 --env-file .env --network reaction.localhost reaction-storefront
 ```
 
 _**NOTE:** You can replace the number before the colon in `4000:4000` with a different localhost port you'd like the application to run at._

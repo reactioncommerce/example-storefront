@@ -7,12 +7,9 @@
 version: '3.4'
 
 networks:
-  api:
+  reaction:
     external:
-      name: api.reaction.localhost
-  auth:
-    external:
-      name: auth.reaction.localhost
+      name: reaction.localhost
 
 services:
   web:
@@ -20,7 +17,7 @@ services:
     env_file:
       - ./.env
     networks:
-      api:
-      auth:
+      default:
+      reaction:
     ports:
       - 4000:4000
