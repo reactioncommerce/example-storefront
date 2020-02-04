@@ -1,3 +1,23 @@
+# v3.0.0-beta.2
+
+This is the second beta release of the Example Storefront project that is designed to work with our new Reaction API.
+
+*Reaction releases will no longer be coordinated across all projects - we'll release each project, independently, as needed. This means version numbers will no longer be in sync. The newest versions of each project will work together. This change has two exceptions: we will release all projects in coordination for a `beta` release, and all projects in coordination for the official `v3.0.0` release.*
+
+## Features
+
+- feat: remove `-beta` from GraphQL paths [#646](https://github.com/reactioncommerce/example-storefront/pull/646)
+- feat: Use Lambda webhook for automated PR creation and merging into reaction-gitops [#651](https://github.com/reactioncommerce/example-storefront/pull/651)
+
+## Fixes
+
+- fix: update query with required shopIds array [#656](https://github.com/reactioncommerce/example-storefront/pull/656)
+
+## Chores
+
+- chore: reconfigure docker-compose networks [#653](https://github.com/reactioncommerce/example-storefront/pull/653)
+- chore: copy changes from 2.x/trunk [#650](https://github.com/reactioncommerce/example-storefront/pull/650)
+
 # v3.0.0-beta
 
 This is the beta release of the Example Storefront project that is designed to work with our new Reaction API.
