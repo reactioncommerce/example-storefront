@@ -13,7 +13,7 @@ networks:
 
 services:
   web:
-    image: reactioncommerce/example-storefront:release-v3.0.0
+    image: reactioncommerce/example-storefront:3.0.0
     env_file:
       - ./.env
     networks:
