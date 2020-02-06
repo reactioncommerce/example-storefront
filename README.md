@@ -213,7 +213,7 @@ We love your pull requests! Check our our [`Good First Issue`](https://github.co
 Pull requests should pass all automated tests, style, and security checks.
 
 #### Automated Tests
-Your code should pass all [acceptance tests and unit tests](https://docs.reactioncommerce.com/reaction-docs/master/testing-reaction). Run
+Your code should pass all [acceptance tests and unit tests](https://docs.reactioncommerce.com/reaction-docs/trunk/testing-reaction). Run
 ```sh
 docker-compose run --rm web yarn test
 ```
