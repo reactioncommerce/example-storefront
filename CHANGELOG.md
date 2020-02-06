@@ -1,7 +1,55 @@
+# v3.0.0
+
+This is the v3.0.0 release of `example-storefront`, designed to work with v3.0.0 of the Reaction API.
+
+## Features
+
+- feat: remove `-beta` from GraphQL paths [#646](https://github.com/reactioncommerce/example-storefront/pull/646)
+- feat: Use Lambda webhook for automated PR creation and merging into reaction-gitops [#651](https://github.com/reactioncommerce/example-storefront/pull/651)
+- feat: implemented change password flow and standard OpenID logout flow [#637](https://github.com/reactioncommerce/example-storefront/pull/637)
+- feat: auto-create Hydra client on startup [#628](https://github.com/reactioncommerce/example-storefront/pull/628)
+
+## Fixes
+
+- fix: update query with required shopIds array [#656](https://github.com/reactioncommerce/example-storefront/pull/656)
+- fixes: made `bin/setup` handle special characters in variables [#639](https://github.com/reactioncommerce/example-storefront/pull/639)
+- fix: params for withTag API query [#621](https://github.com/reactioncommerce/example-storefront/pull/621)
+- fix: handle OAUTH2_IDP_HOST_URL with no ending slash and missing shop [#627](https://github.com/reactioncommerce/example-storefront/pull/627)
+
+## Chores
+
+- chore: reconfigure docker-compose networks [#653](https://github.com/reactioncommerce/example-storefront/pull/653)
+- chore: copy changes from 2.x/trunk [#650](https://github.com/reactioncommerce/example-storefront/pull/650)
+- chore: use published image for docker-compose [#623](https://github.com/reactioncommerce/example-storefront/pull/623)
+
+## Refactors
+
+- refactor: Update token name `cartToken` [#616](https://github.com/reactioncommerce/example-storefront/pull/616)
+
+## Notes
+
+*These changes were originally tested and released in our alpha and beta releases*
+
+- [v3.0.0-beta.2](https://github.com/reactioncommerce/example-storefront/releases/tag/v3.0.0-beta.2)
+- [v3.0.0-beta](https://github.com/reactioncommerce/example-storefront/releases/tag/v3.0.0-beta)
+- [v3.0.0-alpha.3](https://github.com/reactioncommerce/example-storefront/releases/tag/v3.0.0-alpha.3)
+- [v3.0.0-alpha.2](https://github.com/reactioncommerce/example-storefront/releases/tag/v3.0.0-alpha.2)
+- [v3.0.0-alpha](https://github.com/reactioncommerce/example-storefront/releases/tag/v3.0.0-alpha)
+
+*The following Reaction projects are being released one time in coordination as v3.0.0*
+
+- [Reaction API](https://github.com/reactioncommerce/reaction)
+- [Reaction Hydra](https://github.com/reactioncommerce/reaction-hydra)
+- [Reaction Identity](https://github.com/reactioncommerce/reaction-identity)
+- [Reaction Admin (beta)](https://github.com/reactioncommerce/reaction-admin)
+- [Example Storefront](https://github.com/reactioncommerce/example-storefront)
+- [Reaction Development Platform](https://github.com/reactioncommerce/reaction-development-platform)
+
+*After this release, Reaction releases will no longer be coordinated across all projects - we'll release each project independently, as needed. This means version numbers will no longer be in sync. The newest versions of each project will work together.*
+
 # v2.9.1
 
 Example Storefront v2.9.1 is a patch update to keep this project in sync with [Reaction v2.9.1](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.9.1](https://github.com/reactioncommerce/reaction-hydra)
-
 
 ## Fixes
 

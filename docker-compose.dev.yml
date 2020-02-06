@@ -1,0 +1,27 @@
+# This docker-compose file is used to run the project in Docker for development.
+# The local files are mounted into the created container.
+#
+# Usage:
+#  ln -s docker-compose.dev.yml docker-compose.override.yml
+#  docker-compose up [-d]
+#
+# To go back to running the published image:
+#  rm docker-compose.override.yml
+
+version: '3.4'
+
+services:
+  web:
+    image: reactioncommerce/node-dev:10.16.3-v2
+    command: "./bin/start"
+    volumes:
+      - .:/usr/local/src/app
+      - web-yarn:/home/node/.cache/yarn
+      # Do not link in node_modules from the host
+      # This allows IDEs to run lint etc with native add-ons for host OS
+      # Without interfering with native add-ons in container
+      - empty_node_modules:/usr/local/src/app/node_modules
+
+volumes:
+  web-yarn:
+  empty_node_modules:

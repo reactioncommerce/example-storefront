@@ -32,4 +32,4 @@ src/.next/*
 build
 /reports
 
-package-lock.json
+docker-compose.override.yml

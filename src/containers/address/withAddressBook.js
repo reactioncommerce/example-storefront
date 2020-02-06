@@ -11,6 +11,11 @@ import {
   removeAccountAddressBookEntry
 } from "./mutations.gql";
 
+/**
+ * @summary HOC that adds address book props
+ * @param {React.Component} Comp React Component to wrap
+ * @return {React.Component} Wrapped component
+ */
 export default function withAddressBook(Comp) {
   @withApollo
   @inject("authStore")
@@ -110,7 +115,7 @@ export default function withAddressBook(Comp) {
     handleRemoveAccountAddressBookEntry = (addressId) => {
       const { client: apolloClient } = this.props;
 
-      if (!confirm("Delete this address?")) {
+      if (!confirm("Delete this address?")) { // eslint-disable-line no-alert
         return;
       }
 

@@ -12,10 +12,11 @@ import tagQuery from "./tag.gql";
  * @returns {React.Component} - Component with `tag` prop
  */
 export default function withTag(Component) {
-  @inject("routingStore")
+  @inject("primaryShopId", "routingStore")
   @observer
   class WithTag extends React.Component {
     static propTypes = {
+      primaryShopId: PropTypes.string,
       /**
        * slug used to obtain tag info
        */
@@ -27,14 +28,19 @@ export default function withTag(Component) {
 
     render() {
       const {
+        primaryShopId,
         router: { query: { slug: slugFromQueryParam } },
         routingStore: { tagId }
       } = this.props;
 
       const slugOrId = slugFromQueryParam || tagId;
 
+      if (!primaryShopId || !slugOrId) {
+        return <Component {...this.props} />;
+      }
+
       return (
-        <Query query={tagQuery} variables={{ slugOrId }}>
+        <Query query={tagQuery} variables={{ shopId: primaryShopId, slugOrId }}>
           {({ error, data }) => {
             if (error) {
               console.error("WithTag query error:", error); // eslint-disable-line no-console

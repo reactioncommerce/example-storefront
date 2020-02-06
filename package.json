@@ -1,6 +1,6 @@
 {
   "name": "example-storefront",
-  "version": "2.9.1",
+  "version": "3.0.0",
   "description": "The Example Storefront serves as a reference for implementing a web based storefront using the Reaction Commerce GraphQL API.",
   "main": "./src/server.js",
   "keywords": [],
@@ -23,13 +23,16 @@
     "test:unit": "NODE_ENV=jesttest jest",
     "test:unit:watch": "NODE_ENV=jesttest jest --watchAll",
     "test:integration": "mocha tests/integration",
-    "test:link": "blc http://web.api.reaction.localhost:4000 -ro -filter=3 -e",
+    "test:link": "blc http://web.reaction.localhost:4000 -ro -filter=3 -e",
     "test:file": "NODE_ENV=jesttest jest --watch --no-coverage"
   },
   "eslintConfig": {
-    "extends": [
-      "@reactioncommerce"
-    ]
+    "extends": "@reactioncommerce",
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
   },
   "dependencies": {
     "@material-ui/core": "~3.9.2",

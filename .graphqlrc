@@ -1,5 +1,5 @@
 {
   "request": {
-    "url": "http://localhost:3000/graphql-beta"
+    "url": "http://localhost:3000/graphql"
   }
 }

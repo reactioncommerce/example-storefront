@@ -110,7 +110,7 @@ class NavigationMobile extends Component {
               <div className={classes.toolbarTitle}>
                 <Typography className={classes.title} color="inherit" variant="h6">
                   <Link route="/" onClick={this.handleClose}>
-                    <ShopLogo shopName={shop && shop.name} />
+                    {shop ? <ShopLogo shopName={shop.name} /> : "Example Storefront"}
                   </Link>
                 </Typography>
               </div>

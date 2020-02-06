@@ -1,37 +1,23 @@
-# This docker-compose file is used to run the Example Storefront in Docker for development.
-# The local files are mounted into the created container.
+# This docker-compose file is used to run the project's published image
+#
 # Usage: docker-compose up [-d]
+#
+# See comment in docker-compose.dev.yml if you want to run for development.
 
 version: '3.4'
 
 networks:
-  api:
+  reaction:
     external:
-      name: api.reaction.localhost
-  auth.reaction.localhost:
-    external:
-      name: auth.reaction.localhost
+      name: reaction.localhost
 
 services:
   web:
-    image: reactioncommerce/node-dev:10.16.3-v2
+    image: reactioncommerce/example-storefront:release-v3.0.0
     env_file:
       - ./.env
     networks:
-      api:
-        aliases:
-          - storefront
-      auth.reaction.localhost:
+      default:
+      reaction:
     ports:
       - 4000:4000
-    volumes:
-      - web-yarn:/home/node/.cache/yarn
-      - .:/usr/local/src/app
-      # Do not link in node_modules from the host
-      # This allows IDEs to run lint etc with native add-ons for host OS
-      # Without interfering with native add-ons in container
-      - empty_node_modules:/usr/local/src/app/node_modules
-
-volumes:
-  web-yarn:
-  empty_node_modules:

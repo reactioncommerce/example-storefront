@@ -240,7 +240,7 @@ class Checkout extends Component {
 
         <Link route="home">
           <div className={classes.logo}>
-            <ShopLogo shopName={shop.name} />
+            {shop ? <ShopLogo shopName={shop.name} /> : "Example Storefront"}
           </div>
         </Link>
 
@@ -255,7 +255,7 @@ class Checkout extends Component {
       <div className={classes.headerContainer}>
         <Link route="home">
           <div className={classes.logo}>
-            <ShopLogo shopName={shop.name} />
+            {shop ? <ShopLogo shopName={shop.name} /> : "Example Storefront"}
           </div>
         </Link>
         <div className={classes.checkoutTitleContainer}>

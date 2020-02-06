@@ -5,16 +5,16 @@ const chalk = require("chalk");
  * Logger. Customize the way you log errors and messages here.
  */
 const logger = {
-  error(message) {
-    console.error(chalk.red(message));
+  error(message, ...rest) {
+    console.error(chalk.red(message), ...rest);
   },
 
-  info(message) {
-    console.info(chalk.cyan(message));
+  info(message, ...rest) {
+    console.info(chalk.cyan(message), ...rest);
   },
 
-  warn(message) {
-    console.warn(chalk.yellow(message));
+  warn(message, ...rest) {
+    console.warn(chalk.yellow(message), ...rest);
   },
 
   // Called when express.js app starts on given port w/o errors

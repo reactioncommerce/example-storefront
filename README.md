@@ -25,19 +25,16 @@ This example storefront is built with [Next.js](https://nextjs.org/), [React](ht
 
 Follow the [Reaction Platform docs](https://docs.reactioncommerce.com/docs/installation-reaction-platform) to install and run all the services necessary to run the storefront:
 
-| Directory: Service                                                                         | URL                                                          |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
-| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API                    | [localhost:3000/graphql-beta](localhost:3000/graphql-beta)   |
-| [`reaction`](https://github.com/reactioncommerce/reaction): GraphiQL developer tool        | [localhost:3000/graphql-beta](localhost:3000/graphql-beta)   |
-| [`reaction`](https://github.com/reactioncommerce/reaction): Operator UI                    | [localhost:3000](localhost:3000)                             |
-| [`reaction`](https://github.com/reactioncommerce/reaction): MongoDB                        | [localhost:27017](localhost:27017)                           |
-| [`reaction-hydra`](https://github.com/reactioncommerce/reaction-hydra): Authentication     | [localhost:4444](localhost:4444)                             |
-| [`example-storefront`](https://github.com/reactioncommerce/example-storefront): Storefront | [localhost:4000](localhost:4000)                             |
+| Directory: Service                                                                            | URL                                              |
+|-----------------------------------------------------------------------------------------------|--------------------------------------------------|
+| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API                       | [localhost:3000/graphql](localhost:3000/graphql) |
+| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL Playground developer tool | [localhost:3000/graphql](localhost:3000/graphql) |
+| [`reaction`](https://github.com/reactioncommerce/reaction): Reaction Admin                    | [localhost:4080](localhost:4080)                 |
+| [`reaction`](https://github.com/reactioncommerce/reaction): MongoDB                           | [localhost:27017](localhost:27017)               |
+| [`reaction-hydra`](https://github.com/reactioncommerce/reaction-hydra): Authentication        | [localhost:4444](localhost:4444)                 |
+| [`example-storefront`](https://github.com/reactioncommerce/example-storefront): Storefront    | [localhost:4000](localhost:4000)                 |
 
-**Note**: The storefront has redirects so if you open any of the following URLs, you'll be redirected to the GraphiQL developer tool:
-- [localhost:4000/graphql]()
-- [localhost:4000/graphql-beta]()
-- [localhost:4000/graphiql]()
+**Note**: The storefront has redirects so that if you open [http://localhost:4000/graphql](http://localhost:4000/graphql), you'll be redirected to the GraphQL Playground.
 
 ## Configuration
 
@@ -78,7 +75,7 @@ docker-compose up -d && docker-compose logs -f
 
 ### Run in development against a production API
 
-Change the `INTERNAL_GRAPHQL_URL` in `.env` to the production API URL. The URL should end in `/graphql-beta`, like: `https://my-website.com/graphql-beta`. Save the `.env` file and restart the application with:
+Change the `INTERNAL_GRAPHQL_URL` in `.env` to the production API URL. The URL should end in `/graphql`, like: `https://my-website.com/graphql`. Save the `.env` file and restart the application with:
 
 ```sh
 docker-compose run --rm --service-ports web yarn start
@@ -152,7 +149,7 @@ Sometimes we need to test the [Example Storefront Component Library](https://git
 1. After the build is done, `cd` into the new `dist` folder it just built and run `yarn link` to allow the library to be installed into the storefront. This will link `@reactioncommerce/components`
 1. Inside the `example-storefront` repo, temporarily rename your `.yarnrc` file to anything else (i.e. `.yarnrc-temp`)
 1. Run `yarn install` and then the command `yarn link "@reactioncommerce/components"` to set the local version as an override of the published npm version
-1. Inside your `.env` file, change `INTERNAL_GRAPHQL_URL` to equal `http://localhost:3030/graphql-beta`, the same as the `EXTERNAL_GRAPHQL_URL`
+1. Inside your `.env` file, change `INTERNAL_GRAPHQL_URL` to equal `http://localhost:3000/graphql`, the same as the `EXTERNAL_GRAPHQL_URL`
 1. Start the storefront locally by running the command `export $(cat .env | xargs) && yarn dev`
 1. Your storefront should now be running at `localhost:4000`
     - If you see errors about not being able to find peer dependency packages, that seems to be an issues with yarn linking. You can just temporarily `yarn add` each of those packages in the component library `package/dist` folder. (This folder is gitignored anyway.)
@@ -191,7 +188,7 @@ docker build -t reaction-storefront .
 Then, to start the app on your machine, make sure the Reaction API container is already running and enter:
 
 ```sh
-docker run -it --name storefront -p 4000:4000 --env-file .env --network api.reaction.localhost reaction-storefront
+docker run -it --name storefront -p 4000:4000 --env-file .env --network reaction.localhost reaction-storefront
 ```
 
 _**NOTE:** You can replace the number before the colon in `4000:4000` with a different localhost port you'd like the application to run at._
