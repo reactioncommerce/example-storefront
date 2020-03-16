@@ -41,11 +41,6 @@ const styles = (theme) => ({
  * @param {Object} props Component props
  * @returns {React.Component} React component node that represents a product detail view
  */
-@withWidth({ initialWidth: "md" })
-@withStyles(styles, { withTheme: true, name: "SkProductDetail" })
-@inject("routingStore", "uiStore")
-@track()
-@observer
 class ProductDetail extends Component {
   static propTypes = {
     /**
@@ -83,7 +78,7 @@ class ProductDetail extends Component {
       selectOptionId = variant.options[0]._id;
     }
 
-    this.trackAction({ variant, optionId, action: PRODUCT_VIEWED });
+    // this.trackAction({ variant, optionId, action: PRODUCT_VIEWED });
 
     uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
 
@@ -92,12 +87,6 @@ class ProductDetail extends Component {
       variantId: selectOptionId || variantId
     }, { replace: true });
   }
-
-  @trackProduct()
-  trackAction() {}
-
-  @trackCartItems()
-  trackCartItems() {}
 
   /**
    * @name handleSelectVariant
@@ -159,6 +148,7 @@ class ProductDetail extends Component {
         const { cart } = data.createCart || data.addCartItems;
         const { edges: items } = cart.items;
 
+        /*
         this.trackAction({
           variant: {
             ...selectedVariant,
@@ -168,11 +158,12 @@ class ProductDetail extends Component {
           optionId: selectedOption ? selectedOption._id : null,
           action: PRODUCT_ADDED
         });
+        */
 
         // The mini cart popper will open automatically after adding an item to the cart,
         // therefore, a CART_VIEWED event is published.
         // debugger // eslint-disable-line
-        this.trackCartItems({ cartItems: items, cartId: cart._id, action: CART_VIEWED }); // eslint-disable-line camelcase
+        // this.trackCartItems({ cartItems: items, cartId: cart._id, action: CART_VIEWED }); // eslint-disable-line camelcase
       }
     }
     if (isWidthUp("md", width)) {
@@ -259,6 +250,7 @@ class ProductDetail extends Component {
     const productPrice = this.determineProductPrice();
     const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
 
+    
     // Phone size
     if (isWidthDown("sm", width)) {
       return (
@@ -347,4 +339,4 @@ class ProductDetail extends Component {
   }
 }
 
-export default ProductDetail;
+export default withWidth({ initialWidth: "md" })(withStyles(styles, { withTheme: true})(inject("routingStore", "uiStore")(observer(ProductDetail))));

@@ -33,7 +33,6 @@ const styles = (theme) => ({
   subtitle2: theme.typography.subtitle2
 });
 
-@withStyles(styles, { name: "SkOrderSummary" })
 class OrderSummary extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -108,4 +107,4 @@ class OrderSummary extends Component {
   }
 }
 
-export default OrderSummary;
+export default withStyles(styles)(OrderSummary);

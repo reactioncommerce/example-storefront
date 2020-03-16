@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject } from "mobx-react";
+import { inject, observer } from "mobx-react";
 
 import { NavigationItemDesktop } from "components/NavigationDesktop";
 
-@inject("navItems")
-export class NavigationDesktop extends Component {
+class NavigationDesktop extends Component {
   static propTypes = {
     classes: PropTypes.object,
     navItems: PropTypes.object
@@ -32,4 +31,4 @@ export class NavigationDesktop extends Component {
   }
 }
 
-export default NavigationDesktop;
+export default inject("navItems")(observer(NavigationDesktop));

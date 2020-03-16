@@ -27,8 +27,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { name: "SkVariantList" })
-export default class VariantList extends Component {
+class VariantList extends Component {
   static propTypes = {
     classes: PropTypes.object,
     currencyCode: PropTypes.string.isRequired,
@@ -129,3 +128,5 @@ export default class VariantList extends Component {
     );
   }
 }
+
+export default withStyles(styles)(VariantList);

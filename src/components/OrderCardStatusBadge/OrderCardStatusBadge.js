@@ -26,7 +26,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true })
 class OrderCardStatusBadge extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -58,4 +57,4 @@ class OrderCardStatusBadge extends Component {
   }
 }
 
-export default OrderCardStatusBadge;
+export default withStyles(styles, { withTheme: true })(OrderCardStatusBadge);

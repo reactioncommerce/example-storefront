@@ -1,4 +1,4 @@
-import NextApp, { Container } from "next/app";
+import NextApp from "next/app";
 import React from "react";
 import { ThemeProvider as RuiThemeProvider } from "styled-components";
 import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
@@ -22,12 +22,7 @@ import getAllTags from "../lib/data/getAllTags";
 
 const { publicRuntimeConfig } = getConfig();
 
-@withApolloClient
-@withMobX
-@withShop
-@withViewer
-@track({}, { dispatch })
-export default class App extends NextApp {
+class App extends NextApp {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
 
@@ -75,26 +70,26 @@ export default class App extends NextApp {
     const { stripe } = this.state;
 
     return (
-      <Container>
-        <ComponentsProvider value={components}>
-          <MobxProvider suppressChangedStoreWarning navItems={shop && shop.defaultNavigationTree} tags={tags}>
-            <RuiThemeProvider theme={componentTheme}>
-              <MuiThemeProvider theme={theme}>
-                <CssBaseline />
-                {route === "/checkout" || route === "/login" ? (
-                  <StripeProvider stripe={stripe}>
-                    <Component shop={shop} {...rest} {...pageProps} />
-                  </StripeProvider>
-                ) : (
-                  <Layout shop={shop} viewer={viewer}>
-                    <Component shop={shop} {...rest} {...pageProps} />
-                  </Layout>
-                )}
-              </MuiThemeProvider>
-            </RuiThemeProvider>
-          </MobxProvider>
-        </ComponentsProvider>
-      </Container>
+      <ComponentsProvider value={components}>
+        <MobxProvider suppressChangedStoreWarning navItems={shop && shop.defaultNavigationTree} tags={tags}>
+          <RuiThemeProvider theme={componentTheme}>
+            <MuiThemeProvider theme={theme}>
+              <CssBaseline />
+              {route === "/checkout" || route === "/login" ? (
+                <StripeProvider stripe={stripe}>
+                  <Component shop={shop} {...rest} {...pageProps} />
+                </StripeProvider>
+              ) : (
+                <Layout shop={shop} viewer={viewer}>
+                  <Component shop={shop} {...rest} {...pageProps} />
+                </Layout>
+              )}
+            </MuiThemeProvider>
+          </RuiThemeProvider>
+        </MobxProvider>
+      </ComponentsProvider>
     );
   }
 }
+
+export default withApolloClient(withMobX(withShop(withViewer(App))));

@@ -12,11 +12,7 @@ import ProductGridTitle from "components/ProductGridTitle";
 import SharedPropTypes from "lib/utils/SharedPropTypes";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
-@withTag
-@withCatalogItems
-@inject("routingStore", "uiStore")
-@observer
-export default class TagGridPage extends Component {
+class TagGridPage extends Component {
   static propTypes = {
     catalogItems: PropTypes.array.isRequired,
     catalogItemsPageInfo: PropTypes.object,
@@ -72,12 +68,9 @@ export default class TagGridPage extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.catalogItems !== prevProps.catalogItems) {
-      this.trackEvent(this.props);
+      // this.trackEvent(this.props);
     }
   }
-
-  @trackProductListViewed()
-  trackEvent() {}
 
   setPageSize = (pageSize) => {
     this.props.routingStore.setSearch({ limit: pageSize });
@@ -166,3 +159,5 @@ export default class TagGridPage extends Component {
     );
   }
 }
+
+export default withTag(withCatalogItems(inject("routingStore", "uiStore")(observer(TagGridPage))))

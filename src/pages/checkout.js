@@ -131,10 +131,6 @@ const styles = (theme) => ({
 
 const hasIdentityCheck = (cart) => !!((cart && cart.account !== null) || (cart && cart.email));
 
-@withCart
-@withAvailablePaymentMethods
-@observer
-@withStyles(styles, { withTheme: true })
 class Checkout extends Component {
   static propTypes = {
     availablePaymentMethods: PropTypes.arrayOf(PropTypes.shape({
@@ -387,4 +383,4 @@ class Checkout extends Component {
   }
 }
 
-export default Checkout;
+export default withCart(withAvailablePaymentMethods(observer(withStyles(styles, { withTheme: true })(Checkout))));

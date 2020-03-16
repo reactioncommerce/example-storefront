@@ -36,7 +36,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { name: "SkVariantItem" })
 class VariantItem extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -86,4 +85,4 @@ class VariantItem extends Component {
   }
 }
 
-export default VariantItem;
+export default withStyles(styles)(VariantItem);

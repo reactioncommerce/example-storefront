@@ -14,9 +14,6 @@ import catalogItemsQuery from "./catalogItems.gql";
  * @returns {React.Component} - component decorated with primaryShopId and catalog as props
  */
 export default function withCatalogItems(Component) {
-  @withTag
-  @inject("primaryShopId", "routingStore", "uiStore")
-  @observer
   class CatalogItems extends React.Component {
     static propTypes = {
       primaryShopId: PropTypes.string,
@@ -76,5 +73,5 @@ export default function withCatalogItems(Component) {
 
   hoistNonReactStatic(CatalogItems, Component);
 
-  return CatalogItems;
+  return withTag(inject("primaryShopId", "routingStore", "uiStore")(observer(CatalogItems)));
 }

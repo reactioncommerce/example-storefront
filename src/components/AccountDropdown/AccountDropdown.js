@@ -19,9 +19,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { name: "SkAccountDropdown" })
-@inject("authStore")
-@observer
 class AccountDropdown extends Component {
   static propTypes = {
     authStore: PropTypes.object.isRequired,
@@ -106,4 +103,4 @@ class AccountDropdown extends Component {
   }
 }
 
-export default AccountDropdown;
+export default withStyles(styles)(inject("authStore")(observer(AccountDropdown)));

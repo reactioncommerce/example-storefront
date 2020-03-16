@@ -28,10 +28,6 @@ import {
  * @returns {React.Component} - Component with `cart` props and callbacks
  */
 export default function withCart(Component) {
-  @withApollo
-  @withShop
-  @inject("cartStore", "authStore")
-  @observer
   class WithCart extends React.Component {
     static propTypes = {
       authStore: PropTypes.shape({
@@ -496,5 +492,5 @@ export default function withCart(Component) {
 
   hoistNonReactStatic(WithCart, Component);
 
-  return WithCart;
+  return withApollo(withShop(inject("cartStore", "authStore")(observer(WithCart))));
 }

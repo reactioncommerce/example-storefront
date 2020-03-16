@@ -1,4 +1,4 @@
-import { observable, action } from "mobx";
+import { observable, action, decorate } from "mobx";
 
 /**
  * A mobx store for authentication
@@ -15,14 +15,14 @@ class AuthStore {
    *
    * @type String
    */
-  @observable accountId = null;
+  accountId = null;
 
   /**
    * The account data of the currently signed-in user
    *
    * @type String
    */
-  @observable account = {};
+  account = {};
 
   get isAuthenticated() {
     return !!this.accountId;
@@ -45,7 +45,7 @@ class AuthStore {
     };
   }
 
-  @action setAccount(account) {
+  setAccount = (account) => {
     if (account) {
       this.accountId = account._id || null;
       this.account = { ...this.splitNames(account), ...account };
@@ -55,5 +55,11 @@ class AuthStore {
     }
   }
 }
+
+decorate(AuthStore, {
+  account: observable,
+  accountId: observable,
+  setAccount: action
+})
 
 export default AuthStore;
