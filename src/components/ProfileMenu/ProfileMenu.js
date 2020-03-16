@@ -8,7 +8,7 @@ import withAddressBook from "containers/address/withAddressBook";
 
 const styles = (theme) => ({
   accountProfileInfoContainer: {
-    marginBottom: theme.spacing.unit * 4
+    marginBottom: theme.spacing(4)
   }
 });
 

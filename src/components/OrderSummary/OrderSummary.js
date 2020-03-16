@@ -22,7 +22,7 @@ const styles = (theme) => ({
     border: theme.palette.borders.default
   },
   header: {
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
+    padding: theme.spacing(1, 2)
   },
   title: {
     flex: "1 0 auto"
@@ -90,7 +90,7 @@ class OrderSummary extends Component {
     return (
       <div className={classes.summary}>
         <div className={classes.header}>
-          <Grid container spacing={24}>
+          <Grid container spacing={3}>
             <Grid item xs={3}>
               <Typography className={classes.subtitle2} variant="subtitle1">{"Payment Method"}</Typography>
             </Grid>

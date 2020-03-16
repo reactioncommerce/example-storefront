@@ -12,7 +12,7 @@ const styles = (theme) => ({
   featured: {
     display: "flex",
     justifyContent: "center",
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing()
   },
   featuredImage: {
     flex: 0,
@@ -94,7 +94,7 @@ class MediaGallery extends Component {
         <Grid item xs={12} sm={12}>
           <div className={classes.featured}>{this.renderFeaturedImage()}</div>
 
-          <Grid container spacing={theme.spacing.unit}>
+          <Grid container spacing={1}>
             {mediaItems.map((media, index) => (
               <Grid item key={index} xs={3} sm={2}>
                 <MediaGalleryItem index={index} media={media} onClick={this.handleMediaItemClick} />

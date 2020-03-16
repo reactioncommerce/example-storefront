@@ -10,13 +10,13 @@ const styles = (theme) => ({
   fulfillmentGroup: {
   },
   fulfillmentGroupDetails: {
-    padding: theme.spacing.unit * 2
+    padding: theme.spacing(2)
   },
   fulfillmentGroupCount: theme.typography.subtitle2,
   fulfillmentGroupHeader: {
     borderBottom: theme.palette.borders.default,
     borderTop: theme.palette.borders.default,
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
+    padding: theme.spacing(1, 2)
   },
   fulfillmentGroupHeaderRightColumn: {
     textAlign: "right"
@@ -107,7 +107,7 @@ class OrderCardFulfillmentGroup extends Component {
               direction="row"
               justify="center"
               alignItems="center"
-              spacing={24}
+              spacing={3}
             >
               <Grid item xs={6}>
                 <Typography className={classes.fulfillmentGroupCount} variant="subtitle1">Shipment {currentGroupCount} of {totalGroupsCount}</Typography>

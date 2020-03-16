@@ -8,8 +8,8 @@ const styles = (theme) => ({
   loadMore: {
     display: "flex",
     justifyContent: "center",
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2)
   },
   cfXPgA: {
     paddingLeft: 0,

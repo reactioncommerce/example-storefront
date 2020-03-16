@@ -16,10 +16,10 @@ const styles = (theme) => ({
   profileOrdersList: {},
   profileOrdersPagination: {},
   profileOrdersSelect: {
-    marginBottom: theme.spacing.unit * 4
+    marginBottom: theme.spacing(4)
   },
   profileOrdersTitle: {
-    marginBottom: theme.spacing.unit * 4
+    marginBottom: theme.spacing(4)
   }
 });
 

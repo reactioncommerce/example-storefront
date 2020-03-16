@@ -26,7 +26,7 @@ const styles = (theme) => ({
   },
   title: {
     color: theme.palette.reaction.reactionBlue,
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing(),
     borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
   },
   toolbar: {

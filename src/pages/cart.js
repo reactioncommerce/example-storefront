@@ -24,10 +24,10 @@ const styles = (theme) => ({
   },
   checkoutButtonsContainer: {
     backgroundColor: theme.palette.reaction.black02,
-    padding: theme.spacing.unit * 2
+    padding: theme.spacing(2)
   },
   customerSupportCopy: {
-    paddingLeft: `${theme.spacing.unit * 4}px !important`
+    paddingLeft: `${theme.spacing(4)}px !important`
   },
   phoneNumber: {
     fontWeight: theme.typography.fontWeightBold
@@ -178,7 +178,7 @@ class CartPage extends Component {
           <Typography className={classes.title} variant="h6" align="center">
             Shopping Cart
           </Typography>
-          <Grid container spacing={24}>
+          <Grid container spacing={3}>
             {this.renderCartItems()}
             {this.renderCartSummary()}
             <Grid className={classes.customerSupportCopy} item>

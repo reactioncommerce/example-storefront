@@ -12,10 +12,10 @@ import ViewerInfo from "@reactioncommerce/components/ViewerInfo/v1";
 const styles = (theme) => ({
   accountDropdown: {
     width: 320,
-    padding: theme.spacing.unit * 2
+    padding: theme.spacing(2)
   },
   marginBottom: {
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2)
   }
 });
 

@@ -24,14 +24,14 @@ const { CART_VIEWED, PRODUCT_ADDED, PRODUCT_VIEWED } = TRACKING;
 
 const styles = (theme) => ({
   section: {
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2)
   },
   breadcrumbGrid: {
-    marginBottom: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(2)
   },
   info: {
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing()
   }
 });
 
@@ -304,7 +304,7 @@ class ProductDetail extends Component {
 
     return (
       <Fragment>
-        <Grid container spacing={theme.spacing.unit * 5}>
+        <Grid container spacing={5}>
           <Grid item className={classes.breadcrumbGrid} xs={12}>
             <Breadcrumbs isPDP tagId={routingStore.tagId} product={product} />
           </Grid>
