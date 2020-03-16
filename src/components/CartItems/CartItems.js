@@ -17,7 +17,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { name: "SkCartItems" })
 class CartItems extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -97,4 +96,4 @@ class CartItems extends Component {
   }
 }
 
-export default CartItems;
+export default withStyles(styles)(CartItems);

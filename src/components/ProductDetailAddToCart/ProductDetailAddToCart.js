@@ -73,11 +73,7 @@ const styles = (theme) => ({
   }
 });
 
-
-@withStyles(styles, { name: "SkProductDetailAddToCart" })
-@inject("uiStore")
-@observer
-export default class ProductDetailAddToCart extends Component {
+class ProductDetailAddToCart extends Component {
   static propTypes = {
     classes: PropTypes.object,
     onClick: PropTypes.func,
@@ -281,3 +277,5 @@ export default class ProductDetailAddToCart extends Component {
     );
   }
 }
+
+export default withStyles(styles)(inject("uiStore")(observer(ProductDetailAddToCart)));

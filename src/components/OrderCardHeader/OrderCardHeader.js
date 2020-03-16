@@ -51,7 +51,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true })
 class OrderCardHeader extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -173,4 +172,4 @@ class OrderCardHeader extends Component {
   }
 }
 
-export default OrderCardHeader;
+export default withStyles(styles, { withTheme: true })(OrderCardHeader);

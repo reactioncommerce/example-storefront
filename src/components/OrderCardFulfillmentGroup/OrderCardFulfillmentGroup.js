@@ -26,7 +26,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
 class OrderCardFulfillmentGroup extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -142,4 +141,4 @@ class OrderCardFulfillmentGroup extends Component {
   }
 }
 
-export default OrderCardFulfillmentGroup;
+export default withStyles(styles)(OrderCardFulfillmentGroup);

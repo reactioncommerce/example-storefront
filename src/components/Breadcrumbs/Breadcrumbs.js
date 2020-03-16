@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { inject } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import { withStyles } from "@material-ui/core/styles";
 import ChevronRight from "mdi-material-ui/ChevronRight";
 import Link from "components/Link";
@@ -30,8 +30,6 @@ const styles = (theme) => ({
   }
 });
 
-@inject("tags")
-@withStyles(styles, { name: "SkBreadcrumbs" })
 class Breadcrumbs extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -117,4 +115,4 @@ class Breadcrumbs extends Component {
   }
 }
 
-export default Breadcrumbs;
+export default withStyles(styles)(inject("tags")(observer(Breadcrumbs)));

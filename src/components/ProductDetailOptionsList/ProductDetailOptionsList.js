@@ -25,9 +25,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true, name: "SkOptionsList" })
-@observer
-export default class OptionsList extends Component {
+class OptionsList extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     onSelectOption: PropTypes.func,
@@ -77,3 +75,5 @@ export default class OptionsList extends Component {
     );
   }
 }
+
+export default withStyles(styles, { withTheme: true})(observer(OptionsList));

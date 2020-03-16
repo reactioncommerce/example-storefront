@@ -7,9 +7,6 @@ import ProductGrid from "components/ProductGrid";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
 import { inPageSizes } from "lib/utils/pageSizes";
 
-@withCatalogItems
-@inject("routingStore", "uiStore")
-@observer
 class ProductGridPage extends Component {
   static propTypes = {
     catalogItems: PropTypes.array,
@@ -40,7 +37,7 @@ class ProductGridPage extends Component {
     return { initialGridSize: { width } };
   }
 
-  @trackProductListViewed()
+  // @trackProductListViewed()
   componentDidMount() {
     const { routingStore } = this.props;
     routingStore.setTagId(null);
@@ -48,12 +45,9 @@ class ProductGridPage extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.catalogItems !== prevProps.catalogItems) {
-      this.trackEvent(this.props);
+      // this.trackEvent(this.props);
     }
   }
-
-  @trackProductListViewed()
-  trackEvent() {}
 
   setPageSize = (pageSize) => {
     this.props.routingStore.setSearch({ limit: pageSize });
@@ -108,4 +102,4 @@ class ProductGridPage extends Component {
   }
 }
 
-export default ProductGridPage;
+export default withCatalogItems(inject("routingStore", "uiStore")(observer(ProductGridPage)));

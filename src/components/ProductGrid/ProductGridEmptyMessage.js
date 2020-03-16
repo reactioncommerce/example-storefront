@@ -20,9 +20,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
-@inject("routingStore")
-export default class ProductGridEmptyMessage extends Component {
+class ProductGridEmptyMessage extends Component {
   static propTypes = {
     actionMessage: PropTypes.string,
     classes: PropTypes.object,
@@ -54,3 +52,5 @@ export default class ProductGridEmptyMessage extends Component {
     );
   }
 }
+
+export default withStyles(styles)(inject("routingStore")(ProductGridEmptyMessage));

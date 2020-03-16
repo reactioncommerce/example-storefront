@@ -1,4 +1,4 @@
-import { action, toJS, observable } from "mobx";
+import { action, toJS, observable, decorate } from "mobx";
 import routes, { Router } from "routes";
 import { inPageSizes, PAGE_SIZES } from "lib/utils/pageSizes";
 
@@ -7,55 +7,53 @@ import { inPageSizes, PAGE_SIZES } from "lib/utils/pageSizes";
  * @class RoutingStore
  */
 
-export default class RoutingStore {
+class RoutingStore {
   /**
    * The pathname of the current page (i.e. `/tags/shop`)
    *
    * @type String
    */
-  @observable pathname = "";
+  pathname = "";
 
   /**
    * The path from the response header "Request-Path".
    *
    * @type string
    */
-  @observable requestPath = null;
+  requestPath = null;
 
   /**
    * The route, which corresponds to the page template
    *
    * @type string
    */
-  @observable route = null;
+  route = null;
 
   /**
    * The query params for the current page (i.e. `{shop: `1234', first: 24}`)
    *
    * @type Object
    */
-  @observable query = {};
+  query = {};
 
   /**
    * The query params as a URL string. (i.e. `sortby=minPrice-asc&limit=60`)
    *
    * @type String
    */
-  @observable queryString = "";
+  queryString = "";
 
   /**
    * The tag ID for the current page.
    * @type String
    */
-  @observable tagId = null;
+  tagId = null;
 
-  @action
   setTagId = (tagId) => {
     this.tagId = tagId;
   };
 
-  @action
-  updateRoute({ pathname, query, route }) {
+  updateRoute = ({ pathname, query, route }) => {
     this.pathname = pathname;
     this.query = query;
     this.route = route;
@@ -67,7 +65,7 @@ export default class RoutingStore {
    * @param {String} path Request pathname
    * @returns {undefined} No return value
    */
-  @action setRequestPath(path) {
+  setRequestPath = (path) => {
     this.requestPath = path;
   }
 
@@ -101,8 +99,8 @@ export default class RoutingStore {
    * @param {String} search Search query string first=1&after=123
    * @returns {String} full url with query string
    */
-  @action
-  setSearch(search) {
+
+  setSearch = (search) => {
     const _query = { ...toJS(this.query), ...search };
     const _slug = _query.slug;
     const _limit = parseInt(_query.limit, 10);
@@ -146,5 +144,21 @@ export default class RoutingStore {
     }
 
     return path;
-  }
+  };
 }
+
+decorate(RoutingStore, {
+  pathname: observable,
+  requestPath: observable,
+  route: observable,
+  query: observable,
+  queryString: observable,
+  tagId: observable,
+  setTagId: action,
+  updateRoute: action,
+  setRequestPath: action,
+  setRewriteRoute: action,
+  setSearch: action
+})
+
+export default RoutingStore;

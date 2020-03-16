@@ -64,9 +64,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true, name: "SkCartPopover" })
-@inject("uiStore")
-@observer
 class CartPopover extends Component {
   static propTypes = {
     /**
@@ -178,4 +175,4 @@ class CartPopover extends Component {
   }
 }
 
-export default CartPopover;
+export default withStyles(styles)(inject("uiStore")(observer(CartPopover)));

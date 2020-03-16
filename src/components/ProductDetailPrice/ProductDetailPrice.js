@@ -28,7 +28,6 @@ const styles = (theme) => ({
  * Product detail basic info fields
  * @class ProductDetailTitle
  */
-@withStyles(styles, { name: "SKProductDetailPrice" })
 class ProductDetailPrice extends Component {
   static propTypes = {
     /**
@@ -86,4 +85,4 @@ class ProductDetailPrice extends Component {
   }
 }
 
-export default ProductDetailPrice;
+export default withStyles(styles)(ProductDetailPrice);

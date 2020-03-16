@@ -7,8 +7,6 @@ import ProductDetail from "components/ProductDetail";
 import PageLoading from "components/PageLoading";
 import ErrorPage from "./_error";
 
-@withCart
-@withCatalogItemProduct
 class ProductDetailPage extends Component {
   static propTypes = {
     /**
@@ -115,4 +113,4 @@ class ProductDetailPage extends Component {
   }
 }
 
-export default ProductDetailPage;
+export default withCart(withCatalogItemProduct(ProductDetailPage));

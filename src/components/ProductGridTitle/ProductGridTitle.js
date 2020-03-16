@@ -12,8 +12,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { name: "SkProductGridTitle" })
-export default class ProductGridTitle extends Component {
+class ProductGridTitle extends Component {
   static propTypes = {
     classes: PropTypes.object,
     displayTitle: PropTypes.string
@@ -34,3 +33,5 @@ export default class ProductGridTitle extends Component {
     );
   }
 }
+
+export default withStyles(styles)(ProductGridTitle);

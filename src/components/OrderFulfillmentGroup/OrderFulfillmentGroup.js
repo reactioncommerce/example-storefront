@@ -25,7 +25,6 @@ const styles = (theme) => ({
   subtitle2: theme.typography.subtitle2
 });
 
-@withStyles(styles, { name: "SkOrderFulfillmentGroup" })
 class OrderFulfillmentGroup extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -164,4 +163,4 @@ class OrderFulfillmentGroup extends Component {
   }
 }
 
-export default OrderFulfillmentGroup;
+export default withStyles(styles, { name: "SkOrderFulfillmentGroup" })(OrderFulfillmentGroup);

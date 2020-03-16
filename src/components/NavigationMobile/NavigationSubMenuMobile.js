@@ -29,7 +29,6 @@ const styles = () => ({
   }
 });
 
-@withStyles(styles, { name: "SkNavigationItemMobile" })
 class NavigationSubMenuMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -84,4 +83,4 @@ class NavigationSubMenuMobile extends Component {
   }
 }
 
-export default NavigationSubMenuMobile;
+export default withStyles(styles)(NavigationSubMenuMobile);

@@ -11,9 +11,6 @@ import { validateAddress } from "./query.gql";
  * @returns {React.Component} Higher order component
  */
 export default function withAddressValidation(Comp) {
-  @withApollo
-  @inject("primaryShopId")
-  @observer
   class WithAddressValidation extends Component {
     static propTypes = {
       client: PropTypes.shape({
@@ -81,5 +78,5 @@ export default function withAddressValidation(Comp) {
 
   hoistNonReactStatic(WithAddressValidation, Comp);
 
-  return WithAddressValidation;
+  return withApollo(inject("primaryShopId")(observer(WithAddressValidation)));
 }

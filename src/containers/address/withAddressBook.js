@@ -17,9 +17,6 @@ import {
  * @return {React.Component} Wrapped component
  */
 export default function withAddressBook(Comp) {
-  @withApollo
-  @inject("authStore")
-  @observer
   class WithAddressBook extends Component {
     static propTypes = {
       authStore: PropTypes.shape({
@@ -161,5 +158,5 @@ export default function withAddressBook(Comp) {
 
   hoistNonReactStatic(WithAddressBook, Comp);
 
-  return WithAddressBook;
+  return withApollo(inject("authStore")(observer(WithAddressBook)));
 }

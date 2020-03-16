@@ -10,9 +10,6 @@ const styles = () => ({
   }
 });
 
-@withStyles(styles, { name: "SkCart" })
-@inject("uiStore")
-@observer
 class Cart extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -39,4 +36,4 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+export default withStyles(styles)(inject("uiStore")(observer(Cart)));

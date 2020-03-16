@@ -11,8 +11,8 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { name: "SkPageStepper" })
-export default class PageStepper extends Component {
+
+class PageStepper extends Component {
   static propTypes = {
     classes: PropTypes.object,
     pageInfo: PropTypes.shape({
@@ -63,3 +63,5 @@ export default class PageStepper extends Component {
     );
   }
 }
+
+export default withStyles(styles)(PageStepper);

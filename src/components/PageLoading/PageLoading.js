@@ -19,7 +19,6 @@ const styles = () => ({
   }
 });
 
-@withStyles(styles, { withTheme: true })
 class PageLoading extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -139,4 +138,4 @@ class PageLoading extends Component {
   }
 }
 
-export default PageLoading;
+export default withStyles(styles, { withTheme: true })(PageLoading);

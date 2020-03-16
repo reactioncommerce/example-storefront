@@ -1,4 +1,4 @@
-import { observable, action } from "mobx";
+import { observable, action, decorate } from "mobx";
 import { PAGE_SIZES, inPageSizes } from "lib/utils/pageSizes";
 
 /**
@@ -13,7 +13,7 @@ class UIStore {
    * @type Boolean
    * @default false
    */
-  @observable isCartOpen = false;
+  isCartOpen = false;
 
   /**
    * Is the menu drawer open or closed
@@ -21,7 +21,7 @@ class UIStore {
    * @type Boolean
    * @default false
    */
-  @observable isMenuDrawerOpen = false;
+  isMenuDrawerOpen = false;
 
   /**
    * Default display language for shop text, when translations are available.
@@ -29,7 +29,7 @@ class UIStore {
    * @type String
    * @default "en"
    */
-  @observable language = "en";
+  language = "en";
 
   /**
    * Shop locales info loaded via a json file if needed.
@@ -37,7 +37,7 @@ class UIStore {
    * @type Object
    * @default {}
    */
-  @observable locales = {};
+  locales = {};
 
   /**
    * Return orders with these order status values
@@ -45,7 +45,7 @@ class UIStore {
    * @type Array
    * @default []
    */
-  @observable orderStatusQuery = [];
+  orderStatusQuery = [];
 
   /**
    * Limit for results of queries for multiple orders
@@ -53,14 +53,14 @@ class UIStore {
    * @type Number
    * @default 5
    */
-  @observable orderQueryLimit = 5;
+  orderQueryLimit = 5;
 
   /**
    * The number of items per page to display on the product grid.
    *
    * @type Number
    */
-  @observable pageSize = PAGE_SIZES._20;
+  pageSize = PAGE_SIZES._20;
 
   /**
    * App config data
@@ -70,7 +70,7 @@ class UIStore {
    *
    * @type String
    */
-  @observable pdpSelectedOptionId = null;
+  pdpSelectedOptionId = null;
 
   /**
    * The ID of the variant that is selected on the product detail page. This is not
@@ -79,21 +79,21 @@ class UIStore {
    *
    * @type String
    */
-  @observable pdpSelectedVariantId = null;
+  pdpSelectedVariantId = null;
 
   /**
    * The product grid's sorting order
    *
    * @type string
    */
-  @observable sortBy = "updatedAt-desc";
+  sortBy = "updatedAt-desc";
 
   /**
    * The sort by currency code
    *
    * @type string
    */
-  @observable sortByCurrencyCode = "USD";
+  sortByCurrencyCode = "USD";
 
   /* ACTIONS */
   /**
@@ -102,11 +102,11 @@ class UIStore {
    * @param {Object} locales locales data loaded via json.
    * @returns {undefined} No return
    */
-  @action setLocales(locales) {
+  setLocales = (locales) => {
     this.locales = locales;
   }
 
-  @action setPDPSelectedVariantId(variantId, optionId) {
+  setPDPSelectedVariantId = (variantId, optionId) => {
     this.pdpSelectedVariantId = variantId;
     this.pdpSelectedOptionId = optionId;
   }
@@ -116,7 +116,7 @@ class UIStore {
    * @summary Open the mini-cart drawer
    * @returns {undefined} No return
    */
-  @action openCart = () => {
+  openCart = () => {
     this.isCartOpen = true;
     this.clearOpenCartTimeout();
   }
@@ -127,14 +127,14 @@ class UIStore {
    * @param {Number} delay Time in milliseconds to keep cart open after which it will be closed
    * @returns {undefined} No return
    */
-  @action closeCart = (delay = 500) => {
+  closeCart = (delay = 500) => {
     this.openCartTimeout = setTimeout(action(() => {
       this.isCartOpen = false;
       this.clearOpenCartTimeout();
     }), delay);
-  }
+  };
 
-  @action openCartWithTimeout = (delay = 3000) => {
+  openCartWithTimeout = (delay = 3000) => {
     this.openCart();
 
     this.openCartTimeout = setTimeout(action(() => {
@@ -152,15 +152,15 @@ class UIStore {
     this.openCartTimeout && clearTimeout(this.openCartTimeout);
   }
 
-  @action toggleCartOpen() {
+  toggleCartOpen = () => {
     this.isCartOpen = !this.isCartOpen;
   }
 
-  @action closeMenuDrawer() {
+  closeMenuDrawer = () => {
     this.isMenuDrawerOpen = false;
   }
 
-  @action toggleMenuDrawerOpen() {
+  toggleMenuDrawerOpen = () => {
     this.isMenuDrawerOpen = !this.isMenuDrawerOpen;
   }
 
@@ -170,18 +170,44 @@ class UIStore {
    * @param {Array} orderStatus Order statuses to filter by
    * @returns {undefined} No return
    */
-  @action setOrderStatusSelectValue(orderStatus) {
+  setOrderStatusSelectValue = (orderStatus) => {
     this.orderStatusQuery = orderStatus;
   }
 
-  @action setPageSize = (size) => {
+  setPageSize = (size) => {
     // Validate page size
     this.pageSize = inPageSizes(size) ? size : PAGE_SIZES._20;
   }
 
-  @action setSortBy = (sortBy) => {
+  setSortBy = (sortBy) => {
     this.sortBy = sortBy;
   }
 }
+
+decorate(UIStore, {
+  isCartOpen: observable,
+  isMenuDrawerOpen: observable,
+  language: observable,
+  locales: observable,
+  orderStatusQuery: observable,
+  orderQueryLimit: observable,
+  pageSize: observable,
+  pdpSelectedOptionId: observable,
+  pdpSelectedVariantId: observable,
+  sortBy: observable,
+  sortByCurrencyCode: observable,
+  setLocales: action,
+  setPDPSelectedVariantId: action,
+  openCart: action,
+  closeCart: action,
+  openCartWithTimeout: action,
+  clearOpenCartTimeout: action,
+  toggleCartOpen: action,
+  closeMenuDrawer: action,
+  toggleMenuDrawerOpen: action,
+  setOrderStatusSelectValue: action,
+  setPageSize: action,
+  setSortBy: action
+})
 
 export default UIStore;

@@ -16,12 +16,6 @@ const styles = () => ({
   }
 });
 
-@track((ownProps) => ({
-  component: "Link",
-  url: ownProps.route || ownProps.href,
-  params: ownProps.params
-}))
-@withStyles(styles, { name: "SkLink" })
 class Link extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
@@ -43,16 +37,20 @@ class Link extends Component {
     shouldOpenInNewWindow: false
   }
 
+  /*
   @track(() => ({
     action: "Link Clicked"
   }))
+  */
   handleClick = (event) => {
     this.props.onClick(event);
   }
 
+  /*
   @track(() => ({
     action: "Link Enter Key Down"
   }))
+  */
   handleKeyDown = (event) => {
     if (event.key === "Enter") {
       this.props.onClick(event);
@@ -125,4 +123,4 @@ class Link extends Component {
   }
 }
 
-export default Link;
+export default (withStyles(styles)(Link));
