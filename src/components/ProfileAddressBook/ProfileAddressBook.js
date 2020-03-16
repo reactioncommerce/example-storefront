@@ -11,7 +11,7 @@ import ErrorPage from "../../pages/_error";
 
 const styles = (theme) => ({
   profileAddressBookTitle: {
-    marginBottom: theme.spacing.unit * 4
+    marginBottom: theme.spacing(4)
   }
 });
 

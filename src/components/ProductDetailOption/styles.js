@@ -1,7 +1,7 @@
 export default (theme) => ({
   optionButton: {
     "fontWeight": 600,
-    "padding": theme.spacing.unit,
+    "padding": theme.spacing(),
     "borderRadius": "2px",
     "backgroundColor": theme.palette.primary.contrastText,
     "border": "1px solid",

@@ -139,11 +139,7 @@ const theme = createMuiTheme({
     depth1: "0 0 1rem -0.5rem #808080",
     depth2: "0 0 1rem #808080"
   },
-  spacing: {
-    unithalf: 4
-  },
   typography: {
-    useNextVariants: true, // TODO: remove this once new variant styles are official in V4.0.0: https://material-ui.com/style/typography/#migration-to-typography-v2
     fontFamily: "Source Sans Pro, Helvetica Neue, Helvetica, sans-serif",
     fontSize: 16,
     fontWeightLight: 400,

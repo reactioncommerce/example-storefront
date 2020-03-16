@@ -12,10 +12,10 @@ import OrderCard from "components/OrderCard";
 
 const styles = (theme) => ({
   orderThankYou: {
-    marginBottom: theme.spacing.unit * 3
+    marginBottom: theme.spacing(3)
   },
   title: {
-    marginBottom: theme.spacing.unit * 3
+    marginBottom: theme.spacing(3)
   }
 });
 

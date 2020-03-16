@@ -110,7 +110,7 @@ class CheckoutSummary extends Component {
   render() {
     return (
       <aside>
-        <Grid container spacing={24}>
+        <Grid container spacing={3}>
           {this.renderCartItems()}
           {this.renderCartSummary()}
         </Grid>

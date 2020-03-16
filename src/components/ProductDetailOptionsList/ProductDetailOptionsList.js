@@ -10,18 +10,18 @@ import ProductDetailOption from "components/ProductDetailOption";
 const styles = (theme) => ({
   root: {
     position: "relative",
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit
+    marginTop: theme.spacing(),
+    marginBottom: theme.spacing()
   },
   alert: {
     display: "flex",
-    top: -theme.spacing.unit * 2,
-    right: theme.spacing.unit * 1
+    top: -theme.spacing(2),
+    right: theme.spacing(1)
   },
   badge: {
     fontSize: "0.5rem",
-    top: -theme.spacing.unit,
-    left: theme.spacing.unit * 11
+    top: -theme.spacing(),
+    left: theme.spacing(11)
   }
 });
 
@@ -56,13 +56,12 @@ export default class OptionsList extends Component {
       onSelectOption,
       options,
       selectedOptionId,
-      theme
     } = this.props;
 
     if (!Array.isArray(options)) return null;
 
     return (
-      <Grid container className={root} spacing={theme.spacing.unit}>
+      <Grid container className={root} spacing={1}>
         {options.map((option) => (
           <Grid item key={option._id}>
             <ProductDetailOption

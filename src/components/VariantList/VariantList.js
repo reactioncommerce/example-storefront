@@ -12,18 +12,18 @@ const styles = (theme) => ({
   alert: {
     display: "flex",
     position: "absolute",
-    top: -theme.spacing.unit * 2,
-    right: theme.spacing.unit * 11
+    top: -theme.spacing(2),
+    right: theme.spacing(11)
   },
   inventoryStatus: {
-    paddingTop: theme.spacing.unit
+    paddingTop: theme.spacing()
   },
   variantsContainer: {
   },
   variantItem: {
     position: "relative",
-    marginTop: theme.spacing.unit * 1.25,
-    marginBottom: theme.spacing.unit * 1.25
+    marginTop: theme.spacing(1.25),
+    marginBottom: theme.spacing(1.25)
   }
 });
 

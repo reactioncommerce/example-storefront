@@ -14,7 +14,7 @@ import ProductGridEmptyMessage from "./ProductGridEmptyMessage";
 const styles = (theme) => ({
   filters: {
     justifyContent: "flex-end",
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2)
   }
 });
 
@@ -45,7 +45,7 @@ export default class ProductGrid extends Component {
     const { classes, pageSize, setPageSize, setSortBy, sortBy } = this.props;
 
     return (
-      <Grid container spacing={8} className={classes.filters}>
+      <Grid container spacing={1} className={classes.filters}>
         <Grid item>
           <PageSizeSelector pageSize={pageSize} onChange={setPageSize} />
         </Grid>
@@ -69,7 +69,7 @@ export default class ProductGrid extends Component {
 
     return (
       <Fragment>
-        <Grid container spacing={24}>
+        <Grid container spacing={3}>
           <CatalogGrid
             initialSize={initialSize}
             onItemClick={this.onItemClick}

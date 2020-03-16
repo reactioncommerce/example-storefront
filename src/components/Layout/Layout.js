@@ -15,7 +15,7 @@ const styles = (theme) => ({
     marginRight: "auto"
   },
   article: {
-    padding: theme.spacing.unit * 3
+    padding: theme.spacing(3)
   }
 });
 

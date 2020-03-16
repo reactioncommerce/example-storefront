@@ -11,16 +11,16 @@ const styles = (theme) => ({
     border: theme.palette.borders.default
   },
   fulfillmentDetails: {
-    padding: theme.spacing.unit * 2
+    padding: theme.spacing(2)
   },
   header: {
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
+    padding: theme.spacing(1, 2)
   },
   headerRightColumn: {
     textAlign: "right"
   },
   summary: {
-    paddingTop: theme.spacing.unit * 2
+    paddingTop: theme.spacing(2)
   },
   subtitle2: theme.typography.subtitle2
 });
@@ -121,7 +121,7 @@ class OrderFulfillmentGroup extends Component {
 
       return (
         <div className={classes.fulfillmentDetails}>
-          <Grid container spacing={24}>
+          <Grid container spacing={3}>
             <Grid item xs={3}>
               <Typography className={classes.subtitle2} variant="subtitle1">{"Shipping Address"}</Typography>
             </Grid>
@@ -144,7 +144,7 @@ class OrderFulfillmentGroup extends Component {
       <Fragment>
         <section className={classes.fulfillmentGroup}>
           <header className={classes.header}>
-            <Grid container spacing={24}>
+            <Grid container spacing={3}>
               <Grid item xs={6}>
                 <Typography className={classes.subtitle2} variant="subtitle1">{fulfillmentMethod.displayName}</Typography>
               </Grid>

@@ -11,16 +11,13 @@ const styles = (theme) => ({
   orderCard: {
     border: `solid 1px ${theme.palette.reaction.black10}`,
     borderRadius: "2px",
-    marginBottom: theme.spacing.unit * 2.5
+    marginBottom: theme.spacing(2.5)
   },
   orderCardHeader: {},
   orderCardFulfillmentGroups: {},
   orderCardSummary: {
     borderTop: theme.palette.borders.default,
-    paddingBottom: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
-    paddingTop: theme.spacing.unit * 2
+    padding: theme.spacing(2)
   }
 });
 
