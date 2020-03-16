@@ -9,7 +9,6 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { getOperationAST } from "graphql";
 import fetch from "isomorphic-fetch";
 import getConfig from "next/config";
-import logger from "../logger";
 import { omitTypenameLink } from "./omitVariableTypenameLink";
 
 const SIGN_IN_PATH = "/signin";
@@ -45,7 +44,7 @@ const create = (initialState, options) => {
 
     if (graphQLErrors) {
       graphQLErrors.forEach(({ message, locations, path }) => {
-        logger.error(`[GraphQL error]: ${message}`, {
+        console.error(`[GraphQL error]: ${message}`, {
           locations,
           operationName: operation && operation.operationName,
           path
@@ -58,7 +57,7 @@ const create = (initialState, options) => {
       if (errorCode === STATUS_UNAUTHORIZED) {
         // If a 401 Unauthorized error occurred, redirect to /signin.
         // This will re-authenticate the user without showing a login page and a new token is issued.
-        logger.info("Attempting silent re-auth");
+        console.info("Attempting silent re-auth");
         if (process && process.browser) {
           Router.pushRoute(SIGN_IN_PATH);
         } else {
@@ -75,7 +74,7 @@ const create = (initialState, options) => {
         return;
       }
       if (errorCode !== STATUS_BAD_REQUEST) {
-        logger.error(`Unable to access the GraphQL API. Is it running and accessible at ${graphqlUrl} from the Storefront UI server?`);
+        console.error(`Unable to access the GraphQL API. Is it running and accessible at ${graphqlUrl} from the Storefront UI server?`);
       }
     }
   });
