@@ -1,6 +1,5 @@
 import primaryShopQuery from "containers/common-gql/primaryShop.gql";
 import tagsQuery from "containers/tags/tags.gql";
-import logger from "lib/logger";
 
 /**
  * @summary Gets all tags for the current shop from GraphQL and returns an array of them
@@ -31,7 +30,7 @@ export default async function getAllTags(client) {
   const { data: { primaryShop: shop } } = await client.query({ query: primaryShopQuery });
 
   if (!shop) {
-    logger.warn("primaryShop query result was null");
+    console.warn("primaryShop query result was null");
     return [];
   }
 

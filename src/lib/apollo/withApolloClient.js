@@ -4,7 +4,6 @@ import { ApolloProvider, getDataFromTree } from "react-apollo";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import Head from "next/head";
 import rootMobxStores from "lib/stores";
-import logger from "../logger";
 import initApollo from "./initApollo";
 
 /**
@@ -41,7 +40,7 @@ export default function withApolloClient(WrappedComponent) {
         const userString = req && req.session && req.session.passport && req.session.passport.user;
         user = userString && JSON.parse(userString);
       } catch (error) {
-        logger.error(`Error parsing user object. Check passport session configuration. ${error}`);
+        console.error(`Error parsing user object. Check passport session configuration. ${error}`);
       }
 
       const apollo = initApollo({ cookies: req && req.cookies }, { accessToken: user && user.accessToken, req, res });
