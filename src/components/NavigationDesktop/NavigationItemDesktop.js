@@ -20,7 +20,7 @@ const styles = (theme) => ({
   popover: {
     left: "0!important",
     maxWidth: "100vw",
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing(2),
     width: "100vw"
   },
   grid: {
@@ -30,8 +30,8 @@ const styles = (theme) => ({
     display: "flex",
     textDecoration: "underline",
     fontSize: "14px",
-    marginTop: theme.spacing.unit * 6,
-    marginBottom: theme.spacing.unit * 2,
+    marginTop: theme.spacing(6),
+    marginBottom: theme.spacing(2),
     fontFamily: theme.typography.fontFamily
   },
   navigationShopAllLinkIcon: {
@@ -126,7 +126,7 @@ class NavigationItemDesktop extends Component {
           onClose={this.onClose}
           open={this.state.isSubNavOpen}
         >
-          <Grid container className={classes.grid} spacing={16}>
+          <Grid container className={classes.grid} spacing={2}>
             {items.map((item, index) => {
               const { navigationItem: { data: { contentForLanguage, classNames: navigationItemClassNames, isUrlRelative, shouldOpenInNewWindow } } } = item;
               return (

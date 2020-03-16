@@ -14,7 +14,7 @@ import Divider from "components/Divider";
 
 const styles = (theme) => ({
   addToCartButton: {
-    "padding": theme.spacing.unit,
+    "padding": theme.spacing(),
     "backgroundColor": theme.palette.primary.main,
     "borderRadius": theme.palette.reaction.buttonBorderRadius,
     "minWidth": "66%",
@@ -50,7 +50,7 @@ const styles = (theme) => ({
     borderRadius: theme.palette.reaction.buttonBorderRadius
   },
   quantityGrid: {
-    marginBottom: theme.spacing.unit * 3
+    marginBottom: theme.spacing(3)
   },
   quantityInput: {
     "color": theme.palette.reaction.coolGray500,
@@ -69,7 +69,7 @@ const styles = (theme) => ({
   },
   quantityTypography: {
     color: theme.palette.reaction.coolGray500,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2)
   }
 });
 

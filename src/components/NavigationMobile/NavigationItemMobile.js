@@ -17,7 +17,7 @@ import Link from "components/Link";
 
 const styles = (theme) => ({
   subNav: {
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2)
   },
   listItemRoot: {
     paddingTop: 16,
@@ -34,7 +34,7 @@ const styles = (theme) => ({
     paddingRight: 0
   },
   subMenuList: {
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing(2)
   }
 });
 

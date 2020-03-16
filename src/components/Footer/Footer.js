@@ -10,7 +10,7 @@ const styles = (theme) => ({
     alignItems: "center",
     display: "flex",
     justifyContent: "center",
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2)
   }
 });
 

@@ -18,24 +18,24 @@ const flexWrapper = () => ({
 const styles = (theme) => ({
   loginWrapper: {
     ...flexWrapper(),
-    paddingBottom: theme.spacing.unit * 8,
+    paddingBottom: theme.spacing(8),
     [theme.breakpoints.up("md")]: {
       minHeight: "400px",
       paddingBottom: 0,
-      paddingRight: theme.spacing.unit * 8
+      paddingRight: theme.spacing(8)
     }
   },
   loginButton: {
-    marginTop: theme.spacing.unit * 3
+    marginTop: theme.spacing(3)
   },
   guestWrapper: {
     ...flexWrapper(),
     borderTop: `solid 1px ${theme.palette.reaction.black10}`,
-    paddingTop: theme.spacing.unit * 8,
+    paddingTop: theme.spacing(8),
     [theme.breakpoints.up("md")]: {
       borderLeft: `solid 1px ${theme.palette.reaction.black10}`,
       borderTop: "none",
-      paddingLeft: theme.spacing.unit * 8,
+      paddingLeft: theme.spacing(8),
       paddingTop: 0
     }
   }
