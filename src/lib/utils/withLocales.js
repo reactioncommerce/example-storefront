@@ -12,8 +12,6 @@ import { inject, observer } from "mobx-react";
  * @return {Class} - React component with locales on props
  */
 export default function withLocales(ComponentWithLocales) {
-  @inject("uiStore")
-  @observer
   class WithLocales extends Component {
     static propTypes = {
       forwardRef: PropTypes.func,
@@ -39,7 +37,7 @@ export default function withLocales(ComponentWithLocales) {
     async loadLocales() {
       let locales;
       try {
-        locales = await import("/static/data/locales.json");
+        locales = await import("static/data/locales.json");
       } catch (error) {
         // eslint-disable-next-line
         console.error(error);
@@ -54,5 +52,7 @@ export default function withLocales(ComponentWithLocales) {
     }
   }
 
-  return React.forwardRef((props, ref) => <WithLocales {...props} forwardRef={ref} />);
+  const WrappedComp = inject("uiStore")(observer(WithLocales));
+
+  return React.forwardRef((props, ref) => <WrappedComp {...props} forwardRef={ref} />);
 }

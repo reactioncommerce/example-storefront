@@ -7,8 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { inventoryStatus, STATUS_LABELS } from "@reactioncommerce/components/InventoryStatus/v1/utils";
 import styles from "./styles";
 
-@withStyles(styles, { name: "SkProductDetailOption" })
-export default class ProductDetailOption extends Component {
+class ProductDetailOption extends Component {
   static propTypes = {
     classes: PropTypes.object,
     isActive: PropTypes.bool,
@@ -47,3 +46,5 @@ export default class ProductDetailOption extends Component {
     );
   }
 }
+
+export default withStyles(styles)(ProductDetailOption);

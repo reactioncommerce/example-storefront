@@ -11,7 +11,6 @@ import { availablePaymentMethods as availablePaymentMethodsQuery } from "./queri
  * @returns {React.Component} - Component with `cart` props and callbacks
  */
 export default function withAvailablePaymentMethods(Component) {
-  @withApollo
   class WithAvailablePaymentMethods extends React.Component {
     static propTypes = {
       cart: PropTypes.shape({
@@ -47,5 +46,5 @@ export default function withAvailablePaymentMethods(Component) {
 
   hoistNonReactStatic(WithAvailablePaymentMethods, Component);
 
-  return WithAvailablePaymentMethods;
+  return withApollo(WithAvailablePaymentMethods);
 }

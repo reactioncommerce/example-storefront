@@ -23,10 +23,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true })
-@inject("routingStore", "uiStore")
-@withOrders
-@observer
 class ProfileOrders extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -152,4 +148,4 @@ class ProfileOrders extends Component {
   }
 }
 
-export default ProfileOrders;
+export default withStyles(styles, { withTheme: true })(inject("routingStore", "uiStore")(withOrders(observer(ProfileOrders))));

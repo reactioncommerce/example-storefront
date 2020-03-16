@@ -15,11 +15,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
-@withAddressBook
-@inject("authStore")
-@inject("uiStore")
-@observer
 class ProfileAddressBookPage extends Component {
   static propTypes = {
     authStore: PropTypes.shape({
@@ -69,4 +64,4 @@ class ProfileAddressBookPage extends Component {
   }
 }
 
-export default ProfileAddressBookPage;
+export default withStyles(styles)(withAddressBook(inject("authStore", "uiStore")(observer(ProfileAddressBookPage))));

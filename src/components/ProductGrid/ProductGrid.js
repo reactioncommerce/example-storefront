@@ -18,9 +18,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { name: "SkProductGrid" })
-@track()
-export default class ProductGrid extends Component {
+class ProductGrid extends Component {
   static propTypes = {
     catalogItems: PropTypes.arrayOf(PropTypes.object),
     classes: PropTypes.object,
@@ -56,7 +54,7 @@ export default class ProductGrid extends Component {
     );
   }
 
-  @trackProductClicked()
+  // @trackProductClicked()
   onItemClick = (event, product) => {} // eslint-disable-line no-unused-vars
 
   renderMainArea() {
@@ -92,3 +90,5 @@ export default class ProductGrid extends Component {
     );
   }
 }
+
+export default withStyles(styles)(ProductGrid);

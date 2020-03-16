@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import Document, { Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet as StyledComponentSheets } from "styled-components";
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from "@material-ui/styles";
-import Helmet from "react-helmet";
 import getConfig from "next/config";
 import analyticsProviders from "../custom/analytics";
 import favicons from "custom/favicons";
@@ -17,8 +16,6 @@ const { publicRuntimeConfig } = getConfig();
  */
 class HTMLDocument extends Document {
   render() {
-    const { helmet } = this.props;
-    const htmlAttrs = helmet.htmlAttributes.toComponent();
     const links = [
       { rel: "canonical", href: publicRuntimeConfig.canonicalUrl },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" },
@@ -49,18 +46,11 @@ class HTMLDocument extends Document {
       }
     ];
 
-    return <html lang="en" {...htmlAttrs}>
+    return (
+      <html lang="en">
       <Head>
-        <Helmet htmlAttributes={{ lang: "en", dir: "ltr" }} />
         {meta.map((tag, index) => <meta key={index} {...tag} />)}
         {links.map((link, index) => <link key={index} {...link} />)}
-        {helmet.base.toComponent()}
-        {helmet.title.toComponent()}
-        {helmet.meta.toComponent()}
-        {helmet.link.toComponent()}
-        {helmet.style.toComponent()}
-        {helmet.script.toComponent()}
-        {helmet.noscript.toComponent()}
       </Head>
       <body>
         <Main />
@@ -68,7 +58,8 @@ class HTMLDocument extends Document {
         {scripts.map((script, index) => (script.innerHTML ? /* eslint-disable-next-line */
           <script async key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} /> : <script async key={index} {...script} />))}
       </body>
-    </html>;
+    </html>
+    );
   }
 }
 

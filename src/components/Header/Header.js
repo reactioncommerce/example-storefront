@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import AppBar from "@material-ui/core/AppBar";
 import Hidden from "@material-ui/core/Hidden";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -36,8 +36,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { name: "SkHeader" })
-@inject("uiStore")
 class Header extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -89,4 +87,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withStyles(styles)(inject("uiStore")(observer(Header)));

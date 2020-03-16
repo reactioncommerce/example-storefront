@@ -12,8 +12,6 @@ import viewerQuery from "./viewer.gql";
  * @returns {React.Component} - Component with `viewer` prop
  */
 export default function withViewer(Component) {
-  @inject("authStore")
-  @observer
   class WithViewer extends React.Component {
     static propTypes = {
       authStore: PropTypes.shape({
@@ -45,5 +43,5 @@ export default function withViewer(Component) {
 
   hoistNonReactStatic(WithViewer, Component);
 
-  return WithViewer;
+  return inject("authStore")(observer(WithViewer));
 }

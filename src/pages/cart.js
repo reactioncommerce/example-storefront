@@ -43,11 +43,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
-@withCart
-@inject("uiStore")
-@track()
-@observer
 class CartPage extends Component {
   static propTypes = {
     cart: PropTypes.shape({
@@ -81,7 +76,7 @@ class CartPage extends Component {
 
     // Track a cart view event
     if (cart && Array.isArray(cart.items) && cart.items.length) {
-      this.trackAction({ cartItems: cart.items, cartId: cart._id, action: TRACKING.CART_VIEWED });
+      // this.trackAction({ cartItems: cart.items, cartId: cart._id, action: TRACKING.CART_VIEWED });
     }
   }
 
@@ -93,9 +88,6 @@ class CartPage extends Component {
     onChangeCartItemsQuantity({ quantity, cartItemId });
   };
 
-  @trackCartItems()
-  trackAction() {}
-
   handleRemoveItem = async (itemId) => {
     const { cart: { items }, onRemoveCartItems } = this.props;
 
@@ -106,7 +98,7 @@ class CartPage extends Component {
       const removedItem = { cart_id: _id, ...variantById(items, itemId) }; // eslint-disable-line camelcase
 
       // Track removed item
-      this.trackAction({ cartItems: removedItem, action: TRACKING.PRODUCT_REMOVED });
+      // this.trackAction({ cartItems: removedItem, action: TRACKING.PRODUCT_REMOVED });
     }
   };
 
@@ -200,3 +192,4 @@ class CartPage extends Component {
 }
 
 export default CartPage;
+withStyles(styles)(withCart(inject("uiStore")(observer(CartPage))));

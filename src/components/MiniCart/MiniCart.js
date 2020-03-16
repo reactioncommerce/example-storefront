@@ -45,13 +45,7 @@ const styles = ({ palette, zIndex }) => ({
   }
 });
 
-@withStyles(styles, { name: "SkMiniCart" })
-@withShop
-@withCart
-@inject("uiStore")
-@track()
-@observer
-export default class MiniCart extends Component {
+class MiniCart extends Component {
   static propTypes = {
     cart: PropTypes.shape({
       items: PropTypes.arrayOf(PropTypes.object),
@@ -96,7 +90,7 @@ export default class MiniCart extends Component {
 
     // Track a cart view event, only if the cart contains items
     if (cart && Array.isArray(cart.items) && cart.items.length) {
-      this.trackAction({ cartItems: cart.items, cartId: cart._id, action: CART_VIEWED });
+      // this.trackAction({ cartItems: cart.items, cartId: cart._id, action: CART_VIEWED });
     }
   }
 
@@ -134,9 +128,6 @@ export default class MiniCart extends Component {
     onChangeCartItemsQuantity({ quantity, cartItemId });
   }
 
-  @trackCartItems()
-  trackAction() {}
-
   handleRemoveItem = async (itemId) => {
     const { cart: { items }, onRemoveCartItems } = this.props;
     const { data, error } = await onRemoveCartItems(itemId);
@@ -146,7 +137,7 @@ export default class MiniCart extends Component {
       const removedItem = { cart_id: _id, ...variantById(items, itemId) }; // eslint-disable-line camelcase
 
       // Track removed item
-      this.trackAction({ cartItems: removedItem, action: PRODUCT_REMOVED });
+      // this.trackAction({ cartItems: removedItem, action: PRODUCT_REMOVED });
     }
   };
 
@@ -232,3 +223,5 @@ export default class MiniCart extends Component {
     );
   }
 }
+
+export default withStyles(styles, { name: "SkMiniCart" })(withShop(withCart(inject("uiStore")(observer(MiniCart)))));

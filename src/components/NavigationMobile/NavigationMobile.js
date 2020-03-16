@@ -49,11 +49,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { name: "SkNavigationMobile" })
-@withShop
-@inject("navItems")
-@inject("uiStore")
-@observer
 class NavigationMobile extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -140,4 +135,4 @@ class NavigationMobile extends Component {
   }
 }
 
-export default NavigationMobile;
+export default withStyles(styles)(withShop(inject("navItems", "uiStore")(observer(NavigationMobile))));

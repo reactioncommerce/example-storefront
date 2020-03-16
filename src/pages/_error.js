@@ -20,8 +20,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles)
-export default class Error extends Component {
+class Error extends Component {
   static propTypes = {
     classes: PropTypes.object,
     shop: PropTypes.object,
@@ -66,3 +65,5 @@ export default class Error extends Component {
     );
   }
 }
+
+export default withStyles(styles)(Error);
