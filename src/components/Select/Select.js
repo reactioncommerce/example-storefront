@@ -12,20 +12,20 @@ const styles = (theme) => ({
   },
   menuItem: {
     fontSize: "1rem",
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit
+    paddingTop: theme.spacing(),
+    paddingBottom: theme.spacing()
   },
   selectMenu: {
     fontSize: "1rem",
     border: theme.palette.borders.default,
-    paddingLeft: theme.spacing.unit,
+    paddingLeft: theme.spacing(),
     borderRadius: theme.borderRadii.default
   },
   selected: {
     backgroundColor: theme.palette.action.hover
   },
   input: {
-    width: theme.spacing.unit * 21
+    width: theme.spacing(21)
   }
 });
 

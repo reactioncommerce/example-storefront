@@ -11,7 +11,7 @@ import ErrorPage from "./_error";
 
 const styles = (theme) => ({
   accountProfileInfoContainer: {
-    marginBottom: theme.spacing.unit * 4
+    marginBottom: theme.spacing(4)
   }
 });
 
@@ -53,7 +53,7 @@ class ProfileAddressBookPage extends Component {
           meta={[{ name: "description", content: shop && shop.description }]}
         />
         <section>
-          <Grid container spacing={24}>
+          <Grid container spacing={3}>
             <Grid item xs={false} md={1} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
             <Grid item xs={12} md={3}>
               <ProfileMenu router={router} />

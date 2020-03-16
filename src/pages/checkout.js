@@ -85,7 +85,7 @@ const styles = (theme) => ({
   },
   logo: {
     color: theme.palette.reaction.reactionBlue,
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing(),
     borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
   },
   // login view styles
@@ -101,7 +101,7 @@ const styles = (theme) => ({
   backLinkText: {
     letterSpacing: "0.3px",
     lineHeight: 1.71,
-    marginLeft: theme.spacing.unit,
+    marginLeft: theme.spacing(),
     textDecoration: "underline"
   },
   headerFlex: {
@@ -113,17 +113,17 @@ const styles = (theme) => ({
     borderBottom: `solid 1px ${theme.palette.reaction.black10}`,
     display: "flex",
     justifyContent: "center",
-    marginBottom: theme.spacing.unit * 3,
-    padding: theme.spacing.unit * 3
+    marginBottom: theme.spacing(3),
+    padding: theme.spacing(3)
   },
   main: {
     flex: "1 1 auto",
     maxWidth: theme.layout.mainLoginMaxWidth,
     minHeight: "calc(100vh - 135px)",
     margin: "0 auto",
-    padding: `${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px 0`,
+    padding: theme.spacing(3, 3, 0),
     [theme.breakpoints.up("md")]: {
-      padding: `${theme.spacing.unit * 10}px ${theme.spacing.unit * 3}px 0`
+      padding: theme.spacing(10, 3, 0)
     }
   },
   root: {}
@@ -329,7 +329,7 @@ class Checkout extends Component {
     return (
       <div className={classes.checkoutContentContainer}>
         <div className={classes.checkoutContent}>
-          <Grid container spacing={24}>
+          <Grid container spacing={3}>
             <Grid item xs={12} md={7}>
               <div className={classes.flexContainer}>
                 <div className={classes.checkoutActions}>

@@ -1,10 +1,9 @@
 import NextApp, { Container } from "next/app";
 import React from "react";
 import { ThemeProvider as RuiThemeProvider } from "styled-components";
-import { StripeProvider } from "react-stripe-elements";
-import { MuiThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import JssProvider from "react-jss/lib/JssProvider";
+import { StripeProvider } from "react-stripe-elements";
 import { Provider as MobxProvider } from "mobx-react";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
 import getConfig from "next/config";
@@ -16,9 +15,9 @@ import withViewer from "containers/account/withViewer";
 import Layout from "components/Layout";
 import withMobX from "lib/stores/withMobX";
 import rootMobXStores from "lib/stores";
-import getPageContext from "../lib/theme/getPageContext";
-import components from "../custom/componentsContext";
-import componentTheme from "../custom/componentTheme";
+import components from "custom/componentsContext";
+import componentTheme from "custom/componentTheme";
+import theme from "custom/reactionTheme";
 import getAllTags from "../lib/data/getAllTags";
 
 const { publicRuntimeConfig } = getConfig();
@@ -50,11 +49,8 @@ export default class App extends NextApp {
 
   constructor(props) {
     super(props);
-    this.pageContext = getPageContext();
     this.state = { stripe: null };
   }
-
-  pageContext = null;
 
   componentDidMount() {
     // Fetch and update auth token in auth store
@@ -82,25 +78,20 @@ export default class App extends NextApp {
       <Container>
         <ComponentsProvider value={components}>
           <MobxProvider suppressChangedStoreWarning navItems={shop && shop.defaultNavigationTree} tags={tags}>
-            <JssProvider
-              registry={this.pageContext.sheetsRegistry}
-              generateClassName={this.pageContext.generateClassName}
-            >
-              <RuiThemeProvider theme={componentTheme}>
-                <MuiThemeProvider theme={this.pageContext.theme} sheetsManager={this.pageContext.sheetsManager}>
-                  <CssBaseline />
-                  {route === "/checkout" || route === "/login" ? (
-                    <StripeProvider stripe={stripe}>
-                      <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
-                    </StripeProvider>
-                  ) : (
-                    <Layout shop={shop} viewer={viewer}>
-                      <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
-                    </Layout>
-                  )}
-                </MuiThemeProvider>
-              </RuiThemeProvider>
-            </JssProvider>
+            <RuiThemeProvider theme={componentTheme}>
+              <MuiThemeProvider theme={theme}>
+                <CssBaseline />
+                {route === "/checkout" || route === "/login" ? (
+                  <StripeProvider stripe={stripe}>
+                    <Component shop={shop} {...rest} {...pageProps} />
+                  </StripeProvider>
+                ) : (
+                  <Layout shop={shop} viewer={viewer}>
+                    <Component shop={shop} {...rest} {...pageProps} />
+                  </Layout>
+                )}
+              </MuiThemeProvider>
+            </RuiThemeProvider>
           </MobxProvider>
         </ComponentsProvider>
       </Container>

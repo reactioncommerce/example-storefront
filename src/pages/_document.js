@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
 import Document, { Head, Main, NextScript } from "next/document";
-import flush from "styled-jsx/server";
+import { ServerStyleSheet as StyledComponentSheets } from "styled-components";
+import { ServerStyleSheets as MaterialUiServerStyleSheets } from "@material-ui/styles";
 import Helmet from "react-helmet";
-import { ServerStyleSheet } from "styled-components";
 import getConfig from "next/config";
 import analyticsProviders from "../custom/analytics";
-import favicons from "../custom/favicons";
+import favicons from "custom/favicons";
+import theme from "custom/reactionTheme";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -16,50 +16,8 @@ const { publicRuntimeConfig } = getConfig();
  * Event handlers like onClick can't be added to this file.
  */
 class HTMLDocument extends Document {
-  static getInitialProps(ctx) {
-    // Render app and page and get the context of the page with collected side effects.
-    let pageContext;
-
-    const sheet = new ServerStyleSheet();
-
-    const page = ctx.renderPage((App) => {
-      const WrappedComponent = (props) => {
-        // eslint-disable-next-line prefer-destructuring
-        pageContext = props.pageContext;
-
-        return sheet.collectStyles(<App {...props} />);
-      };
-
-      WrappedComponent.propTypes = {
-        pageContext: PropTypes.object.isRequired
-      };
-
-      return WrappedComponent;
-    });
-
-    const styledComponentsStyleTags = sheet.getStyleElement();
-
-    return {
-      ...page,
-      pageContext,
-      helmet: Helmet.rewind(),
-      styles: (
-        <Fragment>
-          <style
-            id="jss-server-side"
-            // pageContext is undefined when there was an Apollo network error. Avoid extra errors
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: pageContext ? pageContext.sheetsRegistry.toString() : "" }}
-          />
-          {flush() || null}
-        </Fragment>
-      ),
-      styledComponentsStyleTags
-    };
-  }
-
   render() {
-    const { helmet, pageContext, styledComponentsStyleTags } = this.props;
+    const { helmet } = this.props;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
     const links = [
       { rel: "canonical", href: publicRuntimeConfig.canonicalUrl },
@@ -71,14 +29,13 @@ class HTMLDocument extends Document {
       {
         name: "viewport",
         content: "user-scalable=0, initial-scale=1 minimum-scale=1, width=device-width, height=device-height"
+      },
+      // PWA primary color
+      {
+        name: "theme-color",
+        content: theme.palette.primary.main
       }
     ];
-
-    // PWA primary color
-    // pageContext is undefined when there was an Apollo network error. Avoid extra errors
-    if (pageContext) {
-      meta.push({ name: "theme-color", content: pageContext.theme.palette.primary.main });
-    }
 
     // Analytics & Stripe Elements scripts
     const scripts = [
@@ -104,7 +61,6 @@ class HTMLDocument extends Document {
         {helmet.style.toComponent()}
         {helmet.script.toComponent()}
         {helmet.noscript.toComponent()}
-        {styledComponentsStyleTags}
       </Head>
       <body>
         <Main />
@@ -114,6 +70,33 @@ class HTMLDocument extends Document {
       </body>
     </html>;
   }
+}
+
+HTMLDocument.getInitialProps = async (ctx) => {
+  const styledComponentSheet = new StyledComponentSheets();
+  const materialUiSheets = new MaterialUiServerStyleSheets();
+  const originalRenderPage = ctx.renderPage;
+
+  try {
+    ctx.renderPage = () => originalRenderPage({
+      enhanceApp: (App) => (props) => (
+        styledComponentSheet.collectStyles(materialUiSheets.collect(<App {...props} />))
+      )
+    });
+    const initialProps = await Document.getInitialProps(ctx);
+    return {
+      ...initialProps,
+      styles: (
+        <Fragment key="styles">
+          {initialProps.styles}
+          {materialUiSheets.getStyleElement()}
+          {styledComponentSheet.getStyleElement()}
+        </Fragment>
+      )
+    };
+  } finally {
+    styledComponentSheet.seal();
+  } 
 }
 
 export default HTMLDocument;
