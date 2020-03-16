@@ -12,9 +12,6 @@ import { orderByReferenceId } from "./queries.gql";
  * @returns {React.Component} - Component with `cart` props and callbacks
  */
 export default function withOrder(Component) {
-  @withApollo
-  @inject("cartStore", "primaryShopId", "routingStore", "uiStore")
-  @observer
   class WithOrder extends React.Component {
     static propTypes = {
       cartStore: PropTypes.shape({
@@ -67,5 +64,5 @@ export default function withOrder(Component) {
 
   hoistNonReactStatic(WithOrder, Component);
 
-  return WithOrder;
+  return withApollo(inject("cartStore", "primaryShopId", "routingStore", "uiStore")(observer(WithOrder)));
 }

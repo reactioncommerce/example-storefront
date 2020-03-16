@@ -41,8 +41,7 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { withTheme: true, name: "SkEntry" })
-export default class Entry extends Component {
+class Entry extends Component {
   static propTypes = {
     classes: PropTypes.object,
     onLoginButtonClick: PropTypes.func,
@@ -90,3 +89,5 @@ export default class Entry extends Component {
     );
   }
 }
+
+export default withStyles(styles, { withTheme: true})(Entry);

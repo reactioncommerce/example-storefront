@@ -19,8 +19,6 @@ const styles = (theme) => ({
   }
 });
 
-@withOrder
-@withStyles(styles, { withTheme: true })
 class CheckoutComplete extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -82,4 +80,4 @@ class CheckoutComplete extends Component {
   }
 }
 
-export default CheckoutComplete;
+export default withOrder(withStyles(styles, { withTheme: true })(CheckoutComplete))

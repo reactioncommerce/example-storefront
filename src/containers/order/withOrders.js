@@ -14,9 +14,6 @@ import { ordersByAccountIdQuery } from "./queries.gql";
  * @returns {React.Component} - Component with `orders` props and callbacks
  */
 export default function withOrders(Component) {
-  @withApollo
-  @inject("authStore", "cartStore", "primaryShopId", "routingStore", "uiStore")
-  @observer
   class WithOrders extends React.Component {
     static propTypes = {
       authStore: PropTypes.shape({
@@ -72,5 +69,5 @@ export default function withOrders(Component) {
 
   hoistNonReactStatic(WithOrders, Component);
 
-  return WithOrders;
+  return withApollo(inject("authStore", "cartStore", "primaryShopId", "routingStore", "uiStore")(observer(WithOrders)));
 }

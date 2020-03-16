@@ -11,7 +11,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { name: "SkCheckoutSummary" })
 class CheckoutSummary extends Component {
   static propTypes = {
     cart: PropTypes.shape({
@@ -119,4 +118,4 @@ class CheckoutSummary extends Component {
   }
 }
 
-export default CheckoutSummary;
+export default withStyles(styles)(CheckoutSummary);

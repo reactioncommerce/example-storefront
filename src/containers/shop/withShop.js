@@ -12,7 +12,6 @@ import primaryShopQuery from "../common-gql/primaryShop.gql";
  * @returns {React.Component} - component decorated with primaryShopId and shop as props
  */
 export default function withShop(Component) {
-  @inject("uiStore")
   class Shop extends React.Component {
     static propTypes = {
       uiStore: PropTypes.object.isRequired
@@ -46,5 +45,5 @@ export default function withShop(Component) {
 
   hoistNonReactStatic(Shop, Component);
 
-  return Shop;
+  return inject("uiStore")(Shop);
 }

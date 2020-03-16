@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { observable, action } from "mobx";
+import { observable, action, decorate } from "mobx";
 
 /**
  * A MobX store for cart
@@ -14,35 +14,35 @@ class CartStore {
    *
    * @type String
    */
-  @observable anonymousCartId = null;
+  anonymousCartId = null;
 
   /**
    * The token for an anonymous cart
    *
    * @type String
    */
-  @observable anonymousCartToken = null;
+  anonymousCartToken = null;
 
   /**
    * The cart id for an account cart
    *
    * @type String
    */
-  @observable accountCartId = null;
+  accountCartId = null;
 
   /**
    * Is the cart currently in the process of being reconciled
    *
    * @type Boolean
    */
-  @observable isReconcilingCarts = false;
+  isReconcilingCarts = false;
 
   /**
    * Payment data from the payment action during checkout
    *
    * @type Object[]
    */
-  @observable checkoutPayments = [];
+  checkoutPayments = [];
 
   /**
    * @name setAnonymousCartCredentials
@@ -51,7 +51,7 @@ class CartStore {
    * @param {String} anonymousCartToken  Token from "createCart" mutation
    * @returns {undefined} No return
    */
-  @action setAnonymousCartCredentials(anonymousCartId, anonymousCartToken) {
+  setAnonymousCartCredentials = (anonymousCartId, anonymousCartToken) => {
     this.anonymousCartId = anonymousCartId || null;
     this.anonymousCartToken = anonymousCartToken || null;
 
@@ -79,7 +79,7 @@ class CartStore {
    * @summary Remove anonymousCartId and anonymousCartToken from local storage and cookies
    * @returns {undefined} No return
    */
-  @action clearAnonymousCartCredentials() {
+  clearAnonymousCartCredentials = () => {
     this.setAnonymousCartCredentials(null, null);
   }
 
@@ -103,9 +103,9 @@ class CartStore {
    * @param {Boolean} value true/false
    * @returns {undefined} No return
    */
-  @action setIsReconcilingCarts(value) {
+  setIsReconcilingCarts = (value) => {
     this.isReconcilingCarts = value;
-  }
+  };
 
   /**
    * @name hasAnonymousCartCredentials
@@ -120,17 +120,31 @@ class CartStore {
     return typeof this.accountCartId === "string";
   }
 
-  @action setAccountCartId(value) {
+  setAccountCartId = (value) => {
     this.accountCartId = value;
   }
 
-  @action addCheckoutPayment(value) {
+  addCheckoutPayment = (value) => {
     this.checkoutPayments.push(value);
   }
 
-  @action resetCheckoutPayments() {
+  resetCheckoutPayments = () => {
     this.checkoutPayments = [];
   }
 }
+
+decorate(CartStore, {
+  anonymousCartId: observable,
+  anonymousCartToken: observable,
+  accountCartId: observable,
+  isReconcilingCarts: observable,
+  checkoutPayments: observable,
+  setAnonymousCartCredentials: action,
+  clearAnonymousCartCredentials: action,
+  setIsReconcilingCarts: action,
+  setAccountCartId: action,
+  addCheckoutPayment: action,
+  resetCheckoutPayments: action
+})
 
 export default CartStore;

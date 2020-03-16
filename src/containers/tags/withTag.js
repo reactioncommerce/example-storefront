@@ -12,8 +12,6 @@ import tagQuery from "./tag.gql";
  * @returns {React.Component} - Component with `tag` prop
  */
 export default function withTag(Component) {
-  @inject("primaryShopId", "routingStore")
-  @observer
   class WithTag extends React.Component {
     static propTypes = {
       primaryShopId: PropTypes.string,
@@ -61,5 +59,5 @@ export default function withTag(Component) {
 
   hoistNonReactStatic(WithTag, Component);
 
-  return WithTag;
+  return inject("primaryShopId", "routingStore")(observer(WithTag));
 }

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { inject } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import classNames from "classnames";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
@@ -42,8 +42,6 @@ const styles = (theme) => ({
   }
 });
 
-@inject("routingStore")
-@withStyles(styles, { name: "SkNavigationItemDesktop" })
 class NavigationItemDesktop extends Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -181,4 +179,4 @@ class NavigationItemDesktop extends Component {
   }
 }
 
-export default NavigationItemDesktop;
+export default withStyles(styles)(inject("routingStore")(observer(NavigationItemDesktop)));

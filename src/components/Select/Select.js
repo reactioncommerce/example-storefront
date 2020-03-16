@@ -29,7 +29,6 @@ const styles = (theme) => ({
   }
 });
 
-@withStyles(styles, { name: "SkSelect" })
 class Select extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -86,4 +85,4 @@ class Select extends Component {
   }
 }
 
-export default Select;
+export default withStyles(styles)(Select);

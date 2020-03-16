@@ -38,10 +38,7 @@ const NoPaymentMethodsMessage = () => <MessageDiv>No payment methods available</
 
 NoPaymentMethodsMessage.renderComplete = () => "";
 
-@withAddressValidation
-@track()
-@observer
-export default class CheckoutActions extends Component {
+class CheckoutActions extends Component {
   static propTypes = {
     addressValidation: PropTypes.func.isRequired,
     addressValidationResults: PropTypes.object,
@@ -80,7 +77,7 @@ export default class CheckoutActions extends Component {
     const { cart } = this.props;
 
     // Track start of checkout process
-    this.trackCheckoutStarted({ cart, action: CHECKOUT_STARTED });
+    // this.trackCheckoutStarted({ cart, action: CHECKOUT_STARTED });
 
     const { checkout: { fulfillmentGroups } } = cart;
     const [fulfillmentGroup] = fulfillmentGroups;
@@ -89,7 +86,7 @@ export default class CheckoutActions extends Component {
     // as it will be expanded by default, only record this event when the
     // shipping address has not yet been set.
     if (!fulfillmentGroup.shippingAddress) {
-      this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 1 }));
+      // this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 1 }));
     }
   }
 
@@ -107,15 +104,6 @@ export default class CheckoutActions extends Component {
   componentWillUnmount() {
     this._isMounted = false;
   }
-
-  @trackCheckoutStep()
-  trackAction() {}
-
-  @trackCheckout()
-  trackCheckoutStarted() {}
-
-  @trackOrder()
-  trackOrder() {}
 
   buildData = ({ step, action }) => ({
     action,
@@ -142,10 +130,10 @@ export default class CheckoutActions extends Component {
 
     if (data && !error) {
       // track successfully setting a shipping address
-      this.trackAction(this.buildData({ action: CHECKOUT_STEP_COMPLETED, step: 1 }));
+      // this.trackAction(this.buildData({ action: CHECKOUT_STEP_COMPLETED, step: 1 }));
 
       // The next step will automatically be expanded, so lets track that
-      this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 2 }));
+      // this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 2 }));
 
       if (this._isMounted) {
         this.setState({
@@ -180,10 +168,10 @@ export default class CheckoutActions extends Component {
     const { data, error } = await onSetFulfillmentOption(fulfillmentOption);
     if (data && !error) {
       // track successfully setting a shipping method
-      this.trackAction(this.buildData({ action: CHECKOUT_STEP_COMPLETED, step: 2 }));
+      // this.trackAction(this.buildData({ action: CHECKOUT_STEP_COMPLETED, step: 2 }));
 
       // The next step will automatically be expanded, so lets track that
-      this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 3 }));
+      // this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 3 }));
     }
   };
 
@@ -198,10 +186,10 @@ export default class CheckoutActions extends Component {
     });
 
     // Track successfully setting a payment method
-    this.trackAction(this.buildData({ action: PAYMENT_INFO_ENTERED, step: 3 }));
+    // this.trackAction(this.buildData({ action: PAYMENT_INFO_ENTERED, step: 3 }));
 
     // The next step will automatically be expanded, so lets track that
-    this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 4 }));
+    // this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 4 }));
   };
 
   handlePaymentsReset = () => {
@@ -278,9 +266,9 @@ export default class CheckoutActions extends Component {
 
       const { placeOrder: { orders, token } } = data;
 
-      this.trackAction(this.buildData({ action: CHECKOUT_STEP_COMPLETED, step: 4 }));
+      // this.trackAction(this.buildData({ action: CHECKOUT_STEP_COMPLETED, step: 4 }));
 
-      this.trackOrder({ action: ORDER_COMPLETED, orders });
+      // this.trackOrder({ action: ORDER_COMPLETED, orders });
 
       // Send user to order confirmation page
       Router.pushRoute("checkoutComplete", { orderId: orders[0].referenceId, token });
@@ -418,3 +406,5 @@ export default class CheckoutActions extends Component {
     );
   }
 }
+
+export default withAddressValidation(observer(CheckoutActions));

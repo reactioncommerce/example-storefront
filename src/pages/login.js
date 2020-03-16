@@ -57,9 +57,7 @@ const styles = (theme) => ({
   root: {}
 });
 
-@withCart
-@withStyles(styles, { withTheme: true })
-export default class Login extends Component {
+class Login extends Component {
   static propTypes = {
     cart: PropTypes.shape({
       account: PropTypes.object,
@@ -126,3 +124,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default withCart(withStyles(styles, { withTheme: true })(Login));
