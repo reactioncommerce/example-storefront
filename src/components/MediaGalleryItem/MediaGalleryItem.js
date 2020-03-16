@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import withStyles from "@material-ui/core/styles/withStyles";
-import ProgressiveImage from "@reactioncommerce/components/ProgressiveImage/v1";
+// import ProgressiveImage from "@reactioncommerce/components/ProgressiveImage/v1";
+import ProgressiveImage from "components/ProgressiveImage";
 
 const styles = () => ({
   root: {
@@ -14,7 +15,6 @@ const styles = () => ({
  * Product detail media gallery item
  * @class ProductDetailMediaGalleryItem
  */
-@withStyles(styles, { name: "SkMediaGalleryItem" })
 class MediaGalleryItem extends Component {
   static propTypes = {
     /**
@@ -66,4 +66,4 @@ class MediaGalleryItem extends Component {
   }
 }
 
-export default MediaGalleryItem;
+export default withStyles(styles)(MediaGalleryItem);
