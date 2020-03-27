@@ -55,15 +55,6 @@ class TagGridPage extends Component {
     return null;
   }
 
-  static async getInitialProps({ req }) {
-    // It is not perfect, but the only way we can guess at the screen width of the
-    // requesting device is to parse the `user-agent` header it sends.
-    const userAgent = req ? req.headers["user-agent"] : navigator.userAgent;
-    const width = (userAgent && userAgent.indexOf("Mobi")) > -1 ? 320 : 1024;
-
-    return { initialGridSize: { width } };
-  }
-
   state = {};
 
   componentDidUpdate(prevProps) {
@@ -109,7 +100,6 @@ class TagGridPage extends Component {
     const {
       catalogItems,
       catalogItemsPageInfo,
-      initialGridSize,
       isLoadingCatalogItems,
       routingStore,
       shop,
@@ -147,7 +137,6 @@ class TagGridPage extends Component {
         <ProductGrid
           catalogItems={catalogItems}
           currencyCode={shop.currency.code}
-          initialSize={initialGridSize}
           isLoadingCatalogItems={isLoadingCatalogItems}
           pageInfo={catalogItemsPageInfo}
           pageSize={pageSize}
