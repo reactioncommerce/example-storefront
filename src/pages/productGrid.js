@@ -11,7 +11,6 @@ class ProductGridPage extends Component {
   static propTypes = {
     catalogItems: PropTypes.array,
     catalogItemsPageInfo: PropTypes.object,
-    initialGridSize: PropTypes.object,
     isLoadingCatalogItems: PropTypes.bool,
     routingStore: PropTypes.object,
     shop: PropTypes.shape({
@@ -27,15 +26,6 @@ class ProductGridPage extends Component {
       sortBy: PropTypes.string.isRequired
     })
   };
-
-  static async getInitialProps({ req }) {
-    // It is not perfect, but the only way we can guess at the screen width of the
-    // requesting device is to parse the `user-agent` header it sends.
-    const userAgent = req ? req.headers["user-agent"] : navigator.userAgent;
-    const width = (userAgent && userAgent.indexOf("Mobi")) > -1 ? 320 : 1024;
-
-    return { initialGridSize: { width } };
-  }
 
   // @trackProductListViewed()
   componentDidMount() {
@@ -63,7 +53,6 @@ class ProductGridPage extends Component {
     const {
       catalogItems,
       catalogItemsPageInfo,
-      initialGridSize,
       isLoadingCatalogItems,
       routingStore: { query },
       shop,
@@ -89,7 +78,6 @@ class ProductGridPage extends Component {
         <ProductGrid
           catalogItems={catalogItems}
           currencyCode={(shop && shop.currency && shop.currency.code) || "USD"}
-          initialSize={initialGridSize}
           isLoadingCatalogItems={isLoadingCatalogItems}
           pageInfo={catalogItemsPageInfo}
           pageSize={pageSize}
