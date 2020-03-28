@@ -46,14 +46,10 @@ export default function withCatalogItems(Component) {
         sortOrder
       };
 
-      console.log("primaryShopId", primaryShopId);
-
       return (
         <Query errorPolicy="all" query={catalogItemsQuery} variables={variables}>
           {({ data, fetchMore, loading }) => {
             const { catalogItems } = data || {};
-
-            console.log("data", data)
 
             return (
               <Component
