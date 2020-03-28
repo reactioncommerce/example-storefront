@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Query, withApollo } from "react-apollo";
+import { Query } from "@apollo/react-components";
 import { inject, observer } from "mobx-react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import { orderByReferenceId } from "./queries.gql";
@@ -64,5 +64,5 @@ export default function withOrder(Component) {
 
   hoistNonReactStatic(WithOrder, Component);
 
-  return withApollo(inject("cartStore", "primaryShopId", "routingStore", "uiStore")(observer(WithOrder)));
+  return inject("cartStore", "primaryShopId", "routingStore", "uiStore")(observer(WithOrder));
 }

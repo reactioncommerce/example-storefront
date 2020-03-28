@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Query } from "react-apollo";
+import { Query } from "@apollo/react-components";
 import { inject, observer } from "mobx-react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import tagQuery from "./tag.gql";
