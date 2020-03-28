@@ -61,7 +61,7 @@ class MediaGallery extends Component {
   };
 
   renderPlaceHolderImg = () => {
-    const placeholderURL = "/static/images/placeholder.gif";
+    const placeholderURL = "/images/placeholder.gif";
     return (
       <ProgressiveImage
         presrc={placeholderURL}
