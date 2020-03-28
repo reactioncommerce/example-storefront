@@ -6,7 +6,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { StripeProvider } from "react-stripe-elements";
 import { Provider as MobxProvider } from "mobx-react";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
-import getConfig from "next/config";
 import Layout from "components/Layout";
 import withMobX from "lib/stores/withMobX";
 import withShop from "containers/shop/withShop";
@@ -15,8 +14,6 @@ import components from "custom/componentsContext";
 import componentTheme from "custom/componentTheme";
 import theme from "custom/reactionTheme";
 // import getAllTags from "../lib/data/getAllTags";
-
-const { publicRuntimeConfig } = getConfig();
 
 class App extends NextApp {
   /*
@@ -47,10 +44,9 @@ class App extends NextApp {
       jssStyles.parentNode.removeChild(jssStyles);
     }
 
-    const { stripePublicApiKey } = publicRuntimeConfig;
-    if (stripePublicApiKey && window.Stripe) {
+    if (process.env.STRIPE_PUBLIC_API_KEY && window.Stripe) {
       // eslint-disable-next-line react/no-did-mount-set-state
-      this.setState({ stripe: window.Stripe(stripePublicApiKey) });
+      this.setState({ stripe: window.Stripe(process.env.STRIPE_PUBLIC_API_KEY) });
     }
   }
 

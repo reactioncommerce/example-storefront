@@ -5,9 +5,6 @@ import routes, { Link as NextLink } from "routes";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 // import track from "lib/tracking/track";
-import getConfig from "next/config";
-
-const { publicRuntimeConfig: { enableSPARouting } } = getConfig();
 
 const styles = () => ({
   anchor: {
@@ -68,7 +65,7 @@ class Link extends Component {
       params,
       route,
       shouldOpenInNewWindow,
-      tracking, // eslint-disable-line
+      // tracking, // eslint-disable-line
       to,
       ...props
     } = this.props;
@@ -92,7 +89,7 @@ class Link extends Component {
 
     // If link is a relative and should open in the same window,
     // use `NextLink` component
-    if (enableSPARouting === false) {
+    if (process.env.ENABLE_SPA_ROUTING === false) {
       const { urls: { as } } = routes.findAndGetUrls(route || to || href, params);
 
       return (

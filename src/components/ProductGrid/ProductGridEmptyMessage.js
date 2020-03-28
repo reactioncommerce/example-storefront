@@ -46,7 +46,7 @@ class ProductGridEmptyMessage extends Component {
       <div className={classes.root}>
         <Typography className={classes.notFoundMessage} paragraph>{notFoundMessage}</Typography>
         <Typography className={classes.actionMessage}>
-          <Link route={resetLink}>{actionMessage}</Link>
+          { resetLink && <Link route={resetLink}>{actionMessage}</Link>}
         </Typography>
       </div>
     );

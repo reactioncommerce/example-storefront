@@ -4,8 +4,7 @@
  * - If the config is needed in a Node js file, you should import it directly from here.
  * - If the config is needed in browser code, which may sometimes be executed in a browser
  *   and sometimes be executed on the server, you should import the config from here into
- *   next.config.js and add it to either `publicRuntimeConfig` or `serverRuntimeConfig`.
- *   Then use `getConfig()` to get it within React components and other browser code.
+ *   next.config.js and add it to `env`.
  */
 const envalid = require("envalid");
 
