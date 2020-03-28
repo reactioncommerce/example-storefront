@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
 import { inject, observer } from "mobx-react";
-import track from "lib/tracking/track";
+// import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
 import ProductDetailTitle from "components/ProductDetailTitle";
@@ -16,11 +16,11 @@ import MediaGallery from "components/MediaGallery";
 import { Router } from "routes";
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import variantById from "lib/utils/variantById";
-import trackProduct from "lib/tracking/trackProduct";
-import TRACKING from "lib/tracking/constants";
-import trackCartItems from "lib/tracking/trackCartItems";
+// import trackProduct from "lib/tracking/trackProduct";
+// import TRACKING from "lib/tracking/constants";
+// import trackCartItems from "lib/tracking/trackCartItems";
 
-const { CART_VIEWED, PRODUCT_ADDED, PRODUCT_VIEWED } = TRACKING;
+// const { CART_VIEWED, PRODUCT_ADDED, PRODUCT_VIEWED } = TRACKING;
 
 const styles = (theme) => ({
   section: {
