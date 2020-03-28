@@ -7,40 +7,30 @@ import { StripeProvider } from "react-stripe-elements";
 import { Provider as MobxProvider } from "mobx-react";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
 import getConfig from "next/config";
-import track from "lib/tracking/track";
-import dispatch from "lib/tracking/dispatch";
-import withApolloClient from "lib/apollo/withApolloClient";
-import withShop from "containers/shop/withShop";
-import withViewer from "containers/account/withViewer";
 import Layout from "components/Layout";
 import withMobX from "lib/stores/withMobX";
+import withShop from "containers/shop/withShop";
 import rootMobXStores from "lib/stores";
 import components from "custom/componentsContext";
 import componentTheme from "custom/componentTheme";
 import theme from "custom/reactionTheme";
-import getAllTags from "../lib/data/getAllTags";
+// import getAllTags from "../lib/data/getAllTags";
 
 const { publicRuntimeConfig } = getConfig();
 
 class App extends NextApp {
+  /*
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
-
-    // TODO
-    // We retrieve tags here because
-    // 1) they were used for navigtion and needed to be here and
-    // 2) with multiple pages of tags, this was the only place where
-    // we could loop multiple times to get them all
-    // We no longer use tags for navigation, so if we can find a resolution
-    // to #2, we can move this to only where tags are needed, or inside their own `withTags` container
     const tags = await getAllTags(ctx.apolloClient);
 
     return { pageProps, tags };
   }
+  */
 
   constructor(props) {
     super(props);
@@ -75,6 +65,21 @@ class App extends NextApp {
           <RuiThemeProvider theme={componentTheme}>
             <MuiThemeProvider theme={theme}>
               <CssBaseline />
+              <Layout shop={shop} viewer={viewer}>
+                <Component shop={shop} {...rest} {...pageProps} />
+              </Layout>
+            </MuiThemeProvider>
+          </RuiThemeProvider>
+        </MobxProvider>
+      </ComponentsProvider>
+    );
+
+    return (
+      <ComponentsProvider value={components}>
+        <MobxProvider suppressChangedStoreWarning navItems={shop && shop.defaultNavigationTree} tags={tags}>
+          <RuiThemeProvider theme={componentTheme}>
+            <MuiThemeProvider theme={theme}>
+              <CssBaseline />
               {route === "/checkout" || route === "/login" ? (
                 <StripeProvider stripe={stripe}>
                   <Component shop={shop} {...rest} {...pageProps} />
@@ -92,4 +97,6 @@ class App extends NextApp {
   }
 }
 
-export default withApolloClient(withMobX(withShop(withViewer(App))));
+// export default withMobX(withShop(withViewer(App)));
+// export default withMobX(App);
+export default withMobX(withShop(App));

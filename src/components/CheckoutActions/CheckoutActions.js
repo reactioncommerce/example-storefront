@@ -14,14 +14,15 @@ import withAddressValidation from "containers/address/withAddressValidation";
 import Dialog from "@material-ui/core/Dialog";
 import PageLoading from "components/PageLoading";
 import { Router } from "routes";
-import track from "lib/tracking/track";
-import TRACKING from "lib/tracking/constants";
-import trackCheckout from "lib/tracking/trackCheckout";
-import trackOrder from "lib/tracking/trackOrder";
-import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
+// import track from "lib/tracking/track";
+// import TRACKING from "lib/tracking/constants";
+// import trackCheckout from "lib/tracking/trackCheckout";
+// import trackOrder from "lib/tracking/trackOrder";
+// import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
 import calculateRemainderDue from "lib/utils/calculateRemainderDue";
 import { placeOrder } from "../../containers/order/mutations.gql";
 
+/*
 const {
   CHECKOUT_STARTED,
   CHECKOUT_STEP_COMPLETED,
@@ -29,6 +30,7 @@ const {
   ORDER_COMPLETED,
   PAYMENT_INFO_ENTERED
 } = TRACKING;
+*/
 
 const MessageDiv = styled.div`
   ${addTypographyStyles("NoPaymentMethodsMessage", "bodyText")}
