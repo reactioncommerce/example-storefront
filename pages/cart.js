@@ -11,7 +11,7 @@ import withCart from "containers/cart/withCart";
 import CartItems from "components/CartItems";
 import CheckoutButtons from "components/CheckoutButtons";
 import Link from "components/Link";
-import { Router } from "routes";
+import Router from "next/router";
 import PageLoading from "components/PageLoading";
 // import track from "lib/tracking/track";
 import variantById from "lib/utils/variantById";
