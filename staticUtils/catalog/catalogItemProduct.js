@@ -174,4 +174,4 @@ query catalogItemProductQuery($slugOrId: String!) {
       }
     }
   }
-`
+`;
