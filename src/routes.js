@@ -1,15 +1,12 @@
 const routes = require("next-routes")();
-const getConfig = require("next/config").default;
 const defineRoutes = require("./custom/routes");
 
 if (process.browser) {
-  const { publicRuntimeConfig } = getConfig();
-
   const wrap = (method) => (route, params, options = {}) => {
     const { byName, urls: { as, href } } = routes.findAndGetUrls(route, params);
 
     // Force full page loads
-    if (!publicRuntimeConfig.enableSPARouting && !options.replace) {
+    if (!process.env.ENABLE_SPA_ROUTING && !options.replace) {
       window.location = as;
       return as;
     }

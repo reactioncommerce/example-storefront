@@ -23,7 +23,6 @@ class ProductGrid extends Component {
     catalogItems: PropTypes.arrayOf(PropTypes.object),
     classes: PropTypes.object,
     currencyCode: PropTypes.string.isRequired,
-    initialSize: PropTypes.object,
     isLoadingCatalogItems: PropTypes.bool,
     pageInfo: PropTypes.shape({
       startCursor: PropTypes.string,
@@ -58,7 +57,7 @@ class ProductGrid extends Component {
   onItemClick = (event, product) => {} // eslint-disable-line no-unused-vars
 
   renderMainArea() {
-    const { catalogItems, initialSize, isLoadingCatalogItems, pageInfo } = this.props;
+    const { catalogItems, isLoadingCatalogItems, pageInfo } = this.props;
 
     if (isLoadingCatalogItems) return <PageLoading />;
 
@@ -69,7 +68,6 @@ class ProductGrid extends Component {
       <Fragment>
         <Grid container spacing={3}>
           <CatalogGrid
-            initialSize={initialSize}
             onItemClick={this.onItemClick}
             products={products}
             placeholderImageURL="/static/images/placeholder.gif"
