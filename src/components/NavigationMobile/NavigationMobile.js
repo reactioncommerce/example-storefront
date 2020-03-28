@@ -12,7 +12,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import CloseIcon from "mdi-material-ui/Close";
 import Link from "components/Link";
-import withShop from "containers/shop/withShop";
 import NavigationItemMobile from "./NavigationItemMobile";
 import NavigationSubMenuMobile from "./NavigationSubMenuMobile";
 
@@ -135,4 +134,4 @@ class NavigationMobile extends Component {
   }
 }
 
-export default withStyles(styles)(withShop(inject("navItems", "uiStore")(observer(NavigationMobile))));
+export default withStyles(styles)(inject("navItems", "uiStore")(observer(NavigationMobile)));
