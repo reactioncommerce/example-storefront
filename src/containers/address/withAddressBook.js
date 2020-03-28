@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import { withApollo } from "react-apollo";
 import { inject, observer } from "mobx-react";
 import relayConnectionToArray from "lib/utils/relayConnectionToArray";
 import viewerQuery from "../account/viewer.gql";
@@ -158,5 +157,5 @@ export default function withAddressBook(Comp) {
 
   hoistNonReactStatic(WithAddressBook, Comp);
 
-  return withApollo(inject("authStore")(observer(WithAddressBook)));
+  return inject("authStore")(observer(WithAddressBook));
 }
