@@ -2,11 +2,13 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import withCart from "containers/cart/withCart";
-import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import ProductDetail from "components/ProductDetail";
 import PageLoading from "components/PageLoading";
-import ErrorPage from "./_error";
+import ErrorPage from "../_error";
 import { withApollo } from "lib/apollo/withApollo";
+
+import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
+import fetchCatalogProduct from "staticUtils/catalog/fetchCatalogProduct";
 
 class ProductDetailPage extends Component {
   static propTypes = {
@@ -114,4 +116,28 @@ class ProductDetailPage extends Component {
   }
 }
 
-export default withApollo()(withCart(withCatalogItemProduct(ProductDetailPage)));
+export async function getStaticProps({ params: { slugOrId } }) {
+  const productSlug = slugOrId && slugOrId[0];
+
+  console.log("slugOrId", slugOrId);
+
+  return {
+    props: {
+      ...await fetchCatalogProduct(productSlug),
+      ...await fetchPrimaryShop()
+    },
+    revalidate: 120 // Revalidate each two minutes
+  };
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { slugOrId: ["-"] } },
+      { params: { slugOrId: ["-"] } }
+    ],
+    fallback: true
+  };
+}
+
+export default withApollo()(withCart(ProductDetailPage));
