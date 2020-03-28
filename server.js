@@ -6,7 +6,6 @@ const nextApp = require("next");
 const { useStaticRendering } = require("mobx-react");
 const config = require("./config");
 const logger = require("./lib/logger");
-const router = require("./routes");
 const { configureAuthForServer, createHydraClientIfNecessary } = require("./serverAuth");
 const { sitemapRoutesHandler } = require("./sitemapRoutesHandler");
 
@@ -21,6 +20,8 @@ const app = nextApp({
   dev: config.isDev,
   dir: "./"
 });
+
+const handle = app.getRequestHandler();
 
 useStaticRendering(true);
 
@@ -53,9 +54,9 @@ app
     // apply to routes starting with "/sitemap" and ending with ".xml"
     server.use(/^\/sitemap.*\.xml$/, sitemapRoutesHandler);
 
-    // Setup next routes
-    const routeHandler = router.getRequestHandler(app);
-    server.use(routeHandler);
+    server.all('*', (req, res) => {
+      return handle(req, res)
+    })
 
     return server.listen(config.PORT, (err) => {
       if (err) throw err;

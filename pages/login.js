@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { Router } from "routes";
+import Router from "next/router";
 import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
