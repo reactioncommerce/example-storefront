@@ -19,7 +19,7 @@ if (config.isDev) {
 // return anything until after the NextJS app is initialized.
 const app = nextApp({
   dev: config.isDev,
-  dir: "./src"
+  dir: "./"
 });
 
 useStaticRendering(true);
