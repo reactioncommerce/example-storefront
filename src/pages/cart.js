@@ -13,10 +13,11 @@ import CheckoutButtons from "components/CheckoutButtons";
 import Link from "components/Link";
 import { Router } from "routes";
 import PageLoading from "components/PageLoading";
-import track from "lib/tracking/track";
+// import track from "lib/tracking/track";
 import variantById from "lib/utils/variantById";
-import trackCartItems from "lib/tracking/trackCartItems";
-import TRACKING from "lib/tracking/constants";
+// import trackCartItems from "lib/tracking/trackCartItems";
+// import TRACKING from "lib/tracking/constants";
+import { withApollo } from "lib/apollo/withApollo";
 
 const styles = (theme) => ({
   cartEmptyMessageContainer: {
@@ -191,5 +192,4 @@ class CartPage extends Component {
   }
 }
 
-export default CartPage;
-withStyles(styles)(withCart(inject("uiStore")(observer(CartPage))));
+export default withApollo()(withStyles(styles)(withCart(inject("uiStore")(observer(CartPage)))));
