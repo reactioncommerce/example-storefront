@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import routes, { Link as NextLink } from "routes";
+import NextLink from "next/link";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 // import track from "lib/tracking/track";
@@ -87,25 +87,8 @@ class Link extends Component {
       );
     }
 
-    // If link is a relative and should open in the same window,
-    // use `NextLink` component
-    if (process.env.ENABLE_SPA_ROUTING === false) {
-      const { urls: { as } } = routes.findAndGetUrls(route || to || href, params);
-
-      return (
-        <a
-          href={as}
-          className={classNames(classes.anchor, className)}
-          onClick={this.handleClick}
-          onKeyDown={this.handleKeyDown}
-        >
-          {children}
-        </a>
-      );
-    }
-
     return (
-      <NextLink route={route || to || href} params={params} {...props} passHref>
+      <NextLink href={route || to || href} {...props} passHref>
         <a
           className={classNames(classes.anchor, className)}
           onClick={this.handleClick}

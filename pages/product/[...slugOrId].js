@@ -119,8 +119,6 @@ class ProductDetailPage extends Component {
 export async function getStaticProps({ params: { slugOrId } }) {
   const productSlug = slugOrId && slugOrId[0];
 
-  console.log("slugOrId", slugOrId);
-
   return {
     props: {
       ...await fetchCatalogProduct(productSlug),
