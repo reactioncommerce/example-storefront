@@ -1,5 +1,5 @@
 import React from "react";
-import { ApolloProvider } from "@apollo/client";
+import { ApolloProvider } from "@apollo/react-components";
 import createApolloClient from "./apolloClient";
 
 // On the client we store the apollo client in the following variable
