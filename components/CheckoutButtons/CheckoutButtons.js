@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Button from "@reactioncommerce/components/Button/v1";
-import { Router } from "routes";
+import Router from "next/router";
 
 export default class CheckoutButtons extends Component {
   static propTypes = {
