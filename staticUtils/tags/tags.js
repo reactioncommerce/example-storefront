@@ -30,4 +30,4 @@ fragment TagInfo on Tag {
   }
   displayTitle
 }
-`
+`;
