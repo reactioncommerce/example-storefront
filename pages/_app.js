@@ -13,21 +13,8 @@ import rootMobXStores from "lib/stores";
 import components from "custom/componentsContext";
 import componentTheme from "custom/componentTheme";
 import theme from "custom/reactionTheme";
-// import getAllTags from "../lib/data/getAllTags";
 
 class App extends NextApp {
-  /*
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-    const tags = await getAllTags(ctx.apolloClient);
-
-    return { pageProps, tags };
-  }
-  */
 
   constructor(props) {
     super(props);
@@ -51,24 +38,10 @@ class App extends NextApp {
   }
 
   render() {
-    const { Component, pageProps, shop, tags, viewer, ...rest } = this.props;
+    const { Component, pageProps, viewer, ...rest } = this.props;
+    const { tags, shop } = pageProps;
     const { route } = this.props.router;
     const { stripe } = this.state;
-
-    return (
-      <ComponentsProvider value={components}>
-        <MobxProvider suppressChangedStoreWarning navItems={shop && shop.defaultNavigationTree} tags={tags}>
-          <RuiThemeProvider theme={componentTheme}>
-            <MuiThemeProvider theme={theme}>
-              <CssBaseline />
-              <Layout shop={shop} viewer={viewer}>
-                <Component shop={shop} {...rest} {...pageProps} />
-              </Layout>
-            </MuiThemeProvider>
-          </RuiThemeProvider>
-        </MobxProvider>
-      </ComponentsProvider>
-    );
 
     return (
       <ComponentsProvider value={components}>
@@ -94,5 +67,4 @@ class App extends NextApp {
 }
 
 // export default withMobX(withShop(withViewer(App)));
-// export default withMobX(App);
 export default withMobX(withShop(App));
