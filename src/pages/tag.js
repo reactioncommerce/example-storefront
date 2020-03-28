@@ -11,6 +11,7 @@ import ProductGridHero from "components/ProductGridHero";
 import ProductGridTitle from "components/ProductGridTitle";
 import SharedPropTypes from "lib/utils/SharedPropTypes";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
+import { withApollo } from "lib/apollo/withApollo";
 
 class TagGridPage extends Component {
   static propTypes = {
@@ -149,4 +150,4 @@ class TagGridPage extends Component {
   }
 }
 
-export default withTag(withCatalogItems(inject("routingStore", "uiStore")(observer(TagGridPage))))
+export default withApollo()(withTag(withCatalogItems(inject("routingStore", "uiStore")(observer(TagGridPage)))))

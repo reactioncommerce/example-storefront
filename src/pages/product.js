@@ -6,6 +6,7 @@ import withCatalogItemProduct from "containers/catalog/withCatalogItemProduct";
 import ProductDetail from "components/ProductDetail";
 import PageLoading from "components/PageLoading";
 import ErrorPage from "./_error";
+import { withApollo } from "lib/apollo/withApollo";
 
 class ProductDetailPage extends Component {
   static propTypes = {
@@ -113,4 +114,4 @@ class ProductDetailPage extends Component {
   }
 }
 
-export default withCart(withCatalogItemProduct(ProductDetailPage));
+export default withApollo()(withCart(withCatalogItemProduct(ProductDetailPage)));
