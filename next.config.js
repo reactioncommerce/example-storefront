@@ -45,8 +45,77 @@ module.exports = {
     webpackConfig.resolve.alias["routes"] = path.join(__dirname, 'routes');
     webpackConfig.resolve.alias["utils"] = path.join(__dirname, 'utils');
     webpackConfig.resolve.alias["staticUtils"] = path.join(__dirname, 'staticUtils');
-
+    webpackConfig.resolve.alias["apiUtils"] = path.join(__dirname, 'apiUtils');
 
     return webpackConfig;
+  },
+  experimental: {
+    redirects() {
+      return [
+        {
+          source: "/graphiql",
+          destination: appConfig.EXTERNAL_GRAPHQL_URL,
+          permanent: true
+        },
+        {
+          source: "/graphql-beta",
+          destination: appConfig.EXTERNAL_GRAPHQL_URL,
+          permanent: true
+        },
+        {
+          source: "/graphql-alpha",
+          destination: appConfig.EXTERNAL_GRAPHQL_URL,
+          permanent: true
+        },
+        {
+          source: "/graphql",
+          destination: appConfig.EXTERNAL_GRAPHQL_URL,
+          permanent: true
+        }
+      ];
+    },
+    rewrites() {
+      return [
+        // Sitemap
+        {
+          source: "/sitemap:subPage?.xml",
+          destination: "/api/sitemap"
+        },
+        // Accounts
+        {
+          source: "/change-password",
+          destination: "/api/account/changePassword"
+        },
+        {
+          source: "/post-logout-callback",
+          destination: "/api/account/postLogoutCallback"
+        },
+        {
+          source: "/token",
+          destination: "/api/account/token"
+        },
+        {
+          source: "/signin",
+          destination: "/api/account/signin"
+        },
+        {
+          source: "/signup",
+          destination: "/api/account/signup"
+        },
+        {
+          source: "/callback",
+          destination: "/api/account/callback"
+        },
+        {
+          source: "/logout",
+          destination: "/api/account/logout"
+        },
+        {
+          source: "/refresh",
+          destination: "/api/account/refresh"
+        }
+      ];
+    }
   }
+
 };
