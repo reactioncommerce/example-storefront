@@ -78,7 +78,8 @@
     "react-tracking": "~5.6.0",
     "reacto-form": "~1.4.0",
     "styled-components": "^5.0.1",
-    "subscriptions-transport-ws": "~0.9.15"
+    "subscriptions-transport-ws": "~0.9.15",
+    "swr": "^0.1.18"
   },
   "devDependencies": {
     "@reactioncommerce/eslint-config": "~1.9.0",
