@@ -12,7 +12,7 @@ export default function withShop(Component) {
   class Shop extends React.Component {
 
     render() {
-      const { shop } = this.props;
+      const { pageProps: { shop } } = this.props;
 
       return (
         <Provider primaryShopId={shop && shop._id} shop={shop}>
