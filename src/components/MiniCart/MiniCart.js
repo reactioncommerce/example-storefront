@@ -12,13 +12,12 @@ import Badge from "@material-ui/core/Badge";
 import Popper from "@material-ui/core/Popper";
 import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
-import withShop from "containers/shop/withShop";
-import trackCartItems from "lib/tracking/trackCartItems";
-import track from "lib/tracking/track";
+// import trackCartItems from "lib/tracking/trackCartItems";
+// import track from "lib/tracking/track";
 import variantById from "lib/utils/variantById";
-import TRACKING from "lib/tracking/constants";
+// import TRACKING from "lib/tracking/constants";
 
-const { CART_VIEWED, PRODUCT_REMOVED } = TRACKING;
+// const { CART_VIEWED, PRODUCT_REMOVED } = TRACKING;
 
 const styles = ({ palette, zIndex }) => ({
   popper: {
@@ -224,4 +223,4 @@ class MiniCart extends Component {
   }
 }
 
-export default withStyles(styles, { name: "SkMiniCart" })(withShop(withCart(inject("uiStore")(observer(MiniCart)))));
+export default withStyles(styles, { name: "SkMiniCart" })(withCart(inject("uiStore")(observer(MiniCart))));
