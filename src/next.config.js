@@ -2,30 +2,14 @@ const appConfig = require("./config");
 const path = require('path');
 
 module.exports = {
-  /**
-   * `serverRuntimeConfig` is available in browser code, ONLY when run on the server
-   * @example
-   * import getConfig from "next/config";
-   * const { serverRuntimeConfig } = getConfig();
-   */
-  serverRuntimeConfig: {
-    graphqlUrl: appConfig.INTERNAL_GRAPHQL_URL
-  },
-  /**
-   * `publicRuntimeConfig` is available in browser code, even when run on the server
-   * @example
-   * import getConfig from "next/config";
-   * const { publicRuntimeConfig } = getConfig();
-   */
-  publicRuntimeConfig: {
-    canonicalUrl: appConfig.CANONICAL_URL,
-    graphqlUrl: appConfig.EXTERNAL_GRAPHQL_URL,
-    segmentAnalytics: {
-      skipMinimize: appConfig.SEGMENT_ANALYTICS_SKIP_MINIMIZE,
-      writeKey: appConfig.SEGMENT_ANALYTICS_WRITE_KEY
-    },
-    stripePublicApiKey: appConfig.STRIPE_PUBLIC_API_KEY,
-    enableSPARouting: appConfig.ENABLE_SPA_ROUTING
+  env: {
+    CANONICAL_URL: appConfig.CANONICAL_URL,
+    INTERNAL_GRAPHQL_URL: appConfig.INTERNAL_GRAPHQL_URL,
+    EXTERNAL_GRAPHQL_URL: appConfig.EXTERNAL_GRAPHQL_URL,
+    SEGMENT_ANALYTICS_SKIP_MINIMIZE: appConfig.SEGMENT_ANALYTICS_SKIP_MINIMIZE,
+    SEGMENT_ANALYTICS_WRITE_KEY: appConfig.SEGMENT_ANALYTICS_WRITE_KEY,
+    STRIPE_PUBLIC_API_KEY: appConfig.STRIPE_PUBLIC_API_KEY,
+    ENABLE_SPA_ROUTING: appConfig.ENABLE_SPA_ROUTING
   },
   // NextJS builds to `/src/.next` by default. Change that to `/build/app`
   distDir: "../build/app",

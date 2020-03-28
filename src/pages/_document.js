@@ -2,12 +2,9 @@ import React, { Fragment } from "react";
 import Document, { Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet as StyledComponentSheets } from "styled-components";
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from "@material-ui/styles";
-import getConfig from "next/config";
 import analyticsProviders from "../custom/analytics";
 import favicons from "custom/favicons";
 import theme from "custom/reactionTheme";
-
-const { publicRuntimeConfig } = getConfig();
 
 /**
  * For details about the styled-components SSR code in this file, see https://www.styled-components.com/docs/advanced#nextjs
@@ -17,7 +14,7 @@ const { publicRuntimeConfig } = getConfig();
 class HTMLDocument extends Document {
   render() {
     const links = [
-      { rel: "canonical", href: publicRuntimeConfig.canonicalUrl },
+      { rel: "canonical", href: process.env.CANONICAL_URL },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" },
       ...favicons
     ];
