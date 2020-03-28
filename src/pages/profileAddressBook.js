@@ -8,6 +8,7 @@ import ProfileAddressBook from "components/ProfileAddressBook";
 import ProfileMenu from "components/ProfileMenu";
 import withAddressBook from "containers/address/withAddressBook";
 import ErrorPage from "./_error";
+import { withApollo } from "lib/apollo/withApollo";
 
 const styles = (theme) => ({
   accountProfileInfoContainer: {
@@ -64,4 +65,4 @@ class ProfileAddressBookPage extends Component {
   }
 }
 
-export default withStyles(styles)(withAddressBook(inject("authStore", "uiStore")(observer(ProfileAddressBookPage))));
+export default withApollo()(withStyles(styles)(withAddressBook(inject("authStore", "uiStore")(observer(ProfileAddressBookPage)))));

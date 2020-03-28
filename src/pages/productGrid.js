@@ -4,8 +4,12 @@ import { observer, inject } from "mobx-react";
 import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import ProductGrid from "components/ProductGrid";
-import trackProductListViewed from "lib/tracking/trackProductListViewed";
+// import trackProductListViewed from "lib/tracking/trackProductListViewed";
 import { inPageSizes } from "lib/utils/pageSizes";
+import { withApollo } from "lib/apollo/withApollo";
+import withShop from "containers/shop/withShop";
+import withViewer from "containers/account/withViewer";
+import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 
 class ProductGridPage extends Component {
   static propTypes = {
@@ -90,4 +94,14 @@ class ProductGridPage extends Component {
   }
 }
 
-export default withCatalogItems(inject("routingStore", "uiStore")(observer(ProductGridPage)));
+export async function getStaticProps() {
+  return {
+    props: {
+      ...await fetchPrimaryShop()
+    }
+  };
+}
+
+
+// export default withApollo()(withViewer(withCatalogItems(inject("routingStore", "uiStore")(observer(ProductGridPage)))));
+export default withApollo()(withCatalogItems(inject("routingStore", "uiStore")(observer(ProductGridPage))));
