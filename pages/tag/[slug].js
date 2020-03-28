@@ -10,8 +10,11 @@ import ProductGridEmptyMessage from "components/ProductGrid/ProductGridEmptyMess
 import ProductGridHero from "components/ProductGridHero";
 import ProductGridTitle from "components/ProductGridTitle";
 import SharedPropTypes from "lib/utils/SharedPropTypes";
-import trackProductListViewed from "lib/tracking/trackProductListViewed";
+// import trackProductListViewed from "lib/tracking/trackProductListViewed";
 import { withApollo } from "lib/apollo/withApollo";
+
+import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
+import fetchAllTags from "staticUtils/tags/fetchAllTags";
 
 class TagGridPage extends Component {
   static propTypes = {
@@ -148,6 +151,25 @@ class TagGridPage extends Component {
       </Fragment>
     );
   }
+}
+
+export async function getStaticProps({ params: { slug } }) {
+  return {
+    props: {
+      ...await fetchPrimaryShop("en"),
+      ...await fetchAllTags()
+    },
+    revalidate: 120 // Revalidate each two minutes
+  };
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { slug: "-" } }
+    ],
+    fallback: true
+  };
 }
 
 export default withApollo()(withTag(withCatalogItems(inject("routingStore", "uiStore")(observer(TagGridPage)))))

@@ -7,8 +7,9 @@ import ProductGrid from "components/ProductGrid";
 // import trackProductListViewed from "lib/tracking/trackProductListViewed";
 import { inPageSizes } from "lib/utils/pageSizes";
 import { withApollo } from "lib/apollo/withApollo";
-import withViewer from "containers/account/withViewer";
+
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
+import fetchAllTags from "staticUtils/tags/fetchAllTags";
 
 class ProductGridPage extends Component {
   static propTypes = {
@@ -96,11 +97,10 @@ class ProductGridPage extends Component {
 export async function getStaticProps() {
   return {
     props: {
-      ...await fetchPrimaryShop()
+      ...await fetchPrimaryShop("en"),
+      ...await fetchAllTags()
     }
   };
 }
 
-
-// export default withApollo()(withViewer(withCatalogItems(inject("routingStore", "uiStore")(observer(ProductGridPage)))));
 export default withApollo()(withCatalogItems(inject("routingStore", "uiStore")(observer(ProductGridPage))));
