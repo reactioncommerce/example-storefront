@@ -82,10 +82,7 @@ class ProductDetail extends Component {
 
     uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
 
-    Router.pushRoute("product", {
-      slugOrId: product.slug,
-      variantId: selectOptionId || variantId
-    }, { replace: true });
+    Router.replace("/product/[...slugOrId]", `/product/${product.slug}/${selectOptionId || variantId}`);
   }
 
   /**
