@@ -1,9 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Query } from "react-apollo";
-import { inject, Provider } from "mobx-react";
+import { Provider } from "mobx-react";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import primaryShopQuery from "../common-gql/primaryShop.gql";
 
 /**
  * withShop higher order query component for fetching primaryShopId and shop data
@@ -13,37 +10,22 @@ import primaryShopQuery from "../common-gql/primaryShop.gql";
  */
 export default function withShop(Component) {
   class Shop extends React.Component {
-    static propTypes = {
-      uiStore: PropTypes.object.isRequired
-    };
 
     render() {
-      const { uiStore } = this.props;
-      const { language } = uiStore;
+      const { shop } = this.props;
 
       return (
-        <Query errorPolicy="all" query={primaryShopQuery} variables={{ language }}>
-          {({ loading, data: shopData }) => {
-            const { primaryShop: shop } = shopData || {};
-
-            // Use mobx-provider to pass shop data through context
-            // as well as passing into the component directly
-            return (
-              <Provider primaryShopId={shop && shop._id} shop={shop}>
-                <Component
-                  isLoadingShop={loading}
-                  shop={shop}
-                  {...this.props}
-                />
-              </Provider>
-            );
-          }}
-        </Query>
+        <Provider primaryShopId={shop && shop._id} shop={shop}>
+          <Component
+            isLoadingShop={false}
+            {...this.props}
+          />
+        </Provider>
       );
     }
   }
 
   hoistNonReactStatic(Shop, Component);
 
-  return inject("uiStore")(Shop);
+  return Shop;
 }
