@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
-import { Query } from "react-apollo";
+import { Query } from "@apollo/react-components";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import { pagination, paginationVariablesFromUrlParams } from "lib/utils/pagination";
 import withTag from "containers/tags/withTag";
