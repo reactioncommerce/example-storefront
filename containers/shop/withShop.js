@@ -10,7 +10,6 @@ import hoistNonReactStatic from "hoist-non-react-statics";
  */
 export default function withShop(Component) {
   class Shop extends React.Component {
-
     render() {
       const { pageProps: { shop } } = this.props;
 

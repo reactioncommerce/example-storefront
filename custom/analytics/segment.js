@@ -22,7 +22,6 @@ export function dispatch(data) {
  * @returns {String} String script to be included in the document head
  */
 export function renderScript() {
-
   const opts = {
     apiKey: process.env.SEGMENT_ANALYTICS_WRITE_KEY,
     page: true // Set this to `false` if you want to manually fire `analytics.page()` from within your pages.

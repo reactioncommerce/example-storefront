@@ -7,8 +7,8 @@ import { withStyles } from "@material-ui/core/styles";
 import ProfileMenu from "components/ProfileMenu";
 import ProfileOrders from "components/ProfileOrders";
 import withAddressBook from "containers/address/withAddressBook";
-import ErrorPage from "./_error";
 import { withApollo } from "lib/apollo/withApollo";
+import ErrorPage from "./_error";
 
 const styles = (theme) => ({
   accountProfileInfoContainer: {

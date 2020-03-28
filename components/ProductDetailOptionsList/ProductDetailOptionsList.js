@@ -53,7 +53,7 @@ class OptionsList extends Component {
       classes: { root },
       onSelectOption,
       options,
-      selectedOptionId,
+      selectedOptionId
     } = this.props;
 
     if (!Array.isArray(options)) return null;
@@ -76,4 +76,4 @@ class OptionsList extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true})(observer(OptionsList));
+export default withStyles(styles, { withTheme: true })(observer(OptionsList));

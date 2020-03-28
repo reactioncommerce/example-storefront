@@ -107,4 +107,4 @@ class MediaGallery extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true})(MediaGallery);
+export default withStyles(styles, { withTheme: true })(MediaGallery);

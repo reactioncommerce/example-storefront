@@ -20,8 +20,8 @@ import CheckoutSummary from "components/CheckoutSummary";
 import PageLoading from "components/PageLoading";
 import withCart from "containers/cart/withCart";
 import withAvailablePaymentMethods from "containers/payment/withAvailablePaymentMethods";
-import definedPaymentMethods from "../custom/paymentMethods";
 import { withApollo } from "lib/apollo/withApollo";
+import definedPaymentMethods from "../custom/paymentMethods";
 
 const styles = (theme) => ({
   checkoutActions: {

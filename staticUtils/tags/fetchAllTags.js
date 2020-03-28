@@ -1,6 +1,6 @@
 import { request } from "graphql-request";
-import tagsQuery from "./tags.js";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
+import tagsQuery from "./tags.js";
 
 const endpoint = process.env.NODE_ENV === "production" ? process.env.EXTERNAL_GRAPHQL_URL : process.env.INTERNAL_GRAPHQL_URL;
 
@@ -39,5 +39,5 @@ export default async function fetchAllTags() {
 
   const allTags = await getTags({ shopId: shop._id });
 
-  return allTags && { tags: allTags }
+  return allTags && { tags: allTags };
 }
