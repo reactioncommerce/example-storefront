@@ -2,7 +2,7 @@
   "name": "example-storefront",
   "version": "3.0.0",
   "description": "The Example Storefront serves as a reference for implementing a web based storefront using the Reaction Commerce GraphQL API.",
-  "main": "./src/server.js",
+  "main": "./server.js",
   "keywords": [],
   "author": {
     "name": "Reaction Commerce",
@@ -13,11 +13,11 @@
   "sideEffects": false,
   "scripts": {
     "dev": "echo 'Note: dev script has been renamed to start:dev' && yarn run start:dev",
-    "build": "yarn run build-clean && NODE_ENV=production IS_BUILDING_NEXTJS=1 next build src",
+    "build": "yarn run build-clean && NODE_ENV=production IS_BUILDING_NEXTJS=1 next build",
     "build-clean": "rimraf build/app",
     "lint": "eslint .",
-    "start": "NODE_ENV=production node ./src/server.js",
-    "start:dev": "NODE_ENV=development node ./src/server.js",
+    "start": "NODE_ENV=production node ./server.js",
+    "start:dev": "NODE_ENV=development node ./server.js",
     "test": "yarn run test:unit",
     "test:ci": "yarn run test:unit --ci --runInBand --colors",
     "test:unit": "NODE_ENV=jesttest jest",
@@ -118,7 +118,7 @@
       "jest-junit"
     ],
     "roots": [
-      "./src"
+      "./"
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/tests/setupTests.js"
