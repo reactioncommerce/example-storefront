@@ -62,6 +62,7 @@ module.exports = {
     webpackConfig.resolve.alias["static-translations"] = path.join(__dirname, 'static-translations');
     webpackConfig.resolve.alias["routes"] = path.join(__dirname, 'routes');
     webpackConfig.resolve.alias["utils"] = path.join(__dirname, 'utils');
+    webpackConfig.resolve.alias["staticUtils"] = path.join(__dirname, 'staticUtils');
 
 
     return webpackConfig;
