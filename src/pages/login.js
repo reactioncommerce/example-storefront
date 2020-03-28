@@ -8,8 +8,8 @@ import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import withCart from "containers/cart/withCart";
 import Entry from "components/Entry";
 import Link from "components/Link";
-
 import ChevronLeftIcon from "mdi-material-ui/ChevronLeft";
+import { withApollo } from "lib/apollo/withApollo";
 
 const styles = (theme) => ({
   backLink: {
@@ -125,4 +125,4 @@ class Login extends Component {
   }
 }
 
-export default withCart(withStyles(styles, { withTheme: true })(Login));
+export default withApollo()(withCart(withStyles(styles, { withTheme: true })(Login)));

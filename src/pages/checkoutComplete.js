@@ -6,9 +6,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import PageLoading from "components/PageLoading";
 import withOrder from "containers/order/withOrder";
-
 import OrderCard from "components/OrderCard";
-
+import { withApollo } from "lib/apollo/withApollo";
 
 const styles = (theme) => ({
   orderThankYou: {
@@ -80,4 +79,4 @@ class CheckoutComplete extends Component {
   }
 }
 
-export default withOrder(withStyles(styles, { withTheme: true })(CheckoutComplete))
+export default withApollo()(withOrder(withStyles(styles, { withTheme: true })(CheckoutComplete)));
