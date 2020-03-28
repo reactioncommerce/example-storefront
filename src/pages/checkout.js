@@ -21,6 +21,7 @@ import PageLoading from "components/PageLoading";
 import withCart from "containers/cart/withCart";
 import withAvailablePaymentMethods from "containers/payment/withAvailablePaymentMethods";
 import definedPaymentMethods from "../custom/paymentMethods";
+import { withApollo } from "lib/apollo/withApollo";
 
 const styles = (theme) => ({
   checkoutActions: {
@@ -383,4 +384,4 @@ class Checkout extends Component {
   }
 }
 
-export default withCart(withAvailablePaymentMethods(observer(withStyles(styles, { withTheme: true })(Checkout))));
+export default withApollo()(withCart(withAvailablePaymentMethods(observer(withStyles(styles, { withTheme: true })(Checkout)))));
