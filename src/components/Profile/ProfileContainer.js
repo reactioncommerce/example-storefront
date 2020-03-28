@@ -1,5 +1,5 @@
 import React from "react";
-import { Query } from "react-apollo";
+import { Query } from "@apollo/react-components";
 import viewerQuery from "./viewer.gql";
 import Profile from "./Profile";
 

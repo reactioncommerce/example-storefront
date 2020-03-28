@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Query, withApollo } from "react-apollo";
+import { Query } from "@apollo/react-components";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import { availablePaymentMethods as availablePaymentMethodsQuery } from "./queries.gql";
 
@@ -46,5 +46,5 @@ export default function withAvailablePaymentMethods(Component) {
 
   hoistNonReactStatic(WithAvailablePaymentMethods, Component);
 
-  return withApollo(WithAvailablePaymentMethods);
+  return WithAvailablePaymentMethods;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Query, withApollo } from "react-apollo";
+import { Query } from "@apollo/react-components";
 import { toJS } from "mobx";
 import { inject, observer } from "mobx-react";
 import hoistNonReactStatic from "hoist-non-react-statics";
@@ -69,5 +69,5 @@ export default function withOrders(Component) {
 
   hoistNonReactStatic(WithOrders, Component);
 
-  return withApollo(inject("authStore", "cartStore", "primaryShopId", "routingStore", "uiStore")(observer(WithOrders)));
+  return inject("authStore", "cartStore", "primaryShopId", "routingStore", "uiStore")(observer(WithOrders));
 }
