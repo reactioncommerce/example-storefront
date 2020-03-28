@@ -9,6 +9,7 @@ import { withApollo } from "lib/apollo/withApollo";
 
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchCatalogProduct from "staticUtils/catalog/fetchCatalogProduct";
+import fetchAllTags from "staticUtils/tags/fetchAllTags";
 
 class ProductDetailPage extends Component {
   static propTypes = {
@@ -122,7 +123,8 @@ export async function getStaticProps({ params: { slugOrId } }) {
   return {
     props: {
       ...await fetchCatalogProduct(productSlug),
-      ...await fetchPrimaryShop()
+      ...await fetchPrimaryShop("en"),
+      ...await fetchAllTags()
     },
     revalidate: 120 // Revalidate each two minutes
   };
@@ -131,7 +133,6 @@ export async function getStaticProps({ params: { slugOrId } }) {
 export async function getStaticPaths() {
   return {
     paths: [
-      { params: { slugOrId: ["-"] } },
       { params: { slugOrId: ["-"] } }
     ],
     fallback: true
