@@ -90,4 +90,4 @@ class Entry extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true})(Entry);
+export default withStyles(styles, { withTheme: true })(Entry);

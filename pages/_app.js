@@ -15,7 +15,6 @@ import componentTheme from "custom/componentTheme";
 import theme from "custom/reactionTheme";
 
 class App extends NextApp {
-
   constructor(props) {
     super(props);
     this.state = { stripe: null };

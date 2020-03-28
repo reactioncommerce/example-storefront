@@ -75,11 +75,11 @@ function ProductDetailPage({ addItemsToCart, product, isLoadingProduct, shop }) 
         script={[{ type: "application/ld+json", innerHTML: JSONLd }]}
       />
       <ProductDetail
-      addItemsToCart={addItemsToCart}
-      currencyCode={currencyCode}
-      product={product}
-      shop={shop}
-    />
+        addItemsToCart={addItemsToCart}
+        currencyCode={currencyCode}
+        product={product}
+        shop={shop}
+      />
     </Fragment>
   );
 }

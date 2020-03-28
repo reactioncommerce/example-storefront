@@ -172,4 +172,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default withApollo()(withTag(withCatalogItems(inject("routingStore", "uiStore")(observer(TagGridPage)))))
+export default withApollo()(withTag(withCatalogItems(inject("routingStore", "uiStore")(observer(TagGridPage)))));

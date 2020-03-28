@@ -29,9 +29,6 @@ export default function withCatalogItems(Component) {
       const [sortBy, sortOrder] = uiStore.sortBy.split("-");
       const tagIds = tag && [tag._id];
 
-      console.log("tagIds", tagIds);
-      console.log("primaryShopId", primaryShopId);
-
       if (!primaryShopId) {
         return (
           <Component

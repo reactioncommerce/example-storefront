@@ -247,7 +247,7 @@ class ProductDetail extends Component {
     const productPrice = this.determineProductPrice();
     const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
 
-    
+
     // Phone size
     if (isWidthDown("sm", width)) {
       return (
@@ -336,4 +336,4 @@ class ProductDetail extends Component {
   }
 }
 
-export default withWidth({ initialWidth: "md" })(withStyles(styles, { withTheme: true})(inject("routingStore", "uiStore")(observer(ProductDetail))));
+export default withWidth({ initialWidth: "md" })(withStyles(styles, { withTheme: true })(inject("routingStore", "uiStore")(observer(ProductDetail))));
