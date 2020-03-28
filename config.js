@@ -47,5 +47,5 @@ module.exports = envalid.cleanEnv(process.env, {
   // disable dotenv processing
   dotEnvPath: null,
   // https://www.npmjs.com/package/envalid#strict-mode
-  strict: true
+  strict: false
 });
