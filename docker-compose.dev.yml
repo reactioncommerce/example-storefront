@@ -12,7 +12,7 @@ version: '3.4'
 
 services:
   web:
-    image: reactioncommerce/node-dev:10.16.3-v2
+    image: reactioncommerce/node-dev:12.14.1-v1
     command: "./bin/start"
     volumes:
       - .:/usr/local/src/app
