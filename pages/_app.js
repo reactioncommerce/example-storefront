@@ -4,7 +4,6 @@ import { ThemeProvider as RuiThemeProvider } from "styled-components";
 import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
-import Layout from "components/Layout";
 import { RoutingProvider } from "context/RoutingContext";
 import { AuthProvider } from "context/AuthContext";
 import { CartProvider } from "context/CartContext";
@@ -49,9 +48,7 @@ class App extends NextApp {
                       <RuiThemeProvider theme={componentTheme}>
                         <MuiThemeProvider theme={theme}>
                           <CssBaseline />
-                            <Layout shop={shop}>
-                              <Component shop={shop} {...rest} {...pageProps} />
-                            </Layout>
+                            <Component shop={shop} {...rest} {...pageProps} />
                         </MuiThemeProvider>
                       </RuiThemeProvider>
                     </ComponentsProvider>

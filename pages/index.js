@@ -4,6 +4,7 @@ import inject from "hocs/inject";
 import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import ProductGrid from "components/ProductGrid";
+import Layout from "components/Layout";
 // import trackProductListViewed from "lib/tracking/trackProductListViewed";
 import { inPageSizes } from "lib/utils/pageSizes";
 import { withApollo } from "lib/apollo/withApollo";
@@ -74,7 +75,7 @@ class ProductGridPage extends Component {
     }
 
     return (
-      <Fragment>
+      <Layout shop={shop}>
         <Helmet
           title={pageTitle}
           meta={[{ name: "description", content: shop && shop.description }]}
@@ -89,7 +90,7 @@ class ProductGridPage extends Component {
           setSortBy={this.setSortBy}
           sortBy={sortBy}
         />
-      </Fragment>
+      </Layout>
     );
   }
 }

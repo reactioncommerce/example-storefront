@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import withCart from "containers/cart/withCart";
 import ProductDetail from "components/ProductDetail";
 import PageLoading from "components/PageLoading";
+import Layout from "components/Layout";
 import { withApollo } from "lib/apollo/withApollo";
 
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
@@ -68,7 +69,7 @@ function ProductDetailPage({ addItemsToCart, product, isLoadingProduct, shop }) 
   if (!product) return <ErrorPage shop={shop} subtitle="Not Found" />;
 
   return (
-    <Fragment>
+    <Layout shop={shop}>
       <Helmet
         title={`${product && product.title} | ${shop && shop.name}`}
         meta={[{ name: "description", content: product && product.description }]}
@@ -80,7 +81,7 @@ function ProductDetailPage({ addItemsToCart, product, isLoadingProduct, shop }) 
         product={product}
         shop={shop}
       />
-    </Fragment>
+    </Layout>
   );
 }
 
