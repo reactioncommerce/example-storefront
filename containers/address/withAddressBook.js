@@ -11,10 +11,10 @@ import useUpdateAccountAddressBookEntry from "hooks/address/useUpdateAccountAddr
  */
 export default function withAddressBook(Component) {
   function WithAddressBook(props) {
-    const [ addAccountAddressBookEntry ] = useAddAccountAddressBookEntry();
-    const [ updateAccountAddressBookEntry ] = useUpdateAccountAddressBookEntry();
-    const [ removeAccountAddressBookEntry ] = useRemoveAccountAddressBookEntry();
-    
+    const [addAccountAddressBookEntry] = useAddAccountAddressBookEntry();
+    const [updateAccountAddressBookEntry] = useUpdateAccountAddressBookEntry();
+    const [removeAccountAddressBookEntry] = useRemoveAccountAddressBookEntry();
+
     return (
       <Component
         {...props}

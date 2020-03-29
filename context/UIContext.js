@@ -69,7 +69,7 @@ export const UIProvider = ({ children }) => {
   const setPageSize = (size) => {
     // Validate page size
     _setPageSize(inPageSizes(size) ? size : PAGE_SIZES._20);
-  }
+  };
 
   return (
     <UIContext.Provider value={{

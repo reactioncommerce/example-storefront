@@ -48,7 +48,7 @@ class App extends NextApp {
                       <RuiThemeProvider theme={componentTheme}>
                         <MuiThemeProvider theme={theme}>
                           <CssBaseline />
-                            <Component shop={shop} {...rest} {...pageProps} />
+                          <Component shop={shop} {...rest} {...pageProps} />
                         </MuiThemeProvider>
                       </RuiThemeProvider>
                     </ComponentsProvider>

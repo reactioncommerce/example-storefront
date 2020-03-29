@@ -9,10 +9,10 @@ import ProfileOrders from "components/ProfileOrders";
 import Layout from "components/Layout";
 import withAddressBook from "containers/address/withAddressBook";
 import { withApollo } from "lib/apollo/withApollo";
-import ErrorPage from "../_error";
 
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchAllTags from "staticUtils/tags/fetchAllTags";
+import ErrorPage from "../_error";
 
 const styles = (theme) => ({
   accountProfileInfoContainer: {
@@ -44,11 +44,13 @@ class ProfileOrdersPage extends Component {
     const { authStore: { account }, router, shop } = this.props;
 
     // If there is no logged in user, return Not Found page
-    if (account && !account._id) return (
-      <Layout shop={shop}>
-        <ErrorPage shop={shop} subtitle="Not Found" />
-      </Layout>
-    );
+    if (account && !account._id) {
+      return (
+        <Layout shop={shop}>
+          <ErrorPage shop={shop} subtitle="Not Found" />
+        </Layout>
+      );
+    }
 
     return (
       <Layout shop={shop}>

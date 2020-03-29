@@ -22,7 +22,7 @@ export const RoutingProvider = ({ children }) => {
   }, [route, currentRoute, asPath]);
 
   const setSearch = (search) => {
-      /*
+    /*
     const _query = { ...toJS(this.query), ...search };
     const _slug = _query.slug;
     const _limit = parseInt(_query.limit, 10);
@@ -71,13 +71,13 @@ export const RoutingProvider = ({ children }) => {
 
   return (
     <RoutingContext.Provider value={{
-        tagId,
-        prevAsPath,
-        setTagId,
-        setSearch,
-        query,
-        route,
-        pathname
+      tagId,
+      prevAsPath,
+      setTagId,
+      setSearch,
+      query,
+      route,
+      pathname
     }}
     >
       {children}
