@@ -33,7 +33,6 @@ export const AuthProvider = ({ children }) => {
     const fetchedToken = tokenData && tokenData.accessToken;
     if (fetchedToken) {
       setAccessToken(fetchedToken);
-      sessionStorage.setItem("currentToken", fetchedToken);
       setApolloToken(fetchedToken);
     }
   }, [tokenData]);
