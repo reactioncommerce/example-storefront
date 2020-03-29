@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import Helmet from "react-helmet";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
@@ -65,4 +65,4 @@ class ProfileAddressBookPage extends Component {
   }
 }
 
-export default withApollo()(withStyles(styles)(withAddressBook(inject("authStore", "uiStore")(observer(ProfileAddressBookPage)))));
+export default withApollo()(withStyles(styles)(withAddressBook(inject("authStore", "uiStore")(ProfileAddressBookPage))));

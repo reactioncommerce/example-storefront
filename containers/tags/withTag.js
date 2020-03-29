@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Query } from "@apollo/react-components";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import tagQuery from "./tag.gql";
 
@@ -59,5 +59,5 @@ export default function withTag(Component) {
 
   hoistNonReactStatic(WithTag, Component);
 
-  return inject("primaryShopId", "routingStore")(observer(WithTag));
+  return inject("primaryShopId", "routingStore")(WithTag);
 }

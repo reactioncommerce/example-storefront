@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 
 import { NavigationItemDesktop } from "components/NavigationDesktop";
 
@@ -31,4 +31,4 @@ class NavigationDesktop extends Component {
   }
 }
 
-export default inject("navItems")(observer(NavigationDesktop));
+export default inject("navItems")(NavigationDesktop);

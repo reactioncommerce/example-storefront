@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import { validateAddress } from "./query.gql";
 
 /**
@@ -77,5 +77,5 @@ export default function withAddressValidation(Comp) {
 
   hoistNonReactStatic(WithAddressValidation, Comp);
 
-  return inject("primaryShopId")(observer(WithAddressValidation));
+  return inject("primaryShopId")(WithAddressValidation);
 }

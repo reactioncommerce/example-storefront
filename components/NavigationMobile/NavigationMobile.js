@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import { withStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
@@ -134,4 +134,4 @@ class NavigationMobile extends Component {
   }
 }
 
-export default withStyles(styles)(inject("navItems", "uiStore")(observer(NavigationMobile)));
+export default withStyles(styles)(inject("navItems", "uiStore")(NavigationMobile));

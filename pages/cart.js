@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
@@ -192,4 +192,4 @@ class CartPage extends Component {
   }
 }
 
-export default withApollo()(withStyles(styles)(withCart(inject("uiStore")(observer(CartPage)))));
+export default withApollo()(withStyles(styles)(withCart(inject("uiStore")(CartPage))));

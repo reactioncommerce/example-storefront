@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { observer, inject } from "mobx-react";
+import inject from "hocs/inject";
 import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import ProductGrid from "components/ProductGrid";
@@ -103,4 +103,4 @@ export async function getStaticProps() {
   };
 }
 
-export default withApollo()(withCatalogItems(inject("routingStore", "uiStore")(observer(ProductGridPage))));
+export default withApollo()(withCatalogItems(inject("routingStore", "uiStore")(ProductGridPage)));

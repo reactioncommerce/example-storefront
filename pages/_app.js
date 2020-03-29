@@ -3,10 +3,8 @@ import React from "react";
 import { ThemeProvider as RuiThemeProvider } from "styled-components";
 import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { Provider as MobxProvider } from "mobx-react";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
 import Layout from "components/Layout";
-import withMobX from "lib/stores/withMobX";
 import { RoutingProvider } from "context/RoutingContext";
 import { AuthProvider } from "context/AuthContext";
 import { CartProvider } from "context/CartContext";
@@ -46,7 +44,7 @@ class App extends NextApp {
               >
                 <ShopProvider shop={shop}>
                   <ComponentsProvider value={components}>
-                    <MobxProvider suppressChangedStoreWarning navItems={shop && shop.defaultNavigationTree} tags={tags}>
+                    {/*<MobxProvider suppressChangedStoreWarning navItems={shop && shop.defaultNavigationTree} tags={tags}>*/}
                       <RuiThemeProvider theme={componentTheme}>
                         <MuiThemeProvider theme={theme}>
                           <CssBaseline />
@@ -55,7 +53,7 @@ class App extends NextApp {
                             </Layout>
                         </MuiThemeProvider>
                       </RuiThemeProvider>
-                    </MobxProvider>
+                    {/*/</MobxProvider>*/}
                   </ComponentsProvider>
                 </ShopProvider>
               </LocaleProvider>
@@ -67,4 +65,4 @@ class App extends NextApp {
   }
 }
 
-export default withMobX(App);
+export default App;
