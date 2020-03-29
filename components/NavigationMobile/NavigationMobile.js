@@ -62,7 +62,7 @@ class NavigationMobile extends Component {
 
   static defaultProps = {
     classes: {},
-    navItems: []
+    navItems: {}
   };
 
   state = {
