@@ -78,7 +78,7 @@ class CartItems extends Component {
           items={items}
           onChangeCartItemQuantity={this.handleItemQuantityChange}
           onRemoveItemFromCart={this.handleRemoveItem}
-          productURLPath="/product/"
+          productURLPath="/api/detectLanguage/product/"
         />
         {hasMoreCartItems &&
           <div className={classes.loadMore}>
