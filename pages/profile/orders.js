@@ -11,6 +11,9 @@ import withAddressBook from "containers/address/withAddressBook";
 import { withApollo } from "lib/apollo/withApollo";
 import ErrorPage from "../_error";
 
+import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
+import fetchAllTags from "staticUtils/tags/fetchAllTags";
+
 const styles = (theme) => ({
   accountProfileInfoContainer: {
     marginBottom: theme.spacing(4)
@@ -68,6 +71,15 @@ class ProfileOrdersPage extends Component {
       </Layout>
     );
   }
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      ...await fetchPrimaryShop("en"),
+      ...await fetchAllTags()
+    }
+  };
 }
 
 export default withApollo()(withStyles(styles)(withAddressBook(inject("authStore", "uiStore")(ProfileOrdersPage))));
