@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import { withStyles } from "@material-ui/core/styles";
 import AccountProfileInfo from "@reactioncommerce/components/AccountProfileInfo/v1";
 import InPageMenu from "@reactioncommerce/components/InPageMenu/v1";
@@ -72,4 +72,4 @@ class ProfileMenu extends Component {
   }
 }
 
-export default withStyles(styles)(withAddressBook(inject("authStore")(observer(ProfileMenu))));
+export default withStyles(styles)(withAddressBook(inject("authStore")(ProfileMenu)));

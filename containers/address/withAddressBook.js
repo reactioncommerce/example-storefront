@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import relayConnectionToArray from "lib/utils/relayConnectionToArray";
 import viewerQuery from "../account/viewer.gql";
 import {
@@ -157,5 +157,5 @@ export default function withAddressBook(Comp) {
 
   hoistNonReactStatic(WithAddressBook, Comp);
 
-  return inject("authStore")(observer(WithAddressBook));
+  return inject("authStore")(WithAddressBook);
 }

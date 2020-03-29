@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Query } from "@apollo/react-components";
 import { toJS } from "mobx";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import { pagination, paginationVariablesFromUrlParams } from "lib/utils/pagination";
 import { ordersByAccountIdQuery } from "./queries.gql";
@@ -69,5 +69,5 @@ export default function withOrders(Component) {
 
   hoistNonReactStatic(WithOrders, Component);
 
-  return inject("authStore", "cartStore", "primaryShopId", "routingStore", "uiStore")(observer(WithOrders));
+  return inject("authStore", "cartStore", "primaryShopId", "routingStore", "uiStore")(WithOrders);
 }

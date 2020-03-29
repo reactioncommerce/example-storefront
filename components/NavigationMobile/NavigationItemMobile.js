@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import Router from "next/router";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -187,4 +187,4 @@ class NavigationItemMobile extends Component {
   }
 }
 
-export default withStyles(styles)(inject("routingStore", "uiStore")(observer(NavigationItemMobile)));
+export default withStyles(styles)(inject("routingStore", "uiStore")(NavigationItemMobile));

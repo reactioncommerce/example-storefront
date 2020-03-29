@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import { Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -148,4 +148,4 @@ class ProfileOrders extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(inject("routingStore", "uiStore")(withOrders(observer(ProfileOrders))));
+export default withStyles(styles, { withTheme: true })(inject("routingStore", "uiStore")(withOrders(ProfileOrders)));
