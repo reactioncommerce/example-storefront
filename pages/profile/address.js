@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import ProfileAddressBook from "components/ProfileAddressBook";
 import ProfileMenu from "components/ProfileMenu";
+import Layout from "components/Layout";
 import withAddressBook from "containers/address/withAddressBook";
 import { withApollo } from "lib/apollo/withApollo";
 import ErrorPage from "./_error";
@@ -43,7 +44,7 @@ class ProfileAddressBookPage extends Component {
     if (account && !account._id) return <ErrorPage shop={shop} subtitle="Not Found" />;
 
     return (
-      <Fragment>
+      <Layout shop={shop}>
         <Helmet
           title={`My Address Book | ${shop && shop.name}`}
           meta={[{ name: "description", content: shop && shop.description }]}
@@ -60,7 +61,7 @@ class ProfileAddressBookPage extends Component {
             <Grid item xs={false} md={1} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
           </Grid>
         </section>
-      </Fragment>
+      </Layout>
     );
   }
 }

@@ -11,6 +11,7 @@ import withCart from "containers/cart/withCart";
 import CartItems from "components/CartItems";
 import CheckoutButtons from "components/CheckoutButtons";
 import Link from "components/Link";
+import Layout from "components/Layout";
 import Router from "next/router";
 import PageLoading from "components/PageLoading";
 // import track from "lib/tracking/track";
@@ -162,7 +163,7 @@ class CartPage extends Component {
     if (typeof cart === "undefined") return <PageLoading delay={0} />;
 
     return (
-      <Fragment>
+      <Layout shop={shop}>
         <Helmet
           title={`Cart | ${shop && shop.name}`}
           meta={[{ name: "description", content: shop && shop.description }]}
@@ -187,7 +188,7 @@ class CartPage extends Component {
             </Grid>
           </Grid>
         </section>
-      </Fragment>
+      </Layout>
     );
   }
 }

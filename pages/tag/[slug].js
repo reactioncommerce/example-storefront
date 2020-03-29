@@ -8,7 +8,8 @@ import Breadcrumbs from "components/Breadcrumbs";
 import ProductGrid from "components/ProductGrid";
 import ProductGridEmptyMessage from "components/ProductGrid/ProductGridEmptyMessage";
 import ProductGridHero from "components/ProductGridHero";
-import ProductGridTitle from "components/ProductGridTitle";
+import ProductGridTitle from "components/ProductGridTitle"
+import Layout from "components/Layout";;
 import SharedPropTypes from "lib/utils/SharedPropTypes";
 // import trackProductListViewed from "lib/tracking/trackProductListViewed";
 import { withApollo } from "lib/apollo/withApollo";
@@ -115,15 +116,17 @@ class TagGridPage extends Component {
 
     if (!tag) {
       return (
-        <ProductGridEmptyMessage
-          actionMessage="Go Home"
-          resetLink="/"
-        />
+        <Layout shop={shop}>
+          <ProductGridEmptyMessage
+            actionMessage="Go Home"
+            resetLink="/"
+          />
+        </Layout>
       );
     }
 
     return (
-      <Fragment>
+      <Layout shop={shop}>
         <Helmet
           title={`${tag && tag.name} | ${shop && shop.name}`}
           meta={
@@ -148,7 +151,7 @@ class TagGridPage extends Component {
           setSortBy={this.setSortBy}
           sortBy={sortBy}
         />
-      </Fragment>
+      </Layout>
     );
   }
 }
