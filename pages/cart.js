@@ -82,7 +82,7 @@ class CartPage extends Component {
     }
   }
 
-  handleClick = () => Router.pushRoute("/");
+  handleClick = () => Router.push("/");
 
   handleItemQuantityChange = (quantity, cartItemId) => {
     const { onChangeCartItemsQuantity } = this.props;

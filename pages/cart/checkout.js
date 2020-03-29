@@ -189,7 +189,7 @@ class Checkout extends Component {
     }
   };
 
-  handleCartEmptyClick = () => Router.pushRoute("/");
+  handleCartEmptyClick = () => Router.push("/");
 
   get pagePath() {
     return this.props.router.asPath;
