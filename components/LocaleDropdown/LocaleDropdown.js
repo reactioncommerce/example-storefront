@@ -11,28 +11,9 @@ import { locales } from "translations/config";
 import useTranslation from "hooks/useTranslation";
 
 const useStyles = makeStyles((theme) => ({
-  localeItem: {
-    marginTop: theme.spacing(1),
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  text: {
-    fontSize: 12,
-    fontWeight: 400,
-    minWidth: 0
-  },
-  textGrey: {
-    color: "red",
-    fontSize: 12,
-    fontWeight: 400,
-    minWidth: 0
-  },
-  localeContainer: {
-    marginLeft: -24,
-    marginRight: -24,
-    marginBottom: -10
+  localeSelect: {
+    margin: theme.spacing(0, 1),
+    fontSize: "1rem"
   }
 }));
 
@@ -56,30 +37,13 @@ const LocaleDropdown = () => {
 
   return (
     <Select
-        id="locale-select"
-        value={locale}
-        onChange={event => changeLanguage(event.target.value)}
+      classes={{ root: classes.localeSelect }}
+      id="locale-select"
+      value={locale}
+      onChange={event => changeLanguage(event.target.value)}
     >
         { locales.map(( locale, index ) => <MenuItem key={index} value={locale}>{t(locale)}</MenuItem> )}
   </Select>
-  );
-
-  return (
-    <Grid container spacing={0} justify="flex-end" className={classes.localeContainer}>
-      <Grid item xs={6} sm={2} md={1}
-        className={classes.localeItem}
-      >
-        <Button color="primary" className={locale === "de" && classes.text || classes.textGrey} onClick={() => changeLanguage("de")}>
-          DE
-        </Button>
-        <Typography className={classes.textGrey} variant="body1" align="center">
-          /
-        </Typography>
-        <Button color="primary" className={locale === "en" && classes.text || classes.textGrey} onClick={() => changeLanguage("en")}>
-          EN
-        </Button>
-      </Grid>
-    </Grid>
   );
 };
 
