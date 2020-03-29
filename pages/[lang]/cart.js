@@ -12,7 +12,7 @@ import CartItems from "components/CartItems";
 import CheckoutButtons from "components/CheckoutButtons";
 import Link from "components/Link";
 import Layout from "components/Layout";
-import Router from "next/router";
+import Router from "translations/i18nRouter";
 import PageLoading from "components/PageLoading";
 // import track from "lib/tracking/track";
 import variantById from "lib/utils/variantById";
@@ -20,8 +20,10 @@ import variantById from "lib/utils/variantById";
 // import TRACKING from "lib/tracking/constants";
 import { withApollo } from "lib/apollo/withApollo";
 
+import { locales } from "translations/config";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchAllTags from "staticUtils/tags/fetchAllTags";
+import fetchTranslations from "staticUtils/translations/fetchTranslations";
 
 const styles = (theme) => ({
   cartEmptyMessageContainer: {
@@ -196,12 +198,20 @@ class CartPage extends Component {
   }
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ params: { lang } }) {
   return {
     props: {
-      ...await fetchPrimaryShop("en"),
+      ...await fetchPrimaryShop(lang),
+      ...await fetchTranslations(lang, ["common"]),
       ...await fetchAllTags()
     }
+  };
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: locales.map(locale => ({ params: { lang: locale } })),
+    fallback: false
   };
 }
 

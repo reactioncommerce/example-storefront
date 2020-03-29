@@ -8,6 +8,7 @@ import AccountIcon from "mdi-material-ui/Account";
 import Popover from "@material-ui/core/Popover";
 import useViewer from "hooks/viewer/useViewer";
 import ViewerInfo from "@reactioncommerce/components/ViewerInfo/v1";
+import Link from "components/Link";
 
 const useStyles = makeStyles((theme) => ({
   accountDropdown: {
@@ -58,9 +59,11 @@ const AccountDropdown = () => {
           {isAuthenticated ?
             <Fragment>
               <div className={classes.marginBottom}>
-                <Button color="primary" fullWidth href="/profile/address">
-                  Profile
-                </Button>
+                <Link href="/profile/address">
+                  <Button color="primary" fullWidth>
+                    Profile
+                  </Button>
+                </Link>
               </div>
               <div className={classes.marginBottom}>
                 <Button color="primary" fullWidth href={`/change-password?email=${encodeURIComponent(viewer.emailRecords[0].address)}`}>
