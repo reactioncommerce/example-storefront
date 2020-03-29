@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useQuery, useMutation, useApolloClient } from "@apollo/client";
 import useStores from "hooks/useStores";
 import useShop from "hooks/shop/useShop";
@@ -28,11 +28,9 @@ export default function useCart() {
 
   const accountId = viewer && viewer._id;
 
-  useEffect(() => {
-    cartStore.setAnonymousCartCredentialsFromLocalStorage();
-  }, [cartStore]);
+  const shouldSkipAccountCartByAccountIdQuery = Boolean(!accountId || cartStore.hasAnonymousCartCredentials || isLoadingViewer || !shop || !shop._id);
+  const shouldSkipAnonymousCartByCartIdQuery = Boolean(accountId || isLoadingViewer || !cartStore.anonymousCartId || !cartStore.anonymousCartToken);
 
-  const shouldSkipAccountCartByAccountIdQuery = !accountId || cartStore.hasAnonymousCartCredentials || isLoadingViewer || !shop || !shop._id;
   const { loading: isLoading, data: cartData, fetchMore, refetch: refetchCart } = useQuery(accountCartByAccountIdQuery, {
     skip: shouldSkipAccountCartByAccountIdQuery,
     variables: {
@@ -43,24 +41,40 @@ export default function useCart() {
     pollInterval: shouldSkipAccountCartByAccountIdQuery ? 0 : 10000
   });
 
-  useEffect(() => {
-    refetchCart();
-  }, [viewer, refetchCart]);
-
-  const shouldSkipAnonymousCartByCartIdQuery = accountId || isLoadingViewer || !cartStore.anonymousCartId || !cartStore.anonymousCartToken;
-
   const { loading: isLoadingAnonymous, data: cartDataAnonymous, fetchMore: fetchMoreAnonymous, refetch: refetchCartAnonymous } = useQuery(anonymousCartByCartIdQuery, {
     skip: shouldSkipAnonymousCartByCartIdQuery,
     variables: {
       cartId: cartStore.anonymousCartId,
       cartToken: cartStore.anonymousCartToken
     },
-    errorPolicy: "all",
+    // errorPolicy: "all",
     pollInterval: shouldSkipAnonymousCartByCartIdQuery ? 0 : 10000
   });
 
-  const { cart } = cartData || {};
-  const { pageInfo } = (cart && cart.items) || {};
+  useEffect(() => {
+    if (!shouldSkipAccountCartByAccountIdQuery) {
+      refetchCart();
+    }
+    if (!shouldSkipAnonymousCartByCartIdQuery) {
+      refetchCartAnonymous();
+    }
+  }, [viewer, refetchCart]);
+
+  const cart = useMemo(() => {
+    if (!shouldSkipAccountCartByAccountIdQuery && cartData) {
+      return cartData.cart;
+    }
+    if (!shouldSkipAnonymousCartByCartIdQuery && cartDataAnonymous) {
+      return cartDataAnonymous.cart;
+    }
+
+    return {};
+  }, [cartData, cartDataAnonymous, shouldSkipAccountCartByAccountIdQuery, shouldSkipAnonymousCartByCartIdQuery]);
+
+  const pageInfo = useMemo(() => {
+    if (cart && cart.items) return cart.items.pageInfo;
+    return {};
+  }, [cart]);
 
   // With an authenticated cart, set the accountCartId for later use
   useEffect(() => {
@@ -85,15 +99,14 @@ export default function useCart() {
   };
 
   const [addOrCreateCartMutation, {
-    data: addOrCreateCartMutationData,
     loading: addOrCreateCartLoading
-  }] = useMutation(cart ? addCartItemsMutation : createCartMutation, {
-    onCompleted() {
-      refetchCart();
+  }] = useMutation(cart && cart._id ? addCartItemsMutation : createCartMutation, {
+    onCompleted(addOrCreateCartMutationData) {
       if (addOrCreateCartMutationData && addOrCreateCartMutationData.createCart && (!viewer || !viewer._id)) {
         const { cart: cartPayload, token } = addOrCreateCartMutationData.createCart;
         cartStore.setAnonymousCartCredentials(cartPayload._id, token);
       }
+      refetchCart();
     }
   });
 
@@ -139,48 +152,47 @@ export default function useCart() {
     });
   };
 
-  /*
-
   // If we are authenticated, reconcile carts
-  if (cartStore.hasAnonymousCartCredentials && viewer && viewer._id && cartStore.isReconcilingCarts === false) {
-    // Prevent multiple calls to reconcile cart mutations when one is currently in progress
-    cartStore.setIsReconcilingCarts(true);
+  useEffect(() => {
+    if (cartStore.hasAnonymousCartCredentials && viewer && viewer._id && cartStore.isReconcilingCarts === false) {
+      // Prevent multiple calls to reconcile cart mutations when one is currently in progress
+      cartStore.setIsReconcilingCarts(true);
 
-    apolloClient.mutate({
-      mutation: reconcileCartsMutation,
-      update: (cache, { data: mutationData }) => {
-        // If the mutation data contains a createCart object and we are an anonymous user,
-        // then set the anonymous cart details
-        if (mutationData && mutationData.reconcileCarts) {
-          const { cart: cartPayload } = mutationData.reconcileCarts;
+      apolloClient.mutate({
+        mutation: reconcileCartsMutation,
+        update: (cache, { data: mutationData }) => {
+          // If the mutation data contains a createCart object and we are an anonymous user,
+          // then set the anonymous cart details
+          if (mutationData && mutationData.reconcileCarts) {
+            const { cart: cartPayload } = mutationData.reconcileCarts;
 
-          if (cartPayload) {
-            // Clear anonymous account credentials
-            cartStore.clearAnonymousCartCredentials();
+            if (cartPayload) {
+              // Clear anonymous account credentials
+              cartStore.clearAnonymousCartCredentials();
 
-            // Update cache for account cart query
-            cache.writeQuery({
-              query: accountCartByAccountIdQuery,
-              data: { cart: cartPayload }
-            });
+              // Update cache for account cart query
+              cache.writeQuery({
+                query: accountCartByAccountIdQuery,
+                data: { cart: cartPayload }
+              });
 
-            // Refetch cart
-            refetchCart && refetchCart();
+              // Refetch cart
+              refetchCart && refetchCart();
+            }
+          }
+
+          cartStore.setIsReconcilingCarts(false);
+        },
+        variables: {
+          input: {
+            anonymousCartId: cartStore.anonymousCartId,
+            cartToken: cartStore.anonymousCartToken,
+            shopId: shop && shop._id
           }
         }
-
-        cartStore.setIsReconcilingCarts(false);
-      },
-      variables: {
-        input: {
-          anonymousCartId: cartStore.anonymousCartId,
-          cartToken: cartStore.anonymousCartToken,
-          shopId: shop && shop._id
-        }
-      }
-    });
-  }
-  */
+      });
+    }
+  }, [viewer, cartStore.hasAnonymousCartCredentials, cartStore.isReconcilingCarts, apolloClient]);
 
   let processedCartData = null;
   if (cart) {
@@ -191,7 +203,7 @@ export default function useCart() {
   }
 
   return {
-    addItemsToCart: (items) => handleAddItemsToCart({ items }, !cart),
+    addItemsToCart: (items) => handleAddItemsToCart({ items }, !cart || !cart._id),
     addOrCreateCartLoading,
     cart: processedCartData,
     checkoutMutations: {
