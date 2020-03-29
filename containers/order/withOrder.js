@@ -4,6 +4,7 @@ import { Query } from "@apollo/react-components";
 import inject from "hocs/inject";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import { orderByReferenceId } from "./queries.gql";
+import { useRouter } from "next/router";
 
 /**
  * withOrder higher order query component for fetching an order
@@ -12,54 +13,32 @@ import { orderByReferenceId } from "./queries.gql";
  * @returns {React.Component} - Component with `cart` props and callbacks
  */
 export default function withOrder(Component) {
-  class WithOrder extends React.Component {
-    static propTypes = {
-      cartStore: PropTypes.shape({
-        anonymousCartId: PropTypes.string,
-        anonymousCartToken: PropTypes.string,
-        setAnonymousCartCredentialsFromLocalStorage: PropTypes.func
-      }),
-      client: PropTypes.shape({
-        mutate: PropTypes.func.isRequired
-      }),
-      primaryShopId: PropTypes.string.isRequired,
-      routingStore: PropTypes.shape({
-        query: PropTypes.shape({
-          orderId: PropTypes.string.isRequired,
-          token: PropTypes.string
-        })
-      }),
-      uiStore: PropTypes.shape({
-        language: PropTypes.string.isRequired
-      })
-    }
+  function WithOrder(props) {
+    const { primaryShopId, routingStore, uiStore } = props;
+    const { query } = useRouter();
 
-    render() {
-      const { primaryShopId, routingStore, uiStore } = this.props;
+    const variables = {
+      id: query.orderId,
+      language: uiStore.language,
+      shopId: primaryShopId,
+      token: query.token || null
+    };
 
-      const variables = {
-        id: routingStore.query.orderId,
-        language: uiStore.language,
-        shopId: primaryShopId,
-        token: routingStore.query.token || null
-      };
+    return (
+      <Query errorPolicy="all" query={orderByReferenceId} variables={variables}>
+        {({ loading: isLoading, data: orderData }) => {
+          const { order } = orderData || {};
 
-      return (
-        <Query errorPolicy="all" query={orderByReferenceId} variables={variables}>
-          {({ loading: isLoading, data: orderData }) => {
-            const { order } = orderData || {};
-
-            return (
-              <Component
-                {...this.props}
-                isLoadingOrder={isLoading}
-                order={order}
-              />
-            );
-          }}
-        </Query>
-      );
-    }
+          return (
+            <Component
+              {...props}
+              isLoadingOrder={isLoading}
+              order={order}
+            />
+          );
+        }}
+      </Query>
+    );
   }
 
   hoistNonReactStatic(WithOrder, Component);
