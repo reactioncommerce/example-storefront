@@ -65,9 +65,6 @@ function Link({
     return `/${locale}${linkToUse}`; 
   }, [linkToUse, locale, as]);
 
-  console.log("hrefWithLocale", hrefWithLocale);
-  console.log("asWithLocale", asWithLocale);
-
   return (
     <NextLink href={hrefWithLocale} as={asWithLocale} {...props} passHref>
       <a
