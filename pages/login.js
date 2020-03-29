@@ -8,6 +8,7 @@ import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import withCart from "containers/cart/withCart";
 import Entry from "components/Entry";
 import Link from "components/Link";
+import Layout from "components/Layout";
 import ChevronLeftIcon from "mdi-material-ui/ChevronLeft";
 import { withApollo } from "lib/apollo/withApollo";
 
@@ -110,7 +111,7 @@ class Login extends Component {
   render() {
     const { classes, shop } = this.props;
     return (
-      <Fragment>
+      <Layout shop={shop}>
         <Helmet
           title={`Login | ${shop && shop.name}`}
           meta={[{ name: "description", content: shop && shop.description }]}
@@ -120,7 +121,7 @@ class Login extends Component {
           {this.renderHeader()}
           <main className={classes.main}>{this.renderEntry()}</main>
         </div>
-      </Fragment>
+      </Layout>
     );
   }
 }

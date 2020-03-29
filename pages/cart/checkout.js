@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
 import CheckoutActions from "components/CheckoutActions";
+import Layout from "components/Layout";
 import CheckoutEmailAddress from "@reactioncommerce/components/CheckoutEmailAddress/v1";
 import CheckoutTopHat from "@reactioncommerce/components/CheckoutTopHat/v1";
 import Entry from "components/Entry";
@@ -373,12 +374,12 @@ class Checkout extends Component {
     }
 
     return (
-      <Fragment>
+      <Layout shop={shop}>
         {this.renderCheckoutHead()}
         {this.renderCheckoutTopHat()}
         {this.renderCheckoutHeader()}
         {this.renderCheckoutContent()}
-      </Fragment>
+      </Layout>
     );
   }
 }
