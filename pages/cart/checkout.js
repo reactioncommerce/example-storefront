@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Router from "next/router";
 import { useApolloClient } from "@apollo/client";
@@ -6,7 +6,9 @@ import Head from "next/head";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
+import { StripeProvider } from "react-stripe-elements";
 import CheckoutActions from "components/CheckoutActions";
+import CheckoutSummary from "components/CheckoutSummary";
 import Layout from "components/Layout";
 import PageLoading from "components/PageLoading";
 import { withApollo } from "lib/apollo/withApollo";
@@ -91,6 +93,7 @@ const Checkout = ({ router }) => {
   const { locale, t } = useTranslation("common");
   const apolloClient = useApolloClient();
   const [addressValidation, addressValidationResults] = useAddressValidation();
+  const [ stripe, setStripe ] = useState();
 
   const {
     cart,
@@ -118,6 +121,12 @@ const Checkout = ({ router }) => {
       Router.push("/cart/login", "/cart/login");
     }
   }), [cart, hasIdentity, asPath, Router];
+  
+  useEffect(() => {
+    if (!stripe && process.env.STRIPE_PUBLIC_API_KEY && window && window.Stripe) {
+      setStripe(window.Stripe(process.env.STRIPE_PUBLIC_API_KEY));
+    }
+  }), [stripe];
 
   const renderCheckoutContent = () => {
     // sanity check that "tries" to render the correct /cart view if SSR doesn't provide the `cart`
@@ -155,34 +164,42 @@ const Checkout = ({ router }) => {
         !!availablePaymentMethods.find((availableMethod) => availableMethod.name === method.name));
 
       return (
-        <div className={classes.checkoutContentContainer}>
-          <div className={classes.checkoutContent}>
-            <Grid container spacing={3}>
-              <Grid item xs={12} md={12}>
-                <div className={classes.flexContainer}>
-                  <div className={classes.checkoutActions}>
-                    <CheckoutActions
-                      locale={locale}
-                      apolloClient={apolloClient}
-                      addressValidation={addressValidation}
-                      addressValidationResults={addressValidationResults}
-                      cart={cart}
-                      cartStore={cartStore}
-                      checkoutMutations={checkoutMutations}
-                      clearAuthenticatedUsersCart={clearAuthenticatedUsersCart}
-                      orderEmailAddress={orderEmailAddress}
-                      paymentMethods={paymentMethods}
-                      hasMoreCartItems={hasMoreCartItems}
-                      onRemoveCartItems={onRemoveCartItems}
-                      onChangeCartItemsQuantity={onChangeCartItemsQuantity}
-                      onLoadMoreCartItems={loadMoreCartItems}
-                    />
+        <StripeProvider stripe={stripe}>
+          <div className={classes.checkoutContentContainer}>
+            <div className={classes.checkoutContent}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={7}>
+                  <div className={classes.flexContainer}>
+                    <div className={classes.checkoutActions}>
+                      <CheckoutActions
+                        apolloClient={apolloClient}
+                        cart={cart}
+                        cartStore={cartStore}
+                        checkoutMutations={checkoutMutations}
+                        clearAuthenticatedUsersCart={clearAuthenticatedUsersCart}
+                        orderEmailAddress={orderEmailAddress}
+                        paymentMethods={paymentMethods}
+                      />
+                    </div>
                   </div>
-                </div>
+                </Grid>
+                <Grid item xs={12} md={5}>
+                  <div className={classes.flexContainer}>
+                    <div className={classes.cartSummary}>
+                      <CheckoutSummary
+                        cart={cart}
+                        hasMoreCartItems={hasMoreCartItems}
+                        onRemoveCartItems={onRemoveCartItems}
+                        onChangeCartItemsQuantity={onChangeCartItemsQuantity}
+                        onLoadMoreCartItems={loadMoreCartItems}
+                      />
+                    </div>
+                  </div>
+                </Grid>
               </Grid>
-            </Grid>
+            </div>
           </div>
-        </div>
+        </StripeProvider>
       );
     }
   };
