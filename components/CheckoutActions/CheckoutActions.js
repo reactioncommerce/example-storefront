@@ -2,7 +2,6 @@
 import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import { isEqual } from "lodash";
-import { observer } from "mobx-react";
 import styled from "styled-components";
 import Actions from "@reactioncommerce/components/CheckoutActions/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
@@ -409,4 +408,4 @@ class CheckoutActions extends Component {
   }
 }
 
-export default withAddressValidation(observer(CheckoutActions));
+export default withAddressValidation(CheckoutActions);

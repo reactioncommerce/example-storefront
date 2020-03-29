@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import { withStyles } from "@material-ui/core/styles";
 import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
 import CartItems from "components/CartItems";
@@ -223,4 +223,4 @@ class MiniCart extends Component {
   }
 }
 
-export default withStyles(styles, { name: "SkMiniCart" })(withCart(inject("uiStore")(observer(MiniCart))));
+export default withStyles(styles, { name: "SkMiniCart" })(withCart("uiStore")(MiniCart));

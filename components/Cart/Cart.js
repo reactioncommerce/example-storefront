@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import { withStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 
@@ -36,4 +36,4 @@ class Cart extends Component {
   }
 }
 
-export default withStyles(styles)(inject("uiStore")(observer(Cart)));
+export default withStyles(styles)(inject("uiStore")(Cart));

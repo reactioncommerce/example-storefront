@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import { withStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
@@ -103,4 +103,4 @@ class AccountDropdown extends Component {
   }
 }
 
-export default withStyles(styles)(inject("authStore")(observer(AccountDropdown)));
+export default withStyles(styles)(inject("authStore")(AccountDropdown));

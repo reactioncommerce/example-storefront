@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
 import { withStyles } from "@material-ui/core/styles";
@@ -175,4 +175,4 @@ class CartPopover extends Component {
   }
 }
 
-export default withStyles(styles)(inject("uiStore")(observer(CartPopover)));
+export default withStyles(styles)(inject("uiStore")(CartPopover));
