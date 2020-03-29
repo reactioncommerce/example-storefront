@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import inject from "hocs/inject";
 import relayConnectionToArray from "lib/utils/relayConnectionToArray";
-import viewerQuery from "../account/viewer.gql";
+import viewerQuery from "hooks/viewer/viewer.gql";
 import {
   addAccountAddressBookEntry,
   updateAccountAddressBookEntry,
