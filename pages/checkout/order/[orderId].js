@@ -92,4 +92,11 @@ export async function getStaticProps() {
   };
 }
 
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { orderId: "-" } }],
+    fallback: true
+  };
+}
+
 export default withApollo()(withOrder(withStyles(styles, { withTheme: true })(CheckoutComplete)));
