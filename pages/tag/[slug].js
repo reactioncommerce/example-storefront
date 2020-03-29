@@ -8,8 +8,8 @@ import Breadcrumbs from "components/Breadcrumbs";
 import ProductGrid from "components/ProductGrid";
 import ProductGridEmptyMessage from "components/ProductGrid/ProductGridEmptyMessage";
 import ProductGridHero from "components/ProductGridHero";
-import ProductGridTitle from "components/ProductGridTitle"
-import Layout from "components/Layout";;
+import ProductGridTitle from "components/ProductGridTitle";
+import Layout from "components/Layout";
 import SharedPropTypes from "lib/utils/SharedPropTypes";
 // import trackProductListViewed from "lib/tracking/trackProductListViewed";
 import { withApollo } from "lib/apollo/withApollo";

@@ -93,7 +93,7 @@ const Login = ({ router }) => {
     if (!cart) return;
     if (hasIdentity) {
       // Router.push("/[lang]/cart/checkout", `/${locale}/cart/checkout`);
-      Router.push("/cart/checkout", `/cart/checkout`);
+      Router.push("/cart/checkout", "/cart/checkout");
     }
   }), [cart, hasIdentity, Router];
 
