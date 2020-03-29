@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import PageLoading from "components/PageLoading";
+import Layout from "components/Layout";
 import withOrder from "containers/order/withOrder";
 import OrderCard from "components/OrderCard";
 import { withApollo } from "lib/apollo/withApollo";
@@ -51,7 +52,7 @@ class CheckoutComplete extends Component {
     }
 
     return (
-      <Fragment>
+      <Layout shop={shop}>
         <Helmet>
           <title>{shop && shop.name} | Checkout</title>
           <meta name="description" content={shop && shop.description} />
@@ -74,7 +75,7 @@ class CheckoutComplete extends Component {
           </Grid>
           <Grid item xs={false} md={3} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
         </Grid>
-      </Fragment>
+      </Layout>
     );
   }
 }
