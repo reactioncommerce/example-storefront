@@ -112,7 +112,11 @@ module.exports = {
         {
           source: "/refresh",
           destination: "/api/account/refresh"
-        }
+        },
+        {
+          source: "/",
+          destination: "/api/detectLanguage"
+        },
       ];
     }
   }
