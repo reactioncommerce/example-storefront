@@ -12,7 +12,7 @@ import { addTypographyStyles } from "@reactioncommerce/components/utils";
 import withAddressValidation from "containers/address/withAddressValidation";
 import Dialog from "@material-ui/core/Dialog";
 import PageLoading from "components/PageLoading";
-import Router from "next/router";
+import Router from "translations/i18nRouter";
 // import track from "lib/tracking/track";
 // import TRACKING from "lib/tracking/constants";
 // import trackCheckout from "lib/tracking/trackCheckout";

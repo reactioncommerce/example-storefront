@@ -14,8 +14,10 @@ import SharedPropTypes from "lib/utils/SharedPropTypes";
 // import trackProductListViewed from "lib/tracking/trackProductListViewed";
 import { withApollo } from "lib/apollo/withApollo";
 
+import { locales } from "translations/config";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchAllTags from "staticUtils/tags/fetchAllTags";
+import fetchTranslations from "staticUtils/translations/fetchTranslations";
 
 class TagGridPage extends Component {
   static propTypes = {
@@ -156,11 +158,12 @@ class TagGridPage extends Component {
   }
 }
 
-export async function getStaticProps({ params: { slug } }) {
+export async function getStaticProps({ params: { lang, slug } }) {
   return {
     props: {
-      ...await fetchPrimaryShop("en"),
-      ...await fetchAllTags()
+      ...await fetchPrimaryShop(lang),
+      ...await fetchTranslations(lang, ["common"]),
+      ...await fetchAllTags(lang)
     },
     revalidate: 120 // Revalidate each two minutes
   };
@@ -168,9 +171,7 @@ export async function getStaticProps({ params: { slug } }) {
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      { params: { slug: "-" } }
-    ],
+    paths: locales.map(locale => ({ params: { lang: locale,  slug: "-" } })),
     fallback: true
   };
 }

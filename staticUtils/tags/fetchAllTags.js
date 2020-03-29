@@ -27,8 +27,8 @@ async function getTags(variables) {
  * @param {Object} client ApolloClient instance
  * @returns {Object[]} Array of all tags
  */
-export default async function fetchAllTags() {
-  const { shop } = await fetchPrimaryShop("en");
+export default async function fetchAllTags(lang) {
+  const { shop } = await fetchPrimaryShop(lang);
 
   if (!shop) {
     console.warn("primaryShop query result was null");

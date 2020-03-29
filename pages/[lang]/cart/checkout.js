@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import Router from "next/router";
+import Router from "translations/i18nRouter";
 import { useApolloClient } from "@apollo/client";
 import Head from "next/head";
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,8 +20,10 @@ import useAddressValidation from "hooks/address/useAddressValidation";
 import useTranslation from "hooks/useTranslation";
 import definedPaymentMethods from "custom/paymentMethods";
 
+import { locales } from "translations/config";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchAllTags from "staticUtils/tags/fetchAllTags";
+import fetchTranslations from "staticUtils/translations/fetchTranslations";
 
 const useStyles = makeStyles((theme) => ({
   checkoutActions: {
@@ -117,8 +119,7 @@ const Checkout = ({ router }) => {
     // Skipping if the `cart` is not available
     if (!cart) return;
     if (!hasIdentity) {
-      // Router.push("/[lang]/cart/login", `/${locale}/cart/login`);
-      Router.push("/cart/login", "/cart/login");
+      Router.push("/cart/login");
     }
   }), [cart, hasIdentity, asPath, Router];
   
@@ -227,12 +228,20 @@ Checkout.propTypes = {
   router: PropTypes.object
 };
 
-export async function getStaticProps() {
+export async function getStaticProps({ params: { lang } }) {
   return {
     props: {
-      ...await fetchPrimaryShop("en"),
-      ...await fetchAllTags()
+      ...await fetchPrimaryShop(lang),
+      ...await fetchTranslations(lang, ["common"]),
+      ...await fetchAllTags(lang)
     }
+  };
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: locales.map(locale => ({ params: { lang: locale } })),
+    fallback: false
   };
 }
 
