@@ -115,7 +115,7 @@ const Checkout = ({ router }) => {
     if (!cart) return;
     if (!hasIdentity) {
       // Router.push("/[lang]/cart/login", `/${locale}/cart/login`);
-      Router.push("/cart/login", `/cart/login`);
+      Router.push("/cart/login", "/cart/login");
     }
   }), [cart, hasIdentity, asPath, Router];
 

@@ -87,6 +87,6 @@ const AccountDropdown = () => {
       </Popover>
     </Fragment>
   );
-}
+};
 
 export default inject("authStore")(AccountDropdown);
