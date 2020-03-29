@@ -9,7 +9,7 @@ import ProfileOrders from "components/ProfileOrders";
 import Layout from "components/Layout";
 import withAddressBook from "containers/address/withAddressBook";
 import { withApollo } from "lib/apollo/withApollo";
-import ErrorPage from "./_error";
+import ErrorPage from "../_error";
 
 const styles = (theme) => ({
   accountProfileInfoContainer: {
