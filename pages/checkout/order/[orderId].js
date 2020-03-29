@@ -10,6 +10,9 @@ import withOrder from "containers/order/withOrder";
 import OrderCard from "components/OrderCard";
 import { withApollo } from "lib/apollo/withApollo";
 
+import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
+import fetchAllTags from "staticUtils/tags/fetchAllTags";
+
 const styles = (theme) => ({
   orderThankYou: {
     marginBottom: theme.spacing(3)
@@ -78,6 +81,15 @@ class CheckoutComplete extends Component {
       </Layout>
     );
   }
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      ...await fetchPrimaryShop("en"),
+      ...await fetchAllTags()
+    }
+  };
 }
 
 export default withApollo()(withOrder(withStyles(styles, { withTheme: true })(CheckoutComplete)));
