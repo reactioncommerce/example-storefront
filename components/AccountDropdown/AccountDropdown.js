@@ -1,15 +1,15 @@
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { useState, Fragment } from "react";
 import inject from "hocs/inject";
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import AccountIcon from "mdi-material-ui/Account";
 import Popover from "@material-ui/core/Popover";
+import useViewer from "hooks/viewer/useViewer";
 import ViewerInfo from "@reactioncommerce/components/ViewerInfo/v1";
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   accountDropdown: {
     width: 320,
     padding: theme.spacing(2)
@@ -17,90 +17,76 @@ const styles = (theme) => ({
   marginBottom: {
     marginBottom: theme.spacing(2)
   }
-});
+}));
 
-class AccountDropdown extends Component {
-  static propTypes = {
-    authStore: PropTypes.object.isRequired,
-    classes: PropTypes.object
+const AccountDropdown = () => {
+  const classes = useStyles();
+  const [anchorElement, setAnchorElement] = useState(null);
+  const [viewer, isLoadingViewer] = useViewer();
+  const isAuthenticated = viewer && viewer._id;
+
+  const toggleOpen = (event) => {
+    setAnchorElement(event.currentTarget);
   };
 
-  static defaultProps = {
-    classes: {}
+  const onClose = () => {
+    setAnchorElement(null);
   };
 
-  state = {
-    anchorElement: null
-  };
+  return (
+    <Fragment>
+      { isAuthenticated ?
+        <ButtonBase onClick={toggleOpen}>
+          <ViewerInfo viewer={viewer} />
+        </ButtonBase>
+        :
+        <IconButton color="inherit" onClick={toggleOpen}>
+          <AccountIcon />
+        </IconButton>
+      }
 
-  toggleOpen = (event) => {
-    this.setState({ anchorElement: event.currentTarget });
-  }
-
-  onClose = () => {
-    this.setState({ anchorElement: null });
-  }
-
-  render() {
-    const { classes, authStore } = this.props;
-    const { anchorElement } = this.state;
-    const { account } = authStore;
-
-    return (
-      <Fragment>
-        { authStore.isAuthenticated ?
-          <ButtonBase onClick={this.toggleOpen}>
-            <ViewerInfo viewer={account} />
-          </ButtonBase>
-          :
-          <IconButton color="inherit" onClick={this.toggleOpen}>
-            <AccountIcon />
-          </IconButton>
-        }
-
-        <Popover
-          anchorEl={anchorElement}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center"
-          }}
-          open={Boolean(anchorElement)}
-          onClose={this.onClose}
-        >
-          <div className={classes.accountDropdown}>
-            {authStore.isAuthenticated ?
-              <Fragment>
-                <div className={classes.marginBottom}>
-                  <Button color="primary" fullWidth href="/profile/address">
-                    Profile
-                  </Button>
-                </div>
-                <div className={classes.marginBottom}>
-                  <Button color="primary" fullWidth href={`/change-password?email=${encodeURIComponent(account.emailRecords[0].address)}`}>
-                    Change Password
-                  </Button>
-                </div>
-                <Button color="primary" fullWidth href="/logout" variant="contained">
-                  Sign Out
+      <Popover
+        anchorEl={anchorElement}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center"
+        }}
+        open={Boolean(anchorElement)}
+        onClose={onClose}
+      >
+        <div className={classes.accountDropdown}>
+          {isAuthenticated ?
+            <Fragment>
+              <div className={classes.marginBottom}>
+                <Button color="primary" fullWidth href="/profile/address">
+                  Profile
                 </Button>
-              </Fragment>
-              :
-              <Fragment>
-                <div className={classes.authContent}>
-                  <Button color="primary" fullWidth href="/signin" variant="contained">
-                    Sign In
-                  </Button>
-                </div>
-                <Button color="primary" fullWidth href="/signup">
-                  Create Account
+              </div>
+              <div className={classes.marginBottom}>
+                <Button color="primary" fullWidth href={`/change-password?email=${encodeURIComponent(viewer.emailRecords[0].address)}`}>
+                  Change Password
                 </Button>
-              </Fragment>
-            }
-          </div>
-        </Popover>
-      </Fragment>
-    );
-  }
+              </div>
+              <Button color="primary" fullWidth href="/logout" variant="contained">
+                Sign Out
+              </Button>
+            </Fragment>
+            :
+            <Fragment>
+              <div className={classes.authContent}>
+                <Button color="primary" fullWidth href="/signin" variant="contained">
+                  Sign In
+                </Button>
+              </div>
+              <Button color="primary" fullWidth href="/signup">
+                Create Account
+              </Button>
+            </Fragment>
+          }
+        </div>
+      </Popover>
+    </Fragment>
+  );
 }
 
-export default withStyles(styles)(inject("authStore")(AccountDropdown));
+export default inject("authStore")(AccountDropdown);
