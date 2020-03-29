@@ -12,7 +12,7 @@ import { withApollo } from "lib/apollo/withApollo";
 
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchAllTags from "staticUtils/tags/fetchAllTags";
-import ErrorPage from "../_error";
+import ErrorPage from "pages/_error";
 
 const styles = (theme) => ({
   accountProfileInfoContainer: {
