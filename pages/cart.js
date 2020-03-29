@@ -20,6 +20,9 @@ import variantById from "lib/utils/variantById";
 // import TRACKING from "lib/tracking/constants";
 import { withApollo } from "lib/apollo/withApollo";
 
+import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
+import fetchAllTags from "staticUtils/tags/fetchAllTags";
+
 const styles = (theme) => ({
   cartEmptyMessageContainer: {
     margin: "80px 0"
@@ -191,6 +194,15 @@ class CartPage extends Component {
       </Layout>
     );
   }
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      ...await fetchPrimaryShop("en"),
+      ...await fetchAllTags()
+    }
+  };
 }
 
 export default withApollo()(withStyles(styles)(withCart(inject("uiStore")(CartPage))));
