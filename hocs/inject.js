@@ -1,5 +1,5 @@
 import useStores from "hooks/useStores";
-import useShop from "hooks/useShop";
+import useShop from "hooks/shop/useShop";
 import useTags from "hooks/useTags";
 
 const withInjectedStores = (injections) => (PageComponent) => {
