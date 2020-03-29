@@ -55,7 +55,7 @@ class CheckoutActions extends Component {
       onSetShippingAddress: PropTypes.func.isRequired
     }),
     clearAuthenticatedUsersCart: PropTypes.func.isRequired,
-    client: PropTypes.shape({
+    apolloClient: PropTypes.shape({
       mutate: PropTypes.func.isRequired
     }),
     orderEmailAddress: PropTypes.string.isRequired,
@@ -235,7 +235,7 @@ class CheckoutActions extends Component {
   };
 
   placeOrder = async (order) => {
-    const { cartStore, clearAuthenticatedUsersCart, client: apolloClient } = this.props;
+    const { cartStore, clearAuthenticatedUsersCart, apolloClient } = this.props;
 
     // Payments can have `null` amount to mean "remaining".
     let remainingAmountDue = order.fulfillmentGroups.reduce((sum, group) => sum + group.totalPrice, 0);
@@ -272,7 +272,7 @@ class CheckoutActions extends Component {
       // this.trackOrder({ action: ORDER_COMPLETED, orders });
 
       // Send user to order confirmation page
-      Router.push("checkoutComplete", { orderId: orders[0].referenceId, token });
+      Router.push(`/checkout/order/[orderId]${token && `?token=${token}`}`, `/checkout/order/${orders[0].referenceId}${token && `?token=${token}`}`);
     } catch (error) {
       if (this._isMounted) {
         this.setState({
