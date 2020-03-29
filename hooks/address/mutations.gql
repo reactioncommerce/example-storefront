@@ -1,4 +1,4 @@
-mutation addAccountAddressBookEntry($input: AddAccountAddressBookEntryInput!) {
+mutation addAccountAddressBookEntryMutation($input: AddAccountAddressBookEntryInput!) {
   addAccountAddressBookEntry(input: $input) {
     address {
       _id
@@ -18,7 +18,7 @@ mutation addAccountAddressBookEntry($input: AddAccountAddressBookEntryInput!) {
   }
 }
 
-mutation updateAccountAddressBookEntry($input: UpdateAccountAddressBookEntryInput!) {
+mutation updateAccountAddressBookEntryMutation($input: UpdateAccountAddressBookEntryInput!) {
   updateAccountAddressBookEntry(input: $input) {
     address {
       _id
@@ -38,7 +38,7 @@ mutation updateAccountAddressBookEntry($input: UpdateAccountAddressBookEntryInpu
   }
 }
 
-mutation removeAccountAddressBookEntry($input: RemoveAccountAddressBookEntryInput!) {
+mutation removeAccountAddressBookEntryMutation($input: RemoveAccountAddressBookEntryInput!) {
   removeAccountAddressBookEntry(input: $input) {
     address {
       _id

@@ -1,4 +1,4 @@
-query validateAddress($address: AddressInput!, $shopId: ID!) {
+query validateAddressQuery($address: AddressInput!, $shopId: ID!) {
   addressValidation(address: $address, shopId: $shopId) {
     suggestedAddresses{
       address1
