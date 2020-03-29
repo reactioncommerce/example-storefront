@@ -19,6 +19,7 @@ import useTranslation from "hooks/useTranslation";
 import definedPaymentMethods from "custom/paymentMethods";
 
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
+import fetchAllTags from "staticUtils/tags/fetchAllTags";
 
 const useStyles = makeStyles((theme) => ({
   checkoutActions: {
@@ -212,7 +213,8 @@ Checkout.propTypes = {
 export async function getStaticProps() {
   return {
     props: {
-      ...await fetchPrimaryShop()
+      ...await fetchPrimaryShop("en"),
+      ...await fetchAllTags()
     }
   };
 }
