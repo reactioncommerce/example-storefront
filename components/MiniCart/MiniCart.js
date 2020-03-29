@@ -223,4 +223,4 @@ class MiniCart extends Component {
   }
 }
 
-export default withStyles(styles, { name: "SkMiniCart" })(withCart("uiStore")(MiniCart));
+export default withStyles(styles, { name: "SkMiniCart" })(withCart(inject("uiStore")(MiniCart)));

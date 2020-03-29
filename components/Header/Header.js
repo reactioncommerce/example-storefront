@@ -79,7 +79,7 @@ class Header extends Component {
           </div>
 
           <AccountDropdown />
-          {/* <MiniCart />*/}
+          <MiniCart />
         </Toolbar>
         <NavigationMobile />
       </AppBar>
