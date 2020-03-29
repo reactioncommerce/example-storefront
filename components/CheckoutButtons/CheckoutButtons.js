@@ -30,7 +30,7 @@ export default class CheckoutButtons extends Component {
 
   handleOnClick = () => {
     const { primaryButtonRoute } = this.props;
-    Router.pushRoute(primaryButtonRoute);
+    Router.push(primaryButtonRoute);
   }
 
   render() {

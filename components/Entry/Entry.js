@@ -52,10 +52,10 @@ class Entry extends Component {
 
   static defaultProps = {
     onLoginButtonClick() {
-      Router.pushRoute("/signin");
+      Router.push("/signin");
     },
     onRegisterButtonClick() {
-      Router.pushRoute("/signup");
+      Router.push("/signup");
     },
     setEmailOnAnonymousCart() {}
   };

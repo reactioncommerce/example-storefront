@@ -93,11 +93,11 @@ class MiniCart extends Component {
     }
   }
 
-  handleClick = () => Router.pushRoute("/");
+  handleClick = () => Router.push("/");
 
   handleCheckoutButtonClick = () => {
     this.handleLeavePopper();
-    Router.pushRoute("/cart/checkout");
+    Router.push("/cart/checkout");
   }
 
   handlePopperClose = () => {
@@ -118,7 +118,7 @@ class MiniCart extends Component {
   handleOnClick = () => {
     const { closeCart } = this.props.uiStore;
     closeCart();
-    Router.pushRoute("cart");
+    Router.push("/cart");
   }
 
   handleItemQuantityChange = (quantity, cartItemId) => {

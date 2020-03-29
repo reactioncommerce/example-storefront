@@ -62,7 +62,7 @@ export const RoutingProvider = ({ children }) => {
 
     // Router is only available for the client (browser)
     if (process.browser) {
-      // Router.pushRoute(path, path, { shallow: true, replace: true });
+      // Router.push(path, path, { shallow: true, replace: true });
     }
 
     return path;
