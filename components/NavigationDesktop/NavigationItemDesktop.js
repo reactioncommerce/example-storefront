@@ -79,7 +79,7 @@ class NavigationItemDesktop extends Component {
       this.setState({ isSubNavOpen: !this.state.isSubNavOpen });
     } else {
       const path = this.linkPath();
-      Router.pushRoute(path);
+      Router.push(path);
     }
   };
 
