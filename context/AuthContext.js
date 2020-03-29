@@ -42,37 +42,6 @@ export const AuthProvider = ({ children }) => {
     if (newAccount) {
       setAccountId(newAccount._id) || null;
       _setAccount({ ...splitNames(newAccount), ...newAccount });
-
-      const { name, emailRecords, company, phone } = newAccount;
-
-      if (process.browser && window && typeof window !== "undefined") {
-        const { $crisp } = window;
-
-        if ($crisp) {
-          // Crisp throws errors e.g. for wrong emails like admin@localhost
-          try {
-            if (name) {
-              $crisp.push(["set", "user:nickname", [name]]);
-            }
-
-            if (emailRecords && emailRecords.length) {
-              const { address: email } = emailRecords[0];
-              $crisp.push(["set", "user:email", [email]]);
-            }
-
-            if (company) {
-              $crisp.push(["set", "user:company", [company]]);
-            }
-
-            if (phone) {
-              $crisp.push(["set", "user:phone", [phone]]);
-            }
-          } catch (error) {
-            // This is not critial
-            // console.error("Error forwarding user data", error);
-          }
-        }
-      }
     } else {
       setAccountId(null);
       _setAccount({});
