@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useQuery, useMutation, useApolloClient } from "@apollo/client";
 import useStores from "hooks/useStores";
-import useShop from "hooks/useShop";
+import useShop from "hooks/shop/useShop";
 import useViewer from "hooks/viewer/useViewer";
 import cartItemsConnectionToArray from "lib/utils/cartItemsConnectionToArray";
 import {
@@ -47,7 +47,7 @@ export default function useCart() {
     refetchCart();
   }, [viewer, refetchCart]);
 
-  const shouldSkipAnonymousCartByCartIdQuery = accountId || isLoadingViewer;
+  const shouldSkipAnonymousCartByCartIdQuery = accountId || isLoadingViewer || !cartStore.anonymousCartId || !cartStore.anonymousCartToken;
 
   const { loading: isLoadingAnonymous, data: cartDataAnonymous, fetchMore: fetchMoreAnonymous, refetch: refetchCartAnonymous } = useQuery(anonymousCartByCartIdQuery, {
     skip: shouldSkipAnonymousCartByCartIdQuery,
