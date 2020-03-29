@@ -13,7 +13,7 @@ import ProductDetailVendor from "components/ProductDetailVendor";
 import ProductDetailDescription from "components/ProductDetailDescription";
 import ProductDetailPrice from "components/ProductDetailPrice";
 import MediaGallery from "components/MediaGallery";
-import Router from "next/router";
+import Router from "translations/i18nRouter";
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import variantById from "lib/utils/variantById";
 // import trackProduct from "lib/tracking/trackProduct";

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import Router from "next/router";
+import Router from "translations/i18nRouter";
 import Head from "next/head";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -12,8 +12,10 @@ import useCart from "hooks/cart/useCart";
 import useShop from "hooks/shop/useShop";
 import useTranslation from "hooks/useTranslation";
 
+import { locales } from "translations/config";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchAllTags from "staticUtils/tags/fetchAllTags";
+import fetchTranslations from "staticUtils/translations/fetchTranslations";
 
 const useStyles = makeStyles((theme) => ({
   checkoutActions: {
@@ -92,8 +94,7 @@ const Login = ({ router }) => {
     // Skipping if the `cart` is not available
     if (!cart) return;
     if (hasIdentity) {
-      // Router.push("/[lang]/cart/checkout", `/${locale}/cart/checkout`);
-      Router.push("/cart/checkout", "/cart/checkout");
+      Router.push("/cart/checkout");
     }
   }), [cart, hasIdentity, Router];
 
@@ -122,12 +123,20 @@ Login.propTypes = {
   router: PropTypes.object
 };
 
-export async function getStaticProps() {
+export async function getStaticProps({ params: { lang } }) {
   return {
     props: {
-      ...await fetchPrimaryShop("en"),
-      ...await fetchAllTags()
+      ...await fetchPrimaryShop(lang),
+      ...await fetchTranslations(lang, ["common"]),
+      ...await fetchAllTags(lang)
     }
+  };
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: locales.map(locale => ({ params: { lang: locale } })),
+    fallback: false
   };
 }
 
