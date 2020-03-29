@@ -42,17 +42,23 @@ class CheckoutComplete extends Component {
   render() {
     const { classes, isLoadingOrder, order, shop } = this.props;
 
-    if (isLoadingOrder) return <PageLoading message="Loading order details..." />;
+    if (isLoadingOrder) return (
+      <Layout shop={shop}>
+        <PageLoading message="Loading order details..." />
+      </Layout>
+    );
 
     if (!order) {
       return (
-        <div className={classes.checkoutContentContainer}>
-          <div className={classes.orderDetails}>
-            <section className={classes.section}>
-              <Typography className={classes.title} variant="h6">Order not found</Typography>
-            </section>
+        <Layout shop={shop}>
+          <div className={classes.checkoutContentContainer}>
+            <div className={classes.orderDetails}>
+              <section className={classes.section}>
+                <Typography className={classes.title} variant="h6">Order not found</Typography>
+              </section>
+            </div>
           </div>
-        </div>
+        </Layout>
       );
     }
 
@@ -97,7 +103,7 @@ export async function getStaticProps({ params: { lang } }) {
 
 export async function getStaticPaths() {
   return {
-    paths: locales.map(locale => ({ params: { lang: locale, orderId: "-" } })),
+    paths: locales.map(locale => ({ params: { lang: locale } })),
     fallback: true
   };
 }
