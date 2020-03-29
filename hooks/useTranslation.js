@@ -1,7 +1,7 @@
 import { useContext, useCallback, useMemo } from "react";
 import { useRouter } from "next/router";
 import Skeleton from "@material-ui/lab/Skeleton";
-import { LocaleContext } from "translations/LocaleContext";
+import { LocaleContext } from "context/LocaleContext";
 
 export default function useTranslation(namespace) {
   const { localeData } = useContext(LocaleContext) || {};
