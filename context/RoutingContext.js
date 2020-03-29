@@ -7,6 +7,7 @@ export const RoutingProvider = ({ children }) => {
   const [currentAsPath, setCurrentAsPath] = useState();
   const [currentRoute, setCurrentRoute] = useState();
   const [prevAsPath, setPrevAsPath] = useState();
+  const [queryString, setQueryString] = useState("");
 
   const { asPath, route, query, pathname } = useRouter();
 
@@ -71,6 +72,7 @@ export const RoutingProvider = ({ children }) => {
 
   return (
     <RoutingContext.Provider value={{
+      queryString,
       tagId,
       prevAsPath,
       setTagId,

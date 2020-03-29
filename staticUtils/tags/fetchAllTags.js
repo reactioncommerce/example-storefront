@@ -1,8 +1,6 @@
-import { request } from "graphql-request";
+import graphQLRequest from "staticUtils/graphQLRequest";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import tagsQuery from "./tags.js";
-
-const endpoint = process.env.NODE_ENV === "production" ? process.env.EXTERNAL_GRAPHQL_URL : process.env.INTERNAL_GRAPHQL_URL;
 
 /**
  * @summary Gets all tags for the current shop from GraphQL and returns an array of them
@@ -10,7 +8,7 @@ const endpoint = process.env.NODE_ENV === "production" ? process.env.EXTERNAL_GR
  * @returns {Object[]} Array of all tags on this and all future pages (calls itself recursively)
  */
 async function getTags(variables) {
-  const data = await request(endpoint, tagsQuery, variables);
+  const data = await graphQLRequest(tagsQuery, variables);
 
   const { edges, pageInfo } = data.tags;
 
@@ -30,7 +28,7 @@ async function getTags(variables) {
  * @returns {Object[]} Array of all tags
  */
 export default async function fetchAllTags() {
-  const { shop } = await fetchPrimaryShop();
+  const { shop } = await fetchPrimaryShop("en");
 
   if (!shop) {
     console.warn("primaryShop query result was null");
