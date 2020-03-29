@@ -2,5 +2,6 @@
 query availablePaymentMethods($shopId: ID!) {
   availablePaymentMethods(shopId: $shopId) {
     name
+    isEnabled
   }
 }

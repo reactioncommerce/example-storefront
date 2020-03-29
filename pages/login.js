@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Router from "next/router";
 import Helmet from "react-helmet";
@@ -11,6 +11,9 @@ import Link from "components/Link";
 import Layout from "components/Layout";
 import ChevronLeftIcon from "mdi-material-ui/ChevronLeft";
 import { withApollo } from "lib/apollo/withApollo";
+
+import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
+import fetchAllTags from "staticUtils/tags/fetchAllTags";
 
 const styles = (theme) => ({
   backLink: {
@@ -124,6 +127,15 @@ class Login extends Component {
       </Layout>
     );
   }
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      ...await fetchPrimaryShop("en"),
+      ...await fetchAllTags()
+    }
+  };
 }
 
 export default withApollo()(withCart(withStyles(styles, { withTheme: true })(Login)));

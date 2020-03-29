@@ -41,7 +41,11 @@ class ProfileOrdersPage extends Component {
     const { authStore: { account }, router, shop } = this.props;
 
     // If there is no logged in user, return Not Found page
-    if (account && !account._id) return <ErrorPage shop={shop} subtitle="Not Found" />;
+    if (account && !account._id) return (
+      <Layout shop={shop}>
+        <ErrorPage shop={shop} subtitle="Not Found" />
+      </Layout>
+    );
 
     return (
       <Layout shop={shop}>
