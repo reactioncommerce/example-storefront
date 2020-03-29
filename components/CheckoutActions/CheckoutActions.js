@@ -272,7 +272,7 @@ class CheckoutActions extends Component {
       // this.trackOrder({ action: ORDER_COMPLETED, orders });
 
       // Send user to order confirmation page
-      Router.push(`/checkout/order/[orderId]${token && `?token=${token}`}`, `/checkout/order/${orders[0].referenceId}${token && `?token=${token}`}`);
+      Router.push(`/checkout/order/[orderId]${token ? `?token=${token}` : ""} `, `/checkout/order/${orders[0].referenceId}${token ? `?token=${token}` : ""}`);
     } catch (error) {
       if (this._isMounted) {
         this.setState({
