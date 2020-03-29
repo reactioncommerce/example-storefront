@@ -14,8 +14,7 @@ export default function withCart(Component) {
     const cart = useCart();
 
     return (
-      <Component {...props} {...cart}
-      />
+      <Component {...props} {...cart}/>
     );
   }
 
