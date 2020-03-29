@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
@@ -71,4 +71,4 @@ class ProfileAddressBook extends Component {
   }
 }
 
-export default withStyles(styles)(withAddressBook(inject("authStore", "uiStore")(observer(ProfileAddressBook))));
+export default withStyles(styles)(withAddressBook(inject("authStore", "uiStore")(ProfileAddressBook)));

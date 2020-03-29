@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 // import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
@@ -336,4 +336,4 @@ class ProductDetail extends Component {
   }
 }
 
-export default withWidth({ initialWidth: "md" })(withStyles(styles, { withTheme: true })(inject("routingStore", "uiStore")(observer(ProductDetail))));
+export default withWidth({ initialWidth: "md" })(withStyles(styles, { withTheme: true })(inject("routingStore", "uiStore")(ProductDetail)));

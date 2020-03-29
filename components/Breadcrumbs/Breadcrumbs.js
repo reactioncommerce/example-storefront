@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import { withStyles } from "@material-ui/core/styles";
 import ChevronRight from "mdi-material-ui/ChevronRight";
 import Link from "components/Link";
@@ -115,4 +115,4 @@ class Breadcrumbs extends Component {
   }
 }
 
-export default withStyles(styles)(inject("tags")(observer(Breadcrumbs)));
+export default withStyles(styles)(inject("tags")(Breadcrumbs));

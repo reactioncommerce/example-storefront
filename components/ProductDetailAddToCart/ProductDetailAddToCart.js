@@ -8,7 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Minus from "mdi-material-ui/Minus";
 import Plus from "mdi-material-ui/Plus";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import CartPopover from "components/CartPopover";
 import Divider from "components/Divider";
 
@@ -278,4 +278,4 @@ class ProductDetailAddToCart extends Component {
   }
 }
 
-export default withStyles(styles)(inject("uiStore")(observer(ProductDetailAddToCart)));
+export default withStyles(styles)(inject("uiStore")(ProductDetailAddToCart));

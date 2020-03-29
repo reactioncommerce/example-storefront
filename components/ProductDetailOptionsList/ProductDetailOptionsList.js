@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
-import { observer } from "mobx-react";
 import BadgeOverlay from "@reactioncommerce/components/BadgeOverlay/v1";
 import { BADGE_LABELS, BADGE_TYPES, badgeStatus } from "@reactioncommerce/components/BadgeOverlay/v1/utils";
 import ProductDetailOption from "components/ProductDetailOption";
@@ -76,4 +75,4 @@ class OptionsList extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(observer(OptionsList));
+export default withStyles(styles, { withTheme: true })(OptionsList);

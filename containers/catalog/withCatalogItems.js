@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import { Query } from "@apollo/react-components";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import { pagination, paginationVariablesFromUrlParams } from "lib/utils/pagination";
@@ -73,5 +73,5 @@ export default function withCatalogItems(Component) {
 
   hoistNonReactStatic(CatalogItems, Component);
 
-  return withTag(inject("primaryShopId", "routingStore", "uiStore")(observer(CatalogItems)));
+  return withTag(inject("primaryShopId", "routingStore", "uiStore")(CatalogItems));
 }

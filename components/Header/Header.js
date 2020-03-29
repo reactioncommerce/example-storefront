@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import AppBar from "@material-ui/core/AppBar";
 import Hidden from "@material-ui/core/Hidden";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -87,4 +87,4 @@ class Header extends Component {
   }
 }
 
-export default withStyles(styles)(inject("uiStore")(observer(Header)));
+export default withStyles(styles)(inject("uiStore")(Header));

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { observer, inject } from "mobx-react";
+import inject from "hocs/inject";
 import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import withTag from "containers/tags/withTag";
@@ -172,4 +172,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default withApollo()(withTag(withCatalogItems(inject("routingStore", "uiStore")(observer(TagGridPage)))));
+export default withApollo()(withTag(withCatalogItems(inject("routingStore", "uiStore")(TagGridPage))));

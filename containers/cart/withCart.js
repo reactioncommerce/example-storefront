@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Mutation, Query } from "@apollo/react-components";
-import { inject, observer } from "mobx-react";
+import inject from "hocs/inject";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import cartItemsConnectionToArray from "lib/utils/cartItemsConnectionToArray";
 import {
@@ -491,5 +491,5 @@ export default function withCart(Component) {
 
   hoistNonReactStatic(WithCart, Component);
 
-  return inject("cartStore", "authStore")(observer(WithCart));
+  return inject("cartStore", "authStore")(WithCart);
 }
