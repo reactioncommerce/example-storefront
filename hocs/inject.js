@@ -1,12 +1,14 @@
 import useStores from "hooks/useStores";
 import useShop from "hooks/useShop";
+import useTags from "hooks/useTags";
 
 const withInjectedStores = (injections) => (PageComponent) => {
     const WithInjectedStores = (props) => {
         const stores = useStores();
         const shop = useShop();
-        const tags = [];
-        const navItems = [];
+        const tags = useTags();
+        
+        const navItems = shop && shop.defaultNavigationTree
         const primaryShopId = shop && shop._id;
 
         return (

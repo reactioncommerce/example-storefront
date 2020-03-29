@@ -9,6 +9,7 @@ import { RoutingProvider } from "context/RoutingContext";
 import { AuthProvider } from "context/AuthContext";
 import { CartProvider } from "context/CartContext";
 import { ShopProvider } from "context/ShopContext";
+import { TagsProvider } from "context/TagsContext";
 import { UIProvider } from "context/UIContext";
 import { LocaleProvider } from "context/LocaleContext";
 import components from "custom/componentsContext";
@@ -43,8 +44,8 @@ class App extends NextApp {
                 namespaces={namespaces}
               >
                 <ShopProvider shop={shop}>
-                  <ComponentsProvider value={components}>
-                    {/*<MobxProvider suppressChangedStoreWarning navItems={shop && shop.defaultNavigationTree} tags={tags}>*/}
+                  <TagsProvider tags={tags}>
+                    <ComponentsProvider value={components}>
                       <RuiThemeProvider theme={componentTheme}>
                         <MuiThemeProvider theme={theme}>
                           <CssBaseline />
@@ -53,8 +54,8 @@ class App extends NextApp {
                             </Layout>
                         </MuiThemeProvider>
                       </RuiThemeProvider>
-                    {/*/</MobxProvider>*/}
-                  </ComponentsProvider>
+                    </ComponentsProvider>
+                  </TagsProvider>
                 </ShopProvider>
               </LocaleProvider>
             </CartProvider>
