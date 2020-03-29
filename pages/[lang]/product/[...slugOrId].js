@@ -8,9 +8,11 @@ import PageLoading from "components/PageLoading";
 import Layout from "components/Layout";
 import { withApollo } from "lib/apollo/withApollo";
 
+import { locales } from "translations/config";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchCatalogProduct from "staticUtils/catalog/fetchCatalogProduct";
 import fetchAllTags from "staticUtils/tags/fetchAllTags";
+import fetchTranslations from "staticUtils/translations/fetchTranslations";
 
 /**
  *
@@ -106,14 +108,15 @@ ProductDetailPage.propTypes = {
   })
 };
 
-export async function getStaticProps({ params: { slugOrId } }) {
+export async function getStaticProps({ params: { slugOrId, lang } }) {
   const productSlug = slugOrId && slugOrId[0];
 
   return {
     props: {
+      ...await fetchPrimaryShop(lang),
+      ...await fetchTranslations(lang, ["common"]),
       ...await fetchCatalogProduct(productSlug),
-      ...await fetchPrimaryShop("en"),
-      ...await fetchAllTags()
+      ...await fetchAllTags(lang)
     },
     revalidate: 120 // Revalidate each two minutes
   };
@@ -121,9 +124,7 @@ export async function getStaticProps({ params: { slugOrId } }) {
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      { params: { slugOrId: ["-"] } }
-    ],
+    paths: locales.map(locale => ({ params: { lang: locale, slugOrId: ["-"] } })),
     fallback: true
   };
 }
