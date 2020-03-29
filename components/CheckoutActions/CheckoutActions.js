@@ -19,7 +19,7 @@ import Router from "translations/i18nRouter";
 // import trackOrder from "lib/tracking/trackOrder";
 // import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
 import calculateRemainderDue from "lib/utils/calculateRemainderDue";
-import { placeOrder } from "../../containers/order/mutations.gql";
+import { placeOrderMutation } from "../../hooks/orders/placeOrder.gql";
 
 /*
 const {
@@ -247,7 +247,7 @@ class CheckoutActions extends Component {
 
     try {
       const { data } = await apolloClient.mutate({
-        mutation: placeOrder,
+        mutation: placeOrderMutation,
         variables: {
           input: {
             order,
@@ -272,7 +272,7 @@ class CheckoutActions extends Component {
       // this.trackOrder({ action: ORDER_COMPLETED, orders });
 
       // Send user to order confirmation page
-      Router.push(`/checkout/order/[orderId]${token ? `?token=${token}` : ""} `, `/checkout/order/${orders[0].referenceId}${token ? `?token=${token}` : ""}`);
+      Router.push(`/checkout/order?orderId=${orders[0].referenceId}${token ? `&token=${token}` : ""}`);
     } catch (error) {
       if (this._isMounted) {
         this.setState({
@@ -394,7 +394,7 @@ class CheckoutActions extends Component {
         props: {
           alert: actionAlerts["4"],
           checkoutSummary,
-          productURLPath: "/product/"
+          productURLPath: "/api/detectLanguage/product/"
         }
       }
     ];
