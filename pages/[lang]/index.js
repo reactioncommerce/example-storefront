@@ -109,7 +109,7 @@ export async function getStaticProps({ params: { lang } }) {
 
 export async function getStaticPaths() {
   return {
-    paths: locales.map(locale => ({ params: { lang: locale } })),
+    paths: locales.map((locale) => ({ params: { lang: locale } })),
     fallback: false
   };
 }

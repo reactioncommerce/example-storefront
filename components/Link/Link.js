@@ -33,7 +33,7 @@ function Link({
     if (event.key === "Enter") {
       this.props.onClick(event);
     }
-  }
+  };
 
   // If link is an absolute link, or if link should open in new window,
   // then directly us an `a` tag, insted of the `NextLink` component
@@ -55,14 +55,14 @@ function Link({
   const linkToUse = useMemo(() => route || to || href, [route, to, href]);
 
   const hrefWithLocale = useMemo(() => {
-    if (linkToUse === "/") return `/[lang]`;
+    if (linkToUse === "/") return "/[lang]";
     return `/[lang]${linkToUse}`;
   }, [linkToUse, locale]);
 
   const asWithLocale = useMemo(() => {
     if (linkToUse === "/") return `/${locale}`;
-    if (as) return `/${locale}${as}`; 
-    return `/${locale}${linkToUse}`; 
+    if (as) return `/${locale}${as}`;
+    return `/${locale}${linkToUse}`;
   }, [linkToUse, locale, as]);
 
   return (
@@ -84,7 +84,7 @@ Link.defaultProps = {
   isUrlAbsolute: false,
   onClick: () => { },
   shouldOpenInNewWindow: false
-}
+};
 
 Link.propTypes = {
   children: PropTypes.node.isRequired,
@@ -97,6 +97,6 @@ Link.propTypes = {
   route: PropTypes.string,
   shouldOpenInNewWindow: PropTypes.bool,
   to: PropTypes.string
-}
+};
 
 export default Link;
