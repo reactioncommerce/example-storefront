@@ -1,75 +1,80 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import inject from "hocs/inject";
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import AccountProfileInfo from "@reactioncommerce/components/AccountProfileInfo/v1";
-import InPageMenu from "@reactioncommerce/components/InPageMenu/v1";
-import withAddressBook from "containers/address/withAddressBook";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import ChevronRightIcon from "mdi-material-ui/ChevronRight";
+import AddressbookIcon from "mdi-material-ui/BookOpen";
+import OrderIcon from "mdi-material-ui/Package";
+import { useRouter } from "next/router";
+import useAuthStore from "hooks/globalStores/useAuthStore";
+import Link from "components/Link";
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   accountProfileInfoContainer: {
     marginBottom: theme.spacing(4)
   }
-});
+}));
 
-class ProfileMenu extends Component {
-  static propTypes = {
-    authStore: PropTypes.shape({
-      account: PropTypes.object.isRequired
-    }),
-    classes: PropTypes.object,
-    router: PropTypes.object.isRequired
-  };
+function ProfileMenu() {
+  const classes = useStyles();
+  const { account } = useAuthStore();
+  const { asPath } = useRouter();
 
-  renderAccountProfileInfo() {
-    const { authStore: { account }, classes } = this.props;
+  const menuItems = [
+    {
+      href: "/profile/address",
+      route: "/profile/address",
+      label: "Address Book",
+      isSelected: asPath.includes("/profile/address"),
+      icon: <AddressbookIcon/>
+    },
+    {
+      href: "/profile/orders",
+      route: "/profile/orders",
+      label: "Orders",
+      isSelected: asPath.includes("/profile/orders"),
+      icon: <OrderIcon/>
+    }
+  ];
 
-    return (
+  return (
+    <section>
       <div className={classes.accountProfileInfoContainer}>
         <AccountProfileInfo viewer={account} />
       </div>
-    );
-  }
-
-  renderNavigation() {
-    const { classes, router: { asPath } } = this.props;
-
-    const menuItems = [
-      {
-        href: "/profile/address",
-        route: "/profile/address",
-        label: "Address Book",
-        isSelected: asPath.includes("/profile/address")
-      },
-      {
-        href: "/profile/orders",
-        route: "/profile/orders",
-        label: "Orders",
-        isSelected: asPath.includes("/profile/orders")
-      }
-      // {
-      //   href: "/profile/payments",
-      //   route: "/profile/payments",
-      //   label: "Payment Methods",
-      //   isSelected: asPath === "/profile/payments"
-      // }
-    ];
-
-    return (
       <div className={classes.inPageMenuItemLink}>
-        <InPageMenu menuItems={menuItems} />
-      </div>
-    );
-  }
+        <List component="nav">
+          {menuItems.map((menuItem, index) => (
+            <Link href={menuItem.href} key={menuItem.id || `item-${index}`}>
+              <ListItem
+                button
+                component="a"
+                selected={menuItem.isSelected}
 
-  render() {
-    return (
-      <section>
-        {this.renderAccountProfileInfo()}
-        {this.renderNavigation()}
-      </section>
-    );
-  }
+              >
+                <ListItemIcon>
+                  {menuItem.icon}
+                </ListItemIcon>
+                <ListItemText primary={menuItem.label} />
+                <ListItemSecondaryAction>
+                  <ChevronRightIcon />
+                </ListItemSecondaryAction>
+              </ListItem>
+            </Link>
+          ))}
+        </List>
+      </div>
+    </section>
+  );
 }
 
-export default withStyles(styles)(withAddressBook(inject("authStore")(ProfileMenu)));
+ProfileMenu.propTypes = {
+  router: PropTypes.object.isRequired
+};
+
+export default ProfileMenu;
