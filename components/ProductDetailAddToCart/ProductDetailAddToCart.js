@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Grid from "@material-ui/core/Grid";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -14,21 +15,6 @@ import Divider from "components/Divider";
 import withTranslation from "hocs/withTranslation";
 
 const styles = (theme) => ({
-  addToCartButton: {
-    "padding": theme.spacing(),
-    "backgroundColor": theme.palette.primary.main,
-    "borderRadius": theme.palette.reaction.buttonBorderRadius,
-    "minWidth": "66%",
-    "&:hover": {
-      borderColor: theme.palette.reaction.activeElementBorderColor
-    },
-    "&:focus": {
-      outline: "auto 5px -webkit-focus-ring-color"
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "100%"
-    }
-  },
   addToCartText: {
     color: theme.palette.primary.contrastText,
     fontWeight: 600
@@ -202,7 +188,6 @@ class ProductDetailAddToCart extends Component {
   render() {
     const {
       classes: {
-        addToCartButton,
         addToCartText,
         addToCartErrorText,
         incrementButton,
@@ -264,14 +249,16 @@ class ProductDetailAddToCart extends Component {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <ButtonBase
+            <Button
               onClick={this.handleOnClick}
-              className={addToCartButton}
+              variant="contained"
+              color="primary"
+              disableElevation
             >
               <Typography className={addToCartText} component="span" variant="body1">
                 {t("addToCart")}
               </Typography>
-            </ButtonBase>
+            </Button>
           </Grid>
         </Grid>
         <CartPopover />
