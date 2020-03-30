@@ -22,7 +22,6 @@ import definedPaymentMethods from "custom/paymentMethods";
 
 import { locales } from "translations/config";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
-import fetchAllTags from "staticUtils/tags/fetchAllTags";
 import fetchTranslations from "staticUtils/translations/fetchTranslations";
 
 const useStyles = makeStyles((theme) => ({
@@ -232,8 +231,7 @@ export async function getStaticProps({ params: { lang } }) {
   return {
     props: {
       ...await fetchPrimaryShop(lang),
-      ...await fetchTranslations(lang, ["common"]),
-      ...await fetchAllTags(lang)
+      ...await fetchTranslations(lang, ["common"])
     }
   };
 }
