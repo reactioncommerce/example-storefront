@@ -53,9 +53,6 @@ class ProductGrid extends Component {
     );
   }
 
-  // @trackProductClicked()
-  onItemClick = (event, product) => {} // eslint-disable-line no-unused-vars
-
   renderMainArea() {
     const { catalogItems, isLoadingCatalogItems, pageInfo } = this.props;
 
@@ -68,7 +65,6 @@ class ProductGrid extends Component {
       <Fragment>
         <Grid container spacing={3}>
           <CatalogGrid
-            onItemClick={this.onItemClick}
             products={products}
             placeholderImageURL="/images/placeholder.gif"
             {...this.props}
