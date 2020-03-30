@@ -116,7 +116,7 @@ module.exports = {
         {
           source: "/",
           destination: "/api/detectLanguage"
-        },
+        }
       ];
     }
   }

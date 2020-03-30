@@ -95,7 +95,7 @@ const Checkout = ({ router }) => {
   const { locale, t } = useTranslation("common");
   const apolloClient = useApolloClient();
   const [addressValidation, addressValidationResults] = useAddressValidation();
-  const [ stripe, setStripe ] = useState();
+  const [stripe, setStripe] = useState();
 
   const {
     cart,
@@ -122,7 +122,7 @@ const Checkout = ({ router }) => {
       Router.push("/cart/login");
     }
   }), [cart, hasIdentity, asPath, Router];
-  
+
   useEffect(() => {
     if (!stripe && process.env.STRIPE_PUBLIC_API_KEY && window && window.Stripe) {
       setStripe(window.Stripe(process.env.STRIPE_PUBLIC_API_KEY));
@@ -240,7 +240,7 @@ export async function getStaticProps({ params: { lang } }) {
 
 export async function getStaticPaths() {
   return {
-    paths: locales.map(locale => ({ params: { lang: locale } })),
+    paths: locales.map((locale) => ({ params: { lang: locale } })),
     fallback: false
   };
 }
