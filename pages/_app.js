@@ -1,6 +1,5 @@
 import NextApp from "next/app";
 import React from "react";
-import { ThemeProvider as RuiThemeProvider } from "styled-components";
 import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
@@ -12,7 +11,6 @@ import { TagsProvider } from "context/TagsContext";
 import { UIProvider } from "context/UIContext";
 import { LocaleProvider } from "context/LocaleContext";
 import components from "custom/componentsContext";
-import componentTheme from "custom/componentTheme";
 import theme from "custom/reactionTheme";
 
 class App extends NextApp {
@@ -45,12 +43,10 @@ class App extends NextApp {
                 <ShopProvider shop={shop}>
                   <TagsProvider tags={tags}>
                     <ComponentsProvider value={components}>
-                      <RuiThemeProvider theme={componentTheme}>
-                        <MuiThemeProvider theme={theme}>
-                          <CssBaseline />
-                          <Component shop={shop} {...rest} {...pageProps} />
-                        </MuiThemeProvider>
-                      </RuiThemeProvider>
+                      <MuiThemeProvider theme={theme}>
+                        <CssBaseline />
+                        <Component shop={shop} {...rest} {...pageProps} />
+                      </MuiThemeProvider>
                     </ComponentsProvider>
                   </TagsProvider>
                 </ShopProvider>
