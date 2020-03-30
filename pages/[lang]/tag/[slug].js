@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import inject from "hocs/inject";
 import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
-import withTag from "containers/tags/withTag";
 import Breadcrumbs from "components/Breadcrumbs";
 import ProductGrid from "components/ProductGrid";
 import ProductGridEmptyMessage from "components/ProductGrid/ProductGridEmptyMessage";
@@ -17,6 +16,7 @@ import { withApollo } from "lib/apollo/withApollo";
 import { locales } from "translations/config";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchAllTags from "staticUtils/tags/fetchAllTags";
+import fetchTag from "staticUtils/tag/fetchTag";
 import fetchTranslations from "staticUtils/translations/fetchTranslations";
 
 class TagGridPage extends Component {
@@ -163,7 +163,8 @@ export async function getStaticProps({ params: { lang, slug } }) {
     props: {
       ...await fetchPrimaryShop(lang),
       ...await fetchTranslations(lang, ["common"]),
-      ...await fetchAllTags(lang)
+      ...await fetchAllTags(lang),
+      ...await fetchTag(slug, lang)
     },
     revalidate: 120 // Revalidate each two minutes
   };
@@ -176,4 +177,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default withApollo()(withTag(withCatalogItems(inject("routingStore", "uiStore")(TagGridPage))));
+export default withApollo()(withCatalogItems(inject("routingStore", "uiStore")(TagGridPage)));
