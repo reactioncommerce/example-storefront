@@ -43,6 +43,9 @@ class CheckoutActions extends Component {
   static propTypes = {
     addressValidation: PropTypes.func.isRequired,
     addressValidationResults: PropTypes.object,
+    apolloClient: PropTypes.shape({
+      mutate: PropTypes.func.isRequired
+    }),
     cart: PropTypes.shape({
       account: PropTypes.object,
       checkout: PropTypes.object,
@@ -55,9 +58,6 @@ class CheckoutActions extends Component {
       onSetShippingAddress: PropTypes.func.isRequired
     }),
     clearAuthenticatedUsersCart: PropTypes.func.isRequired,
-    apolloClient: PropTypes.shape({
-      mutate: PropTypes.func.isRequired
-    }),
     orderEmailAddress: PropTypes.string.isRequired,
     paymentMethods: PropTypes.array
   };

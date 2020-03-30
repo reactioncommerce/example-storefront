@@ -10,7 +10,7 @@ import useOrder from "../../hooks/orders/useOrder";
  */
 export default function withOrder(Component) {
   function WithOrder(props) {
-    const [ order, isLoading ] = useOrder();
+    const [order, isLoading] = useOrder();
 
     return (
       <Component

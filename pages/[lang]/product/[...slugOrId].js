@@ -124,7 +124,7 @@ export async function getStaticProps({ params: { slugOrId, lang } }) {
 
 export async function getStaticPaths() {
   return {
-    paths: locales.map(locale => ({ params: { lang: locale, slugOrId: ["-"] } })),
+    paths: locales.map((locale) => ({ params: { lang: locale, slugOrId: ["-"] } })),
     fallback: true
   };
 }

@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import Router, { useRouter } from "next/router";
 import { makeStyles } from "@material-ui/core/styles";
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 import useStores from "hooks/useStores";
 import { locales } from "translations/config";
 import useTranslation from "hooks/useTranslation";
@@ -40,9 +40,9 @@ const LocaleDropdown = () => {
         classes={{ root: classes.localeSelectText }}
         id="locale-select"
         value={locale}
-        onChange={event => changeLanguage(event.target.value)}
+        onChange={(event) => changeLanguage(event.target.value)}
       >
-          { locales.map(( locale, index ) => <MenuItem key={index} value={locale}>{t(locale)}</MenuItem> )}
+        { locales.map((locale, index) => <MenuItem key={index} value={locale}>{t(locale)}</MenuItem>)}
       </Select>
     </div>
   );

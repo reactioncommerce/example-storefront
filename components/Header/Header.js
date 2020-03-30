@@ -80,7 +80,7 @@ class Header extends Component {
           </div>
 
           <LocaleDropdown />
-          
+
           <AccountDropdown />
           <MiniCart />
         </Toolbar>

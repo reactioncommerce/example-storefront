@@ -35,6 +35,6 @@ function SortBySelector({ sortBy, onChange }) {
 SortBySelector.propTypes = {
   onChange: PropTypes.func.isRequired,
   sortBy: PropTypes.string.isRequired
-}
+};
 
 export default SortBySelector;
