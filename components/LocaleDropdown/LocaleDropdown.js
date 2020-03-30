@@ -1,9 +1,6 @@
 import React, { useCallback } from "react";
 import Router, { useRouter } from "next/router";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import useStores from "hooks/useStores";
@@ -12,7 +9,9 @@ import useTranslation from "hooks/useTranslation";
 
 const useStyles = makeStyles((theme) => ({
   localeSelect: {
-    margin: theme.spacing(0, 1),
+    margin: theme.spacing(0, 1)
+  },
+  localeSelectText: {
     fontSize: "1rem"
   }
 }));
@@ -36,14 +35,16 @@ const LocaleDropdown = () => {
   );
 
   return (
-    <Select
-      classes={{ root: classes.localeSelect }}
-      id="locale-select"
-      value={locale}
-      onChange={event => changeLanguage(event.target.value)}
-    >
-        { locales.map(( locale, index ) => <MenuItem key={index} value={locale}>{t(locale)}</MenuItem> )}
-  </Select>
+    <div className={classes.localeSelect}>
+      <Select
+        classes={{ root: classes.localeSelectText }}
+        id="locale-select"
+        value={locale}
+        onChange={event => changeLanguage(event.target.value)}
+      >
+          { locales.map(( locale, index ) => <MenuItem key={index} value={locale}>{t(locale)}</MenuItem> )}
+      </Select>
+    </div>
   );
 };
 
