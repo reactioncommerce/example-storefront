@@ -11,6 +11,7 @@ import Plus from "mdi-material-ui/Plus";
 import inject from "hocs/inject";
 import CartPopover from "components/CartPopover";
 import Divider from "components/Divider";
+import withTranslation from "hocs/withTranslation";
 
 const styles = (theme) => ({
   addToCartButton: {
@@ -210,7 +211,8 @@ class ProductDetailAddToCart extends Component {
         quantityInput,
         quantitySvg,
         quantityTypography
-      }
+      },
+      t
     } = this.props;
 
     const { addToCartQuantity } = this.state;
@@ -220,7 +222,7 @@ class ProductDetailAddToCart extends Component {
         <Grid container>
           <Grid item xs={12} className={quantityGrid}>
             <Divider />
-            <Typography component="span" className={quantityTypography}>Quantity</Typography>
+            <Typography component="span" className={quantityTypography}>{t("quantity")}</Typography>
             <TextField
               id="addToCartQuantityInput"
               value={addToCartQuantity}
@@ -267,7 +269,7 @@ class ProductDetailAddToCart extends Component {
               className={addToCartButton}
             >
               <Typography className={addToCartText} component="span" variant="body1">
-                Add to cart
+                {t("addToCart")}
               </Typography>
             </ButtonBase>
           </Grid>
@@ -278,4 +280,4 @@ class ProductDetailAddToCart extends Component {
   }
 }
 
-export default withStyles(styles)(inject("uiStore")(ProductDetailAddToCart));
+export default withStyles(styles)(inject("uiStore")(withTranslation("productDetail")(ProductDetailAddToCart)));
