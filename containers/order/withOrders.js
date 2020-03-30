@@ -10,7 +10,7 @@ import useOrders from "hooks/orders/useOrders";
  */
 export default function withOrders(Component) {
   function WithOrders(props) {
-    const [ orders, isLoading, pagination ] = useOrders();
+    const [orders, isLoading, pagination] = useOrders();
 
     return (
       <Component
@@ -19,7 +19,7 @@ export default function withOrders(Component) {
         orders={orders}
         ordersPageInfo={pagination}
       />
-    )
+    );
   }
 
   hoistNonReactStatic(WithOrders, Component);

@@ -27,7 +27,7 @@ export default class App extends NextApp {
             <Component {...rest} {...pageProps} />
           </MuiThemeProvider>
         </ComponentsProvider>
-      </ContextProviders>       
+      </ContextProviders>
     );
   }
 }

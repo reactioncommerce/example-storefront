@@ -2,8 +2,8 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import useStores from "hooks/useStores";
 import useShop from "hooks/shop/useShop";
-import { orderByReferenceId } from "./queries.gql";
 import useViewer from "hooks/viewer/useViewer";
+import { orderByReferenceId } from "./queries.gql";
 
 export default function useOrder() {
   const { uiStore } = useStores();

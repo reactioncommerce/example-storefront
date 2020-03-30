@@ -36,6 +36,6 @@ function PageSizeSelector({ pageSize, onChange }) {
 PageSizeSelector.propTypes = {
   onChange: PropTypes.func.isRequired,
   pageSize: PropTypes.number.isRequired
-}
+};
 
 export default PageSizeSelector;
