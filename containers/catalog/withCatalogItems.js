@@ -4,7 +4,6 @@ import inject from "hocs/inject";
 import { Query } from "@apollo/react-components";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import { pagination, paginationVariablesFromUrlParams } from "lib/utils/pagination";
-import withTag from "containers/tags/withTag";
 import catalogItemsQuery from "./catalogItems.gql";
 
 /**
@@ -73,5 +72,5 @@ export default function withCatalogItems(Component) {
 
   hoistNonReactStatic(CatalogItems, Component);
 
-  return withTag(inject("primaryShopId", "routingStore", "uiStore")(CatalogItems));
+  return inject("primaryShopId", "routingStore", "uiStore")(CatalogItems);
 }
