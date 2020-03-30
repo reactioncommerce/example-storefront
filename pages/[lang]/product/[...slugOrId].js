@@ -114,7 +114,7 @@ export async function getStaticProps({ params: { slugOrId, lang } }) {
   return {
     props: {
       ...await fetchPrimaryShop(lang),
-      ...await fetchTranslations(lang, ["common"]),
+      ...await fetchTranslations(lang, ["common", "productDetail"]),
       ...await fetchCatalogProduct(productSlug),
       ...await fetchAllTags(lang)
     },
