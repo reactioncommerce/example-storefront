@@ -252,7 +252,7 @@ Array [
         <CatalogGridItem
           currencyCode="USD"
           onClick={[Function]}
-          placeholderImageURL="/static/images/placeholder.gif"
+          placeholderImageURL="/images/placeholder.gif"
           product={
             Object {
               "_id": "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6am5hOTVrYTlhTmtNeXRteGg=",
@@ -293,7 +293,7 @@ Array [
         <CatalogGridItem
           currencyCode="USD"
           onClick={[Function]}
-          placeholderImageURL="/static/images/placeholder.gif"
+          placeholderImageURL="/images/placeholder.gif"
           product={
             Object {
               "_id": "cmVhY3Rpb24vY2F0YWxvZ1Byb2R1Y3Q6QkNUTVo2SFR4RlNwcEpFU2s=",
