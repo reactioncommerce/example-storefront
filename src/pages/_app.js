@@ -1,4 +1,4 @@
-import NextApp, { Container } from "next/app";
+import NextApp from "next/app";
 import React from "react";
 import { ThemeProvider as RuiThemeProvider } from "styled-components";
 import { StripeProvider } from "react-stripe-elements";
@@ -79,31 +79,29 @@ export default class App extends NextApp {
     const { stripe } = this.state;
 
     return (
-      <Container>
-        <ComponentsProvider value={components}>
-          <MobxProvider suppressChangedStoreWarning navItems={shop && shop.defaultNavigationTree} tags={tags}>
-            <JssProvider
-              registry={this.pageContext.sheetsRegistry}
-              generateClassName={this.pageContext.generateClassName}
-            >
-              <RuiThemeProvider theme={componentTheme}>
-                <MuiThemeProvider theme={this.pageContext.theme} sheetsManager={this.pageContext.sheetsManager}>
-                  <CssBaseline />
-                  {route === "/checkout" || route === "/login" ? (
-                    <StripeProvider stripe={stripe}>
-                      <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
-                    </StripeProvider>
-                  ) : (
-                    <Layout shop={shop} viewer={viewer}>
-                      <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
-                    </Layout>
-                  )}
-                </MuiThemeProvider>
-              </RuiThemeProvider>
-            </JssProvider>
-          </MobxProvider>
-        </ComponentsProvider>
-      </Container>
+      <ComponentsProvider value={components}>
+        <MobxProvider suppressChangedStoreWarning navItems={shop && shop.defaultNavigationTree} tags={tags}>
+          <JssProvider
+            registry={this.pageContext.sheetsRegistry}
+            generateClassName={this.pageContext.generateClassName}
+          >
+            <RuiThemeProvider theme={componentTheme}>
+              <MuiThemeProvider theme={this.pageContext.theme} sheetsManager={this.pageContext.sheetsManager}>
+                <CssBaseline />
+                {route === "/checkout" || route === "/login" ? (
+                  <StripeProvider stripe={stripe}>
+                    <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
+                  </StripeProvider>
+                ) : (
+                  <Layout shop={shop} viewer={viewer}>
+                    <Component pageContext={this.pageContext} shop={shop} {...rest} {...pageProps} />
+                  </Layout>
+                )}
+              </MuiThemeProvider>
+            </RuiThemeProvider>
+          </JssProvider>
+        </MobxProvider>
+      </ComponentsProvider>
     );
   }
 }

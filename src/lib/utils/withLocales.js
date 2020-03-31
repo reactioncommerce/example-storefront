@@ -39,7 +39,7 @@ export default function withLocales(ComponentWithLocales) {
     async loadLocales() {
       let locales;
       try {
-        locales = await import("/static/data/locales.json");
+        locales = await import("/public/data/locales.json");
       } catch (error) {
         // eslint-disable-next-line
         console.error(error);
