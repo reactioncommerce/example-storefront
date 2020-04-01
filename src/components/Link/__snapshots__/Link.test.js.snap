@@ -6,6 +6,7 @@ exports[`basic snapshot 1`] = `
   href="/next"
   onClick={[Function]}
   onKeyDown={[Function]}
+  onMouseEnter={[Function]}
   role="link"
   tabIndex={0}
 >

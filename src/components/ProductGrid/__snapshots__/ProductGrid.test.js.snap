@@ -110,6 +110,7 @@ Array [
         href="tag/test-tag"
         onClick={[Function]}
         onKeyDown={[Function]}
+        onMouseEnter={[Function]}
         role="link"
         tabIndex={0}
       >

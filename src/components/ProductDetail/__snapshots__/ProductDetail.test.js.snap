@@ -66,6 +66,7 @@ exports[`basic snapshot 1`] = `
         href="/"
         onClick={[Function]}
         onKeyDown={[Function]}
+        onMouseEnter={[Function]}
         role="link"
         tabIndex={0}
       >
@@ -91,6 +92,7 @@ exports[`basic snapshot 1`] = `
         href="/tag/tag-a"
         onClick={[Function]}
         onKeyDown={[Function]}
+        onMouseEnter={[Function]}
         role="link"
         tabIndex={0}
       >
@@ -116,6 +118,7 @@ exports[`basic snapshot 1`] = `
         href="/product/example-product"
         onClick={[Function]}
         onKeyDown={[Function]}
+        onMouseEnter={[Function]}
         role="link"
         tabIndex={0}
       >

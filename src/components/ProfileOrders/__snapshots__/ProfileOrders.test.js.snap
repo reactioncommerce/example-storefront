@@ -76,6 +76,7 @@ exports[`basic snapshot of profile orders 1`] = `
           href="/"
           onClick={[Function]}
           onKeyDown={[Function]}
+          onMouseEnter={[Function]}
           role="link"
           tabIndex={0}
         >
