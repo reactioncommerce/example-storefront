@@ -26,8 +26,6 @@ module.exports = {
     stripePublicApiKey: appConfig.STRIPE_PUBLIC_API_KEY,
     enableSPARouting: appConfig.ENABLE_SPA_ROUTING
   },
-  // NextJS builds to `/src/.next` by default. Change that to `/build/app`
-  distDir: "../build/app",
   webpack: (webpackConfig) => {
     webpackConfig.module.rules.push({
       test: /\.(gql|graphql)$/,
