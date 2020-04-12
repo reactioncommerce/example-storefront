@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useCallback } from "react";
 import { useQuery, useMutation, useApolloClient } from "@apollo/client";
 import useStores from "hooks/useStores";
 import useShop from "hooks/shop/useShop";
@@ -37,7 +37,6 @@ export default function useCart() {
       accountId,
       shopId: shop && shop._id
     },
-    // errorPolicy: "all",
     pollInterval: shouldSkipAccountCartByAccountIdQuery ? 0 : 10000
   });
 
@@ -47,7 +46,6 @@ export default function useCart() {
       cartId: cartStore.anonymousCartId,
       cartToken: cartStore.anonymousCartToken
     },
-    // errorPolicy: "all",
     pollInterval: shouldSkipAnonymousCartByCartIdQuery ? 0 : 10000
   });
 
@@ -109,6 +107,34 @@ export default function useCart() {
       refetchCart();
     }
   });
+
+  const [removeCartItemsMutationFun, {
+    loading: removeCartItemsLoading
+  }] = useMutation(removeCartItemsMutation, {
+    update(cache, { data: mutationData }) {
+      if (mutationData && mutationData.removeCartItems) {
+        const { cart: cartPayload } = mutationData.removeCartItems;
+
+        if (cartPayload) {
+        // Update Apollo cache
+          cache.writeQuery({
+            query: cartPayload.account ? accountCartByAccountIdQuery : anonymousCartByCartIdQuery,
+            data: { cart: cartPayload }
+          });
+        }
+      }
+    }
+  });
+
+  const handleRemoveCartItems = useCallback(async (itemIds) => removeCartItemsMutationFun({
+    variables: {
+      input: {
+        cartId: cartStore.anonymousCartId || cartStore.accountCartId,
+        cartItemIds: (Array.isArray(itemIds) && itemIds) || [itemIds],
+        cartToken: cartStore.anonymousCartToken || null
+      }
+    }
+  }), [cartStore.anonymousCartId, cartStore.accountCartId, cartStore.anonymousCartToken]);
 
   const handleAddItemsToCart = async (data, isCreating) => {
     const input = {
@@ -302,32 +328,8 @@ export default function useCart() {
         }
       });
     },
-    onRemoveCartItems: async (itemIds) => {
-      const result = await apolloClient.mutate({
-        mutation: removeCartItemsMutation,
-        variables: {
-          input: {
-            cartId: cartStore.anonymousCartId || cartStore.accountCartId,
-            cartItemIds: (Array.isArray(itemIds) && itemIds) || [itemIds],
-            cartToken: cartStore.anonymousCartToken || null
-          }
-        },
-        update: (cache, { data: mutationData }) => {
-          if (mutationData && mutationData.removeCartItems) {
-            const { cart: cartPayload } = mutationData.removeCartItems;
-
-            if (cartPayload) {
-            // Update Apollo cache
-              cache.writeQuery({
-                query: cartPayload.account ? accountCartByAccountIdQuery : anonymousCartByCartIdQuery,
-                data: { cart: cartPayload }
-              });
-            }
-          }
-        }
-      });
-      return result;
-    },
+    onRemoveCartItems: handleRemoveCartItems,
+    removeCartItemsLoading,
     clearAuthenticatedUsersCart: () => {
       if (viewer && viewer._id) {
         apolloClient.cache.writeQuery({
