@@ -28,7 +28,7 @@ const refresh = async (req, res) => {
             idToken: id_token,
             refreshToken: refresh_token
           });
-          
+
           return res.status(200).send(JSON.stringify({
             accessToken: access_token
           }));
@@ -42,7 +42,7 @@ const refresh = async (req, res) => {
   req.logout();
   return res.status(200).send(JSON.stringify({
     error: "Could not refresh token"
-  }))
+  }));
 };
 
 export default passportMiddleware(refresh);
