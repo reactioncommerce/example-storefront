@@ -1,3 +1,15 @@
+# v2.9.2
+
+Example Storefront v2.9.2 is a patch update to keep this project in sync with [Reaction v2.9.2](https://github.com/reactioncommerce/reaction).
+
+# v2.9.1
+
+Example Storefront v2.9.1 is a patch update to keep this project in sync with [Reaction v2.9.1](https://github.com/reactioncommerce/reaction).
+
+## Fixes
+
+- fix: login from storefront [#633](https://github.com/reactioncommerce/example-storefront/pull/633)
+
 # v2.9.0
 
 Example Storefront v2.9.0 is a minor update to keep this project in sync with [Reaction v2.9.0](https://github.com/reactioncommerce/reaction) and [reaction-hydra v2.9.0](https://github.com/reactioncommerce/reaction-hydra)
