@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet as StyledComponentSheets } from "styled-components";
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from "@material-ui/styles";
 import favicons from "custom/favicons";
@@ -44,7 +44,7 @@ class HTMLDocument extends Document {
     ];
 
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
           {meta.map((tag, index) => <meta key={index} {...tag} />)}
           {links.map((link, index) => <link key={index} {...link} />)}
@@ -53,9 +53,9 @@ class HTMLDocument extends Document {
           <Main />
           <NextScript />
           {scripts.map((script, index) => (script.innerHTML ? /* eslint-disable-next-line */
-          <script async key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} /> : <script async key={index} {...script} />))}
+            <script async key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} /> : <script async key={index} {...script} />))}
         </body>
-      </html>
+      </Html>
     );
   }
 }
