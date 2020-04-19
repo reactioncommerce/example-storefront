@@ -45,6 +45,7 @@
     "@reactioncommerce/components": "~0.67.2",
     "@reactioncommerce/components-context": "~1.2.0",
     "@segment/snippet": "~4.4.0",
+    "apollo-client": "^2.6.8",
     "babel-eslint": "^10.1.0",
     "body-parser": "~1.19.0",
     "classnames": "~2.2.6",
