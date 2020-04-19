@@ -118,7 +118,7 @@ export async function getStaticProps({ params: { slugOrId, lang } }) {
       ...await fetchCatalogProduct(productSlug),
       ...await fetchAllTags(lang)
     },
-    revalidate: 120 // Revalidate each two minutes
+    unstable_revalidate: 120 // Revalidate each two minutes
   };
 }
 
