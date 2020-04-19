@@ -12,10 +12,6 @@ project and can be used to add new decisions.
 docker-compose run --rm web adr new "Implement the Torpedos"
 ```
 
-## MobX
-
-- [How to use MobX correctly in this project](MOBX.md)
-
 ## Testing
 
 - [Testing](testing.md)
