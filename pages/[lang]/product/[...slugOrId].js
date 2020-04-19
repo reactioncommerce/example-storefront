@@ -1,7 +1,8 @@
-import React, { useMemo, Fragment } from "react";
+import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { useRouter } from "next/router";
+import Typography from "@material-ui/core/Typography";
 import withCart from "containers/cart/withCart";
 import ProductDetail from "components/ProductDetail";
 import PageLoading from "components/PageLoading";
@@ -68,7 +69,7 @@ function ProductDetailPage({ addItemsToCart, product, isLoadingProduct, shop }) 
   const JSONLd = useMemo(() => buildJSONLd(product, shop), [product, shop]);
 
   if (isLoadingProduct || router.isFallback) return <PageLoading />;
-  if (!product) return <ErrorPage shop={shop} subtitle="Not Found" />;
+  if (!product) return <Typography>Not Found</Typography>;
 
   return (
     <Layout shop={shop}>
