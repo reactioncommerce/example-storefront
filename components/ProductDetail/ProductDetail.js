@@ -4,7 +4,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import withWidth, { isWidthUp, isWidthDown } from "@material-ui/core/withWidth";
 import inject from "hocs/inject";
-// import track from "lib/tracking/track";
 import Breadcrumbs from "components/Breadcrumbs";
 import ProductDetailAddToCart from "components/ProductDetailAddToCart";
 import ProductDetailTitle from "components/ProductDetailTitle";
@@ -16,11 +15,6 @@ import MediaGallery from "components/MediaGallery";
 import Router from "translations/i18nRouter";
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import variantById from "lib/utils/variantById";
-// import trackProduct from "lib/tracking/trackProduct";
-// import TRACKING from "lib/tracking/constants";
-// import trackCartItems from "lib/tracking/trackCartItems";
-
-// const { CART_VIEWED, PRODUCT_ADDED, PRODUCT_VIEWED } = TRACKING;
 
 const styles = (theme) => ({
   section: {
@@ -78,8 +72,6 @@ class ProductDetail extends Component {
       selectOptionId = variant.options[0]._id;
     }
 
-    // this.trackAction({ variant, optionId, action: PRODUCT_VIEWED });
-
     uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
 
     Router.replace("/product/[...slugOrId]", `/product/${product.slug}/${selectOptionId || variantId}`);
@@ -124,7 +116,7 @@ class ProductDetail extends Component {
       const price = priceByCurrencyCode(currencyCode, selectedVariantOrOption.pricing);
 
       // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
-      const { data } = await addItemsToCart([
+      await addItemsToCart([
         {
           price: {
             amount: price.price,
@@ -137,31 +129,6 @@ class ProductDetail extends Component {
           quantity
         }
       ]);
-
-      // If no errors occurred, track action
-      if (data) {
-        // The response data will be in either `createCart` or `addCartItems` prop
-        // depending on the type of user, either authenticated or anonymous.
-        const { cart } = data.createCart || data.addCartItems;
-        const { edges: items } = cart.items;
-
-        /*
-        this.trackAction({
-          variant: {
-            ...selectedVariant,
-            cart_id: cart._id, // eslint-disable-line camelcase
-            quantity
-          },
-          optionId: selectedOption ? selectedOption._id : null,
-          action: PRODUCT_ADDED
-        });
-        */
-
-        // The mini cart popper will open automatically after adding an item to the cart,
-        // therefore, a CART_VIEWED event is published.
-        // debugger // eslint-disable-line
-        // this.trackCartItems({ cartItems: items, cartId: cart._id, action: CART_VIEWED }); // eslint-disable-line camelcase
-      }
     }
     if (isWidthUp("md", width)) {
       // Open the cart, and close after a 3 second delay

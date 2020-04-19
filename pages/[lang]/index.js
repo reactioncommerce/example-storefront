@@ -5,7 +5,6 @@ import Helmet from "react-helmet";
 import withCatalogItems from "containers/catalog/withCatalogItems";
 import ProductGrid from "components/ProductGrid";
 import Layout from "components/Layout";
-// import trackProductListViewed from "lib/tracking/trackProductListViewed";
 import { inPageSizes } from "lib/utils/pageSizes";
 import { withApollo } from "lib/apollo/withApollo";
 
@@ -33,16 +32,9 @@ class ProductGridPage extends Component {
     })
   };
 
-  // @trackProductListViewed()
   componentDidMount() {
     const { routingStore } = this.props;
     routingStore.setTagId(null);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.catalogItems !== prevProps.catalogItems) {
-      // this.trackEvent(this.props);
-    }
   }
 
   setPageSize = (pageSize) => {

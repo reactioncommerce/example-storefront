@@ -12,12 +12,7 @@ import Badge from "@material-ui/core/Badge";
 import Popper from "@material-ui/core/Popper";
 import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
-// import trackCartItems from "lib/tracking/trackCartItems";
-// import track from "lib/tracking/track";
 import variantById from "lib/utils/variantById";
-// import TRACKING from "lib/tracking/constants";
-
-// const { CART_VIEWED, PRODUCT_REMOVED } = TRACKING;
 
 const styles = ({ palette, zIndex }) => ({
   popper: {
@@ -86,11 +81,6 @@ class MiniCart extends Component {
   handlePopperOpen = () => {
     const { cart, uiStore: { openCart } } = this.props;
     openCart();
-
-    // Track a cart view event, only if the cart contains items
-    if (cart && Array.isArray(cart.items) && cart.items.length) {
-      // this.trackAction({ cartItems: cart.items, cartId: cart._id, action: CART_VIEWED });
-    }
   }
 
   handleClick = () => Router.push("/");
@@ -128,16 +118,8 @@ class MiniCart extends Component {
   }
 
   handleRemoveItem = async (itemId) => {
-    const { cart: { items }, onRemoveCartItems } = this.props;
-    const { data, error } = await onRemoveCartItems(itemId);
-
-    if (data && !error) {
-      const { cart: { _id } } = data.removeCartItems;
-      const removedItem = { cart_id: _id, ...variantById(items, itemId) }; // eslint-disable-line camelcase
-
-      // Track removed item
-      // this.trackAction({ cartItems: removedItem, action: PRODUCT_REMOVED });
-    }
+    const { onRemoveCartItems } = this.props;
+    await onRemoveCartItems(itemId);
   };
 
   renderMiniCart() {

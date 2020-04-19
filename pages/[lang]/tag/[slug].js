@@ -10,7 +10,6 @@ import ProductGridHero from "components/ProductGridHero";
 import ProductGridTitle from "components/ProductGridTitle";
 import Layout from "components/Layout";
 import SharedPropTypes from "lib/utils/SharedPropTypes";
-// import trackProductListViewed from "lib/tracking/trackProductListViewed";
 import { withApollo } from "lib/apollo/withApollo";
 
 import { locales } from "translations/config";
@@ -63,12 +62,6 @@ class TagGridPage extends Component {
   }
 
   state = {};
-
-  componentDidUpdate(prevProps) {
-    if (this.props.catalogItems !== prevProps.catalogItems) {
-      // this.trackEvent(this.props);
-    }
-  }
 
   setPageSize = (pageSize) => {
     this.props.routingStore.setSearch({ limit: pageSize });

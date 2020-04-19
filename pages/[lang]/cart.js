@@ -14,10 +14,7 @@ import Link from "components/Link";
 import Layout from "components/Layout";
 import Router from "translations/i18nRouter";
 import PageLoading from "components/PageLoading";
-// import track from "lib/tracking/track";
 import variantById from "lib/utils/variantById";
-// import trackCartItems from "lib/tracking/trackCartItems";
-// import TRACKING from "lib/tracking/constants";
 import { withApollo } from "lib/apollo/withApollo";
 
 import { locales } from "translations/config";
@@ -77,15 +74,6 @@ class CartPage extends Component {
     })
   };
 
-  componentDidMount() {
-    const { cart } = this.props;
-
-    // Track a cart view event
-    if (cart && Array.isArray(cart.items) && cart.items.length) {
-      // this.trackAction({ cartItems: cart.items, cartId: cart._id, action: TRACKING.CART_VIEWED });
-    }
-  }
-
   handleClick = () => Router.push("/");
 
   handleItemQuantityChange = (quantity, cartItemId) => {
@@ -95,17 +83,9 @@ class CartPage extends Component {
   };
 
   handleRemoveItem = async (itemId) => {
-    const { cart: { items }, onRemoveCartItems } = this.props;
+    const { onRemoveCartItems } = this.props;
 
-    const { data, error } = await onRemoveCartItems(itemId);
-
-    if (data && !error) {
-      const { cart: { _id } } = data.removeCartItems;
-      const removedItem = { cart_id: _id, ...variantById(items, itemId) }; // eslint-disable-line camelcase
-
-      // Track removed item
-      // this.trackAction({ cartItems: removedItem, action: TRACKING.PRODUCT_REMOVED });
-    }
+    await onRemoveCartItems(itemId);
   };
 
   renderCartItems() {

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
-// import ProgressiveImage from "@reactioncommerce/components/ProgressiveImage/v1";
 import ProgressiveImage from "components/ProgressiveImage";
 import MediaGalleryItem from "components/MediaGalleryItem";
 

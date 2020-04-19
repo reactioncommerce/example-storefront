@@ -13,23 +13,8 @@ import withAddressValidation from "containers/address/withAddressValidation";
 import Dialog from "@material-ui/core/Dialog";
 import PageLoading from "components/PageLoading";
 import Router from "translations/i18nRouter";
-// import track from "lib/tracking/track";
-// import TRACKING from "lib/tracking/constants";
-// import trackCheckout from "lib/tracking/trackCheckout";
-// import trackOrder from "lib/tracking/trackOrder";
-// import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
 import calculateRemainderDue from "lib/utils/calculateRemainderDue";
 import { placeOrderMutation } from "../../hooks/orders/placeOrder.gql";
-
-/*
-const {
-  CHECKOUT_STARTED,
-  CHECKOUT_STEP_COMPLETED,
-  CHECKOUT_STEP_VIEWED,
-  ORDER_COMPLETED,
-  PAYMENT_INFO_ENTERED
-} = TRACKING;
-*/
 
 const MessageDiv = styled.div`
   ${addTypographyStyles("NoPaymentMethodsMessage", "bodyText")}
@@ -73,24 +58,6 @@ class CheckoutActions extends Component {
     isPlacingOrder: false
   };
 
-  componentDidMount() {
-    this._isMounted = true;
-    const { cart } = this.props;
-
-    // Track start of checkout process
-    // this.trackCheckoutStarted({ cart, action: CHECKOUT_STARTED });
-
-    const { checkout: { fulfillmentGroups } } = cart;
-    const [fulfillmentGroup] = fulfillmentGroups;
-
-    // Track the first step, "Enter a shipping address" when the page renders,
-    // as it will be expanded by default, only record this event when the
-    // shipping address has not yet been set.
-    if (!fulfillmentGroup.shippingAddress) {
-      // this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 1 }));
-    }
-  }
-
   componentDidUpdate({ addressValidationResults: prevAddressValidationResults }) {
     const { addressValidationResults } = this.props;
     if (
@@ -129,20 +96,12 @@ class CheckoutActions extends Component {
     delete address.isValid;
     const { data, error } = await onSetShippingAddress(address);
 
-    if (data && !error) {
-      // track successfully setting a shipping address
-      // this.trackAction(this.buildData({ action: CHECKOUT_STEP_COMPLETED, step: 1 }));
-
-      // The next step will automatically be expanded, so lets track that
-      // this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 2 }));
-
-      if (this._isMounted) {
-        this.setState({
-          actionAlerts: {
-            1: {}
-          }
-        });
-      }
+    if (data && !error && this._isMounted) {
+      this.setState({
+        actionAlerts: {
+          1: {}
+        }
+      });
     }
   };
 
@@ -166,14 +125,7 @@ class CheckoutActions extends Component {
       fulfillmentMethodId: shippingMethod.selectedFulfillmentOption.fulfillmentMethod._id
     };
 
-    const { data, error } = await onSetFulfillmentOption(fulfillmentOption);
-    if (data && !error) {
-      // track successfully setting a shipping method
-      // this.trackAction(this.buildData({ action: CHECKOUT_STEP_COMPLETED, step: 2 }));
-
-      // The next step will automatically be expanded, so lets track that
-      // this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 3 }));
-    }
+    await onSetFulfillmentOption(fulfillmentOption);
   };
 
   handlePaymentSubmit = (paymentInput) => {
@@ -185,12 +137,6 @@ class CheckoutActions extends Component {
         3: {}
       }
     });
-
-    // Track successfully setting a payment method
-    // this.trackAction(this.buildData({ action: PAYMENT_INFO_ENTERED, step: 3 }));
-
-    // The next step will automatically be expanded, so lets track that
-    // this.trackAction(this.buildData({ action: CHECKOUT_STEP_VIEWED, step: 4 }));
   };
 
   handlePaymentsReset = () => {
@@ -266,10 +212,6 @@ class CheckoutActions extends Component {
       cartStore.resetCheckoutPayments();
 
       const { placeOrder: { orders, token } } = data;
-
-      // this.trackAction(this.buildData({ action: CHECKOUT_STEP_COMPLETED, step: 4 }));
-
-      // this.trackOrder({ action: ORDER_COMPLETED, orders });
 
       // Send user to order confirmation page
       Router.push(`/checkout/order?orderId=${orders[0].referenceId}${token ? `&token=${token}` : ""}`);

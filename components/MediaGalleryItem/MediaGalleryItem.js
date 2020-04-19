@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import withStyles from "@material-ui/core/styles/withStyles";
-// import ProgressiveImage from "@reactioncommerce/components/ProgressiveImage/v1";
 import ProgressiveImage from "components/ProgressiveImage";
 
 const styles = () => ({
@@ -40,7 +39,7 @@ class MediaGalleryItem extends Component {
   };
 
   static defaultProps = {
-    onClick: () => {}
+    onClick: () => { }
   };
 
   /**

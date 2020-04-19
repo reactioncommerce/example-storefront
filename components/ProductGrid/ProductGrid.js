@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import CatalogGrid from "@reactioncommerce/components/CatalogGrid/v1";
-// import track from "lib/tracking/track";
-// import trackProductClicked from "lib/tracking/trackProductClicked";
 import PageLoading from "components/PageLoading";
 import PageStepper from "components/PageStepper";
 import PageSizeSelector from "components/PageSizeSelector";
