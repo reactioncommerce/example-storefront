@@ -62,7 +62,7 @@
     "keymirror": "~0.1.1",
     "lodash": "~4.17.11",
     "mdi-material-ui": "~5.9.0",
-    "next": "^9.3.5",
+    "next": "9.4.1",
     "passport": "~0.4.0",
     "passport-oauth2": "~1.4.0",
     "prop-types": "^15.7.2",
