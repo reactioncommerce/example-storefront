@@ -24,6 +24,7 @@ const { bool, num, port, str, url } = envalid;
 module.exports = envalid.cleanEnv(process.env, {
   CANONICAL_URL: url(),
   ENABLE_SPA_ROUTING: bool({ default: true }), // must explicitly set to false to disable
+  BUILD_GRAPHQL_URL: url(),
   EXTERNAL_GRAPHQL_URL: url(),
   INTERNAL_GRAPHQL_URL: url(),
   NODE_ENV: str({ choices: ["development", "test", "jesttest", "production"], default: "production" }),
