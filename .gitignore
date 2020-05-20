@@ -5,6 +5,7 @@
 .c9
 .env*
 !.env.example*
+!.env.prod*
 *.csv
 *.dat
 *.gz

@@ -1,4 +1,8 @@
-FROM node:10.16.3-alpine
+FROM node:12-alpine
+
+ARG NEXTJS_DOTENV
+
+ENV NEXTJS_DOTENV=$NEXTJS_DOTENV
 
 # hadolint ignore=DL3018
 RUN apk --no-cache add bash curl less tini vim make
@@ -12,13 +16,10 @@ RUN chown node:node .
 
 # Copy specific things so that we can keep the image as small as possible
 # without relying on each repo to include a .dockerignore file.
-COPY --chown=node:node package.json ./
-COPY --chown=node:node yarn.lock ./
-COPY --chown=node:node ./src ./src
-COPY --chown=node:node LICENSE ./
+COPY --chown=node:node ./ ./
 
 # Needed only for the build command
-COPY --chown=node:node .babelrc ./
+# COPY --chown=node:node .babelrc ./
 
 USER node
 
@@ -26,13 +27,12 @@ USER node
 RUN yarn install --production=false --frozen-lockfile --ignore-scripts --non-interactive --no-cache
 
 ENV BUILD_ENV=production NODE_ENV=production
-RUN IS_BUILDING_NEXTJS=1 "$(npm bin)/next" build src
+RUN export $(grep -v '^#' .env.${NEXTJS_DOTENV:-prod} | xargs -0) && yarn build
 
 # Install only prod dependencies now that we've built, to make the image smaller
 RUN rm -rf node_modules/*
-RUN rm ./.babelrc
 RUN yarn install --production=true --frozen-lockfile --ignore-scripts --non-interactive
 
 # If any Node flags are needed, they can be set in the NODE_OPTIONS env variable.
-CMD ["tini", "--", "node", "."]
+CMD ["tini", "--", "yarn", "start"]
 LABEL com.reactioncommerce.name="example-storefront"
