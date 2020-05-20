@@ -18,9 +18,6 @@ RUN chown node:node .
 # without relying on each repo to include a .dockerignore file.
 COPY --chown=node:node ./ ./
 
-# Needed only for the build command
-# COPY --chown=node:node .babelrc ./
-
 USER node
 
 # Install ALL dependencies. We need devDependencies for the build command.
