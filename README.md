@@ -70,6 +70,7 @@ cd example-storefront
 ### Build and run in development mode with logs
 
 ```sh
+./bin/setup
 docker-compose up -d && docker-compose logs -f
 ```
 
