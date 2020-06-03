@@ -1,3 +1,12 @@
+# v3.1.0
+
+This release of `example-storefront` is designed to work with v3.x of the Reaction API.
+
+### Chores
+
+- chore: bump https-proxy-agent from 2.2.2 to 2.2.4 ([#669](http://github.com/reactioncommerce/reaction-admin/pull/669))
+- chore: switch to 3.0.0 Docker tag ([#659](http://github.com/reactioncommerce/reaction-admin/pull/659))
+
 # v3.0.0
 
 This is the v3.0.0 release of `example-storefront`, designed to work with v3.0.0 of the Reaction API.
