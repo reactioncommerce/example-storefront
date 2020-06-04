@@ -1,0 +1,7 @@
+# Get available payment methods for a shop
+query availablePaymentMethods($shopId: ID!) {
+  availablePaymentMethods(shopId: $shopId) {
+    name
+    isEnabled
+  }
+}

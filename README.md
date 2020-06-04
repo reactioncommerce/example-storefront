@@ -9,9 +9,9 @@ Reaction comes with a robust set of core commerce capabilities right out of the 
 
 Check out the full list of Reaction [features](https://www.reactioncommerce.com/features) and [release history](https://reactioncommerce.com/roadmap) for more info.
 
-This example storefront is built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [MobX](https://mobx.js.org/getting-started.html), [GraphQL](https://graphql.org/), and [Apollo Client](https://www.apollographql.com/docs/react/)
+This example storefront is built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [GraphQL](https://graphql.org/), and [Apollo Client](https://www.apollographql.com/docs/react/)
 
-- Headless ecommerce example storefront built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [MobX](https://mobx.js.org/getting-started.html), [GraphQL](https://graphql.org/), [Apollo Client](https://www.apollographql.com/docs/react/)
+- Headless ecommerce example storefront built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [GraphQL](https://graphql.org/), [Apollo Client](https://www.apollographql.com/docs/react/)
 - [Reaction GraphQL API](https://github.com/reactioncommerce/reaction/tree/master/imports/plugins/core/graphql) integration
 - Server-side rendering
 - Payments with [Stripe](https://stripe.com/)

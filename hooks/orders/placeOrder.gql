@@ -1,0 +1,11 @@
+#import "./fragments.gql"
+
+# place an order
+mutation placeOrderMutation($input: PlaceOrderInput!, $language: String! = "en") {
+  placeOrder(input: $input) {
+    orders {
+      ...OrderQueryFragment
+    },
+    token
+  }
+}

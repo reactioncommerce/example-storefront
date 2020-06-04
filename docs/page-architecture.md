@@ -4,7 +4,6 @@
 Common dependencies are injected in the root level component, `_app.js`, and will be available to all pages. Common dependencies are provided by the following decorator: 
 * @withApolloClient - Decorates each page with the `ApolloProvider` giving each page the capability to make `GraphQL` requests. 
 * @withShop - Decorates each page with current shop's id, description, currency and other relevant fields. A `shop` prop with this information will be available to each page.
-* @withMobX - Injects MobX stores to React's context, to make a particular store available to a page as a prop, use the `@inject("storeName")` decorator.
 * @withTheme - Makes the Material UI theme available to all pages and subsequent components. To access the theme use the `@withStyles(styles, {withTheme: true })` decorator in a page or component.
 * @track - Makes tracking facilities available to each page. 
 
