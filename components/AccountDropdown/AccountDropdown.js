@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 const AccountDropdown = () => {
   const classes = useStyles();
   const [anchorElement, setAnchorElement] = useState(null);
-  const [viewer, isLoadingViewer] = useViewer();
+  const [viewer] = useViewer();
   const isAuthenticated = viewer && viewer._id;
 
   const toggleOpen = (event) => {

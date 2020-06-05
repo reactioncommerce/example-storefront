@@ -20,6 +20,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+/**
+ * Renders the menu in the profile view
+ *
+ * @returns {React.Component} The profile view react component
+ */
 function ProfileMenu() {
   const classes = useStyles();
   const { account } = useAuthStore();

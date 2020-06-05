@@ -2,6 +2,7 @@ import useStores from "hooks/useStores";
 import useShop from "hooks/shop/useShop";
 import useTags from "hooks/useTags";
 
+// eslint-disable-next-line no-unused-vars
 const withInjectedStores = (injections) => (PageComponent) => {
   const WithInjectedStores = (props) => {
     const stores = useStores();

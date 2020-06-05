@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import isLocale from "translations/isLocale";
 
@@ -40,4 +41,11 @@ export const LocaleProvider = ({ lang, translations, namespaces, children }) => 
       {children}
     </LocaleContext.Provider>
   );
+};
+
+LocaleProvider.propTypes = {
+  children: PropTypes.node,
+  lang: PropTypes.string,
+  namespaces: PropTypes.array,
+  translations: PropTypes.array
 };

@@ -66,6 +66,7 @@ class ProductDetailAddToCart extends Component {
     onClick: PropTypes.func,
     selectedOptionId: PropTypes.string,
     selectedVariantId: PropTypes.string,
+    t: PropTypes.func, // eslint-disable-line id-length
     uiStore: PropTypes.shape({
       openCartWithTimeout: PropTypes.func
     }).isRequired,
@@ -197,7 +198,7 @@ class ProductDetailAddToCart extends Component {
         quantitySvg,
         quantityTypography
       },
-      t
+      t // eslint-disable-line id-length
     } = this.props;
 
     const { addToCartQuantity } = this.state;

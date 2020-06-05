@@ -1,6 +1,13 @@
 import redirect from "apiUtils/redirect";
 import appConfig from "../../../config.js";
 
+/**
+ * Redirects to the change password view
+ *
+ * @param {Obect} req - the request
+ * @param {Object} res - the response
+ * @returns {undefined}
+ */
 export default async function changePassword(req, res) {
   const { email } = req.query;
 

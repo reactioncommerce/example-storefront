@@ -10,7 +10,7 @@ import useUpdateAccountAddressBookEntry from "hooks/address/useUpdateAccountAddr
  * @return {React.Component} Wrapped component
  */
 export default function withAddressBook(Component) {
-  function WithAddressBook(props) {
+  function WithAddressBook(props) { // eslint-disable-line require-jsdoc
     const [addAccountAddressBookEntry] = useAddAccountAddressBookEntry();
     const [updateAccountAddressBookEntry] = useUpdateAccountAddressBookEntry();
     const [removeAccountAddressBookEntry] = useRemoveAccountAddressBookEntry();

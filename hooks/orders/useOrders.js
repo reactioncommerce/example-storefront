@@ -5,6 +5,11 @@ import useShop from "hooks/shop/useShop";
 import { pagination, paginationVariablesFromUrlParams } from "lib/utils/pagination";
 import { ordersByAccountIdQuery } from "./queries.gql";
 
+/**
+ * Get the user's orders context
+ *
+ * @returns {Object} the user's orders context
+ */
 export default function useOrders() {
   const { authStore, uiStore } = useStores();
   const shop = useShop();

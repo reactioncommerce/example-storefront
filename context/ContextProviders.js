@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { RoutingProvider } from "context/RoutingContext";
 import { AuthProvider } from "context/AuthContext";
 import { CartProvider } from "context/CartContext";
@@ -31,4 +32,9 @@ export const ContextProviders = ({ children, pageProps }) => {
       </UIProvider>
     </RoutingProvider>
   );
+};
+
+ContextProviders.propTypes = {
+  children: PropTypes.node,
+  pageProps: PropTypes.object
 };

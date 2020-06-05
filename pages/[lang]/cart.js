@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import inject from "hocs/inject";
@@ -14,7 +14,6 @@ import Link from "components/Link";
 import Layout from "components/Layout";
 import Router from "translations/i18nRouter";
 import PageLoading from "components/PageLoading";
-import variantById from "lib/utils/variantById";
 import { withApollo } from "lib/apollo/withApollo";
 
 import { locales } from "translations/config";
@@ -177,6 +176,12 @@ class CartPage extends Component {
   }
 }
 
+/**
+ *  Static props for the cart route
+ *
+ * @param {String} lang - the shop's language
+ * @returns {Object} props
+ */
 export async function getStaticProps({ params: { lang } }) {
   return {
     props: {
@@ -186,6 +191,11 @@ export async function getStaticProps({ params: { lang } }) {
   };
 }
 
+/**
+ *  Static paths for the cart route
+ *
+ * @returns {Object} paths
+ */
 export async function getStaticPaths() {
   return {
     paths: locales.map((locale) => ({ params: { lang: locale } })),

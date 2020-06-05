@@ -20,6 +20,12 @@ import {
   anonymousCartByCartIdQuery
 } from "./queries.gql";
 
+
+/**
+ * Hook to get cart information
+ *
+ * @returns {Object} the user's current cart
+ */
 export default function useCart() {
   const { cartStore } = useStores();
   const [viewer, isLoadingViewer] = useViewer();
@@ -40,7 +46,7 @@ export default function useCart() {
     pollInterval: shouldSkipAccountCartByAccountIdQuery ? 0 : 10000
   });
 
-  const { loading: isLoadingAnonymous, data: cartDataAnonymous, fetchMore: fetchMoreAnonymous, refetch: refetchCartAnonymous } = useQuery(anonymousCartByCartIdQuery, {
+  const { data: cartDataAnonymous, refetch: refetchCartAnonymous } = useQuery(anonymousCartByCartIdQuery, {
     skip: shouldSkipAnonymousCartByCartIdQuery,
     variables: {
       cartId: cartStore.anonymousCartId,

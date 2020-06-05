@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 
 export const RoutingContext = createContext();
@@ -7,7 +8,7 @@ export const RoutingProvider = ({ children }) => {
   const [currentAsPath, setCurrentAsPath] = useState();
   const [currentRoute, setCurrentRoute] = useState();
   const [prevAsPath, setPrevAsPath] = useState();
-  const [queryString, setQueryString] = useState("");
+  const [queryString, setQueryString] = useState(""); // eslint-disable-line no-unused-vars
 
   const { asPath, route, query, pathname } = useRouter();
 
@@ -22,7 +23,7 @@ export const RoutingProvider = ({ children }) => {
     }
   }, [route, currentRoute, asPath]);
 
-  const setSearch = (search) => {
+  const setSearch = (search) => { // eslint-disable-line no-unused-vars
     /*
     const _query = { ...toJS(this.query), ...search };
     const _slug = _query.slug;
@@ -85,4 +86,8 @@ export const RoutingProvider = ({ children }) => {
       {children}
     </RoutingContext.Provider>
   );
+};
+
+RoutingProvider.propTypes = {
+  children: PropTypes.node
 };

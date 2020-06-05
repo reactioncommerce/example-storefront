@@ -4,6 +4,7 @@ const ignorePaths = ["/signin", "/signin", "/refresh"];
 
 const replace = (href, as) => {
   if (!process.browser) {
+    // eslint-disable-next-line
     console.warn("You should only use i18nRouter inside the client side of your app.");
     return null;
   }
@@ -23,10 +24,13 @@ const replace = (href, as) => {
   }
 
   Router.replace(`/[lang]${href}`, `/${locale}${as}`);
+
+  return null;
 };
 
 const push = (href, as) => {
   if (!process.browser) {
+    // eslint-disable-next-line no-console
     console.warn("You should only use i18nRouter inside the client side of your app.");
     return null;
   }
@@ -46,6 +50,8 @@ const push = (href, as) => {
   }
 
   Router.push(`/[lang]${href}`, `/${locale}${as}`);
+
+  return null;
 };
 
 export default {

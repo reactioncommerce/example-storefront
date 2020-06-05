@@ -130,6 +130,11 @@ class Login extends Component {
   }
 }
 
+/**
+ *  Static props for the login
+ *
+ * @returns {Object} the props
+ */
 export async function getStaticProps({ params: { lang } }) {
   return {
     props: {
@@ -139,6 +144,11 @@ export async function getStaticProps({ params: { lang } }) {
   };
 }
 
+/**
+ *  Static paths for the login
+ *
+ * @returns {Object} thepaths
+ */
 export async function getStaticPaths() {
   return {
     paths: locales.map((locale) => ({ params: { lang: locale } })),
