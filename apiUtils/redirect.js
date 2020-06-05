@@ -1,3 +1,11 @@
+/**
+ * Redirects to a new given location
+ *
+ * @param {Object} res  - response
+ * @param {String} statusCode  - HTTP response status code
+ * @param {String} location - the new location
+ * @returns {Object} the updated response object
+ */
 export default function redirect(res, statusCode, location) {
   if (!res) {
     throw new Error("Response object required");

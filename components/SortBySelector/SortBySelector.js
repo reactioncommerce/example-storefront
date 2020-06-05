@@ -3,8 +3,15 @@ import PropTypes from "prop-types";
 import Select from "components/Select";
 import useTranslation from "hooks/useTranslation";
 
+/**
+ * Renders the select to allow users to sort products
+ *
+ * @param {String} sortBy - the key to sort by
+ * @param {Function} onChange - the onChange event handler
+ * @returns {React.Component} - the sort by selector
+ */
 function SortBySelector({ sortBy, onChange }) {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("common"); // eslint-disable-line id-length
 
   return (
     <Select

@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import PropTypes from "prop-types";
 import { PAGE_SIZES, inPageSizes } from "lib/utils/pageSizes";
 
 export const UIContext = createContext();
@@ -9,12 +10,12 @@ export const UIProvider = ({ children }) => {
   const [language, setLanguage] = useState("en");
   const [locales, setLocales] = useState({});
   const [orderStatusQuery, setOrderStatusQuery] = useState([]);
-  const [orderQueryLimit, setOrderQueryLimit] = useState(5);
+  const [orderQueryLimit, setOrderQueryLimit] = useState(5); // eslint-disable-line no-unused-vars
   const [pageSize, _setPageSize] = useState(PAGE_SIZES._20);
   const [pdpSelectedOptionId, setPdpSelectedOptionId] = useState(null);
   const [pdpSelectedVariantId, setPdpSelectedVariantId] = useState(null);
   const [sortBy, setSortBy] = useState("updatedAt-desc");
-  const [sortByCurrencyCode, setSortByCurrencyCode] = useState("USD");
+  const [sortByCurrencyCode, setSortByCurrencyCode] = useState("USD"); // eslint-disable-line no-unused-vars
   const [openCartTimeout, setOpenCartTimeout] = useState();
 
   const setPDPSelectedVariantId = (variantId, optionId) => {
@@ -101,4 +102,8 @@ export const UIProvider = ({ children }) => {
       {children}
     </UIContext.Provider>
   );
+};
+
+UIProvider.propTypes = {
+  children: PropTypes.node
 };

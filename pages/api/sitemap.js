@@ -1,6 +1,13 @@
 import fetch from "isomorphic-unfetch";
 import appConfig from "../../config.js";
 
+/**
+ * Generates the sitemap and returns it
+ *
+ * @param {Object} req - the request
+ * @param {Object} res  - the response
+ * @returns {String} the the sitemap
+ */
 export default async function generateSitemap(req, res) {
   const shopUrl = `${req.protocol}://${req.headers.host}`;
   const handle = req.url.replace("/", "");

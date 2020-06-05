@@ -4,8 +4,15 @@ import Select from "components/Select";
 import { PAGE_SIZES } from "lib/utils/pageSizes";
 import useTranslation from "hooks/useTranslation";
 
+/**
+ * Renders the page size selector
+ *
+ * @param {Integer} pageSize - the page size
+ * @param {Function} onChange - the onChange page size handler
+ * @returns {React.Component} The page size selector
+ */
 function PageSizeSelector({ pageSize, onChange }) {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("common"); // eslint-disable-line id-length
 
   return (
     <Select

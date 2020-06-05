@@ -3,6 +3,11 @@ import { useLazyQuery } from "@apollo/client";
 import useShop from "hooks/shop/useShop";
 import { validateAddressQuery } from "./query.gql";
 
+/**
+ * Perform address validation
+ *
+ * @returns {Array} A list of suggested addresses
+ */
 export default function useAddressValidation() {
   const shop = useShop();
 
@@ -24,7 +29,7 @@ export default function useAddressValidation() {
     isValid: true
   });
 
-  const [handleAddressValidationFunc, { loading, data }] = useLazyQuery(validateAddressQuery);
+  const [handleAddressValidationFunc, { data }] = useLazyQuery(validateAddressQuery);
 
   const handleAddressValidation = async (address) => {
     if (!address) return;

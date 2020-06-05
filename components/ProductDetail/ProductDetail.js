@@ -181,7 +181,6 @@ class ProductDetail extends Component {
       currencyCode,
       product,
       routingStore,
-      theme,
       uiStore: { pdpSelectedOptionId, pdpSelectedVariantId },
       width
     } = this.props;

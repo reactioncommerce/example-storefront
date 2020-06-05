@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 const LocaleDropdown = () => {
   const classes = useStyles();
   const router = useRouter();
-  const { locale, t } = useTranslation("common");
+  const { locale, t } = useTranslation("common"); // eslint-disable-line id-length
   const { uiStore } = useStores();
 
   const changeLanguage = useCallback(
@@ -42,7 +42,7 @@ const LocaleDropdown = () => {
         value={locale}
         onChange={(event) => changeLanguage(event.target.value)}
       >
-        { locales.map((locale, index) => <MenuItem key={index} value={locale}>{t(locale)}</MenuItem>)}
+        { locales.map((localeOption, index) => <MenuItem key={index} value={localeOption}>{t(localeOption)}</MenuItem>)}
       </Select>
     </div>
   );

@@ -5,6 +5,11 @@ import useViewer from "hooks/viewer/useViewer";
 import availablePaymentMethodsQuery from "./availablePaymentMethods.gql";
 
 
+/**
+ * Gets the available payment methods
+ *
+ * @returns {Array} A list of available payment methods
+ */
 export default function useAvailablePaymentMethods() {
   const shop = useShop();
   const [viewer, isLoadingViewer] = useViewer();
