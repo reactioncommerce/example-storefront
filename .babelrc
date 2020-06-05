@@ -1,0 +1,99 @@
+{
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "targets": {
+            "node": "current",
+            "browsers": [
+              "last 2 versions",
+              "ie 11"
+            ]
+          }
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    "babel-plugin-styled-components",
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "components": "./components",
+          "containers": "./containers",
+          "context": "./context",
+          "custom": "./custom",
+          "hocs": "./hocs",
+          "hooks": "./hooks",
+          "lib": "./lib",
+          "pages": "./pages",
+          "public": "./public",
+          "static": "./static",
+          "serverUtils": "./serverUtils",
+          "translations": "./translations",
+          "routes": "./routes",
+          "utils": "./utils",
+          "staticUtils": "./staticUtils",
+          "apiUtils": "./apiUtils"
+        }
+      }
+    ],
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ]
+  ],
+  "env": {
+    "jesttest": {
+      "plugins": [
+        "babel-plugin-styled-components",
+        [
+          "module-resolver",
+          {
+            "alias": {
+              "components": "./components",
+              "containers": "./containers",
+              "context": "./context",
+              "custom": "./custom",
+              "hocs": "./hocs",
+              "hooks": "./hooks",
+              "lib": "./lib",
+              "pages": "./pages",
+              "public": "./public",
+              "static": "./static",
+              "serverUtils": "./serverUtils",
+              "translations": "./translations",
+              "routes": "./routes",
+              "utils": "./utils",
+              "staticUtils": "./staticUtils",
+              "apiUtils": "./apiUtils"
+            }
+          }
+        ],
+        [
+          "@babel/plugin-proposal-decorators",
+          {
+            "legacy": true
+          }
+        ],
+        [
+          "@babel/plugin-proposal-class-properties",
+          {
+            "loose": true
+          }
+        ],
+        "dynamic-import-node"
+      ]
+    }
+  }
+}
