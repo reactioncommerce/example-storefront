@@ -20,9 +20,24 @@
     [
       "module-resolver",
       {
-        "root": [
-          "./src"
-        ]
+        "alias": {
+          "components": "./components",
+          "containers": "./containers",
+          "context": "./context",
+          "custom": "./custom",
+          "hocs": "./hocs",
+          "hooks": "./hooks",
+          "lib": "./lib",
+          "pages": "./pages",
+          "public": "./public",
+          "static": "./static",
+          "serverUtils": "./serverUtils",
+          "translations": "./translations",
+          "routes": "./routes",
+          "utils": "./utils",
+          "staticUtils": "./staticUtils",
+          "apiUtils": "./apiUtils"
+        }
       }
     ],
     [
@@ -45,9 +60,24 @@
         [
           "module-resolver",
           {
-            "root": [
-              "./src"
-            ]
+            "alias": {
+              "components": "./components",
+              "containers": "./containers",
+              "context": "./context",
+              "custom": "./custom",
+              "hocs": "./hocs",
+              "hooks": "./hooks",
+              "lib": "./lib",
+              "pages": "./pages",
+              "public": "./public",
+              "static": "./static",
+              "serverUtils": "./serverUtils",
+              "translations": "./translations",
+              "routes": "./routes",
+              "utils": "./utils",
+              "staticUtils": "./staticUtils",
+              "apiUtils": "./apiUtils"
+            }
           }
         ],
         [

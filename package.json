@@ -115,12 +115,17 @@
       "!**/vendor/**"
     ],
     "coverageDirectory": "reports/coverage",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/node_nodules/",
+      "<rootDir>/build/",
+      "<rootDir>/lib/tracking/utils"
+    ],
     "reporters": [
       "default",
       "jest-junit"
     ],
     "roots": [
-      "./"
+      "<rootDir>"
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/tests/setupTests.js"
