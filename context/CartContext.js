@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import Cookies from "js-cookie";
 
 const ANONYMOUS_CART_ID_KEY_NAME = "anonymousCartId";
@@ -41,8 +42,8 @@ export const CartProvider = ({ children }) => {
   };
 
   const setAnonymousCartCredentialsFromLocalStorage = () => {
-    const anonymousCartId = localStorage.getItem(ANONYMOUS_CART_ID_KEY_NAME);
-    const anonymousCartToken = localStorage.getItem(ANONYMOUS_CART_TOKEN_KEY_NAME);
+    const anonymousCartId = localStorage.getItem(ANONYMOUS_CART_ID_KEY_NAME); // eslint-disable-line no-shadow
+    const anonymousCartToken = localStorage.getItem(ANONYMOUS_CART_TOKEN_KEY_NAME); // eslint-disable-line no-shadow
 
     setAnonymousCartCredentials(anonymousCartId, anonymousCartToken);
   };
@@ -74,7 +75,7 @@ export const CartProvider = ({ children }) => {
       clearAnonymousCartCredentials,
       setAnonymousCartCredentialsFromLocalStorage,
       setIsReconcilingCarts,
-      hasAnonymousCartCredentials: anonymousCartId && anonymousCartToken || false,
+      hasAnonymousCartCredentials: (anonymousCartId && anonymousCartToken) || false,
       hasAccountCart: typeof accountCartId === "string",
       setAccountCartId,
       addCheckoutPayment,
@@ -85,4 +86,8 @@ export const CartProvider = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
+};
+
+CartProvider.propTypes = {
+  children: PropTypes.node
 };

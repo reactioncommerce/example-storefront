@@ -1,10 +1,17 @@
 import { createContext, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import fetch from "isomorphic-unfetch";
 import useSWR from "swr";
 import { setAccessToken as setApolloToken } from "lib/apollo/apolloClient";
 
-const fetcher = (url) => fetch(url).then((r) => r.json());
+const fetcher = (url) => fetch(url).then((response) => response.json());
 
+/**
+ * Splits the user's full name into first and last name
+ *
+ * @param {Object} account - the users account
+ * @returns {Object} users first and last name as object properties
+ */
 function splitNames(account) {
   let firstName = "";
   let lastName = "";
@@ -60,4 +67,8 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.node
 };

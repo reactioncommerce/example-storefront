@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import inject from "hocs/inject";
 import Helmet from "react-helmet";
@@ -77,6 +77,11 @@ class ProfileOrdersPage extends Component {
   }
 }
 
+/**
+ *  Static props for the orders route
+ * @param {String} lang - the shop's language
+ * @returns {Object} props
+ */
 export async function getStaticProps({ params: { lang } }) {
   return {
     props: {
@@ -86,6 +91,10 @@ export async function getStaticProps({ params: { lang } }) {
   };
 }
 
+/**
+ *  Static paths for the orders route
+ * @returns {Object} the static paths
+ */
 export async function getStaticPaths() {
   return {
     paths: locales.map((locale) => ({ params: { lang: locale } })),

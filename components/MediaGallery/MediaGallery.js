@@ -86,7 +86,7 @@ class MediaGallery extends Component {
   }
 
   render() {
-    const { classes, mediaItems, theme } = this.props;
+    const { classes, mediaItems } = this.props;
 
     return (
       <Grid container className={classes.root}>

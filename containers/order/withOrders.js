@@ -9,7 +9,7 @@ import useOrders from "hooks/orders/useOrders";
  * @returns {React.Component} - Component with `orders` props and callbacks
  */
 export default function withOrders(Component) {
-  function WithOrders(props) {
+  function WithOrders(props) { // eslint-disable-line require-jsdoc
     const [orders, isLoading, pagination] = useOrders();
 
     return (

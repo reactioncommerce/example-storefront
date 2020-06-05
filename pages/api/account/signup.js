@@ -5,6 +5,7 @@ const signUp = async (req, res) => {
   passport.authenticate("oauth2", {
     loginAction: "signup",
     failureRedirect: "/"
+    // eslint-disable-next-line no-unused-vars
   })(req, res, (...args) => {});
 };
 

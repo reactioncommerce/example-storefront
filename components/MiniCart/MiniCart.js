@@ -12,7 +12,6 @@ import Badge from "@material-ui/core/Badge";
 import Popper from "@material-ui/core/Popper";
 import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
-import variantById from "lib/utils/variantById";
 
 const styles = ({ palette, zIndex }) => ({
   popper: {
@@ -79,7 +78,7 @@ class MiniCart extends Component {
   anchorElement = null
 
   handlePopperOpen = () => {
-    const { cart, uiStore: { openCart } } = this.props;
+    const { uiStore: { openCart } } = this.props;
     openCart();
   }
 

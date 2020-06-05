@@ -21,20 +21,21 @@ const refresh = async (req, res) => {
         const responseData = await response.json();
 
         if (responseData) {
-          const { access_token, id_token, refresh_token } = responseData;
+          const { access_token: accessToken, id_token: idToken, refresh_token: newToken } = responseData;
 
           req.session.passport.user = JSON.stringify({
-            accessToken: access_token,
-            idToken: id_token,
-            refreshToken: refresh_token
+            accessToken,
+            idToken,
+            refreshToken: newToken
           });
 
           return res.status(200).send(JSON.stringify({
-            accessToken: access_token
+            accessToken
           }));
         }
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error("error-token-refresh", error);
     }
   }

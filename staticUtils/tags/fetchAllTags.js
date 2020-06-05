@@ -24,13 +24,14 @@ async function getTags(variables) {
 
 /**
  * @summary Gets all tags for the current shop from GraphQL and returns an array of them
- * @param {Object} client ApolloClient instance
+ * @param {String} lang - the shop's language
  * @returns {Object[]} Array of all tags
  */
 export default async function fetchAllTags(lang) {
   const { shop } = await fetchPrimaryShop(lang);
 
   if (!shop) {
+    // eslint-disable-next-line no-console
     console.warn("primaryShop query result was null");
     return [];
   }

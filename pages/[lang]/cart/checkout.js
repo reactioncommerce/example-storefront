@@ -16,7 +16,7 @@ import useCart from "hooks/cart/useCart";
 import useStores from "hooks/useStores";
 import useShop from "hooks/shop/useShop";
 import useAvailablePaymentMethods from "hooks/availablePaymentMethods/useAvailablePaymentMethods";
-import useAddressValidation from "hooks/address/useAddressValidation";
+// import useAddressValidation from "hooks/address/useAddressValidation";
 import useTranslation from "hooks/useTranslation";
 import definedPaymentMethods from "custom/paymentMethods";
 
@@ -91,15 +91,15 @@ const Checkout = ({ router }) => {
   const classes = useStyles();
   const { cartStore } = useStores();
   const shop = useShop();
-  const { locale, t } = useTranslation("common");
+  const { locale, t } = useTranslation("common"); // eslint-disable-line no-unused-vars, id-length
   const apolloClient = useApolloClient();
-  const [addressValidation, addressValidationResults] = useAddressValidation();
+  // TODO: implement address validation
+  // const [addressValidation, addressValidationResults] = useAddressValidation();
   const [stripe, setStripe] = useState();
 
   const {
     cart,
     isLoadingCart,
-    setEmailOnAnonymousCart,
     checkoutMutations,
     clearAuthenticatedUsersCart,
     hasMoreCartItems,
@@ -120,14 +120,15 @@ const Checkout = ({ router }) => {
     if (!hasIdentity) {
       Router.push("/cart/login");
     }
-  }), [cart, hasIdentity, asPath, Router];
+  }), [cart, hasIdentity, asPath, Router]; // eslint-disable-line no-sequences
 
   useEffect(() => {
     if (!stripe && process.env.STRIPE_PUBLIC_API_KEY && window && window.Stripe) {
       setStripe(window.Stripe(process.env.STRIPE_PUBLIC_API_KEY));
     }
-  }), [stripe];
+  }), [stripe]; // eslint-disable-line no-sequences
 
+  // eslint-disable-next-line react/no-multi-comp
   const renderCheckoutContent = () => {
     // sanity check that "tries" to render the correct /cart view if SSR doesn't provide the `cart`
 
@@ -156,7 +157,8 @@ const Checkout = ({ router }) => {
         );
       }
 
-      const orderEmailAddress = (cart && cart.account && Array.isArray(cart.account.emailRecords) && cart.account.emailRecords[0].address) || (cart ? cart.email : null);
+      const orderEmailAddress = (cart && cart.account && Array.isArray(cart.account.emailRecords) &&
+        cart.account.emailRecords[0].address) || (cart ? cart.email : null);
 
       // Filter the hard-coded definedPaymentMethods list from the client to remove any
       // payment methods that were not returned from the API as currently available.
@@ -202,6 +204,9 @@ const Checkout = ({ router }) => {
         </StripeProvider>
       );
     }
+
+    // Render nothing by default
+    return null;
   };
 
   if (isLoadingCart || isLoadingAvailablePaymentMethods) {
@@ -227,6 +232,11 @@ Checkout.propTypes = {
   router: PropTypes.object
 };
 
+/**
+ *  Static props for the cart
+ *
+ * @returns {Object} the props
+ */
 export async function getStaticProps({ params: { lang } }) {
   return {
     props: {
@@ -236,6 +246,11 @@ export async function getStaticProps({ params: { lang } }) {
   };
 }
 
+/**
+ *  Static paths for the cart
+ *
+ * @returns {Object} the paths
+ */
 export async function getStaticPaths() {
   return {
     paths: locales.map((locale) => ({ params: { lang: locale } })),

@@ -2,8 +2,13 @@ import { useMutation } from "@apollo/client";
 import useViewer from "hooks/viewer/useViewer";
 import { updateAccountAddressBookEntryMutation } from "./mutations.gql";
 
+/**
+ * Updates a users address book entries
+ *
+ * @returns {Array} A list of updated address book entries
+ */
 export default function useUpdateAccountAddressBookEntry() {
-  const [viewer, isLoadingViewer, refetchViewer] = useViewer();
+  const [viewer, refetchViewer] = useViewer();
 
   const [updateAccountAddressBookEntryFunc, { loading }] = useMutation(updateAccountAddressBookEntryMutation, {
     onCompleted() {

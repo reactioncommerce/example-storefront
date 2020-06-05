@@ -6,13 +6,27 @@ import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
 import useTranslation from "hooks/useTranslation";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   anchor: {
     color: "inherit",
     textDecoration: "none"
   }
 }));
 
+/**
+ * A wrapper around the next Link component
+ *
+ * @param {React.node} children - The elements the Link will wrap
+ * @param {String} className - Classes to apply
+ * @param {String} href - the links destination
+ * @param {Boolean} isUrlAbsolute - true if the link is absolute
+ * @param {Function} onClick - onClick handler
+ * @param {Object} param - route params
+ * @param {Object} route - the route object
+ * @param {Boolean} shouldOpenInNewWindow - if true link opens in new window
+ * @param {String} to - another way to specify the links destination
+ * @returns {React.Component} A wrapped link element
+ */
 function Link({
   children,
   className,
@@ -36,7 +50,7 @@ function Link({
   };
 
   // If link is an absolute link, or if link should open in new window,
-  // then directly us an `a` tag, insted of the `NextLink` component
+  // then directly us an `a` tag, instead of the `NextLink` component
   if (isUrlAbsolute || shouldOpenInNewWindow) {
     return (
       <a
@@ -87,6 +101,7 @@ Link.defaultProps = {
 };
 
 Link.propTypes = {
+  as: PropTypes.sting,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   href: PropTypes.string,

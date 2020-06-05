@@ -9,7 +9,7 @@ import useOrder from "../../hooks/orders/useOrder";
  * @returns {React.Component} - Component with `cart` props and callbacks
  */
 export default function withOrder(Component) {
-  function WithOrder(props) {
+  function WithOrder(props) { // eslint-disable-line require-jsdoc
     const [order, isLoading] = useOrder();
 
     return (

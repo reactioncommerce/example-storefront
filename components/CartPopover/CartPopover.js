@@ -145,7 +145,6 @@ class CartPopover extends Component {
         isContainerHidden,
         isContainerVisible
       },
-      theme,
       uiStore
     } = this.props;
 

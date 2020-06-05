@@ -18,6 +18,8 @@ import fetchTranslations from "staticUtils/translations/fetchTranslations";
 /**
  *
  * @name buildJSONLd
+ * @param {Object} product - The product
+ * @param {Object} shop - The shop
  * @summary Builds a JSONLd object from product properties.
  * @return {String} Stringified product jsonld
  */
@@ -63,6 +65,15 @@ function buildJSONLd(product, shop) {
   return JSON.stringify(productJSON);
 }
 
+/**
+ * Layout for the product detail page
+ *
+ * @param {Function} addItemsToCart - function to call to add items to cart
+ * @param {Object} product - the product
+ * @param {Boolean} isLoadingProduct - loading indicator
+ * @param {Object} shop - the shop this product belong to
+ * @return {React.Component} The product detail page
+ */
 function ProductDetailPage({ addItemsToCart, product, isLoadingProduct, shop }) {
   const router = useRouter();
   const currencyCode = (shop && shop.currency.code) || "USD";
@@ -109,6 +120,11 @@ ProductDetailPage.propTypes = {
   })
 };
 
+/**
+ *  Static props for a product
+ *
+ * @returns {Object} the props
+ */
 export async function getStaticProps({ params: { slugOrId, lang } }) {
   const productSlug = slugOrId && slugOrId[0];
 
@@ -119,10 +135,16 @@ export async function getStaticProps({ params: { slugOrId, lang } }) {
       ...await fetchCatalogProduct(productSlug),
       ...await fetchAllTags(lang)
     },
+    // eslint-disable-next-line camelcase
     unstable_revalidate: 120 // Revalidate each two minutes
   };
 }
 
+/**
+ *  Static paths for a product
+ *
+ * @returns {Object} the paths
+ */
 export async function getStaticPaths() {
   return {
     paths: locales.map((locale) => ({ params: { lang: locale, slugOrId: ["-"] } })),

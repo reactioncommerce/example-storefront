@@ -2,7 +2,7 @@ import useTranslation from "hooks/useTranslation";
 
 const withTranslation = (namespace) => (PageComponent) => {
   const WithInjectedStores = (props) => {
-    const { locale, t } = useTranslation(namespace);
+    const { locale, t } = useTranslation(namespace); // eslint-disable-line id-length
 
     return (
       <PageComponent {...props} locale={locale} t={t} />

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import inject from "hocs/inject";
 import Helmet from "react-helmet";
@@ -151,6 +151,13 @@ class TagGridPage extends Component {
   }
 }
 
+/**
+ *  Static props for the tags route
+ *
+ * @param {String} lang - the shop's language
+ * @param {String} slug - the tag's slug
+ * @returns {Object} props
+ */
 export async function getStaticProps({ params: { lang, slug } }) {
   return {
     props: {
@@ -159,10 +166,16 @@ export async function getStaticProps({ params: { lang, slug } }) {
       ...await fetchAllTags(lang),
       ...await fetchTag(slug, lang)
     },
+    // eslint-disable-next-line camelcase
     unstable_revalidate: 120 // Revalidate each two minutes
   };
 }
 
+/**
+ *  Static path for the tags route
+ *
+ * @returns {Object} the paths
+ */
 export async function getStaticPaths() {
   return {
     paths: locales.map((locale) => ({ params: { lang: locale, slug: "-" } })),

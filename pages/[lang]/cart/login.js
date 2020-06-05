@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Router from "translations/i18nRouter";
 import Head from "next/head";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import Layout from "components/Layout";
 import Entry from "components/Entry";
 import PageLoading from "components/PageLoading";
@@ -78,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = ({ router }) => {
   const classes = useStyles();
-  const { locale, t } = useTranslation("common");
+  const { locale, t } = useTranslation("common"); // eslint-disable-line no-unused-vars, id-length
   const shop = useShop();
 
   const {
@@ -95,7 +94,7 @@ const Login = ({ router }) => {
     if (hasIdentity) {
       Router.push("/cart/checkout");
     }
-  }), [cart, hasIdentity, Router];
+  }), [cart, hasIdentity, Router]; // eslint-disable-line no-sequences
 
   if (isLoadingCart) {
     return (
@@ -122,6 +121,11 @@ Login.propTypes = {
   router: PropTypes.object
 };
 
+/**
+ *  Static props for the login
+ * @param {String} lang - the shop's language
+ * @returns {Object} the props
+ */
 export async function getStaticProps({ params: { lang } }) {
   return {
     props: {
@@ -131,6 +135,11 @@ export async function getStaticProps({ params: { lang } }) {
   };
 }
 
+/**
+ *  Static paths for the login
+ *
+ * @returns {Object} the paths
+ */
 export async function getStaticPaths() {
   return {
     paths: locales.map((locale) => ({ params: { lang: locale } })),

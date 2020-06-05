@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import Grid from "@material-ui/core/Grid";
@@ -92,6 +92,11 @@ class CheckoutComplete extends Component {
   }
 }
 
+/**
+ *  Static props for an order
+ *
+ * @returns {Object} the props
+ */
 export async function getStaticProps({ params: { lang } }) {
   return {
     props: {
@@ -101,6 +106,11 @@ export async function getStaticProps({ params: { lang } }) {
   };
 }
 
+/**
+ *  Static paths for an order
+ *
+ * @returns {Object} the props
+ */
 export async function getStaticPaths() {
   return {
     paths: locales.map((locale) => ({ params: { lang: locale } })),

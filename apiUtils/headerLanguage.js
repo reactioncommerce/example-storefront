@@ -1,3 +1,9 @@
+/**
+ * Look up the accepted languages in the HTTP headers
+ *
+ * @param {Object} req - the current request
+ * @returns {Array} A list of accepted languages
+ */
 export default function headerLookup(req) {
   let found;
 
@@ -9,23 +15,23 @@ export default function headerLookup(req) {
     const acceptLanguage = headers["accept-language"];
 
     if (acceptLanguage) {
-      const lngs = []; let i; let m;
+      const languages = []; let index; let match;
       const rgx = /(([a-z]{2})-?([A-Z]{2})?)\s*;?\s*(q=([0-9.]+))?/gi;
 
       do {
-        m = rgx.exec(acceptLanguage);
-        if (m) {
-          const lng = m[1]; const weight = m[5] || "1"; const q = Number(weight);
-          if (lng && !isNaN(q)) {
-            lngs.push({ lng, q });
+        match = rgx.exec(acceptLanguage);
+        if (match) {
+          const lng = match[1]; const weight = match[5] || "1"; const priority = Number(weight);
+          if (lng && !isNaN(priority)) {
+            languages.push({ lng, priority });
           }
         }
-      } while (m);
+      } while (match);
 
-      lngs.sort((a, b) => b.q - a.q);
+      languages.sort((langA, langB) => langB.priority - langA.priority);
 
-      for (i = 0; i < lngs.length; i++) {
-        locales.push(lngs[i].lng);
+      for (index = 0; index < languages.length; index += 1) {
+        locales.push(languages[index].lng);
       }
 
       if (locales.length) found = locales;
