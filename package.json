@@ -21,7 +21,6 @@
     "test:ci": "yarn run test:unit --ci --runInBand --colors",
     "test:unit": "NODE_ENV=jesttest jest",
     "test:unit:watch": "NODE_ENV=jesttest jest --watchAll",
-    "test:integration": "mocha tests/integration",
     "test:link": "blc http://web.reaction.localhost:4000 -ro -filter=3 -e",
     "test:file": "NODE_ENV=jesttest jest --watch --no-coverage",
     "create-hydra-client": "node createHydraClientIfNecessary.js"
@@ -83,9 +82,6 @@
     "babel-jest": "^26.0.1",
     "babel-preset-jest": "^26.0.0",
     "broken-link-checker": "~0.7.8",
-    "chai": "~4.2.0",
-    "chai-cheerio": "~1.0.0",
-    "cheerio": ">=1.0.0-rc.2 < 1.1.0",
     "enzyme": "~3.8.0",
     "enzyme-adapter-react-16": "~1.8.0",
     "eslint": "~4.19.1",
@@ -98,7 +94,6 @@
     "jest-junit": "~6.2.1",
     "jest-styled-components": "^7.0.2",
     "jest-transform-graphql": "~2.1.0",
-    "mocha": "~5.2.0",
     "react-test-renderer": "~16.7.0",
     "rimraf": "~2.6.3",
     "snyk": "~1.126.0"
