@@ -78,12 +78,11 @@
   },
   "devDependencies": {
     "@reactioncommerce/eslint-config": "~1.9.0",
+    "@testing-library/react": "^10.2.1",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.0.1",
     "babel-preset-jest": "^26.0.0",
     "broken-link-checker": "~0.7.8",
-    "enzyme": "~3.8.0",
-    "enzyme-adapter-react-16": "~1.8.0",
     "eslint": "~4.19.1",
     "eslint-plugin-import": "~2.16.0",
     "eslint-plugin-jest": "~21.27.2",
@@ -92,9 +91,7 @@
     "eslint-plugin-react": "~7.12.4",
     "jest": "26.0.0",
     "jest-junit": "~6.2.1",
-    "jest-styled-components": "^7.0.2",
     "jest-transform-graphql": "~2.1.0",
-    "react-test-renderer": "~16.7.0",
     "rimraf": "~2.6.3",
     "snyk": "~1.126.0"
   },
@@ -119,9 +116,6 @@
     ],
     "roots": [
       "<rootDir>"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/tests/setupTests.js"
     ],
     "transform": {
       "\\.(gql|graphql)$": "jest-transform-graphql",
