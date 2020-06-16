@@ -101,7 +101,7 @@ Link.defaultProps = {
 };
 
 Link.propTypes = {
-  as: PropTypes.sting,
+  as: PropTypes.string,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   href: PropTypes.string,
