@@ -61,7 +61,7 @@
     "keymirror": "~0.1.1",
     "lodash": "~4.17.11",
     "mdi-material-ui": "~5.9.0",
-    "next": "9.4.4",
+    "next": "9.4.1",
     "passport": "~0.4.0",
     "passport-oauth2": "~1.4.0",
     "prop-types": "^15.7.2",
@@ -78,6 +78,7 @@
   },
   "devDependencies": {
     "@reactioncommerce/eslint-config": "~1.9.0",
+    "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^10.2.1",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.0.1",
@@ -110,12 +111,25 @@
       "<rootDir>/build/",
       "<rootDir>/lib/tracking/utils"
     ],
+    "moduleNameMapper": {
+      "^hocs(.*)$": "<rootDir>/hocs$1",
+      "^hooks(.*)$": "<rootDir>/hooks$1",
+      "^context(.*)$": "<rootDir>/context$1",
+      "^lib(.*)$": "<rootDir>/lib$1",
+      "^containers(.*)$": "<rootDir>/containers$1",
+      "^components(.*)$": "<rootDir>/components$1",
+      "^translations(.*)$": "<rootDir>/translations$1",
+      "^staticUtils(.*)$": "<rootDir>/staticUtils$1"
+    },
     "reporters": [
       "default",
       "jest-junit"
     ],
     "roots": [
       "<rootDir>"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.js"
     ],
     "transform": {
       "\\.(gql|graphql)$": "jest-transform-graphql",
