@@ -2,7 +2,7 @@
 
 [Reaction Commerce](http://reactioncommerce.com) is an API-first, headless commerce platform built using Node.js, React, and GraphQL. It plays nicely with npm, Docker and Kubernetes.
 
-This Example Storefront is to serve as a reference on how to implement a web based storefront using the Reaction Commerce GraphQL API. You can fork this project as a jumping off point or create your own custom experience using your prefered client-side technology. While we feel our example storefront is full featured enough to use in production, it may be missing features your shop requires at this time.
+This Example Storefront is to serve as a reference on how to implement a web based storefront using the Reaction Commerce GraphQL API. You can fork this project as a jumping off point or create your own custom experience using your prefered client-side technology. While we believe our example storefront is full featured enough to use in production, it may be missing features your shop requires at this time.
 
 ## Features
 Reaction comes with a robust set of core commerce capabilities right out of the box. And since anything in our codebase can be extended, overwritten, or installed as a package, you may also customize anything on our platform.
@@ -17,7 +17,6 @@ This example storefront is built with [Next.js](https://nextjs.org/), [React](ht
 - Payments with [Stripe](https://stripe.com/)
 - Analytics with [Segment](https://segment.com/) or any other provider
 - Reusable, customizable, themeable ecommerce React components from the [Example Storefront Component Library](https://github.com/reactioncommerce/reaction-component-library/) with [Styled Components](https://www.styled-components.com/)
-- Fully-configured test suite: Jest snapshot testing, Mocha integration testing
 - Written in ES6, configured with ES6
 - Containerized with Docker
 
@@ -62,13 +61,22 @@ Read the docs for [setting up Segment or a custom analytics tracker](docs/tracki
 ## Development
 
 The Reaction Platform runs the storefront with Docker, so you will have to use Docker commands to view logs, run commands inside the container and more. To run commands specifically for the storefront, make sure to change directories into the `example-storefront` directory within the `reaction-platform` repository:
-
 ```sh
 cd example-storefront
 ```
 
 ### Build and run in development mode with logs
+Create a symbolic link to use the development Docker image:
+```
+ln -s docker-compose.dev.yml docker-compose.override.yml
+```
 
+If running for the first time or environment variables in `.env.example` have changed execute the command below to update environment variables.
+```
+./bin/setup
+```
+
+Start the storefront by executing:
 ```sh
 docker-compose up -d && docker-compose logs -f
 ```
@@ -98,11 +106,6 @@ docker-compose run --rm web yarn test
 Run tests locally without cache (this can be helpful if changes aren't showing up)
 ```sh
 docker-compose run --rm web yarn test --no-cache
-```
-
-To update a failing snapshot (if you've made changes to a component)
-```sh
-docker-compose run --rm web yarn test -u
 ```
 
 To run Snyk security tests (this will run tests in the same way as CI)
@@ -182,13 +185,14 @@ Sometimes it is helpful during development to make a production build of the app
 Run this command to build a Docker image with the production build of the app in it:
 
 ```sh
-docker build -t reaction-storefront .
+docker build --network=host -t  reactioncommerce/example-storefront:X.X.X .
 ```
+Where X.X.X indicates the tag version you want to use, i.e. `3.1.0`
 
 Then, to start the app on your machine, make sure the Reaction API container is already running and enter:
 
 ```sh
-docker run -it --name storefront -p 4000:4000 --env-file .env --network reaction.localhost reaction-storefront
+docker run -it --name storefront -p 4000:4000 --env-file .env.prod --network reaction.localhost reactioncommerce/example-storefront:X.X.X
 ```
 
 _**NOTE:** You can replace the number before the colon in `4000:4000` with a different localhost port you'd like the application to run at._

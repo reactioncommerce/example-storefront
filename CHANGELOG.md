@@ -1,3 +1,18 @@
+# v3.2.0
+
+## Refactors
+
+- refactor: Configure `react-testing-library` and remove unnecessary testing dependencies [#686](https://github.com/reactioncommerce/example-storefront/pull/686)
+
+This is a major update that introduces the following refactors in PR [#667](https://github.com/reactioncommerce/example-storefront/pull/667)
+- Use React hooks for various parts of the application including orders, cart, shop, translations and more. This refactor remove various HOC that added unnecessary complexity to the app.
+- React context is now used and all previous uses of MobX have been removed. Using React context greatly simplifies local states management.
+- Simple translation helpers have been added to support multi-lingual shops. See the `useTranslation` React hook for more details.
+- Next.js has been update to use version 9.4.1, which includes support for [SSG](https://nextjs.org/blog/next-9-3#next-gen-static-site-generation-ssg-support)(Static Site Generation). By default product pages are re-regenerated every two minutes. Further, various other features, such as dynamic routes and API routes are now used, either a dynamic route or API
+as appropriate.
+- Various components form the Reaction component library have been removed in favor of using the new Reaction Catalyst design system. This is a stepping stone towards consolidating styling solutions use use only one.
+
+
 # v3.1.0
 
 This release of `example-storefront` is designed to work with v3.x of the Reaction API.
