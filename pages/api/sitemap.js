@@ -1,6 +1,9 @@
 import fetch from "isomorphic-unfetch";
 import appConfig from "../../config.js";
 
+let shopUrl = appConfig.CANONICAL_URL;
+if (shopUrl.endsWith("/")) shopUrl = shopUrl.slice(0, -1);
+
 /**
  * Generates the sitemap and returns it
  *
@@ -9,7 +12,6 @@ import appConfig from "../../config.js";
  * @returns {String} the the sitemap
  */
 export default async function generateSitemap(req, res) {
-  const shopUrl = `${req.protocol}://${req.headers.host}`;
   const handle = req.url.replace("/", "");
 
   const query = `
