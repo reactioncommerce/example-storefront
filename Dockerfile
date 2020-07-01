@@ -24,7 +24,9 @@ USER node
 RUN yarn install --production=false --frozen-lockfile --ignore-scripts --non-interactive --no-cache
 
 ENV BUILD_ENV=production NODE_ENV=production
-RUN export "$(grep -v '^#' .env.${NEXTJS_DOTENV:-prod} | xargs -0) && yarn build"
+
+# hadolint ignore=SC2046
+RUN export $(grep -v '^#' .env.${NEXTJS_DOTENV:-prod} | xargs -0) && yarn build
 
 # Install only prod dependencies now that we've built, to make the image smaller
 RUN rm -rf node_modules/*
