@@ -77,10 +77,15 @@ function buildJSONLd(product, shop) {
 function ProductDetailPage({ addItemsToCart, product, isLoadingProduct, shop }) {
   const router = useRouter();
   const currencyCode = (shop && shop.currency.code) || "USD";
-  const JSONLd = useMemo(() => buildJSONLd(product, shop), [product, shop]);
+  const JSONLd = useMemo(() => {
+    if (product && shop) {
+      return buildJSONLd(product, shop);
+    }
+    return null;
+  }, [product, shop]);
 
   if (isLoadingProduct || router.isFallback) return <PageLoading />;
-  if (!product) return <Typography>Not Found</Typography>;
+  if (!product && !shop) return <Typography>Not Found</Typography>;
 
   return (
     <Layout shop={shop}>
@@ -127,10 +132,24 @@ ProductDetailPage.propTypes = {
  */
 export async function getStaticProps({ params: { slugOrId, lang } }) {
   const productSlug = slugOrId && slugOrId[0];
+  const primaryShop = await fetchPrimaryShop(lang);
+
+  if (!primaryShop) {
+    return {
+      props: {
+        shop: null,
+        translations: null,
+        products: null,
+        tags: null
+      },
+      // eslint-disable-next-line camelcase
+      unstable_revalidate: 1 // Revalidate immediately
+    };
+  }
 
   return {
     props: {
-      ...await fetchPrimaryShop(lang),
+      ...primaryShop,
       ...await fetchTranslations(lang, ["common", "productDetail"]),
       ...await fetchCatalogProduct(productSlug),
       ...await fetchAllTags(lang)
