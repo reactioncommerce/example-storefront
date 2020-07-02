@@ -109,7 +109,7 @@ class TagGridPage extends Component {
     const pageSize = routingStore.query && routingStore.query.limit ? parseInt(routingStore.query.limit, 10) : uiStore.pageSize;
     const sortBy = routingStore.query && routingStore.query.sortby ? routingStore.query.sortby : uiStore.sortBy;
 
-    if (!tag) {
+    if (!tag && !shop) {
       return (
         <Layout shop={shop}>
           <ProductGridEmptyMessage
@@ -159,9 +159,24 @@ class TagGridPage extends Component {
  * @returns {Object} props
  */
 export async function getStaticProps({ params: { lang, slug } }) {
+  const primaryShop = await fetchPrimaryShop(lang);
+
+  if (!primaryShop) {
+    return {
+      props: {
+        shop: null,
+        translations: null,
+        fetchAllTags: null,
+        tag: null
+      },
+      // eslint-disable-next-line camelcase
+      unstable_revalidate: 1 // Revalidate immediately
+    };
+  }
+
   return {
     props: {
-      ...await fetchPrimaryShop(lang),
+      ...primaryShop,
       ...await fetchTranslations(lang, ["common"]),
       ...await fetchAllTags(lang),
       ...await fetchTag(slug, lang)
