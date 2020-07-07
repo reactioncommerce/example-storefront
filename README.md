@@ -192,7 +192,7 @@ Where X.X.X indicates the tag version you want to use, i.e. `3.1.0`
 Then, to start the app on your machine, make sure the Reaction API container is already running and enter:
 
 ```sh
-docker run -it --name storefront -p 4000:4000 --env-file .env.prod --network reaction.localhost reactioncommerce/example-storefront:X.X.X
+docker run -it --name storefront -p 4000:4000 --network reaction.localhost reactioncommerce/example-storefront:X.X.X
 ```
 
 _**NOTE:** You can replace the number before the colon in `4000:4000` with a different localhost port you'd like the application to run at._
