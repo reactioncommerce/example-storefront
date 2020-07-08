@@ -85,7 +85,7 @@ function ProductDetailPage({ addItemsToCart, product, isLoadingProduct, shop }) 
   }, [product, shop]);
 
   if (isLoadingProduct || router.isFallback) return <PageLoading />;
-  if (!product && !shop) return <Typography>Not Found</Typography>;
+  if (!product || !shop) return <Typography>Not Found</Typography>;
 
   return (
     <Layout shop={shop}>
