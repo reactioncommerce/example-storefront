@@ -95,11 +95,27 @@ class ProductGridPage extends Component {
  * @returns {Object} the props
  */
 export async function getStaticProps({ params: { lang } }) {
+  const primaryShop = await fetchPrimaryShop(lang);
+  const translations = await fetchTranslations(lang, ["common"]);
+
+  if (!primaryShop) {
+    return {
+      props: {
+        shop: null,
+        ...translations
+      },
+      // eslint-disable-next-line camelcase
+      unstable_revalidate: 1 // Revalidate immediately
+    };
+  }
+
   return {
     props: {
-      ...await fetchPrimaryShop(lang),
-      ...await fetchTranslations(lang, ["common"])
-    }
+      ...primaryShop,
+      ...translations
+    },
+    // eslint-disable-next-line camelcase
+    unstable_revalidate: 120 // Revalidate each two minutes
   };
 }
 
