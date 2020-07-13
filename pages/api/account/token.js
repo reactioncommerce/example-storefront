@@ -17,7 +17,8 @@ const token = async (req, res) => {
     }
   }
 
-  return res.status(401).send(JSON.stringify({ error: "No authorization data present" }));
+  // Anonymous user
+  return res.status(200).send(JSON.stringify({ anonymous: true }))
 };
 
 export default passportMiddleware(token);
