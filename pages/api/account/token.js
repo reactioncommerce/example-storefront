@@ -18,7 +18,7 @@ const token = async (req, res) => {
   }
 
   // Anonymous user
-  return res.status(200).send(JSON.stringify({ anonymous: true }))
+  return res.status(200).send(JSON.stringify({ anonymous: true }));
 };
 
 export default passportMiddleware(token);
