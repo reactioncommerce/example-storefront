@@ -38,6 +38,8 @@ export default function useCart() {
   const shouldSkipAnonymousCartByCartIdQuery = Boolean(accountId || isLoadingViewer || !cartStore.anonymousCartId || !cartStore.anonymousCartToken);
 
   const { loading: isLoading, data: cartData, fetchMore, refetch: refetchCart } = useQuery(accountCartByAccountIdQuery, {
+    // TODO: Revisit this extra request on load, skip is not respected and is as known issue in Apollo Client
+    // https://github.com/apollographql/react-apollo/issues/3492
     skip: shouldSkipAccountCartByAccountIdQuery,
     variables: {
       accountId,
@@ -47,6 +49,8 @@ export default function useCart() {
   });
 
   const { data: cartDataAnonymous, refetch: refetchCartAnonymous } = useQuery(anonymousCartByCartIdQuery, {
+    // TODO: Revisit this extra request on load, skip is not respected and is as known issue in Apollo Client
+    // https://github.com/apollographql/react-apollo/issues/3492
     skip: shouldSkipAnonymousCartByCartIdQuery,
     variables: {
       cartId: cartStore.anonymousCartId,
