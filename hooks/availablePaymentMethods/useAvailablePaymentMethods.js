@@ -15,7 +15,7 @@ export default function useAvailablePaymentMethods() {
   const [viewer, isLoadingViewer] = useViewer();
 
   const { loading, data, refetch } = useQuery(availablePaymentMethodsQuery, {
-    skip: !shop || isLoadingViewer,
+    skip: !shop._id || isLoadingViewer,
     variables: {
       shopId: shop && shop._id
     }
