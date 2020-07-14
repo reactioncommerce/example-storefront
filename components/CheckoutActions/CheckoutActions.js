@@ -69,6 +69,10 @@ class CheckoutActions extends Component {
     }
   }
 
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
   componentWillUnmount() {
     this._isMounted = false;
   }
