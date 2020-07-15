@@ -37,7 +37,10 @@ export default function useCart() {
   const shouldSkipAccountCartByAccountIdQuery = Boolean(!accountId || cartStore.hasAnonymousCartCredentials || isLoadingViewer || !shop || !shop._id);
   const shouldSkipAnonymousCartByCartIdQuery = Boolean(accountId || isLoadingViewer || !cartStore.anonymousCartId || !cartStore.anonymousCartToken);
 
-  const [fetchAccountCart, { loading: isLoading, called: accountCartQueryCalled,  data: cartData, fetchMore, refetch: refetchAccountCart }] = useLazyQuery(accountCartByAccountIdQuery, {
+  const [
+    fetchAccountCart,
+    { loading: isLoading, called: accountCartQueryCalled, data: cartData, fetchMore, refetch: refetchAccountCart }
+  ] = useLazyQuery(accountCartByAccountIdQuery, {
     variables: {
       accountId,
       shopId: shop && shop._id
@@ -46,7 +49,10 @@ export default function useCart() {
   });
 
 
-  const [fetchAnonymousCart, { data: cartDataAnonymous, called: anonymousCartQueryCalled, refetch: refetchCartAnonymous }] = useLazyQuery(anonymousCartByCartIdQuery, {
+  const [
+    fetchAnonymousCart,
+    { data: cartDataAnonymous, called: anonymousCartQueryCalled, refetch: refetchCartAnonymous }
+  ] = useLazyQuery(anonymousCartByCartIdQuery, {
     variables: {
       cartId: cartStore.anonymousCartId,
       cartToken: cartStore.anonymousCartToken
@@ -62,7 +68,7 @@ export default function useCart() {
 
   useEffect(() => {
     if (!shouldSkipAccountCartByAccountIdQuery && accountCartQueryCalled) {
-     refetchAccountCart();
+      refetchAccountCart();
     }
     if (!shouldSkipAnonymousCartByCartIdQuery && anonymousCartQueryCalled) {
       refetchCartAnonymous();
@@ -120,7 +126,7 @@ export default function useCart() {
       if (accountCartId) {
         refetchAccountCart();
       } else if (anonymousCartToken) {
-       refetchCartAnonymous();
+        refetchCartAnonymous();
       }
     }
   });
@@ -222,7 +228,7 @@ export default function useCart() {
               // Refetch cart
               if (accountCartQueryCalled) {
                 refetchAccountCart();
-               }
+              }
             }
           }
 
