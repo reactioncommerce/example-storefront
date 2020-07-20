@@ -2,7 +2,7 @@ import passportMiddleware from "apiUtils/passportMiddleware";
 
 const token = async (req, res) => {
   req.session.redirectTo = req.headers.Referer;
-  if (req.session && req.session.passport) {
+  if (req.session && req.session.passport && req.session.passport.user) {
     try {
       const user = JSON.parse(req.session.passport.user);
       const { accessToken } = user;
@@ -17,7 +17,7 @@ const token = async (req, res) => {
     }
   }
 
-  return res.status(401).send(JSON.stringify({ error: "No authorization data present" }));
+  return res.status(200).send(JSON.stringify({ anonymous: true }));
 };
 
 export default passportMiddleware(token);

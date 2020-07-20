@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useCallback } from "react";
-import { useQuery, useMutation, useApolloClient } from "@apollo/client";
+import { useLazyQuery, useMutation, useApolloClient } from "@apollo/client";
 import useStores from "hooks/useStores";
 import useShop from "hooks/shop/useShop";
 import useViewer from "hooks/viewer/useViewer";
@@ -37,8 +37,10 @@ export default function useCart() {
   const shouldSkipAccountCartByAccountIdQuery = Boolean(!accountId || cartStore.hasAnonymousCartCredentials || isLoadingViewer || !shop || !shop._id);
   const shouldSkipAnonymousCartByCartIdQuery = Boolean(accountId || isLoadingViewer || !cartStore.anonymousCartId || !cartStore.anonymousCartToken);
 
-  const { loading: isLoading, data: cartData, fetchMore, refetch: refetchCart } = useQuery(accountCartByAccountIdQuery, {
-    skip: shouldSkipAccountCartByAccountIdQuery,
+  const [
+    fetchAccountCart,
+    { loading: isLoading, called: accountCartQueryCalled, data: cartData, fetchMore, refetch: refetchAccountCart }
+  ] = useLazyQuery(accountCartByAccountIdQuery, {
     variables: {
       accountId,
       shopId: shop && shop._id
@@ -46,8 +48,11 @@ export default function useCart() {
     pollInterval: shouldSkipAccountCartByAccountIdQuery ? 0 : 10000
   });
 
-  const { data: cartDataAnonymous, refetch: refetchCartAnonymous } = useQuery(anonymousCartByCartIdQuery, {
-    skip: shouldSkipAnonymousCartByCartIdQuery,
+
+  const [
+    fetchAnonymousCart,
+    { data: cartDataAnonymous, called: anonymousCartQueryCalled, refetch: refetchAnonymousCart }
+  ] = useLazyQuery(anonymousCartByCartIdQuery, {
     variables: {
       cartId: cartStore.anonymousCartId,
       cartToken: cartStore.anonymousCartToken
@@ -55,14 +60,20 @@ export default function useCart() {
     pollInterval: shouldSkipAnonymousCartByCartIdQuery ? 0 : 10000
   });
 
+  if (!accountCartQueryCalled && !shouldSkipAccountCartByAccountIdQuery) {
+    fetchAccountCart();
+  } else if (!anonymousCartQueryCalled && !shouldSkipAnonymousCartByCartIdQuery) {
+    fetchAnonymousCart();
+  }
+
   useEffect(() => {
-    if (!shouldSkipAccountCartByAccountIdQuery) {
-      refetchCart();
+    if (!shouldSkipAccountCartByAccountIdQuery && accountCartQueryCalled) {
+      refetchAccountCart();
     }
-    if (!shouldSkipAnonymousCartByCartIdQuery) {
-      refetchCartAnonymous();
+    if (!shouldSkipAnonymousCartByCartIdQuery && anonymousCartQueryCalled) {
+      refetchAnonymousCart();
     }
-  }, [viewer, refetchCart]);
+  }, [viewer, refetchAccountCart]);
 
   const cart = useMemo(() => {
     if (!shouldSkipAccountCartByAccountIdQuery && cartData) {
@@ -110,7 +121,13 @@ export default function useCart() {
         const { cart: cartPayload, token } = addOrCreateCartMutationData.createCart;
         cartStore.setAnonymousCartCredentials(cartPayload._id, token);
       }
-      refetchCart();
+
+      const { accountCartId, anonymousCartToken } = cartStore;
+      if (accountCartId) {
+        refetchAccountCart();
+      } else if (anonymousCartToken) {
+        refetchAnonymousCart();
+      }
     }
   });
 
@@ -209,7 +226,9 @@ export default function useCart() {
               });
 
               // Refetch cart
-              refetchCart && refetchCart();
+              if (accountCartQueryCalled) {
+                refetchAccountCart();
+              }
             }
           }
 
@@ -348,7 +367,7 @@ export default function useCart() {
         });
       }
     },
-    refetchCart,
+    refetchAccountCart,
     setEmailOnAnonymousCart: async ({ email }) => {
       await apolloClient.mutate({
         mutation: setEmailOnAnonymousCartMutation,

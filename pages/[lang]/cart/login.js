@@ -85,7 +85,7 @@ const Login = ({ router }) => {
     isLoadingCart,
     setEmailOnAnonymousCart
   } = useCart();
-  const hasIdentity = !!((cart && cart.account !== null) || (cart && cart.email));
+  const hasIdentity = !!((cart && cart.account) || (cart && cart.email));
   const pageTitle = `Login | ${shop && shop.name}`;
 
   useEffect(() => {
