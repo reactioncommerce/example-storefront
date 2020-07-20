@@ -51,7 +51,7 @@ export default function useCart() {
 
   const [
     fetchAnonymousCart,
-    { data: cartDataAnonymous, called: anonymousCartQueryCalled, refetch: refetchCartAnonymous }
+    { data: cartDataAnonymous, called: anonymousCartQueryCalled, refetch: refetchAnonymousCart }
   ] = useLazyQuery(anonymousCartByCartIdQuery, {
     variables: {
       cartId: cartStore.anonymousCartId,
@@ -71,7 +71,7 @@ export default function useCart() {
       refetchAccountCart();
     }
     if (!shouldSkipAnonymousCartByCartIdQuery && anonymousCartQueryCalled) {
-      refetchCartAnonymous();
+      refetchAnonymousCart();
     }
   }, [viewer, refetchAccountCart]);
 
@@ -126,7 +126,7 @@ export default function useCart() {
       if (accountCartId) {
         refetchAccountCart();
       } else if (anonymousCartToken) {
-        refetchCartAnonymous();
+        refetchAnonymousCart();
       }
     }
   });
