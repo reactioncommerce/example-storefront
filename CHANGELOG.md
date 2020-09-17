@@ -2,6 +2,10 @@
 
 Example Storefront v2.9.3 is a patch update to keep this project in sync with [Reaction v2.9.3](https://github.com/reactioncommerce/reaction).
 
+## Reaction v2 EOL
+
+This is the final release of Reaction v2 software. As of September 1, 2020, Reaction v2 is no longer supported. We encourage everyone to upgrade to Reaction v3. Please see the [Upgrading from 2.x](https://docs.reactioncommerce.com/docs/upgrading) guide in our docs.
+
 # v2.9.2
 
 Example Storefront v2.9.2 is a patch update to keep this project in sync with [Reaction v2.9.2](https://github.com/reactioncommerce/reaction).
