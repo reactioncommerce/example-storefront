@@ -1,3 +1,7 @@
+# v2.9.3
+
+Example Storefront v2.9.3 is a patch update to keep this project in sync with [Reaction v2.9.3](https://github.com/reactioncommerce/reaction).
+
 # v2.9.2
 
 Example Storefront v2.9.2 is a patch update to keep this project in sync with [Reaction v2.9.2](https://github.com/reactioncommerce/reaction).
