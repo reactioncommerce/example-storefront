@@ -1,17 +1,44 @@
-# v3.2.0
+# v4.0.0
+
+Example Storefront v4.0.0 adds major features and performance enhancements, and does contain breaking changes since v3.1.0
+
+_This is a reminder that starting with v3.x, all Reaction projects have begun tracking their versions independently, and this release **will** work with the latest releases of all other Reaction projects, even though the major version number may be different._
+
+## BREAKING CHANGES
+
+- React hooks are introduced, and replace many HOC's, which have been removed: `withAddressBook`, `withAddressValidation`, `withAvailablePaymentMethods`, `withCart`, `withCatalogItemProduct`, `withOrder`, `withOrders`, `withShop`, `withTag`, `withViewer`.
+- Use React hooks for various parts of the application including orders, cart, shop, translations and more. This refactor remove various HOC that added unnecessary complexity to the app.
+- MobX has been removed, and React context is now used in its place.
+- Next.js has been update to use version 9.4.1, which includes support for [SSG](https://nextjs.org/blog/next-9-3#next-gen-static-site-generation-ssg-support)(Static Site Generation). By default product pages are re-regenerated every two minutes. Further, various other features, such as dynamic routes and API routes are now used, either a dynamic route or API.
+- Various components from the Reaction component library have been removed in favor of using the new Reaction Catalyst design system. This is a stepping stone towards consolidating styling solutions use use only one.
 
 ## Refactors
 
-- refactor: Configure `react-testing-library` and remove unnecessary testing dependencies [#686](https://github.com/reactioncommerce/example-storefront/pull/686)
+- refactor: Storefront v2 ([#667](https://github.com/reactioncommerce/example-storefront/pull/667))
+- refactor: Revalidate index page, require instant revalidation if no shop is present during build ([#698](https://github.com/reactioncommerce/example-storefront/pull/698))
+- refactor: Return Not found if either product or shop are missing ([#696](https://github.com/reactioncommerce/example-storefront/pull/696))
+- refactor: Use CANONICAL_URL for sitemap route ([#690](https://github.com/reactioncommerce/example-storefront/pull/690))
 
-This is a major update that introduces the following refactors in PR [#667](https://github.com/reactioncommerce/example-storefront/pull/667)
-- Use React hooks for various parts of the application including orders, cart, shop, translations and more. This refactor remove various HOC that added unnecessary complexity to the app.
-- React context is now used and all previous uses of MobX have been removed. Using React context greatly simplifies local states management.
-- Simple translation helpers have been added to support multi-lingual shops. See the `useTranslation` React hook for more details.
-- Next.js has been update to use version 9.4.1, which includes support for [SSG](https://nextjs.org/blog/next-9-3#next-gen-static-site-generation-ssg-support)(Static Site Generation). By default product pages are re-regenerated every two minutes. Further, various other features, such as dynamic routes and API routes are now used, either a dynamic route or API
-as appropriate.
-- Various components form the Reaction component library have been removed in favor of using the new Reaction Catalyst design system. This is a stepping stone towards consolidating styling solutions use use only one.
+## Fixes
 
+- fix: Fix for 2 vulnerabilities ([#727](https://github.com/reactioncommerce/example-storefront/pull/727))
+- fix: don't execute unnecessary requests for anonymous cart on initial load ([#705](https://github.com/reactioncommerce/example-storefront/pull/705))
+- fix: Set _isMounted to true after component mounted ([#700](https://github.com/reactioncommerce/example-storefront/pull/700))
+- fix: docker production build ([#693](https://github.com/reactioncommerce/example-storefront/pull/693))
+- fix: fix broken unit test ([#682](https://github.com/reactioncommerce/example-storefront/pull/682))
+- fix: runtime build issues ([#685](https://github.com/reactioncommerce/example-storefront/pull/685))
+
+## Chores
+
+- chore(deps): Bump elliptic from 6.5.2 to 6.5.3 ([#717](https://github.com/reactioncommerce/example-storefront/pull/717))
+- chore: Bump lodash from 4.17.15 to 4.17.19 ([#706](https://github.com/reactioncommerce/example-storefront/pull/706))
+- chore: update README and CHANGELOG to reflect recent updates ([#687](https://github.com/reactioncommerce/example-storefront/pull/687))
+- chore: Setup react-testing-library and some clean up ([#686](https://github.com/reactioncommerce/example-storefront/pull/686))
+- chore: fix various eslint errors and warnings ([#684](https://github.com/reactioncommerce/example-storefront/pull/684))
+
+## Contributors
+
+Thanks to @janus-reith for contributing to this release! 🎉
 
 # v3.1.0
 
@@ -19,8 +46,8 @@ This release of `example-storefront` is designed to work with v3.x of the Reacti
 
 ### Chores
 
-- chore: bump https-proxy-agent from 2.2.2 to 2.2.4 ([#669](http://github.com/reactioncommerce/reaction-admin/pull/669))
-- chore: switch to 3.0.0 Docker tag ([#659](http://github.com/reactioncommerce/reaction-admin/pull/659))
+- chore: bump https-proxy-agent from 2.2.2 to 2.2.4 ([#669](http://github.com/reactioncommerce/example-storefront/pull/669))
+- chore: switch to 3.0.0 Docker tag ([#659](http://github.com/reactioncommerce/example-storefront/pull/659))
 
 # v3.0.0
 
