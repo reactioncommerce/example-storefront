@@ -58,6 +58,10 @@ class CheckoutActions extends Component {
     isPlacingOrder: false
   };
 
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
   componentDidUpdate({ addressValidationResults: prevAddressValidationResults }) {
     const { addressValidationResults } = this.props;
     if (
@@ -67,10 +71,6 @@ class CheckoutActions extends Component {
     ) {
       this.handleValidationErrors();
     }
-  }
-
-  componentDidMount() {
-    this._isMounted = true;
   }
 
   componentWillUnmount() {
