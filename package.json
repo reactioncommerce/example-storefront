@@ -34,6 +34,8 @@
     }
   },
   "dependencies": {
+    "@analytics/google-analytics": "^0.5.2",
+    "@analytics/segment": "^0.5.0",
     "@apollo/client": "^3.0.0-beta.41",
     "@apollo/link-context": "^2.0.0-beta.3",
     "@apollo/link-error": "^2.0.0-beta.3",
@@ -44,6 +46,7 @@
     "@reactioncommerce/components": "~0.67.2",
     "@reactioncommerce/components-context": "~1.2.0",
     "@segment/snippet": "~4.4.0",
+    "analytics": "^0.5.5",
     "apollo-client": "^2.6.8",
     "body-parser": "~1.19.0",
     "classnames": "~2.2.6",
@@ -74,7 +77,8 @@
     "reacto-form": "~1.4.0",
     "styled-components": "^5.0.1",
     "subscriptions-transport-ws": "~0.9.15",
-    "swr": "^0.1.18"
+    "swr": "^0.1.18",
+    "use-analytics": "^0.0.3"
   },
   "devDependencies": {
     "@reactioncommerce/eslint-config": "~1.9.0",

@@ -15,6 +15,10 @@ import MediaGallery from "components/MediaGallery";
 import Router from "translations/i18nRouter";
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import variantById from "lib/utils/variantById";
+import withTracking from "hocs/withTracking";
+import TRACKING from "lib/tracking/constants";
+
+const { PRODUCT_VIEWED } = TRACKING;
 
 const styles = (theme) => ({
   section: {
@@ -45,6 +49,7 @@ class ProductDetail extends Component {
      * @type Function
      */
     addItemsToCart: PropTypes.func,
+    callTracking: PropTypes.func,
     classes: PropTypes.object,
     currencyCode: PropTypes.string.isRequired,
     product: PropTypes.object,
@@ -63,7 +68,7 @@ class ProductDetail extends Component {
   }
 
   selectVariant(variant, optionId) {
-    const { product, uiStore } = this.props;
+    const { product, uiStore, callTracking } = this.props;
 
     // Select the variant, and if it has options, the first option
     const variantId = variant._id;
@@ -72,9 +77,11 @@ class ProductDetail extends Component {
       selectOptionId = variant.options[0]._id;
     }
 
+    const url = `/product/${product.slug}/${selectOptionId || variantId}`;
+    callTracking({ product, variant, optionId: selectOptionId, action: PRODUCT_VIEWED, url });
     uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
 
-    Router.replace("/product/[...slugOrId]", `/product/${product.slug}/${selectOptionId || variantId}`);
+    Router.replace("/product/[...slugOrId]", url);
   }
 
   /**
@@ -302,4 +309,4 @@ class ProductDetail extends Component {
   }
 }
 
-export default withWidth({ initialWidth: "md" })(withStyles(styles, { withTheme: true })(inject("routingStore", "uiStore")(ProductDetail)));
+export default withWidth({ initialWidth: "md" })(withStyles(styles, { withTheme: true })(inject("routingStore", "uiStore")(withTracking()(ProductDetail))));
