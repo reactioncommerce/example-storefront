@@ -33,7 +33,7 @@ export default function useViewer() {
       // identify the user
       const isAuthenticated = viewer?._id;
 
-      if (!!isAuthenticated) {
+      if (isAuthenticated) {
         identify(isAuthenticated, {
           firstName: viewer?.firstName,
           lastName: viewer?.lastName,

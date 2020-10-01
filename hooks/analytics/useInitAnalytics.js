@@ -15,7 +15,7 @@ export default function useInitAnalytics() {
       if (typeof window !== "undefined") {
         setTimeout(() => {
           analytics.page({
-            path: url,
+            path: url
           });
         }, 1000);
       }
