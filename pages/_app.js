@@ -5,15 +5,13 @@ import { ContextProviders } from "context/ContextProviders";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
 import components from "custom/componentsContext";
 import theme from "custom/reactionTheme";
-import { useRouter } from "next/router";
-import analytics from "lib/analytics";
 import { AnalyticsProvider } from "use-analytics";
 import PropTypes from "prop-types";
-import { decodeOpaqueId } from "lib/utils/decoding";
+import useInitAnalytics from "hooks/analytics/useInitAnalytics";
 
 const App = (props) => {
-  const router = useRouter();
-  const [previewUrl, setPreviewUrl] = useState(null);
+  const { Component, pageProps, ...rest } = props;
+  const analytics = useInitAnalytics();
 
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -21,28 +19,7 @@ const App = (props) => {
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles);
     }
-
-    const handleRouteChange = (url) => {
-      if (previewUrl === url) return true;
-      setPreviewUrl(url);
-      const { isFallback, query } = router;
-      const { shop } = props.pageProps;
-      const shopDecoded = shop?._id && decodeOpaqueId(shop._id);
-
-      return analytics.page({
-        isFallback,
-        path: url,
-        query,
-        shopId: shopDecoded?.id
-      });
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
-
-  const { Component, pageProps, ...rest } = props;
+  }, []);
 
   return (
     <AnalyticsProvider instance={analytics}>
@@ -60,8 +37,7 @@ const App = (props) => {
 
 App.propTypes = {
   Component: PropTypes.func,
-  pageProps: PropTypes.object,
-  router: PropTypes.object
+  pageProps: PropTypes.object
 };
 
 export default App;

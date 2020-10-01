@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import useStores from "hooks/useStores";
 import { useAnalytics } from "use-analytics";
-import { decodeOpaqueId } from "lib/utils/decoding";
 import viewerQuery from "./viewer.gql";
 
 /**
@@ -33,21 +32,14 @@ export default function useViewer() {
 
       // identify the user
       const isAuthenticated = viewer?._id;
-      const isTracked = localStorage.getItem("isTracked");
 
-      // if we already use identify to get identity of the user we don't need to send it again
-      if (!!isAuthenticated && isTracked === "false") {
-        const accountDecoded = decodeOpaqueId(viewer._id);
-        localStorage.setItem("isTracked", true);
-
-        identify(accountDecoded.id, {
+      if (!!isAuthenticated) {
+        identify(isAuthenticated, {
           firstName: viewer?.firstName,
           lastName: viewer?.lastName,
           email: viewer.primaryEmailAddress
         });
       }
-    } else {
-      localStorage.setItem("isTracked", false);
     }
   }, [viewer]);
 

@@ -17,6 +17,7 @@ import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import variantById from "lib/utils/variantById";
 import withTracking from "hocs/withTracking";
 import TRACKING from "lib/tracking/constants";
+import trackProduct from "lib/tracking/trackProduct";
 
 const { PRODUCT_VIEWED } = TRACKING;
 
@@ -78,7 +79,7 @@ class ProductDetail extends Component {
     }
 
     const url = `/product/${product.slug}/${selectOptionId || variantId}`;
-    callTracking({ product, variant, optionId: selectOptionId, action: PRODUCT_VIEWED, url });
+    callTracking({ product, variant, optionId: selectOptionId, action: PRODUCT_VIEWED, url }, trackProduct);
     uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
 
     Router.replace("/product/[...slugOrId]", url);
@@ -309,4 +310,4 @@ class ProductDetail extends Component {
   }
 }
 
-export default withWidth({ initialWidth: "md" })(withStyles(styles, { withTheme: true })(inject("routingStore", "uiStore")(withTracking()(ProductDetail))));
+export default withWidth({ initialWidth: "md" })(withStyles(styles, { withTheme: true })(inject("routingStore", "uiStore")(withTracking(ProductDetail))));
