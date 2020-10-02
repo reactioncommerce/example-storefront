@@ -9,8 +9,8 @@ export default function useTrackingEvents() {
   const { track } = useAnalytics();
 
   const callTracking = (payload, processDataFunc) => {
-    const dataProduct = processDataFunc(payload);
-    track(payload.action, dataProduct);
+    const data = processDataFunc(payload);
+    track(payload.action, data);
   };
 
   return callTracking;
