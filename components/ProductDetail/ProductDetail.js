@@ -153,13 +153,13 @@ const ProductDetail = (props) => {
       </Grid>
     </Fragment>
   );
-}
+};
 
 ProductDetail.propTypes = {
   addItemsToCart: PropTypes.func,
   currencyCode: PropTypes.string.isRequired,
-  shop: PropTypes.object.isRequired,
-  product: PropTypes.object
+  product: PropTypes.object,
+  shop: PropTypes.object.isRequired
 };
 
 export default (ProductDetail);

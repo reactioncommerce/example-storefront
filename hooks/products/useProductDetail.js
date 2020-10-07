@@ -8,20 +8,16 @@ import useProductViewedEvent from "hooks/analytics/useProductViewedEvent";
 
 /**
  * Hook to process product details
- *
+ * @param {Function} addItemsToCart Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
+ * @param {String} currencyCode currencyCode
+ * @param {Object} product product
  * @returns {Object} the product details functions
  */
-export default function useProductDetail(props) {
+export default function useProductDetail({ addItemsToCart, currencyCode, product }) {
   const width = useWidth();
   const { uiStore, routingStore } = useStores();
   const trackProductViewedEvent = useProductViewedEvent();
   const { openCartWithTimeout, pdpSelectedOptionId, pdpSelectedVariantId } = uiStore;
-
-  const {
-    addItemsToCart,
-    currencyCode,
-    product
-  } = props;
 
   const selectVariant = (variant, optionId) => {
     // Select the variant, and if it has options, the first option
@@ -35,7 +31,7 @@ export default function useProductDetail(props) {
     trackProductViewedEvent({ product, variant, optionId: selectOptionId, url });
     uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
     Router.replace("/product/[...slugOrId]", url);
-  }
+  };
 
   // Called when the add to cart button is clicked
   const handleAddToCartClick = async (quantity) => {
@@ -83,7 +79,7 @@ export default function useProductDetail(props) {
     }
 
     return productPrice;
-  }
+  };
 
   // Set the default media as the top-level product's media
   // (all media on all variants and objects)
@@ -120,6 +116,5 @@ export default function useProductDetail(props) {
     currencyCode,
     product,
     pdpMediaItems
-  }
-
+  };
 }
