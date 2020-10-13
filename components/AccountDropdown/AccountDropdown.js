@@ -9,6 +9,7 @@ import Popover from "@material-ui/core/Popover";
 import useViewer from "hooks/viewer/useViewer";
 import ViewerInfo from "@reactioncommerce/components/ViewerInfo/v1";
 import Link from "components/Link";
+import useTranslation from "hooks/useTranslation";
 
 const useStyles = makeStyles((theme) => ({
   accountDropdown: {
@@ -25,6 +26,7 @@ const AccountDropdown = () => {
   const [anchorElement, setAnchorElement] = useState(null);
   const [viewer] = useViewer();
   const isAuthenticated = viewer && viewer._id;
+  const { t } = useTranslation("common");
 
   const toggleOpen = (event) => {
     setAnchorElement(event.currentTarget);
@@ -61,28 +63,28 @@ const AccountDropdown = () => {
               <div className={classes.marginBottom}>
                 <Link href="/profile/address">
                   <Button color="primary" fullWidth>
-                    Profile
+                    {t("profile")}
                   </Button>
                 </Link>
               </div>
               <div className={classes.marginBottom}>
                 <Button color="primary" fullWidth href={`/change-password?email=${encodeURIComponent(viewer.emailRecords[0].address)}`}>
-                  Change Password
+                  {t("changePassword")}
                 </Button>
               </div>
               <Button color="primary" fullWidth href="/logout" variant="contained">
-                Sign Out
+                {t("signOut")}
               </Button>
             </Fragment>
             :
             <Fragment>
               <div className={classes.authContent}>
                 <Button color="primary" fullWidth href="/signin" variant="contained">
-                  Sign In
+                  {t("signIn")}
                 </Button>
               </div>
               <Button color="primary" fullWidth href="/signup">
-                Create Account
+                {t("createAccount")}
               </Button>
             </Fragment>
           }

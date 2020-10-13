@@ -15,6 +15,7 @@ import ChevronUpIcon from "mdi-material-ui/ChevronUp";
 import { withStyles } from "@material-ui/core/styles";
 import Router from "translations/i18nRouter";
 import Link from "components/Link";
+import withTranslation from "hocs/withTranslation";
 
 const styles = (theme) => ({
   popover: {
@@ -112,7 +113,7 @@ class NavigationItemDesktop extends Component {
   }
 
   renderPopover() {
-    const { classes, navItem, navItem: { items, navigationItem } } = this.props;
+    const { classes, navItem, navItem: { items, navigationItem }, t } = this.props;
 
     if (items) {
       return (
@@ -155,7 +156,7 @@ class NavigationItemDesktop extends Component {
             isUrlAbsolute={!navigationItem.data.isUrlRelative}
             shouldOpenInNewWindow={navigationItem.data.shouldOpenInNewWindow}
           >
-            <span>Shop all {navigationItem.data.contentForLanguage} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
+            <span>{t("showAll")} {navigationItem.data.contentForLanguage} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
           </Link>
         </Popover>
       );
@@ -179,4 +180,4 @@ class NavigationItemDesktop extends Component {
   }
 }
 
-export default withStyles(styles)(inject("routingStore")(NavigationItemDesktop));
+export default withStyles(styles)(inject("routingStore")(withTranslation("common")(NavigationItemDesktop)));

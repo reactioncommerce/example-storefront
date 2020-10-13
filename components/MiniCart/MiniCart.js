@@ -12,6 +12,7 @@ import Badge from "@material-ui/core/Badge";
 import Popper from "@material-ui/core/Popper";
 import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
+import withTranslation from "hocs/withTranslation";
 
 const styles = ({ palette, zIndex }) => ({
   popper: {
@@ -122,13 +123,15 @@ class MiniCart extends Component {
   };
 
   renderMiniCart() {
-    const { cart, classes, hasMoreCartItems, loadMoreCartItems } = this.props;
+    const { cart, classes, hasMoreCartItems, loadMoreCartItems, t } = this.props;
 
     if (cart && Array.isArray(cart.items) && cart.items.length) {
       return (
         <MiniCartComponent
           cart={cart}
           onCheckoutButtonClick={this.handleCheckoutButtonClick}
+          checkoutButtonText={t("checkoutButton")}
+          footerMessageText={t("footerMessage")}
           components={{
             QuantityInput: "div",
             CartItems: (cartItemProps) => (
@@ -148,7 +151,7 @@ class MiniCart extends Component {
     return (
       <div className={classes.emptyCart}>
         <div>
-          <CartEmptyMessage onClick={this.handleClick} />
+          <CartEmptyMessage onClick={this.handleClick} buttonText={t("emptyButton")} messageText={t("emptyText")} />
         </div>
       </div>
     );
@@ -204,4 +207,4 @@ class MiniCart extends Component {
   }
 }
 
-export default withStyles(styles, { name: "SkMiniCart" })(withCart(inject("uiStore")(MiniCart)));
+export default withStyles(styles, { name: "SkMiniCart" })(withCart(inject("uiStore")(withTranslation("common")(MiniCart))));

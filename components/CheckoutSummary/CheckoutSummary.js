@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
+import withTranslation from "hocs/withTranslation";
 
 const styles = (theme) => ({
   summary: {
@@ -55,7 +56,7 @@ class CheckoutSummary extends Component {
   }
 
   renderCartItems() {
-    const { cart, hasMoreCartItems, loadMoreCartItems } = this.props;
+    const { cart, hasMoreCartItems, loadMoreCartItems, t } = this.props;
 
     if (cart && Array.isArray(cart.items)) {
       return (
@@ -77,7 +78,7 @@ class CheckoutSummary extends Component {
   }
 
   renderCartSummary() {
-    const { cart, classes } = this.props;
+    const { cart, classes, t } = this.props;
 
     if (cart && cart.checkout && cart.checkout.summary) {
       const {
@@ -98,6 +99,13 @@ class CheckoutSummary extends Component {
             displayTax={taxTotal && taxTotal.displayAmount}
             displayTotal={total && total.displayAmount}
             itemsQuantity={cart.totalItemQuantity}
+            cartTitleText={t("cartTitle")}
+            itemsText={t("items")}
+            itemLabelText={t("itemsLabel")}
+            orderTotalLabelText={t("orderTotalLabel")}
+            shippingLabelText={t("shippingLabel")}
+            surchargesLabelText={t("surchargesLabel")}
+            taxLabelText={t("taxLabel")}
           />
         </Grid>
       );
@@ -118,4 +126,4 @@ class CheckoutSummary extends Component {
   }
 }
 
-export default withStyles(styles)(CheckoutSummary);
+export default withStyles(styles)(withTranslation("common")(CheckoutSummary));

@@ -6,6 +6,7 @@ import OrderCardHeader from "components/OrderCardHeader";
 import OrderCardFulfillmentGroup from "components/OrderCardFulfillmentGroup";
 import OrderCardSummary from "components/OrderCardSummary";
 import PageLoading from "components/PageLoading";
+import withTranslation from "hocs/withTranslation";
 
 const styles = (theme) => ({
   orderCard: {
@@ -63,9 +64,9 @@ class OrderCard extends Component {
   }
 
   render() {
-    const { classes, isLoadingOrders } = this.props;
+    const { classes, isLoadingOrders, t } = this.props;
 
-    if (isLoadingOrders) return <PageLoading message="Loading order details..." />;
+    if (isLoadingOrders) return <PageLoading message={t("loading")} />;
 
     return (
       <Grid container>
@@ -87,4 +88,4 @@ class OrderCard extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(OrderCard);
+export default withStyles(styles, { withTheme: true })(withTranslation("common")(OrderCard));

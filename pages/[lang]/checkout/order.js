@@ -9,6 +9,7 @@ import Layout from "components/Layout";
 import withOrder from "containers/order/withOrder";
 import OrderCard from "components/OrderCard";
 import { withApollo } from "lib/apollo/withApollo";
+import withTranslation from "hocs/withTranslation";
 
 import { locales } from "translations/config";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
@@ -39,12 +40,12 @@ class CheckoutComplete extends Component {
   };
 
   render() {
-    const { classes, isLoadingOrder, order, shop } = this.props;
+    const { classes, isLoadingOrder, order, shop, t } = this.props;
 
     if (isLoadingOrder) {
       return (
         <Layout shop={shop}>
-          <PageLoading message="Loading order details..." />
+          <PageLoading message={t("loading")} />
         </Layout>
       );
     }
@@ -55,7 +56,7 @@ class CheckoutComplete extends Component {
           <div className={classes.checkoutContentContainer}>
             <div className={classes.orderDetails}>
               <section className={classes.section}>
-                <Typography className={classes.title} variant="h6">Order not found</Typography>
+                <Typography className={classes.title} variant="h6">{t("orderNotFound")}</Typography>
               </section>
             </div>
           </div>
@@ -73,12 +74,12 @@ class CheckoutComplete extends Component {
           <Grid item xs={false} md={3} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
           <Grid item xs={12} md={6}>
             <Grid item className={classes.orderThankYou} xs={12} md={12}>
-              <Typography className={classes.title} variant="h6">Thank you for your order</Typography>
+              <Typography className={classes.title} variant="h6">{t("thankYouForYourOrder")}</Typography>
               <Typography variant="body1">
-                {"Your order ID is:"} <strong>{order.referenceId}</strong>
+                {t("yourOrderIdIs")} <strong>{order.referenceId}</strong>
               </Typography>
               <Typography variant="body1">
-                {"We've sent a confirmation email to:"} <strong>{order.email}</strong>
+                {t("weSentConfirmation")} <strong>{order.email}</strong>
               </Typography>
             </Grid>
             <Grid item xs={12} md={12}>
@@ -118,4 +119,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default withApollo()(withOrder(withStyles(styles, { withTheme: true })(CheckoutComplete)));
+export default withApollo()(withOrder(withStyles(styles, { withTheme: true })(withTranslation("common")(CheckoutComplete))));

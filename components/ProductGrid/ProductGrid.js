@@ -7,6 +7,7 @@ import PageLoading from "components/PageLoading";
 import PageStepper from "components/PageStepper";
 import PageSizeSelector from "components/PageSizeSelector";
 import SortBySelector from "components/SortBySelector";
+import withTranslation from "hocs/withTranslation";
 import ProductGridEmptyMessage from "./ProductGridEmptyMessage";
 
 const styles = (theme) => ({
@@ -52,12 +53,12 @@ class ProductGrid extends Component {
   }
 
   renderMainArea() {
-    const { catalogItems, isLoadingCatalogItems, pageInfo } = this.props;
+    const { catalogItems, isLoadingCatalogItems, pageInfo, t } = this.props;
 
     if (isLoadingCatalogItems) return <PageLoading />;
 
     const products = (catalogItems || []).map((item) => item.node.product);
-    if (products.length === 0) return <ProductGridEmptyMessage />;
+    if (products.length === 0) return <ProductGridEmptyMessage actionMessage={t("productGridActionMessage")} notFoundMessage={t("notFound")} />;
 
     return (
       <Fragment>
@@ -83,4 +84,4 @@ class ProductGrid extends Component {
   }
 }
 
-export default withStyles(styles)(ProductGrid);
+export default withStyles(styles)(withTranslation("common")(ProductGrid));
