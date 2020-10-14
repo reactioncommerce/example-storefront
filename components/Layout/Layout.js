@@ -6,7 +6,9 @@ import Footer from "components/Footer";
 
 const styles = (theme) => ({
   root: {
-    minHeight: "100vh"
+    minHeight: "100vh",
+    display: 'flex',
+    flexDirection: 'column',
   },
   main: {
     flex: "1 1 auto",
@@ -16,6 +18,9 @@ const styles = (theme) => ({
   },
   article: {
     padding: theme.spacing(3)
+  },
+  fetch: {
+    width: '100%',
   }
 });
 
@@ -40,9 +45,11 @@ class Layout extends Component {
       <React.Fragment>
         <div className={classes.root}>
           <Header shop={shop} viewer={viewer} />
-          <main className={classes.main}>
-            <article className={classes.article}>{children}</article>
-          </main>
+          <div className={classes.fetch}>
+            <main className={classes.main}>
+              <article className={classes.article}>{children}</article>
+            </main>
+          </div>
           <Footer />
         </div>
       </React.Fragment>
