@@ -7,6 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import AddressBook from "@reactioncommerce/components/AddressBook/v1";
 import withAddressBook from "containers/address/withAddressBook";
 import relayConnectionToArray from "lib/utils/relayConnectionToArray";
+import withTranslation from "hocs/withTranslation";
 import ErrorPage from "../../pages/_error";
 
 const styles = (theme) => ({
@@ -35,7 +36,8 @@ class ProfileAddressBook extends Component {
       authStore: { account: { addressBook } },
       onAddressAdded,
       onAddressEdited,
-      onAddressDeleted
+      onAddressDeleted,
+      t
     } = this.props;
     // Use relayConnectionToArray to remove edges / nodes levels from addressBook object
     const addresses = (addressBook && relayConnectionToArray(addressBook)) || [];
@@ -51,19 +53,22 @@ class ProfileAddressBook extends Component {
         onAddressAdded={onAddressAdded}
         onAddressEdited={onAddressEdited}
         onAddressDeleted={onAddressDeleted}
+        addNewItemButtonText={t("addNewAddress")}
+        deleteItemButtonText={t("deleteAddress")}
+        entryFormSubmitButtonText={t("saveChanges")}
       />
     );
   }
 
   render() {
-    const { authStore: { account }, classes, shop } = this.props;
+    const { authStore: { account }, classes, shop, t } = this.props;
 
-    if (account && !account._id) return <ErrorPage shop={shop} subtitle="Not Found" />;
+    if (account && !account._id) return <ErrorPage shop={shop} subtitle={t("Not found")} />;
 
     return (
       <Grid className={classes.profileAddressBookContainer} container>
         <Grid className={classes.profileAddressBookTitle} item xs={12} md={12}>
-          <Typography variant="h6">Address Book</Typography>
+          <Typography variant="h6">{t("addressBook")}</Typography>
         </Grid>
         {this.renderAddressBook()}
       </Grid>
@@ -71,4 +76,4 @@ class ProfileAddressBook extends Component {
   }
 }
 
-export default withStyles(styles)(withAddressBook(inject("authStore", "uiStore")(ProfileAddressBook)));
+export default withStyles(styles)(withAddressBook(inject("authStore", "uiStore")(withTranslation("common")(ProfileAddressBook))));

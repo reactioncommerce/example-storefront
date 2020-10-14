@@ -69,4 +69,14 @@ export default {
   orderNotFound: "заказ не найден",
   thankYouForYourOrder: "Спасибо за Ваш заказ",
   weSentConfirmation: "Мы отправили email на вашу почту",
+  notFound: "Не найдено",
+  addressBook: "Адресная книга",
+  addNewAddress: "Добавить новый адрес",
+  deleteAddress: "Удалить адрес",
+  saveChanges: "Сохранить изменения",
+  orders: "Заказы",
+
+  total: "Итого",
+  remove: "Удалить",
+  change: "Изменить",
 };

@@ -137,7 +137,7 @@ const Checkout = ({ router }) => {
         <div className={classes.emptyCartContainer}>
           <div className={classes.emptyCart}>
             <div>
-              <CartEmptyMessage onClick={() => Router.push("/")} messageText="Ihr Warenkorb ist leer." buttonText="Weiter einkaufen" />
+              <CartEmptyMessage onClick={() => Router.push("/")} messageText={t("emptyText")} buttonText={t("emptyButton")} />
             </div>
           </div>
         </div>
@@ -150,7 +150,7 @@ const Checkout = ({ router }) => {
           <div className={classes.emptyCartContainer}>
             <div className={classes.emptyCart}>
               <div>
-                <CartEmptyMessage onClick={() => Router.push("/")} messageText="Ihr Warenkorb ist leer." buttonText="Weiter einkaufen" />
+                <CartEmptyMessage onClick={() => Router.push("/")} messageText={t("emptyText")}  buttonText={t("emptyButton")} />
               </div>
             </div>
           </div>

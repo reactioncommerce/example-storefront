@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import inject from "hocs/inject";
 import { withStyles } from "@material-ui/core/styles";
 import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
+import MiniCartSummary from "@reactioncommerce/components/MiniCartSummary/v1";
 import CartItems from "components/CartItems";
 import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
 import IconButton from "@material-ui/core/IconButton";
@@ -141,6 +142,13 @@ class MiniCart extends Component {
                 onRemoveItemFromCart={this.handleRemoveItem}
                 onChangeCartItemQuantity={this.handleItemQuantityChange}
                 onLoadMoreCartItems={loadMoreCartItems}
+              />
+            ),
+            MiniCartSummary: (miniCartSummaryProps) => (
+              <MiniCartSummary
+                {...miniCartSummaryProps}
+                subtotalLabelText={t("total")}
+                taxLabelText={t("tax")}
               />
             )
           }}

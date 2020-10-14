@@ -62,10 +62,16 @@ import SelectableList from "@reactioncommerce/components/SelectableList/v1";
 import StockWarning from "@reactioncommerce/components/StockWarning/v1";
 import StripeForm from "@reactioncommerce/components/StripeForm/v1";
 import TextInput from "@reactioncommerce/components/TextInput/v1";
+import useTranslation from "../hooks/useTranslation";
 import withLocales from "../lib/utils/withLocales";
 
 // Providing locales data
 const AddressFormWithLocales = withLocales(AddressForm);
+const CheckoutActionCompleteComponent = (checkoutActionCompleteProps) => {
+  const {t} = useTranslation("common");
+  
+  return (<CheckoutActionComplete {...checkoutActionCompleteProps} changeButtonText={t("change")} />)
+};
 
 export default {
   Accordion,
@@ -86,7 +92,7 @@ export default {
   CatalogGridItem,
   Checkbox,
   CheckoutAction,
-  CheckoutActionComplete,
+  CheckoutActionComplete: CheckoutActionCompleteComponent,
   CheckoutActionIncomplete,
   ErrorsBlock,
   Field,

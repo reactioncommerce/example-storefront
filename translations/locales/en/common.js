@@ -69,4 +69,15 @@ export default {
   orderNotFound: "Order not found",
   thankYouForYourOrder: "Thank you for your order",
   weSentConfirmation: "We've sent a confirmation email to:",
+
+  notFound: "Not found",
+  addressBook: "Address book",
+  addNewAddress: "Add a new addres",
+  deleteAddress: "Delete address",
+  saveChanges: "Save changes",
+  orders: "Orders",
+
+  total: "Total",
+  remove: "Remove",
+  change: "Change",
 };
