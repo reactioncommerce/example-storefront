@@ -62,12 +62,14 @@ class ProfileAddressBookPage extends Component {
         />
         <section>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={7}>
+            <Grid item xs={false} md={1} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
+            <Grid item xs={12} md={3}>
               <ProfileMenu router={router} />
             </Grid>
-            <Grid item xs={12} md={5}>
+            <Grid item xs={12} md={7}>
               {this.renderMainContent()}
             </Grid>
+            <Grid item xs={false} md={1} /> {/* MUI grid doesn't have an offset. Use blank grid item instead. */}
           </Grid>
         </section>
       </Layout>

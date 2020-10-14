@@ -7,13 +7,10 @@ const date = new Date();
 
 const styles = (theme) => ({
   footer: {
-    marginTop: 'auto',
     alignItems: "center",
     display: "flex",
     justifyContent: "center",
-    backgroundColor: '#2667e5',
-    color: '#fff',
-    padding: 20,
+    marginBottom: theme.spacing(2)
   }
 });
 
