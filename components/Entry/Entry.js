@@ -72,7 +72,6 @@ class Entry extends Component {
             <Button onClick={onLoginButtonClick} actionType="important" isFullWidth className={classes.loginButton}>
               Login
             </Button>
-            <br/>
             <Button onClick={onRegisterButtonClick} actionType="secondary" isFullWidth className={classes.loginButton}>
               Create a new account
             </Button>
