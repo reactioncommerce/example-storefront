@@ -12,8 +12,8 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       light: "#26B0F9",
-      main: "#1999DD",
-      dark: "#172F3C",
+      main: "rgb(0, 143, 255)",
+      dark: "rgb(0, 120, 255)",
       contrastText: "#FFFFFF"
     },
     secondary: {
@@ -122,7 +122,7 @@ const theme = createMuiTheme({
         innerColor: "#1999dd",
         outerColor: "rgba(9.80392156862745%,59.99999999999995%,86.66666666666667%,0.122)"
       },
-      teal: "#8ce0c9",
+      teal: "#26B0F9",
       teal100: "#edfdf8",
       teal200: "#d9ece6",
       teal300: "#a3f2dc",
@@ -132,7 +132,7 @@ const theme = createMuiTheme({
     }
   },
   borderRadii: {
-    default: 2
+    default: 0,
   },
   boxShadow: {
     depth0: "none",
@@ -140,7 +140,7 @@ const theme = createMuiTheme({
     depth2: "0 0 1rem #808080"
   },
   typography: {
-    fontFamily: "Source Sans Pro, Helvetica Neue, Helvetica, sans-serif",
+    fontFamily: "Roboto, sans-serif",
     fontSize: 16,
     fontWeightLight: 400,
     fontWeightRegular: 400,
@@ -160,7 +160,14 @@ const theme = createMuiTheme({
       fontWeight: 600,
       color: "#3c3c3c"
     }
-  }
+  },
+  overrides: {
+    MuiButton: {
+      root: {
+        borderRadius: 0,
+      },
+    },
+  },
 });
 
 export default theme;
