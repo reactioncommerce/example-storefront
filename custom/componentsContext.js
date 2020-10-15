@@ -66,7 +66,34 @@ import useTranslation from "../hooks/useTranslation";
 import withLocales from "../lib/utils/withLocales";
 
 // Providing locales data
-const AddressFormWithLocales = withLocales(AddressForm);
+const CustomAddressChoice = React.forwardRef((addressChoiceProps, ref) => {
+  const {t} = useTranslation("common");
+
+  return <AddressChoice {...addressChoiceProps} ref={ref} otherAddressLabel={t("useDifferentAddress")}/>
+});
+const AddressFormWithLocales = withLocales(React.forwardRef((addressFormProps, ref) => {
+  const {t} = useTranslation("common");
+
+  return <AddressForm {...addressFormProps} ref={ref} 
+    address1LabelText={t("mainAddress")}
+    address1PlaceholderText={t("mainAddress")}
+    address2LabelText={t("secondaryAddress")}
+    address2PlaceholderText={t("secondaryAddress")}
+    cityLabelText={t("city")}
+    cityPlaceholderText={t("city")}
+    countryLabelText={t("country")}
+    countryPlaceholderText={t("country")}
+    isCommercialLabelText={t("isCommercial")}
+    nameLabelText={t("name")}
+    namePlaceholderText={t("name")}
+    phoneLabelText={t("phone")}
+    phonePlaceholderText={t("phone")}
+    postalLabelText={t("postal")}
+    postalPlaceholderText={t("postal")}
+    regionLabelText={t("region")}
+    regionPlaceholderText={t("region")}
+    />
+}));
 const CheckoutActionCompleteComponent = (checkoutActionCompleteProps) => {
   const {t} = useTranslation("common");
   
@@ -79,7 +106,7 @@ export default {
   AddressBook,
   Address,
   AddressCapture,
-  AddressChoice,
+  AddressChoice: CustomAddressChoice,
   AddressForm: AddressFormWithLocales,
   AddressReview,
   BadgeOverlay,

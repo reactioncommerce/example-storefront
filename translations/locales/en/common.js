@@ -58,6 +58,7 @@ export default {
   region: "Region",
   noFulfillmenMethods: "	No fulfillment methods",
   billingAddress: "Billing address",
+  useDifferentAddress: "Use a difference address",
 
   cancel: "Cancel",
   saveAndContinue: "Save and continue",

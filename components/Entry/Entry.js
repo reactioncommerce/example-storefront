@@ -84,7 +84,11 @@ class Entry extends Component {
             <Typography variant="h6" gutterBottom>
               {t("guestCheckout")}
             </Typography>
-            <GuestForm onSubmit={setEmailOnAnonymousCart} emailLabelText={t("email")} buttonText={t("continueAsAGuest")} helpText={t("guestHelpText")}/>
+            <GuestForm onSubmit={setEmailOnAnonymousCart} 
+              emailLabelText={t("email")} 
+              emailPlaceholderText={t("email")}
+              buttonText={t("continueAsAGuest")} 
+              helpText={t("guestHelpText")}/>
           </div>
         </Grid>
       </Grid>
