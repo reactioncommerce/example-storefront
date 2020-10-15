@@ -20,7 +20,6 @@ const styles = (theme) => ({
 const Footer = ({ ...props }) => (
   <footer className={props.classes.footer}>
     <Typography variant="caption">
-      &copy; {date.getFullYear()} Reaction Commerce
     </Typography>
   </footer>
 );
