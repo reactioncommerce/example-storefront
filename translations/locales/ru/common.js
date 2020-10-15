@@ -80,4 +80,13 @@ export default {
   total: "Итого",
   remove: "Удалить",
   change: "Изменить",
+  
+  backorder: "Задержанный Заказ",
+  lowQuantity: "В Малом Количестве",
+  bestseller: "Бестселлер",
+  soldOut: "Нет В Наличии",
+  clearanceSale: "Распродажа",
+
+  home: "Главная",
+  defaultErrorMessage: "Извините! Мы не смогли найти то, что вы ищете."
 };

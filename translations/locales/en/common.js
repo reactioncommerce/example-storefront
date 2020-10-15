@@ -81,4 +81,14 @@ export default {
   total: "Total",
   remove: "Remove",
   change: "Change",
+
+  backorder: "Backorder",
+  lowQuantity: "Low Inventory",
+  bestseller: "Bestseller ",
+  soldOut: "Sold Out",
+  clearanceSale: "Sale",
+
+
+  home: "Home",
+  defaultErrorMessage: "Sorry! We couldn't find what you're looking for."
 };

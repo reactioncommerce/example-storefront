@@ -66,6 +66,13 @@ class ProductGrid extends Component {
           <CatalogGrid
             products={products}
             placeholderImageURL="/images/placeholder.gif"
+            badgeLabels={{
+              BACKORDER: t("backorder"),
+              BESTSELLER: t("bestseller"),
+              LOW_QUANTITY: t("lowQuantity"),
+              SOLD_OUT: t("soldOut"),
+              SALE: t("clearanceSale")
+            }}
             {...this.props}
           />
         </Grid>
