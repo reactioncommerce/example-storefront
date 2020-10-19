@@ -21,7 +21,7 @@ const styles = (theme) => ({
     flexDirection: "column"
   },
   header: {
-    flex: "0 0 auto"
+    flex: "0 0 auto",
   },
   toolbarTitle: {
     position: "absolute",
@@ -39,12 +39,23 @@ const styles = (theme) => ({
     width: 320
   },
   subNav: {
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     left: 0,
-    width: 320,
+    zIndex: 11,
+    width: '100vw',
     height: "100vh",
     backgroundColor: theme.palette.background.default
+  },
+  overflow: {
+    overflowY: 'auto',
+    overflowX: 'hidden',
+  },
+  fetch: {
+    width: '100vw',
+  },
+  displayNone: {
+    display: 'none',
   }
 });
 
@@ -98,33 +109,33 @@ class NavigationMobile extends Component {
 
     if (navItems && navItems.items) {
       return (
-        <Drawer open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
-          <div className={classes.header}>
-            <Toolbar disableGutters>
-              <div className={classes.toolbarTitle}>
-                <Typography className={classes.title} color="inherit" variant="h6">
-                  <Link route="/" onClick={this.handleClose}>
-                    {shop ? <ShopLogo shopName={shop.name} /> : "Example Storefront"}
-                  </Link>
-                </Typography>
-              </div>
-              <IconButton onClick={this.handleClose}>
-                <CloseIcon />
-              </IconButton>
-            </Toolbar>
-            <Divider />
-          </div>
-          <nav className={classes.menu}>
-            <MenuList disablePadding>{navItems.items.map(this.renderNavItem)}</MenuList>
-          </nav>
-          <Slide direction="left" in={!!this.state.navItem}>
-            <nav className={classes.subNav}>
-              <NavigationSubMenuMobile
-                navItem={this.state.navItem}
-                onBackButtonClick={this.handleCloseSubMenu}
-              />
+        <Drawer classes={styles.overflow} open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
+            <div className={classes.fetch}>
+              <Toolbar disableGutters>
+                <div className={classes.toolbarTitle}>
+                  <Typography className={classes.title} color="inherit" variant="h6">
+                    <Link route="/" onClick={this.handleClose}>
+                      {shop ? <ShopLogo shopName={shop.name} /> : "Example Storefront"}
+                    </Link>
+                  </Typography>
+                </div>
+                <IconButton onClick={this.handleClose}>
+                  <CloseIcon />
+                </IconButton>
+              </Toolbar>
+              <Divider />
+            </div>
+            <nav className={classes.menu}>
+              <MenuList disablePadding>{navItems.items.map(this.renderNavItem)}</MenuList>
             </nav>
-          </Slide>
+            <Slide direction="left" in={!!this.state.navItem}>
+              <nav className={!this.state.navItem ? classes.displayNone : classes.subNav}>
+                <NavigationSubMenuMobile
+                  navItem={this.state.navItem}
+                  onBackButtonClick={this.handleCloseSubMenu}
+                />
+              </nav>
+            </Slide>
         </Drawer>
       );
     }
