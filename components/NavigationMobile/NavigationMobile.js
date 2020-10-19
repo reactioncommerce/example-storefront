@@ -40,13 +40,27 @@ const styles = (theme) => ({
     width: '100vw'
   },
   subNav: {
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     left: 0,
+<<<<<<< HEAD
+=======
+    zIndex: 11,
+>>>>>>> fix: adaptive header
     width: '100vw',
     height: "100vh",
     backgroundColor: theme.palette.background.default
   },
+<<<<<<< HEAD
+=======
+  overflow: {
+    overflowY: 'auto',
+    overflowX: 'hidden',
+  },
+  fetch: {
+    width: '100vw',
+  },
+>>>>>>> fix: adaptive header
   displayNone: {
     display: 'none',
   }
@@ -102,8 +116,13 @@ class NavigationMobile extends Component {
 
     if (navItems && navItems.items) {
       return (
+<<<<<<< HEAD
         <Drawer open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
             <div className={classes.header}>
+=======
+        <Drawer classes={styles.overflow} open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
+            <div className={classes.fetch}>
+>>>>>>> fix: adaptive header
               <Toolbar disableGutters>
                 <div className={classes.toolbarTitle}>
                   <Typography className={classes.title} color="inherit" variant="h6">
