@@ -22,6 +22,7 @@ const styles = (theme) => ({
   },
   header: {
     flex: "0 0 auto",
+    width: '100vw'
   },
   toolbarTitle: {
     position: "absolute",
@@ -36,23 +37,15 @@ const styles = (theme) => ({
   menu: {
     flex: "1 1 auto",
     overflowY: "auto",
-    width: 320
+    width: '100vw'
   },
   subNav: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
-    zIndex: 11,
     width: '100vw',
     height: "100vh",
     backgroundColor: theme.palette.background.default
-  },
-  overflow: {
-    overflowY: 'auto',
-    overflowX: 'hidden',
-  },
-  fetch: {
-    width: '100vw',
   },
   displayNone: {
     display: 'none',
@@ -109,8 +102,8 @@ class NavigationMobile extends Component {
 
     if (navItems && navItems.items) {
       return (
-        <Drawer classes={styles.overflow} open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
-            <div className={classes.fetch}>
+        <Drawer open={uiStore.isMenuDrawerOpen} onClose={this.handleClose}>
+            <div className={classes.header}>
               <Toolbar disableGutters>
                 <div className={classes.toolbarTitle}>
                   <Typography className={classes.title} color="inherit" variant="h6">

@@ -80,7 +80,7 @@ class Header extends Component {
               </Link>
             </Typography>
 
-            <Hidden smDown>
+            <Hidden smDown initialWidth={"md"}>
               <NavigationDesktop />
             </Hidden>
           </div>

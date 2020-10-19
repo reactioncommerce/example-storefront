@@ -155,7 +155,7 @@ class NavigationItemDesktop extends Component {
             isUrlAbsolute={!navigationItem.data.isUrlRelative}
             shouldOpenInNewWindow={navigationItem.data.shouldOpenInNewWindow}
           >
-            <span>Shop all {navigationItem.data.contentForLanguage} asdasdasd<ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
+            <span>Shop all {navigationItem.data.contentForLanguage} <ChevronRight className={classes.navigationShopAllLinkIcon} /></span>
           </Link>
         </Popover>
       );
