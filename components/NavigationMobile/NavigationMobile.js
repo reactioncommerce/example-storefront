@@ -43,7 +43,6 @@ const styles = (theme) => ({
     position: "absolute",
     top: 0,
     left: 0,
-    zIndex: 11,
     width: '100vw',
     height: "100vh",
     backgroundColor: theme.palette.background.default

@@ -13,10 +13,11 @@ import AccountDropdown from "components/AccountDropdown";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import Link from "components/Link";
 import MiniCart from "components/MiniCart";
+import ProgressiveImage from "components/ProgressiveImage";
 
 const styles = (theme) => ({
   appBar: {
-    backgroundColor: theme.palette.reaction.white,
+    backgroundColor: 'rgb(242, 243, 249)',
     borderBottom: `solid 1px ${theme.palette.reaction.black05}`,
     color: theme.palette.reaction.coolGrey500
   },
@@ -26,9 +27,7 @@ const styles = (theme) => ({
     flex: 1
   },
   title: {
-    color: theme.palette.reaction.reactionBlue,
     marginRight: theme.spacing(),
-    borderBottom: `solid 5px ${theme.palette.reaction.reactionBlue200}`
   },
   toolbar: {
     alignItems: "center",
@@ -64,7 +63,7 @@ class Header extends Component {
   };
 
   render() {
-    const { classes: { appBar, controls, toolbar, title }, shop } = this.props;
+    const { classes: { appBar, controls, toolbar, title, logo }, shop } = this.props;
 
     return (
       <AppBar position="static" elevation={0} className={appBar}>
@@ -76,7 +75,10 @@ class Header extends Component {
           <div className={controls}>
             <Typography className={title} color="inherit" variant="h6">
               <Link route="/">
-                {shop ? <ShopLogo shopName={shop.name} /> : "Example Storefront"}
+                <img
+                  src="/images/logo.png"
+                  className={logo}
+                />
               </Link>
             </Typography>
 
