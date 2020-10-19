@@ -18,6 +18,17 @@ const useStyles = makeStyles((theme) => ({
   },
   marginBottom: {
     marginBottom: theme.spacing(2)
+  },
+  minIcon: {
+    width: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      width: '20px',
+    },
+  },
+  mobilePadding: {
+    [theme.breakpoints.down('sm')]: {
+      padding: '10px',
+    },
   }
 }));
 
@@ -43,8 +54,8 @@ const AccountDropdown = () => {
           <ViewerInfo viewer={viewer} />
         </ButtonBase>
         :
-        <IconButton color="inherit" onClick={toggleOpen}>
-          <AccountIcon />
+        <IconButton className={classes.mobilePadding} color="inherit" onClick={toggleOpen}>
+          <AccountIcon className={classes.minIcon} />
         </IconButton>
       }
 

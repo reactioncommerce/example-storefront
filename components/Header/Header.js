@@ -34,6 +34,12 @@ const styles = (theme) => ({
     alignItems: "center",
     display: "flex",
     justifyContent: "space-between"
+  },
+  logo: {
+    width: 150,
+    [theme.breakpoints.down('sm')]: {
+      width: 110,
+    },
   }
 });
 
