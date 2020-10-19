@@ -47,6 +47,9 @@ const styles = (theme) => ({
     height: "100vh",
     backgroundColor: theme.palette.background.default
   },
+  fetch: {
+    width: '100vw',
+  },
   displayNone: {
     display: 'none',
   }

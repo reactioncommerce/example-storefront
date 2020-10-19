@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import inject from "hocs/inject";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
 import MiniCartSummary from "@reactioncommerce/components/MiniCartSummary/v1";
 import CartItems from "components/CartItems";
@@ -15,7 +15,7 @@ import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
 import withTranslation from "hocs/withTranslation";
 
-const styles = ({ palette, zIndex }) => ({
+const styles = ({ palette, zIndex, breakpoints }) => ({
   popper: {
     marginTop: "0.5rem",
     marginRight: "1rem",
@@ -36,7 +36,19 @@ const styles = ({ palette, zIndex }) => ({
     width: 20,
     height: 20,
     top: 10,
-    left: 20
+    left: 20,
+    [breakpoints.down('sm')]: {
+      fontSize: 11,
+      top: 7,
+      left: 3,
+      padding: 0,
+    },
+  },
+  minIcon: {
+    width: 'auto',
+    [breakpoints.down('sm')]: {
+      width: '20px',
+    },
   }
 });
 
@@ -185,10 +197,10 @@ class MiniCart extends Component {
                   color="primary"
                   classes={{ badge: classes.badge }}
                 >
-                  <CartIcon />
+                  <CartIcon className={classes.minIcon} />
                 </Badge>
               )
-              : <CartIcon />
+              : <CartIcon className={classes.minIcon} />
             }
           </IconButton>
         </div>

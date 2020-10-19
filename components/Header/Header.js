@@ -15,7 +15,6 @@ import Link from "components/Link";
 import MiniCart from "components/MiniCart";
 import ProgressiveImage from "components/ProgressiveImage";
 
-
 const styles = (theme) => ({
   appBar: {
     backgroundColor: 'rgb(242, 243, 249)',
@@ -37,6 +36,9 @@ const styles = (theme) => ({
   },
   logo: {
     width: 150,
+    [theme.breakpoints.down('sm')]: {
+      width: 110,
+    },
   }
 });
 
