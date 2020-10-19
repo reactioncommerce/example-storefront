@@ -67,4 +67,4 @@ class Error extends Component {
   }
 }
 
-export default withStyles(styles)(withTransation("common")(Error));
+export default withStyles(styles)(withTranslation("common")(Error));
