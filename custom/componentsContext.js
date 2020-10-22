@@ -69,34 +69,23 @@ import withLocales from "../lib/utils/withLocales";
 const CustomAddressChoice = React.forwardRef((addressChoiceProps, ref) => {
   const {t} = useTranslation("common");
 
-  return <AddressChoice {...addressChoiceProps} ref={ref} otherAddressLabel={t("useDifferentAddress")}/>
+  return <AddressChoice otherAddressLabel={t("useDifferentAddress")}/>
 });
 const AddressFormWithLocales = withLocales(React.forwardRef((addressFormProps, ref) => {
   const {t} = useTranslation("common");
+  const options = [{
+    id: "111",
+    label: t("paymentCashOrCard"),
+    value: "cashOrCard"
+  }];
 
-  return <AddressForm {...addressFormProps} ref={ref} 
-    address1LabelText={t("mainAddress")}
-    address1PlaceholderText={t("mainAddress")}
-    address2LabelText={t("secondaryAddress")}
-    address2PlaceholderText={t("secondaryAddress")}
-    cityLabelText={t("city")}
-    cityPlaceholderText={t("city")}
-    countryLabelText={t("country")}
-    countryPlaceholderText={t("country")}
-    isCommercialLabelText={t("isCommercial")}
-    nameLabelText={t("name")}
-    namePlaceholderText={t("name")}
-    phoneLabelText={t("phone")}
-    phonePlaceholderText={t("phone")}
-    postalLabelText={t("postal")}
-    postalPlaceholderText={t("postal")}
-    regionLabelText={t("region")}
-    regionPlaceholderText={t("region")}
-    />
+  return (
+    <SelectableList options={options} name="DefaultForm" value="cashOrCard"/>
+  );
 }));
 const CheckoutActionCompleteComponent = (checkoutActionCompleteProps) => {
   const {t} = useTranslation("common");
-  
+
   return (<CheckoutActionComplete {...checkoutActionCompleteProps} changeButtonText={t("change")} />)
 };
 

@@ -58,6 +58,12 @@ class Header extends Component {
     classes: {}
   };
 
+  componentDidMount() {
+    if (window.matchMedia("only screen and (max-width: 760px)").matches && !window.location.pathname.substring(1).includes('/')) {
+      this.props.uiStore.toggleMenuDrawerOpen();
+    }
+  }
+
   handleNavigationToggleClick = () => {
     this.props.uiStore.toggleMenuDrawerOpen();
   };

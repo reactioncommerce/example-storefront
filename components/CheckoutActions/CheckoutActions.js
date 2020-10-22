@@ -135,7 +135,7 @@ class CheckoutActions extends Component {
   };
 
   handlePaymentSubmit = (paymentInput) => {
-    this.props.cartStore.addCheckoutPayment(paymentInput);
+    this.props.cartStore.addCheckoutPayment({...paymentInput, displayName: "paymentCashOrCard"});
 
     this.setState({
       hasPaymentError: false,
@@ -328,10 +328,8 @@ class CheckoutActions extends Component {
           addresses,
           alert: actionAlerts["3"],
           onReset: this.handlePaymentsReset,
-          payments,
-          paymentMethods,
-          remainingAmountDue,
-          billingAddressTitleText: t("billingAddress")
+          paymentMethods: [paymentMethods[1]],
+          billingAddressTitleText: null
         }
       },
       {
@@ -369,9 +367,9 @@ class CheckoutActions extends Component {
         {this.renderPlacingOrderOverlay()}
         <Actions actions={actions}
           cancelButtonText={t("cancel")}
-          isSavingButtonText={t("placingOrder")} 
-          saveButtonText={t("saveAndContinue")} 
-          isNotSavingButtonText={t("placeOrder")} 
+          isSavingButtonText={t("placingOrder")}
+          saveButtonText={t("saveAndContinue")}
+          isNotSavingButtonText={t("placeOrder")}
         />
       </Fragment>
     );

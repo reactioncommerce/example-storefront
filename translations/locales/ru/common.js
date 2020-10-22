@@ -43,9 +43,10 @@ export default {
   shippingAddressFormLabel: "Введите адрес",
   shippingAddress: "Адрес доставки",
   shippingMethodFormLabel: "Выберите способ доставки",
-  shippingMethod: "Способ доставки", 
-  paymentInfoFormLabel: "Заполните платежные данные",
+  shippingMethod: "Способ доставки",
+  paymentInfoFormLabel: "Оплата",
   reviewAndPlaceOrder: "Оформить заказ",
+  paymentCashOrCard: "Оплата наличными или кассой на карте",
 
   mainAddress: "Основной адрес",
   secondaryAddress: "Дополнительный адрес",
@@ -80,12 +81,13 @@ export default {
   total: "Итого",
   remove: "Удалить",
   change: "Изменить",
-  
+
   backorder: "Задержанный Заказ",
   lowQuantity: "В Малом Количестве",
   bestseller: "Бестселлер",
   soldOut: "Нет В Наличии",
   clearanceSale: "Распродажа",
+
 
   home: "Главная",
   defaultErrorMessage: "Извините! Мы не смогли найти то, что вы ищете."

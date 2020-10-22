@@ -43,9 +43,10 @@ export default {
   shippingAddressFormLabel: "Enter a shipping address",
   shippingAddress: "Shipping address",
   shippingMethodFormLabel: "Choose a shipping method",
-  shippingMethod: "Shipping method", 
-  paymentInfoFormLabel: "Enter payment information",
+  shippingMethod: "Shipping method",
+  paymentInfoFormLabel: "Payment",
   reviewAndPlaceOrder: "Review and place order",
+  paymentCashOrCard: "Payment in cash or by cashier on the card",
 
   mainAddress: "Address1",
   secondaryAddress: "Address2",
