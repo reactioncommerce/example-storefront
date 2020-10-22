@@ -10,7 +10,7 @@ const paymentMethods = [
   },
   {
     displayName: "IOU",
-    InputComponent: ExampleIOUPaymentForm,
+    InputComponent: null,
     name: "iou_example",
     shouldCollectBillingAddress: true
   }
