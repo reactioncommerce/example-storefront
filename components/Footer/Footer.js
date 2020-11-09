@@ -10,17 +10,23 @@ const styles = (theme) => ({
     marginTop: 'auto',
     alignItems: "center",
     display: "flex",
-    justifyContent: "center",
     backgroundColor: '#2667e5',
     color: '#fff',
-    padding: 20,
+  },
+  footerLink: {
+    textDecoration: "none",
+    color: "#fff",
+    padding: 15,
+    display: "block",
+    width: "100%",
+    textAlign: "center",
+    fontWeight: 600
   }
 });
 
 const Footer = ({ ...props }) => (
   <footer className={props.classes.footer}>
-    <Typography variant="caption">
-    </Typography>
+    <a href="http://localhost:4080" className={props.classes.footerLink}>Кабинет продавца</a>
   </footer>
 );
 
