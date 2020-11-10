@@ -17,7 +17,7 @@ export default (req, res) => {
     { name: "en-US", locale: "en" },
     { name: "en-ZA", locale: "en" },
     { name: "en-GB", locale: "en" },
-    { name: "en", locale: "en" },,
+    { name: "en", locale: "en" },
   ];
 
   const detections = headerLanguage(req);
