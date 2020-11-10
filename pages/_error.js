@@ -4,6 +4,7 @@ import Helmet from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Link from "components/Link";
+import withTranslation from "hocs/withTranslation";
 
 const styles = (theme) => ({
   root: {
@@ -44,7 +45,7 @@ class Error extends Component {
   };
 
   render() {
-    const { classes, shop, statusCode, subtitle } = this.props;
+    const { classes, shop, statusCode, subtitle, t } = this.props;
 
     return (
       <div className={classes.root}>
@@ -54,10 +55,10 @@ class Error extends Component {
         ) : (
           <Fragment>
             <Typography className={classes.errorMessage} paragraph>
-              Sorry! We couldn't find what you're looking for.
+              {t("defaultErrorMessage")}
             </Typography>
             <Typography className={classes.errorLink}>
-              <Link route="/">Home</Link>
+              <Link route="/">{t("home")}</Link>
             </Typography>
           </Fragment>
         )}
@@ -66,4 +67,4 @@ class Error extends Component {
   }
 }
 
-export default withStyles(styles)(Error);
+export default withStyles(styles)(withTranslation("common")(Error));

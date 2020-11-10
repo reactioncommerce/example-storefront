@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import GuestForm from "@reactioncommerce/components/GuestForm/v1";
 import Button from "@reactioncommerce/components/Button/v1";
+import withTranslation from "hocs/withTranslation";
 
 // flex wrapper jss mixin
 const flexWrapper = () => ({
@@ -61,28 +62,32 @@ class Entry extends Component {
   };
 
   render() {
-    const { classes, onLoginButtonClick, onRegisterButtonClick, setEmailOnAnonymousCart } = this.props;
+    const { classes, onLoginButtonClick, onRegisterButtonClick, setEmailOnAnonymousCart, t } = this.props;
     return (
       <Grid container>
         <Grid item xs={12} md={7}>
           <div className={classes.loginWrapper}>
             <Typography variant="h6" gutterBottom>
-              Returning Customer
+              {t("returningCustomer")}
             </Typography>
             <Button onClick={onLoginButtonClick} actionType="important" isFullWidth className={classes.loginButton}>
-              Login
+              {t("login")}
             </Button>
             <Button onClick={onRegisterButtonClick} actionType="secondary" isFullWidth className={classes.loginButton}>
-              Create a new account
+              {t("createAccount")}
             </Button>
           </div>
         </Grid>
         <Grid item xs={12} md={5}>
           <div className={classes.guestWrapper}>
             <Typography variant="h6" gutterBottom>
-              Guest Checkout
+              {t("guestCheckout")}
             </Typography>
-            <GuestForm onSubmit={setEmailOnAnonymousCart} />
+            <GuestForm onSubmit={setEmailOnAnonymousCart}
+              emailLabelText={t("email")}
+              emailPlaceholderText={t("email")}
+              buttonText={t("continueAsAGuest")}
+              helpText={t("guestHelpText")}/>
           </div>
         </Grid>
       </Grid>
@@ -90,4 +95,4 @@ class Entry extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Entry);
+export default withStyles(styles, { withTheme: true })(withTranslation("common")(Entry));

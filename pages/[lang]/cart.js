@@ -15,6 +15,7 @@ import Layout from "components/Layout";
 import Router from "translations/i18nRouter";
 import PageLoading from "components/PageLoading";
 import { withApollo } from "lib/apollo/withApollo";
+import withTranslation from "hocs/withTranslation";
 
 import { locales } from "translations/config";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
@@ -88,7 +89,7 @@ class CartPage extends Component {
   };
 
   renderCartItems() {
-    const { cart, classes, hasMoreCartItems, loadMoreCartItems } = this.props;
+    const { cart, classes, hasMoreCartItems, loadMoreCartItems, t } = this.props;
 
     if (cart && Array.isArray(cart.items) && cart.items.length) {
       return (
@@ -108,13 +109,13 @@ class CartPage extends Component {
 
     return (
       <Grid item xs={12} className={classes.cartEmptyMessageContainer}>
-        <CartEmptyMessage onClick={this.handleClick} />
+        <CartEmptyMessage onClick={this.handleClick} buttonText={t("emptyButton")} messageText={t("emptyText")} />
       </Grid>
     );
   }
 
   renderCartSummary() {
-    const { cart, classes } = this.props;
+    const { cart, classes, t } = this.props;
 
     if (cart && cart.checkout && cart.checkout.summary && Array.isArray(cart.items) && cart.items.length) {
       const { fulfillmentTotal, itemTotal, surchargeTotal, taxTotal, total } = cart.checkout.summary;
@@ -122,6 +123,13 @@ class CartPage extends Component {
       return (
         <Grid item xs={12} md={3}>
           <CartSummary
+            cartTitleText={t("cartTitle")}
+            itemsText={t("items")}
+            itemLabelText={t("itemsLabel")}
+            orderTotalLabelText={t("orderTotalLabel")}
+            shippingLabelText={t("shippingLabel")}
+            surchargesLabelText={t("surchargesLabel")}
+            taxLabelText={t("taxLabel")}
             displayShipping={fulfillmentTotal && fulfillmentTotal.displayAmount}
             displaySubtotal={itemTotal && itemTotal.displayAmount}
             displaySurcharge={surchargeTotal && surchargeTotal.displayAmount}
@@ -130,7 +138,7 @@ class CartPage extends Component {
             itemsQuantity={cart.totalItemQuantity}
           />
           <div className={classes.checkoutButtonsContainer}>
-            <CheckoutButtons />
+            <CheckoutButtons primaryButtonText={t("checkoutButton")} />
           </div>
         </Grid>
       );
@@ -140,7 +148,7 @@ class CartPage extends Component {
   }
 
   render() {
-    const { cart, classes, shop } = this.props;
+    const { cart, classes, shop, t } = this.props;
     // when a user has no item in cart in a new session, this.props.cart is null
     // when the app is still loading, this.props.cart is undefined
     if (typeof cart === "undefined") return <PageLoading delay={0} />;
@@ -153,20 +161,20 @@ class CartPage extends Component {
         />
         <section>
           <Typography className={classes.title} variant="h6" align="center">
-            Shopping Cart
+            {t("shoppingCart")}
           </Typography>
           <Grid container spacing={3}>
             {this.renderCartItems()}
             {this.renderCartSummary()}
             <Grid className={classes.customerSupportCopy} item>
               <Typography paragraph variant="caption">
-                Have questions? call <span className={classes.phoneNumber}>1.800.555.5555</span>
+                {t("customerSupportCopy")} <span className={classes.phoneNumber}>1.800.555.5555</span>
               </Typography>
               <Typography paragraph variant="caption">
-                <Link href="#">Shipping information</Link>
+                <Link href="#">{t("shippingInfo")}</Link>
               </Typography>
               <Typography paragraph variant="caption">
-                <Link href="#">Return policy</Link>
+                <Link href="#">{t("returnPolicy")}</Link>
               </Typography>
             </Grid>
           </Grid>
@@ -203,4 +211,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default withApollo()(withStyles(styles)(withCart(inject("uiStore")(CartPage))));
+export default withApollo()(withStyles(styles)(withCart(inject("uiStore")(withTranslation("common")(CartPage)))));

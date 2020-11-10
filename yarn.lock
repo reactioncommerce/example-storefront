@@ -1567,10 +1567,10 @@
   dependencies:
     hoist-non-react-statics "^3.2.0"
 
-"@reactioncommerce/components@~0.67.2":
-  version "0.67.3"
-  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.67.3.tgz#4d26b7f7ac075ec74cfd9fac05077ea564ef5d0b"
-  integrity sha512-Vbbq4kE5yrTYYnyiNyCTLDqLUptOokO7hMP+Omwn5J5iY7+UjobCSv3dphL0K8YjZjeJphWvmdmhcU/H84uAFQ==
+"@reactioncommerce/components@~0.69.0":
+  version "0.69.0"
+  resolved "https://registry.yarnpkg.com/@reactioncommerce/components/-/components-0.69.0.tgz#ed7751740ce58038acb930aa2f4c4db41b5e7df2"
+  integrity sha512-nE40mFSQOb3YfZwAt9OGm7uDa/1wSm+BVxDAJA/XAkr0UGMJk2oEvRaHrY9yzANwN1V2Qx0if2mtbARXxPYuSw==
   dependencies:
     "@babel/runtime" "~7.3.1"
     "@material-ui/core" "~3.1.0"

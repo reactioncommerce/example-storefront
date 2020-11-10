@@ -9,16 +9,23 @@ const styles = (theme) => ({
   footer: {
     alignItems: "center",
     display: "flex",
-    justifyContent: "center",
-    marginBottom: theme.spacing(2)
+    backgroundColor: '#2667e5',
+    color: '#fff',
+  },
+  footerLink: {
+    textDecoration: "none",
+    color: "#fff",
+    padding: 15,
+    display: "block",
+    width: "100%",
+    textAlign: "center",
+    fontWeight: 600
   }
 });
 
 const Footer = ({ ...props }) => (
   <footer className={props.classes.footer}>
-    <Typography variant="caption">
-      &copy; {date.getFullYear()} Reaction Commerce
-    </Typography>
+    <a href="http://localhost:4080" className={props.classes.footerLink}>Кабинет продавца</a>
   </footer>
 );
 

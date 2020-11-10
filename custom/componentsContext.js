@@ -62,10 +62,32 @@ import SelectableList from "@reactioncommerce/components/SelectableList/v1";
 import StockWarning from "@reactioncommerce/components/StockWarning/v1";
 import StripeForm from "@reactioncommerce/components/StripeForm/v1";
 import TextInput from "@reactioncommerce/components/TextInput/v1";
+import useTranslation from "../hooks/useTranslation";
 import withLocales from "../lib/utils/withLocales";
 
 // Providing locales data
-const AddressFormWithLocales = withLocales(AddressForm);
+const CustomAddressChoice = React.forwardRef((addressChoiceProps, ref) => {
+  const {t} = useTranslation("common");
+
+  return <AddressChoice otherAddressLabel={t("useDifferentAddress")}/>
+});
+const AddressFormWithLocales = withLocales(React.forwardRef((addressFormProps, ref) => {
+  const {t} = useTranslation("common");
+  const options = [{
+    id: "111",
+    label: t("paymentCashOrCard"),
+    value: "cashOrCard"
+  }];
+
+  return (
+    <SelectableList options={options} name="DefaultForm" value="cashOrCard"/>
+  );
+}));
+const CheckoutActionCompleteComponent = (checkoutActionCompleteProps) => {
+  const {t} = useTranslation("common");
+
+  return (<CheckoutActionComplete {...checkoutActionCompleteProps} changeButtonText={t("change")} />)
+};
 
 export default {
   Accordion,
@@ -73,7 +95,7 @@ export default {
   AddressBook,
   Address,
   AddressCapture,
-  AddressChoice,
+  AddressChoice: CustomAddressChoice,
   AddressForm: AddressFormWithLocales,
   AddressReview,
   BadgeOverlay,
@@ -86,7 +108,7 @@ export default {
   CatalogGridItem,
   Checkbox,
   CheckoutAction,
-  CheckoutActionComplete,
+  CheckoutActionComplete: CheckoutActionCompleteComponent,
   CheckoutActionIncomplete,
   ErrorsBlock,
   Field,

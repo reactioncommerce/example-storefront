@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { isEqual } from "lodash";
 import styled from "styled-components";
 import Actions from "@reactioncommerce/components/CheckoutActions/v1";
+import CartSummary from "@reactioncommerce/components/CartSummary/v1";
 import ShippingAddressCheckoutAction from "@reactioncommerce/components/ShippingAddressCheckoutAction/v1";
 import FulfillmentOptionsCheckoutAction from "@reactioncommerce/components/FulfillmentOptionsCheckoutAction/v1";
 import PaymentsCheckoutAction from "@reactioncommerce/components/PaymentsCheckoutAction/v1";
@@ -14,6 +15,7 @@ import Dialog from "@material-ui/core/Dialog";
 import PageLoading from "components/PageLoading";
 import Router from "translations/i18nRouter";
 import calculateRemainderDue from "lib/utils/calculateRemainderDue";
+import withTranslation from "hocs/withTranslation";
 import { placeOrderMutation } from "../../hooks/orders/placeOrder.gql";
 
 const MessageDiv = styled.div`
@@ -133,7 +135,7 @@ class CheckoutActions extends Component {
   };
 
   handlePaymentSubmit = (paymentInput) => {
-    this.props.cartStore.addCheckoutPayment(paymentInput);
+    this.props.cartStore.addCheckoutPayment({...paymentInput, displayName: "paymentCashOrCard"});
 
     this.setState({
       hasPaymentError: false,
@@ -252,7 +254,8 @@ class CheckoutActions extends Component {
       addressValidationResults,
       cart,
       cartStore,
-      paymentMethods
+      paymentMethods,
+      t
     } = this.props;
 
     const { checkout: { fulfillmentGroups, summary }, items } = cart;
@@ -286,9 +289,9 @@ class CheckoutActions extends Component {
     const actions = [
       {
         id: "1",
-        activeLabel: "Enter a shipping address",
-        completeLabel: "Shipping address",
-        incompleteLabel: "Shipping address",
+        activeLabel: t("shippingAddressFormLabel"),
+        completeLabel: t("shippingAddress"),
+        incompleteLabel: t("shippingAddress"),
         status: fulfillmentGroup.type !== "shipping" || fulfillmentGroup.shippingAddress ? "complete" : "incomplete",
         component: ShippingAddressCheckoutAction,
         onSubmit: this.setShippingAddress,
@@ -301,22 +304,23 @@ class CheckoutActions extends Component {
       },
       {
         id: "2",
-        activeLabel: "Choose a shipping method",
-        completeLabel: "Shipping method",
-        incompleteLabel: "Shipping method",
+        activeLabel: t("shippingMethodFormLabel"),
+        completeLabel: t("shippingMethod"),
+        incompleteLabel: t("shippingMethod"),
         status: fulfillmentGroup.selectedFulfillmentOption ? "complete" : "incomplete",
         component: FulfillmentOptionsCheckoutAction,
         onSubmit: this.setShippingMethod,
         props: {
           alert: actionAlerts["2"],
-          fulfillmentGroup
+          fulfillmentGroup,
+          emptyMessageLabelText: t("noFulfillmenMethods")
         }
       },
       {
         id: "3",
-        activeLabel: "Enter payment information",
-        completeLabel: "Payment information",
-        incompleteLabel: "Payment information",
+        activeLabel: t("paymentInfoFormLabel"),
+        completeLabel: t("paymentInfoFormLabel"),
+        incompleteLabel: t("paymentInfoFormLabel"),
         status: remainingAmountDue === 0 && !hasPaymentError ? "complete" : "incomplete",
         component: PaymentComponent,
         onSubmit: this.handlePaymentSubmit,
@@ -324,23 +328,36 @@ class CheckoutActions extends Component {
           addresses,
           alert: actionAlerts["3"],
           onReset: this.handlePaymentsReset,
-          payments,
-          paymentMethods,
-          remainingAmountDue
+          paymentMethods: [paymentMethods[1]],
+          billingAddressTitleText: null
         }
       },
       {
         id: "4",
-        activeLabel: "Review and place order",
-        completeLabel: "Review and place order",
-        incompleteLabel: "Review and place order",
+        activeLabel: t("reviewAndPlaceOrder"),
+        completeLabel: t("reviewAndPlaceOrder"),
+        incompleteLabel: t("reviewAndPlaceOrder"),
         status: "incomplete",
         component: FinalReviewCheckoutAction,
         onSubmit: this.buildOrder,
         props: {
           alert: actionAlerts["4"],
           checkoutSummary,
-          productURLPath: "/api/detectLanguage/product/"
+          productURLPath: "/api/detectLanguage/product/",
+          components: {
+            CartSummary: (cartSummaryProps) => (
+              <CartSummary
+                {...cartSummaryProps}
+                cartTitleText={t("cartTitle")}
+                itemsText={t("items")}
+                itemLabelText={t("itemsLabel")}
+                orderTotalLabelText={t("orderTotalLabel")}
+                shippingLabelText={t("shippingLabel")}
+                surchargesLabelText={t("surchargesLabel")}
+                taxLabelText={t("taxLabel")}
+              />
+            )
+          }
         }
       }
     ];
@@ -348,10 +365,15 @@ class CheckoutActions extends Component {
     return (
       <Fragment>
         {this.renderPlacingOrderOverlay()}
-        <Actions actions={actions} />
+        <Actions actions={actions}
+          cancelButtonText={t("cancel")}
+          isSavingButtonText={t("placingOrder")}
+          saveButtonText={t("saveAndContinue")}
+          isNotSavingButtonText={t("placeOrder")}
+        />
       </Fragment>
     );
   }
 }
 
-export default withAddressValidation(CheckoutActions);
+export default withAddressValidation((withTranslation("common")(CheckoutActions)));

@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import ChevronRight from "mdi-material-ui/ChevronRight";
 import Link from "components/Link";
 import SharedPropTypes from "lib/utils/SharedPropTypes";
+import withTranslation from "hocs/withTranslation";
 
 const styles = (theme) => ({
   container: {
@@ -104,15 +105,15 @@ class Breadcrumbs extends Component {
   }
 
   render() {
-    const { classes: { container, breadcrumbLink } } = this.props;
+    const { classes: { container, breadcrumbLink }, t } = this.props;
 
     return (
       <div className={container}>
-        <Link route="/"><span className={breadcrumbLink}>Home</span></Link>
+        <Link route="/"><span className={breadcrumbLink}>{t("home")}</span></Link>
         {this.renderBreadcrumbs()}
       </div>
     );
   }
 }
 
-export default withStyles(styles)(inject("tags")(Breadcrumbs));
+export default withStyles(styles)(inject("tags")(withTranslation("common")(Breadcrumbs)));

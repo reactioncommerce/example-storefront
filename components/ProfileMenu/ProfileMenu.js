@@ -13,6 +13,7 @@ import OrderIcon from "mdi-material-ui/Package";
 import { useRouter } from "next/router";
 import useAuthStore from "hooks/globalStores/useAuthStore";
 import Link from "components/Link";
+import useTranslation from "hooks/useTranslation";
 
 const useStyles = makeStyles((theme) => ({
   accountProfileInfoContainer: {
@@ -29,19 +30,20 @@ function ProfileMenu() {
   const classes = useStyles();
   const { account } = useAuthStore();
   const { asPath } = useRouter();
+  const {t} = useTranslation("common");
 
   const menuItems = [
     {
       href: "/profile/address",
       route: "/profile/address",
-      label: "Address Book",
+      label: t("addressBook"),
       isSelected: asPath.includes("/profile/address"),
       icon: <AddressbookIcon/>
     },
     {
       href: "/profile/orders",
       route: "/profile/orders",
-      label: "Orders",
+      label: t("orders"),
       isSelected: asPath.includes("/profile/orders"),
       icon: <OrderIcon/>
     }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import CartSummary from "@reactioncommerce/components/CartSummary/v1";
+import withTranslation from "hocs/withTranslation";
 
 class OrderCardSummary extends Component {
   static propTypes = {
@@ -25,7 +26,7 @@ class OrderCardSummary extends Component {
   }
 
   render() {
-    const { summary } = this.props;
+    const { summary, t } = this.props;
 
     if (summary) {
       const {
@@ -44,6 +45,13 @@ class OrderCardSummary extends Component {
           displaySurcharge={surchargeTotal && surchargeTotal.displayAmount}
           displayTax={taxTotal && taxTotal.displayAmount}
           displayTotal={total && total.displayAmount}
+          cartTitleText={t("cartTitle")}
+          itemsText={t("items")}
+          itemLabelText={t("itemsLabel")}
+          orderTotalLabelText={t("orderTotalLabel")}
+          shippingLabelText={t("shippingLabel")}
+          surchargesLabelText={t("surchargesLabel")}
+          taxLabelText={t("taxLabel")}
         />
       );
     }
@@ -52,4 +60,4 @@ class OrderCardSummary extends Component {
   }
 }
 
-export default OrderCardSummary;
+export default (withTranslation("common")(OrderCardSummary));

@@ -7,12 +7,16 @@ import useStores from "hooks/useStores";
 import { locales } from "translations/config";
 import useTranslation from "hooks/useTranslation";
 
+
 const useStyles = makeStyles((theme) => ({
   localeSelect: {
     margin: theme.spacing(0, 1)
   },
   localeSelectText: {
-    fontSize: "1rem"
+    fontSize: "1rem",
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '0.85rem',
+    },
   }
 }));
 

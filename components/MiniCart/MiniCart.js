@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import inject from "hocs/inject";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import MiniCartComponent from "@reactioncommerce/components/MiniCart/v1";
+import MiniCartSummary from "@reactioncommerce/components/MiniCartSummary/v1";
 import CartItems from "components/CartItems";
 import CartEmptyMessage from "@reactioncommerce/components/CartEmptyMessage/v1";
 import IconButton from "@material-ui/core/IconButton";
@@ -12,8 +13,9 @@ import Badge from "@material-ui/core/Badge";
 import Popper from "@material-ui/core/Popper";
 import Fade from "@material-ui/core/Fade";
 import withCart from "containers/cart/withCart";
+import withTranslation from "hocs/withTranslation";
 
-const styles = ({ palette, zIndex }) => ({
+const styles = ({ palette, zIndex, breakpoints }) => ({
   popper: {
     marginTop: "0.5rem",
     marginRight: "1rem",
@@ -34,7 +36,19 @@ const styles = ({ palette, zIndex }) => ({
     width: 20,
     height: 20,
     top: 10,
-    left: 20
+    left: 20,
+    [breakpoints.down('sm')]: {
+      fontSize: 11,
+      top: 7,
+      left: 3,
+      padding: 0,
+    },
+  },
+  minIcon: {
+    width: 'auto',
+    [breakpoints.down('sm')]: {
+      width: '20px',
+    },
   }
 });
 
@@ -122,13 +136,15 @@ class MiniCart extends Component {
   };
 
   renderMiniCart() {
-    const { cart, classes, hasMoreCartItems, loadMoreCartItems } = this.props;
+    const { cart, classes, hasMoreCartItems, loadMoreCartItems, t } = this.props;
 
     if (cart && Array.isArray(cart.items) && cart.items.length) {
       return (
         <MiniCartComponent
           cart={cart}
           onCheckoutButtonClick={this.handleCheckoutButtonClick}
+          checkoutButtonText={t("checkoutButton")}
+          footerMessageText={t("footerMessage")}
           components={{
             QuantityInput: "div",
             CartItems: (cartItemProps) => (
@@ -139,6 +155,13 @@ class MiniCart extends Component {
                 onChangeCartItemQuantity={this.handleItemQuantityChange}
                 onLoadMoreCartItems={loadMoreCartItems}
               />
+            ),
+            MiniCartSummary: (miniCartSummaryProps) => (
+              <MiniCartSummary
+                {...miniCartSummaryProps}
+                subtotalLabelText={t("total")}
+                taxLabelText={t("tax")}
+              />
             )
           }}
         />
@@ -148,7 +171,7 @@ class MiniCart extends Component {
     return (
       <div className={classes.emptyCart}>
         <div>
-          <CartEmptyMessage onClick={this.handleClick} />
+          <CartEmptyMessage onClick={this.handleClick} buttonText={t("emptyButton")} messageText={t("emptyText")} />
         </div>
       </div>
     );
@@ -174,10 +197,10 @@ class MiniCart extends Component {
                   color="primary"
                   classes={{ badge: classes.badge }}
                 >
-                  <CartIcon />
+                  <CartIcon className={classes.minIcon} />
                 </Badge>
               )
-              : <CartIcon />
+              : <CartIcon className={classes.minIcon} />
             }
           </IconButton>
         </div>
@@ -204,4 +227,4 @@ class MiniCart extends Component {
   }
 }
 
-export default withStyles(styles, { name: "SkMiniCart" })(withCart(inject("uiStore")(MiniCart)));
+export default withStyles(styles, { name: "SkMiniCart" })(withCart(inject("uiStore")(withTranslation("common")(MiniCart))));
