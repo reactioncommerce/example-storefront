@@ -7,7 +7,6 @@ const date = new Date();
 
 const styles = (theme) => ({
   footer: {
-    marginTop: 'auto',
     alignItems: "center",
     display: "flex",
     backgroundColor: '#2667e5',
