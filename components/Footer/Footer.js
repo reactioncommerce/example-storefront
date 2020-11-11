@@ -11,6 +11,11 @@ const styles = (theme) => ({
     display: "flex",
     backgroundColor: '#2667e5',
     color: '#fff',
+    position: 'fixed',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    marginTop: '50px'
   },
   footerLink: {
     textDecoration: "none",
