@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import analytics from "lib/analytics";
 
-
 /**
  * Initialize the analytic provider
  * @returns {Object} useInitAnalytics

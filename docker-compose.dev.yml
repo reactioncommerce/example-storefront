@@ -8,7 +8,7 @@
 # To go back to running the published image:
 #  rm docker-compose.override.yml
 
-version: "3.4"
+version: '3.4'
 
 services:
   web:

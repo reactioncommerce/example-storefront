@@ -1,10 +1,11 @@
+import { useState } from "react";
 import { isWidthUp } from "@material-ui/core/withWidth";
 import Router from "translations/i18nRouter";
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import variantById from "lib/utils/variantById";
 import useStores from "hooks/useStores";
 import useWidth from "hooks/useWidth";
-import useProductViewedEvent from "hooks/analytics/useProductViewedEvent";
+import useTrackerEvents from "hooks/analytics/useTrackerEvents";
 
 /**
  * Hook to process product details
@@ -16,36 +17,38 @@ import useProductViewedEvent from "hooks/analytics/useProductViewedEvent";
 export default function useProductDetail({ addItemsToCart, currencyCode, product }) {
   const width = useWidth();
   const { uiStore, routingStore } = useStores();
-  const trackProductViewedEvent = useProductViewedEvent();
-  const { openCartWithTimeout, pdpSelectedOptionId, pdpSelectedVariantId } = uiStore;
+  const [selectedVariant, setSelectedVariant] = useState(null);
+  const {
+    trackProductViewedEvent,
+    trackProductAddedEvent,
+    trackCartViewedEvent
+  } = useTrackerEvents();
+  const { openCartWithTimeout } = uiStore;
 
   const selectVariant = (variant, optionId) => {
-    // Select the variant, and if it has options, the first option
-    const variantId = variant._id;
-    let selectOptionId = optionId;
-    if (!selectOptionId && variant.options && variant.options.length) {
-      selectOptionId = variant.options[0]._id;
-    }
+    const firstOption = variant?.options && variant.options[0];
+    const selectedVariantOption = optionId && variantById(variant.options, optionId);
+    const variantOrOptionId = optionId || firstOption?._id || variant._id;
+    const url = `/product/${product.slug}/${variantOrOptionId}`;
 
-    const url = `/product/${product.slug}/${selectOptionId || variantId}`;
-    trackProductViewedEvent({ product, variant, optionId: selectOptionId, url });
-    uiStore.setPDPSelectedVariantId(variantId, selectOptionId);
+    setSelectedVariant(selectedVariantOption || firstOption || variant);
+    // TODO: delete this
+    uiStore.setPDPSelectedVariantId(variant._id, variantOrOptionId);
     Router.replace("/product/[...slugOrId]", url);
+    // pass the url here because we have to wait for the route transition from Router.replace();
+    // if that page is not pre-rendered, it's gonna take a while to be fully loaded
+    trackProductViewedEvent({ product, variant, optionId: variantOrOptionId, url });
   };
 
   // Called when the add to cart button is clicked
   const handleAddToCartClick = async (quantity) => {
-    // Get selected variant or variant option
-    const selectedVariant = variantById(product.variants, pdpSelectedVariantId);
-    const selectedOption = variantById(selectedVariant.options, pdpSelectedOptionId);
-    const selectedVariantOrOption = selectedOption || selectedVariant;
-
-    if (selectedVariantOrOption) {
+    if (selectedVariant && selectedVariant?.pricing) {
       // Get the price for the currently selected variant or variant option
-      const price = priceByCurrencyCode(currencyCode, selectedVariantOrOption.pricing);
+      const price = priceByCurrencyCode(currencyCode, selectedVariant.pricing);
 
+      // TODO: useCart
       // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
-      await addItemsToCart([
+      const { data } = await addItemsToCart([
         {
           price: {
             amount: price.price,
@@ -53,11 +56,36 @@ export default function useProductDetail({ addItemsToCart, currencyCode, product
           },
           productConfiguration: {
             productId: product.productId, // Pass the productId, not to be confused with _id
-            productVariantId: selectedVariantOrOption.variantId // Pass the variantId, not to be confused with _id
+            productVariantId: selectedVariant.variantId // Pass the variantId, not to be confused with _id
           },
           quantity
         }
       ]);
+
+      if (data) {
+        // The response data will be in either `createCart` or `addCartItems` prop
+        // depending on the type of user, either authenticated or anonymous.
+        const { cart } = data.createCart || data.addCartItems;
+        const { edges: items } = cart.items;
+
+        // TODO: check url
+        trackProductAddedEvent({
+          product,
+          variant: {
+            ...selectedVariant,
+            cart_id: cart._id, // eslint-disable-line camelcase
+            quantity
+          },
+          optionId: selectedVariant._id
+        });
+
+
+        // The mini cart popper will open automatically after adding an item to the cart,
+        // therefore, a CART_VIEWED event is published.
+        // debugger // eslint-disable-line
+        trackCartViewedEvent({ cartItems: items, cartId: cart._id }); // eslint-disable-line camelcase
+
+      }
     }
     if (isWidthUp("md", width)) {
       // Open the cart, and close after a 3 second delay
@@ -68,13 +96,9 @@ export default function useProductDetail({ addItemsToCart, currencyCode, product
   // Determines a product's price given the shop's currency code. It will
   // use the selected option if available, otherwise it will use the selected variant.
   const determineProductPrice = () => {
-    const selectedVariant = variantById(product.variants, pdpSelectedVariantId);
     let productPrice = {};
 
-    if (pdpSelectedOptionId && selectedVariant) {
-      const selectedOption = variantById(selectedVariant.options, pdpSelectedOptionId);
-      productPrice = priceByCurrencyCode(currencyCode, selectedOption.pricing);
-    } else if (!pdpSelectedOptionId && selectedVariant) {
+    if (selectedVariant && selectedVariant?.pricing) {
       productPrice = priceByCurrencyCode(currencyCode, selectedVariant.pricing);
     }
 
@@ -88,21 +112,9 @@ export default function useProductDetail({ addItemsToCart, currencyCode, product
   // If we have a selected variant (we always should)
   // check to see if media is available, and use media instead
   // Revert to original media if variant doesn't have specific media
-  const selectedVariant = product.variants.find((variant) => variant._id === pdpSelectedVariantId);
   if (selectedVariant) {
-    if (selectedVariant.media && selectedVariant.media.length) {
+    if (selectedVariant && selectedVariant?.media && selectedVariant.media.length) {
       pdpMediaItems = selectedVariant.media;
-    }
-
-    // If we have a selected option, do the same check
-    // Will revert to variant check if no option media is available
-    if (Array.isArray(selectedVariant.options) && selectedVariant.options.length) {
-      const selectedOption = selectedVariant.options.find((option) => option._id === pdpSelectedOptionId);
-      if (selectedOption) {
-        if (selectedOption.media && selectedOption.media.length) {
-          pdpMediaItems = selectedOption.media;
-        }
-      }
     }
   }
 
