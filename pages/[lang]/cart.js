@@ -19,6 +19,7 @@ import { withApollo } from "lib/apollo/withApollo";
 import { locales } from "translations/config";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchTranslations from "staticUtils/translations/fetchTranslations";
+import useTrackerEvents from "hooks/analytics/useTrackerEvents";
 
 const styles = (theme) => ({
   cartEmptyMessageContainer: {

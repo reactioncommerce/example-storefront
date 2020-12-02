@@ -5,6 +5,7 @@ import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import variantById from "lib/utils/variantById";
 import useStores from "hooks/useStores";
 import useWidth from "hooks/useWidth";
+import useCart from "hooks/cart/useCart";
 import useTrackerEvents from "hooks/analytics/useTrackerEvents";
 
 /**
@@ -14,16 +15,19 @@ import useTrackerEvents from "hooks/analytics/useTrackerEvents";
  * @param {Object} product product
  * @returns {Object} the product details functions
  */
-export default function useProductDetail({ addItemsToCart, currencyCode, product }) {
+export default function useProductDetail({ currencyCode, product }) {
   const width = useWidth();
+  const { addItemsToCart } = useCart();
   const { uiStore, routingStore } = useStores();
+  const { openCartWithTimeout } = uiStore;
   const [selectedVariant, setSelectedVariant] = useState(null);
+  const [selectedVariantUrl, setSelectedVariantUrl] = useState(null);
+
   const {
     trackProductViewedEvent,
     trackProductAddedEvent,
     trackCartViewedEvent
   } = useTrackerEvents();
-  const { openCartWithTimeout } = uiStore;
 
   const selectVariant = (variant, optionId) => {
     const firstOption = variant?.options && variant.options[0];
@@ -31,29 +35,31 @@ export default function useProductDetail({ addItemsToCart, currencyCode, product
     const variantOrOptionId = optionId || firstOption?._id || variant._id;
     const url = `/product/${product.slug}/${variantOrOptionId}`;
 
+    setSelectedVariantUrl(url);
     setSelectedVariant(selectedVariantOption || firstOption || variant);
-    // TODO: delete this
     uiStore.setPDPSelectedVariantId(variant._id, variantOrOptionId);
-    Router.replace("/product/[...slugOrId]", url);
     // pass the url here because we have to wait for the route transition from Router.replace();
     // if that page is not pre-rendered, it's gonna take a while to be fully loaded
+    // I don't want to wait for that url
     trackProductViewedEvent({ product, variant, optionId: variantOrOptionId, url });
+    Router.replace("/product/[...slugOrId]", url);
   };
 
   // Called when the add to cart button is clicked
   const handleAddToCartClick = async (quantity) => {
-    if (selectedVariant && selectedVariant?.pricing) {
+    if (selectedVariant) {
       // Get the price for the currently selected variant or variant option
-      const price = priceByCurrencyCode(currencyCode, selectedVariant.pricing);
-
-      // TODO: useCart
-      // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
+      const price = priceByCurrencyCode(currencyCode, selectedVariant?.pricing);
       const { data } = await addItemsToCart([
         {
           price: {
             amount: price.price,
             currencyCode
           },
+          // productId: Collection product's id
+          // variantId: Collection product's id (variant)
+          // product._id: Collection catalog's id
+          // variant._id: Collection catalog's id (variant)
           productConfiguration: {
             productId: product.productId, // Pass the productId, not to be confused with _id
             productVariantId: selectedVariant.variantId // Pass the variantId, not to be confused with _id
@@ -65,25 +71,26 @@ export default function useProductDetail({ addItemsToCart, currencyCode, product
       if (data) {
         // The response data will be in either `createCart` or `addCartItems` prop
         // depending on the type of user, either authenticated or anonymous.
-        const { cart } = data.createCart || data.addCartItems;
-        const { edges: items } = cart.items;
+        const { cart } = data?.createCart || data?.addCartItems;
+        const { edges: items } = cart?.items;
 
-        // TODO: check url
         trackProductAddedEvent({
           product,
           variant: {
             ...selectedVariant,
-            cart_id: cart._id, // eslint-disable-line camelcase
+            cart_id: cart?._id, // eslint-disable-line camelcase
             quantity
           },
-          optionId: selectedVariant._id
+          optionId: selectedVariant._id,
+          url: selectedVariantUrl
         });
-
 
         // The mini cart popper will open automatically after adding an item to the cart,
         // therefore, a CART_VIEWED event is published.
-        // debugger // eslint-disable-line
-        trackCartViewedEvent({ cartItems: items, cartId: cart._id }); // eslint-disable-line camelcase
+        trackCartViewedEvent({
+          cartItems: items,
+          cartId: cart._id
+        });
 
       }
     }

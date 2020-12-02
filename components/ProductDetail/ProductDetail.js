@@ -32,7 +32,10 @@ const useStyles = makeStyles((theme) => ({
  * @param {Object} props Component props
  * @returns {React.Component} React component node that represents a product detail view
  */
-const ProductDetail = (props) => {
+const ProductDetail = ({
+  currencyCode,
+  product
+}) => {
   const {
     selectVariant,
     determineProductPrice,
@@ -40,10 +43,11 @@ const ProductDetail = (props) => {
     width,
     uiStore,
     routingStore,
-    currencyCode,
-    product,
     pdpMediaItems
-  } = useProductDetail(props);
+  } = useProductDetail({
+    currencyCode,
+    product
+  });
 
   const classes = useStyles();
   const { pdpSelectedOptionId, pdpSelectedVariantId } = uiStore;
@@ -60,12 +64,12 @@ const ProductDetail = (props) => {
   // Called when an option is selected in the option list
   const handleSelectOption = (option) => {
     // If we are clicking an option, it must be for the current selected variant
-    const variant = product.variants.find((vnt) => vnt._id === uiStore.pdpSelectedVariantId);
+    const variant = product.variants.find((vnt) => vnt._id === pdpSelectedVariantId);
     selectVariant(variant, option._id);
   };
 
   const productPrice = determineProductPrice();
-  const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
+  const compareAtDisplayPrice = (productPrice?.compareAtPrice?.displayAmount) || null;
 
 
   // Phone size
@@ -156,10 +160,8 @@ const ProductDetail = (props) => {
 };
 
 ProductDetail.propTypes = {
-  addItemsToCart: PropTypes.func,
   currencyCode: PropTypes.string.isRequired,
-  product: PropTypes.object,
-  shop: PropTypes.object.isRequired
+  product: PropTypes.object
 };
 
 export default (ProductDetail);

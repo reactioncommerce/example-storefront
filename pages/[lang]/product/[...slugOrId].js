@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { useRouter } from "next/router";
 import Typography from "@material-ui/core/Typography";
-import withCart from "containers/cart/withCart";
 import ProductDetail from "components/ProductDetail";
 import PageLoading from "components/PageLoading";
 import Layout from "components/Layout";
@@ -68,13 +67,12 @@ function buildJSONLd(product, shop) {
 /**
  * Layout for the product detail page
  *
- * @param {Function} addItemsToCart - function to call to add items to cart
  * @param {Object} product - the product
  * @param {Boolean} isLoadingProduct - loading indicator
  * @param {Object} shop - the shop this product belong to
  * @return {React.Component} The product detail page
  */
-function ProductDetailPage({ addItemsToCart, product, isLoadingProduct, shop }) {
+function ProductDetailPage({ product, isLoadingProduct, shop }) {
   const router = useRouter();
   const currencyCode = (shop && shop.currency.code) || "USD";
   const JSONLd = useMemo(() => {
@@ -95,23 +93,14 @@ function ProductDetailPage({ addItemsToCart, product, isLoadingProduct, shop }) 
         script={[{ type: "application/ld+json", innerHTML: JSONLd }]}
       />
       <ProductDetail
-        addItemsToCart={addItemsToCart}
         currencyCode={currencyCode}
         product={product}
-        shop={shop}
       />
     </Layout>
   );
 }
 
 ProductDetailPage.propTypes = {
-  /**
-   * Function to add items to a cart, usually using the addItemsToCart from @withCart decorator.
-   *
-   * @example addItemsToCart(CartItemInput)
-   * @type function
-   */
-  addItemsToCart: PropTypes.func,
   isLoadingProduct: PropTypes.bool,
   /**
    * Catalog Product item
@@ -171,4 +160,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default withApollo()(withCart(ProductDetailPage));
+export default withApollo()(ProductDetailPage);

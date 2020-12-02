@@ -12,6 +12,7 @@ import Fade from "@material-ui/core/Fade";
 import useStores from "hooks/useStores";
 import useCart from "hooks/cart/useCart";
 import { makeStyles } from "@material-ui/core/styles";
+import useTrackerEvents from "hooks/analytics/useTrackerEvents";
 
 const useStyles = makeStyles(({ palette, zIndex }) => ({
   popper: {
@@ -46,10 +47,20 @@ const MiniCart = () => {
   const { hasMoreCartItems, loadMoreCartItems, cart: cartItems } = cart;
   const [anchorElement, setPopoverAnchorEl] = useState(null);
 
+  const {
+    trackCartViewedEvent
+  } = useTrackerEvents();
+
   const handlePopperOpen = () => {
-    const {
-      openCart
-    } = uiStore;
+    const { openCart } = uiStore;
+    // Track a cart view event, only if the cart contains items
+    if (cartItems?.items && Array.isArray(cartItems.items) && cartItems.items.length) {
+      trackCartViewedEvent({
+        cartItems: cartItems.items,
+        cartId: cartItems._id
+      });
+    }
+
     openCart();
   };
 
