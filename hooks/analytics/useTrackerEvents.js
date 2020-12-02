@@ -7,6 +7,7 @@ import trackCartItems from "lib/tracking/trackCartItems";
 const {
   PRODUCT_VIEWED,
   PRODUCT_ADDED,
+  PRODUCT_REMOVED,
   CART_VIEWED
 } = TRACKING;
 
@@ -31,6 +32,13 @@ export default function useTrackerEvents() {
     track(PRODUCT_ADDED, data);
   };
 
+  // TODO: we need the variant and product data to track this properly
+  // https://segment.com/docs/connections/spec/ecommerce/v2/#product-removed
+  const trackProductRemoveEvent = (payload) => {
+    const data = trackCartItems({ ...payload, url, locale: query.lang });
+    track(PRODUCT_REMOVED, data);
+  };
+
   // TODO: add url variant and url_media variant
   // https://segment.com/docs/connections/spec/ecommerce/v2/#cart-viewed
   const trackCartViewedEvent = (payload) => {
@@ -41,6 +49,7 @@ export default function useTrackerEvents() {
   return {
     trackProductViewedEvent,
     trackProductAddedEvent,
+    trackProductRemoveEvent,
     trackCartViewedEvent
   };
 }
