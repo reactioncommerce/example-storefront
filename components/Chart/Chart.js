@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { CardContent, CircularProgress, Card } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles({
   root: {
@@ -43,3 +44,9 @@ const Chart = (props) => {
 };
 
 export default Chart;
+
+Chart.propTypes = {
+  color: PropTypes.string,
+  label: PropTypes.string,
+  value: PropTypes.number
+};

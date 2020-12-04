@@ -86,7 +86,7 @@ class Header extends Component {
           <MiniCart />
         </Toolbar>
         <NavigationMobile />
-        <Chart label={shop.name} value={Math.random()} color={'#d1383d'}/>
+        <Chart label={shop.name} value={Math.random()} color={"#d1383d"}/>
       </AppBar>
     );
   }
