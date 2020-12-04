@@ -23,19 +23,20 @@ const useStyles = makeStyles({
     position: "absolute",
     top: 81,
     right: 49,
-    fontSize: '14px'
+    fontSize: "14px"
   }
 });
 
 const Chart = (props) => {
-  const { value, name } = props;
+  const { value, label } = props;
   const classes = useStyles(props);
+  const roundValue = Math.round(value * 100);
   return (
     <Card className={classes.root}>
       <CardContent className={classes.content}>
-        <Typography component="div" variant="body1">{name}</Typography>
-        <Typography className={classes.value} component="div" variant="body1">{Math.round(value * 100)}%</Typography>
-        <CircularProgress colorSecondary='grey'className={classes.progress} variant="static" value={Math.round(value * 100)} size={60}/>
+        <Typography component="div" variant="body1">{label}</Typography>
+        <Typography className={classes.value} component="div" variant="body1">{roundValue}%</Typography>
+        <CircularProgress className={classes.progress} variant="static" value={roundValue} size={60}/>
       </CardContent>
     </Card>
   );
