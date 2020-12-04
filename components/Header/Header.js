@@ -13,6 +13,7 @@ import AccountDropdown from "components/AccountDropdown";
 import ShopLogo from "@reactioncommerce/components/ShopLogo/v1";
 import Link from "components/Link";
 import MiniCart from "components/MiniCart";
+import Chart from "components/Chart";
 
 const styles = (theme) => ({
   appBar: {
@@ -85,6 +86,7 @@ class Header extends Component {
           <MiniCart />
         </Toolbar>
         <NavigationMobile />
+        <Chart name={shop.name} value={Math.random()} color={'#d1383d'}/>
       </AppBar>
     );
   }
