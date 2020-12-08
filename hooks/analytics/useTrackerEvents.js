@@ -96,7 +96,7 @@ export default function useTrackerEvents() {
   };
 
   // https://segment.com/docs/connections/spec/ecommerce/v2/#product-list-viewed
-  const trackProductListedEvent = (payload) => {
+  const trackProductListViewedEvent = (payload) => {
     const data = trackProductListViewed(payload);
     track(PRODUCT_LIST_VIEWED, data);
   };
@@ -112,6 +112,6 @@ export default function useTrackerEvents() {
     trackOrderCompleted,
     trackPaymentInfoEntered,
     trackProductClickedEvent,
-    trackProductListedEvent
+    trackProductListViewedEvent
   };
 }

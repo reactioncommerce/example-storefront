@@ -1,44 +1,37 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import CatalogGrid from "@reactioncommerce/components/CatalogGrid/v1";
 import PageLoading from "components/PageLoading";
 import PageStepper from "components/PageStepper";
 import PageSizeSelector from "components/PageSizeSelector";
 import SortBySelector from "components/SortBySelector";
 import ProductGridEmptyMessage from "./ProductGridEmptyMessage";
+import useTrackerEvents from "hooks/analytics/useTrackerEvents";
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   filters: {
     justifyContent: "flex-end",
     marginBottom: theme.spacing(2)
   }
-});
+}));
 
-class ProductGrid extends Component {
-  static propTypes = {
-    catalogItems: PropTypes.arrayOf(PropTypes.object),
-    classes: PropTypes.object,
-    currencyCode: PropTypes.string.isRequired,
-    isLoadingCatalogItems: PropTypes.bool,
-    pageInfo: PropTypes.shape({
-      startCursor: PropTypes.string,
-      endCursor: PropTypes.string,
-      hasNextPage: PropTypes.bool,
-      hasPreviousPage: PropTypes.bool,
-      loadNextPage: PropTypes.func,
-      loadPreviousPage: PropTypes.func
-    }),
-    pageSize: PropTypes.number.isRequired,
-    setPageSize: PropTypes.func.isRequired,
-    setSortBy: PropTypes.func.isRequired,
-    sortBy: PropTypes.string.isRequired
-  };
+const ProductGrid = (props) => {
+  const classes = useStyles();
+  const {
+    pageSize,
+    setPageSize,
+    setSortBy,
+    sortBy,
+    catalogItems,
+    isLoadingCatalogItems,
+    pageInfo
+  } = props;
 
-  renderFilters() {
-    const { classes, pageSize, setPageSize, setSortBy, sortBy } = this.props;
+  const { trackProductClickedEvent } = useTrackerEvents();
 
+  const renderFilters = () => {
     return (
       <Grid container spacing={1} className={classes.filters}>
         <Grid item>
@@ -51,9 +44,7 @@ class ProductGrid extends Component {
     );
   }
 
-  renderMainArea() {
-    const { catalogItems, isLoadingCatalogItems, pageInfo } = this.props;
-
+  const renderMainArea = () => {
     if (isLoadingCatalogItems) return <PageLoading />;
 
     const products = (catalogItems || []).map((item) => item.node.product);
@@ -64,8 +55,14 @@ class ProductGrid extends Component {
         <Grid container spacing={3}>
           <CatalogGrid
             products={products}
+            // TODO: onItemClick is ignored because React doesn't recognize it as a custom prop
+            // reactjs.org/warnings/unknown-prop.html
+            onItemClick={(event, product) => {
+              event.preventDefault();
+              trackProductClickedEvent({ product })
+            }}
             placeholderImageURL="/images/placeholder.gif"
-            {...this.props}
+            {...props}
           />
         </Grid>
         {pageInfo && <PageStepper pageInfo={pageInfo} />}
@@ -73,14 +70,31 @@ class ProductGrid extends Component {
     );
   }
 
-  render() {
-    return (
-      <Fragment>
-        {this.renderFilters()}
-        {this.renderMainArea()}
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment>
+      {renderFilters()}
+      {renderMainArea()}
+    </Fragment>
+  );
 }
 
-export default withStyles(styles)(ProductGrid);
+ProductGrid.propTypes = {
+  catalogItems: PropTypes.arrayOf(PropTypes.object),
+  classes: PropTypes.object,
+  currencyCode: PropTypes.string.isRequired,
+  isLoadingCatalogItems: PropTypes.bool,
+  pageInfo: PropTypes.shape({
+    startCursor: PropTypes.string,
+    endCursor: PropTypes.string,
+    hasNextPage: PropTypes.bool,
+    hasPreviousPage: PropTypes.bool,
+    loadNextPage: PropTypes.func,
+    loadPreviousPage: PropTypes.func
+  }),
+  pageSize: PropTypes.number.isRequired,
+  setPageSize: PropTypes.func.isRequired,
+  setSortBy: PropTypes.func.isRequired,
+  sortBy: PropTypes.string.isRequired
+};
+
+export default ProductGrid;
