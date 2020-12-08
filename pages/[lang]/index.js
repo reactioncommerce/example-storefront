@@ -76,7 +76,7 @@ const ProductGridPage = (props) => {
       />
     </Layout>
   );
-}
+};
 
 ProductGridPage.propTypes = {
   catalogItems: PropTypes.array,

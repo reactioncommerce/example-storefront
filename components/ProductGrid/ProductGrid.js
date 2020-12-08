@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp */
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
@@ -7,8 +8,8 @@ import PageLoading from "components/PageLoading";
 import PageStepper from "components/PageStepper";
 import PageSizeSelector from "components/PageSizeSelector";
 import SortBySelector from "components/SortBySelector";
-import ProductGridEmptyMessage from "./ProductGridEmptyMessage";
 import useTrackerEvents from "hooks/analytics/useTrackerEvents";
+import ProductGridEmptyMessage from "./ProductGridEmptyMessage";
 
 const useStyles = makeStyles((theme) => ({
   filters: {
@@ -31,18 +32,16 @@ const ProductGrid = (props) => {
 
   const { trackProductClickedEvent } = useTrackerEvents();
 
-  const renderFilters = () => {
-    return (
-      <Grid container spacing={1} className={classes.filters}>
-        <Grid item>
-          <PageSizeSelector pageSize={pageSize} onChange={setPageSize} />
-        </Grid>
-        <Grid item>
-          <SortBySelector sortBy={sortBy} onChange={setSortBy} />
-        </Grid>
+  const renderFilters = () => (
+    <Grid container spacing={1} className={classes.filters}>
+      <Grid item>
+        <PageSizeSelector pageSize={pageSize} onChange={setPageSize} />
       </Grid>
-    );
-  }
+      <Grid item>
+        <SortBySelector sortBy={sortBy} onChange={setSortBy} />
+      </Grid>
+    </Grid>
+  );
 
   const renderMainArea = () => {
     if (isLoadingCatalogItems) return <PageLoading />;
@@ -59,7 +58,7 @@ const ProductGrid = (props) => {
             // reactjs.org/warnings/unknown-prop.html
             onItemClick={(event, product) => {
               event.preventDefault();
-              trackProductClickedEvent({ product })
+              trackProductClickedEvent({ product });
             }}
             placeholderImageURL="/images/placeholder.gif"
             {...props}
@@ -68,7 +67,7 @@ const ProductGrid = (props) => {
         {pageInfo && <PageStepper pageInfo={pageInfo} />}
       </Fragment>
     );
-  }
+  };
 
   return (
     <Fragment>
@@ -76,7 +75,7 @@ const ProductGrid = (props) => {
       {renderMainArea()}
     </Fragment>
   );
-}
+};
 
 ProductGrid.propTypes = {
   catalogItems: PropTypes.arrayOf(PropTypes.object),

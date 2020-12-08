@@ -7,6 +7,7 @@ import trackCheckout from "lib/tracking/trackCheckout";
 import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
 import trackOrder from "lib/tracking/trackOrder";
 import trackProductListViewed from "lib/tracking/trackProductListViewed";
+import trackProductClicked from "lib/tracking/trackProductClicked";
 
 const {
   PRODUCT_VIEWED,
