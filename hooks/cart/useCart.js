@@ -356,13 +356,13 @@ export default function useCart() {
     onRemoveCartItems: handleRemoveCartItems,
     removeCartItemsLoading,
     clearAuthenticatedUsersCart: () => {
-      if (viewer && viewer._id) {
+      if (viewer?._id) {
         apolloClient.cache.writeQuery({
           query: accountCartByAccountIdQuery,
           data: { cart: null },
           variables: {
-            accountId: viewer && viewer._id,
-            shopId: shop && shop._id
+            accountId: viewer?._id,
+            shopId: shop?._id
           }
         });
       }

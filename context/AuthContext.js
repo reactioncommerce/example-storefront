@@ -30,6 +30,7 @@ function splitNames(account) {
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const [identified, setIdentified] = useState(false);
   const [accountId, setAccountId] = useState(null);
   const [accessToken, setAccessToken] = useState(null);
   const [account, _setAccount] = useState({});
@@ -61,7 +62,9 @@ export const AuthProvider = ({ children }) => {
       accessToken,
       setAccount,
       setAccessToken,
-      isAuthenticated: !!accountId
+      isAuthenticated: !!accountId,
+      identified,
+      setIdentified
     }}
     >
       {children}

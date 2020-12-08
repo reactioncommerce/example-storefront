@@ -23,6 +23,7 @@ import definedPaymentMethods from "custom/paymentMethods";
 import { locales } from "translations/config";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchTranslations from "staticUtils/translations/fetchTranslations";
+import useAddressValidation from "hooks/address/useAddressValidation";
 
 const useStyles = makeStyles((theme) => ({
   checkoutActions: {
@@ -93,8 +94,7 @@ const Checkout = ({ router }) => {
   const shop = useShop();
   const { locale, t } = useTranslation("common"); // eslint-disable-line no-unused-vars, id-length
   const apolloClient = useApolloClient();
-  // TODO: implement address validation
-  // const [addressValidation, addressValidationResults] = useAddressValidation();
+  const [addressValidation, addressValidationResults] = useAddressValidation();
   const [stripe, setStripe] = useState();
 
   const {
@@ -181,6 +181,8 @@ const Checkout = ({ router }) => {
                         clearAuthenticatedUsersCart={clearAuthenticatedUsersCart}
                         orderEmailAddress={orderEmailAddress}
                         paymentMethods={paymentMethods}
+                        addressValidation={addressValidation}
+                        addressValidationResults={addressValidationResults}
                       />
                     </div>
                   </div>

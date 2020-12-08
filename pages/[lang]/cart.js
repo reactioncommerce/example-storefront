@@ -54,7 +54,7 @@ const CartPage = (props) => {
     hasMoreCartItems,
     loadMoreCartItems,
     onChangeCartItemsQuantity,
-    onRemoveCartItems,
+    onRemoveCartItems
   } = useCart();
 
   const {
@@ -117,7 +117,7 @@ const CartPage = (props) => {
         <CartEmptyMessage onClick={handleClick} />
       </Grid>
     );
-  }
+  };
 
   const renderCartSummary = () => {
     if (cart?.checkout?.summary && Array.isArray(cart.items) && cart.items.length) {
@@ -141,7 +141,7 @@ const CartPage = (props) => {
     }
 
     return null;
-  }
+  };
 
   // when a user has no item in cart in a new session, cart is null
   // when the app is still loading, cart is undefined
@@ -175,7 +175,7 @@ const CartPage = (props) => {
       </section>
     </Layout>
   );
-}
+};
 
 
 CartPage.propTypes = {

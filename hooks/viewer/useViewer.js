@@ -12,7 +12,14 @@ import viewerQuery from "./viewer.gql";
 export default function useViewer() {
   const { authStore } = useStores();
   const { identify } = useAnalytics();
-  const { account, setAccount, accessToken } = authStore;
+
+  const {
+    account,
+    setAccount,
+    accessToken,
+    identified,
+    setIdentified
+  } = authStore;
 
   const { loading, data, refetch } = useQuery(viewerQuery, {
     skip: !accessToken
@@ -29,16 +36,18 @@ export default function useViewer() {
   useEffect(() => {
     if (viewer) {
       setAccount(viewer);
-
       // identify the user
       const isAuthenticated = viewer?._id;
 
       if (isAuthenticated) {
-        identify(isAuthenticated, {
+        !identified && identify(isAuthenticated, {
           firstName: viewer?.firstName,
           lastName: viewer?.lastName,
           email: viewer.primaryEmailAddress
         });
+        setIdentified(true);
+      } else {
+        setIdentified(false);
       }
     }
   }, [viewer]);

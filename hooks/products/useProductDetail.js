@@ -91,7 +91,6 @@ export default function useProductDetail({ currencyCode, product }) {
           cartItems: items,
           cartId: cart._id
         });
-
       }
     }
     if (isWidthUp("md", width)) {
