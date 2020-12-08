@@ -62,12 +62,34 @@ const CheckoutActions = (props) => {
     setActionAlerts({ ...actionAlerts, ...action });
   };
 
+  const shippingMethodData = () => {
+    const { selectedFulfillmentOption } = fulfillmentGroups[0];
+    return selectedFulfillmentOption ? selectedFulfillmentOption.fulfillmentMethod.displayName : null;
+  };
+
+  const paymentMethodData = () => {
+    const [firstPayment] = cartStore.checkoutPayments;
+    return firstPayment ? firstPayment.payment.method : null;
+  };
+
+  const handleValidationErrors = () => {
+    const { validationErrors } = addressValidationResults || [];
+    const shippingAlert = validationErrors && validationErrors.length ? {
+      alertType: validationErrors[0].type,
+      title: validationErrors[0].summary,
+      message: validationErrors[0].details
+    } : null;
+
+    handleActionAlerts({ 1: shippingAlert });
+  };
+
   useEffect(() => {
     setSelectedPaymentMethod(paymentMethodData());
     setSelectedShippingMethod(shippingMethodData());
-  }, [cart, cartStore]);
+  }, [cart.checkout, cartStore.checkoutPayments]);
 
   useEffect(() => {
+    // track the checkout started
     trackCheckoutStartedEvent({ cart });
 
     const [fulfillmentGroup] = fulfillmentGroups;
@@ -86,6 +108,7 @@ const CheckoutActions = (props) => {
     if (!fulfillmentGroup.shippingAddress) {
       trackCheckoutStepViewed({
         step: 1,
+        // TODO: not sure if checkout_id can be the same cart id
         checkout_id: cart._id, // eslint-disable-line camelcase
         payment_method: selectedPaymentMethod, // eslint-disable-line camelcase
         shipping_method: selectedShippingMethod // eslint-disable-line camelcase
@@ -94,16 +117,6 @@ const CheckoutActions = (props) => {
 
     return setPrevAddressValidationResults(addressValidationResults);
   }, []);
-
-  const shippingMethodData = () => {
-    const { selectedFulfillmentOption } = fulfillmentGroups[0];
-    return selectedFulfillmentOption ? selectedFulfillmentOption.fulfillmentMethod.displayName : null;
-  };
-
-  const paymentMethodData = () => {
-    const [firstPayment] = cartStore.checkoutPayments;
-    return firstPayment ? firstPayment.payment.method : null;
-  };
 
   const setShippingAddress = async (address) => {
     delete address.isValid;
@@ -130,28 +143,24 @@ const CheckoutActions = (props) => {
     }
   };
 
-  const handleValidationErrors = () => {
-    const { validationErrors } = addressValidationResults || [];
-    const shippingAlert = validationErrors && validationErrors.length ? {
-      alertType: validationErrors[0].type,
-      title: validationErrors[0].summary,
-      message: validationErrors[0].details
-    } : null;
-
-    handleActionAlerts({ 1: shippingAlert });
-  };
-
-  const setShippingMethod = async (shippingMethodData) => {
+  const setShippingMethod = async (shippingMethod) => {
     const fulfillmentOption = {
       fulfillmentGroupId: fulfillmentGroups[0]._id,
-      fulfillmentMethodId: shippingMethodData.selectedFulfillmentOption.fulfillmentMethod._id
+      fulfillmentMethodId: shippingMethod.selectedFulfillmentOption.fulfillmentMethod._id
     };
 
     const { data, error } = await onSetFulfillmentOption(fulfillmentOption);
     if (data && !error) {
-      const { selectFulfillmentOptionForGroup: { cart } } = data;
-      const { checkout: { fulfillmentGroups } } = cart;
-      const selectedShipping = fulfillmentGroups[0]?.selectedFulfillmentOption?.fulfillmentMethod?.displayName;
+      const {
+        selectFulfillmentOptionForGroup: {
+          cart: {
+            checkout: {
+              fulfillmentGroups: fulfillmentGroupsSelected
+            }
+          }
+        }
+      } = data;
+      const selectedShipping = fulfillmentGroupsSelected[0]?.selectedFulfillmentOption?.fulfillmentMethod?.displayName;
 
       setSelectedShippingMethod(selectedShipping);
       // track successfully setting a shipping method
@@ -198,43 +207,6 @@ const CheckoutActions = (props) => {
 
   const handlePaymentsReset = () => {
     cartStore.resetCheckoutPayments();
-  };
-
-  const buildOrder = async () => {
-    const cartId = cartStore.hasAccountCart ? cartStore.accountCartId : cartStore.anonymousCartId;
-    const { checkout } = cart;
-
-    const fulfillmentGroups = checkout.fulfillmentGroups.map((group) => {
-      const { data } = group;
-      const { selectedFulfillmentOption } = group;
-
-      const items = cart.items.map((item) => ({
-        addedAt: item.addedAt,
-        price: item.price.amount,
-        productConfiguration: item.productConfiguration,
-        quantity: item.quantity
-      }));
-
-      return {
-        data,
-        items,
-        selectedFulfillmentMethodId: selectedFulfillmentOption.fulfillmentMethod._id,
-        shopId: group.shop._id,
-        totalPrice: checkout.summary.total.amount,
-        type: group.type
-      };
-    });
-
-    const order = {
-      cartId,
-      currencyCode: checkout.summary.total.currency.code,
-      email: orderEmailAddress,
-      fulfillmentGroups,
-      shopId: cart.shop._id
-    };
-
-    setIsPlacingOrder(true);
-    placeOrder(order);
   };
 
   const placeOrder = async (order) => {
@@ -292,6 +264,43 @@ const CheckoutActions = (props) => {
         }
       });
     }
+  };
+
+  const buildOrder = async () => {
+    const cartId = cartStore.hasAccountCart ? cartStore.accountCartId : cartStore.anonymousCartId;
+    const { checkout } = cart;
+
+    const fulfillmentGroupsData = checkout.fulfillmentGroups.map((group) => {
+      const { data } = group;
+      const { selectedFulfillmentOption } = group;
+
+      const itemsData = cart.items.map((item) => ({
+        addedAt: item.addedAt,
+        price: item.price.amount,
+        productConfiguration: item.productConfiguration,
+        quantity: item.quantity
+      }));
+
+      return {
+        data,
+        items: itemsData,
+        selectedFulfillmentMethodId: selectedFulfillmentOption.fulfillmentMethod._id,
+        shopId: group.shop._id,
+        totalPrice: checkout.summary.total.amount,
+        type: group.type
+      };
+    });
+
+    const order = {
+      cartId,
+      currencyCode: checkout.summary.total.currency.code,
+      email: orderEmailAddress,
+      fulfillmentGroups: fulfillmentGroupsData,
+      shopId: cart.shop._id
+    };
+
+    setIsPlacingOrder(true);
+    placeOrder(order);
   };
 
   const renderPlacingOrderOverlay = () => (
@@ -398,6 +407,8 @@ const CheckoutActions = (props) => {
 
 
 CheckoutActions.propTypes = {
+  addressValidation: PropTypes.func.isRequired,
+  addressValidationResults: PropTypes.array.isRequired,
   apolloClient: PropTypes.shape({
     mutate: PropTypes.func.isRequired
   }),

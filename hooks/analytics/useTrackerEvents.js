@@ -6,6 +6,7 @@ import trackCartItems from "lib/tracking/trackCartItems";
 import trackCheckout from "lib/tracking/trackCheckout";
 import trackCheckoutStep from "lib/tracking/trackCheckoutStep";
 import trackOrder from "lib/tracking/trackOrder";
+import trackProductListViewed from "lib/tracking/trackProductListViewed";
 
 const {
   PRODUCT_VIEWED,
@@ -16,7 +17,9 @@ const {
   CHECKOUT_STEP_VIEWED,
   CHECKOUT_STEP_COMPLETED,
   ORDER_COMPLETED,
-  PAYMENT_INFO_ENTERED
+  PAYMENT_INFO_ENTERED,
+  PRODUCT_CLICKED,
+  PRODUCT_LIST_VIEWED
 } = TRACKING;
 
 /**
@@ -86,6 +89,18 @@ export default function useTrackerEvents() {
     track(ORDER_COMPLETED, data);
   };
 
+  // https://segment.com/docs/connections/spec/ecommerce/v2/#product-clicked
+  const trackProductClickedEvent = (payload) => {
+    const data = trackProductClicked(payload);
+    track(PRODUCT_CLICKED, data);
+  };
+
+  // https://segment.com/docs/connections/spec/ecommerce/v2/#product-list-viewed
+  const trackProductListedEvent = (payload) => {
+    const data = trackProductListViewed(payload);
+    track(PRODUCT_LIST_VIEWED, data);
+  };
+
   return {
     trackProductViewedEvent,
     trackProductAddedEvent,
@@ -95,6 +110,8 @@ export default function useTrackerEvents() {
     trackCheckoutStepViewed,
     trackCheckoutStepCompleted,
     trackOrderCompleted,
-    trackPaymentInfoEntered
+    trackPaymentInfoEntered,
+    trackProductClickedEvent,
+    trackProductListedEvent
   };
 }
