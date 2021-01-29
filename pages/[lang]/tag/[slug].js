@@ -161,7 +161,7 @@ class TagGridPage extends Component {
 export async function getStaticProps({ params: { lang, slug } }) {
   const primaryShop = await fetchPrimaryShop(lang);
 
-  if (!primaryShop) {
+  if (!primaryShop?.shop) {
     return {
       props: {
         shop: null,

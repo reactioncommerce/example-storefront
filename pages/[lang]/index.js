@@ -98,7 +98,7 @@ export async function getStaticProps({ params: { lang } }) {
   const primaryShop = await fetchPrimaryShop(lang);
   const translations = await fetchTranslations(lang, ["common"]);
 
-  if (!primaryShop) {
+  if (!primaryShop?.shop) {
     return {
       props: {
         shop: null,
