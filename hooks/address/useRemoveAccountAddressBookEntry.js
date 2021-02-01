@@ -8,7 +8,7 @@ import { removeAccountAddressBookEntryMutation } from "./mutations.gql";
  * @returns {Array} A list of removed address book entries
  */
 export default function useRemoveAccountAddressBookEntry() {
-  const [viewer, refetchViewer] = useViewer();
+  const [viewer, , refetchViewer] = useViewer();
 
   const [removeAccountAddressBookEntryFunc, { loading }] = useMutation(removeAccountAddressBookEntryMutation, {
     onCompleted() {
