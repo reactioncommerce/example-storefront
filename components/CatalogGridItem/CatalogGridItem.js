@@ -214,6 +214,7 @@ class CatalogGridItem extends Component {
 
   render() {
     const { className, badgeLabels, components: { BadgeOverlay }, product } = this.props;
+    
     const { slug } = product;
     const badgeProps = { product };
 
