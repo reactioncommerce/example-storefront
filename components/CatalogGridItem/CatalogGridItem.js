@@ -214,7 +214,6 @@ class CatalogGridItem extends Component {
 
   render() {
     const { className, badgeLabels, components: { BadgeOverlay }, product } = this.props;
-
     const { slug } = product;
     const badgeProps = { product };
 
@@ -225,8 +224,8 @@ class CatalogGridItem extends Component {
     return (
       <div className={className}>
         <Link
-          href="/product/[...slugOrId]"
-          as={`/product/${slug}`}
+          href={slug && `/product/[...slugOrId]`}
+          as={slug && `/product/${slug}`}
         >
           <BadgeOverlay {...badgeProps}>
             {this.renderProductMedia()}
