@@ -48,6 +48,7 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
+          version: 19.03.13
       - run:
           name: Lint Dockerfiles
           command: ${CI_SCRIPTS} lint-dockerfiles
@@ -82,6 +83,7 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
+          version: 19.03.13
       - run:
           name: Build and push production Docker image
           command: ${CI_SCRIPTS} docker-build-tag-push . ${DOCKER_REPOSITORY}
