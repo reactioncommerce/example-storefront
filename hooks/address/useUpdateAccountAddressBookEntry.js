@@ -8,7 +8,7 @@ import { updateAccountAddressBookEntryMutation } from "./mutations.gql";
  * @returns {Array} A list of updated address book entries
  */
 export default function useUpdateAccountAddressBookEntry() {
-  const [viewer, refetchViewer] = useViewer();
+  const [viewer, , refetchViewer] = useViewer();
 
   const [updateAccountAddressBookEntryFunc, { loading }] = useMutation(updateAccountAddressBookEntryMutation, {
     onCompleted() {
