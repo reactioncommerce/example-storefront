@@ -1,3 +1,14 @@
+# v4.0.1
+Example Storefront v4.0.1 adds minor features and performance enhancements, and does contain breaking changes since v4.0.1
+
+## Fixes
+fix: changes made to address book does not reflect in UI ([#747](https://github.com/reactioncommerce/example-storefront/pull/747))
+fix: Error on PDP when product is missing slug ([#751](https://github.com/reactioncommerce/example-storefront/pull/751))
+fix: pinning docker to higher version ([#749](https://github.com/reactioncommerce/example-storefront/pull/749))
+
+## Chores
+chore: add package-link file to storefront ([#745](https://github.com/reactioncommerce/example-storefront/pull/745))
+
 # v4.0.0
 
 Example Storefront v4.0.0 adds major features and performance enhancements, and does contain breaking changes since v3.1.0
