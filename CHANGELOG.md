@@ -1,5 +1,5 @@
 # v4.0.1
-Example Storefront v4.0.1 adds minor features and performance enhancements, and does contain breaking changes since v4.0.1
+Example Storefront v4.0.1 adds minor features, and does contain breaking changes since v4.0.1
 
 ## Fixes
 fix: changes made to address book does not reflect in UI ([#747](https://github.com/reactioncommerce/example-storefront/pull/747))
