@@ -225,8 +225,8 @@ class CatalogGridItem extends Component {
     return (
       <div className={className}>
         <Link
-          href="/product/[...slugOrId]"
-          as={`/product/${slug}`}
+          href={slug && "/product/[...slugOrId]"}
+          as={slug && `/product/${slug}`}
         >
           <BadgeOverlay {...badgeProps}>
             {this.renderProductMedia()}
