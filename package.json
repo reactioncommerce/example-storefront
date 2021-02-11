@@ -23,7 +23,10 @@
     "test:unit:watch": "NODE_ENV=jesttest jest --watchAll",
     "test:link": "blc http://web.reaction.localhost:4000 -ro -filter=3 -e",
     "test:file": "NODE_ENV=jesttest jest --watch --no-coverage",
-    "create-hydra-client": "node createHydraClientIfNecessary.js"
+    "create-hydra-client": "node createHydraClientIfNecessary.js",
+    "postinstall": "is-ci || is-docker || husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
   },
   "eslintConfig": {
     "extends": "@reactioncommerce",
@@ -77,6 +80,8 @@
     "swr": "^0.1.18"
   },
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@reactioncommerce/eslint-config": "~1.9.0",
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^10.2.1",
@@ -90,9 +95,13 @@
     "eslint-plugin-jsx-a11y": "~6.2.1",
     "eslint-plugin-promise": "~3.8.0",
     "eslint-plugin-react": "~7.12.4",
+    "husky": "^5.0.8",
+    "is-ci": "^2.0.0",
+    "is-docker": "^2.1.1",
     "jest": "26.0.0",
     "jest-junit": "~6.2.1",
     "jest-transform-graphql": "~2.1.0",
+    "pinst": "^2.1.4",
     "rimraf": "~2.6.3",
     "snyk": "~1.126.0"
   },
@@ -142,5 +151,10 @@
   },
   "prettier": {
     "arrowParens": "always"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
