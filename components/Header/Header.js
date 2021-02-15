@@ -84,7 +84,7 @@ class Header extends Component {
           <AccountDropdown />
           <MiniCart />
         </Toolbar>
-        <NavigationMobile />
+        <NavigationMobile shop={shop}/>
       </AppBar>
     );
   }
