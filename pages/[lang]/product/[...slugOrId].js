@@ -134,7 +134,7 @@ export async function getStaticProps({ params: { slugOrId, lang } }) {
   const productSlug = slugOrId && slugOrId[0];
   const primaryShop = await fetchPrimaryShop(lang);
 
-  if (!primaryShop) {
+  if (!primaryShop?.shop) {
     return {
       props: {
         shop: null,
