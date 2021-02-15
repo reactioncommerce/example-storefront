@@ -4,7 +4,8 @@ import { ServerStyleSheet as StyledComponentSheets } from "styled-components";
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from "@material-ui/styles";
 import favicons from "custom/favicons";
 import theme from "custom/reactionTheme";
-import analyticsProviders from "../custom/analytics";
+import definedPaymentMethods from "custom/paymentMethods";
+import analyticsProviders from "custom/analytics";
 
 /**
  * For details about the styled-components SSR code in this file, see https://www.styled-components.com/docs/advanced#nextjs
@@ -36,12 +37,14 @@ class HTMLDocument extends Document {
       ...analyticsProviders.map((provider) => ({
         type: "text/javascript",
         innerHTML: provider.renderScript()
-      })),
-      {
-        type: "text/javascript",
-        src: "https://js.stripe.com/v3/"
-      }
+      }))
     ];
+    definedPaymentMethods
+      .some((method) => method.name === "stripe_card")
+        && scripts.push({
+          type: "text/javascript",
+          src: "https://js.stripe.com/v3/"
+        });
 
     return (
       <Html lang="en">
