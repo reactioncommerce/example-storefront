@@ -1,6 +1,6 @@
 {
   "name": "example-storefront",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "The Example Storefront serves as a reference for implementing a web based storefront using the Reaction Commerce GraphQL API.",
   "keywords": [],
   "author": {

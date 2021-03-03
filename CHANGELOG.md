@@ -1,3 +1,36 @@
+# v4.0.2
+
+example-storefront v4.0.2 adds patch features or bug fixes and contains no breaking changes since v4.0.0.
+
+## Chore
+
+ - chore: adding git hooks for commit-msg ([#753](https://github.com/reactioncommerce/example-storefront/pull/753))
+ - chore: add package-unlink ([#745](https://github.com/reactioncommerce/example-storefront/pull/745))
+ - chore: add package-link file to storefront ([#745](https://github.com/reactioncommerce/example-storefront/pull/745))
+ - chore(deps): Bump ini from 1.3.5 to 1.3.7 ([#745](https://github.com/reactioncommerce/example-storefront/pull/745))
+
+## Fixes
+
+ - change log corrections ([#754](https://github.com/reactioncommerce/example-storefront/pull/754))
+ - fix: add third parameter from hook destructure ([#747](https://github.com/reactioncommerce/example-storefront/pull/747))
+ - fix: fix linting error ([#751](https://github.com/reactioncommerce/example-storefront/pull/751))
+ - fix: merge truck to clear tests ([#746](https://github.com/reactioncommerce/example-storefront/pull/746))
+ - fix: merge trunk to pass tests ([#745](https://github.com/reactioncommerce/example-storefront/pull/745))
+ - add correct permissions on file ([#745](https://github.com/reactioncommerce/example-storefront/pull/745))
+ - (fix): readding removed space ([#751](https://github.com/reactioncommerce/example-storefront/pull/751))
+ - (fix): readding removed space ([#751](https://github.com/reactioncommerce/example-storefront/pull/751))
+ - (fix): add check for slug before link ([#751](https://github.com/reactioncommerce/example-storefront/pull/751))
+ - (bugfix): pinning docker to higher version ([#749](https://github.com/reactioncommerce/example-storefront/pull/749))
+ - (bugfix): check shop variable for null ([#746](https://github.com/reactioncommerce/example-storefront/pull/746))
+ - (bugfix): not pre-rendering cart with shop ([#746](https://github.com/reactioncommerce/example-storefront/pull/746))
+ - add package-update bin script ([#745](https://github.com/reactioncommerce/example-storefront/pull/745))
+ - update docker-compose to use base image which installs yalc ([#745](https://github.com/reactioncommerce/example-storefront/pull/745))
+ - fix: issue#710 Shop name not persisting on Mobile Nav ([#738](https://github.com/reactioncommerce/example-storefront/pull/738))
+
+## Contributors
+
+ Special thanks to Halton Xu for contributing to the release!
+
 # v4.0.1
 Example Storefront v4.0.1 adds minor features, and does contain breaking changes since v4.0.1
 
