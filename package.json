@@ -23,6 +23,7 @@
     "test:unit:watch": "NODE_ENV=jesttest jest --watchAll",
     "test:link": "blc http://web.reaction.localhost:4000 -ro -filter=3 -e",
     "test:file": "NODE_ENV=jesttest jest --watch --no-coverage",
+    "type-check": "tsc",
     "create-hydra-client": "node createHydraClientIfNecessary.js",
     "postinstall": "is-ci || is-docker || husky install",
     "prepublishOnly": "pinst --disable",
@@ -34,7 +35,22 @@
       "react": {
         "version": "detect"
       }
-    }
+    },
+    "overrides": [
+      {
+        "files": [
+          "*.ts",
+          "*.tsx"
+        ],
+        "rules": {
+          "comma-dangle": "off",
+          "max-len": "off",
+          "quote-props": "off",
+          "react/prop-types": "off",
+          "react/jsx-max-props-per-line": "off"
+        }
+      }
+    ]
   },
   "dependencies": {
     "@apollo/client": "^3.0.0-beta.41",
@@ -85,6 +101,7 @@
     "@reactioncommerce/eslint-config": "~1.9.0",
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^10.2.1",
+    "@types/react": "^16.13.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.0.1",
     "babel-preset-jest": "^26.0.0",
@@ -103,7 +120,8 @@
     "jest-transform-graphql": "~2.1.0",
     "pinst": "^2.1.4",
     "rimraf": "~2.6.3",
-    "snyk": "~1.126.0"
+    "snyk": "~1.126.0",
+    "typescript": "^4.2.3"
   },
   "jest": {
     "collectCoverage": true,
@@ -148,9 +166,6 @@
   "jest-junit": {
     "output": "reports/junit/junit.xml",
     "suiteName": "jest-tests"
-  },
-  "prettier": {
-    "arrowParens": "always"
   },
   "commitlint": {
     "extends": [
