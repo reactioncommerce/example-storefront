@@ -1,10 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import PropTypes from "prop-types";
-import fetch from "isomorphic-unfetch";
-import useSWR from "swr";
-import { setAccessToken as setApolloToken } from "lib/apollo/apolloClient";
-
-const fetcher = (url) => fetch(url).then((response) => response.json());
 
 /**
  * Splits the user's full name into first and last name
@@ -31,25 +26,13 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [accountId, setAccountId] = useState(null);
-  const [accessToken, setAccessToken] = useState(null);
   const [account, _setAccount] = useState({});
 
-  const { data: tokenData } = useSWR("/api/account/token", fetcher);
-
-  useEffect(() => {
-    const fetchedToken = tokenData && tokenData.accessToken;
-    if (fetchedToken) {
-      setAccessToken(fetchedToken);
-      setApolloToken(fetchedToken);
-    }
-  }, [tokenData]);
-
   const setAccount = (newAccount) => {
+    setAccountId(newAccount?._id ?? null);
     if (newAccount) {
-      setAccountId(newAccount._id) || null;
       _setAccount({ ...splitNames(newAccount), ...newAccount });
     } else {
-      setAccountId(null);
       _setAccount({});
     }
   };
@@ -58,9 +41,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={{
       accountId,
       account,
-      accessToken,
       setAccount,
-      setAccessToken,
       isAuthenticated: !!accountId
     }}
     >

@@ -9,7 +9,7 @@ const withTranslation = (namespace) => (PageComponent) => {
     );
   };
 
-    // Set the correct displayName in development
+  // Set the correct displayName in development
   if (process.env.NODE_ENV !== "production") {
     const displayName = PageComponent.displayName || PageComponent.name || "Component";
     WithInjectedStores.displayName = `withInjectedStores(${displayName})`;
