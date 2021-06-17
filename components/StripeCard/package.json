@@ -1,0 +1,15 @@
+{
+  "name": "reaction-stripe-sca-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Janus Reith",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@stripe/react-stripe-js": "^1.4.1",
+    "@stripe/stripe-js": "^1.15.0"
+  }
+}
