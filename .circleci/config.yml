@@ -87,7 +87,7 @@ jobs:
             - reaction-v3-node-modules-{{ .Branch }}
       - run:
           name: Push the latest version to npm
-          command: yarn run semantic-release --dry-run
+          command: yarn run semantic-release
 
   docker-build-push:
     <<: *defaults
