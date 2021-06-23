@@ -8,6 +8,46 @@
     "email": "engineering@reactioncommerce.com",
     "url": "https://reactioncommerce.com"
   },
+  "release": {
+    "branches": [
+      "trunk"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "sed -i 's/${lastRelease.version}/${nextRelease.version}/g' docker-compose.yml"
+        }
+      ],
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      "@semantic-release/github",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "package-lock.json",
+            "CHANGELOG.md",
+            "docker-compose.yml"
+          ],
+          "message": "chore(release): v${nextRelease.version} [skip ci]"
+        }
+      ]
+    ]
+  },
   "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
@@ -99,6 +139,9 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@reactioncommerce/eslint-config": "~1.9.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/exec": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^10.2.1",
     "@types/react": "^16.13.0",
@@ -120,6 +163,7 @@
     "jest-transform-graphql": "~2.1.0",
     "pinst": "^2.1.4",
     "rimraf": "~2.6.3",
+    "semantic-release": "^17.4.4",
     "snyk": "~1.126.0",
     "typescript": "^4.2.3"
   },

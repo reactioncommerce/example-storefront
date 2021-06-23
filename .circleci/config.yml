@@ -31,7 +31,7 @@ jobs:
             - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
             - reaction-v3-node-modules-{{ .Branch }}
       - run:
-          name: Install NPM dependencies
+          name: Install yarn dependencies
           command: yarn install --production=false --frozen-lockfile --non-interactive
       - save_cache:
           key: reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
@@ -77,6 +77,18 @@ jobs:
           name: Run Unit Tests
           command: yarn run test:ci
 
+  release:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+            - reaction-v3-node-modules-{{ .Branch }}
+      - run:
+          name: Push the latest version to npm
+          command: yarn run semantic-release --dry-run
+
   docker-build-push:
     <<: *defaults
     steps:
@@ -86,7 +98,11 @@ jobs:
           version: 19.03.13
       - run:
           name: Build and push production Docker image
-          command: ${CI_SCRIPTS} docker-build-tag-push . ${DOCKER_REPOSITORY}
+          command: |
+            VERSION=$(git describe --tags `git rev-list --tags --max-count=1` | cut -c2-100)
+            docker build -t ${DOCKER_REPOSITORY}:${VERSION} .
+            docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+            docker push ${DOCKER_REPOSITORY}:${VERSION}
       - webhook/notify:
           endpoint: "${GITOPS_PR_WEBHOOK}"
 
@@ -111,9 +127,17 @@ workflows:
       - test-unit:
           requires:
             - install-dependencies
-      - docker-build-push:
-          context: reaction-publish-docker
+      - release:
+          context: reaction-publish-semantic-release
+          filters:
+            branches:
+              only:
+                - trunk
           requires:
             - dockerfile-lint
             - eslint
             - test-unit
+      - docker-build-push:
+          context: reaction-publish-docker
+          requires:
+            - release
