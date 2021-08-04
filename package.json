@@ -98,7 +98,8 @@
     "reacto-form": "~1.4.0",
     "styled-components": "^5.0.1",
     "subscriptions-transport-ws": "~0.9.15",
-    "swr": "^0.1.18"
+    "swr": "^0.1.18",
+    "@stripe/react-stripe-js": "^1.4.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",

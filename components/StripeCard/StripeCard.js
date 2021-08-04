@@ -9,8 +9,8 @@ import StripeInput from "./StripeInput";
 const useStyles = makeStyles(() => ({
   stripeForm: {
     display: "flex",
-    flexDirection: "column",
-  },
+    flexDirection: "column"
+  }
 }));
 
 function SplitForm(
@@ -20,7 +20,7 @@ function SplitForm(
     onReadyForSaveChange,
     stripeCardNumberInputLabel = "Card Number",
     stripeCardExpirationDateInputLabel = "Exp.",
-    stripeCardCVCInputLabel = "CVC",
+    stripeCardCVCInputLabel = "CVC"
   },
   ref
 ) {
@@ -32,9 +32,9 @@ function SplitForm(
       showIcon: true,
       style: {
         base: {
-          fontSize: "18px",
-        },
-      },
+          fontSize: "18px"
+        }
+      }
     }),
     []
   );
@@ -43,7 +43,7 @@ function SplitForm(
   const [formCompletionState, setFormCompletionState] = useState({
     cardNumber: false,
     cardExpiry: false,
-    cardCvc: false,
+    cardCvc: false
   });
 
   const [isConfirmationInFlight, setIsConfirmationInFlight] = useState(false);
@@ -67,7 +67,7 @@ function SplitForm(
       if (formCompletionState[elementType] !== complete) {
         setFormCompletionState({
           ...formCompletionState,
-          [elementType]: complete,
+          [elementType]: complete
         });
       }
     },
@@ -94,8 +94,8 @@ function SplitForm(
       const result = await stripe.confirmCardPayment(paymentIntentClientSecret, {
         // eslint-disable-next-line camelcase
         payment_method: {
-          card: elements.getElement(CardNumberElement),
-        },
+          card: elements.getElement(CardNumberElement)
+        }
       });
 
       setIsConfirmationInFlight(false);
@@ -104,26 +104,21 @@ function SplitForm(
         // Show error to your customer (e.g., insufficient funds)
         console.error(result.error.message); // eslint-disable-line
         setError(result.error.message);
+      } else if (result.paymentIntent.status === "succeeded" || result.paymentIntent.status === "requires_capture") {
+        // Show a success message to your customer
+        // There's a risk of the customer closing the window before callback
+        // execution. Set up a webhook or plugin to listen for the
+        // payment_intent.succeeded event that handles any business critical
+        // post-payment actions.
+        const { amount, id } = result.paymentIntent;
+        onSubmit({
+          amount: amount ? parseFloat(amount / 100) : null,
+          data: { stripePaymentIntentId: id },
+          displayName: "Stripe Payment"
+        });
       } else {
-        // The payment has been processed!
-        if (result.paymentIntent.status === "succeeded" || result.paymentIntent.status === "requires_capture") {
-          // Show a success message to your customer
-          // There's a risk of the customer closing the window before callback
-          // execution. Set up a webhook or plugin to listen for the
-          // payment_intent.succeeded event that handles any business critical
-          // post-payment actions.
-
-          const { amount, id } = result.paymentIntent;
-
-          onSubmit({
-            amount: amount ? parseFloat(amount / 100) : null,
-            data: { stripePaymentIntentId: id },
-            displayName: "Stripe Payment",
-          });
-        } else {
-          console.error("Payment was not successful"); // eslint-disable-line
-          setError("Payment was not successful");
-        }
+        console.error("Payment was not successful"); // eslint-disable-line
+        setError("Payment was not successful");
       }
     },
     [createStripePaymentIntent, onSubmit, stripe, setError, isConfirmationInFlight, setIsConfirmationInFlight]
@@ -132,7 +127,7 @@ function SplitForm(
   useImperativeHandle(ref, () => ({
     submit() {
       handleSubmit();
-    },
+    }
   }));
 
   return (
@@ -157,11 +152,11 @@ function SplitForm(
                       inputComponent: StripeInput,
                       inputProps: {
                         component: CardNumberElement,
-                        options,
-                      },
+                        options
+                      }
                     }}
                     InputLabelProps={{
-                      shrink: true,
+                      shrink: true
                     }}
                     onChange={onInputChange}
                     required
@@ -178,11 +173,11 @@ function SplitForm(
                       inputComponent: StripeInput,
                       inputProps: {
                         component: CardExpiryElement,
-                        options,
-                      },
+                        options
+                      }
                     }}
                     InputLabelProps={{
-                      shrink: true,
+                      shrink: true
                     }}
                     onChange={onInputChange}
                     required
@@ -199,11 +194,11 @@ function SplitForm(
                       inputComponent: StripeInput,
                       inputProps: {
                         component: CardCvcElement,
-                        options,
-                      },
+                        options
+                      }
                     }}
                     InputLabelProps={{
-                      shrink: true,
+                      shrink: true
                     }}
                     onChange={onInputChange}
                     required
