@@ -99,7 +99,8 @@
     "styled-components": "^5.0.1",
     "subscriptions-transport-ws": "~0.9.15",
     "swr": "^0.1.18",
-    "@stripe/react-stripe-js": "^1.4.1"
+    "@stripe/react-stripe-js": "^1.4.1",
+    "@stripe/stripe-js": "^1.16.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
