@@ -6,12 +6,6 @@ import StripeCard from "components/StripeCard";
 const paymentMethods = [
   /*
   {
-    displayName: "Credit Card",
-    InputComponent: StripePaymentInput,
-    name: "stripe_card",
-    shouldCollectBillingAddress: true
-  },
-  {
     displayName: "IOU",
     InputComponent: ExampleIOUPaymentForm,
     name: "iou_example",
@@ -22,8 +16,8 @@ const paymentMethods = [
     displayName: "Credit Card",
     InputComponent: StripeCard,
     name: "stripe_payment_intent",
-    shouldCollectBillingAddress: true,
-  },
+    shouldCollectBillingAddress: true
+  }
 ];
 
 export default paymentMethods;

@@ -16,9 +16,9 @@ export default function useStripePaymentIntent() {
         input: {
           cartId: anonymousCartId || accountCartId,
           shopId: shop?._id,
-          cartToken: anonymousCartToken,
-        },
-      },
+          cartToken: anonymousCartToken
+        }
+      }
     });
 
     return data?.createStripePaymentIntent;

@@ -1,4 +1,4 @@
-import React, { useImperativeHandle,useRef } from "react";
+import React, { useImperativeHandle, useRef } from "react";
 
 function StripeInput({ component: Component, inputRef, ...props }) {
   const elementRef = useRef();
