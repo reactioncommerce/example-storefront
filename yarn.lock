@@ -8969,15 +8969,15 @@ md5.js@^1.3.4:
     inherits "^2.0.1"
     safe-buffer "^5.1.2"
 
+mdi-material-ui@~5.33.1:
+  version "5.33.1"
+  resolved "https://registry.yarnpkg.com/mdi-material-ui/-/mdi-material-ui-5.33.1.tgz#a6a476a8ce7217357b4f4b9bd1774337fe540123"
+  integrity sha512-YIVE/SOlsgM4/vnPwaV5pm0/70WtD7idEO3JU9dbJhcD3VVsTl5lzO1LYxwSvIl0vpQVcw48aZhTL7Ld640UXQ==
+
 mdi-material-ui@~5.8.0:
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/mdi-material-ui/-/mdi-material-ui-5.8.0.tgz#2b92231a37ac52bef46e4ef5450ca7432fec5695"
   integrity sha512-KixZVfNg0ejURv9CIliB1M3kl4Soe6f6yAFjFNsoYPMvGGw1AhnQKGZ3EOEKOIdp2X9YeZFOaO+i9e4ZHUrpNA==
-
-mdi-material-ui@~5.9.0:
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/mdi-material-ui/-/mdi-material-ui-5.9.0.tgz#88d662a0c618224e8150d02b3f7f2ab2569803a0"
-  integrity sha512-+3vYdXmh3zS/FhIb/0+fGLoplgVGxOtK6zxP7hhDZ9nVYxhSP85n+Uh/g5qLb/W1mXihOxEGkcKS2p+dxYBg6w==
 
 mdn-data@2.0.4:
   version "2.0.4"
