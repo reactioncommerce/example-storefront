@@ -1,3 +1,16 @@
+# [4.1.0](https://github.com/reactioncommerce/example-storefront/compare/v4.0.2...v4.1.0) (2021-06-23)
+
+
+### Bug Fixes
+
+* enable semantic releae ([601dd87](https://github.com/reactioncommerce/example-storefront/commit/601dd8708f6b1ba9909332dd0b107795aa8dc103))
+* remove dry from semantic release ([c623a85](https://github.com/reactioncommerce/example-storefront/commit/c623a8541d97ea8355792dc226f2c625e8063b23))
+
+
+### Features
+
+* add typescript support ([bcf17cd](https://github.com/reactioncommerce/example-storefront/commit/bcf17cde13647dce51ca7d4f7f95cc3b69a362e9))
+
 # v4.0.2
 
 example-storefront v4.0.2 adds patch features or bug fixes and contains no breaking changes since v4.0.0.

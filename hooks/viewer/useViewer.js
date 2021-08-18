@@ -10,21 +10,22 @@ import viewerQuery from "./viewer.gql";
  */
 export default function useViewer() {
   const { authStore } = useStores();
-  const { account, setAccount } = authStore;
-  const authToken = typeof window !== "undefined" ? window.localStorage.getItem("accounts:accessToken") : undefined;
+  const { account, setAccount, accessToken } = authStore;
 
-  const { loading, data, refetch } = useQuery(viewerQuery);
+  const { loading, data, refetch } = useQuery(viewerQuery, {
+    skip: !accessToken
+  });
 
-  const viewer = data?.viewer;
-  useEffect(() => {
-    refetch();
-  }, [authToken]);
+  const viewer = data && data.viewer;
 
   useEffect(() => {
-    if (loading) {
-      return;
+    if (!viewer && accessToken) {
+      refetch();
     }
-    setAccount(viewer);
+  }, [accessToken, viewer]);
+
+  useEffect(() => {
+    if (viewer) setAccount(viewer);
   }, [viewer]);
 
   return [

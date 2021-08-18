@@ -31,6 +31,7 @@ Follow the [Reaction Platform docs](https://docs.reactioncommerce.com/docs/insta
 | [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL Playground developer tool | [localhost:3000/graphql](localhost:3000/graphql) |
 | [`reaction`](https://github.com/reactioncommerce/reaction): Reaction Admin                    | [localhost:4080](localhost:4080)                 |
 | [`reaction`](https://github.com/reactioncommerce/reaction): MongoDB                           | [localhost:27017](localhost:27017)               |
+| [`reaction-hydra`](https://github.com/reactioncommerce/reaction-hydra): Authentication        | [localhost:4444](localhost:4444)                 |
 | [`example-storefront`](https://github.com/reactioncommerce/example-storefront): Storefront    | [localhost:4000](localhost:4000)                 |
 
 **Note**: The storefront has redirects so that if you open [http://localhost:4000/graphql](http://localhost:4000/graphql), you'll be redirected to the GraphQL Playground.
@@ -224,7 +225,7 @@ docker stop reaction-storefront
 
 ## Contribute
 
-Find a bug, a typo, or something that’s not documented well? We’d love for you to [open an issue](https://github.com/reactioncommerce/example-storefront/issues) telling us what we can improve!
+Find a bug, a typo, or something that’s not documented well? We’d love for you to [open an issue](https://github.com/reactioncommerce/example-storefront/issues) telling us what we can improve! This project uses [semantic-release](https://semantic-release.gitbook.io/semantic-release/), please use their [commit message format.](https://semantic-release.gitbook.io/semantic-release/#commit-message-format).
 
 Want to request a feature? Use our [Reaction Feature Requests repository](https://github.com/reactioncommerce/reaction-feature-requests) to file a request.
 
