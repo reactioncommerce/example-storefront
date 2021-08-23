@@ -1,3 +1,11 @@
+## [4.1.2](https://github.com/reactioncommerce/example-storefront/compare/v4.1.1...v4.1.2) (2021-08-23)
+
+
+### Bug Fixes
+
+* snyk vulnerability of apollo client ([9f8fecb](https://github.com/reactioncommerce/example-storefront/commit/9f8fecbef4d852ed2177aa722151e56a711420b1))
+* upgrade @apollo/client from 3.0.0-rc.4 to 3.3.21 ([a6f3099](https://github.com/reactioncommerce/example-storefront/commit/a6f3099a4f6ec64083e25ec98b5e1b5d459e4986))
+
 ## [4.1.1](https://github.com/reactioncommerce/example-storefront/compare/v4.1.0...v4.1.1) (2021-08-23)
 
 
