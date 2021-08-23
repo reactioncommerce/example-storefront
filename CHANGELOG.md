@@ -1,3 +1,13 @@
+## [4.1.1](https://github.com/reactioncommerce/example-storefront/compare/v4.1.0...v4.1.1) (2021-08-23)
+
+
+### Bug Fixes
+
+* upgrade graphql from 14.1.1 to 14.7.0 ([3b97799](https://github.com/reactioncommerce/example-storefront/commit/3b977990afd068a72bc13f48bac7382d50fbb3a2))
+* upgrade mdi-material-ui from 5.9.0 to 5.33.1 ([323fdff](https://github.com/reactioncommerce/example-storefront/commit/323fdff30afb5a0601f40b7c8c67a97479955bbf))
+* upgrade styled-components from 5.1.1 to 5.3.0 ([7672cad](https://github.com/reactioncommerce/example-storefront/commit/7672cad4f37844ae1839a2d90b8bd6a107586b34))
+* upgrade swr from 0.1.18 to 0.5.6 ([cb39c7a](https://github.com/reactioncommerce/example-storefront/commit/cb39c7a9b2bd1c625a6096199dac1d128af74e35))
+
 # [4.1.0](https://github.com/reactioncommerce/example-storefront/compare/v4.0.2...v4.1.0) (2021-06-23)
 
 

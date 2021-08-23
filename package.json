@@ -1,6 +1,6 @@
 {
   "name": "example-storefront",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "The Example Storefront serves as a reference for implementing a web based storefront using the Reaction Commerce GraphQL API.",
   "keywords": [],
   "author": {
@@ -112,14 +112,14 @@
     "date-fns": "~1.30.1",
     "envalid": "~4.2.0",
     "express": "~4.16.4",
-    "graphql": "~14.1.1",
+    "graphql": "~14.7.0",
     "graphql-request": "^2.0.0",
     "graphql-tag": "~2.10.1",
     "isomorphic-unfetch": "^3.0.0",
     "js-cookie": "~2.2.0",
     "keymirror": "~0.1.1",
     "lodash": "~4.17.20",
-    "mdi-material-ui": "~5.9.0",
+    "mdi-material-ui": "~5.33.1",
     "next": "9.4.1",
     "passport": "~0.4.0",
     "passport-oauth2": "~1.4.0",
@@ -131,9 +131,9 @@
     "react-stripe-elements": "~2.0.3",
     "react-tracking": "~5.6.0",
     "reacto-form": "~1.4.0",
-    "styled-components": "^5.0.1",
+    "styled-components": "^5.3.0",
     "subscriptions-transport-ws": "~0.9.15",
-    "swr": "^0.1.18"
+    "swr": "^0.5.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
