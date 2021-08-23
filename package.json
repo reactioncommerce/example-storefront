@@ -119,7 +119,7 @@
     "js-cookie": "~2.2.0",
     "keymirror": "~0.1.1",
     "lodash": "~4.17.20",
-    "mdi-material-ui": "~5.9.0",
+    "mdi-material-ui": "~5.33.1",
     "next": "9.4.1",
     "passport": "~0.4.0",
     "passport-oauth2": "~1.4.0",
