@@ -85,17 +85,34 @@ export default function SignUp(props) {
       </FormControl>
       <FormControl>
         <InputLabel htmlFor="password">Password</InputLabel>
-        <Input id="password" aria-describedby="password" onChange={handlePasswordChange} value={password}
+        <Input
+          id="password"
+          aria-describedby="password"
+          onChange={handlePasswordChange}
+          value={password}
           type="password"
         />
       </FormControl>
-      <Button onClick={registerUser} color="primary" variant="contained" className={classes.signUpButton}
-        tabIndex="0" role="button"
-      >Sign Up</Button>
+      <Button
+        onClick={registerUser}
+        color="primary"
+        variant="contained"
+        className={classes.signUpButton}
+        tabIndex="0"
+        role="button"
+      >
+        Sign Up
+      </Button>
       {!!error && <div className={classes.error}>{error}</div>}
-      <div className={classes.switchEntryMode} onClick={handleOpenLogIn} onKeyDown={handleOpenLogIn} role="button"
+      <div
+        className={classes.switchEntryMode}
+        onClick={handleOpenLogIn}
+        onKeyDown={handleOpenLogIn}
+        role="button"
         tabIndex={0}
-      >Already have an account? Log In</div>
+      >
+        Already have an account? Log In
+      </div>
     </form>
   );
 }
