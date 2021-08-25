@@ -71,7 +71,7 @@ class ProductGridPage extends Component {
       <Layout shop={shop}>
         <Helmet
           title={pageTitle}
-          meta={[{ name: "description", content: shop && shop.description }]}
+          meta={[{ name: "descrition", content: shop && shop.description }]}
         />
         <ProductGrid
           catalogItems={catalogItems}

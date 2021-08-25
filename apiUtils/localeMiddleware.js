@@ -3,8 +3,7 @@ import redirect from "./redirect";
 
 export default (req, res) => {
   const {
-    query: { slug },
-    _parsedUrl
+    query: { slug, ...rest }
   } = req;
 
   const fallback = "de";
@@ -41,7 +40,7 @@ export default (req, res) => {
     found = fallback;
   }
 
-  const queryPart = (_parsedUrl && _parsedUrl.query) ? `?${_parsedUrl.query}` : "";
+  const queryPart = rest ? (`?${Object.keys(rest).map((k) => `${k}=${rest[k]}`).join("&")}`) : "";
 
   if (slug) {
     return redirect(res, 302, `/${found}${slug ? `/${slug.join("/")}` : ""}${queryPart}`);
