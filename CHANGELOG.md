@@ -1,3 +1,17 @@
+# [5.0.0](https://github.com/reactioncommerce/example-storefront/compare/v4.1.2...v5.0.0) (2021-08-25)
+
+
+### Features
+
+* breaking use account-js for authentication ([7a509c9](https://github.com/reactioncommerce/example-storefront/commit/7a509c9717e2a71c3f0722b8bf366e88a18d1240))
+
+
+### BREAKING CHANGES
+
+* the authorization methods have been switched to account-js
+
+Signed-off-by: Akarshit Wal <akarshitwal@gmail.com>
+
 ## [4.1.2](https://github.com/reactioncommerce/example-storefront/compare/v4.1.1...v4.1.2) (2021-08-23)
 
 
