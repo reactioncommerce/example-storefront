@@ -11,7 +11,6 @@ import useViewer from "hooks/viewer/useViewer";
 import getAccountsHandler from "../../lib/accountsServer.js";
 import hashPassword from "../../lib/utils/hashPassword";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     "display": "flex",
@@ -81,8 +80,8 @@ export default function Login(props) {
         },
         password: hashPassword(password)
       });
-      await refetch();
       closeModal();
+      await refetch();
     } catch (err) {
       setError(err.message);
     }
@@ -98,20 +97,36 @@ export default function Login(props) {
       </FormControl>
       <FormControl>
         <InputLabel htmlFor="password">Password</InputLabel>
-        <Input id="password" aria-describedby="password" onChange={handlePasswordChange} value={password}
+        <Input
+          id="password"
+          aria-describedby="password"
+          onChange={handlePasswordChange}
+          value={password}
           type="password"
         />
       </FormControl>
-      <div className={classes.forgotPassword} onClick={handleForgotPasswordClick} onKeyDown={handleForgotPasswordClick} role="button"
-        tabIndex={0}
-      >Forgot Password?</div>
-      <Button onClick={registerUser} color="primary" variant="contained"
+      <div
+        className={classes.forgotPassword}
+        onClick={handleForgotPasswordClick}
+        onKeyDown={handleForgotPasswordClick}
         role="button"
-      >Sign In</Button>
-      {!!error && <div className={classes.error}>{error}</div>}
-      <div className={classes.switchEntryMode} onClick={handleOpenSignUp} onKeyDown={handleOpenSignUp} role="button"
         tabIndex={0}
-      >Don't have an account? Sign Up</div>
+      >
+        Forgot Password?
+      </div>
+      <Button onClick={registerUser} color="primary" variant="contained" role="button">
+        Sign In
+      </Button>
+      {!!error && <div className={classes.error}>{error}</div>}
+      <div
+        className={classes.switchEntryMode}
+        onClick={handleOpenSignUp}
+        onKeyDown={handleOpenSignUp}
+        role="button"
+        tabIndex={0}
+      >
+        Don't have an account? Sign Up
+      </div>
     </form>
   );
 }

@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Router from "translations/i18nRouter";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import GuestForm from "@reactioncommerce/components/GuestForm/v1";
 import Button from "@reactioncommerce/components/Button/v1";
+import useStores from "hooks/useStores";
 
 // flex wrapper jss mixin
 const flexWrapper = () => ({
@@ -42,7 +42,9 @@ const styles = (theme) => ({
 });
 
 const Entry = (props) => {
-  const { classes, onLoginButtonClick, onRegisterButtonClick, setEmailOnAnonymousCart } = props;
+  const { classes, setEmailOnAnonymousCart } = props;
+  const { uiStore } = useStores();
+  const { setEntryModal } = uiStore;
   return (
     <Grid container>
       <Grid item xs={12} md={7}>
@@ -50,10 +52,20 @@ const Entry = (props) => {
           <Typography variant="h6" gutterBottom>
             Returning Customer
           </Typography>
-          <Button onClick={onLoginButtonClick} actionType="important" isFullWidth className={classes.loginButton}>
+          <Button
+            onClick={() => setEntryModal("login")}
+            actionType="important"
+            isFullWidth
+            className={classes.loginButton}
+          >
             Login
           </Button>
-          <Button onClick={onRegisterButtonClick} actionType="secondary" isFullWidth className={classes.loginButton}>
+          <Button
+            onClick={() => setEntryModal("signup")}
+            actionType="secondary"
+            isFullWidth
+            className={classes.loginButton}
+          >
             Create a new accounts
           </Button>
         </div>
@@ -71,12 +83,6 @@ const Entry = (props) => {
 };
 
 Entry.defaultProps = {
-  onLoginButtonClick() {
-    Router.push("/signin");
-  },
-  onRegisterButtonClick() {
-    Router.push("/signup");
-  },
   setEmailOnAnonymousCart() {}
 };
 
