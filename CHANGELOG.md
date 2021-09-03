@@ -1,3 +1,10 @@
+## [5.0.3](https://github.com/reactioncommerce/example-storefront/compare/v5.0.2...v5.0.3) (2021-09-03)
+
+
+### Bug Fixes
+
+* login allowed from checkout page ([d22bea2](https://github.com/reactioncommerce/example-storefront/commit/d22bea2fd5d32770aba1d8a61f82565f337395bd))
+
 ## [5.0.2](https://github.com/reactioncommerce/example-storefront/compare/v5.0.1...v5.0.2) (2021-08-31)
 
 
