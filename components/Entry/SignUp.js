@@ -68,8 +68,8 @@ export default function SignUp(props) {
     try {
       // Creating user will login also
       await passwordClient.createUser({ email, password: hashPassword(password) });
-      await refetch();
       closeModal();
+      await refetch();
     } catch (err) {
       setError(err.message);
     }
