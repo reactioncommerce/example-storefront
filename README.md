@@ -15,7 +15,7 @@ This example storefront is built with [Next.js](https://nextjs.org/), [React](ht
 - Headless ecommerce example storefront built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [GraphQL](https://graphql.org/), [Apollo Client](https://www.apollographql.com/docs/react/)
 - [Reaction GraphQL API](https://github.com/reactioncommerce/reaction/tree/master/imports/plugins/core/graphql) integration
 - Server-side rendering
-- Payments with [Stripe](https://stripe.com/)
+- Payments with [Stripe](https://stripe.com/) with Strong Customer Authentication included.
 - Analytics with [Segment](https://segment.com/) or any other provider
 - Reusable, customizable, themeable ecommerce React components from the [Example Storefront Component Library](https://github.com/reactioncommerce/reaction-component-library/) with [Styled Components](https://www.styled-components.com/)
 - Written in ES6, configured with ES6
@@ -31,7 +31,6 @@ Follow the [Reaction Platform docs](https://docs.reactioncommerce.com/docs/insta
 | [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL Playground developer tool | [localhost:3000/graphql](localhost:3000/graphql) |
 | [`reaction`](https://github.com/reactioncommerce/reaction): Reaction Admin                    | [localhost:4080](localhost:4080)                 |
 | [`reaction`](https://github.com/reactioncommerce/reaction): MongoDB                           | [localhost:27017](localhost:27017)               |
-| [`reaction-hydra`](https://github.com/reactioncommerce/reaction-hydra): Authentication        | [localhost:4444](localhost:4444)                 |
 | [`example-storefront`](https://github.com/reactioncommerce/example-storefront): Storefront    | [localhost:4000](localhost:4000)                 |
 
 **Note**: The storefront has redirects so that if you open [http://localhost:4000/graphql](http://localhost:4000/graphql), you'll be redirected to the GraphQL Playground.
@@ -43,7 +42,7 @@ Follow the [Reaction Platform docs](https://docs.reactioncommerce.com/docs/insta
 When running the storefront and Reaction for the first time, you will need to configure Stripe payment processing and shipping options to test a complete order checkout flow. After signing up for a Stripe API key, follow these steps:
 
 1. Add public Stripe API key (`STRIPE_PUBLIC_API_KEY`) to `.env`.
-2. Open the Reaction Classic app, at `http://localhost:3000`. Log in as an Admin user.
+2. Open the Reaction Admin app, at `http://localhost:4080`. Log in as an Admin user.
 3. Open **Payments**: Enable Stripe by checking the box. Add a Stripe secret key and public key.
 4. Open **Shipping**: Enable flat-rate shipping by checking the box. Enable at least one type of flat-rate shipping by clicking on the option in the table and checking the box.
 

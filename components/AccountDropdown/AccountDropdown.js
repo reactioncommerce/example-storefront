@@ -1,6 +1,7 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import inject from "hocs/inject";
 import { makeStyles } from "@material-ui/core/styles";
+import { useRouter } from "next/router";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import ButtonBase from "@material-ui/core/ButtonBase";
@@ -9,6 +10,9 @@ import Popover from "@material-ui/core/Popover";
 import useViewer from "hooks/viewer/useViewer";
 import ViewerInfo from "@reactioncommerce/components/ViewerInfo/v1";
 import Link from "components/Link";
+import useStores from "hooks/useStores";
+import EntryModal from "../Entry/EntryModal";
+import getAccountsHandler from "../../lib/accountsServer.js";
 
 const useStyles = makeStyles((theme) => ({
   accountDropdown: {
@@ -21,30 +25,50 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AccountDropdown = () => {
+  const router = useRouter();
+  const { uiStore } = useStores();
+  const { setEntryModal } = uiStore;
+  const resetToken = router?.query?.resetToken;
   const classes = useStyles();
   const [anchorElement, setAnchorElement] = useState(null);
-  const [viewer] = useViewer();
+  const [viewer, , refetch] = useViewer();
+  const { accountsClient } = getAccountsHandler();
   const isAuthenticated = viewer && viewer._id;
 
-  const toggleOpen = (event) => {
-    setAnchorElement(event.currentTarget);
-  };
+  useEffect(() => {
+    // Open the modal in case of reset-password link
+    if (!resetToken) {
+      return;
+    }
+    setEntryModal("reset-password");
+  }, [resetToken]);
 
   const onClose = () => {
     setAnchorElement(null);
   };
 
+  const handleSignOut = async () => {
+    await accountsClient.logout();
+    await refetch();
+    onClose();
+  };
+
+  const toggleOpen = (event) => {
+    setAnchorElement(event.currentTarget);
+  };
+
   return (
     <Fragment>
-      { isAuthenticated ?
+      <EntryModal onClose={onClose} resetToken={resetToken} />
+      {isAuthenticated ? (
         <ButtonBase onClick={toggleOpen}>
           <ViewerInfo viewer={viewer} />
         </ButtonBase>
-        :
+      ) : (
         <IconButton color="inherit" onClick={toggleOpen}>
           <AccountIcon />
         </IconButton>
-      }
+      )}
 
       <Popover
         anchorEl={anchorElement}
@@ -56,7 +80,7 @@ const AccountDropdown = () => {
         onClose={onClose}
       >
         <div className={classes.accountDropdown}>
-          {isAuthenticated ?
+          {isAuthenticated ? (
             <Fragment>
               <div className={classes.marginBottom}>
                 <Link href="/profile/address">
@@ -66,26 +90,26 @@ const AccountDropdown = () => {
                 </Link>
               </div>
               <div className={classes.marginBottom}>
-                <Button color="primary" fullWidth href={`/change-password?email=${encodeURIComponent(viewer.emailRecords[0].address)}`}>
+                <Button color="primary" fullWidth onClick={() => setEntryModal("change-password")}>
                   Change Password
                 </Button>
               </div>
-              <Button color="primary" fullWidth href="/logout" variant="contained">
+              <Button color="primary" fullWidth onClick={handleSignOut} variant="contained">
                 Sign Out
               </Button>
             </Fragment>
-            :
+          ) : (
             <Fragment>
               <div className={classes.authContent}>
-                <Button color="primary" fullWidth href="/signin" variant="contained">
+                <Button color="primary" fullWidth variant="contained" onClick={() => setEntryModal("login")}>
                   Sign In
                 </Button>
               </div>
-              <Button color="primary" fullWidth href="/signup">
+              <Button color="primary" fullWidth onClick={() => setEntryModal("signup")}>
                 Create Account
               </Button>
             </Fragment>
-          }
+          )}
         </div>
       </Popover>
     </Fragment>
