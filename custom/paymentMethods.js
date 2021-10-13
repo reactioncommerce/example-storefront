@@ -8,7 +8,6 @@ const paymentMethods = [
     name: "iou_example",
     shouldCollectBillingAddress: true
   },
-
   {
     displayName: "Credit Card (SCA)",
     InputComponent: StripeCard,
