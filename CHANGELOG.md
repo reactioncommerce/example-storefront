@@ -1,3 +1,21 @@
+# [5.1.0](https://github.com/reactioncommerce/example-storefront/compare/v5.0.3...v5.1.0) (2021-10-16)
+
+
+### Bug Fixes
+
+* keep stripe method ([1aa98dc](https://github.com/reactioncommerce/example-storefront/commit/1aa98dc5882bf57cb2867df23bf478372986ca18))
+* lint ([1669dc8](https://github.com/reactioncommerce/example-storefront/commit/1669dc83ff5c22c13f4aa4e0124eb5f3a004781e))
+* lint errors ([6e42b9d](https://github.com/reactioncommerce/example-storefront/commit/6e42b9dbe9e03d7e1b1d0c95d0c15659124f9100))
+* lint errors in StripeCard, add stripe js lib ([4d9569d](https://github.com/reactioncommerce/example-storefront/commit/4d9569d3eb8c8e76915ded20767c05f3848ac0a7))
+* lint errors in StripeCard, add stripe js lib ([e0140f1](https://github.com/reactioncommerce/example-storefront/commit/e0140f1858305e984082988a90db9bf775973cf4))
+* remove stripe old payment method, SCA remains ([73623ca](https://github.com/reactioncommerce/example-storefront/commit/73623caf480e7e69c92073e9c23609a9319cfa68))
+* remove stripe, stripe SCA remains ([3d25fd6](https://github.com/reactioncommerce/example-storefront/commit/3d25fd63401857768f820df776f486ce4f5920a9))
+
+
+### Features
+
+* Add Stripe Payments Intents API SCA-compliant Payment Component ([30fa912](https://github.com/reactioncommerce/example-storefront/commit/30fa912c83e32df4b3f3c184ed5d5ec6c1ae46a0))
+
 ## [5.0.3](https://github.com/reactioncommerce/example-storefront/compare/v5.0.2...v5.0.3) (2021-09-03)
 
 
