@@ -1,0 +1,5 @@
+mutation createStripePaymentIntent($input: CreateStripePaymentIntentInput!) {
+  createStripePaymentIntent(input: $input) {
+    paymentIntentClientSecret
+  }
+}
