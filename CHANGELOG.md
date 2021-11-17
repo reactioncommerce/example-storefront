@@ -1,3 +1,10 @@
+## [5.1.1](https://github.com/reactioncommerce/example-storefront/compare/v5.1.0...v5.1.1) (2021-11-17)
+
+
+### Bug Fixes
+
+* add package link check ([450bea0](https://github.com/reactioncommerce/example-storefront/commit/450bea0d8380d19a652aa653e21a82daa817a8e2))
+
 # [5.1.0](https://github.com/reactioncommerce/example-storefront/compare/v5.0.3...v5.1.0) (2021-10-16)
 
 
