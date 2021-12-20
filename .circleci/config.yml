@@ -32,7 +32,7 @@ jobs:
             - reaction-v3-node-modules-{{ .Branch }}
       - run:
           name: Install dependencies
-          command: npm install --production=false --frozen-lockfile --non-interactive
+          command: npm install
       - save_cache:
           key: reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
           paths:
