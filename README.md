@@ -86,7 +86,7 @@ docker-compose up -d && docker-compose logs -f
 Change the `INTERNAL_GRAPHQL_URL` in `.env` to the production API URL. The URL should end in `/graphql`, like: `https://my-website.com/graphql`. Save the `.env` file and restart the application with:
 
 ```sh
-docker-compose run --rm --service-ports web yarn start
+docker-compose run --rm --service-ports web npm start
 ```
 
 ### Run commands in container
@@ -95,20 +95,20 @@ docker-compose run --rm --service-ports web yarn start
 docker-compose run --rm web [command]
 ```
 
-Run any command inside a Docker container and then remove the container. Use this to run any tooling operations. Remember your project directory will be mounted and things will usually just work. See Yarn section below for more examples.
+Run any command inside a Docker container and then remove the container. Use this to run any tooling operations. Remember your project directory will be mounted and things will usually just work.
 
 ### Run tests in container
 
 Run tests locally
 
 ```sh
-docker-compose run --rm web yarn test
+docker-compose run --rm web npm test
 ```
 
 Run tests locally without cache (this can be helpful if changes aren't showing up)
 
 ```sh
-docker-compose run --rm web yarn test --no-cache
+docker-compose run --rm web npm test --no-cache
 ```
 
 To run Snyk security tests (this will run tests in the same way as CI)
@@ -133,40 +133,39 @@ You can use the Google Chrome DevTools to debug the code running in the Node.js 
 ### Yarn Commands
 
 Yarn & NPM should run inside the Docker container. We've taken steps to ensure that the node_modules are placed into a cacheable location. If you run Yarn locally, the node_modules are written directly to the project directory and take precedence over those from the Docker build.
-**Yarn Add**
+**NPM Add**
 
 ```
-docker-compose run --rm web yarn add --dev [package]
+docker-compose run --rm web npm add --dev [package]
 ```
 
-**Yarn Install**
+**NPM Install**
 
-⚠️ Always rebuild the image and start a new container after modifying yarn.lock or Dockerfile!
+⚠️ Always rebuild the image and start a new container after modifying package-lock.json or Dockerfile!
 
 ```
-docker-compose run --rm web yarn install
+docker-compose run --rm web npm install
 docker-compose down --rmi local
 docker-compose up -d --build
 ```
 
 ### Testing component library in the storefront
 
-Sometimes we need to test the [Example Storefront Component Library](https://github.com/reactioncommerce/reaction-component-library) components in the context of the storefront. Unfortunately, there isn't an easy wasy to do this within our Docker containers, so we need to run the `storefront` outside of docker.
+Sometimes we need to test the [Example Storefront Component Library](https://github.com/reactioncommerce/reaction-component-library) components in the context of the storefront. Unfortunately, there isn't an easy way to do this within our Docker containers, so we need to run the `storefront` outside of docker.
 
 1. `cd` to your local [`reaction-component-library`](https://github.com/reactioncommerce/reaction-component-library) repo.
 1. Git checkout the proper branch that you want to link
-1. `cd` into the `package` folder of this repo, and run the command `yarn install` followed by `yarn build`
-1. After the build is done, `cd` into the new `dist` folder it just built and run `yarn link` to allow the library to be installed into the storefront. This will link `@reactioncommerce/components`
+1. `cd` into the `package` folder of this repo, and run the command `npm install` followed by `npm run build`
+1. After the build is done, `cd` into the new `dist` folder it just built and run `npm link` to allow the library to be installed into the storefront. This will link `@reactioncommerce/components`
 1. Inside the `example-storefront` repo, temporarily rename your `.yarnrc` file to anything else (i.e. `.yarnrc-temp`)
-1. Run `yarn install` and then the command `yarn link "@reactioncommerce/components"` to set the local version as an override of the published npm version
+1. Run `npm install` and then the command `npm link "@reactioncommerce/components"` to set the local version as an override of the published npm version
 1. Inside your `.env` file, change `INTERNAL_GRAPHQL_URL` to equal `http://localhost:3000/graphql`, the same as the `EXTERNAL_GRAPHQL_URL`
-1. Start the storefront locally by running the command `export $(cat .env | xargs) && yarn dev`
+1. Start the storefront locally by running the command `export $(cat .env | xargs) && npm dev`
 1. Your storefront should now be running at `localhost:4000`
-   - If you see errors about not being able to find peer dependency packages, that seems to be an issues with yarn linking. You can just temporarily `yarn add` each of those packages in the component library `package/dist` folder. (This folder is gitignored anyway.)
+   - If you see errors about not being able to find peer dependency packages, that seems to be an issues with npm linking. You can just temporarily `npm add` each of those packages in the component library `package/dist` folder. (This folder is gitignored anyway.)
 1. After your changes are tested, shut down the storefront by running the command `CTRL+C`
-1. Run `yarn unlink "@reactioncommerce/components"` in the storefront repo folder
-1. `cd` to the `package/dist` folder of the `reaction-component-library` repo. Run the command `yarn unlink` to unlink the local version of the component library
-1. Undo the renaming of your `.yarnrc` file
+1. Run `npm unlink "@reactioncommerce/components"` in the storefront repo folder
+1. `cd` to the `package/dist` folder of the `reaction-component-library` repo. Run the command `npm unlink` to unlink the local version of the component library
 1. Undo the URL change inside your `.env` file
 
 ## Clean up containers
@@ -234,19 +233,19 @@ Pull requests should pass all automated tests, style, and security checks.
 Your code should pass all acceptance tests and unit tests. Run
 
 ```sh
-docker-compose run --rm web yarn test
+docker-compose run --rm web npm test
 ```
 
 to run the test suites locally. If you're adding functionality to Reaction, you should add tests for the added functionality. You can run the tests locally without cache if necessary by passing the `--no-cache` flag. This can be helpful if changes aren't showing up.
 
 ```sh
-docker-compose run --rm web yarn test --no-cache
+docker-compose run --rm web npm test --no-cache
 ```
 
 To update a failing snapshot (if you've made changes to a component)
 
 ```sh
-docker-compose run --rm web yarn test -u
+docker-compose run --rm web npm test -u
 ```
 
 #### Eslint
