@@ -26,10 +26,10 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-#      - restore_cache:
-#          keys:
-#            - reaction-storefront-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
-#            - reaction-stoprefront-v3-node-modules-{{ .Branch }}
+      - restore_cache:
+          keys:
+            - reaction-storefront-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+            - reaction-storefront-v3-node-modules-{{ .Branch }}
       - run:
           name: Install dependencies
           command: npm install
@@ -57,10 +57,10 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-#      - restore_cache:
-#          keys:
-#            - reaction-storefront-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
-#            - reaction-storefront-v3-node-modules-{{ .Branch }}
+      - restore_cache:
+          keys:
+            - reaction-storefront-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+            - reaction-storefront-v3-node-modules-{{ .Branch }}
       - run:
           name: Lint JavaScript
           command: npm run lint
@@ -69,10 +69,10 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-#      - restore_cache:
-#          keys:
-#            - reaction-storefront-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
-#            - reaction-storefront-v3-node-modules-{{ .Branch }}
+      - restore_cache:
+          keys:
+            - reaction-storefront-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+            - reaction-storefront-v3-node-modules-{{ .Branch }}
       - run:
           name: Run Unit Tests
           command: npm run test:ci
@@ -81,10 +81,10 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-#      - restore_cache:
-#          keys:
-#            - reaction-storefront-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
-#            - reaction-storefront-v3-node-modules-{{ .Branch }}
+      - restore_cache:
+          keys:
+            - reaction-storefront-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+            - reaction-storefront-v3-node-modules-{{ .Branch }}
       - run:
           name: Push the latest version to npm
           command: npm run semantic-release
