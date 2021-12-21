@@ -26,10 +26,10 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - reaction-storefront-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
-            - reaction-stoprefront-v3-node-modules-{{ .Branch }}
+#      - restore_cache:
+#          keys:
+#            - reaction-storefront-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+#            - reaction-stoprefront-v3-node-modules-{{ .Branch }}
       - run:
           name: Install dependencies
           command: npm install
