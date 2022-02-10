@@ -19,7 +19,7 @@ defaults: &defaults
     - GITOPS_PR_WEBHOOK: "https://w603b5hwp1.execute-api.us-east-1.amazonaws.com/dev/pullrequests"
     - GLOBAL_CACHE_VERSION: “v3”
   docker:
-    - image: circleci/node:12-stretch
+    - image: cimg/node:14.18
 
 jobs:
   install-dependencies:
@@ -28,13 +28,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
             - reaction-v3-node-modules-{{ .Branch }}
       - run:
-          name: Install yarn dependencies
-          command: yarn install --production=false --frozen-lockfile --non-interactive
+          name: Install dependencies
+          command: npm install --production=false --frozen-lockfile --non-interactive
       - save_cache:
-          key: reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+          key: reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.lock" }}
           paths:
             - node_modules
       - save_cache:
@@ -59,11 +59,11 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
             - reaction-v3-node-modules-{{ .Branch }}
       - run:
           name: Lint JavaScript
-          command: yarn run lint
+          command: npm run lint
 
   test-unit:
     <<: *defaults
@@ -71,11 +71,11 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "pacakge-lock.json" }}
             - reaction-v3-node-modules-{{ .Branch }}
       - run:
           name: Run Unit Tests
-          command: yarn run test:ci
+          command: npm run test:ci
 
   release:
     <<: *defaults
@@ -83,11 +83,11 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
             - reaction-v3-node-modules-{{ .Branch }}
       - run:
           name: Push the latest version to npm
-          command: yarn run semantic-release
+          command: npm run semantic-release
 
   docker-build-push:
     <<: *defaults
