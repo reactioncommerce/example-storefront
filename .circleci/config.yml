@@ -71,7 +71,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - reaction-v4-node-modules-{{ checksum "package.json" }}-{{ checksum "pacakge-lock.json" }}
+            - reaction-v4-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
             - reaction-v4-node-modules-{{ .Branch }}
       - run:
           name: Run Unit Tests
