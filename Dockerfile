@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:14-alpine
 
 ARG NEXTJS_DOTENV
 
@@ -21,17 +21,17 @@ COPY --chown=node:node ./ ./
 USER node
 
 # Install ALL dependencies. We need devDependencies for the build command.
-RUN yarn install --production=false --frozen-lockfile --ignore-scripts --non-interactive --no-cache
+RUN npm install --production=false --frozen-lockfile --ignore-scripts --non-interactive --no-cache
 
 ENV BUILD_ENV=production NODE_ENV=production
 
 # hadolint ignore=SC2046
-RUN export $(grep -v '^#' .env.${NEXTJS_DOTENV:-prod} | xargs -0) && yarn build
+RUN export $(grep -v '^#' .env.${NEXTJS_DOTENV:-prod} | xargs -0) && npm run build
 
 # Install only prod dependencies now that we've built, to make the image smaller
 RUN rm -rf node_modules/*
-RUN yarn install --production=true --frozen-lockfile --ignore-scripts --non-interactive
+RUN npm install --production=true --frozen-lockfile --ignore-scripts --non-interactive
 
 # If any Node flags are needed, they can be set in the NODE_OPTIONS env variable.
-CMD ["tini", "--", "yarn", "start"]
+CMD ["tini", "--", "npm", "start"]
 LABEL com.reactioncommerce.name="example-storefront"

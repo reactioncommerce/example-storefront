@@ -1,12 +1,15 @@
 {
   "name": "example-storefront",
-  "version": "5.1.1",
+  "version": "6.0.0",
   "description": "The Example Storefront serves as a reference for implementing a web based storefront using the Reaction Commerce GraphQL API.",
   "keywords": [],
   "author": {
-    "name": "Reaction Commerce",
-    "email": "engineering@reactioncommerce.com",
-    "url": "https://reactioncommerce.com"
+    "name": "Mailchimp Open Commerce",
+    "email": "hello-open-commerce@mailchimp.com",
+    "url": "https://mailchimp.com/developer/open-commerce/"
+  },
+  "engines": {
+    "node": ">=14.18.1"
   },
   "release": {
     "branches": [
@@ -52,14 +55,14 @@
   "sideEffects": false,
   "scripts": {
     "dev": "echo 'Note: dev script has been renamed to start:dev' && yarn run start:dev",
-    "build": "yarn run build-clean && NODE_ENV=production IS_BUILDING_NEXTJS=1 next build",
+    "build": "npm run build-clean && NODE_ENV=production IS_BUILDING_NEXTJS=1 next build",
     "build-clean": "rimraf .next",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "start": "NODE_ENV=production next start -p 4000",
     "start:dev": "NODE_ENV=development next dev -p 4000",
-    "test": "yarn run test:unit",
-    "test:ci": "yarn run test:unit --ci --runInBand --colors",
+    "test": "npm run test:unit",
+    "test:ci": "npm run test:unit --ci --runInBand --colors",
     "test:unit": "NODE_ENV=jesttest jest",
     "test:unit:watch": "NODE_ENV=jesttest jest --watchAll",
     "test:link": "blc http://web.reaction.localhost:4000 -ro -filter=3 -e",
