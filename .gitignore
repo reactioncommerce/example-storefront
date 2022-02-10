@@ -24,7 +24,6 @@ npm-debug.log
 pids
 results
 allure-results
-package-lock.json
 
 .reaction/config.json
 
