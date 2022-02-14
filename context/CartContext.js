@@ -11,7 +11,6 @@ export const CartProvider = ({ children }) => {
   const [anonymousCartId, setAnonymousCartId] = useState();
   const [anonymousCartToken, setAnonymousCartToken] = useState();
   const [accountCartId, setAccountCartId] = useState();
-  const [isReconcilingCarts, setIsReconcilingCarts] = useState(false);
   const [checkoutPayments, setCheckoutPayments] = useState([]);
 
   const setAnonymousCartCredentials = (newAnonymousCartId, newAnonymousCartToken) => {
@@ -65,23 +64,23 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{
-      anonymousCartId,
-      anonymousCartToken,
-      accountCartId,
-      isReconcilingCarts,
-      checkoutPayments,
-      setAnonymousCartCredentials,
-      clearAnonymousCartCredentials,
-      setAnonymousCartCredentialsFromLocalStorage,
-      setIsReconcilingCarts,
-      hasAnonymousCartCredentials: (anonymousCartId && anonymousCartToken) || false,
-      hasAccountCart: typeof accountCartId === "string",
-      setAccountCartId,
-      addCheckoutPayment,
-      setCheckoutPayment,
-      resetCheckoutPayments
-    }}
+    <CartContext.Provider
+      value={{
+        anonymousCartId,
+        anonymousCartToken,
+        accountCartId,
+        // isReconcilingCarts,
+        checkoutPayments,
+        setAnonymousCartCredentials,
+        clearAnonymousCartCredentials,
+        setAnonymousCartCredentialsFromLocalStorage,
+        hasAnonymousCartCredentials: (anonymousCartId && anonymousCartToken) || false,
+        hasAccountCart: typeof accountCartId === "string",
+        setAccountCartId,
+        addCheckoutPayment,
+        setCheckoutPayment,
+        resetCheckoutPayments
+      }}
     >
       {children}
     </CartContext.Provider>

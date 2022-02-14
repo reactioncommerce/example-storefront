@@ -1,3 +1,63 @@
+## [5.1.1](https://github.com/reactioncommerce/example-storefront/compare/v5.1.0...v5.1.1) (2021-11-17)
+
+
+### Bug Fixes
+
+* add package link check ([450bea0](https://github.com/reactioncommerce/example-storefront/commit/450bea0d8380d19a652aa653e21a82daa817a8e2))
+
+# [5.1.0](https://github.com/reactioncommerce/example-storefront/compare/v5.0.3...v5.1.0) (2021-10-16)
+
+
+### Bug Fixes
+
+* keep stripe method ([1aa98dc](https://github.com/reactioncommerce/example-storefront/commit/1aa98dc5882bf57cb2867df23bf478372986ca18))
+* lint ([1669dc8](https://github.com/reactioncommerce/example-storefront/commit/1669dc83ff5c22c13f4aa4e0124eb5f3a004781e))
+* lint errors ([6e42b9d](https://github.com/reactioncommerce/example-storefront/commit/6e42b9dbe9e03d7e1b1d0c95d0c15659124f9100))
+* lint errors in StripeCard, add stripe js lib ([4d9569d](https://github.com/reactioncommerce/example-storefront/commit/4d9569d3eb8c8e76915ded20767c05f3848ac0a7))
+* lint errors in StripeCard, add stripe js lib ([e0140f1](https://github.com/reactioncommerce/example-storefront/commit/e0140f1858305e984082988a90db9bf775973cf4))
+* remove stripe old payment method, SCA remains ([73623ca](https://github.com/reactioncommerce/example-storefront/commit/73623caf480e7e69c92073e9c23609a9319cfa68))
+* remove stripe, stripe SCA remains ([3d25fd6](https://github.com/reactioncommerce/example-storefront/commit/3d25fd63401857768f820df776f486ce4f5920a9))
+
+
+### Features
+
+* Add Stripe Payments Intents API SCA-compliant Payment Component ([30fa912](https://github.com/reactioncommerce/example-storefront/commit/30fa912c83e32df4b3f3c184ed5d5ec6c1ae46a0))
+
+## [5.0.3](https://github.com/reactioncommerce/example-storefront/compare/v5.0.2...v5.0.3) (2021-09-03)
+
+
+### Bug Fixes
+
+* login allowed from checkout page ([d22bea2](https://github.com/reactioncommerce/example-storefront/commit/d22bea2fd5d32770aba1d8a61f82565f337395bd))
+
+## [5.0.2](https://github.com/reactioncommerce/example-storefront/compare/v5.0.1...v5.0.2) (2021-08-31)
+
+
+### Bug Fixes
+
+* contributing guide ([a778712](https://github.com/reactioncommerce/example-storefront/commit/a778712fa7383c60287a5c149dec33408010fb78))
+
+## [5.0.1](https://github.com/reactioncommerce/example-storefront/compare/v5.0.0...v5.0.1) (2021-08-31)
+
+
+### Bug Fixes
+
+* correct admin URL ([1526165](https://github.com/reactioncommerce/example-storefront/commit/15261655f445c92f88400a8b036ffc070e90299d))
+
+# [5.0.0](https://github.com/reactioncommerce/example-storefront/compare/v4.1.2...v5.0.0) (2021-08-25)
+
+
+### Features
+
+* breaking use account-js for authentication ([7a509c9](https://github.com/reactioncommerce/example-storefront/commit/7a509c9717e2a71c3f0722b8bf366e88a18d1240))
+
+
+### BREAKING CHANGES
+
+* the authorization methods have been switched to account-js
+
+Signed-off-by: Akarshit Wal <akarshitwal@gmail.com>
+
 ## [4.1.2](https://github.com/reactioncommerce/example-storefront/compare/v4.1.1...v4.1.2) (2021-08-23)
 
 

@@ -15,12 +15,9 @@ import {
   updateCartItemsQuantityMutation,
   updateFulfillmentOptionsForGroup
 } from "./mutations.gql";
-import {
-  accountCartByAccountIdQuery,
-  anonymousCartByCartIdQuery
-} from "./queries.gql";
+import { accountCartByAccountIdQuery, anonymousCartByCartIdQuery } from "./queries.gql";
 
-
+let isReconcilingCarts = false;
 /**
  * Hook to get cart information
  *
@@ -48,7 +45,6 @@ export default function useCart() {
     pollInterval: shouldSkipAccountCartByAccountIdQuery ? 0 : 10000
   });
 
-
   const [
     fetchAnonymousCart,
     { data: cartDataAnonymous, called: anonymousCartQueryCalled, refetch: refetchAnonymousCart }
@@ -73,7 +69,7 @@ export default function useCart() {
     if (!shouldSkipAnonymousCartByCartIdQuery && anonymousCartQueryCalled) {
       refetchAnonymousCart();
     }
-  }, [viewer, refetchAccountCart]);
+  }, [viewer?._id, refetchAccountCart]);
 
   const cart = useMemo(() => {
     if (!shouldSkipAccountCartByAccountIdQuery && cartData) {
@@ -113,33 +109,32 @@ export default function useCart() {
     };
   };
 
-  const [addOrCreateCartMutation, {
-    loading: addOrCreateCartLoading
-  }] = useMutation(cart && cart._id ? addCartItemsMutation : createCartMutation, {
-    onCompleted(addOrCreateCartMutationData) {
-      if (addOrCreateCartMutationData && addOrCreateCartMutationData.createCart && (!viewer || !viewer._id)) {
-        const { cart: cartPayload, token } = addOrCreateCartMutationData.createCart;
-        cartStore.setAnonymousCartCredentials(cartPayload._id, token);
-      }
+  const [addOrCreateCartMutation, { loading: addOrCreateCartLoading }] = useMutation(
+    cart && cart._id ? addCartItemsMutation : createCartMutation,
+    {
+      onCompleted(addOrCreateCartMutationData) {
+        if (addOrCreateCartMutationData && addOrCreateCartMutationData.createCart && (!viewer || !viewer._id)) {
+          const { cart: cartPayload, token } = addOrCreateCartMutationData.createCart;
+          cartStore.setAnonymousCartCredentials(cartPayload._id, token);
+        }
 
-      const { accountCartId, anonymousCartToken } = cartStore;
-      if (accountCartId) {
-        refetchAccountCart();
-      } else if (anonymousCartToken) {
-        refetchAnonymousCart();
+        const { accountCartId, anonymousCartToken } = cartStore;
+        if (accountCartId) {
+          refetchAccountCart();
+        } else if (anonymousCartToken) {
+          refetchAnonymousCart();
+        }
       }
     }
-  });
+  );
 
-  const [removeCartItemsMutationFun, {
-    loading: removeCartItemsLoading
-  }] = useMutation(removeCartItemsMutation, {
+  const [removeCartItemsMutationFun, { loading: removeCartItemsLoading }] = useMutation(removeCartItemsMutation, {
     update(cache, { data: mutationData }) {
       if (mutationData && mutationData.removeCartItems) {
         const { cart: cartPayload } = mutationData.removeCartItems;
 
         if (cartPayload) {
-        // Update Apollo cache
+          // Update Apollo cache
           cache.writeQuery({
             query: cartPayload.account ? accountCartByAccountIdQuery : anonymousCartByCartIdQuery,
             data: { cart: cartPayload }
@@ -149,15 +144,19 @@ export default function useCart() {
     }
   });
 
-  const handleRemoveCartItems = useCallback(async (itemIds) => removeCartItemsMutationFun({
-    variables: {
-      input: {
-        cartId: cartStore.anonymousCartId || cartStore.accountCartId,
-        cartItemIds: (Array.isArray(itemIds) && itemIds) || [itemIds],
-        cartToken: cartStore.anonymousCartToken || null
-      }
-    }
-  }), [cartStore.anonymousCartId, cartStore.accountCartId, cartStore.anonymousCartToken]);
+  const handleRemoveCartItems = useCallback(
+    async (itemIds) =>
+      removeCartItemsMutationFun({
+        variables: {
+          input: {
+            cartId: cartStore.anonymousCartId || cartStore.accountCartId,
+            cartItemIds: (Array.isArray(itemIds) && itemIds) || [itemIds],
+            cartToken: cartStore.anonymousCartToken || null
+          }
+        }
+      }),
+    [cartStore.anonymousCartId, cartStore.accountCartId, cartStore.anonymousCartToken]
+  );
 
   const handleAddItemsToCart = async (data, isCreating) => {
     const input = {
@@ -203,10 +202,9 @@ export default function useCart() {
 
   // If we are authenticated, reconcile carts
   useEffect(() => {
-    if (cartStore.hasAnonymousCartCredentials && viewer && viewer._id && cartStore.isReconcilingCarts === false) {
+    if (cartStore.hasAnonymousCartCredentials && viewer && viewer._id && isReconcilingCarts === false) {
       // Prevent multiple calls to reconcile cart mutations when one is currently in progress
-      cartStore.setIsReconcilingCarts(true);
-
+      isReconcilingCarts = true;
       apolloClient.mutate({
         mutation: reconcileCartsMutation,
         update: (cache, { data: mutationData }) => {
@@ -231,8 +229,7 @@ export default function useCart() {
               }
             }
           }
-
-          cartStore.setIsReconcilingCarts(false);
+          isReconcilingCarts = true;
         },
         variables: {
           input: {
@@ -243,7 +240,7 @@ export default function useCart() {
         }
       });
     }
-  }, [viewer, cartStore.hasAnonymousCartCredentials, cartStore.isReconcilingCarts, apolloClient]);
+  }, [viewer?._id, cartStore.hasAnonymousCartCredentials, isReconcilingCarts, apolloClient]);
 
   let processedCartData = null;
   if (cart) {
@@ -288,7 +285,9 @@ export default function useCart() {
         });
 
         // Update fulfillment options for current cart
-        const { data: { setShippingAddressOnCart } } = response;
+        const {
+          data: { setShippingAddressOnCart }
+        } = response;
         handleUpdateFulfillmentOptionsForGroup(setShippingAddressOnCart.cart.checkout.fulfillmentGroups[0]._id);
 
         return response;
@@ -305,7 +304,12 @@ export default function useCart() {
           const { cart: fetchMoreCart } = fetchMoreResult;
 
           // Check for additional items from result
-          if (fetchMoreCart && fetchMoreCart.items && Array.isArray(fetchMoreCart.items.edges) && fetchMoreCart.items.edges.length) {
+          if (
+            fetchMoreCart &&
+            fetchMoreCart.items &&
+            Array.isArray(fetchMoreCart.items.edges) &&
+            fetchMoreCart.items.edges.length
+          ) {
             // Merge previous cart items with next cart items
             return {
               ...fetchMoreResult,
@@ -314,10 +318,7 @@ export default function useCart() {
                 items: {
                   __typename: previousResult.cart.items.__typename,
                   pageInfo: fetchMoreCart.items.pageInfo,
-                  edges: [
-                    ...previousResult.cart.items.edges,
-                    ...fetchMoreCart.items.edges
-                  ]
+                  edges: [...previousResult.cart.items.edges, ...fetchMoreCart.items.edges]
                 }
               }
             };

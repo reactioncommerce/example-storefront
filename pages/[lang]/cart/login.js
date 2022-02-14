@@ -80,11 +80,7 @@ const Login = ({ router }) => {
   const { locale, t } = useTranslation("common"); // eslint-disable-line no-unused-vars, id-length
   const shop = useShop();
 
-  const {
-    cart,
-    isLoadingCart,
-    setEmailOnAnonymousCart
-  } = useCart();
+  const { cart, isLoadingCart, setEmailOnAnonymousCart } = useCart();
   const hasIdentity = !!((cart && cart.account) || (cart && cart.email));
   const pageTitle = `Login | ${shop && shop.name}`;
 
@@ -94,7 +90,7 @@ const Login = ({ router }) => {
     if (hasIdentity) {
       Router.push("/cart/checkout");
     }
-  }), [cart, hasIdentity, Router]; // eslint-disable-line no-sequences
+  }, [cart, hasIdentity, Router]);
 
   if (isLoadingCart) {
     return (
@@ -129,8 +125,8 @@ Login.propTypes = {
 export async function getStaticProps({ params: { lang } }) {
   return {
     props: {
-      ...await fetchPrimaryShop(lang),
-      ...await fetchTranslations(lang, ["common"])
+      ...(await fetchPrimaryShop(lang)),
+      ...(await fetchTranslations(lang, ["common"]))
     }
   };
 }
