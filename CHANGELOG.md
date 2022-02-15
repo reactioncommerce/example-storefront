@@ -1,3 +1,11 @@
+## [5.1.3](https://github.com/reactioncommerce/example-storefront/compare/v5.1.2...v5.1.3) (2022-02-15)
+
+
+### Bug Fixes
+
+* remove create-hydra command from old version ([b56f089](https://github.com/reactioncommerce/example-storefront/commit/b56f08973ac565e091ddcd79beb0f418fe019308))
+* upgrade @segment/snippet from 4.4.0 to 4.14.2 ([9bb070b](https://github.com/reactioncommerce/example-storefront/commit/9bb070b1fb1dc7a9439e9670b02ac2b83b28acbd))
+
 ## [5.1.2](https://github.com/reactioncommerce/example-storefront/compare/v5.1.1...v5.1.2) (2022-02-15)
 
 
