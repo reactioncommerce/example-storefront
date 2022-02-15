@@ -65,7 +65,6 @@
     "test:link": "blc http://web.reaction.localhost:4000 -ro -filter=3 -e",
     "test:file": "NODE_ENV=jesttest jest --watch --no-coverage",
     "type-check": "tsc",
-    "create-hydra-client": "node createHydraClientIfNecessary.js",
     "postinstall": "is-ci || is-docker || husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
