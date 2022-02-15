@@ -1,3 +1,10 @@
+## [5.1.2](https://github.com/reactioncommerce/example-storefront/compare/v5.1.1...v5.1.2) (2022-02-15)
+
+
+### Bug Fixes
+
+* upgrade @material-ui/core from 4.10.2 to 4.12.3 ([bcc9c25](https://github.com/reactioncommerce/example-storefront/commit/bcc9c25d2d3d17b5f3eb1155f70925c5570650fd))
+
 ## [5.1.1](https://github.com/reactioncommerce/example-storefront/compare/v5.1.0...v5.1.1) (2021-11-17)
 
 
