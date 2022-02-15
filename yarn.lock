@@ -2136,10 +2136,10 @@
   resolved "https://registry.npmjs.org/@reactioncommerce/eslint-config/-/eslint-config-1.9.0.tgz"
   integrity sha512-pLkrZNEEoL1MSQCYn+jeGmEZHDFuyrrEEAtF+uq206Sddw+hiwQ4s9vEWNs4mP60mnKmHo03QfQ8XtQik6tRcA==
 
-"@segment/snippet@~4.4.0":
-  version "4.4.0"
-  resolved "https://registry.npmjs.org/@segment/snippet/-/snippet-4.4.0.tgz"
-  integrity sha1-FT8XuASKJ2S7sTQ6YfPDwk2gOOI=
+"@segment/snippet@~4.14.2":
+  version "4.14.2"
+  resolved "https://registry.yarnpkg.com/@segment/snippet/-/snippet-4.14.2.tgz#d2a0a78714966c51b06ffffdb7685aa5d7f75eb9"
+  integrity sha512-14C0hoau8TZgWC87Zynk9fWuuxE8f2BvquRVSg4dF63ySvdy6cubbmBkpDhNfWteI04+BDA2OLL+4irGnL6YGA==
   dependencies:
     "@ndhoule/map" "^2.0.1"
 
