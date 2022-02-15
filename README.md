@@ -1,21 +1,19 @@
 # Example Storefront
 
-[Reaction Commerce](http://reactioncommerce.com) is an API-first, headless commerce platform built using Node.js, React, and GraphQL. It plays nicely with npm, Docker and Kubernetes.
+[Mailchimp Open Commerce](https://mailchimp.com/developer/open-commerce/) is an API-first, headless commerce platform built using Node.js, React, and GraphQL. It plays nicely with npm, Docker and Kubernetes.
 
-This Example Storefront is to serve as a reference on how to implement a web based storefront using the Reaction Commerce GraphQL API. You can fork this project as a jumping off point or create your own custom experience using your prefered client-side technology. While we believe our example storefront is full featured enough to use in production, it may be missing features your shop requires at this time.
+This Example Storefront is to serve as a reference on how to implement a web based storefront using the Reaction Commerce GraphQL API. You can fork this project as a jumping off point or create your own custom experience using your preferred client-side technology. While we believe our example storefront is full-featured enough to use in production, it may be missing features your shop requires at this time.
 
 ## Features
 
-Reaction comes with a robust set of core commerce capabilities right out of the box. And since anything in our codebase can be extended, overwritten, or installed as a package, you may also customize anything on our platform.
-
-Check out the full list of Reaction [features](https://www.reactioncommerce.com/features) and [release history](https://reactioncommerce.com/roadmap) for more info.
+Mailchimp Open Commerce comes with a robust set of core commerce capabilities right out of the box. And since anything in our codebase can be extended, overwritten, or installed as a package, you may also customize anything on our platform.
 
 This example storefront is built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [GraphQL](https://graphql.org/), and [Apollo Client](https://www.apollographql.com/docs/react/)
 
 - Headless ecommerce example storefront built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [GraphQL](https://graphql.org/), [Apollo Client](https://www.apollographql.com/docs/react/)
 - [Reaction GraphQL API](https://github.com/reactioncommerce/reaction/tree/master/imports/plugins/core/graphql) integration
 - Server-side rendering
-- Payments with [Stripe](https://stripe.com/)
+- Payments with [Stripe](https://stripe.com/) with Strong Customer Authentication included.
 - Analytics with [Segment](https://segment.com/) or any other provider
 - Reusable, customizable, themeable ecommerce React components from the [Example Storefront Component Library](https://github.com/reactioncommerce/reaction-component-library/) with [Styled Components](https://www.styled-components.com/)
 - Written in ES6, configured with ES6
@@ -23,15 +21,13 @@ This example storefront is built with [Next.js](https://nextjs.org/), [React](ht
 
 ## Getting Started
 
-Follow the [Reaction Platform docs](https://docs.reactioncommerce.com/docs/installation-reaction-platform) to install and run all the services necessary to run the storefront:
+Follow the [Quick Start Guide](https://mailchimp.com/developer/open-commerce/guides/quick-start/) to install and run all the services necessary to run the storefront:
 
 | Directory: Service                                                                            | URL                                              |
 | --------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API                       | [localhost:3000/graphql](localhost:3000/graphql) |
-| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL Playground developer tool | [localhost:3000/graphql](localhost:3000/graphql) |
-| [`reaction`](https://github.com/reactioncommerce/reaction): Reaction Admin                    | [localhost:4080](localhost:4080)                 |
+| [`reaction`](https://github.com/reactioncommerce/reaction): GraphQL API                       | [localhost:3000/graphql](localhost:3000/graphql) ||
+| [`reaction-admin`](https://github.com/reactioncommerce/reaction-admin): Reaction Admin        | [localhost:4080](localhost:4080)                 |
 | [`reaction`](https://github.com/reactioncommerce/reaction): MongoDB                           | [localhost:27017](localhost:27017)               |
-| [`reaction-hydra`](https://github.com/reactioncommerce/reaction-hydra): Authentication        | [localhost:4444](localhost:4444)                 |
 | [`example-storefront`](https://github.com/reactioncommerce/example-storefront): Storefront    | [localhost:4000](localhost:4000)                 |
 
 **Note**: The storefront has redirects so that if you open [http://localhost:4000/graphql](http://localhost:4000/graphql), you'll be redirected to the GraphQL Playground.
@@ -43,7 +39,7 @@ Follow the [Reaction Platform docs](https://docs.reactioncommerce.com/docs/insta
 When running the storefront and Reaction for the first time, you will need to configure Stripe payment processing and shipping options to test a complete order checkout flow. After signing up for a Stripe API key, follow these steps:
 
 1. Add public Stripe API key (`STRIPE_PUBLIC_API_KEY`) to `.env`.
-2. Open the Reaction Classic app, at `http://localhost:3000`. Log in as an Admin user.
+2. Open the Reaction Admin app, at `http://localhost:4080`. Log in as an Admin user.
 3. Open **Payments**: Enable Stripe by checking the box. Add a Stripe secret key and public key.
 4. Open **Shipping**: Enable flat-rate shipping by checking the box. Enable at least one type of flat-rate shipping by clicking on the option in the table and checking the box.
 
@@ -54,10 +50,8 @@ Read the docs for [setting up Segment or a custom analytics tracker](docs/tracki
 ## Documentation
 
 - [Example Storefront full documentation](./docs)
-- [Example Storefront Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs), and [component documentation](http://designsystem.reactioncommerce.com/)
-- [Reaction Docs: Using GraphQL](https://docs.reactioncommerce.com/docs/graphql-using)
-- [Reaction Docs: Testing with Jest](https://docs.reactioncommerce.com/docs/testing-reaction)
-- [Reaction Docs: Developing with Docker](https://docs.reactioncommerce.com/docs/installation-docker-development)
+- [Example Storefront Component Library repository](https://github.com/reactioncommerce/reaction-component-library), [documentation](https://github.com/reactioncommerce/reaction-component-library/tree/master/docs)
+- [Reaction Docs: Testing with Jest](https://mailchimp.com/developer/open-commerce/docs/testing-requirements/)
 
 ## Development
 
@@ -237,7 +231,7 @@ Pull requests should pass all automated tests, style, and security checks.
 
 #### Automated Tests
 
-Your code should pass all [acceptance tests and unit tests](https://docs.reactioncommerce.com/reaction-docs/trunk/testing-reaction). Run
+Your code should pass all acceptance tests and unit tests. Run
 
 ```sh
 docker-compose run --rm web yarn test
@@ -264,12 +258,6 @@ docker-compose run --rm web eslint src
 ```
 
 to run ESLint against your code locally.
-
-Please follow the [Reaction Code Style Guide](https://docs.reactioncommerce.com/docs/styleguide). Check out our guides to [JSDoc](https://docs.reactioncommerce.com/docs/jsdoc-style-guide), [Git](https://docs.reactioncommerce.com/docs/git-style-guide), [error handling](https://docs.reactioncommerce.com/docs/error-handling-guide), [logging](https://docs.reactioncommerce.com/docs/logging), and [React](https://docs.reactioncommerce.com/docs/react-best-practices).
-
-We also request that you follow the our [pull request template](https://docs.reactioncommerce.com/docs/contributing-to-reaction#fill-out-the-pull-request-template)
-
-Get more details in our [Contributing Guide](https://docs.reactioncommerce.com/docs/contributing-to-reaction).
 
 ### Developer Certificate of Origin
 
