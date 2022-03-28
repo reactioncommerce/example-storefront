@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/reactioncommerce/example-storefront/compare/v5.1.3...v5.2.0) (2022-03-28)
+
+
+### Features
+
+* added latest tag to docker images ([9f93132](https://github.com/reactioncommerce/example-storefront/commit/9f9313209f15d619a1480273a6a9b7f8bf7afc19))
+
 ## [5.1.3](https://github.com/reactioncommerce/example-storefront/compare/v5.1.2...v5.1.3) (2022-02-15)
 
 
