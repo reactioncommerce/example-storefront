@@ -11,9 +11,9 @@ Variables for customizing the theme are located in the `[src/lib/theme/reactionT
 For example, you can change the various colors used for the primary color, fonts used, layout dimensions and more. All of the [default theme variables from Material UI](https://material-ui.com/customization/default-theme/) are available to override as well as any additional variables added for the example storefront itself.
 
 ```js
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
 
-const theme = createMuiTheme({
+const theme = createTheme({
   layout: {
     mainContentMaxWidth: "1440px",
     mainLoginMaxWidth: "1024px"
@@ -49,9 +49,9 @@ To add custom overrides, simply add an `overrides` object to the theme. The `ove
 **src/lib/theme/reactionTheme.js**
 
 ```js
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
 
-const theme = createMuiTheme({
+const theme = createTheme({
   overrides: {
     // Override styles for the Starter kit header
     SkHeader: { // Name of the component
