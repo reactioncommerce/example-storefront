@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/reactioncommerce/example-storefront/compare/v5.2.0...v5.2.1) (2022-04-28)
+
+
+### Bug Fixes
+
+* muitheme variable change ([ddad190](https://github.com/reactioncommerce/example-storefront/commit/ddad190681c8913b8a7a34cfc3b1d9027c319d45))
+
 # [5.2.0](https://github.com/reactioncommerce/example-storefront/compare/v5.1.3...v5.2.0) (2022-03-28)
 
 
