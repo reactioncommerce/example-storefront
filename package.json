@@ -8,6 +8,7 @@
     "email": "engineering@reactioncommerce.com",
     "url": "https://reactioncommerce.com"
   },
+  "reactionProjectType": "storefront-example",
   "release": {
     "branches": [
       "trunk"
