@@ -11,8 +11,8 @@ export default async function fetchPrimaryShop(language) {
   const { data } = await client.query({
     query: primaryShopQuery,
     variables: {
-      language,
-    },
+      language
+    }
   });
 
   return data?.primaryShop ? { shop: data.primaryShop } : { shop: null };
