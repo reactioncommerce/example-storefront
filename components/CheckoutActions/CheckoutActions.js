@@ -154,6 +154,7 @@ class CheckoutActions extends Component {
 
     const fulfillmentGroups = checkout.fulfillmentGroups.map((group) => {
       const { data } = group;
+      const groupId = group._id;
       const { selectedFulfillmentOption } = group;
 
       const items = cart.items.map((item) => ({
@@ -164,6 +165,7 @@ class CheckoutActions extends Component {
       }));
 
       return {
+        _id: groupId,
         data,
         items,
         selectedFulfillmentMethodId: selectedFulfillmentOption.fulfillmentMethod._id,
