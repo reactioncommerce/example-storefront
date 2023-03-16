@@ -19,7 +19,7 @@ defaults: &defaults
     - GITOPS_PR_WEBHOOK: "https://w603b5hwp1.execute-api.us-east-1.amazonaws.com/dev/pullrequests"
     - GLOBAL_CACHE_VERSION: “v3”
   docker:
-    - image: circleci/node:12-stretch
+    - image: cimg/node:18.10.0
 
 jobs:
   install-dependencies:

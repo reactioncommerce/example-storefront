@@ -1,8 +1,9 @@
-FROM node:12-alpine
+FROM node:18.10.0-alpine
 
 ARG NEXTJS_DOTENV
 
 ENV NEXTJS_DOTENV=$NEXTJS_DOTENV
+ENV NODE_OPTIONS=--openssl-legacy-provider
 
 # hadolint ignore=DL3018
 RUN apk --no-cache add bash curl less tini vim make
